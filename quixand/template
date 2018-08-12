@@ -1,0 +1,22 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="quixand"
+version=2012.12.24.1
+revision=1
+short_desc="A tool for creating single-use unrecoverable encrypted sandboxes"
+depends="bash encfs"
+homepage="https://xyne.archlinux.ca/projects/quixand/"
+license="GPL-2"
+distfiles="https://xyne.archlinux.ca/projects/quixand/src/$pkgname-$version.tar.xz"
+checksum="3d8f1b03de824d5b9357b5479ecdfcdce22985671eac5234199fb4504cb2ba11"
+
+do_install() {
+  vmkdir /usr/bin
+  vbin quixand
+  vman man/quixand.1.gz
+}
+
+post_install() {
+  vlicense COPYING
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
