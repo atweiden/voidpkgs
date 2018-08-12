@@ -1,0 +1,21 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="font-tamsyn-console"
+version=1.11
+revision=1
+short_desc="A monospaced bitmap font for the console"
+noarch="yes"
+homepage="http://www.fial.com/~scott/tamsyn-font"
+license="Custom"
+#distfiles="http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-$version.tar.gz"
+distfiles="https://web.archive.org/web/20180517215104/http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-$version.tar.gz"
+checksum="97be1b604441b725548c454a92603993eb96e493f508845638a86c8d64fbf24e"
+wrksrc="tamsyn-font-$version"
+
+do_install() {
+  vlicense LICENSE
+  vdoc README
+  vmkdir usr/share/kbd/consolefonts
+  vcopy *.psf.gz usr/share/kbd/consolefonts
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
