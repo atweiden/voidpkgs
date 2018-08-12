@@ -1,0 +1,17 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="enchive"
+version=3.4
+revision=1
+short_desc="Encrypted personal archives"
+homepage="https://github.com/skeeto/enchive"
+license="Unlicense"
+changelog="https://raw.githubusercontent.com/skeeto/enchive/master/NEWS.md"
+distfiles="https://github.com/skeeto/enchive/releases/download/$version/$pkgname-$version.tar.xz"
+checksum="1e8551df0bb98a4f20930a010b3a6b01f60078af86288370ef93895a3918505e"
+build_style="gnu-makefile"
+
+CFLAGS='-ansi -pedantic -Wall -Wextra -O3 -g3 -D_FILE_OFFSET_BITS=64'
+CFLAGS+=" -DENCHIVE_AGENT_TIMEOUT=420"
+CFLAGS+=" -DENCHIVE_FILE_EXTENSION='.enc'"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
