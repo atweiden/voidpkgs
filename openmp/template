@@ -1,0 +1,36 @@
+# credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="openmp"
+version=6.0.1
+revision=1
+short_desc="LLVM OpenMP Runtime Library"
+makedepends="libelf libffi"
+hostmakedepends="ninja perl pkg-config"
+homepage="https://openmp.llvm.org"
+license="Custom"
+distfiles="https://releases.llvm.org/$version/$pkgname-$version.src.tar.xz"
+checksum="66afca2b308351b180136cf899a3b22865af1a775efaf74dc8a10c96d4721c5a"
+wrksrc="$pkgname-$version.src"
+build_style="cmake"
+configure_args=""
+configure_args+=" -DCMAKE_BUILD_TYPE=Release"
+configure_args+=" -DCMAKE_INSTALL_PREFIX=/usr"
+configure_args+=" -G Ninja"
+make_cmd="ninja"
+
+case "$XBPS_TARGET_MACHINE" in
+  *-musl) configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
+esac
+
+do_install() {
+  cd "${cmake_builddir:=build}"
+  DESTDIR="$DESTDIR" ninja install
+}
+
+post_install() {
+  vlicense LICENSE.txt
+  # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
+  rm "$DESTDIR/usr/lib/libgomp.so"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
