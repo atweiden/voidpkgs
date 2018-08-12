@@ -1,0 +1,13 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tty-no-cursor-blink"
+version=0.0.3
+revision=1
+short_desc="Disable blinking cursor in Linux tty"
+homepage="https://github.com/atweiden/tty-no-cursor-blink"
+license="Unlicense"
+
+do_install() {
+  vsv tty-no-cursor-blink
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
