@@ -1,0 +1,49 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dcrd"
+version=1.2.0
+revision=1
+short_desc="Decred daemon written in Go"
+hostmakedepends="dep git"
+homepage="https://github.com/decred/dcrd"
+license="ISC"
+distfiles="https://codeload.github.com/decred/$pkgname/tar.gz/release-v$version>$pkgname-$version.tar.gz"
+checksum="aaf956e1906f0f0cb0e9aea26a653236879c43624bf4507be324fe1974834fda"
+build_style="go"
+go_import_path="github.com/decred/dcrd"
+wrksrc="$pkgname-release-v$version"
+
+do_build() {
+  cd "$GOSRCPATH"
+  dep ensure -v
+  go install . ./cmd/...
+}
+
+pre_install() {
+  # prepend dcr to unqualified binaries...
+  for _bin in $(find "$GOPATH/bin"  \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        -type f ! -name "dcr*" -printf '%f\n'); do
+    mv "$GOPATH/bin/$_bin" "$GOPATH/bin/dcr$_bin"
+  done
+}
+
+do_install() {
+  for _bin in $(find "$GOPATH/bin"  \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        -type f     \
+                        -executable); do
+    vbin "$_bin"
+  done
+}
+
+post_install() {
+  vlicense "$GOSRCPATH/LICENSE"
+  vdoc "$GOSRCPATH/CHANGES"
+  vdoc "$GOSRCPATH/README.md"
+  vdoc "$GOSRCPATH/cmd/dcrctl/sample-dcrctl.conf"
+  vcopy "$GOSRCPATH/docs" "usr/share/doc/$pkgname"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
