@@ -12,6 +12,7 @@ dcrd                         | PASS   | PASS
 dcrwallet                    | PASS   | PASS
 enchive                      | PASS   | PASS
 font-tamsyn-console          | PASS   | PASS
+gocrypfs                     | ????   | ????
 keymap-us-capslock-backspace | PASS   | PASS
 libbitcoin-blockchain        | PASS   | FAIL
 libbitcoin-client            | PASS   | FAIL
