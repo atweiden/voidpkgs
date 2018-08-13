@@ -19,7 +19,7 @@ do_build() {
 }
 
 pre_install() {
-  # prepend dcr to unqualified binaries...
+  # prepend dcr to unqualified binaries
   for _bin in $(find "$GOPATH/bin"  \
                         -mindepth 1 \
                         -maxdepth 1 \
