@@ -17,6 +17,7 @@ From top to bottom:
 1. Dependencies (`depends`, `makedepends`, `checkdepends`, `hostmakedepends`)
 1. URL
 1. License
+1. Changelog
 1. Source
 1. Source Checksums
 1. Build Style
