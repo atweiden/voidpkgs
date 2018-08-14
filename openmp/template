@@ -16,9 +16,7 @@ distfiles="https://releases.llvm.org/$version/$pkgname-$version.src.tar.xz"
 checksum="66afca2b308351b180136cf899a3b22865af1a775efaf74dc8a10c96d4721c5a"
 wrksrc="$pkgname-$version.src"
 build_style="cmake"
-configure_args+=" -DCMAKE_BUILD_TYPE=Release"
-configure_args+=" -DCMAKE_INSTALL_PREFIX=/usr"
-configure_args+=" -G Ninja"
+configure_args="-G Ninja"
 make_cmd="ninja"
 
 case "$XBPS_TARGET_MACHINE" in

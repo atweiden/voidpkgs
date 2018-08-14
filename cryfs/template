@@ -21,10 +21,7 @@ distfiles="https://github.com/cryfs/cryfs/releases/download/$version/$pkgname-$v
 checksum="d328ca4379a70f07a3d178e618fe6d40de94db1006508a845ae467f555ecf9a6"
 create_wrksrc="$pkgname-$version"
 build_style="cmake"
-configure_args+=" -DCMAKE_INSTALL_PREFIX=/usr"
-configure_args+=" -DCMAKE_BUILD_TYPE=Release"
-configure_args+=" -DBUILD_TESTING=off"
-configure_args+=" -DCRYFS_UPDATE_CHECKS=off"
+configure_args="-DCRYFS_UPDATE_CHECKS=off"
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl) configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
