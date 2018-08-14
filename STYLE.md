@@ -1,10 +1,8 @@
-Style Guide
-===========
+Style Guide for Void `template` Files
+=====================================
 
-Void `template` File
----------------------
-
-### Layout
+Layout
+------
 
 From top to bottom:
 
@@ -27,9 +25,10 @@ From top to bottom:
 1. Actions (in order of execution)
 1. Subpackages
 
-### Other
+Other
+-----
 
-#### Comments
+### Comments
 
 Always put comments on a line of their own, e.g.
 
@@ -38,11 +37,11 @@ Always put comments on a line of their own, e.g.
 _var=3 # bad comment
 ```
 
-#### Long Lines
+### Long Lines
 
 In *Actions* section, split lines of over 80 characters with `\`.
 
-#### Order
+### Order
 
 Always sort items in alphabetical order when appropriate, e.g.
 
@@ -58,16 +57,16 @@ configure_args+=" --with-gnu-ld"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 ```
 
-#### `post_install()`
+### `post_install()`
 
 Install license, man page, documentation in that order. Then clean up
 any unwanted files.
 
-#### Spaces Vs. Tabs
+### Spaces Vs. Tabs
 
 Tabs only.
 
-#### Variables
+### Variables
 
 Split string variables containing multiple entries across newlines, e.g.
 
@@ -116,6 +115,6 @@ version='2018.08.14'
 version="2018.08.14"
 ```
 
-#### Vim
+### Vim
 
 End every `template` file with: `vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:`.
