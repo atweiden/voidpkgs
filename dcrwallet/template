@@ -1,3 +1,4 @@
+# Template file for 'dcrwallet'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrwallet"
 version=1.2.0

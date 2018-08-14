@@ -1,3 +1,4 @@
+# Template file for 'openmp'
 # XXX: echo "libiomp5.so openmp-6.0.1_1" >> common/shlibs
 # credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"

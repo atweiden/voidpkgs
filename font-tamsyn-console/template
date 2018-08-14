@@ -1,3 +1,4 @@
+# Template file for 'font-tamsyn-console'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="font-tamsyn-console"
 version=1.11

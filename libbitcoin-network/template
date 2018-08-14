@@ -1,3 +1,4 @@
+# Template file for 'libbitcoin-network'
 # XXX: echo "libbitcoin-network.so.0 libbitcoin-network-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-network"

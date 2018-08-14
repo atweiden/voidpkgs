@@ -1,3 +1,4 @@
+# Template file for 'keymap-us-capslock-backspace'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="keymap-us-capslock-backspace"
 version=1.0.0

@@ -1,3 +1,4 @@
+# Template file for 'tty-no-cursor-blink'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tty-no-cursor-blink"
 version=0.0.3

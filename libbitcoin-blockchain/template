@@ -1,3 +1,4 @@
+# Template file for 'libbitcoin-blockchain'
 # XXX: echo "libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-blockchain"

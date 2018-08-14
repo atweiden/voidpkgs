@@ -1,3 +1,4 @@
+# Template file for 'btcd'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcd"
 version=20180813

@@ -1,3 +1,4 @@
+# Template file for 'gocryptfs'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gocryptfs"
 version=1.5
