@@ -37,6 +37,27 @@ Always put comments on a line of their own, e.g.
 _var=3 # bad comment
 ```
 
+### Dependencies
+
+Group optional dependencies by `build_option` in a separate alphabetical
+order, after mandatory dependencies, e.g.
+
+```sh
+# good
+depends+=" python3-qrcode"
+depends+=" python3-requests"
+depends+=" $(vopt_if qt hicolor-icon-theme)"
+depends+=" $(vopt_if qt xdg-utils)"
+```
+
+```sh
+# not good
+depends+=" $(vopt_if qt hicolor-icon-theme)"
+depends+=" python3-qrcode"
+depends+=" python3-requests"
+depends+=" $(vopt_if qt xdg-utils)"
+```
+
 ### Long Lines
 
 In *Actions* section, split lines of over 80 characters with `\`.
