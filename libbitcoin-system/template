@@ -26,7 +26,7 @@ configure_args+=" --with-icu"
 configure_args+=" --with-png"
 configure_args+=" --with-qrencode"
 configure_args+=" --without-examples"
-# XXX: echo "libbitcoin.so.0 libbitcoin-3.5.0_1" >> common/shlibs
+# XXX: echo "libbitcoin.so.0 libbitcoin-system-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin.so.0"
 
 pre_configure() {
