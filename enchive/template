@@ -14,4 +14,8 @@ CFLAGS='-ansi -pedantic -Wall -Wextra -O3 -g3 -D_FILE_OFFSET_BITS=64'
 CFLAGS+=" -DENCHIVE_AGENT_TIMEOUT=420"
 CFLAGS+=" -DENCHIVE_FILE_EXTENSION='.enc'"
 
+post_install() {
+  vdoc README.md
+}
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
