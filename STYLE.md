@@ -35,7 +35,8 @@ In *Actions* section, split lines of over 80 characters with `\`.
 
 #### `post_install()`
 
-Install license, man page, documentation in that order.
+Install license, man page, documentation in that order. Then clean up
+any unwanted files.
 
 #### Variables
 
