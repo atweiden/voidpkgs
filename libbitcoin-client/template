@@ -29,6 +29,7 @@ build_style="gnu-configure"
 configure_args=""
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-examples"
+shlib_provides="libbitcoin-client.so.0"
 
 pre_configure() {
   ./autogen.sh

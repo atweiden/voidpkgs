@@ -25,6 +25,7 @@ checksum="376ab5abd8d7734a8b678030b9e997c4b1922e422f6e0a185d7daa3eb251db93"
 build_style="gnu-configure"
 configure_args=""
 configure_args+=" --with-gnu-ld"
+shlib_provides="libbitcoin-database.so.0"
 
 pre_configure() {
   ./autogen.sh

@@ -33,6 +33,7 @@ build_style="gnu-configure"
 configure_args=""
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 configure_args+=" --with-gnu-ld"
+shlib_provides="libbitcoin-server.so.0"
 
 pre_configure() {
   ./autogen.sh

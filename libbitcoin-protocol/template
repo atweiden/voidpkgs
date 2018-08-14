@@ -27,6 +27,7 @@ checksum="9deac6908489e2d59fb9f89c895c49b00e01902d5fdb661f67d4dbe45b22af76"
 build_style="gnu-configure"
 configure_args=""
 configure_args+=" --with-gnu-ld"
+shlib_provides="libbitcoin-protocol.so.0"
 
 pre_configure() {
   ./autogen.sh

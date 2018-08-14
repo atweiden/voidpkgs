@@ -22,6 +22,7 @@ build_style="gnu-configure"
 configure_args=""
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-tests"
+shlib_provides="libbitcoin-consensus.so.0"
 
 pre_configure() {
   ./autogen.sh

@@ -18,6 +18,7 @@ build_style="gnu-configure"
 configure_args=""
 configure_args+=" --enable-module-recovery"
 configure_args+=" --with-gnu-ld"
+shlib_provides="libsecp256k1.so.0"
 
 do_fetch() {
   git clone "$homepage" "$wrksrc"
