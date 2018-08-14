@@ -28,6 +28,10 @@ From top to bottom:
 
 ### Other
 
+#### Long Lines
+
+In *Actions* section, split lines of over 80 characters with `\`.
+
 #### `post_install()`
 
 Install license, man page, documentation in that order.
