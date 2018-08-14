@@ -4,7 +4,8 @@ pkgname="dcrwallet"
 version=1.2.0
 revision=1
 short_desc="Decred wallet daemon written in Go"
-hostmakedepends="dep git"
+hostmakedepends+=" dep"
+hostmakedepends+=" git"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://codeload.github.com/decred/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
@@ -26,16 +27,6 @@ pre_install() {
                         -maxdepth 1 \
                         -type f ! -name "dcr*" -printf '%f\n'); do
     mv "$GOPATH/bin/$_bin" "$GOPATH/bin/dcr$_bin"
-  done
-}
-
-do_install() {
-  for _bin in $(find "$GOPATH/bin"  \
-                        -mindepth 1 \
-                        -maxdepth 1 \
-                        -type f     \
-                        -executable); do
-    vbin "$_bin"
   done
 }
 
