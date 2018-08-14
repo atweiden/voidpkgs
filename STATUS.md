@@ -8,6 +8,7 @@ btcwallet                    | PASS   | PASS
 cryfs                        | PASS   | FAIL
 dcrd                         | PASS   | PASS
 dcrwallet                    | PASS   | PASS
+electrum-git                 | ????   | ????
 enchive                      | PASS   | PASS
 font-tamsyn-console          | PASS   | PASS
 gocryptfs                    | ????   | ????
