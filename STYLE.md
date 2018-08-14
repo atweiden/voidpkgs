@@ -29,6 +29,19 @@ From top to bottom:
 
 ### Other
 
+#### Comments
+
+Always put comments on a line of their own, e.g.
+
+```sh
+# good comment
+_var=3 # bad comment
+```
+
+#### Long Lines
+
+In *Actions* section, split lines of over 80 characters with `\`.
+
 #### Order
 
 Always sort items in alphabetical order when appropriate, e.g.
@@ -44,19 +57,6 @@ configure_args+=" --with-gnu-ld"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 ```
-
-#### Comments
-
-Always put comments on a line of their own, e.g.
-
-```sh
-# good comment
-_var=3 # bad comment
-```
-
-#### Long Lines
-
-In *Actions* section, split lines of over 80 characters with `\`.
 
 #### `post_install()`
 
