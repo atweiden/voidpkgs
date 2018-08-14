@@ -33,4 +33,4 @@ do_install() {
           -t "$DESTDIR/usr/share/kbd/keymaps/i386/qwerty"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
