@@ -32,4 +32,15 @@ post_install() {
   vdoc README.md
 }
 
+libsecp256k1-devel_package() {
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
+}
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

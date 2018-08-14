@@ -6,15 +6,15 @@ revision=1
 short_desc="Bitcoin Full Node and Query Server"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
-makedepends+=" libbitcoin-blockchain"
-makedepends+=" libbitcoin-consensus"
-makedepends+=" libbitcoin-database"
-makedepends+=" libbitcoin-network"
-makedepends+=" libbitcoin-node"
-makedepends+=" libbitcoin-protocol"
-makedepends+=" libbitcoin-system"
+makedepends+=" libbitcoin-blockchain-devel"
+makedepends+=" libbitcoin-consensus-devel"
+makedepends+=" libbitcoin-database-devel"
+makedepends+=" libbitcoin-network-devel"
+makedepends+=" libbitcoin-node-devel"
+makedepends+=" libbitcoin-protocol-devel"
+makedepends+=" libbitcoin-system-devel"
 makedepends+=" libpng-devel"
-makedepends+=" libsecp256k1"
+makedepends+=" libsecp256k1-devel"
 makedepends+=" qrencode-devel"
 makedepends+=" zeromq-devel"
 hostmakedepends+=" autoconf"
@@ -40,6 +40,17 @@ pre_configure() {
 post_install() {
   vlicense COPYING
   vdoc README.md
+}
+
+libbitcoin-server-devel_package() {
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
