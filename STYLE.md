@@ -29,6 +29,15 @@ From top to bottom:
 
 ### Other
 
+#### Comments
+
+Always put comments on a line of their own, e.g.
+
+```sh
+# good comment
+_var=3 # bad comment
+```
+
 #### Long Lines
 
 In *Actions* section, split lines of over 80 characters with `\`.
