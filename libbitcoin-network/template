@@ -21,7 +21,7 @@ license="AGPL-3"
 distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
 checksum="e065bd95f64ad5d7b0f882e8759f6b0f81a5fb08f7e971d80f3592a1b5aa8db4"
 build_style="gnu-configure"
-configure_args+=" --with-gnu-ld"
+configure_args="--with-gnu-ld"
 # XXX: echo "libbitcoin-network.so.0 libbitcoin-network-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-network.so.0"
 
