@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-blockchain'
-# XXX: echo "libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-blockchain"
 version=3.5.0
@@ -25,6 +24,7 @@ distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkg
 checksum="03b8362c9172edbeb1e5970c996405cd2738e8274ba459e9b85359d6b838de20"
 build_style="gnu-configure"
 configure_args+=" --with-gnu-ld"
+# XXX: echo "libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-blockchain.so.0"
 
 pre_configure() {

@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-consensus'
-# XXX: echo "libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-consensus"
 version=3.5.0
@@ -20,6 +19,7 @@ checksum="bb29761d4275a9c993151707557008b23572a3d9adecc0e36a3075cfb101dd1e"
 build_style="gnu-configure"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-tests"
+# XXX: echo "libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-consensus.so.0"
 
 pre_configure() {

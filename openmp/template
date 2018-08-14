@@ -1,5 +1,4 @@
 # Template file for 'openmp'
-# XXX: echo "libiomp5.so openmp-6.0.1_1" >> common/shlibs
 # credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openmp"
@@ -18,6 +17,7 @@ configure_args+=" -DCMAKE_BUILD_TYPE=Release"
 configure_args+=" -DCMAKE_INSTALL_PREFIX=/usr"
 configure_args+=" -G Ninja"
 make_cmd="ninja"
+# XXX: echo "libiomp5.so openmp-6.0.1_1" >> common/shlibs
 shlib_provides="libiomp5.so"
 
 case "$XBPS_TARGET_MACHINE" in

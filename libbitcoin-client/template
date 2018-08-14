@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-client'
-# XXX: echo "libbitcoin-client.so.0 libbitcoin-client-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-client"
 version=3.5.0
@@ -27,6 +26,7 @@ checksum="bafa26647f334ecad04fc4bbef507a1954d7e0682f07bd38b90ab66dba5fe0d2"
 build_style="gnu-configure"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-examples"
+# XXX: echo "libbitcoin-client.so.0 libbitcoin-client-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-client.so.0"
 
 pre_configure() {

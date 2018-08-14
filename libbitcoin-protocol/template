@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-protocol'
-# XXX: echo "libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-protocol"
 version=3.5.0
@@ -25,6 +24,7 @@ distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkg
 checksum="9deac6908489e2d59fb9f89c895c49b00e01902d5fdb661f67d4dbe45b22af76"
 build_style="gnu-configure"
 configure_args+=" --with-gnu-ld"
+# XXX: echo "libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-protocol.so.0"
 
 pre_configure() {

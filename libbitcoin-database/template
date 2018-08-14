@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-database'
-# XXX: echo "libbitcoin-database.so.0 libbitcoin-database-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-database"
 version=3.5.0
@@ -23,6 +22,7 @@ distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkg
 checksum="376ab5abd8d7734a8b678030b9e997c4b1922e422f6e0a185d7daa3eb251db93"
 build_style="gnu-configure"
 configure_args+=" --with-gnu-ld"
+# XXX: echo "libbitcoin-database.so.0 libbitcoin-database-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-database.so.0"
 
 pre_configure() {

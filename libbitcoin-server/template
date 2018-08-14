@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-server'
-# XXX: echo "libbitcoin-server.so.0 libbitcoin-server-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-server"
 version=3.5.0
@@ -31,6 +30,7 @@ checksum="37ef8d572fb7400565655501ffdea5d07a1de10f3d9fa823d33e2bf68ef8c3ce"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 configure_args+=" --with-gnu-ld"
+# XXX: echo "libbitcoin-server.so.0 libbitcoin-server-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-server.so.0"
 
 pre_configure() {

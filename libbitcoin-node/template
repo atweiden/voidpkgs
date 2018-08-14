@@ -1,5 +1,4 @@
 # Template file for 'libbitcoin-node'
-# XXX: echo "libbitcoin-node.so.0 libbitcoin-node-3.5.0_1" >> common/shlibs
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-node"
 version=3.5.0
@@ -28,6 +27,7 @@ checksum="e3a0a96155ca93aa6cba75789c18419f40686a69cbd40c77aa77ca84ccc43cab"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 configure_args+=" --with-gnu-ld"
+# XXX: echo "libbitcoin-node.so.0 libbitcoin-node-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-node.so.0"
 
 pre_configure() {
