@@ -29,6 +29,22 @@ From top to bottom:
 
 ### Other
 
+#### Order
+
+Always sort items in alphabetical order when appropriate, e.g.
+
+```sh
+# good
+configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
+configure_args+=" --with-gnu-ld"
+```
+
+```sh
+# not good
+configure_args+=" --with-gnu-ld"
+configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
+```
+
 #### Comments
 
 Always put comments on a line of their own, e.g.
@@ -46,6 +62,10 @@ In *Actions* section, split lines of over 80 characters with `\`.
 
 Install license, man page, documentation in that order. Then clean up
 any unwanted files.
+
+#### Spaces Vs. Tabs
+
+Tabs only.
 
 #### Variables
 
@@ -95,10 +115,6 @@ version='2018.08.14'
 # not good
 version="2018.08.14"
 ```
-
-#### Spaces Vs. Tabs
-
-Tabs only.
 
 #### Vim
 
