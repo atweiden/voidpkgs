@@ -5,7 +5,9 @@ version=1.0.0
 revision=1
 short_desc="Provides US keymap with capslock key remapped to backspace"
 noarch="yes"
-hostmakedepends="gzip kbd sed"
+hostmakedepends+=" gzip"
+hostmakedepends+=" kbd"
+hostmakedepends+=" sed"
 homepage="https://github.com/atweiden"
 license="Unlicense"
 
