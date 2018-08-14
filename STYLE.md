@@ -25,7 +25,7 @@ From top to bottom:
 1. Actions (in order of execution)
 1. Subpackages
 
-Other
+Style
 -----
 
 ### Comments
