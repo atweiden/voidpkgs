@@ -87,8 +87,4 @@ Tabs only.
 
 #### Vim
 
-End every `template` file with:
-
-```sh
-vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
-```
+End every `template` file with: `vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:`.
