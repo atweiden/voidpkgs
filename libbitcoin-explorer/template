@@ -28,6 +28,11 @@ checksum="630cffd577c0d10345b44ce8160f4604519b0ca69bf201f524f104c207b930aa"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 configure_args+=" --with-gnu-ld"
+if [[ -n "$CROSS_BUILD" ]]; then
+	configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+	configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
+	configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+fi
 # XXX: echo "libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-explorer.so.0"
 

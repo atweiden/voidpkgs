@@ -26,6 +26,11 @@ configure_args+=" --with-icu"
 configure_args+=" --with-png"
 configure_args+=" --with-qrencode"
 configure_args+=" --without-examples"
+if [[ -n "$CROSS_BUILD" ]]; then
+	configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+	configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
+	configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+fi
 # XXX: echo "libbitcoin.so.0 libbitcoin-system-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin.so.0"
 

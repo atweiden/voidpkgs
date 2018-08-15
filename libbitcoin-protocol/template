@@ -24,6 +24,11 @@ distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkg
 checksum="9deac6908489e2d59fb9f89c895c49b00e01902d5fdb661f67d4dbe45b22af76"
 build_style="gnu-configure"
 configure_args="--with-gnu-ld"
+if [[ -n "$CROSS_BUILD" ]]; then
+	configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+	configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
+	configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+fi
 # XXX: echo "libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-protocol.so.0"
 

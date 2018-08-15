@@ -22,6 +22,11 @@ distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkg
 checksum="376ab5abd8d7734a8b678030b9e997c4b1922e422f6e0a185d7daa3eb251db93"
 build_style="gnu-configure"
 configure_args="--with-gnu-ld"
+if [[ -n "$CROSS_BUILD" ]]; then
+	configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+	configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
+	configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+fi
 # XXX: echo "libbitcoin-database.so.0 libbitcoin-database-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-database.so.0"
 
