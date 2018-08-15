@@ -1,0 +1,24 @@
+# Template file for 'peru'
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="peru"
+version=1.1.4
+revision=1
+short_desc="A tool for fetching code"
+noarch="yes"
+depends+=" python3"
+depends+=" python3-docopt"
+depends+=" python3-yaml"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/buildinspace/peru"
+license="MIT"
+distfiles="https://codeload.github.com/buildinspace/peru/tar.gz/$version>$pkgname-$version.tar.gz"
+checksum="aa93ba4d7663f597c05a14dc39cac57ddcdaa70b876c90ebe46bf205240b0784"
+build_style="python3-module"
+pycompile_module="peru"
+
+post_install() {
+	vlicense LICENSE
+	vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
