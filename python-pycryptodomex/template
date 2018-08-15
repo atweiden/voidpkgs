@@ -4,7 +4,6 @@ pkgname="python-pycryptodomex"
 version=3.6.5
 revision=1
 short_desc="A self-contained Python2 package of low-level cryptographic primitives"
-noarch="yes"
 depends="python"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
@@ -32,7 +31,6 @@ do_check() {
 
 python3-pycryptodomex_package() {
 	short_desc="${short_desc/Python2/Python3}"
-	noarch="yes"
 	depends="python3"
 	pycompile_module="Crypto"
 	provides="python3-crypto-${version}_1"
