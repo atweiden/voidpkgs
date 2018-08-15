@@ -1,0 +1,29 @@
+# Template file for 'dcrseeder'
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dcrseeder"
+version=20180808
+revision=1
+short_desc="Decred DNS seeder"
+hostmakedepends+=" dep"
+hostmakedepends+=" git"
+homepage="https://github.com/decred/dcrseeder"
+license="ISC"
+_gitrev="de0911b0a4a5f3f25e219fa386977414a9e9fc36"
+distfiles="https://codeload.github.com/decred/dcrseeder/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
+checksum="0f583a9259a8561cbe97f3c3edfa96a114dfbc92d1424daa7de7d149e3e627ed"
+wrksrc="$pkgname-$_gitrev"
+build_style="go"
+go_import_path="github.com/decred/dcrseeder"
+
+do_build() {
+	cd "$GOSRCPATH"
+	dep ensure -v
+	go install . ./cmd/...
+}
+
+post_install() {
+	vlicense "$GOSRCPATH/LICENSE"
+	vdoc "$GOSRCPATH/README.md"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
