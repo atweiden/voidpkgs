@@ -35,6 +35,7 @@ hostmakedepends+=" protobuf"                                # [CHECK]
 hostmakedepends+=" python3-curl"                            # [CHECK]
 hostmakedepends+=" python3-requests"                        # [CHECK]
 hostmakedepends+=" python3-setuptools"                      # [CHECK]
+hostmakedepends+=" $(vopt_if qt python3-PyQt5)"             # [CHECK]
 hostmakedepends+=" $(vopt_if qt python3-PyQt5-devel-tools)" # [CHECK]
 homepage="https://github.com/spesmilo/electrum"
 license="MIT"
@@ -78,10 +79,10 @@ do_check() {
 }
 
 post_install() {
-	vlicense "$GOSRCPATH/LICENCE"
-	vdoc "$GOSRCPATH/AUTHORS"
-	vdoc "$GOSRCPATH/RELEASE-NOTES"
-	vdoc "$GOSRCPATH/README.rst"
+	vlicense LICENCE
+	vdoc AUTHORS
+	vdoc RELEASE-NOTES
+	vdoc README.rst
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
