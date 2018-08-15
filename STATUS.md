@@ -27,5 +27,6 @@ libbitcoin-server            | PASS   | PASS
 libbitcoin-system            | PASS   | PASS
 libsecp256k1                 | PASS   | PASS
 openmp                       | PASS   | PASS
+peru                         | PASS   | PASS
 quixand                      | PASS   | PASS
 tty-no-cursor-blink          | PASS   | PASS
