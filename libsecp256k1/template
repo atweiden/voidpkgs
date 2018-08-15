@@ -1,18 +1,20 @@
 # Template file for 'libsecp256k1'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libsecp256k1"
-version=20180813
+version=20180531
 revision=1
 short_desc="Optimized C library for EC operations on curve secp256k1"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
-hostmakedepends+=" git"
 hostmakedepends+=" libtool"
 hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/bitcoin-core/secp256k1"
 license="MIT"
-create_wrksrc="$pkgname-$version"
+_gitrev="1e6f1f5ad5e7f1e3ef79313ec02023902bf8175c"
+distfiles="https://codeload.github.com/bitcoin-core/secp256k1/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
+checksum="a1696df913a115cb9112c6b158cadebb4c9bd6a9c917d6ccbc4145a7118fc131"
+wrksrc="$pkgname-$_gitrev"
 build_style="gnu-configure"
 configure_args+=" --disable-benchmark"
 configure_args+=" --disable-coverage"
