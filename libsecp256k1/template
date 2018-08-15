@@ -13,8 +13,8 @@ homepage="https://github.com/bitcoin-core/secp256k1"
 license="MIT"
 _gitrev="1e6f1f5ad5e7f1e3ef79313ec02023902bf8175c"
 distfiles="https://codeload.github.com/bitcoin-core/secp256k1/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
-checksum="a1696df913a115cb9112c6b158cadebb4c9bd6a9c917d6ccbc4145a7118fc131"
-wrksrc="$pkgname-$_gitrev"
+checksum="d4bc033398d4db43077ceb3aa50bb2f7700bdf3fc6eb95b8c799ff6f657a804a"
+wrksrc="${pkgname#lib}-$_gitrev"
 build_style="gnu-configure"
 configure_args+=" --disable-benchmark"
 configure_args+=" --disable-coverage"
@@ -26,10 +26,6 @@ configure_args+=" --enable-tests"
 configure_args+=" --with-gnu-ld"
 # XXX: echo "libsecp256k1.so.0 libsecp256k1-20180531_1" >> common/shlibs
 shlib_provides="libsecp256k1.so.0"
-
-do_fetch() {
-	git clone "$homepage" "$wrksrc"
-}
 
 pre_configure() {
 	./autogen.sh
