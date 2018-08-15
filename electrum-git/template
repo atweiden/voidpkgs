@@ -40,7 +40,7 @@ hostmakedepends+=" $(vopt_if qt python3-PyQt5-devel-tools)" # [CHECK]
 homepage="https://github.com/spesmilo/electrum"
 license="MIT"
 changelog="https://raw.githubusercontent.com/spesmilo/electrum/master/RELEASE-NOTES"
-wrksrc="${pkgver^}-$version"
+wrksrc="${pkgname%-git}-$version"
 build_options+=" hw"
 build_options+=" qt"
 desc_option_hw="Enable support for hardware wallets"
@@ -58,10 +58,16 @@ do_fetch() {
 	git clone "$homepage" "$wrksrc"
 }
 
-pre_build() {
-	# compile icons for qt
-	eval "$(vopt_if qt 'pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py' 'echo')"
+if [ "$(vopt_if qt)" ]; then
 
+pre_configure() {
+	# compile icons for qt
+	pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py
+}
+
+fi
+
+pre_build() {
 	# compile protobuf description file
 	protoc \
 		--proto_path=electrum \
