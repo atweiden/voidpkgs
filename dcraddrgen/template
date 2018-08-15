@@ -1,0 +1,29 @@
+# Template file for 'dcraddrgen'
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dcraddrgen"
+version=20180613
+revision=1
+short_desc="Simple offline address generator for Decred"
+hostmakedepends+=" dep"
+hostmakedepends+=" git"
+homepage="https://github.com/decred/dcraddrgen"
+license="ISC"
+_gitrev="4c9d3e21584149d499557627db82f73234710310"
+distfiles="https://codeload.github.com/decred/dcraddrgen/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
+checksum="a8217ffa0478d9ea3eda63cf0423bffe9b01412710311d6d538d6930e50b718f"
+wrksrc="$pkgname-$_gitrev"
+build_style="go"
+go_import_path="github.com/decred/dcraddrgen"
+
+do_build() {
+	cd "$GOSRCPATH"
+	dep ensure -v
+	go install
+}
+
+post_install() {
+	vlicense "$GOSRCPATH/LICENSE"
+	vdoc "$GOSRCPATH/README.md"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
