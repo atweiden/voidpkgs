@@ -10,9 +10,9 @@ homepage="https://github.com/decred/dcrd"
 license="ISC"
 distfiles="https://codeload.github.com/decred/$pkgname/tar.gz/release-v$version>$pkgname-$version.tar.gz"
 checksum="aaf956e1906f0f0cb0e9aea26a653236879c43624bf4507be324fe1974834fda"
+wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
-wrksrc="$pkgname-release-v$version"
 
 do_build() {
 	cd "$GOSRCPATH"

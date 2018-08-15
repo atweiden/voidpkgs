@@ -10,9 +10,9 @@ homepage="https://github.com/rfjakob/gocryptfs"
 license="MIT"
 distfiles="https://github.com/rfjakob/gocryptfs/releases/download/v$version/${pkgname}_v${version}_src-deps.tar.gz>$pkgname-$version.tar.gz"
 checksum="c23602cf6917dd41502ae5e12f7e9400166bdd65349bfe3b40f0766082eab035"
+wrksrc="${pkgname}_v${version}_src-deps"
 build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
-wrksrc="${pkgname}_v${version}_src-deps"
 
 do_build() {
 	"$GOSRCPATH/build-without-openssl.bash"
