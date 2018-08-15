@@ -6,7 +6,9 @@ Name                         | x86_64 | aarch64
 btcd                         | PASS   | PASS
 btcwallet                    | PASS   | PASS
 cryfs                        | PASS   | FAIL
+dcraddrgen                   | PASS   | PASS
 dcrd                         | PASS   | PASS
+dcrseeder                    | PASS   | PASS
 dcrwallet                    | PASS   | PASS
 electrum-git                 | ????   | ????
 enchive                      | PASS   | PASS
