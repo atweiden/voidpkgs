@@ -1,0 +1,66 @@
+diff --git a/common/shlibs b/common/shlibs
+index ae83079b..9f703bc9 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3409,3 +3409,4 @@ libbitcoin-client.so.0 libbitcoin-client-3.5.0_1
+ libbitcoin-network.so.0 libbitcoin-network-3.5.0_1
+ libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1
+ libbitcoin-database.so.0 libbitcoin-database-3.5.0_1
++libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1
+diff --git a/srcpkgs/libbitcoin-blockchain-devel b/srcpkgs/libbitcoin-blockchain-devel
+new file mode 120000
+index 00000000..faa90101
+--- /dev/null
++++ b/srcpkgs/libbitcoin-blockchain-devel
+@@ -0,0 +1 @@
++libbitcoin-blockchain
+\ No newline at end of file
+diff --git a/srcpkgs/libbitcoin-blockchain/template b/srcpkgs/libbitcoin-blockchain/template
+new file mode 100644
+index 00000000..35f45c51
+--- /dev/null
++++ b/srcpkgs/libbitcoin-blockchain/template
+@@ -0,0 +1,43 @@
++# Template file for 'libbitcoin-blockchain'
++pkgname=libbitcoin-blockchain
++version=3.5.0
++revision=1
++only_for_archs="aarch64 aarch64-musl x86_64 x86_64-musl"
++build_style=gnu-configure
++configure_args="--with-gnu-ld"
++hostmakedepends="autoconf automake git libtool m4 pkg-config"
++makedepends="boost-devel icu-devel libbitcoin-consensus-devel
++ libbitcoin-database-devel libbitcoin-system-devel libpng-devel
++ libsecp256k1-devel qrencode-devel"
++short_desc="Bitcoin Blockchain Library"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="AGPL-3.0-or-later"
++homepage="https://github.com/libbitcoin/libbitcoin-blockchain"
++distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
++checksum=03b8362c9172edbeb1e5970c996405cd2738e8274ba459e9b85359d6b838de20
++shlib_provides="libbitcoin-blockchain.so.0"
++
++if [ "$CROSS_BUILD" ]; then
++	configure_args+=" --host=$XBPS_CROSS_TRIPLET --with-boost=$XBPS_CROSS_BASE/usr
++ --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
++fi
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libbitcoin-blockchain-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}

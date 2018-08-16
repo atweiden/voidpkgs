@@ -1,0 +1,65 @@
+diff --git a/common/shlibs b/common/shlibs
+index eabafb7a9b..c32025f5ed 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3405,3 +3405,4 @@ libsecp256k1.so.0 libsecp256k1-20180531_1
+ libbitcoin.so.0 libbitcoin-system-3.5.0_1
+ libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1
+ libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1
++libbitcoin-client.so.0 libbitcoin-client-3.5.0_1
+diff --git a/srcpkgs/libbitcoin-client-devel b/srcpkgs/libbitcoin-client-devel
+new file mode 120000
+index 0000000000..b52c6b7d37
+--- /dev/null
++++ b/srcpkgs/libbitcoin-client-devel
+@@ -0,0 +1 @@
++libbitcoin-client
+\ No newline at end of file
+diff --git a/srcpkgs/libbitcoin-client/template b/srcpkgs/libbitcoin-client/template
+new file mode 100644
+index 0000000000..38ab872e59
+--- /dev/null
++++ b/srcpkgs/libbitcoin-client/template
+@@ -0,0 +1,42 @@
++# Template file for 'libbitcoin-client'
++pkgname=libbitcoin-client
++version=3.5.0
++revision=1
++build_style=gnu-configure
++configure_args="--with-gnu-ld --without-examples"
++hostmakedepends="autoconf automake git libtool m4 pkg-config"
++makedepends="boost-devel icu-devel libbitcoin-protocol-devel
++ libbitcoin-system-devel libpng-devel libsecp256k1-devel protobuf-devel
++ qrencode-devel zeromq-devel"
++short_desc="Bitcoin Client Query Library"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="AGPL-3.0-or-later"
++homepage="https://github.com/libbitcoin/libbitcoin-client"
++distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
++checksum=bafa26647f334ecad04fc4bbef507a1954d7e0682f07bd38b90ab66dba5fe0d2
++shlib_provides="libbitcoin-client.so.0"
++
++if [ "$CROSS_BUILD" ]; then
++	configure_args+=" --host=$XBPS_CROSS_TRIPLET --with-boost=$XBPS_CROSS_BASE/usr
++ --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
++fi
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libbitcoin-client-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}

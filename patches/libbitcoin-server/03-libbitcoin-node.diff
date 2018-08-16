@@ -1,0 +1,67 @@
+diff --git a/common/shlibs b/common/shlibs
+index 9f703bc9..063a8a0c 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3410,3 +3410,4 @@ libbitcoin-network.so.0 libbitcoin-network-3.5.0_1
+ libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1
+ libbitcoin-database.so.0 libbitcoin-database-3.5.0_1
+ libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1
++libbitcoin-node.so.0 libbitcoin-node-3.5.0_1
+diff --git a/srcpkgs/libbitcoin-node-devel b/srcpkgs/libbitcoin-node-devel
+new file mode 120000
+index 00000000..373283d3
+--- /dev/null
++++ b/srcpkgs/libbitcoin-node-devel
+@@ -0,0 +1 @@
++libbitcoin-node
+\ No newline at end of file
+diff --git a/srcpkgs/libbitcoin-node/template b/srcpkgs/libbitcoin-node/template
+new file mode 100644
+index 00000000..1a4029be
+--- /dev/null
++++ b/srcpkgs/libbitcoin-node/template
+@@ -0,0 +1,44 @@
++# Template file for 'libbitcoin-node'
++pkgname=libbitcoin-node
++version=3.5.0
++revision=1
++only_for_archs="aarch64 aarch64-musl x86_64 x86_64-musl"
++build_style=gnu-configure
++configure_args="--with-bash-completiondir=/usr/share/bash-completion/completions
++ --with-gnu-ld"
++hostmakedepends="autoconf automake git libtool m4 pkg-config"
++makedepends="boost-devel icu-devel libbitcoin-blockchain-devel
++ libbitcoin-consensus-devel libbitcoin-database-devel libbitcoin-network-devel
++ libbitcoin-system-devel libpng-devel libsecp256k1-devel qrencode-devel"
++short_desc="Bitcoin Full Node"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="AGPL-3.0-or-later"
++homepage="https://github.com/libbitcoin/libbitcoin-node"
++distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
++checksum=e3a0a96155ca93aa6cba75789c18419f40686a69cbd40c77aa77ca84ccc43cab
++shlib_provides="libbitcoin-node.so.0"
++
++if [ "$CROSS_BUILD" ]; then
++	configure_args+=" --host=$XBPS_CROSS_TRIPLET --with-boost=$XBPS_CROSS_BASE/usr
++ --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
++fi
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libbitcoin-node-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}

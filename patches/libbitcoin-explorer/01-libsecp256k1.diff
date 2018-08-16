@@ -1,0 +1,61 @@
+diff --git a/common/shlibs b/common/shlibs
+index 92155049e4..b5202f7616 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3401,3 +3401,4 @@ libbelcard.so.1 belcard-1.0.2_1
+ libshaderc_shared.so shaderc-2017.2_1
+ libglslang.so glslang-6.2.2596_1
+ libSPIRV.so glslang-6.2.2596_1
++libsecp256k1.so.0 libsecp256k1-20180531_1
+diff --git a/srcpkgs/libsecp256k1-devel b/srcpkgs/libsecp256k1-devel
+new file mode 120000
+index 0000000000..1a5b8eebdd
+--- /dev/null
++++ b/srcpkgs/libsecp256k1-devel
+@@ -0,0 +1 @@
++libsecp256k1
+\ No newline at end of file
+diff --git a/srcpkgs/libsecp256k1/template b/srcpkgs/libsecp256k1/template
+new file mode 100644
+index 0000000000..0eacab675a
+--- /dev/null
++++ b/srcpkgs/libsecp256k1/template
+@@ -0,0 +1,38 @@
++# Template file for 'libsecp256k1'
++pkgname=libsecp256k1
++version=20180531
++revision=1
++build_style=gnu-configure
++configure_args="--disable-benchmark --disable-coverage --disable-jni
++ --disable-openssl-tests --enable-exhaustive-tests --enable-module-recovery
++ --enable-tests --with-gnu-ld"
++hostmakedepends="autoconf automake libtool m4 pkg-config"
++short_desc="Optimized C library for EC operations on curve secp256k1"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="MIT"
++homepage="https://github.com/bitcoin-core/secp256k1"
++_gitrev="1e6f1f5ad5e7f1e3ef79313ec02023902bf8175c"
++distfiles="https://codeload.github.com/bitcoin-core/secp256k1/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
++checksum=d4bc033398d4db43077ceb3aa50bb2f7700bdf3fc6eb95b8c799ff6f657a804a
++wrksrc="${pkgname#lib}-$_gitrev"
++shlib_provides="libsecp256k1.so.0"
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libsecp256k1-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}

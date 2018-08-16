@@ -1,0 +1,66 @@
+diff --git a/common/shlibs b/common/shlibs
+index 3cd91ba962..74198fb2f2 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3407,3 +3407,4 @@ libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1
+ libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1
+ libbitcoin-client.so.0 libbitcoin-client-3.5.0_1
+ libbitcoin-network.so.0 libbitcoin-network-3.5.0_1
++libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1
+diff --git a/srcpkgs/libbitcoin-explorer-devel b/srcpkgs/libbitcoin-explorer-devel
+new file mode 120000
+index 0000000000..f064c37387
+--- /dev/null
++++ b/srcpkgs/libbitcoin-explorer-devel
+@@ -0,0 +1 @@
++libbitcoin-explorer
+\ No newline at end of file
+diff --git a/srcpkgs/libbitcoin-explorer/template b/srcpkgs/libbitcoin-explorer/template
+new file mode 100644
+index 0000000000..87328b29ad
+--- /dev/null
++++ b/srcpkgs/libbitcoin-explorer/template
+@@ -0,0 +1,43 @@
++# Template file for 'libbitcoin-explorer'
++pkgname=libbitcoin-explorer
++version=3.5.0
++revision=1
++build_style=gnu-configure
++configure_args="--with-bash-completiondir=/usr/share/bash-completion/completions
++ --with-gnu-ld"
++hostmakedepends="autoconf automake git libtool m4 pkg-config"
++makedepends="boost-devel icu-devel libbitcoin-client-devel
++ libbitcoin-network-devel libbitcoin-protocol-devel libbitcoin-system-devel
++ libpng-devel libsecp256k1-devel protobuf-devel qrencode-devel zeromq-devel"
++short_desc="Bitcoin Command Line Tool"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="AGPL-3.0-or-later"
++homepage="https://github.com/libbitcoin/libbitcoin-explorer"
++distfiles="https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
++checksum=630cffd577c0d10345b44ce8160f4604519b0ca69bf201f524f104c207b930aa
++shlib_provides="libbitcoin-explorer.so.0"
++
++if [ "$CROSS_BUILD" ]; then
++	configure_args+=" --host=$XBPS_CROSS_TRIPLET --with-boost=$XBPS_CROSS_BASE/usr
++ --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
++fi
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libbitcoin-explorer-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}

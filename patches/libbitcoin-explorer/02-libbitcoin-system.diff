@@ -1,0 +1,66 @@
+diff --git a/common/shlibs b/common/shlibs
+index b5202f7616..fef5b85e4e 100644
+--- a/common/shlibs
++++ b/common/shlibs
+@@ -3402,3 +3402,4 @@ libshaderc_shared.so shaderc-2017.2_1
+ libglslang.so glslang-6.2.2596_1
+ libSPIRV.so glslang-6.2.2596_1
+ libsecp256k1.so.0 libsecp256k1-20180531_1
++libbitcoin.so.0 libbitcoin-system-3.5.0_1
+diff --git a/srcpkgs/libbitcoin-system-devel b/srcpkgs/libbitcoin-system-devel
+new file mode 120000
+index 0000000000..13797e5b58
+--- /dev/null
++++ b/srcpkgs/libbitcoin-system-devel
+@@ -0,0 +1 @@
++libbitcoin-system
+\ No newline at end of file
+diff --git a/srcpkgs/libbitcoin-system/template b/srcpkgs/libbitcoin-system/template
+new file mode 100644
+index 0000000000..128ab10eed
+--- /dev/null
++++ b/srcpkgs/libbitcoin-system/template
+@@ -0,0 +1,43 @@
++# Template file for 'libbitcoin-system'
++pkgname=libbitcoin-system
++version=3.5.0
++revision=1
++build_style=gnu-configure
++configure_args="--with-gnu-ld --with-icu --with-png --with-qrencode
++ --without-examples"
++hostmakedepends="autoconf automake git libtool m4 pkg-config"
++makedepends="boost-devel icu-devel libpng-devel libsecp256k1-devel
++ qrencode-devel"
++short_desc="Bitcoin Cross-Platform C++ Development Toolkit"
++maintainer="Andy Weidenbaum <archbaum@gmail.com>"
++license="AGPL-3.0-or-later"
++homepage="https://github.com/libbitcoin/libbitcoin"
++distfiles="https://codeload.github.com/libbitcoin/${pkgname%-system}/tar.gz/v$version>$pkgname-$version.tar.gz"
++checksum=214d9cd6581330b0e1f6fd8f0c634c46b75ae5515806ecac189f21c0291ae2d9
++wrksrc="${pkgname%-system}-$version"
++shlib_provides="libbitcoin.so.0"
++
++if [ "$CROSS_BUILD" ]; then
++	configure_args+=" --host=$XBPS_CROSS_TRIPLET --with-boost=$XBPS_CROSS_BASE/usr
++ --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
++fi
++
++pre_configure() {
++	./autogen.sh
++}
++
++post_install() {
++	vlicense COPYING
++	vdoc README.md
++}
++
++libbitcoin-system-devel_package() {
++	short_desc+=" - development files"
++	depends="$sourcepkg>=${version}_$revision"
++	pkg_install() {
++		vmove usr/include
++		vmove "usr/lib/*.a"
++		vmove "usr/lib/*.so"
++		vmove usr/lib/pkgconfig
++	}
++}
