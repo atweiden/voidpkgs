@@ -38,7 +38,9 @@ openmp-devel_package() {
 	short_desc+=" - development files"
 	depends="$sourcepkg>=${version}_$revision"
 	# XXX: echo "libiomp5.so openmp-devel-6.0.1_1" >> common/shlibs
-	shlib_provides="libiomp5.so"
+	# XXX: echo "libomp.so openmp-devel-6.0.1_1" >> common/shlibs
+	# XXX: echo "libomp-target.so openmp-devel-6.0.1_1" >> common/shlibs
+	shlib_provides="libiomp5.so libomp.so libomp-target.so"
 	pkg_install() {
 		vmove usr/include
 		vmove "usr/lib/*.so"
