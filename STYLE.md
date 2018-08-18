@@ -83,10 +83,6 @@ configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completio
 Install license, man page, documentation in that order. Then clean up
 any unwanted files.
 
-### Spaces Vs. Tabs
-
-Spaces only.
-
 ### Variables
 
 Split string variables containing multiple entries across newlines, e.g.
@@ -139,3 +135,14 @@ version="2018.08.14"
 ### Vim
 
 End every `template` file with: `vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:`.
+
+### Whitespacing
+
+Spaces only. Indent by two spaces.
+
+```vim
+set tabstop = 2
+set shiftwidth = 2
+set softtabstop = 2
+set expandtab
+```
