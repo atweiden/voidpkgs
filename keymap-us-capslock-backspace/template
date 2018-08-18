@@ -12,28 +12,28 @@ homepage="https://github.com/atweiden"
 license="Unlicense"
 
 pre_build() {
-	# fetch us keymap
-	cp -dpr --no-preserve=ownership \
-		/usr/share/kbd/keymaps/i386/qwerty/us.map.gz us-capslock-backspace.map.gz
-	# decompress us keymap
-	gunzip us-capslock-backspace.map.gz
+  # fetch us keymap
+  cp -dpr --no-preserve=ownership \
+    /usr/share/kbd/keymaps/i386/qwerty/us.map.gz us-capslock-backspace.map.gz
+  # decompress us keymap
+  gunzip us-capslock-backspace.map.gz
 }
 
 do_build() {
-	# remap capslock backspace key in keymap
-	sed \
-		-i \
-		-e '1s/us/us-capslock-backspace/' \
-		-e 's/\(keycode\s*58\s*=\s*\).*/\1Delete/' \
-		us-capslock-backspace.map
-	# compress keymap
-	gzip us-capslock-backspace.map
+  # remap capslock backspace key in keymap
+  sed \
+    -i \
+    -e '1s/us/us-capslock-backspace/' \
+    -e 's/\(keycode\s*58\s*=\s*\).*/\1Delete/' \
+    us-capslock-backspace.map
+  # compress keymap
+  gzip us-capslock-backspace.map
 }
 
 do_install() {
-	# install keymap us-capslock-backspace
-	install -Dm 644 us-capslock-backspace.map.gz \
-					-t "$DESTDIR/usr/share/kbd/keymaps/i386/qwerty"
+  # install keymap us-capslock-backspace
+  install -Dm 644 us-capslock-backspace.map.gz \
+          -t "$DESTDIR/usr/share/kbd/keymaps/i386/qwerty"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

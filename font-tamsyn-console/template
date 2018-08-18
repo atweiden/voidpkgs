@@ -14,13 +14,13 @@ wrksrc="tamsyn-font-$version"
 conflicts="font-tamsyn"
 
 do_install() {
-	vmkdir usr/share/kbd/consolefonts
-	vcopy *.psf.gz usr/share/kbd/consolefonts
+  vmkdir usr/share/kbd/consolefonts
+  vcopy *.psf.gz usr/share/kbd/consolefonts
 }
 
 post_install() {
-	vlicense LICENSE
-	vdoc README
+  vlicense LICENSE
+  vdoc README
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -9,7 +9,7 @@ homepage="https://github.com/atweiden/tty-no-cursor-blink"
 license="Unlicense"
 
 do_install() {
-	vsv tty-no-cursor-blink
+  vsv tty-no-cursor-blink
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

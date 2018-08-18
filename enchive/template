@@ -16,7 +16,7 @@ CFLAGS+=" -DENCHIVE_AGENT_TIMEOUT=420"
 CFLAGS+=" -DENCHIVE_FILE_EXTENSION='.enc'"
 
 post_install() {
-	vdoc README.md
+  vdoc README.md
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

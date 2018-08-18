@@ -85,7 +85,7 @@ any unwanted files.
 
 ### Spaces Vs. Tabs
 
-Tabs only.
+Spaces only.
 
 ### Variables
 

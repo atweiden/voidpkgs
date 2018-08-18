@@ -55,40 +55,40 @@ provides="electrum"
 conflicts="electrum"
 
 do_fetch() {
-	git clone "$homepage" "$wrksrc"
+  git clone "$homepage" "$wrksrc"
 }
 
 if [ "$(vopt_if qt)" ]; then
 
 pre_configure() {
-	# compile icons for qt
-	pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py
+  # compile icons for qt
+  pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py
 }
 
 fi
 
 pre_build() {
-	# compile protobuf description file
-	protoc \
-		--proto_path=electrum \
-		--python_out=electrum \
-		electrum/paymentrequest.proto
+  # compile protobuf description file
+  protoc \
+    --proto_path=electrum \
+    --python_out=electrum \
+    electrum/paymentrequest.proto
 
-	# create translations
-	python3 contrib/make_locale
+  # create translations
+  python3 contrib/make_locale
 }
 
 do_check() {
-	_pyver="$(python3 -c \
-		'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
-	tox -e "py$_pyver"
+  _pyver="$(python3 -c \
+    'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
+  tox -e "py$_pyver"
 }
 
 post_install() {
-	vlicense LICENCE
-	vdoc AUTHORS
-	vdoc RELEASE-NOTES
-	vdoc README.rst
+  vlicense LICENCE
+  vdoc AUTHORS
+  vdoc RELEASE-NOTES
+  vdoc README.rst
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

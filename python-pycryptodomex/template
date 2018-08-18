@@ -21,25 +21,25 @@ provides="python-crypto-${version}_1"
 replaces="python-crypto>=0"
 
 post_install() {
-	vlicense LICENSE.rst
-	vdoc README.rst
+  vlicense LICENSE.rst
+  vdoc README.rst
 }
 
 do_check() {
-	python3 setup.py test
+  python3 setup.py test
 }
 
 python3-pycryptodomex_package() {
-	short_desc="${short_desc/Python2/Python3}"
-	depends="python3"
-	pycompile_module="Crypto"
-	provides="python3-crypto-${version}_1"
-	replaces="python3-crypto>=0"
-	pkg_install() {
-		vmove usr/lib/python3*
-		vlicense LICENSE.rst
-		vdoc README.rst
-	}
+  short_desc="${short_desc/Python2/Python3}"
+  depends="python3"
+  pycompile_module="Crypto"
+  provides="python3-crypto-${version}_1"
+  replaces="python3-crypto>=0"
+  pkg_install() {
+    vmove usr/lib/python3*
+    vlicense LICENSE.rst
+    vdoc README.rst
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

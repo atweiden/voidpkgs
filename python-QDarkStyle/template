@@ -18,20 +18,20 @@ build_style="python-module"
 pycompile_module="qdarkstyle"
 
 post_install() {
-	vlicense LICENSE.md
-	vdoc README.md
+  vlicense LICENSE.md
+  vdoc README.md
 }
 
 python3-QDarkStyle_package() {
-	short_desc="${short_desc/Python2/Python3}"
-	noarch="yes"
-	depends="python3"
-	pycompile_module="qdarkstyle"
-	pkg_install() {
-		vmove usr/lib/python3*
-		vlicense LICENSE.md
-		vdoc README.md
-	}
+  short_desc="${short_desc/Python2/Python3}"
+  noarch="yes"
+  depends="python3"
+  pycompile_module="qdarkstyle"
+  pkg_install() {
+    vmove usr/lib/python3*
+    vlicense LICENSE.md
+    vdoc README.md
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

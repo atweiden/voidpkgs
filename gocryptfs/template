@@ -15,14 +15,14 @@ build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
 
 do_build() {
-	"$GOSRCPATH/build-without-openssl.bash"
+  "$GOSRCPATH/build-without-openssl.bash"
 }
 
 post_install() {
-	vlicense "$GOSRCPATH/LICENSE"
-	vdoc "$GOSRCPATH/README.md"
-	vcopy "$GOSRCPATH/Documentation" "usr/share/doc/$pkgname"
-	vcopy "$GOSRCPATH/contrib" "usr/share/doc/$pkgname"
+  vlicense "$GOSRCPATH/LICENSE"
+  vdoc "$GOSRCPATH/README.md"
+  vcopy "$GOSRCPATH/Documentation" "usr/share/doc/$pkgname"
+  vcopy "$GOSRCPATH/contrib" "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
