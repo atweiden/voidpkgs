@@ -1,7 +1,7 @@
 ## `shlibs`
 
-This file represents a map between shared libraries and packages in
-XBPS. Every shared library installed by a package must be listed here
+[This file](shlibs) represents a map between shared libraries and packages
+in XBPS. Every shared library installed by a package must be listed here
 and mapped to a binary package.
 
 The first field lists the exact SONAME embedded in binaries.
