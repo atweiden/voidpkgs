@@ -31,7 +31,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
   configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 fi
-# XXX: echo "libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1" >> common/shlibs
 shlib_provides="libbitcoin-explorer.so.0"
 
 pre_configure() {

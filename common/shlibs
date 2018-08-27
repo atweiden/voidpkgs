@@ -117,6 +117,16 @@ libassuan.so.0 libassuan-2.0.1_1
 libatomic.so.1 libatomic-4.9.0_1
 libatomic_ops.so.1 libatomic_ops-7.4.2_1
 libatomic_ops_gpl.so.1 libatomic_ops-7.4.2_1
+libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1
+libbitcoin-client.so.0 libbitcoin-client-3.5.0_1
+libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1
+libbitcoin-database.so.0 libbitcoin-database-3.5.0_1
+libbitcoin-explorer.so.0 libbitcoin-explorer-3.5.0_1
+libbitcoin-network.so.0 libbitcoin-network-3.5.0_1
+libbitcoin-node.so.0 libbitcoin-node-3.5.0_1
+libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1
+libbitcoin-server.so.0 libbitcoin-server-3.5.0_1
+libbitcoin.so.0 libbitcoin-system-3.5.0_1
 libblkid.so.1 libblkid-2.18_1
 libbtrfs.so.0 libbtrfs-3.12_1
 libcap.so.2 libcap-2.16_1
@@ -191,6 +201,7 @@ libqrencode.so.4 libqrencode-4.0.0_1
 librtmp.so.1 librtmp-2.4.20161210_1
 libsasl2.so.3 libsasl-2.1.26_1
 libseccomp.so.2 libseccomp-2.0.0_1
+libsecp256k1.so.0 libsecp256k1-20180531_1
 libsodium.so.23 libsodium-1.0.15_1
 libssh2.so.1 libssh2-1.4.1_1
 libssl.so.45 libssl45-2.7.2_1
@@ -245,6 +256,10 @@ libhogweed.so.4 nettle-3.2_1
 libnettle.so.6 nettle-3.2_1
 libnghttp2.so.14 nghttp2-1.0.2_1
 libnpth.so.0 npth-1.1_1
+libiomp5.so openmp-devel-6.0.1_1
+libomp-target.so openmp-devel-6.0.1_1
+libomp.so openmp-devel-6.0.1_1
+libomptarget.so openmp-devel-6.0.1_1
 libpam.so.0 pam-libs-1.1.6_3
 libpam_misc.so.0 pam-libs-1.1.6_3
 libpamc.so.0 pam-libs-1.1.6_3
@@ -252,8 +267,8 @@ libpci.so.3 pciutils-3.5.0_1
 libperl.so.5.28 perl-5.28.0_1
 libpopt.so.0 popt-1.15_1
 libprocps.so.7 procps-ng-3.3.15_1
-libprotoc.so.17 protobuf-3.6.1_1
 libprotobuf.so.17 protobuf-3.6.1_1
+libprotoc.so.17 protobuf-3.6.1_1
 libprotobuf-lite.so.17 protobuf-lite-3.6.1_1
 libpython2.7.so.1.0 python-2.7_1
 libpython3.6m.so.1.0 python3-3.6.2_1

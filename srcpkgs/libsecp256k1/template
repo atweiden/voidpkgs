@@ -23,7 +23,6 @@ configure_args+=" --enable-exhaustive-tests"
 configure_args+=" --enable-module-recovery"
 configure_args+=" --enable-tests"
 configure_args+=" --with-gnu-ld"
-# XXX: echo "libsecp256k1.so.0 libsecp256k1-20180531_1" >> common/shlibs
 shlib_provides="libsecp256k1.so.0"
 
 pre_configure() {
