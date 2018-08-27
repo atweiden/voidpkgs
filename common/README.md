@@ -1,17 +1,21 @@
 ## `shlibs`
 
-[This file](shlibs) represents a map between shared libraries and packages
+[shlibs][shlibs] represents a map between shared libraries and packages
 in XBPS. Every shared library installed by a package must be listed here
 and mapped to a binary package.
 
-The first field lists the exact SONAME embedded in binaries.
+- The first field lists the exact SONAME embedded in binaries
+- The second field lists the package/version tuple containing the SONAME
+  - The version component is used as greater than or equal to that
+    version in resulting binary package
+- The third field (optional) specifies that shared library should not
+  be used to perform checks of soname bumps
 
-The second field lists the package/version tuple containing the
-SONAME. The version component is used as greater than or equal to that
-version in resulting binary package.
+When multiple packages provide the same SONAME, the first one (order
+top->bottom) is preferred over the next ones.
 
-The third field (optional) specifies that shared library should not be
-used to perform checks of soname bumps.
+[shlibs][shlibs] is sorted with
+[scripts/sort-common-shlibs.p6][scripts/sort-common-shlibs.p6].
 
-PLEASE NOTE: when multiple packages provide the same SONAME, the first
-one (order top->bottom) is preferred over the next ones.
+[scripts/sort-common-shlibs.p6]: ../scripts/sort-common-shlibs.p6
+[shlibs]: shlibs
