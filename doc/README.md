@@ -5,6 +5,11 @@
 Original license retained from upstream sources, lightly modified to
 remove leading whitespace and wrap at 72 chars.
 
+## [MANUAL.md](MANUAL.md)
+
+[Manual.md](https://github.com/void-linux/void-packages/blob/master/Manual.md)
+from upstream.
+
 ## README.md
 
 This file.
