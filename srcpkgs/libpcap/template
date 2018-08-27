@@ -1,46 +1,53 @@
-# Template file for 'libpcap'
-pkgname=libpcap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libpcap"
 version=1.9.0
 revision=1
-build_style=gnu-configure
-configure_args="--enable-ipv6 --with-libnl --with-pcap=linux
- $(vopt_enable bluetooth) $(vopt_enable dbus) $(vopt_enable usb)"
-hostmakedepends="pkg-config flex"
-makedepends="libnl3-devel $(vopt_if bluetooth libbluetooth-devel)
- $(vopt_if dbus dbus-devel) $(vopt_if usb libusb-devel)"
 short_desc="System-independent interface for user-level packet capture"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-3-Clause"
+makedepends+=" libnl3-devel"
+makedepends+=" $(vopt_if dbus dbus-devel)"
+makedepends+=" $(vopt_if usb libusb-devel)"
+hostmakedepends+=" flex"
+hostmakedepends+=" pkg-config"
 homepage="https://www.tcpdump.org/"
-distfiles="https://www.tcpdump.org/release/${pkgname}-${version}.tar.gz"
-checksum=2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019
-
-build_options="bluetooth dbus usb"
+license="BSD-3-Clause"
+distfiles="https://www.tcpdump.org/release/$pkgname-$version.tar.gz"
+checksum="2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
+build_style="gnu-configure"
+configure_args+=" --enable-ipv6"
+configure_args+=" --with-libnl"
+configure_args+=" --with-pcap=linux"
+configure_args+=" $(vopt_enable dbus)"
+configure_args+=" $(vopt_enable usb)"
+build_options+=" dbus"
+build_options+=" usb"
 build_options_default="usb"
 
 # for libnl
-CFLAGS="-I${XBPS_CROSS_BASE}/usr/include/libnl3"
+CFLAGS="-I$XBPS_CROSS_BASE/usr/include/libnl3"
 
 post_install() {
-	vlicense LICENSE
-	for f in ${DESTDIR}/usr/share/man/man3/*.3pcap; do
-		mv ${f} ${f%pcap}
-	done
+  vlicense LICENSE
+  for f in "$DESTDIR/usr/share/man/man3"/*.3pcap; do
+    mv "$f" "${f%pcap}"
+  done
 }
 
 libpcap-devel_package() {
-	depends="libnl3-devel libpcap>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/bin
-		vmove usr/share/man/man1
-		vmove usr/share/man/man3
-		vmove usr/share/man/man5
-		vmove usr/share/man/man7/pcap-linktype.7
-		vmove usr/share/man/man7/pcap-tstamp.7
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends+=" libnl3-devel"
+  depends+=" libpcap>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/bin
+    vmove usr/share/man/man1
+    vmove usr/share/man/man3
+    vmove usr/share/man/man5
+    vmove usr/share/man/man7/pcap-linktype.7
+    vmove usr/share/man/man7/pcap-tstamp.7
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
