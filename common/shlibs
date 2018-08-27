@@ -226,6 +226,8 @@ libzip.so.5 libzip-1.2_1
 libzstd.so.1 libzstd-1.0.0_1
 liblz.so.1 lzlib-1.8_1
 liblzo2.so.2 lzo-2.03_1
+libodbc.so.2 libodbc-2.3.1_1
+libodbcinst.so.2 libodbc-2.3.1_1
 libkrad.so.0 mit-krb5-libs-1.12.1_1
 libkdb_ldap.so.1 mit-krb5-libs-1.14.2_2
 libkadm5clnt_mit.so.11 mit-krb5-libs-1.15.1_1

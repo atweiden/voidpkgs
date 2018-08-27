@@ -335,6 +335,9 @@ my List:D %pkg{Str:D} =
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
     'tcl' => ['tcl-devel'],
+    'tcl' => ['tcl-devel'],
+    'unixodbc' => qw<libodbc
+                     unixodbc-devel>,
     'util-linux' => qw<libblkid
                        libblkid-devel
                        libfdisk
