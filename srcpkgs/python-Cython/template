@@ -1,0 +1,38 @@
+# Template file for 'python-Cython'
+pkgname=python-Cython
+version=0.28.5
+revision=1
+wrksrc="Cython-${version}"
+build_style=python-module
+hostmakedepends="python-devel python3-devel"
+makedepends="${hostmakedepends}"
+pycompile_module="Cython pyximport cython.py"
+short_desc="C-Extensions for Python2"
+maintainer="Alessio Sergi <al3hex@gmail.com>"
+homepage="http://cython.org"
+license="Apache-2.0"
+distfiles="${PYPI_SITE}/C/Cython/Cython-${version}.tar.gz"
+checksum=b64575241f64f6ec005a4d4137339fb0ba5e156e826db2fdb5f458060d9979e0
+
+alternatives="
+ cython:cygdb:/usr/bin/cygdb2
+ cython:cython:/usr/bin/cython2
+ cython:cythonize:/usr/bin/cythonize2"
+
+# Skip build phase, otherwise Cython gets confused when cross compiling
+do_build() {
+	:
+}
+
+python3-Cython_package() {
+	alternatives="
+	 cython:cygdb:/usr/bin/cygdb3
+	 cython:cython:/usr/bin/cython3
+	 cython:cythonize:/usr/bin/cythonize3"
+	pycompile_module="Cython pyximport cython.py"
+	short_desc="${short_desc/Python2/Python3}"
+	pkg_install() {
+		vmove usr/bin/*3
+		vmove usr/lib/python3*
+	}
+}

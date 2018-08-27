@@ -1,0 +1,20 @@
+# Template file for 'python-typing'
+pkgname=python-typing
+version=3.6.4
+revision=1
+noarch=yes
+wrksrc="typing-${version}"
+build_style=python2-module
+pycompile_module="typing.py"
+hostmakedepends="python-setuptools"
+depends="python"
+short_desc="Backport of the typing module from Python 3.5+"
+maintainer="Alessio Sergi <al3hex@gmail.com>"
+homepage="https://docs.python.org/3/library/typing.html"
+license="PSF"
+distfiles="${PYPI_SITE}/t/typing/typing-${version}.tar.gz"
+checksum=d400a9344254803a2368533e4533a4200d21eb7b6b729c173bc38201a74db3f2
+
+post_install() {
+	vlicense LICENSE
+}

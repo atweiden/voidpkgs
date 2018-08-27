@@ -1,0 +1,36 @@
+# Template file for 'python-py'
+pkgname=python-py
+version=1.5.4
+revision=1
+noarch=yes
+wrksrc="py-${version}"
+build_style=python-module
+pycompile_module="py"
+hostmakedepends="python-setuptools python3-setuptools"
+depends="python"
+checkdepends="python3-pytest"
+short_desc="Python2 development support library"
+maintainer="Orpahend <orphan@voidlinux.eu>"
+license="MIT"
+homepage="https://github.com/pytest-dev/py"
+distfiles="${PYPI_SITE}/p/py/py-${version}.tar.gz"
+checksum=3fd59af7435864e1a243790d322d763925431213b6b8529c6ca71081ace3bbf7
+
+do_check() {
+	python3 -m pytest
+}
+
+post_install() {
+	vlicense LICENSE
+}
+
+python3-py_package() {
+	noarch=yes
+	depends="python3"
+	pycompile_module="py"
+	short_desc="${short_desc/Python2/Python3}"
+	pkg_install() {
+		vmove usr/lib/python3*
+		vlicense LICENSE
+	}
+}

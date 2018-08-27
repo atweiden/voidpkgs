@@ -1,0 +1,36 @@
+# Template file for 'python-urllib3'
+pkgname=python-urllib3
+version=1.23
+revision=1
+noarch=yes
+wrksrc="urllib3-${version}"
+build_style=python-module
+pycompile_module="urllib3"
+hostmakedepends="python-setuptools python3-setuptools"
+depends="python-six"
+short_desc="HTTP library with thread-safe connection pooling (Python2)"
+maintainer="Alessio Sergi <al3hex@gmail.com>"
+homepage="https://urllib3.readthedocs.io/"
+license="MIT"
+distfiles="${PYPI_SITE}/u/urllib3/urllib3-${version}.tar.gz"
+checksum=a68ac5e15e76e7e5dd2b8f94007233e01effe3e50e8daddf69acfd81cb686baf
+
+post_install() {
+	# replace bundled copy of six
+	for pyver in $py2_ver $py3_ver; do
+		rm -f ${DESTDIR}/usr/lib/python${pyver}/site-packages/urllib3/packages/six.py
+		ln -sf ../../six.py ${DESTDIR}/usr/lib/python${pyver}/site-packages/urllib3/packages/six.py
+	done
+	vlicense LICENSE.txt LICENSE
+}
+
+python3-urllib3_package() {
+	noarch=yes
+	depends="python3-six"
+	pycompile_module="urllib3"
+	short_desc="${short_desc/Python2/Python3}"
+	pkg_install() {
+		vmove usr/lib/python3*
+		vlicense LICENSE.txt LICENSE
+	}
+}

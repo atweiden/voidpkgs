@@ -1,0 +1,34 @@
+# Template file for 'python-Pygments'
+pkgname=python-Pygments
+version=2.2.0
+revision=2
+noarch=yes
+wrksrc="Pygments-${version}"
+build_style=python-module
+hostmakedepends="python-setuptools python3-setuptools"
+depends="python-setuptools"
+pycompile_module="pygments"
+short_desc="Python2 syntax highlighter"
+maintainer="Alessio Sergi <al3hex@gmail.com>"
+homepage="http://pygments.org/"
+license="2-clause-BSD"
+distfiles="${PYPI_SITE}/P/Pygments/Pygments-${version}.tar.gz"
+checksum=dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc
+alternatives="pygments:pygmentize:/usr/bin/pygmentize2"
+
+post_install() {
+	vlicense LICENSE
+}
+
+python3-Pygments_package() {
+	noarch=yes
+	depends="python3-setuptools"
+	pycompile_module="pygments"
+	short_desc="${short_desc/Python2/Python3}"
+	alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
+	pkg_install() {
+		vmove usr/bin/pygmentize3
+		vmove usr/lib/python3*
+		vlicense LICENSE
+	}
+}
