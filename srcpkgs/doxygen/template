@@ -1,0 +1,29 @@
+# Template file for 'doxygen'
+pkgname=doxygen
+version=1.8.14
+revision=1
+build_style=cmake
+hostmakedepends="perl python flex"
+short_desc="Source code documentation generator tool"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.doxygen.org/"
+license="GPL-2"
+distfiles="http://ftp.stack.nl/pub/users/dimitri/${pkgname}-${version}.src.tar.gz"
+checksum=d1757e02755ef6f56fd45f1f4398598b920381948d6fcfa58f5ca6aa56f59d4d
+
+post_install() {
+	vman doc/doxygen.1
+}
+
+if [ -z "$CROSS_BUILD" ]; then
+	makedepends="qt-devel"
+	configure_args+=" -Dbuild_wizard=1"
+	doxygen-gui_package() {
+		depends="${sourcepkg}>=${version}_${revision}"
+		short_desc+=" - GUI configuration tool"
+		pkg_install() {
+			vmove usr/bin/doxywizard
+			vman doc/doxywizard.1
+		}
+	}
+fi

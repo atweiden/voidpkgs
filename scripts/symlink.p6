@@ -223,6 +223,8 @@ my List:D %pkg{Str:D} =
                  lld-devel
                  lldb
                  lldb-devel>,
+    'lua' => qw<lua-devel>,
+    'lutok' => qw<lutok-devel>,
     'lvm2' => qw<device-mapper
                  device-mapper-devel
                  liblvm2app
