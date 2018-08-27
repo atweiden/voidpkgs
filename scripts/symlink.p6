@@ -130,6 +130,7 @@ my List:D %pkg{Str:D} =
     'haveged' => qw<libhaveged
                     libhaveged-devel>,
     'http-parser' => ['http-parser-devel'],
+    'icdiff' => ['python3-icdiff'],
     'icu' => qw<icu-devel
                 icu-libs>,
     'inetutils' => qw<inetutils-dnsdomainname
