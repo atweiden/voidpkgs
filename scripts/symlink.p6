@@ -382,14 +382,7 @@ sub mksymlinks(%p --> Nil)
             say($ln-cmdline);
             my Proc:D $ln-cmdline-proc = shell($ln-cmdline);
             $ln-cmdline-proc.exitcode == 0
-                or do {
-                    my Str:D $message =
-                        sprintf(
-                            Q{Sorry, could not create symlink from `%s`},
-                            $ln-cmdline.join(' ')
-                        );
-                    die($message);
-                }
+                or die("Sorry, could not create symlink from `$ln-cmdline`");
         }
     });
 }
