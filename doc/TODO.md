@@ -56,7 +56,6 @@ port templates
 - cross-arm-none-eabi
 - cross-armv7l-linux-gnueabihf
 - cross-armv7l-linux-musleabihf
-- cross-i686-linux-gnu
 - cross-i686-linux-musl
 - cross-i686-pc-linux-gnu
 - cross-mips-linux-musl
@@ -97,7 +96,6 @@ port templates
 - file
 - findutils
 - flex
-- font-tamsyn-console
 - font-unifont-bdf
 - freetype
 - fuse
@@ -137,7 +135,6 @@ port templates
 - json-c
 - kbd
 - kernel-libc-headers
-- keymap-us-capslock-backspace
 - kmod
 - ldns
 - less
