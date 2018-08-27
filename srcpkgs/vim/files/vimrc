@@ -1,10 +1,24 @@
-" System-wide vim configuration
+" All system-wide defaults are set in $VIMRUNTIME/voidlinux.vim (usually
+" just /usr/share/vim/vimfiles/voidlinux.vim) and sourced by the call
+" to :runtime you can find below.
+"
+" If you wish to change any of those settings, you should do it in this
+" file (/etc/vimrc), since voidlinux.vim will be overwritten every time
+" an upgrade of the Vim packages is performed.
 
-set nocompatible
-set backspace=indent,eol,start
-set history=50
-set ruler
+" It is recommended to make changes after sourcing voidlinux.vim since
+" it alters the value of the 'compatible' option.
+"
+" Credit: https://www.archlinux.org/packages/extra/x86_64/vim/
 
-if filereadable("/etc/vimrc.local")
-  source /etc/vimrc.local
-endif
+" This line should not be removed as it ensures that various options
+" are properly set to work with the Vim-related packages.
+runtime! voidlinux.vim
+
+" Uncomment for old-style vim functionalty:
+"runtime! vimrc_example.vim
+
+" Better yet, read the vim manual and configure Vim to your own liking.
+
+" Uncomment to disable loading defaults if ~/.vimrc is missing:
+"let skip_defaults_vim=1

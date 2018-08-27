@@ -1,199 +1,95 @@
-# Template file for 'vim'
-pkgname=vim
-version=8.1.0277
-revision=3
-hostmakedepends="glib-devel pkg-config"
-makedepends="acl-devel gtk+-devel libXt-devel lua-devel ncurses-devel
- perl python-devel python3-devel ruby-devel"
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="vim"
+version=8.1.0328
+revision=1
+short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
-short_desc="Vim editor (vi clone)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" acl-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends="pkgconf"
+homepage="https://www.vim.org/"
 license="Vim"
-homepage="https://www.vim.org"
-distfiles="https://github.com/vim/vim/archive/v${version}.tar.gz"
-checksum=d7b5387e70cddf481e880f90fbc75085e515225322443cbdaa2861679868ff4e
-
-subpackages="xxd vim-common vim-x11 gvim"
-# XXX vim-huge cannot be cross compiled for now.
-if [ -z "$CROSS_BUILD" ]; then
-	subpackages+=" vim-huge vim-huge-python3 gvim-huge"
+distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$pkgver.tar.gz"
+checksum="aef0d840d4d50c4172a15e3c7a7fcd6c9a674dce06c6721fbe09c26cd094eaab"
+build_style="gnu-configure"
+configure_args+=" --disable-cscope"
+configure_args+=" --disable-gpm"
+configure_args+=" --disable-hangulinput"
+configure_args+=" --disable-luainterp"
+configure_args+=" --disable-mzschemeinterp"
+configure_args+=" --disable-netbeans"
+configure_args+=" --disable-perlinterp"
+configure_args+=" --disable-pythoninterp"
+configure_args+=" --disable-python3interp"
+configure_args+=" --disable-rubyinterp"
+configure_args+=" --disable-tclinterp"
+configure_args+=" --disable-workshop"
+configure_args+=" --disable-xim"
+configure_args+=" --disable-xsmp"
+configure_args+=" --disable-xsmp-interact"
+configure_args+=" --enable-gui=no"
+configure_args+=" --enable-multibyte"
+configure_args+=" --enable-terminal"
+configure_args+=" --with-compiledby='Void Linux'"
+configure_args+=" --with-ex-name=vim-ex"
+configure_args+=" --with-features=huge"
+configure_args+=" --with-tlib=ncursesw"
+configure_args+=" --with-view-name=vim-view"
+configure_args+=" --with-x=no"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # https://github.com/vim/vim/blob/master/src/INSTALLx.txt
+  configure_script+=" ac_cv_small_wchar_t=no"
+  configure_script+=" vim_cv_getcwd_broken=no"
+  configure_script+=" vim_cv_memmove_handles_overlap=yes"
+  configure_script+=" vim_cv_stat_ignores_slash=yes"
+  configure_script+=" vim_cv_terminfo=yes"
+  configure_script+=" vim_cv_tgetent=zero"
+  configure_script+=" vim_cv_toupper_broken=no"
+  configure_script+=" vim_cv_tty_group=world"
+  configure_script+=" vim_cv_tty_mode=0620"
+  configure_script+=" ./configure"
+  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
 fi
+make_install_args="VIMRCLOC=/etc"
 
-alternatives="vim:vim:/usr/bin/vim-normal"
-
-pre_configure() {
-	for f in ${subpackages/xxd vim-common/}; do
-		mkdir -p /tmp/${f}
-		cp -a $wrksrc/* /tmp/${f}
-		mv /tmp/${f} $wrksrc/${f}
-	done
-}
-
-do_configure() {
-	args="--enable-cscope --enable-multibyte --with-tlib=ncursesw
-		--with-ex-name=vim-ex --with-view-name=vim-view"
-
-	nohuge_args="--disable-perlinterp --disable-pythoninterp
-		--disable-rubyinterp --disable-workshop
-		--disable-netbeans --disable-gpm
-		--disable-hangulinput"
-
-	if [ "$CROSS_BUILD" ]; then
-		configure_args+="
-			--host=${XBPS_CROSS_TRIPLET}
-			vim_cv_toupper_broken=no vim_cv_terminfo=yes
-			vim_cv_tty_group=world vim_cv_getcwd_broken=no
-			vim_cv_stat_ignores_slash=yes
-			vim_cv_memmove_handles_overlap=yes
-			vim_cv_tgetent=zero
-			ac_cv_small_wchar_t=no"
-	fi
-
-	# Normal version.
-	cd $wrksrc
-	./configure ${configure_args} ${args} ${nohuge_args} --disable-xim --enable-gui=no --with-x=no
-
-	# X11 version.
-	cd $wrksrc/vim-x11
-	./configure ${configure_args} ${args} ${nohuge_args} --enable-gui=no --with-x
-
-	# GTK+ version.
-	cd $wrksrc/gvim
-	./configure ${configure_args} ${args} ${nohuge_args} --enable-gui=gtk2 --with-x --with-vim-name=gvim
-
-	# Huge versions
-	if [ -z "$CROSS_BUILD" ]; then
-		cd $wrksrc/vim-huge
-		./configure ${configure_args} ${args} --with-x=yes --enable-gui=no \
-			--with-features=huge --enable-perlinterp --enable-pythoninterp \
-			--enable-rubyinterp --enable-luainterp --enable-clientserver \
-			--enable-terminal
-
-		cd $wrksrc/vim-huge-python3
-		./configure ${configure_args} ${args} --with-x=yes --enable-gui=no \
-			--with-features=huge --enable-perlinterp \
-			--disable-pythoninterp --enable-python3interp \
-			--enable-rubyinterp --enable-luainterp \
-			--enable-terminal
-
-		cd $wrksrc/gvim-huge
-		./configure ${configure_args} ${args} \
-			--enable-gui=gtk2 --with-x --with-vim-name=gvim-huge \
-			--with-features=huge --enable-perlinterp --enable-pythoninterp \
-			--enable-rubyinterp --enable-luainterp --enable-clientserver \
-			--enable-terminal
-	fi
-}
-
-do_build() {
-	cd $wrksrc
-	make ${makejobs}
-
-	for f in ${subpackages/xxd vim-common/}; do
-		cd $wrksrc/$f
-		make ${makejobs}
-	done
-
-}
-
-do_install() {
-	make DESTDIR=$DESTDIR install
-	vlicense runtime/doc/uganda.txt LICENSE
-
-	mv ${DESTDIR}/usr/bin/vim ${DESTDIR}/usr/bin/vim-normal
-
-	# Create vim-ex symlink.
-	cd ${DESTDIR}/usr/bin
-	ln -sf vim vim-ex
-	rm -f ${DESTDIR}/usr/bin/{ex,view}
+post_install() {
+  vlicense runtime/doc/uganda.txt LICENSE
+  # create vim-ex symlink
+  cd "$DESTDIR/usr/bin"
+  ln -sf vim vim-ex
+  rm -f "$DESTDIR/usr/bin"/{ex,view}
 }
 
 vim-common_package() {
-	short_desc+=" - common files"
-	depends="xxd"
-	noarch=yes
-	alternatives="
-	 vi:ex:/usr/bin/vim
-	 vi:ex.1:/usr/share/man/man1/vim.1
-	 vi:vi:/usr/bin/vim
-	 vi:vi.1:/usr/share/man/man1/vim.1
-	 vi:view:/usr/bin/vim
-	 vi:view.1:/usr/share/man/man1/vim.1
-	"
-	pkg_install() {
-		vmove usr/bin/rvim
-		vmove usr/bin/vim-ex
-		vmove usr/bin/vimdiff
-		vmove usr/bin/vimtutor
-		vmove usr/bin/*view
-		vmove "usr/share/man/man1/*vim*"
-		vmove usr/share/licenses
-		vmove usr/share/vim
-		vinstall ${FILESDIR}/vimrc 644 usr/share/vim
-	}
+  short_desc+=" - common files"
+  depends="xxd"
+  noarch="yes"
+  alternatives+=" vi:ex:/usr/bin/vim"
+  alternatives+=" vi:ex.1:/usr/share/man/man1/vim.1"
+  alternatives+=" vi:vi:/usr/bin/vim"
+  alternatives+=" vi:vi.1:/usr/share/man/man1/vim.1"
+  alternatives+=" vi:view:/usr/bin/vim"
+  alternatives+=" vi:view.1:/usr/share/man/man1/vim.1"
+  pkg_install() {
+    vmove usr/bin/rvim
+    vmove usr/bin/vim-ex
+    vmove usr/bin/vim-view
+    vmove usr/bin/vimdiff
+    vmove usr/bin/vimtutor
+    vmove "usr/share/man/man1/*vim*"
+    vmove usr/share/licenses
+    vmove usr/share/vim
+    vinstall "$FILESDIR/vimrc" 644 etc
+    vinstall "$FILESDIR/voidlinux.vim" 644 usr/share/vim/vimfiles
+  }
 }
-vim-x11_package() {
-	depends="vim-common-${version}_${revision}"
-	provides="vim-${version}_${revision}"
-	short_desc+=" - with access to X11 selection"
-	alternatives="vim:vim:/usr/bin/vim-x11"
-	pkg_install() {
-		vbin $wrksrc/vim-x11/src/vim vim-x11
-	}
-}
-gvim_package() {
-	depends="vim-common-${version}_${revision} desktop-file-utils hicolor-icon-theme"
-	provides="vim-${version}_${revision}"
-	short_desc+=" - GTK+ GUI"
-	alternatives="vim:vim:/usr/bin/gvim"
-	pkg_install() {
-		cd $wrksrc/gvim
-		sed -i "s|/locolor|/hicolor|g" src/Makefile
-		for d in 16 32 48; do
-			install -d ${PKGDESTDIR}/usr/share/icons/hicolor/${d}x${d}/apps
-		done
-		make -C src DESTDIR=${PKGDESTDIR} installvimbin install-icons
-		vmove usr/share/applications/gvim.desktop
-		rm "$PKGDESTDIR"/usr/share/applications/vim.desktop
-	}
-}
-gvim-huge_package() {
-	depends="python vim-common-${version}_${revision} desktop-file-utils hicolor-icon-theme"
-	provides="vim-${version}_${revision}"
-	short_desc+=" - GTK+ GUI - Huge (all features enabled, using Python 2)"
-	alternatives="vim:vim:/usr/bin/gvim-huge"
-	pkg_install() {
-		cd $wrksrc/gvim-huge
-		sed -i "s|/locolor|/hicolor|g" src/Makefile
-		for d in 16 32 48; do
-			install -d ${PKGDESTDIR}/usr/share/icons/hicolor/${d}x${d}/apps
-		done
-		make -C src DESTDIR=${PKGDESTDIR} installvimbin install-icons
-		vmove usr/share/applications/*.desktop
-	}
-}
-vim-huge_package() {
-	depends="python vim-common-${version}_${revision}"
-	short_desc+=" - Huge (all features enabled, using Python 2)"
-	provides="vim-${version}_${revision}"
-	alternatives="vim:vim:/usr/bin/vim-huge"
-	pkg_install() {
-		vbin $wrksrc/vim-huge/src/vim vim-huge
-	}
-}
-vim-huge-python3_package() {
-	depends="python3 vim-common-${version}_${revision}"
-	short_desc+=" - Huge (all features enabled, using Python 3)"
-	provides="vim-${version}_${revision}"
-	alternatives="vim:vim:/usr/bin/vim-huge-python3"
-	pkg_install() {
-		vbin $wrksrc/vim-huge-python3/src/vim vim-huge-python3
-	}
-}
+
 xxd_package() {
-	short_desc="Make a hexdump or do the reverse"
-	pkg_install() {
-		vmove usr/bin/xxd
-		vmove usr/share/man/man1/xxd.1
-	}
+  short_desc="Make a hexdump or do the reverse"
+  pkg_install() {
+    vmove usr/bin/xxd
+    vmove usr/share/man/man1/xxd.1
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
