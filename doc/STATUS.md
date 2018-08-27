@@ -10,7 +10,6 @@ dcraddrgen                   | PASS   | PASS
 dcrd                         | PASS   | PASS
 dcrseeder                    | PASS   | PASS
 dcrwallet                    | PASS   | PASS
-electrum-git                 | ????   | ????
 enchive                      | PASS   | PASS
 font-tamsyn-console          | PASS   | PASS
 gocryptfs                    | ????   | ????
