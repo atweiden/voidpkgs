@@ -1,0 +1,33 @@
+# Template build file for 'pixman'.
+pkgname=pixman
+version=0.34.0
+revision=2
+build_style=gnu-configure
+configure_args="--disable-gtk" # do not require gtk+!
+hostmakedepends="pkg-config perl"
+short_desc="Library of low-level pixel manipulation routines"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://xorg.freedesktop.org"
+license="MIT"
+distfiles="${XORG_SITE}/lib/$pkgname-$version.tar.bz2"
+checksum=39ba3438f3d17c464b0cb8be006dacbca0ab5aee97ebde69fec7ecdbf85794a0
+
+pre_configure() {
+	case "$XBPS_TARGET_MACHINE" in
+		arm*) configure_args+=" --disable-arm-iwmmxt --disable-arm-iwmmxt2";;
+	esac
+}
+post_install() {
+	vlicense COPYING
+}
+
+pixman-devel_package() {
+	depends="pixman>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}

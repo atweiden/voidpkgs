@@ -1,0 +1,64 @@
+# Template file for 'glib'
+pkgname=glib
+version=2.56.2
+revision=1
+build_style=gnu-configure
+configure_args="--enable-libelf --disable-fam --with-pcre=system --enable-static"
+hostmakedepends="automake libtool pkg-config perl python3 libxslt docbook-xsl"
+makedepends="zlib-devel pcre-devel libffi-devel dbus-devel elfutils-devel libmount-devel"
+short_desc="The GNU library of C routines"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="LGPL-2.1-or-later"
+homepage="https://wiki.gnome.org/Projects/GLib"
+changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
+distfiles="${GNOME_SITE}/glib/${version%.*}/glib-${version}.tar.xz"
+checksum=d64abd16813501c956c4e123ae79f47f1b58de573df9fdd3b0795f1e2c1aa789
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends+=" glib-devel"
+	case "$XBPS_TARGET_MACHINE" in
+		mips*)	# It seems common/environment/configure/autoconf_cache/mips-linux is not read?
+			configure_args+=" glib_cv_stack_grows=no glib_cv_rtldglobal_broken=no glib_cv_uscore=no" ;;
+	esac
+fi
+
+pre_configure() {
+	autoreconf -fi
+}
+
+libglib-devel_package() {
+	depends="${makedepends} glib>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/glib-2.0
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
+glib-devel_package() {
+	depends="python3 perl libglib-devel>=${version}_${revision}"
+	short_desc+=" - development files"
+	pycompile_dirs="/usr/share/glib-2.0"
+	python_version=3
+	pkg_install() {
+		vmove usr/bin/glib-compile-resources
+		vmove usr/bin/glib-genmarshal
+		vmove usr/bin/glib-mkenums
+		vmove usr/bin/gtester-report
+		vmove usr/bin/gdbus-codegen
+		vmove usr/bin/gtester
+		vmove usr/bin/glib-gettextize
+		vmove usr/share/man/man1/glib-compile-resources.1
+		vmove usr/share/man/man1/glib-gettextize.1
+		vmove usr/share/man/man1/gtester.1
+		vmove usr/share/man/man1/glib-mkenums.1
+		vmove usr/share/man/man1/gdbus-codegen.1
+		vmove usr/share/man/man1/glib-genmarshal.1
+		vmove usr/share/man/man1/gtester-report.1
+		for f in gtk-doc aclocal glib-2.0 gdb; do
+			vmove usr/share/${f}
+		done
+	}
+}

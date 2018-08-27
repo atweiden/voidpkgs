@@ -52,6 +52,7 @@ my List:D %pkg{Str:D} =
                  dbus-libs
                  dbus-x11>,
     'dracut' => ['dracut-network'],
+    'dtc' => ['dtc-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
                       e2fsprogs-libs>,
     'efivar' => qw<libefivar
@@ -108,6 +109,8 @@ my List:D %pkg{Str:D} =
                 git-gui
                 git-svn
                 gitk>,
+    'glib' => qw<glib-devel
+                 libglib-devel>,
     'glibc' => qw<glibc-devel
                   glibc-locales
                   nscd>,
@@ -272,6 +275,7 @@ my List:D %pkg{Str:D} =
                      pinentry-gtk
                      pinentry-qt
                      pinentry-tty>,
+    'pixman' => ['pixman-devel'],
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
     'pps-tools' => ['pps-tools-devel'],
