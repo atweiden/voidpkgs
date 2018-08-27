@@ -268,6 +268,8 @@ my List:D %pkg{Str:D} =
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
     'procps-ng' => ['procps-ng-devel'],
+    'protobuf' => qw<protobuf-devel
+                     protobuf-lite>,
     'python' => ['python-devel'],
     'python3' => ['python3-devel'],
     'qemu' => ['qemu-ga'],
