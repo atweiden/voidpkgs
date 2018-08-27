@@ -1,4 +1,9 @@
-## `shlibs`
+## [options.description][options.description]
+
+[options.description][options.description] represents a map between
+generic package build options and the description thereof.
+
+## [shlibs][shlibs]
 
 [shlibs][shlibs] represents a map between shared libraries and packages
 in XBPS. Every shared library installed by a package must be listed here
@@ -17,5 +22,6 @@ top->bottom) is preferred over the next ones.
 [shlibs][shlibs] is sorted with
 [scripts/sort-common-shlibs.p6][scripts/sort-common-shlibs.p6].
 
+[options.description]: options.description
 [scripts/sort-common-shlibs.p6]: ../scripts/sort-common-shlibs.p6
 [shlibs]: shlibs
