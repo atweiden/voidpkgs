@@ -276,6 +276,7 @@ my List:D %pkg{Str:D} =
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'readline' => ['readline-devel'],
+    'rhash' => ['rhash-devel'],
     'runit-void' => ['runit-void-apparmor'],
     'sqlite' => ['sqlite-devel'],
     'sysfsutils' => qw<libsysfs
