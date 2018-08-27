@@ -1,4 +1,3 @@
-# Template file for 'enchive'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="enchive"
 version=3.4

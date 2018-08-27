@@ -1,4 +1,3 @@
-# Template file for 'libbitcoin-node'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-node"
 version=3.5.0

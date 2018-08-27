@@ -1,4 +1,3 @@
-# Template file for 'libbitcoin-network'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-network"
 version=3.5.0

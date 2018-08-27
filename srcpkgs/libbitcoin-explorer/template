@@ -1,4 +1,3 @@
-# Template file for 'libbitcoin-explorer'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-explorer"
 version=3.5.0

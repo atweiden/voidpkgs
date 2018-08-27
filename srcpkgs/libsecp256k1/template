@@ -1,4 +1,3 @@
-# Template file for 'libsecp256k1'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libsecp256k1"
 version=20180531

@@ -1,4 +1,3 @@
-# Template file for 'libbitcoin-consensus'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-consensus"
 version=3.5.0

@@ -1,4 +1,3 @@
-# Template file for 'cryfs'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cryfs"
 version=0.9.9

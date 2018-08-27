@@ -1,4 +1,3 @@
-# Template file for 'btcwallet'
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcwallet"
 version=20180813
