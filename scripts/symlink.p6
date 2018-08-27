@@ -142,6 +142,7 @@ my List:D %pkg{Str:D} =
                       inetutils-uucpd
                       inetutils-whois>,
     'iproute2' => ['iproute2-tc-ipt'],
+    'iptables' => ['iptables-devel'],
     'isl15' => ['isl15-devel'],
     'jansson' => ['jansson-devel'],
     'json-c' => ['json-c-devel'],
