@@ -296,6 +296,7 @@ my List:D %pkg{Str:D} =
     'python-attrs' => ['python3-attrs'],
     'python-chardet' => ['python3-chardet'],
     'python-coverage' => ['python3-coverage'],
+    'python-cram' => ['python3-cram'],
     'python-docopt' => ['python3-docopt'],
     'python-enum34' => ['python3-enum34'],
     'python-flaky' => ['python3-flaky'],
