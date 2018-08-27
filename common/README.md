@@ -1,0 +1,17 @@
+## `shlibs`
+
+This file represents a map between shared libraries and packages in
+XBPS. Every shared library installed by a package must be listed here
+and mapped to a binary package.
+
+The first field lists the exact SONAME embedded in binaries.
+
+The second field lists the package/version tuple containing the
+SONAME. The version component is used as greater than or equal to that
+version in resulting binary package.
+
+The third field (optional) specifies that shared library should not be
+used to perform checks of soname bumps.
+
+PLEASE NOTE: when multiple packages provide the same SONAME, the first
+one (order top->bottom) is preferred over the next ones.
