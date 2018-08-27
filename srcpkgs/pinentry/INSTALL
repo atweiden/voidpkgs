@@ -1,5 +1,5 @@
-case ${ACTION} in
+case "$ACTION" in
 post)
-	ln -sf pinentry-curses usr/bin/pinentry
-	;;
+  ln -sf pinentry-curses usr/bin/pinentry
+  ;;
 esac

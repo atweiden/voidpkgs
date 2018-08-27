@@ -1,5 +1,5 @@
-case ${ACTION} in
+case "$ACTION" in
 purge)
-	rm -f usr/bin/pinentry
-	;;
+  rm -f usr/bin/pinentry
+  ;;
 esac

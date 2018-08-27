@@ -1,60 +1,50 @@
-# Template file for 'pinentry'
-pkgname=pinentry
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pinentry"
 version=1.1.0
 revision=1
-build_style=gnu-configure
-configure_args="--disable-rpath --without-libcap --disable-pinentry-gtk
- --enable-pinentry-curses --enable-fallback-curses --enable-pinentry-gtk2
- --enable-pinentry-emacs --enable-pinentry-qt --enable-pinentry-tty"
-hostmakedepends="pkg-config"
-makedepends="ncurses-devel gtk+-devel libassuan-devel libgpg-error-devel qt5-devel"
-short_desc="PIN or passphrase entry dialogs for GnuPG"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2"
-homepage="https://www.gnupg.org/related_software/pinentry/index.html"
-distfiles="ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${version}.tar.bz2"
-checksum=68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
-
-if [ -n "$CROSS_BUILD" ]; then
-	hostmakedepends+=" qt5-host-tools"
+short_desc="Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
+makedepends+=" libassuan-devel"
+makedepends+=" libgpg-error-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends="pkgconf"
+homepage="https://www.gnupg.org/related_software/pinentry/"
+license="GPL-2.0-or-later"
+distfiles="https://www.gnupg.org/ftp/gcrypt/pinentry/$pkgname-$version.tar.bz2"
+checksum="68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570"
+build_style="gnu-configure"
+configure_args+=" --disable-inside-emacs"
+configure_args+=" --disable-libsecret"
+configure_args+=" --disable-pinentry-emacs"
+configure_args+=" --disable-pinentry-fltk"
+configure_args+=" --disable-pinentry-gnome3"
+configure_args+=" --disable-pinentry-gtk2"
+configure_args+=" --disable-pinentry-qt"
+configure_args+=" --disable-pinentry-qt5"
+configure_args+=" --disable-pinentry-tqt"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-fallback-curses"
+configure_args+=" --enable-pinentry-curses"
+configure_args+=" --enable-pinentry-tty"
+configure_args+=" --with-gnu-ld"
+configure_args+=" --without-libcap"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
 fi
 
 pre_build() {
-	sed -e 's,ncursesw/curses.h,curses.h,' -i pinentry/pinentry-curses.c
+  sed -e 's,ncursesw/curses.h,curses.h,' -i pinentry/pinentry-curses.c
 }
 
 post_install() {
-	rm ${DESTDIR}/usr/bin/pinentry
+  rm "$DESTDIR/usr/bin/pinentry"
 }
 
 pinentry-tty_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" for dumb terminals"
-	pkg_install() {
-		vmove usr/bin/pinentry-tty
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - tty version"
+  pkg_install() {
+    vmove usr/bin/pinentry-tty
+  }
 }
 
-pinentry-qt_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" based on Qt"
-	pkg_install() {
-		vmove usr/bin/pinentry-qt
-	}
-}
-
-pinentry-gtk_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" based on GTK+"
-	pkg_install() {
-		vmove usr/bin/pinentry-gtk-2
-	}
-}
-
-pinentry-emacs_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - Emacs interface"
-	pkg_install() {
-		vmove usr/bin/pinentry-emacs
-	}
-}
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
