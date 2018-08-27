@@ -152,6 +152,8 @@ my List:D %pkg{Str:D} =
                       inetutils-whois>,
     'iproute2' => ['iproute2-tc-ipt'],
     'iptables' => ['iptables-devel'],
+    'irssi' => qw<irssi-devel
+                  irssi-perl>,
     'isl15' => ['isl15-devel'],
     'jansson' => ['jansson-devel'],
     'json-c' => ['json-c-devel'],
