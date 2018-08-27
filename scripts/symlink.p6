@@ -213,6 +213,7 @@ my List:D %pkg{Str:D} =
     'libunwind' => ['libunwind-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
+    'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
     'libxml2' => qw<libxml2-devel
                     libxml2-python>,
