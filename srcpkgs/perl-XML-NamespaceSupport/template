@@ -1,0 +1,16 @@
+# Template build file for 'perl-XML-NamespaceSupport'.
+pkgname=perl-XML-NamespaceSupport
+version=1.12
+revision=1
+wrksrc="${pkgname/perl-/}-${version}"
+build_style=perl-module
+hostmakedepends="perl"
+makedepends="${hostmakedepends}"
+depends="${makedepends}"
+noarch="yes"
+short_desc="Perl module to the SAX2 NamespaceSupport class"
+homepage="https://metacpan.org/release/XML-NamespaceSupport"
+license="Artistic, GPL-1"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+distfiles="${CPAN_SITE}/XML/XML-NamespaceSupport-$version.tar.gz"
+checksum=47e995859f8dd0413aa3f22d350c4a62da652e854267aa0586ae544ae2bae5ef
