@@ -288,6 +288,7 @@ my List:D %pkg{Str:D} =
     'python' => ['python-devel'],
     'python-docopt' => ['python3-docopt'],
     'python-setuptools' => ['python3-setuptools'],
+    'python-six' => ['python3-six'],
     'python-yaml' => ['python3-yaml'],
     'python3' => ['python3-devel'],
     'qrencode' => qw<libqrencode
