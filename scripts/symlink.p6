@@ -128,6 +128,7 @@ my List:D %pkg{Str:D} =
                   libguile>,
     'haveged' => qw<libhaveged
                     libhaveged-devel>,
+    'http-parser' => ['http-parser-devel'],
     'icu' => qw<icu-devel
                 icu-libs>,
     'inetutils' => qw<inetutils-dnsdomainname
@@ -173,6 +174,7 @@ my List:D %pkg{Str:D} =
     'libevent' => ['libevent-devel'],
     'libffi' => ['libffi-devel'],
     'libgcrypt' => ['libgcrypt-devel'],
+    'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
     'libidn' => ['libidn-devel'],
     'libksba' => ['libksba-devel'],
@@ -204,6 +206,7 @@ my List:D %pkg{Str:D} =
                     libltdl-devel>,
     'libtommath' => ['libtommath-devel'],
     'libunistring' => ['libunistring-devel'],
+    'libunwind' => ['libunwind-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
     'libuv' => ['libuv-devel'],
@@ -292,6 +295,7 @@ my List:D %pkg{Str:D} =
     'readline' => ['readline-devel'],
     'rhash' => ['rhash-devel'],
     'runit-void' => ['runit-void-apparmor'],
+    'rust' => ['rust-doc'],
     'sqlite' => ['sqlite-devel'],
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
