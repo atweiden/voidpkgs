@@ -246,6 +246,7 @@ my List:D %pkg{Str:D} =
                      libnftables-devel>,
     'nghttp2' => ['nghttp2-devel'],
     'npth' => ['npth-devel'],
+    'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
     'openldap' => qw<libldap
@@ -267,6 +268,7 @@ my List:D %pkg{Str:D} =
                      pinentry-tty>,
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
+    'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
     'protobuf' => qw<protobuf-devel
                      protobuf-lite>,
