@@ -270,6 +270,7 @@ my List:D %pkg{Str:D} =
     'procps-ng' => ['procps-ng-devel'],
     'python' => ['python-devel'],
     'python3' => ['python3-devel'],
+    'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'readline' => ['readline-devel'],
