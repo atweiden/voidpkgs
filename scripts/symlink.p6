@@ -271,6 +271,9 @@ my List:D %pkg{Str:D} =
     'protobuf' => qw<protobuf-devel
                      protobuf-lite>,
     'python' => ['python-devel'],
+    'python-docopt' => ['python3-docopt'],
+    'python-setuptools' => ['python3-setuptools'],
+    'python-yaml' => ['python3-yaml'],
     'python3' => ['python3-devel'],
     'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
