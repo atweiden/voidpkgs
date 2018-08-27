@@ -1,6 +1,8 @@
 Todo
 ====
 
+- trim dbus template
+  - rm gui deps
 - trim git template
   - disable cvs and svn support
   - rm gui deps
