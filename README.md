@@ -9,6 +9,7 @@ Usage
 ```sh
 git clone https://github.com/atweiden/voidpkgs
 cd voidpkgs
+./xbps-src <binary-bootstrap|bootstrap>
 ./xbps-src pkg quixand
 xbps-install xtools
 xi quixand
