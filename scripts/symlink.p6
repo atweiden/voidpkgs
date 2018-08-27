@@ -124,6 +124,7 @@ my List:D %pkg{Str:D} =
     'grub' => qw<grub-i386-efi
                  grub-utils
                  grub-x86_64-efi>,
+    'gtest' => ['gtest-devel'],
     'guile' => qw<guile-devel
                   libguile>,
     'haveged' => qw<libhaveged

@@ -1,0 +1,22 @@
+# Template build file for 'gtest'
+pkgname=gtest
+version=1.8.0
+revision=4
+wrksrc="googletest-release-${version}"
+build_style=cmake
+short_desc="Google's framework for writing C++ tests"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
+license="MIT"
+hostmakedepends="unzip"
+homepage="https://github.com/google/googletest"
+distfiles="https://github.com/google/googletest/archive/release-${version}.tar.gz>${pkgname}-${version}.tar.gz"
+checksum=58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8
+configure_args="-DBUILD_SHARED_LIBS=ON -DCMAKE_SKIP_RPATH=ON"
+
+gtest-devel_package() {
+	depends="gtest>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+	}
+}
