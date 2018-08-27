@@ -252,6 +252,9 @@ libpci.so.3 pciutils-3.5.0_1
 libperl.so.5.28 perl-5.28.0_1
 libpopt.so.0 popt-1.15_1
 libprocps.so.7 procps-ng-3.3.15_1
+libprotoc.so.17 protobuf-3.6.1_1
+libprotobuf.so.17 protobuf-3.6.1_1
+libprotobuf-lite.so.17 protobuf-lite-3.6.1_1
 libpython2.7.so.1.0 python-2.7_1
 libpython3.6m.so.1.0 python3-3.6.2_1
 libpython3.so python3-3.6.2_1
