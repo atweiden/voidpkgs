@@ -1,0 +1,56 @@
+# Template build file for 'libxml2'.
+pkgname=libxml2
+version=2.9.8
+revision=2
+build_style=gnu-configure
+configure_args="--disable-static --with-threads --with-history --with-icu"
+hostmakedepends="automake libtool gettext-devel pkg-config python-devel"
+makedepends="zlib-devel ncurses-devel readline-devel liblzma-devel
+ icu-devel python-devel"
+short_desc="Library providing XML and HTML support"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.xmlsoft.org/"
+license="MIT"
+distfiles="http://xmlsoft.org/sources/$pkgname-$version.tar.gz"
+checksum=0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732
+
+LDFLAGS="-lz -llzma -lpthread"
+
+pre_configure() {
+	autoreconf -fi
+	sed '/PROGRAMS =/s,$(noinst_PROGRAMS),,' -i Makefile.in
+}
+pre_build() {
+	if [ "$CROSS_BUILD" ]; then
+		sed "s|/usr/\(include/python2.7\)|$XBPS_CROSS_BASE/\1|g" -i python/Makefile
+	fi
+}
+post_install() {
+	vlicense COPYING
+}
+
+libxml2-devel_package() {
+	depends="zlib-devel liblzma-devel icu-devel libxml2>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/bin/xml2-config
+		vmove usr/lib/xml2Conf.sh
+		vmove usr/lib/pkgconfig
+		vmove usr/lib/cmake
+		vmove usr/share/aclocal
+		vmove usr/share/gtk-doc
+		vmove usr/share/doc/${sourcepkg}-${version}
+		vmove "usr/share/man/man1/xml2-config*"
+		vmove usr/share/man/man3
+		vmove "usr/lib/*.so"
+	}
+}
+libxml2-python_package() {
+	lib32disabled=yes
+	short_desc+=" - python extension"
+	pkg_install() {
+		vmove "usr/lib/python*"
+		vmove usr/share/doc/${sourcepkg}-python-${version}
+	}
+}

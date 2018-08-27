@@ -1,0 +1,66 @@
+# Template file for 'openssh'
+pkgname=openssh
+version=7.7p1
+revision=2
+build_style=gnu-configure
+configure_args="--datadir=/usr/share/openssh
+ --sysconfdir=/etc/ssh --without-selinux --with-privsep-user=nobody
+ --with-mantype=doc --without-rpath --with-xauth=/usr/bin/xauth
+ --disable-strip --with-privsep-path=/var/chroot/ssh
+ --with-pid-dir=/run --with-pam
+ --with-libedit --with-Werror
+ $(vopt_with ldns ldns=$XBPS_CROSS_BASE/usr)
+ $(vopt_if ssl --with-ssl-engine --without-openssl)
+ $(vopt_if gssapi --with-kerberos5=$XBPS_CROSS_BASE/usr --without-kerberos5)
+ LD=$CC"
+hostmakedepends="autoconf"
+makedepends="libedit-devel pam-devel zlib-devel
+ $(vopt_if gssapi 'mit-krb5-devel') $(vopt_if ldns 'libldns-devel')
+ $(vopt_if ssl 'libressl-devel')"
+short_desc="The OpenSSH implementation of SSH protocol"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.openssh.org"
+license="BSD"
+distfiles="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$pkgname-$version.tar.gz"
+checksum=d73be7e684e99efcd024be15a30bffcbe41b012b2f7b3c9084aed621775e6b8f
+conf_files="/etc/ssh/moduli /etc/ssh/ssh_config /etc/ssh/sshd_config /etc/pam.d/sshd"
+make_dirs="/var/chroot/ssh 0755 root root"
+
+# Package build options
+build_options="ldns ssl gssapi"
+build_options_default="ldns ssl"
+
+case $XBPS_TARGET_MACHINE in
+	i686-musl)
+		CFLAGS="-fno-stack-protector"
+		configure_args+=" --disable-wtmp --disable-utmp"
+		;;
+	*-musl)
+		configure_args+=" --disable-wtmp --disable-utmp"
+		;;
+esac
+
+if [ "$XBPS_GCC_VERSION_MAJOR" -ge 7 ]; then
+	CFLAGS+=" -Wno-format-truncation -Wno-stringop-truncation"
+fi
+
+pre_configure() {
+	autoreconf -fi
+}
+
+post_install() {
+	vinstall contrib/sshd.pam.generic 644 etc/pam.d sshd
+	vbin contrib/ssh-copy-id
+	vman contrib/ssh-copy-id.1
+	vlicense LICENCE
+
+	sed -i \
+		-e 's|^#\(UsePAM\) no|\1 yes|g' \
+		-e 's|^#\(PermitRootLogin\) .*|\1 yes|g' \
+		-e 's|^#\(ChallengeResponseAuthentication\) yes|\1 no|g' \
+		-e 's|^#\(PrintMotd\) yes|\1 no|g' \
+		${DESTDIR}/etc/ssh/sshd_config
+
+	vinstall ${FILESDIR}/sshd.pam 644 etc/pam.d sshd
+	vsv sshd
+}

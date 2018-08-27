@@ -1,0 +1,32 @@
+# Template build file for 'json-c'.
+pkgname=json-c
+version=0.13.1
+revision=1
+build_style=gnu-configure
+hostmakedepends="automake libtool"
+short_desc="A JSON implementation in C"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="MIT"
+homepage="http://oss.metaparadigm.com/$pkgname"
+distfiles="https://s3.amazonaws.com/json-c_releases/releases/$pkgname-$version.tar.gz"
+checksum=b87e608d4d3f7bfdd36ef78d56d53c74e66ab278d318b71e6002a369d36f4873
+
+CFLAGS="-Wno-error"
+
+pre_configure() {
+	autoreconf -fi
+}
+post_install() {
+	vlicense COPYING
+}
+
+json-c-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+	}
+}

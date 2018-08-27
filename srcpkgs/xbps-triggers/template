@@ -1,0 +1,23 @@
+# Template file for 'xbps-triggers'
+pkgname=xbps-triggers
+version=0.108
+revision=1
+noarch=yes
+bootstrap=yes
+short_desc="The XBPS triggers for Void Linux"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.voidlinux.eu"
+license="Simplified BSD"
+
+do_install() {
+	_triggersdir=usr/libexec/${pkgname}
+
+	for f in ${FILESDIR}/*; do
+		_trigger=$(basename $f)
+		vinstall ${FILESDIR}/${_trigger} 750 ${_triggersdir}
+		echo "# end" >> ${DESTDIR}/${_triggersdir}/${_trigger}
+	done
+	vmkdir var/db/xbps
+	cd ${DESTDIR}/var/db/xbps
+	ln -sf ../../../${_triggersdir} triggers
+}

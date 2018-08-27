@@ -1,0 +1,54 @@
+# Template file for 'cryptsetup'
+pkgname=cryptsetup
+version=2.0.4
+revision=1
+build_style=gnu-configure
+configure_args="--with-crypto_backend=openssl $(vopt_enable pwquality)
+ --enable-cryptsetup-reencrypt"
+hostmakedepends="pkg-config"
+makedepends="device-mapper-devel json-c-devel libressl-devel popt-devel
+ $(vopt_if pwquality 'libpwquality-devel')"
+short_desc="Setup virtual encryption devices under Linux dm-crypt"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-2.0-or-later"
+homepage="https://gitlab.com/cryptsetup/cryptsetup"
+changelog="https://gitlab.com/cryptsetup/cryptsetup/raw/master/docs/v${version}-ReleaseNotes"
+distfiles="${KERNEL_SITE}/utils/cryptsetup/v${version%.*}/${pkgname}-${version}.tar.xz"
+checksum=9d3a3c7033293e0c97f0ad0501fd5b4d4913ae497cbf70cca06633ccc54b5734
+
+build_options="pwquality"
+desc_option_pwquality="Enable support for checking password quality via libpwquality"
+
+case $XBPS_TARGET_MACHINE in
+	*-musl)
+	configure_args+=" --enable-static-cryptsetup"
+	cryptsetup-static_package() {
+		short_desc+=" - static cryptsetup"
+		pkg_install() {
+			vmove "usr/bin/*.static"
+		}
+	}
+	;;
+esac
+
+libcryptsetup_package() {
+	short_desc+=" - runtime libraries"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
+
+cryptsetup-devel_package() {
+	depends="libcryptsetup>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		case $XBPS_TARGET_MACHINE in
+			*-musl)
+				vmove "usr/lib/*.a"
+			;;
+		esac
+	}
+}

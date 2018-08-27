@@ -1,0 +1,67 @@
+# Template file for 'mdocml'
+pkgname=mdocml
+version=1.14.4
+revision=1
+wrksrc="mandoc-${version}"
+build_style=configure
+makedepends="zlib-devel"
+checkdepends="perl"
+depends="less"
+provides="man-0_1"
+conf_files="/etc/man.conf"
+short_desc="The mandoc UNIX manpage compiler toolset"
+maintainer="Leah Neukirchen <leah@vuxu.org>"
+license="ISC"
+homepage="http://mandoc.bsd.lv"
+distfiles="http://mandoc.bsd.lv/snapshots/mandoc-${version}.tar.gz"
+checksum=24eb72103768987dcc63b53d27fdc085796330782f44b3b40c4660b1e1ee9b9c
+
+alternatives="
+ man:man:/usr/bin/mandoc
+ man:whatis:/usr/bin/mandoc
+ man:apropos:/usr/bin/mandoc
+ man:man.1:/usr/share/man/man1/mandoc-man.1
+ man:whatis.1:/usr/share/man/man1/mandoc-whatis.1
+ man:apropos.1:/usr/share/man/man1/mandoc-apropos.1"
+
+post_extract() {
+	# use less(1)
+	sed -i 's,"more -s","less -s",g' main.c
+	sed -i 's,.Xr more,.Xr less,g' *.1
+}
+pre_configure() {
+	cat >configure.local <<EOF
+PREFIX=/usr
+SBINDIR=/usr/bin
+MANDIR=/usr/share/man
+OSNAME="Void Linux"
+BINM_SOELIM=mandoc-soelim
+MANM_ROFF="mandoc_roff"
+LDFLAGS="$LDFLAGS"
+CFLAGS="$CFLAGS"
+CC="$CC"
+HAVE_REWB_BSD=0
+EOF
+	case "$XBPS_TARGET_MACHINE" in
+		*-musl) echo 'UTF8_LOCALE="C.UTF-8"' >>configure.local;;
+	esac
+	
+}
+do_check() {
+	make regress
+}
+post_install() {
+	# Rename mans for alternatives
+	for f in apropos man whatis; do
+		mv ${DESTDIR}/usr/share/man/man1/{$f,mandoc-$f}.1
+	done
+	# Use alternatives.
+	rm -f ${DESTDIR}/usr/bin/{apropos,man,whatis}
+	# man(1) configuration file
+	vconf ${FILESDIR}/man.conf
+	# remove devel stuff
+	rm -rf ${DESTDIR}/usr/{include,lib,share/man/man3}
+	# Daily cron job to generate man db
+	vinstall ${FILESDIR}/makewhatis.cron.daily 755 etc/cron.daily makewhatis
+	vlicense LICENSE
+}

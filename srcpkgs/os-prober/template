@@ -1,0 +1,28 @@
+# Template file for 'os-prober'
+pkgname=os-prober
+version=1.76
+revision=1
+make_dirs="/var/lib/os-prober 0755 root root"
+short_desc="Utility to detect other OSes on a set of drives"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://packages.debian.org/sid/os-prober"
+license="GPL-2"
+distfiles="${DEBIAN_SITE}/main/o/$pkgname/${pkgname}_$version.tar.xz"
+checksum=d3a580610e0148ee1fea98de993b27b856870fb0a31e9ce1a33be2654e2c64ed
+
+do_build() {
+	make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ${makejobs}
+}
+do_install() {
+	vbin linux-boot-prober
+	vbin os-prober
+	vinstall newns 755 usr/lib/os-prober
+	vinstall common.sh 755 usr/share/os-prober
+
+	for dir in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do
+		vmkdir usr/lib/${dir}
+		install -m755 -t ${DESTDIR}/usr/lib/${dir} ${dir}/common/*
+		[ -d ${dir}/x86 ] && cp -r ${dir}/x86/* ${DESTDIR}/usr/lib/${dir}
+	done
+	vinstall os-probes/mounted/powerpc/20macosx 755 usr/lib/os-probes/mounted
+}

@@ -1,0 +1,36 @@
+# Template file for 'nftables'
+pkgname=nftables
+version=0.9.0
+revision=1
+build_style=gnu-configure
+configure_args="--sbindir=/usr/bin CONFIG_MAN=y DB2MAN=docbook2man"
+hostmakedepends="docbook2x flex pkg-config"
+makedepends="gmp-devel libmnl-devel libnftnl-devel readline-devel"
+short_desc="Netfilter nftables userspace tools"
+maintainer="Leah Neukirchen <leah@vuxu.org>"
+license="GPL-2.0-only"
+homepage="http://netfilter.org/projects/nftables/"
+distfiles="http://www.netfilter.org/projects/${pkgname}/files/${pkgname}-${version}.tar.bz2"
+checksum=ad8181b5fcb9ca572f444bed54018749588522ee97e4c21922648bb78d7e7e91
+
+post_install() {
+	vsv nftables
+}
+
+libnftables_package() {
+	short_desc+=" - runtime libraries"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
+
+libnftables-devel_package() {
+	depends="libnftables-${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		vmove "usr/lib/*.a"
+	}
+}

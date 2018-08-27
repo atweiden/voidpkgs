@@ -1,0 +1,18 @@
+# Template file for 'logrotate'
+pkgname=logrotate
+version=3.14.0
+revision=1
+build_style=gnu-configure
+makedepends="acl-devel popt-devel"
+conf_files="/etc/logrotate.conf"
+short_desc="Log file rotation and periodic maintenance"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/logrotate/logrotate"
+distfiles="${homepage}/releases/download/${version}/logrotate-${version}.tar.xz"
+checksum=4703bdc0e2df3b322f9dff0aafc99aa9172c9e4acae28b7c924cc7d4e5b29d55
+
+post_install() {
+	vconf ${FILESDIR}/logrotate.conf
+	vinstall ${FILESDIR}/logrotate.cron-daily 744 etc/cron.daily logrotate
+}

@@ -1,0 +1,104 @@
+# Template file for 'boost'
+pkgname=boost
+version=1.65.1
+revision=2
+wrksrc="${pkgname}_${version//\./_}"
+hostmakedepends="bzip2-devel icu-devel python-devel"
+makedepends="zlib-devel bzip2-devel icu-devel python-devel"
+short_desc="Free peer-reviewed portable C++ source libraries"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.boost.org/"
+license="Boost Software License 1.0"
+distfiles="${SOURCEFORGE_SITE}/$pkgname/${pkgname}_${version//\./_}.tar.bz2"
+checksum=9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81
+
+CXXFLAGS="-std=c++11"
+
+case "$XBPS_TARGET_MACHINE" in
+	i686*)    _arch=x86;      _toolset="gcc-i386";    _abi=sysv  ;;
+	x86_64*)  _arch=x86;      _toolset="gcc-x86_64";  _abi=sysv  ;;
+	arm*)     _arch=arm;      _toolset="gcc-arm";     _abi=aapcs ;;
+	aarch64*) _arch=arm;      _toolset="gcc-aarch64"; _abi=aapcs ;;
+	mips*)    _arch=mips32r2; _toolset="gcc-mips";    _abi=o32   ;;
+esac
+
+do_build() {
+	echo "using gcc : ${_toolset#gcc-} : ${CXX} ${CXXFLAGS} ;" >user-config.jam
+	if [ "$CROSS_BUILD" ]; then
+		echo "using python : 2.7 : : ${XBPS_CROSS_BASE}/usr/include/python2.7 : ${XBPS_CROSS_BASE}/usr/lib/python2.7 ;" \
+			>>user-config.jam
+	fi
+	./bootstrap.sh \
+		--prefix=${DESTDIR}/usr --with-python=${XBPS_CROSS_BASE}/usr/bin/python2 \
+		--with-python-root=${XBPS_CROSS_BASE}/usr
+	(
+	# Rebuild bjam for target
+	cd tools/build/src/engine
+	LIBS="$LDFLAGS" ${wrksrc}/bjam -f build.jam --toolset=cc --toolset-root= -d+2 clean
+	LIBS="$LDFLAGS" ${wrksrc}/bjam -f build.jam --toolset=cc --toolset-root= -d+2
+	)
+	./bjam ${makejobs} \
+		--toolset=${_toolset} abi=${_abi} architecture=${_arch} \
+		--user-config=${wrksrc}/user-config.jam --debug-building
+}
+do_install() {
+	# Install bjam
+	for _b in tools/build/src/engine/bin.*/*; do
+		vbin ${_b}
+	done
+
+	# Install headers/libs
+	./bjam --prefix=${DESTDIR}/usr abi=${_abi} architecture=${_arch} \
+		--user-config=${wrksrc}/user-config.jam install
+
+	# Install Boost.Build stuff.
+	vmkdir usr/share/boost-build
+	cd ${wrksrc}/tools/build && cp -a . ${DESTDIR}/usr/share/boost-build
+	find ${DESTDIR}/usr/share/boost-build \
+		-type f -name \*.orig -exec rm -f {} \;
+	rm -rf ${DESTDIR}/usr/share/boost-build/src/engine/bootstrap
+	rm -rf ${DESTDIR}/usr/share/boost-build/src/engine/bin.*
+	( echo '# System wide configuration file for Boost.Build.' ; \
+	  echo ; \
+	  echo 'using gcc ;' ; ) >${wrksrc}/site-config.jam
+	cd $wrksrc
+	vconf site-config.jam
+
+	# license
+	vlicense LICENSE_1_0.txt
+}
+
+boost-jam_package() {
+	short_desc+=" - Boost.Jam utility"
+	depends="boost-build-${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin/bjam
+		vmove usr/bin/b2
+	}
+}
+boost-python_package() {
+	depends="boost-${version}_${revision} python"
+	short_desc+=" - Python bindings"
+	pkg_install() {
+		vmove usr/lib/libboost_python*
+	}
+}
+boost-build_package() {
+	noarch=yes
+	conf_files="/etc/site-config.jam"
+	short_desc+=" - Boost.Build framework"
+	pkg_install() {
+		vmove usr/share/boost-build
+		vmove etc
+	}
+}
+boost-devel_package() {
+	noverifyrdeps=yes
+	depends="boost-${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/*.a
+		vmove usr/lib/*.so
+	}
+}

@@ -1,0 +1,18 @@
+# Template file for 'nqp'
+pkgname=nqp
+version=2018.06
+revision=1
+build_style=configure
+configure_script="perl Configure.pl"
+configure_args="--prefix=/usr --backends=moar"
+hostmakedepends="perl"
+makedepends="MoarVM"
+depends="MoarVM"
+short_desc="Not Quite Perl, a lightweight Perl 6-like environment for VMs"
+maintainer="Ruslan <axetwe@gmail.com>"
+license="Artistic-2.0"
+homepage="https://github.com/perl6/nqp"
+distfiles="https://github.com/perl6/nqp/archive/${version}.tar.gz"
+checksum=f2c50bef725eddd232f6080c3bb78c6c60751b22300eb6fbfe71a15876f8c4f5
+nocross=yes
+make_check_target=test

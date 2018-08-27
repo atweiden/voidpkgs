@@ -1,0 +1,40 @@
+# Template file for 'libpng'
+pkgname=libpng
+version=1.6.35
+revision=1
+build_style=gnu-configure
+makedepends="zlib-devel"
+short_desc="Library for manipulating PNG images"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="Libpng"
+homepage="http://www.libpng.org/pub/png/libpng.html"
+distfiles="${SOURCEFORGE_SITE}/libpng/libpng-${version}.tar.xz"
+checksum=23912ec8c9584917ed9b09c5023465d71709dce089be503c7867fec68a93bcd7
+
+case "$XBPS_TARGET_MACHINE" in
+	arm*|aarch64*) configure_args="--enable-arm-neon=no";;
+esac
+
+post_install() {
+	rm -f ${DESTDIR}/usr/lib/*.la
+	vlicense LICENSE
+}
+
+libpng-devel_package() {
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove "usr/bin/libpng*-config"
+		vmove usr/include
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove usr/lib/pkgconfig
+		vmove usr/share/man/man3
+	}
+}
+libpng-progs_package() {
+	short_desc+=" - utilities"
+	pkg_install() {
+		vmove usr/bin
+	}
+}

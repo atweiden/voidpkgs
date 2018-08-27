@@ -1,0 +1,36 @@
+# Template file for 'ninja'
+pkgname=ninja
+version=1.8.2
+revision=1
+hostmakedepends="python asciidoc"
+short_desc="Small build system with a focus on speed"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="Apache-2.0"
+homepage="https://ninja-build.org/"
+distfiles="https://github.com/martine/ninja/archive/v${version}.tar.gz"
+checksum=86b8700c3d0880c2b44c2ff67ce42774aaf8c28cbf57725cb881569288c1c6f4
+
+do_configure() {
+	# Skip rebuild with bootstrapped ninja until build phase:
+	sed -e "s|subprocess.check_call(rebuild_args)|pass|" -i configure.py
+	python2 configure.py --bootstrap
+}
+do_build() {
+	if [ "$CROSS_BUILD" ]; then
+		HOST_CXXFLAGS="${BUILD_CFLAGS}"
+	else
+		HOST_CXXFLAGS="${CXXFLAGS}"
+	fi
+	CXXFLAGS="$HOST_CXXFLAGS" python2 configure.py
+	asciidoc doc/manual.asciidoc
+}
+do_check() {
+	./ninja ninja_test &&
+	./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
+}
+do_install() {
+	vbin ninja
+	vdoc doc/manual.html
+	vinstall misc/bash-completion 644 usr/share/bash-completion/completions ninja
+	vinstall misc/zsh-completion 644 usr/share/zsh/site-functions _ninja
+}

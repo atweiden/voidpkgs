@@ -1,0 +1,39 @@
+# Template file for 'iputils'
+pkgname=iputils
+version=20180629
+revision=1
+patch_args="-Np1"
+wrksrc="${pkgname}-s${version}"
+makedepends="libcap-devel libressl-devel"
+depends="libcap-progs"
+short_desc="Useful utilities for Linux networking (including ping)"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="BSD-3-Clause, GPL-2.0-or-later"
+homepage="https://github.com/iputils/iputils"
+distfiles="https://github.com/${pkgname}/${pkgname}/archive/s${version}.tar.gz"
+checksum=da14105291dd491f28ea91ade854ed10aee8ba019641c80eed233de3908be7c5
+
+alternatives="
+ ping:ping:/usr/bin/${pkgname}-ping
+ ping:ping.8:/usr/share/man/man8/${pkgname}-ping.8
+ ping6:ping6:/usr/bin/${pkgname}-ping
+ ping6:ping6.8:/usr/share/man/man8/${pkgname}-ping.8"
+
+do_build() {
+	make CC="$CC" LD="$LD" CCOPTOPT="$CFLAGS" LDFLAGS="$LDFLAGS" \
+		USE_NETTLE=no USE_GNUTLS=no USE_GCRYPT=no USE_IDN=no \
+		${makejobs} \
+		arping clockdiff ping rdisc tracepath
+}
+
+do_install() {
+	vbin ping ${pkgname}-ping
+	for f in clockdiff arping rdisc tracepath; do
+		vbin ${f}
+	done
+	for f in clockdiff arping ping rdisc tracepath; do
+		vman doc/${f}.8
+	done
+	mv ${DESTDIR}/usr/share/man/man8/{ping,${pkgname}-ping}.8
+	vlicense LICENSE.BSD3
+}

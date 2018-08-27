@@ -1,0 +1,76 @@
+# Template build file for 'icu'.
+pkgname=icu
+version=59.1
+revision=2
+wrksrc=icu
+build_wrksrc=source
+build_style=gnu-configure
+hostmakedepends="pkg-config"
+short_desc="Robust and full-featured Unicode services"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.icu-project.org/"
+license="ICU License /usr/share/licenses/icu/license.html"
+distfiles="http://download.icu-project.org/files/icu4c/${version}/icu4c-${version//./_}-src.tgz"
+checksum=7132fdaf9379429d004005217f10e00b7d2319d0fea22bdfddef8991c45b75fe
+
+if [ "$CROSS_BUILD" ]; then
+	configure_args+=" --with-cross-build=${XBPS_BUILDDIR}/${wrksrc}/host-icu"
+fi
+
+pre_configure() {
+
+	# strtod_l() is not supported by musl; also xlocale.h is missing
+	# It is not possible to disable its use via configure switches or env vars
+	# so monkey patching is needed. Idea was stollen from openembedded
+	# https://github.com/openembedded/openembedded-core/blob/master/meta/recipes-support/icu/icu.inc#L30
+	# http://git.alpinelinux.org/cgit/aports/tree/main/icu/APKBUILD?id=46736e7b8040becc9f69ad6d2c2d317a52d5485b#n34
+	case "${XBPS_TARGET_MACHINE}" in
+	*-musl) sed -i -e 's,DU_HAVE_STRTOD_L=1,DU_HAVE_STRTOD_L=0,' configure ;;
+	esac
+
+	if [ "$CROSS_BUILD" ]; then
+		# Configure and build for host.
+		mkdir host-build
+		(
+		cd host-build
+		env CC=cc LD=ld CXX=g++ AR=ar RANLIB=ranlib \
+			AS=as STRIP=strip CFLAGS="-Os -fPIE" CXXFLAGS="-Os -fPIE" \
+			../configure --prefix=/
+		make ${makejobs}
+		mkdir -p ${wrksrc}/host-icu/config
+		cp config/icucross.* ${wrksrc}/host-icu/config
+		make DESTDIR=${wrksrc}/host-icu install
+		mv ${wrksrc}/host-icu/sbin/* ${wrksrc}/host-icu/bin
+		make distclean
+		)
+	fi
+
+	# libicudata must be linked to libc, otherwise it's soft-float on ARM.
+	# probably other stuff breaks too, so let's just do it.
+	# See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
+	sed -e 's,-nostdlib,,g' -i ${wrksrc}/source/config/mh-linux
+}
+
+post_install() {
+	vlicense $wrksrc/LICENSE
+}
+
+icu-devel_package() {
+	depends="libstdc++-devel icu-libs>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/icu
+		vmove usr/lib/pkgconfig
+		vmove usr/share/icu
+		vmove usr/bin/icu-config
+		vmove "usr/share/man/man1/icu-config*"
+		vmove "usr/lib/*.so"
+	}
+}
+icu-libs_package() {
+	short_desc+=" - shared libs"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}

@@ -1,0 +1,31 @@
+# Template build file for 'libidn'.
+pkgname=libidn
+version=1.34
+revision=1
+build_style=gnu-configure
+configure_args="--disable-csharp --disable-java --disable-static
+ --enable-threads=posix"
+hostmakedepends="perl pkg-config gettext-devel automake libtool"
+short_desc="Internationalized string handling library"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://www.gnu.org/software/libidn/"
+license="GPL-3.0-or-later, LGPL-2.1-or-later"
+distfiles="${GNU_SITE}/libidn/libidn-${version}.tar.gz"
+checksum=3719e2975f2fb28605df3479c380af2cf4ab4e919e1506527e4c7670afff6e3c
+
+pre_configure() {
+	autoreconf -fi
+}
+
+libidn-devel_package() {
+	depends="libidn>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove usr/share/man/man3
+		vmove usr/share/emacs
+		vmove usr/share/info
+		vmove "usr/lib/*.so"
+	}
+}

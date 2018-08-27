@@ -1,0 +1,29 @@
+# Template file for 'libevent'
+pkgname=libevent
+version=2.1.8
+revision=5
+wrksrc="${pkgname}-${version}-stable"
+build_style=gnu-configure
+makedepends="libressl-devel"
+short_desc="Abstract asynchronous event notification library"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="http://libevent.org/"
+license="3-clause-BSD"
+distfiles="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
+checksum=965cc5a8bb46ce4199a47e9b2c9e1cae3b137e8356ffdad6d94d3b9069b71dc2
+
+post_install() {
+	vlicense LICENSE
+}
+
+libevent-devel_package() {
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/bin
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove usr/lib/*.a
+		vmove usr/lib/*.so
+	}
+}

@@ -1,0 +1,66 @@
+# Template file for 'gettext'
+pkgname=gettext
+version=0.19.8.1
+revision=4
+bootstrap=yes
+build_style=gnu-configure
+configure_args="--disable-java --disable-native-java --disable-csharp
+ --disable-libasprintf --enable-threads=posix --disable-rpath --without-emacs
+ --disable-acl --with-included-glib --with-included-libcroco --without-git
+ --with-included-libxml --with-included-libunistring --disable-openmp
+ --disable-curses --without-examples --enable-nls
+ gl_cv_func_gettimeofday_clobber=no"
+short_desc="Internationalized Message Handling Library and tools"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-3.0-or-later"
+homepage="http://www.gnu.org/software/gettext/"
+distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
+checksum=ff942af0e438ced4a8b0ea4b0b6e0d6d657157c5e2364de57baa279c1c125c43
+
+case "$XBPS_TARGET_MACHINE" in
+	# force libintl
+	*-musl) configure_args+=" --with-included-gettext";;
+esac
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends="automake libtool git"
+	pre_configure() {
+		autoreconf -fi
+	}
+fi
+
+
+post_install() {
+	# Fix conflict with musl.
+	if [ -e ${DESTDIR}/usr/include/libintl.h ]; then
+		vmkdir usr/include/gettext
+		mv ${DESTDIR}/usr/include/libintl.h ${DESTDIR}/usr/include/gettext/libintl.h
+	fi
+}
+
+gettext-devel-examples_package() {
+	noarch=yes
+	short_desc+=" - examples for development"
+	pkg_install() {
+		vmove usr/share/doc/gettext
+	}
+}
+gettext-devel_package() {
+	depends="gettext-libs>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/*.a
+		vmove usr/share/aclocal
+		vmove usr/share/gettext
+		vmove usr/share/man/man3
+		vmove usr/bin/autopoint
+		vmove usr/bin/gettextize
+	}
+}
+gettext-libs_package() {
+	short_desc+=" - shared libraries"
+	pkg_install() {
+		vmove usr/lib/*.so*
+	}
+}

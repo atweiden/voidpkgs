@@ -1,0 +1,43 @@
+# Template file for 'wpa_supplicant'
+pkgname=wpa_supplicant
+version=2.6
+revision=9
+build_wrksrc=$pkgname
+short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="BSD-3-Clause"
+homepage="http://w1.fi/wpa_supplicant/"
+distfiles="http://w1.fi/releases/$pkgname-$version.tar.gz"
+checksum=b4936d34c4e6cdd44954beba74296d964bc2c9668ecaa5255e499636fe2b1450
+
+hostmakedepends="pkg-config"
+makedepends="libnl3-devel libressl-devel dbus-devel readline-devel"
+conf_files="/etc/${pkgname}/${pkgname}.conf"
+
+pre_build() {
+	sed -i 's|/usr/local|$(PREFIX)|g' Makefile
+	cp -f ${FILESDIR}/config .config
+	sed -i 's, -u, -uq,' dbus/*.service.in
+}
+do_build() {
+	export CFLAGS+=" $(pkg-config --cflags libnl-3.0) $CPPFLAGS"
+	make ${makejobs} V=1 PREFIX=/usr BINDIR=/usr/bin
+}
+do_install() {
+	make PREFIX=/usr BINDIR=/usr/bin DESTDIR=${DESTDIR} install
+
+	vinstall ${FILESDIR}/${pkgname}.conf 640 etc/$pkgname
+	vsconf wpa_supplicant.conf
+
+	for d in doc/docbook/*.[58]; do
+		vman $d
+	done
+	install -d ${DESTDIR}/usr/share/dbus-1/system-services
+	install -m644 dbus/*.service ${DESTDIR}/usr/share/dbus-1/system-services/
+	vinstall dbus/dbus-${pkgname}.conf 644 etc/dbus-1/system.d ${pkgname}.conf
+
+	rm ${DESTDIR}/usr/share/man/man8/wpa_gui.8
+
+	vlicense README
+	vsv wpa_supplicant
+}

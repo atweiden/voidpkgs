@@ -1,0 +1,30 @@
+# Template file for 'fuse'
+pkgname=fuse
+version=2.9.8
+revision=1
+build_style=gnu-configure
+configure_args="--enable-lib --enable-util"
+hostmakedepends="automake libtool gettext-devel"
+short_desc="Filesystem in Userspace"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="https://github.com/libfuse/libfuse"
+distfiles="${homepage}/releases/download/${pkgname}-${version}/${pkgname}-${version}.tar.gz"
+checksum=5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3
+
+post_install() {
+	# remove obsolete rules file provided by udev.
+	rm -rf ${DESTDIR}/{dev,etc}
+	mv ${DESTDIR}/sbin/* ${DESTDIR}/usr/bin
+}
+
+fuse-devel_package() {
+	depends="fuse>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
