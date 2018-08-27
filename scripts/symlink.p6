@@ -67,6 +67,7 @@ my List:D %pkg{Str:D} =
                  libmagic>,
     'flex' => ['libfl-devel'],
     'fuse' => ['fuse-devel'],
+    'gc' => ['gc-devel'],
     'gcc' => qw<gcc-fortran
                 gcc-go
                 gcc-go-tools
@@ -120,6 +121,8 @@ my List:D %pkg{Str:D} =
     'grub' => qw<grub-i386-efi
                  grub-utils
                  grub-x86_64-efi>,
+    'guile' => qw<guile-devel
+                  libguile>,
     'haveged' => qw<libhaveged
                     libhaveged-devel>,
     'icu' => qw<icu-devel

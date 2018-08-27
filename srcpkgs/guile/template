@@ -1,0 +1,40 @@
+# Template build file for 'guile'
+pkgname=guile
+version=2.0.14
+revision=4
+build_style=gnu-configure
+configure_args="--disable-static --disable-error-on-warning"
+hostmakedepends="pkg-config"
+makedepends="gmp-devel libltdl-devel libunistring-devel libffi-devel gc-devel ncurses-devel"
+short_desc="A portable, embeddable Scheme implementation written in C"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-3, LGPL-3"
+homepage="http://www.gnu.org/software/${pkgname}"
+distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
+checksum=8aeb2f353881282fe01694cce76bb72f7ffdd296a12c7a1a39255c27b0dfe5f1
+nocross=yes   # only works for same wordsize and endianess
+
+post_extract() {
+	case "$XBPS_TARGET_MACHINE" in
+		*-musl) sed -i '/strtol_l/{N;d}' libguile/i18n.c;;
+	esac
+}
+libguile_package() {
+	short_desc+=" - runtime library"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+		vmkdir usr/share/gdb/auto-load/usr/lib
+		mv ${PKGDESTDIR}/usr/lib/*.scm ${PKGDESTDIR}/usr/share/gdb/auto-load/usr/lib
+	}
+}
+guile-devel_package() {
+	short_desc+=" - development files"
+	depends="gmp-devel libguile>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin/guile-config
+		vmove usr/include
+		vmove usr/share/aclocal
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}
