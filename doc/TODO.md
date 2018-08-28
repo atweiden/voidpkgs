@@ -1,4 +1,4 @@
 Todo
 ====
 
-- replace `pkg-config` with `pkgconf`
+- adhere to style guide
