@@ -1,21 +1,56 @@
-# Template file for 'base-voidstrap'
-pkgname=base-voidstrap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="base-voidstrap"
 version=0.9
 revision=2
-build_style=meta
-homepage="http://www.voidlinux.eu/"
 short_desc="Void Linux base system meta package for containers/chroots"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="Public domain"
-
-depends="
- base-files ncurses coreutils findutils diffutils
- dash bash grep gzip file sed gawk less util-linux which tar man-pages
- mdocml>=1.13.3 shadow e2fsprogs btrfs-progs xfsprogs f2fs-tools dosfstools kbd
- psmisc procps-ng tzdata pciutils iana-etc eudev runit-void openssh dhcpcd
- iproute2 iputils iw xbps nvi sudo traceroute kmod"
-
+depends+=" base-files"
+depends+=" bash"
+depends+=" btrfs-progs"
+depends+=" coreutils"
+depends+=" dash"
+depends+=" dhcpcd"
+depends+=" diffutils"
+depends+=" dosfstools"
+depends+=" e2fsprogs"
+depends+=" eudev"
+depends+=" f2fs-tools"
+depends+=" file"
+depends+=" findutils"
+depends+=" gawk"
+depends+=" grep"
+depends+=" gzip"
+depends+=" iana-etc"
+depends+=" iproute2"
+depends+=" iputils"
+depends+=" iw"
+depends+=" kbd"
+depends+=" kmod"
+depends+=" less"
+depends+=" man-pages"
+depends+=" mdocml>=1.13.3"
+depends+=" ncurses"
+depends+=" nvi"
+depends+=" openssh"
+depends+=" pciutils"
+depends+=" procps-ng"
+depends+=" psmisc"
+depends+=" runit-void"
+depends+=" sed"
+depends+=" shadow"
+depends+=" sudo"
+depends+=" tar"
+depends+=" traceroute"
+depends+=" tzdata"
+depends+=" util-linux"
+depends+=" which"
+depends+=" xbps"
+depends+=" xfsprogs"
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) depends+=" musl";;
-	*) depends+=" glibc-locales";;
+  *-musl) depends+=" musl";;
+  *) depends+=" glibc-locales";;
 esac
+homepage="http://www.voidlinux.eu/"
+license="Public domain"
+build_style="meta"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

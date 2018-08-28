@@ -1,42 +1,48 @@
-# Template file for 'atf'
-pkgname=atf
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="atf"
 version=0.21
 revision=2
-build_style=gnu-configure
-hostmakedepends="automake libtool gdb"
-depends="gdb xmlcatmgr"
-xml_entries="system http://www.NetBSD.org/XML/atf/tests-results.dtd /usr/share/xml/atf/tests-results.dtd"
 short_desc="Automated Testing Framework"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends+=" gdb"
+depends+=" xmlcatmgr"
+hostmakedepends+=" automake"
+hostmakedepends+=" gdb"
+hostmakedepends+=" libtool"
+xml_entries+=" system"
+xml_entries+=" http://www.NetBSD.org/XML/atf/tests-results.dtd"
+xml_entries+=" /usr/share/xml/atf/tests-results.dtd"
 homepage="https://github.com/jmmv/atf"
 license="BSD"
-distfiles="https://github.com/jmmv/atf/releases/download/atf-${version}/atf-${version}.tar.gz"
-checksum=92bc64180135eea8fe84c91c9f894e678767764f6dbc8482021d4dde09857505
-
-configure_args="kyua_cv_attribute_noreturn=yes
-		kyua_cv_getcwd_works=yes
-		kyua_cv_getopt_optreset=no
-		kyua_cv_getopt_plus=yes
-		kyua_cv_signal_lastno=31"
+distfiles="https://github.com/jmmv/atf/releases/download/atf-$version/atf-$version.tar.gz"
+checksum="92bc64180135eea8fe84c91c9f894e678767764f6dbc8482021d4dde09857505"
+build_style="gnu-configure"
+configure_args+=" kyua_cv_attribute_noreturn=yes"
+configure_args+=" kyua_cv_getcwd_works=yes"
+configure_args+=" kyua_cv_getopt_optreset=no"
+configure_args+=" kyua_cv_getopt_plus=yes"
+configure_args+=" kyua_cv_signal_lastno=31"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 atf-devel_package() {
-	depends="atf-libs>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share/aclocal
-	}
+  depends="atf-libs>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/aclocal
+  }
 }
+
 atf-libs_package() {
-	short_desc+=" - runtime libraries"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - runtime libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
