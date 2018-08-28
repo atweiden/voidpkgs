@@ -266,6 +266,7 @@ my List:D %pkg{Str:D} =
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
+    'odroid-c2-kernel' => ['odroid-c2-kernel-headers'],
     'openldap' => qw<libldap
                      libldap-devel
                      openldap-tools>,
