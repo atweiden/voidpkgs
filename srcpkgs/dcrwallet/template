@@ -5,6 +5,7 @@ revision=1
 short_desc="Decred wallet daemon written in Go"
 hostmakedepends+=" dep"
 hostmakedepends+=" git"
+tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://codeload.github.com/decred/$pkgname/tar.gz/v$version>$pkgname-$version.tar.gz"
