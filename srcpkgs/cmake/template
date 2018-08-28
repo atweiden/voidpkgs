@@ -1,36 +1,49 @@
-# Template file for 'cmake'
-pkgname=cmake
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cmake"
 version=3.12.1
 revision=1
-build_style=configure
-makedepends="expat-devel libarchive-devel libcurl-devel libuv-devel
- ncurses-devel rhash-devel"
 short_desc="Cross-platform, open-source build system"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later, BSD-3-Clause"
+makedepends+=" expat-devel"
+makedepends+=" libarchive-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libuv-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" rhash-devel"
 homepage="https://www.cmake.org"
-distfiles="https://www.cmake.org/files/v${version%.*}/${pkgname}-${version}.tar.gz"
-checksum=c53d5c2ce81d7a957ee83e3e635c8cda5dfe20c9d501a4828ee28e1615e57ab2
-make_check_target=test
+license="LGPL-2.1-or-later, BSD-3-Clause"
+distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
+checksum="c53d5c2ce81d7a957ee83e3e635c8cda5dfe20c9d501a4828ee28e1615e57ab2"
+build_style="configure"
+make_check_target="test"
 
-if [ "$CROSS_BUILD" ]; then
-	# XXX ugly :-)
-	build_style=cmake
-	hostmakedepends="cmake gcc-fortran"
-	configure_args=" -DCMAKE_DOC_DIR=/share/doc/cmake"
-	configure_args+=" -DCMAKE_USE_SYSTEM_LIBARCHIVE=1"
-	configure_args+=" -DCMAKE_USE_SYSTEM_CURL=1 -DCMAKE_USE_SYSTEM_ZLIB=1"
-	configure_args+=" -DCMAKE_USE_SYSTEM_EXPAT=1 -DCMAKE_USE_SYSTEM_BZIP2=1"
-	configure_args+=" -DCMAKE_USE_SYSTEM_LIBLZMA=1 -DKWSYS_LFS_WORKS=1"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # XXX ugly :-)
+  build_style="cmake"
+  hostmakedepends+=" cmake"
+  hostmakedepends+=" gcc-fortran"
+  configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
+  configure_args+=" -DCMAKE_USE_SYSTEM_BZIP2=1"
+  configure_args+=" -DCMAKE_USE_SYSTEM_CURL=1"
+  configure_args+=" -DCMAKE_USE_SYSTEM_EXPAT=1"
+  configure_args+=" -DCMAKE_USE_SYSTEM_LIBARCHIVE=1"
+  configure_args+=" -DCMAKE_USE_SYSTEM_LIBLZMA=1"
+  configure_args+=" -DCMAKE_USE_SYSTEM_ZLIB=1"
+  configure_args+=" -DKWSYS_LFS_WORKS=1"
 else
-	build_style=configure
-	configure_args="--prefix=/usr --mandir=/share/man"
-	configure_args+=" --docdir=/share/doc/cmake --system-libs --no-system-jsoncpp ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
+  build_style="configure"
+  configure_args+=" --prefix=/usr"
+  configure_args+=" --mandir=/share/man"
+  configure_args+=" --docdir=/share/doc/cmake"
+  configure_args+=" --system-libs"
+  configure_args+=" --no-system-jsoncpp"
+  configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
 fi
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/doc/cmake
-	vlicense Copyright.txt
-	vlicense Utilities/cmzlib/Copyright.txt cmzlib-Copyright.txt
-	vlicense Utilities/cmcompress/Copyright.txt cmcompress-Copyright.txt
+  rm -rf "$DESTDIR/usr/share/doc/cmake"
+  vlicense Copyright.txt
+  vlicense Utilities/cmzlib/Copyright.txt cmzlib-Copyright.txt
+  vlicense Utilities/cmcompress/Copyright.txt cmcompress-Copyright.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

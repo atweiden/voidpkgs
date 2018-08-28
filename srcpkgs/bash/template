@@ -1,48 +1,50 @@
-# Template file for 'bash'
-pkgname=bash
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bash"
 _bash_distver=4.4
 _bash_patchlevel=023
-version="${_bash_distver}.${_bash_patchlevel}"
+version="$_bash_distver.$_bash_patchlevel"
 revision=1
-wrksrc="${pkgname}-${_bash_distver}"
-build_style=gnu-configure
-configure_args="--without-bash-malloc --with-curses --without-installed-readline"
-make_build_args="TERMCAP_LIB=${XBPS_CROSS_BASE}/usr/lib/libncursesw.a"
-hostmakedepends="bison"
-makedepends="ncurses-devel"
-conflicts="chroot-bash>=0"
-register_shell=/bin/bash
 short_desc="The GNU Bourne Again Shell"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="ncurses-devel"
+hostmakedepends="bison"
 homepage="http://www.gnu.org/software/bash/bash.html"
 license="GPL-3.0-or-later"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${_bash_distver}.tar.gz"
-CFLAGS="-DSYS_BASHRC='\"/etc/bash/bashrc\"'"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$_bash_distver.tar.gz"
+checksum="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
+wrksrc="$pkgname-$_bash_distver"
+build_style="gnu-configure"
+configure_args+=" --with-curses"
+configure_args+=" --without-bash-malloc"
+configure_args+=" --without-installed-readline"
+make_build_args="TERMCAP_LIB=$XBPS_CROSS_BASE/usr/lib/libncursesw.a"
+register_shell="/bin/bash"
 make_dirs="/etc/bash/bashrc.d 755 root root"
-checksum=d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb
+conflicts="chroot-bash>=0"
+alternatives+=" sh:sh:/usr/bin/bash"
+alternatives+=" sh:sh.1:/usr/share/man/man1/bash.1"
 
-alternatives="
- sh:sh:/usr/bin/bash
- sh:sh.1:/usr/share/man/man1/bash.1"
+CFLAGS="-DSYS_BASHRC='\"/etc/bash/bashrc\"'"
 
 pre_configure() {
-	local ver=$(echo ${_bash_distver}|sed "s|\.||g")
+  local ver=$(echo "$_bash_distver"|sed "s|\.||g")
 
-	cd ${wrksrc}
-	for p in $(seq -w 001 ${_bash_patchlevel}); do
-		patch -sNp0 -i ${FILESDIR}/bash${ver}-${p}
-		msg_normal " Applying patch bash${ver}-$p.\n"
-	done
+  cd "$wrksrc"
+  for p in $(seq -w 001 $_bash_patchlevel); do
+    patch -sNp0 -i "$FILESDIR/bash$ver-$p"
+    msg_normal " Applying patch bash$ver-$p.\n"
+  done
 }
 
 do_check() {
-	make tests
+  make tests
 }
 
 post_install() {
-	rm -r ${DESTDIR}/usr/share/doc
-	ln -s bash ${DESTDIR}/usr/bin/rbash
-	vmkdir /etc/bash
-	vinstall ${FILESDIR}/bashrc 644 etc/bash
-	vinstall ${FILESDIR}/bash.sh 644 etc/profile.d
+  rm -r "$DESTDIR/usr/share/doc"
+  ln -s bash "$DESTDIR/usr/bin/rbash"
+  vmkdir /etc/bash
+  vinstall "$FILESDIR/bashrc" 644 etc/bash
+  vinstall "$FILESDIR/bash.sh" 644 etc/profile.d
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

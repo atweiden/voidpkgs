@@ -1,36 +1,53 @@
-# Template file for 'chroot-util-linux'
-pkgname=chroot-util-linux
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="chroot-util-linux"
 version=2.29.2
 revision=3
-wrksrc="${pkgname/chroot-/}-${version}"
-bootstrap=yes
-conflicts="util-linux>=0"
-provides="util-linux-${version}_${revision}"
-makedepends="zlib-devel"
-build_style=gnu-configure
-configure_args="--without-ncurses --without-udev --disable-libuuid
---disable-libblkid --disable-libmount --disable-mount --disable-losetup
---disable-fsck --disable-partx --disable-uuidd --disable-mountpoint
---disable-fallocate --disable-unshare --disable-nls --disable-wall
---disable-chfn-chsh-password --disable-su --disable-sulogin
---disable-login --disable-runuser --disable-setpriv --disable-libsmartcols
- scanf_cv_alloc_modifier=as"
 short_desc="Miscellaneous linux utilities -- for xbps-src use"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="zlib-devel"
 homepage="http://userweb.kernel.org/~kzak/util-linux-ng"
 license="GPL-2"
-distfiles="${KERNEL_SITE}/utils/util-linux/v${version%.*}/util-linux-${version}.tar.xz"
-checksum=accea4d678209f97f634f40a93b7e9fcad5915d1f4749f6c47bee6bf110fe8e3
+distfiles="$KERNEL_SITE/utils/util-linux/v${version%.*}/util-linux-$version.tar.xz"
+checksum="accea4d678209f97f634f40a93b7e9fcad5915d1f4749f6c47bee6bf110fe8e3"
+wrksrc="${pkgname/chroot-/}-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-chfn-chsh-password"
+configure_args+=" --disable-fallocate"
+configure_args+=" --disable-fsck"
+configure_args+=" --disable-libblkid"
+configure_args+=" --disable-libmount"
+configure_args+=" --disable-libsmartcols"
+configure_args+=" --disable-libuuid"
+configure_args+=" --disable-login"
+configure_args+=" --disable-losetup"
+configure_args+=" --disable-mount"
+configure_args+=" --disable-mountpoint"
+configure_args+=" --disable-nls"
+configure_args+=" --disable-partx"
+configure_args+=" --disable-runuser"
+configure_args+=" --disable-setpriv"
+configure_args+=" --disable-su"
+configure_args+=" --disable-sulogin"
+configure_args+=" --disable-unshare"
+configure_args+=" --disable-uuidd"
+configure_args+=" --disable-wall"
+configure_args+=" --without-ncurses"
+configure_args+=" --without-udev"
+configure_args+=" scanf_cv_alloc_modifier=as"
+bootstrap="yes"
+provides="util-linux-${version}_$revision"
+conflicts="util-linux>=0"
 
-if [ -z "$CHROOT_READY" ]; then
-	CFLAGS+=" -I${XBPS_MASTERDIR}/usr/include"
-	LDFLAGS+=" -L${XBPS_MASTERDIR}/usr/lib"
+if [[ -z "$CHROOT_READY" ]]; then
+  CFLAGS+=" -I$XBPS_MASTERDIR/usr/include"
+  LDFLAGS+=" -L$XBPS_MASTERDIR/usr/lib"
 fi
 
 post_install() {
-	# Remove unused stuff.
-	rm -rf ${DESTDIR}/bin
-	rm -rf ${DESTDIR}/sbin
-	rm -rf ${DESTDIR}/usr/sbin
-	rm -rf ${DESTDIR}/usr/share/man
+  # remove unused stuff
+  rm -rf "$DESTDIR/bin"
+  rm -rf "$DESTDIR/sbin"
+  rm -rf "$DESTDIR/usr/sbin"
+  rm -rf "$DESTDIR/usr/share/man"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

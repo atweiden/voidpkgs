@@ -1,22 +1,27 @@
-# Template file for 'cabal-install'
-pkgname=cabal-install
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cabal-install"
 version=2.2.0.0
 revision=2
-hostmakedepends="ghc curl"
-makedepends="gmp-devel libffi-devel zlib-devel"
-depends="ghc"
 short_desc="Command-line interface for Cabal and Hackage"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-3-Clause"
+depends="ghc"
+makedepends+=" gmp-devel"
+makedepends+=" libffi-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" curl"
+hostmakedepends+=" ghc"
 homepage="https://hackage.haskell.org/package/cabal-install"
-distfiles="https://hackage.haskell.org/packages/archive/${pkgname}/${version}/${pkgname}-${version}.tar.gz"
-checksum=c856a2dd93c5a7b909597c066b9f9ca27fbda1a502b3f96077b7918c0f64a3d9
+license="BSD-3-Clause"
+distfiles="https://hackage.haskell.org/packages/archive/$pkgname/$version/$pkgname-$version.tar.gz"
+checksum="c856a2dd93c5a7b909597c066b9f9ca27fbda1a502b3f96077b7918c0f64a3d9"
 nopie_files="/usr/bin/cabal"
 
 do_build() {
-	PREFIX=$PWD/build sh bootstrap.sh --user --no-doc
+  PREFIX="$PWD/build" sh bootstrap.sh --user --no-doc
 }
+
 do_install() {
-	vbin build/bin/cabal
-	vlicense LICENSE
+  vbin build/bin/cabal
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
