@@ -3,9 +3,6 @@ Todo
 
 - rework fzf template
   - install keybindings to `/etc/profile.d`
-- trim grub template
-  - rm gui deps
-    - disable grub-mkfont
 - trim dbus template
   - rm gui deps
 - trim git template
