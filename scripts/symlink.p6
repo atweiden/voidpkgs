@@ -51,6 +51,7 @@ my List:D %pkg{Str:D} =
     'dbus' => qw<dbus-devel
                  dbus-libs
                  dbus-x11>,
+    'dhcp' => ['dhclient'],
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
