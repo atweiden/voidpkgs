@@ -3,6 +3,15 @@ voidpkgs
 
 Package templates for Void
 
+
+Description
+-----------
+
+Console-only XBPS repository. No X.
+
+A fork of [void-linux/void-packages][void-linux/void-packages].
+
+
 Usage
 -----
 
@@ -21,3 +30,6 @@ Licensing
 
 This is free and unencumbered public domain software. For more
 information, see http://unlicense.org/ or the accompanying UNLICENSE file.
+
+
+[void-linux/void-packages]: https://github.com/void-linux/void-packages
