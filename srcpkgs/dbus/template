@@ -1,55 +1,65 @@
-# Template file for 'dbus'
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname=dbus
 version=1.12.10
-revision=1
-build_style=gnu-configure
-configure_args="--disable-selinux --enable-inotify --with-dbus-user=dbus
- --enable-xml-docs --disable-static --disable-tests --enable-epoll
- --disable-asserts --disable-systemd --disable-user-session
- --with-system-socket=/run/dbus/system_bus_socket --disable-doxygen-docs
- --with-system-pid-file=/run/dbus/pid --with-console-auth-dir=/run/console"
-hostmakedepends="gperf intltool pkg-config xmlto"
-makedepends="expat-devel libX11-devel libcap-devel"
+revision=2
 short_desc="Message bus system"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+makedepends+=" expat-devel"
+makedepends+=" libcap-devel"
+hostmakedepends+=" gperf"
+hostmakedepends+=" intltool"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" xmlto"
 homepage="https://dbus.freedesktop.org/"
+license="GPL-2.0-or-later"
 changelog="https://raw.githubusercontent.com/freedesktop/dbus/dbus-1.12/NEWS"
-distfiles="https://dbus.freedesktop.org/releases/dbus/dbus-${version}.tar.gz"
-checksum=4b693d24976258c3f2fa9cc33ad9288c5fbfa7a16481dbd9a8a429f7aa8cdcf7
-conf_files="/etc/dbus-1/session.conf /etc/dbus-1/system.conf"
+distfiles="https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.gz"
+checksum="4b693d24976258c3f2fa9cc33ad9288c5fbfa7a16481dbd9a8a429f7aa8cdcf7"
+conf_files+=" /etc/dbus-1/session.conf"
+conf_files+=" /etc/dbus-1/system.conf"
+build_style="gnu-configure"
+configure_args+=" --disable-asserts"
+configure_args+=" --disable-doxygen-docs"
+configure_args+=" --disable-selinux"
+configure_args+=" --disable-static"
+configure_args+=" --disable-systemd"
+configure_args+=" --disable-tests"
+configure_args+=" --disable-user-session"
+configure_args+=" --disable-x11-autolaunch"
+configure_args+=" --enable-epoll"
+configure_args+=" --enable-inotify"
+configure_args+=" --enable-xml-docs"
+configure_args+=" --with-console-auth-dir=/run/console"
+configure_args+=" --with-dbus-user=dbus"
+configure_args+=" --with-gnu-ld"
+configure_args+=" --with-system-pid-file=/run/dbus/pid"
+configure_args+=" --with-system-socket=/run/dbus/system_bus_socket"
+configure_args+=" --without-x"
 
 # Create dbus:22 system account.
 system_accounts="dbus:22"
 
 post_install() {
-	vsv dbus
+  vsv dbus
 }
 
 dbus-devel_package() {
-	depends="expat-devel dbus-libs>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/dbus-*"
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove usr/share/doc
-		vmove usr/lib/cmake
-	}
+  depends="expat-devel dbus-libs>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/dbus-*"
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove usr/share/doc
+    vmove usr/lib/cmake
+  }
 }
 
 dbus-libs_package() {
-	short_desc+=" - shared libraries"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
 
-dbus-x11_package() {
-	short_desc+=" - X11 support"
-	pkg_install() {
-		vmove usr/bin/dbus-launch
-		vmove usr/share/man/man1/dbus-launch.1
-	}
-}
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
