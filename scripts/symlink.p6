@@ -100,6 +100,7 @@ my List:D %pkg{Str:D} =
                 libstdc++-devel
                 libvtv
                 libvtv-devel>,
+    'gcc-multilib' => ['gcc-objc-multilib'],
     'gdbm' => ['gdbm-devel'],
     'gettext' => qw<gettext-devel
                     gettext-devel-examples
@@ -183,6 +184,7 @@ my List:D %pkg{Str:D} =
     'libidn' => ['libidn-devel'],
     'libksba' => ['libksba-devel'],
     'libmnl' => ['libmnl-devel'],
+    'libmpack' => ['libmpack-devel'],
     'libmpc' => ['libmpc-devel'],
     'libnftnl' => ['libnftnl-devel'],
     'libnl' => ['libnl-devel'],
@@ -204,6 +206,7 @@ my List:D %pkg{Str:D} =
     'libssh2' => ['libssh2-devel'],
     'libtasn1' => qw<libtasn1-devel
                      libtasn1-tools>,
+    'libtermkey' => ['libtermkey-devel'],
     'libtomcrypt' => ['libtomcrypt-devel'],
     'libtommath' => ['libtommath-devel'],
     'libtool' => qw<libltdl
@@ -215,6 +218,7 @@ my List:D %pkg{Str:D} =
     'libusb-compat' => ['libusb-compat-devel'],
     'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
+    'libvterm' => ['libvterm-devel'],
     'libxml2' => qw<libxml2-devel
                     libxml2-python>,
     'libxslt' => qw<libxslt-devel
@@ -238,6 +242,11 @@ my List:D %pkg{Str:D} =
                  lldb
                  lldb-devel>,
     'lua' => qw<lua-devel>,
+    'LuaJIT' => ['LuaJIT-devel'],
+    'lua-lpeg' => qw<lua51-lpeg
+                     lua52-lpeg>,
+    'lua51' => ['lua51-devel'],
+    'lua52' => ['lua52-devel'],
     'lutok' => qw<lutok-devel>,
     'lvm2' => qw<device-mapper
                  device-mapper-devel
@@ -252,6 +261,7 @@ my List:D %pkg{Str:D} =
                      mit-krb5-devel
                      mit-krb5-libs>,
     'mpfr' => ['mpfr-devel'],
+    'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],
     'ncurses' => qw<ncurses-base
                     ncurses-devel
@@ -307,10 +317,15 @@ my List:D %pkg{Str:D} =
     'python-enum34' => ['python3-enum34'],
     'python-flaky' => ['python3-flaky'],
     'python-funcsigs' => ['python3-funcsigs'],
+    'python-greenlet' => qw<python-greenlet-devel
+                            python3-greenlet
+                            python3-greenlet-devel>,
     'python-hypothesis' => ['python3-hypothesis'],
     'python-idna' => ['python3-idna'],
     'python-imagesize' => ['python3-imagesize'],
+    'python-msgpack' => ['python3-msgpack'],
     'python-more-itertools' => ['python3-more-itertools'],
+    'python-neovim' => ['python3-neovim'],
     'python-numpy' => ['python3-numpy'],
     'python-packaging' => ['python3-packaging'],
     'python-parsing' => ['python3-parsing'],
@@ -341,6 +356,7 @@ my List:D %pkg{Str:D} =
                        libsysfs-devel>,
     'tcl' => ['tcl-devel'],
     'tcl' => ['tcl-devel'],
+    'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,
     'util-linux' => qw<libblkid
