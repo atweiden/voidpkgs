@@ -355,6 +355,11 @@ my List:D %pkg{Str:D} =
     'rhash' => ['rhash-devel'],
     'runit-void' => ['runit-void-apparmor'],
     'rust' => ['rust-doc'],
+    'schilytools' => qw<sccs
+                        sdd
+                        sfind
+                        smake
+                        star>,
     'sqlite' => ['sqlite-devel'],
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
