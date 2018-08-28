@@ -106,11 +106,6 @@ my List:D %pkg{Str:D} =
     'gettext' => qw<gettext-devel
                     gettext-devel-examples
                     gettext-libs>,
-    'git' => qw<git-all
-                git-cvs
-                git-gui
-                git-svn
-                gitk>,
     'glib' => qw<glib-devel
                  libglib-devel>,
     'glibc' => qw<glibc-devel
