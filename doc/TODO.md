@@ -4,7 +4,7 @@ Todo
 pick up where you left off:
 
 ```sh
-comm -3 <(find . -type f -name 'template' | sed 's,./,,') <(ag Weidenbaum -l)
+comm -3 <(find . -type f -name 'template' | sed 's,./,,' | sort ) <(ag Weidenbaum -l | sort) | ag srcpkgs
 ```
 
 - adhere to style guide
