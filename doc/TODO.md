@@ -9,5 +9,6 @@ comm -3 <(find . -type f -name 'template' | sed 's,./,,' | sort ) <(ag Weidenbau
 
 - adhere to style guide
   - convert tabs to spaces
+  - put all `&&` conditional on separate line
 - trim non-`template` files
 - s/voidlinux.eu/voidlinux.org
