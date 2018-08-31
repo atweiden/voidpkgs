@@ -29,8 +29,7 @@ configure_args+=" --toolchain=gnu"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --build=$XBPS_CROSS_TRIPLET"
   configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  PKG_CONFIG_PATH+=" $XBPS_CROSS_BASE/usr/lib/pkgconfig:"
-  PKG_CONFIG_PATH+=" $XBPS_CROSS_BASE/usr/share/pkgconfig"
+  export PKG_CONFIG_PATH="$XBPS_CROSS_BASE/usr/lib/pkgconfig:$XBPS_CROSS_BASE/usr/share/pkgconfig"
 fi
 if [[ -n "$(vopt_if clang clang)" ]]; then
   configure_args+=" --compiler=clang"
