@@ -1,13 +1,13 @@
 voidpkgs
 ========
 
-Package templates for Void
+Console-only XBPS source package collection for Void
 
 
 Description
 -----------
 
-Console-only XBPS repository. No X.
+Console-only package templates for Void. TUIs accepted.
 
 A fork of [void-linux/void-packages][void-linux/void-packages].
 
