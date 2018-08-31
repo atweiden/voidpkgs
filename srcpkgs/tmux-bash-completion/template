@@ -3,6 +3,7 @@ pkgname="tmux-bash-completion"
 version=20170805
 revision=1
 short_desc="Bash completion for tmux"
+noarch="yes"
 depends="bash-completion"
 license="GPL-2.0-only"
 homepage="https://github.com/imomaliev/tmux-bash-completion"
