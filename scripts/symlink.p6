@@ -156,6 +156,7 @@ my List:D %pkg{Str:D} =
                   irssi-perl>,
     'isl15' => ['isl15-devel'],
     'jansson' => ['jansson-devel'],
+    'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],
     'kbd' => ['kbd-data'],
     'kmod' => qw<libkmod
@@ -278,6 +279,8 @@ my List:D %pkg{Str:D} =
     'numactl' => qw<libnuma
                     libnuma-devel>,
     'odroid-c2-kernel' => ['odroid-c2-kernel-headers'],
+    'oniguruma' => qw<oniguruma-devel
+                      oniguruma-doc>,
     'openldap' => qw<libldap
                      libldap-devel
                      openldap-tools>,
@@ -370,6 +373,7 @@ my List:D %pkg{Str:D} =
                        libsmartcols-devel
                        libuuid
                        libuuid-devel>,
+    'valgrind' => ['valgrind-devel'],
     'vim' => qw<gvim
                 gvim-huge
                 vim-common
