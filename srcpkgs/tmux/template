@@ -1,16 +1,29 @@
-# Template file for 'tmux'
-pkgname=tmux
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tmux"
 version=2.7
 revision=1
-build_style=gnu-configure
-makedepends="libevent-devel ncurses-devel"
-short_desc="Terminal Multiplexer"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+short_desc="A terminal multiplexer"
+makedepends+=" libevent-devel"
+makedepends+=" libutempter-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" pkgconf"
 license="ISC"
 homepage="http://tmux.github.io"
-distfiles="https://github.com/tmux/tmux/releases/download/${version}/tmux-${version}.tar.gz"
-checksum=9ded7d100313f6bc5a87404a4048b3745d61f2332f99ec1400a7c4ed9485d452
+changelog="https://raw.githubusercontent.com/tmux/tmux/master/CHANGES"
+distfiles="https://github.com/tmux/tmux/releases/download/$version/tmux-$version.tar.gz"
+checksum="9ded7d100313f6bc5a87404a4048b3745d61f2332f99ec1400a7c4ed9485d452"
+build_style="gnu-configure"
+configure_args="--enable-utempter"
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
+  vdoc CHANGES
+  vdoc README
+  vdoc SYNCING
+  vdoc TODO
+  vdoc example_tmux.conf
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
