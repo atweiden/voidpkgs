@@ -27,19 +27,22 @@ pre_configure() {
 
 do_configure() {
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
-    CONFIGFLAG="--enable-64-bit-bfd --enable-multilib"
+    unset CONFIGFLAG
+    CONFIGFLAG+=" --enable-64-bit-bfd"
+    CONFIGFLAG+=" --enable-multilib"
   fi
 
   if [[ -n "$CROSS_BUILD" ]]; then
-    # do not use configure_args or build_style=gnu-configure,
-    # avoid passing --with-sysroot to $XBPS_CROSS_BASE.
+    # do not use configure_args or build_style=gnu-configure
+    # avoid passing --with-sysroot to $XBPS_CROSS_BASE
     unset CONFIGFLAG
     CONFIGFLAG+=" --host=$XBPS_CROSS_TRIPLET"
     CONFIGFLAG+=" --with-build-sysroot=$XBPS_CROSS_BASE"
   fi
 
   if [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
-    CONFIGFLAG+=" --with-float=soft --without-fp"
+    CONFIGFLAG+=" --with-float=soft"
+    CONFIGFLAG+=" --without-fp"
   fi
 
   if [[ "${XBPS_TARGET_MACHINE%-musl}" == "x86_64" ]]; then
@@ -73,7 +76,7 @@ do_build() {
   # rebuild libbfd.a with -fPIC
   cp -a bfd bfd-pic
   make -C bfd-pic clean
-  # visibility=hidden to prevent 3rd party shared libraries from exporting
+  # visibility=hidden to prevent 3rd-party shared libraries from exporting
   # bfd non-stable API
   make CFLAGS="$CFLAGS -fPIC -fvisibility=hidden" -C bfd-pic
 
@@ -128,7 +131,7 @@ do_install() {
 
   # create triplet symlinks
   for f in "$DESTDIR/usr/bin"/*; do
-    ln -s ${f##*/} $DESTDIR/usr/bin/${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}-${f##*/}
+    ln -s "${f##*/}" "$DESTDIR/usr/bin/${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}-${f##*/}"
   done
 }
 

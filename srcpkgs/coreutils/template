@@ -53,8 +53,8 @@ do_configure() {
     # XXX: syncfs() in src/sync.c expects a return value
     *-musl) configure_args+=" ac_cv_func_syncfs=no";;
   esac
-  # do not install kill: provided by util-linux
-  # do not install uptime: provided by procps-ng
+  # do not install kill (provided by util-linux)
+  # do not install uptime (provided by procps-ng)
   ./configure \
     "$configure_args" \
     --disable-rpath \

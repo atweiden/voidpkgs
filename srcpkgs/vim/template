@@ -43,17 +43,16 @@ configure_args+=" --with-view-name=vim-view"
 configure_args+=" --with-x=no"
 if [[ -n "$CROSS_BUILD" ]]; then
   # https://github.com/vim/vim/blob/master/src/INSTALLx.txt
-  configure_script+=" ac_cv_small_wchar_t=no"
-  configure_script+=" vim_cv_getcwd_broken=no"
-  configure_script+=" vim_cv_memmove_handles_overlap=yes"
-  configure_script+=" vim_cv_stat_ignores_slash=yes"
-  configure_script+=" vim_cv_terminfo=yes"
-  configure_script+=" vim_cv_tgetent=zero"
-  configure_script+=" vim_cv_toupper_broken=no"
-  configure_script+=" vim_cv_tty_group=world"
-  configure_script+=" vim_cv_tty_mode=0620"
-  configure_script+=" ./configure"
   configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+  configure_args+=" ac_cv_small_wchar_t=no"
+  configure_args+=" vim_cv_getcwd_broken=no"
+  configure_args+=" vim_cv_memmove_handles_overlap=yes"
+  configure_args+=" vim_cv_stat_ignores_slash=yes"
+  configure_args+=" vim_cv_terminfo=yes"
+  configure_args+=" vim_cv_tgetent=zero"
+  configure_args+=" vim_cv_toupper_broken=no"
+  configure_args+=" vim_cv_tty_group=world"
+  configure_args+=" vim_cv_tty_mode=0620"
 fi
 make_install_args="VIMRCLOC=/etc"
 
@@ -62,6 +61,9 @@ post_install() {
   # create vim-ex symlink
   cd "$DESTDIR/usr/bin"
   ln -sf vim vim-ex
+}
+
+do_clean() {
   rm -f "$DESTDIR/usr/bin"/{ex,view}
 }
 

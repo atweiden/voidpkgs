@@ -24,7 +24,7 @@ make_install_args+=" RAKUDO_LOG_PRECOMP=1"
 make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
 make_check_target="test"
 nocross="yes"
-provides="perl6"
+provides="perl6-${version}_$revision"
 
 post_install() {
   vinstall tools/install-dist.pl 755 usr/bin perl6-install-dist

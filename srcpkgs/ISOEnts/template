@@ -18,7 +18,7 @@ do_install() {
   local dir="$DESTDIR/usr/share/sgml/iso8879"
   install -d "$dir"
   bsdtar xf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname.zip" -C "$dir"
-  install -m644 "$FILESDIR/catalog" "$dir"
+  install -m 644 "$FILESDIR/catalog" "$dir"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

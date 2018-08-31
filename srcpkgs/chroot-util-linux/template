@@ -42,7 +42,7 @@ if [[ -z "$CHROOT_READY" ]]; then
   LDFLAGS+=" -L$XBPS_MASTERDIR/usr/lib"
 fi
 
-post_install() {
+do_clean() {
   # remove unused stuff
   rm -rf "$DESTDIR/bin"
   rm -rf "$DESTDIR/sbin"

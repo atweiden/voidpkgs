@@ -14,7 +14,7 @@ distfiles="https://download.tuxfamily.org/chrony/$pkgname-$version.tar.gz"
 checksum="0d1fb2d5875032f2d5a86f3770374c87ee4c941916f64171e81f7684f2a73128"
 conf_files="/etc/chrony.conf"
 chrony_homedir="/var/lib/chrony"
-# XXX: when updating, confirm upstream config still refers to make_dirs
+# when updating, confirm upstream config still refers to make_dirs
 make_dirs+=" /var/lib/chrony 0755 chrony chrony"
 make_dirs+=" /var/log/chrony 0755 chrony chrony"
 system_accounts="chrony"
@@ -29,10 +29,13 @@ alternatives+=" ntpd:ntpd:/etc/sv/chronyd"
 
 post_install() {
   vconf examples/chrony.conf.example3 chrony.conf
-  # Modify default configuration so it works out-of-the-box
-  sed -e 's,! pool pool.ntp.org iburst,pool pool.ntp.org iburst,' -i "$DESTDIR/etc/chrony.conf"
-  sed -e 's,! rtcfile /var/lib/chrony/rtc,rtcfile /var/lib/chrony/rtc,' -i "$DESTDIR/etc/chrony.conf"
-  sed -e 's,! makestep 1.0 3,makestep 1.0 3,' -i "$DESTDIR/etc/chrony.conf"
+  # modify default configuration so it works out-of-the-box
+  sed \
+    -i \
+    -e 's,! pool pool.ntp.org iburst,pool pool.ntp.org iburst,' \
+    -e 's,! rtcfile /var/lib/chrony/rtc,rtcfile /var/lib/chrony/rtc,' \
+    -e 's,! makestep 1.0 3,makestep 1.0 3,' \
+    "$DESTDIR/etc/chrony.conf"
   vsconf examples/chrony.conf.example1
   vsconf examples/chrony.conf.example2
   vsv chronyd

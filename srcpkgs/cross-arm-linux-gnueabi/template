@@ -342,7 +342,9 @@ do_install() {
   # install glibc for target
   cd "$wrksrc/glibc-build"
   make install_root="$DESTDIR/$_sysroot" install install-headers
+}
 
+do_clean() {
   # remove unnecessary stuff
   rm -f "$DESTDIR/usr"/lib*/libiberty.a
   rm -rf "$DESTDIR/usr/share"

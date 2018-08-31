@@ -32,7 +32,6 @@ fi
 do_install() {
   # remove unneeded stuff
   make DESTDIR="$wrksrc/build-tmp" install
-
   vbin "$wrksrc/build-tmp/usr/bin/git" chroot-git
 }
 

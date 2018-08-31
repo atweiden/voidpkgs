@@ -40,10 +40,13 @@ else
 fi
 
 post_install() {
-  rm -rf "$DESTDIR/usr/share/doc/cmake"
   vlicense Copyright.txt
   vlicense Utilities/cmzlib/Copyright.txt cmzlib-Copyright.txt
   vlicense Utilities/cmcompress/Copyright.txt cmcompress-Copyright.txt
+}
+
+do_clean() {
+  rm -rf "$DESTDIR/usr/share/doc/cmake"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

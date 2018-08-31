@@ -14,10 +14,9 @@ distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
 checksum="5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
 build_style="gnu-configure"
 
-do_check() {
-  # taken from http://www.linuxfromscratch.org/lfs/view/development/chapter06/automake.html
+pre_check() {
+  # source: http://www.linuxfromscratch.org/lfs/view/development/chapter06/automake.html
   sed -i "s:./configure:LEXLIB=/usr/lib/libfl.a &:" t/lex-{clean,depend}-cxx.sh
-  make -j4 check
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

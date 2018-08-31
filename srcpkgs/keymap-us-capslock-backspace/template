@@ -12,8 +12,10 @@ license="Unlicense"
 
 pre_build() {
   # fetch us keymap
-  cp -dpr --no-preserve=ownership \
-    /usr/share/kbd/keymaps/i386/qwerty/us.map.gz us-capslock-backspace.map.gz
+  cp \
+    -a \
+    /usr/share/kbd/keymaps/i386/qwerty/us.map.gz \
+    us-capslock-backspace.map.gz
   # decompress us keymap
   gunzip us-capslock-backspace.map.gz
 }
@@ -31,8 +33,7 @@ do_build() {
 
 do_install() {
   # install keymap us-capslock-backspace
-  install -Dm 644 us-capslock-backspace.map.gz \
-          -t "$DESTDIR/usr/share/kbd/keymaps/i386/qwerty"
+  vinstall us-capslock-backspace.map.gz 644 usr/share/kbd/keymaps/i386/qwerty
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

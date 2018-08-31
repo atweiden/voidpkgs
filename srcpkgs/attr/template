@@ -12,6 +12,11 @@ conf_files="/etc/xattr.conf"
 build_style="gnu-configure"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --libexecdir=/usr/lib"
+if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
+  unset configure_args
+  configure_args+=" --libdir=/usr/lib32"
+  configure_args+=" --libexecdir=/usr/lib32"
+fi
 # tests break when ran in parallel
 make_check_args="-j1"
 bootstrap="yes"
@@ -19,14 +24,8 @@ bootstrap="yes"
 # The included libtool is rotten and only works with bash; easiest fix.
 export CONFIG_SHELL="/bin/bash"
 
-if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
-  unset configure_args
-  configure_args+=" --libdir=/usr/lib32"
-  configure_args+=" --libexecdir=/usr/lib32"
-fi
-
 pre_check() {
-  # Either the test wasn't updated or the package misconfigures/miscompiles
+  # either the test wasn't updated or the package misconfigures/miscompiles
   # the error message in musl based systems
   # EXPECTED: Operation not supported
   # RECIEVED: Not supported

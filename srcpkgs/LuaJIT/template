@@ -4,6 +4,9 @@ version=2.0.5
 revision=2
 short_desc="A Just-In-Time Compiler for Lua"
 hostmakedepends="lua52-BitOp"
+if [[ -n "$CROSS_BUILD" -a "$XBPS_MACHINE" == "x86_64" ]]; then
+  hostmakedepends+=" gcc-multilib"
+fi
 homepage="http://www.luajit.org"
 license="MIT"
 distfiles="http://luajit.org/download/$pkgname-$version.tar.gz"
@@ -13,10 +16,6 @@ case "$XBPS_TARGET_MACHINE" in
   arm*-musl) broken="https://build.voidlinux.eu/builders/armv7l-musl_builder/builds/6139/steps/shell_3/logs/stdio" ;;
   aarch64*) broken="unsupported";;
 esac
-
-if [[ -n "$CROSS_BUILD" -a "$XBPS_MACHINE" == "x86_64" ]]; then
-  hostmakedepends+=" gcc-multilib"
-fi
 
 do_build() {
   local _cflags="$CFLAGS"

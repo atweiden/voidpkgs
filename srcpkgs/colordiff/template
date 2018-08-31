@@ -14,13 +14,16 @@ conf_files+=" /etc/colordiffrc-gitdiff"
 conf_files+=" /etc/colordiffrc-lightbg"
 
 do_install() {
-  vman colordiff.1
-  vman cdiff.1
   vbin colordiff.pl colordiff
   vbin cdiff.sh cdiff
   vinstall colordiffrc 644 etc
   vinstall colordiffrc-lightbg 644 etc
   vinstall colordiffrc-gitdiff 644 etc
+}
+
+post_install() {
+  vman colordiff.1
+  vman cdiff.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

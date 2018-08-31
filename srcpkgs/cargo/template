@@ -35,8 +35,8 @@ esac
 post_extract() {
   mkdir -p target/snapshot
   case "$XBPS_MACHINE" in
-    x86_64-musl) cp ../cargo cargo ;;
-    *) cp ../cargo-*/cargo/bin/cargo cargo ;;
+    x86_64-musl) cp ../cargo cargo                   ;;
+    *)           cp ../cargo-*/cargo/bin/cargo cargo ;;
   esac
 }
 
@@ -49,15 +49,17 @@ do_build() {
 
 do_install() {
   vbin target/release/cargo
+}
+
+post_install() {
+  vlicense LICENSE-APACHE
+  vlicense LICENSE-MIT
+  vlicense LICENSE-THIRD-PARTY
   for f in src/etc/man/*.?; do
     vman "$f"
   done
   vinstall src/etc/cargo.bashcomp.sh 0644 usr/share/bash-completion/completions cargo
   vinstall src/etc/_cargo 0644 usr/share/zsh/site-functions
-
-  vlicense LICENSE-APACHE
-  vlicense LICENSE-MIT
-  vlicense LICENSE-THIRD-PARTY
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

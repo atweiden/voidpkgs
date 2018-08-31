@@ -16,7 +16,7 @@ bootstrap="yes"
 provides="awk-0_1"
 replaces="awk>=0"
 
-post_install() {
+do_clean() {
   rm -rf "$DESTDIR/usr/share"
 }
 

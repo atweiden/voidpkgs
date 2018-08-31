@@ -17,8 +17,7 @@ disable_parallel_build="yes"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" bc"
   pre_build() {
-    # don’t run target built binary 'fbc';
-    # run host 'bc' instead
+    # don't run target built binary `fbc`, run host `bc` instead
     sed -i -e 's|^\(\s\+\)./fbc|\1bc|g' bc/Makefile
   }
 fi
@@ -28,16 +27,23 @@ do_build() {
 }
 
 do_check() {
-  # LFS tells us that there are 10 known failures
+  # LinuxFromScratch tells us of 10 known failures:
+  # http://www.linuxfromscratch.org/lfs/view/development/chapter06/bc.html
+  #
   # What happens here:
   # 1. echo "quit" so bc will quit after running Test/checklib.b
   # 2. tee to /dev/tty so the maintainer will see the output of the tests
   # 3. grep the total failures for any number between 1 and 199
   # 4. cut total failures: from the numbers
   # 5. use awk to sum the numbers
-  failures="$(echo "quit" | ./bc/bc -l Test/checklib.b | tee /dev/tty | grep 'Total failures: [1-9]\|1[0-9]\|1[0-9][0-9]' | cut -d: -f2 | awk '{s+=$1} END {print s}' )"
-  # 6. check if there are more than then 10 known test failures as pointed out by LFS
-  # http://www.linuxfromscratch.org/lfs/view/development/chapter06/bc.html
+  failures="$(echo "quit" \
+    | ./bc/bc -l Test/checklib.b \
+    | tee /dev/tty \
+    | grep 'Total failures: [1-9]\|1[0-9]\|1[0-9][0-9]' \
+    | cut -d: -f2 \
+    | awk '{s+=$1} END {print s}'
+  )"
+  # 6. check if there are >10 known test failures
   if [[ "$failures" -gt 10 ]]; then
     echo "Sorry, there are more than the 10 known failures"
     return 1

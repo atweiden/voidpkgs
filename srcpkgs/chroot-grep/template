@@ -16,8 +16,9 @@ bootstrap="yes"
 provides="grep-${version}_$revision"
 conflicts="grep>=0"
 
-post_install() {
-  rm -rf "$DESTDIR/usr/share/info" "$DESTDIR/usr/share/man"
+do_clean() {
+  rm -rf "$DESTDIR/usr/share/info"
+  rm -rf "$DESTDIR/usr/share/man"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
