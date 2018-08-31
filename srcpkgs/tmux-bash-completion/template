@@ -1,0 +1,23 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tmux-bash-completion"
+version=20170805
+revision=1
+short_desc="Bash completion for tmux"
+depends="bash-completion"
+license="GPL-2.0-only"
+homepage="https://github.com/imomaliev/tmux-bash-completion"
+_gitrev="847eda60c4664bfca833a086a3e2167957c26be0"
+distfiles="https://codeload.github.com/imomaliev/tmux-bash-completion/tar.gz/$_gitrev>$pkgname-$version.tar.gz"
+checksum="3ac0a217e749f762d2b93057dca9795fed74f700402184f2ee0b4cf22eb596e5"
+wrksrc="$pkgname-$_gitrev"
+
+do_install() {
+  vinstall completions/tmux 644 usr/share/bash-completion/completions
+}
+
+post_install() {
+  vlicense COPYING
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
