@@ -1,19 +1,33 @@
-# Template file for 'rakudo'
-pkgname=rakudo
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="rakudo"
 version=2018.06
 revision=1
-build_style=configure
-configure_script="perl Configure.pl"
-configure_args="--prefix=/usr --backends=moar"
-hostmakedepends="perl"
-makedepends="libatomic_ops-devel libffi-devel libtommath-devel libuv-devel nqp"
+short_desc="Production-ready, stable implementation of the Perl 6 language"
 depends="nqp"
-short_desc="Rakudo is an implementation of Perl 6 language"
-maintainer="Ruslan <axetwe@gmail.com>"
-license="Artistic-2.0"
+makedepends+=" libatomic_ops-devel"
+makedepends+=" libffi-devel"
+makedepends+=" libtommath-devel"
+makedepends+=" libuv-devel"
+makedepends+=" nqp"
+hostmakedepends="perl"
+tags="perl6"
 homepage="https://rakudo.org"
+license="Artistic-2.0"
 changelog="https://raw.githubusercontent.com/rakudo/rakudo/master/docs/ChangeLog"
-distfiles="https://github.com/rakudo/rakudo/archive/${version}.tar.gz"
-checksum=b93588f38836edabf3ded0842f81e9ab950e4792c7e0b230e800f1bb6ccde8eb
-nocross=yes
-make_check_target=test
+distfiles="https://rakudo.perl6.org/downloads/$pkgname/$pkgname-$version.tar.gz"
+checksum="62d8c9d3485a5a1c35117c52a0d39efdd9acad62d27779affbccc9be776fae65"
+build_style="configure"
+configure_script="perl Configure.pl"
+configure_args+=" --backends=moar"
+configure_args+=" --prefix=/usr"
+make_install_args+=" RAKUDO_LOG_PRECOMP=1"
+make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
+make_check_target="test"
+nocross="yes"
+provides="perl6-${version}_$revision"
+
+post_install() {
+  vinstall tools/install-dist.pl 755 usr/bin perl6-install-dist
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

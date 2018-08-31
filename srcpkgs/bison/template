@@ -1,26 +1,28 @@
-# Template file for 'bison'
-pkgname=bison
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bison"
 version=3.0.5
 revision=1
-build_style=gnu-configure
-hostmakedepends="help2man perl m4"
-depends="m4"
 short_desc="GNU yacc(1) replacement"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3.0-or-later"
+depends="m4"
+hostmakedepends+=" help2man"
+hostmakedepends+=" perl"
+hostmakedepends+=" m4"
 homepage="http://www.gnu.org/software/bison/bison.html"
-distfiles="${GNU_SITE}/bison/bison-${version}.tar.xz"
-checksum=075cef2e814642e30e10e8155e93022e4a91ca38a65aa1d5467d4e969f97f338
-alternatives="
- yacc:yacc:/usr/bin/bison-yacc
- yacc:yacc.1:/usr/share/man/man1/bison-yacc.1"
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/bison/bison-$version.tar.xz"
+checksum="075cef2e814642e30e10e8155e93022e4a91ca38a65aa1d5467d4e969f97f338"
+build_style="gnu-configure"
+alternatives+=" yacc:yacc:/usr/bin/bison-yacc"
+alternatives+=" yacc:yacc.1:/usr/share/man/man1/bison-yacc.1"
 
 do_check() {
-	# Missing files for compilation
-	:
+  # missing files for compilation
+  :
 }
 
 post_install() {
-	mv ${DESTDIR}/usr/bin/{yacc,bison-yacc}
-	mv ${DESTDIR}/usr/share/man/man1/{yacc,bison-yacc}.1
+  mv "$DESTDIR/usr/bin"/{yacc,bison-yacc}
+  mv "$DESTDIR/usr/share/man/man1"/{yacc,bison-yacc}.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

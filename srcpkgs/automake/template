@@ -1,20 +1,22 @@
-# Template build file for 'automake'.
-pkgname=automake
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="automake"
 version=1.16.1
 revision=2
-noarch=yes
-build_style=gnu-configure
-hostmakedepends="perl autoconf"
-depends="${hostmakedepends}"
 short_desc="GNU Standards-compliant Makefile generator"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+noarch="yes"
+depends+=" autoconf"
+depends+=" perl"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" perl"
 homepage="https://www.gnu.org/software/automake"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921
+license="GPL-2.0-or-later"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
+build_style="gnu-configure"
 
-do_check() {
-	# taken from http://www.linuxfromscratch.org/lfs/view/development/chapter06/automake.html
-	sed -i "s:./configure:LEXLIB=/usr/lib/libfl.a &:" t/lex-{clean,depend}-cxx.sh
-	make -j4 check
+pre_check() {
+  # source: http://www.linuxfromscratch.org/lfs/view/development/chapter06/automake.html
+  sed -i "s:./configure:LEXLIB=/usr/lib/libfl.a &:" t/lex-{clean,depend}-cxx.sh
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

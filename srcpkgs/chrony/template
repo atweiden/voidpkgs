@@ -1,39 +1,44 @@
-# Template file for 'chrony'
-# When Updating: Please confirm the upstream config still refers to make_dirs
-pkgname=chrony
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="chrony"
 version=3.3
 revision=1
-build_style=gnu-configure
-configure_args="--without-nss --enable-scfilter
- --with-sendmail=/usr/bin/sendmail"
-hostmakedepends="pkg-config"
-makedepends="libcap-devel libedit-devel libseccomp-devel libtomcrypt-devel"
-conf_files="/etc/chrony.conf"
-system_accounts="chrony"
-chrony_homedir="/var/lib/chrony"
-make_dirs="
-	/var/log/chrony 0755 chrony chrony
-	/var/lib/chrony	0755 chrony chrony"
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-only"
+makedepends+=" libcap-devel"
+makedepends+=" libedit-devel"
+makedepends+=" libseccomp-devel"
+makedepends+=" libtomcrypt-devel"
+hostmakedepends="pkg-config"
 homepage="https://chrony.tuxfamily.org/"
-distfiles="https://download.tuxfamily.org/chrony/${pkgname}-${version}.tar.gz"
-checksum=0d1fb2d5875032f2d5a86f3770374c87ee4c941916f64171e81f7684f2a73128
-
+license="GPL-2.0-only"
+distfiles="https://download.tuxfamily.org/chrony/$pkgname-$version.tar.gz"
+checksum="0d1fb2d5875032f2d5a86f3770374c87ee4c941916f64171e81f7684f2a73128"
+conf_files="/etc/chrony.conf"
+chrony_homedir="/var/lib/chrony"
+# when updating, confirm upstream config still refers to make_dirs
+make_dirs+=" /var/lib/chrony 0755 chrony chrony"
+make_dirs+=" /var/log/chrony 0755 chrony chrony"
+system_accounts="chrony"
+build_style="gnu-configure"
+configure_args+=" --enable-scfilter"
+configure_args+=" --with-sendmail=/usr/bin/sendmail"
+configure_args+=" --without-nss"
 provides="ntp-daemon-0_1"
-alternatives="
- ntpd:ntpd:/usr/bin/chronyd
- ntpd:ntpd.8:/usr/share/man/man8/chronyd.8
- ntpd:ntpd:/etc/sv/chronyd"
+alternatives+=" ntpd:ntpd:/usr/bin/chronyd"
+alternatives+=" ntpd:ntpd.8:/usr/share/man/man8/chronyd.8"
+alternatives+=" ntpd:ntpd:/etc/sv/chronyd"
 
 post_install() {
-	vconf examples/chrony.conf.example3 chrony.conf
-	# Modify default configuration so it works out-of-the-box
-	sed -e 's,! pool pool.ntp.org iburst,pool pool.ntp.org iburst,' -i ${DESTDIR}/etc/chrony.conf
-	sed -e 's,! rtcfile /var/lib/chrony/rtc,rtcfile /var/lib/chrony/rtc,' -i ${DESTDIR}/etc/chrony.conf
-	sed -e 's,! makestep 1.0 3,makestep 1.0 3,' -i ${DESTDIR}/etc/chrony.conf
-	vsconf examples/chrony.conf.example1
-	vsconf examples/chrony.conf.example2
-	vsv chronyd
+  vconf examples/chrony.conf.example3 chrony.conf
+  # modify default configuration so it works out-of-the-box
+  sed \
+    -i \
+    -e 's,! pool pool.ntp.org iburst,pool pool.ntp.org iburst,' \
+    -e 's,! rtcfile /var/lib/chrony/rtc,rtcfile /var/lib/chrony/rtc,' \
+    -e 's,! makestep 1.0 3,makestep 1.0 3,' \
+    "$DESTDIR/etc/chrony.conf"
+  vsconf examples/chrony.conf.example1
+  vsconf examples/chrony.conf.example2
+  vsv chronyd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

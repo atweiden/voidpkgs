@@ -1,81 +1,90 @@
-# Template file for 'base-files'
-pkgname=base-files
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="base-files"
 version=0.139
 revision=10
-bootstrap=yes
-depends="xbps-triggers"
 short_desc="Void Linux base system files"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends="xbps-triggers"
 homepage="https://www.voidlinux.eu"
 license="Public domain"
-conf_files="
-	/etc/inputrc
-	/etc/profile
-	/etc/hosts
-	/etc/host.conf
-	/etc/securetty
-	/etc/skel/.bash_profile
-	/etc/skel/.bash_logout
-	/etc/skel/.bashrc
-	/etc/skel/.inputrc
-	/etc/issue
-	/etc/passwd
-	/etc/group
-	/etc/fstab
-	/etc/crypttab
-	/etc/nsswitch.conf"
-
-replaces="base-directories>=0"
-# New system groups
+conf_files+=" /etc/crypttab"
+conf_files+=" /etc/fstab"
+conf_files+=" /etc/group"
+conf_files+=" /etc/host.conf"
+conf_files+=" /etc/hosts"
+conf_files+=" /etc/inputrc"
+conf_files+=" /etc/issue"
+conf_files+=" /etc/nsswitch.conf"
+conf_files+=" /etc/passwd"
+conf_files+=" /etc/profile"
+conf_files+=" /etc/securetty"
+conf_files+=" /etc/skel/.bash_logout"
+conf_files+=" /etc/skel/.bash_profile"
+conf_files+=" /etc/skel/.bashrc"
+conf_files+=" /etc/skel/.inputrc"
+# new system groups
 system_groups="kvm:24"
+bootstrap="yes"
+replaces="base-directories>=0"
 
 do_install() {
-	if [ "$XBPS_TARGET_MACHINE" = "x86_64" ]; then
-		vmkdir usr/lib
-		vmkdir usr/lib32
-		ln -s ../lib/locale ${DESTDIR}/usr/lib32/locale
-		vinstall ${FILESDIR}/ld.so.lib32.conf 644 etc/ld.so.conf.d lib32.conf
-	fi
+  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
+    vmkdir usr/lib
+    vmkdir usr/lib32
+    ln -s ../lib/locale "$DESTDIR/usr/lib32/locale"
+    vinstall "$FILESDIR/ld.so.lib32.conf" 644 etc/ld.so.conf.d lib32.conf
+  fi
 
-	# Install misc config files.
-	for f in bash_logout bash_profile bashrc inputrc; do
-		vinstall ${FILESDIR}/dot_${f} 644 etc/skel .${f}
-	done
+  # install misc config files
+  for f in bash_logout \
+           bash_profile \
+           bashrc \
+           inputrc; do
+    vinstall "$FILESDIR/dot_$f" 644 etc/skel ".$f"
+  done
 
-	vinstall ${FILESDIR}/securetty 600 etc
-	for f in profile hosts host.conf issue \
-		inputrc fstab passwd group crypttab nsswitch.conf; do
-		vinstall ${FILESDIR}/${f} 644 etc
-	done
-	vmkdir etc/colors
-	vmkdir etc/profile.d
-	install -m644 ${FILESDIR}/*.sh ${DESTDIR}/etc/profile.d
-	install -m644 ${FILESDIR}/DIR_COLORS* ${DESTDIR}/etc/colors
+  vinstall "$FILESDIR/securetty" 600 etc
+  for f in crypttab \
+           fstab \
+           group \
+           host.conf \
+           hosts \
+           inputrc \
+           issue \
+           nsswitch.conf \
+           passwd \
+           profile; do
+    vinstall "$FILESDIR/$f" 644 etc
+  done
+  vmkdir etc/colors
+  vmkdir etc/profile.d
+  install -m 644 "$FILESDIR/*.sh" "$DESTDIR/etc/profile.d"
+  install -m 644 "$FILESDIR/DIR_COLORS*" "$DESTDIR/etc/colors"
 
-	# modprobe(8) files
-	vinstall ${FILESDIR}/usb-load-ehci-first 644 usr/lib/modprobe.d usb-load-ehci-first.conf
-	vinstall ${FILESDIR}/blacklist.conf 644 usr/lib/modprobe.d
-	# sysctl(8) files
-	vinstall ${FILESDIR}/sysctl.conf 644 usr/lib/sysctl.d void.conf
+  # modprobe(8) files
+  vinstall "$FILESDIR/usb-load-ehci-first" 644 usr/lib/modprobe.d usb-load-ehci-first.conf
+  vinstall "$FILESDIR/blacklist.conf" 644 usr/lib/modprobe.d
+  # sysctl(8) files
+  vinstall "$FILESDIR/sysctl.conf" 644 usr/lib/sysctl.d void.conf
 
-	# Install common licenses, from Debian.
-	vmkdir usr/share/licenses
-	install -m644 ${FILESDIR}/licenses/* ${DESTDIR}/usr/share/licenses
+  # Install common licenses, from Debian.
+  vmkdir usr/share/licenses
+  install -m 644 "$FILESDIR/licenses"/* "$DESTDIR/usr/share/licenses"
 
-	# vkpurge
-	vbin ${FILESDIR}/vkpurge
-	vman ${FILESDIR}/vkpurge.8
+  # vkpurge
+  vbin "$FILESDIR/vkpurge"
+  vman "$FILESDIR/vkpurge.8"
 
-	vbin ${FILESDIR}/lsb_release
+  vbin "$FILESDIR/lsb_release"
 
-	# Install default dracut configuration.
-	vinstall ${FILESDIR}/dracut.conf.d.voidlinux.conf 644 \
-		usr/lib/dracut/dracut.conf.d 00-void.conf
+  # Install default dracut configuration.
+  vinstall "$FILESDIR/dracut.conf.d.voidlinux.conf" 644 usr/lib/dracut/dracut.conf.d 00-void.conf
 
-	# Create /proc/self/mounts -> /etc/mtab symlink.
-	ln -sf /proc/self/mounts ${DESTDIR}/etc/mtab
+  # Create /proc/self/mounts -> /etc/mtab symlink.
+  ln -sf /proc/self/mounts "$DESTDIR/etc/mtab"
 
-	# udev rules
-	vmkdir usr/lib/udev/rules.d
-	install -m644 ${FILESDIR}/*.rules ${DESTDIR}/usr/lib/udev/rules.d
+  # udev rules
+  vmkdir usr/lib/udev/rules.d
+  install -m 644 "$FILESDIR"/*.rules "$DESTDIR/usr/lib/udev/rules.d"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

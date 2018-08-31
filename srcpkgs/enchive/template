@@ -10,7 +10,13 @@ distfiles="https://github.com/skeeto/enchive/releases/download/$version/$pkgname
 checksum="1e8551df0bb98a4f20930a010b3a6b01f60078af86288370ef93895a3918505e"
 build_style="gnu-makefile"
 
-CFLAGS='-ansi -pedantic -Wall -Wextra -O3 -g3 -D_FILE_OFFSET_BITS=64'
+CFLAGS+=" -ansi"
+CFLAGS+=" -pedantic"
+CFLAGS+=" -Wall"
+CFLAGS+=" -Wextra"
+CFLAGS+=" -O3"
+CFLAGS+=" -g3"
+CFLAGS+=" -D_FILE_OFFSET_BITS=64"
 CFLAGS+=" -DENCHIVE_AGENT_TIMEOUT=420"
 CFLAGS+=" -DENCHIVE_FILE_EXTENSION='.enc'"
 

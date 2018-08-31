@@ -1,23 +1,29 @@
-# Template file for 'colordiff'
-pkgname=colordiff
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="colordiff"
 version=1.0.18
 revision=1
-depends="perl"
-noarch=yes
-conf_files="/etc/colordiffrc /etc/colordiffrc-lightbg /etc/colordiffrc-gitdiff"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2"
-homepage="http://www.colordiff.org/"
 short_desc="Colorizes output of diff"
-distfiles="http://www.colordiff.org/${pkgname}-${version}.tar.gz"
-checksum=29cfecd8854d6e19c96182ee13706b84622d7b256077df19fbd6a5452c30d6e0
+noarch="yes"
+depends="perl"
+homepage="http://www.colordiff.org/"
+license="GPL-2"
+distfiles="http://www.colordiff.org/$pkgname-$version.tar.gz"
+checksum="29cfecd8854d6e19c96182ee13706b84622d7b256077df19fbd6a5452c30d6e0"
+conf_files+=" /etc/colordiffrc"
+conf_files+=" /etc/colordiffrc-gitdiff"
+conf_files+=" /etc/colordiffrc-lightbg"
 
 do_install() {
-	vman colordiff.1
-	vman cdiff.1
-	vbin colordiff.pl colordiff
-	vbin cdiff.sh cdiff
-	vinstall colordiffrc 644 etc
-	vinstall colordiffrc-lightbg 644 etc
-	vinstall colordiffrc-gitdiff 644 etc
+  vbin colordiff.pl colordiff
+  vbin cdiff.sh cdiff
+  vinstall colordiffrc 644 etc
+  vinstall colordiffrc-lightbg 644 etc
+  vinstall colordiffrc-gitdiff 644 etc
 }
+
+post_install() {
+  vman colordiff.1
+  vman cdiff.1
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

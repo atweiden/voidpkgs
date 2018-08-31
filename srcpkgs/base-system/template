@@ -1,25 +1,66 @@
-# Template file for 'base-system'
-pkgname=base-system
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="base-system"
 version=0.112
 revision=3
-build_style=meta
-homepage="https://www.voidlinux.eu/"
 short_desc="Void Linux base system meta package"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends+=" acpid"
+depends+=" base-files>=0.77"
+depends+=" bash"
+depends+=" btrfs-progs"
+depends+=" coreutils"
+depends+=" dash"
+depends+=" dhcpcd"
+depends+=" diffutils"
+depends+=" dosfstools"
+depends+=" e2fsprogs"
+depends+=" ethtool"
+depends+=" eudev"
+depends+=" f2fs-tools"
+depends+=" file"
+depends+=" findutils"
+depends+=" gawk"
+depends+=" grep"
+depends+=" gzip"
+depends+=" iana-etc"
+depends+=" iproute2"
+depends+=" iputils"
+depends+=" iw"
+depends+=" kbd"
+depends+=" kmod"
+depends+=" less"
+depends+=" libgcc"
+depends+=" man-pages"
+depends+=" mdocml>=1.13.3"
+depends+=" ncurses"
+depends+=" nvi"
+depends+=" openssh"
+depends+=" pciutils"
+depends+=" procps-ng"
+depends+=" psmisc"
+depends+=" runit-void"
+depends+=" sed"
+depends+=" shadow"
+depends+=" sudo"
+depends+=" tar"
+depends+=" traceroute"
+depends+=" tzdata"
+depends+=" usbutils"
+depends+=" util-linux"
+depends+=" void-artwork"
+depends+=" which"
+depends+=" wifi-firmware"
+depends+=" wpa_supplicant"
+depends+=" xbps"
+depends+=" xfsprogs"
+case "$XBPS_TARGET_MACHINE" in
+  *-musl) depends+=" musl";;
+  *) depends+=" glibc-locales";;
+esac
+case "$XBPS_TARGET_MACHINE" in
+  i686*|x86_64*) depends+=" linux";;
+esac
+homepage="https://www.voidlinux.eu/"
 license="Public domain"
+build_style="meta"
 
-depends="
- base-files>=0.77 ncurses coreutils findutils diffutils libgcc
- dash bash grep gzip file sed gawk less util-linux which tar man-pages
- mdocml>=1.13.3 shadow e2fsprogs btrfs-progs xfsprogs f2fs-tools dosfstools
- psmisc procps-ng tzdata pciutils usbutils iana-etc openssh dhcpcd
- kbd iproute2 iputils iw wpa_supplicant xbps nvi sudo wifi-firmware
- void-artwork traceroute ethtool kmod acpid eudev runit-void"
-
-case "$XBPS_TARGET_MACHINE" in
-	*-musl) depends+=" musl";;
-	*) depends+=" glibc-locales";;
-esac
-case "$XBPS_TARGET_MACHINE" in
-	i686*|x86_64*) depends+=" linux";;
-esac
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

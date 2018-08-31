@@ -108,7 +108,7 @@ do_install() {
   if [[ -n "$_GRUBX64" ]]; then
     cd "$wrksrc/efi_build"
     make DESTDIR="$DESTDIR/efi" install
-    # Remove non-platform specific files
+    # remove non-platform specific files
     rm -rf "$DESTDIR/efi"/{boot,etc,usr/{share,bin}}
     rm -f "$DESTDIR/efi/usr/lib/grub/x86_64-efi"/x86_64-*
     rm -f "$DESTDIR/efi/usr/lib/grub/x86_64-efi"/*.{module,image}
@@ -118,7 +118,7 @@ do_install() {
 
   cd "$wrksrc/efi_i386_build"
   make DESTDIR="$DESTDIR/efi_i386" install
-  # Remove non-platform specific files
+  # remove non-platform specific files
   rm -rf "$DESTDIR/efi_i386"/{boot,etc,usr/{share,bin}}
   rm -f "$DESTDIR/efi_i386/usr/lib/grub/i386-efi"/i386-*
   rm -f "$DESTDIR/efi_i386/usr/lib/grub/i386-efi"/*.{module,image}
@@ -128,18 +128,18 @@ do_install() {
   cd "$wrksrc/bios_build"
   make DESTDIR="$DESTDIR" install
 
-  # Required to compress info files.
+  # required to compress info files
   vmkdir usr/share/info
   touch -f "$DESTDIR/usr/share/info/dir"
 
   vinstall "$FILESDIR/grub.default" 644 etc/default grub
-  # Kernel hooks.
+  # kernel hooks
   vinstall "$FILESDIR/kernel.d/grub.post" 750 \
     etc/kernel.d/post-install 50-grub
   vinstall "$FILESDIR/kernel.d/grub.post" 750 \
     etc/kernel.d/post-remove 50-grub
 
-  # update-grub for noobs.
+  # update-grub for noobs
   printf "#!/bin/sh\ngrub-mkconfig -o /boot/grub/grub.cfg\nexit \$?\n" >> \
     "$DESTDIR/usr/bin/update-grub"
   chmod 755 "$DESTDIR/usr/bin/update-grub"
@@ -147,8 +147,10 @@ do_install() {
   vmkdir usr/share/bash-completion/completions
   mv "$DESTDIR/etc/bash_completion.d/grub" \
     "$DESTDIR/usr/share/bash-completion/completions"
+}
 
-  # Remove useless tools
+do_clean() {
+  # remove useless tools
   rm "$DESTDIR/usr/bin/grub-ofpathname"
   rm "$DESTDIR/usr/bin/grub-sparc64-setup"
 }

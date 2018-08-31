@@ -16,19 +16,16 @@ checksum="66afca2b308351b180136cf899a3b22865af1a775efaf74dc8a10c96d4721c5a"
 wrksrc="$pkgname-$version.src"
 build_style="cmake"
 configure_args="-G Ninja"
-make_cmd="ninja"
-
 case "$XBPS_TARGET_MACHINE" in
   *-musl) configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
 esac
-
-do_install() {
-  cd "${cmake_builddir:=build}"
-  DESTDIR="$DESTDIR" ninja install
-}
+make_cmd="ninja"
 
 post_install() {
   vlicense LICENSE.txt
+}
+
+do_clean() {
   # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
   rm "$DESTDIR/usr/lib/libgomp.so"
 }

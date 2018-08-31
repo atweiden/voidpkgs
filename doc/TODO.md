@@ -1,5 +1,14 @@
 Todo
 ====
 
-- trim [common/options.description](../common/options.description)
-- replace `pkg-config` with `pkgconf`
+pick up where you left off:
+
+```sh
+comm -3 <(find . -type f -name 'template' | sed 's,./,,' | sort ) <(ag Weidenbaum -l | sort) | ag srcpkgs
+```
+
+- adhere to style guide
+  - convert tabs to spaces
+  - put all `&&` conditional on separate line
+- trim non-`template` files
+- s/voidlinux.eu/voidlinux.org

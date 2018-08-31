@@ -3,7 +3,6 @@ pkgname="git"
 version=2.18.0
 revision=1
 short_desc="Git Tree History Storage Tool"
-# required by https://
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
 depends+=" perl-MIME-tools"

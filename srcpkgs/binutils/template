@@ -1,121 +1,148 @@
-# Template file for 'binutils'
-pkgname=binutils
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="binutils"
 version=2.29.1
 revision=3
-bootstrap=yes
 short_desc="GNU binary utilities"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.bz2"
-checksum=1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.bz2"
+checksum="1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
+bootstrap="yes"
 
-if [ "$CHROOT_READY" ]; then
-	hostmakedepends="flex perl"
-	checkdepends="bc"
+if [[ -n "$CHROOT_READY" ]]; then
+  hostmakedepends+=" flex"
+  hostmakedepends+=" perl"
+  checkdepends="bc"
 else
-	unset XBPS_CHECK_PKGS
+  unset XBPS_CHECK_PKGS
 fi
-makedepends+=" zlib-devel"
+
+makedepends="zlib-devel"
 
 pre_configure() {
-	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-	# Drop bashism!
-	sed -e 's,source,\.,g' -i ld/scripttempl/elf32msp430.sc
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  # drop bashism
+  sed -e 's,source,\.,g' -i ld/scripttempl/elf32msp430.sc
 }
+
 do_configure() {
-	if [ "$XBPS_TARGET_MACHINE" = "x86_64" ]; then
-		CONFIGFLAG="--enable-64-bit-bfd --enable-multilib"
-	fi
-	if [ "$CROSS_BUILD" ]; then
-		# Do not use configure_args nor build_style=gnu-configure,
-		# avoiding --with-sysroot to $XBPS_CROSS_BASE.
-		CONFIGFLAG="--host=$XBPS_CROSS_TRIPLET --with-build-sysroot=$XBPS_CROSS_BASE"
-	fi
-	if [ "$XBPS_TARGET_MACHINE" = "mipsel-musl" ]; then
-		CONFIGFLAG+=" --with-float=soft --without-fp"
-	fi
-	if [ "${XBPS_TARGET_MACHINE%-musl}" = "x86_64" ]; then
-		CONFIGFLAG+=" --enable-targets=x86_64-pep"
-	fi
-	./configure --build=$XBPS_TRIPLET --prefix=/usr --enable-threads \
-		--enable-plugins --enable-secureplt --with-mmap \
-		--disable-shared --enable-gold --disable-werror \
-		--enable-deterministic-archives --enable-ld=default \
-		--disable-nls $CONFIGFLAG
+  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
+    unset CONFIGFLAG
+    CONFIGFLAG+=" --enable-64-bit-bfd"
+    CONFIGFLAG+=" --enable-multilib"
+  fi
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # do not use configure_args or build_style=gnu-configure
+    # avoid passing --with-sysroot to $XBPS_CROSS_BASE
+    unset CONFIGFLAG
+    CONFIGFLAG+=" --host=$XBPS_CROSS_TRIPLET"
+    CONFIGFLAG+=" --with-build-sysroot=$XBPS_CROSS_BASE"
+  fi
+
+  if [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
+    CONFIGFLAG+=" --with-float=soft"
+    CONFIGFLAG+=" --without-fp"
+  fi
+
+  if [[ "${XBPS_TARGET_MACHINE%-musl}" == "x86_64" ]]; then
+    CONFIGFLAG+=" --enable-targets=x86_64-pep"
+  fi
+
+  ./configure \
+    "$CONFIGFLAG" \
+    --build="$XBPS_TRIPLET" \
+    --disable-nls \
+    --disable-shared \
+    --disable-werror \
+    --enable-deterministic-archives \
+    --enable-gold \
+    --enable-ld=default \
+    --enable-plugins \
+    --enable-secureplt \
+    --enable-threads \
+    --prefix=/usr \
+    --with-mmap
 }
+
 do_build() {
-	make ${makejobs}
+  make "$makejobs"
 
-	# Rebuild libiberty.a with -fPIC
-	cp -a libiberty libiberty-pic
-	make -C libiberty-pic clean
-	make CFLAGS="$CFLAGS -fPIC" -C libiberty-pic
+  # rebuild libiberty.a with -fPIC
+  cp -a libiberty libiberty-pic
+  make -C libiberty-pic clean
+  make CFLAGS="$CFLAGS -fPIC" -C libiberty-pic
 
-	# Rebuild libbfd.a with -fPIC
-	# hidden visability prevent 3rd party shared libraries exporting bfd non-stable API
-	cp -a bfd bfd-pic
-	make -C bfd-pic clean
-	make CFLAGS="$CFLAGS -fPIC -fvisibility=hidden" -C bfd-pic
+  # rebuild libbfd.a with -fPIC
+  cp -a bfd bfd-pic
+  make -C bfd-pic clean
+  # visibility=hidden to prevent 3rd-party shared libraries from exporting
+  # bfd non-stable API
+  make CFLAGS="$CFLAGS -fPIC -fvisibility=hidden" -C bfd-pic
 
-	# Rebuild libopcodes.a with -fPIC
-	cp -a opcodes opcodes-pic
-	make -C opcodes-pic clean
-	make CFLAGS="$CFLAGS -fPIC" -C opcodes-pic
+  # rebuild libopcodes.a with -fPIC
+  cp -a opcodes opcodes-pic
+  make -C opcodes-pic clean
+  make CFLAGS="$CFLAGS -fPIC" -C opcodes-pic
 }
+
 do_check() {
-	make -k check
+  make -k check
 }
+
 do_install() {
-	if [ "$XBPS_TARGET_MACHINE" = "x86_64" ]; then
-		mkdir -p ${DESTDIR}/usr/lib
-		cd ${DESTDIR}/usr
-		ln -s lib lib64
-		cd ${wrksrc}
-	fi
-	make DESTDIR=${DESTDIR} tooldir=/usr install
+  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
+    mkdir -p "$DESTDIR/usr/lib"
+    cd "$DESTDIR/usr"
+    ln -s lib lib64
+    cd "$wrksrc"
+  fi
+  make DESTDIR="$DESTDIR" tooldir="/usr" install
 
-	# Remove ld (hardlink) and make a symlink to ld.bfd.
-	rm -f ${DESTDIR}/usr/bin/ld
-	ln -sfr ${DESTDIR}/usr/bin/ld.bfd ${DESTDIR}/usr/bin/ld
+  # remove ld (hardlink) and make a symlink to ld.bfd
+  rm -f "$DESTDIR/usr/bin/ld"
+  ln -sfr "$DESTDIR/usr/bin/ld.bfd" "$DESTDIR/usr/bin/ld"
 
-	# Add some useful headers
-	install -m644 include/libiberty.h ${DESTDIR}/usr/include
-	install -m644 include/demangle.h ${DESTDIR}/usr/include
+  # add some useful headers
+  install -m 644 include/libiberty.h "$DESTDIR/usr/include"
+  install -m 644 include/demangle.h "$DESTDIR/usr/include"
 
-	# install libraries rebuilt with -fPIC
-	install -m644 libiberty-pic/libiberty.a ${DESTDIR}/usr/lib
-	install -m644 bfd-pic/libbfd.a ${DESTDIR}/usr/lib
-	install -m644 opcodes-pic/libopcodes.a ${DESTDIR}/usr/lib
+  # install libraries rebuilt with -fPIC
+  install -m 644 libiberty-pic/libiberty.a "$DESTDIR/usr/lib"
+  install -m 644 bfd-pic/libbfd.a "$DESTDIR/usr/lib"
+  install -m 644 opcodes-pic/libopcodes.a "$DESTDIR/usr/lib"
 
-	# Remove these symlinks, they are not ABI stable.
-	# Programs should compile static to the .a file.
-	rm -f ${DESTDIR}/usr/lib/lib{bfd,opcodes}.so
-	echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" \
-		>${DESTDIR}/usr/lib/libbfd.so
-	echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" \
-		>${DESTDIR}/usr/lib/libopcodes.so
+  # remove these symlinks, they are not ABI stable
+  # programs should compile static to the .a file
+  rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
+  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" \
+    >"$DESTDIR/usr/lib/libbfd.so"
+  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" \
+    >"$DESTDIR/usr/lib/libopcodes.so"
 
-	# Remove info file that conflicts with autoconf.
-	rm -f ${DESTDIR}/usr/share/info/standards.info
-	rm -f ${DESTDIR}/usr/lib64
+  # remove info file that conflicts with autoconf
+  rm -f "$DESTDIR/usr/share/info/standards.info"
+  rm -f "$DESTDIR/usr/lib64"
 
-	# Remove useless manpages.
-	for f in dlltool nlmconv windres windmc; do
-		rm -f ${DESTDIR}/usr/share/man/man1/${f}.1
-	done
-	# Create triplet symlinks
-	for f in ${DESTDIR}/usr/bin/*; do
-		ln -s ${f##*/} ${DESTDIR}/usr/bin/${XBPS_CROSS_TRIPLET:-${XBPS_TRIPLET}}-${f##*/}
-	done
+  # remove useless manpages
+  for f in dlltool nlmconv windres windmc; do
+    rm -f "$DESTDIR/usr/share/man/man1/$f.1"
+  done
+
+  # create triplet symlinks
+  for f in "$DESTDIR/usr/bin"/*; do
+    ln -s "${f##*/}" "$DESTDIR/usr/bin/${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}-${f##*/}"
+  done
 }
 
 binutils-devel_package() {
-	depends="zlib-devel"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends="zlib-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

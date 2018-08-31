@@ -1,5 +1,5 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
-pkgname=dbus
+pkgname="dbus"
 version=1.12.10
 revision=2
 short_desc="Message bus system"

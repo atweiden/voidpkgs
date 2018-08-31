@@ -1,61 +1,65 @@
-# Template file for 'cargo'
-pkgname=cargo
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cargo"
 version=0.29.0
 revision=2
-hostmakedepends="rust python curl cmake pkg-config"
-makedepends="libcurl-devel libgit2-devel"
-depends="rust"
 short_desc="Rust package manager"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="MIT, Apache-2.0"
+depends="rust"
+makedepends+=" libcurl-devel"
+makedepends+=" libgit2-devel"
+hostmakedepends+=" cmake"
+hostmakedepends+=" curl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python"
+hostmakedepends+=" rust"
 homepage="https://crates.io/"
-distfiles="https://github.com/rust-lang/cargo/archive/${version}.tar.gz"
-checksum=9aedb9536ec0b92059ed06b79a72798daf14e3fbcf29fac308ac07d23a9493d3
-nocross=yes
+license="MIT, Apache-2.0"
+distfiles="https://github.com/rust-lang/cargo/archive/$version.tar.gz"
+checksum="9aedb9536ec0b92059ed06b79a72798daf14e3fbcf29fac308ac07d23a9493d3"
+nocross="yes"
 
 case "$XBPS_MACHINE" in
-x86_64-musl)
-	distfiles+="
-	 https://repo.voidlinux.eu/distfiles/cargo-0.29.0-x86_64-unknown-linux-musl-libgit2-27.tar.gz"
-	checksum+="
-	 a46cb16e1008032277d744b74cba16a107539b12b8fbfd763c4cc1f80ee5568c"
-	;;
-x86_64)
-	distfiles+="
-	 https://static.rust-lang.org/dist/cargo-0.29.0-x86_64-unknown-linux-gnu.tar.gz"
-	checksum+="
-	 a5e7749767c47669ed9b6e32c6fb8eda6b0fe1c63ac73a6d4666b5c1352bad24"
-	;;
-i686)
-	distfiles+="
-	 https://static.rust-lang.org/dist/cargo-0.29.0-i686-unknown-linux-gnu.tar.gz"
-	checksum+="
-	 ec9ba3aa064719222bb59de4cf8f2ad061bb31288e7dd4e98b80215203aa5876"
-	;;
+  x86_64-musl)
+    distfiles+=" https://repo.voidlinux.eu/distfiles/cargo-$version-x86_64-unknown-linux-musl-libgit2-27.tar.gz"
+    checksum+=" a46cb16e1008032277d744b74cba16a107539b12b8fbfd763c4cc1f80ee5568c"
+    ;;
+  x86_64)
+    distfiles+=" https://static.rust-lang.org/dist/cargo-$version-x86_64-unknown-linux-gnu.tar.gz"
+    checksum+=" a5e7749767c47669ed9b6e32c6fb8eda6b0fe1c63ac73a6d4666b5c1352bad24"
+    ;;
+  i686)
+    distfiles+=" https://static.rust-lang.org/dist/cargo-$version-i686-unknown-linux-gnu.tar.gz"
+    checksum+=" ec9ba3aa064719222bb59de4cf8f2ad061bb31288e7dd4e98b80215203aa5876"
+    ;;
 esac
 
 post_extract() {
-	mkdir -p target/snapshot
-	case "$XBPS_MACHINE" in
-		x86_64-musl) cp ../cargo cargo;;
-		*) cp ../cargo-*/cargo/bin/cargo cargo;;
-	esac
+  mkdir -p target/snapshot
+  case "$XBPS_MACHINE" in
+    x86_64-musl) cp ../cargo cargo                   ;;
+    *)           cp ../cargo-*/cargo/bin/cargo cargo ;;
+  esac
 }
-do_build() {
-	export LIBGIT2_SYS_USE_PKG_CONFIG=yes
-	export CARGO_HOME="${wrksrc}/.cargo"
-	export RUST_BACKTRACE=1
-	./cargo build --release
-}
-do_install() {
-	vbin target/release/cargo
-	for f in src/etc/man/*.?; do
-		vman $f
-	done
-	vinstall src/etc/cargo.bashcomp.sh 0644 usr/share/bash-completion/completions cargo
-	vinstall src/etc/_cargo 0644 usr/share/zsh/site-functions
 
-	vlicense LICENSE-APACHE
-	vlicense LICENSE-MIT
-	vlicense LICENSE-THIRD-PARTY
+do_build() {
+  export LIBGIT2_SYS_USE_PKG_CONFIG="yes"
+  export CARGO_HOME="$wrksrc/.cargo"
+  export RUST_BACKTRACE=1
+  ./cargo build --release
 }
+
+do_install() {
+  vbin target/release/cargo
+}
+
+post_install() {
+  vlicense LICENSE-APACHE
+  vlicense LICENSE-MIT
+  vlicense LICENSE-THIRD-PARTY
+  for f in src/etc/man/*.?; do
+    vman "$f"
+  done
+  vinstall src/etc/cargo.bashcomp.sh 0644 usr/share/bash-completion/completions cargo
+  vinstall src/etc/_cargo 0644 usr/share/zsh/site-functions
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
