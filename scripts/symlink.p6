@@ -8,6 +8,8 @@ my List:D %pkg{Str:D} =
                 acl-progs>,
     'atf' => qw<atf-devel
                 atf-libs>,
+    'aria2' => qw<libaria2
+                  libaria2-devel>,
     'attr' => qw<attr-devel
                  attr-progs>,
     'binutils' => ['binutils-devel'],
@@ -20,6 +22,7 @@ my List:D %pkg{Str:D} =
                         libbtrfsutil
                         libbtrfsutil-devel>,
     'bzip2' => ['bzip2-devel'],
+    'c-ares' => ['c-ares-devel'],
     'cracklib' => qw<cracklib-devel
                      cracklib-python
                      libcracklib>,
@@ -171,6 +174,8 @@ my List:D %pkg{Str:D} =
                       libcap-ng-progs
                       libcap-ng-python
                       libcap-ng-python3>,
+    'libcppunit' => qw<libcppunit-devel
+                       libcppunit-examples>,
     'libedit' => ['libedit-devel'],
     'libevent' => ['libevent-devel'],
     'libffi' => ['libffi-devel'],
