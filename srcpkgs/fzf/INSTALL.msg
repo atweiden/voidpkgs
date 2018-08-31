@@ -1,2 +1,1 @@
-For key bindings, source the appropriate file(s) from
-/usr/share/doc/fzf
+For key bindings, source the appropriate file(s) from /usr/share/doc/fzf
