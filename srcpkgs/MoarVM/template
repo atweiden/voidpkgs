@@ -23,13 +23,19 @@ configure_args+=" --has-libffi"
 configure_args+=" --has-libtommath"
 configure_args+=" --has-libuv"
 configure_args+=" --optimize"
+configure_args+=" --pkgconfig=/usr/bin/pkgconf"
 configure_args+=" --prefix=/usr"
 configure_args+=" --toolchain=gnu"
-configure_args+=" $(vopt_if clang --compiler=clang)"
-nocross="yes"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --build=$XBPS_CROSS_TRIPLET"
+  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+fi
+if [[ -n "$(vopt_if clang clang)" ]]; then
+  configure_args+=" --compiler=clang"
+  nopie="yes"
+fi
 build_options="clang"
 desc_option_png="Use clang instead of gcc to compile MoarVM"
-build_options_default="clang"
 shlib_provides="libmoar.so"
 
 post_install() {
