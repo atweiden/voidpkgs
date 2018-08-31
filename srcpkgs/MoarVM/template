@@ -2,27 +2,47 @@ maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="MoarVM"
 version=2018.06
 revision=1
-short_desc="MoarVM is a virtual machine for Rakudo Perl 6"
+short_desc="A VM for NQP and Rakudo Perl 6"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
-hostmakedepends="perl"
-homepage="http://moarvm.com"
+hostmakedepends+=" binutils"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkgconf"
+hostmakedepends+=" $(vopt_if clang clang)"
+tags="perl6"
+homepage="https://moarvm.org"
 license="Artistic-2.0"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
 checksum="6eb8ffc8966151a8031c02abd78325fbe9ebeb0b835a5b7a9985ea3b25ca39a8"
 build_style="configure"
 configure_script="perl Configure.pl"
-configure_args+=" --prefix=/usr"
-configure_args+=" --has-libuv"
 configure_args+=" --has-libatomic_ops"
 configure_args+=" --has-libffi"
 configure_args+=" --has-libtommath"
+configure_args+=" --has-libuv"
+configure_args+=" --optimize"
+configure_args+=" --prefix=/usr"
+configure_args+=" --toolchain=gnu"
+configure_args+=" $(vopt_if clang --compiler=clang)"
 nocross="yes"
+build_options="clang"
+desc_option_png="Use clang instead of gcc to compile MoarVM"
+build_options_default="clang"
 shlib_provides="libmoar.so"
+
+post_install() {
+  vlicense Artistic2.txt
+  vlicense CREDITS
+  vlicense LICENSE
+  vdoc README.markdown
+  vcopy docs "usr/share/doc/$pkgname/design"
+}
 
 do_clean() {
   rm -rf "$DESTDIR/usr/include/libtommath"
   rm -rf "$DESTDIR/usr/include/libuv"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
