@@ -17,6 +17,7 @@ post_install() {
 
 libxxhash_package() {
   short_desc+=" - library"
+  shlib_provides="libxxhash.so.0"
   pkg_install() {
     vmove "usr/lib/libxxhash.so.*"
   }
@@ -27,9 +28,8 @@ libxxhash-devel_package() {
   depends="libxxhash>=${version}_$revision"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/*.la"
+    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
-    vmove usr/lib/pkgconfig
   }
 }
 
