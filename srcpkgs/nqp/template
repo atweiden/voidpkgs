@@ -5,7 +5,8 @@ revision=1
 short_desc="A lightweight Perl 6-like environment for virtual machines, with MoarVM support"
 depends="MoarVM"
 makedepends="MoarVM"
-hostmakedepends="perl"
+hostmakedepends+=" MoarVM"
+hostmakedepends+=" perl"
 tags="perl6"
 homepage="https://github.com/perl6/nqp"
 license="Artistic-2.0"
@@ -15,7 +16,11 @@ build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
-make_check_target="test"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
+  configure_args+=" --sysroot=$XBPS_CROSS_BASE"
+fi
 nocross="yes"
+make_check_target="test"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
