@@ -1,0 +1,36 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="xxHash"
+version=0.6.5
+revision=1
+short_desc="Fast non-cryptographic hashing algorithm"
+license="BSD-2-Clause, GPL-2.0-or-later"
+homepage="https://cyan4973.github.io/xxHash/"
+distfiles="https://github.com/Cyan4973/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="19030315f4fc1b4b2cdb9d7a317069a109f90e39d1fe4c9159b7aaa39030eb95"
+build_style="gnu-makefile"
+make_build_target="all"
+make_check_target="test"
+
+post_install() {
+  vlicense LICENSE
+}
+
+libxxhash_package() {
+  short_desc+=" - library"
+  pkg_install() {
+    vmove "usr/lib/libxxhash.so.*"
+  }
+}
+
+libxxhash-devel_package() {
+  short_desc+=" - library development files"
+  depends="libxxhash>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.la"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
