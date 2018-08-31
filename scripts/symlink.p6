@@ -308,6 +308,7 @@ my List:D %pkg{Str:D} =
     'python' => ['python-devel'],
     'python-Babel' => ['python3-Babel'],
     'python-Cython' => ['python3-Cython'],
+    'python-M2Crypto' => ['python3-M2Crypto'],
     'python-MarkupSafe' => ['python3-MarkupSafe'],
     'python-Pygments' => ['python3-Pygments'],
     'python-Sphinx' => ['python3-Sphinx'],
