@@ -443,6 +443,9 @@ _pkgs=('ISOEnts'
        'zeromq'
        'zip'
        'zlib'
+       'zsh'
+       'zsh-completions'
+       'zsh-syntax-highlighting'
        'zstd')
 
 for _pkg in "${_pkgs[@]}"; do
