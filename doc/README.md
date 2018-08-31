@@ -5,6 +5,10 @@
 Original license retained from upstream sources, lightly modified to
 remove leading whitespace and wrap at 72 chars.
 
+## [LANGS.md](LANGS.md)
+
+List of programming languages shipped with this repo.
+
 ## [MANUAL.md](MANUAL.md)
 
 [Manual.md](https://github.com/void-linux/void-packages/blob/master/Manual.md)
