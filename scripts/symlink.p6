@@ -155,6 +155,7 @@ my List:D %pkg{Str:D} =
     'irssi' => qw<irssi-devel
                   irssi-perl>,
     'isl15' => ['isl15-devel'],
+    'isl16' => ['isl16-devel'],
     'jansson' => ['jansson-devel'],
     'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],

@@ -1,39 +1,46 @@
-# Template file for 'aria2'
-pkgname=aria2
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="aria2"
 version=1.34.0
 revision=3
-build_style=gnu-configure
-configure_args="--with-openssl --with-libexpat --without-gnutls
- --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
- --with-bashcompletiondir=/usr/share/bash-completion/completions
- --enable-libaria2"
-hostmakedepends="pkg-config"
-makedepends="c-ares-devel expat-devel gmp-devel libressl-devel sqlite-devel
- zlib-devel"
-depends="ca-certificates"
-checkdepends="libcppunit-devel"
 short_desc="Lightweight multi-protocol/multi-source command-line download utility"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+depends="ca-certificates"
+makedepends+=" c-ares-devel"
+makedepends+=" expat-devel"
+makedepends+=" gmp-devel"
+makedepends+=" libressl-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" zlib-devel"
+checkdepends="libcppunit-devel"
+hostmakedepends="pkg-config"
 homepage="https://aria2.github.io/"
+license="GPL-2.0-or-later"
 changelog="https://raw.githubusercontent.com/aria2/aria2/master/NEWS"
-distfiles="https://github.com/aria2/aria2/releases/download/release-${version}/aria2-${version}.tar.xz"
-checksum=3a44a802631606e138a9e172a3e9f5bcbaac43ce2895c1d8e2b46f30487e77a3
+distfiles="https://github.com/aria2/aria2/releases/download/release-$version/aria2-$version.tar.xz"
+checksum="3a44a802631606e138a9e172a3e9f5bcbaac43ce2895c1d8e2b46f30487e77a3"
+build_style="gnu-configure"
+configure_args+=" --with-openssl"
+configure_args+=" --with-libexpat"
+configure_args+=" --without-gnutls"
+configure_args+=" --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --with-bashcompletiondir=/usr/share/bash-completion/completions"
+configure_args+=" --enable-libaria2"
 
 libaria2_package() {
-	short_desc="Multi-Protocol/multi-source download library"
-	pkg_install() {
-		vmove "usr/lib/libaria2.so.*"
-	}
+  short_desc="Multi-Protocol/multi-source download library"
+  pkg_install() {
+    vmove "usr/lib/libaria2.so.*"
+  }
 }
 
 libaria2-devel_package() {
-	short_desc="Multi-Protocol/multi-source download library - development files"
-	depends="libaria2>=${version}_${revision} ${makedepends}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.la"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  short_desc="Multi-Protocol/multi-source download library - development files"
+  depends="libaria2>=${version}_$revision $makedepends"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.la"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
