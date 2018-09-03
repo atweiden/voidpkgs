@@ -1,59 +1,81 @@
-# Template file for 'curl'
-pkgname=curl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="curl"
 version=7.61.0
 revision=1
-build_style=gnu-configure
-configure_args="ac_cv_sizeof_off_t=8 --enable-threaded-resolver --enable-ipv6
- $(vopt_with rtmp) $(vopt_with gssapi) $(vopt_enable ldap) $(vopt_with gnuts)
- $(vopt_enable ldap ldaps) $(vopt_with ssh libssh2) $(vopt_with ssl)
- --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt --without-libidn2"
-hostmakedepends="groff perl pkg-config"
-makedepends="nghttp2-devel zlib-devel $(vopt_if gnutls 'gnutls-devel')
- $(vopt_if gssapi 'mit-krb5-devel') $(vopt_if ldap 'libldap-devel')
- $(vopt_if rtmp 'librtmp-devel') $(vopt_if ssh 'libssh2-devel')
- $(vopt_if ssl 'libressl-devel')"
-depends="ca-certificates"
-checkdepends="python"
 short_desc="Client that groks URLs"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="MIT"
+depends="ca-certificates"
+makedepends+=" nghttp2-devel"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if gnutls gnutls-devel)"
+makedepends+=" $(vopt_if gssapi mit-krb5-devel)"
+makedepends+=" $(vopt_if ldap libldap-devel)"
+makedepends+=" $(vopt_if rtmp librtmp-devel)"
+makedepends+=" $(vopt_if ssh libssh2-devel)"
+makedepends+=" $(vopt_if ssl libressl-devel)"
+checkdepends="python"
+hostmakedepends+=" groff"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="https://curl.haxx.se"
+license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
-distfiles="${homepage}/download/${pkgname}-${version}.tar.bz2"
-checksum=5f6f336921cf5b84de56afbd08dfb70adeef2303751ffb3e570c936c6d656c9c
-build_options="gnutls gssapi ldap rtmp ssh ssl"
-build_options_default="ssh ssl"
-vopt_conflict ssl gnutls
+distfiles="$homepage/download/$pkgname-$version.tar.bz2"
+checksum="5f6f336921cf5b84de56afbd08dfb70adeef2303751ffb3e570c936c6d656c9c"
+build_style="gnu-configure"
+configure_args+=" --enable-ipv6"
+configure_args+=" --enable-threaded-resolver"
+configure_args+=" --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --without-libidn2"
+configure_args+=" ac_cv_sizeof_off_t=8"
+configure_args+=" $(vopt_enable ldap ldaps)"
+configure_args+=" $(vopt_enable ldap)"
+configure_args+=" $(vopt_with gnuts)"
+configure_args+=" $(vopt_with gssapi)"
+configure_args+=" $(vopt_with rtmp)"
+configure_args+=" $(vopt_with ssh libssh2)"
+configure_args+=" $(vopt_with ssl)"
+build_options+=" gnutls"
+build_options+=" gssapi"
+build_options+=" ldap"
+build_options+=" rtmp"
+build_options+=" ssh"
+build_options+=" ssl"
+build_options_default+=" ssh"
+build_options_default+=" ssl"
+
+vopt_conflict "ssl" "gnutls"
 
 pre_configure() {
-	export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
-	export CFLAGS="${CFLAGS/-I${XBPS_CROSS_BASE}\/usr\/include/}"
-	export CPPFLAGS="-D_FORTIFY_SOURCE=2"
+  export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
+  export CFLAGS="${CFLAGS/-I$XBPS_CROSS_BASE\/usr\/include/}"
+  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
 }
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
 
 libcurl_package() {
-	short_desc="The multiprotocol file transfer library"
-	shlib_provides="libcurl-gnutls.so.4"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-		ln -sf libcurl.so.4.5.0 ${PKGDESTDIR}/usr/lib/libcurl-gnutls.so.4
-	}
+  short_desc="The multiprotocol file transfer library"
+  shlib_provides="libcurl-gnutls.so.4"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+    ln -sf libcurl.so.4.5.0 "$PKGDESTDIR/usr/lib/libcurl-gnutls.so.4"
+  }
 }
 libcurl-devel_package() {
-	depends="${makedepends} libcurl>=${version}_${revision}"
-	short_desc="The multiprotocol file transfer library - development files"
-	pkg_install() {
-		vmove usr/bin/curl-config
-		vmove "usr/share/man/man1/curl-config*"
-		vmove usr/share/man/man3
-		vmove usr/share/aclocal
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  depends="$makedepends libcurl>=${version}_$revision"
+  short_desc="The multiprotocol file transfer library - development files"
+  pkg_install() {
+    vmove usr/bin/curl-config
+    vmove "usr/share/man/man1/curl-config*"
+    vmove usr/share/man/man3
+    vmove usr/share/aclocal
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

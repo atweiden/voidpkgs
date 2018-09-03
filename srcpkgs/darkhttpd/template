@@ -1,20 +1,27 @@
-# Template file for 'darkhttpd'
-pkgname=darkhttpd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="darkhttpd"
 version=1.12
 revision=1
 short_desc="A small and secure static webserver"
-maintainer="Andrea Brancaleoni <abc@pompel.me>"
-license="BSD"
 homepage="http://dmr.ath.cx/net/darkhttpd/"
+license="BSD"
 distfiles="$homepage/$pkgname-$version.tar.bz2"
-checksum=a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505
-CFLAGS="$CFLAGS $LDFLAGS"
+checksum="a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505"
+
+CFLAGS+=" $CFLAGS"
+CFLAGS+=" $LDFLAGS"
 
 do_build() {
-	${CC} ${CFLAGS} ${LDFLAGS} ${LIBS} ${pkgname}.c -o ${pkgname}
+  "$CC" "$CFLAGS" "$LDFLAGS" "$LIBS" "$pkgname.c" -o "$pkgname"
 }
+
 do_install() {
-	vbin ${pkgname}
-	sed -n '0,/^$/p' darkhttpd.c > LICENSE
-	vlicense LICENSE
+  vbin "$pkgname"
 }
+
+post_install() {
+  sed -n '0,/^$/p' darkhttpd.c > LICENSE
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

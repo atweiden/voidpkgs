@@ -1,20 +1,22 @@
-# Template file for 'dialog'
-pkgname=dialog
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dialog"
 _distver=1.3
 _date=20180621
-version="${_distver}.${_date}"
+version="$_distver.$_date"
 revision=1
-wrksrc="${pkgname}-${_distver}-${_date}"
-build_style=gnu-configure
-configure_args="--with-ncursesw --disable-nls"
-makedepends="ncurses-devel"
 short_desc="A tool to display dialog boxes from shell scripts"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
-license="LGPL-2.1-only"
+makedepends="ncurses-devel"
 homepage="https://invisible-island.net/dialog/"
-distfiles="https://invisible-mirror.net/archives/${pkgname}/${pkgname}-${_distver}-${_date}.tgz"
-checksum=4a4859e2b22d24e46c1a529b5a5605b95503aa04da4432f7bbd713e3e867587a
+license="LGPL-2.1-only"
+distfiles="https://invisible-mirror.net/archives/$pkgname/$pkgname-$_distver-$_date.tgz"
+checksum="4a4859e2b22d24e46c1a529b5a5605b95503aa04da4432f7bbd713e3e867587a"
+wrksrc="$pkgname-$_distver-$_date"
+build_style="gnu-configure"
+configure_args+=" --disable-nls"
+configure_args+=" --with-ncursesw"
 
 post_install() {
-	rm -r ${DESTDIR}/usr/lib
+  rm -r "$DESTDIR/usr/lib"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

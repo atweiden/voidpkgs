@@ -1,24 +1,36 @@
-# Template file for 'docbook2x'
-pkgname=docbook2x
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="docbook2x"
 version=0.8.8
 revision=5
-patch_args="-Np1"
-wrksrc="docbook2X-${version}"
-build_style=gnu-configure
-configure_args="--without-resolver-jars --without-saxon-jars --without-xalan-jars"
-hostmakedepends="texinfo libxslt docbook docbook-dsssl docbook-xsl perl-XML-SAX"
-depends="${hostmakedepends}"
-xml_entries="
- nextCatalog /usr/share/docbook2X/dtd/catalog.xml --
- nextCatalog /usr/share/docbook2X/xslt/catalog.xml --"
+depends+=" docbook"
+depends+=" docbook-dsssl"
+depends+=" docbook-xsl"
+depends+=" libxslt"
+depends+=" perl-XML-SAX"
+depends+=" texinfo"
+hostmakedepends+=" docbook"
+hostmakedepends+=" docbook-dsssl"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" perl-XML-SAX"
+hostmakedepends+=" texinfo"
 short_desc="DocBook converter to UNIX manpage and GNU Texinfo format"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://docbook2x.sourceforge.net"
 license="MIT"
-distfiles="${SOURCEFORGE_SITE}/$pkgname/docbook2X-$version.tar.gz"
-checksum=4077757d367a9d1b1427e8d5dfc3c49d993e90deabc6df23d05cfe9cd2fcdc45
+distfiles="$SOURCEFORGE_SITE/$pkgname/docbook2X-$version.tar.gz"
+checksum="4077757d367a9d1b1427e8d5dfc3c49d993e90deabc6df23d05cfe9cd2fcdc45"
+wrksrc="docbook2X-$version"
+build_style="gnu-configure"
+configure_args+=" --without-resolver-jars"
+configure_args+=" --without-saxon-jars"
+configure_args+=" --without-xalan-jars"
+patch_args="-Np1"
+xml_entries+=" nextCatalog /usr/share/docbook2X/dtd/catalog.xml --"
+xml_entries+=" nextCatalog /usr/share/docbook2X/xslt/catalog.xml --"
 
 post_install() {
-	sed -i -e 's|${prefix}|/usr|g' ${DESTDIR}/usr/bin/*
-	vlicense COPYING
+  sed -i -e 's|${prefix}|/usr|g' "$DESTDIR/usr/bin"/*
+  vlicense COPYING
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

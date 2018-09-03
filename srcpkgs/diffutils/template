@@ -1,26 +1,27 @@
-# Template file for 'diffutils'
-pkgname=diffutils
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="diffutils"
 version=3.6
 revision=3
-bootstrap=yes
-build_style=gnu-configure
-configure_args="gl_cv_func_gettimeofday_clobber=no gl_cv_func_tzset_clobber=no"
 short_desc="The GNU diff utilities"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.gnu.org/software/diffutils"
 license="GPL-3"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6
-
-if [ -n "$CROSS_BUILD" ]; then
-	# Tell configure we have GNU getopt
-	configure_args+=" gl_cv_func_getopt_gnu=yes"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6"
+build_style="gnu-configure"
+configure_args="gl_cv_func_gettimeofday_clobber=no gl_cv_func_tzset_clobber=no"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # tell configure we have gnu getopt
+  configure_args+=" gl_cv_func_getopt_gnu=yes"
 fi
+bootstrap="yes"
 
 pre_check() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl* )
-			# Disable locale tests that fail on musl
-			sed -i '/test-mbrtowc5.sh/d' gnulib-tests/Makefile ;;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl* )
+      # disable locale tests that fail on musl
+      sed -i '/test-mbrtowc5.sh/d' gnulib-tests/Makefile
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

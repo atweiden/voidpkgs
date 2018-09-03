@@ -1,52 +1,59 @@
-# Template file for 'dhcp'
-pkgname=dhcp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dhcp"
 version=4.4.1
 revision=1
-wrksrc="dhcp-${version/P/-P}"
-build_style=gnu-configure
-disable_parallel_build=yes
-hostmakedepends="perl"
-conf_files="/etc/dhcpd.conf"
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="ISC"
+hostmakedepends="perl"
 homepage="https://www.isc.org/software/dhcp"
+license="ISC"
 distfiles="http://ftp.isc.org/isc/dhcp/${version/P/-P}/dhcp-${version/P/-P}.tar.gz"
-checksum=2a22508922ab367b4af4664a0472dc220cc9603482cf3c16d9aff14f3a76b608
+checksum="2a22508922ab367b4af4664a0472dc220cc9603482cf3c16d9aff14f3a76b608"
+conf_files="/etc/dhcpd.conf"
+wrksrc="dhcp-${version/P/-P}"
+build_style="gnu-configure"
+disable_parallel_build="yes"
 
 pre_configure() {
-	local _args=" --sbindir=/usr/bin --enable-paranoia
-		--with-srv-lease-file=/var/lib/dhcp/dhcpd.leases
-		--with-srv6-lease-file=/var/lib/dhcp/dhcpd6.leases
-		--with-cli-lease-file=/var/lib/dhclient/dhclient.leases
-		--with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases
-		--with-randomdev=/dev/random"
-	local cargs="$(echo $configure_args | tr '\n' ' ')"
-
-	# set real configure_args
-	export configure_args+="${_args}"
+  local _args+=" --enable-paranoia"
+  local _args+=" --sbindir=/usr/bin"
+  local _args+=" --with-cli-lease-file=/var/lib/dhclient/dhclient.leases"
+  local _args+=" --with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases"
+  local _args+=" --with-randomdev=/dev/random"
+  local _args+=" --with-srv-lease-file=/var/lib/dhcp/dhcpd.leases"
+  local _args+=" --with-srv6-lease-file=/var/lib/dhcp/dhcpd6.leases"
+  local cargs="$(echo $configure_args | tr '\n' ' ')"
+  # set real configure_args
+  export configure_args+=" $_args"
 }
+
 post_install() {
-	mv ${DESTDIR}/etc/dhclient.conf.example ${DESTDIR}/etc/dhclient.conf
-	mv ${DESTDIR}/etc/dhcpd.conf.example ${DESTDIR}/etc/dhcpd.conf
-	sed -i "s/^/#/" $DESTDIR/etc/dhclient.conf $DESTDIR/etc/dhcpd.conf
-	vsv dhcpd4
-	vsv dhcpd6
-	# Remove development stuff, useless...
-	rm -rf ${DESTDIR}/usr/include ${DESTDIR}/usr/lib ${DESTDIR}/usr/share/man/man3
-	vlicense LICENSE
+  vlicense LICENSE
+  vsv dhcpd4
+  vsv dhcpd6
+  mv "$DESTDIR/etc/dhclient.conf.example" "$DESTDIR/etc/dhclient.conf"
+  mv "$DESTDIR/etc/dhcpd.conf.example" "$DESTDIR/etc/dhcpd.conf"
+  sed -i "s/^/#/" "$DESTDIR/etc/dhclient.conf" "$DESTDIR/etc/dhcpd.conf"
+}
+
+do_clean() {
+  # remove development stuff, useless
+  rm -rf "$DESTDIR/usr/include"
+  rm -rf "$DESTDIR/usr/lib"
+  rm -rf "$DESTDIR/usr/share/man/man3"
 }
 
 dhclient_package() {
-	short_desc="Client from the Internet Software Consortium's implementation of DHCP"
-	conf_files="/etc/dhclient.conf"
-	make_dirs="/var/lib/dhclient 0755 root root"
-	pkg_install() {
-		vmove etc/dhclient.conf
-		vmove usr/bin/dhclient
-		vmove usr/share/man/man5/dhclient*
-		vmove usr/share/man/man8/dhclient*
-		vbin client/scripts/linux dhclient-script
-		vsv dhclient
-	}
+  short_desc="Client from the Internet Software Consortium's implementation of DHCP"
+  conf_files="/etc/dhclient.conf"
+  make_dirs="/var/lib/dhclient 0755 root root"
+  pkg_install() {
+    vmove etc/dhclient.conf
+    vmove usr/bin/dhclient
+    vmove "usr/share/man/man5/dhclient*"
+    vmove "usr/share/man/man8/dhclient*"
+    vbin client/scripts/linux dhclient-script
+    vsv dhclient
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

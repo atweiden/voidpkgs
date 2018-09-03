@@ -1,59 +1,68 @@
-# Template file for 'dracut'
-pkgname=dracut
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dracut"
 version=048
 revision=1
-build_style=configure
-configure_args="--prefix=/usr --sysconfdir=/etc"
-hostmakedepends="asciidoc pkg-config"
-makedepends="libkmod-devel"
-depends="bash coreutils cpio psmisc"
-conf_files="/etc/dracut.conf"
-homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
 short_desc="A new initramfs infrastructure"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later, LGPL-2.0-or-later"
-distfiles="${KERNEL_SITE}/utils/boot/${pkgname}/${pkgname}-${version}.tar.xz"
-checksum=0750d6b71b7f95d8dfa338404372bfeb0e5c30e7fe2a21ba55c6dbf3dbcf6a79
-
-make_dirs="
-	/etc/dracut.conf.d 0755 root root
-	/usr/lib/dracut/dracut.conf.d 0755 root root"
-
+depends+=" bash"
+depends+=" coreutils"
+depends+=" cpio"
+depends+=" psmisc"
+makedepends="libkmod-devel"
 case "$XBPS_TARGET_MACHINE" in
-*-musl) # Add musl-fts implementation
-	makedepends+=" musl-fts-devel"
-	;;
+  *-musl) makedepends+=" musl-fts-devel" ;;
 esac
+hostmakedepends="asciidoc pkg-config"
+homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
+license="GPL-2.0-or-later, LGPL-2.0-or-later"
+distfiles="$KERNEL_SITE/utils/boot/$pkgname/$pkgname-$version.tar.xz"
+checksum="0750d6b71b7f95d8dfa338404372bfeb0e5c30e7fe2a21ba55c6dbf3dbcf6a79"
+conf_files="/etc/dracut.conf"
+build_style="configure"
+configure_args+=" --prefix=/usr"
+configure_args+=" --sysconfdir=/etc"
+make_dirs+=" /etc/dracut.conf.d 0755 root root"
+make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
 
 do_build() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl) make ${makejobs} LDLIBS="${XBPS_CROSS_BASE}/usr/lib/libfts.a";;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl) make "$makejobs" LDLIBS="$XBPS_CROSS_BASE/usr/lib/libfts.a" ;;
+  esac
 }
 
 do_check() {
-	# Requires the distfile to be a git repository
-	:
+  # requires the distfile to be a git repository
+  :
 }
 
 post_install() {
-	# kernel hooks.
-	vinstall ${FILESDIR}/kernel-hook-postinst 755 etc/kernel.d/post-install 20-dracut
-	vinstall ${FILESDIR}/kernel-hook-postrm 755 etc/kernel.d/post-remove 20-dracut
-	# We don't need the systemd stuff.
-	rm -rf ${DESTDIR}/usr/lib/dracut/modules.d/*systemd*
-	rm -f ${DESTDIR}/usr/share/man/man8/*.service.*
-	rm -rf ${DESTDIR}/usr/lib/kernel
+  # kernel hooks
+  vinstall "$FILESDIR/kernel-hook-postinst" 755 etc/kernel.d/post-install 20-dracut
+  vinstall "$FILESDIR/kernel-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut
+}
+
+do_clean() {
+  # we don't need the systemd stuff
+  rm -rf "$DESTDIR/usr/lib/dracut/modules.d"/*systemd*
+  rm -f "$DESTDIR/usr/share/man/man8"/*.service.*
+  rm -rf "$DESTDIR/usr/lib/kernel"
 }
 
 dracut-network_package() {
-	depends="dhclient dracut-${version}_${revision}"
-	short_desc+=" - network modules"
-	noarch=yes
-	pkg_install() {
-		for f in 40network 90livenet 95fcoe 95iscsi \
-		    95nbd 95nfs 95zfcp 95znet; do
-			vmove usr/lib/dracut/modules.d/${f}
-		done
-	}
+  depends="dhclient dracut-${version}_$revision"
+  short_desc+=" - network modules"
+  noarch="yes"
+  pkg_install() {
+    for f in 40network \
+             90livenet \
+             95fcoe \
+             95iscsi \
+             95nbd \
+             95nfs \
+             95zfcp \
+             95znet; do
+      vmove "usr/lib/dracut/modules.d/$f"
+    done
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

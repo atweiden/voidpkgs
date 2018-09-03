@@ -1,18 +1,19 @@
-# Template file for 'dosfstools'
-pkgname=dosfstools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dosfstools"
 version=4.1
 revision=1
-build_style=gnu-configure
-configure_args="--enable-compat-symlinks"
-hostmakedepends="pkg-config"
-makedepends="eudev-libudev-devel"
 short_desc="DOS filesystem tools"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="eudev-libudev-devel"
+hostmakedepends="pkg-config"
 homepage="https://github.com/dosfstools/dosfstools"
 license="GPL-3"
-distfiles="https://github.com/$pkgname/$pkgname/releases/download/v$version/${pkgname}-${version}.tar.xz"
-checksum=e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173
+distfiles="https://github.com/$pkgname/$pkgname/releases/download/v$version/$pkgname-$version.tar.xz"
+checksum="e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173"
+build_style="gnu-configure"
+configure_args="--enable-compat-symlinks"
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/doc
+  rm -rf "$DESTDIR/usr/share/doc"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

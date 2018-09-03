@@ -1,16 +1,17 @@
-# Template file for 'dnssec-anchors'
-pkgname=dnssec-anchors
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dnssec-anchors"
 version=20170822
 revision=1
-# can be refreshed by a local DNSSEC aware name server.
-conf_files="/etc/dns/root.key"
 short_desc="DNSSEC trust anchors for the root zone"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="Public Domain"
+noarch="yes"
 homepage="http://data.iana.org/root-anchors/"
-noarch=yes
+license="Public Domain"
+# can be refreshed by a local DNSSEC aware name server
+conf_files="/etc/dns/root.key"
 
 do_install() {
-	# Generate using unbound-anchor(1).
-	vinstall ${FILESDIR}/root.key 644 etc/dns
+  # generate using unbound-anchor(1)
+  vinstall "$FILESDIR/root.key" 644 etc/dns
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

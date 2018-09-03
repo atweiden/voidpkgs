@@ -1,30 +1,53 @@
-# Template file for 'docbook-xsl'
-pkgname=docbook-xsl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="docbook-xsl"
 version=1.79.1
 revision=1
-noarch=yes
-depends="xmlcatmgr docbook-xml>=4.2"
-xml_entries="nextCatalog /usr/share/xsl/docbook/catalog.xml --"
 short_desc="Docbook XSL modular stylesheet"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+noarch="yes"
+depends+=" docbook-xml>=4.2"
+depends+=" xmlcatmgr"
 homepage="http://docbook.sourceforge.net/"
 license="MIT"
-distfiles="${SOURCEFORGE_SITE}/docbook/$pkgname-$version.tar.bz2"
-checksum=725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968
+distfiles="$SOURCEFORGE_SITE/docbook/$pkgname-$version.tar.bz2"
+checksum="725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968"
+xml_entries="nextCatalog /usr/share/xsl/docbook/catalog.xml --"
 
 do_install() {
-	local xslmods="assembly common eclipse epub epub3 fo highlighting html \
-		htmlhelp images javahelp lib manpages params profiling \
-		roundtrip template slides website xhtml xhtml-1_1 xhtml5"
+  local xslmods+=" assembly"
+  local xslmods+=" common"
+  local xslmods+=" eclipse"
+  local xslmods+=" epub"
+  local xslmods+=" epub3"
+  local xslmods+=" fo"
+  local xslmods+=" highlighting"
+  local xslmods+=" html"
+  local xslmods+=" htmlhelp"
+  local xslmods+=" images"
+  local xslmods+=" javahelp"
+  local xslmods+=" lib"
+  local xslmods+=" manpages"
+  local xslmods+=" params"
+  local xslmods+=" profiling"
+  local xslmods+=" roundtrip"
+  local xslmods+=" slides"
+  local xslmods+=" template"
+  local xslmods+=" website"
+  local xslmods+=" xhtml"
+  local xslmods+=" xhtml-1_1"
+  local xslmods+=" xhtml5"
 
-	vinstall catalog.xml 644 usr/share/xsl/docbook
-	vinstall VERSION 644 usr/share/xsl/docbook
-	vinstall VERSION.xsl 644 usr/share/xsl/docbook
+  vinstall catalog.xml 644 usr/share/xsl/docbook
+  vinstall VERSION 644 usr/share/xsl/docbook
+  vinstall VERSION.xsl 644 usr/share/xsl/docbook
 
-	for dir in ${xslmods}; do
-		vmkdir usr/share/xsl/docbook/${dir}
-		cp -a ${dir}/* ${DESTDIR}/usr/share/xsl/docbook/${dir}/
-	done
-
-	vlicense COPYING
+  for dir in $xslmods; do
+    vmkdir "usr/share/xsl/docbook/$dir"
+    cp -a "$dir"/* "$DESTDIR/usr/share/xsl/docbook/$dir/"
+  done
 }
+
+post_install() {
+  vlicense COPYING
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
