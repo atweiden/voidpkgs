@@ -320,7 +320,9 @@ do_install() {
   # install glibc for target
   cd "$wrksrc/glibc-build"
   make install_root="$DESTDIR/$_sysroot" install install-headers
+}
 
+do_clean() {
   # remove unnecessary stuff
   rm -f "$DESTDIR/usr"/lib*/libiberty.a
   rm -rf "$DESTDIR/usr/share"
@@ -328,9 +330,6 @@ do_install() {
   rm -rf "$DESTDIR/$_sysroot/usr"/{sbin,share,libexec}
   rm -rf "$DESTDIR/$_sysroot/usr/lib/gconv"
   rm -f "$DESTDIR/$_sysroot/libexec"
-}
-
-do_clean() {
   # remove temporary stuff from masterdir
   rm -rf "$_sysroot"
   rm -f "/usr/bin"/$_triplet*

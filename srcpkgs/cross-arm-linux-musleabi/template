@@ -118,7 +118,7 @@ _gcc_bootstrap() {
 
   make "$makejobs"
   make install
-  touch $wrksrc/.gcc_bootstrap_done
+  touch "$wrksrc/.gcc_bootstrap_done"
 }
 
 _linux_headers() {
@@ -147,7 +147,7 @@ _musl_build() {
 
   CC="$_triplet-gcc" \
   CFLAGS="-Os -pipe $_archflags" \
-    ./configure --prefix=/usr
+    ./configure --prefix="/usr"
 
   make "$makejobs"
   make DESTDIR="$_sysroot" install

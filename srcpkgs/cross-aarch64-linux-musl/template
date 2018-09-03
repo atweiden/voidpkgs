@@ -151,7 +151,7 @@ _musl_build() {
   CFLAGS="-Os -pipe $_archflags" \
   LD="$_triplet-ld" \
   RANLIB="$_triplet-ranlib" \
-    ./configure --prefix=/usr
+    ./configure --prefix="/usr"
 
   make "$makejobs"
   make DESTDIR="$_sysroot" install
@@ -166,7 +166,7 @@ _gcc_build() {
   cd "$wrksrc"
   msg_normal "Building cross gcc final\n"
 
-  ! [[ -d gcc-build ]] \
+  ! [[ -d "gcc-build" ]] \
     && mkdir gcc-build
   cd gcc-build
 

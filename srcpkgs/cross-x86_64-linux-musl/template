@@ -96,6 +96,7 @@ _gcc_bootstrap() {
   ! [[ -d "../gcc-bootstrap" ]] \
     && mkdir ../gcc-bootstrap
   cd ../gcc-bootstrap
+
   export ac_cv_c_compiler_gnu="yes"
 
   _args+=" $_fpuflags"

@@ -112,7 +112,8 @@ _gcc_bootstrap() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" libat_cv_have_ifunc=no"
 
-  CFLAGS="-O0 -g0" CXXFLAGS="-O0 -g0" \
+  CFLAGS="-O0 -g0" \
+  CXXFLAGS="-O0 -g0" \
     "../gcc-$_gcc_version/configure" "$_args"
 
   make "$makejobs"
