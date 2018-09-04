@@ -22,5 +22,6 @@ comm -3 <(find . -type f -name 'template' | sed 's,./,,' | sort ) <(ag Weidenbau
   - put all `&&` conditional on separate line
 - trim non-`template` files
 - s/voidlinux.eu/voidlinux.org
+- replace `http://` links with `https://`
 
 [upstream]: https://github.com/void-linux/void-packages
