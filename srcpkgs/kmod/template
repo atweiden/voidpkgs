@@ -1,43 +1,47 @@
-# Template file for 'kmod'
-pkgname=kmod
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="kmod"
 version=25
 revision=1
-build_style=gnu-configure
-configure_args="--with-zlib --with-xz"
-hostmakedepends="pkg-config"
-makedepends="zlib-devel liblzma-devel"
-make_dirs="
- /etc/depmod.d 0755 root root
- /etc/modprobe.d 0755 root root
- /usr/lib/depmod.d 0755 root root
- /usr/lib/modprobe.d 0755 root root"
 short_desc="Linux kernel module handling"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
+makedepends+=" liblzma-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
 homepage="http://git.profusion.mobi/cgit.cgi/kmod.git"
-distfiles="${KERNEL_SITE}/utils/kernel/kmod/kmod-${version}.tar.xz"
-checksum=7165e6496656159dcb909a91ed708a0fe273a4b128b4b1dc997ccb5189eef1cd
+license="GPL-2"
+distfiles="$KERNEL_SITE/utils/kernel/kmod/kmod-$version.tar.xz"
+checksum="7165e6496656159dcb909a91ed708a0fe273a4b128b4b1dc997ccb5189eef1cd"
+build_style="gnu-configure"
+configure_args+=" --with-xz"
+configure_args+=" --with-zlib"
+make_dirs+=" /etc/depmod.d 0755 root root"
+make_dirs+=" /etc/modprobe.d 0755 root root"
+make_dirs+=" /usr/lib/depmod.d 0755 root root"
+make_dirs+=" /usr/lib/modprobe.d 0755 root root"
 
 post_install() {
-	vinstall ${FILESDIR}/depmod-search.conf 644 usr/lib/depmod.d search.conf
-	# Add compatibility symlinks.
-	for tool in {ls,ins,rm,dep}mod mod{info,probe}; do
-		ln -sf kmod ${DESTDIR}/usr/bin/${tool}
-	done
+  vinstall "$FILESDIR/depmod-search.conf" 644 usr/lib/depmod.d search.conf
+  # add compatibility symlinks
+  for tool in {ls,ins,rm,dep}mod mod{info,probe}; do
+    ln -sf kmod "$DESTDIR/usr/bin/$tool"
+  done
 }
 
 libkmod_package() {
-	short_desc+=" - runtime shared library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - runtime shared library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
 libkmod-devel_package() {
-	depends="${makedepends} libkmod>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" libkmod>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

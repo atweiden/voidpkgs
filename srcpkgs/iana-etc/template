@@ -1,15 +1,16 @@
-# Template file for 'iana-etc'
-pkgname=iana-etc
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="iana-etc"
 version=20180731
 revision=1
-bootstrap=yes
-noarch=yes
 short_desc="Unix /etc/services and /etc/protocols files"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
+noarch="yes"
 homepage="https://www.iana.org/protocols"
 license="Public Domain"
+bootstrap="yes"
 
 do_install() {
-	vconf ${FILESDIR}/protocols
-	vconf ${FILESDIR}/services
+  vconf "$FILESDIR/protocols"
+  vconf "$FILESDIR/services"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

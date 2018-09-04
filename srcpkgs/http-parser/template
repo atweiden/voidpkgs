@@ -1,31 +1,32 @@
-# Template file for 'http-parser'
-pkgname=http-parser
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="http-parser"
 version=2.8.1
 revision=1
-build_style=gnu-makefile
 short_desc="HTTP request/response parser for c"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="MIT"
 homepage="https://github.com/joyent/http-parser"
-distfiles="$homepage/archive/v${version}.tar.gz"
-checksum=51615f68b8d67eadfd2482decc63b3e55d749ce0055502bbb5b0032726d22d96
-make_build_target=library
+license="MIT"
+distfiles="$homepage/archive/v$version.tar.gz"
+checksum="51615f68b8d67eadfd2482decc63b3e55d749ce0055502bbb5b0032726d22d96"
+build_style="gnu-makefile"
+make_build_target="library"
 
 pre_install() {
-	vmkdir usr/lib/pkgconfig
-	vmkdir usr/include
+  vmkdir usr/lib/pkgconfig
+  vmkdir usr/include
 }
 
 post_install() {
-	vlicense LICENSE-MIT
+  vlicense LICENSE-MIT
 }
 
 http-parser-devel_package() {
-	depends="$sourcepkg>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

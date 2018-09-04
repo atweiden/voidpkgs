@@ -1,19 +1,29 @@
-# Template file for 'gnupg'
-pkgname=gnupg
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gnupg"
 version=1.4.23
 revision=1
-build_style=gnu-configure
-configure_args="--enable-threads=posix --enable-noexecstack gnupg_cv_regex_broken=no"
-makedepends="bzip2-devel zlib-devel libldap-devel libcurl-devel readline-devel libusb-compat-devel"
 short_desc="The GNU Privacy Guard"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" bzip2-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libusb-compat-devel"
+makedepends+=" readline-devel"
+makedepends+=" zlib-devel"
 license="GPL-3.0-or-later"
 homepage="https://www.gnupg.org/"
-distfiles="https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-${version}.tar.bz2"
-checksum=c9462f17e651b6507848c08c430c791287cd75491f8b5a8b50c6ed46b12678ba
+distfiles="https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-$version.tar.bz2"
+checksum="c9462f17e651b6507848c08c430c791287cd75491f8b5a8b50c6ed46b12678ba"
+build_style="gnu-configure"
+configure_args+=" --enable-noexecstack"
+configure_args+=" --enable-threads=posix"
+configure_args+=" gnupg_cv_regex_broken=no"
 
 post_extract() {
-	case "$XBPS_TARGET_MACHINE" in
-		i686-musl) sed -i Makefile* -e"s;checks = checks;checks =;" ;;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    i686-musl)
+      sed -i Makefile* -e"s;checks = checks;checks =;"
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

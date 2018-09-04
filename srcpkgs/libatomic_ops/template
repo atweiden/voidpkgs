@@ -1,27 +1,29 @@
-# Template file for 'libatomic_ops'
-pkgname=libatomic_ops
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libatomic_ops"
 version=7.6.6
 revision=1
-build_style=gnu-configure
-configure_args="--enable-shared --enable-static"
 short_desc="Semi-portable access to hardware provided atomic memory operations"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later, MIT"
 homepage="https://github.com/ivmai/libatomic_ops"
-distfiles="${homepage}/releases/download/v${version}/libatomic_ops-${version}.tar.gz"
-checksum=99feabc5f54877f314db4fadeb109f0b3e1d1a54afb6b4b3dfba1e707e38e074
+license="GPL-2.0-or-later, MIT"
+distfiles="$homepage/releases/download/v$version/libatomic_ops-$version.tar.gz"
+checksum="99feabc5f54877f314db4fadeb109f0b3e1d1a54afb6b4b3dfba1e707e38e074"
+build_style="gnu-configure"
+configure_args+=" --enable-shared"
+configure_args+=" --enable-static"
 
 post_install() {
-	vlicense doc/LICENSING.txt
+  vlicense doc/LICENSING.txt
 }
 
 libatomic_ops-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,30 +1,39 @@
-# Template file for 'kyua'
-pkgname=kyua
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="kyua"
 version=0.13
 revision=1
-build_style=gnu-configure
-configure_args="
- kyua_cv_attribute_noreturn=yes kyua_cv_lchmod_works=no
- kyua_cv_getopt_gnu=yes kyua_cv_getopt_optind_reset_value=0
- kyua_cv_signals_lastno=31 kyua_cv_getcwd_dyn=yes
- ac_cv_path_GDB=/usr/bin/gdb ac_cv_path_UMOUNT=/usr/bin/umount"
-hostmakedepends="pkg-config automake libtool atf-devel"
-makedepends="atf-devel lutok-devel sqlite-devel"
-depends="atf>=0.21"
 short_desc="Kyua (automated testing framework) - Command line interface"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="2-clause-BSD"
+depends="atf>=0.21"
+makedepends+=" atf-devel"
+makedepends+=" lutok-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends+=" atf-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/jmmv/kyua"
-distfiles="https://github.com/jmmv/kyua/releases/download/kyua-${version}/kyua-${version}.tar.gz"
-checksum=db6e5d341d5cf7e49e50aa361243e19087a00ba33742b0855d2685c0b8e721d6
+license="2-clause-BSD"
+distfiles="https://github.com/jmmv/kyua/releases/download/kyua-$version/kyua-$version.tar.gz"
+checksum="db6e5d341d5cf7e49e50aa361243e19087a00ba33742b0855d2685c0b8e721d6"
+build_style="gnu-configure"
+configure_args+=" ac_cv_path_GDB=/usr/bin/gdb"
+configure_args+=" ac_cv_path_UMOUNT=/usr/bin/umount"
+configure_args+=" kyua_cv_attribute_noreturn=yes"
+configure_args+=" kyua_cv_getcwd_dyn=yes"
+configure_args+=" kyua_cv_getopt_gnu=yes"
+configure_args+=" kyua_cv_getopt_optind_reset_value=0"
+configure_args+=" kyua_cv_lchmod_works=no"
+configure_args+=" kyua_cv_signals_lastno=31"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 kyua-tests_package() {
-	short_desc+=" - testsuite"
-	pkg_install() {
-		vmove usr/tests
-	}
+  short_desc+=" - testsuite"
+  pkg_install() {
+    vmove usr/tests
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

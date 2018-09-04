@@ -1,51 +1,55 @@
-# Template build file for 'gmp'
-pkgname=gmp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gmp"
 version=6.1.2
 revision=1
-bootstrap=yes
-build_style=gnu-configure
-configure_args="--enable-cxx"
-hostmakedepends="m4"
-makedepends="zlib-devel"
 short_desc="Library for arbitrary precision arithmetic"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-3"
+makedepends="zlib-devel"
+hostmakedepends="m4"
 homepage="http://gmplib.org/"
-distfiles="https://gmplib.org/download/gmp/gmp-${version}.tar.xz"
-checksum=87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+license="LGPL-3"
+distfiles="https://gmplib.org/download/gmp/gmp-$version.tar.xz"
+checksum="87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
+build_style="gnu-configure"
+configure_args="--enable-cxx"
+bootstrap="yes"
+subpackages+=" gmpxx"
+subpackages+=" gmpxx-devel"
+subpackages+=" gmp-devel"
 
-subpackages="gmpxx gmpxx-devel gmp-devel"
-
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" automake libtool"
-	pre_configure() {
-		autoreconf -if
-	}
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" automake"
+  hostmakedepends+=" libtool"
+  pre_configure() {
+    autoreconf -if
+  }
 fi
 
-
 gmpxx_package() {
-	short_desc+=" - C++ support"
-	pkg_install() {
-		vmove usr/lib/libgmpxx.so.*
-	}
+  short_desc+=" - C++ support"
+  pkg_install() {
+    vmove "usr/lib/libgmpxx.so.*"
+  }
 }
+
 gmpxx-devel_package() {
-	depends="gmpxx-${version}_${revision}"
-	short_desc+=" - C++ development files"
-	pkg_install() {
-		vmove usr/include/gmpxx.h
-		vmove usr/lib/libgmpxx.a
-		vmove usr/lib/libgmpxx.so
-	}
+  depends="gmpxx-${version}_$revision"
+  short_desc+=" - C++ development files"
+  pkg_install() {
+    vmove usr/include/gmpxx.h
+    vmove usr/lib/libgmpxx.a
+    vmove usr/lib/libgmpxx.so
+  }
 }
+
 gmp-devel_package() {
-	depends="gmp-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share
-	}
+  depends="gmp-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

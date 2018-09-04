@@ -1,60 +1,63 @@
-# Template file for 'groff'
-pkgname=groff
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="groff"
 version=1.22.3
 revision=4
-hostmakedepends="perl bison"
-makedepends="zlib-devel"
 short_desc="The GNU troff text-formatting system"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
-homepage="http://www.gnu.org/software/groff/groff.html"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.gz"
-checksum=3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5
-
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" groff"
+makedepends="zlib-devel"
+hostmakedepends+=" bison"
+hostmakedepends+=" perl"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" groff"
 fi
+homepage="http://www.gnu.org/software/groff/groff.html"
+license="GPL-2"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5"
 
 do_configure() {
-	if [ "$CROSS_BUILD" ]; then
-		sed -i \
-			-e '/^GROFFBIN=/s:=.*:=/usr/bin/groff:' \
-			-e '/^TROFFBIN=/s:=.*:=/usr/bin/troff:' \
-			-e '/^GROFF_BIN_PATH=/s:=.*:=:' \
-			-e '/^GROFF_BIN_DIR=/s:=.*:=:' \
-			contrib/*/Makefile.sub \
-			doc/Makefile.in \
-			doc/Makefile.sub
-	fi
-	./configure ${configure_args} --without-x --disable-rpath
+  if [[ -n "$CROSS_BUILD" ]]; then
+    sed -i \
+      -e '/^GROFFBIN=/s:=.*:=/usr/bin/groff:' \
+      -e '/^TROFFBIN=/s:=.*:=/usr/bin/troff:' \
+      -e '/^GROFF_BIN_PATH=/s:=.*:=:' \
+      -e '/^GROFF_BIN_DIR=/s:=.*:=:' \
+      contrib/*/Makefile.sub \
+      doc/Makefile.in \
+      doc/Makefile.sub
+  fi
+  ./configure "$configure_args" --without-x --disable-rpath
 }
+
 do_build() {
-	if [ "$CROSS_BUILD" ]; then
-		make TROFFBIN=troff GROFFBIN=groff GROFF_BIN_PATH=
-	else
-		make
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    make TROFFBIN="troff" GROFFBIN="groff" GROFF_BIN_PATH=
+  else
+    make
+  fi
 }
+
 do_install() {
-	make DESTDIR=${DESTDIR} install
+  make DESTDIR="$DESTDIR" install
 
-	# Remove unused stuff.
-	rm -rf ${DESTDIR}/usr/lib
+  # remove unused stuff
+  rm -rf "$DESTDIR/usr/lib"
 
-	# From Arch:
-	#
-	# Fix some issues when encoding to utf8 man pages
-	# The output chars don't match keyboard chars...
-	for f in man mdoc; do
-		cat ${FILESDIR}/site.tmac >> \
-			${DESTDIR}/usr/share/groff/site-tmac/${f}.local
-	done
+  # from Arch:
+  #
+  # fix some issues when encoding to utf8 man pages
+  # the output chars don't match keyboard chars...
+  for f in man \
+           mdoc; do
+    cat "$FILESDIR/site.tmac" >> "$DESTDIR/usr/share/groff/site-tmac/$f.local"
+  done
 }
 
 groff-doc_package() {
-	short_desc+=" - documentation"
-	noarch=yes
-	pkg_install() {
-		vmove usr/share/doc
-	}
+  short_desc+=" - documentation"
+  noarch="yes"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

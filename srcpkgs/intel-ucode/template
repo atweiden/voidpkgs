@@ -1,25 +1,30 @@
-# Template file for 'intel-ucode'
-pkgname=intel-ucode
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="intel-ucode"
 version=20180807
 revision=1
 _dlid=28039
-noarch=yes
-create_wrksrc=yes
 short_desc="Microcode update files for Intel CPUs"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+noarch="yes"
+only_for_archs+=" i686"
+only_for_archs+=" i686-musl"
+only_for_archs+=" x86_64"
+only_for_archs+=" x86_64-musl"
 license="INTEL Software License Agreement"
 homepage="https://downloadcenter.intel.com/SearchResult.aspx?lang=eng&keyword=%22microcode%22"
-distfiles="https://downloadmirror.intel.com/${_dlid}/eng/microcode-${version}.tgz"
-checksum=29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40
-
+distfiles="https://downloadmirror.intel.com/$_dlid/eng/microcode-$version.tgz"
+checksum="29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40"
 conf_files="/etc/dracut.conf.d/intel_ucode.conf"
-
-only_for_archs="i686 x86_64 i686-musl x86_64-musl"
+create_wrksrc="yes"
 
 do_install() {
-	vmkdir usr/lib/firmware/intel-ucode
-	vcopy "intel-ucode/*" usr/lib/firmware/intel-ucode
-	vmkdir etc/dracut.conf.d
-	echo "early_microcode=yes" >> ${DESTDIR}/etc/dracut.conf.d/intel_ucode.conf
-	vlicense ${FILESDIR}/LICENSE
+  vmkdir usr/lib/firmware/intel-ucode
+  vcopy "intel-ucode/*" usr/lib/firmware/intel-ucode
+  vmkdir etc/dracut.conf.d
+  echo "early_microcode=yes" >> "$DESTDIR/etc/dracut.conf.d/intel_ucode.conf"
 }
+
+post_install() {
+  vlicense "$FILESDIR/LICENSE"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

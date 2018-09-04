@@ -1,21 +1,28 @@
-# Template file for 'gptfdisk'
-pkgname=gptfdisk
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gptfdisk"
 version=1.0.4
 revision=1
-build_style=gnu-makefile
-makedepends="ncurses-devel popt-devel icu-devel libuuid-devel"
 short_desc="GPT fdisk text-mode partitioning tool"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+makedepends+=" icu-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" popt-devel"
 homepage="http://www.rodsbooks.com/gdisk/"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=b663391a6876f19a3cd901d862423a16e2b5ceaa2f4a3b9bb681e64b9c7ba78d
+license="GPL-2.0-or-later"
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="b663391a6876f19a3cd901d862423a16e2b5ceaa2f4a3b9bb681e64b9c7ba78d"
+build_style="gnu-makefile"
 
 do_install() {
-	for f in cgdisk gdisk sgdisk fixparts; do
-		vbin ${f}
-		if [ -r "${f}.8" ]; then
-			vman ${f}.8
-		fi
-	done
+  for f in cgdisk \
+           fixparts \
+           gdisk \
+           sgdisk; do
+    vbin "$f"
+    if [[ -r "$f.8" ]]; then
+      vman "$f.8"
+    fi
+  done
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

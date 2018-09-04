@@ -1,28 +1,30 @@
-# Template file for 'gtest'
-pkgname=gtest
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gtest"
 version=1.8.1
 revision=1
-wrksrc="googletest-release-${version}"
-build_style=cmake
-configure_args="-DBUILD_SHARED_LIBS=ON -DCMAKE_SKIP_RPATH=ON"
-hostmakedepends="unzip"
 short_desc="Google's framework for writing C++ tests"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="BSD-3-Clause"
+hostmakedepends="unzip"
 homepage="https://github.com/google/googletest"
-distfiles="https://github.com/google/googletest/archive/release-${version}.tar.gz>${pkgname}-${version}.tar.gz"
-checksum=9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c
+license="BSD-3-Clause"
+distfiles="https://github.com/google/googletest/archive/release-$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c"
+wrksrc="googletest-release-$version"
+build_style="cmake"
+configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DCMAKE_SKIP_RPATH=ON"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 gtest-devel_package() {
-	depends="gtest>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/cmake
-	}
+  depends="gtest>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove usr/lib/cmake
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

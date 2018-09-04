@@ -1,20 +1,26 @@
-# Template file for 'iw'
-pkgname=iw
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="iw"
 version=4.14
 revision=1
-hostmakedepends="pkg-config libnl3-devel"
-makedepends="libnl3-devel"
 short_desc="nl80211 based CLI configuration utility for wireless devices"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="libnl3-devel"
+hostmakedepends+=" libnl3-devel"
+hostmakedepends+=" pkg-config"
 license="ISC"
 homepage="http://wireless.kernel.org/en/users/Documentation/iw"
-distfiles="http://www.kernel.org/pub/software/network/iw/iw-${version}.tar.xz"
-checksum=f01671c0074bfdec082a884057edba1b9efd35c89eda554638496f03b769ad89
+distfiles="http://www.kernel.org/pub/software/network/iw/iw-$version.tar.xz"
+checksum="f01671c0074bfdec082a884057edba1b9efd35c89eda554638496f03b769ad89"
 
 do_build() {
-	make V=1 CC=$CC ${makejobs}
+  make V=1 CC="$CC" "$makejobs"
 }
+
 do_install() {
-	make PREFIX=/usr SBINDIR=/usr/bin DESTDIR=${DESTDIR} install
-	vlicense COPYING
+  make PREFIX="/usr" SBINDIR="/usr/bin" DESTDIR="$DESTDIR" install
 }
+
+post_install() {
+  vlicense COPYING
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

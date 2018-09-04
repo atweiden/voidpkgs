@@ -1,48 +1,65 @@
-# Template file for 'iproute2'
-pkgname=iproute2
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="iproute2"
 version=4.16.0
 revision=1
-hostmakedepends="pkg-config perl flex"
-makedepends="libfl-devel libmnl-devel db-devel iptables-devel"
-conf_files="
-	/etc/iproute2/ematch_map
-	/etc/iproute2/rt_dsfield
-	/etc/iproute2/rt_protos
-	/etc/iproute2/rt_realms
-	/etc/iproute2/rt_scopes
-	/etc/iproute2/rt_tables"
 short_desc="IP Routing Utilities"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" db-devel"
+makedepends+=" iptables-devel"
+makedepends+=" libfl-devel"
+makedepends+=" libmnl-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="http://www.linux-foundation.org/en/Net:Iproute2"
 license="GPL-2"
-distfiles="${KERNEL_SITE}/utils/net/$pkgname/$pkgname-$version.tar.xz"
-checksum=0c5c24020fd7349fe25728c5edee9fb6a1bc8a38f08e23be5c57a6301e55ee0a
+distfiles="$KERNEL_SITE/utils/net/$pkgname/$pkgname-$version.tar.xz"
+checksum="0c5c24020fd7349fe25728c5edee9fb6a1bc8a38f08e23be5c57a6301e55ee0a"
+conf_files+=" /etc/iproute2/ematch_map"
+conf_files+=" /etc/iproute2/rt_dsfield"
+conf_files+=" /etc/iproute2/rt_protos"
+conf_files+=" /etc/iproute2/rt_realms"
+conf_files+=" /etc/iproute2/rt_scopes"
+conf_files+=" /etc/iproute2/rt_tables"
 
 do_configure() {
-	./configure
-	sed -i 's,CCOPTS,HOSTCCOPTS,g' netem/Makefile
-	sed -i 's/^LDFLAGS +=/override &/' */Makefile
+  ./configure
+  sed -i 's,CCOPTS,HOSTCCOPTS,g' netem/Makefile
+  sed -i 's/^LDFLAGS +=/override &/' */Makefile
 }
+
 do_build() {
-	make HOSTCC=cc CC="$CC" RANLIB="$RANLIB" AR="$AR" LD="$LD" \
-		CCOPTS="$CFLAGS" HOSTCCOPTS="$XBPS_CFLAGS" LDFLAGS="$LDFLAGS" \
-		DBM_INCLUDE="$XBPS_CROSS_BASE/usr/include" ${makejobs}
+  make \
+    AR="$AR" \
+    CC="$CC" \
+    CCOPTS="$CFLAGS" \
+    DBM_INCLUDE="$XBPS_CROSS_BASE/usr/include" \
+    HOSTCC="cc" \
+    HOSTCCOPTS="$XBPS_CFLAGS" \
+    LD="$LD" \
+    LDFLAGS="$LDFLAGS" \
+    RANLIB="$RANLIB" \
+    "$makejobs"
 }
+
 do_check() {
-	cd testsuite
-
-	make
+  cd testsuite
+  make
 }
-do_install() {
-	make DESTDIR=${DESTDIR} SBINDIR=/usr/bin install
 
-	rm -r ${DESTDIR}/usr/share/doc
-	rm -r ${DESTDIR}/usr/share/man/man3
+do_install() {
+  make DESTDIR="$DESTDIR" SBINDIR="/usr/bin" install
+}
+
+do_clean() {
+  rm -r "$DESTDIR/usr/share/doc"
+  rm -r "$DESTDIR/usr/share/man/man3"
 }
 
 iproute2-tc-ipt_package() {
-	short_desc+=" - tc(8) IPtables support"
-	pkg_install() {
-		vmove usr/lib/tc/m_xt.so
-	}
+  short_desc+=" - tc(8) IPtables support"
+  pkg_install() {
+    vmove usr/lib/tc/m_xt.so
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

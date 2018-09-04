@@ -1,25 +1,30 @@
-# Template build file for 'grep'.
-pkgname=grep
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="grep"
 version=3.1
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake libtool pkg-config gettext-devel"
-makedepends="pcre-devel"
 short_desc="The GNU grep utility"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3"
+makedepends="pcre-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://www.gnu.org/software/grep/"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=db625c7ab3bb3ee757b3926a5cfa8d9e1c3991ad24707a83dde8a5ef2bf7a07e
+license="GPL-3"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="db625c7ab3bb3ee757b3926a5cfa8d9e1c3991ad24707a83dde8a5ef2bf7a07e"
+build_style="gnu-configure"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 pre_check() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl)
-			# Disable locale tests that fail on musl
-			sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      # disable locale tests that fail on musl
+      sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

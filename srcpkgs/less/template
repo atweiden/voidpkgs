@@ -1,13 +1,15 @@
-# Template file for 'less'
-pkgname=less
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="less"
 version=530
 revision=1
-build_style=gnu-configure
-configure_args="--with-regex=pcre"
-makedepends="ncurses-devel pcre-devel"
 short_desc="Pager program similar to more(1)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3"
+makedepends+=" ncurses-devel"
+makedepends+=" pcre-devel"
 homepage="http://www.greenwoodsoftware.com/less"
-distfiles="http://www.greenwoodsoftware.com/less/less-${version}.tar.gz"
-checksum=503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2
+license="GPL-3"
+distfiles="http://www.greenwoodsoftware.com/less/less-$version.tar.gz"
+checksum="503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2"
+build_style="gnu-configure"
+configure_args="--with-regex=pcre"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
