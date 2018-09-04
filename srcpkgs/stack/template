@@ -1,36 +1,49 @@
-# Template file for 'stack'
-pkgname=stack
+_stackage="lts-12.0"
+
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="stack"
 version=1.7.1
 revision=1
-_stackage="lts-12.0"
-hostmakedepends="cabal-install pkg-config unzip"
-makedepends="zlib-devel pcre-devel"
-depends="git iana-etc"
 short_desc="Cross-platform program for developing Haskell projects"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="3-clause-BSD"
+depends+=" git"
+depends+=" iana-etc"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" cabal-install"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" unzip"
 homepage="http://haskellstack.org"
-distfiles="https://github.com/commercialhaskell/${pkgname}/releases/download/v${version}/${pkgname}-${version}-sdist-1.tar.gz
- https://www.stackage.org/${_stackage}/cabal.config>cabal.config-${_stackage}"
-skip_extraction="cabal.config-${_stackage}"
-checksum="a548fb549b2b1e539e257732596508e4c3d43e3a9d62bd22ecc19dda67c30ce6
- 5cc57cdd4fe15dc8cbb02ef9e57838e224db7bcb5383c22d6bca5c027f3bee7b"
-nocross=yes
+license="3-clause-BSD"
+distfiles+=" https://github.com/commercialhaskell/$pkgname/releases/download/v$version/$pkgname-$version-sdist-1.tar.gz"
+distfiles+=" https://www.stackage.org/$_stackage/cabal.config>cabal.config-$_stackage"
+checksum+=" a548fb549b2b1e539e257732596508e4c3d43e3a9d62bd22ecc19dda67c30ce6"
+checksum+=" 5cc57cdd4fe15dc8cbb02ef9e57838e224db7bcb5383c22d6bca5c027f3bee7b"
+skip_extraction="cabal.config-$_stackage"
+nocross="yes"
 nopie_files="/usr/bin/stack"
 
 do_build() {
-	cabal sandbox init
-	cp ${XBPS_SRCDISTDIR}/${pkgname}-${version}/cabal.config-${_stackage} cabal.config
-	sed -i 's/\(hpack\|temporary\|store\|fsnotify\|exceptions\|aeson\) .*/\1/' stack.cabal
-	cabal update
-	cabal install ${makejobs} cpphs happy
-	cabal install ${makejobs} --only-dependencies
-	cabal configure -v --prefix=/usr --libsubdir='$pkg' \
-		--datasubdir='$pkg' --docdir='$datadir/doc/$pkg'
-	cabal build ${makejobs}
+  cabal sandbox init
+  cp "$XBPS_SRCDISTDIR/$pkgname-$version/cabal.config-$_stackage" cabal.config
+  sed -i 's/\(hpack\|temporary\|store\|fsnotify\|exceptions\|aeson\) .*/\1/' stack.cabal
+  cabal update
+  cabal install "$makejobs" cpphs happy
+  cabal install "$makejobs" --only-dependencies
+  cabal configure \
+    --datasubdir='$pkg' \
+    --docdir='$datadir/doc/$pkg' \
+    --libsubdir='$pkg' \
+    --prefix="/usr" \
+    -v
+  cabal build "$makejobs"
 }
 
 do_install() {
-	vbin dist/build/stack/stack
-	vlicense LICENSE
+  vbin dist/build/stack/stack
 }
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

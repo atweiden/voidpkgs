@@ -1,41 +1,49 @@
-# Template file for 'tcl'
-pkgname=tcl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tcl"
 version=8.6.8
 revision=1
-wrksrc="tcl${version}"
-build_wrksrc="unix"
-build_style=gnu-configure
-configure_args="--enable-threads --without-tzdata --enable-man-symlinks
- --disable-static --disable-rpath --with-system-sqlite
- tcl_cv_strtod_unbroken=ok"
-makedepends="zlib-devel sqlite-devel"
 short_desc="The TCL scripting language"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" sqlite-devel"
+makedepends+=" zlib-devel"
 homepage="http://www.tcl.tk"
 license="tcl/tk"
-distfiles="${SOURCEFORGE_SITE}/$pkgname/${pkgname}${version}-src.tar.gz"
-checksum=c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a
-
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname$version-src.tar.gz"
+checksum="c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a"
+wrksrc="tcl$version"
+build_wrksrc="unix"
+build_style="gnu-configure"
+configure_args+=" --disable-rpath"
+configure_args+=" --disable-static"
+configure_args+=" --enable-man-symlinks"
+configure_args+=" --enable-threads"
+configure_args+=" --with-system-sqlite"
+configure_args+=" --without-tzdata"
+configure_args+=" tcl_cv_strtod_unbroken=ok"
 shlib_provides="libtcl${version%.*}.so"
 
 post_extract() {
-	sed -i 's/-DSQLITE_API=MODULE_SCOPE//g' pkgs/sqlite*/Makefile.in
+  sed -i 's/-DSQLITE_API=MODULE_SCOPE//g' pkgs/sqlite*/Makefile.in
 }
 
 do_install() {
-	make INSTALL_ROOT=${DESTDIR} install install-private-headers
-	ln -s tclsh8.6 ${DESTDIR}/usr/bin/tclsh
-	vlicense ../license.terms LICENSE
+  make INSTALL_ROOT="$DESTDIR" install install-private-headers
+  ln -s tclsh8.6 "$DESTDIR/usr/bin/tclsh"
+}
+
+post_install() {
+  vlicense ../license.terms LICENSE
 }
 
 tcl-devel_package() {
-	depends="tcl>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/lib/tclConfig.sh
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-		vmove usr/share/man/mann
-	}
+  depends="tcl>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/lib/tclConfig.sh
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+    vmove usr/share/man/mann
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

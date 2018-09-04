@@ -1,64 +1,87 @@
-# Template file for 'glib'
-pkgname=glib
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="glib"
 version=2.56.2
 revision=1
-build_style=gnu-configure
-configure_args="--enable-libelf --disable-fam --with-pcre=system --enable-static"
-hostmakedepends="automake libtool pkg-config perl python3 libxslt docbook-xsl"
-makedepends="zlib-devel pcre-devel libffi-devel dbus-devel elfutils-devel libmount-devel"
+makedepends+=" dbus-devel"
+makedepends+=" elfutils-devel"
+makedepends+=" libffi-devel"
+makedepends+=" libmount-devel"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" libtool"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
 short_desc="The GNU library of C routines"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later"
 homepage="https://wiki.gnome.org/Projects/GLib"
+license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
-distfiles="${GNOME_SITE}/glib/${version%.*}/glib-${version}.tar.xz"
-checksum=d64abd16813501c956c4e123ae79f47f1b58de573df9fdd3b0795f1e2c1aa789
+distfiles="$GNOME_SITE/glib/${version%.*}/glib-$version.tar.xz"
+checksum="d64abd16813501c956c4e123ae79f47f1b58de573df9fdd3b0795f1e2c1aa789"
+build_style="gnu-configure"
+configure_args+=" --disable-fam"
+configure_args+=" --enable-libelf"
+configure_args+=" --enable-static"
+configure_args+=" --with-pcre=system"
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" glib-devel"
-	case "$XBPS_TARGET_MACHINE" in
-		mips*)	# It seems common/environment/configure/autoconf_cache/mips-linux is not read?
-			configure_args+=" glib_cv_stack_grows=no glib_cv_rtldglobal_broken=no glib_cv_uscore=no" ;;
-	esac
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" glib-devel"
+  case "$XBPS_TARGET_MACHINE" in
+    mips*)
+      # it seems common/environment/configure/autoconf_cache/mips-linux is not read?
+      configure_args+=" glib_cv_stack_grows=no"
+      configure_args+=" glib_cv_rtldglobal_broken=no"
+      configure_args+=" glib_cv_uscore=no"
+      ;;
+  esac
 fi
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 libglib-devel_package() {
-	depends="${makedepends} glib>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/glib-2.0
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" glib>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/glib-2.0
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
 glib-devel_package() {
-	depends="python3 perl libglib-devel>=${version}_${revision}"
-	short_desc+=" - development files"
-	pycompile_dirs="/usr/share/glib-2.0"
-	python_version=3
-	pkg_install() {
-		vmove usr/bin/glib-compile-resources
-		vmove usr/bin/glib-genmarshal
-		vmove usr/bin/glib-mkenums
-		vmove usr/bin/gtester-report
-		vmove usr/bin/gdbus-codegen
-		vmove usr/bin/gtester
-		vmove usr/bin/glib-gettextize
-		vmove usr/share/man/man1/glib-compile-resources.1
-		vmove usr/share/man/man1/glib-gettextize.1
-		vmove usr/share/man/man1/gtester.1
-		vmove usr/share/man/man1/glib-mkenums.1
-		vmove usr/share/man/man1/gdbus-codegen.1
-		vmove usr/share/man/man1/glib-genmarshal.1
-		vmove usr/share/man/man1/gtester-report.1
-		for f in gtk-doc aclocal glib-2.0 gdb; do
-			vmove usr/share/${f}
-		done
-	}
+  depends="python3 perl libglib-devel>=${version}_$revision"
+  short_desc+=" - development files"
+  pycompile_dirs="/usr/share/glib-2.0"
+  python_version=3
+  pkg_install() {
+    vmove usr/bin/gdbus-codegen
+    vmove usr/bin/glib-compile-resources
+    vmove usr/bin/glib-genmarshal
+    vmove usr/bin/glib-gettextize
+    vmove usr/bin/glib-mkenums
+    vmove usr/bin/gtester
+    vmove usr/bin/gtester-report
+    vmove usr/share/man/man1/gdbus-codegen.1
+    vmove usr/share/man/man1/glib-compile-resources.1
+    vmove usr/share/man/man1/glib-genmarshal.1
+    vmove usr/share/man/man1/glib-gettextize.1
+    vmove usr/share/man/man1/glib-mkenums.1
+    vmove usr/share/man/man1/gtester-report.1
+    vmove usr/share/man/man1/gtester.1
+    for f in aclocal \
+             gdb \
+             glib-2.0 \
+             gtk-doc; do
+      vmove "usr/share/$f"
+    done
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

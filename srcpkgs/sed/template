@@ -1,28 +1,31 @@
-# Template file for 'sed'
-pkgname=sed
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sed"
 version=4.5
 revision=1
-bootstrap=yes
-build_style=gnu-configure
-configure_args="--enable-acl gl_cv_func_working_acl_get_file=yes"
-makedepends="acl-devel"
 short_desc="The GNU stream editor"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3.0-or-later"
+makedepends="acl-devel"
 homepage="http://www.gnu.org/software/sed"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=7aad73c8839c2bdadca9476f884d2953cdace9567ecd0d90f9959f229d146b40
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="7aad73c8839c2bdadca9476f884d2953cdace9567ecd0d90f9959f229d146b40"
+build_style="gnu-configure"
+configure_args+=" --enable-acl"
+configure_args+=" gl_cv_func_working_acl_get_file=yes"
+bootstrap="yes"
 
 post_extract() {
-	# dont regenerate the man page with help2man...
-	sed -i 's|\(^doc/sed.1:\).*$|\1|' Makefile.in
+  # dont regenerate the man page with help2man...
+  sed -i 's|\(^doc/sed.1:\).*$|\1|' Makefile.in
 }
 
 pre_check() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl)
-			# Disable locale tests that fail on musl
-			sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
-			sed -i '/test-mbrtowc5.sh/d' gnulib-tests/Makefile ;;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      # disable locale tests that fail on musl
+      sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
+      sed -i '/test-mbrtowc5.sh/d' gnulib-tests/Makefile
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

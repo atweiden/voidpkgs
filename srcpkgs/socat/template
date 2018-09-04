@@ -1,20 +1,27 @@
-# Template file for 'socat'
-pkgname=socat
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="socat"
 version=1.7.3.2
 revision=4
-build_style=gnu-configure
-configure_args="--disable-libwrap --enable-fips
- ac_cv_have_z_modifier=yes sc_cv_sys_crdly_shift=9
- sc_cv_sys_tabdly_shift=11 sc_cv_sys_csize_shift=4
- ac_cv_ispeed_offset=13"
-makedepends="readline-devel libressl-devel"
 short_desc="Relay for bidirectional data transfer between two independent channels"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
+makedepends+=" libressl-devel"
+makedepends+=" readline-devel"
 homepage="http://www.dest-unreach.org/socat/"
+license="GPL-2"
 distfiles="http://www.dest-unreach.org/socat/download/socat-$version.tar.bz2"
-checksum=e3561f808739383eb10fada1e5d4f26883f0311b34fd0af7837d0c95ef379251
+checksum="e3561f808739383eb10fada1e5d4f26883f0311b34fd0af7837d0c95ef379251"
+build_style="gnu-configure"
+configure_args+=" --disable-libwrap"
+configure_args+=" --enable-fips"
+configure_args+=" ac_cv_have_z_modifier=yes"
+configure_args+=" ac_cv_ispeed_offset=13"
+configure_args+=" sc_cv_sys_crdly_shift=9"
+configure_args+=" sc_cv_sys_csize_shift=4"
+configure_args+=" sc_cv_sys_tabdly_shift=11"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) CFLAGS="-D_LINUX_IF_ETHER_H";;
+  *-musl)
+    CFLAGS="-D_LINUX_IF_ETHER_H"
+    ;;
 esac
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

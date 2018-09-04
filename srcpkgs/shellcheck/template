@@ -1,18 +1,19 @@
-# Template file for 'shellcheck'
-pkgname=shellcheck
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="shellcheck"
 version=0.5.0
 revision=2
-build_style=haskell-stack
-stackage="lts-12.0"
 short_desc="A static analysis tool for shell scripts"
-maintainer="Diogo Leal <diogo@diogoleal.com>"
-license="GPL-3.0-or-later"
 homepage="https://www.shellcheck.net/"
-distfiles="https://github.com/koalaman/shellcheck/archive/v${version}.tar.gz"
-checksum=348a3f7892c1f28a44f188c00ac82f1b3bf899d9f81d14ddb0e306db26c937bb
-nocross=yes
+license="GPL-3.0-or-later"
+distfiles="https://github.com/koalaman/shellcheck/archive/v$version.tar.gz"
+checksum="348a3f7892c1f28a44f188c00ac82f1b3bf899d9f81d14ddb0e306db26c937bb"
+build_style="haskell-stack"
+stackage="lts-12.0"
+nocross="yes"
 nopie_files="/usr/bin/shellcheck"
 
 post_install() {
-	vdoc shellcheck.1.md
+  vdoc shellcheck.1.md
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,20 +1,20 @@
-# Template build file for 'tar'.
-pkgname=tar
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tar"
 version=1.30
 revision=1
-bootstrap=yes
-build_style=gnu-configure
-configure_args="gl_cv_struct_dirent_d_ino=yes"
-makedepends="acl-devel"
 short_desc="The GNU tape archiver with remote magnetic tape support"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="acl-devel"
 homepage="http://www.gnu.org/software/tar/"
 license="GPL-3"
-distfiles="${GNU_SITE}/tar/$pkgname-$version.tar.xz"
-checksum=f1bf92dbb1e1ab27911a861ea8dde8208ee774866c46c0bb6ead41f4d1f4d2d3
+distfiles="$GNU_SITE/tar/$pkgname-$version.tar.xz"
+checksum="f1bf92dbb1e1ab27911a861ea8dde8208ee774866c46c0bb6ead41f4d1f4d2d3"
+build_style="gnu-configure"
+configure_args="gl_cv_struct_dirent_d_ino=yes"
+bootstrap="yes"
 
 pre_configure() {
-	# avoid regenerating doc on install
-	touch -r doc/stamp-vti configure
+  # avoid regenerating doc on install
+  touch -r doc/stamp-vti configure
 }
 
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

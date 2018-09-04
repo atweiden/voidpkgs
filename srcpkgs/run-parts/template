@@ -1,20 +1,24 @@
-# Template file for 'run-parts'
-pkgname=run-parts
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="run-parts"
 version=4.8.6
 revision=1
-bootstrap=yes
-wrksrc="debianutils-${version}"
-build_style=gnu-configure
-make_build_target="run-parts"
 short_desc="Run scripts or programs in a directory"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
 homepage="https://tracker.debian.org/pkg/debianutils"
+license="GPL-2.0-or-later"
 #changelog="http://metadata.ftp-master.debian.org/changelogs/main/d/debianutils/debianutils_${version}_changelog"
-distfiles="${DEBIAN_SITE}/main/d/debianutils/debianutils_${version}.tar.xz"
-checksum=db09047144dadf6a35d0f28977fbef83b0dd60ca32e6c8512cce2444a6423f73
+distfiles="$DEBIAN_SITE/main/d/debianutils/debianutils_$version.tar.xz"
+checksum="db09047144dadf6a35d0f28977fbef83b0dd60ca32e6c8512cce2444a6423f73"
+wrksrc="debianutils-$version"
+build_style="gnu-configure"
+make_build_target="run-parts"
+bootstrap="yes"
 
 do_install() {
-	vbin run-parts
-	vman run-parts.8
+  vbin run-parts
 }
+
+post_install() {
+  vman run-parts.8
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

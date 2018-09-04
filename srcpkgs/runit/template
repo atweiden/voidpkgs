@@ -1,57 +1,75 @@
-# Template file for 'runit'
-pkgname=runit
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="runit"
 version=2.1.2
 revision=9
-wrksrc="admin"
 short_desc="A UNIX init scheme with service supervision"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="3-clause-BSD"
 homepage="http://smarden.org/runit/"
+license="3-clause-BSD"
 distfiles="http://smarden.org/runit/runit-$version.tar.gz"
-checksum=6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18
-
+checksum="6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18"
+wrksrc="admin"
 build_options="static"
 
 do_build() {
-	cd ${pkgname}-${version}/src
+  cd "$pkgname-$version/src"
 
-	if [ "$build_option_static" ]; then
-		CFLAGS+=" -static"
-		LDFLAGS+=" -static"
-	fi
+  if [[ -n "$build_option_static" ]]; then
+    CFLAGS+=" -static"
+    LDFLAGS+=" -static"
+  fi
 
-	sed -e 's,sbin/runit,usr/bin/runit,g' -i runit.h
+  echo "$CC -D_GNU_SOURCE $CFLAGS" >conf-cc
+  echo "$CC $LDFLAGS -Wl,-z -Wl,noexecstack" >conf-ld
 
-	echo "$CC -D_GNU_SOURCE $CFLAGS" >conf-cc
-	echo "$CC $LDFLAGS -Wl,-z -Wl,noexecstack" >conf-ld
-	# set default service path to /var/service
-	sed -i -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' sv.c
-	# change type short to gid_t for getgroups(2) and setgroups(2)
-	sed -i -e 's:short x\[4\];$:gid_t x[4];:' chkshsgr.c
+  # use /usr/bin
+  sed \
+    -i \
+    -e 's,sbin/runit,usr/bin/runit,g' \
+    runit.h
 
-	make ${makejobs}
+  # set default service path to /var/service
+  sed \
+    -i \
+    -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' \
+    sv.c
+
+  # change type short to gid_t for getgroups(2) and setgroups(2)
+  sed \
+    -i \
+    -e 's:short x\[4\];$:gid_t x[4];:' \
+    chkshsgr.c
+
+  make "$makejobs"
 }
 
 do_install() {
-	vlicense ${pkgname}-${version}/package/COPYING
+  vlicense "$pkgname-$version/package/COPYING"
 
-	cd ${pkgname}-${version}/src
+  cd "$pkgname-$version/src"
 
-	# default services
-	vmkdir var
-	ln -s ../run/runit/runsvdir/current ${DESTDIR}/var/service
+  # default services
+  vmkdir var
+  ln -s ../run/runit/runsvdir/current "$DESTDIR/var/service"
 
-	local f
-	for f in chpst runit runit-init runsv runsvchdir runsvdir \
-		sv svlogd utmpset; do
-		vbin $f
-	done
+  for f in chpst \
+           runit \
+           runit-init \
+           runsv \
+           runsvchdir \
+           runsvdir \
+           sv \
+           svlogd \
+           utmpset; do
+    vbin "$f"
+  done
 
-	cd ..
-	for f in man/*; do
-		vman $f
-	done
+  cd ..
+  for f in man/*; do
+    vman "$f"
+  done
 
-	vinstall ${FILESDIR}/_sv 644 usr/share/zsh/site-functions
-	vinstall ${FILESDIR}/sv  644 usr/share/bash-completion/completions
+  vinstall "$FILESDIR/sv"  644 usr/share/bash-completion/completions
+  vinstall "$FILESDIR/_sv" 644 usr/share/zsh/site-functions
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
