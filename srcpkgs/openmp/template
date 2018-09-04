@@ -21,6 +21,11 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 make_cmd="ninja"
 
+do_install() {
+  cd "${cmake_builddir:=build}"
+  DESTDIR="$DESTDIR" ninja install
+}
+
 post_install() {
   vlicense LICENSE.txt
 }
