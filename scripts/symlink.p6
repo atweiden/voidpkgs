@@ -365,7 +365,7 @@ my List:D %pkg{Str:D} =
     'sqlite' => ['sqlite-devel'],
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
-    'tcl' => ['tcl-devel'],
+    'talloc' => ['talloc-devel'],
     'tcl' => ['tcl-devel'],
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
