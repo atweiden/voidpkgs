@@ -1,25 +1,29 @@
-# Template file for 'dtc'
-pkgname=dtc
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dtc"
 version=1.4.7
 revision=1
-build_style=gnu-makefile
+short_desc="Device Tree Compiler"
+hostmakedepends+=" bison"
+hostmakedepends+=" flex"
+hostmakedepends+=" git"
+homepage="http://www.devicetree.org/Device_Tree_Compiler"
+license="GPL-2"
+distfiles="https://www.kernel.org/pub/software/utils/dtc/dtc-$version.tar.xz"
+checksum="6643e8f00ff86350f465bb54b2185058b5b1b7bac01a0842c81a52b86589cde7"
+build_style="gnu-makefile"
 make_build_args="NO_PYTHON=1"
 make_install_args="$make_build_args"
-hostmakedepends="git flex bison"
-short_desc="Device Tree Compiler"
-maintainer="Andrea Brancaleoni <abc@pompel.me>"
-license="GPL-2"
-homepage="http://www.devicetree.org/Device_Tree_Compiler"
+
 CFLAGS="-fPIC"
-distfiles="https://www.kernel.org/pub/software/utils/dtc/dtc-$version.tar.xz"
-checksum=6643e8f00ff86350f465bb54b2185058b5b1b7bac01a0842c81a52b86589cde7
 
 dtc-devel_package() {
-	depends="dtc>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/libfdt.so"
-	}
+  depends="dtc>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/libfdt.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

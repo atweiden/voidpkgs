@@ -1,44 +1,47 @@
-# Template file for 'efibootmgr'
-pkgname=efibootmgr
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="efibootmgr"
 version=16
 revision=1
-hostmakedepends="pkg-config"
-makedepends="libefivar-devel zlib-devel pciutils-devel popt-devel"
 short_desc="Tool to modify UEFI Firmware Boot Manager Variables"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+only_for_archs+=" i686"
+only_for_archs+=" i686-musl"
+only_for_archs+=" x86_64"
+only_for_archs+=" x86_64-musl"
+makedepends+=" libefivar-devel"
+makedepends+=" pciutils-devel"
+makedepends+=" popt-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
 homepage="https://github.com/rhinstaller/efibootmgr"
-distfiles="https://github.com/rhinstaller/efibootmgr/releases/download/${version}/${pkgname}-${version}.tar.bz2"
-checksum=950795fb4b58a09fb69e93c120d624000253f1241134469495c7a9def731f65f
-only_for_archs="i686 i686-musl x86_64 x86_64-musl"
+license="GPL-2.0-or-later"
+distfiles="https://github.com/rhinstaller/efibootmgr/releases/download/$version/$pkgname-$version.tar.bz2"
+checksum="950795fb4b58a09fb69e93c120d624000253f1241134469495c7a9def731f65f"
 conf_files="/etc/default/efibootmgr-kernel-hook"
 
-CPPFLAGS="-I${XBPS_CROSS_BASE}/usr/include/efivar"
+CPPFLAGS="-I$XBPS_CROSS_BASE/usr/include/efivar"
 
 case "$XBPS_TARGET_MACHINE" in
-	x86_64*)
-		EFI_LOADER="grubx64.efi" ;;
-	i686*)
-		EFI_LOADER="grub.efi" ;;
+  x86_64*) EFI_LOADER="grubx64.efi" ;;
+  i686*) EFI_LOADER="grub.efi" ;;
 esac
 
 do_build() {
-	make EXTRA_CFLAGS="$CFLAGS" ${makejobs} EFIDIR="void" EFI_LOADER="${EFI_LOADER}"
+  make EXTRA_CFLAGS="$CFLAGS" $makejobs EFIDIR="void" EFI_LOADER="$EFI_LOADER"
 }
 
 do_install() {
-	vbin src/efibootdump
-	vman src/efibootdump.8
-	vbin src/efibootmgr
-	vman src/efibootmgr.8
+  vbin src/efibootdump
+  vbin src/efibootmgr
 }
 
 post_install() {
-	vlicense COPYING
-	vmkdir etc/
-	vinstall "${FILESDIR}/efibootmgr-kernel-hook.confd" 644 etc/default efibootmgr-kernel-hook
-	vinstall ${FILESDIR}/kernel.d/efibootmgr.post-install 744 \
-		etc/kernel.d/post-install 50-efibootmgr
-	vinstall ${FILESDIR}/kernel.d/efibootmgr.post-remove 744 \
-		etc/kernel.d/post-remove 50-efibootmgr
+  vlicense COPYING
+  vman src/efibootdump.8
+  vman src/efibootmgr.8
+  vmkdir etc/
+  vinstall "$FILESDIR/efibootmgr-kernel-hook.confd" 644 etc/default efibootmgr-kernel-hook
+  vinstall "$FILESDIR/kernel.d/efibootmgr.post-install" 744 etc/kernel.d/post-install 50-efibootmgr
+  vinstall "$FILESDIR/kernel.d/efibootmgr.post-remove" 744 etc/kernel.d/post-remove 50-efibootmgr
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
