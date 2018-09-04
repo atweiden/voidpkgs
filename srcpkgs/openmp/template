@@ -30,11 +30,6 @@ post_install() {
   vlicense LICENSE.txt
 }
 
-do_clean() {
-  # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
-  rm "$DESTDIR/usr/lib/libgomp.so"
-}
-
 openmp-devel_package() {
   short_desc+=" - development files"
   depends="$sourcepkg>=${version}_$revision"
@@ -45,6 +40,10 @@ openmp-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
+  }
+  do_clean() {
+    # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
+    rm "$PKGDESTDIR/usr/lib/libgomp.so"
   }
 }
 
