@@ -1,66 +1,83 @@
-# Template file for 'gettext'
-pkgname=gettext
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gettext"
 version=0.19.8.1
 revision=4
-bootstrap=yes
-build_style=gnu-configure
-configure_args="--disable-java --disable-native-java --disable-csharp
- --disable-libasprintf --enable-threads=posix --disable-rpath --without-emacs
- --disable-acl --with-included-glib --with-included-libcroco --without-git
- --with-included-libxml --with-included-libunistring --disable-openmp
- --disable-curses --without-examples --enable-nls
- gl_cv_func_gettimeofday_clobber=no"
 short_desc="Internationalized Message Handling Library and tools"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/gettext/"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=ff942af0e438ced4a8b0ea4b0b6e0d6d657157c5e2364de57baa279c1c125c43
-
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="ff942af0e438ced4a8b0ea4b0b6e0d6d657157c5e2364de57baa279c1c125c43"
+build_style="gnu-configure"
+configure_args+=" --disable-acl"
+configure_args+=" --disable-csharp"
+configure_args+=" --disable-curses"
+configure_args+=" --disable-java"
+configure_args+=" --disable-libasprintf"
+configure_args+=" --disable-native-java"
+configure_args+=" --disable-openmp"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-nls"
+configure_args+=" --enable-threads=posix"
+configure_args+=" --with-included-glib"
+configure_args+=" --with-included-libcroco"
+configure_args+=" --with-included-libunistring"
+configure_args+=" --with-included-libxml"
+configure_args+=" --without-emacs"
+configure_args+=" --without-examples"
+configure_args+=" --without-git"
+configure_args+=" gl_cv_func_gettimeofday_clobber=no"
 case "$XBPS_TARGET_MACHINE" in
-	# force libintl
-	*-musl) configure_args+=" --with-included-gettext";;
+  # force libintl
+  *-musl)
+    configure_args+=" --with-included-gettext"
+    ;;
 esac
+bootstrap="yes"
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends="automake libtool git"
-	pre_configure() {
-		autoreconf -fi
-	}
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" automake"
+  hostmakedepends+=" git"
+  hostmakedepends+=" libtool"
+  pre_configure() {
+    autoreconf -fi
+  }
 fi
 
-
 post_install() {
-	# Fix conflict with musl.
-	if [ -e ${DESTDIR}/usr/include/libintl.h ]; then
-		vmkdir usr/include/gettext
-		mv ${DESTDIR}/usr/include/libintl.h ${DESTDIR}/usr/include/gettext/libintl.h
-	fi
+  # fix conflict with musl
+  if [[ -e "$DESTDIR/usr/include/libintl.h" ]]; then
+    vmkdir usr/include/gettext
+    mv "$DESTDIR/usr/include/libintl.h" "$DESTDIR/usr/include/gettext/libintl.h"
+  fi
 }
 
 gettext-devel-examples_package() {
-	noarch=yes
-	short_desc+=" - examples for development"
-	pkg_install() {
-		vmove usr/share/doc/gettext
-	}
+  noarch="yes"
+  short_desc+=" - examples for development"
+  pkg_install() {
+    vmove usr/share/doc/gettext
+  }
 }
+
 gettext-devel_package() {
-	depends="gettext-libs>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-		vmove usr/share/aclocal
-		vmove usr/share/gettext
-		vmove usr/share/man/man3
-		vmove usr/bin/autopoint
-		vmove usr/bin/gettextize
-	}
+  depends="gettext-libs>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove usr/share/aclocal
+    vmove usr/share/gettext
+    vmove usr/share/man/man3
+    vmove usr/bin/autopoint
+    vmove usr/bin/gettextize
+  }
 }
+
 gettext-libs_package() {
-	short_desc+=" - shared libraries"
-	pkg_install() {
-		vmove usr/lib/*.so*
-	}
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

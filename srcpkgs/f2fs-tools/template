@@ -1,23 +1,29 @@
-# Template file for 'f2fs-tools'
-pkgname=f2fs-tools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="f2fs-tools"
 version=1.11.0
 revision=1
-build_style=gnu-configure
-configure_args="--sbindir=/usr/bin --disable-static ac_cv_file__git=yes"
-make_install_args="sbindir=/usr/bin"
-hostmakedepends="automake libtool pkg-config git"
-makedepends="libuuid-devel"
 short_desc="Tools for the Linux Flash-Friendly File System (F2FS)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-only"
+makedepends="libuuid-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" git"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git"
-distfiles="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/${pkgname}-${version}.tar.gz"
-checksum=b916ac7cda902502cf18de98da94921f71edbab40fb0437d757f0716191c79e3
+license="GPL-2.0-only"
+distfiles="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$pkgname-$version.tar.gz"
+checksum="b916ac7cda902502cf18de98da94921f71edbab40fb0437d757f0716191c79e3"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" ac_cv_file__git=yes"
+make_install_args="sbindir=/usr/bin"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) makedepends+=" musl-legacy-compat"
+  *-musl) makedepends+=" musl-legacy-compat"
 esac
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,32 +1,36 @@
-# Template file for 'flex'
-pkgname=flex
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="flex"
 version=2.6.4
 revision=3
-build_style=gnu-configure
-configure_args="--disable-bootstrap --disable-shared"
-hostmakedepends="bison"
-makedepends="bison"
-depends="bison libfl-devel-${version}_${revision} m4"
 short_desc="The Fast Lexical Analyzer"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends+=" bison"
+depends+=" libfl-devel-${version}_$revision"
+depends+=" m4"
+makedepends="bison"
+hostmakedepends="bison"
 homepage="http://flex.sourceforge.net"
 license="BSD"
-distfiles="https://github.com/westes/${pkgname}/releases/download/v${version}/${pkgname}-${version}.tar.gz"
-checksum=e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
+distfiles="https://github.com/westes/$pkgname/releases/download/v$version/$pkgname-$version.tar.gz"
+checksum="e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995"
+build_style="gnu-configure"
+configure_args+=" --disable-bootstrap"
+configure_args+=" --disable-shared"
 
-# Required to enable the definition of reallocarray() in stdlib.h
+# required to enable the definition of reallocarray() in stdlib.h
 CFLAGS="-D_GNU_SOURCE"
 
 post_install() {
-	ln -s flex ${DESTDIR}/usr/bin/lex
-	vlicense COPYING
+  vlicense COPYING
+  ln -s flex "$DESTDIR/usr/bin/lex"
 }
 
 libfl-devel_package() {
-	replaces="libfl>=0"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-	}
+  replaces="libfl>=0"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

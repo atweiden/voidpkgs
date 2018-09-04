@@ -1,26 +1,30 @@
-# Template file for 'fd'
-pkgname=fd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="fd"
 version=7.1.0
 revision=1
-hostmakedepends="cargo"
 short_desc="Simple, fast and user-friendly alternative to find"
-maintainer="Jerry Tegno <jerrytegno@gmail.com>"
-license="Apache-2.0, MIT"
+hostmakedepends="cargo"
 homepage="https://github.com/sharkdp/fd"
-distfiles="https://github.com/sharkdp/fd/archive/v${version}.tar.gz"
-checksum=9385a55738947f69fd165781598de6c980398c6214a4927fce13a4f7f1e63d4d
-nocross=yes
+license="Apache-2.0, MIT"
+distfiles="https://github.com/sharkdp/fd/archive/v$version.tar.gz"
+checksum="9385a55738947f69fd165781598de6c980398c6214a4927fce13a4f7f1e63d4d"
+nocross="yes"
 
 do_build() {
-	cargo build --release
+  cargo build --release
 }
 
 do_check() {
-	cargo test --release
+  cargo test --release
 }
 
 do_install() {
-	vbin target/release/fd
-	vman doc/fd.1
-	vlicense LICENSE-MIT
+  vbin target/release/fd
 }
+
+post_install() {
+  vlicense LICENSE-MIT
+  vman doc/fd.1
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,37 +1,43 @@
-# Template file for 'gc'
-pkgname=gc
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gc"
 version=7.6.8
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="libatomic_ops-devel"
 short_desc="A garbage collector for C and C++"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+makedepends="libatomic_ops-devel"
+hostmakedepends="pkg-config"
 homepage="http://www.hboehm.info/gc/"
-distfiles="https://github.com/ivmai/bdwgc/releases/download/v${version}/gc-${version}.tar.gz"
-checksum=040ac5cdbf1bebc7c8cd4928996bbae0c54497c151ea5639838fa0128102e258
+license="GPL-2.0-or-later"
+distfiles="https://github.com/ivmai/bdwgc/releases/download/v$version/gc-$version.tar.gz"
+checksum="040ac5cdbf1bebc7c8cd4928996bbae0c54497c151ea5639838fa0128102e258"
+build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
-*-musl)
-	CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DSEARCH_FOR_DATA_START -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR'
+  *-musl)
+    CFLAGS+=" -DHAVE_DL_ITERATE_PHDR"
+    CFLAGS+=" -DNO_GETCONTEXT"
+    CFLAGS+=" -DSEARCH_FOR_DATA_START"
+    CFLAGS+=" -DUSE_MMAP"
+    CFLAGS+=" -D_GNU_SOURCE"
+    ;;
 esac
 
 post_install() {
-	mkdir -p ${DESTDIR}/usr/include/gc/
-	mv ${wrksrc}/include/* ${DESTDIR}/usr/include/gc/
-	mv ${DESTDIR}/usr/include/gc/extra/* ${DESTDIR}/usr/include/
-	rmdir ${DESTDIR}/usr/include/gc/extra
+  mkdir -p "$DESTDIR/usr/include/gc/"
+  mv "$wrksrc/include"/* "$DESTDIR/usr/include/gc/"
+  mv "$DESTDIR/usr/include/gc/extra"/* "$DESTDIR/usr/include/"
+  rmdir "$DESTDIR/usr/include/gc/extra"
 }
 
 gc-devel_package() {
-	depends="gc>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/share
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  depends="gc>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/share
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

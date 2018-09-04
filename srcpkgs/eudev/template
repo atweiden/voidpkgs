@@ -1,45 +1,56 @@
-# Template file for 'eudev'
-
-_UDEV_VERSION="220" # compatible udev version provided
-
-pkgname=eudev
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="eudev"
 version=3.2.5
 revision=3
-conf_files="/etc/udev/udev.conf"
-build_style=gnu-configure
-configure_args="--enable-hwdb --enable-manpages --disable-introspection"
-hostmakedepends="automake libtool pkg-config gperf libxslt docbook-xsl"
-makedepends="libblkid-devel libkmod-devel"
 short_desc="Gentoo's fork of systemd-udev (enhanced userland device daemon)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
+makedepends+=" libblkid-devel"
+makedepends+=" libkmod-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" gperf"
+hostmakedepends+=" libtool"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/gentoo/eudev"
-distfiles="http://dev.gentoo.org/~blueness/eudev/eudev-${version}.tar.gz"
-checksum=49c2d04105cad2526302627e040fa24b1916a9a3e059539bc8bb919b973890af
+license="GPL-2"
+distfiles="http://dev.gentoo.org/~blueness/eudev/eudev-$version.tar.gz"
+checksum="49c2d04105cad2526302627e040fa24b1916a9a3e059539bc8bb919b973890af"
+conf_files="/etc/udev/udev.conf"
+build_style="gnu-configure"
+configure_args+=" --disable-introspection"
+configure_args+=" --enable-hwdb"
+configure_args+=" --enable-manpages"
+
+# compatible udev version provided
+_UDEV_VERSION="220"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
+
 post_install() {
-	vsv udevd
+  vsv udevd
 }
 
 eudev-libudev-devel_package() {
-	provides="libudev-devel-${_UDEV_VERSION}_${revision}"
-	depends="eudev-libudev>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share/pkgconfig
-	}
+  provides="libudev-devel-${_UDEV_VERSION}_$revision"
+  depends="eudev-libudev>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/pkgconfig
+  }
 }
+
 eudev-libudev_package() {
-	provides="libudev-${_UDEV_VERSION}_${revision}"
-	short_desc+=" - runtime library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  provides="libudev-${_UDEV_VERSION}_$revision"
+  short_desc+=" - runtime library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

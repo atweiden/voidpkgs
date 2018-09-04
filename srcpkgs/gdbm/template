@@ -1,39 +1,43 @@
-# Template file for 'gdbm'
-pkgname=gdbm
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gdbm"
 version=1.18
 revision=1
-build_style=gnu-configure
-configure_args="--enable-libgdbm-compat --disable-rpath"
 short_desc="GNU database routines"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3.0-or-later"
 homepage="http://www.gnu.org.ua/software/gdbm/"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=b8822cb4769e2d759c828c06f196614936c88c141c3132b18252fe25c2b635ce
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="b8822cb4769e2d759c828c06f196614936c88c141c3132b18252fe25c2b635ce"
+build_style="gnu-configure"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-libgdbm-compat"
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends="libtool automake gettext-devel"
-	pre_configure() {
-		autoreconf -fi
-	}
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" automake"
+  hostmakedepends+=" gettext-devel"
+  hostmakedepends+=" libtool"
+  pre_configure() {
+    autoreconf -fi
+  }
 fi
 
 post_install() {
-	# create symlinks for compatibility
-	vmkdir usr/include/gdbm
-	ln -sf ../gdbm.h ${DESTDIR}/usr/include/gdbm/gdbm.h
-	ln -sf ../ndbm.h ${DESTDIR}/usr/include/gdbm/ndbm.h
-	ln -sf ../dbm.h ${DESTDIR}/usr/include/gdbm/dbm.h
+  # create symlinks for compatibility
+  vmkdir usr/include/gdbm
+  ln -sf ../gdbm.h "$DESTDIR/usr/include/gdbm/gdbm.h"
+  ln -sf ../ndbm.h "$DESTDIR/usr/include/gdbm/ndbm.h"
+  ln -sf ../dbm.h "$DESTDIR/usr/include/gdbm/dbm.h"
 }
 
 gdbm-devel_package() {
-	short_desc+=" - development files"
-	depends="gdbm>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share/info
-		vmove usr/share/man/man3
-	}
+  short_desc+=" - development files"
+  depends="gdbm>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/info
+    vmove usr/share/man/man3
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,42 +1,48 @@
-# Template file for 'erlang'
-pkgname=erlang
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="erlang"
 version=21.0
 revision=3
-create_wrksrc=yes
-build_wrksrc=otp_src_${version}
-build_style=gnu-configure
-configure_args="$(vopt_if x11 --with-wx-config=wx-config-3.0)"
-hostmakedepends="perl libxslt"
-makedepends="ncurses-devel unixodbc-devel libressl-devel zlib-devel
- $(vopt_if x11 'wxWidgets-devel glu-devel')"
 short_desc="Concurrent functional programming language developed by Ericsson"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
+makedepends+=" libressl-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" unixodbc-devel"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if x11 'glu-devel wxWidgets-devel')"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" perl"
 license="Apache-2.0"
 homepage="http://www.erlang.org/"
-distfiles="http://www.erlang.org/download/otp_src_${version}.tar.gz
- http://www.erlang.org/download/otp_doc_man_${version}.tar.gz"
-checksum="c7d247c0cad2d2e718eaca2e2dff051136a1347a92097abf19ebf65ea2870131
- 10bf0e44b97ee8320c4868d5a4259c49d4d2a74e9c48583735ae0401f010fb31"
-
+distfiles+=" http://www.erlang.org/download/otp_src_$version.tar.gz"
+distfiles+=" http://www.erlang.org/download/otp_doc_man_$version.tar.gz"
+checksum+=" c7d247c0cad2d2e718eaca2e2dff051136a1347a92097abf19ebf65ea2870131"
+checksum+=" 10bf0e44b97ee8320c4868d5a4259c49d4d2a74e9c48583735ae0401f010fb31"
+create_wrksrc="yes"
+build_wrksrc="otp_src_$version"
+build_style="gnu-configure"
+configure_args="$(vopt_if x11 --with-wx-config=wx-config-3.0)"
 build_options="x11"
 
 pre_configure() {
-	if [ "$CROSS_BUILD" ]; then
-		# Build the bootstrap compiler for the host platform.
-		env - PATH=/usr/bin:/usr/sbin ./configure --enable-bootstrap-only
-		env - PATH=/usr/bin:/usr/sbin HOME=$HOME make ${makejobs}
-		configure_args+=" --build=$(erts/autoconf/config.guess)"
-		export erl_xcomp_sysroot=/usr/${XBPS_CROSS_TRIPLET}
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # build the bootstrap compiler for the host platform
+    env - PATH="/usr/bin:/usr/sbin" ./configure --enable-bootstrap-only
+    env - PATH="/usr/bin:/usr/sbin" HOME="$HOME" make "$makejobs"
+    configure_args+=" --build=$(erts/autoconf/config.guess)"
+    export erl_xcomp_sysroot="/usr/$XBPS_CROSS_TRIPLET"
+  fi
 }
+
 post_configure() {
-	sed -i '/LDFLAGS =/s/=/+=/' lib/odbc/c_src/*/Makefile
+  sed -i '/LDFLAGS =/s/=/+=/' lib/odbc/c_src/*/Makefile
 }
+
 post_install() {
-	vmkdir usr/share/man
-	vmkdir usr/lib/erlang/man
-	vcopy ../man/man1 usr/share/man
-	vcopy ../man/man3 usr/lib/erlang/man
-	vcopy ../man/man4 usr/lib/erlang/man
-	vcopy ../man/man7 usr/lib/erlang/man
+  vmkdir usr/share/man
+  vmkdir usr/lib/erlang/man
+  vcopy ../man/man1 usr/share/man
+  vcopy ../man/man3 usr/lib/erlang/man
+  vcopy ../man/man4 usr/lib/erlang/man
+  vcopy ../man/man7 usr/lib/erlang/man
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

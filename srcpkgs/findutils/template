@@ -1,32 +1,32 @@
-# Template file for 'findutils'
-pkgname=findutils
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="findutils"
 version=4.6.0
 revision=4
-bootstrap=yes
-build_style=gnu-configure
-configure_args="--program-prefix=g"
 short_desc="The GNU Find Utilities"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3"
 homepage="http://www.gnu.org/software/findutils"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d
-
-alternatives="
- xargs:xargs:/usr/bin/gxargs
- xargs:xargs.1:/usr/share/man/man1/gxargs.1
- find:find:/usr/bin/gfind
- find:find.1:/usr/share/man/man1/gfind.1
-"
+license="GPL-3"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d"
+build_style="gnu-configure"
+configure_args="--program-prefix=g"
+bootstrap="yes"
+alternatives+=" find:find.1:/usr/share/man/man1/gfind.1"
+alternatives+=" find:find:/usr/bin/gfind"
+alternatives+=" xargs:xargs.1:/usr/share/man/man1/gxargs.1"
+alternatives+=" xargs:xargs:/usr/bin/gxargs"
 
 post_extract() {
-	sed -i '/SUBDIRS/s/locate//' Makefile.in
+  sed -i '/SUBDIRS/s/locate//' Makefile.in
 }
+
 pre_check() {
-	# LFS reccomends disabling this due to to the possibility of looping forever on some machines
-	# see: http://www.linuxfromscratch.org/lfs/view/development/chapter06/findutils.html
-	sed -i 's/test-lock..EXEEXT.//' tests/Makefile.in
+  # LFS reccomends disabling this due to to the possibility of looping forever on some machines
+  # see: http://www.linuxfromscratch.org/lfs/view/development/chapter06/findutils.html
+  sed -i 's/test-lock..EXEEXT.//' tests/Makefile.in
 }
+
 post_configure() {
-	make -C locate dblocation.texi
+  make -C locate dblocation.texi
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
