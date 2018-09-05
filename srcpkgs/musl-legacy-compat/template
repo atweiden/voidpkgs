@@ -1,17 +1,27 @@
-# Template file for 'musl-legacy-compat'
-pkgname=musl-legacy-compat
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="musl-legacy-compat"
 version=0.3
 revision=1
-noarch=yes
-bootstrap=yes
-only_for_archs="i686-musl x86_64-musl armv5tel-musl armv6l-musl armv7l-musl aarch64-musl mips-musl mipshf-musl mipsel-musl mipselhf-musl"
 short_desc="Legacy compatibility headers for the musl libc"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD"
+noarch="yes"
+only_for_archs+=" aarch64-musl"
+only_for_archs+=" armv5tel-musl"
+only_for_archs+=" armv6l-musl"
+only_for_archs+=" armv7l-musl"
+only_for_archs+=" i686-musl"
+only_for_archs+=" mips-musl"
+only_for_archs+=" mipsel-musl"
+only_for_archs+=" mipselhf-musl"
+only_for_archs+=" mipshf-musl"
+only_for_archs+=" x86_64-musl"
 homepage="http://www.voidlinux.eu"
+license="BSD"
+bootstrap="yes"
 
 do_install() {
-	for f in ${FILESDIR}/*.h; do
-		vinstall ${f} 644 usr/include/sys
-	done
+  for f in "$FILESDIR"/*.h; do
+    vinstall "$f" 644 usr/include/sys
+  done
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,53 +1,66 @@
-# Template build file for 'libxslt'.
-pkgname=libxslt
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libxslt"
 version=1.1.32
 revision=1
-build_style=gnu-configure
-configure_args="--disable-static"
-makedepends="python-devel libxml2-devel libxml2-python libgcrypt-devel"
 short_desc="XSLT parser library from the GNOME project"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" libgcrypt-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" libxml2-python"
+makedepends+=" python-devel"
 homepage="http://xmlsoft.org/XSLT/"
 license="MIT"
-distfiles="ftp://xmlsoft.org/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=526ecd0abaf4a7789041622c3950c0e7f2c4c8835471515fd77eec684a355460
+distfiles="ftp://xmlsoft.org/$pkgname/$pkgname-$version.tar.gz"
+checksum="526ecd0abaf4a7789041622c3950c0e7f2c4c8835471515fd77eec684a355460"
+build_style="gnu-configure"
+configure_args="--disable-static"
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends="libtool automake gettext-devel ${makedepends}"
-	pre_build() {
-		sed -e "s|/usr/\(include/python2.7\)|$XBPS_CROSS_BASE/\1|g" \
-			-e "s|/usr/\(lib/python2.7/site-packages\)|$XBPS_CROSS_BASE/\1|g" \
-			-i python/Makefile
-	}
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" $makedepends"
+  hostmakedepends+=" automake"
+  hostmakedepends+=" gettext-devel"
+  hostmakedepends+=" libtool"
+  pre_build() {
+    sed \
+      -i \
+      -e "s|/usr/\(include/python2.7\)|$XBPS_CROSS_BASE/\1|g" \
+      -e "s|/usr/\(lib/python2.7/site-packages\)|$XBPS_CROSS_BASE/\1|g" \
+      python/Makefile
+  }
 fi
 
 post_install() {
-	# Remove references to the install(1) wrapper.
-	sed -e "s,${XBPS_WRAPPERDIR},/usr/bin,g" -i ${DESTDIR}/usr/bin/xslt-config
-	vlicense COPYING
+  vlicense COPYING
+  # remove references to the install(1) wrapper
+  sed \
+    -i \
+    -e "s,$XBPS_WRAPPERDIR,/usr/bin,g" \
+    "$DESTDIR/usr/bin/xslt-config"
 }
 
 libxslt-devel_package() {
-	depends="libxml2-devel ${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/bin/xslt-config
-		vmove usr/lib/xsltConf.sh
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove usr/share/aclocal
-		vmove usr/share/doc/${sourcepkg}-${version}
-		vmove usr/share/man/man3
-	}
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" libxml2-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin/xslt-config
+    vmove usr/lib/xsltConf.sh
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove usr/share/aclocal
+    vmove "usr/share/doc/$sourcepkg-$version"
+    vmove usr/share/man/man3
+  }
 }
 
 libxslt-python_package() {
-	lib32disabled=yes
-	short_desc+=" - python extension"
-	pycompile_module="libxslt.py"
-	pkg_install() {
-		vmove "usr/lib/python*"
-		vmove usr/share/doc/${sourcepkg}-python-${version}
-	}
+  lib32disabled="yes"
+  short_desc+=" - python extension"
+  pycompile_module="libxslt.py"
+  pkg_install() {
+    vmove "usr/lib/python*"
+    vmove "usr/share/doc/$sourcepkg-python-$version"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

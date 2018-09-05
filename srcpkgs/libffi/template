@@ -1,36 +1,41 @@
-# Template file for 'libffi'
-pkgname=libffi
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libffi"
 version=3.2.1
 revision=5
-build_style=gnu-configure
-configure_args="--includedir=/usr/include --with-pic"
 short_desc="Library supporting Foreign Function Interfaces"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://sourceware.org/libffi"
 license="MIT"
 distfiles="ftp://sourceware.org/pub/$pkgname/$pkgname-$version.tar.gz"
-checksum=d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37
+checksum="d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37"
+build_style="gnu-configure"
+configure_args+=" --includedir=/usr/include"
+configure_args+=" --with-pic"
 
 pre_install() {
-	vmkdir usr/lib
-	ln -s lib ${DESTDIR}/usr/lib64
+  vmkdir usr/lib
+  ln -s lib "$DESTDIR/usr/lib64"
 }
+
 post_install() {
-	# Fix includedir for pkg-config file.
-	sed -i -e "s|\${libdir}/libffi-${version}|/usr|" \
-		${DESTDIR}/usr/lib/pkgconfig/libffi.pc
-	vlicense LICENSE
-	rm -f ${DESTDIR}/usr/lib64
+  # fix includedir for pkg-config file
+  sed \
+    -i \
+    -e "s|\${libdir}/libffi-$version|/usr|" \
+    "$DESTDIR/usr/lib/pkgconfig/libffi.pc"
+  vlicense LICENSE
+  rm -f "$DESTDIR/usr/lib64"
 }
 
 libffi-devel_package() {
-	depends="libffi>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share
-	}
+  depends="libffi>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,26 +1,28 @@
-# Template build file for 'mpfr'
-pkgname=mpfr
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mpfr"
 version=4.0.1
 revision=1
-bootstrap=yes
-build_style=gnu-configure
-configure_args="--enable-thread-safe"
-makedepends="gmp-devel"
 short_desc="Library for multiple-precision floating-point computations"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-3.0-or-later"
+makedepends="gmp-devel"
 homepage="http://www.mpfr.org"
-distfiles="http://www.mpfr.org/mpfr-${version}/mpfr-${version}.tar.xz"
-checksum=67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e
+license="LGPL-3.0-or-later"
+distfiles="http://www.mpfr.org/mpfr-$version/mpfr-$version.tar.xz"
+checksum="67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e"
+build_style="gnu-configure"
+configure_args="--enable-thread-safe"
+bootstrap="yes"
 
 mpfr-devel_package() {
-	depends="${makedepends} mpfr>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/share
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" mpfr>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/share
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

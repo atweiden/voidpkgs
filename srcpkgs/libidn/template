@@ -1,31 +1,38 @@
-# Template build file for 'libidn'.
-pkgname=libidn
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libidn"
 version=1.34
 revision=1
-build_style=gnu-configure
-configure_args="--disable-csharp --disable-java --disable-static
- --enable-threads=posix"
-hostmakedepends="perl pkg-config gettext-devel automake libtool"
 short_desc="Internationalized string handling library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="http://www.gnu.org/software/libidn/"
 license="GPL-3.0-or-later, LGPL-2.1-or-later"
-distfiles="${GNU_SITE}/libidn/libidn-${version}.tar.gz"
-checksum=3719e2975f2fb28605df3479c380af2cf4ab4e919e1506527e4c7670afff6e3c
+distfiles="$GNU_SITE/libidn/libidn-$version.tar.gz"
+checksum="3719e2975f2fb28605df3479c380af2cf4ab4e919e1506527e4c7670afff6e3c"
+build_style="gnu-configure"
+configure_args+=" --disable-csharp"
+configure_args+=" --disable-java"
+configure_args+=" --disable-static"
+configure_args+=" --enable-threads=posix"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 libidn-devel_package() {
-	depends="libidn>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-		vmove usr/share/emacs
-		vmove usr/share/info
-		vmove "usr/lib/*.so"
-	}
+  depends="libidn>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+    vmove usr/share/emacs
+    vmove usr/share/info
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

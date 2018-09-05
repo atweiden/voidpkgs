@@ -1,27 +1,28 @@
-# Template build file for 'm4'.
-pkgname=m4
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="m4"
 version=1.4.18
 revision=1
-bootstrap=yes
-replaces="chroot-m4>=0"
-build_style=gnu-configure
-configure_args="--enable-changeword --enable-threads"
 short_desc="GNU version of UNIX m4 macro language processor"
 homepage="https://www.gnu.org/software/m4/"
 license="GPL-3"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07"
+build_style="gnu-configure"
+configure_args+=" --enable-changeword"
+configure_args+=" --enable-threads"
+bootstrap="yes"
+replaces="chroot-m4>=0"
 
 pre_check() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl* )
-			# Disable locale tests that fail on musl
-			sed -i '/test-localename$(EXEEXT)/d' tests/Makefile
-			sed -i '/test-mbrtowc5.sh/d' tests/Makefile
-
-			# Fails because test-localename doesn't work on musl
-			sed -i '/test-localeconv$(EXEEXT)/d' tests/Makefile
-			;;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl* )
+      # disable locale tests that fail on musl
+      sed -i '/test-localename$(EXEEXT)/d' tests/Makefile
+      sed -i '/test-mbrtowc5.sh/d' tests/Makefile
+      # fails because test-localename doesn't work on musl
+      sed -i '/test-localeconv$(EXEEXT)/d' tests/Makefile
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

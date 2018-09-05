@@ -1,16 +1,17 @@
-# Template file for 'ncdu'
-pkgname=ncdu
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ncdu"
 version=1.13
 revision=1
-build_style=gnu-configure
-makedepends="ncurses-devel"
 short_desc="NCurses Disk Usage utility"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="ncurses-devel"
 homepage="http://dev.yorhel.nl/ncdu"
 license="MIT"
-distfiles="http://dev.yorhel.nl/download/${pkgname}-${version}.tar.gz"
-checksum=f4d9285c38292c2de05e444d0ba271cbfe1a705eee37c2b23ea7c448ab37255a
+distfiles="http://dev.yorhel.nl/download/$pkgname-$version.tar.gz"
+checksum="f4d9285c38292c2de05e444d0ba271cbfe1a705eee37c2b23ea7c448ab37255a"
+build_style="gnu-configure"
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,28 +1,28 @@
-# Template build file for 'lzo'.
-pkgname=lzo
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="lzo"
 version=2.10
 revision=2
-build_style=gnu-configure
-configure_args="--enable-shared"
 short_desc="Portable lossless data compression library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.oberhumer.com/opensource/lzo"
 license="GPL-2"
 distfiles="http://www.oberhumer.com/opensource/lzo/download/lzo-$version.tar.gz"
-checksum=c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072
-
+checksum="c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072"
+build_style="gnu-configure"
+configure_args="--enable-shared"
 
 post_install() {
-	rm -r ${DESTDIR}/usr/share/doc
+  rm -r "$DESTDIR/usr/share/doc"
 }
 
 lzo-devel_package() {
-	depends="lzo>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  depends="lzo>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

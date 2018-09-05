@@ -1,74 +1,103 @@
-# Template file for 'mit-krb5'
-pkgname=mit-krb5
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mit-krb5"
 version=1.16.1
 revision=1
-wrksrc="krb5-${version}"
-build_style=gnu-configure
-hostmakedepends="e2fsprogs-devel flex perl pkg-config"
-makedepends="e2fsprogs-devel libldap-devel"
-#depends="mit-krb5-client)=${version}_${revision}"
 short_desc="MIT Kerberos 5 implementation"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="MIT"
+#depends="mit-krb5-client)=${version}_$revision"
+makedepends+=" e2fsprogs-devel"
+makedepends+=" libldap-devel"
+hostmakedepends+=" e2fsprogs-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
-distfiles="${homepage}/dist/krb5/1.16/krb5-${version}.tar.gz"
-checksum=214ffe394e3ad0c730564074ec44f1da119159d94281bbec541dc29168d21117
+license="MIT"
+distfiles="$homepage/dist/krb5/1.16/krb5-$version.tar.gz"
+checksum="214ffe394e3ad0c730564074ec44f1da119159d94281bbec541dc29168d21117"
+wrksrc="krb5-$version"
+build_style="gnu-configure"
 
 post_extract() {
-	# Fix db plugin.
-	sed -i -e "s|<db.h>|<db_185.h>|" $wrksrc/src/plugins/kdb/db2/*.[ch]
+  # fix db plugin
+  sed -i -e "s|<db.h>|<db_185.h>|" "$wrksrc/src/plugins/kdb/db2"/*.[ch]
 }
 
 do_configure() {
-	WARN_CFLAGS= ./src/configure ${configure_args} --sbindir=/usr/bin \
-		--disable-rpath --with-system-et --without-system-verto --with-ldap \
-		--with-system-ss --with-system-db --enable-shared --without-tcl \
-		ac_cv_func_pthread_once=yes ac_cv_func_pthread_rwlock_init=yes \
-		acx_pthread_ok=yes ac_cv_func_regcomp=yes ac_cv_printf_positional=yes \
-		krb5_cv_attr_constructor_destructor=yes,yes
+  WARN_CFLAGS= ./src/configure \
+    "$configure_args" \
+    --disable-rpath \
+    --enable-shared \
+    --sbindir=/usr/bin \
+    --with-ldap \
+    --with-system-db \
+    --with-system-et \
+    --with-system-ss \
+    --without-system-verto \
+    --without-tcl \
+    ac_cv_func_pthread_once="yes" \
+    ac_cv_func_pthread_rwlock_init="yes" \
+    ac_cv_func_regcomp="yes" \
+    ac_cv_printf_positional="yes" \
+    acx_pthread_ok="yes" \
+    krb5_cv_attr_constructor_destructor="yes,yes"
 }
 
 pre_build() {
-	sed -i "/LDFLAGS=/d" src/build-tools/krb5-config.in
+  sed -i "/LDFLAGS=/d" src/build-tools/krb5-config.in
 }
 
 do_build() {
-	make
+  make
 }
 
 post_install() {
-	vsv krb5kdc
-	vsv kadmind
-	vlicense NOTICE
+  vlicense NOTICE
+  vsv krb5kdc
+  vsv kadmind
 }
 
 mit-krb5-client_package() {
-	short_desc+=" - client programs"
-	pkg_install() {
-		for f in uuclient ktutil kswitch gss-client kvno kinit kpasswd \
-			kdestroy sclient kadmin k5srvutil sim_client klist ksu; do
-			vmove usr/bin/${f}
-			if [ -f ${DESTDIR}/usr/share/man/man1/${f}.1 ]; then
-				vmove usr/share/man/man1/${f}.1
-			fi
-		done
-	}
+  short_desc+=" - client programs"
+  pkg_install() {
+    for f in gss-client \
+             k5srvutil \
+             kadmin \
+             kdestroy \
+             kinit \
+             klist \
+             kpasswd \
+             ksu \
+             kswitch \
+             ktutil \
+             kvno \
+             sclient \
+             sim_client \
+             uuclient; do
+      vmove "usr/bin/$f"
+      if [[ -f "$DESTDIR/usr/share/man/man1/$f.1" ]]; then
+        vmove "usr/share/man/man1/$f.1"
+      fi
+    done
+  }
 }
 
 mit-krb5-devel_package() {
-	depends="${makedepends} mit-krb5-libs>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/bin/krb5-config
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" mit-krb5-libs>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/bin/krb5-config
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
 
 mit-krb5-libs_package() {
-	short_desc+=" - runtime libraries"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - runtime libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

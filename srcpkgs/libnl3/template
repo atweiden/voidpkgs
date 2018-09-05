@@ -1,38 +1,44 @@
-# Template file for 'libnl3'
-pkgname=libnl3
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libnl3"
 version=3.4.0
 revision=1
-wrksrc="libnl-${version}"
-build_style=gnu-configure
-configure_args="--disable-static"
-hostmakedepends="automake flex libtool pkg-config"
-conf_files="/etc/libnl/pktloc /etc/libnl/classid"
 short_desc="Netlink Protocol Library Suite"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1"
+hostmakedepends+=" automake"
+hostmakedepends+=" flex"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/thom311/libnl"
-distfiles="https://github.com/thom311/libnl/releases/download/libnl${version//./_}/libnl-${version}.tar.gz"
-checksum=b7287637ae71c6db6f89e1422c995f0407ff2fe50cecd61a312b6a9b0921f5bf
+license="LGPL-2.1"
+distfiles="https://github.com/thom311/libnl/releases/download/libnl${version//./_}/libnl-$version.tar.gz"
+checksum="b7287637ae71c6db6f89e1422c995f0407ff2fe50cecd61a312b6a9b0921f5bf"
+conf_files+=" /etc/libnl/classid"
+conf_files+=" /etc/libnl/pktloc"
+wrksrc="libnl-$version"
+build_style="gnu-configure"
+configure_args="--disable-static"
 
 pre_configure() {
-	autoreconf -fi
-	sed -i '/<linux\/if_bridge.h>/i#define _LINUX_IN6_H' lib/route/link/bridge.c
+  autoreconf -fi
+  sed -i '/<linux\/if_bridge.h>/i#define _LINUX_IN6_H' lib/route/link/bridge.c
 }
 
 libnl3-devel_package() {
-	depends="libnl3>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/*.so
-	}
+  depends="libnl3>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
 libnl3-progs_package() {
-	short_desc+=" - cli utilities"
-	pkg_install() {
-		vmove usr/bin
-		vmove usr/share/man/man8
-		vmove usr/lib/libnl
-	}
+  short_desc+=" - cli utilities"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/share/man/man8
+    vmove usr/lib/libnl
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

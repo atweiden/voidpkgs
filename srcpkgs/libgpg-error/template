@@ -1,33 +1,35 @@
-# Template file for 'libgpg-error'
-pkgname=libgpg-error
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libgpg-error"
 version=1.32
 revision=1
-build_style=gnu-configure
 short_desc="Library for error values used by GnuPG component"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later, GPL-2.0-or-later"
 homepage="https://www.gnupg.org"
-distfiles="https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${version}.tar.bz2"
-checksum=c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca
+license="LGPL-2.1-or-later, GPL-2.0-or-later"
+distfiles="https://www.gnupg.org/ftp/gcrypt/$pkgname/$pkgname-$version.tar.bz2"
+checksum="c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca"
+build_style="gnu-configure"
 
 post_configure() {
-	if [ "$CROSS_BUILD" ]; then
-		cp ${FILESDIR}/lock-obj-pub.arm.h \
-			src/syscfg/lock-obj-pub.${XBPS_CROSS_TRIPLET#*-}.h
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cp \
+      "$FILESDIR/lock-obj-pub.arm.h" \
+      "src/syscfg/lock-obj-pub.${XBPS_CROSS_TRIPLET#*-}.h"
+  fi
 }
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/common-lisp
+  rm -rf "$DESTDIR/usr/share/common-lisp"
 }
 
 libgpg-error-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/bin/gpg-error-config
-		vmove usr/include
-		vmove usr/share/aclocal
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin/gpg-error-config
+    vmove usr/include
+    vmove usr/share/aclocal
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

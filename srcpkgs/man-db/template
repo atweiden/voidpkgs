@@ -1,46 +1,68 @@
-# Template file for 'man-db'
-pkgname=man-db
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="man-db"
 version=2.8.4
 revision=1
-build_style=gnu-configure
-configure_args="--with-db=db --with-pager=less --with-gzip=/usr/bin/gzip
- --with-bzip2=/usr/bin/bzip2 --disable-rpath --enable-threads=posix
- --with-lzma=/usr/bin/lzma --with-xz=/usr/bin/xz --disable-setuid
- --without-included-regex --enable-automatic-create --sbindir=/usr/bin"
-hostmakedepends="groff pkg-config"
-makedepends="db-devel gettext-devel groff libpipeline-devel zlib-devel"
-depends="bzip2 coreutils grep groff gzip less"
-conf_files="/etc/man_db.conf"
-provides="man-0_1"
 short_desc="The on-line manual database"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+depends+=" bzip2"
+depends+=" coreutils"
+depends+=" grep"
+depends+=" groff"
+depends+=" gzip"
+depends+=" less"
+makedepends+=" db-devel"
+makedepends+=" gettext-devel"
+makedepends+=" groff"
+makedepends+=" libpipeline-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" groff"
+hostmakedepends+=" pkg-config"
 homepage="http://www.nongnu.org/man-db/"
-distfiles="${NONGNU_SITE}/${pkgname}/${pkgname}-${version}.tar.xz"
-checksum=103c185f9d8269b9ee3b8a4cb27912b3aa393e952731ef96fedc880723472bc3
-lib32disabled=yes
-
-alternatives="
- man:man:/usr/bin/mandb-man
- man:whatis:/usr/bin/mandb-whatis
- man:apropos:/usr/bin/mandb-whatis
- man:man.1:/usr/share/man/man1/mandb-man.1
- man:whatis.1:/usr/share/man/man1/mandb-whatis.1
- man:apropos.1:/usr/share/man/man1/mandb-apropos.1"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="$NONGNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="103c185f9d8269b9ee3b8a4cb27912b3aa393e952731ef96fedc880723472bc3"
+conf_files="/etc/man_db.conf"
+build_style="gnu-configure"
+configure_args+=" --disable-rpath"
+configure_args+=" --disable-setuid"
+configure_args+=" --enable-automatic-create"
+configure_args+=" --enable-threads=posix"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --with-bzip2=/usr/bin/bzip2"
+configure_args+=" --with-db=db"
+configure_args+=" --with-gzip=/usr/bin/gzip"
+configure_args+=" --with-lzma=/usr/bin/lzma"
+configure_args+=" --with-pager=less"
+configure_args+=" --with-xz=/usr/bin/xz"
+configure_args+=" --without-included-regex"
+lib32disabled="yes"
+provides="man-0_1"
+alternatives+=" man:man:/usr/bin/mandb-man"
+alternatives+=" man:whatis:/usr/bin/mandb-whatis"
+alternatives+=" man:apropos:/usr/bin/mandb-whatis"
+alternatives+=" man:man.1:/usr/share/man/man1/mandb-man.1"
+alternatives+=" man:whatis.1:/usr/share/man/man1/mandb-whatis.1"
+alternatives+=" man:apropos.1:/usr/share/man/man1/mandb-apropos.1"
 
 pre_configure() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl) CFLAGS+=" -I${XBPS_CROSS_BASE}/usr/include/gettext"
-			LDFLAGS+=" -lintl";;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/gettext"
+      LDFLAGS+=" -lintl"
+      ;;
+  esac
 }
+
 post_install() {
-	rm -r ${DESTDIR}/usr/lib/tmpfiles.d
-	# Rename files for alternatives
-	for f in apropos man whatis; do
-		mv ${DESTDIR}/usr/bin/{$f,mandb-$f}
-		mv ${DESTDIR}/usr/share/man/man1/{$f,mandb-$f}.1
-	done
-	# Install the cron daily job.
-	vinstall ${FILESDIR}/man-db.cron-daily 744 etc/cron.daily man-db
+  rm -r "$DESTDIR/usr/lib/tmpfiles.d"
+  # rename files for alternatives
+  for f in apropos \
+           man \
+           whatis; do
+    mv "$DESTDIR/usr/bin"/{"$f","mandb-$f"}
+    mv "$DESTDIR/usr/share/man/man1"/{"$f","mandb-$f"}.1
+  done
+  # install the cron daily job
+  vinstall "$FILESDIR/man-db.cron-daily" 744 etc/cron.daily man-db
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

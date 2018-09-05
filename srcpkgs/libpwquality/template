@@ -1,30 +1,37 @@
-# Template file for 'libpwquality'
-pkgname=libpwquality
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libpwquality"
 version=1.4.0
 revision=1
-build_style=gnu-configure
-configure_args="--disable-static --enable-pam --disable-python-bindings
- --with-securedir=/usr/lib/security"
-hostmakedepends="libtool automake gettext-devel"
-makedepends="cracklib-devel pam-devel"
-conf_files="/etc/security/pwquality.conf"
 short_desc="Library for password quality checking and generating random passwords"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" cracklib-devel"
+makedepends+=" pam-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
 homepage="https://github.com/libpwquality/libpwquality"
 license="GPL-2"
-distfiles="${homepage}/releases/download/libpwquality-${version}/libpwquality-${version}.tar.bz2"
-checksum=1de6ff046cf2172d265a2cb6f8da439d894f3e4e8157b056c515515232fade6b
+distfiles="$homepage/releases/download/libpwquality-$version/libpwquality-$version.tar.bz2"
+checksum="1de6ff046cf2172d265a2cb6f8da439d894f3e4e8157b056c515515232fade6b"
+conf_files="/etc/security/pwquality.conf"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --enable-pam"
+configure_args+=" --disable-python-bindings"
+configure_args+=" --with-securedir='/usr/lib/security'"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 libpwquality-devel_package() {
-	depends="cracklib-devel ${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" cracklib-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

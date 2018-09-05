@@ -1,38 +1,42 @@
-# Template file for 'libtermkey'
-pkgname=libtermkey
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libtermkey"
 version=0.20
 revision=2
-build_style=gnu-makefile
-hostmakedepends="libtool pkg-config perl"
-makedepends="unibilium-devel"
 short_desc="Library for processing keyboard entry from terminal-based programs"
-maintainer="Steve Prybylski <sa.prybylx@gmail.com>"
-license="MIT"
+makedepends="unibilium-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="http://www.leonerd.org.uk/code/libtermkey"
-distfiles="${homepage}/${pkgname}-${version}.tar.gz"
-checksum=6c0d87c94ab9915e76ecd313baec08dedf3bd56de83743d9aa923a081935d2f5
+license="MIT"
+distfiles="$homepage/$pkgname-$version.tar.gz"
+checksum="6c0d87c94ab9915e76ecd313baec08dedf3bd56de83743d9aa923a081935d2f5"
+build_style="gnu-makefile"
 
 do_build() {
-	if [ "$CROSS_BUILD" ]; then
-		cp /usr/bin/libtool .
-		sed -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" -i libtool
-		sed -e 's,libtool,./libtool,g' -i Makefile
-	fi
-	make termkey.h libtermkey.la
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cp /usr/bin/libtool .
+    sed -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" -i libtool
+    sed -e 's,libtool,./libtool,g' -i Makefile
+  fi
+  make termkey.h libtermkey.la
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 libtermkey-devel_package() {
-	short_desc+=" - development files"
-	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-	}
+  short_desc+=" - development files"
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

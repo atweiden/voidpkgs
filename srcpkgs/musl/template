@@ -1,61 +1,75 @@
-# Template file for 'musl'.
-pkgname=musl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="musl"
 version=1.1.19
 revision=1
-build_style=gnu-configure
-configure_args="--prefix=/usr --disable-gcc-wrapper"
-conflicts="glibc>=0"
-bootstrap=yes
 short_desc="The musl C library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="MIT"
+only_for_archs+=" aarch64-musl"
+only_for_archs+=" armv5tel-musl"
+only_for_archs+=" armv6l-musl"
+only_for_archs+=" armv7l-musl"
+only_for_archs+=" i686-musl"
+only_for_archs+=" mips-musl"
+only_for_archs+=" mipsel-musl"
+only_for_archs+=" mipselhf-musl"
+only_for_archs+=" mipshf-musl"
+only_for_archs+=" x86_64-musl"
 homepage="http://www.musl-libc.org/"
-distfiles="http://www.musl-libc.org/releases/musl-${version}.tar.gz"
-checksum=db59a8578226b98373f5b27e61f0dd29ad2456f4aa9cec587ba8c24508e4c1d9
-
+license="MIT"
+distfiles="http://www.musl-libc.org/releases/musl-$version.tar.gz"
+checksum="db59a8578226b98373f5b27e61f0dd29ad2456f4aa9cec587ba8c24508e4c1d9"
+build_style="gnu-configure"
+configure_args+=" --disable-gcc-wrapper"
+configure_args+=" --prefix=/usr"
 nostrip_files="libc.so"
 shlib_provides="libc.so"
-only_for_archs="i686-musl x86_64-musl armv5tel-musl armv6l-musl armv7l-musl aarch64-musl mips-musl mipshf-musl mipsel-musl mipselhf-musl"
-
+bootstrap="yes"
 desc_option_bigstack="bigger default pthread stack size"
 build_options="bigstack"
+conflicts="glibc>=0"
 
 CFLAGS="$(vopt_if bigstack -DVOID_BIGSTACK)"
 
 post_build() {
-	$CC $CFLAGS $LDFLAGS ${FILESDIR}/getent.c -o getent
-	$CC $CFLAGS $LDFLAGS ${FILESDIR}/getconf.c -o getconf
-	$CC $CFLAGS $LDFLAGS ${FILESDIR}/iconv.c -o iconv
+  "$CC" "$CFLAGS" "$LDFLAGS" "$FILESDIR/getent.c" -o getent
+  "$CC" "$CFLAGS" "$LDFLAGS" "$FILESDIR/getconf.c" -o getconf
+  "$CC" "$CFLAGS" "$LDFLAGS" "$FILESDIR/iconv.c" -o iconv
 }
+
 do_install() {
-	# Move everything to /usr.
-	vmkdir usr/lib
-	ln -sfr ${DESTDIR}/usr/lib ${DESTDIR}/lib
-	make DESTDIR=${DESTDIR} install
-	rm ${DESTDIR}/lib
-	# provide ldd
-	vmkdir usr/bin
-	ln -s /usr/lib/libc.so ${DESTDIR}/usr/bin/ldd
-	# additional utils from Alpine/NetBSD
-	vbin iconv
-	vbin getent
-	vman ${FILESDIR}/getent.1
-	vbin getconf
-	vman ${FILESDIR}/getconf.1
-	# Fake ldconfig
-	ln -s true ${DESTDIR}/usr/bin/ldconfig
-	# Create xbps.d(5) arch override file
-	vmkdir usr/share/xbps.d
-	echo "architecture=${XBPS_TARGET_MACHINE}" > ${DESTDIR}/usr/share/xbps.d/musl-arch.conf
-	vlicense COPYRIGHT
+  # move everything to /usr
+  vmkdir usr/lib
+  ln -sfr "$DESTDIR/usr/lib" "$DESTDIR/lib"
+  make DESTDIR="$DESTDIR" install
+  rm "$DESTDIR/lib"
+  # provide ldd
+  vmkdir usr/bin
+  ln -s /usr/lib/libc.so "$DESTDIR/usr/bin/ldd"
+  # additional utils from Alpine/NetBSD
+  vbin iconv
+  vbin getent
+  vman "$FILESDIR/getent.1"
+  vbin getconf
+  vman "$FILESDIR/getconf.1"
+  # fake ldconfig
+  ln -s true "$DESTDIR/usr/bin/ldconfig"
+  # create xbps.d(5) arch override file
+  vmkdir usr/share/xbps.d
+  echo "architecture=$XBPS_TARGET_MACHINE" > "$DESTDIR/usr/share/xbps.d/musl-arch.conf"
+}
+
+post_install() {
+  vlicense COPYRIGHT
 }
 
 musl-devel_package() {
-	depends="kernel-libc-headers ${sourcepkg}-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-		vmove usr/lib/*.o
-	}
+  depends+=" $sourcepkg-${version}_$revision"
+  depends+=" kernel-libc-headers"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.o"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

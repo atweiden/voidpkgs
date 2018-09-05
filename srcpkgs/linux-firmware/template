@@ -1,76 +1,79 @@
-# Template file for 'linux-firmware'
-pkgname=linux-firmware
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="linux-firmware"
 version=20180825
 revision=1
-_githash=fea76a04f25fd0a217c0d566ff5ff8f23ad3e648
-wrksrc="${pkgname}-${_githash}"
-noarch=yes
+_githash="fea76a04f25fd0a217c0d566ff5ff8f23ad3e648"
 short_desc="Binary firmware blobs for the Linux kernel"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+noarch="yes"
 homepage="https://www.kernel.org/"
-license="See /usr/share/licenses/${pkgname}"
-depends="${pkgname}-amd-${version}_${revision} ${pkgname}-network-${version}_${revision}"
-distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/${pkgname}-${_githash}.tar.gz"
-checksum=bbcd63740019c9df823853274c799267c9436fbab8f40d2290736a07109c1763
+license="See /usr/share/licenses/$pkgname"
+depends+=" $pkgname-amd-${version}_$revision"
+depends+=" $pkgname-network-${version}_$revision"
+distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$_githash.tar.gz"
+checksum="bbcd63740019c9df823853274c799267c9436fbab8f40d2290736a07109c1763"
+wrksrc="$pkgname-$_githash"
 
 do_install() {
-	vmkdir usr/lib/firmware
-	vmkdir usr/share/licenses/${pkgname}
-	vcopy "*" usr/lib/firmware
-	rm -f ${DESTDIR}/usr/lib/firmware/{README*,configure,GPL*}
-	mv ${DESTDIR}/usr/lib/firmware/{LICEN*,WHENCE} \
-		${DESTDIR}/usr/share/licenses/${pkgname}
+  vmkdir usr/lib/firmware
+  vmkdir "usr/share/licenses/$pkgname"
+  vcopy "*" usr/lib/firmware
+  rm -f "$DESTDIR/usr/lib/firmware"/{README*,configure,GPL*}
+  mv \
+    "$DESTDIR/usr/lib/firmware"/{LICEN*,WHENCE} \
+    "$DESTDIR/usr/share/licenses/$pkgname"
 }
 
 linux-firmware-amd_package() {
-	short_desc+=" - AMD CPU/GPU microcode"
-	noarch=yes
-	pkg_install() {
-		vmove usr/lib/firmware/amd*
-		vmove usr/lib/firmware/radeon
-		vmove usr/share/licenses/linux-firmware/LICENSE.amdgpu
-		vmove usr/share/licenses/linux-firmware/LICENSE.amd-ucode
-		vmove usr/share/licenses/linux-firmware/LICENSE.radeon
-	}
+  short_desc+=" - AMD CPU/GPU microcode"
+  noarch="yes"
+  pkg_install() {
+    vmove "usr/lib/firmware/amd*"
+    vmove usr/lib/firmware/radeon
+    vmove usr/share/licenses/linux-firmware/LICENSE.amdgpu
+    vmove usr/share/licenses/linux-firmware/LICENSE.amd-ucode
+    vmove usr/share/licenses/linux-firmware/LICENSE.radeon
+  }
 }
 
 linux-firmware-intel_package() {
-	short_desc+=" - Intel CPU/GPU microcode"
-	noarch=yes
-	pkg_install() {
-		vmove usr/lib/firmware/i915
-		vmove usr/share/licenses/linux-firmware/LICENSE.i915
-	}
+  short_desc+=" - Intel CPU/GPU microcode"
+  noarch="yes"
+  pkg_install() {
+    vmove usr/lib/firmware/i915
+    vmove usr/share/licenses/linux-firmware/LICENSE.i915
+  }
 }
 
 linux-firmware-nvidia_package() {
-	short_desc+=" NVIDIA GPU microcode"
-	noarch=yes
-	pkg_install() {
-		vmove usr/lib/firmware/nvidia
-		vmove usr/share/licenses/linux-firmware/LICENCE.nvidia*
-	}
+  short_desc+=" NVIDIA GPU microcode"
+  noarch="yes"
+  pkg_install() {
+    vmove usr/lib/firmware/nvidia
+    vmove "usr/share/licenses/linux-firmware/LICENCE.nvidia*"
+  }
 }
 
 linux-firmware-network_package() {
-	short_desc+=" - network"
-	noarch=yes
-	pkg_install() {
-		vmove usr/lib/firmware/3com
-		vmove usr/lib/firmware/RTL8192E
-		vmove "usr/lib/firmware/rt*"
-		vmove "usr/lib/firmware/ath*"
-		vmove "usr/lib/firmware/ar*"
-		vmove "usr/lib/firmware/bnx2*"
-		vmove usr/lib/firmware/brcm
-		vmove "usr/lib/firmware/cxgb*"
-		vmove "usr/lib/firmware/htc*"
-		vmove "usr/lib/firmware/iwl*"
-		vmove "usr/lib/firmware/intel*"
-		vmove usr/lib/firmware/kaweth
-		vmove usr/lib/firmware/libertas
-		vmove usr/lib/firmware/mrvl
-		vmove usr/lib/firmware/ueagle-atm
-		vmove usr/lib/firmware/ti-connectivity
-	}
+  short_desc+=" - network"
+  noarch="yes"
+  pkg_install() {
+    vmove usr/lib/firmware/3com
+    vmove usr/lib/firmware/RTL8192E
+    vmove "usr/lib/firmware/rt*"
+    vmove "usr/lib/firmware/ath*"
+    vmove "usr/lib/firmware/ar*"
+    vmove "usr/lib/firmware/bnx2*"
+    vmove usr/lib/firmware/brcm
+    vmove "usr/lib/firmware/cxgb*"
+    vmove "usr/lib/firmware/htc*"
+    vmove "usr/lib/firmware/iwl*"
+    vmove "usr/lib/firmware/intel*"
+    vmove usr/lib/firmware/kaweth
+    vmove usr/lib/firmware/libertas
+    vmove usr/lib/firmware/mrvl
+    vmove usr/lib/firmware/ueagle-atm
+    vmove usr/lib/firmware/ti-connectivity
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

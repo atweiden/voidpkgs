@@ -1,23 +1,24 @@
-# Template file for 'libnftnl'
-pkgname=libnftnl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libnftnl"
 version=1.1.1
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="libmnl-devel"
 short_desc="Low-level netlink interface to nf_tables"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+makedepends="libmnl-devel"
+hostmakedepends="pkg-config"
 homepage="https://www.netfilter.org/projects/libnftnl/"
-distfiles="https://www.netfilter.org/projects/${pkgname}/files/${pkgname}-${version}.tar.bz2"
-checksum=5d6a65413f27ec635eedf6aba033f7cf671d462a2afeacc562ba96b19893aff2
+license="GPL-2.0-or-later"
+distfiles="https://www.netfilter.org/projects/$pkgname/files/$pkgname-$version.tar.bz2"
+checksum="5d6a65413f27ec635eedf6aba033f7cf671d462a2afeacc562ba96b19893aff2"
+build_style="gnu-configure"
 
 libnftnl-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" -- development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

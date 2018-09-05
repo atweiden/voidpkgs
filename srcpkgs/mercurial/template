@@ -1,26 +1,30 @@
-# Template file for 'mercurial'
-pkgname=mercurial
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mercurial"
 version=4.7
 revision=1
-build_style=python2-module
-hostmakedepends="python-devel"
-makedepends="python-devel"
-depends="ca-certificates"
-pycompile_module="hgdemandimport hgext hgext3rd mercurial"
 short_desc="Fast, lightweight source control management system"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+depends="ca-certificates"
+makedepends="python-devel"
+hostmakedepends="python-devel"
 homepage="https://www.mercurial-scm.org/"
-distfiles="https://www.mercurial-scm.org/release/mercurial-${version}.tar.gz"
-checksum=098cb1437f77fb7f75dc2f008742933c729ec0b63cfa3e4e2f0a8fbc3d0d349f
+license="GPL-2.0-or-later"
+distfiles="https://www.mercurial-scm.org/release/mercurial-$version.tar.gz"
+checksum="098cb1437f77fb7f75dc2f008742933c729ec0b63cfa3e4e2f0a8fbc3d0d349f"
+build_style="python2-module"
+pycompile_module+=" hgdemandimport"
+pycompile_module+=" hgext"
+pycompile_module+=" hgext3rd"
+pycompile_module+=" mercurial"
 
 post_install() {
-	vmkdir usr/share/man/man1
-	vmkdir usr/share/man/man5
-	install -m644 doc/*.1 ${DESTDIR}/usr/share/man/man1
-	install -m644 doc/*.5 ${DESTDIR}/usr/share/man/man5
-	install -m644 -D contrib/bash_completion \
-		${DESTDIR}/usr/share/bash-completion/completions/hg
-	install -m644 -D contrib/zsh_completion \
-		${DESTDIR}/usr/share/zsh/site-functions/_hg
+  vmkdir usr/share/man/man1
+  vmkdir usr/share/man/man5
+  install -m 644 doc/*.1 "$DESTDIR/usr/share/man/man1"
+  install -m 644 doc/*.5 "$DESTDIR/usr/share/man/man5"
+  install -m 644 -D contrib/bash_completion \
+    "$DESTDIR/usr/share/bash-completion/completions/hg"
+  install -m 644 -D contrib/zsh_completion \
+    "$DESTDIR/usr/share/zsh/site-functions/_hg"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
