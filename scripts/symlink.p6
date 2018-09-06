@@ -398,6 +398,7 @@ my List:D %pkg{Str:D} =
                 vim-huge-python3
                 vim-x11
                 xxd>,
+    'wireguard' => ['wireguard-tools'],
     'wireless_tools' => ['wireless_tools-devel'],
     'xbps' => qw<libxbps
                  libxbps-devel
