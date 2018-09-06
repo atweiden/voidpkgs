@@ -1,27 +1,34 @@
-# Template file for 'wget'
-pkgname=wget
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="wget"
 version=1.19.5
 revision=1
-build_style=gnu-configure
-configure_args="$(vopt_if ssl '--with-ssl=openssl') $(vopt_if gnutls '--with-ssl=gnutls')"
-hostmakedepends="perl pkg-config"
-makedepends="libidn-devel libuuid-devel pcre-devel
- $(vopt_if gnutls 'gnutls-devel') $(vopt_if ssl 'libressl-devel')"
-checkdepends="perl-HTTP-Daemon perl-IO-Socket-SSL"
-depends="ca-certificates"
 short_desc="The GNU wget download utility"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends="ca-certificates"
+makedepends+=" libidn-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" pcre-devel"
+makedepends+=" $(vopt_if gnutls gnutls-devel)"
+makedepends+=" $(vopt_if ssl libressl-devel)"
+checkdepends+=" perl-HTTP-Daemon"
+checkdepends+=" perl-IO-Socket-SSL"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+homepage="http://www.gnu.org/software/wget/wget.html"
 license="GPL-3.0-or-later"
 #changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
-homepage="http://www.gnu.org/software/wget/wget.html"
-distfiles="${GNU_SITE}/wget/wget-${version}.tar.gz"
-checksum=b39212abe1a73f2b28f4c6cb223c738559caac91d6e416a6d91d4b9d55c9faee
+distfiles="$GNU_SITE/wget/wget-$version.tar.gz"
+checksum="b39212abe1a73f2b28f4c6cb223c738559caac91d6e416a6d91d4b9d55c9faee"
 conf_files="/etc/wgetrc"
-
-build_options="gnutls ssl"
+build_style="gnu-configure"
+configure_args+=" $(vopt_if ssl --with-ssl='openssl')"
+configure_args+=" $(vopt_if gnutls --with-ssl='gnutls')"
+build_options+=" gnutls"
+build_options+=" ssl"
 build_options_default="ssl"
 vopt_conflict gnutls ssl
 
 post_install() {
-	echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> ${DESTDIR}/etc/wgetrc
+  echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> "$DESTDIR/etc/wgetrc"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

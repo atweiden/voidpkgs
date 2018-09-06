@@ -1,21 +1,30 @@
-# Template file for 'thin-provisioning-tools'
-pkgname=thin-provisioning-tools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="thin-provisioning-tools"
 version=0.7.6
 revision=2
-build_style=gnu-configure
-hostmakedepends="automake libtool pkg-config"
-makedepends="boost-devel expat-devel libaio-devel"
 short_desc="Tools for manipulating the metadata of dm-thin device-mapper targets"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3.0-or-later"
+makedepends+=" boost-devel"
+makedepends+=" expat-devel"
+makedepends+=" libaio-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/jthornber/thin-provisioning-tools"
-distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=491358c1406414ab3f06b260bd9da8a2f9109c4c426dda899d4d985860dfc01f
+license="GPL-3.0-or-later"
+distfiles="$homepage/archive/v$version.tar.gz"
+checksum="491358c1406414ab3f06b260bd9da8a2f9109c4c426dda899d4d985860dfc01f"
+build_style="gnu-configure"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 do_install() {
-	make DESTDIR=${DESTDIR} BINDIR=${DESTDIR}/usr/bin MANDIR=/usr/share/man install
+  make \
+    BINDIR="$DESTDIR/usr/bin" \
+    DESTDIR="$DESTDIR" \
+    MANDIR="/usr/share/man" \
+    install
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

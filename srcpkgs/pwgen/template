@@ -1,11 +1,12 @@
-# Template file for 'pwgen'
-pkgname=pwgen
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pwgen"
 version=2.08
 revision=1
-build_style=gnu-configure
 short_desc="Password Generator"
-maintainer="Duncaen <duncaen@voidlinux.eu>"
-license="GPL-2"
 homepage="http://pwgen.sourceforge.net"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=dab03dd30ad5a58e578c5581241a6e87e184a18eb2c3b2e0fffa8a9cf105c97b
+license="GPL-2"
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="dab03dd30ad5a58e578c5581241a6e87e184a18eb2c3b2e0fffa8a9cf105c97b"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

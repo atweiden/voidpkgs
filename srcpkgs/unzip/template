@@ -1,37 +1,58 @@
-# Template file for 'unzip'
-pkgname=unzip
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="unzip"
 version=6.0
 revision=11
-makedepends="bzip2-devel"
-wrksrc=unzip60
 short_desc="List, test and extract compressed files in a ZIP archive"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="bzip2-devel"
 homepage="http://infozip.sf.net/"
 license="BSD"
-distfiles="${SOURCEFORGE_SITE}/infozip/${pkgname}60.tar.gz"
-checksum=036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+distfiles="$SOURCEFORGE_SITE/infozip/$pkgname60.tar.gz"
+checksum="036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37"
+wrksrc="unzip60"
 
 do_build() {
-	CFLAGS+=" -D_FILE_OFFSET_BITS=64 -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT \
-		-DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE \
-		-DNO_LCHMOD -LDDATE_FORMAT=DF_YMD -DUSE_BZIP2 -DNATIVE"
-
-	make ${makejobs} -f unix/Makefile LOCAL_UNZIP="$CFLAGS" \
-		prefix=/usr LF2="" CC=$CC CFLAGS="$CFLAGS" LFLAGS1="$LDFLAGS" \
-		D_USE_BZ2=-DUSE_BZIP2 L_BZ2=-lbz2 unzips
+  CFLAGS+=" -DLARGE_FILE_SUPPORT"
+  CFLAGS+=" -DNATIVE"
+  CFLAGS+=" -DNO_LCHMOD"
+  CFLAGS+=" -DUNICODE_SUPPORT"
+  CFLAGS+=" -DUNICODE_WCHAR"
+  CFLAGS+=" -DUSE_BZIP2"
+  CFLAGS+=" -DUTF8_MAYBE_NATIVE"
+  CFLAGS+=" -DWILD_STOP_AT_DIR"
+  CFLAGS+=" -D_FILE_OFFSET_BITS=64"
+  CFLAGS+=" -LDDATE_FORMAT=DF_YMD"
+  make \
+    "$makejobs" \
+    -f unix/Makefile \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    D_USE_BZ2="-DUSE_BZIP2" \
+    LF2="" \
+    LFLAGS1="$LDFLAGS" \
+    LOCAL_UNZIP="$CFLAGS" \
+    L_BZ2="-lbz2" \
+    prefix="/usr" \
+    unzips
 }
 
 do_check() {
-	make -f unix/Makefile test
+  make -f unix/Makefile test
 }
 
 do_install() {
-	cd ${wrksrc}
-	make ${makejobs} -f unix/Makefile prefix=${DESTDIR}/usr \
-		INSTALL_PROGRAM="install" install
-
-	vmkdir usr/share
-	mv ${DESTDIR}/usr/man ${DESTDIR}/usr/share
-
-	vlicense LICENSE
+  cd "$wrksrc"
+  make \
+    "$makejobs" \
+    -f unix/Makefile \
+    INSTALL_PROGRAM="install" \
+    prefix="$DESTDIR/usr" \
+    install
+  vmkdir usr/share
+  mv "$DESTDIR/usr/man" "$DESTDIR/usr/share"
 }
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

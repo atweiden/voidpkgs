@@ -1,21 +1,36 @@
-# Template build file for 'zip'.
-pkgname=zip
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="zip"
 version=3.0
 revision=5
-wrksrc="zip30"
 short_desc="Create/update ZIP files compatible with pkzip"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD"
 homepage="http://infozip.sf.net/"
-distfiles="${SOURCEFORGE_SITE}/infozip/zip30.tar.gz"
-checksum=f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369
+license="BSD"
+distfiles="$SOURCEFORGE_SITE/infozip/zip30.tar.gz"
+checksum="f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369"
+wrksrc="zip30"
 
 do_build() {
-	sed -e "s|generic CC=gcc CPP=\"gcc -E\"|zips CC=$CC CPP=\"$CPP -E\" CFLAGS=\"-DLARGE_FILE_SUPPORT $CFLAGS \${CFLAGS_NOOPT}\" LFLAGS2=\"$LDFLAGS\"|g" -i unix/Makefile
-	make CC=$CC CPP=$CPP -f unix/Makefile generic_gcc
+  sed \
+    -i \
+    -e "s|generic CC=gcc CPP=\"gcc -E\"|zips CC=$CC CPP=\"$CPP -E\" CFLAGS=\"-DLARGE_FILE_SUPPORT $CFLAGS \${CFLAGS_NOOPT}\" LFLAGS2=\"$LDFLAGS\"|g" \
+    unix/Makefile
+  make \
+    CC="$CC" \
+    CPP="$CPP" \
+    -f unix/Makefile \
+    generic_gcc
 }
 
 do_install() {
-	make PREFIX=/usr DESTDIR=${DESTDIR} -f unix/Makefile install
-	vlicense LICENSE
+  make \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    -f unix/Makefile \
+    install
 }
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,36 +1,45 @@
-# Template file for 'xbps-static'
-# NOTE: keep this package synchronized with "srcpkgs/xbps".
-pkgname=xbps-static
+# NOTE: keep this package synchronized with "srcpkgs/xbps"
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="xbps-static"
 version=0.53
 revision=1
-wrksrc="xbps-${version}"
-build_style=configure
-hostmakedepends="pkg-config"
-makedepends="libarchive-devel"
-depends="xbps-triggers"
 short_desc="The XBPS package system utilities - static binaries"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-2-Clause"
+depends="xbps-triggers"
+makedepends="libarchive-devel"
+hostmakedepends="pkg-config"
 homepage="https://www.voidlinux.eu/xbps"
-distfiles="https://github.com/void-linux/xbps/archive/${version}.tar.gz"
-checksum=360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4
+license="BSD-2-Clause"
+distfiles="https://github.com/void-linux/xbps/archive/$version.tar.gz"
+checksum="360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4"
+wrksrc="xbps-$version"
+build_style="configure"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) ;;
-	*) broken="only for musl arches" ;;
+  *-musl)
+    ;;
+  *)
+    broken="only for musl arches"
+    ;;
 esac
 
 do_configure() {
-	HAVE_VASPRINTF=1 ./configure --prefix=/usr --sysconfdir=/etc --enable-static --enable-debug --verbose
+  HAVE_VASPRINTF=1 ./configure \
+    --enable-debug \
+    --enable-static \
+    --prefix="/usr" \
+    --sysconfdir="/etc" \
+    --verbose
 }
 
 do_install() {
-	make DESTDIR=${wrksrc}/static-install install
-	vmkdir usr/bin
-	mv ${wrksrc}/static-install/usr/bin/*.static ${DESTDIR}/usr/bin
+  make DESTDIR="$wrksrc/static-install" install
+  vmkdir usr/bin
+  mv "$wrksrc/static-install/usr/bin"/*.static "$DESTDIR/usr/bin"
 }
 
 post_install() {
-	vlicense COPYING
-	vlicense COPYING.3RDPARTY
+  vlicense COPYING
+  vlicense COPYING.3RDPARTY
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

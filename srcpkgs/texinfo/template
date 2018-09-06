@@ -1,24 +1,27 @@
-# Template file for 'texinfo'
-pkgname=texinfo
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="texinfo"
 version=6.5
 revision=1
-build_style=gnu-configure
-configure_args="--disable-static"
-hostmakedepends="perl ncurses-devel"
-makedepends="ncurses-devel"
-checkdepends="ncurses gzip"
-conflicts="chroot-texinfo>=0"
-depends="gzip perl"
 short_desc="The GNU Documentation System"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-3"
+depends+=" gzip"
+depends+=" perl"
+makedepends="ncurses-devel"
+checkdepends+=" gzip"
+checkdepends+=" ncurses"
+hostmakedepends+=" ncurses-devel"
+hostmakedepends+=" perl"
 homepage="http://www.gnu.org/software/texinfo/"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62
-
+license="GPL-3"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62"
+build_style="gnu-configure"
+configure_args="--disable-static"
+conflicts="chroot-texinfo>=0"
 
 post_install() {
-	rm -f ${DESTDIR}/usr/share/info/dir
-	# Compress manually info files.
-	gzip -9 ${DESTDIR}/usr/share/info/*
+  rm -f "$DESTDIR/usr/share/info/dir"
+  # compress info files
+  gzip -9 "$DESTDIR/usr/share/info"/*
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

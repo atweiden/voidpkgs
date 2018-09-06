@@ -1,54 +1,61 @@
-# Template file for 'valgrind'
-pkgname=valgrind
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="valgrind"
 version=3.13.0
 revision=2
-only_for_archs="i686 x86_64 armv7l i686-musl x86_64-musl armv7l-musl"
-build_style=gnu-configure
-configure_args="--enable-tls --without-mpicc"
-hostmakedepends="automake perl pkg-config"
-makedepends="libgomp-devel"
-depends="perl"
 short_desc="Tool for finding memory management bugs in programs"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+only_for_archs+=" armv7l"
+only_for_archs+=" armv7l-musl"
+only_for_archs+=" i686"
+only_for_archs+=" i686-musl"
+only_for_archs+=" x86_64"
+only_for_archs+=" x86_64-musl"
+depends="perl"
+makedepends="libgomp-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="http://valgrind.org/"
 license="GPL-2"
-distfiles="https://sourceware.org/pub/${pkgname}/${pkgname}-${version}.tar.bz2"
-checksum=d76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b
+distfiles="https://sourceware.org/pub/$pkgname/$pkgname-$version.tar.bz2"
+checksum="d76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b"
+build_style="gnu-configure"
+configure_args+=" --enable-tls"
+configure_args+=" --without-mpicc"
+lib32files+=" /usr/lib/valgrind/*-x86-linux"
+lib32files+=" /usr/lib/valgrind/default.supp"
+lib32symlinks+=" valgrind/cachegrind-x86-linux"
+lib32symlinks+=" valgrind/callgrind-x86-linux"
+lib32symlinks+=" valgrind/drd-x86-linux"
+lib32symlinks+=" valgrind/exp-bbv-x86-linux"
+lib32symlinks+=" valgrind/exp-dhat-x86-linux"
+lib32symlinks+=" valgrind/exp-sgcheck-x86-linux"
+lib32symlinks+=" valgrind/getoff-x86-linux"
+lib32symlinks+=" valgrind/helgrind-x86-linux"
+lib32symlinks+=" valgrind/lackey-x86-linux"
+lib32symlinks+=" valgrind/massif-x86-linux"
+lib32symlinks+=" valgrind/memcheck-x86-linux"
+lib32symlinks+=" valgrind/none-x86-linux"
 
 CFLAGS="-fno-stack-protector"
 CXXFLAGS="-fno-stack-protector"
 
-lib32files="/usr/lib/valgrind/*-x86-linux
- /usr/lib/valgrind/default.supp"
-lib32symlinks="
- valgrind/cachegrind-x86-linux
- valgrind/callgrind-x86-linux
- valgrind/drd-x86-linux
- valgrind/exp-bbv-x86-linux
- valgrind/exp-dhat-x86-linux
- valgrind/exp-sgcheck-x86-linux
- valgrind/getoff-x86-linux
- valgrind/helgrind-x86-linux
- valgrind/lackey-x86-linux
- valgrind/massif-x86-linux
- valgrind/memcheck-x86-linux
- valgrind/none-x86-linux"
-
-if [ "$XBPS_TARGET_MACHINE" = "armv7l" ]; then
-	configure_args+=" ac_cv_host=armv7l-unknown-linux-gnueabihf"
+if [[ "$XBPS_TARGET_MACHINE" == "armv7l" ]]; then
+  configure_args+=" ac_cv_host='armv7l-unknown-linux-gnueabihf'"
 fi
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 valgrind-devel_package() {
-	depends="valgrind>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/valgrind/*.a"
-		vmove usr/share/doc
-	}
+  depends="valgrind>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/valgrind/*.a"
+    vmove usr/share/doc
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

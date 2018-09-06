@@ -1,28 +1,33 @@
-# Template build file for 'zlib'
-pkgname=zlib
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="zlib"
 version=1.2.11
 revision=3
-bootstrap=yes
-build_style=configure
 short_desc="A compression/decompression Library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="zlib"
 homepage="http://www.zlib.net"
+license="zlib"
 distfiles="$homepage/$pkgname-$version.tar.gz"
-checksum=c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1
+checksum="c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1"
+build_style="configure"
+bootstrap="yes"
 
 do_configure() {
-	LDFLAGS= LDSHAREDLIBC= ./configure --prefix=/usr --shared
+  LDFLAGS= \
+  LDSHAREDLIBC= \
+    ./configure \
+      --prefix="/usr" \
+      --shared
 }
 
 zlib-devel_package() {
-	depends="zlib>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share
-	}
+  depends="zlib>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

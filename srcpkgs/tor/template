@@ -1,29 +1,35 @@
-# Template file for 'tor'
-pkgname=tor
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tor"
 version=0.3.3.9
 revision=1
-build_style=gnu-configure
-makedepends="libevent-devel libseccomp-devel zlib-devel"
-depends="ca-certificates torsocks"
 short_desc="Anonymity Online"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-3-Clause"
+depends+=" ca-certificates"
+depends+=" torsocks"
+makedepends+=" libevent-devel"
+makedepends+=" libseccomp-devel"
+makedepends+=" zlib-devel"
 homepage="https://www.torproject.org/"
-distfiles="https://www.torproject.org/dist/tor-${version}.tar.gz"
-checksum=85346b4d026e6a041c8e326d2cc64b5f5361b032075c89c5854f16dbc02fce6f
+license="BSD-3-Clause"
+distfiles="https://www.torproject.org/dist/tor-$version.tar.gz"
+checksum="85346b4d026e6a041c8e326d2cc64b5f5361b032075c89c5854f16dbc02fce6f"
 conf_files="/etc/tor/torrc"
-system_accounts="tor"
-tor_homedir=/var/lib/tor
+build_style="gnu-configure"
 make_dirs="/var/lib/tor 0700 tor tor"
+system_accounts="tor"
+tor_homedir="/var/lib/tor"
 
 case "$XBPS_TARGET_MACHINE" in
-	aarch64*) configure_args="--disable-seccomp";;
+  aarch64*)
+    configure_args="--disable-seccomp"
+    ;;
 esac
 
 post_install() {
-	# Use our own default config file.
-	vinstall ${FILESDIR}/torrc 640 etc/tor
-	rm -f ${DESTDIR}/etc/tor/torrc.sample
-	vlicense LICENSE
-	vsv tor
+  vlicense LICENSE
+  # use our own default config file
+  vinstall "$FILESDIR/torrc" 640 etc/tor
+  rm -f "$DESTDIR/etc/tor/torrc.sample"
+  vsv tor
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

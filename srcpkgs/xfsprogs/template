@@ -1,31 +1,39 @@
-# Template file for 'xfsprogs'
-pkgname=xfsprogs
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="xfsprogs"
 version=4.18.0
 revision=1
-build_style=gnu-configure
-configure_args="--enable-readline=yes --enable-lib64=no"
-hostmakedepends="libuuid-devel"
-makedepends="libblkid-devel readline-devel"
 short_desc="Utilities for managing the XFS filesystem"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later"
+makedepends+=" libblkid-devel"
+makedepends+=" readline-devel"
+hostmakedepends="libuuid-devel"
 homepage="http://xfs.org/index.php/Main_Page"
-distfiles="${KERNEL_SITE}/utils/fs/xfs/xfsprogs/xfsprogs-${version}.tar.xz"
-checksum=397dc96f51aeeff73d021d3418d3172377b2685f2740ca60525096c070aa3df1
+license="LGPL-2.1-or-later"
+distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/xfsprogs-$version.tar.xz"
+checksum="397dc96f51aeeff73d021d3418d3172377b2685f2740ca60525096c070aa3df1"
+build_style="gnu-configure"
+configure_args+=" --enable-lib64=no"
+configure_args+=" --enable-readline=yes"
 
 do_install() {
-	make install install-dev DIST_ROOT=${DESTDIR} \
-		PKG_ROOT_SBIN_DIR=/usr/bin PKG_ROOT_LIB_DIR=/usr/lib
-	rm -rf ${DESTDIR}/usr/share/doc
+  make \
+    DIST_ROOT="$DESTDIR" \
+    PKG_ROOT_LIB_DIR="/usr/lib" \
+    PKG_ROOT_SBIN_DIR="/usr/bin" \
+    install \
+    install-dev
+  rm -rf "$DESTDIR/usr/share/doc"
 }
 
 xfsprogs-devel_package() {
-	depends="libuuid-devel ${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share/man/man3
-	}
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" libuuid-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/man/man3
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

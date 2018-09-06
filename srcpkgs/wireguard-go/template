@@ -1,20 +1,22 @@
-# Template file for 'wireguard-go'
-pkgname=wireguard-go
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="wireguard-go"
 version=0.0.20180613
 revision=2
-build_style=go
-go_import_path="git.zx2c4.com/wireguard-go"
-hostmakedepends="git dep"
-depends="wireguard-tools"
 short_desc="Implementation of WireGuard in Go"
-maintainer="lemmi <lemmi@nerd2nerd.org>"
-license="GPL-2"
+depends="wireguard-tools"
+hostmakedepends+=" dep"
+hostmakedepends+=" git"
 homepage="https://git.zx2c4.com/wireguard-go/about/"
-distfiles="https://git.zx2c4.com/wireguard-go/snapshot/wireguard-go-${version}.tar.xz"
-checksum=3e22e6f2a715f05f9bbc5b1a9c737ab2edc8f26b2af61f9cc31f83391cd663ff
+license="GPL-2"
+distfiles="https://git.zx2c4.com/wireguard-go/snapshot/wireguard-go-$version.tar.xz"
+checksum="3e22e6f2a715f05f9bbc5b1a9c737ab2edc8f26b2af61f9cc31f83391cd663ff"
+build_style="go"
+go_import_path="git.zx2c4.com/wireguard-go"
 
 pre_build() {
-	rm donotuseon_linux.go
-	cd ${GOSRCPATH}
-	dep ensure -vendor-only -v
+  rm donotuseon_linux.go
+  cd "$GOSRCPATH"
+  dep ensure -vendor-only -v
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

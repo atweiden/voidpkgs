@@ -1,13 +1,14 @@
-# Template file for 'psmisc'
-pkgname=psmisc
-reverts=23.2_1
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="psmisc"
 version=23.1
 revision=1
-build_style=gnu-configure
-makedepends="ncurses-devel"
 short_desc="Small set of utilities that use the linux proc filesystem"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+makedepends="ncurses-devel"
 homepage="https://gitlab.com/psmisc/psmisc"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.xz"
-checksum=2e84d474cf75dfbe3ecdacfb797bbfab71a35c7c2639d1b9f6d5f18b2149ba30
+license="GPL-2.0-or-later"
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="2e84d474cf75dfbe3ecdacfb797bbfab71a35c7c2639d1b9f6d5f18b2149ba30"
+build_style="gnu-configure"
+reverts=23.2_1
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

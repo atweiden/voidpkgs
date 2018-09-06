@@ -1,44 +1,70 @@
-# Template file for 'zsh'
-pkgname=zsh
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="zsh"
 version=5.5.1
 revision=2
-lib32disabled=yes
-build_style=gnu-configure
-make_build_target="all info"
-make_install_args="install.info"
-configure_args="--enable-etcdir=/etc/zsh --enable-zshenv=/etc/zsh/zshenv
- --enable-zlogin=/etc/zsh/zlogin --enable-zlogout=/etc/zsh/zlogout
- --enable-zprofile=/etc/profile --enable-zshrc=/etc/zsh/zshrc
- --enable-maildir-support --enable-function-subdirs
- --enable-fndir=/usr/share/zsh/functions --with-term-lib=ncursesw
- --enable-scriptdir=/usr/share/zsh/scripts --enable-pcre
- --enable-multibyte --enable-cap --with-tcsetpgrp
- zsh_cv_shared_environ=yes
- zsh_cv_func_dlsym_needs_underscore=no
- zsh_cv_sys_dynamic_execsyms=yes"
-hostmakedepends="automake"
-makedepends="gdbm-devel pcre-devel libcap-devel ncurses-devel"
-register_shell="/bin/zsh"
 short_desc="The Z SHell"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" gdbm-devel"
+makedepends+=" libcap-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pcre-devel"
+hostmakedepends="automake"
 homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
-distfiles="http://www.zsh.org/pub/zsh-${version}.tar.gz"
-checksum=774caa89e7aea5f33c3033cbffd93e28707f72ba5149c79709e48e6c2d2ee080
+distfiles="http://www.zsh.org/pub/zsh-$version.tar.gz"
+checksum="774caa89e7aea5f33c3033cbffd93e28707f72ba5149c79709e48e6c2d2ee080"
+build_style="gnu-configure"
+configure_args+=" --enable-cap"
+configure_args+=" --enable-etcdir='/etc/zsh'"
+configure_args+=" --enable-fndir='/usr/share/zsh/functions'"
+configure_args+=" --enable-function-subdirs"
+configure_args+=" --enable-maildir-support"
+configure_args+=" --enable-multibyte"
+configure_args+=" --enable-pcre"
+configure_args+=" --enable-scriptdir='/usr/share/zsh/scripts'"
+configure_args+=" --enable-zlogin='/etc/zsh/zlogin'"
+configure_args+=" --enable-zlogout='/etc/zsh/zlogout'"
+configure_args+=" --enable-zprofile='/etc/profile'"
+configure_args+=" --enable-zshenv='/etc/zsh/zshenv'"
+configure_args+=" --enable-zshrc='/etc/zsh/zshrc'"
+configure_args+=" --with-tcsetpgrp"
+configure_args+=" --with-term-lib='ncursesw'"
+configure_args+=" zsh_cv_func_dlsym_needs_underscore='no'"
+configure_args+=" zsh_cv_shared_environ='yes'"
+configure_args+=" zsh_cv_sys_dynamic_execsyms='yes'"
+make_build_target+=" all"
+make_build_target+=" info"
+make_install_args="install.info"
+register_shell="/bin/zsh"
+lib32disabled="yes"
 
 pre_configure() {
-	# Set correct keymap path
-	sed -i 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' \
-		Completion/Unix/Command/_loadkeys
+  # set correct keymap path
+  sed \
+    -i \
+    -e 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' \
+    Completion/Unix/Command/_loadkeys
+  # remove unneeded and conflicting completion scripts
+  for _fpath in AIX \
+                BSD \
+                Cygwin \
+                Darwin \
+                Debian \
+                Mandriva \
+                Redhat \
+                Solaris \
+                openSUSE; do
+    rm -rf "Completion/$_fpath"
+    sed \
+      -i \
+      -e "s,\s*Completion/$_fpath/\*/\*,,g" \
+      Src/Zle/complete.mdd
+  done
+  rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
+  rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
+}
 
-	# Remove unneeded and conflicting completion scripts
-	for _fpath in AIX BSD Cygwin Darwin Debian Mandriva openSUSE Redhat Solaris; do
-		rm -rf Completion/$_fpath
-		sed "s#\s*Completion/$_fpath/\*/\*##g" -i Src/Zle/complete.mdd
-	done
-	rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
-	rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
-}
 post_install() {
-	vlicense LICENCE
+  vlicense LICENCE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,16 +1,20 @@
-# Template file for 'usb-modeswitch'
-pkgname=usb-modeswitch
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="usb-modeswitch"
 version=2.5.2
 revision=1
-build_style=gnu-makefile
 short_desc="Mode switching tool for controlling multi-mode USB devices"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="GPL-2"
-conf_files="/etc/usb_modeswitch.conf"
+depends+=" $pkgname-data"
+depends+=" tcl"
 makedepends="libusb-devel"
-depends="tcl ${pkgname}-data"
-hostmakedepends="pkg-config tcl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" tcl"
 homepage="http://www.draisberghof.de/usb_modeswitch/"
-distfiles="http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-${version}.tar.bz2"
-checksum=abffac09c87eacd78e101545967dc25af7e989745b4276756d45dbf4008a2ea6
-make_install_args="SBINDIR=/usr/bin UDEVDIR=/usr/lib/udev"
+license="GPL-2"
+distfiles="http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-$version.tar.bz2"
+checksum="abffac09c87eacd78e101545967dc25af7e989745b4276756d45dbf4008a2ea6"
+conf_files="/etc/usb_modeswitch.conf"
+build_style="gnu-makefile"
+make_install_args+=" SBINDIR=/usr/bin"
+make_install_args+=" UDEVDIR=/usr/lib/udev"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

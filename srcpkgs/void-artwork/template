@@ -1,16 +1,17 @@
-# Template file for 'void-artwork'
-pkgname=void-artwork
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="void-artwork"
 version=20170517
 revision=1
-noarch=yes
 short_desc="Void Linux artwork"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="Public domain"
+noarch="yes"
 homepage="http://www.voidlinux.eu"
+license="Public domain"
 
 do_install() {
-	vinstall ${FILESDIR}/splash.png 644 usr/share/void-artwork
-	vinstall ${FILESDIR}/splashwhite.png 644 usr/share/void-artwork
-	vinstall ${FILESDIR}/void-logo.png 644 usr/share/void-artwork
-	vinstall ${FILESDIR}/void-transparent.png 644 usr/share/void-artwork
+  vinstall "$FILESDIR/splash.png" 644 usr/share/void-artwork
+  vinstall "$FILESDIR/splashwhite.png" 644 usr/share/void-artwork
+  vinstall "$FILESDIR/void-logo.png" 644 usr/share/void-artwork
+  vinstall "$FILESDIR/void-transparent.png" 644 usr/share/void-artwork
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

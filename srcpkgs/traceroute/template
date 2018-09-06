@@ -1,30 +1,35 @@
-# Template file for 'traceroute'
-pkgname=traceroute
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="traceroute"
 version=2.1.0
 revision=2
 short_desc="Traces the route taken by packets over an IPv4/IPv6 network"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
 homepage="http://traceroute.sourceforge.net"
+license="GPL-2"
 distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.gz"
-checksum=3669d22a34d3f38ed50caba18cd525ba55c5c00d5465f2d20d7472e5d81603b6
-
-alternatives="
- traceroute:traceroute:/usr/bin/linux-traceroute
- traceroute:traceroute.1:/usr/share/man/man1/linux-traceroute.1
-"
+checksum="3669d22a34d3f38ed50caba18cd525ba55c5c00d5465f2d20d7472e5d81603b6"
+alternatives+=" traceroute:traceroute.1:/usr/share/man/man1/linux-traceroute.1"
+alternatives+=" traceroute:traceroute:/usr/bin/linux-traceroute"
 
 do_build() {
-	if [ "$CROSS_BUILD" ]; then
-		make LDFLAGS="-L${wrksrc}/libsupp $LDFLAGS" CFLAGS="$CFLAGS $CPPFLAGS" CROSS=${XBPS_CROSS_TRIPLET}- ${makejobs}
-	else
-		make CFLAGS="$CFLAGS $CPPFLAGS" LDFLAGS="$LDFLAGS" ${makejobs}
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    make \
+      "$makejobs" \
+      CFLAGS="$CFLAGS $CPPFLAGS" \
+      CROSS="$XBPS_CROSS_TRIPLET-" \
+      LDFLAGS="-L$wrksrc/libsupp $LDFLAGS"
+  else
+    make \
+      "$makejobs" \
+      CFLAGS="$CFLAGS $CPPFLAGS" \
+      LDFLAGS="$LDFLAGS"
+  fi
 }
-do_install() {
-	vbin traceroute/traceroute linux-traceroute
-	vman traceroute/traceroute.8 linux-traceroute.8
 
-	ln -s linux-traceroute $DESTDIR/usr/bin/traceroute6
-	ln -s linux-traceroute.8 $DESTDIR/usr/share/man/man8/traceroute6.8
+do_install() {
+  vbin traceroute/traceroute linux-traceroute
+  vman traceroute/traceroute.8 linux-traceroute.8
+  ln -s linux-traceroute "$DESTDIR/usr/bin/traceroute6"
+  ln -s linux-traceroute.8 "$DESTDIR/usr/share/man/man8/traceroute6.8"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

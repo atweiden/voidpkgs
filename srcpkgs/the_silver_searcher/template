@@ -1,22 +1,26 @@
-# Template file for 'the_silver_searcher'
-pkgname=the_silver_searcher
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="the_silver_searcher"
 version=2.2.0
 revision=1
-build_style=gnu-configure
-make_check_target=test
-hostmakedepends="pkg-config automake"
-makedepends="pcre-devel zlib-devel liblzma-devel"
-checkdepends="python3-cram"
 short_desc="Code-searching tool similar to ack, but faster"
-maintainer="Jan S. <jan.schreib@gmail.com>"
-license="Apache-2.0"
+makedepends+=" liblzma-devel"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+checkdepends="python3-cram"
+hostmakedepends+=" automake"
+hostmakedepends+=" pkg-config"
 homepage="https://geoff.greer.fm/ag/"
-distfiles="https://geoff.greer.fm/ag/releases/${pkgname}-${version}.tar.gz"
-checksum=d9621a878542f3733b5c6e71c849b9d1a830ed77cb1a1f6c2ea441d4b0643170
+license="Apache-2.0"
+distfiles="https://geoff.greer.fm/ag/releases/$pkgname-$version.tar.gz"
+checksum="d9621a878542f3733b5c6e71c849b9d1a830ed77cb1a1f6c2ea441d4b0643170"
+build_style="gnu-configure"
+make_check_target="test"
 
 post_install() {
-	rm ${DESTDIR}/usr/share/the_silver_searcher/completions/ag.bashcomp.sh
-	vinstall ag.bashcomp.sh 644 usr/share/bash-completion/completions ag
-	vinstall _the_silver_searcher 644 usr/share/zsh/site-functions
-	vlicense NOTICE
+  vlicense NOTICE
+  rm "$DESTDIR/usr/share/the_silver_searcher/completions/ag.bashcomp.sh"
+  vinstall ag.bashcomp.sh 644 usr/share/bash-completion/completions ag
+  vinstall _the_silver_searcher 644 usr/share/zsh/site-functions
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
