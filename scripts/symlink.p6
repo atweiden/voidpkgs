@@ -12,6 +12,9 @@ my List:D %pkg{Str:D} =
                   libaria2-devel>,
     'attr' => qw<attr-devel
                  attr-progs>,
+    'bcc' => qw<bcc-devel
+                bcc-tools
+                python-bcc>,
     'binutils' => ['binutils-devel'],
     'boost' => qw<boost-build
                   boost-devel
