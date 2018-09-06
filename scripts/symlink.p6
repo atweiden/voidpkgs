@@ -23,6 +23,7 @@ my List:D %pkg{Str:D} =
                         libbtrfsutil-devel>,
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
+    'cmocka' => ['cmocka-devel'],
     'cracklib' => qw<cracklib-devel
                      cracklib-python
                      libcracklib>,
@@ -300,6 +301,8 @@ my List:D %pkg{Str:D} =
                      pinentry-qt
                      pinentry-tty>,
     'pixman' => ['pixman-devel'],
+    'pkcs11-helper' => qw<pkcs11-helper-devel
+                          pkcs11-helper-doc>,
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
     'pps-tools' => ['pps-tools-devel'],
