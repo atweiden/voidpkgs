@@ -1,0 +1,25 @@
+# Template file for 'ansible'
+pkgname=ansible
+version=2.6.3
+revision=2
+noarch=yes
+build_style=python3-module
+pycompile_module="ansible"
+hostmakedepends="python3-setuptools"
+depends="${hostmakedepends} python3-cryptography python3-Jinja2 python3-paramiko
+ python3-yaml"
+short_desc="Simple deployment, configuration management and execution framework"
+maintainer="Michael Aldridge <maldridge@VoidLinux.eu>"
+license="GPL-3.0-or-later"
+homepage="https://www.ansible.com/"
+distfiles="https://releases.ansible.com/ansible/${pkgname}-${version}.tar.gz"
+checksum=1027f627e6d8a2d51f3a79abb01447716a78aa646e0c2f9860cfde273256a28c
+
+post_install() {
+	for f in examples/*; do
+		vsconf ${f}
+	done
+	for m in docs/man/man1/*.1; do
+		vman ${m}
+	done
+}

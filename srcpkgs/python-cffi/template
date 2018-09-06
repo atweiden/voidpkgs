@@ -1,0 +1,30 @@
+# Template file for 'python-cffi'
+pkgname=python-cffi
+version=1.11.5
+revision=1
+wrksrc="cffi-${version}"
+build_style=python-module
+hostmakedepends="python-setuptools python3-setuptools libffi-devel"
+makedepends="python-devel python3-devel libffi-devel"
+depends="python-pycparser"
+pycompile_module="cffi"
+short_desc="C foreign function interface for Python2"
+maintainer="Alessio Sergi <al3hex@gmail.com>"
+homepage="https://cffi.readthedocs.io/"
+license="MIT"
+distfiles="${PYPI_SITE}/c/cffi/cffi-${version}.tar.gz"
+checksum=e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4
+
+post_install() {
+	vlicense LICENSE
+}
+
+python3-cffi_package() {
+	depends="python3-pycparser"
+	pycompile_module="cffi"
+	short_desc="${short_desc/Python2/Python3}"
+	pkg_install() {
+		vmove usr/lib/python3*
+		vlicense LICENSE
+	}
+}
