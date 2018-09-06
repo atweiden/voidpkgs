@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libarchive"
-version=3.3.2
-revision=5
+version=3.3.3
+revision=1
 short_desc="Library to read/write several different streaming archive formats"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -11,10 +11,11 @@ makedepends+=" $(vopt_if expat expat-devel)"
 makedepends+=" $(vopt_if lz4 liblz4-devel)"
 makedepends+=" $(vopt_if lzo lzo-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if zstd zstd-devel)"
 homepage="http://www.libarchive.org/"
 license="BSD"
 distfiles="http://www.libarchive.org/downloads/libarchive-$version.tar.gz"
-checksum="ed2dbd6954792b2c054ccf8ec4b330a54b85904a80cef477a1c74643ddafa0ce"
+checksum="ba7eb1781c9fbbae178c4c6bad1c6eb08edab9a1496c64833d1715d022b30e2e"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --without-nettle"
@@ -26,11 +27,12 @@ configure_args+=" $(vopt_with expat)"
 configure_args+=" $(vopt_with lz4)"
 configure_args+=" $(vopt_with lzo lzo2)"
 configure_args+=" $(vopt_with ssl openssl)"
+configure_args+=" $(vopt_with zstd)"
 bootstrap="yes"
 # package build options
-build_options="acl expat lzo lz4 ssl"
+build_options="acl expat lzo lz4 ssl zstd"
 # enable acl and ssl by default
-build_options_default="acl ssl"
+build_options_default="acl ssl zstd"
 
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"
