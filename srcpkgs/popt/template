@@ -1,28 +1,28 @@
-# Template file for 'popt'
-pkgname=popt
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="popt"
 version=1.16
 revision=7
-build_style=gnu-configure
 short_desc="Command line option parsing library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://rpm5.org"
 license="MIT"
 distfiles="http://rpm5.org/files/$pkgname/$pkgname-$version.tar.gz"
-checksum=e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8
-
+checksum="e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8"
+build_style="gnu-configure"
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
 
 popt-devel_package() {
-	depends="popt>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove "usr/lib/*.a"
-		vmove usr/share/man/man3
-	}
+  depends="popt>=${version}_${revision}"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove "usr/lib/*.a"
+    vmove usr/share/man/man3
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

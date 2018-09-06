@@ -1,44 +1,53 @@
-# Template file for 'procps-ng'
-pkgname=procps-ng
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="procps-ng"
 version=3.3.15
 revision=1
-build_style=gnu-configure
-configure_args="--exec-prefix=/ --bindir=/usr/bin --sbindir=/usr/bin
- --libdir=/usr/lib --disable-kill --enable-watch8bit
- --disable-modern-top --without-systemd"
-hostmakedepends="automake gettext-devel libtool pkg-config"
+short_desc="Utilities for monitoring your system and its processes"
 makedepends="ncurses-devel"
 checkdepends="dejagnu"
-short_desc="Utilities for monitoring your system and its processes"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://gitlab.com/procps-ng/procps"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
 #changelog="https://gitlab.com/procps-ng/procps/raw/master/NEWS"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/Production/${pkgname}-${version}.tar.xz"
-checksum=10bd744ffcb3de2d591d2f6acf1a54a7ba070fdcc432a855931a5057149f0465
-
+distfiles="$SOURCEFORGE_SITE/$pkgname/Production/$pkgname-$version.tar.xz"
+checksum="10bd744ffcb3de2d591d2f6acf1a54a7ba070fdcc432a855931a5057149f0465"
 conf_files="/etc/sysctl.conf"
+build_style="gnu-configure"
+configure_args+=" --exec-prefix='/'"
+configure_args+=" --bindir='/usr/bin'"
+configure_args+=" --sbindir='/usr/bin'"
+configure_args+=" --libdir='/usr/lib'"
+configure_args+=" --disable-kill"
+configure_args+=" --enable-watch8bit"
+configure_args+=" --disable-modern-top"
+configure_args+=" --without-systemd"
 
 post_extract() {
-	sed -i 's,ncursesw/ncurses.h,ncurses.h,g' watch.c
+  sed -i 's,ncursesw/ncurses.h,ncurses.h,g' watch.c
 }
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	vconf ${FILESDIR}/sysctl.conf
+  vconf "$FILESDIR/sysctl.conf"
 }
 
 procps-ng-devel_package() {
-	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/share/man/man3
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/share/man/man3
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

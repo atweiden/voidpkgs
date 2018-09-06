@@ -1,23 +1,32 @@
-# Template file for 'openvpn'
-pkgname=openvpn
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="openvpn"
 version=2.4.6
 revision=3
-build_style=gnu-configure
-configure_args="--enable-pkcs11 --enable-iproute2 --disable-systemd"
-hostmakedepends="iproute2 pkg-config"
-makedepends="libressl-devel lzo-devel pam-devel pkcs11-helper-devel
- cmocka-devel"
-depends="iproute2"
 short_desc="An easy-to-use, robust, and highly configurable VPN"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-only"
+depends="iproute2"
+makedepends+=" cmocka-devel"
+makedepends+=" libressl-devel"
+makedepends+=" lzo-devel"
+makedepends+=" pam-devel"
+makedepends+=" pkcs11-helper-devel"
+hostmakedepends+=" iproute2"
+hostmakedepends+=" pkg-config"
 homepage="https://www.openvpn.net"
-distfiles="http://build.openvpn.net/downloads/releases/${pkgname}-${version}.tar.xz"
-checksum=4f6434fa541cc9e363434ea71a16a62cf2615fb2f16af5b38f43ab5939998c26
+license="GPL-2.0-only"
+distfiles="http://build.openvpn.net/downloads/releases/$pkgname-$version.tar.xz"
+checksum="4f6434fa541cc9e363434ea71a16a62cf2615fb2f16af5b38f43ab5939998c26"
+build_style="gnu-configure"
+configure_args+=" --disable-systemd"
+configure_args+=" --enable-iproute2"
+configure_args+=" --enable-pkcs11"
 
 post_install() {
-	vmkdir usr/share/examples/${pkgname}
-	cp -r sample/sample-config-files/* ${DESTDIR}/usr/share/examples/${pkgname}
-
-	rm -rf ${DESTDIR}/usr/include
+  vmkdir "usr/share/examples/$pkgname"
+  cp -r sample/sample-config-files/* "$DESTDIR/usr/share/examples/$pkgname"
 }
+
+do_clean() {
+  rm -rf "$DESTDIR/usr/include"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
