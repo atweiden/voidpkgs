@@ -1,51 +1,66 @@
-# Template file for 'odroid-c2-uboot'
-pkgname=odroid-c2-uboot
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="odroid-c2-uboot"
 version=v2015.01
 revision=2
-_githash=f416a769454b89c39d5b217d28bd3c9f5d1594df
-wrksrc="u-boot-${_githash}"
-only_for_archs="aarch64 aarch64-musl"
-conf_files="/boot/boot.ini"
-hostmakedepends="bc"
+_githash="f416a769454b89c39d5b217d28bd3c9f5d1594df"
 short_desc="Odroid C2 U-Boot files for SD booting"
-maintainer="Christian Neukirchen <chneukirchen@gmail.com>"
-license="GPL-2"
+only_for_archs+=" aarch64"
+only_for_archs+=" aarch64-musl"
+hostmakedepends="bc"
 homepage="https://github.com/hardkernel/u-boot"
-distfiles="https://github.com/hardkernel/u-boot/archive/${_githash}.tar.gz"
-checksum=da7ca9e6abdfedaa65ac4e0bd378155002bf5d0ccea663ddf03fa839dceb3724
+license="GPL-2"
+distfiles="https://github.com/hardkernel/u-boot/archive/$_githash.tar.gz"
+checksum="da7ca9e6abdfedaa65ac4e0bd378155002bf5d0ccea663ddf03fa839dceb3724"
+conf_files="/boot/boot.ini"
+wrksrc="u-boot-$_githash"
 
 case "$XBPS_MACHINE" in
-	x86_64) ;;
-	*) broken="Can only be built from x86_64: https://github.com/hardkernel/u-boot/issues/23" ;;
+  x86_64)
+    ;;
+  *)
+    broken="Can only be built from x86_64: https://github.com/hardkernel/u-boot/issues/23"
+    ;;
 esac
 
 make_build_args="ARCH=arm"
-if [ "$CROSS_BUILD" ]; then
-	make_build_args+=" CROSS_COMPILE=${XBPS_CROSS_TRIPLET}-"
+if [[ -n "$CROSS_BUILD" ]]; then
+  make_build_args+=" CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
 else
-	make_build_args+=" HOSTARCH=arm"
+  make_build_args+=" HOSTARCH=arm"
 fi
 
 post_extract() {
-	touch include/stddef.h  # musl hack
-	sed -i '1itypedef unsigned long ulong;' \
-		include/image.h tools/mkimage.h tools/proftool.c
+  # musl hack
+  touch include/stddef.h
+  sed \
+    -i \
+    -e '1itypedef unsigned long ulong;' \
+    include/image.h \
+    tools/mkimage.h \
+    tools/proftool.c
 }
+
 do_configure() {
-	unset CFLAGS CXXFLAGS LDFLAGS
-
-	make ${make_build_args} distclean
-	make ${make_build_args} odroidc2_config
+  unset CFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  make "$make_build_args" distclean
+  make "$make_build_args" odroidc2_config
 }
+
 do_build() {
-	unset CFLAGS CXXFLAGS LDFLAGS
+  unset CFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  make "$makejobs" "$make_build_args"
+}
 
-	make ${makejobs} ${make_build_args}
-}
 do_install() {
-	vmkdir boot
-	vinstall sd_fuse/bl1.bin.hardkernel 644 boot
-	vinstall sd_fuse/u-boot.bin 644 boot
-	vinstall sd_fuse/sd_fusing.sh 755 boot
-	vinstall ${FILESDIR}/boot.ini 644 boot
+  vmkdir boot
+  vinstall sd_fuse/bl1.bin.hardkernel 644 boot
+  vinstall sd_fuse/u-boot.bin 644 boot
+  vinstall sd_fuse/sd_fusing.sh 755 boot
+  vinstall "$FILESDIR/boot.ini" 644 boot
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,17 +1,18 @@
-# Template file for 'perl-URI'
-pkgname=perl-URI
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-URI"
 version=1.74
 revision=1
-noarch=yes
-wrksrc="URI-$version"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="${hostmakedepends}"
-checkdepends="perl-Test-Needs"
-depends="${hostmakedepends}"
 short_desc="Perl Uniform Resource Identifiers class (URI, RFC 2396)"
+noarch="yes"
+depends="perl"
+makedepends="perl"
+checkdepends="perl-Test-Needs"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/URI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-distfiles="${CPAN_SITE}/URI/URI-${version}.tar.gz"
-checksum=a9c254f45f89cb1dd946b689dfe433095404532a4543bdaab0b71ce0fdcdd53d
+distfiles="$CPAN_SITE/URI/URI-$version.tar.gz"
+checksum="a9c254f45f89cb1dd946b689dfe433095404532a4543bdaab0b71ce0fdcdd53d"
+wrksrc="URI-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

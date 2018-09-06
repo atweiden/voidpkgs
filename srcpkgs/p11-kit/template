@@ -1,39 +1,46 @@
-# Template file for 'p11-kit'
-pkgname=p11-kit
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="p11-kit"
 version=0.23.14
 revision=1
-build_style=gnu-configure
-configure_args="--with-module-path=/usr/lib/pkcs11 --without-trust-paths"
-hostmakedepends="automake libtool pkg-config"
-makedepends="libtasn1-devel libffi-devel"
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-3-Clause"
+makedepends+=" libffi-devel"
+makedepends+=" libtasn1-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/p11-glue/p11-kit"
-distfiles="${homepage}/releases/download/${version}/p11-kit-${version}.tar.gz"
-checksum=1cb9fa6d237539f25f62f4c3d4ec71a1c8e0772957ec45ec5af92134129e0d70
+license="BSD-3-Clause"
+distfiles="$homepage/releases/download/$version/p11-kit-$version.tar.gz"
+checksum="1cb9fa6d237539f25f62f4c3d4ec71a1c8e0772957ec45ec5af92134129e0d70"
 conf_files="/etc/pkcs11/pkcs11.conf"
+build_style="gnu-configure"
+configure_args+=" --with-module-path='/usr/lib/pkcs11'"
+configure_args+=" --without-trust-paths"
 
 case "$XBPS_TARGET_MACHIN" in
-	*-musl) configure_args+=" ac_cv_issetugid_openbsd=no" ;;
+  *-musl)
+    configure_args+=" ac_cv_issetugid_openbsd='no'"
+    ;;
 esac
 
 pre_configure() {
-	NOCONFIGURE=1 autoreconf -fi
+  NOCONFIGURE=1 autoreconf -fi
 }
 
 post_install() {
-	mv ${DESTDIR}/etc/pkcs11/pkcs11.conf.example ${DESTDIR}/etc/pkcs11/pkcs11.conf
-	vlicense COPYING
+  vlicense COPYING
+  mv "$DESTDIR/etc/pkcs11/pkcs11.conf.example" "$DESTDIR/etc/pkcs11/pkcs11.conf"
 }
 
 p11-kit-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share/gtk-doc
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/gtk-doc
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

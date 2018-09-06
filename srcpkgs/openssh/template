@@ -1,66 +1,83 @@
-# Template file for 'openssh'
-pkgname=openssh
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="openssh"
 version=7.8p1
 revision=1
-build_style=gnu-configure
-configure_args="--datadir=/usr/share/openssh
- --sysconfdir=/etc/ssh --without-selinux --with-privsep-user=nobody
- --with-mantype=doc --without-rpath --with-xauth=/usr/bin/xauth
- --disable-strip --with-privsep-path=/var/chroot/ssh
- --with-pid-dir=/run --with-pam
- --with-libedit --with-Werror
- $(vopt_with ldns ldns=$XBPS_CROSS_BASE/usr)
- $(vopt_if ssl --with-ssl-engine --without-openssl)
- $(vopt_if gssapi --with-kerberos5=$XBPS_CROSS_BASE/usr --without-kerberos5)
- LD=$CC"
-hostmakedepends="autoconf"
-makedepends="libedit-devel pam-devel zlib-devel
- $(vopt_if gssapi 'mit-krb5-devel') $(vopt_if ldns 'libldns-devel')
- $(vopt_if ssl 'libressl-devel')"
 short_desc="The OpenSSH implementation of SSH protocol"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" libedit-devel"
+makedepends+=" pam-devel"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if gssapi mit-krb5-devel)"
+makedepends+=" $(vopt_if ldns libldns-devel)"
+makedepends+=" $(vopt_if ssl libressl-devel)"
+hostmakedepends="autoconf"
 homepage="http://www.openssh.org"
 license="BSD"
 distfiles="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$pkgname-$version.tar.gz"
-checksum=1a484bb15152c183bb2514e112aa30dd34138c3cfb032eee5490a66c507144ca
-conf_files="/etc/ssh/moduli /etc/ssh/ssh_config /etc/ssh/sshd_config /etc/pam.d/sshd"
+checksum="1a484bb15152c183bb2514e112aa30dd34138c3cfb032eee5490a66c507144ca"
+conf_files+=" /etc/pam.d/sshd"
+conf_files+=" /etc/ssh/moduli"
+conf_files+=" /etc/ssh/ssh_config"
+conf_files+=" /etc/ssh/sshd_config"
+build_style="gnu-configure"
+configure_args+=" --datadir='/usr/share/openssh'"
+configure_args+=" --disable-strip"
+configure_args+=" --sysconfdir='/etc/ssh'"
+configure_args+=" --with-Werror"
+configure_args+=" --with-libedit"
+configure_args+=" --with-mantype='doc'"
+configure_args+=" --with-pam"
+configure_args+=" --with-pid-dir='/run'"
+configure_args+=" --with-privsep-path='/var/chroot/ssh'"
+configure_args+=" --with-privsep-user='nobody'"
+configure_args+=" --with-xauth='/usr/bin/xauth'"
+configure_args+=" --without-rpath"
+configure_args+=" --without-selinux"
+configure_args+=" LD=$CC"
+configure_args+=" $(vopt_with ldns ldns="$XBPS_CROSS_BASE/usr")"
+configure_args+=" $(vopt_if ssl --with-ssl-engine --without-openssl)"
+configure_args+=" $(vopt_if gssapi --with-kerberos5="$XBPS_CROSS_BASE/usr" --without-kerberos5)"
 make_dirs="/var/chroot/ssh 0755 root root"
-
-# Package build options
-build_options="ldns ssl gssapi"
-build_options_default="ldns ssl"
+build_options+=" gssapi"
+build_options+=" ldns"
+build_options+=" ssl"
+build_options_default+=" ldns"
+build_options_default+=" ssl"
 
 case $XBPS_TARGET_MACHINE in
-	i686-musl)
-		CFLAGS="-fno-stack-protector"
-		configure_args+=" --disable-wtmp --disable-utmp"
-		;;
-	*-musl)
-		configure_args+=" --disable-wtmp --disable-utmp"
-		;;
+  i686-musl)
+    CFLAGS="-fno-stack-protector"
+    configure_args+=" --disable-utmp"
+    configure_args+=" --disable-wtmp"
+    ;;
+  *-musl)
+    configure_args+=" --disable-utmp"
+    configure_args+=" --disable-wtmp"
+    ;;
 esac
 
-if [ "$XBPS_GCC_VERSION_MAJOR" -ge 7 ]; then
-	CFLAGS+=" -Wno-format-truncation -Wno-stringop-truncation"
+if [[ "$XBPS_GCC_VERSION_MAJOR" -ge 7 ]]; then
+  CFLAGS+=" -Wno-format-truncation"
+  CFLAGS+=" -Wno-stringop-truncation"
 fi
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	vinstall contrib/sshd.pam.generic 644 etc/pam.d sshd
-	vbin contrib/ssh-copy-id
-	vman contrib/ssh-copy-id.1
-	vlicense LICENCE
-
-	sed -i \
-		-e 's|^#\(UsePAM\) no|\1 yes|g' \
-		-e 's|^#\(PermitRootLogin\) .*|\1 yes|g' \
-		-e 's|^#\(ChallengeResponseAuthentication\) yes|\1 no|g' \
-		-e 's|^#\(PrintMotd\) yes|\1 no|g' \
-		${DESTDIR}/etc/ssh/sshd_config
-
-	vinstall ${FILESDIR}/sshd.pam 644 etc/pam.d sshd
-	vsv sshd
+  vlicense LICENCE
+  vman contrib/ssh-copy-id.1
+  vinstall contrib/sshd.pam.generic 644 etc/pam.d sshd
+  vbin contrib/ssh-copy-id
+  sed \
+    -i \
+    -e 's|^#\(UsePAM\) no|\1 yes|g' \
+    -e 's|^#\(PermitRootLogin\) .*|\1 yes|g' \
+    -e 's|^#\(ChallengeResponseAuthentication\) yes|\1 no|g' \
+    -e 's|^#\(PrintMotd\) yes|\1 no|g' \
+    "$DESTDIR/etc/ssh/sshd_config"
+  vinstall "$FILESDIR/sshd.pam" 644 etc/pam.d sshd
+  vsv sshd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

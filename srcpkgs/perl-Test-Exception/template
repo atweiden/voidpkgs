@@ -1,16 +1,19 @@
-# Template build file for 'perl-Test-Exception'.
-pkgname=perl-Test-Exception
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Test-Exception"
 version=0.43
 revision=1
-wrksrc="${pkgname#*-}-${version}"
-build_style=perl-module
-hostmakedepends="perl perl-Sub-Uplevel"
-makedepends="perl"
-depends="${hostmakedepends}"
-noarch=yes
 short_desc='Test::Exception - Provides modules for testing exception based code.'
-maintainer="Enguerrand de Rochefort <voidlinux@rochefort.de>"
+noarch="yes"
+depends+=" perl"
+depends+=" perl-Sub-Uplevel"
+makedepends="perl"
+hostmakedepends+=" perl"
+hostmakedepends+=" perl-Sub-Uplevel"
 homepage="https://metacpan.org/release/Test-Exception"
 license="Artistic, GPL-1"
-distfiles="$CPAN_SITE/Test/Test-Exception-${version}.tar.gz"
-checksum=156b13f07764f766d8b45a43728f2439af81a3512625438deab783b7883eb533
+distfiles="$CPAN_SITE/Test/Test-Exception-$version.tar.gz"
+checksum="156b13f07764f766d8b45a43728f2439af81a3512625438deab783b7883eb533"
+wrksrc="${pkgname#*-}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,86 +1,111 @@
-# Template file for 'openldap'
-pkgname=openldap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="openldap"
 version=2.4.45
 revision=7
-build_style=gnu-configure
-configure_args="--prefix=/usr
- --libexecdir=/usr/libexec
- --sysconfdir=/etc
- --localstatedir=/var/lib/openldap
- --sbindir=/usr/bin
- --enable-dynamic --enable-proctitle --with-tls
- --enable-ipv6 --enable-local --with-cyrus-sasl --with-threads
- --enable-syslog --enable-slapd --enable-crypt --enable-spasswd
- --enable-bdb --enable-hdb --enable-overlays=mod
- --disable-static --with-yielding_select=yes --enable-modules"
-hostmakedepends="pkg-config groff automake libtool"
-makedepends="libressl-devel libsasl-devel db-devel libltdl-devel"
-depends="openldap-tools>=${version}_${revision}"
-conf_files="/etc/openldap/ldap.conf /etc/openldap/slapd.conf"
 short_desc="OpenLDAP (Lightweight Directory Access Protocol)"
-license="OLDAP-2.0"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+depends="openldap-tools>=${version}_$revision"
+makedepends+=" db-devel"
+makedepends+=" libltdl-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libsasl-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" groff"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="http://www.openldap.org"
-distfiles="https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${version}.tgz"
-checksum=cdd6cffdebcd95161a73305ec13fc7a78e9707b46ca9f84fb897cd5626df3824
-
+license="OLDAP-2.0"
+distfiles="https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-$version.tgz"
+checksum="cdd6cffdebcd95161a73305ec13fc7a78e9707b46ca9f84fb897cd5626df3824"
+conf_files="/etc/openldap/ldap.conf /etc/openldap/slapd.conf"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --enable-bdb"
+configure_args+=" --enable-crypt"
+configure_args+=" --enable-dynamic"
+configure_args+=" --enable-hdb"
+configure_args+=" --enable-ipv6"
+configure_args+=" --enable-local"
+configure_args+=" --enable-modules"
+configure_args+=" --enable-overlays='mod'"
+configure_args+=" --enable-proctitle"
+configure_args+=" --enable-slapd"
+configure_args+=" --enable-spasswd"
+configure_args+=" --enable-syslog"
+configure_args+=" --libexecdir='/usr/libexec'"
+configure_args+=" --localstatedir='/var/lib/openldap'"
+configure_args+=" --prefix='/usr'"
+configure_args+=" --sbindir='/usr/bin'"
+configure_args+=" --sysconfdir='/etc'"
+configure_args+=" --with-cyrus-sasl"
+configure_args+=" --with-threads"
+configure_args+=" --with-tls"
+configure_args+=" --with-yielding_select='yes'"
 system_accounts="ldap"
 ldap_homedir="/var/lib/openldap"
 
 pre_configure() {
-	sed -i 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' include/ldap_defaults.h
-	sed -i 's|%LOCALSTATEDIR%/run|/run/openldap|' servers/slapd/slapd.{conf,ldif}
-	sed -i 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' servers/slapd/Makefile.in
-	aclocal; autoconf; autoheader; libtoolize -f
-}
-post_install() {
-	ln -sf ../libexec/slapd ${DESTDIR}/usr/bin/slapd
-	vsv slapd
-	vlicense LICENSE
-	chmod 755 ${DESTDIR}/usr/lib/*.so.*
-	vmkdir usr/share/examples/openldap
-	mv ${DESTDIR}/etc/openldap/*.{example,default} ${DESTDIR}/usr/share/examples/openldap
+  sed -i 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' include/ldap_defaults.h
+  sed -i 's|%LOCALSTATEDIR%/run|/run/openldap|' servers/slapd/slapd.{conf,ldif}
+  sed -i 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' servers/slapd/Makefile.in
+  aclocal
+  autoconf
+  autoheader
+  libtoolize -f
 }
 
+post_install() {
+  vlicense LICENSE
+  ln -sf ../libexec/slapd "$DESTDIR/usr/bin/slapd"
+  vsv slapd
+  chmod 755 "$DESTDIR/usr/lib"/*.so.*
+  vmkdir usr/share/examples/openldap
+  mv \
+    "$DESTDIR/etc/openldap"/*.{example,default} \
+    "$DESTDIR/usr/share/examples/openldap"
+}
 
 libldap-devel_package() {
-	depends="${makedepends} libldap>=${version}_${revision}"
-	short_desc+=" library - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.so"
-		vmove usr/share/man/man3
-	}
+  depends+=" $makedepends"
+  depends+=" libldap>=${version}_$revision"
+  short_desc+=" library - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/share/man/man3
+  }
 }
+
 libldap_package() {
-	short_desc+=" library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
 
 openldap-tools_package() {
-	short_desc+=" - utilities"
-	pkg_install() {
-		vmove usr/bin/ldapmodrdn
-		vmove usr/bin/ldapsearch
-		vmove usr/bin/ldapcompare
-		vmove usr/bin/ldapurl
-		vmove usr/bin/ldapmodify
-		vmove usr/bin/ldapexop
-		vmove usr/bin/ldappasswd
-		vmove usr/bin/ldapwhoami
-		vmove usr/bin/ldapdelete
-		vmove usr/bin/ldapadd
-		vmove usr/share/man/man1/ldapmodrdn.1
-		vmove usr/share/man/man1/ldapsearch.1
-		vmove usr/share/man/man1/ldapcompare.1
-		vmove usr/share/man/man1/ldapurl.1
-		vmove usr/share/man/man1/ldapmodify.1
-		vmove usr/share/man/man1/ldapexop.1
-		vmove usr/share/man/man1/ldappasswd.1
-		vmove usr/share/man/man1/ldapwhoami.1
-		vmove usr/share/man/man1/ldapdelete.1
-		vmove usr/share/man/man1/ldapadd.1
-	}
+  short_desc+=" - utilities"
+  pkg_install() {
+    vmove usr/bin/ldapadd
+    vmove usr/bin/ldapcompare
+    vmove usr/bin/ldapdelete
+    vmove usr/bin/ldapexop
+    vmove usr/bin/ldapmodify
+    vmove usr/bin/ldapmodrdn
+    vmove usr/bin/ldappasswd
+    vmove usr/bin/ldapsearch
+    vmove usr/bin/ldapurl
+    vmove usr/bin/ldapwhoami
+    vmove usr/share/man/man1/ldapadd.1
+    vmove usr/share/man/man1/ldapcompare.1
+    vmove usr/share/man/man1/ldapdelete.1
+    vmove usr/share/man/man1/ldapexop.1
+    vmove usr/share/man/man1/ldapmodify.1
+    vmove usr/share/man/man1/ldapmodrdn.1
+    vmove usr/share/man/man1/ldappasswd.1
+    vmove usr/share/man/man1/ldapsearch.1
+    vmove usr/share/man/man1/ldapurl.1
+    vmove usr/share/man/man1/ldapwhoami.1
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

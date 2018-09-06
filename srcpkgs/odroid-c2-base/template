@@ -1,13 +1,17 @@
-# Template file for 'odroid-c2-base'
-pkgname=odroid-c2-base
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="odroid-c2-base"
 version=20160923
 revision=1
-build_style=meta
-homepage="http://www.voidlinux.eu"
 short_desc="Void Linux Odroid C2 platform package"
-maintainer="Christian Neukirchen <chneukirchen@gmail.com>"
+only_for_archs+=" aarch64"
+only_for_archs+=" aarch64-musl"
+homepage="http://www.voidlinux.eu"
 license="Public Domain"
-
-only_for_archs="aarch64 aarch64-musl"
+depends+=" linux-firmware-network"
+depends+=" virtual?ntp-daemon"
+depends+=" odroid-c2-kernel"
+depends+=" odroid-c2-uboot"
 makedepends="base-system"
-depends="virtual?ntp-daemon odroid-c2-kernel odroid-c2-uboot linux-firmware-network"
+build_style="meta"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

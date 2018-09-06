@@ -1,34 +1,34 @@
-# Template build file for 'nettle'.
-pkgname=nettle
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nettle"
 version=3.4
 revision=1
-build_style=gnu-configure
-hostmakedepends="m4"
-makedepends="gmp-devel"
-configure_args="--enable-shared"
 short_desc="A low-level cryptographic library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="gmp-devel"
+hostmakedepends="m4"
 homepage="http://www.lysator.liu.se/~nisse/nettle/"
 license="GPL-2"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-${version}.tar.gz"
-checksum=ae7a42df026550b85daca8389b6a60ba6313b0567f374392e54918588a411e94
-
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="ae7a42df026550b85daca8389b6a60ba6313b0567f374392e54918588a411e94"
+build_style="gnu-configure"
+configure_args="--enable-shared"
 
 nettle-devel_package() {
-	depends="gmp-devel ${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share/info
-	}
+  depends="gmp-devel $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/info
+  }
 }
 
 nettle-tools_package() {
-	short_desc+=" - bundled tools"
-	pkg_install() {
-		vmove usr/bin
-	}
+  short_desc+=" - bundled tools"
+  pkg_install() {
+    vmove usr/bin
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

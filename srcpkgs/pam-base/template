@@ -1,22 +1,21 @@
-# Template file for 'pam-base'
-pkgname=pam-base
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pam-base"
 version=0.3
 revision=3
-noarch=yes
 short_desc="PAM base configuration files"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="public domain"
+noarch="yes"
 homepage="http://www.voidlinux.eu"
-
-conf_files="
- /etc/pam.d/other
- /etc/pam.d/system-auth
- /etc/pam.d/system-local-login
- /etc/pam.d/system-login
- /etc/pam.d/system-remote-login
- /etc/pam.d/system-services"
+license="public domain"
+conf_files+=" /etc/pam.d/other"
+conf_files+=" /etc/pam.d/system-auth"
+conf_files+=" /etc/pam.d/system-local-login"
+conf_files+=" /etc/pam.d/system-login"
+conf_files+=" /etc/pam.d/system-remote-login"
+conf_files+=" /etc/pam.d/system-services"
 
 do_install() {
-	vmkdir etc/pam.d
-	install -m644 ${FILESDIR}/* ${DESTDIR}/etc/pam.d
+  vmkdir etc/pam.d
+  install -m 644 "$FILESDIR"/* "$DESTDIR/etc/pam.d"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

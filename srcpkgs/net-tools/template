@@ -1,62 +1,75 @@
-# Template file for 'net-tools'
-pkgname=net-tools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="net-tools"
 version=1.60.20150526git
 revision=4
-hostmakedepends="git"
 short_desc="Basic networking tools"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+hostmakedepends="git"
 homepage="http://sourceforge.net/projects/$pkgname/"
 license="GPL-2"
-
-alternatives="
- ifconfig:ifconfig:/usr/bin/${pkgname}-ifconfig
- ifconfig:/usr/share/man/man1/ifconfig.1:/usr/share/man/man8/${pkgname}-ifconfig.8
- hostname:hostname:/usr/bin/${pkgname}-hostname
- hostname:/usr/share/man/man1/hostname.1:/usr/share/man/man8/${pkgname}-hostname.1"
+alternatives+=" hostname:/usr/share/man/man1/hostname.1:/usr/share/man/man8/$pkgname-hostname.1"
+alternatives+=" hostname:hostname:/usr/bin/$pkgname-hostname"
+alternatives+=" ifconfig:/usr/share/man/man1/ifconfig.1:/usr/share/man/man8/$pkgname-ifconfig.8"
+alternatives+=" ifconfig:ifconfig:/usr/bin/$pkgname-ifconfig"
 
 do_fetch() {
-	git clone git://git.code.sf.net/p/net-tools/code ${pkgname}-${version}
+  git clone git://git.code.sf.net/p/net-tools/code "$pkgname-$version"
 }
+
 pre_build() {
-	sed -i "s#/sbin#/bin#" Makefile
-	sed -i "s#/usr##" man/Makefile
-	case "$XBPS_TARGET_MACHINE" in
-	*-musl)
+  sed -i "s#/sbin#/bin#" Makefile
+  sed -i "s#/usr##" man/Makefile
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      # include file is <linux/ipv6_route.h>
+      sed \
+        -i \
+        -e "s#netinet6/#linux/#" \
+        "$wrksrc/lib/inet6_gr.c"
+      sed \
+        -i \
+        -e "s#netinet6/#linux/#" \
+        "$wrksrc/lib/inet6_sr.c"
 
-		# Include file is <linux/ipv6_route.h>
-		sed -i ${wrksrc}/lib/inet6_gr.c \
-			-e "s#netinet6/#linux/#"
-		sed -i ${wrksrc}/lib/inet6_sr.c \
-			-e "s#netinet6/#linux/#"
+      # HZ is defined in <asm/param.h>
+      sed \
+        -i \
+        -e "/#include <sys\/param.h>/a #include <asm\/param.h>" \
+        "$wrksrc/lib/inet_sr.c"
+      sed \
+        -i \
+        -e "/#include <sys\/param.h>/a #include <asm\/param.h>" \
+        "$wrksrc/netstat.c"
 
-		# HZ is defined in <asm/param.h>
-		sed -i ${wrksrc}/lib/inet_sr.c \
-			-e "/#include <sys\/param.h>/a #include <asm\/param.h>"
-		sed -i ${wrksrc}/netstat.c \
-			-e "/#include <sys\/param.h>/a #include <asm\/param.h>"
+      # need <termios.h> for tty constants and structure
+      sed \
+        -i \
+        -e "/#include <limits.h>/a #include <termios.h>" \
+        "$wrksrc/slattach.c"
 
-		# Need <termios.h> for tty constants and structure
-		sed -i ${wrksrc}/slattach.c \
-			-e "/#include <limits.h>/a #include <termios.h>"
-
-		# Disable obsolete non-glibc includes
-		sed -i ${wrksrc}/mii-tool.c \
-			-e "s/#ifndef __GLIBC__/#if 0/"
-	esac
+      # disable obsolete non-glibc includes
+      sed \
+        -i \
+        -e "s/#ifndef __GLIBC__/#if 0/" \
+        "$wrksrc/mii-tool.c"
+  esac
 }
+
 do_build() {
-	replace_interpreter bash configure.sh
-	yes "" | make
+  replace_interpreter bash configure.sh
+  yes "" | make
 }
+
 do_install() {
-	make DESTDIR=${DESTDIR}/usr update
-	# Rename ifconfig for alternatives.
-	mv ${DESTDIR}/usr/bin/{ifconfig,${pkgname}-ifconfig}
-	mv ${DESTDIR}/usr/share/man/man8/{ifconfig,${pkgname}-ifconfig}.8
-	# Rename hostname(1) for alternatives.
-	mv ${DESTDIR}/usr/bin/{hostname,${pkgname}-hostname}
-	mv ${DESTDIR}/usr/share/man/man1/{hostname,${pkgname}-hostname}.1
-	# Remove dnsdomainname(1), conflicts with busybox/inetutils.
-	rm ${DESTDIR}/usr/bin/*domainname
-	rm ${DESTDIR}/usr/share/man/man1/*domainname*
+  make DESTDIR="$DESTDIR/usr" update
+  # rename ifconfig for alternatives
+  mv "$DESTDIR/usr/bin"/{ifconfig,"$pkgname-ifconfig"}
+  mv "$DESTDIR/usr/share/man/man8"/{ifconfig,"$pkgname-ifconfig"}.8
+  # rename hostname(1) for alternatives
+  mv "$DESTDIR/usr/bin"/{hostname,"$pkgname-hostname"}
+  mv "$DESTDIR/usr/share/man/man1"/{hostname,"$pkgname-hostname"}.1
+  # remove dnsdomainname(1), conflicts with busybox/inetutils
+  rm "$DESTDIR/usr/bin"/*domainname
+  rm "$DESTDIR/usr/share/man/man1"/*domainname*
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

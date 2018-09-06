@@ -1,30 +1,36 @@
-# Template file for 'nghttp2'
-pkgname=nghttp2
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nghttp2"
 version=1.33.0
 revision=1
-build_style=gnu-configure
-configure_args="--without-libxml2 --without-jemalloc --without-spdylay"
-hostmakedepends="pkg-config"
-makedepends="zlib-devel libressl-devel libevent-devel jansson-devel"
 short_desc="HTTP/2 C Library"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" jansson-devel"
+makedepends+=" libevent-devel"
+makedepends+=" libressl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
-distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v${version}/nghttp2-${version}.tar.xz"
-checksum=4879ce9ff3320f5344b910ee1c46ed5e366edc2272620cf17d8e762724d7df1e
+distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/nghttp2-$version.tar.xz"
+checksum="4879ce9ff3320f5344b910ee1c46ed5e366edc2272620cf17d8e762724d7df1e"
+build_style="gnu-configure"
+configure_args+=" --without-jemalloc"
+configure_args+=" --without-libxml2"
+configure_args+=" --without-spdylay"
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/man
-	vlicense COPYING
+  vlicense COPYING
+  rm -rf "$DESTDIR/usr/share/man"
 }
 
 nghttp2-devel_package() {
-	depends="${sourcepkg}-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  depends="$sourcepkg-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

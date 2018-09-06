@@ -1,14 +1,14 @@
-# Template file for 'patch'
-pkgname=patch
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="patch"
 version=2.7.6
 revision=1
-bootstrap=yes
-build_style=gnu-configure
-makedepends="attr-devel"
 short_desc="Patch files using diff output"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends="attr-devel"
 homepage="http://www.gnu.org/software/patch/patch.html"
 license="GPL-3"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.xz"
-checksum=ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd"
+build_style="gnu-configure"
+bootstrap="yes"
 
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

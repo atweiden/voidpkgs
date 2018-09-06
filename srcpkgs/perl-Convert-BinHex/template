@@ -1,17 +1,21 @@
-# Template build file for 'perl-Convert-BinHex'.
-pkgname=perl-Convert-BinHex
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Convert-BinHex"
 version=1.125
 revision=1
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="${hostmakedepends}"
-checkdepends="perl-Test-Most perl-File-Slurp perl-Test-Pod perl-Test-Pod-Coverage"
-depends="${makedepends}"
-noarch="yes"
 short_desc="Convert::BinHex -- Perl module to extract data from Macintosh BinHex files"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+noarch="yes"
+depends="perl"
+makedepends="perl"
+checkdepends+=" perl-File-Slurp"
+checkdepends+=" perl-Test-Most"
+checkdepends+=" perl-Test-Pod"
+checkdepends+=" perl-Test-Pod-Coverage"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Convert-BinHex"
 license="Artistic, GPL-1"
-distfiles="${CPAN_SITE}/Convert/${pkgname/perl-/}-$version.tar.gz"
-checksum=513591b4be46bd7eb91e83197721b4a045a9753a3dd2f11de82c9d3013226397
+distfiles="$CPAN_SITE/Convert/${pkgname/perl-/}-$version.tar.gz"
+checksum="513591b4be46bd7eb91e83197721b4a045a9753a3dd2f11de82c9d3013226397"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

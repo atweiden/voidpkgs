@@ -1,15 +1,18 @@
-# Template build file for 'perl-Pod-Coverage'.
-pkgname=perl-Pod-Coverage
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Pod-Coverage"
 version=0.23
 revision=1
-wrksrc="${pkgname#*-}-${version}"
-build_style=perl-module
-hostmakedepends="perl perl-Devel-Symdump"
-depends="${hostmakedepends}"
 short_desc='Pod::Coverage - Check if module documentation is comprehensive'
-maintainer="Enguerrand de Rochefort <voidlinux@rochefort.de>"
+noarch="yes"
+depends+=" perl"
+depends+=" perl-Devel-Symdump"
+hostmakedepends+=" perl"
+hostmakedepends+=" perl-Devel-Symdump"
 homepage="https://metacpan.org/release/Pod-Coverage"
 license="GPL-1, Artistic"
-distfiles="$CPAN_SITE/Pod/Pod-Coverage-${version}.tar.gz"
-checksum=30b7a0b0c942f44a7552c0d34e9b1f2e0ba0b67955c61e3b1589ec369074b107
-noarch=yes
+distfiles="$CPAN_SITE/Pod/Pod-Coverage-$version.tar.gz"
+checksum="30b7a0b0c942f44a7552c0d34e9b1f2e0ba0b67955c61e3b1589ec369074b107"
+wrksrc="${pkgname#*-}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,20 +1,21 @@
-# Template build file for 'perl-Devel-StackTrace'.
-pkgname=perl-Devel-StackTrace
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Devel-StackTrace"
 version=2.03
 revision=1
-wrksrc="${pkgname#*-}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-depends="perl"
-noarch=yes
 short_desc='Devel::StackTrace - An object representing a stack trace'
-maintainer="Enguerrand de Rochefort <voidlinux@rochefort.de>"
+noarch="yes"
+depends="perl"
+makedepends="perl"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Devel-StackTrace"
 license="GPL-1, Artistic"
-distfiles="$CPAN_SITE/Devel/Devel-StackTrace-${version}.tar.gz"
-checksum=7618cd4ebe24e254c17085f4b418784ab503cb4cb3baf8f48a7be894e59ba848
+distfiles="$CPAN_SITE/Devel/Devel-StackTrace-$version.tar.gz"
+checksum="7618cd4ebe24e254c17085f4b418784ab503cb4cb3baf8f48a7be894e59ba848"
+wrksrc="${pkgname#*-}-$version"
+build_style="perl-module"
 
 do_check() {
-	make test
+  make test
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
