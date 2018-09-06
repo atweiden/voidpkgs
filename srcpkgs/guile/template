@@ -17,16 +17,12 @@ checksum="8aeb2f353881282fe01694cce76bb72f7ffdd296a12c7a1a39255c27b0dfe5f1"
 build_style="gnu-configure"
 configure_args+=" --disable-error-on-warning"
 configure_args+=" --disable-static"
-# only works for same wordsize and endianess
-nocross="yes"
 
-post_extract() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      sed -i '/strtol_l/{N;d}' libguile/i18n.c
-      ;;
-  esac
-}
+# on aarch64* builders, this may require building the host's guile first
+if [[ -n "$CROSS_BUILD" ]]; then
+  # need host guile to cross compile
+  hostmakedepends+=" guile"
+fi
 
 libguile_package() {
   short_desc+=" - runtime library"
