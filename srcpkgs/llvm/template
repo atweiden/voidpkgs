@@ -103,7 +103,7 @@ post_extract() {
     mv "$XBPS_BUILDDIR/lld-$version.src" "$wrksrc/tools/lld"
   fi
   # move lldb files into the llvm source
-  if [[ -z "$CROSS_BUILD" -a -d "$XBPS_BUILDDIR/lldb-$version.src" ]]; then
+  if [[ -z "$CROSS_BUILD" ]] && [[ -d "$XBPS_BUILDDIR/lldb-$version.src" ]]; then
     mv "$XBPS_BUILDDIR/lldb-$version.src" "$wrksrc/tools/lldb"
   fi
   # move compiler-rt files into the llvm source

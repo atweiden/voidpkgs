@@ -4,7 +4,7 @@ version=2.0.5
 revision=2
 short_desc="A Just-In-Time Compiler for Lua"
 hostmakedepends="lua52-BitOp"
-if [[ -n "$CROSS_BUILD" -a "$XBPS_MACHINE" == "x86_64" ]]; then
+if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_MACHINE" == "x86_64" ]]; then
   hostmakedepends+=" gcc-multilib"
 fi
 homepage="http://www.luajit.org"
