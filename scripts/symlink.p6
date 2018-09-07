@@ -167,6 +167,13 @@ my List:D %pkg{Str:D} =
     'kmod' => qw<libkmod
                  libkmod-devel>,
     'kyua' => ['kyua-tests'],
+    'lapack' => qw<blas
+                   blas-devel
+                   cblas
+                   cblas-devel
+                   lapack-devel
+                   lapacke
+                   lapacke-devel>,
     'ldns' => qw<libldns
                  libldns-devel>,
     'libaio' => ['libaio-devel'],

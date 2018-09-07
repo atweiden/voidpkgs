@@ -1,0 +1,94 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="lapack"
+version=3.8.0
+revision=2
+short_desc="Linear Algebra PACKage"
+hostmakedepends="gcc-fortran"
+homepage="http://www.netlib.org/lapack/"
+license="3-clause-BSD"
+distfiles="http://www.netlib.org/lapack/lapack-$version.tar.gz"
+checksum="deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6"
+build_style="cmake"
+configure_args+=" -DBUILD_DEPRECATED=ON"
+configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DBUILD_TESTING=OFF"
+configure_args+=" -DCBLAS=ON"
+configure_args+=" -DCMAKE_SKIP_RPATH=ON"
+configure_args+=" -DCMAKE_VERBOSE_MAKEFILE=ON"
+configure_args+=" -DLAPACKE=ON"
+
+post_install() {
+  vlicense LICENSE
+}
+
+lapack-devel_package() {
+  depends+=" $sourcepkg-${version}_$revision"
+  depends+=" blas-devel-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove "usr/lib/cmake/lapack-$version"
+    vmove usr/lib/pkgconfig/lapack.pc
+    vmove usr/lib/liblapack.a
+    vmove usr/lib/liblapack.so
+  }
+}
+
+blas_package() {
+  short_desc="Basic Linear Algebra Subprograms"
+  pkg_install() {
+    vmove "usr/lib/libblas.so.*"
+    vlicense LICENSE
+  }
+}
+
+blas-devel_package() {
+  depends="blas-${version}_$revision"
+  short_desc="Basic Linear Algebra Subprograms - development files"
+  pkg_install() {
+    vmove usr/lib/pkgconfig/blas.pc
+    vmove usr/lib/libblas.a
+    vmove usr/lib/libblas.so
+  }
+}
+
+cblas_package() {
+  short_desc="C interface to BLAS"
+  pkg_install() {
+    vmove "usr/lib/libcblas.so.*"
+  }
+}
+
+cblas-devel_package() {
+  short_desc="C interface to BLAS - development files"
+  depends+=" blas-devel-${version}_$revision"
+  depends+=" cblas-${version}_$revision"
+  pkg_install() {
+    vmove "usr/include/cblas*.h"
+    vmove "usr/lib/cmake/cblas-$version"
+    vmove usr/lib/pkgconfig/cblas.pc
+    vmove usr/lib/libcblas.a
+    vmove usr/lib/libcblas.so
+  }
+}
+
+lapacke_package() {
+  short_desc="C interface to LAPACK"
+  pkg_install() {
+    vmove "usr/lib/liblapacke.so.*"
+  }
+}
+
+lapacke-devel_package() {
+  short_desc="C interface to LAPACK - development files"
+  depends+=" lapack-devel-${version}_$revision"
+  depends+=" lapacke-${version}_$revision"
+  pkg_install() {
+    vmove "usr/include/lapacke*.h"
+    vmove "usr/lib/cmake/lapacke-$version"
+    vmove usr/lib/pkgconfig/lapacke.pc
+    vmove usr/lib/liblapacke.a
+    vmove usr/lib/liblapacke.so
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
