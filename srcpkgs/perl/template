@@ -222,7 +222,7 @@ post_install() {
   # /usr/share/perl5/core_perl/pod/ (FS#16488)
   rm -f "$DESTDIR/usr/share/perl5/core_perl"/*.pod
   for d in "$DESTDIR/usr/share/perl5/core_perl"/*; do
-    if [[ -d "$d" -a "$(basename $d)" != "pod" ]]; then
+    if [[ -d "$d" ]] && [[ "$(basename $d)" != "pod" ]]; then
       find "$d" -name *.pod -delete
     fi
   done
