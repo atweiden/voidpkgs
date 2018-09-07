@@ -1,32 +1,36 @@
-# Template file for 'python-yaml'
-pkgname=python-yaml
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-yaml"
 version=3.13
 revision=1
-wrksrc="PyYAML-${version}"
-build_style=python-module
-pycompile_module="yaml"
-hostmakedepends="python-setuptools python3-setuptools"
-makedepends="libyaml-devel python-devel python3-devel"
 short_desc="YAML parser and emitter for Python2"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="MIT"
+makedepends+=" libyaml-devel"
+makedepends+=" python-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="http://pyyaml.org/wiki/PyYAML"
-distfiles="${PYPI_SITE}/P/PyYAML/PyYAML-${version}.tar.gz"
-checksum=3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf
+license="MIT"
+distfiles="$PYPI_SITE/P/PyYAML/PyYAML-$version.tar.gz"
+checksum="3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf"
+wrksrc="PyYAML-$version"
+build_style="python-module"
+pycompile_module="yaml"
 
 do_check() {
-	python3 setup.py test
+  python3 setup.py test
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python3-yaml_package() {
-	pycompile_module="yaml"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-		vlicense LICENSE
-	}
+  pycompile_module="yaml"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+    vlicense LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
