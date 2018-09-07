@@ -1,0 +1,154 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="qemu"
+version=3.0.0
+revision=1
+short_desc="Open Source Processor Emulator"
+makedepends+=" bzip2-devel"
+makedepends+=" gnutls-devel"
+makedepends+=" libaio-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libcap-ng-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libglib-devel"
+makedepends+=" libjpeg-turbo-devel"
+makedepends+=" libnfs-devel"
+makedepends+=" libpng-devel"
+makedepends+=" libsasl-devel"
+makedepends+=" libseccomp-devel"
+makedepends+=" libssh2-devel"
+makedepends+=" libusb-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" lzo-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" nss-devel"
+makedepends+=" pixman-devel"
+makedepends+=" snappy-devel"
+makedepends+=" usbredir-devel"
+makedepends+=" vde2-devel"
+makedepends+=" xfsprogs-devel"
+makedepends+=" $(vopt_if smartcard libcacard-devel)"
+makedepends+=" $(vopt_if spice spice-devel)"
+hostmakedepends+=" automake"
+hostmakedepends+=" flex"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python"
+homepage="http://qemu.org"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="http://wiki.qemu.org/download/qemu-$version.tar.bz2"
+checksum="933e62ad604f5f8d0a93f5e0a98fd95f9d2e23ff1dbd0c744c6c7506bba8ebe8"
+nocross="https://api.travis-ci.org/jobs/210268003/log.txt"
+nostrip="yes"
+build_options+=" smartcard"
+build_options+=" spice"
+build_options_default+=" smartcard"
+desc_option_smartcard="Enable smartcard support"
+desc_option_spice="Enable support for SPICE"
+
+case "$XBPS_TARGET_MACHINE" in
+  i686*|x86_64*)
+    build_options_default+=" spice"
+    ;;
+  aarch64-musl)
+    CFLAGS+=" -D_LINUX_SYSINFO_H"
+    ;;
+esac
+
+post_extract() {
+  sed -i 's/__u64/unsigned long/' linux-user/host/aarch64/hostdep.h
+}
+
+do_configure() {
+  local args
+
+  sed \
+    -i \
+    -e 's,-rpath /usr/local/lib,,g' \
+    configure
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    args+=" --cross-prefix=$XBPS_CROSS_TRIPLET-"
+    export LIBTOOL="libtool"
+  fi
+  unset CPP
+
+  ./configure \
+    "$(vopt_enable smartcard)" \
+    "$(vopt_enable spice)" \
+    $args \
+    --audio-drv-list= \
+    --disable-bluez \
+    --disable-cocoa \
+    --disable-glusterfs \
+    --disable-gtk \
+    --disable-jemalloc \
+    --disable-mpath \
+    --disable-opengl \
+    --disable-sdl \
+    --disable-virglrenderer \
+    --disable-vte \
+    --disable-xen \
+    --disable-xen-pci-passthrough \
+    --enable-attr \
+    --enable-bzip2 \
+    --enable-cap-ng \
+    --enable-curl \
+    --enable-curses \
+    --enable-kvm \
+    --enable-libssh2 \
+    --enable-libusb \
+    --enable-libxml2 \
+    --enable-linux-aio \
+    --enable-lzo \
+    --enable-pie \
+    --enable-seccomp \
+    --enable-snappy \
+    --enable-tools \
+    --enable-tpm \
+    --enable-usb-redir \
+    --enable-vhost-crypto \
+    --enable-vhost-net \
+    --enable-virtfs \
+    --enable-vnc \
+    --enable-vnc-jpeg \
+    --enable-vnc-png \
+    --enable-vnc-sasl \
+    --libexecdir="/usr/libexec" \
+    --localstatedir="/var" \
+    --prefix="/usr" \
+    --sysconfdir="/etc"
+}
+
+do_build() {
+  # remove our strip(1) wrapper... E2BIG
+  rm -f "$XBPS_WRAPPERDIR/strip"
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # XXX libtool execs cc and ar
+    mkdir -p "$wrksrc/cross"
+    ln -sf "/usr/bin/$XBPS_CROSS_TRIPLET-gcc" "$wrksrc/cross/cc"
+    ln -sf "/usr/bin/$XBPS_CROSS_TRIPLET-ar" "$wrksrc/cross/ar"
+    export PATH="$wrksrc/cross:$PATH"
+  fi
+  make "$makejobs"
+}
+
+do_install() {
+  # remove our strip(1) wrapper... E2BIG
+  rm -f "$XBPS_WRAPPERDIR/strip"
+  make DESTDIR="$DESTDIR" install
+  # qemu-bridge-helper must be setuid for non privileged users
+  chmod u+s "$DESTDIR/usr/libexec/qemu-bridge-helper"
+  vsv qemu-ga
+}
+
+qemu-ga_package() {
+  short_desc="QEMU Guest Agent"
+  pkg_install() {
+    vmove usr/bin/qemu-ga
+    vmove etc/sv/qemu-ga
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

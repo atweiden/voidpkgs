@@ -1,0 +1,49 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="spice"
+version=0.14.0
+revision=4
+short_desc="Implements the SPICE protocol"
+makedepends+=" libcacard-devel"
+makedepends+=" libglib-devel"
+makedepends+=" libjpeg-turbo-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libsasl-devel"
+makedepends+=" lz4-devel"
+makedepends+=" nss-devel"
+makedepends+=" pixman-devel"
+makedepends+=" spice-protocol"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python"
+homepage="http://www.spice-space.org"
+license="GPL-2"
+distfiles="http://www.spice-space.org/download/releases/spice-$version.tar.bz2"
+checksum="3adb9495b51650e5eab53c74dd6a74919af4b339ff21721d9ab2a45b2e3bb848"
+build_style="gnu-configure"
+configure_args+=" --disable-celt051"
+configure_args+=" --disable-gstreamer"
+configure_args+=" --disable-opengl"
+configure_args+=" --disable-static"
+configure_args+=" --disable-tunnel"
+configure_args+=" --disable-xinerama"
+configure_args+=" --enable-lz4"
+configure_args+=" --enable-smartcard"
+configure_args+=" --with-gnu-ld"
+configure_args+=" --with-sasl"
+
+post_extract() {
+  # detects cpu from triplet
+  sed -i 's/armv6hl/arm/g' configure
+}
+
+spice-devel_package() {
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

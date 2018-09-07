@@ -1,0 +1,70 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nspr"
+version=4.19
+revision=1
+short_desc="NetScape Portable Runtime"
+makedepends="zlib-devel"
+homepage="http://www.mozilla.org/projects/nspr/"
+license="MPL-2.0"
+distfiles="$MOZILLA_SITE/nspr/releases/v$version/src/$pkgname-$version.tar.gz"
+checksum="2ed95917fa2277910d1d1cf36030607dccc0ba522bba08e2af13c113dcd8f729"
+build_wrksrc="nspr"
+build_style="gnu-configure"
+
+do_configure() {
+  CFLAGS+=" -D_PR_HAVE_GETADDRINFO"
+  CFLAGS+=" -D_PR_HAVE_GETHOSTBYNAME2"
+  CFLAGS+=" -D_PR_HAVE_INET_NTOP"
+  CFLAGS+=" -D_PR_HAVE_OFF64_T"
+  CFLAGS+=" -D_PR_INET6"
+  CFLAGS+=" -D_PR_INET6_PROBE"
+  CFLAGS+=" -D_PR_POLL_AVAILABLE"
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    _args+=" --target=$XBPS_CROSS_TRIPLET"
+  fi
+  case "$XBPS_TARGET_MACHINE" in
+    x86_64*)
+      _args+=" --enable-64bit"
+      ;;
+  esac
+
+  ./configure \
+    "$_args" \
+    --build="$XBPS_TRIPLET" \
+    --enable-debug \
+    --enable-ipv6 \
+    --enable-optimize \
+    --includedir="/usr/include/nspr" \
+    --libdir="/usr/lib" \
+    --prefix="/usr"
+}
+
+do_build() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    make "$makejobs"
+  else
+    make CC="$CC" CXX="$CXX" "$makejobs"
+  fi
+}
+
+post_install() {
+  sed -i "s|\(-specs=.*hardened-ld\)||g" "$DESTDIR/usr/bin/nspr-config"
+  ln -s nspr.pc "$DESTDIR/usr/lib/pkgconfig/mozilla-nspr.pc"
+  rm -r "$DESTDIR/usr/bin"/{compile-et.pl,prerr.properties}
+  rm -r "$DESTDIR/usr/include/nspr/md"
+}
+
+nspr-devel_package() {
+  depends="nspr>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/bin
+    vmove usr/lib/pkgconfig
+    vmove usr/share/aclocal
+    vmove "usr/lib/*.a"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

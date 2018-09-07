@@ -1,0 +1,46 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pcsclite"
+version=1.8.23
+revision=1
+short_desc="Middleware to access a smart card using SCard API (PC/SC)"
+homepage="https://alioth.debian.org/projects/pcsclite"
+license="2-clause-BSD"
+depends="python"
+makedepends+=" eudev-libudev-devel"
+makedepends+=" libusb-devel"
+makedepends+=" python-devel"
+hostmakedepends+=" intltool"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python"
+distfiles="https://alioth.debian.org/frs/download.php/file/4235/pcsc-lite-$version.tar.bz2"
+checksum="5a27262586eff39cfd5c19aadc8891dd71c0818d3d629539bd631b958be689c9"
+wrksrc="pcsc-lite-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-libsystemd"
+configure_args+=" --enable-libudev"
+configure_args+=" --sbindir='/usr/bin'"
+
+post_install() {
+  vsv pcscd
+  vlicense COPYING
+}
+
+pcsclite-devel_package() {
+  short_desc+=" - development files"
+  depends="libpcsclite>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.la"
+    vmove "usr/lib/*.so"
+  }
+}
+
+libpcsclite_package() {
+  short_desc+=" - library files"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

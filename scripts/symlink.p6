@@ -181,6 +181,7 @@ my List:D %pkg{Str:D} =
                        libarchive-devel>,
     'libassuan' => ['libassuan-devel'],
     'libatomic_ops' => ['libatomic_ops-devel'],
+    'libcacard' => ['libcacard-devel'],
     'libcap' => qw<libcap-devel
                    libcap-progs>,
     'libcap-ng' => qw<libcap-ng-devel
@@ -196,10 +197,13 @@ my List:D %pkg{Str:D} =
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
     'libidn' => ['libidn-devel'],
+    'libjpeg-turbo' => qw<libjpeg-turbo-devel
+                          libjpeg-turbo-tools>,
     'libksba' => ['libksba-devel'],
     'libmnl' => ['libmnl-devel'],
     'libmpack' => ['libmpack-devel'],
     'libmpc' => ['libmpc-devel'],
+    'libnfs' => ['libnfs-devel'],
     'libnftnl' => ['libnftnl-devel'],
     'libnl' => ['libnl-devel'],
     'libnl3' => qw<libnl3-devel
@@ -287,6 +291,8 @@ my List:D %pkg{Str:D} =
                      libnftables-devel>,
     'nghttp2' => ['nghttp2-devel'],
     'npth' => ['npth-devel'],
+    'nspr' => ['nspr-devel'],
+    'nss' => ['nss-devel'],
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
@@ -306,6 +312,8 @@ my List:D %pkg{Str:D} =
                  pcre-devel>,
     'pcre2' => qw<libpcre2
                   pcre2-devel>,
+    'pcsclite' => qw<libpcsclite
+                     pcsclite-devel>,
     'pinentry' => qw<pinentry-emacs
                      pinentry-gtk
                      pinentry-qt
@@ -374,6 +382,7 @@ my List:D %pkg{Str:D} =
     'python-urllib3' => ['python3-urllib3'],
     'python-yaml' => ['python3-yaml'],
     'python3' => ['python3-devel'],
+    'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'readline' => ['readline-devel'],
@@ -385,6 +394,8 @@ my List:D %pkg{Str:D} =
                         sfind
                         smake
                         star>,
+    'snappy' => ['snappy-devel'],
+    'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
@@ -393,6 +404,7 @@ my List:D %pkg{Str:D} =
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,
+    'usbredir' => ['usbredir-devel'],
     'util-linux' => qw<libblkid
                        libblkid-devel
                        libfdisk
@@ -404,6 +416,8 @@ my List:D %pkg{Str:D} =
                        libuuid
                        libuuid-devel>,
     'valgrind' => ['valgrind-devel'],
+    'vde2' => qw<libvde2
+                 vde2-devel>,
     'vim' => qw<gvim
                 gvim-huge
                 vim-common

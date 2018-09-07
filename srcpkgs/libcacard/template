@@ -1,0 +1,29 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libcacard"
+version=2.6.1
+revision=1
+short_desc="Library to provide emulation of smart cards to a virtual card reader"
+makedepends+=" libglib-devel"
+makedepends+=" nss-devel"
+makedepends+=" pcsclite-devel"
+hostmakedepends="pkg-config"
+homepage="https://www.spice-space.org/page/Libcacard"
+license="LGPL-2.1-or-later"
+distfiles="https://www.spice-space.org/download/libcacard/libcacard-$version.tar.xz"
+checksum="6276c6a2bd018bf14f1b97260fff093b4a2325a9177be4fc6be7c1a9e204def0"
+build_style="gnu-configure"
+replaces="libcacard-tools>=0"
+
+libcacard-devel_package() {
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" libglib-devel"
+  depends+=" nss-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

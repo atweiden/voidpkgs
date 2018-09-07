@@ -1,0 +1,64 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libjpeg-turbo"
+version=1.5.3
+revision=1
+short_desc="Derivative of libjpeg which uses SIMD instructions"
+hostmakedepends="yasm"
+homepage="http://libjpeg-turbo.virtualgl.org/"
+license="BSD"
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="b24890e2bb46e12e72a79f7e965f409f4e16466d00e1dd15d93d73ee6b592523"
+build_style="gnu-configure"
+configure_args="--with-jpeg8"
+provides="jpeg-8_1"
+replaces="jpeg>=0"
+
+# SIMD uses FP instructions, disable on soft-float MIPS
+case "$XBPS_TARGET_MACHINE" in
+  mips*hf)
+    ;;
+  mips*)
+    configure_args+=" --without-simd"
+    ;;
+esac
+
+do_install() {
+  make \
+    DESTDIR="$DESTDIR" \
+    docdir="/usr/share/doc/$pkgname" \
+    exampledir="/usr/share/doc/$pkgname" \
+    install
+
+  vinstall jpegint.h 644 usr/include
+  vlicense LICENSE.md
+
+  rm -r "$DESTDIR/usr/share/doc"
+  rm -f "$DESTDIR/usr/bin/tjbench"
+  rm -f "$DESTDIR/usr/bin/jpegut"
+  rm -f "$DESTDIR/usr/bin/jpgtest"
+}
+
+libjpeg-turbo-devel_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  provides="jpeg-devel-8_1"
+  replaces="jpeg-devel>=0"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
+}
+
+libjpeg-turbo-tools_package() {
+  provides="jpeg-tools-8_1"
+  replaces="jpeg-tools>=0"
+  short_desc+=" - bundled tools"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/share/man
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
