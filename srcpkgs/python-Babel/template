@@ -22,6 +22,7 @@ post_install() {
 }
 
 python3-Babel_package() {
+  unset depends
   noarch="yes"
   depends+=" python3-pytz"
   depends+=" python3-setuptools"

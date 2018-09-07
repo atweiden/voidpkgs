@@ -1,27 +1,38 @@
-# Template file for 'python-pynacl'
-pkgname=python-pynacl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-pynacl"
 version=1.2.1
 revision=1
-wrksrc="PyNaCl-${version}"
-build_style=python-module
-pycompile_module="nacl"
-hostmakedepends="python-setuptools python3-setuptools python-cffi python3-cffi"
-makedepends="python-devel python3-devel python-cffi python3-cffi libsodium-devel"
-depends="python-cffi python-six"
 short_desc="Python2 binding to the Networking and Cryptography (NaCl) library"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+depends+=" python-cffi"
+depends+=" python-six"
+makedepends+=" libsodium-devel"
+makedepends+=" python-cffi"
+makedepends+=" python-devel"
+makedepends+=" python3-cffi"
+makedepends+=" python3-devel"
+hostmakedepends+=" python-cffi"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-cffi"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pyca/pynacl/"
 license="Apache-2.0"
-distfiles="${PYPI_SITE}/P/PyNaCl/PyNaCl-${version}.tar.gz"
-checksum=e0d38fa0a75f65f556fb912f2c6790d1fa29b7dd27a1d9cc5591b281321eaaa9
+distfiles="$PYPI_SITE/P/PyNaCl/PyNaCl-$version.tar.gz"
+checksum="e0d38fa0a75f65f556fb912f2c6790d1fa29b7dd27a1d9cc5591b281321eaaa9"
+wrksrc="PyNaCl-$version"
+build_style="python-module"
+pycompile_module="nacl"
 
-export SODIUM_INSTALL=system
+export SODIUM_INSTALL="system"
 
 python3-pynacl_package() {
-	pycompile_module="nacl"
-	depends="python3-cffi python3-six"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  unset depends
+  pycompile_module="nacl"
+  depends+=" python3-cffi"
+  depends+=" python3-six"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

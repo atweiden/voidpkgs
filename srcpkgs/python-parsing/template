@@ -1,31 +1,33 @@
-# Template file for 'python-parsing'
-pkgname=python-parsing
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-parsing"
 version=2.2.0
 revision=2
-noarch=yes
-wrksrc="pyparsing-${version}"
-build_style=python-module
-hostmakedepends="python-setuptools python3-setuptools"
-depends="python"
-pycompile_module="pyparsing.py"
 short_desc="Python parsing module (Python2)"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="MIT"
+noarch="yes"
+depends="python"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="http://pyparsing.wikispaces.com/"
-distfiles="${PYPI_SITE}/p/pyparsing/pyparsing-${version}.tar.gz"
-checksum=0832bcf47acd283788593e7a0f542407bd9550a55a8a8435214a1960e04bcb04
+license="MIT"
+distfiles="$PYPI_SITE/p/pyparsing/pyparsing-$version.tar.gz"
+checksum="0832bcf47acd283788593e7a0f542407bd9550a55a8a8435214a1960e04bcb04"
+wrksrc="pyparsing-$version"
+build_style="python-module"
+pycompile_module="pyparsing.py"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python3-parsing_package() {
-	noarch=yes
-	depends="python3"
-	pycompile_module="pyparsing.py"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-		vlicense LICENSE
-	}
+  noarch="yes"
+  depends="python3"
+  pycompile_module="pyparsing.py"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+    vlicense LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

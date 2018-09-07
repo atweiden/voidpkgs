@@ -1,36 +1,38 @@
-# Template file for 'python-more-itertools'
-pkgname=python-more-itertools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-more-itertools"
 version=4.3.1
 revision=1
-noarch=yes
-wrksrc="more-itertools-${version}"
-build_style=python-module
-pycompile_module="more_itertools"
-hostmakedepends="python-setuptools python3-setuptools"
+short_desc="More Python2 routines for operating on itertables"
+noarch="yes"
 depends="python-six"
 checkdepends="python3-six"
-short_desc="More Python2 routines for operating on itertables"
-maintainer="Orphaned <orphan@voidlinux.eu>"
-license="MIT"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/erikrose/more-itertools"
-distfiles="https://github.com/erikrose/more-itertools/archive/${version}.tar.gz"
-checksum=ad2a4f23bb8a45015a887d450ec995daf9da46a100a56432702a91c43a859b70
+license="MIT"
+distfiles="https://github.com/erikrose/more-itertools/archive/$version.tar.gz"
+checksum="ad2a4f23bb8a45015a887d450ec995daf9da46a100a56432702a91c43a859b70"
+wrksrc="more-itertools-$version"
+build_style="python-module"
+pycompile_module="more_itertools"
 
 do_check() {
-	python3 setup.py test
+  python3 setup.py test
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python3-more-itertools_package() {
-	noarch=yes
-	pycompile_module="more_itertools"
-	short_desc="${short_desc/Python2/Python3}"
-	depends="python3-six"
-	pkg_install() {
-		vmove usr/lib/python3*
-		vlicense LICENSE
-	}
+  noarch="yes"
+  pycompile_module="more_itertools"
+  short_desc="${short_desc/Python2/Python3}"
+  depends="python3-six"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+    vlicense LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

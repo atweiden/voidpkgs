@@ -1,48 +1,59 @@
-# Template file for 'python-hypothesis'
-pkgname=python-hypothesis
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-hypothesis"
 version=3.70.3
 revision=1
-noarch=yes
-wrksrc="hypothesis-hypothesis-python-${version}"
-build_wrksrc=hypothesis-python
-build_style=python-module
-pycompile_module="hypothesis"
-hostmakedepends="python-setuptools python3-setuptools"
-depends="python-attrs python-coverage python-enum34"
-checkdepends="python-coverage python-enum34 python-pytest python3-coverage
- python3-flaky python3-pytest python3-pytz python3-numpy"
 short_desc="Python2 library for property based testing"
-maintainer="Orphaned <orphan@voidlinux.eu>"
-license="MPL-2.0"
+noarch="yes"
+depends+=" python-attrs"
+depends+=" python-coverage"
+depends+=" python-enum34"
+checkdepends+=" python-coverage"
+checkdepends+=" python-enum34"
+checkdepends+=" python-pytest"
+checkdepends+=" python3-coverage"
+checkdepends+=" python3-flaky"
+checkdepends+=" python3-numpy"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytz"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="https://hypothesis.works/"
+license="MPL-2.0"
 changelog="https://github.com/HypothesisWorks/hypothesis/raw/master/hypothesis-python/docs/changes.rst"
-distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-${version}.tar.gz"
-checksum=e414e13ed928f5bfe5ec66ecb730b8075b2aa6c3a38543dc316f3d6bbd8bd080
+distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
+checksum="e414e13ed928f5bfe5ec66ecb730b8075b2aa6c3a38543dc316f3d6bbd8bd080"
+wrksrc="hypothesis-hypothesis-python-$version"
+build_wrksrc="hypothesis-python"
+build_style="python-module"
+pycompile_module="hypothesis"
 
 do_check() {
-	# pytest doesn't recognize -n switch
-	sed -i 's/ -n 2$//' tox.ini
+  # pytest doesn't recognize -n switch
+  sed -i 's/ -n 2$//' tox.ini
 
-	# In python3 mock is actually unittest.mock
-	sed -i 's/from mock/from unittest.mock/' tests/cover/test_regressions.py
-	sed -i 's/from mock/from unittest.mock/' tests/cover/test_reflection.py
+  # in python3 mock is actually unittest.mock
+  sed -i 's/from mock/from unittest.mock/' tests/cover/test_regressions.py
+  sed -i 's/from mock/from unittest.mock/' tests/cover/test_reflection.py
 
-	# Add variables that will be used by python to find the local
-	# hypothesis build
-	PY3PATH="${PWD}/build-${py3_ver}/lib"
-	PY2PATH="${PWD}/build-2.7/lib"
+  # add variables to be used by python to find the local hypothesis build
+  PY3PATH="$PWD/build-$py3_ver/lib"
+  PY2PATH="$PWD/build-2.7/lib"
 
-	PYTHONPATH="${PY3PATH}" python3 -m pytest tests/cover
-	PYTHONPATH="${PY3PATH}" python3 -m pytest tests/py3
-	PYTHONPATH="${PY2PATH}" python2 -m pytest tests/py2
+  PYTHONPATH="$PY3PATH" python3 -m pytest tests/cover
+  PYTHONPATH="$PY3PATH" python3 -m pytest tests/py3
+  PYTHONPATH="$PY2PATH" python2 -m pytest tests/py2
 }
 
 python3-hypothesis_package() {
-	noarch=yes
-	pycompile_module="hypothesis"
-	depends="python3-attrs python3-coverage"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  unset depends
+  noarch="yes"
+  pycompile_module="hypothesis"
+  depends+=" python3-attrs"
+  depends+=" python3-coverage"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

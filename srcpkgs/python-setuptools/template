@@ -1,41 +1,49 @@
-# Template file for 'python-setuptools'
-pkgname=python-setuptools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-setuptools"
 version=40.2.0
 revision=1
-noarch=yes
-wrksrc="setuptools-${version}"
-build_style=python-module
-hostmakedepends="unzip python-devel python3-devel"
-depends="python"
-pycompile_module="pkg_resources setuptools easy_install.py"
-provides="python-distribute-${version}_1"
-replaces="python-distribute>=0"
 short_desc="Easily build and distribute Python2 packages"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+noarch="yes"
+depends="python"
+hostmakedepends+=" python-devel"
+hostmakedepends+=" python3-devel"
+hostmakedepends+=" unzip"
 homepage="https://github.com/pypa/setuptools"
 license="MIT"
-distfiles="${PYPI_SITE}/s/setuptools/setuptools-${version}.zip"
-checksum=47881d54ede4da9c15273bac65f9340f8929d4f0213193fa7894be384f2dcfa6
+distfiles="$PYPI_SITE/s/setuptools/setuptools-$version.zip"
+checksum="47881d54ede4da9c15273bac65f9340f8929d4f0213193fa7894be384f2dcfa6"
+wrksrc="setuptools-$version"
+build_style="python-module"
+pycompile_module+=" easy_install.py"
+pycompile_module+=" pkg_resources"
+pycompile_module+=" setuptools"
+provides="python-distribute-${version}_1"
+replaces="python-distribute>=0"
 alternatives="setuptools:easy_install:/usr/bin/easy_install2"
 
 export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 export SETUPTOOLS_DISABLE_VERSIONED_EASY_INSTALL_SCRIPT=1
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python3-setuptools_package() {
-	noarch=yes
-	depends="python3"
-	pycompile_module="pkg_resources setuptools easy_install.py"
-	short_desc="${short_desc/Python2/Python3}"
-	provides="python3-distribute-${version}_1"
-	replaces="python3-distribute>=0"
-	alternatives="setuptools:easy_install:/usr/bin/easy_install3"
-	pkg_install() {
-		vmove usr/bin/easy_install3
-		vmove usr/lib/python3*
-		vlicense LICENSE
-	}
+  unset pycompile_module
+  noarch="yes"
+  depends="python3"
+  pycompile_module+=" easy_install.py"
+  pycompile_module+=" pkg_resources"
+  pycompile_module+=" setuptools"
+  short_desc="${short_desc/Python2/Python3}"
+  provides="python3-distribute-${version}_1"
+  replaces="python3-distribute>=0"
+  alternatives="setuptools:easy_install:/usr/bin/easy_install3"
+  pkg_install() {
+    vmove usr/bin/easy_install3
+    vmove "usr/lib/python3*"
+    vlicense LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

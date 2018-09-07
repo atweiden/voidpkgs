@@ -1,47 +1,53 @@
-# Template file for 'python-numpy'
-pkgname=python-numpy
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-numpy"
 version=1.15.1
 revision=1
-wrksrc="numpy-${version}"
-build_style=python-module
-pycompile_module="numpy"
-hostmakedepends="python-setuptools python3-setuptools
- python-Cython python3-Cython gcc-fortran"
-makedepends="python-devel python3-devel lapack-devel cblas-devel"
 short_desc="Fast and sophisticated array facility to Python2"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+makedepends+=" cblas-devel"
+makedepends+=" lapack-devel"
+makedepends+=" python-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" gcc-fortran"
+hostmakedepends+=" python-Cython"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-Cython"
+hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
-distfiles="https://github.com/numpy/numpy/archive/v${version}.tar.gz"
-checksum=8fb9ebbeda083cc99feba86b6da7e0a12a1442e62a53e9e94790d6d9e78cd695
+distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz"
+checksum="8fb9ebbeda083cc99feba86b6da7e0a12a1442e62a53e9e94790d6d9e78cd695"
+wrksrc="numpy-$version"
+build_style="python-module"
+pycompile_module="numpy"
+nocross="https://build.voidlinux.eu/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
 alternatives="numpy:f2py:/usr/bin/f2py2"
 
-nocross="https://build.voidlinux.eu/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
-
-export ATLAS=None
+export ATLAS="None"
 LDFLAGS="-shared"
 
 post_install() {
-	# create compat symlinks for .h files
-	vmkdir ${py2_inc}
-	ln -sfr ${DESTDIR}/${py2_sitelib}/numpy/core/include/numpy \
-		${DESTDIR}/${py2_inc}
-	vmkdir ${py3_inc}
-	ln -sfr ${DESTDIR}/${py3_sitelib}/numpy/core/include/numpy \
-		${DESTDIR}/${py3_inc}
+  vlicense LICENSE.txt LICENSE
+  # create compat symlinks for .h files
+  vmkdir "$py2_inc"
+  ln -sfr "$DESTDIR/$py2_sitelib/numpy/core/include/numpy" "$DESTDIR/$py2_inc"
+  vmkdir "$py3_inc"
+  ln -sfr "$DESTDIR/$py3_sitelib/numpy/core/include/numpy" "$DESTDIR/$py3_inc"
+}
 
-	rm -f ${DESTDIR}/usr/lib/python*/site-packages/numpy/LICENSE.txt
-	vlicense LICENSE.txt LICENSE
+do_clean() {
+  rm -f "$DESTDIR/usr/lib"/python*/site-packages/numpy/LICENSE.txt
 }
 
 python3-numpy_package() {
-	alternatives="numpy:f2py:/usr/bin/f2py3"
-	pycompile_module="numpy"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/bin/f2py3
-		vmove ${py3_sitelib}
-		vmove ${py3_inc}
-		vlicense LICENSE.txt LICENSE
-	}
+  alternatives="numpy:f2py:/usr/bin/f2py3"
+  pycompile_module="numpy"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove usr/bin/f2py3
+    vmove "$py3_sitelib"
+    vmove "$py3_inc"
+    vlicense LICENSE.txt LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

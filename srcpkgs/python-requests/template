@@ -1,30 +1,39 @@
-# Template file for 'python-requests'
-pkgname=python-requests
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-requests"
 version=2.19.1
 revision=1
-noarch=yes
-wrksrc="requests-${version}"
-build_style=python-module
-pycompile_module="requests"
-hostmakedepends="python-setuptools python3-setuptools"
-depends="ca-certificates python-chardet python-urllib3 python-idna"
 short_desc="Python2 HTTP library for human beings"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+noarch="yes"
+depends+=" ca-certificates"
+depends+=" python-chardet"
+depends+=" python-idna"
+depends+=" python-urllib3"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="http://python-requests.org/"
 license="Apache-2.0"
-distfiles="${PYPI_SITE}/r/requests/requests-${version}.tar.gz"
-checksum=ec22d826a36ed72a7358ff3fe56cbd4ba69dd7a6718ffd450ff0e9df7a47ce6a
+distfiles="$PYPI_SITE/r/requests/requests-$version.tar.gz"
+checksum="ec22d826a36ed72a7358ff3fe56cbd4ba69dd7a6718ffd450ff0e9df7a47ce6a"
+wrksrc="requests-$version"
+build_style="python-module"
+pycompile_module="requests"
 
 pre_build() {
-	sed -i '/certifi/d' setup.py
+  sed -i '/certifi/d' setup.py
 }
 
 python3-requests_package() {
-	noarch=yes
-	pycompile_module="requests"
-	depends="ca-certificates python3-chardet python3-urllib3 python3-idna"
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  unset depends
+  noarch="yes"
+  pycompile_module="requests"
+  depends+=" ca-certificates"
+  depends+=" python3-chardet"
+  depends+=" python3-idna"
+  depends+=" python3-urllib3"
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,45 +1,50 @@
-# Template file for 'python-greenlet'
-pkgname=python-greenlet
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-greenlet"
 version=0.4.14
 revision=1
-wrksrc="greenlet-${version}"
-build_style=python-module
-hostmakedepends="python-setuptools python3-setuptools"
-makedepends="python-devel python3-devel"
 short_desc="Lightweight in-process concurrent programming (Python2)"
-maintainer="Steve Prybylski <sa.prybylx@gmail.com>"
-license="MIT"
+makedepends+=" python-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/python-greenlet/greenlet"
+license="MIT"
 changelog="https://raw.githubusercontent.com/python-greenlet/greenlet/master/NEWS"
-distfiles="${PYPI_SITE}/g/greenlet/greenlet-${version}.tar.gz"
-checksum=f1cc268a15ade58d9a0c04569fe6613e19b8b0345b64453064e2c3c6d79051af
+distfiles="$PYPI_SITE/g/greenlet/greenlet-$version.tar.gz"
+checksum="f1cc268a15ade58d9a0c04569fe6613e19b8b0345b64453064e2c3c6d79051af"
+wrksrc="greenlet-$version"
+build_style="python-module"
 
 do_check() {
-	python3 setup.py test
+  python3 setup.py test
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python-greenlet-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove ${py2_inc}
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove "$py2_inc"
+  }
 }
+
 python3-greenlet-devel_package() {
-	depends="python3-greenlet>=${version}_${revision}"
-	short_desc="${short_desc/Python2/Python3} - development files"
-	pkg_install() {
-		vmove ${py3_inc}
-	}
+  depends="python3-greenlet>=${version}_$revision"
+  short_desc="${short_desc/Python2/Python3} - development files"
+  pkg_install() {
+    vmove "$py3_inc"
+  }
 }
+
 python3-greenlet_package() {
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove ${py3_sitelib}
-		vlicense LICENSE
-	}
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "$py3_sitelib"
+    vlicense LICENSE
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
