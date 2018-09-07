@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mlocate"
 version=0.26
-revision=3
+revision=4
 short_desc="Implementation of locate/updatedb that reuses the database"
 homepage="https://pagure.io/mlocate"
 license="GPL-2"
@@ -10,8 +10,10 @@ checksum="3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e"
 build_style="gnu-configure"
 configure_args+=" --localstatedir=/var/lib"
 configure_args+=" --program-prefix=m"
+make_build_args="groupname=_mlocate"
+make_install_args="$make_build_args"
 make_dirs="/var/lib/mlocate 0755 root root"
-system_accounts="mlocate"
+system_accounts="_mlocate"
 alternatives+=" locate:locate.1:/usr/share/man/man1/mlocate.1"
 alternatives+=" locate:locate:/usr/bin/mlocate"
 alternatives+=" locate:locatedb.5:/usr/share/man/man5/mmlocate.db.5"
