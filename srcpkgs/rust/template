@@ -4,7 +4,7 @@ version=1.28.0
 revision=1
 short_desc="Safe, concurrent, practical systems language"
 # NB. if you push any(!) new version, don't forget to put a build
-# output of musl to https://repo.voidlinux.eu/distfiles/
+# output of musl to https://alpha.de.repo.voidlinux.org/distfiles/
 only_for_archs+=" i686"
 only_for_archs+=" x86_64"
 only_for_archs+=" x86_64-musl"
@@ -36,9 +36,9 @@ case "$XBPS_MACHINE" in
   x86_64-musl)
     hostmakedepends+=" libcurl"
     hostmakedepends+=" libgit2"
-    distfiles+=" https://repo.voidlinux.eu/distfiles/rustc-$_rust_dist_version-x86_64-unknown-linux-musl.tar.xz"
-    distfiles+=" https://repo.voidlinux.eu/distfiles/rust-std-$_rust_dist_version-x86_64-unknown-linux-musl.tar.xz"
-    distfiles+=" https://repo.voidlinux.eu/distfiles/cargo-$_cargo_dist_version-x86_64-unknown-linux-musl.tar.gz"
+    distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/rustc-$_rust_dist_version-x86_64-unknown-linux-musl.tar.xz"
+    distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/rust-std-$_rust_dist_version-x86_64-unknown-linux-musl.tar.xz"
+    distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/cargo-$_cargo_dist_version-x86_64-unknown-linux-musl.tar.gz"
     checksum+=" 2da811f9a81f63a93d62cefe15f391efaff663438f2c364fd1a522ef576753f4"
     checksum+=" e18aea5529d434e0950a77c266c3230ea878e3f3ea8b4114ee5a081092f98037"
     checksum+=" d54f7b4c6e8af657e6173e9e0200130b2f297f365ed4c06a4e9029762d975836"
