@@ -35,8 +35,12 @@ esac
 post_extract() {
   mkdir -p target/snapshot
   case "$XBPS_MACHINE" in
-    x86_64-musl) cp ../cargo cargo                   ;;
-    *)           cp ../cargo-*/cargo/bin/cargo cargo ;;
+    x86_64-musl)
+      cp ../cargo cargo
+      ;;
+    *)
+      cp ../cargo-*/cargo/bin/cargo cargo
+      ;;
   esac
 }
 
