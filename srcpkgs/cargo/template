@@ -19,7 +19,7 @@ nocross="yes"
 
 case "$XBPS_MACHINE" in
   x86_64-musl)
-    distfiles+=" https://repo.voidlinux.eu/distfiles/cargo-$version-x86_64-unknown-linux-musl-libgit2-27.tar.gz"
+    distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/cargo-$version-x86_64-unknown-linux-musl-libgit2-27.tar.gz"
     checksum+=" a46cb16e1008032277d744b74cba16a107539b12b8fbfd763c4cc1f80ee5568c"
     ;;
   x86_64)
