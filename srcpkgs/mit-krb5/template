@@ -24,7 +24,7 @@ post_extract() {
 
 do_configure() {
   WARN_CFLAGS= ./src/configure \
-    "$configure_args" \
+    $configure_args \
     --disable-rpath \
     --enable-shared \
     --sbindir=/usr/bin \

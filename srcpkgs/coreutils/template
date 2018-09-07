@@ -56,7 +56,7 @@ do_configure() {
   # do not install kill (provided by util-linux)
   # do not install uptime (provided by procps-ng)
   ./configure \
-    "$configure_args" \
+    $configure_args \
     --disable-rpath \
     --enable-install-program=arch,hostname \
     --enable-no-install-program=kill,uptime

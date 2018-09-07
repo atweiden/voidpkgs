@@ -110,7 +110,7 @@ do_configure() {
   export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=?/}"
 
   SHELL="/bin/bash" ../configure \
-    "$configure_args" \
+    $configure_args \
     --bindir="/usr/bin" \
     --disable-lock-elision \
     --disable-profile \

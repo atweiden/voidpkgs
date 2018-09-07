@@ -17,7 +17,7 @@ conflicts="texinfo>=0"
 do_configure() {
   cp -f "$XBPS_CROSSPFDIR/config.sub" build-aux
   ./configure \
-    "$configure_args" \
+    $configure_args \
     --disable-nls
 }
 

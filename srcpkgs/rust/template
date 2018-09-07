@@ -154,7 +154,7 @@ do_configure() {
     configure_args+=" --musl-root=/usr"
     ;;
   esac
-  ./configure "$configure_args"
+  ./configure $configure_args
 }
 
 do_install() {

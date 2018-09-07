@@ -73,7 +73,7 @@ _binutils_build() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" --with-system-zlib"
 
-  "../binutils-$_binutils_version/configure" "$_args"
+  "../binutils-$_binutils_version/configure" $_args
   make configure-host
   make "$makejobs"
   make install
@@ -118,7 +118,7 @@ _gcc_bootstrap() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" libat_cv_have_ifunc=no"
 
-  "../gcc-$_gcc_version/configure" "$_args"
+  "../gcc-$_gcc_version/configure" $_args
   find -name Makefile -exec sed -i "{}" -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \;
   make "$makejobs"
   make install
@@ -188,7 +188,7 @@ _gcc_build() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" libat_cv_have_ifunc=no"
 
-  "../gcc-$_gcc_version/configure" "$_args"
+  "../gcc-$_gcc_version/configure" $_args
   find -name Makefile -exec sed -i "{}" -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \;
   make "$makejobs"
   touch "$wrksrc/.gcc_build_done"

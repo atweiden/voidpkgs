@@ -85,7 +85,7 @@ _binutils_build() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" --with-system-zlib"
 
-  "../binutils-$_binutils_version/configure" "$_args"
+  "../binutils-$_binutils_version/configure" $_args
   make configure-host
   make "$makejobs"
   make install
@@ -129,7 +129,7 @@ _gcc_bootstrap() {
 
   CFLAGS="-O0 -g0" \
   CXXFLAGS="-O0 -g0" \
-    "../gcc-$_gcc_version/configure" "$_args"
+    "../gcc-$_gcc_version/configure" $_args
 
   make "$makejobs"
   make install
@@ -171,7 +171,7 @@ _glibc_headers() {
   _args+=" --prefix=/usr"
   _args+=" --with-headers=$_sysroot/usr/include"
 
-  "../glibc-$_glibc_version/configure" "$_args"
+  "../glibc-$_glibc_version/configure" $_args
   make -k install-headers cross_compiling="yes" install_root="$_sysroot"
   touch "$wrksrc/.glibc_headers_done"
 }
@@ -208,7 +208,7 @@ _glibc_build() {
   _args+=" --prefix=/usr"
   _args+=" --with-headers=$_sysroot/usr/include"
 
-  "../glibc-$_glibc_version/configure" "$_args"
+  "../glibc-$_glibc_version/configure" $_args
   make "$makejobs"
   make install_root="$_sysroot" install
   touch "$wrksrc/.glibc_build_done"
@@ -273,7 +273,7 @@ _gcc_build() {
   _args+=" --with-linker-hash-style=gnu"
   _args+=" --with-sysroot=$_sysroot"
 
-  "../gcc-$_gcc_version/configure" "$_args"
+  "../gcc-$_gcc_version/configure" $_args
   make "$makejobs"
   touch "$wrksrc/.gcc_build_done"
 }

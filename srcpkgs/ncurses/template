@@ -23,7 +23,7 @@ do_configure() {
   cd "$wrksrc/ncursesw-build"
   # widec build
   ../configure \
-    "$configure_args" \
+    $configure_args \
     --enable-ext-colors \
     --enable-pc-files \
     --enable-widec \
@@ -40,7 +40,7 @@ do_configure() {
   cd "$wrksrc/ncurses-build"
   # non-widec build
   ../configure \
-    "$configure_args" \
+    $configure_args \
     --enable-pc-files \
     --with-pkg-config-libdir="/usr/lib/pkgconfig" \
     --with-shared \

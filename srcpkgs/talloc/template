@@ -21,7 +21,7 @@ do_configure() {
     _args+=" --hostcc=cc"
   fi
   ./configure \
-    "$_args" \
+    $_args \
     --disable-python \
     --prefix="/usr"
 }

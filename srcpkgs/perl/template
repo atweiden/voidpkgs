@@ -197,7 +197,7 @@ do_configure() {
   export LD="$CC"
 
   ./configure \
-    "$_args" \
+    $_args \
     --prefix=/usr \
     -Dcccdlflags="-fPIC" \
     -Dccflags=" $CFLAGS " \

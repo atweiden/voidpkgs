@@ -30,7 +30,7 @@ do_configure() {
   esac
 
   ./configure \
-    "$_args" \
+    $_args \
     --build="$XBPS_TRIPLET" \
     --enable-debug \
     --enable-ipv6 \

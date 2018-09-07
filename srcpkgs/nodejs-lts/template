@@ -50,7 +50,7 @@ do_configure() {
     esac
   fi
   ./configure \
-    "$_args" \
+    $_args \
     --prefix="/usr" \
     --shared-zlib \
     "$(vopt_if http_parser --shared-http-parser)" \

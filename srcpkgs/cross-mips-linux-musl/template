@@ -72,7 +72,7 @@ _binutils_build() {
   _args+=" --with-sysroot=$_sysroot"
   _args+=" --with-system-zlib"
 
-  "../binutils-$_binutils_version/configure" "$_args"
+  "../binutils-$_binutils_version/configure" $_args
   make configure-host && make "$makejobs"
   make install
   touch "$wrksrc/.binutils_build_done"
@@ -112,7 +112,7 @@ _gcc_bootstrap() {
 
   CFLAGS="-O0 -g0" \
   CXXFLAGS="-O0 -g0" \
-    "../gcc-$_gcc_version/configure" "$_args"
+    "../gcc-$_gcc_version/configure" $_args
 
   make "$makejobs"
   make install
@@ -182,7 +182,7 @@ _gcc_build() {
   _args+=" --target=$_triplet"
   _args+=" --with-sysroot=$_sysroot"
 
-  "../gcc-$_gcc_version/configure" "$_args"
+  "../gcc-$_gcc_version/configure" $_args
   make "$makejobs"
   touch "$wrksrc/.gcc_build_done"
 }

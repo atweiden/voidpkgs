@@ -56,8 +56,8 @@ do_configure() {
     _args="--build=${XBPS_MACHINE%%-musl}"
   fi
   ./configure \
-    "$_args" \
-    "$configure_args" \
+    $_args \
+    $configure_args \
     --enable-ipv6 \
     --enable-loadable-sqlite-extensions \
     --enable-shared \

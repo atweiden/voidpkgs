@@ -298,7 +298,7 @@ do_configure() {
 
   mkdir -p build
   cd build
-  CONFIG_SHELL="/bin/bash" "$wrksrc/configure" "$_args"
+  CONFIG_SHELL="/bin/bash" "$wrksrc/configure" $_args
 }
 
 do_build() {
@@ -683,3 +683,5 @@ libstdc++_package() {
     vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
   }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
