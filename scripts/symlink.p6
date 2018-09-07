@@ -12,6 +12,12 @@ my List:D %pkg{Str:D} =
                   libaria2-devel>,
     'attr' => qw<attr-devel
                  attr-progs>,
+    'avahi' => qw<avahi-autoipd
+                  avahi-compat-libs
+                  avahi-compat-libs-devel
+                  avahi-libs
+                  avahi-libs-devel
+                  avahi-utils>,
     'bcc' => qw<bcc-devel
                 bcc-tools
                 python-bcc>,
@@ -59,6 +65,7 @@ my List:D %pkg{Str:D} =
                  dbus-libs
                  dbus-x11>,
     'dhcp' => ['dhclient'],
+    'distcc' => ['distcc-pump'],
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel

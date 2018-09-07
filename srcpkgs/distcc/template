@@ -1,0 +1,66 @@
+# Template file for 'distcc'
+pkgname=distcc
+version=3.2rc1
+revision=15
+build_style=gnu-configure
+configure_args="--disable-Werror --with-gtk"
+hostmakedepends="pkg-config"
+makedepends="python-devel popt-devel avahi-libs-devel gtk+-devel"
+conflicts="chroot-distcc>=0"
+conf_files="
+	/etc/distcc/hosts
+	/etc/distcc/clients.allow"
+short_desc="Distributed compilation for faster C/C++ builds"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+homepage="https://distcc.github.io"
+license="GPL-2"
+distfiles="https://github.com/distcc/${pkgname}/releases/download/v${version}/${pkgname}-${version}.tar.bz2"
+checksum=311671e844625d7fdb18dd3d096cd855751cfe8de13827682bcb7beff9133b30
+
+post_install() {
+	local f x
+	# Remove useless files.
+	rm -f ${DESTDIR}/etc/default/distcc
+	rm -f ${DESTDIR}/etc/distcc/commands.allow.sh
+	rm -rf ${DESTDIR}/usr/share/doc/distcc/example
+
+	vsv distccd
+
+	# gcc wrappers
+	vmkdir usr/lib/distcc/bin
+	for f in gcc cc c++ g++; do
+		ln -sfr ${DESTDIR}/usr/bin/distcc ${DESTDIR}/usr/lib/distcc/bin/${f}
+	done
+	# cross-gcc wrappers
+	for x in arm-linux-gnueabi arm-linux-gnueabihf armv7l-linux-gnueabihf \
+		arm-linux-musleabihf armv7l-linux-musleabihf; do
+		for f in gcc cc c++ g++; do
+			ln -sfr ${DESTDIR}/usr/bin/distcc ${DESTDIR}/usr/lib/distcc/bin/${x}-${f}
+		done
+	done
+}
+
+distcc-gtk_package() {
+	depends="distcc-${version}_${revision}"
+	short_desc+=" - GTK+ monitor"
+	pkg_install() {
+		vmove usr/bin/distccmon-gnome
+	}
+}
+
+if [ -z "$CROSS_BUILD" ]; then
+
+distcc-pump_package() {
+	depends="distcc-${version}_${revision}"
+	short_desc+=" - Pump mode support files"
+	pycompile_module="include_server"
+	pkg_install() {
+		vmove usr/bin/pump
+		vmove usr/share/man/man1/pump.1.gz
+		vmove usr/share/man/man1/include_server.1.gz
+		vmove usr/lib/python2.7
+		vmove usr/share/doc/distcc/README.pump
+	}
+}
+
+fi # !CROSS_BUILD
