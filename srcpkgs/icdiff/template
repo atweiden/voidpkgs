@@ -23,6 +23,7 @@ post_install() {
 }
 
 python3-icdiff_package() {
+  unset alternatives
   noarch="yes"
   depends="python3"
   pycompile_module="icdiff.py"
