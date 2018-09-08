@@ -1,15 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-XML-Parser"
 version=2.44
-revision=10
+revision=11
 short_desc="Perl extension interface to James Clark's XML parser, expat"
 depends="perl>=5.20"
 makedepends+=" expat-devel"
 makedepends+=" perl"
-hostmakedepends+=" expat-devel"
-hostmakedepends+=" perl"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/XML-Parser"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname/perl-/}-$version.tar.gz"
 checksum="1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216"
 wrksrc="${pkgname/perl-/}-$version"
