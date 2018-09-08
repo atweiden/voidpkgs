@@ -10,6 +10,7 @@ From top to bottom:
 1. Package Name
 1. Package Version
 1. Package Release
+1. Auxiliary Version Metadata (e.g. `_gitrev`)
 1. Package Description
 1. Architecture
 1. Dependencies (`depends`, `makedepends`, `checkdepends`, `hostmakedepends`)
@@ -18,10 +19,13 @@ From top to bottom:
 1. Changelog
 1. Source
 1. Source Checksums
+1. Config Files
 1. Build Style
 1. Build Style Options
+1. Other Options
 1. Provides
 1. Conflicts
+1. Replaces
 1. Actions (in order of execution)
 1. Subpackages
 
