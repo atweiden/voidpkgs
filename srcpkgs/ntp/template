@@ -25,11 +25,11 @@ configure_args+=" --with-crypto"
 configure_args+=" ol_cv_pthread_select_yields=yes"
 make_dirs="/var/db/ntpd 0755 ntpd ntpd"
 system_accounts="ntpd"
+ntpd_homedir="/var/db/ntpd"
 provides="ntp-daemon-0_1"
 alternatives+=" ntpd:ntpd.8:/usr/share/man/man8/isc-ntpd.8"
 alternatives+=" ntpd:ntpd:/etc/sv/isc-ntpd"
 alternatives+=" ntpd:ntpd:/usr/bin/isc-ntpd"
-ntpd_homedir="/var/db/ntpd"
 
 post_extract() {
   sed -i 's/linux/GLIBC/g' ntpd/ntpd.c
