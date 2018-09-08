@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-IO-Tty"
 version=1.12
-revision=6
+revision=7
 short_desc="IO::Tty - Perl interface to Low-level allocate a pseudo-Tty"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Tty"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/IO-Tty-$version.tar.gz"
 checksum="a2ef8770d3309178203f8c8ac25e623e63cf76e97830fd3be280ade1a555290d"
 wrksrc="IO-Tty-$version"
