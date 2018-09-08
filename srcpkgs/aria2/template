@@ -18,12 +18,12 @@ changelog="https://raw.githubusercontent.com/aria2/aria2/master/NEWS"
 distfiles="https://github.com/aria2/aria2/releases/download/release-$version/aria2-$version.tar.xz"
 checksum="3a44a802631606e138a9e172a3e9f5bcbaac43ce2895c1d8e2b46f30487e77a3"
 build_style="gnu-configure"
-configure_args+=" --with-openssl"
-configure_args+=" --with-libexpat"
-configure_args+=" --without-gnutls"
-configure_args+=" --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
-configure_args+=" --with-bashcompletiondir=/usr/share/bash-completion/completions"
 configure_args+=" --enable-libaria2"
+configure_args+=" --with-bashcompletiondir=/usr/share/bash-completion/completions"
+configure_args+=" --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --with-libexpat"
+configure_args+=" --with-openssl"
+configure_args+=" --without-gnutls"
 
 libaria2_package() {
   short_desc="Multi-Protocol/multi-source download library"
@@ -33,8 +33,10 @@ libaria2_package() {
 }
 
 libaria2-devel_package() {
+  unset depends
   short_desc="Multi-Protocol/multi-source download library - development files"
-  depends="libaria2>=${version}_$revision $makedepends"
+  depends+=" $makedepends"
+  depends+=" libaria2>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.la"
