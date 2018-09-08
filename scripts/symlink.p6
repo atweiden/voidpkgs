@@ -197,6 +197,7 @@ my List:D %pkg{Str:D} =
                       libcap-ng-python3>,
     'libcppunit' => qw<libcppunit-devel
                        libcppunit-examples>,
+    'libdaemon' => ['libdaemon-devel'],
     'libedit' => ['libedit-devel'],
     'libevent' => ['libevent-devel'],
     'libffi' => ['libffi-devel'],
