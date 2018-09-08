@@ -1,18 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glib"
-version=2.56.2
-revision=1
+version=2.58.0
+revision=3
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libmount-devel"
 makedepends+=" pcre-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
+checkdepends+=" desktop-file-utils"
+checkdepends+=" shared-mime-info"
+checkdepends+=" tzdata"
 hostmakedepends+=" docbook-xsl"
-hostmakedepends+=" libtool"
 hostmakedepends+=" libxslt"
-hostmakedepends+=" perl"
+hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 short_desc="The GNU library of C routines"
@@ -20,28 +21,16 @@ homepage="https://wiki.gnome.org/Projects/GLib"
 license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/glib-$version.tar.xz"
-checksum="d64abd16813501c956c4e123ae79f47f1b58de573df9fdd3b0795f1e2c1aa789"
-build_style="gnu-configure"
-configure_args+=" --disable-fam"
-configure_args+=" --enable-libelf"
-configure_args+=" --enable-static"
-configure_args+=" --with-pcre=system"
+checksum="c0f4ce0730b4f95c47b711613b5406a887c2ee13ea6d25930d72a4fa7fdb77f6"
+build_style="meson"
+configure_args+=" -Dfam=false"
+configure_args+=" -Dgtk_doc=false"
+configure_args+=" -Dman=true"
+configure_args+=" -Dselinux=false"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" glib-devel"
-  case "$XBPS_TARGET_MACHINE" in
-    mips*)
-      # it seems common/environment/configure/autoconf_cache/mips-linux is not read?
-      configure_args+=" glib_cv_stack_grows=no"
-      configure_args+=" glib_cv_rtldglobal_broken=no"
-      configure_args+=" glib_cv_uscore=no"
-      ;;
-  esac
 fi
-
-pre_configure() {
-  autoreconf -fi
-}
 
 libglib-devel_package() {
   depends+=" $makedepends"
@@ -51,12 +40,14 @@ libglib-devel_package() {
     vmove usr/include
     vmove usr/lib/glib-2.0
     vmove usr/lib/pkgconfig
-    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
 }
+
 glib-devel_package() {
-  depends="python3 perl libglib-devel>=${version}_$revision"
+  depends+=" libglib-devel>=${version}_$revision"
+  depends+=" perl"
+  depends+=" python3"
   short_desc+=" - development files"
   pycompile_dirs="/usr/share/glib-2.0"
   python_version=3
@@ -77,8 +68,7 @@ glib-devel_package() {
     vmove usr/share/man/man1/gtester.1
     for f in aclocal \
              gdb \
-             glib-2.0 \
-             gtk-doc; do
+             glib-2.0; do
       vmove "usr/share/$f"
     done
   }

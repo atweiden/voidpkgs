@@ -1,0 +1,16 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="shared-mime-info"
+version=1.10
+revision=1
+short_desc="Core database of common types"
+makedepends+=" libglib-devel"
+makedepends+=" libxml2-devel"
+hostmakedepends+=" intltool"
+hostmakedepends+=" pkg-config"
+license="GPL-2.0-or-later"
+homepage="http://freedesktop.org/Software/shared-mime-info"
+distfiles="http://freedesktop.org/~hadess/$pkgname-$version.tar.xz"
+checksum="c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf"
+build_style="gnu-configure"
+configure_args="--disable-update-mimedb"
+disable_parallel_build="yes"
