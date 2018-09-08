@@ -231,34 +231,48 @@ my grammar Shlibs::Parser::Grammar
 
 # end grammar Shlibs::Parser::Grammar }}}
 
-# list pkgs in https://github.com/void-linux/void-packages/common/shlibs
-my Str:D $path-void-packages =
-    sprintf(Q{%s/Sandbox/void-linux/void-packages}, $*HOME);
-my Str:D $path-void-packages-common-shlibs =
-    sprintf(Q{%s/common/shlibs}, $path-void-packages);
-my Shlibs::Parser::Actions $actions .= new;
-my Shlibs:D $shlibs =
-    Shlibs::Parser::Grammar.parsefile(
-        $path-void-packages-common-shlibs,
-        :$actions
-    ).made;
-my Str:D @pkg-void-linux =
-    $shlibs.mapping.map(-> Mapping:D $m { $m.pkg.pkgname }).unique.sort;
-
 # list pkgs in https://github.com/atweiden/voidpkgs/srcpkgs
-my Str:D @pkg-atweiden =
+my Str:D @pkg-atw =
     dir('srcpkgs').map(-> IO::Path:D $p { $p.basename }).sort;
 
-# take intersection of atweiden and void-linux pkgs
-# TODO: keep pkgs that appear in atweiden and not void-linux
-my Set:D $pkg-intersection = @pkg-atweiden (&) @pkg-void-linux;
-my Str:D @pkg-intersection = Array[Str:D].new($pkg-intersection.keys.sort);
+# parse shlibs from https://github.com/void-linux/void-packages/common/shlibs
+my Str:D $path-void = sprintf(Q{%s/Sandbox/void-linux/void-packages}, $*HOME);
+my Str:D $path-void-common-shlibs = sprintf(Q{%s/common/shlibs}, $path-void);
+my Shlibs::Parser::Actions $actions .= new;
+my Shlibs:D $shlibs-void =
+    Shlibs::Parser::Grammar.parsefile($path-void-common-shlibs, :$actions).made;
 
-# write intersection to stdout
-my Mapping:D @mapping-intersection =
-    @pkg-intersection.map(-> Str:D $pkgname {
-        $shlibs.mapping.grep({ .pkg.pkgname eqv $pkgname })
+# list pkgs in https://github.com/void-linux/void-packages/common/shlibs
+my Str:D @pkg-void =
+    $shlibs-void.mapping.map(-> Mapping:D $m { $m.pkg.pkgname }).unique.sort;
+
+# take intersection of atw and void pkgs
+my Set:D $pkg-atw-void = @pkg-atw (&) @pkg-void;
+my Str:D @pkg-atw-void = Array[Str:D].new($pkg-atw-void.keys.sort);
+
+# parse shlibs from https://github.com/atweiden/voidpkgs/common/shlibs
+my Str:D $path-atw = sprintf(Q{%s/Projects/voidpkgs}, $*HOME);
+my Str:D $path-atw-common-shlibs = sprintf(Q{%s/common/shlibs}, $path-atw);
+$actions .= new;
+my Shlibs:D $shlibs-atw =
+    Shlibs::Parser::Grammar.parsefile($path-atw-common-shlibs, :$actions).made;
+
+# take union of atw shlibs and intersection of atw and void
+my Mapping:D @mapping-atw = $shlibs-atw.mapping;
+my Mapping:D @mapping-void =
+    @pkg-atw-void.map(-> Str:D $pkgname {
+        $shlibs-void.mapping.grep({ .pkg.pkgname eqv $pkgname })
     }).flat;
-@mapping-intersection.map({ .source }).join("\n").say;
+my Set:D $mapping-atw-void = @mapping-atw (|) @mapping-void;
+my Mapping:D @mapping-atw-void = Array[Mapping:D].new($mapping-atw-void.keys);
+
+# write sorted shlibs to stdout
+@mapping-atw-void
+    .unique(:as(-> Mapping:D $mapping { $mapping.soname }))
+    .sort({ $^a.soname cmp $^b.soname })
+    .sort({ $^a.pkg.pkgname cmp $^b.pkg.pkgname })
+    .map({ .source })
+    .join("\n")
+    .say;
 
 # vim: set filetype=perl6 foldmethod=marker foldlevel=0:
