@@ -4,7 +4,8 @@ version=1.9.3
 revision=1
 short_desc="Improved colored diff (Python2)"
 noarch="yes"
-depends="python"
+depends+=" python"
+depends+=" python-setuptools"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 license="Python-2.0"
@@ -24,8 +25,10 @@ post_install() {
 
 python3-icdiff_package() {
   unset alternatives
+  unset depends
   noarch="yes"
-  depends="python3"
+  depends+=" python3"
+  depends+=" python3-setuptools"
   pycompile_module="icdiff.py"
   alternatives+=" icdiff:icdiff:/usr/bin/icdiff3"
   alternatives+=" icdiff:git-icdiff:/usr/bin/git-icdiff3"
