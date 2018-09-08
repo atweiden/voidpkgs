@@ -80,8 +80,8 @@ configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completio
 
 ### `post_install()`
 
-Install license, man page, documentation in that order. Then clean up
-any unwanted files.
+Install license, man page, documentation in that order. Clean up any
+unwanted files in `do_clean()`.
 
 ### Variables
 
