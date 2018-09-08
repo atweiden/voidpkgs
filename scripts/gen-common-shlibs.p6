@@ -250,6 +250,7 @@ my Str:D @pkg-atweiden =
     dir('srcpkgs').map(-> IO::Path:D $p { $p.basename }).sort;
 
 # take intersection of atweiden and void-linux pkgs
+# TODO: keep pkgs that appear in atweiden and not void-linux
 my Set:D $pkg-intersection = @pkg-atweiden (&) @pkg-void-linux;
 my Str:D @pkg-intersection = Array[Str:D].new($pkg-intersection.keys.sort);
 
