@@ -1,0 +1,23 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="binfmt-support"
+version=2.1.8
+revision=1
+short_desc="Register interpreters for various binary formats"
+makedepends="libpipeline-devel"
+hostmakedepends="pkg-config"
+homepage="http://packages.debian.org/en/sid/binfmt-support"
+license="GPL-3"
+distfiles="$DEBIAN_SITE/main/b/binfmt-support/binfmt-support_$version.orig.tar.gz"
+checksum="ebad04db8444d2275d042b5074fa3e160bcf3e2c23ee9b660e75f5acd73618a2"
+build_style="gnu-configure"
+make_dirs="/var/lib/binfmts 0755 root root"
+
+post_install() {
+  vsv binfmt-support
+}
+
+do_clean() {
+  rm -r "$DESTDIR/etc/init"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
