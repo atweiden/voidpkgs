@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
 version=2.32.1
-revision=1
+revision=2
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
@@ -20,13 +20,13 @@ distfiles="$KERNEL_SITE/utils/$pkgname/v${version%.1}/$pkgname-$version.tar.xz"
 checksum="86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
-system_accounts="uuidd"
+system_accounts="_uuidd"
+_uuidd_homedir="/run/uuidd"
 provides+=" eject-${version}_1"
 provides+=" rfkill-${version}_1"
 replaces="rfkill>=0"
 alternatives+=" logger:logger:/usr/bin/$pkgname-logger"
 alternatives+=" logger:logger.1:/usr/share/man/man1/$pkgname-logger.1"
-uuidd_homedir="/run/uuidd"
 
 # XXX musl needs this for switch_root(8)
 CFLAGS="-D_DIRENT_HAVE_D_TYPE"
