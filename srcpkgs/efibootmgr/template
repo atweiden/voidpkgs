@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="efibootmgr"
-version=16
+version=17
 revision=1
 short_desc="Tool to modify UEFI Firmware Boot Manager Variables"
 only_for_archs+=" i686"
@@ -8,25 +8,29 @@ only_for_archs+=" i686-musl"
 only_for_archs+=" x86_64"
 only_for_archs+=" x86_64-musl"
 makedepends+=" libefivar-devel"
-makedepends+=" pciutils-devel"
 makedepends+=" popt-devel"
-makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/rhinstaller/efibootmgr"
 license="GPL-2.0-or-later"
-distfiles="https://github.com/rhinstaller/efibootmgr/releases/download/$version/$pkgname-$version.tar.bz2"
-checksum="950795fb4b58a09fb69e93c120d624000253f1241134469495c7a9def731f65f"
+distfiles="https://github.com/rhboot/efibootmgr/archive/$version.tar.gz"
+checksum="22a95ebe0d5c9fb2915b3a100450f8f37484d1dbb8b296f55b343cc84f10397d"
 conf_files="/etc/default/efibootmgr-kernel-hook"
 
-CPPFLAGS="-I$XBPS_CROSS_BASE/usr/include/efivar"
-
 case "$XBPS_TARGET_MACHINE" in
-  x86_64*) EFI_LOADER="grubx64.efi" ;;
-  i686*) EFI_LOADER="grub.efi" ;;
+  x86_64*)
+    EFI_LOADER="grubx64.efi"
+    ;;
+  i686*)
+    EFI_LOADER="grub.efi"
+    ;;
 esac
 
 do_build() {
-  make EXTRA_CFLAGS="$CFLAGS" $makejobs EFIDIR="void" EFI_LOADER="$EFI_LOADER"
+  make \
+    "$makejobs" \
+    EFIDIR="void" \
+    EFI_LOADER="$EFI_LOADER" \
+    EXTRA_CFLAGS="$CFLAGS"
 }
 
 do_install() {
