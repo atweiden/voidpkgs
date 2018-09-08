@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ripgrep"
-version=0.9.0
+version=0.10.0
 revision=1
 short_desc="Fast search tool inspired by ag and grep"
 hostmakedepends+=" asciidoc"
@@ -8,8 +8,8 @@ hostmakedepends+=" cargo"
 hostmakedepends+=" rust"
 homepage="https://github.com/BurntSushi/ripgrep/"
 license="Public Domain, MIT"
-distfiles="https://github.com/BurntSushi/${pkgname}/archive/${version}.tar.gz"
-checksum="871a24ad29a4c5b6d82f6049156db2662e6a9820cca6f361547b8ab8bc1be7ae"
+distfiles="https://github.com/BurntSushi/$pkgname/archive/$version.tar.gz"
+checksum="a2a6eb7d33d75e64613c158e1ae450899b437e37f1bfbd54f713b011cd8cc31e"
 nocross="yes"
 
 do_build() {
