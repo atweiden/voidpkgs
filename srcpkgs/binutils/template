@@ -51,7 +51,7 @@ do_configure() {
   fi
 
   ./configure \
-    "$CONFIGFLAG" \
+    $CONFIGFLAG \
     --build="$XBPS_TRIPLET" \
     --disable-nls \
     --disable-shared \
