@@ -9,7 +9,9 @@ depends+=" cpio"
 depends+=" psmisc"
 makedepends="libkmod-devel"
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) makedepends+=" musl-fts-devel" ;;
+  *-musl)
+    makedepends+=" musl-fts-devel"
+    ;;
 esac
 hostmakedepends="asciidoc pkg-config"
 homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
@@ -25,7 +27,9 @@ make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
 
 do_build() {
   case "$XBPS_TARGET_MACHINE" in
-    *-musl) make "$makejobs" LDLIBS="$XBPS_CROSS_BASE/usr/lib/libfts.a" ;;
+    *-musl)
+      make "$makejobs" LDLIBS="$XBPS_CROSS_BASE/usr/lib/libfts.a"
+      ;;
   esac
 }
 
@@ -48,7 +52,9 @@ do_clean() {
 }
 
 dracut-network_package() {
-  depends="dhclient dracut-${version}_$revision"
+  unset depends
+  depends+=" dhclient"
+  depends+=" dracut-${version}_$revision"
   short_desc+=" - network modules"
   noarch="yes"
   pkg_install() {

@@ -289,6 +289,7 @@ my List:D %pkg{Str:D} =
     'mpfr' => ['mpfr-devel'],
     'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],
+    'musl-fts' => ['musl-fts-devel'],
     'ncurses' => qw<ncurses-base
                     ncurses-devel
                     ncurses-libs
