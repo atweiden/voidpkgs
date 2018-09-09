@@ -7,13 +7,12 @@ _isl_version=0.19
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gcc"
 version=$_majorver.0
-revision=2
+revision=3
 short_desc="The GNU C Compiler"
-depends+=" binutils libgcc-devel-${version}_$revision"
+depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
 depends+=" libssp-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
-makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
@@ -34,7 +33,8 @@ checksum+=" d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8"
 nopie="yes"
 lib32disabled="yes"
 bootstrap="yes"
-replaces="gcc-gcj<7.2.0 gcc-gcj-jdk-compat<7.2.0"
+replaces+=" gcc-gcj-jdk-compat<7.2.0"
+replaces+=" gcc-gcj<7.2.0"
 alternatives="cc:cc:/usr/bin/gcc"
 subpackages+=" libgcc"
 subpackages+=" libgomp"
@@ -294,7 +294,6 @@ do_configure() {
   _args+=" --prefix=/usr"
   _args+=" --with-isl"
   _args+=" --with-linker-hash-style=$_hash"
-  _args+=" --with-system-zlib"
 
   mkdir -p build
   cd build
@@ -313,7 +312,10 @@ pre_install() {
   if [[ "$CROSS_BUILD" ]]; then
     # XXX otherwise links to host libpthread
     for f in $(find "$wrksrc/build/$XBPS_CROSS_TRIPLET" -type f -name libtool); do
-      sed -e "s,add_dir=\"-L\$libdir\",add_dir=\"-L$XBPS_CROSS_BASE\$libdir\",g" -i "$f"
+      sed \
+        -i \
+        -e "s,add_dir=\"-L\$libdir\",add_dir=\"-L$XBPS_CROSS_BASE\$libdir\",g" \
+        "$f"
     done
   fi
 }
@@ -361,7 +363,8 @@ do_install() {
   fi
 
   # install c89 and c99 wrappers and its manpages, from NetBSD
-  for f in c89 c99; do
+  for f in c89 \
+           c99; do
     vbin "$FILESDIR/$f.sh" "$f"
     vman "$FILESDIR/$f.1"
   done
@@ -376,14 +379,18 @@ do_install() {
 }
 
 gcc-go_package() {
+  unset depends
   lib32disabled="yes"
-  depends="gcc>=$_majorver libgo-devel>=$_majorver"
+  depends+=" gcc>=$_majorver"
+  depends+=" libgo-devel>=$_majorver"
   short_desc+=" - Go compiler frontend"
   pkg_install() {
-    for f in gccgo "$_triplet-gccgo"; do
+    for f in "$_triplet-gccgo" \
+             gccgo; do
       vmove "usr/bin/$f"
     done
-    for f in go1 cgo; do
+    for f in cgo \
+             go1; do
       vmove "usr/lib/gcc/$_triplet/$_majorver/$f"
     done
     vmove usr/share/info/gccgo.info
@@ -407,11 +414,14 @@ gcc-go-tools_package() {
 }
 
 gcc-fortran_package() {
+  unset depends
   lib32disabled="yes"
-  depends="gcc>=$_majorver libgfortran-devel>=$_majorver"
+  depends+=" gcc>=$_majorver"
+  depends+=" libgfortran-devel>=$_majorver"
   short_desc+=" - Fortran compiler frontend"
   pkg_install() {
-    for f in gfortran "$_triplet-gfortran"; do
+    for f in "$_triplet-gfortran" \
+             gfortran; do
       vmove "usr/bin/$f"
     done
     vmove "usr/lib/gcc/$_triplet/$_majorver/f951"
@@ -433,8 +443,10 @@ gcc-objc++_package() {
 }
 
 gcc-objc_package() {
+  unset depends
   lib32disabled="yes"
-  depends="gcc>=$_majorver libobjc>=$_majorver"
+  depends+=" gcc>=$_majorver"
+  depends+=" libobjc>=$_majorver"
   short_desc+=" - Objective-C support"
   pkg_install() {
     vmove "usr/lib/gcc/$_triplet/$_majorver/include/objc"
@@ -545,7 +557,7 @@ libatomic-devel_package() {
 libatomic_package() {
   short_desc+=" - Atomics library"
   pkg_install() {
-    vmove usr/lib/libatomic.so.*
+    vmove "usr/lib/libatomic.so.*"
   }
 }
 
