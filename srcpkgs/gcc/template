@@ -214,7 +214,7 @@ do_configure() {
       ;;
   esac
 
-  if [[ -z "$CHROOT_READY" -o -n "$CROSS_BUILD" ]]; then
+  if [[ -z "$CHROOT_READY" ]] || [[ -n "$CROSS_BUILD" ]]; then
     _langs="c,c++,lto"
   fi
 
