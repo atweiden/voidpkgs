@@ -27,9 +27,9 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
   configure_args+=" --sysroot=$XBPS_CROSS_BASE"
 fi
+make_check_target="test"
 make_install_args+=" RAKUDO_LOG_PRECOMP=1"
 make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
-make_check_target="test"
 nocross="yes"
 make_dirs+=" /usr/share/perl6/bin 0755 root root"
 make_dirs+=" /usr/share/perl6/lib 0755 root root"

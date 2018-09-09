@@ -20,7 +20,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
   configure_args+=" --sysroot=$XBPS_CROSS_BASE"
 fi
-nocross="yes"
 make_check_target="test"
+nocross="yes"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
