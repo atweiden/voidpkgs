@@ -57,8 +57,8 @@ do_install() {
   done
   vmkdir etc/colors
   vmkdir etc/profile.d
-  install -m 644 "$FILESDIR/*.sh" "$DESTDIR/etc/profile.d"
-  install -m 644 "$FILESDIR/DIR_COLORS*" "$DESTDIR/etc/colors"
+  install -m 644 "$FILESDIR"/*.sh "$DESTDIR/etc/profile.d"
+  install -m 644 "$FILESDIR"/DIR_COLORS* "$DESTDIR/etc/colors"
 
   # modprobe(8) files
   vinstall "$FILESDIR/usb-load-ehci-first" 644 usr/lib/modprobe.d usb-load-ehci-first.conf
