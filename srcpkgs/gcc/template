@@ -13,8 +13,6 @@ depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
 depends+=" libssp-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
-makedepends="zlib-devel"
-hostmakedepends+=" zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
@@ -296,7 +294,6 @@ do_configure() {
   _args+=" --prefix=/usr"
   _args+=" --with-isl"
   _args+=" --with-linker-hash-style=$_hash"
-  _args+=" --with-system-zlib"
 
   mkdir -p build
   cd build
