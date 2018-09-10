@@ -16,7 +16,7 @@ wrksrc="$pkgname"
 bootstrap="yes"
 
 post_extract() {
-  "$BUILD_CC" "$BUILD_CFLAGS" "$FILESDIR/certdata2pem.c" -o "$wrksrc/mozilla/certdata2pem"
+  $BUILD_CC $BUILD_CFLAGS "$FILESDIR/certdata2pem.c" -o "$wrksrc/mozilla/certdata2pem"
   cp "$FILESDIR/remove-expired-certs.sh" "$wrksrc/mozilla"
   sed -i "$wrksrc/mozilla/Makefile" \
     -e 's,python certdata2pem.py,./certdata2pem,g'
