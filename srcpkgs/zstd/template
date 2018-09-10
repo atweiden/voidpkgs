@@ -10,6 +10,7 @@ homepage="http://www.zstd.net"
 license="BSD-3-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/facebook/zstd/archive/v$version.tar.gz"
 checksum="d6e1559e4cdb7c4226767d4ddc990bff5f9aab77085ff0d0490c828b025e2eea"
+bootstrap="yes"
 
 do_build() {
   make
