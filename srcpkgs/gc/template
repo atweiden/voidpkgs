@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gc"
-version=7.6.8
+version=8.0.0
 revision=1
 short_desc="A garbage collector for C and C++"
 makedepends="libatomic_ops-devel"
@@ -8,8 +8,10 @@ hostmakedepends="pkg-config"
 homepage="http://www.hboehm.info/gc/"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/ivmai/bdwgc/releases/download/v$version/gc-$version.tar.gz"
-checksum="040ac5cdbf1bebc7c8cd4928996bbae0c54497c151ea5639838fa0128102e258"
+checksum="8f23f9a20883d00af2bff122249807e645bdf386de0de8cbd6cce3e0c6968f04"
 build_style="gnu-configure"
+configure_args+=" --enable-mmap"
+configure_args+=" --enable-static"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
