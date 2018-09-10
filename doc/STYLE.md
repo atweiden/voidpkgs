@@ -82,10 +82,12 @@ configure_args+=" --with-gnu-ld"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
 ```
 
+It is not always appropriate to sort items in alphabetical order,
+e.g. for dependencies listed in `build_style="meta"` templates.
+
 ### `post_install()`
 
-Install license, man page, documentation in that order. Clean up any
-unwanted files in `do_clean()`.
+Install license, man page, documentation in that order.
 
 ### Variables
 
