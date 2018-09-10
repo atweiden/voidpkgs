@@ -20,8 +20,9 @@ Usage
 ```sh
 git clone https://github.com/atweiden/voidpkgs
 cd voidpkgs
-./xbps-src <binary-bootstrap|bootstrap>
-./xbps-src pkg quixand
+./xbps-src -N bootstrap
+./xbps-src -N pkg base-system
+./xbps-src -N pkg quixand
 xbps-install xtools
 xi quixand
 ```
