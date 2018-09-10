@@ -22,12 +22,8 @@ depends+=" texinfo"
 depends+=" unzip"
 depends+=" xz"
 case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    depends+=" musl"
-    ;;
-  *)
-    depends+=" glibc-devel"
-    ;;
+  *-musl) depends+=" musl"        ;;
+  *)      depends+=" glibc-devel" ;;
 esac
 homepage="http://www.voidlinux.eu/"
 license="Public Domain"
