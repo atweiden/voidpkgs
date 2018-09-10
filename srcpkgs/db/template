@@ -20,12 +20,13 @@ make_build_args="LIBSO_LIBS='-lpthread'"
 post_install() {
   chmod 755 "$DESTDIR/usr/bin"/*
   vmkdir "usr/share/doc/$pkgname-$version"
-  mv $"DESTDIR/usr/docs"/* "$DESTDIR/usr/share/doc/$pkgname-$version"
+  mv "$DESTDIR/usr/docs"/* "$DESTDIR/usr/share/doc/$pkgname-$version"
   rmdir "$DESTDIR/usr/docs"
 }
 
 db-devel_package() {
-  depends="libdb>=${version}_$revision libdb-cxx>=${version}_$revision"
+  depends+=" libdb-cxx>=${version}_$revision"
+  depends+=" libdb>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
