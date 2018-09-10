@@ -73,9 +73,9 @@ do_install() {
              ncurses \
              panel; do
     rm -f "$DESTDIR/usr/lib/lib$lib.so"
-    echo "INPUT(-l$libw)" >"$DESTDIR/usr/lib/lib$lib.so"
+    echo "INPUT(-l${lib}w)" >"$DESTDIR/usr/lib/lib$lib.so"
     chmod 755 "$DESTDIR/usr/lib/lib$lib.so"
-    ln -sf "lib$libw.a" "$DESTDIR/usr/lib/lib$lib.a"
+    ln -sf "lib${lib}w.a" "$DESTDIR/usr/lib/lib$lib.a"
   done
   ln -sf libncurses++w.a "$DESTDIR/usr/lib/libncurses++.a"
 
