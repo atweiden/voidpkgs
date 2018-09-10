@@ -46,11 +46,11 @@ do_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
       arm*)
-        _args+=" --dest-cpu='arm'"
+        _args+=" --dest-cpu=arm"
         _args+=" --without-snapshot"
         ;;
       aarch64*)
-        _args+=" --dest-cpu='arm64'"
+        _args+=" --dest-cpu=arm64"
         _args+=" --without-snapshot"
         ;;
       *)
@@ -64,7 +64,7 @@ do_configure() {
     --shared-zlib \
     "$(vopt_if cares --shared-cares)" \
     "$(vopt_if http_parser --shared-http-parser)" \
-    "$(vopt_if icu --with-intl='system-icu')" \
+    "$(vopt_if icu --with-intl=system-icu)" \
     "$(vopt_if libuv --shared-libuv)" \
     "$(vopt_if nghttp2 --shared-nghttp2)" \
     "$(vopt_if ssl --shared-openssl)"

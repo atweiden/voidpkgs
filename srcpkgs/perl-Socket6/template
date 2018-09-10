@@ -20,7 +20,7 @@ post_extract() {
 pre_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     export ipv6_cv_can_inet_ntop="yes"
-    sed -i 's:\./configure:& --host='$XBPS_CROSS_TRIPLET':g' Makefile.PL
+    sed -i "s:\./configure:& --host='$XBPS_CROSS_TRIPLET':g" Makefile.PL
   fi
 }
 

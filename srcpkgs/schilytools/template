@@ -70,7 +70,7 @@ star_package() {
   alternatives+=" pax:pax:/usr/bin/spax"
   alternatives+=" pax:pax.1:/usr/share/man/man1/spax.1"
   pkg_install() {
-    make install -C star DESTDIR="$PKGDESTDIR" INS_BASE="/usr" SYMLINKS='suntar scpio spax'
+    make install -C star DESTDIR="$PKGDESTDIR" INS_BASE="/usr" SYMLINKS="suntar scpio spax"
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/ustar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"

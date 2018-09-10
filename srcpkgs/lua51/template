@@ -21,9 +21,9 @@ alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.1.1"
 alternatives+=" lua:lua.pc:/usr/lib/pkgconfig/lua5.1.pc"
 alternatives+=" lua:lua:/usr/bin/lua5.1"
 alternatives+=" lua:lua:/usr/include/lua5.1"
+alternatives+=" lua:lua:/usr/share/doc/lua5.1"
 alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.1.1"
 alternatives+=" lua:luac:/usr/bin/luac5.1"
-alternatives+=' lua:lua:/usr/share/doc/lua5.1'
 
 do_build() {
   export CFLAGS="$CFLAGS -fPIC"

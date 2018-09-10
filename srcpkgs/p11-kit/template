@@ -14,12 +14,12 @@ distfiles="$homepage/releases/download/$version/p11-kit-$version.tar.gz"
 checksum="1cb9fa6d237539f25f62f4c3d4ec71a1c8e0772957ec45ec5af92134129e0d70"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="gnu-configure"
-configure_args+=" --with-module-path='/usr/lib/pkcs11'"
+configure_args+=" --with-module-path=/usr/lib/pkcs11"
 configure_args+=" --without-trust-paths"
 
 case "$XBPS_TARGET_MACHIN" in
   *-musl)
-    configure_args+=" ac_cv_issetugid_openbsd='no'"
+    configure_args+=" ac_cv_issetugid_openbsd=no"
     ;;
 esac
 

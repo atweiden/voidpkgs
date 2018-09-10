@@ -2,7 +2,7 @@ maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Class-Data-Inheritable"
 version=0.08
 revision=1
-short_desc='Class::Data::Inheritable - Inheritable, overridable class data'
+short_desc="Class::Data::Inheritable - Inheritable, overridable class data"
 noarch="yes"
 depends="perl"
 makedepends="perl"
@@ -15,3 +15,5 @@ distfiles="$CPAN_SITE/Class/Class-Data-Inheritable-$version.tar.gz"
 checksum="9967feceea15227e442ec818723163eb6d73b8947e31f16ab806f6e2391af14a"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

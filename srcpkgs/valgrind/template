@@ -40,7 +40,7 @@ CFLAGS="-fno-stack-protector"
 CXXFLAGS="-fno-stack-protector"
 
 if [[ "$XBPS_TARGET_MACHINE" == "armv7l" ]]; then
-  configure_args+=" ac_cv_host='armv7l-unknown-linux-gnueabihf'"
+  configure_args+=" ac_cv_host=armv7l-unknown-linux-gnueabihf"
 fi
 
 pre_configure() {

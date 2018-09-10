@@ -15,7 +15,7 @@ configure_args+=" --enable-compat185"
 configure_args+=" --enable-cxx"
 configure_args+=" --enable-dbm"
 configure_args+=" --enable-static"
-make_build_args="LIBSO_LIBS='-lpthread'"
+make_build_args="LIBSO_LIBS=-lpthread"
 
 post_install() {
   chmod 755 "$DESTDIR/usr/bin"/*

@@ -17,7 +17,7 @@ build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --enable-pam"
 configure_args+=" --disable-python-bindings"
-configure_args+=" --with-securedir='/usr/lib/security'"
+configure_args+=" --with-securedir=/usr/lib/security"
 
 pre_configure() {
   autoreconf -fi

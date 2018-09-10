@@ -16,7 +16,7 @@ build_style="configure"
 do_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     cp "$FILESDIR/cross-32bit.answers" .
-    _args+=" --cross-answers='cross-32bit.answers'"
+    _args+=" --cross-answers=cross-32bit.answers"
     _args+=" --cross-compile"
     _args+=" --hostcc=cc"
   fi

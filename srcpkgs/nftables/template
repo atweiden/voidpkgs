@@ -15,7 +15,7 @@ license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/$pkgname/files/$pkgname-$version.tar.bz2"
 checksum="ad8181b5fcb9ca572f444bed54018749588522ee97e4c21922648bb78d7e7e91"
 build_style="gnu-configure"
-configure_args+=" --sbindir='/usr/bin'"
+configure_args+=" --sbindir=/usr/bin"
 configure_args+=" CONFIG_MAN=y"
 configure_args+=" DB2MAN=docbook2man"
 

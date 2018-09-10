@@ -263,7 +263,7 @@ _do_gcc_build() {
   _args+=" --with-gnu-as"
   _args+=" --with-gnu-ld"
   _args+=" --with-headers=$_sysroot/include"
-  _args+=" --with-host-libstdcxx='-static-libgcc'"
+  _args+=" --with-host-libstdcxx=-static-libgcc"
   _args+=" --with-isl"
   _args+=" --with-libelf"
   _args+=" --with-mpc"
@@ -276,7 +276,7 @@ _do_gcc_build() {
   _args+=" --with-system-zlib"
 
   "../gcc-$_gcc_version/configure" $_args
-  make "$makejobs" INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
+  make "$makejobs" INHIBIT_LIBC_CFLAGS="-DUSE_TM_CLONE_REGISTRY=0"
 }
 
 do_build() {

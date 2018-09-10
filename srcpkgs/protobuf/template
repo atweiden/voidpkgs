@@ -19,7 +19,7 @@ CXXFLAGS="-std=c++14"
 if [[ -n "$CROSS_BUILD" ]]; then
   # needs host protoc
   hostmakedepends+=" protobuf"
-  configure_args+=" --with-protoc='/usr/bin/protoc'"
+  configure_args+=" --with-protoc=/usr/bin/protoc"
 fi
 
 case "$XBPS_TARGET_MACHINE" in

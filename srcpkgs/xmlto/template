@@ -13,6 +13,6 @@ license="GPL-2"
 distfiles="http://anduin.linuxfromscratch.org/BLFS/xmlto/xmlto-$version.tar.bz2"
 checksum="1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276"
 build_style="gnu-configure"
-configure_args="ac_cv_path_BASH='/bin/bash'"
+configure_args="ac_cv_path_BASH=/bin/bash"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:

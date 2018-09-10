@@ -41,7 +41,7 @@ lib32disabled="yes"
 pre_configure() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      configure_args+=" ac_cv_search_crypt='no'"
+      configure_args+=" ac_cv_search_crypt=no"
       ;;
   esac
   autoreconf -fi

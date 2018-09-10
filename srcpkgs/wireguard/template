@@ -13,8 +13,8 @@ checksum="a38ead72994a7db7cda2d0085f410df1111b4728db050a519883eda8f3fe38f1"
 wrksrc="WireGuard-$version"
 build_wrksrc="src/tools"
 build_style="gnu-makefile"
-make_install_args+=" WITH_BASHCOMPLETION='yes'"
-make_install_args+=" WITH_WGQUICK='yes'"
+make_install_args+=" WITH_BASHCOMPLETION=yes"
+make_install_args+=" WITH_WGQUICK=yes"
 dkms_modules="wireguard $version"
 
 post_extract() {
