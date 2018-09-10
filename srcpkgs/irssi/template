@@ -17,7 +17,7 @@ build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --enable-true-color"
 configure_args+=" --with-proxy"
-subpackages="irssi-devel"
+subpackages+=" irssi-devel"
 
 LDFLAGS="-lncursesw"
 
