@@ -23,9 +23,6 @@ configure_args+=" --enable-pkcs11"
 post_install() {
   vmkdir "usr/share/examples/$pkgname"
   cp -r sample/sample-config-files/* "$DESTDIR/usr/share/examples/$pkgname"
-}
-
-do_clean() {
   rm -rf "$DESTDIR/usr/include"
 }
 

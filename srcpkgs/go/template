@@ -88,9 +88,6 @@ do_install() {
 
 post_install() {
   vlicense LICENSE
-}
-
-do_clean() {
   rm -f "$DESTDIR/usr/share/go/doc/articles/wiki/get.bin"
   rm -f "$DESTDIR/usr/lib/go/pkg/tool"/*/api
   rm -rf "$DESTDIR/usr/lib/go/pkg/bootstrap"

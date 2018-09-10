@@ -61,9 +61,6 @@ post_install() {
   # create vim-ex symlink
   cd "$DESTDIR/usr/bin"
   ln -sf vim vim-ex
-}
-
-do_clean() {
   rm -f "$DESTDIR/usr/bin"/{ex,view}
 }
 

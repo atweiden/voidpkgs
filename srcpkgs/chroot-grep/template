@@ -16,7 +16,7 @@ bootstrap="yes"
 provides="grep-${version}_$revision"
 conflicts="grep>=0"
 
-do_clean() {
+post_install() {
   rm -rf "$DESTDIR/usr/share/info"
   rm -rf "$DESTDIR/usr/share/man"
 }

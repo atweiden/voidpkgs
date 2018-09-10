@@ -35,7 +35,7 @@ pre_build() {
   sed -e 's,ncursesw/curses.h,curses.h,' -i pinentry/pinentry-curses.c
 }
 
-do_clean() {
+post_install() {
   rm "$DESTDIR/usr/bin/pinentry"
 }
 

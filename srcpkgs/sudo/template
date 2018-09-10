@@ -48,9 +48,6 @@ pre_check() {
 post_install() {
   vlicense doc/LICENSE
   vinstall "$FILESDIR/sudo.pam" 644 etc/pam.d sudo
-}
-
-do_clean() {
   # remove unused stuff
   rm -rf "$DESTDIR/usr/share/doc"
   rm -rf "$DESTDIR/usr/include"

@@ -16,7 +16,7 @@ build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/hwdata"
 configure_args+=" --disable-zlib"
 
-do_clean() {
+post_install() {
   # remove lsusb.py - avoid useless python scripts
   rm -f "$DESTDIR/usr/bin/lsusb.py"
   # remove usb ids - provided by hwids

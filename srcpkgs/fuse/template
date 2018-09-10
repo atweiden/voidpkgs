@@ -15,12 +15,9 @@ configure_args+=" --enable-lib"
 configure_args+=" --enable-util"
 
 post_install() {
-  mv "$DESTDIR/sbin"/* "$DESTDIR/usr/bin"
-}
-
-do_clean() {
   # remove obsolete rules file provided by udev
   rm -rf "$DESTDIR"/{dev,etc}
+  mv "$DESTDIR/sbin"/* "$DESTDIR/usr/bin"
 }
 
 fuse-devel_package() {

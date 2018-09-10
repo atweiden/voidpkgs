@@ -33,7 +33,7 @@ do_install() {
   make DESTDIR="$DESTDIR" install
 }
 
-do_clean() {
+post_install() {
   rm -f "$DESTDIR/usr/bin/info"
   rm -f "$DESTDIR/usr/bin/infokey"
   rm -rf "$DESTDIR/usr/share"

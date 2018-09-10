@@ -256,9 +256,7 @@ do_install() {
 
   # make ld-musl-armhf.so.1 symlink relative
   ln -sf libc.so "$DESTDIR/$_sysroot/usr/lib/ld-musl-armhf.so.1"
-}
 
-do_clean() {
   # remove unnecessary stuff
   rm -f "$DESTDIR/usr"/lib*/libiberty.a
   rm -rf "$DESTDIR/usr/share"

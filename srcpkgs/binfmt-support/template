@@ -14,9 +14,6 @@ make_dirs="/var/lib/binfmts 0755 root root"
 
 post_install() {
   vsv binfmt-support
-}
-
-do_clean() {
   rm -r "$DESTDIR/etc/init"
 }
 

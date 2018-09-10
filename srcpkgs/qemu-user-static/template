@@ -145,9 +145,6 @@ do_install() {
   for f in "$DESTDIR/usr/bin"/*; do
     mv "$f" "$f-static"
   done
-}
-
-do_clean() {
   rm -rf "$DESTDIR/etc"
   rm -rf "$DESTDIR/usr/libexec"
   rm -rf "$DESTDIR/usr/share"

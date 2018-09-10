@@ -84,9 +84,6 @@ do_install() {
 
 post_install() {
   vlicense LICENSE
-}
-
-do_clean() {
   rm -r "$DESTDIR/usr/include"
 }
 

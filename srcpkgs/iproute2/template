@@ -48,9 +48,6 @@ do_check() {
 
 do_install() {
   make DESTDIR="$DESTDIR" SBINDIR="/usr/bin" install
-}
-
-do_clean() {
   rm -r "$DESTDIR/usr/share/doc"
   rm -r "$DESTDIR/usr/share/man/man3"
 }

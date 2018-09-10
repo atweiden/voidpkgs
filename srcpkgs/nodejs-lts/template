@@ -70,9 +70,6 @@ do_build() {
 do_install() {
   vlicense LICENSE
   make LD="$CXX" LDFLAGS+="-ldl" DESTDIR="$DESTDIR" install
-}
-
-do_clean() {
   rm -r "$DESTDIR/usr/include"
 }
 

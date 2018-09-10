@@ -17,7 +17,9 @@ wrksrc="$pkgname-$version.src"
 build_style="cmake"
 configure_args="-G Ninja"
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
+  *-musl)
+    configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
+    ;;
 esac
 make_cmd="ninja"
 
@@ -40,8 +42,6 @@ openmp-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
-  }
-  do_clean() {
     # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
     rm "$PKGDESTDIR/usr/lib/libgomp.so"
   }

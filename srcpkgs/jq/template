@@ -13,9 +13,6 @@ build_style="gnu-configure"
 
 post_install() {
   vlicense COPYING
-}
-
-do_clean() {
   rm -rf "$DESTDIR/usr/share/doc/$pkgname"
 }
 

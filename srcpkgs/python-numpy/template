@@ -27,15 +27,12 @@ LDFLAGS="-shared"
 
 post_install() {
   vlicense LICENSE.txt LICENSE
+  rm -f "$DESTDIR/usr/lib"/python*/site-packages/numpy/LICENSE.txt
   # create compat symlinks for .h files
   vmkdir "$py2_inc"
   ln -sfr "$DESTDIR/$py2_sitelib/numpy/core/include/numpy" "$DESTDIR/$py2_inc"
   vmkdir "$py3_inc"
   ln -sfr "$DESTDIR/$py3_sitelib/numpy/core/include/numpy" "$DESTDIR/$py3_inc"
-}
-
-do_clean() {
-  rm -f "$DESTDIR/usr/lib"/python*/site-packages/numpy/LICENSE.txt
 }
 
 python3-numpy_package() {

@@ -45,9 +45,6 @@ post_install() {
   vlicense LICENSE
   vdoc README.markdown
   vcopy docs "usr/share/doc/$pkgname/design"
-}
-
-do_clean() {
   rm -rf "$DESTDIR/usr/include/libtommath"
   rm -rf "$DESTDIR/usr/include/libuv"
 }

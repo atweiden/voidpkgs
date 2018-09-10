@@ -147,9 +147,7 @@ do_install() {
   vmkdir usr/share/bash-completion/completions
   mv "$DESTDIR/etc/bash_completion.d/grub" \
     "$DESTDIR/usr/share/bash-completion/completions"
-}
 
-do_clean() {
   # remove useless tools
   rm "$DESTDIR/usr/bin/grub-ofpathname"
   rm "$DESTDIR/usr/bin/grub-sparc64-setup"

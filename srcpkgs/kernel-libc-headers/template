@@ -42,9 +42,6 @@ do_build() {
 
 do_install() {
   make ARCH="$_arch" INSTALL_HDR_PATH="$DESTDIR/usr" headers_install
-}
-
-do_clean() {
   # remove unused files
   rm -f $(find "$DESTDIR/usr/include" -name .install -or -name ..install.cmd)
   # remove drm headers, use libdrm

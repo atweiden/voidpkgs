@@ -264,9 +264,7 @@ do_install() {
 
   # make ld-musl.so symlinks relative
   ln -sf libc.so "$DESTDIR/$_sysroot/usr/lib/ld-musl-aarch64.so.1"
-}
 
-do_clean() {
   # remove unnecessary stuff
   rm -f "$DESTDIR/usr/lib*/libiberty.a"
   rm -rf "$DESTDIR/usr/share"

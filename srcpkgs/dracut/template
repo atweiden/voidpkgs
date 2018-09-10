@@ -42,9 +42,6 @@ post_install() {
   # kernel hooks
   vinstall "$FILESDIR/kernel-hook-postinst" 755 etc/kernel.d/post-install 20-dracut
   vinstall "$FILESDIR/kernel-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut
-}
-
-do_clean() {
   # we don't need the systemd stuff
   rm -rf "$DESTDIR/usr/lib/dracut/modules.d"/*systemd*
   rm -f "$DESTDIR/usr/share/man/man8"/*.service.*
