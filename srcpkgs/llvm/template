@@ -91,7 +91,7 @@ post_extract() {
   fi
 
   # move clang files into the llvm source
-  if [[ -d "$"XBPS_BUILDDIR/cfe-$version.src ]]; then
+  if [[ -d "$XBPS_BUILDDIR/cfe-$version.src" ]]; then
     mv "$XBPS_BUILDDIR/cfe-$version.src" "$wrksrc/tools/clang"
   fi
   # move clang-tools-extra files into llvm source
