@@ -9,12 +9,12 @@ build_style="meta"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*)
-    depends+=" dracut"
     depends+=" linux$version"
     depends+=" linux-firmware-amd"
     depends+=" linux-firmware-intel"
-    depends+=" linux-firmware-network"
     depends+=" linux-firmware-nvidia"
+    depends+=" linux-firmware-network"
+    depends+=" dracut"
     _depends_headers="linux$version-headers"
     ;;
   arm*|aarch64*)
