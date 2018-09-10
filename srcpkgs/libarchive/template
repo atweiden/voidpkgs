@@ -30,9 +30,16 @@ configure_args+=" $(vopt_with ssl openssl)"
 configure_args+=" $(vopt_with zstd)"
 bootstrap="yes"
 # package build options
-build_options="acl expat lzo lz4 ssl zstd"
-# enable acl and ssl by default
-build_options_default="acl ssl zstd"
+build_options+=" acl"
+build_options+=" expat"
+build_options+=" lz4"
+build_options+=" lzo"
+build_options+=" ssl"
+build_options+=" zstd"
+# enable acl, ssl and zstd by default
+build_options_default+=" acl"
+build_options_default+=" ssl"
+build_options_default+=" zstd"
 
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"
