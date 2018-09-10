@@ -24,7 +24,8 @@ if [[ -z "$CHROOT_READY" ]]; then
 fi
 
 acl-devel_package() {
-  depends="attr-devel acl>=${version}_$revision"
+  depends+=" acl>=${version}_$revision"
+  depends+=" attr-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
