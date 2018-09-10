@@ -46,8 +46,12 @@ depends+=" which"
 depends+=" xbps"
 depends+=" xfsprogs"
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) depends+=" musl";;
-  *) depends+=" glibc-locales";;
+  *-musl)
+    depends+=" musl"
+    ;;
+  *)
+    depends+=" glibc-locales"
+    ;;
 esac
 homepage="http://www.voidlinux.eu/"
 license="Public domain"

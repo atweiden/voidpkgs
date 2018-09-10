@@ -53,11 +53,17 @@ depends+=" wpa_supplicant"
 depends+=" xbps"
 depends+=" xfsprogs"
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) depends+=" musl";;
-  *) depends+=" glibc-locales";;
+  *-musl)
+    depends+=" musl"
+    ;;
+  *)
+    depends+=" glibc-locales"
+    ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*) depends+=" linux";;
+  i686*|x86_64*)
+    depends+=" linux"
+    ;;
 esac
 homepage="https://www.voidlinux.eu/"
 license="Public domain"
