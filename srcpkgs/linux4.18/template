@@ -85,19 +85,19 @@ do_configure() {
   if [[ -f "$FILESDIR/$arch-dotconfig-custom" ]]; then
     msg_normal "Detected a custom .config file for your arch, using it.\n"
     cp -f "$FILESDIR/$arch-dotconfig-custom" .config
-    make "$makejobs" ARCH="$arch" "$_args" oldconfig
+    make "$makejobs" ARCH="$arch" $_args oldconfig
   elif [[ -f "$FILESDIR/$arch-dotconfig" ]]; then
     msg_normal "Detected a .config file for your arch, using it.\n"
     cp -f "$FILESDIR/$arch-dotconfig" .config
-    make "$makejobs" ARCH="$arch" "$_args" oldconfig
+    make "$makejobs" ARCH="$arch" $_args oldconfig
   elif [[ -f "$FILESDIR/${XBPS_TARGET_MACHINE%%-musl}-dotconfig" ]]; then
     msg_normal "Detected a .config file for your cpu family, using it.\n"
     cp -f "$FILESDIR/${XBPS_TARGET_MACHINE%%-musl}-dotconfig" .config
-    make "$makejobs" ARCH="$arch" "$_args" oldconfig
+    make "$makejobs" ARCH="$arch" $_args oldconfig
   else
     msg_normal "Defaulting to 'defconfig and allmodconfig'.\n"
-    make "$makejobs" ARCH="$arch" "$_args" defconfig
-    make "$makejobs" ARCH="$arch" "$_args" allmodconfig
+    make "$makejobs" ARCH="$arch" $_args defconfig
+    make "$makejobs" ARCH="$arch" $_args allmodconfig
   fi
   # always use our revision to CONFIG_LOCALVERSION to match our pkg version.
   sed \
@@ -137,7 +137,7 @@ do_build() {
   fi
   export LDFLAGS=
   make ARCH="$arch" "$_version" "$_cross" "$makejobs" prepare
-  make ARCH="$arch" "$_version" "$_cross" "$makejobs" "$_args"
+  make ARCH="$arch" "$_version" "$_cross" "$makejobs" $_args
 }
 
 do_install() {
