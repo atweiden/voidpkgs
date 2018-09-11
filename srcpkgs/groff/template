@@ -27,8 +27,8 @@ do_configure() {
   fi
   ./configure \
     $configure_args \
-    --disable-rpath
-    --without-x \
+    --disable-rpath \
+    --without-x
 }
 
 do_build() {
