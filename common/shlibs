@@ -160,6 +160,7 @@ libbitcoin-server.so.0 libbitcoin-server-3.5.0_1
 libbitcoin.so.0 libbitcoin-system-3.5.0_1
 libblkid.so.1 libblkid-2.18_1
 libbtrfs.so.0 libbtrfs-3.12_1
+libbtrfsutil.so.1 libbtrfsutil-4.17.1_1
 libcacard.so.0 libcacard-1.6.1_1
 libcap.so.2 libcap-2.16_1
 libcap-ng.so.0 libcap-ng-0.6.2_1
