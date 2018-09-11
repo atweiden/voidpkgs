@@ -21,7 +21,6 @@ post_install() {
   vlicense COPYING
   vdoc CHANGES
   vdoc README
-  vdoc SYNCING
   vdoc TODO
   vdoc example_tmux.conf
 }
