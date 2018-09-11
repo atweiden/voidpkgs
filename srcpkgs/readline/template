@@ -25,7 +25,7 @@ pre_configure() {
       fi
       local patch_url="$url/readline${_dist_ver/./}-$p"
       msg_normal " Fetching $patch_url ...\n"
-      "$XBPS_FETCH_CMD" "$patch_url"
+      $XBPS_FETCH_CMD "$patch_url"
     done
   fi
   cd "$wrksrc"
