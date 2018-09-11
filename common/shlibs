@@ -393,6 +393,7 @@ libspice-client-glib-2.0.so.8 spice-gtk-0.14_1
 libspice-controller.so.0 spice-gtk-0.14_1
 libspice-client-gtk-3.0.so.5 spice-gtk-0.33_1
 libsqlite3.so.0 sqlite-3.8.11.1_3
+libsudo_util.so.0 sudo-1.8.25_1
 libtalloc.so.2 talloc-2.0.1_1
 libtcl8.6.so tcl-8.6.0_1
 libunibilium.so.4 unibilium-2.0.0_1
