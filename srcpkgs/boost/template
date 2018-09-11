@@ -19,11 +19,31 @@ wrksrc="${pkgname}_${version//\./_}"
 CXXFLAGS="-std=c++11"
 
 case "$XBPS_TARGET_MACHINE" in
-  i686*)    _arch=x86;      _toolset="gcc-i386";    _abi=sysv  ;;
-  x86_64*)  _arch=x86;      _toolset="gcc-x86_64";  _abi=sysv  ;;
-  arm*)     _arch=arm;      _toolset="gcc-arm";     _abi=aapcs ;;
-  aarch64*) _arch=arm;      _toolset="gcc-aarch64"; _abi=aapcs ;;
-  mips*)    _arch=mips32r2; _toolset="gcc-mips";    _abi=o32   ;;
+  i686*)
+    _abi="sysv"
+    _arch="x86"
+    _toolset="gcc-i386"
+    ;;
+  x86_64*)
+    _abi="sysv"
+    _arch="x86"
+    _toolset="gcc-x86_64"
+    ;;
+  arm*)
+    _abi="aapcs"
+    _arch="arm"
+    _toolset="gcc-arm"
+    ;;
+  aarch64*)
+    _abi="aapcs"
+    _arch="arm"
+    _toolset="gcc-aarch64"
+    ;;
+  mips*)
+    _abi="o32"
+    _arch="mips32r2"
+    _toolset="gcc-mips"
+    ;;
 esac
 
 do_build() {
@@ -91,15 +111,16 @@ boost-jam_package() {
 }
 
 boost-python_package() {
-  depends="boost-${version}_$revision python"
+  depends+=" boost-${version}_$revision"
+  depends+=" python"
   short_desc+=" - Python bindings"
   pkg_install() {
-    vmove usr/lib/libboost_python*
+    vmove "usr/lib/libboost_python*"
   }
 }
 
 boost-build_package() {
-  noarch=yes
+  noarch="yes"
   conf_files="/etc/site-config.jam"
   short_desc+=" - Boost.Build framework"
   pkg_install() {
@@ -109,13 +130,13 @@ boost-build_package() {
 }
 
 boost-devel_package() {
-  noverifyrdeps=yes
-  depends="boost-${version}_${revision}"
+  noverifyrdeps="yes"
+  depends="boost-${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
-    vmove usr/lib/*.a
-    vmove usr/lib/*.so
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
   }
 }
 

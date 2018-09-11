@@ -23,7 +23,9 @@ build_style="cmake"
 configure_args="-DCRYFS_UPDATE_CHECKS=off"
 
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
+  *-musl)
+    configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
+    ;;
 esac
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
