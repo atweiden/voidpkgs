@@ -138,8 +138,8 @@ do_build() {
     _version="EXTRAVERSION=$_patchver"
   fi
   export LDFLAGS=
-  make ARCH="$arch" "$_version" "$_cross" "$makejobs" prepare
-  make ARCH="$arch" "$_version" "$_cross" "$makejobs" $_args
+  make ARCH="$arch" $_version $_cross $makejobs prepare
+  make ARCH="$arch" $_version $_cross $makejobs $_args
 }
 
 do_install() {
