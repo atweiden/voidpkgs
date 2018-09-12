@@ -370,6 +370,7 @@ libiomp5.so openmp-devel-6.0.1_1
 libomp-target.so openmp-devel-6.0.1_1
 libomp.so openmp-devel-6.0.1_1
 libomptarget.so openmp-devel-6.0.1_1
+libp11-kit.so.0 p11-kit-0.7_1
 libpam.so.0 pam-libs-1.1.6_3
 libpam_misc.so.0 pam-libs-1.1.6_3
 libpamc.so.0 pam-libs-1.1.6_3

@@ -1,5 +1,21 @@
 use v6;
 
+# p6doc {{{
+
+=begin pod
+=head BUGS
+
+=for item
+C<p11-kit> mapping from L<https://github.com/void-linux/void-packages>
+is not being detected.
+
+=for item
+C<sort-common-shlibs.p6> produces different sort order of mappings than
+C<gen-common-shlibs.p6>.
+=end pod
+
+# end p6doc }}}
+
 # class Shlibs::Parser::ParseTree {{{
 
 my role Pkg
