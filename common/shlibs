@@ -247,6 +247,8 @@ libnuma.so.1 libnuma-2.0.7_1
 libobjc.so.4 libobjc-4.7.3_12
 libodbc.so.2 libodbc-2.3.1_1
 libodbcinst.so.2 libodbc-2.3.1_1
+libparted-fs-resize.so.0 libparted-3.1_1
+libparted.so.2 libparted-3.1_1
 libpcap.so.1 libpcap-1.1.1_1
 libpcreposix.so.0 libpcre-7.8_1
 libpcre.so.1 libpcre-8.30_1

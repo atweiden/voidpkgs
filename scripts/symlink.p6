@@ -304,6 +304,7 @@ my List:D %pkg{Str:D} =
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
     'nss' => ['nss-devel'],
+    'ntfs-3g' => ['ntfs-3g-devel'],
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
@@ -317,6 +318,8 @@ my List:D %pkg{Str:D} =
     'pam' => qw<pam-devel
                 pam-libs
                 pam-userdb>,
+    'parted' => qw<libparted
+                   libparted-devel>,
     'pciutils' => ['pciutils-devel'],
     'pcre' => qw<libpcre
                  libpcrecpp

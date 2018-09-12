@@ -1,0 +1,41 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bootiso"
+version=3.1.3
+revision=1
+short_desc="Create a USB bootable device from an ISO image easily and securely"
+noarch="yes"
+depends+=" bash"
+depends+=" coreutils"
+depends+=" curl"
+depends+=" dosfstools"
+depends+=" e2fsprogs"
+depends+=" eudev"
+depends+=" exfat-utils"
+depends+=" f2fs-tools"
+depends+=" file"
+depends+=" findutils"
+depends+=" gawk"
+depends+=" grep"
+depends+=" mtools"
+depends+=" ntfs-3g"
+depends+=" parted"
+depends+=" rsync"
+depends+=" syslinux"
+depends+=" tar"
+depends+=" util-linux"
+homepage="https://github.com/jsamr/bootiso"
+license="MIT"
+distfiles="https://github.com/jsamr/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687"
+
+do_install() {
+  vbin bootiso
+}
+
+post_install() {
+  vlicense LICENSE
+  vdoc "*.md"
+  vcopy images/ "usr/share/doc/$pkgname"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

@@ -1,0 +1,50 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ntfs-3g"
+version=2017.3.23
+revision=2
+short_desc="Stable Read/Write NTFS Driver in userspace"
+makedepends+=" fuse-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" $(vopt_if crypto 'gnutls-devel libgcrypt-devel')"
+hostmakedepends="pkg-config"
+homepage="http://www.tuxera.com/community/ntfs-3g-download/"
+license="GPL-2"
+distfiles="http://www.tuxera.com/opensource/${pkgname}_ntfsprogs-$version.tgz"
+checksum="3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5"
+wrksrc="${pkgname}_ntfsprogs-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --enable-posix-acls"
+configure_args+=" --enable-xattr-mappings"
+configure_args+=" --exec-prefix=/usr"
+configure_args+=" --sbin=/usr/bin"
+configure_args+=" --with-fuse=external"
+configure_args+=" $(vopt_if crypto --enable-crypto)"
+configure_args+=" $(vopt_if extras --enable-extras)"
+configure_args+=" $(vopt_if quarantined --enable-quarantined)"
+build_options+=" crypto"
+build_options+=" extras"
+build_options+=" quarantined"
+desc_option_crypto="Enable crypto related code and utilities"
+desc_option_extras="Enable extra ntfsprogs utilities"
+desc_option_quarantined="Enable quarantined ntfsprogs utilities"
+build_options_default+=" crypto"
+build_options_default+=" extras"
+
+post_install() {
+  mv "$DESTDIR/sbin"/* "$DESTDIR/usr/bin"
+  ln -sf ntfs-3g "$DESTDIR/usr/bin/mount.ntfs"
+}
+
+ntfs-3g-devel_package() {
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" fuse-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
