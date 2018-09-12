@@ -7,8 +7,6 @@ Console-only XBPS source package collection for Void
 Description
 -----------
 
-Console-only package templates for Void. TUIs accepted.
-
 A fork of [void-linux/void-packages][void-linux/void-packages] with GUI
 support removed from [srcpkgs][srcpkgs]. Templates adhere to my [style
 guide][style guide].
