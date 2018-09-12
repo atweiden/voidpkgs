@@ -26,7 +26,7 @@ depends+=" util-linux"
 homepage="https://github.com/jsamr/bootiso"
 license="MIT"
 distfiles="https://github.com/jsamr/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687"
+checksum="da00027f5ee0f87886ae7e5f74d20f8b5528b241548b4b7bd888a684abc97c1c"
 
 do_install() {
   vbin bootiso
