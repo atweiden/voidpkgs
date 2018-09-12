@@ -14,6 +14,10 @@ C<p11-kit> mapping from L<https://github.com/void-linux/void-packages>
 is not being detected.
 
 =for item
+C<pkcs11-helper> mapping from
+L<https://github.com/void-linux/void-packages> is not being detected.
+
+=for item
 C<sort-common-shlibs.p6> produces different sort order of mappings than
 C<gen-common-shlibs.p6>.
 =end pod
