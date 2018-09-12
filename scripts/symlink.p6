@@ -398,6 +398,9 @@ my List:D %pkg{Str:D} =
                      qrencode-devel>,
     'readline' => ['readline-devel'],
     'rhash' => ['rhash-devel'],
+    'ruby' => qw<ruby-devel
+                 ruby-devel-doc
+                 ruby-ri>,
     'runit-void' => ['runit-void-apparmor'],
     'rust' => ['rust-doc'],
     'schilytools' => qw<sccs
