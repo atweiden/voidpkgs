@@ -6,6 +6,10 @@ use v6;
 =head BUGS
 
 =for item
+C<ntfs-3g> mapping from L<https://github.com/void-linux/void-packages>
+is not being detected.
+
+=for item
 C<p11-kit> mapping from L<https://github.com/void-linux/void-packages>
 is not being detected.
 
