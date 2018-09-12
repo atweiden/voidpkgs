@@ -1,0 +1,37 @@
+# Template file for 'gnu-efi-libs'
+pkgname=gnu-efi-libs
+reverts="3.0w_1" # Not an actual revert, xbps considers 3.0w higher than 3.0.8
+version=3.0.8
+revision=2
+wrksrc="gnu-efi-${version}"
+makedepends="pciutils-devel"
+nostrip=yes
+short_desc="Library for building UEFI Applications using GNU toolchain"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-2.0-or-later"
+homepage="http://sourceforge.net/projects/gnu-efi/"
+distfiles="${SOURCEFORGE_SITE}/gnu-efi/gnu-efi-${version}.tar.bz2"
+checksum=76006d8ea8d67bcf72f35d09d43e9ef6a69400d6d5d4bf64baf1ab7434e2b722
+
+do_build() {
+	unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+	make lib gnuefi inc apps
+}
+
+do_install() {
+	make INSTALLROOT=${DESTDIR} PREFIX=/usr LIBDIR=/usr/lib install
+
+	case "$XBPS_TARGET_MACHINE" in
+		i686*) _EFI_ARCH="ia32";;
+		x86_64*) _EFI_ARCH="x86_64";;
+	esac
+	vmkdir usr/share/gnu-efi/apps/${_EFI_ARCH}
+
+	if [ "${XBPS_MACHINE%-musl}" = "i686" ]; then
+		HOST_ARCH="ia32"
+	else
+		HOST_ARCH="${XBPS_MACHINE/-musl//}"
+	fi
+
+	install -Dm644 "$HOST_ARCH"/apps/*.efi ${DESTDIR}/usr/share/gnu-efi/apps/${_EFI_ARCH}
+}
