@@ -62,8 +62,7 @@ my List:D %pkg{Str:D} =
                libdb
                libdb-cxx>,
     'dbus' => qw<dbus-devel
-                 dbus-libs
-                 dbus-x11>,
+                 dbus-libs>,
     'dhcp' => ['dhclient'],
     'distcc' => ['distcc-pump'],
     'dracut' => ['dracut-network'],
