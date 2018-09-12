@@ -1,17 +1,18 @@
-# Template file for 'mtools'
-pkgname=mtools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mtools"
 version=4.0.18
 revision=3
-build_style=gnu-configure
-makedepends="acl-devel"
-conf_files="/etc/mtools.conf"
 short_desc="A collection of utilities to access MS-DOS disks"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
+makedepends="acl-devel"
 homepage="http://www.gnu.org/software/mtools"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.bz2"
-checksum=59e9cf80885399c4f229e5d87e49c0c2bfeec044e1386d59fcd0b0aead6b2f85
+license="GPL-2"
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.bz2"
+checksum="59e9cf80885399c4f229e5d87e49c0c2bfeec044e1386d59fcd0b0aead6b2f85"
+conf_files="/etc/mtools.conf"
+build_style="gnu-configure"
 
 post_install() {
-	vconf mtools.conf
+  vconf mtools.conf
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:

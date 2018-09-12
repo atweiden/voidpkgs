@@ -1,19 +1,27 @@
-# Template file for 'nasm'
-pkgname=nasm
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nasm"
 version=2.13.02
 revision=1
-build_style=gnu-configure
-make_build_args="all doc"
-hostmakedepends="groff perl perl-Font-TTF perl-IO-String perl-Sort-Versions
- ghostscript source-sans-pro liberation-fonts-ttf"
 short_desc="An 80x86 assembler designed for portability and modularity"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+hostmakedepends+=" ghostscript"
+hostmakedepends+=" groff"
+hostmakedepends+=" liberation-fonts-ttf"
+hostmakedepends+=" perl"
+hostmakedepends+=" perl-Font-TTF"
+hostmakedepends+=" perl-IO-String"
+hostmakedepends+=" perl-Sort-Versions"
+hostmakedepends+=" source-sans-pro"
 homepage="http://www.nasm.us"
 license="2-clause-BSD"
-distfiles="http://www.nasm.us/pub/nasm/releasebuilds/${version}/nasm-${version}.tar.bz2"
-checksum=8d3028d286be7c185ba6ae4c8a692fc5438c129b2a3ffad60cbdcedd2793bbbe
+distfiles="http://www.nasm.us/pub/nasm/releasebuilds/$version/nasm-$version.tar.bz2"
+checksum="8d3028d286be7c185ba6ae4c8a692fc5438c129b2a3ffad60cbdcedd2793bbbe"
+build_style="gnu-configure"
+make_build_args+=" all"
+make_build_args+=" doc"
 
 do_install() {
-	make INSTALLROOT="${DESTDIR}" install install_doc
-	vlicense LICENSE
+  make INSTALLROOT="$DESTDIR" install install_doc
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
