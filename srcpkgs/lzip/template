@@ -1,17 +1,17 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lzip"
 version=1.20
 revision=2
-build_style="gnu-configure"
 short_desc="Lossless data compressor based on the LZMA algorithm"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
 homepage="http://www.nongnu.org/lzip/lzip.html"
+license="GPL-2"
 distfiles="http://download.savannah.gnu.org/releases/lzip/lzip-$version.tar.gz"
 checksum="c93b81a5a7788ef5812423d311345ba5d3bd4f5ebf1f693911e3a13553c1290c"
+build_style="gnu-configure"
 
 do_configure() {
   ./configure \
-    --prefix=/usr \
+    --prefix="/usr" \
     CXX="$CXX" \
     CXXFLAGS="$CXXFLAGS" \
     LDFLAGS="$LDFLAGS"
