@@ -11,5 +11,6 @@ Programming Languages
 - Lua
 - Perl
 - Python
+- Ruby
 - Rust
 - Tcl
