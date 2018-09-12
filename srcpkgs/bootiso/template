@@ -34,7 +34,8 @@ do_install() {
 
 post_install() {
   vlicense LICENSE
-  vdoc "*.md"
+  vdoc changelog.md
+  vdoc readme.md
   vcopy images/ "usr/share/doc/$pkgname"
 }
 
