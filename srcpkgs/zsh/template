@@ -7,14 +7,12 @@ makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre-devel"
-hostmakedepends+=" autoconf"
-hostmakedepends+=" automake"
-hostmakedepends+=" m4"
+hostmakedepends="automake"
 homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
 changelog="https://raw.githubusercontent.com/zsh-users/$pkgname/master/ChangeLog"
-distfiles="https://github.com/zsh-users/$pkgname/archive/$pkgname-$version.tar.gz"
-checksum="c8d0faf9c131290b16be995a8eb7e884b4c6c5cc7d33dd3a3f2b6b9a06902050"
+distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.xz"
+checksum="9566753f317d31b808b6b63a5622c71f25d473a6b5fea5c35ab1c7ed96fbb3e8"
 wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
@@ -65,8 +63,6 @@ pre_configure() {
   done
   rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
   rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
-
-  ./Util/preconfig
 }
 
 post_install() {
