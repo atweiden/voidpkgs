@@ -3,7 +3,7 @@ _majorver=8.2
 
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gcc-multilib"
-version="$_majorver.0"
+version=$_majorver.0
 revision=2
 short_desc="The GNU C Compiler (multilib files)"
 only_for_archs="x86_64"
