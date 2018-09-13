@@ -51,6 +51,7 @@ libboost_wave.so.1.65.1 boost-1.65.1_1<1.66_1
 libboost_wserialization.so.1.65.1 boost-1.65.1_1<1.66_1
 libboost_python.so.1.65.1 boost-python-1.65.1<1.66_1
 libbz2.so.1 bzip2-1.0.5_1
+libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
 libclang.so.6 clang-6.0.0_1
 libcmocka.so.0 cmocka-1.1.1_1
@@ -130,6 +131,7 @@ libgnutlsxx.so.28 gnutls-3.2.13_1
 libgnutls.so.30 gnutls-3.4.13_1
 libgtest.so gtest-1.7.0_1
 libgtest_main.so gtest-1.7.0_1
+libhttp_parser.so.2.8 http-parser-2.8.0_1
 libicudata.so.62 icu-libs-62.1_1
 libicui18n.so.62 icu-libs-62.1_1
 libicuio.so.62 icu-libs-62.1_1

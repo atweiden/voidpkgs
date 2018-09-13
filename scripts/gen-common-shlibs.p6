@@ -194,7 +194,7 @@ my grammar Shlibs::Parser::Grammar
 
     token version
     {
-        <version-chars>
+        <alnum> <version-chars>?
     }
 
     token version-chars
@@ -204,7 +204,7 @@ my grammar Shlibs::Parser::Grammar
 
     token version-char
     {
-        <!before <revision-full>> \S
+        <!before <revision-full>> <+alnum +[\.] +[\_] +[\<] +[\+]>
     }
 
     token revision-full
