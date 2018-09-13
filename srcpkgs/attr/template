@@ -30,7 +30,9 @@ pre_check() {
   # EXPECTED: Operation not supported
   # RECIEVED: Not supported
   case "$XBPS_TARGET_MACHINE" in
-   *-musl* ) sed -i 's|f: Operation n|f: N|g' test/attr.test ;;
+   *-musl* )
+     sed -i 's|f: Operation n|f: N|g' test/attr.test
+     ;;
   esac
 }
 

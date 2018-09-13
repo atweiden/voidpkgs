@@ -29,9 +29,8 @@ post_install() {
 }
 
 cracklib-devel_package() {
-  unset depends
-  depends+=" zlib-devel"
   depends+=" libcracklib-${version}_$revision"
+  depends+=" zlib-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
@@ -39,7 +38,6 @@ cracklib-devel_package() {
 }
 
 cracklib-python_package() {
-  unset depends
   depends="python"
   short_desc+=" - python bindings"
   lib32disabled="yes"

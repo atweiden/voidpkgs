@@ -17,12 +17,18 @@ CXXFLAGS+=" -DNDEBUG"
 CXXFLAGS+=" -fPIC"
 
 post_extract() {
-  sed -i -e 's/^CXXFLAGS/#CXXFLAGS/' GNUmakefile
+  sed \
+    -i \
+    -e 's/^CXXFLAGS/#CXXFLAGS/' \
+    GNUmakefile
 }
 
 post_install() {
   vinstall "$FILESDIR/libcrypto++.pc" 644 usr/lib/pkgconfig
-  sed -e "s,@@VERSION@@,$version,g" -i "$DESTDIR/usr/lib/pkgconfig/libcrypto++.pc"
+  sed \
+    -i \
+    -e "s,@@VERSION@@,$version,g" \
+    "$DESTDIR/usr/lib/pkgconfig/libcrypto++.pc"
   vlicense License.txt LICENSE
 }
 

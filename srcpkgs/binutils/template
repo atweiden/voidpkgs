@@ -23,7 +23,7 @@ makedepends="zlib-devel"
 pre_configure() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
   # drop bashism
-  sed -e 's,source,\.,g' -i ld/scripttempl/elf32msp430.sc
+  sed -i -e 's,source,\.,g' ld/scripttempl/elf32msp430.sc
 }
 
 do_configure() {
@@ -116,17 +116,18 @@ do_install() {
   # remove these symlinks, they are not ABI stable
   # programs should compile static to the .a file
   rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
-  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" \
-    >"$DESTDIR/usr/lib/libbfd.so"
-  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" \
-    >"$DESTDIR/usr/lib/libopcodes.so"
+  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" >"$DESTDIR/usr/lib/libbfd.so"
+  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" >"$DESTDIR/usr/lib/libopcodes.so"
 
   # remove info file that conflicts with autoconf
   rm -f "$DESTDIR/usr/share/info/standards.info"
   rm -f "$DESTDIR/usr/lib64"
 
   # remove useless manpages
-  for f in dlltool nlmconv windres windmc; do
+  for f in dlltool \
+           nlmconv \
+           windres \
+           windmc; do
     rm -f "$DESTDIR/usr/share/man/man1/$f.1"
   done
 

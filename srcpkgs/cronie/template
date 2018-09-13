@@ -35,12 +35,16 @@ alternatives+=" crond:crontab.1:/usr/share/man/man1/cronie-crontab.1"
 alternatives+=" crond:crond.8:/usr/share/man/man8/cronie-crond.8"
 
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) makedepends+=" musl-obstack" ;;
+  *-musl)
+    makedepends+=" musl-obstack"
+    ;;
 esac
 
 pre_build() {
   case "$XBPS_TARGET_MACHINE" in
-    *-musl) sed -i Makefile */Makefile -e "s; -lpam; -lobstack&;" ;;
+    *-musl)
+      sed -i Makefile */Makefile -e "s; -lpam; -lobstack&;"
+      ;;
   esac
 }
 
