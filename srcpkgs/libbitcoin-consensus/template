@@ -3,7 +3,6 @@ pkgname="libbitcoin-consensus"
 version=3.5.0
 revision=1
 short_desc="Bitcoin Consensus Library"
-makedepends+=" boost"
 makedepends+=" boost-devel"
 makedepends+=" libsecp256k1-devel"
 hostmakedepends+=" autoconf"
@@ -17,7 +16,9 @@ license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="bb29761d4275a9c993151707557008b23572a3d9adecc0e36a3075cfb101dd1e"
 build_style="gnu-configure"
-configure_args="--with-gnu-ld"
+# XXX BOOST_UNIT_TEST_FRAMEWORK_LIB="-lboost_unit_test_framework"
+configure_args+=" ax_cv_boost_unit_test_framework=no"
+configure_args+=" --with-gnu-ld"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --host=$XBPS_CROSS_TRIPLET"
   configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
