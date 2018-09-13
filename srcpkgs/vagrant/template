@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vagrant"
-version=2.1.4
+version=2.1.5
 revision=1
 short_desc="Tool for building and distributing development environments"
 only_for_archs+=" i686"
@@ -14,7 +14,7 @@ hostmakedepends="ruby"
 homepage="https://www.vagrantup.com/"
 license="MIT"
 distfiles="https://github.com/mitchellh/$pkgname/archive/v$version.tar.gz"
-checksum="ec3da78c4fde87736cabf622d1ea8088b5e7b1cbad0de306fe7941f8a4ef8f11"
+checksum="347179564f5a8a56e2d6dcb82470e04d92a60ed0b3265efc07f9ff37cd5c7f5f"
 patch_args="-p1"
 nocross="yes"
 
@@ -27,9 +27,13 @@ do_build() {
 }
 
 do_install() {
-  GEM_PATH="$DESTDIR/usr/lib/$pkgname" \
   GEM_HOME="$GEM_PATH" \
-    gem install "$pkgname-$version.gem" --no-ri --no-rdoc -- --disable-clean
+  GEM_PATH="$DESTDIR/usr/lib/$pkgname" \
+    gem install "$pkgname-$version.gem" \
+      --no-rdoc \
+      --no-ri \
+      -- \
+      --disable-clean
 
   find "$DESTDIR" -type f -name \*.a -delete
   find "$DESTDIR" -type f -name \*.log -delete
@@ -49,17 +53,18 @@ do_install() {
   find "$DESTDIR" -type f -name LICENSE -delete
   find "$DESTDIR" -type f -name .\* -delete
   find "$DESTDIR" -type f -name \*.rdoc -delete
-  find "$DESTDIR" -type d -name ext -print0|xargs -0 rm -rf --
-  find "$DESTDIR" -type d -name test -print0|xargs -0 rm -rf --
-  find "$DESTDIR" -type d -name examples -print0|xargs -0 rm -rf --
-  find "$DESTDIR" -type d -name doc -print0|xargs -0 rm -rf --
-  find "$DESTDIR" -type d -name ports -print0|xargs -0 rm -rf --
+  find "$DESTDIR" -type d -name ext -print0 | xargs -0 rm -rf --
+  find "$DESTDIR" -type d -name test -print0 | xargs -0 rm -rf --
+  find "$DESTDIR" -type d -name examples -print0 | xargs -0 rm -rf --
+  find "$DESTDIR" -type d -name doc -print0 | xargs -0 rm -rf --
+  find "$DESTDIR" -type d -name ports -print0 | xargs -0 rm -rf --
   rm -r "$DESTDIR/usr/lib/$pkgname/cache"
 
   vmkdir usr/bin
   vmkdir usr/share/bash-completion/completions
   vbin "$FILESDIR/$pkgname"
-  ln -sf "/usr/lib/$pkgname/gems/$pkgname-$version/contrib/bash/completion.sh" \
+  ln -sf \
+    "/usr/lib/$pkgname/gems/$pkgname-$version/contrib/bash/completion.sh" \
     "$DESTDIR/usr/share/bash-completion/completions/$pkgname"
   vlicense LICENSE
 }
