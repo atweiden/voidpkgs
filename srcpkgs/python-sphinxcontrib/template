@@ -13,11 +13,12 @@ create_wrksrc="yes"
 pycompile_module="sphinxcontrib"
 
 do_install() {
-  for py_sitelib in "$py2_sitelib" "$py3_sitelib"; do
+  for py_sitelib in "$py2_sitelib" \
+                    "$py3_sitelib"; do
     vmkdir "$py_sitelib/sphinxcontrib"
     cat > "$DESTDIR/$py_sitelib/sphinxcontrib/__init__.py" <<-EOF
-      __import__('pkg_resources').declare_namespace(__name__)
-    EOF
+  __import__('pkg_resources').declare_namespace(__name__)
+EOF
   done
 }
 
