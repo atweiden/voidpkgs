@@ -1,17 +1,21 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="zsh"
-version=5.5.1
-revision=2
+version=5.6.1
+revision=1
 short_desc="The Z SHell"
 makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre-devel"
+hostmakedepends="autoconf"
 hostmakedepends="automake"
+hostmakedepends="m4"
 homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
-distfiles="http://www.zsh.org/pub/zsh-$version.tar.gz"
+changelog="https://raw.githubusercontent.com/zsh-users/$pkgname/master/ChangeLog"
+distfiles="https://github.com/zsh-users/$pkgname/archive/$pkgname-$version.tar.gz"
 checksum="774caa89e7aea5f33c3033cbffd93e28707f72ba5149c79709e48e6c2d2ee080"
+wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
 configure_args+=" --enable-etcdir=/etc/zsh"
@@ -61,6 +65,8 @@ pre_configure() {
   done
   rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
   rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
+
+  ./Util/preconfig
 }
 
 post_install() {
