@@ -389,8 +389,11 @@ gcc-go_package() {
              gccgo; do
       vmove "usr/bin/$f"
     done
-    for f in cgo \
-             go1; do
+    for f in buildid \
+             cgo \
+             go1 \
+             test2json \
+             vet; do
       vmove "usr/lib/gcc/$_triplet/$_majorver/$f"
     done
     vmove usr/share/info/gccgo.info
