@@ -359,6 +359,7 @@ my List:D %pkg{Str:D} =
     'python-cram' => ['python3-cram'],
     'python-cryptography' => ['python3-cryptography'],
     'python-docopt' => ['python3-docopt'],
+    'python-docutils' => ['python3-docutils'],
     'python-enum34' => ['python3-enum34'],
     'python-flaky' => ['python3-flaky'],
     'python-funcsigs' => ['python3-funcsigs'],
