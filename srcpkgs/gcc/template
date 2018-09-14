@@ -255,7 +255,7 @@ do_configure() {
     *-musl)
       _args+=" --disable-symvers"
       _args+=" libat_cv_have_ifunc=no"
-      if [[ "$XBPS_TARGET_MACHINE" = "i686-musl" ]]; then
+      if [[ "$XBPS_TARGET_MACHINE" == "i686-musl" ]]; then
         # remove libmpx because it won't compile
         rm -rf libmpx
       fi
