@@ -388,7 +388,6 @@ my List:D %pkg{Str:D} =
     'python-snowballstemmer' => ['python3-snowballstemmer'],
     'python-sphinxcontrib' => ['python3-sphinxcontrib'],
     'python-sphinxcontrib-websupport' => ['python3-sphinxcontrib-websupport'],
-    'python-typing' => ['python3-typing'],
     'python-urllib3' => ['python3-urllib3'],
     'python-yaml' => ['python3-yaml'],
     'python3' => ['python3-devel'],
