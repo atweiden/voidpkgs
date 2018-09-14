@@ -5,6 +5,7 @@ revision=1
 short_desc="Open source trace format converter"
 makedepends+=" glib-devel"
 makedepends+=" libelf"
+makedepends+=" libuuid-devel"
 makedepends+=" popt-devel"
 hostmakedepends="pkg-config"
 homepage="http://diamon.org/babeltrace"
