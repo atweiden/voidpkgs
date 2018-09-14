@@ -1,19 +1,24 @@
-# Template file for 'fossil'
-pkgname=fossil
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="fossil"
 version=2.6
 revision=1
-build_style=configure
-configure_args="--disable-internal-sqlite --prefix=/usr"
-hostmakedepends="tcl"
-makedepends="zlib-devel libressl-devel readline-devel sqlite-devel"
 short_desc="Simple, high-reliability, distributed software configuration management"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-2-Clause"
+makedepends+=" libressl-devel"
+makedepends+=" readline-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="tcl"
 homepage="https://www.fossil-scm.org"
-distfiles="https://www.fossil-scm.org/index.html/uv/fossil-src-${version}.tar.gz"
-checksum=76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9
+license="BSD-2-Clause"
+distfiles="https://www.fossil-scm.org/index.html/uv/fossil-src-$version.tar.gz"
+checksum="76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9"
+build_style="configure"
+configure_args+=" --disable-internal-sqlite"
+configure_args+=" --prefix=/usr"
 
 post_install() {
-	vman fossil.1
-	vlicense COPYRIGHT-BSD2.txt LICENSE
+  vlicense COPYRIGHT-BSD2.txt LICENSE
+  vman fossil.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
