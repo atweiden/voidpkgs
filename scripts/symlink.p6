@@ -18,6 +18,7 @@ my List:D %pkg{Str:D} =
                   avahi-libs
                   avahi-libs-devel
                   avahi-utils>,
+    'babeltrace' => ['babeltrace-devel'],
     'bcc' => qw<bcc-devel
                 bcc-tools
                 python-bcc>,
