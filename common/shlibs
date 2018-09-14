@@ -13,6 +13,12 @@ libavahi-common.so.3 avahi-libs-0.6.25_1
 libavahi-core.so.7 avahi-libs-0.6.25_1
 libavahi-ui.so.0 avahi-ui-libs-0.6.25_1
 libavahi-ui-gtk3.so.0 avahi-ui-libs-gtk3-0.6.25_1
+libbabeltrace-ctf-metadata.so.1 babeltrace-1.5.3_1
+libbabeltrace-ctf-text.so.1 babeltrace-1.5.3_1
+libbabeltrace-ctf.so.1 babeltrace-1.5.3_1
+libbabeltrace-dummy.so.1 babeltrace-1.5.3_1
+libbabeltrace-lttng-live.so.1 babeltrace-1.5.3_1
+libbabeltrace.so.1 babeltrace-1.5.3_1
 libblas.so.3 blas-3.5.0_1
 libboost_atomic.so.1.65.1 boost-1.65.1_1<1.66_1
 libboost_chrono.so.1.65.1 boost-1.65.1_1<1.66_1
