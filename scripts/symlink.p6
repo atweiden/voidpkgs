@@ -204,6 +204,7 @@ my List:D %pkg{Str:D} =
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
     'libidn' => ['libidn-devel'],
+    'libimobiledevice' => ['libimobiledevice-devel'],
     'libjpeg-turbo' => qw<libjpeg-turbo-devel
                           libjpeg-turbo-tools>,
     'libksba' => ['libksba-devel'],
@@ -219,6 +220,9 @@ my List:D %pkg{Str:D} =
                    libnl3-progs>,
     'libpcap' => ['libpcap-devel'],
     'libpipeline' => ['libpipeline-devel'],
+    'libplist' => qw<libplist++
+                     libplist-devel
+                     libplist-python>,
     'libpng' => qw<libpng-devel
                    libpng-progs>,
     'libpwquality' => ['libpwquality-devel'],
@@ -243,6 +247,7 @@ my List:D %pkg{Str:D} =
     'libunwind' => ['libunwind-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
+    'libusbmuxd' => ['libusbmuxd-devel'],
     'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
     'libvterm' => ['libvterm-devel'],
