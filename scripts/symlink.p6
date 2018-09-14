@@ -376,7 +376,6 @@ my List:D %pkg{Str:D} =
     'python-packaging' => ['python3-packaging'],
     'python-paramiko' => ['python3-paramiko'],
     'python-parsing' => ['python3-parsing'],
-    'python-pathlib2' => ['python3-pathlib2'],
     'python-pluggy' => ['python3-pluggy'],
     'python-ply' => ['python3-ply'],
     'python-py' => ['python3-py'],
