@@ -435,12 +435,7 @@ my List:D %pkg{Str:D} =
     'valgrind' => ['valgrind-devel'],
     'vde2' => qw<libvde2
                  vde2-devel>,
-    'vim' => qw<gvim
-                gvim-huge
-                vim-common
-                vim-huge
-                vim-huge-python3
-                vim-x11
+    'vim' => qw<vim-common
                 xxd>,
     'void-repo-multilib' => ['void-repo-multilib-nonfree'],
     'void-repo-nonfree' => ['void-repo-debug'],
