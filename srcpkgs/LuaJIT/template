@@ -49,7 +49,7 @@ do_build() {
     HOST_LDFLAGS="$XBPS_LDFLAGS" \
     TARGET_CFLAGS="$_cflags" \
     TARGET_LDFLAGS="$_ldflags" \
-    "$cross"
+    $cross
 }
 
 do_install() {
