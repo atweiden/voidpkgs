@@ -48,20 +48,22 @@ post_extract() {
 }
 
 pre_configure() {
-  configure_args="$configure_args/with-sysroot/with-build-sysroot"
+  configure_args="${configure_args/with-sysroot/with-build-sysroot}"
 }
 
 pre_build() {
   export gl_cv_func_gettimeofday_clobber="no"
-  export gl_cv_func_working_strerror="yes"
   export gl_cv_func_strerror_0_works="yes"
+  export gl_cv_func_working_strerror="yes"
 }
 
 post_install() {
   # resolve conflicts with binutils
   rm -rf "$DESTDIR/usr/include" "$DESTDIR/usr/lib"
   [[ -d "$DESTDIR/usr/lib64" ]] && rm -rf "$DESTDIR/usr/lib64"
-  for f in bfd configure standards; do
+  for f in bfd \
+           configure \
+           standards; do
     rm -f "$DESTDIR/usr/share/info/$f".info*
   done
 }
