@@ -63,6 +63,7 @@ libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
 libclang.so.6 clang-6.0.0_1
 libcmocka.so.0 cmocka-1.1.1_1
+libreg.so crda-3.18_5
 libcryptopp.so.5.6 crypto++-565_1
 libdbus-glib-1.so.2 dbus-glib-0.80_1
 libdbus-1.so.3 dbus-libs-1.2.10_1
