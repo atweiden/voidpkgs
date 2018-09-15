@@ -11,9 +11,13 @@ makedepends+=" zlib-devel"
 checkdepends+=" desktop-file-utils"
 checkdepends+=" shared-mime-info"
 checkdepends+=" tzdata"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
 hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" libtool"
 hostmakedepends+=" libxslt"
 hostmakedepends+=" m4"
+hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 short_desc="The GNU library of C routines"
@@ -22,16 +26,27 @@ license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/glib-$version.tar.xz"
 checksum="c0f4ce0730b4f95c47b711613b5406a887c2ee13ea6d25930d72a4fa7fdb77f6"
-build_style="meson"
-configure_args+=" --default-library=both"
-configure_args+=" -Dfam=false"
-configure_args+=" -Dgtk_doc=false"
-configure_args+=" -Dman=true"
-configure_args+=" -Dselinux=false"
+build_style="gnu-configure"
+configure_args+=" --disable-fam"
+configure_args+=" --enable-libelf"
+configure_args+=" --enable-static"
+configure_args+=" --with-pcre=system"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" glib-devel"
+  case "$XBPS_TARGET_MACHINE" in
+    mips*)
+      # it seems common/environment/configure/autoconf_cache/mips-linux is not read?
+      configure_args+=" glib_cv_stack_grows=no"
+      configure_args+=" glib_cv_rtldglobal_broken=no"
+      configure_args+=" glib_cv_uscore=no"
+      ;;
+  esac
 fi
+
+pre_configure() {
+  ./autogen.sh
+}
 
 libglib-devel_package() {
   depends+=" $makedepends"
