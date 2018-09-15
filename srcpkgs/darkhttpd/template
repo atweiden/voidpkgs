@@ -12,7 +12,7 @@ CFLAGS+=" $CFLAGS"
 CFLAGS+=" $LDFLAGS"
 
 do_build() {
-  "$CC" "$CFLAGS" "$LDFLAGS" "$LIBS" "$pkgname.c" -o "$pkgname"
+  $CC $CFLAGS $LDFLAGS $LIBS "$pkgname.c" -o "$pkgname"
 }
 
 do_install() {
