@@ -53,10 +53,10 @@ do_configure() {
     $_args \
     --prefix="/usr" \
     --shared-zlib \
-    "$(vopt_if http_parser --shared-http-parser)" \
-    "$(vopt_if icu --with-intl=system-icu)" \
-    "$(vopt_if libuv --shared-libuv)" \
-    "$(vopt_if ssl --shared-openssl)"
+    $(vopt_if http_parser --shared-http-parser) \
+    $(vopt_if icu --with-intl=system-icu) \
+    $(vopt_if libuv --shared-libuv) \
+    $(vopt_if ssl --shared-openssl)
 }
 
 do_build() {
