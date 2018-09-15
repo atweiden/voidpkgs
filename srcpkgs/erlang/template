@@ -7,7 +7,6 @@ makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" unixodbc-devel"
 makedepends+=" zlib-devel"
-makedepends+=" $(vopt_if x11 'glu-devel wxWidgets-devel')"
 hostmakedepends+=" libxslt"
 hostmakedepends+=" perl"
 license="Apache-2.0"
@@ -19,8 +18,6 @@ checksum+=" 10bf0e44b97ee8320c4868d5a4259c49d4d2a74e9c48583735ae0401f010fb31"
 create_wrksrc="yes"
 build_wrksrc="otp_src_$version"
 build_style="gnu-configure"
-configure_args="$(vopt_if x11 --with-wx-config=wx-config-3.0)"
-build_options="x11"
 
 pre_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
