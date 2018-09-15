@@ -5,6 +5,7 @@ revision=1
 short_desc="The GNU wget download utility"
 depends="ca-certificates"
 makedepends+=" libidn-devel"
+makedepends+=" libpsl-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" pcre-devel"
 makedepends+=" $(vopt_if gnutls gnutls-devel)"
