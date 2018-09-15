@@ -38,11 +38,11 @@ do_build() {
 
   # build nsinstall for host
   make \
-    "$_native_use64"
-    CC="$BUILD_CC"
-    CFLAGS="$BUILD_CFLAGS"
-    LD="$BUILD_LD"
-    LDFLAGS="$BUILD_LDFLAGS"
+    $_native_use64 \
+    CC="$BUILD_CC" \
+    CFLAGS="$BUILD_CFLAGS" \
+    LD="$BUILD_LD" \
+    LDFLAGS="$BUILD_LDFLAGS" \
     -C coreconf
 
   if [[ -n "$CROSS_BUILD" ]]; then
@@ -72,7 +72,7 @@ do_build() {
     export XCFLAGS="$CFLAGS"
 
     make \
-      "$_target_use64" \
+      $_target_use64 \
       CC="$CC" \
       CCC="$CXX" \
       CROSS_COMPILE=1 \
@@ -81,7 +81,7 @@ do_build() {
       RANLIB="$RANLIB" \
       -C lib/dbm
     make \
-      "$_target_use64" \
+      $_target_use64 \
       CC="$CC" \
       CCC="$CXX" \
       CROSS_COMPILE=1 \
@@ -93,8 +93,8 @@ do_build() {
     export NSPR_INCLUDE_DIR="/usr/include/nspr"
     export NSPR_LIB_DIR="/usr/lib"
     export XCFLAGS="$CFLAGS"
-    make "$_native_use64" -C lib/dbm
-    make "$_native_use64"
+    make $_native_use64 -C lib/dbm
+    make $_native_use64
   fi
 }
 
