@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-Sphinx"
-version=1.7.8
+version=1.7.9
 revision=1
 short_desc="Python2 documentation generator"
 noarch="yes"
@@ -22,7 +22,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="http://sphinx-doc.org/"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="a07050845cc9a2f4026a6035cc8ed795a5ce7be6528bbc82032385c10807dfe7"
+checksum="217a7705adcb573da5bbe1e0f5cab4fa0bd89fd9342c9159121746f593c2d5a4"
 wrksrc="Sphinx-$version"
 build_style="python-module"
 pycompile_module="sphinx"
