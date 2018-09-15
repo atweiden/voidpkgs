@@ -19,6 +19,8 @@ libbabeltrace-ctf.so.1 babeltrace-1.5.3_1
 libbabeltrace-dummy.so.1 babeltrace-1.5.3_1
 libbabeltrace-lttng-live.so.1 babeltrace-1.5.3_1
 libbabeltrace.so.1 babeltrace-1.5.3_1
+libbcc.so.0 bcc-0.7.0_1
+libbpf.so.0 bcc-0.7.0_1
 libblas.so.3 blas-3.5.0_1
 libboost_atomic.so.1.65.1 boost-1.65.1_1<1.66_1
 libboost_chrono.so.1.65.1 boost-1.65.1_1<1.66_1
@@ -335,6 +337,9 @@ libyaml-0.so.2 libyaml-0.1.4_1
 libzip.so.5 libzip-1.2_1
 libzstd.so.1 libzstd-1.0.0_1
 libldm.so.1 linux-driver-management-1.0.1_1
+liblldb.so.6 lldb-6.0.1_3
+liblldbIntelFeatures.so.6 lldb-6.0.1_3
+libLTO.so.6 llvm-6.0.1_3
 libunwind.so.1 llvm-libunwind-3.8.0_1
 liblua5.3.so.5.3 lua-5.3.1_2
 liblua5.1.so.5.1 lua51-5.1.5_1
