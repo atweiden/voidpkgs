@@ -8,6 +8,8 @@ my List:D %pkg{Str:D} =
                 acl-progs>,
     'atf' => qw<atf-devel
                 atf-libs>,
+    'argon2' => qw<libargon2
+                   libargon2-devel>,
     'aria2' => qw<libaria2
                   libaria2-devel>,
     'attr' => qw<attr-devel
