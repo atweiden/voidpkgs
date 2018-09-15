@@ -228,6 +228,7 @@ my List:D %pkg{Str:D} =
                      libplist-python>,
     'libpng' => qw<libpng-devel
                    libpng-progs>,
+    'libpsl' => ['libpsl-devel'],
     'libpwquality' => ['libpwquality-devel'],
     'libressl' => qw<libcrypto43
                      libressl-devel
