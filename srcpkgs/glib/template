@@ -33,6 +33,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 libglib-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" glib>=${version}_$revision"
   short_desc+=" - development files"
@@ -45,6 +46,7 @@ libglib-devel_package() {
 }
 
 glib-devel_package() {
+  unset depends
   depends+=" libglib-devel>=${version}_$revision"
   depends+=" perl"
   depends+=" python3"
