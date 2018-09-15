@@ -6,6 +6,7 @@ version=$_distver.$_date
 revision=1
 short_desc="A tool to display dialog boxes from shell scripts"
 makedepends="ncurses-devel"
+hostmakedepends="pkg-config"
 homepage="https://invisible-island.net/dialog/"
 license="LGPL-2.1-only"
 distfiles="https://invisible-mirror.net/archives/$pkgname/$pkgname-$_distver-$_date.tgz"
