@@ -75,8 +75,8 @@ do_configure() {
   unset CPP
 
   ./configure \
-    "$(vopt_enable smartcard)" \
-    "$(vopt_enable spice)" \
+    $(vopt_enable smartcard) \
+    $(vopt_enable spice) \
     $args \
     --audio-drv-list= \
     --disable-bluez \
