@@ -565,6 +565,7 @@ libatomic_package() {
 }
 
 libgcc_package() {
+  unset replaces
   short_desc+=" - GCC library"
   replaces+=" libcilkrts<8.2.0"
   replaces+=" libgcj<7.2.0"
@@ -576,6 +577,7 @@ libgcc_package() {
 }
 
 libgcc-devel_package() {
+  unset replaces
   depends="libgcc-${version}_$revision"
   short_desc+=" - GCC library - development files"
   replaces+=" libcilkrts-devel<8.2.0"

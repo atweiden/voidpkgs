@@ -88,6 +88,7 @@ libfdisk_package() {
 }
 
 libfdisk-devel_package() {
+  unset depends
   depends+=" libblkid-devel-${version}_$revision"
   depends+=" libfdisk-${version}_$revision"
   short_desc="fdisk(8) library development files"
@@ -107,6 +108,7 @@ libmount_package() {
 }
 
 libmount-devel_package() {
+  unset depends
   depends+=" libblkid-devel-${version}_$revision"
   depends+=" libmount-${version}_$revision"
   short_desc="mount(8) library development files"
@@ -126,6 +128,7 @@ libblkid_package() {
 }
 
 libblkid-devel_package() {
+  unset depends
   depends+=" libblkid-${version}_$revision"
   depends+=" libuuid-devel-${version}_$revision"
   depends+=" zlib-devel"

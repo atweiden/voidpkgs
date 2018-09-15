@@ -38,8 +38,9 @@ post_install() {
 }
 
 protobuf-devel_package() {
-  depends="zlib-devel protobuf-${version}_$revision
-   protobuf-lite-${version}_$revision"
+  depends+=" protobuf-${version}_$revision"
+  depends+=" protobuf-lite-${version}_$revision"
+  depends+=" zlib-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

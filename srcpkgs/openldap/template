@@ -65,6 +65,7 @@ post_install() {
 }
 
 libldap-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" libldap>=${version}_$revision"
   short_desc+=" library - development files"

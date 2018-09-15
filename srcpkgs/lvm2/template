@@ -63,6 +63,7 @@ post_install() {
 }
 
 device-mapper-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" device-mapper>=${version}_$revision"
   short_desc="Device Mapper userspace library - development files"
@@ -100,6 +101,7 @@ device-mapper_package() {
 }
 
 liblvm2app-devel_package() {
+  unset depends
   depends+=" device-mapper-devel-${version}_$revision"
   depends+=" libblkid-devel"
   depends+=" liblvm2app-${version}_$revision"

@@ -199,7 +199,8 @@ do_install() {
 glibc-devel_package() {
   lib32depends="glibc>=${version}_$revision"
   lib32files="/usr/include/gnu/stubs-32.h"
-  depends="$makedepends glibc>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" glibc>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

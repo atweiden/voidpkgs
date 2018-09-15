@@ -24,7 +24,8 @@ post_install() {
 }
 
 libmpc-devel_package() {
-  depends="$makedepends libmpc>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" libmpc>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

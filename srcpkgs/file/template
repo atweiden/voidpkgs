@@ -31,7 +31,8 @@ libmagic_package() {
 }
 
 file-devel_package() {
-  depends="$makedepends libmagic>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" libmagic>=${version}_$revision"
   short_desc="File type identification library - development files"
   pkg_install() {
     vmove usr/include

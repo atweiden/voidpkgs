@@ -43,7 +43,8 @@ do_install() {
 }
 
 readline-devel_package() {
-  depends="ncurses-devel $sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" ncurses-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

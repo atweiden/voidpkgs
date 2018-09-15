@@ -36,7 +36,8 @@ pre_configure() {
 
 libimobiledevice-devel_package() {
   short_desc+=" - development files"
-  depends="$makedepends $sourcepkg>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"

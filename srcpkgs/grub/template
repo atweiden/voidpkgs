@@ -163,8 +163,11 @@ grub-utils_package() {
 }
 
 grub-x86_64-efi_package() {
-  noarch=yes
-  depends="grub>=$version dosfstools efibootmgr"
+  unset depends
+  noarch="yes"
+  depends+=" dosfstools"
+  depends+=" efibootmgr"
+  depends+=" grub>=$version"
   short_desc+=" - x86_64 EFI support"
   pkg_install() {
     vmove usr/lib/grub/x86_64-efi
@@ -172,8 +175,11 @@ grub-x86_64-efi_package() {
 }
 
 grub-i386-efi_package() {
-  noarch=yes
-  depends="grub>=$version dosfstools efibootmgr"
+  unset depends
+  noarch="yes"
+  depends+=" dosfstools"
+  depends+=" efibootmgr"
+  depends+=" grub>=$version"
   short_desc+=" - i386 EFI support"
   pkg_install() {
     vmove usr/lib/grub/i386-efi

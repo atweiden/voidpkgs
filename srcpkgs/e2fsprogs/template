@@ -51,7 +51,8 @@ post_install() {
 }
 
 e2fsprogs-devel_package() {
-  depends="$makedepends e2fsprogs-libs>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" e2fsprogs-libs>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

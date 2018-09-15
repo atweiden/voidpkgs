@@ -64,7 +64,9 @@ libcurl_package() {
   }
 }
 libcurl-devel_package() {
-  depends="$makedepends libcurl>=${version}_$revision"
+  unset depends
+  depends+=" $makedepends"
+  depends+=" libcurl>=${version}_$revision"
   short_desc="The multiprotocol file transfer library - development files"
   pkg_install() {
     vmove usr/bin/curl-config

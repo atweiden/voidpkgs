@@ -68,9 +68,9 @@ bcc-devel_package() {
 
 python-bcc_package() {
   lib32disabled="yes"
-  depends="python"
   short_desc+=" - Python 2.7 module"
-  depends="$sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" python"
   pycompile_module="bcc"
   pkg_install() {
     vmove "usr/lib/python*"

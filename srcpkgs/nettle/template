@@ -13,7 +13,8 @@ build_style="gnu-configure"
 configure_args="--enable-shared"
 
 nettle-devel_package() {
-  depends="gmp-devel $sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" gmp-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
