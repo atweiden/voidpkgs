@@ -137,21 +137,21 @@ do_configure() {
       ;;
   esac
   export LD_LIBRARY_PATH="$wrksrc/stage0/lib"
-  configure_args+=" --build=$_triplet"
-  configure_args+=" --disable-codegen-tests"
-  configure_args+=" --disable-docs"
-  configure_args+=" --disable-rpath"
-  configure_args+=" --enable-ccache"
-  configure_args+=" --enable-local-rust"
-  configure_args+=" --host=$_triplet"
-  configure_args+=" --llvm-root=/usr"
-  configure_args+=" --local-rust-root=$wrksrc/stage0"
-  configure_args+=" --prefix=/usr"
-  configure_args+=" --release-channel=stable"
+  configure_args+=" --build=$_triplet "
+  configure_args+=" --disable-codegen-tests "
+  configure_args+=" --disable-docs "
+  configure_args+=" --disable-rpath "
+  configure_args+=" --enable-ccache "
+  configure_args+=" --enable-local-rust "
+  configure_args+=" --host=$_triplet "
+  configure_args+=" --llvm-root=/usr "
+  configure_args+=" --local-rust-root=$wrksrc/stage0 "
+  configure_args+=" --prefix=/usr "
+  configure_args+=" --release-channel=stable "
   case "$XBPS_TARGET_MACHINE" in
   *-musl)
-    configure_args+=" --disable-jemalloc"
-    configure_args+=" --musl-root=/usr"
+    configure_args+=" --disable-jemalloc "
+    configure_args+=" --musl-root=/usr "
     ;;
   esac
   ./configure $configure_args
