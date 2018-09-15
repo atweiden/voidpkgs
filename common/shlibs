@@ -350,6 +350,12 @@ liblua5.2.so.5.2 lua52-5.2.4_2
 liblutok.so.3 lutok-0.4_1
 liblz.so.1 lzlib-1.8_1
 liblzo2.so.2 lzo-2.03_1
+db2.so.0 mit-krb5-1.16.1_1
+k5tls.so.0 mit-krb5-1.16.1_1
+kldap.so.0 mit-krb5-1.16.1_1
+otp.so.0 mit-krb5-1.16.1_1
+pkinit.so.0 mit-krb5-1.16.1_1
+test.so.0 mit-krb5-1.16.1_1
 libkrad.so.0 mit-krb5-libs-1.12.1_1
 libkdb_ldap.so.1 mit-krb5-libs-1.14.2_2
 libkadm5clnt_mit.so.11 mit-krb5-libs-1.15.1_1
