@@ -211,6 +211,7 @@ libgit2.so.27 libgit2-0.27.3_1
 libgo.so.13 libgo-8.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
+libgudev-1.0.so.0 libgudev-230_1
 libguile-2.0.so.22 libguile-2.0.9_3
 libhavege.so.1 libhaveged-1.9.1_1
 libidn.so.11 libidn-1.10_1
@@ -230,6 +231,7 @@ liblvm2app.so.2.2 liblvm2app-2.02.54_1
 liblz4.so.1 liblz4-1.8.2_1
 liblzma.so.5 liblzma-5.0.0_1
 libmagic.so.1 libmagic-5.12_1
+libmbim-glib.so.4 libmbim-1.10.0_1
 libmnl.so.0 libmnl-1.0.3_1
 libmount.so.1 libmount-2.18_1
 libmpack.so.0 libmpack-1.0.5_1
@@ -438,6 +440,10 @@ libunibilium.so.4 unibilium-2.0.0_1
 libusbredirhost.so.1 usbredir-0.7_1
 libusbredirparser.so.1 usbredir-0.7_1
 libiw.so.29 wireless_tools-29_1
+libwvbase.so.4.6 wvstreams-4.6.1_1
+libwvstreams.so.4.6 wvstreams-4.6.1_1
+libwvutils.so.4.6 wvstreams-4.6.1_1
+libuniconf.so.4.6 wvstreams-4.6.1_2
 libhandle.so.1 xfsprogs-3.2.1_1
 libzmq.so.5 zeromq-4.1.2_1
 libz.so.1 zlib-1.2.3_1
