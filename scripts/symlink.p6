@@ -445,6 +445,7 @@ my List:D %pkg{Str:D} =
     'void-repo-nonfree' => ['void-repo-debug'],
     'wireguard' => ['wireguard-tools'],
     'wireless_tools' => ['wireless_tools-devel'],
+    'wvstreams' => ['wvstreams-devel'],
     'xbps' => qw<libxbps
                  libxbps-devel
                  xbps-tests>,
