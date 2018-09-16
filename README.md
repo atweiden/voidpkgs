@@ -15,12 +15,39 @@ guide][style guide].
 Usage
 -----
 
+Fetch voidpkgs:
+
 ```sh
 git clone https://github.com/atweiden/voidpkgs
 cd voidpkgs
+```
+
+Bootstrap native libc architecture without remote repositories:
+
+```sh
 ./xbps-src -N bootstrap
 ./xbps-src -N pkg base-system
-./xbps-src -N pkg quixand
+```
+
+Bootstrap cross-compiled musl architecture without remote repositories:
+
+```sh
+_arch=$(uname -m)
+./xbps-src -N pkg cross-$_arch-linux-musl
+./xbps-src -N -a $_arch-musl pkg base-chroot-musl
+XBPS_TARGET_ARCH=$_arch-musl xbps-rindex -a hostdir/binpkgs/*
+./xbps-src -N bootstrap -m masterdir-$_arch-musl $_arch-musl
+```
+
+Bootstrap 32-bit architecture without remote repositories:
+
+```sh
+./xbps-src -N -m masterdir-i686 bootstrap i686
+```
+
+Install pkg easily with xtools/xi:
+
+```sh
 xbps-install xtools
 xi quixand
 ```
