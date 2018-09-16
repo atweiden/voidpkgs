@@ -1,12 +1,13 @@
-# Template file for 'minicom'
-pkgname=minicom
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="minicom"
 version=2.7.1
 revision=1
-build_style=gnu-configure
-makedepends="ncurses-devel"
 short_desc="Menu driven communications program"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2"
+makedepends="ncurses-devel"
 homepage="http://alioth.debian.org/projects/minicom/"
-distfiles="https://alioth.debian.org/frs/download.php/file/4215/minicom-${version}.tar.gz"
-checksum=532f836b7a677eb0cb1dca8d70302b73729c3d30df26d58368d712e5cca041f1
+license="GPL-2"
+distfiles="https://alioth.debian.org/frs/download.php/file/4215/minicom-$version.tar.gz"
+checksum="532f836b7a677eb0cb1dca8d70302b73729c3d30df26d58368d712e5cca041f1"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
