@@ -20,10 +20,10 @@ make_dirs+=" /etc/ppp/peers 0755 root root"
 
 CFLAGS="-D_GNU_SOURCE"
 
-pre_configure() {
+do_configure() {
   # set custom CFLAGS
   find -name "Makefile.linux" -exec \
-    sed -i "{}" -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" \;
+    sed -i -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" "{}" \;
   # set custom LDFLAGS for chat, pppoe-discovery and pppdump
   sed \
     -i \
@@ -52,9 +52,7 @@ pre_configure() {
     -i \
     -e "s:^#CBCP=y:CBCP=y:" \
     pppd/Makefile.linux
-}
 
-do_configure() {
   ./configure $configure_args
 }
 
