@@ -212,6 +212,7 @@ my List:D %pkg{Str:D} =
     'libjpeg-turbo' => qw<libjpeg-turbo-devel
                           libjpeg-turbo-tools>,
     'libksba' => ['libksba-devel'],
+    'libmbim' => ['libmbim-devel'],
     'libmnl' => ['libmnl-devel'],
     'libmpack' => ['libmpack-devel'],
     'libmpc' => ['libmpc-devel'],
