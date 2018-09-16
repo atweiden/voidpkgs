@@ -1,6 +1,5 @@
-diff -Nur ppp-2.4.6.orig/chat/Makefile.linux ppp-2.4.6/chat/Makefile.linux
---- ppp-2.4.6.orig/chat/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/chat/Makefile.linux	2014-02-24 09:00:16.666577906 +0100
+--- chat/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ chat/Makefile.linux	2014-02-24 09:00:16.666577906 +0100
 @@ -1,7 +1,7 @@
  #	$Id: Makefile.linux,v 1.15 2006/06/04 05:07:46 paulus Exp $
  
@@ -29,9 +28,8 @@ diff -Nur ppp-2.4.6.orig/chat/Makefile.linux ppp-2.4.6/chat/Makefile.linux
  
  install: chat
  	mkdir -p $(BINDIR) $(MANDIR)
-diff -Nur ppp-2.4.6.orig/configure ppp-2.4.6/configure
---- ppp-2.4.6.orig/configure	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/configure	2014-02-24 09:00:16.743242620 +0100
+--- configure	2014-01-02 05:42:08.000000000 +0100
++++ configure	2014-02-24 09:00:16.743242620 +0100
 @@ -185,7 +185,10 @@
      rm -f $2
      if [ -f $1 ]; then
@@ -44,9 +42,8 @@ diff -Nur ppp-2.4.6.orig/configure ppp-2.4.6/configure
      fi
  }
  
-diff -Nur ppp-2.4.6.orig/linux/Makefile.top ppp-2.4.6/linux/Makefile.top
---- ppp-2.4.6.orig/linux/Makefile.top	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/linux/Makefile.top	2014-02-24 09:00:16.743242620 +0100
+--- linux/Makefile.top	2014-01-02 05:42:08.000000000 +0100
++++ linux/Makefile.top	2014-02-24 09:00:16.743242620 +0100
 @@ -1,7 +1,7 @@
  # PPP top-level Makefile for Linux.
  
@@ -56,9 +53,8 @@ diff -Nur ppp-2.4.6.orig/linux/Makefile.top ppp-2.4.6/linux/Makefile.top
  INCDIR = $(DESTDIR)/include
  MANDIR = $(DESTDIR)/share/man
  ETCDIR = $(INSTROOT)@SYSCONF@/ppp
-diff -Nur ppp-2.4.6.orig/pppd/Makefile.linux ppp-2.4.6/pppd/Makefile.linux
---- ppp-2.4.6.orig/pppd/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/Makefile.linux	2014-02-24 09:00:16.743242620 +0100
+--- pppd/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/Makefile.linux	2014-02-24 09:00:16.743242620 +0100
 @@ -5,7 +5,7 @@
  
  # Default installation locations
@@ -78,9 +74,8 @@ diff -Nur ppp-2.4.6.orig/pppd/Makefile.linux ppp-2.4.6/pppd/Makefile.linux
  LIBS =
  
  # Uncomment the next 2 lines to include support for Microsoft's
-diff -Nur ppp-2.4.6.orig/pppd/plugins/Makefile.linux ppp-2.4.6/pppd/plugins/Makefile.linux
---- ppp-2.4.6.orig/pppd/plugins/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/plugins/Makefile.linux	2014-02-24 09:00:16.779908379 +0100
+--- pppd/plugins/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/plugins/Makefile.linux	2014-02-24 09:00:16.779908379 +0100
 @@ -1,11 +1,11 @@
  #CC	= gcc
 -COPTS	= -O2 -g
@@ -96,9 +91,8 @@ diff -Nur ppp-2.4.6.orig/pppd/plugins/Makefile.linux ppp-2.4.6/pppd/plugins/Make
  MANDIR = $(DESTDIR)/share/man/man8
  LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
  
-diff -Nur ppp-2.4.6.orig/pppd/plugins/pppoatm/Makefile.linux ppp-2.4.6/pppd/plugins/pppoatm/Makefile.linux
---- ppp-2.4.6.orig/pppd/plugins/pppoatm/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/plugins/pppoatm/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
+--- pppd/plugins/pppoatm/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/plugins/pppoatm/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
 @@ -1,7 +1,7 @@
  #CC	= gcc
 -COPTS	= -O2 -g
@@ -118,9 +112,8 @@ diff -Nur ppp-2.4.6.orig/pppd/plugins/pppoatm/Makefile.linux ppp-2.4.6/pppd/plug
  
  install: all
  	$(INSTALL) -d -m 755 $(LIBDIR)
-diff -Nur ppp-2.4.6.orig/pppd/plugins/pppol2tp/Makefile.linux ppp-2.4.6/pppd/plugins/pppol2tp/Makefile.linux
---- ppp-2.4.6.orig/pppd/plugins/pppol2tp/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/plugins/pppol2tp/Makefile.linux	2014-02-24 09:01:06.325349425 +0100
+--- pppd/plugins/pppol2tp/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/plugins/pppol2tp/Makefile.linux	2014-02-24 09:01:06.325349425 +0100
 @@ -1,12 +1,12 @@
  #CC	= gcc
 -COPTS	= -O2 -g
@@ -146,9 +139,8 @@ diff -Nur ppp-2.4.6.orig/pppd/plugins/pppol2tp/Makefile.linux ppp-2.4.6/pppd/plu
  
  install: all
  	$(INSTALL) -d -m 755 $(LIBDIR)
-diff -Nur ppp-2.4.6.orig/pppd/plugins/radius/Makefile.linux ppp-2.4.6/pppd/plugins/radius/Makefile.linux
---- ppp-2.4.6.orig/pppd/plugins/radius/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/plugins/radius/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
+--- pppd/plugins/radius/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/plugins/radius/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
 @@ -12,7 +12,8 @@
  INSTALL	= install
  
@@ -176,9 +168,8 @@ diff -Nur ppp-2.4.6.orig/pppd/plugins/radius/Makefile.linux ppp-2.4.6/pppd/plugi
  
  CLIENTOBJS = avpair.o buildreq.o config.o dict.o ip_util.o \
  	clientid.o sendserver.o lock.o util.o md5.o
-diff -Nur ppp-2.4.6.orig/pppd/plugins/rp-pppoe/Makefile.linux ppp-2.4.6/pppd/plugins/rp-pppoe/Makefile.linux
---- ppp-2.4.6.orig/pppd/plugins/rp-pppoe/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppd/plugins/rp-pppoe/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
+--- pppd/plugins/rp-pppoe/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppd/plugins/rp-pppoe/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
 @@ -15,7 +15,7 @@
  #***********************************************************************
  
@@ -214,9 +205,8 @@ diff -Nur ppp-2.4.6.orig/pppd/plugins/rp-pppoe/Makefile.linux ppp-2.4.6/pppd/plu
  
  install: all
  	$(INSTALL) -d -m 755 $(LIBDIR)
-diff -Nur ppp-2.4.6.orig/pppdump/Makefile.linux ppp-2.4.6/pppdump/Makefile.linux
---- ppp-2.4.6.orig/pppdump/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppdump/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
+--- pppdump/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppdump/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
 @@ -1,8 +1,9 @@
  DESTDIR = $(INSTROOT)@DESTDIR@
 -BINDIR = $(DESTDIR)/sbin
@@ -238,9 +228,8 @@ diff -Nur ppp-2.4.6.orig/pppdump/Makefile.linux ppp-2.4.6/pppdump/Makefile.linux
  
  clean:
  	rm -f pppdump $(OBJS) *~
-diff -Nur ppp-2.4.6.orig/pppstats/Makefile.linux ppp-2.4.6/pppstats/Makefile.linux
---- ppp-2.4.6.orig/pppstats/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
-+++ ppp-2.4.6/pppstats/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
+--- pppstats/Makefile.linux	2014-01-02 05:42:08.000000000 +0100
++++ pppstats/Makefile.linux	2014-02-24 09:00:16.809907637 +0100
 @@ -3,14 +3,15 @@
  # $Id: Makefile.linux,v 1.9 2006/06/04 05:07:46 paulus Exp $
  #
