@@ -1,24 +1,33 @@
-# Template file for 'screen'
-pkgname=screen
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="screen"
 version=4.6.2
 revision=1
-build_style=gnu-configure
-configure_args="--with-sys-screenrc=/etc/screenrc --enable-pam
- --enable-colors256 --enable-rxvt_osc --enable-telnet
- --enable-use-locale --with-socket-dir=/run/screens --with-pty-group=5"
-makedepends="pam-devel ncurses-devel"
-conf_files="/etc/screenrc /etc/skel/.screenrc"
 short_desc="GNU screen manager with VT100/ANSI terminal emulation"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" libutempter-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pam-devel"
 homepage="http://www.gnu.org/s/screen/"
 license="GPL-3"
-distfiles="${GNU_SITE}/$pkgname/$pkgname-$version.tar.gz"
-checksum=1b6922520e6a0ce5e28768d620b0f640a6631397f95ccb043b70b91bb503fa3a
+distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+checksum="1b6922520e6a0ce5e28768d620b0f640a6631397f95ccb043b70b91bb503fa3a"
+conf_files+=" /etc/screenrc"
+conf_files+=" /etc/skel/.screenrc"
+build_style="gnu-configure"
+configure_args+=" --enable-colors256"
+configure_args+=" --enable-pam"
+configure_args+=" --enable-rxvt_osc"
+configure_args+=" --enable-telnet"
+configure_args+=" --enable-use-locale"
+configure_args+=" --enable-utmp"
+configure_args+=" --with-pty-group=5"
+configure_args+=" --with-socket-dir=/run/screens"
+configure_args+=" --with-sys-screenrc=/etc/screenrc"
 
 post_install() {
-	vinstall etc/etcscreenrc 0644 etc screenrc
-	vinstall etc/screenrc 0644 etc/skel .screenrc
-	vinstall ${FILESDIR}/screen 0644 etc/pam.d
-
-	chmod 4755 ${DESTDIR}/usr/bin/screen-${version}
+  vinstall etc/etcscreenrc 0644 etc screenrc
+  vinstall etc/screenrc 0644 etc/skel .screenrc
+  vinstall "$FILESDIR/screen" 0644 etc/pam.d
+  chmod 4755 "$DESTDIR/usr/bin/screen-$version"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
