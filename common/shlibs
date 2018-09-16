@@ -6,13 +6,9 @@ libatf-c.so.1 atf-libs-0.21_1
 libattr.so.1 attr-2.4.43_1
 libdns_sd.so.1 avahi-compat-libs-0.6.25_1
 libhowl.so.0 avahi-compat-libs-0.6.25_1
-libavahi-glib.so.1 avahi-glib-libs-0.6.25_1
-libavahi-gobject.so.0 avahi-glib-libs-0.6.25_1
 libavahi-client.so.3 avahi-libs-0.6.25_1
 libavahi-common.so.3 avahi-libs-0.6.25_1
 libavahi-core.so.7 avahi-libs-0.6.25_1
-libavahi-ui.so.0 avahi-ui-libs-0.6.25_1
-libavahi-ui-gtk3.so.0 avahi-ui-libs-gtk3-0.6.25_1
 libbabeltrace-ctf-metadata.so.1 babeltrace-1.5.3_1
 libbabeltrace-ctf-text.so.1 babeltrace-1.5.3_1
 libbabeltrace-ctf.so.1 babeltrace-1.5.3_1
@@ -65,7 +61,6 @@ libclang.so.6 clang-6.0.0_1
 libcmocka.so.0 cmocka-1.1.1_1
 libreg.so crda-3.18_5
 libcryptopp.so.5.6 crypto++-565_1
-libdbus-glib-1.so.2 dbus-glib-0.80_1
 libdbus-1.so.3 dbus-libs-1.2.10_1
 libdevmapper-event-lvm2.so.2.02 device-mapper-2.02.110_1
 libdevmapper-event.so.1.02 device-mapper-2.02.110_1
@@ -210,14 +205,9 @@ libevent_openssl-2.1.so.6 libevent-2.1.8_3
 libfdisk.so.1 libfdisk-2.26_1
 libffi.so.6 libffi-3.1_1
 libgcc_s.so.1 libgcc-4.4.0_1
-libgcj_bc.so.1 libgcj-4.7.3_1
-libgcj-tools.so.17 libgcj-6.2.1_1
-libgij.so.17 libgcj-6.2.1_1
-libgcj.so.17 libgcj-6.3.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
 libgfortran.so.5 libgfortran-8.2.0_1
 libgit2.so.27 libgit2-0.27.3_1
-libgit2-glib-1.0.so.0 libgit2-glib-0.23.4_1
 libgo.so.13 libgo-8.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
@@ -234,11 +224,6 @@ liblber-2.4.so.2 libldap-2.4.21_1
 libldap-2.4.so.2 libldap-2.4.21_1
 libldap_r-2.4.so.2 libldap-2.4.21_1
 libldns.so.2 libldns-1.7.0_1
-libLLVM-3.8.so libllvm3.8-3.8.0_1
-libLLVM-3.8.1.so libllvm3.8-3.8.1_1
-libLLVM-3.9.so libllvm3.9-3.9.0_1
-libLLVM-4.0.so libllvm4.0-4.0.0_1
-libLLVM-5.0.so libllvm5.0-5.0.0_1
 libLLVM-6.0.so libllvm6.0-6.0.0_1
 libltdl.so.7 libltdl-2.2.6_1
 liblvm2app.so.2.2 liblvm2app-2.02.54_1
@@ -289,7 +274,6 @@ libpsl.so.5 libpsl-0.20.2_1
 libpwquality.so.1 libpwquality-1.1.1_1
 libqrencode.so.4 libqrencode-4.0.0_1
 libquadmath.so.0 libquadmath-4.4.0_1
-librtmp.so.1 librtmp-2.4.20161210_1
 liblsan.so.0 libsanitizer-6.3.0_1
 libtsan.so.0 libsanitizer-6.3.0_1
 libasan.so.5 libsanitizer-8.2.0_1
@@ -337,18 +321,14 @@ libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1
 libxxhash.so.0 libxxhash-0.6.5_1
 libyaml-0.so.2 libyaml-0.1.4_1
-libzip.so.5 libzip-1.2_1
 libzstd.so.1 libzstd-1.0.0_1
-libldm.so.1 linux-driver-management-1.0.1_1
 liblldb.so.6 lldb-6.0.1_3
 liblldbIntelFeatures.so.6 lldb-6.0.1_3
 libLTO.so.6 llvm-6.0.1_3
-libunwind.so.1 llvm-libunwind-3.8.0_1
 liblua5.3.so.5.3 lua-5.3.1_2
 liblua5.1.so.5.1 lua51-5.1.5_1
 liblua5.2.so.5.2 lua52-5.2.4_2
 liblutok.so.3 lutok-0.4_1
-liblz.so.1 lzlib-1.8_1
 liblzo2.so.2 lzo-2.03_1
 db2.so.0 mit-krb5-1.16.1_1
 k5tls.so.0 mit-krb5-1.16.1_1
@@ -375,7 +355,6 @@ libmsgpack.so.4 msgpack-1.1.0_1
 libmsgpackc.so.2 msgpack-1.1.0_1
 libc.so musl-0.9.9_1
 libfts.so.0 musl-fts-1.2_2
-librpmatch.so.0 musl-rpmatch-1.0_1
 libformw.so.6 ncurses-libs-5.8_1 ignore
 libmenuw.so.6 ncurses-libs-5.8_1 ignore
 libncursesw.so.5 ncurses-libs-5.8_1 ignore
@@ -401,7 +380,6 @@ libnssutil3.so nss-3.12.4_1
 libsmime3.so nss-3.12.4_1
 libsoftokn3.so nss-3.12.4_1
 libssl3.so nss-3.12.4_1
-libnss_ldap.so.2 nss-pam-ldapd-0.9.7_4
 libntfs-3g.so.88 ntfs-3g-2017.3.23_1
 libonig.so.5 oniguruma-6.8.1_1
 accesslog-2.4.so.2 openldap-2.4.45_7
@@ -416,8 +394,10 @@ memberof-2.4.so.2 openldap-2.4.45_7
 pcache-2.4.so.2 openldap-2.4.45_7
 ppolicy-2.4.so.2 openldap-2.4.45_7
 refint-2.4.so.2 openldap-2.4.45_7
+refint-2.4.so.2 openldap-2.4.45_7
 retcode-2.4.so.2 openldap-2.4.45_7
 rwm-2.4.so.2 openldap-2.4.45_7
+seqmod-2.4.so.2 openldap-2.4.45_7
 seqmod-2.4.so.2 openldap-2.4.45_7
 sssvlv-2.4.so.2 openldap-2.4.45_7
 syncprov-2.4.so.2 openldap-2.4.45_7
@@ -441,10 +421,8 @@ libpopt.so.0 popt-1.15_1
 libprocps.so.7 procps-ng-3.3.15_1
 libprotobuf.so.17 protobuf-3.6.1_1
 libprotoc.so.17 protobuf-3.6.1_1
-libprotobuf-c.so.1 protobuf-c-1.1.0_1
 libprotobuf-lite.so.17 protobuf-lite-3.6.1_1
 libpython2.7.so.1.0 python-2.7_1
-libpyglib-2.0-python.so.0 python-gobject2-2.28.6_11
 libpython3.6m.so.1.0 python3-3.6.2_1
 libpython3.so python3-3.6.2_1
 libhistory.so.7 readline-7.0_1
@@ -453,9 +431,6 @@ librhash.so.0 rhash-1.3.4_1
 libruby.so.2.5 ruby-2.5.0_1
 libsnappy.so.1 snappy-1.1.0_1
 libspice-server.so.1 spice-0.6.4_1
-libspice-client-glib-2.0.so.8 spice-gtk-0.14_1
-libspice-controller.so.0 spice-gtk-0.14_1
-libspice-client-gtk-3.0.so.5 spice-gtk-0.33_1
 libsqlite3.so.0 sqlite-3.8.11.1_3
 libsudo_util.so.0 sudo-1.8.25_1
 libtalloc.so.2 talloc-2.0.1_1
