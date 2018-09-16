@@ -60,8 +60,6 @@ do_install() {
 
   chmod 755 "$DESTDIR/usr/lib/pppd/$version"/*.so
 
-  vmkdir usr/bin
-  mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
   vbin pppd/pppd
   vbin chat/chat
 
