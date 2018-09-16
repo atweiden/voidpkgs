@@ -342,6 +342,7 @@ my List:D %pkg{Str:D} =
                           pkcs11-helper-doc>,
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
+    'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
     'protobuf' => qw<protobuf-devel
