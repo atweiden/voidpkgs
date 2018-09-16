@@ -1,27 +1,39 @@
-# Template file for 'wvstreams'
-pkgname=wvstreams
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="wvstreams"
 version=4.6.1
 revision=16
-build_style=gnu-configure
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="LGPL-2"
 short_desc="Library for doing network in C++"
 homepage="https://code.google.com/p/wvstreams"
-distfiles="${DEBIAN_SITE}/main/w/${pkgname}/${pkgname}_${version}.orig.tar.gz"
-makedepends="libressl-devel zlib-devel"
-checksum=8403f5fbf83aa9ac0c6ce15d97fd85607488152aa84e007b7d0621b8ebc07633
-configure_args="--sbindir=/usr/bin --without-dbus --without-tcl --without-qt"
+license="LGPL-2"
+distfiles="$DEBIAN_SITE/main/w/$pkgname/${pkgname}_$version.orig.tar.gz"
+makedepends+=" libressl-devel"
+makedepends+=" pam-devel"
+makedepends+=" readline-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
+checksum="8403f5fbf83aa9ac0c6ce15d97fd85607488152aa84e007b7d0621b8ebc07633"
 conf_files="/etc/uniconf.conf"
-
+build_style="gnu-configure"
+configure_args+=" --disable-testgui"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --with-openssl"
+configure_args+=" --with-pam"
+configure_args+=" --with-zlib"
+configure_args+=" --without-dbus"
+configure_args+=" --without-qt"
+configure_args+=" --without-tcl"
 replaces="uniconf>=0"
 
 wvstreams-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision} ${makedepends}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
