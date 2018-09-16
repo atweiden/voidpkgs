@@ -19,9 +19,16 @@ and mapped to a binary package.
 When multiple packages provide the same SONAME, the first one (order
 top->bottom) is preferred over the next ones.
 
-[shlibs][shlibs] is sorted with
-[scripts/sort-common-shlibs.p6][scripts/sort-common-shlibs.p6].
+[shlibs][shlibs] is generated with
+[scripts/gen-common-shlibs.p6][scripts/gen-common-shlibs.p6], then sorted
+with [scripts/sort-common-shlibs.p6][scripts/sort-common-shlibs.p6]:
+
+```sh
+perl6 scripts/gen-common-shlibs.p6 > common/shlibs
+perl6 scripts/sort-common-shlibs.p6 > common/shlibs
+```
 
 [options.description]: options.description
+[scripts/gen-common-shlibs.p6]: ../scripts/gen-common-shlibs.p6
 [scripts/sort-common-shlibs.p6]: ../scripts/sort-common-shlibs.p6
 [shlibs]: shlibs
