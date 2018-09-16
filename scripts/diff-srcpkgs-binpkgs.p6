@@ -90,74 +90,74 @@ my class Binpkg::Parser::Actions
 
 my grammar Binpkg::Parser::Grammar
 {
-    token binpkg
+    regex binpkg
     {
         <pkgname> <version-full> <arch-full> <extension>
     }
 
-    token pkgname
+    regex pkgname
     {
         <pkgname-chars>
     }
 
-    token pkgname-chars
+    regex pkgname-chars
     {
         <pkgname-char>+
     }
 
     token pkgname-char
     {
-        <!before <version-full>> \S
+        \S
     }
 
-    token version-full
+    regex version-full
     {
         '-' <version> <revision-full>
     }
 
-    token version
+    regex version
     {
         <alnum> <version-chars>?
     }
 
-    token version-chars
+    regex version-chars
     {
         <version-char>+
     }
 
     token version-char
     {
-        <!before <revision-full>> <+alnum +[\.] +[\_] +[\<] +[\+]>
+        <+alnum +[\.] +[\_] +[\<] +[\+]>
     }
 
-    token revision-full
+    regex revision-full
     {
         '_' <revision>
     }
 
-    token revision
+    regex revision
     {
         <revision-char>+
     }
 
     token revision-char
     {
-        <!before <arch-full>> \S
+        \d
     }
 
-    token arch-full
+    regex arch-full
     {
         '.' <arch>
     }
 
-    token arch
+    regex arch
     {
         <arch-char>+
     }
 
     token arch-char
     {
-        <!before <extension>> \S
+        \S
     }
 
     token extension
