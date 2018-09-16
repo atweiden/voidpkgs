@@ -206,6 +206,7 @@ my List:D %pkg{Str:D} =
     'libgcrypt' => ['libgcrypt-devel'],
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
+    'libgudev' => ['libgudev-devel'],
     'libidn' => ['libidn-devel'],
     'libimobiledevice' => ['libimobiledevice-devel'],
     'libjpeg-turbo' => qw<libjpeg-turbo-devel
