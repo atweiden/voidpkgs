@@ -167,47 +167,47 @@ my grammar Shlibs::Parser::Grammar
         \S+
     }
 
-    token pkg
+    regex pkg
     {
         <pkgname> <version-full>
     }
 
-    token pkgname
+    regex pkgname
     {
         <pkgname-chars>
     }
 
-    token pkgname-chars
+    regex pkgname-chars
     {
         <pkgname-char>+
     }
 
     token pkgname-char
     {
-        <!before <version-full>> \S
+        \S
     }
 
-    token version-full
+    regex version-full
     {
         '-' <version> <revision-full>
     }
 
-    token version
+    regex version
     {
         <alnum> <version-chars>?
     }
 
-    token version-chars
+    regex version-chars
     {
         <version-char>+
     }
 
     token version-char
     {
-        <!before <revision-full>> <+alnum +[\.] +[\_] +[\<] +[\+]>
+        <+alnum +[\.] +[\_] +[\<] +[\+]>
     }
 
-    token revision-full
+    regex revision-full
     {
         '_' <revision>
     }
