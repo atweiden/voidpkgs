@@ -1,3 +1,4 @@
+# credit: https://www.archlinux.org/packages/core/x86_64/ppp/
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ppp"
 version=2.4.7
@@ -18,25 +19,10 @@ conf_files+=" /etc/ppp/pap-secrets"
 make_dirs+=" /etc/ppp/ipv6-down.d 0755 root root"
 make_dirs+=" /etc/ppp/peers 0755 root root"
 
+# -D_GNU_SOURCE is needed for IPv6 to work apparently
 CFLAGS="-D_GNU_SOURCE"
 
-do_configure() {
-  # set custom CFLAGS
-  find -name "Makefile.linux" -exec \
-    sed -i -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" "{}" \;
-  # set custom LDFLAGS for chat, pppoe-discovery and pppdump
-  sed \
-    -i \
-    -e "s;-o chat ;$LDFLAGS -o chat ;" \
-    chat/Makefile.linux
-  sed \
-    -i \
-    -e "s;-o pppoe-discovery ;$LDFLAGS -o pppoe-discovery ;" \
-    pppd/plugins/rp-pppoe/Makefile.linux
-  sed \
-    -i \
-    -e "s;-o pppdump ;$LDFLAGS -o pppdump ;" \
-    pppdump/Makefile.linux
+pre_configure() {
   # enable active filter
   sed \
     -i \
@@ -52,7 +38,9 @@ do_configure() {
     -i \
     -e "s:^#CBCP=y:CBCP=y:" \
     pppd/Makefile.linux
+}
 
+do_configure() {
   ./configure $configure_args
 }
 
