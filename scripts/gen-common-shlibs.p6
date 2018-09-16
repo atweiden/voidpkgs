@@ -279,9 +279,9 @@ my Set:D $mapping-atw-void = @mapping-atw (|) @mapping-void;
 my Mapping:D @mapping-atw-void = Array[Mapping:D].new($mapping-atw-void.keys);
 
 # needed where multiple pkgs provide same soname
-my &as = sub (Mapping:D $mapping)
+my Str:D &as = sub (Mapping:D $mapping --> Str:D)
 {
-    sprintf(Q{%s|%s}, $mapping.soname, $mapping.pkg.pkgname);
+    my Str:D $s = sprintf(Q{%s|%s}, $mapping.soname, $mapping.pkg.pkgname);
 }
 
 # write sorted shlibs to stdout
