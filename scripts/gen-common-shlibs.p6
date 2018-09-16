@@ -278,9 +278,15 @@ my Mapping:D @mapping-void =
 my Set:D $mapping-atw-void = @mapping-atw (|) @mapping-void;
 my Mapping:D @mapping-atw-void = Array[Mapping:D].new($mapping-atw-void.keys);
 
+# needed where multiple pkgs provide same soname
+my &as = sub (Mapping:D $mapping)
+{
+    sprintf(Q{%s|%s}, $mapping.soname, $mapping.pkg.pkgname);
+}
+
 # write sorted shlibs to stdout
 @mapping-atw-void
-    .unique(:as(-> Mapping:D $mapping { $mapping.soname }))
+    .unique(:&as)
     .sort({ $^a.soname cmp $^b.soname })
     .sort({ $^a.pkg.pkgname cmp $^b.pkg.pkgname })
     .map({ .source })
