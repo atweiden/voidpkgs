@@ -336,10 +336,7 @@ my List:D %pkg{Str:D} =
                   pcre2-devel>,
     'pcsclite' => qw<libpcsclite
                      pcsclite-devel>,
-    'pinentry' => qw<pinentry-emacs
-                     pinentry-gtk
-                     pinentry-qt
-                     pinentry-tty>,
+    'pinentry' => ['pinentry-tty'],
     'pixman' => ['pixman-devel'],
     'pkcs11-helper' => qw<pkcs11-helper-devel
                           pkcs11-helper-doc>,
