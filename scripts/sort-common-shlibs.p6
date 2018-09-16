@@ -1,4 +1,4 @@
-#!/usr/bin/env perl6
+use v6;
 
 sub sort-shlibs(Str:D @shlib --> List:D)
 {
@@ -17,4 +17,4 @@ sub sort-shlibs(Str:D @shlib --> List:D)
 
 my Str:D $common-shlibs = 'common/shlibs';
 my Str:D @shlib = $common-shlibs.IO.lines;
-.say for @shlib.&sort-shlibs().List;
+@shlib.&sort-shlibs().join("\n").say;
