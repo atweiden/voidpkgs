@@ -1,91 +1,108 @@
-# Template file for 'ppp'
-pkgname=ppp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ppp"
 version=2.4.7
 revision=7
 short_desc="PPP (Point-to-Point Protocol) daemon"
+makedepends="libpcap-devel"
 homepage="https://ppp.samba.org/"
 license="BSD, LGPLv2+, GPLv2+, Public Domain"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 distfiles="https://ftp.samba.org/pub/ppp/ppp-$version.tar.gz"
-checksum=02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30
-
-makedepends="libpcap-devel"
-conf_files="
-	/etc/ppp/ip-up
-	/etc/ppp/ip-down
-	/etc/ppp/ipv6-up
-	/etc/ppp/ipv6-down
-	/etc/ppp/options
-	/etc/ppp/chap-secrets
-	/etc/ppp/pap-secrets"
+checksum="02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30"
+conf_files+=" /etc/ppp/chap-secrets"
+conf_files+=" /etc/ppp/ip-down"
+conf_files+=" /etc/ppp/ip-up"
+conf_files+=" /etc/ppp/ipv6-down"
+conf_files+=" /etc/ppp/ipv6-up"
+conf_files+=" /etc/ppp/options"
+conf_files+=" /etc/ppp/pap-secrets"
+make_dirs+=" /etc/ppp/ipv6-down.d 0755 root root"
+make_dirs+=" /etc/ppp/peers 0755 root root"
 
 CFLAGS="-D_GNU_SOURCE"
 
+pre_configure() {
+  # set custom CFLAGS
+  find -name "Makefile.linux" -exec \
+    sed -i "{}" -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" \;
+  # set custom LDFLAGS for chat, pppoe-discovery and pppdump
+  sed \
+    -i \
+    -e "s;-o chat ;$LDFLAGS -o chat ;" \
+    chat/Makefile.linux
+  sed \
+    -i \
+    -e "s;-o pppoe-discovery ;$LDFLAGS -o pppoe-discovery ;" \
+    pppd/plugins/rp-pppoe/Makefile.linux
+  sed \
+    -i \
+    -e "s;-o pppdump ;$LDFLAGS -o pppdump ;" \
+    pppdump/Makefile.linux
+  # enable active filter
+  sed \
+    -i \
+    -e "s:^#FILTER=y:FILTER=y:" \
+    pppd/Makefile.linux
+  # enable ipv6 support
+  sed \
+    -i \
+    -e "s:^#HAVE_INET6=y:HAVE_INET6=y:" \
+    pppd/Makefile.linux
+  # enable Microsoft Proprietary Callback Control Protocol
+  sed \
+    -i \
+    -e "s:^#CBCP=y:CBCP=y:" \
+    pppd/Makefile.linux
+}
+
 do_configure() {
-	# Custom CFLAGS.
-	find -name "Makefile.linux" -exec sed -i "{}" \
-		-e "s;CFLAGS\\s*=\(.*\);CFLAGS = ${CFLAGS} \1;" \;
-	# Custom LDFLAGS for chat, pppoe-discovery and pppdump
-	sed -i chat/Makefile.linux \
-		-e "s;-o chat ;${LDFLAGS} -o chat ;"
-	sed -i pppd/plugins/rp-pppoe/Makefile.linux \
-		-e "s;-o pppoe-discovery ;${LDFLAGS} -o pppoe-discovery ;"
-	sed -i pppdump/Makefile.linux \
-		-e "s;-o pppdump ;${LDFLAGS} -o pppdump ;"
-	# Enable active filter
-	sed -i "s:^#FILTER=y:FILTER=y:" pppd/Makefile.linux
-	# Enable ipv6 support
-	sed -i "s:^#HAVE_INET6=y:HAVE_INET6=y:" pppd/Makefile.linux
-	# Enable Microsoft Proprietary Callback Control Protocol
-	sed -i "s:^#CBCP=y:CBCP=y:" pppd/Makefile.linux
-
-	./configure ${configure_args}
+  ./configure $configure_args
 }
+
 do_build() {
-	make COPTS="${CFLAGS} ${LDFLAGS}" ${makejobs}
+  make COPTS="$CFLAGS $LDFLAGS" "$makejobs"
 }
+
 do_install() {
-	make DESTDIR=${DESTDIR}/usr install
+  make DESTDIR="$DESTDIR/usr" install
 
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl) vinstall include/net/ppp_defs.h 644 usr/include/net;;
-	esac
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      vinstall include/net/ppp_defs.h 644 usr/include/net
+      ;;
+  esac
 
-	chmod 755 ${DESTDIR}/usr/lib/pppd/${version}/*.so
+  chmod 755 "$DESTDIR/usr/lib/pppd/$version"/*.so
 
-	vmkdir usr/bin
-	mv ${DESTDIR}/usr/sbin/* ${DESTDIR}/usr/bin
-	vbin pppd/pppd 
-	vbin chat/chat
+  vmkdir usr/bin
+  mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
+  vbin pppd/pppd
+  vbin chat/chat
 
-	vinstall ${FILESDIR}/options 644 etc/ppp
-	vinstall ${FILESDIR}/ip-up 755 etc/ppp
-	vinstall ${FILESDIR}/ip-down 755 etc/ppp
-	vinstall ${FILESDIR}/ipv6-up 755 etc/ppp
-	vinstall ${FILESDIR}/ipv6-down 755 etc/ppp
+  vinstall "$FILESDIR/options" 644 etc/ppp
+  vinstall "$FILESDIR/ip-up" 755 etc/ppp
+  vinstall "$FILESDIR/ip-down" 755 etc/ppp
+  vinstall "$FILESDIR/ipv6-up" 755 etc/ppp
+  vinstall "$FILESDIR/ipv6-down" 755 etc/ppp
 
-	vinstall ${FILESDIR}/ip-up.d.dns.sh 755 etc/ppp/ip-up.d 00-dns.sh
-	vinstall ${FILESDIR}/ip-down.d.dns.sh 755 etc/ppp/ip-down.d 00-dns.sh
-	vinstall ${FILESDIR}/ipv6-up.d.iface-config.sh 755 etc/ppp/ipv6-up.d  00-iface-config.sh
-	vmkdir etc/ppp/ipv6-down.d
-	touch ${DESTDIR}/etc/ppp/ipv6-down.d/.empty_on_purpose
+  vinstall "$FILESDIR/ip-up.d.dns.sh" 755 etc/ppp/ip-up.d 00-dns.sh
+  vinstall "$FILESDIR/ip-down.d.dns.sh" 755 etc/ppp/ip-down.d 00-dns.sh
+  vinstall "$FILESDIR/ipv6-up.d.iface-config.sh" 755 etc/ppp/ipv6-up.d 00-iface-config.sh
 
-	vbin scripts/pon
-	vman scripts/pon.1
-	vbin scripts/poff
-	vbin scripts/plog
+  vbin scripts/pon
+  vman scripts/pon.1
+  vbin scripts/poff
+  vbin scripts/plog
 
-	vinstall etc.ppp/pap-secrets 600 etc/ppp
-	vinstall etc.ppp/chap-secrets 600 etc/ppp
-
-	vmkdir etc/ppp/peers
-	touch -f ${DESTDIR}/etc/ppp/peers/.empty_on_purpose
+  vinstall etc.ppp/pap-secrets 600 etc/ppp
+  vinstall etc.ppp/chap-secrets 600 etc/ppp
 }
 
 ppp-devel_package() {
-	depends="libpcap-devel"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-	}
+  depends="libpcap-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
