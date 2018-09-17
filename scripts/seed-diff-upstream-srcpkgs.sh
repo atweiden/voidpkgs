@@ -82,8 +82,17 @@ mkpkgs() {
 
 # perl6 script to double-quote pkgname in toml key
 read -r -d '' rakudo <<'EOF'
+my token meta
+{
+    | maintainer
+    | pkgname
+    | version
+    | revision
+    | short_desc
+    | license
+};
 $*IN.lines.map(-> Str:D $line {
-    if $line ~~ /$<pkgname> = <+[\S] -[\.]>+ (.*)/
+    if $line ~~ /$<pkgname> = [<!before '.' <meta>> \S]+ (.*)/
     {
         sprintf(Q{"%s"%s}, $<pkgname>, $0).say;
     }
