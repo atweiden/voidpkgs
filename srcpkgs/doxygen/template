@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="doxygen"
 version=1.8.14
-revision=1
+revision=2
 short_desc="Source code documentation generator tool"
 hostmakedepends+=" flex"
 hostmakedepends+=" perl"
