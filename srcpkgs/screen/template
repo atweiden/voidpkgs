@@ -10,8 +10,7 @@ homepage="http://www.gnu.org/s/screen/"
 license="GPL-3"
 distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
 checksum="1b6922520e6a0ce5e28768d620b0f640a6631397f95ccb043b70b91bb503fa3a"
-conf_files+=" /etc/screenrc"
-conf_files+=" /etc/skel/.screenrc"
+conf_files="/etc/screenrc"
 build_style="gnu-configure"
 configure_args+=" --enable-colors256"
 configure_args+=" --enable-pam"
@@ -24,7 +23,6 @@ configure_args+=" --with-sys-screenrc=/etc/screenrc"
 
 post_install() {
   vinstall etc/etcscreenrc 0644 etc screenrc
-  vinstall etc/screenrc 0644 etc/skel .screenrc
   vinstall "$FILESDIR/screen" 0644 etc/pam.d
   chmod 4755 "$DESTDIR/usr/bin/screen-$version"
 }
