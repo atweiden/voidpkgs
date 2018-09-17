@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="psmisc"
 version=23.1
-revision=1
+revision=2
 short_desc="Small set of utilities that use the linux proc filesystem"
 makedepends="ncurses-devel"
 homepage="https://gitlab.com/psmisc/psmisc"
