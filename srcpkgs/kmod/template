@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kmod"
 version=25
-revision=1
+revision=2
 short_desc="Linux kernel module handling"
 makedepends+=" liblzma-devel"
 makedepends+=" zlib-devel"
