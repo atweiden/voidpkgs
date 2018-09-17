@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # -----------------------------------------------------------------------------
 # seed-diff-upstream-srcpkgs.sh: seed diff.p6 atw/voidpkgs void/void-packages
@@ -14,7 +14,7 @@ readonly ROOT_ATW="$(realpath "$DIR/..")"
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
 readonly SRCPKGS_ATW="$ROOT_ATW/srcpkgs/"
 # path to https://github.com/void-linux/void-packages
-readonly ROOT_VOID="$HOME/Projects/void-linux/void-packages"
+readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 # path to https://github.com/void-linux/void-packages/srcpkgs
 readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 # target pkgs, directories only
