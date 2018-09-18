@@ -122,12 +122,7 @@ multi sub fmt(%c --> Str:D)
             .flat
             .kv
             .map(-> $k, $v {
-                $v
-                .values
-                .flat
-                .first
-                .first
-                .source
+                $v.values.flat.first[0..^*-1].map({ .source })
             })
             .flat
         })
