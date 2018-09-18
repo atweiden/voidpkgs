@@ -573,3 +573,5 @@ for _pkg in "${_pkgs[@]}"; do
     exit 1
   fi
 done
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
