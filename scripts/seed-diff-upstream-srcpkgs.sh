@@ -31,6 +31,15 @@ declare -A pkgs_void
 # end global variables }}}
 # ==============================================================================
 
+unset_pkgvars() {
+  unset maintainer
+  unset pkgname
+  unset version
+  unset revision
+  unset short_desc
+  unset license
+}
+
 gen_path_srcpkgs() {
   local subject
   subject="${1^^}"
@@ -46,12 +55,7 @@ mkpkgs() {
   local path_srcpkgs
   local path_template
 
-  unset maintainer
-  unset pkgname
-  unset version
-  unset revision
-  unset short_desc
-  unset license
+  unset_pkgvars
 
   for _pkg in ${PKGS[@]}; do
     path_srcpkgs="$(gen_path_srcpkgs "$subject")"
@@ -69,12 +73,7 @@ mkpkgs() {
     eval pkgs_$subject["$_pkg.short_desc"]="\"$short_desc\""
     eval pkgs_$subject["$_pkg.license"]="\"$license\""
     # clean up environment
-    unset maintainer
-    unset pkgname
-    unset version
-    unset revision
-    unset short_desc
-    unset license
+    unset_pkgvars
     unset path_srcpkgs
     unset path_template
   done
