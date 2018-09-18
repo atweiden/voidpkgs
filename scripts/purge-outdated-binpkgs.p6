@@ -29,33 +29,6 @@ sub gen-binpkgs(Str:D @xbps --> Array[Binpkg:D])
         });
 }
 
-multi sub output(%candidate --> Str:D)
-{
-    my Str:D @xbps =
-        %candidate
-        .kv
-        .map(-> Str:D $arch, @source {
-            output($arch, @source);
-        })
-        .flat;
-    # adjust for C<arch>s with no dupes
-    my Str:D @output = @xbps.grep({ .so }) // '';
-    my Str:D $output = @output.sort.join("\n");
-}
-
-multi sub output(Str:D $arch, @source where .so --> Array[Str:D])
-{
-    my Str:D @output =
-        @source
-        .flat
-        .map({ .Str });
-}
-
-multi sub output(Str:D $arch, @source --> Array[Str:D])
-{
-    my Str:D @output = '';
-}
-
 sub gen-candidates(--> Hash:D)
 {
     # parse C<Binpkg>s from hostdir/binpkgs directory listing
@@ -81,6 +54,33 @@ sub gen-candidates(--> Hash:D)
                     .values.flat.first.map({ .source })
                 });
         });
+}
+
+multi sub output(%candidate --> Str:D)
+{
+    my Str:D @xbps =
+        %candidate
+        .kv
+        .map(-> Str:D $arch, @source {
+            output($arch, @source);
+        })
+        .flat;
+    # adjust for C<arch>s with no dupes
+    my Str:D @output = @xbps.grep({ .so }) // '';
+    my Str:D $output = @output.sort.join("\n");
+}
+
+multi sub output(Str:D $arch, @source where .so --> Array[Str:D])
+{
+    my Str:D @output =
+        @source
+        .flat
+        .map({ .Str });
+}
+
+multi sub output(Str:D $arch, @source --> Array[Str:D])
+{
+    my Str:D @output = '';
 }
 
 multi sub MAIN('ls', 'dupes')
