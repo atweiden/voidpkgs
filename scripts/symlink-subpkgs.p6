@@ -1,23 +1,11 @@
 use v6;
 
-sub mksymlinks(%pkg --> Nil)
-{
-    %pkg.kv.map(-> Str:D $pkg, @subpkg {
-        for @subpkg -> $subpkg
-        {
-            my Str:D $ln-cmdline = "ln -rs srcpkgs/$pkg srcpkgs/$subpkg";
-            say($ln-cmdline);
-            my Proc:D $ln-cmdline-proc = shell($ln-cmdline);
-            $ln-cmdline-proc.exitcode == 0
-                or die("Sorry, could not create symlink from `$ln-cmdline`");
-        }
-    });
-}
-
-# %pkg {{{
-
+# path to https://github.com/atweiden/voidpkgs
+constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
+# path to https://github.com/atweiden/voidpkgs/srcpkgs
+constant $SRCPKGS = sprintf(Q{%s/srcpkgs/}, $ROOT);
 # array of subpackages indexed by base pkg
-my List:D %pkg{Str:D} =
+constant %PKG = Map.new(
     'acl' => qw<acl-devel
                 acl-progs>,
     'atf' => qw<atf-devel
@@ -470,10 +458,23 @@ my List:D %pkg{Str:D} =
     'zlib' => ['zlib-devel'],
     'zstd' => qw<libzstd
                  libzstd-devel
-                 zstd-devel>;
+                 zstd-devel>
+);
 
-# end %pkg }}}
+sub mksymlinks(%pkg --> Nil)
+{
+    %pkg.kv.map(-> Str:D $pkg, @subpkg {
+        for @subpkg -> $subpkg
+        {
+            my Str:D $ln-cmdline = "ln -rs $SRCPKGS/$pkg $SRCPKGS/$subpkg";
+            say($ln-cmdline);
+            my Proc:D $ln-cmdline-proc = shell($ln-cmdline);
+            $ln-cmdline-proc.exitcode == 0
+                or die("Sorry, could not create symlink from `$ln-cmdline`");
+        }
+    });
+}
 
-mksymlinks(%pkg);
+mksymlinks(%PKG);
 
 # vim: set filetype=perl6 foldmethod=marker foldlevel=0:
