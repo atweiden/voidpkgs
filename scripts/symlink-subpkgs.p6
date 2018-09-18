@@ -3,7 +3,7 @@ use v6;
 # path to https://github.com/atweiden/voidpkgs
 constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
-constant $SRCPKGS = sprintf(Q{%s/srcpkgs/}, $ROOT);
+constant $SRCPKGS = sprintf(Q{%s/srcpkgs}, $ROOT);
 # array of subpackages indexed by base pkg
 constant %PKG = Map.new(
     'acl' => qw<acl-devel
