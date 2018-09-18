@@ -1,5 +1,22 @@
 use v6;
 
+=begin pod
+=head NAME
+
+symlink-subpkgs.p6
+
+=head SYNOPSIS
+
+    scripts/symlink-subpkgs.p6
+
+=head DESCRIPTION
+
+Create relative symlinks in srcpkgs to handle subpkgs properly.
+
+Symlinks take into consideration downstream changes, e.g. removal of
+GUI support.
+=end pod
+
 # path to https://github.com/atweiden/voidpkgs
 constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/srcpkgs

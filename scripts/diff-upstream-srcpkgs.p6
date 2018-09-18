@@ -1,6 +1,22 @@
 use v6;
 use Config::TOML;
 
+=begin pod
+=head NAME
+
+diff-upstream-srcpkgs.p6
+
+=head SYNOPSIS
+
+    perl6 scripts/diff-upstream-srcpkgs.p6
+
+=head DESCRIPTION
+
+Compare upstream srcpkgs to our srcpkgs downstream and show diff.
+
+Much of the work is done in C<seed-diff-upstream-srcpkgs.sh>.
+=end pod
+
 my role Pkg
 {
     has Str:D $.maintainer is required;

@@ -4,6 +4,33 @@ constant $LIB = sprintf(Q{%s/lib}, $*PROGRAM.dirname);
 use lib $LIB;
 use Binpkg::Parser;
 
+=begin pod
+=head NAME
+
+purge-outdated-binpkgs.p6
+
+=head SYNOPSIS
+
+List all duplicate pkgs, all versions, including latest version:
+
+    scripts/purge-outdated-binpkgs.p6 --all ls dupes
+
+Dry run:
+
+    scripts/purge-outdated-binpkgs.p6 ls dupes \
+        | scripts/purge-outdated-binpkgs.p6 --dry-run
+
+=head DESCRIPTION
+
+Grep C<hostdir/binpkgs> for duplicate binpkgs and purge outdated.
+
+Properly adjusts for binpkgs with duplicate C<pkgname>s but different
+C<arch>s.
+
+Features C<--dry-run> flag for safety, and C<--all ls dupes> cmd for
+reviewability.
+=end pod
+
 # path to https://github.com/atweiden/voidpkgs
 constant $DIR-ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/hostdir/binpkgs

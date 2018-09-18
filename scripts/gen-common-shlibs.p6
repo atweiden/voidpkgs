@@ -3,17 +3,29 @@ constant $LIB = sprintf(Q{%s/lib}, $*PROGRAM.dirname);
 use lib $LIB;
 use Shlibs::Parser;
 
-# p6doc {{{
-
 =begin pod
+=head NAME
+
+gen-common-shlibs.p6
+
+=head SYNOPSIS
+
+    perl6 scripts/gen-common-shlibs.p6 > common/shlibs
+
+=head DESCRIPTION
+
+Derives list of our downstream srcpkgs from C<srcpkgs/> directory
+listing. Parses upstream's C<common/shlibs> for associated soname
+mappings, and adds them to our own C<common/shlibs>. Keeps entries to our
+own C<common/shlibs> which we've added over and above that of upstream.
+Orders soname mappings alphabetically by pkgname then by soname.
+
 =head BUGS
 
 =for item
 C<sort-common-shlibs.p6> produces different sort order of mappings than
 C<gen-common-shlibs.p6>.
 =end pod
-
-# end p6doc }}}
 
 # path to https://github.com/atweiden/voidpkgs
 constant $ROOT-ATW = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;

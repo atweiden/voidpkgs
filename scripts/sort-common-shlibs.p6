@@ -1,5 +1,20 @@
 use v6;
 
+=begin pod
+=head NAME
+
+sort-common-shlibs.p6
+
+=head SYNOPSIS
+
+    scripts/sort-common-shlibs.p6 > common/shlibs
+
+=head DESCRIPTION
+
+Order soname mappings in C<common/shlibs> alphabetically by pkgname then
+by soname.
+=end pod
+
 # path to https://github.com/atweiden/voidpkgs
 constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/common/shlibs

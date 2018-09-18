@@ -3,6 +3,20 @@ constant $LIB = sprintf(Q{%s/lib}, $*PROGRAM.dirname);
 use lib $LIB;
 use Binpkg::Parser;
 
+=begin pod
+=head NAME
+
+diff-srcpkgs-binpkgs.p6
+
+=head SYNOPSIS
+
+    perl6 scripts/diff-srcpkgs-binpkgs.p6
+
+=head DESCRIPTION
+
+Show srcpkgs not yet built into binpkgs.
+=end pod
+
 # path to https://github.com/atweiden/voidpkgs
 constant $DIR-ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/hostdir/binpkgs
