@@ -562,15 +562,19 @@ readonly PKGS=('ISOEnts'
 # end constants }}}
 # ==============================================================================
 
-for _pkg in "${PKGS[@]}"; do
-  _dir="$SRCPKGS_VOID/$_pkg"
-  echo "Copying $_dir..."
-  if [[ -d "$_dir" ]]; then
-    cp -a "$_dir" "$SRCPKGS_ATW"
-  else
-    echo "not found"
-    exit 1
-  fi
-done
+main() {
+  for _pkg in "${PKGS[@]}"; do
+    _dir="$SRCPKGS_VOID/$_pkg"
+    echo "Copying $_dir..."
+    if [[ -d "$_dir" ]]; then
+      cp -a "$_dir" "$SRCPKGS_ATW"
+    else
+      echo "not found"
+      exit 1
+    fi
+  done
+}
+
+main
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
