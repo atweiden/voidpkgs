@@ -281,13 +281,13 @@ constant %PKG = Map.new(
                  lld-devel
                  lldb
                  lldb-devel>,
-    'lua' => qw<lua-devel>,
+    'lua' => ['lua-devel'],
     'LuaJIT' => ['LuaJIT-devel'],
     'lua-lpeg' => qw<lua51-lpeg
                      lua52-lpeg>,
     'lua51' => ['lua51-devel'],
     'lua52' => ['lua52-devel'],
-    'lutok' => qw<lutok-devel>,
+    'lutok' => ['lutok-devel'],
     'lvm2' => qw<device-mapper
                  device-mapper-devel
                  liblvm2app
