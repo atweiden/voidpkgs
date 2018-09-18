@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 
+# -----------------------------------------------------------------------------
+# copy.sh: copy select srcpkgs from upstream
+# -----------------------------------------------------------------------------
+
+# ==============================================================================
+# constants {{{
+
+# path to this script
+readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# path to https://github.com/atweiden/voidpkgs
+readonly ROOT_ATW="$(realpath "$DIR/..")"
+# path to https://github.com/atweiden/voidpkgs/srcpkgs
+readonly SRCPKGS_ATW="$ROOT_ATW/srcpkgs/"
+# path to https://github.com/void-linux/void-packages
+readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
+# path to https://github.com/void-linux/void-packages/srcpkgs
+readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
+
+# end constants }}}
+# ==============================================================================
+
 # use this script to copy pkgs over from inside void-packages dir
 _pkgs=('ISOEnts'
        'LuaJIT'
@@ -543,10 +564,10 @@ _pkgs=('ISOEnts'
        'zstd')
 
 for _pkg in "${_pkgs[@]}"; do
-  _dir="srcpkgs/$_pkg"
+  _dir="$SRCPKGS_VOID/$_pkg"
   echo "Copying $_dir..."
   if [[ -d "$_dir" ]]; then
-    cp -a "$PWD/srcpkgs/$_pkg" "$HOME/Projects/voidpkgs/srcpkgs"
+    cp -a "$_dir" "$SRCPKGS_ATW"
   else
     echo "not found"
     exit 1
