@@ -19,7 +19,7 @@ readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 # target pkgs, directories only
 readonly PKGS=($(find "$SRCPKGS_ATW" -mindepth 1 -maxdepth 1 -type d \
-  | while read -r _p; do basename "$_p"; done))
+  -exec basename '{}' \;))
 
 # end constants }}}
 # ==============================================================================
