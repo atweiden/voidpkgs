@@ -1,5 +1,10 @@
 use v6;
 
+# path to https://github.com/atweiden/voidpkgs
+constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
+# path to https://github.com/atweiden/voidpkgs/common/shlibs
+constant $COMMON-SHLIBS = sprintf(Q{%s/common/shlibs}, $ROOT);
+
 sub sort-shlibs(Str:D @shlib --> List:D)
 {
     my List:D $sort-shlibs =
@@ -15,6 +20,5 @@ sub sort-shlibs(Str:D @shlib --> List:D)
         .List;
 }
 
-my Str:D $common-shlibs = 'common/shlibs';
-my Str:D @shlib = $common-shlibs.IO.lines;
+my Str:D @shlib = $COMMON-SHLIBS.IO.lines;
 @shlib.&sort-shlibs().join("\n").say;
