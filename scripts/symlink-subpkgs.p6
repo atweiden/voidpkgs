@@ -1,5 +1,19 @@
 use v6;
 
+sub mksymlinks(%pkg --> Nil)
+{
+    %pkg.kv.map(-> Str:D $pkg, @subpkg {
+        for @subpkg -> $subpkg
+        {
+            my Str:D $ln-cmdline = "ln -rs srcpkgs/$pkg srcpkgs/$subpkg";
+            say($ln-cmdline);
+            my Proc:D $ln-cmdline-proc = shell($ln-cmdline);
+            $ln-cmdline-proc.exitcode == 0
+                or die("Sorry, could not create symlink from `$ln-cmdline`");
+        }
+    });
+}
+
 # %pkg {{{
 
 # array of subpackages indexed by base pkg
@@ -459,20 +473,6 @@ my List:D %pkg{Str:D} =
                  zstd-devel>;
 
 # end %pkg }}}
-
-sub mksymlinks(%p --> Nil)
-{
-    %p.kv.map(-> Str:D $pkg, @subpkg {
-        for @subpkg -> $subpkg
-        {
-            my Str:D $ln-cmdline = "ln -rs srcpkgs/$pkg srcpkgs/$subpkg";
-            say($ln-cmdline);
-            my Proc:D $ln-cmdline-proc = shell($ln-cmdline);
-            $ln-cmdline-proc.exitcode == 0
-                or die("Sorry, could not create symlink from `$ln-cmdline`");
-        }
-    });
-}
 
 mksymlinks(%pkg);
 
