@@ -14,8 +14,7 @@ sub ls-binpkgs(--> Array[Str:D])
     my Str:D @xbps =
         dir($DIR-BINPKGS)
         .grep({ .extension eqv 'xbps' })
-        .map({ .basename })
-        .sort;
+        .map({ .basename });
 }
 
 sub gen-binpkgs(Str:D @xbps --> Array[Binpkg:D])
@@ -47,46 +46,97 @@ sub gen-candidates(--> Hash:D)
         %binpkg-by-arch-by-pkgname.kv.map(-> Str:D $arch, %classify {
             $arch =>
                 %classify
-                .grep({
-                    .values.flat.first.elems > 1
-                })
-                .map({
-                    .values.flat.first.map({ .source })
-                });
+                .grep({ .values.flat.first.elems > 1 })
+                .map({ .values.flat.first });
         });
 }
 
-multi sub output(%candidate --> Str:D)
+multi sub fmt(%c, Bool:D :all($)! where .so --> Str:D)
 {
-    my Str:D @xbps =
-        %candidate
-        .kv
-        .map(-> Str:D $arch, @source {
-            output($arch, @source);
+    my Str:D $fmt =
+        %c
+        .map({
+            .values
+            .flat
+            .first
+            .map({
+                .classify({ .pkgname })
+            })
+            .values
+            .flat
+            .kv
+            .map(-> $k, $v {
+                $v
+                .values
+                .flat
+                .first
+                .map({ .source })
+            })
+            .flat
         })
-        .flat;
-    # adjust for C<arch>s with no dupes
-    my Str:D @output = @xbps.grep({ .so }) // '';
-    my Str:D $output = @output.sort.join("\n");
-}
-
-multi sub output(Str:D $arch, @source where .so --> Array[Str:D])
-{
-    my Str:D @output =
-        @source
+        .values
         .flat
-        .map({ .Str });
+        .sort
+        .join("\n");
 }
 
-multi sub output(Str:D $arch, @source --> Array[Str:D])
+multi sub fmt(%c --> Str:D)
 {
-    my Str:D @output = '';
+    my Str:D $fmt =
+        %c
+        .map({
+            .values
+            .flat
+            .first
+            .map({
+                .classify({ .pkgname })
+            })
+            .values
+            .flat
+            .kv
+            .map(-> $k, $v {
+                $v
+                .values
+                .flat
+                .first
+                .first
+                .source
+            })
+            .flat
+        })
+        .values
+        .flat
+        .sort
+        .join("\n");
 }
 
-multi sub MAIN('ls', 'dupes')
+multi sub MAIN('ls', 'dupes', Bool:D :all($)! where .so --> Nil)
 {
-    my %candidate = gen-candidates();
-    output(%candidate).say;
+    gen-candidates()
+    ==> fmt(:all)
+    ==> say();
+}
+
+multi sub MAIN('ls', 'dupes' --> Nil)
+{
+    gen-candidates()
+    ==> fmt()
+    ==> say();
+}
+
+multi sub MAIN(Bool:D :dry-run($)! where .so --> Nil)
+{
+    my Str:D @xbps = $*IN.lines;
+    my Str:D @path-str =
+        @xbps
+        .map(-> Str:D $xbps {
+            sprintf(Q{%s%s}, $DIR-BINPKGS, $xbps)
+        })
+        .map(-> Str:D $xbps {
+            # --dry-run
+            sprintf(Q{rm -f %s}, $xbps)
+        });
+    @path-str.join("\n").say;
 }
 
 # vim: set filetype=perl6 foldmethod=marker foldlevel=0:
