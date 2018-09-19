@@ -1,5 +1,45 @@
 use v6;
 
+=begin pod
+=head NAME
+
+C<Binpkg::Parser>
+
+=head SYNOPSIS
+
+    use Binpkg::Parser;
+    my Str:D $s = 'zeromq-4.2.5_1.x86_64.xbps';
+    my Binpkg::Parser::Actions $actions .= new;
+    my Str:D $rule = 'binpkg';
+    my Binpkg:D $binpkg =
+        Binpkg::Parser::Grammar.parse($s, :$rule, :$actions).made;
+
+=head DESCRIPTION
+
+Parse *.xbps binpkgs in C<hostdir/binpkgs>, e.g.
+C<zeromq-4.2.5_1.x86_64.xbps>.
+
+Results in Perl 6 role, punned, containing attributes:
+
+=for item
+C<$.source>: *.xbps file listing causal text
+
+=for item
+C<$.pkgname>: corresponds to C<pkgname> field in Void template files
+
+=for item
+C<$.version>: corresponds to C<version> field in Void template files
+
+=for item
+C<$.revision>: corresponds to C<revision> field in Void template files
+
+=for item
+C<$.arch>: corresponds to C<arch> string in *.xbps in binpkgs directory
+
+=for item
+C<$.extension>: *.xbps file extension, always C<xbps>
+=end pod
+
 # class Binpkg::Parser::ParseTree {{{
 
 role Binpkg

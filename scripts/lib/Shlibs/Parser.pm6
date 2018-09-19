@@ -1,5 +1,55 @@
 use v6;
 
+=begin pod
+=head NAME
+
+C<Shlibs::Parser>
+
+=head SYNOPSIS
+
+    use Shlibs::Parser;
+    my Str:D $s = 'libzmq.so.5 zeromq-4.1.2_1';
+    my Shlibs::Parser::Actions $actions .= new;
+    my Shlibs:D $shlibs =
+        Shlibs::Parser::Grammar.parse($s, :$actions).made;
+
+=head DESCRIPTION
+
+Parse soname mappings in C<common/shlibs>, e.g.
+C<libzmq.so.5 zeromq-4.1.2_1>.
+
+Results in Perl 6 roles, punned.
+
+Role C<Pkg> contains attributes:
+
+=for item
+C<$.pkgname>: corresponds to C<pkgname> field in Void template files
+
+=for item
+C<$.version>: corresponds to C<version> field in Void template files
+
+=for item
+C<$.revision>: corresponds to C<revision> field in Void template files
+
+Role C<Mapping> contains attributes:
+
+=for item
+C<$.source>: soname mapping causal text
+
+=for item
+C<$.soname>: soname
+
+=for item
+C<$.pkg>: pkg info from mapping
+
+=for item
+C<$.metadata>: metadata, an optional field
+
+Role <Shlibs> contains attribute:
+
+C<@.mapping>: list of punned C<Mapping>s
+=end pod
+
 # class Shlibs::Parser::ParseTree {{{
 
 role Pkg
