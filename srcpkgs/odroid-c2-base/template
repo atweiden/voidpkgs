@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="odroid-c2-base"
-version=20160923
+version=20180903
 revision=1
-short_desc="Void Linux Odroid C2 platform package"
+short_desc="Void Linux ODROID-C2 platform package"
 only_for_archs+=" aarch64"
 only_for_archs+=" aarch64-musl"
 homepage="http://www.voidlinux.eu"
