@@ -39,6 +39,7 @@ packages for XBPS, the `Void Linux` native packaging system.
   * [Go packages](#pkgs_go)
   * [Haskell packages](#pkgs_haskell)
   * [Font packages](#pkgs_font)
+  * [Removing a package](#pkg_remove)
   * [Notes](#notes)
   * [Contributing via git](#contributing)
 * [Help](#help)
@@ -606,6 +607,12 @@ Example for qutebrowser: `tags="browser chromium-based qt5 python3"`
 that contain Makefile.PL files that need to be processes for the package to work. It is
 used in the perl-module build_style and has no use outside of it.
 Example: `perl_configure_dirs="blob/bob foo/blah"`
+
+- `preserve` If set, files owned by the package in the system are not removed when
+the package is updated, reinstalled or removed. This is mostly useful for kernel packages
+that shouldn't remove the kernel files when they are removed in case it might break the
+user's booting and module loading. Otherwise in the majority of cases it should not be
+used.
 
 <a id="explain_depends"></a>
 #### About the many types of `depends` variable.
@@ -1295,6 +1302,36 @@ following variables:
 cache during the install/removal of the package
 - `font_dirs`: which should be set to the directory where the package
 installs its fonts
+
+<a id="pkg_remove"></a>
+### Removing a package
+
+Follows a list of things that should be done to help guarantee that a
+package template removal and by extension its binary packages from
+Void Linux's repositories goes smoothly.
+
+Before removing a package template:
+
+- Guarantee that no package depends on it or any of its subpackages.
+For that you can search the templates for references to the package
+with `grep -r '\bpkg\b' srcpkgs/`.
+- Guarantee that no package depends on shlibs provided by it.
+
+When removing the package template:
+
+- Remove all symlinks that point to the package.
+`find srcpkgs/ -lname <pkg>` should be enough.
+- If the package provides shlibs make sure to remove them from
+common/shlibs.
+- Some packages use patches and files from other packages using symlinks,
+generally those packages are the same but have been split as to avoid
+cyclic dependencies. Make sure that the package you're removing is not
+the source of those patches/files.
+
+For the one doing the merge of the removal:
+
+- Remove the package from the repository index or contact a team member
+that can do so.
 
 <a id="notes"></a>
 ### Notes
