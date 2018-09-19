@@ -40,7 +40,7 @@ C<$.source>: soname mapping causal text
 C<$.soname>: soname
 
 =for item
-C<$.pkg>: pkg info from mapping
+C<$.pkg>: C<Pkg> role, above
 
 =for item
 C<$.metadata>: metadata, an optional field

@@ -22,22 +22,27 @@ C<zeromq-4.2.5_1.x86_64.xbps>.
 Results in Perl 6 role, punned, containing attributes:
 
 =for item
-C<$.source>: *.xbps file listing causal text
+C<$.source>: complete *.xbps file string in binpkgs directory
 
 =for item
-C<$.pkgname>: corresponds to C<pkgname> field in Void template files
+C<$.pkgname>: corresponds to C<pkgname> string from *.xbps file in
+binpkgs directory
 
 =for item
-C<$.version>: corresponds to C<version> field in Void template files
+C<$.version>: corresponds to C<version> string from *.xbps file in
+binpkgs directory
 
 =for item
-C<$.revision>: corresponds to C<revision> field in Void template files
+C<$.revision>: corresponds to C<revision> string from *.xbps file in
+binpkgs directory
 
 =for item
-C<$.arch>: corresponds to C<arch> string in *.xbps in binpkgs directory
+C<$.arch>: corresponds to C<arch> string from *.xbps file in binpkgs
+directory
 
 =for item
-C<$.extension>: *.xbps file extension, always C<xbps>
+C<$.extension>: corresponds to file extension string from *.xbps file
+in binpkgs directory, always C<xbps>
 =end pod
 
 # class Binpkg::Parser::ParseTree {{{
