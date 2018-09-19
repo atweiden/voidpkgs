@@ -14,6 +14,8 @@ gen-common-shlibs.p6
 
 =head DESCRIPTION
 
+Generate C<common/shlibs> based on srcpkgs.
+
 Derives list of our downstream srcpkgs from C<srcpkgs/> directory
 listing. Parses upstream's C<common/shlibs> for associated soname
 mappings, and adds them to our own C<common/shlibs>. Keeps entries to our
