@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sudo"
-version=1.8.25
+version=1.8.25p1
 revision=1
 short_desc="Allow others to run commands as root"
 makedepends+=" pam-devel"
@@ -10,7 +10,7 @@ homepage="https://www.sudo.ws/"
 license="ISC"
 changelog="https://www.sudo.ws/repos/sudo/raw-file/tip/NEWS"
 distfiles="https://www.sudo.ws/dist/sudo-$version.tar.gz"
-checksum="9dcf0f61f663b4051d4b37a57f2da9d2800182b8c19205edde616fc9d935dc41"
+checksum="9dc99c7a7d37a0ab938410995c133e15d6afb970c2c66f9264fe36d20c89195b"
 conf_files+=" /etc/pam.d/sudo"
 conf_files+=" /etc/sudoers"
 build_style="gnu-configure"
@@ -38,11 +38,6 @@ post_configure() {
 
 pre_install() {
   find "$wrksrc" -type f -name Makefile -exec sed -i 's,$(INSTALL_OWNER),,g' {} \;
-}
-
-pre_check() {
-  # failing test
-  rm plugins/sudoers/regress/sudoers/test19*
 }
 
 post_install() {
