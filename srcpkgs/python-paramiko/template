@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-paramiko"
-version=2.4.1
+version=2.4.2
 revision=1
 short_desc="Python2 SSH2 protocol library"
 noarch="yes"
@@ -13,7 +13,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="http://www.paramiko.org/"
 license="LGPL-2.1-or-later"
 distfiles="$PYPI_SITE/p/paramiko/paramiko-$version.tar.gz"
-checksum="33e36775a6c71790ba7692a73f948b329cf9295a72b0102144b031114bd2a4f3"
+checksum="a8975a7df3560c9f1e2b43dc54ebd40fd00a7017392ca5445ce7df409f900fcb"
 wrksrc="${pkgname/python-/}-$version"
 build_style="python-module"
 pycompile_module="paramiko"
