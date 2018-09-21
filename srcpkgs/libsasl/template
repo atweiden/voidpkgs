@@ -12,6 +12,7 @@ license="BSD"
 distfiles="ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-$version.tar.gz"
 checksum="8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3"
 wrksrc="cyrus-sasl-$version"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-krb4"
 configure_args+=" --disable-otp"
@@ -27,7 +28,6 @@ configure_args+=" --enable-ntlm"
 configure_args+=" --enable-plain"
 configure_args+=" --with-configdir=/etc/sasl2:/etc/sasl:/usr/lib/sasl2"
 configure_args+=" --with-devrandom=/dev/random"
-patch_args="-Np1"
 
 # seems to be cured with libtool>=2.4.6
 #disable_parallel_build=yes

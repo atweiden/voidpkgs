@@ -16,11 +16,11 @@ license="GPL-2.0-or-later"
 distfiles="http://dev.gentoo.org/~blueness/eudev/eudev-$version.tar.gz"
 checksum="865871d3b3f13a7acf6a8aaacbd5b6c68b206c0b8b4442a5f11ce3b1f5b6b7e1"
 conf_files="/etc/udev/udev.conf"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-introspection"
 configure_args+=" --enable-hwdb"
 configure_args+=" --enable-manpages"
-patch_args="-Np1"
 
 # compatible udev version provided
 _UDEV_VERSION="220"

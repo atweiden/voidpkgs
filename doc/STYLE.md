@@ -20,6 +20,7 @@ From top to bottom:
 1. Source
 1. Source Checksums
 1. Config Files
+1. Pre-Build Style Options (`patch_args`)
 1. Build Style
 1. Build Style Options
 1. Other Options
