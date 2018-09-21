@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wpa_supplicant"
 version=2.6
-revision=9
+revision=10
 short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
-makedepends+=" dbus-devel"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
-makedepends+=" readline-devel"
+makedepends+=" $(vopt_if dbus dbus-devel)"
+makedepends+=" $(vopt_if readline readline-devel)"
 hostmakedepends="pkg-config"
 homepage="http://w1.fi/wpa_supplicant/"
 license="BSD-3-Clause"
@@ -14,13 +14,35 @@ distfiles="http://w1.fi/releases/$pkgname-$version.tar.gz"
 checksum="b4936d34c4e6cdd44954beba74296d964bc2c9668ecaa5255e499636fe2b1450"
 conf_files="/etc/$pkgname/$pkgname.conf"
 build_wrksrc="$pkgname"
+build_options+=" dbus"
+build_options+=" readline"
+build_options_default+=" dbus"
+build_options_default+=" readline"
 
 pre_build() {
   sed -i 's|/usr/local|$(PREFIX)|g' Makefile
   cp -f "$FILESDIR/config" .config
-  sed -i 's, -u, -uq,' dbus/*.service.in
-}
 
+  if [[ -n "$build_option_dbus" ]]; then
+    sed \
+      -i \
+      -e 's, -u, -uq,' \
+      dbus/*.service.in
+  else
+    sed \
+      -i \
+      -e 's|#\{0,1\}\(CONFIG_CTRL_IFACE_DBUS\)=\(.*\)|\1=|' \
+      -e 's|#\{0,1\}\(CONFIG_CTRL_IFACE_DBUS_NEW\)=\(.*\)|\1=|' \
+      -e 's|#\{0,1\}\(CONFIG_CTRL_IFACE_DBUS_INTRO\)=\(.*\)|\1=|' .config
+  fi
+
+  if [[ -n "$build_option_readline" ]]; then
+    sed \
+      -i \
+      -e 's|#\{0,1\}\(CONFIG_READLINE\)=\(.*\)|\1=y|' \
+      .config
+  fi
+}
 do_build() {
   export CFLAGS+=" $(pkg-config --cflags libnl-3.0) $CPPFLAGS"
   make \
@@ -37,23 +59,27 @@ do_install() {
     PREFIX="/usr" \
     install
 
+  if [[ -n "$build_option_dbus" ]]; then
+    install -d "$DESTDIR/usr/share/dbus-1/system-services"
+    install -m 644 dbus/*.service "$DESTDIR/usr/share/dbus-1/system-services/"
+    vinstall "dbus/dbus-$pkgname.conf" 644 etc/dbus-1/system.d "$pkgname.conf"
+  fi
+
   vinstall "$FILESDIR/$pkgname.conf" 640 "etc/$pkgname"
   vsconf wpa_supplicant.conf
 
   for d in doc/docbook/*.[58]; do
     vman "$d"
   done
-  install -d "$DESTDIR/usr/share/dbus-1/system-services"
-  install -m 644 dbus/*.service "$DESTDIR/usr/share/dbus-1/system-services/"
-  vinstall "dbus/dbus-$pkgname.conf" 644 etc/dbus-1/system.d "$pkgname.conf"
 
   rm "$DESTDIR/usr/share/man/man8/wpa_gui.8"
-
-  vsv wpa_supplicant
+  rm "$DESTDIR/usr/share/man/man8/wpa_priv.8"
+  rm "$DESTDIR/usr/share/man/man8/eapol_test.8"
 }
 
 post_install() {
   vlicense README
+  vsv wpa_supplicant
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0:
