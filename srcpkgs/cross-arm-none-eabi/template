@@ -369,4 +369,4 @@ do_install() {
   rm -f "$DESTDIR/$_sysroot/libexec"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

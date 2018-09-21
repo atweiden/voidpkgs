@@ -108,4 +108,4 @@ gcc-objc-multilib_package() {
   build_style="meta"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

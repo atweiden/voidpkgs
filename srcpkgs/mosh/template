@@ -21,4 +21,4 @@ pre_configure() {
   printf "%s\n" "#!/bin/sh" ":" > src/tests/local.test
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

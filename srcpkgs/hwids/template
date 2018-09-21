@@ -15,4 +15,4 @@ do_install() {
   install -m 644 *.ids "$DESTDIR/usr/share/hwdata"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

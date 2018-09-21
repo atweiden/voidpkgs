@@ -14,4 +14,4 @@ do_install() {
   vinstall "$FILESDIR/void-transparent.png" 644 usr/share/void-artwork
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

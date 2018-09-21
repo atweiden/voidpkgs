@@ -47,4 +47,4 @@ bootstrap="yes"
 provides="base-chroot-${version}_$revision"
 conflicts="base-chroot>=0"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -24,4 +24,4 @@ post_install() {
   gzip -9 "$DESTDIR/usr/share/info"/*
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

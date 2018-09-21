@@ -87,4 +87,4 @@ do_install() {
   install -m 644 "$FILESDIR"/*.rules "$DESTDIR/usr/lib/udev/rules.d"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

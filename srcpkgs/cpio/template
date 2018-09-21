@@ -12,4 +12,4 @@ checksum="70998c5816ace8407c8b101c9ba1ffd3ebbecba1f5031046893307580ec1296e"
 build_style="gnu-configure"
 configure_args="--with-rmt=/usr/bin/rmt"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

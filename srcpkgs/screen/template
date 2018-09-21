@@ -27,4 +27,4 @@ post_install() {
   chmod 4755 "$DESTDIR/usr/bin/screen-$version"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

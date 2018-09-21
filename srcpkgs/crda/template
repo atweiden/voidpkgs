@@ -64,4 +64,4 @@ do_install() {
   find "$DESTDIR" -type f -name "*.h" -delete
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -18,4 +18,4 @@ post_extract() {
   sed -i '/if.*guess_malloc_names/s/.*/if(my $extra_defs=""){/' Makefile.PL
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

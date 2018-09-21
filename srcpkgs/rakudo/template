@@ -52,4 +52,4 @@ post_install() {
   vinstall tools/install-dist.p6 755 usr/bin perl6-install-dist
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -9,4 +9,4 @@ distfiles="$SOURCEFORGE_SITE/acpiclient/$pkgname-$version.tar.gz"
 checksum="d7a504b61c716ae5b7e81a0c67a50a51f06c7326f197b66a4b823de076a35005"
 build_style="gnu-configure"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

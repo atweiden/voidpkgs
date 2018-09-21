@@ -17,4 +17,4 @@ post_install() {
   vinstall "$FILESDIR/logrotate.cron-daily" 744 etc/cron.daily logrotate
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

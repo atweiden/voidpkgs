@@ -26,4 +26,4 @@ post_install() {
   vman cdiff.1
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

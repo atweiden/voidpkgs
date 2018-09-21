@@ -16,4 +16,4 @@ do_install() {
   vsv wpa_actiond
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

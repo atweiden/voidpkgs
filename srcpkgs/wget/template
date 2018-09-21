@@ -32,4 +32,4 @@ post_install() {
   echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> "$DESTDIR/etc/wgetrc"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

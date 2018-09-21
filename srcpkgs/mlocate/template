@@ -32,4 +32,4 @@ post_install() {
     "$DESTDIR/usr/share/man/man5/updatedb.conf.5"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

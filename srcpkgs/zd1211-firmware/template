@@ -15,4 +15,4 @@ do_install() {
   install -m 644 zd1211* "$DESTDIR/usr/lib/firmware/zd1211"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

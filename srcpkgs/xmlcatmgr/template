@@ -44,4 +44,4 @@ post_install() {
   install -Dm 644 catalog.etc.xml "$DESTDIR/etc/xml/catalog"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

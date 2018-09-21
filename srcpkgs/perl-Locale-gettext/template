@@ -13,4 +13,4 @@ checksum="909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15"
 wrksrc="Locale-gettext-$version"
 build_style="perl-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

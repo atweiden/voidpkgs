@@ -43,4 +43,4 @@ do_install() {
   ln -s /etc/ssl/certs/ca-certificates.crt "$DESTDIR/etc/ssl/certs.pem"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

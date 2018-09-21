@@ -22,4 +22,4 @@ post_install() {
   vsv dnscrypt-proxy
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -30,4 +30,4 @@ linux-headers_package() {
   depends="$_depends_headers"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

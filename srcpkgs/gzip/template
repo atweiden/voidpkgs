@@ -22,4 +22,4 @@ pre_check() {
   sed -i '1721,1727d;1447d' tests/Makefile
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

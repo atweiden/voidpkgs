@@ -56,4 +56,4 @@ zstd-devel_package() {
   depends="libzstd-devel>=${version}_$revision"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

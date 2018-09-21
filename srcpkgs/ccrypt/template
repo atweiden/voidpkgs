@@ -9,4 +9,4 @@ distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.gz"
 checksum="b19c47500a96ee5fbd820f704c912f6efcc42b638c0a6aa7a4e3dc0a6b51a44f"
 build_style="gnu-configure"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

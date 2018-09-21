@@ -37,4 +37,4 @@ post_install() {
   vman doc/proot/man.1 proot.1
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

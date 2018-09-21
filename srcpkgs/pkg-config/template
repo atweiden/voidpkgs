@@ -21,4 +21,4 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

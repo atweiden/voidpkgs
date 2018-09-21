@@ -11,4 +11,4 @@ distfiles="https://github.com/hanslub42/$pkgname/releases/download/v$version/$pk
 checksum="8e86d0b7882d9b8a73d229897a90edc207b1ae7fa0899dca8ee01c31a93feb2f"
 build_style="gnu-configure"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

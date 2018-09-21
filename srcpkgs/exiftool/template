@@ -15,4 +15,4 @@ checksum="82d534ac8e7fa7eeb43b0c5d4018852a1be44500d96e5a2d0a228d219949ce16"
 wrksrc="Image-ExifTool-$version"
 build_style="perl-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

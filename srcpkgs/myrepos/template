@@ -15,4 +15,4 @@ do_fetch() {
   git clone --branch "$version" https://git.joeyh.name/git/myrepos.git "$pkgname-$version"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -20,4 +20,4 @@ pre_check() {
   sed -i '/AT_SETUP(\[AC_PROG_CPP via CC\])/ s/$/ \nAT_XFAIL_IF(\[:\])/' tests/c.at
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -14,4 +14,4 @@ wrksrc="TermReadKey-$version"
 build_style="perl-module"
 reverts="2.37_1"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

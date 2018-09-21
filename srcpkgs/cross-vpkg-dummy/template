@@ -60,4 +60,4 @@ conflicts+=" libstdc++-devel>=0"
 conflicts+=" libstdc++>=0"
 conflicts+=" musl>=0"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

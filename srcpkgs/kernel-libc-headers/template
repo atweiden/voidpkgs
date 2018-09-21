@@ -48,4 +48,4 @@ do_install() {
   rm -rf "$DESTDIR/usr/include/drm"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

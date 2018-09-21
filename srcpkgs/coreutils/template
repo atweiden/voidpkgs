@@ -160,4 +160,4 @@ do_install() {
     "$DESTDIR/usr/share/man/man1/hostname-coreutils.1"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

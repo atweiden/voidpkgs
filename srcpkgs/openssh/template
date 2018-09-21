@@ -80,4 +80,4 @@ post_install() {
   vsv sshd
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

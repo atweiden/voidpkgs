@@ -1,4 +1,4 @@
-# vim: set ts=4 sw=4 et:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
 
 # AppArmor is not enabled in kernel, silently exit
 [ ! -d /sys/kernel/security/apparmor ] && return

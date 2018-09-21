@@ -67,4 +67,4 @@ post_install() {
   vinstall "$FILESDIR/makewhatis.cron.daily" 755 etc/cron.daily makewhatis
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

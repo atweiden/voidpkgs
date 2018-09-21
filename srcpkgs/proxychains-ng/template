@@ -11,4 +11,4 @@ conf_files="/etc/proxychains.conf"
 build_style="gnu-configure"
 make_install_target="install install-config"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

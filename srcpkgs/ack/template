@@ -13,4 +13,4 @@ distfiles="$CPAN_SITE/App/ack-$version.tar.gz"
 checksum="72934009ad8fe712deeb2c41960f2746d0a25e3a226ad7c54232c00105e54f00"
 build_style="perl-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

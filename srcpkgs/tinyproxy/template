@@ -24,4 +24,4 @@ post_install() {
   vsv tinyproxy
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

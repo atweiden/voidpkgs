@@ -14,4 +14,4 @@ configure_args="$(vopt_with guile)"
 build_options="guile"
 bootstrap="yes"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

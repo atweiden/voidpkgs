@@ -13,4 +13,4 @@ checksum="acb046683e49d650b113634ecf57df000816a49e611b0fff70bf3f93568bfa2d"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

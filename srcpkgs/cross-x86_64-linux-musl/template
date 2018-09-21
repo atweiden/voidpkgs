@@ -283,4 +283,4 @@ cross-x86_64-linux-musl-libc_package() {
   }
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

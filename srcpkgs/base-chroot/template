@@ -37,4 +37,4 @@ depends+=" which"
 build_style="meta"
 bootstrap="yes"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

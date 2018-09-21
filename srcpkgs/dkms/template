@@ -27,4 +27,4 @@ do_install() {
   vinstall "$FILESDIR/kernel.d/dkms.prerm" 750 etc/kernel.d/pre-remove 10-dkms
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

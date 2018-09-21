@@ -13,4 +13,4 @@ build_style="gnu-makefile"
 CFLAGS='-fPIC -DPREFIX=\"/usr\" -DLIBDIRNAME=\"/lib/faketime\"'
 LDFLAGS='-lpthread'
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

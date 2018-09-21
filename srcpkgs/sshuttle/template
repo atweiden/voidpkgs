@@ -32,4 +32,4 @@ post_install() {
   vman docs/_build/man/sshuttle.1
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

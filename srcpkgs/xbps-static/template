@@ -42,4 +42,4 @@ post_install() {
   vlicense COPYING.3RDPARTY
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

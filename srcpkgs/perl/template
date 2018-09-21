@@ -240,4 +240,4 @@ post_install() {
   #ln -sfr "$DESTDIR/usr/lib/perl5/core_perl/CORE/libperl.so.$version" "$DESTDIR/usr/lib/libperl.so"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

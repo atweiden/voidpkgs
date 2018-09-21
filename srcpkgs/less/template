@@ -12,4 +12,4 @@ checksum="503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2"
 build_style="gnu-configure"
 configure_args="--with-regex=pcre"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

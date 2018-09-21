@@ -11,4 +11,4 @@ distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
 checksum="bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692"
 build_style="gnu-configure"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

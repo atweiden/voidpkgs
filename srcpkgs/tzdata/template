@@ -32,4 +32,4 @@ do_install() {
   install -m 444 -t "$DESTDIR/usr/share/zoneinfo" iso3166.tab zone1970.tab zone.tab
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

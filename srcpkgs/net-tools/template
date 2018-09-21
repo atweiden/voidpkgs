@@ -72,4 +72,4 @@ do_install() {
   rm "$DESTDIR/usr/share/man/man1"/*domainname*
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -9,4 +9,4 @@ distfiles="http://www.kernel.org/pub/software/network/$pkgname/$pkgname-$version
 checksum="90948555d4c017561d0d8795f2dc61893a4932c0f3b85e6d422afd7031b7c110"
 build_style="gnu-configure"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

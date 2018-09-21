@@ -42,4 +42,4 @@ python3-Jinja2_package() {
   }
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

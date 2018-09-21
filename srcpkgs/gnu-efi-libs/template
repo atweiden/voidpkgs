@@ -47,4 +47,4 @@ do_install() {
   install -Dm 644 "$HOST_ARCH/apps"/*.efi "$DESTDIR/usr/share/gnu-efi/apps/$_EFI_ARCH"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

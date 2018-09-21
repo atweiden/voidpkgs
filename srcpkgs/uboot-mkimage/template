@@ -29,4 +29,4 @@ post_install() {
   vman doc/mkimage.1
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -13,4 +13,4 @@ checksum="7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d"
 build_style="gnu-configure"
 configure_args="--with-pcre-prefix=$XBPS_CROSS_BASE/usr"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

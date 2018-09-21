@@ -65,4 +65,4 @@ post_install() {
   vinstall "$FILESDIR/man-db.cron-daily" 744 etc/cron.daily man-db
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
