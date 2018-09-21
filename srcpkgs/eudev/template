@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="eudev"
-version=3.2.5
-revision=3
+version=3.2.6
+revision=1
 short_desc="Gentoo's fork of systemd-udev (enhanced userland device daemon)"
 makedepends+=" libblkid-devel"
 makedepends+=" libkmod-devel"
@@ -12,14 +12,15 @@ hostmakedepends+=" libtool"
 hostmakedepends+=" libxslt"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/gentoo/eudev"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://dev.gentoo.org/~blueness/eudev/eudev-$version.tar.gz"
-checksum="49c2d04105cad2526302627e040fa24b1916a9a3e059539bc8bb919b973890af"
+checksum="865871d3b3f13a7acf6a8aaacbd5b6c68b206c0b8b4442a5f11ce3b1f5b6b7e1"
 conf_files="/etc/udev/udev.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-introspection"
 configure_args+=" --enable-hwdb"
 configure_args+=" --enable-manpages"
+patch_args="-Np1"
 
 # compatible udev version provided
 _UDEV_VERSION="220"
