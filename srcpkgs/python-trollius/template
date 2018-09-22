@@ -14,3 +14,5 @@ checksum="b35b9a9079c3c06a04cedf27dd833982b5d58401722da63d2c7c6384063a6924"
 wrksrc="trollius-$version"
 build_style="python2-module"
 pycompile_module="trollius"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

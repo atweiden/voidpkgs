@@ -14,3 +14,5 @@ checksum="c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf"
 build_style="gnu-configure"
 configure_args="--disable-update-mimedb"
 disable_parallel_build="yes"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
