@@ -165,14 +165,13 @@ multi sub MAIN('rm', Bool:D :dry-run($)! where .so --> Nil)
 multi sub MAIN('rm' --> Nil)
 {
     my Str:D @xbps = $*IN.lines;
-    my Str:D @path-str =
-        @xbps
-        .map(-> Str:D $xbps {
-            sprintf(Q{%s%s}, $BINPKGS, $xbps)
-        })
-        .map(-> Str:D $xbps {
-            $xbps.IO.unlink
-        });
+    @xbps
+    .map(-> Str:D $xbps {
+        sprintf(Q{%s%s}, $BINPKGS, $xbps)
+    })
+    .map(-> Str:D $xbps {
+        $xbps.IO.unlink
+    });
 }
 
 # vim: set filetype=perl6 foldmethod=marker foldlevel=0:
