@@ -22,18 +22,22 @@ configure_args+=" --with-crypto_backend=openssl"
 configure_args+=" $(vopt_enable pwquality)"
 build_options="pwquality"
 desc_option_pwquality="Enable support for checking password quality via libpwquality"
+subpackages+=" libcryptsetup"
+subpackages+=" cryptsetup-devel"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
     configure_args+=" --enable-static-cryptsetup"
-    cryptsetup-static_package() {
-      short_desc+=" - static cryptsetup"
-      pkg_install() {
-        vmove "usr/bin/*.static"
-      }
-    }
+    subpackages+=" cryptsetup-static"
     ;;
 esac
+
+cryptsetup-static_package() {
+  short_desc+=" - static cryptsetup"
+  pkg_install() {
+    vmove "usr/bin/*.static"
+  }
+}
 
 libcryptsetup_package() {
   short_desc+=" - runtime libraries"
@@ -50,7 +54,9 @@ cryptsetup-devel_package() {
     vmove usr/lib/pkgconfig
     vmove "usr/lib/*.so"
     case "$XBPS_TARGET_MACHINE" in
-      *-musl) vmove "usr/lib/*.a" ;;
+      *-musl)
+        vmove "usr/lib/*.a"
+        ;;
     esac
   }
 }
