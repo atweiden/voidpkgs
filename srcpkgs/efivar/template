@@ -10,7 +10,8 @@ distfiles="https://github.com/rhboot/efivar/releases/download/$version/efivar-$v
 checksum="94bfccc20889440978a85f08d5af4619040ee199001b62588d47d676f58c0d33"
 build_style="gnu-makefile"
 make_build_args="libdir=/usr/lib"
-make_build_target="all test"
+make_build_target+=" all"
+make_build_target+=" test"
 make_install_args="libdir=/usr/lib"
 
 case "$XBPS_TARGET_MACHINE" in
