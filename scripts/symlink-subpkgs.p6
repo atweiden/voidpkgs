@@ -27,6 +27,9 @@ constant %PKG = Map.new(
                 acl-progs>,
     'atf' => qw<atf-devel
                 atf-libs>,
+    'apparmor' => qw<apparmor-vim
+                     libapparmor
+                     libapparmor-devel>,
     'argon2' => qw<libargon2
                    libargon2-devel>,
     'aria2' => qw<libaria2
