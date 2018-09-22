@@ -13,7 +13,8 @@ case "$XBPS_TARGET_MACHINE" in
     makedepends+=" musl-fts-devel"
     ;;
 esac
-hostmakedepends="asciidoc pkg-config"
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" pkg-config"
 homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
 license="GPL-2.0-or-later, LGPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/boot/$pkgname/$pkgname-$version.tar.xz"
