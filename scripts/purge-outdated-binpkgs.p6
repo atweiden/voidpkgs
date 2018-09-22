@@ -32,14 +32,14 @@ reviewability.
 =end pod
 
 # path to https://github.com/atweiden/voidpkgs
-constant $DIR-ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
+constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/hostdir/binpkgs
-constant $DIR-BINPKGS = sprintf(Q{%s/hostdir/binpkgs/}, $DIR-ROOT);
+constant $BINPKGS = sprintf(Q{%s/hostdir/binpkgs/}, $ROOT);
 
 sub ls-binpkgs(--> Array[Str:D])
 {
     my Str:D @xbps =
-        dir($DIR-BINPKGS)
+        dir($BINPKGS)
         .grep({ .extension eqv 'xbps' })
         .map({ .basename });
 }
@@ -152,7 +152,7 @@ multi sub MAIN(Bool:D :dry-run($)! where .so --> Nil)
     my Str:D @path-str =
         @xbps
         .map(-> Str:D $xbps {
-            sprintf(Q{%s%s}, $DIR-BINPKGS, $xbps)
+            sprintf(Q{%s%s}, $BINPKGS, $xbps)
         })
         .map(-> Str:D $xbps {
             # --dry-run

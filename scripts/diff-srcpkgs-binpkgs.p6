@@ -18,19 +18,19 @@ Show srcpkgs not yet built into binpkgs.
 =end pod
 
 # path to https://github.com/atweiden/voidpkgs
-constant $DIR-ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
+constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/hostdir/binpkgs
-constant $DIR-BINPKGS = sprintf(Q{%s/hostdir/binpkgs/}, $DIR-ROOT);
+constant $BINPKGS = sprintf(Q{%s/hostdir/binpkgs/}, $ROOT);
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
-constant $DIR-SRCPKGS = sprintf(Q{%s/srcpkgs/}, $DIR-ROOT);
+constant $SRCPKGS = sprintf(Q{%s/srcpkgs/}, $ROOT);
 
 multi sub ls-binpkgs(
-    $? where $DIR-BINPKGS.IO.e && $DIR-BINPKGS.IO.d
+    $? where $BINPKGS.IO.e && $BINPKGS.IO.d
     --> Array[Str:D]
 )
 {
     my Str:D @binpkg =
-        dir($DIR-BINPKGS)
+        dir($BINPKGS)
         .grep({ .extension eqv 'xbps' })
         .map({ .basename })
         .sort
@@ -51,7 +51,7 @@ multi sub ls-binpkgs(
 sub ls-srcpkgs(--> Array[Str:D])
 {
     my Str:D @srcpkg =
-        dir($DIR-SRCPKGS)
+        dir($SRCPKGS)
         .map({ .basename })
         .sort;
 }
