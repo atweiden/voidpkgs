@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-util-linux"
-version=2.29.2
-revision=3
+version=2.32.1
+revision=1
 short_desc="Miscellaneous linux utilities -- for xbps-src use"
 makedepends="zlib-devel"
 homepage="http://userweb.kernel.org/~kzak/util-linux-ng"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v${version%.*}/util-linux-$version.tar.xz"
-checksum="accea4d678209f97f634f40a93b7e9fcad5915d1f4749f6c47bee6bf110fe8e3"
+checksum="86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2"
 wrksrc="${pkgname/chroot-/}-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-chfn-chsh-password"
