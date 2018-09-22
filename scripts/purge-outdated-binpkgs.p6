@@ -20,6 +20,11 @@ Dry run:
     scripts/purge-outdated-binpkgs.p6 ls dupes \
         | scripts/purge-outdated-binpkgs.p6 --dry-run rm
 
+Purge:
+
+    scripts/purge-outdated-binpkgs.p6 ls dupes \
+        | scripts/purge-outdated-binpkgs.p6 rm
+
 =head DESCRIPTION
 
 Grep C<hostdir/binpkgs> for duplicate binpkgs and purge outdated.
@@ -159,6 +164,19 @@ multi sub MAIN('rm', Bool:D :dry-run($)! where .so --> Nil)
             sprintf(Q{rm -f %s}, $xbps)
         });
     @path-str.join("\n").say;
+}
+
+multi sub MAIN('rm' --> Nil)
+{
+    my Str:D @xbps = $*IN.lines;
+    my Str:D @path-str =
+        @xbps
+        .map(-> Str:D $xbps {
+            sprintf(Q{%s%s}, $BINPKGS, $xbps)
+        })
+        .map(-> Str:D $xbps {
+            $xbps.IO.unlink
+        });
 }
 
 # vim: set filetype=perl6 foldmethod=marker foldlevel=0:
