@@ -17,7 +17,11 @@ alternatives+=" awk:awk.1:/usr/share/man/man1/gawk.1"
 
 pre_configure() {
   # create symlinks for bins and manpages
-  sed -i -e "s|\$(LN)|\$(LN_S)|g" Makefile.in doc/Makefile.in
+  sed \
+    -i \
+    -e "s|\$(LN)|\$(LN_S)|g" \
+    Makefile.in \
+    doc/Makefile.in
 }
 
 pre_check() {

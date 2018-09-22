@@ -14,7 +14,9 @@ make_build_target="all test"
 make_install_args="libdir=/usr/lib"
 
 case "$XBPS_TARGET_MACHINE" in
-  armv*|mips*|aarch*) broken="unsupported arches for UEFI" ;;
+  armv*|mips*|aarch*)
+    broken="unsupported arches for UEFI"
+    ;;
 esac
 
 CFLAGS="-D_GNU_SOURCE"

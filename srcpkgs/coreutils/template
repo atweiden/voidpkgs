@@ -51,7 +51,9 @@ do_configure() {
   fi
   case "$XBPS_TARGET_MACHINE" in
     # XXX: syncfs() in src/sync.c expects a return value
-    *-musl) configure_args+=" ac_cv_func_syncfs=no";;
+    *-musl)
+      configure_args+=" ac_cv_func_syncfs=no"
+      ;;
   esac
   # do not install kill (provided by util-linux)
   # do not install uptime (provided by procps-ng)

@@ -21,7 +21,10 @@ configure_args+=" gnupg_cv_regex_broken=no"
 post_extract() {
   case "$XBPS_TARGET_MACHINE" in
     i686-musl)
-      sed -i Makefile* -e"s;checks = checks;checks =;"
+      sed \
+        -i \
+        -e "s;checks = checks;checks =;" \
+        Makefile*
       ;;
   esac
 }

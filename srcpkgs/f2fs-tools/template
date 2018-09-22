@@ -19,7 +19,9 @@ configure_args+=" ac_cv_file__git=yes"
 make_install_args="sbindir=/usr/bin"
 
 case "$XBPS_TARGET_MACHINE" in
-  *-musl) makedepends+=" musl-legacy-compat"
+  *-musl)
+    makedepends+=" musl-legacy-compat"
+    ;;
 esac
 
 pre_configure() {

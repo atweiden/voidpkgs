@@ -26,7 +26,10 @@ pre_configure() {
   # - http://git.alpinelinux.org/cgit/aports/tree/main/icu/APKBUILD?id=46736e7b8040becc9f69ad6d2c2d317a52d5485b#n34
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      sed -i -e 's,DU_HAVE_STRTOD_L=1,DU_HAVE_STRTOD_L=0,' configure
+      sed \
+        -i \
+        -e 's,DU_HAVE_STRTOD_L=1,DU_HAVE_STRTOD_L=0,' \
+        configure
       ;;
   esac
 

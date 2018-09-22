@@ -323,10 +323,10 @@ pre_install() {
 do_install() {
   cd build
   case "$XBPS_TARGET_MACHINE" in
-  x86_64*|aarch64*)
-    vmkdir usr/lib
-    ln -sfr "$DESTDIR/usr/lib" "$DESTDIR/usr/lib64"
-    ;;
+    x86_64*|aarch64*)
+      vmkdir usr/lib
+      ln -sfr "$DESTDIR/usr/lib" "$DESTDIR/usr/lib64"
+      ;;
   esac
   make DESTDIR="$DESTDIR" install
 

@@ -31,13 +31,21 @@ lib32disabled="yes"
 post_configure() {
   case "$XBPS_TARGET_MACHINE" in
     i686-musl)
-      find -type f -exec sed -i "{}" -e "s;-fstack-protector-strong;-fno-stack-protector;g" \;
+      find -type f \
+        -exec sed \
+                -i \
+                -e "s;-fstack-protector-strong;-fno-stack-protector;g" \
+                "{}" \;
       ;;
   esac
 }
 
 pre_install() {
-  find "$wrksrc" -type f -name Makefile -exec sed -i 's,$(INSTALL_OWNER),,g' {} \;
+  find "$wrksrc" -type f -name Makefile \
+    -exec sed \
+            -i \
+            -e 's,$(INSTALL_OWNER),,g' \
+            {} \;
 }
 
 post_install() {

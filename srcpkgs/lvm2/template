@@ -54,7 +54,10 @@ post_install() {
   sed -i 's,use_lvmetad = 1,use_lvmetad = 0,' "$DESTDIR/etc/lvm/lvm.conf"
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      sed -i 's,use_mlockall = 0,use_mlockall = 1,' "$DESTDIR/etc/lvm/lvm.conf"
+      sed \
+        -i \
+        -e 's,use_mlockall = 0,use_mlockall = 1,' \
+        "$DESTDIR/etc/lvm/lvm.conf"
       ;;
   esac
   vsv lvmetad
