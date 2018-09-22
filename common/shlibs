@@ -158,6 +158,7 @@ libjq.so.1 jq-devel-1.4_1
 libjson-c.so.4 json-c-0.13.1_1
 liblapack.so.3 lapack-3.5.0_1
 libaio.so.1 libaio-0.3.109_1
+libapparmor.so.1 libapparmor-2.12.0_1
 libarchive.so.13 libarchive-3.1.2_1
 libargon2.so.1 libargon2-20171227_1
 libaria2.so.0 libaria2-1.33.1_3
