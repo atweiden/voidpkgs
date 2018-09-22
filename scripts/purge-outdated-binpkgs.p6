@@ -83,10 +83,10 @@ sub gen-candidates(--> Hash:D)
         });
 }
 
-multi sub fmt(%c, Bool:D :all($)! where .so --> Str:D)
+multi sub fmt(%candidate, Bool:D :all($)! where .so --> Str:D)
 {
     my Str:D $fmt =
-        %c
+        %candidate
         .map({
             .values
             .flat
@@ -112,10 +112,10 @@ multi sub fmt(%c, Bool:D :all($)! where .so --> Str:D)
         .join("\n");
 }
 
-multi sub fmt(%c --> Str:D)
+multi sub fmt(%candidate --> Str:D)
 {
     my Str:D $fmt =
-        %c
+        %candidate
         .map({
             .values
             .flat
