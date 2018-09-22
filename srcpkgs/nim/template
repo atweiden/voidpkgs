@@ -1,0 +1,124 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nim"
+version=0.18.0
+revision=3
+_cversion=0.18.0
+_nimbleversion=0.9.0
+short_desc="Compiled, garbage-collected systems programming language which has an excellent productivity/performance ratio"
+depends="gcc"
+makedepends="readline-devel"
+hostmakedepends="ed"
+homepage="https://nim-lang.org/"
+license="MIT"
+distfiles+=" https://github.com/nim-lang/Nim/archive/v$version.tar.gz"
+distfiles+=" https://github.com/nim-lang/csources/archive/v$_cversion.tar.gz>csources-$_cversion.tar.gz"
+distfiles+=" https://github.com/nim-lang/nimble/archive/v$_nimbleversion.tar.gz>nimble-$_nimbleversion.tar.gz"
+checksum+=" 9b9982f349fb96db44020a6da14fa683179b637a3d94782e2c99156ac613e187"
+checksum+=" e9aff9d58661ea852ae424ba34fc3750b45fb31982645a3038de2300bea2d17c"
+checksum+=" d02cc0b1787fa30e6d88a1ee7aa067c1555b7763d2716742d1d10132df550456"
+build_wrksrc="Nim-$version"
+create_wrksrc="yes"
+
+post_extract() {
+  mv "csources-$_cversion" "$build_wrksrc/csources"
+  mkdir "$build_wrksrc/dist"
+  mv "nimble-$_nimbleversion" "$build_wrksrc/dist/nimble"
+}
+
+do_build() {
+  # build csources
+  pushd csources
+  CFLAGS= LDFLAGS= sh build.sh
+  popd
+
+  ed lib/wrappers/openssl.nim <<-EDIT
+  ,s/versions = "(/versions = "(.45|/
+  w
+  q
+EDIT
+
+  # build nim
+  ./bin/nim \
+    c \
+    -d:release \
+    koch
+  ./koch \
+    boot \
+    -d:release \
+    -d:nativeStacktrace \
+    -d:useGnuReadline
+  # build nimble
+  ./koch nimble
+
+  case "$XBPS_TARGET_MACHINE" in
+    aarch64*)
+      _arch="arm64"
+      ;;
+    arm*)
+      _arch="arm"
+      ;;
+  esac
+
+  case "$XBPS_TARGET_MACHINE" in
+    arm*|aarch64*)
+      ed config/nim.cfg <<-EDIT
+  ,s/^arm.linux.gcc.exe .*/arm.linux.gcc.exe = "$CC"/
+  ,s/^arm.linux.gcc.linkerexe .*/arm.linux.gcc.linkerexe = "$CC"/
+  a
+  arm64.linux.gcc.exe = "$CC"
+  arm64.linux.gcc.linkerexe = "$CC"
+  .
+  w
+  q
+EDIT
+      # build nimgrep and nimsuggest
+      bin/nim c -d:release --os:linux --cpu:$_arch --listCmd compiler/nim
+      for _p in dist/nimble/src/nimble \
+                tools/nimgrep \
+                nimsuggest/nimsuggest; do
+        bin/nim c -d:release --os:linux --cpu:$_arch --listCmd "$_p"
+        mv "$_p" bin
+      done
+      # build libnimrtl
+      pushd lib
+      ../bin/nim c --app:lib -d:createNimRtl -d:release --os:linux --cpu:$_arch nimrtl.nim
+      popd
+      ;;
+    *)
+      # build nimgrep and nimsuggest
+      ./koch tools
+      # build libnimrtl
+      pushd lib
+      ../bin/nim c --app:lib -d:createNimRtl -d:release nimrtl.nim
+      popd
+      ;;
+  esac
+}
+
+do_install() {
+  ./koch install "$DESTDIR/usr/lib"
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    mv compiler/nim "$DESTDIR/usr/lib/nim/bin/nim"
+  fi
+
+  vmkdir usr/bin
+  vmkdir usr/share/nim
+  ln -sf /usr/lib/nim/bin/nim "$DESTDIR/usr/bin/nim"
+  for _f in nimble \
+            nimsuggest \
+            nimgrep; do
+    chmod 0755 "bin/$_f"
+    cp "bin/$_f" "$DESTDIR/usr/lib/nim/bin"
+    ln -sf "/usr/lib/nim/bin/$_f" "$DESTDIR/usr/bin/$_f"
+  done
+  cp -r doc examples "$DESTDIR/usr/lib/nim"
+  ln -sf /usr/lib/nim/doc "$DESTDIR/usr/share/nim/doc"
+  ln -sf /usr/lib/nim/examples "$DESTDIR/usr/share/nim/examples"
+}
+
+post_install() {
+  vlicense copying.txt
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

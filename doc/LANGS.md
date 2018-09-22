@@ -9,6 +9,7 @@ Programming Languages
 - Guile
 - Haskell
 - Lua
+- Nim
 - OCaml
 - Perl
 - Python
