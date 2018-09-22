@@ -32,7 +32,10 @@ alternatives+=" ntpd:ntpd:/etc/sv/isc-ntpd"
 alternatives+=" ntpd:ntpd:/usr/bin/isc-ntpd"
 
 post_extract() {
-  sed -i 's/linux/GLIBC/g' ntpd/ntpd.c
+  sed \
+    -i \
+    -e 's/linux/GLIBC/g' \
+    ntpd/ntpd.c
 }
 
 post_install() {

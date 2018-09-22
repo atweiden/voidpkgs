@@ -19,7 +19,10 @@ build_style="gnu-configure"
 
 post_extract() {
   # fix db plugin
-  sed -i -e "s|<db.h>|<db_185.h>|" "$wrksrc/src/plugins/kdb/db2"/*.[ch]
+  sed \
+    -i \
+    -e "s|<db.h>|<db_185.h>|" \
+    "$wrksrc/src/plugins/kdb/db2"/*.[ch]
 }
 
 do_configure() {
@@ -43,7 +46,10 @@ do_configure() {
 }
 
 pre_build() {
-  sed -i "/LDFLAGS=/d" src/build-tools/krb5-config.in
+  sed \
+    -i \
+    -e "/LDFLAGS=/d" \
+    src/build-tools/krb5-config.in
 }
 
 do_build() {

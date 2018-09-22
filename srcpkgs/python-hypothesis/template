@@ -29,11 +29,20 @@ pycompile_module="hypothesis"
 
 do_check() {
   # pytest doesn't recognize -n switch
-  sed -i 's/ -n 2$//' tox.ini
+  sed \
+    -i \
+    -e 's/ -n 2$//' \
+    tox.ini
 
   # in python3 mock is actually unittest.mock
-  sed -i 's/from mock/from unittest.mock/' tests/cover/test_regressions.py
-  sed -i 's/from mock/from unittest.mock/' tests/cover/test_reflection.py
+  sed \
+    -i \
+    -e 's/from mock/from unittest.mock/' \
+    tests/cover/test_regressions.py
+  sed \
+    -i \
+    -e 's/from mock/from unittest.mock/' \
+    tests/cover/test_reflection.py
 
   # add variables to be used by python to find the local hypothesis build
   PY3PATH="$PWD/build-$py3_ver/lib"

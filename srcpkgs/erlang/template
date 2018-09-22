@@ -30,7 +30,10 @@ pre_configure() {
 }
 
 post_configure() {
-  sed -i '/LDFLAGS =/s/=/+=/' lib/odbc/c_src/*/Makefile
+  sed \
+    -i \
+    -e '/LDFLAGS =/s/=/+=/' \
+    lib/odbc/c_src/*/Makefile
 }
 
 post_install() {

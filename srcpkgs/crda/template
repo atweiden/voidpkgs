@@ -26,7 +26,10 @@ desc_option_wardrive="Disable CRDA checks for wardriving competitions"
 post_extract() {
   if [[ -n "$build_option_wardrive" ]]; then
     # max 2W =~ 33dBm
-    sed -i 's/([0-9][0-9])/(33)/g' "$_dbsrc/db.txt"
+    sed \
+      -i \
+      -e 's/([0-9][0-9])/(33)/g' \
+      "$_dbsrc/db.txt"
   fi
 }
 

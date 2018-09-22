@@ -13,7 +13,10 @@ checksum="3f3ecb90e28cbe53fba7a4a27ccce7aad188d3210bb1964a923a731a27a75acb"
 build_style="gnu-configure"
 
 pre_configure() {
-  sed -i /SUBDIRS/s/tests// Makefile.am
+  sed \
+    -i \
+    -e '/SUBDIRS/s/tests//' \
+    Makefile.am
   autoreconf -fi
 }
 

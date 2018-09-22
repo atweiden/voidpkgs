@@ -17,7 +17,10 @@ build_style="gnu-configure"
 
 pre_check() {
   # disable failing test by adding AT_XFAIL_IF([:])
-  sed -i '/AT_SETUP(\[AC_PROG_CPP via CC\])/ s/$/ \nAT_XFAIL_IF(\[:\])/' tests/c.at
+  sed \
+    -i \
+    -e '/AT_SETUP(\[AC_PROG_CPP via CC\])/ s/$/ \nAT_XFAIL_IF(\[:\])/' \
+    tests/c.at
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

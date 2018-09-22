@@ -33,11 +33,16 @@ pre_configure() {
     patch -s -Np0 -i "$XBPS_SRCDISTDIR/$pkgname-$version/readline${_dist_ver/./}-$p"
     msg_normal " Applying patch readline${_dist_ver/./}-$p.\n"
   done
-  sed -i 's|-Wl,-rpath,$(libdir) ||g' support/shobj-conf
+  sed \
+    -i \
+    -e 's|-Wl,-rpath,$(libdir) ||g' \
+    support/shobj-conf
 }
+
 do_build() {
   make "$makejobs" LDFLAGS="-lncurses" SHLIB_LIBS="-lncurses"
 }
+
 do_install() {
   make DESTDIR="$DESTDIR" LDFLAGS="-lncurses" SHLIB_LIBS="-lncurses" install
 }

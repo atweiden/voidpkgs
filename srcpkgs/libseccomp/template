@@ -14,7 +14,10 @@ build_style="gnu-configure"
 post_extract() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      sed -i '/<linux\/prctl.h>/d' src/system.h
+      sed \
+        -i \
+        -e '/<linux\/prctl.h>/d' \
+        src/system.h
       ;;
   esac
 }

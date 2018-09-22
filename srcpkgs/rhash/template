@@ -19,7 +19,10 @@ make_install_target+=" install"
 make_install_target+=" install-lib-shared"
 
 post_extract() {
-  sed -i 's/__GLIBC__/__linux__/' librhash/byte_order.h
+  sed \
+    -i \
+    -e 's/__GLIBC__/__linux__/' \
+    librhash/byte_order.h
 }
 
 post_install() {

@@ -26,7 +26,10 @@ alternatives+=" lua:lua:/usr/share/doc/lua5.3"
 
 pre_build() {
   # lua 5.3.4 has wrong release version in its Makefile; fix it
-  sed -i "s/^R= \$V.4/R= \$V.5/" Makefile
+  sed \
+    -i \
+    -e "s/^R= \$V.4/R= \$V.5/" \
+    Makefile
 }
 
 do_build() {

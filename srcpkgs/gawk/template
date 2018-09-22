@@ -25,11 +25,20 @@ pre_configure() {
 }
 
 pre_check() {
-  sed -i 's/done | more/done/g' test/Makefile
+  sed \
+    -i \
+    -e 's/done | more/done/g' \
+    test/Makefile
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      sed -i '/testext/d' test/Makefile
-      sed -i '/clos1way6/d' test/Makefile
+      sed \
+        -i \
+        -e '/testext/d' \
+        test/Makefile
+      sed \
+        -i \
+        -e '/clos1way6/d' \
+        test/Makefile
       ;;
   esac
 }

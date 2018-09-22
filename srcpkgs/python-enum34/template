@@ -16,7 +16,10 @@ pycompile_module="enum"
 
 pre_build() {
   # remove doc
-  sed -i "/'enum' :/,+6d" setup.py
+  sed \
+    -i \
+    -e "/'enum' :/,+6d" \
+    setup.py
 }
 
 post_install() {

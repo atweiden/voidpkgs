@@ -22,7 +22,10 @@ configure_args+=" tcl_cv_strtod_unbroken=ok"
 shlib_provides="libtcl${version%.*}.so"
 
 post_extract() {
-  sed -i 's/-DSQLITE_API=MODULE_SCOPE//g' pkgs/sqlite*/Makefile.in
+  sed \
+    -i \
+    -e 's/-DSQLITE_API=MODULE_SCOPE//g' \
+    pkgs/sqlite*/Makefile.in
 }
 
 do_install() {

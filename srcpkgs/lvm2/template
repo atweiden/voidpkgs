@@ -47,11 +47,17 @@ do_check() {
 }
 
 pre_configure() {
-  sed -i 's|@BLKID_LIBS@|-lblkid -luuid|g' make.tmpl.in
+  sed \
+    -i \
+    -e 's|@BLKID_LIBS@|-lblkid -luuid|g' \
+    make.tmpl.in
 }
 
 post_install() {
-  sed -i 's,use_lvmetad = 1,use_lvmetad = 0,' "$DESTDIR/etc/lvm/lvm.conf"
+  sed \
+    -i \
+    -e 's,use_lvmetad = 1,use_lvmetad = 0,' \
+    "$DESTDIR/etc/lvm/lvm.conf"
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       sed \

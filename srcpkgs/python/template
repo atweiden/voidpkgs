@@ -32,7 +32,10 @@ pre_configure() {
   rm -r Modules/_ctypes/libffi*
   rm -r Modules/zlib
   # enable loading sqlite extensions
-  sed -i '/SQLITE_OMIT_LOAD_EXTENSION/d' setup.py
+  sed \
+    -i \
+    -e '/SQLITE_OMIT_LOAD_EXTENSION/d' \
+    setup.py
 }
 
 do_configure() {

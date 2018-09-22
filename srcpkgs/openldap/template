@@ -44,9 +44,18 @@ system_accounts="ldap"
 ldap_homedir="/var/lib/openldap"
 
 pre_configure() {
-  sed -i 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' include/ldap_defaults.h
-  sed -i 's|%LOCALSTATEDIR%/run|/run/openldap|' servers/slapd/slapd.{conf,ldif}
-  sed -i 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' servers/slapd/Makefile.in
+  sed \
+    -i \
+    -e 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' \
+    include/ldap_defaults.h
+  sed \
+    -i \
+    -e 's|%LOCALSTATEDIR%/run|/run/openldap|' \
+    servers/slapd/slapd.{conf,ldif}
+  sed \
+    -i \
+    -e 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' \
+    servers/slapd/Makefile.in
   aclocal
   autoconf
   autoheader

@@ -14,7 +14,11 @@ pre_configure() {
     -i \
     -e "/#include <linux\/netlink.h>/i #include <stdint.h>" \
     "$wrksrc/include/libnfnetlink/libnfnetlink.h"
-  find "$wrksrc" -type f -exec sed -e "s;u_int;uint;g" -i "{}" \;
+  find "$wrksrc" -type f \
+    -exec sed \
+            -i \
+            -e "s;u_int;uint;g" \
+            "{}" \;
 }
 
 libnfnetlink-devel_package() {

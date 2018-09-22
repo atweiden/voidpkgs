@@ -16,9 +16,18 @@ wrksrc="$pkgname-${version%a*}"
 nocross="yes"
 
 do_build() {
-  sed -i 's|/opt/schily|/usr|g' DEFAULTS/Defaults.linux
-  sed -i 's|DEFINSGRP=.*|DEFINSGRP=root|' DEFAULTS/Defaults.linux
-  sed -i 's|INSDIR=.*|INSDIR=bin|' rscsi/Makefile
+  sed \
+    -i \
+    -e 's|/opt/schily|/usr|g' \
+    DEFAULTS/Defaults.linux
+  sed \
+    -i \
+    -e 's|DEFINSGRP=.*|DEFINSGRP=root|' \
+    DEFAULTS/Defaults.linux
+  sed \
+    -i \
+    -e 's|INSDIR=.*|INSDIR=bin|' \
+    rscsi/Makefile
   smake \
     CC="$CC" \
     COPTX="$CFLAGS" \

@@ -32,7 +32,10 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 pre_build() {
-  sed -e 's,ncursesw/curses.h,curses.h,' -i pinentry/pinentry-curses.c
+  sed \
+    -i \
+    -e 's,ncursesw/curses.h,curses.h,' \
+    pinentry/pinentry-curses.c
 }
 
 post_install() {

@@ -24,7 +24,10 @@ CFLAGS="-D_GNU_SOURCE"
 pre_configure() {
   # custom CFLAGS
   find -name "Makefile.linux" \
-    -exec sed -i "{}" -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" \;
+    -exec sed \
+            -i \
+            -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" \
+            "{}" \;
   # custom LDFLAGS for chat, pppoe-discovery and pppdump
   sed \
     -i \

@@ -114,7 +114,10 @@ done
 binfmts="${binfmts%?}"
 
 post_extract() {
-  sed -i 's/__u64/unsigned long/' linux-user/host/aarch64/hostdep.h
+  sed \
+    -i \
+    -e 's/__u64/unsigned long/' \
+    linux-user/host/aarch64/hostdep.h
 }
 
 do_configure() {

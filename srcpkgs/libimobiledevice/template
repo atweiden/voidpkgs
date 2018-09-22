@@ -27,8 +27,14 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 pre_configure() {
-  sed -i 's,SSLv3_,SSLv23_,g' src/idevice.c
-  sed -i 's,-L$(libdir),,g' cython/Makefile.am
+  sed \
+    -i \
+    -e 's,SSLv3_,SSLv23_,g' \
+    src/idevice.c
+  sed \
+    -i \
+    -e 's,-L$(libdir),,g' \
+    cython/Makefile.am
   export PYTHON_CPPFLAGS="-I$XBPS_CROSS_BASE/usr/include/python2.7"
   export PYTHON_LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -lpython2.7"
   autoreconf -fi

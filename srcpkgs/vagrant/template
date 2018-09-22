@@ -19,7 +19,10 @@ patch_args="-p1"
 nocross="yes"
 
 post_extract() {
-  sed -i 's|\,\ "<\ 2\.5"||g' "$pkgname.gemspec"
+  sed \
+    -i \
+    -e 's|\,\ "<\ 2\.5"||g' \
+    "$pkgname.gemspec"
 }
 
 do_build() {

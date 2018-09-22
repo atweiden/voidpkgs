@@ -88,8 +88,14 @@ _gcc_bootstrap() {
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
 
-  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-  sed -i 's/lib64/lib/' gcc/config/i386/linux64.h
+  sed \
+    -i \
+    -e '/m64=/s/lib64/lib/' \
+    gcc/config/i386/t-linux64
+  sed \
+    -i \
+    -e 's/lib64/lib/' \
+    gcc/config/i386/linux64.h
 
   msg_normal "Building cross gcc bootstrap\n"
 
@@ -119,7 +125,11 @@ _gcc_bootstrap() {
   _args+=" libat_cv_have_ifunc=no"
 
   "../gcc-$_gcc_version/configure" $_args
-  find -name Makefile -exec sed -i "{}" -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \;
+  find -name Makefile \
+    -exec sed \
+            -i \
+            -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \
+            "{}" \;
   make "$makejobs"
   make install
   touch "$wrksrc/.gcc_bootstrap_done"
@@ -189,7 +199,11 @@ _gcc_build() {
   _args+=" libat_cv_have_ifunc=no"
 
   "../gcc-$_gcc_version/configure" $_args
-  find -name Makefile -exec sed -i "{}" -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \;
+  find -name Makefile \
+    -exec sed \
+            -i \
+            -e "s;^CFLAGS.*;& -fPIC -D__WCHAR_TYPE__=int;" \
+            "{}" \;
   make "$makejobs"
   touch "$wrksrc/.gcc_build_done"
 }

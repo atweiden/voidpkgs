@@ -19,7 +19,10 @@ esac
 
 pre_check() {
   # help-version test is known to fail
-  sed -i '1721,1727d;1447d' tests/Makefile
+  sed \
+    -i \
+    -e '1721,1727d;1447d' \
+    tests/Makefile
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -20,7 +20,10 @@ build_options_default+=" dbus"
 build_options_default+=" readline"
 
 pre_build() {
-  sed -i 's|/usr/local|$(PREFIX)|g' Makefile
+  sed \
+    -i \
+    -e 's|/usr/local|$(PREFIX)|g' \
+    Makefile
   cp -f "$FILESDIR/config" .config
 
   if [[ -n "$build_option_dbus" ]]; then

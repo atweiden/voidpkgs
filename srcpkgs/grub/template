@@ -36,7 +36,10 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 post_extract() {
-  sed -i -e 's,freetype/ftsynth.h,freetype2/ftsynth.h,' util/grub-mkfont.c
+  sed \
+    -i \
+    -e 's,freetype/ftsynth.h,freetype2/ftsynth.h,' \
+    util/grub-mkfont.c
 }
 
 do_configure() {

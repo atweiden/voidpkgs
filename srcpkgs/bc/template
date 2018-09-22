@@ -18,7 +18,10 @@ if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" bc"
   pre_build() {
     # don't run target built binary `fbc`, run host `bc` instead
-    sed -i -e 's|^\(\s\+\)./fbc|\1bc|g' bc/Makefile
+    sed \
+      -i \
+      -e 's|^\(\s\+\)./fbc|\1bc|g' \
+      bc/Makefile
   }
 fi
 

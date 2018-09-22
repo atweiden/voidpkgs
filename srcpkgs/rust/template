@@ -94,8 +94,8 @@ post_extract() {
   rustc_ver="$("$wrksrc/stage0/bin/rustc" --version | cut -f2 -d ' ')"
   rustc_key="$(printf "$rustc_ver" | md5sum | cut -c1-8)"
   sed \
-    -E \
     -i \
+    -E \
     -e "s/^(rustc):.*/\1: $rustc_ver-1970-01-01/" \
     -e "s/^(rustc_key):.*/\1: $rustc_key/" \
     src/stage0.txt
@@ -108,7 +108,10 @@ cargo = "$wrksrc/stage0/bin/cargo"
 rustc = "$wrksrc/stage0/bin/rustc"
 EOF
 
-  sed -i /LD_LIBRARY_PATH/d src/bootstrap/bootstrap.py
+  sed \
+    -i \
+    -e '/LD_LIBRARY_PATH/d' \
+    src/bootstrap/bootstrap.py
 }
 
 pre_build() {

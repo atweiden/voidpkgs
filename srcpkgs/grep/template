@@ -22,7 +22,10 @@ pre_check() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # disable locale tests that fail on musl
-      sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
+      sed \
+        -i \
+        -e '/test-localename$(EXEEXT)/d' \
+        gnulib-tests/Makefile
       ;;
   esac
 }

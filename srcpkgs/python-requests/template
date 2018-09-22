@@ -19,7 +19,10 @@ build_style="python-module"
 pycompile_module="requests"
 
 pre_build() {
-  sed -i '/certifi/d' setup.py
+  sed \
+    -i \
+    -e '/certifi/d' \
+    setup.py
 }
 
 python3-requests_package() {

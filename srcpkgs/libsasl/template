@@ -35,7 +35,10 @@ configure_args+=" --with-devrandom=/dev/random"
 pre_configure() {
   # XXX
   if [[ -n "$CROSS_BUILD" ]]; then
-    sed 's,AC_TRY_RUN,AC_TRY_LINK_FUNC,' -i cmulocal/sasl2.m4
+    sed \
+      -i \
+      -e 's,AC_TRY_RUN,AC_TRY_LINK_FUNC,' \
+      cmulocal/sasl2.m4
   fi
 
   # remove outdated files
@@ -46,7 +49,10 @@ pre_configure() {
   mv configure.{in,ac}
 
   # avoid picking up the target LDFLAGS for makemd5
-  sed -i include/Makefile.am -e "/^CFLAGS/a LDFLAGS ="
+  sed \
+    -i \
+    -e "/^CFLAGS/a LDFLAGS =" \
+    include/Makefile.am
 
   # rename configure.in for fewer warnings
   mv saslauthd/configure.{in,ac}
@@ -55,7 +61,11 @@ pre_configure() {
   rm -f config/kerberos_v4.m4
 
   # remove placeholder for KRB4 library
-  find -name Makefile.am -exec sed -i "{}" -e "s;= @SASL_KRB_LIB@;= ;" \;
+  find -name Makefile.am \
+    -exec sed \
+            -i \
+            -e "s;= @SASL_KRB_LIB@;= ;" \
+            "{}" \;
 
   autoreconf -I "$(pwd)/config" -I "$(pwd)/cmulocal" -i -f
 }

@@ -31,7 +31,10 @@ pre_build() {
     -e 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' \
     Makefile
   # fix FHS manpage path
-  sed -i 's|/usr/man|/usr/share/man|g' mk/syslinux.mk
+  sed \
+    -i \
+    -e 's|/usr/man|/usr/share/man|g' \
+    mk/syslinux.mk
 }
 
 do_build() {

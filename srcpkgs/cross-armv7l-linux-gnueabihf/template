@@ -234,8 +234,11 @@ _gcc_build() {
 
   # make this link to target libs
   if ! [[ -f ".sed_subst_done" ]]; then
-    sed -e "s, /lib/, $_sysroot/lib/,g;s, /usr/lib/, $_sysroot/usr/lib/,g" \
-      -i "$_sysroot/lib/libc.so" "$_sysroot/lib/libpthread.so"
+    sed \
+      -i \
+      -e "s, /lib/, $_sysroot/lib/,g;s, /usr/lib/, $_sysroot/usr/lib/,g" \
+      "$_sysroot/lib/libc.so" \
+      "$_sysroot/lib/libpthread.so"
     touch .sed_subst_done
   fi
 

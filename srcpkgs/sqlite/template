@@ -31,7 +31,10 @@ CFLAGS+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY"
 CFLAGS+=" -DSQLITE_SECURE_DELETE"
 
 pre_configure() {
-  sed -i -e 's/ -ltinfo//g' configure
+  sed \
+    -i \
+    -e 's/ -ltinfo//g' \
+    configure
 }
 
 sqlite-devel_package() {

@@ -20,7 +20,10 @@ lib32disabled="yes"
 
 pre_install() {
   # make wpa_supplicant log to syslog rather than stdout
-  sed -i 's,-B,& -s,' hooks/10-wpa_supplicant
+  sed \
+    -i \
+    -e 's,-B,& -s,' \
+    hooks/10-wpa_supplicant
 }
 
 post_install() {
@@ -29,7 +32,10 @@ post_install() {
   vsv dhcpcd
   vsv dhcpcd-eth0
   # enable controlgroup by default, to make dhcpcd-ui work
-  sed -i 's,^#\(controlgroup.*\),\1,' "$DESTDIR/etc/dhcpcd.conf"
+  sed \
+    -i \
+    -e 's,^#\(controlgroup.*\),\1,' \
+    "$DESTDIR/etc/dhcpcd.conf"
   ln -sf /usr/share/dhcpcd/hooks/10-wpa_supplicant "$DESTDIR/usr/libexec/dhcpcd-hooks/"
 }
 

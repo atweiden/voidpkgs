@@ -18,7 +18,10 @@ make_install_args+=" WITH_WGQUICK=yes"
 dkms_modules="wireguard $version"
 
 post_extract() {
-  sed -i 's/^CFLAGS /override &/' "$build_wrksrc/Makefile"
+  sed \
+    -i \
+    -e 's/^CFLAGS /override &/' \
+    "$build_wrksrc/Makefile"
 }
 
 post_install() {

@@ -23,8 +23,14 @@ conf_files+=" /etc/iproute2/rt_tables"
 
 do_configure() {
   ./configure
-  sed -i 's,CCOPTS,HOSTCCOPTS,g' netem/Makefile
-  sed -i 's/^LDFLAGS +=/override &/' */Makefile
+  sed \
+    -i \
+    -e 's,CCOPTS,HOSTCCOPTS,g' \
+    netem/Makefile
+  sed \
+    -i \
+    -e 's/^LDFLAGS +=/override &/' \
+    */Makefile
 }
 
 do_build() {

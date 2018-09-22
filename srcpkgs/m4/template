@@ -17,10 +17,19 @@ pre_check() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl* )
       # disable locale tests that fail on musl
-      sed -i '/test-localename$(EXEEXT)/d' tests/Makefile
-      sed -i '/test-mbrtowc5.sh/d' tests/Makefile
+      sed \
+        -i \
+        -e '/test-localename$(EXEEXT)/d' \
+        tests/Makefile
+      sed \
+        -i \
+        -e '/test-mbrtowc5.sh/d' \
+        tests/Makefile
       # fails because test-localename doesn't work on musl
-      sed -i '/test-localeconv$(EXEEXT)/d' tests/Makefile
+      sed \
+        -i \
+        -e '/test-localeconv$(EXEEXT)/d' \
+        tests/Makefile
       ;;
   esac
 }

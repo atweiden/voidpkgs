@@ -19,7 +19,10 @@ configure_args="--disable-static"
 
 pre_configure() {
   autoreconf -fi
-  sed -i '/<linux\/if_bridge.h>/i#define _LINUX_IN6_H' lib/route/link/bridge.c
+  sed \
+    -i \
+    -e '/<linux\/if_bridge.h>/i#define _LINUX_IN6_H' \
+    lib/route/link/bridge.c
 }
 
 libnl3-devel_package() {

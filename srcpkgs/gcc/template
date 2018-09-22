@@ -169,7 +169,10 @@ post_extract() {
 
 pre_configure() {
   # _FORTIFY_SOURCE needs an optimization level
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {gcc,libiberty}/configure
+  sed \
+    -i \
+    -e "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    {gcc,libiberty}/configure
 }
 
 do_configure() {
@@ -205,12 +208,21 @@ do_configure() {
     aarch64*)
       # use lib not lib64 by default
       _args+=" --with-arch=armv8-a"
-      sed -i '/m64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
+      sed \
+        -i \
+        -e '/m64=/s/lib64/lib/' \
+        gcc/config/aarch64/t-aarch64-linux
       ;;
     x86_64*)
       # use lib not lib64 by default
-      sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-      sed -i 's/lib64/lib/' gcc/config/i386/linux64.h
+      sed \
+        -i \
+        -e '/m64=/s/lib64/lib/' \
+        gcc/config/i386/t-linux64
+      sed \
+        -i \
+        -e 's/lib64/lib/' \
+        gcc/config/i386/linux64.h
       ;;
   esac
 

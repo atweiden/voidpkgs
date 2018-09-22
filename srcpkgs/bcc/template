@@ -28,7 +28,10 @@ esac
 
 post_extract() {
   # break on musl
-  sed -i '/tests/d' CMakeLists.txt
+  sed \
+    -i \
+    -e '/tests/d' \
+    CMakeLists.txt
 }
 
 bcc-tools_package() {

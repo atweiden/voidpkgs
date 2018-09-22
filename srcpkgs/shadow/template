@@ -34,16 +34,25 @@ pre_configure() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # completely disable unportable ruserok()
-      sed '/RUSEROK/d' -i configure
+      sed \
+        -i \
+        -e '/RUSEROK/d' \
+        configure
       ;;
   esac
 }
 
 do_build() {
   # don't install groups(1), we use the one from coreutils
-  sed -i 's/groups$(EXEEXT) //' src/Makefile
+  sed \
+    -i \
+    -e 's/groups$(EXEEXT) //' \
+    src/Makefile
   for f in $(find man -name Makefile); do
-    sed -i 's/groups\.1 / /' "$f"
+    sed \
+      -i \
+      -e 's/groups\.1 / /' \
+      "$f"
   done
   make "$makejobs"
 }
@@ -74,9 +83,15 @@ post_install() {
   install -m 644 "$FILESDIR/login.defs" "$DESTDIR/etc"
 
   # disable creating mailbox files by default
-  sed -i -e 's/yes/no/' "$DESTDIR/etc/default/useradd"
+  sed \
+    -i \
+    -e 's/yes/no/' \
+    "$DESTDIR/etc/default/useradd"
   # change default group to the users gid (100)
-  sed -i -e 's/^\(GROUP\)=\(.*\)$/\1=100/' "$DESTDIR/etc/default/useradd"
+  sed \
+    -i \
+    -e 's/^\(GROUP\)=\(.*\)$/\1=100/' \
+    "$DESTDIR/etc/default/useradd"
 
   chmod 644 "$DESTDIR/etc/default/useradd"
 

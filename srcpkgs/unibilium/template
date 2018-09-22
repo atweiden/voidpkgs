@@ -14,8 +14,14 @@ build_style="gnu-makefile"
 do_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     cp /usr/bin/libtool .
-    sed -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" -i libtool
-    sed -e 's,libtool,./libtool,g' -i Makefile
+    sed \
+      -i \
+      -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" \
+      libtool
+    sed \
+      -i \
+      -e 's,libtool,./libtool,g' \
+      Makefile
   fi
   make "$makejobs"
 }

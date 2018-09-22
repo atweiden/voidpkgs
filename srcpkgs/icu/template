@@ -63,7 +63,10 @@ pre_configure() {
   # probably other stuff breaks too, so let's just do it
   #
   # see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-  sed -e 's,-nostdlib,,g' -i "$wrksrc/source/config/mh-linux"
+  sed \
+    -i \
+    -e 's,-nostdlib,,g' \
+    "$wrksrc/source/config/mh-linux"
 }
 
 post_install() {

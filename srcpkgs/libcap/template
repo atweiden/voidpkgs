@@ -18,9 +18,18 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 
 do_configure() {
-  sed -i 's/CFLAGS :=/CFLAGS +=/g' Make.Rules
-  sed -i 's/LDFLAGS :=/LDFLAGS +=/g' Make.Rules
-  sed -i '/BUILD_CFLAGS/s/$(CFLAGS)//' Make.Rules
+  sed \
+    -i \
+    -e 's/CFLAGS :=/CFLAGS +=/g' \
+    Make.Rules
+  sed \
+    -i \
+    -e 's/LDFLAGS :=/LDFLAGS +=/g' \
+    Make.Rules
+  sed \
+    -i \
+    -e '/BUILD_CFLAGS/s/$(CFLAGS)//' \
+    Make.Rules
 }
 
 do_build() {

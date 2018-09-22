@@ -19,7 +19,10 @@ configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-trust-anchor=/etc/dns/root.key"
 
 post_extract() {
-  sed -i 's/defined(@\$also)/@$also/' doc/doxyparse.pl
+  sed \
+    -i \
+    -e 's/defined(@\$also)/@$also/' \
+    doc/doxyparse.pl
 }
 
 post_install() {

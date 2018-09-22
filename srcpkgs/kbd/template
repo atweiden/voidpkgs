@@ -45,8 +45,14 @@ pre_configure() {
   cp azerty/fr-latin9.map azerty/fr-latin0.map
   cd "$wrksrc"
 
-  sed -e '/^PKG_CHECK_MODULES.*/d' -i configure.ac
-  sed -e 's,tests ,,g' -i Makefile.am
+  sed \
+    -i \
+    -e '/^PKG_CHECK_MODULES.*/d' \
+    configure.ac
+  sed \
+    -i \
+    -e 's,tests ,,g' \
+    Makefile.am
 
   $XBPS_FETCH_CMD http://git.alpinelinux.org/cgit/aports/plain/main/kbd/error.h
   autoreconf -fi

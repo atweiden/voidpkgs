@@ -136,10 +136,12 @@ do_configure() {
 
 do_build() {
   # less verbose output when compiling and assembling
-  sed -i Makerules \
+  sed \
+    -i \
     -e 's|compile-command.c = \(.*\)|compile-command.c = @echo " CC     $<"; \1|' \
     -e 's|compile-command.cc = \(.*\)|compile-command.cc = @echo " CXX    $<"; \1|' \
-    -e 's|compile-command.S = \(.*\)|compile-command.S = @echo " ASM    $<"; \1|'
+    -e 's|compile-command.S = \(.*\)|compile-command.S = @echo " ASM    $<"; \1|' \
+    Makerules
   cd build
   make "$makejobs"
 }
@@ -173,7 +175,10 @@ do_install() {
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
     rtldlist+=" /lib/ld-linux.so.2"
     rtldlist+=" /lib/ld-linux-x86-64.so.2"
-    sed -i "s|^RTLDLIST.*$|RTLDLIST=\"$rtldlist\"|" "$DESTDIR/usr/bin/ldd"
+    sed \
+      -i \
+      -e "s|^RTLDLIST.*$|RTLDLIST=\"$rtldlist\"|" \
+      "$DESTDIR/usr/bin/ldd"
   fi
   install -d "$DESTDIR/etc/ld.so.conf.d"
   echo "/usr/local/lib" > "$DESTDIR/etc/ld.so.conf.d/usr_local.conf"

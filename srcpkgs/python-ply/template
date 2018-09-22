@@ -16,7 +16,9 @@ build_style="python-module"
 pycompile_module="ply"
 
 post_install() {
-  sed -n '/Copyright/,/POSSIBILITY/p' README.md >LICENSE
+  sed \
+    -n '/Copyright/,/POSSIBILITY/p' \
+    README.md > LICENSE
   vlicense LICENSE
 }
 

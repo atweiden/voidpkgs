@@ -12,8 +12,14 @@ checksum="47032fb39d698ce4cf9c9c462c198e6b08790ce8203ad1224086b9b978636c69"
 do_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     cp /usr/bin/libtool .
-    sed -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" -i libtool
-    sed -e 's,libtool,./libtool,g' -i makefile.shared
+    sed \
+      -i \
+      -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" \
+      libtool
+    sed \
+      -i \
+      -e 's,libtool,./libtool,g' \
+      makefile.shared
   fi
   make -f makefile.shared
 }

@@ -16,8 +16,14 @@ do_fetch() {
 }
 
 pre_build() {
-  sed -i "s#/sbin#/bin#" Makefile
-  sed -i "s#/usr##" man/Makefile
+  sed \
+    -i \
+    -e "s#/sbin#/bin#" \
+    Makefile
+  sed \
+    -i \
+    -e "s#/usr##" \
+    man/Makefile
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # include file is <linux/ipv6_route.h>

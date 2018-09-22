@@ -32,7 +32,10 @@ configure_args+=" --with-sasl"
 
 post_extract() {
   # detects cpu from triplet
-  sed -i 's/armv6hl/arm/g' configure
+  sed \
+    -i \
+    -e 's/armv6hl/arm/g' \
+    configure
 }
 
 spice-devel_package() {

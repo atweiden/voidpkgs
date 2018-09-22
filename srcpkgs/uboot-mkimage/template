@@ -10,7 +10,12 @@ checksum="cdaf8c81583abfa2e73da46cfcf87b0cbd9741d9aa766f3b905376e3652d543d"
 wrksrc="u-boot-$version"
 
 do_configure() {
-  sed -i 's,ulong,unsigned long,g' include/*.[ch] common/*.[ch] tools/*.[ch]
+  sed \
+    -i \
+    -e 's,ulong,unsigned long,g' \
+    include/*.[ch] \
+    common/*.[ch] \
+    tools/*.[ch]
 }
 
 do_build() {

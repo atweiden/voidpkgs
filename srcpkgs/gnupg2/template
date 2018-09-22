@@ -27,8 +27,14 @@ configure_args+=" --with-libgcrypt-prefix=$XBPS_CROSS_BASE"
 configure_args+=" --with-npth-prefix=$XBPS_CROSS_BASE"
 
 pre_configure() {
-  sed -i '/^CFLAGS=$/d' configure
-  sed -i '/examples\/systemd-user/d' doc/Makefile.in
+  sed \
+    -i \
+    -e '/^CFLAGS=$/d' \
+    configure
+  sed \
+    -i \
+    -e '/examples\/systemd-user/d' \
+    doc/Makefile.in
 }
 
 post_install() {

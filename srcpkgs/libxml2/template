@@ -28,12 +28,18 @@ LDFLAGS="-lz -llzma -lpthread"
 
 pre_configure() {
   autoreconf -fi
-  sed '/PROGRAMS =/s,$(noinst_PROGRAMS),,' -i Makefile.in
+  sed \
+    -i \
+    -e '/PROGRAMS =/s,$(noinst_PROGRAMS),,' \
+    Makefile.in
 }
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
-    sed "s|/usr/\(include/python2.7\)|$XBPS_CROSS_BASE/\1|g" -i python/Makefile
+    sed \
+      -i \
+      -e "s|/usr/\(include/python2.7\)|$XBPS_CROSS_BASE/\1|g" \
+      python/Makefile
   fi
 }
 

@@ -55,7 +55,10 @@ pre_configure() {
 }
 
 post_install() {
-  sed -i 's#/usr/lib/ccache/bin/##g' "$DESTDIR/usr/lib/ghc-${version%[!0-9]}/settings"
+  sed \
+    -i \
+    -e 's#/usr/lib/ccache/bin/##g' \
+    "$DESTDIR/usr/lib/ghc-${version%[!0-9]}/settings"
   vlicense LICENSE
 }
 

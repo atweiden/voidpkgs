@@ -43,7 +43,11 @@ esac
 pre_build() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      sed -i Makefile */Makefile -e "s; -lpam; -lobstack&;"
+      sed \
+        -i \
+        -e "s; -lpam; -lobstack&;" \
+        Makefile \
+        */Makefile
       ;;
   esac
 }

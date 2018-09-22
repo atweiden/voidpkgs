@@ -164,7 +164,10 @@ do_install() {
   esac
 
   # run depmod after compressing modules
-  sed -i '2iexit 0' scripts/depmod.sh
+  sed \
+    -i \
+    -e '2iexit 0' \
+    scripts/depmod.sh
 
   # install kernel, firmware and modules
   make "$makejobs" ARCH="${subarch:-$arch}" INSTALL_MOD_PATH="$DESTDIR" modules_install

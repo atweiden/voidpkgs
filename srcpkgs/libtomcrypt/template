@@ -11,11 +11,20 @@ checksum="96ad4c3b8336050993c5bc2cf6c057484f2b0f9f763448151567fbab5e767b84"
 patch_args="-Np1"
 
 do_build() {
-  sed -e "s,@@CC@@,$CC,g;s,\$(CC),$CC,g" -i makefile.shared
+  sed \
+    -i \
+    -e "s,@@CC@@,$CC,g;s,\$(CC),$CC,g" \
+    makefile.shared
   if [[ -n "$CROSS_BUILD" ]]; then
     cp /usr/bin/libtool .
-    sed -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" -i libtool
-    sed -e 's,libtool,./libtool,g' -i makefile.shared
+    sed \
+      -i \
+      -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" \
+      libtool
+    sed \
+      -i \
+      -e 's,libtool,./libtool,g' \
+      makefile.shared
   fi
   make RANLIB="$RANLIB" -f makefile.shared "$makejobs"
 }

@@ -48,9 +48,15 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 post_extract() {
-  sed -i 's,sgidefs.h,asm/sgidefs.h,' gdb/mips-linux-nat.c
+  sed \
+    -i \
+    -e 's,sgidefs.h,asm/sgidefs.h,' \
+    gdb/mips-linux-nat.c
   # fixes aarch64-musl cross-build
-  sed -i -e "s/@REPLACE_STAT@/0/" gdb/gnulib/import/sys_stat.in.h
+  sed \
+    -i \
+    -e "s/@REPLACE_STAT@/0/" \
+    gdb/gnulib/import/sys_stat.in.h
 }
 
 pre_configure() {

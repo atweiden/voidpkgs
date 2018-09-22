@@ -14,13 +14,19 @@ wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 post_extract() {
-  sed -i '/CFLAGS/d' Makefile.PL
+  sed \
+    -i \
+    -e '/CFLAGS/d' \
+    Makefile.PL
 }
 
 pre_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     export ipv6_cv_can_inet_ntop="yes"
-    sed -i "s:\./configure:& --host='$XBPS_CROSS_TRIPLET':g" Makefile.PL
+    sed \
+      -i \
+      -e "s:\./configure:& --host='$XBPS_CROSS_TRIPLET':g" \
+      Makefile.PL
   fi
 }
 

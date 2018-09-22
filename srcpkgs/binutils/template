@@ -21,9 +21,15 @@ fi
 makedepends="zlib-devel"
 
 pre_configure() {
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  sed \
+    -i \
+    -e "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    libiberty/configure
   # drop bashism
-  sed -i -e 's,source,\.,g' ld/scripttempl/elf32msp430.sc
+  sed \
+    -i \
+    -e 's,source,\.,g' \
+    ld/scripttempl/elf32msp430.sc
 }
 
 do_configure() {

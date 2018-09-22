@@ -29,7 +29,10 @@ xml_entries+=" nextCatalog /usr/share/docbook2X/dtd/catalog.xml --"
 xml_entries+=" nextCatalog /usr/share/docbook2X/xslt/catalog.xml --"
 
 post_install() {
-  sed -i -e 's|${prefix}|/usr|g' "$DESTDIR/usr/bin"/*
+  sed \
+    -i \
+    -e 's|${prefix}|/usr|g' \
+    "$DESTDIR/usr/bin"/*
   vlicense COPYING
 }
 

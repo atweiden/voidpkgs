@@ -32,7 +32,11 @@ post_install() {
   vsv dhcpd6
   mv "$DESTDIR/etc/dhclient.conf.example" "$DESTDIR/etc/dhclient.conf"
   mv "$DESTDIR/etc/dhcpd.conf.example" "$DESTDIR/etc/dhcpd.conf"
-  sed -i "s/^/#/" "$DESTDIR/etc/dhclient.conf" "$DESTDIR/etc/dhcpd.conf"
+  sed \
+    -i \
+    -e "s/^/#/" \
+    "$DESTDIR/etc/dhclient.conf" \
+    "$DESTDIR/etc/dhcpd.conf"
   # remove development stuff, useless
   rm -rf "$DESTDIR/usr/include"
   rm -rf "$DESTDIR/usr/lib"

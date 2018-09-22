@@ -21,7 +21,10 @@ bootstrap="yes"
 conflicts="distcc>=0"
 
 pre_configure() {
-  sed -i -e 's|^\(all: $(bin_PROGRAMS)\) pump include-server|\1|g' Makefile.in
+  sed \
+    -i \
+    -e 's|^\(all: $(bin_PROGRAMS)\) pump include-server|\1|g' \
+    Makefile.in
 }
 
 post_install() {

@@ -26,7 +26,10 @@ configure_args+=" --disable-modern-top"
 configure_args+=" --without-systemd"
 
 post_extract() {
-  sed -i 's,ncursesw/ncurses.h,ncurses.h,g' watch.c
+  sed \
+    -i \
+    -e 's,ncursesw/ncurses.h,ncurses.h,g' \
+    watch.c
 }
 
 pre_configure() {

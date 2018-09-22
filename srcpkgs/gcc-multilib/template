@@ -38,9 +38,15 @@ do_configure() {
   ldconfig &>/dev/null
 
   # _FORTIFY_SOURCE needs an optimization level
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {gcc,libiberty}/configure
+  sed \
+    -i \
+    -e "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    {gcc,libiberty}/configure
   # hack! some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  sed \
+    -i \
+    -e "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    {libiberty,gcc}/configure
 
   ./configure                      \
     --disable-bootstrap            \

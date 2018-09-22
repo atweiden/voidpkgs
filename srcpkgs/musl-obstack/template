@@ -25,7 +25,10 @@ configure_args="--disable-shared"
 CFLAGS="-fPIC"
 
 pre_configure() {
-  sed -i "/pkgconfig_DATA/i pkgconfigdir=\$(libdir)/pkgconfig" Makefile.am
+  sed \
+    -i \
+    -e "/pkgconfig_DATA/i pkgconfigdir=\$(libdir)/pkgconfig" \
+    Makefile.am
   ./bootstrap.sh
 }
 

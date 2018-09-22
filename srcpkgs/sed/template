@@ -15,15 +15,24 @@ bootstrap="yes"
 
 post_extract() {
   # dont regenerate the man page with help2man...
-  sed -i 's|\(^doc/sed.1:\).*$|\1|' Makefile.in
+  sed \
+    -i \
+    -e 's|\(^doc/sed.1:\).*$|\1|' \
+    Makefile.in
 }
 
 pre_check() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # disable locale tests that fail on musl
-      sed -i '/test-localename$(EXEEXT)/d' gnulib-tests/Makefile
-      sed -i '/test-mbrtowc5.sh/d' gnulib-tests/Makefile
+      sed \
+        -i \
+        -e '/test-localename$(EXEEXT)/d' \
+        gnulib-tests/Makefile
+      sed \
+        -i \
+        -e '/test-mbrtowc5.sh/d' \
+        gnulib-tests/Makefile
       ;;
   esac
 }
