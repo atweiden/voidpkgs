@@ -9,6 +9,7 @@ Programming Languages
 - Guile
 - Haskell
 - Lua
+- OCaml
 - Perl
 - Python
 - Ruby
