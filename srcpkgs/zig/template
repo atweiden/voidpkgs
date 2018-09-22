@@ -14,9 +14,9 @@ distfiles="https://github.com/ziglang/zig/archive/$version.tar.gz"
 checksum="09843a3748bf8a5f1742fe93dbf45699f92051ecf479b23272b067dfc3837cc7"
 patch_args="-Np1"
 build_style="cmake"
-configure_args+=" -DZIG_LIBC_LIB_DIR=$(dirname $("$CC" -print-file-name=crt1.o))"
-configure_args+=" -DZIG_LIBC_INCLUDE_DIR=$(echo -n | "$CC" -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-)"
-configure_args+=" -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $("$CC" -print-file-name=crtbegin.o))"
+configure_args+=" -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o))"
+configure_args+=" -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-)"
+configure_args+=" -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))"
 
 do_check() {
   bin/zig build --build-file ../build.zig test
