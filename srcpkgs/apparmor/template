@@ -1,111 +1,122 @@
-# Template file for 'apparmor'
-pkgname=apparmor
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="apparmor"
 version=2.13.0
 revision=7
-build_style=gnu-configure
 _short_ver=${version%\.*}
-wrksrc="${pkgname}-v${_short_ver}"
-build_wrksrc="libraries/libapparmor"
-patch_args="-Np1"
-hostmakedepends="bison flex autoconf automake libtool swig python3"
-makedepends="perl python3-devel"
-depends="runit-void-apparmor python3 libapparmor"
 short_desc="Mandatory access control to restrict programs"
-maintainer="Olivier Mauras <olivier@mauras.ch>"
-license="GPL-2.0-only, LGPL-2.1-only"
+depends+=" libapparmor"
+depends+=" python3"
+depends+=" runit-void-apparmor"
+makedepends+=" perl"
+makedepends+=" python3-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" bison"
+hostmakedepends+=" flex"
+hostmakedepends+=" libtool"
+hostmakedepends+=" python3"
+hostmakedepends+=" swig"
 homepage="https://gitlab.com/apparmor/apparmor"
-distfiles="https://gitlab.com/apparmor/apparmor/-/archive/v${_short_ver}/apparmor-v${_short_ver}.tar.gz"
-checksum=fdafa0b71cbf574cce76a1ea1542b4540fa1c1040f80d0f0866fc0056ec37747
+license="GPL-2.0-only, LGPL-2.1-only"
+distfiles="https://gitlab.com/apparmor/apparmor/-/archive/v$_short_ver/apparmor-v$_short_ver.tar.gz"
+checksum="fdafa0b71cbf574cce76a1ea1542b4540fa1c1040f80d0f0866fc0056ec37747"
 conf_files="/etc/apparmor.d/local/*"
+wrksrc="$pkgname-v$_short_ver"
+patch_args="-Np1"
+build_wrksrc="libraries/libapparmor"
+build_style="gnu-configure"
 make_dirs="/etc/apparmor.d/disable 0755 root root"
 
-if [ -z "$CROSS_BUILD" ]; then
-	configure_args="--with-perl --with-python"
+if [[ -z "$CROSS_BUILD" ]]; then
+  configure_args+=" --with-perl"
+  configure_args+=" --with-python"
 fi
 
 pre_configure() {
-	NOCONFIGURE=1 ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 pre_build() {
-	# Replace release profiles with our own
-	cd ${wrksrc}
+  # replace release profiles with our own
+  cd "$wrksrc"
 
-	# Put in place our own profiles
-	cp ${FILESDIR}/profiles/* profiles/apparmor.d/
-	mv profiles/apparmor.d/bin.ping profiles/apparmor/profiles/extras/
+  # put in place our own profiles
+  cp "$FILESDIR/profiles"/* profiles/apparmor.d/
+  mv profiles/apparmor.d/bin.ping profiles/apparmor/profiles/extras/
 }
 
 post_build() {
-	cd ${wrksrc}/binutils
-	make ${makejobs}
+  cd "$wrksrc/binutils"
+  make "$makejobs"
 
-	cd ${wrksrc}/utils
-	make ${makejobs}
+  cd "$wrksrc/utils"
+  make "$makejobs"
 
-	cd ${wrksrc}/parser
-	sed -i 's#$(DESTDIR)/sbin#$(DESTDIR)/usr/bin#g' Makefile
-	sed -i 's#${DESTDIR}/lib#${DESTDIR}/usr/lib#g' Makefile
-	make ${makejobs}
+  cd "$wrksrc/parser"
+  sed -i 's#$(DESTDIR)/sbin#$(DESTDIR)/usr/bin#g' Makefile
+  sed -i 's#${DESTDIR}/lib#${DESTDIR}/usr/lib#g' Makefile
+  make "$makejobs"
 
-	cd ${wrksrc}/profiles
-	make ${makejobs}
+  cd "$wrksrc/profiles"
+  make "$makejobs"
 }
 
 post_install() {
-	cd ${wrksrc}/binutils
-	make DESTDIR=${DESTDIR} install
+  cd "$wrksrc/binutils"
+  make DESTDIR="$DESTDIR" install
 
-	cd ${wrksrc}/utils
-	make DESTDIR=${DESTDIR} BINDIR=${DESTDIR}/usr/bin install
+  cd "$wrksrc/utils"
+  make DESTDIR="$DESTDIR" BINDIR="$DESTDIR/usr/bin" install
 
-	cd ${wrksrc}/parser
-	make DESTDIR=${DESTDIR} install
+  cd "$wrksrc/parser"
+  make DESTDIR="$DESTDIR" install
 
-	cd ${wrksrc}/profiles
-	make DESTDIR=${DESTDIR} install
+  cd "$wrksrc/profiles"
+  make DESTDIR="$DESTDIR" install
 
-	# Put Vim syntax in the correct place
-	mkdir -p ${DESTDIR}/usr/share/vim/vim80/syntax/
-	mv ${DESTDIR}/usr/share/apparmor/apparmor.vim ${DESTDIR}/usr/share/vim/vim80/syntax/
+  # Put Vim syntax in the correct place
+  mkdir -p "$DESTDIR/usr/share/vim/vim80/syntax/"
+  mv "$DESTDIR/usr/share/apparmor/apparmor.vim" \
+    "$DESTDIR/usr/share/vim/vim80/syntax/"
 
-	# requires perl bindings not generated when cross-compiling
-	if [ "$CROSS_BUILD" ]; then
-		rm -f ${DESTDIR}/usr/bin/aa-notify
-	fi
+  # requires perl bindings not generated when cross-compiling
+  if [[ -n "$CROSS_BUILD" ]]; then
+    rm -f "$DESTDIR/usr/bin/aa-notify"
+  fi
 }
 
 apparmor-vim_package() {
-	noarch=yes
-	short_desc+=" - Vim syntax"
-	depends="vim"
-	pkg_install() {
-		vmove usr/share/vim/vim80/syntax/apparmor.vim
-		vmove usr/share/man/man5/apparmor.vim.5
-	}
+  noarch="yes"
+  short_desc+=" - Vim syntax"
+  depends="vim"
+  pkg_install() {
+    vmove usr/share/vim/vim80/syntax/apparmor.vim
+    vmove usr/share/man/man5/apparmor.vim.5
+  }
 }
 
 libapparmor_package() {
-	short_desc+=" - Library"
-	pkg_install() {
-		vmove "usr/lib/libapparmor.so*"
-		if [ -z "$CROSS_BUILD" ]; then
-			vmove usr/lib/perl5
-			vmove "${py3_sitelib}/LibAppArmor*"
-		fi
-		vmove usr/share/man/man2
-		vmove usr/share/man/man3
-	}
+  short_desc+=" - Library"
+  pkg_install() {
+    vmove "usr/lib/libapparmor.so*"
+    if [[ -z "$CROSS_BUILD" ]]; then
+      vmove usr/lib/perl5
+      vmove "$py3_sitelib/LibAppArmor*"
+    fi
+    vmove usr/share/man/man2
+    vmove usr/share/man/man3
+  }
 }
 
 libapparmor-devel_package() {
-	short_desc+=" - Library development files"
-	depends="${sourcepkg}-${version}_${revision}"
-	pkg_install() {
-		vmove usr/include/
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  short_desc+=" - Library development files"
+  depends="$sourcepkg-${version}_$revision"
+  pkg_install() {
+    vmove usr/include/
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
 
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
