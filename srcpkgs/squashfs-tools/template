@@ -14,7 +14,13 @@ checksum="0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6"
 wrksrc="squashfs$version"
 
 do_build() {
-  make -C "$pkgname" "$makejobs" XZ_SUPPORT=1 LZO_SUPPORT=1 LZMA_XZ_SUPPORT=1 LZ4_SUPPORT=1
+  make \
+    "$makejobs" \
+    -C "$pkgname" \
+    LZ4_SUPPORT=1 \
+    LZMA_XZ_SUPPORT=1 \
+    LZO_SUPPORT=1 \
+    XZ_SUPPORT=1
 }
 
 do_install() {
