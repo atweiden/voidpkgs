@@ -159,7 +159,7 @@ multi sub MAIN('rm', Bool:D :dry-run($)! where .so --> Nil)
             # --dry-run
             sprintf(Q{rm -f %s}, $xbps)
         });
-    @path-str.join("\n").say;
+    @path-str.join("\n").say if @path-str.so;
 }
 
 multi sub MAIN('rm' --> Nil)
