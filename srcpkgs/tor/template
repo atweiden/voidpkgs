@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tor"
-version=0.3.3.10
+version=0.3.4.8
 revision=1
 short_desc="Anonymity Online"
 depends+=" ca-certificates"
@@ -11,7 +11,7 @@ makedepends+=" zlib-devel"
 homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 distfiles="https://www.torproject.org/dist/tor-$version.tar.gz"
-checksum="6203f1159f3ea875a7b2a3e8364050671108e37ae5d6d41be1424b7a61b4cc53"
+checksum="826a4cb2c099a29c7cf91516ffffcfcb5aace7533b8853a8c8bddcfe2bfb1023"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
 make_dirs="/var/lib/tor 0700 tor tor"
