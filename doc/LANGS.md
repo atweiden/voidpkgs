@@ -16,3 +16,4 @@ Programming Languages
 - Ruby
 - Rust
 - Tcl
+- Zig

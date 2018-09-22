@@ -1,0 +1,29 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="zig"
+version=0.2.0
+revision=1
+short_desc="A programming language designed for robustness, optimality, and clarity"
+makedepends+=" clang"
+makedepends+=" libxml2-devel"
+makedepends+=" llvm"
+makedepends+=" ncurses-devel"
+makedepends+=" zlib-devel"
+homepage="https://ziglang.org"
+license="MIT"
+distfiles="https://github.com/ziglang/zig/archive/$version.tar.gz"
+checksum="09843a3748bf8a5f1742fe93dbf45699f92051ecf479b23272b067dfc3837cc7"
+patch_args="-Np1"
+build_style="cmake"
+configure_args+=" -DZIG_LIBC_LIB_DIR=$(dirname $("$CC" -print-file-name=crt1.o))"
+configure_args+=" -DZIG_LIBC_INCLUDE_DIR=$(echo -n | "$CC" -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-)"
+configure_args+=" -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $("$CC" -print-file-name=crtbegin.o))"
+
+do_check() {
+  bin/zig build --build-file ../build.zig test
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
