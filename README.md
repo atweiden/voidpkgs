@@ -54,6 +54,12 @@ xbps-install --repository=hostdir/binpkgs xtools
 xi quixand
 ```
 
+Ignore upstream repo pkg updates:
+
+```sh
+xbps-pkgdb -m hold xtools
+```
+
 
 Licensing
 ---------
