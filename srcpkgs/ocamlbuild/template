@@ -1,0 +1,13 @@
+# Template file for 'ocamlbuild'
+pkgname=ocamlbuild
+version=0.13.1
+revision=1
+build_style=gnu-makefile
+hostmakedepends="ocaml"
+short_desc="OCaml build tool"
+maintainer="Leah Neukirchen <leah@vuxu.org>"
+license="LGPL-2.0-only"
+homepage="https://github.com/ocaml/ocamlbuild"
+distfiles="https://github.com/ocaml/${pkgname}/archive/${version}.tar.gz"
+checksum=79839544bcaebc8f9f0d73d029e2b67e2c898bba046c559ea53de81ea763408c
+nocross=yes
