@@ -27,6 +27,8 @@ build_wrksrc="libraries/libapparmor"
 build_style="gnu-configure"
 make_dirs="/etc/apparmor.d/disable 0755 root root"
 
+_vimver=81
+
 if [[ -z "$CROSS_BUILD" ]]; then
   configure_args+=" --with-perl"
   configure_args+=" --with-python"
@@ -74,10 +76,10 @@ post_install() {
   cd "$wrksrc/profiles"
   make DESTDIR="$DESTDIR" install
 
-  # Put Vim syntax in the correct place
-  mkdir -p "$DESTDIR/usr/share/vim/vim80/syntax/"
+  # put vim syntax in the correct place
+  mkdir -p "$DESTDIR/usr/share/vim/vim$_vimver/syntax"
   mv "$DESTDIR/usr/share/apparmor/apparmor.vim" \
-    "$DESTDIR/usr/share/vim/vim80/syntax/"
+    "$DESTDIR/usr/share/vim/vim$_vimver/syntax"
 
   # requires perl bindings not generated when cross-compiling
   if [[ -n "$CROSS_BUILD" ]]; then
@@ -90,7 +92,7 @@ apparmor-vim_package() {
   short_desc+=" - Vim syntax"
   depends="vim"
   pkg_install() {
-    vmove usr/share/vim/vim80/syntax/apparmor.vim
+    vmove "usr/share/vim/vim$_vimver/syntax/apparmor.vim"
     vmove usr/share/man/man5/apparmor.vim.5
   }
 }
