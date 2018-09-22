@@ -98,11 +98,7 @@ multi sub fmt(%candidate, Bool:D :all($)! where .so --> Str:D)
             .flat
             .kv
             .map(-> $k, $v {
-                $v
-                .values
-                .flat
-                .first
-                .map({ .source })
+                $v.values.flat.first.map({ .source })
             })
             .flat
         })
