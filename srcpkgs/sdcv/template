@@ -1,26 +1,32 @@
-# Template file for 'sdcv'
-pkgname=sdcv
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sdcv"
 version=0.5.2
 revision=1
-build_style=cmake
-hostmakedepends="glib-devel"
-makedepends="zlib-devel readline-devel glib-devel"
 short_desc="Console version of Stardict program"
-maintainer="Casper Ti. Vector <caspervector@gmail.com>"
-license="GPL-2"
+makedepends+=" glib-devel"
+makedepends+=" readline-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="glib-devel"
 homepage="https://dushistov.github.io/sdcv/"
+license="GPL-2"
 distfiles="https://github.com/Dushistov/sdcv/archive/v$version.tar.gz"
-checksum=ec08dc084a0748d5a89df01a20bbf294f09b0366295cd418000f15d2e043c4f7
+checksum="ec08dc084a0748d5a89df01a20bbf294f09b0366295cd418000f15d2e043c4f7"
+build_style="cmake"
 
 post_extract() {
-	rm po/*.po
-	sed -i '/share\/man\/uk/d' CMakeLists.txt
+  rm po/*.po
+  sed \
+    -i \
+    -e '/share\/man\/uk/d' \
+    CMakeLists.txt
 }
 
 pre_install() {
-	mkdir -p build/locale
+  mkdir -p build/locale
 }
 
 post_install() {
-	vdoc README.org
+  vdoc README.org
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
