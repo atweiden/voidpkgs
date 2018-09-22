@@ -18,7 +18,7 @@ List all duplicate pkgs, all versions, including latest version:
 Dry run:
 
     scripts/purge-outdated-binpkgs.p6 ls dupes \
-        | scripts/purge-outdated-binpkgs.p6 --dry-run
+        | scripts/purge-outdated-binpkgs.p6 --dry-run rm
 
 =head DESCRIPTION
 
@@ -146,7 +146,7 @@ multi sub MAIN('ls', 'dupes' --> Nil)
     ==> say();
 }
 
-multi sub MAIN(Bool:D :dry-run($)! where .so --> Nil)
+multi sub MAIN('rm', Bool:D :dry-run($)! where .so --> Nil)
 {
     my Str:D @xbps = $*IN.lines;
     my Str:D @path-str =
