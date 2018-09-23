@@ -30,7 +30,6 @@ do_configure() {
     $configure_args \
     --disable-rpath \
     --enable-shared \
-    --sbindir=/usr/bin \
     --with-ldap \
     --with-system-db \
     --with-system-et \

@@ -14,9 +14,8 @@ license="GPL-3"
 distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
 checksum="858b589c22297cacdf437f3baff6f04b333087521ab274f7ab677cb8c6bb78e4"
 build_style="gnu-configure"
-configure_args+=" --sbindir=/usr/bin"
 # parted wants off_t as 64bit type
-configure_args+=" ac_cv_sizeof_off_t=8"
+configure_args="ac_cv_sizeof_off_t=8"
 
 libparted_package() {
   short_desc+=" - shared library"

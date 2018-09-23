@@ -18,7 +18,6 @@ wrksrc="pcsc-lite-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-libsystemd"
 configure_args+=" --enable-libudev"
-configure_args+=" --sbindir=/usr/bin"
 
 post_install() {
   vsv pcscd

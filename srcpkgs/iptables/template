@@ -20,7 +20,6 @@ configure_args+=" --enable-bpf-compiler"
 configure_args+=" --enable-devel"
 configure_args+=" --enable-libipq"
 configure_args+=" --enable-shared"
-configure_args+=" --sbindir=/usr/bin"
 disable_parallel_build="yes"
 
 if [[ -n "$CROSS_BUILD" ]]; then

@@ -14,14 +14,14 @@ build_style="gnu-configure"
 disable_parallel_build="yes"
 
 pre_configure() {
-  local _args+=" --enable-paranoia"
-  local _args+=" --sbindir=/usr/bin"
-  local _args+=" --with-cli-lease-file=/var/lib/dhclient/dhclient.leases"
-  local _args+=" --with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases"
-  local _args+=" --with-randomdev=/dev/random"
-  local _args+=" --with-srv-lease-file=/var/lib/dhcp/dhcpd.leases"
-  local _args+=" --with-srv6-lease-file=/var/lib/dhcp/dhcpd6.leases"
-  local cargs="$(echo $configure_args | tr '\n' ' ')"
+  local _args
+  _args+=" --enable-paranoia"
+  _args+=" --with-cli-lease-file=/var/lib/dhclient/dhclient.leases"
+  _args+=" --with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases"
+  _args+=" --with-randomdev=/dev/random"
+  _args+=" --with-srv-lease-file=/var/lib/dhcp/dhcpd.leases"
+  _args+=" --with-srv6-lease-file=/var/lib/dhcp/dhcpd6.leases"
+  cargs="$(echo $configure_args | tr '\n' ' ')"
   # set real configure_args
   export configure_args+=" $_args"
 }
