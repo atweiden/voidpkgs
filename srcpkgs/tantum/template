@@ -24,7 +24,7 @@ pre_check() {
   peru \
     --file=.peru.yml \
     --sync-dir="$PWD" \
-    sync || return 0
+    sync
 }
 
 post_install() {
