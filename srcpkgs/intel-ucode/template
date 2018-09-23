@@ -1,10 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="intel-ucode"
 version=20180807
-revision=1
+revision=2
 _dlid=28039
 short_desc="Microcode update files for Intel CPUs"
-noarch="yes"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
 only_for_archs+=" x86_64"
