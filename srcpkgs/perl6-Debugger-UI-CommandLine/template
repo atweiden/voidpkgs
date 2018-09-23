@@ -15,6 +15,11 @@ checksum="819426e76d9a78b82ac5c6e825eaac1b50a5dc8f85d4d3f515f3e104a5baade3"
 wrksrc="$(basename "$homepage")-$_gitrev"
 build_style="rakudo-perl6"
 
+do_check() {
+  # no tests to run
+  :
+}
+
 post_install() {
   vdoc README.markdown
 }
