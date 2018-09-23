@@ -34,6 +34,11 @@ C<arch>s.
 
 Features C<--dry-run> flag for safety, and C<--all ls dupes> cmd for
 reviewability.
+
+=head ALTERNATVES
+
+    xbps-rindex -c "$PWD/hostdir/binpkgs"
+    xbps-rindex -r "$PWD/hostdir/binpkgs"
 =end pod
 
 # path to https://github.com/atweiden/voidpkgs
