@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="MoarVM"
-version=2018.08
+version=2018.09
 revision=1
 short_desc="A VM for NQP and Rakudo Perl 6"
 makedepends+=" libatomic_ops-devel"
@@ -15,7 +15,7 @@ tags="perl6"
 homepage="https://moarvm.org"
 license="Artistic-2.0"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="32c4a32eaad55a1a05f0df4a5e3a85f15ad3c16e69e480ed71d5fa20b32ca944"
+checksum="1a7f4363dee1feacc230928c81d280182d4d969398669bf145235f35b49f8fe7"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --has-libatomic_ops"
@@ -45,8 +45,6 @@ post_install() {
   vlicense LICENSE
   vdoc README.markdown
   vcopy docs "usr/share/doc/$pkgname/design"
-  rm -rf "$DESTDIR/usr/include/libtommath"
-  rm -rf "$DESTDIR/usr/include/libuv"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
