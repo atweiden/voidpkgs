@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="man-pages"
 version=4.16
-revision=1
+revision=2
 short_desc="Linux Documentation Project (LDP) manual pages"
 noarch="yes"
 license="GPL-2.0-or-later"
@@ -44,6 +44,7 @@ do_install() {
   mv man1/{iconv.1,glibc-iconv.1}
   mv man1/{ldd.1,glibc-ldd.1}
   mv man1/{getent.1,glibc-getent.1}
+  sed 's/^\.TH SYSLOG 2/.TH KLOGCTL 3/' man2/syslog.2 > man3/klogctl.3
 }
 
 man-pages-devel_package() {
