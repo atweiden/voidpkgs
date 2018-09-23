@@ -1,27 +1,26 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="musl-legacy-compat"
 version=0.3
-revision=1
+revision=2
 short_desc="Legacy compatibility headers for the musl libc"
-noarch="yes"
-only_for_archs+=" aarch64-musl"
-only_for_archs+=" armv5tel-musl"
-only_for_archs+=" armv6l-musl"
-only_for_archs+=" armv7l-musl"
-only_for_archs+=" i686-musl"
-only_for_archs+=" mips-musl"
-only_for_archs+=" mipsel-musl"
-only_for_archs+=" mipselhf-musl"
-only_for_archs+=" mipshf-musl"
-only_for_archs+=" x86_64-musl"
 homepage="http://www.voidlinux.eu"
-license="BSD"
+license="BSD-2-Clause, BSD-3-Clause"
 bootstrap="yes"
+
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    ;;
+  #*) broken="Only valid for musl systems";;
+esac
 
 do_install() {
   for f in "$FILESDIR"/*.h; do
     vinstall "$f" 644 usr/include/sys
   done
+  sed -n '3,32p' < "$FILESDIR/queue.h" > LICENSE.BSD-3-Clause
+  sed -n '2,26p' < "$FILESDIR/tree.h" > LICENSE.BSD-2-Clause
+  vlicense LICENSE.BSD-3-Clause
+  vlicense LICENSE.BSD-2-Clause
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
