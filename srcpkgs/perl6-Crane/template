@@ -1,0 +1,21 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl6-Crane"
+version=0.1.0
+revision=1
+_gitrev="77270457082ff654f91ab13ad52e359ea6c68752"
+short_desc="Navigate Perl6 containers and perform tasks"
+noarch="yes"
+tags="perl6"
+homepage="https://github.com/atweiden/crane"
+license="Unlicense"
+distfiles="https://github.com/atweiden/crane/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="4d1a96d41ccadeafe49427ae67042b52551e4c7d7a36047e669d220c992cb6b5"
+wrksrc="$(basename "$homepage")-$_gitrev"
+build_style="rakudo-perl6"
+
+post_install() {
+  vlicense UNLICENSE
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
