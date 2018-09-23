@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fossil"
-version=2.6
+version=2.7
 revision=1
 short_desc="Simple, high-reliability, distributed software configuration management"
 makedepends+=" libressl-devel"
@@ -11,7 +11,7 @@ hostmakedepends="tcl"
 homepage="https://www.fossil-scm.org"
 license="BSD-2-Clause"
 distfiles="https://www.fossil-scm.org/index.html/uv/fossil-src-$version.tar.gz"
-checksum="76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9"
+checksum="2c24359131d7495e47dc95021eb35f1ba408ded9087e36370d94742a4011033c"
 build_style="configure"
 configure_args+=" --disable-internal-sqlite"
 configure_args+=" --prefix=/usr"
