@@ -35,16 +35,16 @@ post_extract() {
 
 pre_configure() {
   cat >configure.local <<EOF
-BINM_SOELIM="mandoc"-soelim
+BINM_SOELIM="mandoc-soelim"
 CC="$CC"
 CFLAGS="$CFLAGS"
 HAVE_REWB_BSD=0
 LDFLAGS="$LDFLAGS"
-MANDIR="/usr"/share/man
+MANDIR="/usr/share/man"
 MANM_ROFF="mandoc_roff"
 OSNAME="Void Linux"
 PREFIX="/usr"
-SBINDIR="/usr"/bin
+SBINDIR="/usr/bin"
 EOF
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
