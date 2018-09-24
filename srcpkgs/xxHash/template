@@ -17,7 +17,6 @@ post_install() {
 
 libxxhash_package() {
   short_desc+=" - library"
-  shlib_provides="libxxhash.so.0"
   pkg_install() {
     vmove "usr/lib/libxxhash.so.*"
   }

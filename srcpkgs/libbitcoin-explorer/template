@@ -33,7 +33,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
   configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 fi
-shlib_provides="libbitcoin-explorer.so.0"
 
 pre_configure() {
   ./autogen.sh

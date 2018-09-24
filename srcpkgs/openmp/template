@@ -35,10 +35,6 @@ post_install() {
 openmp-devel_package() {
   short_desc+=" - development files"
   depends="$sourcepkg>=${version}_$revision"
-  shlib_provides+=" libiomp5.so"
-  shlib_provides+=" libomp.so"
-  shlib_provides+=" libomptarget.so"
-  shlib_provides+=" libomp-target.so"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"

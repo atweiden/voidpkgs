@@ -23,7 +23,6 @@ configure_args+=" --enable-exhaustive-tests"
 configure_args+=" --enable-module-recovery"
 configure_args+=" --enable-tests"
 configure_args+=" --with-gnu-ld"
-shlib_provides="libsecp256k1.so.0"
 
 pre_configure() {
   ./autogen.sh
