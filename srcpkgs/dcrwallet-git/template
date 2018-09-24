@@ -18,7 +18,6 @@ do_fetch() {
 do_build() {
   cd "$GOSRCPATH"
   export GO111MODULE="on"
-  export GOCACHE="on"
   go install
 }
 
