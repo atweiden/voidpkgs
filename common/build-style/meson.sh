@@ -57,8 +57,8 @@ endian = '${_MESON_TARGET_ENDIAN}'
 EOF
 		configure_args+=" --cross-file=${meson_crossfile}"
 
-		# Meson tries to compile natively with CC, CXX, LD, AR
-		# so when cross compiling, we need to set those to the
+		# Meson tries to compile natively with CC, CXX, LD, AR 
+		# so when cross compiling, we need to set those to the 
 		# host versions.
 		export CC=${CC_host} CXX=${CXX_host} LD=${LD_host} AR=${AR_host}
 
