@@ -11,6 +11,5 @@ distfiles="http://roy.aydogan.net/$pkgname/$pkgname-$version.tar.xz"
 checksum="51a04d39232bb797c9efeaad51a525cf50a1deefcb19a1ea5dd3475118634db8"
 conf_files="/etc/resolvconf.conf"
 build_style="gnu-configure"
-configure_args="--bindir=/usr/bin"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
