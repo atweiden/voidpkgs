@@ -11,7 +11,6 @@ checksum="59be87689c415ba0d9c9bc6babbdd3df3b372d60b21e526b118d722dbc995682"
 conf_files="/etc/tinyproxy/tinyproxy.conf"
 build_style="gnu-configure"
 configure_args+=" --enable-transparent"
-configure_args+=" --localstatedir=/var"
 configure_args+=" tinyproxy_cv_regex_broken=no"
 system_accounts="_tinyproxy"
 
