@@ -322,7 +322,7 @@ libxbps.so.3 libxbps-0.53_1
 libxml2.so.2 libxml2-2.7.0_1
 libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1
-libxxhash.so.0 libxxhash-0.6.5_1
+libxxhash.so.0 libxxHash-0.6.5_2
 libyaml-0.so.2 libyaml-0.1.4_1
 libzstd.so.1 libzstd-1.0.0_1
 liblldb.so.6 lldb-6.0.1_3

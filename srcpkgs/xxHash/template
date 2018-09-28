@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xxHash"
 version=0.6.5
-revision=1
+revision=2
 short_desc="Fast non-cryptographic hashing algorithm"
 license="BSD-2-Clause, GPL-2.0-or-later"
 homepage="https://cyan4973.github.io/xxHash/"
@@ -15,16 +15,16 @@ post_install() {
   vlicense LICENSE
 }
 
-libxxhash_package() {
+libxxHash_package() {
   short_desc+=" - library"
   pkg_install() {
-    vmove "usr/lib/libxxhash.so.*"
+    vmove "usr/lib/*.so.*"
   }
 }
 
-libxxhash-devel_package() {
-  short_desc+=" - library development files"
-  depends="libxxhash>=${version}_$revision"
+xxHash-devel_package() {
+  short_desc+=" - development files"
+  depends="libxxHash>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
