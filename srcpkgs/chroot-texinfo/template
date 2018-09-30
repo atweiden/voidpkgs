@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-texinfo"
 version=4.13a
-revision=9
+revision=10
 short_desc="The GNU Documentation System -- for xbps-src use"
 makedepends="ncurses-devel"
 hostmakedepends="ncurses-devel"
@@ -13,6 +13,7 @@ wrksrc="texinfo-4.13"
 bootstrap="yes"
 provides="texinfo-${version}_$revision"
 conflicts="texinfo>=0"
+reverts="6.5_1"
 
 do_configure() {
   cp -f "$XBPS_CROSSPFDIR/config.sub" build-aux
