@@ -1,16 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-texinfo"
-version=6.5
-revision=1
+version=4.13a
+revision=9
 short_desc="The GNU Documentation System -- for xbps-src use"
 makedepends="ncurses-devel"
-hostmakedepends+=" ncurses-devel"
-hostmakedepends+=" perl"
+hostmakedepends="ncurses-devel"
 homepage="http://www.gnu.org/software/texinfo/"
-license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/texinfo/texinfo-$version.tar.xz"
-checksum="77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62"
-wrksrc="texinfo-$version"
+license="GPL-3"
+distfiles="$GNU_SITE/texinfo/texinfo-$version.tar.lzma"
+checksum="6d28b0ceae866e3536142fc552e7a3bc9f84c8303119c25731b2478eef64c9e5"
+wrksrc="texinfo-4.13"
 bootstrap="yes"
 provides="texinfo-${version}_$revision"
 conflicts="texinfo>=0"
