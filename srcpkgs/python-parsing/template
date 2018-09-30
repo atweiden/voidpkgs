@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-parsing"
 version=2.2.1
-revision=1
+revision=2
 short_desc="Python parsing module (Python2)"
 noarch="yes"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
-homepage="http://pyparsing.wikispaces.com/"
+homepage="https://github.com/pyparsing/pyparsing"
 license="MIT"
 changelog="https://github.com/pyparsing/pyparsing/raw/master/CHANGES"
 distfiles="https://github.com/pyparsing/pyparsing/archive/pyparsing_$version.tar.gz"
@@ -17,7 +17,7 @@ build_style="python-module"
 pycompile_module="pyparsing.py"
 
 do_check() {
-  python unitTests.py
+  python2 unitTests.py
   python3 unitTests.py
 }
 
