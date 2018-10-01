@@ -1,15 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Socket6"
-version=0.28
-revision=6
-short_desc="Socket6 - IPv6 related part of the C socket.h defines and structure manipulators"
+version=0.29
+revision=1
+short_desc="IPv6 related part of the C socket.h defines and structure manipulators"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Socket6"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/${pkgname/perl-/}/${pkgname/perl-/}-$version.tar.gz"
-checksum="bfd49ab99f3197c99285fed4683c4edc06277c1e4453f593e694d7bff0974586"
+checksum="468915fa3a04dcf6574fc957eff495915e24569434970c91ee8e4e1459fc9114"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
