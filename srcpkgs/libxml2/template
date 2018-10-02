@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libxml2"
 version=2.9.8
-revision=3
+revision=4
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
@@ -18,6 +18,7 @@ homepage="http://www.xmlsoft.org/"
 license="MIT"
 distfiles="http://xmlsoft.org/sources/$pkgname-$version.tar.gz"
 checksum="0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --with-history"
