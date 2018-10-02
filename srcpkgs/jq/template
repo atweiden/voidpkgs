@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="jq"
 version=1.5
-revision=6
+revision=7
 short_desc="Command-line JSON processor"
 makedepends="oniguruma-devel"
 checkdepends="valgrind"
