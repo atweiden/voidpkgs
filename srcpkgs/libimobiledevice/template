@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libimobiledevice"
 version=1.2.0
-revision=10
+revision=11
 short_desc="A library to communicate with Apple devices"
 makedepends+=" libglib-devel"
 makedepends+=" libplist-devel"
@@ -17,6 +17,7 @@ homepage="http://www.libimobiledevice.org/"
 license="GPL-2,LGPL-2.1"
 distfiles="http://www.libimobiledevice.org/downloads/$pkgname-$version.tar.bz2"
 checksum="786b0de0875053bf61b5531a86ae8119e320edab724fc62fe2150cc931f11037"
+patch_args="-Np1"
 build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
