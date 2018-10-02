@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mercurial"
-version=4.7.1
+version=4.7.2
 revision=1
 short_desc="Fast, lightweight source control management system"
 depends="ca-certificates"
@@ -9,7 +9,7 @@ hostmakedepends="python-devel"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/mercurial-$version.tar.gz"
-checksum="8503383c1c31842576516b803d07564216470887ca6388719e4c4089663b410c"
+checksum="97f0594216f2348a2e37b2ad8a56eade044e741153fee8c584487e9934ca09fb"
 build_style="python2-module"
 pycompile_module+=" hgdemandimport"
 pycompile_module+=" hgext"
