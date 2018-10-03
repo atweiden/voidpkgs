@@ -1,18 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="myrepos"
-version=1.20171231
+version=1.20180726
 revision=1
-short_desc="Manage all your version control repos"
+short_desc="Multiple Repository management tool"
 noarch="yes"
-depends="perl"
-hostmakedepends+=" git"
-hostmakedepends+=" perl"
+depends+=" git"
+depends+=" mercurial"
+depends+=" perl"
+hostmakedepends="$depends"
 homepage="https://myrepos.branchable.com"
 license="GPL-2"
+distfiles="https://git.joeyh.name/index.cgi/myrepos.git/snapshot/$pkgname-$version.tar.gz"
+checksum="bfb909037da678a1668f3f7f86efee7ee31f2bc66d90b83dd9e6b6a5f998c4e2"
 build_style="gnu-makefile"
-
-do_fetch() {
-  git clone --branch "$version" https://git.joeyh.name/git/myrepos.git "$pkgname-$version"
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
