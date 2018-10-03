@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ldns"
 version=1.7.0
-revision=6
+revision=7
 short_desc="Modern DNS/DNSSEC library -- utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
@@ -11,6 +11,7 @@ homepage="http://www.nlnetlabs.nl/projects/ldns/"
 license="BSD"
 distfiles="http://www.nlnetlabs.nl/downloads/$pkgname/$pkgname-$version.tar.gz"
 checksum="c19f5b1b4fb374cfe34f4845ea11b1e0551ddc67803bd6ddd5d2a20f0997a6cc"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-dane-ta-usage"
 configure_args+=" --with-drill"
