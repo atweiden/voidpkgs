@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="guile"
 version=2.0.14
-revision=4
+revision=5
 short_desc="A portable, embeddable Scheme implementation written in C"
 makedepends+=" gc-devel"
 makedepends+=" gmp-devel"
@@ -9,6 +9,7 @@ makedepends+=" libffi-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libunistring-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" readline-devel"
 hostmakedepends="pkg-config"
 license="GPL-3, LGPL-3"
 homepage="http://www.gnu.org/software/$pkgname"
@@ -35,8 +36,9 @@ libguile_package() {
 
 guile-devel_package() {
   short_desc+=" - development files"
+  depends+=" gc-devel"
   depends+=" gmp-devel"
-  depends+=" libguile>=${version}_$revision"
+  depends+=" guile>=${version}_$revision"
   pkg_install() {
     vmove usr/bin/guile-config
     vmove usr/include
