@@ -8,6 +8,7 @@ Programming Languages
 - Go
 - Guile
 - Haskell
+- JavaScript
 - Lua
 - Nim
 - OCaml
