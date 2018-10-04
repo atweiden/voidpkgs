@@ -1,0 +1,44 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nmap"
+version=7.70
+revision=3
+short_desc="Utility for network discovery and security auditing"
+makedepends+=" libpcap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libssh2-devel"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if lua lua52-devel)"
+hostmakedepends="python"
+homepage="https://nmap.org"
+license="GPL-2.0-or-later"
+distfiles="https://nmap.org/dist/nmap-$version.tar.bz2"
+checksum="847b068955f792f4cc247593aca6dc3dc4aae12976169873247488de147a6e18"
+build_style="gnu-configure"
+configure_args+=" --with-libssh2"
+configure_args+=" --with-ndiff"
+configure_args+=" --with-openssl"
+configure_args+=" --without-zenmap"
+configure_args+=" $(vopt_with lua liblua)"
+build_options="lua"
+if [[ -z "$CROSS_BUILD" ]]; then
+  build_options_default="lua"
+fi
+
+pre_check() {
+  # disable zenmap tests
+  # https://github.com/nmap/nmap/issues/662
+  # https://github.com/nmap/nmap/issues/666
+  # https://github.com/nmap/nmap/issues/85
+  sed \
+    -i \
+    -e 's|check-zenmap ||g' \
+    Makefile
+}
+
+post_install() {
+  # do not use bundled certificates, use only system ones
+  rm -f "$DESTDIR/usr/share/ncat/ca-bundle.crt"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
