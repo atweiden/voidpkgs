@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-devel"
-version=20170527
+version=20181003
 revision=1
 short_desc="Void Linux development tools meta package"
 depends+=" autoconf"
@@ -23,7 +23,7 @@ depends+=" unzip"
 depends+=" xz"
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
-    depends+=" musl"
+    depends+=" musl-devel"
     ;;
   *)
     depends+=" glibc-devel"
