@@ -39,6 +39,8 @@ pre_check() {
 post_install() {
   # do not use bundled certificates, use only system ones
   rm -f "$DESTDIR/usr/share/ncat/ca-bundle.crt"
+  # do not install uninstall scripts
+  rm -f "$DESTDIR/usr/bin"/uninstall*
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
