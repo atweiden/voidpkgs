@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ocaml"
-version=4.07.0
+version=4.07.1
 revision=1
 short_desc="A functional language with OO extensions"
 makedepends="ncurses-devel"
 homepage="http://ocaml.org/"
 license="QPL-1.0, LGPL-2.1-only"
 distfiles="https://github.com/$pkgname/$pkgname/archive/$version.tar.gz"
-checksum="8dd39da81beaad53a158e71c428f902b609d8f7f33fedf37f15c56be6c4cf840"
+checksum="83683ddad54bd23773591a9f757e702fa5cfa2ea1b124d8fe75a73729e592bfe"
 nocross="yes"
 disable_parallel_build="yes"
 
