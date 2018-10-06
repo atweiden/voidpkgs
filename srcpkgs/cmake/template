@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cmake"
-version=3.12.2
+version=3.12.3
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -12,7 +12,7 @@ makedepends+=" rhash-devel"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="0f97485799e51a7070cc11494f3e02349b0fc3a24cc12b082e737bf67a0581a4"
+checksum="acbf13af31a741794106b76e5d22448b004a66485fc99f6d7df4d22e99da164a"
 build_style="configure"
 make_check_target="test"
 
