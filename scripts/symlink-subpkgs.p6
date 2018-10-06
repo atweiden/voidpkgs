@@ -58,6 +58,7 @@ constant %PKG = Map.new(
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
     'cmocka' => ['cmocka-devel'],
+    'confuse' => ['confuse-devel'],
     'cracklib' => qw<cracklib-devel
                      cracklib-python
                      libcracklib>,
