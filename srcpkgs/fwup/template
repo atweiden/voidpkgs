@@ -1,29 +1,40 @@
-# Template file for 'fwup'
-pkgname=fwup
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="fwup"
 version=1.2.6
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake libtool pkg-config"
-makedepends="libarchive-devel libsodium-devel confuse-devel"
-checkdepends="mtools unzip zip dosfstools"
 short_desc="Configurable embedded Linux firmware update creator and runner"
-maintainer="Duncaen <duncaen@voidlinux.eu>"
-license="Apache-2.0"
-#changelog="https://github.com/fhunleth/fwup/raw/master/CHANGELOG.md"
-homepage="https://github.com/fhunleth/fwup"
-distfiles="https://github.com/fhunleth/fwup/archive/v${version}.tar.gz"
-checksum=5bdcb8a5424b211fd35ddd4d8fdd6f74e8221cf432807dc8018f81ce54939b52
-
-if [ -z "$CROSS_BUILD" ]; then
-	hostmakedepends+=" help2man"
+makedepends+=" confuse-devel"
+makedepends+=" libarchive-devel"
+makedepends+=" libsodium-devel"
+checkdepends+=" dosfstools"
+checkdepends+=" mtools"
+checkdepends+=" unzip"
+checkdepends+=" zip"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
+if [[ -z "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" help2man"
 fi
+changelog="https://github.com/fhunleth/fwup/raw/master/CHANGELOG.md"
+homepage="https://github.com/fhunleth/fwup"
+license="Apache-2.0"
+distfiles="https://github.com/fhunleth/fwup/archive/v$version.tar.gz"
+checksum="5bdcb8a5424b211fd35ddd4d8fdd6f74e8221cf432807dc8018f81ce54939b52"
+build_style="gnu-configure"
+configure_args="--with-bash-completiondir=/usr/share/bash-completion/completions"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 pre_check() {
-	# mtools.conf requires manual configuration for usage, but not for out tests
-	# so we just remove the unrecognized keyword
-	sed -i '/SAMPLE FILE/d' /etc/mtools.conf
+  # mtools.conf requires manual configuration for usage, but not for out tests
+  # so we just remove the unrecognized keyword
+  sed \
+    -i \
+    -e '/SAMPLE FILE/d' \
+    /etc/mtools.conf
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
