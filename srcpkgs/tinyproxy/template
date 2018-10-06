@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tinyproxy"
 version=1.10.0
-revision=1
+revision=2
 short_desc="Small, efficient HTTP/SSL proxy daemon"
 hostmakedepends="asciidoc"
 homepage="https://tinyproxy.github.io/"
@@ -13,6 +13,7 @@ build_style="gnu-configure"
 configure_args+=" --enable-transparent"
 configure_args+=" tinyproxy_cv_regex_broken=no"
 system_accounts="_tinyproxy"
+make_dirs="/var/log/tinyproxy 755 _tinyproxy _tinyproxy"
 
 post_install() {
   sed \
