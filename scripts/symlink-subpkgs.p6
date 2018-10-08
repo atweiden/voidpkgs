@@ -447,6 +447,8 @@ constant %PKG = Map.new(
                        libsysfs-devel>,
     'talloc' => ['talloc-devel'],
     'tcl' => ['tcl-devel'],
+    'tidy5' => qw<libtidy5
+                  libtidy5-devel>,
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,
