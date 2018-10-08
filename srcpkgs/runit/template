@@ -1,23 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="runit"
 version=2.1.2
-revision=9
+revision=10
 short_desc="A UNIX init scheme with service supervision"
 homepage="http://smarden.org/runit/"
-license="3-clause-BSD"
+license="BSD-3-Clause"
 distfiles="http://smarden.org/runit/runit-$version.tar.gz"
 checksum="6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18"
 wrksrc="admin"
+build_style="gnu-makefile"
+build_wrksrc="$pkgname-$version/src"
 build_options="static"
 
-do_build() {
-  cd "$pkgname-$version/src"
+if [[ -n "$build_option_static" ]]; then
+  CFLAGS+=" -static"
+  LDFLAGS+=" -static"
+fi
 
-  if [[ -n "$build_option_static" ]]; then
-    CFLAGS+=" -static"
-    LDFLAGS+=" -static"
-  fi
-
+pre_build() {
   echo "$CC -D_GNU_SOURCE $CFLAGS" >conf-cc
   echo "$CC $LDFLAGS -Wl,-z -Wl,noexecstack" >conf-ld
 
@@ -38,14 +38,10 @@ do_build() {
     -i \
     -e 's:short x\[4\];$:gid_t x[4];:' \
     chkshsgr.c
-
-  make "$makejobs"
 }
 
 do_install() {
-  vlicense "$pkgname-$version/package/COPYING"
-
-  cd "$pkgname-$version/src"
+  vlicense ../package/COPYING
 
   # default services
   vmkdir var
