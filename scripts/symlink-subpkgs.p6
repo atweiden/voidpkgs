@@ -93,6 +93,7 @@ constant %PKG = Map.new(
     'distcc' => ['distcc-pump'],
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
+    'duktape' => ['duktape-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
                       e2fsprogs-libs>,
     'efivar' => qw<libefivar
