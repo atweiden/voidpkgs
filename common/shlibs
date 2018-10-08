@@ -59,6 +59,7 @@ libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
 libclang.so.6 clang-6.0.0_1
 libcmocka.so.0 cmocka-1.1.1_1
+libconfuse.so.2 confuse-3.2.1_1
 libreg.so crda-3.18_5
 libcryptopp.so.5.6 crypto++-565_1
 libdbus-1.so.3 dbus-libs-1.2.10_1
@@ -71,6 +72,7 @@ libdevmapper-event-lvm2snapshot.so.2.02 device-mapper-2.02.178_1
 libdevmapper-event-lvm2thin.so.2.02 device-mapper-2.02.178_1
 liblvm2cmd.so.2.02 device-mapper-2.02.54_1
 libfdt.so.1 dtc-1.4.1_1
+libduktape.so.203 duktape-2.3.0_1
 libcom_err.so.2 e2fsprogs-libs-1.41.5_1_1
 libe2p.so.2 e2fsprogs-libs-1.41.5_1_1
 libext2fs.so.2 e2fsprogs-libs-1.41.5_1_1
@@ -293,6 +295,7 @@ libstdc++.so.6 libstdc++-4.4.0_1
 libsysfs.so.2 libsysfs-2.1.0_1
 libtasn1.so.6 libtasn1-3.2_1
 libtermkey.so.1 libtermkey-0.17_1
+libtidy.so.5 libtidy5-5.1.25_1
 libtls.so.17 libtls17-2.7.2_1
 libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
