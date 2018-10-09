@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="meson"
 version=0.48.0
-revision=1
+revision=2
 short_desc="Super fast build system"
 noarch="yes"
 depends+=" ninja"
@@ -19,6 +19,13 @@ pycompile_module="mesonbuild"
 do_check() {
   # meson depends on a trillion pkgs to run tests, see: arch checkdepends
   :
+}
+
+post_install() {
+  vmkdir usr/share/vim/vimfiles
+  cp -rt "$DESTDIR/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
+  vinstall data/syntax-highlighting/emacs/meson.el 644 usr/share/emacs/site-lisp
+  vinstall data/shell-completions/zsh/_meson 644 usr/share/zsh/site-functions
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
