@@ -349,6 +349,7 @@ constant %PKG = Map.new(
     'openldap' => qw<libldap
                      libldap-devel
                      openldap-tools>,
+    'opensp' => ['opensp-devel'],
     'p11-kit' => ['p11-kit-devel'],
     'pam' => qw<pam-devel
                 pam-libs
