@@ -370,6 +370,14 @@ constant %PKG = Map.new(
                           pkcs11-helper-doc>,
     'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
+    'postgresql' => qw<postgresql-client
+                       postgresql-contrib
+                       postgresql-doc
+                       postgresql-libs
+                       postgresql-libs-devel
+                       postgresql-plperl
+                       postgresql-plpython
+                       postgresql-pltcl>,
     'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
