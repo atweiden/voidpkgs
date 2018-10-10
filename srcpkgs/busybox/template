@@ -1,0 +1,91 @@
+# Template file for 'busybox'
+pkgname=busybox
+version=1.29.3
+revision=1
+hostmakedepends="perl"
+checkdepends="zip"
+short_desc="The Swiss Army Knife of Embedded Linux"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="GPL-2.0-only"
+homepage="http://www.busybox.net"
+distfiles="${homepage}/downloads/busybox-${version}.tar.bz2"
+checksum=97648636e579462296478e0218e65e4bc1e9cd69089a3b1aeb810bff7621efb7
+
+alternatives="
+ awk:awk:/usr/bin/busybox
+ hostname:hostname:/usr/bin/busybox
+ sh:sh:/usr/bin/busybox
+ ntpd:ntpd:/usr/bin/busybox
+ ntpd:ntpd:/etc/sv/busybox-ntpd
+ vi:vi:/usr/bin/busybox"
+
+do_configure() {
+	mkdir -p src
+	mv * src || true
+
+	local t
+	for t in busybox busybox-static; do
+		mkdir -p $t
+		cp -f ${FILESDIR}/${t}.dotconfig ${t}/.config
+
+		case "$XBPS_TARGET_MACHINE" in
+		*-musl) sed -i -e /CONFIG_FEATURE_VI_REGEX_SEARCH/s/y/n/ \
+				-e /CONFIG_FEATURE_MOUNT_NFS/s/y/n/ \
+				${t}/.config;;
+		esac
+
+		if [ "$CROSS_BUILD" ]; then
+			sed -i -e \
+				"s,\(CONFIG_CROSS_COMPILER_PREFIX\).*,\1=\"${XBPS_CROSS_TRIPLET}-\",g" \
+				${t}/.config
+		fi
+		make -C $t KBUILD_SRC=${wrksrc}/src -f ${wrksrc}/src/Makefile prepare ${makejobs}
+	done
+	sed -i -e '/CONFIG_STATIC/ s/.*/CONFIG_STATIC=y/' busybox-static/.config
+	if [ "$SOURCE_DATE_EPOCH" ]; then
+		# rewrite date with the one from the date wrapper.
+		d=$(date +"%F %T %Z")
+		sed -i "s/\(#define AUTOCONF_TIMESTAMP\).*/\1 \"$d\"/" */include/autoconf.h
+	fi
+}
+
+do_build() {
+	make -C busybox SKIP_STRIP=y ${makejobs}
+	make -C busybox-static SKIP_STRIP=y ${makejobs}
+}
+
+do_check() {
+	# Copy the testsuite into the busybox and it's static counterpart
+	# directory
+	cp -r src/testsuite busybox
+	cp -r src/testsuite busybox-static
+
+	# This is required by the testsuite
+	cp src/scripts/echo.c busybox/scripts
+	cp src/scripts/echo.c busybox-static/scripts
+
+	# Run testsuite for busybox
+	(
+	cd busybox/testsuite
+	SKIP_KNOWN_BUGS=yes ./runtest -v
+	)
+
+	# Run testsuite for busybox-static
+	(
+	cd busybox-static/testsuite
+	SKIP_KNOWN_BUGS=yes ./runtest -v
+	)
+}
+
+do_install() {
+	vbin busybox/busybox_unstripped busybox
+	vman busybox/docs/busybox.1
+	vsv busybox-ntpd
+}
+
+busybox-static_package() {
+	short_desc+=" (statically linked)"
+	pkg_install() {
+		vbin busybox-static/busybox busybox.static
+	}
+}
