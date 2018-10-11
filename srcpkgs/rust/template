@@ -8,7 +8,6 @@ _cargo_dist_version=0.30.0
 # output in https://alpha.de.repo.voidlinux.org/distfiles/
 short_desc="Safe, concurrent, practical systems language"
 makedepends+=" libffi-devel"
-makedepends+=" libunwind-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" llvm"
 makedepends+=" ncurses-devel"
@@ -33,7 +32,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" llvm"
   # required for building the buildhost's stage0/1
   hostmakedepends+=" libffi-devel"
-  hostmakedepends+=" libunwind-devel"
   hostmakedepends+=" libxml2-devel"
   hostmakedepends+=" ncurses-devel"
   hostmakedepends+=" zlib-devel"
