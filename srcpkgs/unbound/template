@@ -1,40 +1,51 @@
-# Template file for 'unbound'
-pkgname=unbound
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="unbound"
 version=1.8.1
 revision=1
-build_style=gnu-configure
-configure_args="--with-libevent --with-conf-file=/etc/unbound/unbound.conf
- --with-pidfile=/run/unbound.pid --with-ssl=${XBPS_CROSS_BASE}/usr
- --with-libevent=${XBPS_CROSS_BASE}/usr --with-libexpat=${XBPS_CROSS_BASE}/usr
- --enable-dnscrypt --enable-event-api --sbindir=/usr/bin
- --with-rootkey-file=/etc/dns/root.key --with-username=_unbound"
-makedepends="expat-devel libevent-devel libsodium-devel"
-depends="dnssec-anchors"
 short_desc="Validating, recursive, and caching DNS resolver"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-3-Clause"
+depends="dnssec-anchors"
+makedepends+=" expat-devel"
+makedepends+=" libevent-devel"
+makedepends+=" libsodium-devel"
 homepage="https://unbound.net/"
-distfiles="https://unbound.net/downloads/${pkgname}-${version}.tar.gz"
-checksum=c362b3b9c35d1b8c1918da02cdd5528d729206c14c767add89ae95acae363c5d
+license="BSD-3-Clause"
+distfiles="https://unbound.net/downloads/$pkgname-$version.tar.gz"
+checksum="c362b3b9c35d1b8c1918da02cdd5528d729206c14c767add89ae95acae363c5d"
 conf_files="/etc/unbound/unbound.conf"
+build_style="gnu-configure"
+configure_args+=" --enable-dnscrypt"
+configure_args+=" --enable-event-api"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --with-conf-file=/etc/unbound/unbound.conf"
+configure_args+=" --with-libevent"
+configure_args+=" --with-libevent=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-libexpat=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-pidfile=/run/unbound.pid"
+configure_args+=" --with-rootkey-file=/etc/dns/root.key"
+configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-username=_unbound"
 system_accounts="_unbound"
 
 post_install() {
-	vsconf doc/example.conf unbound.conf
-	vinstall ${FILESDIR}/unbound.conf 644 etc/unbound
-	vsv unbound
-	vlicense LICENSE
+  vsconf doc/example.conf unbound.conf
+  vinstall "$FILESDIR/unbound.conf" 644 etc/unbound
+  vsv unbound
+  vlicense LICENSE
 }
 
 unbound-devel_package() {
-	depends="unbound>=$version libressl-devel libevent-devel"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-	}
+  unset depends
+  depends+=" libevent-devel"
+  depends+=" libressl-devel"
+  depends+=" unbound>=$version"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+  }
 }
 
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
