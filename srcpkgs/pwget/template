@@ -1,0 +1,21 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pwget"
+version=2.0
+revision=1
+short_desc="Single-binary stateless password manager"
+hostmakedepends="git"
+homepage="https://github.com/majewsky/pwget"
+license="GPL-3.0-or-later"
+changelog="https://raw.githubusercontent.com/majewsky/pwget/master/CHANGELOG.md"
+distfiles="https://github.com/majewsky/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="de3b39758e01b19bbc04ee0d5107e14052d3a32ce8f40d4a63d0ed311394f7ee"
+build_style="go"
+go_import_path="github.com/majewsky/pwget"
+
+post_install() {
+  cd "$wrksrc"
+  vlicense LICENSE
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
