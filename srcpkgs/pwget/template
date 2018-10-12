@@ -8,7 +8,7 @@ homepage="https://github.com/majewsky/pwget"
 license="GPL-3.0-or-later"
 changelog="https://raw.githubusercontent.com/majewsky/pwget/master/CHANGELOG.md"
 distfiles="https://github.com/majewsky/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="de3b39758e01b19bbc04ee0d5107e14052d3a32ce8f40d4a63d0ed311394f7ee"
+checksum="052f167455e09b1c37f5e7db399952a8e8cd69661d5fff8462f39de7db0c5bf8"
 build_style="go"
 go_import_path="github.com/majewsky/pwget"
 
