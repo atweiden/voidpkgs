@@ -1,50 +1,79 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnu-efi-libs"
-version=3.0.8
-revision=2
+version=3.0.9
+revision=1
 short_desc="Library for building UEFI Applications using GNU toolchain"
 makedepends="pciutils-devel"
 homepage="http://sourceforge.net/projects/gnu-efi/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/gnu-efi-$version.tar.bz2"
-checksum="76006d8ea8d67bcf72f35d09d43e9ef6a69400d6d5d4bf64baf1ab7434e2b722"
+checksum="6715ea7eae1c7e4fc5041034bd3f107ec2911962ed284a081e491646b12277f0"
 wrksrc="gnu-efi-$version"
 nostrip="yes"
 # not an actual revert, xbps considers 3.0w higher than 3.0.8
 reverts="3.0w_1"
 
+# if we are cross-building we need to pass the cross-compilation triplet
+# to the CROSS_COMPILE environment variable so the build system uses
+# the cross tooling
+if [[ -n "$CROSS_BUILD" ]]; then
+  export CROSS_COMPILE="$XBPS_CROSS_TRIPLET-"
+fi
+
+# filter out arches for the host machine
+# the makefile only accept specific names like ia32 for i686 and arm
+# for all armv*
+# we also get to remove the musl specifiers
+case "$XBPS_MACHINE" in
+  x86_64*)
+    HOST_ARCH="x86_64"
+    ;;
+  i686*)
+    HOST_ARCH="ia32"
+    ;;
+  arm*)
+    HOST_ARCH="arm"
+    ;;
+  aarch64*)
+    HOST_ARCH="aarch64"
+    ;;
+esac
+
+# filter our arches for the target machines
+# the same rules as above apply
+# we also get a chance to declare broken= here for unsupported
+# configurations
+case "$XBPS_TARGET_MACHINE" in
+  x86_64*)
+    TARGET_ARCH="x86_64"
+    ;;
+  i686*)
+    TARGET_ARCH="ia32"
+    ;;
+  arm*)
+    TARGET_ARCH="arm"
+    ;;
+  aarch64*)
+    TARGET_ARCH="aarch64"
+    ;;
+  *)
+    broken="$XBPS_TARGET_MACHINE is untested, please add support if possible"
+    ;;
+esac
+
 do_build() {
-  unset CFLAGS
-  unset CPPFLAGS
-  unset CXXFLAGS
-  unset LDFLAGS
-  make lib gnuefi inc apps
+  make \
+    ARCH="$TARGET_ARCH" \
+    HOSTARCH="$HOST_ARCH"
 }
 
 do_install() {
   make \
+    ARCH="$TARGET_ARCH" \
     INSTALLROOT="$DESTDIR" \
     LIBDIR="/usr/lib" \
     PREFIX="/usr" \
     install
-
-  case "$XBPS_TARGET_MACHINE" in
-    i686*)
-      _EFI_ARCH="ia32"
-      ;;
-    x86_64*)
-      _EFI_ARCH="x86_64"
-      ;;
-  esac
-  vmkdir "usr/share/gnu-efi/apps/$_EFI_ARCH"
-
-  if [[ "${XBPS_MACHINE%-musl}" == "i686" ]]; then
-    HOST_ARCH="ia32"
-  else
-    HOST_ARCH="${XBPS_MACHINE/-musl//}"
-  fi
-
-  install -Dm 644 "$HOST_ARCH/apps"/*.efi "$DESTDIR/usr/share/gnu-efi/apps/$_EFI_ARCH"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
