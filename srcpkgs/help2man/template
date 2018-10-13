@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="help2man"
-version=1.47.7
+version=1.47.8
 revision=1
 short_desc="GNU conversion tool to create man files"
 depends="perl-Locale-gettext"
 hostmakedepends="perl-Locale-gettext"
 homepage="http://www.gnu.org/software/help2man"
-license="GPL-3"
+license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
-checksum="585b8e88ed04bdb426403cf7d9b0c0bb9c7630755b0096c2b018a024b29bec0d"
+checksum="528f6a81ad34cbc76aa7dce5a82f8b3d2078ef065271ab81fda033842018a8dc"
 build_style="gnu-configure"
 lib32disabled="yes"
 
