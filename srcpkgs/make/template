@@ -15,6 +15,7 @@ patch_args="-Np1"
 build_style="gnu-configure"
 configure_args="$(vopt_with guile)"
 build_options="guile"
+build_options_default="guile"
 bootstrap="yes"
 
 # this should be temporary until upstream releases new version with fixes
