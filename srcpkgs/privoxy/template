@@ -1,42 +1,45 @@
-# Template file for 'privoxy'
-pkgname=privoxy
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="privoxy"
 version=3.0.26
 revision=1
-wrksrc="${pkgname}-${version}-stable"
-build_style=gnu-configure
-configure_args="--sysconfdir=/etc/privoxy --enable-compression --enable-dynamic-pcre --sbindir=/usr/bin"
+short_desc="A non-caching web proxy with advanced filtering capabilities"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="autoconf"
+homepage="http://www.privoxy.org/"
+license="GPL-2"
+distfiles="$SOURCEFORGE_SITE/ijbswa/$pkgname-$version-stable-src.tar.gz"
+checksum="57e415b43ee5dfdca74685cc034053eaae962952fdabd086171551a86abf9cd8"
+conf_files+=" /etc/privoxy/config"
+conf_files+=" /etc/privoxy/default.action"
+conf_files+=" /etc/privoxy/default.filter"
+conf_files+=" /etc/privoxy/match-all.action"
+conf_files+=" /etc/privoxy/trust"
+conf_files+=" /etc/privoxy/user.action"
+conf_files+=" /etc/privoxy/user.filter"
+wrksrc="$pkgname-$version-stable"
+build_style="gnu-configure"
+configure_args+=" --enable-compression"
+configure_args+=" --enable-dynamic-pcre"
+configure_args+=" --sysconfdir=/etc/privoxy"
 make_install_args="STRIP="
-conf_files="
-	/etc/privoxy/config
-	/etc/privoxy/default.action
-	/etc/privoxy/match-all.action
-	/etc/privoxy/user.filter
-	/etc/privoxy/trust
-	/etc/privoxy/default.filter
-	/etc/privoxy/user.action"
 system_accounts="privoxy"
 privoxy_homedir="/etc/privoxy"
-hostmakedepends="autoconf"
-makedepends="pcre-devel zlib-devel"
-short_desc="A non-caching web proxy with advanced filtering capabilities"
-maintainer="Eivind Uggedal <eivind@uggedal.com>"
-license="GPL-2"
-homepage="http://www.privoxy.org/"
-distfiles="${SOURCEFORGE_SITE}/ijbswa/${pkgname}-${version}-stable-src.tar.gz"
-checksum=57e415b43ee5dfdca74685cc034053eaae962952fdabd086171551a86abf9cd8
 
 pre_configure() {
-	autoheader && autoconf
-
-	sed -e 's|^confdir .*|confdir /etc/privoxy|' \
-		-e 's|^logdir .*|logdir /var/log/privoxy|' \
-		-e 's|^\(logfile .*\)|# \1|' \
-		-i config
+  autoheader && autoconf
+  sed \
+    -i \
+    -e 's|^confdir .*|confdir /etc/privoxy|' \
+    -e 's|^logdir .*|logdir /var/log/privoxy|' \
+    -e 's|^\(logfile .*\)|# \1|' \
+    config
 }
 
 post_install() {
-	vsv privoxy
-
-	# privoxy writes logs to stdout with --no-daemon
-	rm -r ${DESTDIR}/var/log/privoxy
+  vsv privoxy
+  # privoxy writes logs to stdout with --no-daemon
+  rm -r "$DESTDIR/var/log/privoxy"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
