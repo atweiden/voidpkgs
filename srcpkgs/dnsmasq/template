@@ -16,6 +16,7 @@ conf_files="/etc/dnsmasq.conf"
 system_accounts="dnsmasq"
 dnsmasq_homedir="/var/chroot"
 build_options="dnssec"
+build_options_default="dnssec"
 desc_option_dnssec="Enable DNSSEC support via nettle"
 
 do_build() {
