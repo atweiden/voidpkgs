@@ -4,6 +4,8 @@ version=0.0.20181007
 revision=1
 short_desc="Fast, modern, secure VPN tunnel"
 depends+=" dkms"
+# for wg-quick DNS
+depends+=" openresolv"
 depends+=" wireguard-tools"
 makedepends="libmnl-devel"
 homepage="https://www.wireguard.com/"
