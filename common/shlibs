@@ -429,10 +429,10 @@ syncprov-2.4.so.2 openldap-2.4.45_7
 translucent-2.4.so.2 openldap-2.4.45_7
 unique-2.4.so.2 openldap-2.4.45_7
 valsort-2.4.so.2 openldap-2.4.45_7
-libiomp5.so openmp-devel-6.0.1_1
-libomp-target.so openmp-devel-6.0.1_1
-libomp.so openmp-devel-6.0.1_1
-libomptarget.so openmp-devel-6.0.1_1
+libiomp5.so openmp-devel-7.0.0_1
+libomp.so openmp-devel-7.0.0_1
+libomptarget.rtl.x86_64.so openmp-devel-7.0.0_1
+libomptarget.so openmp-devel-7.0.0_1
 libosp.so.5 opensp-1.5.2_1
 libp11-kit.so.0 p11-kit-0.7_1
 libpam.so.0 pam-libs-1.1.6_3

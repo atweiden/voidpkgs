@@ -15,7 +15,7 @@ distfiles="https://releases.llvm.org/$version/$pkgname-$version.src.tar.xz"
 checksum="30662b632f5556c59ee9215c1309f61de50b3ea8e89dcc28ba9a9494bba238ff"
 wrksrc="$pkgname-$version.src"
 build_style="cmake"
-configure_args+=" -DLIBOMP_ENABLE_SHARED=OFF"
+configure_args+=" -DLIBOMP_ENABLE_SHARED=ON"
 configure_args+=" -G Ninja"
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -38,9 +38,8 @@ openmp-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
-    # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
+    # libgomp.so is also provided by libgomp; remove it to fix the conflict
     rm -f "$PKGDESTDIR/usr/lib/libgomp.so"
   }
 }
