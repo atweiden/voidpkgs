@@ -1,0 +1,62 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="wslay"
+version=1.1.0
+revision=1
+short_desc="The WebSocket library in C"
+makedepends+=" libressl-devel"
+makedepends+=" libuv-devel"
+makedepends+=" wslay-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" make"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-Sphinx"
+homepage="https://github.com/tatsuhiro-t/wslay"
+license="MIT"
+changelog="https://raw.githubusercontent.com/tatsuhiro-t/wslay/master/ChangeLog.txt"
+distfiles="https://github.com/tatsuhiro-t/wslay/releases/download/release-$version/$pkgname-$version.tar.gz"
+checksum="0de975a31818f1c660fa3c674b17bbcbda6ad9c866402ac8ab46a1847325118e"
+build_style="gnu-configure"
+configure_args="--with-gnu-ld"
+
+pre_configure() {
+  autoreconf -i
+  automake
+  autoconf
+}
+
+post_install() {
+  vlicense COPYING
+  vdoc NEWS
+  vdoc README
+  vdoc README.rst
+  # prepend wslay- to unqualified binaries
+  for _bin in $(find "$DESTDIR/bin" \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        -type f ! -name "wslay*" -printf '%f\n'); do
+    mv "$DESTDIR/bin/$_bin" "$DESTDIR/bin/wslay-$_bin"
+  done
+}
+
+libwslay_package() {
+  short_desc+=" - runtime libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
+}
+
+wslay-devel_package() {
+  short_desc+=" - development files"
+  depends+=" $makedepends"
+  depends+=" libwslay>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
