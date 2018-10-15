@@ -1,0 +1,125 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="subversion"
+version=1.10.3
+revision=1
+short_desc="Enterprise-class centralized version control for the masses"
+depends="ca-certificates"
+makedepends+=" gdbm-devel"
+makedepends+=" liblz4-devel"
+makedepends+=" python-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" swig"
+hostmakedepends="pkg-config"
+homepage="http://subversion.apache.org/"
+license="Apache-2.0, BSD-3-Clause"
+distfiles="http://apache.rediris.es/subversion/subversion-$version.tar.bz2"
+checksum="9f0daac8b84aefaa77ad54dd05ab578ecc939d8e72d08c0cd4f61315921dd9fc"
+build_style="gnu-configure"
+configure_args+=" --disable-javahl"
+configure_args+=" --disable-keychain"
+configure_args+=" --disable-mod-activation"
+configure_args+=" --disable-static"
+configure_args+=" --with-editor=vim"
+configure_args+=" --with-gnu-ld"
+configure_args+=" --with-utf8proc=internal"
+configure_args+=" --without-apr"
+configure_args+=" --without-apr-util"
+configure_args+=" --without-apr_memcache"
+configure_args+=" --without-apxs"
+configure_args+=" --without-gnome-keyring"
+configure_args+=" --without-kwallet"
+configure_args+=" --without-serf"
+
+do_build() {
+  make \
+    "$makejobs" \
+    LT_LDFLAGS="-L$Fdestdir/usr/lib"
+  make \
+    "$makejobs" \
+    swig_pydir="/usr/lib/python2.7/site-packages/libsvn" \
+    swig_pydir_extra="/usr/lib/python2.7/site-packages/svn" \
+    swig-py \
+    swig-pl
+}
+
+do_install() {
+  export LD_LIBRARY_PATH="$DESTDIR/usr/lib:$LD_LIBRARY_PATH"
+
+  make \
+    DESTDIR="$DESTDIR" \
+    INSTALLDIRS="vendor" \
+    swig_pydir="/usr/lib/python2.7/site-packages/libsvn" \
+    swig_pydir_extra="/usr/lib/python2.7/site-packages/svn" \
+    install \
+    install-swig-py \
+    install-swig-pl
+
+  rm -rf "$DESTDIR/usr/lib/perl5/core_perl"
+  vmkdir usr/share/subversion
+  install -dm 755 tools/hook-scripts "$DESTDIR/usr/share/subversion/"
+  rm -f "$DESTDIR/usr/share/subversion/hook-scripts"/*.in
+
+  install -Dm 644 tools/client-side/bash_completion \
+    "$DESTDIR/usr/share/bash-completion/completions/subversion"
+
+  for i in svn \
+           svnadmin \
+           svndumpfilter \
+           svnlook \
+           svnsync \
+           svnversion; do
+    ln -sf subversion "$DESTDIR/usr/share/bash-completion/completions/$i"
+  done
+
+  vlicense LICENSE
+  vsv svnserve
+}
+
+libsvn_package() {
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/libsvn_ra*.so.*"
+    vmove "usr/lib/libsvn_fs*.so.*"
+    vmove "usr/lib/libsvn_subr*.so.*"
+    vmove "usr/lib/libsvn_wc*.so.*"
+    vmove "usr/lib/libsvn_delta*.so.*"
+    vmove "usr/lib/libsvn_diff*.so.*"
+    vmove "usr/lib/libsvn_repos*.so.*"
+    vmove "usr/lib/libsvn_client*.so.*"
+  }
+}
+
+subversion-devel_package() {
+  depends="libsvn>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/share/pkgconfig
+  }
+}
+
+subversion-python_package() {
+  lib32disabled="yes"
+  depends="python"
+  pycompile_module+=" libsvn"
+  pycompile_module+=" svn"
+  short_desc+=" - python bindings"
+  pkg_install() {
+    vmove "usr/lib/libsvn_swig_py*"
+    vmove "usr/lib/python*"
+  }
+}
+
+subversion-perl_package() {
+  lib32disabled="yes"
+  depends="perl"
+  short_desc+=" - perl bindings"
+  pkg_install() {
+    vmove "usr/lib/libsvn_swig_perl*"
+    vmove usr/lib/perl5
+    vmove usr/share/man/man3
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

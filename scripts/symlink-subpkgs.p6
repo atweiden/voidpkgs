@@ -453,6 +453,10 @@ constant %PKG = Map.new(
     'snappy' => ['snappy-devel'],
     'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
+    'subversion' => qw<libsvn
+                       subversion-devel
+                       subversion-perl
+                       subversion-python>,
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
     'talloc' => ['talloc-devel'],
