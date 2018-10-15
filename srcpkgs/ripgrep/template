@@ -1,34 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ripgrep"
 version=0.10.0
-revision=1
+revision=2
 short_desc="Fast search tool inspired by ag and grep"
-hostmakedepends+=" asciidoc"
-hostmakedepends+=" cargo"
-hostmakedepends+=" rust"
+hostmakedepends="asciidoc"
 homepage="https://github.com/BurntSushi/ripgrep/"
 license="Public Domain, MIT"
 distfiles="https://github.com/BurntSushi/$pkgname/archive/$version.tar.gz"
 checksum="a2a6eb7d33d75e64613c158e1ae450899b437e37f1bfbd54f713b011cd8cc31e"
-nocross="yes"
-
-do_build() {
-  cargo build --release
-}
-
-do_check() {
-  cargo test --release
-}
-
-do_install() {
-  vbin target/release/rg
-}
+build_style="cargo"
 
 post_install() {
   vlicense LICENSE-MIT
   vlicense UNLICENSE
   vman rg.1
-  cd target/release/build/ripgrep-*/out
+  cd "target/$RUST_TARGET/release/build"/ripgrep-*/out
   vinstall rg.bash 0644 usr/share/bash-completion/completions rg
   vinstall rg.fish 0644 usr/share/fish/completions
   vinstall complete/_rg 0644 usr/share/zsh/site-functions
