@@ -452,7 +452,8 @@ constant %PKG = Map.new(
                  ruby-devel-doc
                  ruby-ri>,
     'runit-void' => ['runit-void-apparmor'],
-    'rust' => ['rust-doc'],
+    'rust' => qw<rust-doc
+                 rust-std>,
     'schilytools' => qw<sccs
                         sdd
                         sfind

@@ -1,12 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rust"
 version=1.28.0
-revision=3
+revision=4
 _rust_dist_version=1.28.0
 _cargo_dist_version=0.30.0
 # NB. if you push any(!) new version, don't forget to put a musl build
 # output in https://alpha.de.repo.voidlinux.org/distfiles/
 short_desc="Safe, concurrent, practical systems language"
+depends="rust-std"
 makedepends+=" libffi-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" llvm"
@@ -216,6 +217,13 @@ rust-doc_package() {
   noarch="yes"
   pkg_install() {
     vmove usr/share/doc
+  }
+}
+
+rust-std_package() {
+  short_desc+=" - standard library"
+  pkg_install() {
+    vmove usr/lib/rustlib
   }
 }
 
