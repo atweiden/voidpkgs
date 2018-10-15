@@ -21,12 +21,11 @@ configure_args+=" --disable-keychain"
 configure_args+=" --disable-mod-activation"
 configure_args+=" --disable-static"
 configure_args+=" --with-apxs"
-configure_args+=" --with-editor=vim"
+configure_args+=" --with-editor=vi"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --with-utf8proc=internal"
 configure_args+=" --without-gnome-keyring"
 configure_args+=" --without-kwallet"
-configure_args+=" --without-serf"
 
 do_build() {
   make \
