@@ -30,6 +30,14 @@ constant %PKG = Map.new(
     'apparmor' => qw<apparmor-vim
                      libapparmor
                      libapparmor-devel>,
+    'apr' => ['apr-devel'],
+    'apr-util' => qw<apr-util-db
+                     apr-util-devel
+                     apr-util-gdbm
+                     apr-util-ldap
+                     apr-util-odbc
+                     apr-util-pgsql
+                     apr-util-sqlite>,
     'argon2' => qw<libargon2
                    libargon2-devel>,
     'aria2' => qw<libaria2
@@ -450,6 +458,7 @@ constant %PKG = Map.new(
                         sfind
                         smake
                         star>,
+    'serf' => ['serf-devel'],
     'snappy' => ['snappy-devel'],
     'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],

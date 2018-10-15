@@ -1,0 +1,133 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="apr-util"
+version=1.6.1
+revision=5
+short_desc="The Apache Portable Runtime Utility Library"
+makedepends+=" apr-devel"
+makedepends+=" db-devel"
+makedepends+=" expat-devel"
+makedepends+=" gdbm-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" postgresql-libs-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" unixodbc-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" apr-devel"
+hostmakedepends+=" libtool"
+homepage="http://apr.apache.org/"
+license="Apache-2.0"
+distfiles="http://www.apache.org/dist/apr/$pkgname-$version.tar.bz2"
+checksum="d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+build_style="gnu-configure"
+configure_args+=" --enable-util-dso"
+configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr/bin/apr-1-config"
+configure_args+=" --with-berkeley-db=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-crypto"
+configure_args+=" --with-dbm=db53"
+configure_args+=" --with-expat=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-gdbm=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-ldap"
+configure_args+=" --with-odbc=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-openssl"
+configure_args+=" --with-pgsql"
+configure_args+=" --with-sqlite3=$XBPS_CROSS_BASE/usr"
+configure_args+=" --without-oracle"
+
+pre_configure() {
+  sed \
+    -i \
+    -e "s;^\(  APR_BUILD_DIR=\).*$;\1$XBPS_CROSS_BASE/usr/share/apr-1/build;" \
+    configure
+}
+
+post_configure() {
+  # hacks to make cross compiling work
+  sed \
+    -i \
+    -e "s;\(apr_builddir=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
+    -e "s;\(apr_builders=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
+    -e "s;--mode=link;& --tag=CC;g" \
+    -e "s;--mode=compile;& --tag=CC;g" \
+    -e "s;^INTERNAL_CPPFLAGS.*;& -I$XBPS_CROSS_BASE/usr/include/apr-1;" \
+    -e "s;\$(apr_builddir)/libtool;$XBPS_CROSS_BASE/usr/bin/libtool;" \
+    -e '/^LINK /s;$(COMPILE);$(CC);' \
+    build/rules.mk
+
+}
+
+post_install() {
+  # remove static libs
+  find "$DESTDIR" -type f -name \*.a -delete
+}
+
+apr-util-devel_package() {
+  depends+=" $sourcepkg>=$version"
+  depends+=" apr-devel"
+  depends+=" db-devel"
+  depends+=" expat-devel"
+  depends+=" libldap-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/include
+    vmove "usr/lib/*.exp"
+    vmove usr/lib/pkgconfig
+  }
+}
+
+apr-util-db_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - Berkeley DB module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbm_db*"
+  }
+}
+
+apr-util-gdbm_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - GDBM module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbm_gdbm*"
+  }
+}
+
+apr-util-ldap_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - LDAP support"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_ldap*"
+  }
+}
+
+apr-util-odbc_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - ODBC module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbd_odbc*"
+  }
+}
+
+apr-util-pgsql_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - PostgreSQL module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbd_pgsql*"
+  }
+}
+
+apr-util-sqlite_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - SQLite module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbd_sqlite*"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

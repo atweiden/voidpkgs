@@ -1,0 +1,203 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="apache"
+version=2.4.35
+revision=1
+short_desc="The Number One HTTP Server On The Internet"
+makedepends+=" apr-util-devel"
+makedepends+=" db-devel"
+makedepends+=" expat-devel"
+makedepends+=" gdbm-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" nghttp2-devel"
+makedepends+=" pcre-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" apr-util-devel"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+homepage="http://httpd.apache.org/"
+license="Apache-2.0"
+changelog="http://www.apache.org/dist/httpd/CHANGES_2.4"
+distfiles="http://www.apache.org/dist/httpd/httpd-$version.tar.bz2"
+checksum="2607c6fdd4d12ac3f583127629291e9432b247b782396a563bec5678aae69b56"
+conf_files+=" /etc/$pkgname/extra/*.conf"
+conf_files+=" /etc/$pkgname/httpd.conf"
+conf_files+=" /etc/$pkgname/magic"
+conf_files+=" /etc/$pkgname/mime.types"
+wrksrc="httpd-$version"
+build_style="gnu-configure"
+configure_args+=" --enable-auth-digest"
+configure_args+=" --enable-authn-alias"
+configure_args+=" --enable-authn-anon"
+configure_args+=" --enable-authn-dbd"
+configure_args+=" --enable-authn-dbm"
+configure_args+=" --enable-authnz-ldap"
+configure_args+=" --enable-authz-dbm"
+configure_args+=" --enable-authz-owner"
+configure_args+=" --enable-bucketeer"
+configure_args+=" --enable-cache"
+configure_args+=" --enable-cern-meta"
+configure_args+=" --enable-cgi"
+configure_args+=" --enable-cgid"
+configure_args+=" --enable-charset-lite"
+configure_args+=" --enable-dav"
+configure_args+=" --enable-dav-fs"
+configure_args+=" --enable-dav-lock"
+configure_args+=" --enable-dbd"
+configure_args+=" --enable-deflate"
+configure_args+=" --enable-disk-cache"
+configure_args+=" --enable-dumpio"
+configure_args+=" --enable-echo"
+configure_args+=" --enable-expires"
+configure_args+=" --enable-ext-filter"
+configure_args+=" --enable-file-cache"
+configure_args+=" --enable-headers"
+configure_args+=" --enable-http"
+configure_args+=" --enable-http2"
+configure_args+=" --enable-ident"
+configure_args+=" --enable-imagemap"
+configure_args+=" --enable-info"
+configure_args+=" --enable-isapi"
+configure_args+=" --enable-layout=XBPS"
+configure_args+=" --enable-ldap"
+configure_args+=" --enable-log-forensic"
+configure_args+=" --enable-logio"
+configure_args+=" --enable-mem-cache"
+configure_args+=" --enable-mime-magic"
+configure_args+=" --enable-mods-shared=all"
+configure_args+=" --enable-modules=all"
+configure_args+=" --enable-mpms-shared=all"
+configure_args+=" --enable-pie"
+configure_args+=" --enable-proxy"
+configure_args+=" --enable-proxy-ajp"
+configure_args+=" --enable-proxy-balancer"
+configure_args+=" --enable-proxy-connect"
+configure_args+=" --enable-proxy-ftp"
+configure_args+=" --enable-proxy-http"
+configure_args+=" --enable-proxy-scgi"
+configure_args+=" --enable-reqtimeout"
+configure_args+=" --enable-rewrite"
+configure_args+=" --enable-so"
+configure_args+=" --enable-speling"
+configure_args+=" --enable-ssl"
+configure_args+=" --enable-substitute"
+configure_args+=" --enable-unique-id"
+configure_args+=" --enable-usertrack"
+configure_args+=" --enable-vhost-alias"
+configure_args+=" --prefix="
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --sysconfdir=/etc/$pkgname"
+configure_args+=" --with-apr-util=$XBPS_CROSS_BASE/usr/bin/apu-1-config"
+configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr/bin/apr-1-config"
+configure_args+=" --with-pcre=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-z=$XBPS_CROSS_BASE/usr"
+system_accounts="_$pkgname"
+_apache_homedir="/srv/www/$pkgname"
+
+# do not redefine struct iovec in include/apr_want.h
+CFLAGS="-DAPR_IOVEC_DEFINED=1 -I$XBPS_CROSS_BASE/usr/include/apr-1"
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  # FIXME: is sizeof(void*) ever less than sizeof(long)?
+  export ap_cv_void_ptr_lt_long="no"
+  # this is missing in cross compiled apr-1-config (?)
+  LDFLAGS="-pthread"
+fi
+
+pre_configure() {
+  # set default user
+  sed \
+    -i \
+    -e 's#User daemon#User _apache#' \
+    -e 's#Group daemon#Group _apache#' \
+    docs/conf/httpd.conf.in
+
+  cat "$FILESDIR/xbps.layout" >> config.layout
+}
+
+post_configure() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # build gen_test_char using $BUILD_CC
+    sed \
+      -i \
+      -e "s;\$(LINK) \$(EXTRA_LDFLAGS) \$(\(gen_test_char\).*;$BUILD_CC -o \1 \1.c -I$XBPS_CROSS_BASE/usr/include/apr-1;" \
+      server/Makefile
+    # more hacks to make cross compiling work
+    sed \
+      -i \
+      -e "s;--mode=compile;& --tag=CC;" \
+      -e "s;--mode=link;& --tag=CC;" \
+      -e "s;-\(L|R\)/usr/lib;-\1$XBPS_CROSS_BASE/usr/lib;" \
+      -e "s;^\(LIBTOOL =\) /usr/share/apr-1/build/libtool;\1 $XBPS_CROSS_BASE/usr/bin/libtool;" \
+      build/*.mk Makefile */Makefile
+  fi
+}
+
+post_install() {
+  # set a working ServerRoot
+  #
+  # load modules:
+  #  * mod_include.so
+  #  * mod_slotmem_shm.so
+  #  * mod_negotiation.so
+  #  * mod_userdir.so
+  #
+  # avoid loading modules:
+  #  * mod_unique_id.so
+  #
+  # set and enable ServerName to 127.0.0.1
+  #
+  # include extras:
+  #  * httpd-multilang-errordoc.conf
+  #  * httpd-autoindex.conf
+  #  * httpd-languages.conf
+  #  * httpd-userdir.conf
+  #  * httpd-default.conf
+  #
+  sed \
+    -i \
+    -e 's|ServerRoot ""|ServerRoot "/srv/www/apache"|' \
+    -e 's|#\(LoadModule include_module /usr/libexec/httpd/mod_include.so\)|\1|' \
+    -e 's|\(LoadModule unique_id_module /usr/libexec/httpd/mod_unique_id.so\)|#\1|' \
+    -e 's|#\(LoadModule slotmem_shm_module /usr/libexec/httpd/mod_slotmem_shm.so\)|\1|' \
+    -e 's|#\(LoadModule negotiation_module /usr/libexec/httpd/mod_negotiation.so\)|\1|' \
+    -e 's|#\(LoadModule userdir_module /usr/libexec/httpd/mod_userdir.so\)|\1|' \
+    -e 's|#ServerName www.example.com:80|ServerName 127.0.0.1:80|' \
+    -e 's|#\(Include /etc/apache/extra/httpd-multilang-errordoc.conf\)|\1|' \
+    -e 's|#\(Include /etc/apache/extra/httpd-autoindex.conf\)|\1|' \
+    -e 's|#\(Include /etc/apache/extra/httpd-languages.conf\)|\1|' \
+    -e 's|#\(Include /etc/apache/extra/httpd-userdir.conf\)|\1|' \
+    -e 's|#\(Include /etc/apache/extra/httpd-default.conf\)|\1|' \
+    "$DESTDIR/etc/apache/httpd.conf"
+
+  # remove references to hardening -specs
+  sed \
+    -i \
+    -e "s|\(-specs=.*hardened-ld\)||g" -e "s|\(-specs=.*hardened-cc1\)||g" \
+    "$DESTDIR/usr/share/apache/webroot/build"/config{.nice,_vars.mk}
+
+  # remove unused stuff
+  vmkdir usr/share/apache/webroot
+  mv "$DESTDIR/srv/www/$pkgname/cgi-bin" "$DESTDIR/usr/share/apache/webroot"
+  rm -rf "$DESTDIR/srv"
+  rm -rf "$DESTDIR/etc/$pkgname/original"
+
+  vinstall "$FILESDIR/apache.logrotate" 644 etc/logrotate.d apache
+  vsv apache
+}
+
+apache-devel_package() {
+  depends+=" apr-devel"
+  depends+=" apr-util-devel"
+  depends+=" perl"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/share/apache/webroot/build
+    vmove usr/bin/apxs
+    vmove "usr/share/man/man1/apxs*"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

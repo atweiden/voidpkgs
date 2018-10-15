@@ -1,0 +1,49 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="apr"
+version=1.6.5
+revision=1
+short_desc="Apache Portable Runtime Library"
+makedepends+=" expat-devel"
+makedepends+=" libuuid-devel"
+homepage="http://apr.apache.org/"
+license="Apache-2.0"
+distfiles="http://www.apache.org/dist/apr/apr-$version.tar.bz2"
+checksum="a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105"
+build_style="gnu-configure"
+configure_args="--with-installbuilddir=/usr/share/apr-1/build"
+# can't run test programs when cross compiling
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" apr_cv_process_shared_works=yes"
+  configure_args+=" apr_cv_mutex_robust_shared=yes"
+fi
+
+# do not redefine struct iovec in include/apr_want.h
+CFLAGS="-DAPR_IOVEC_DEFINED=1"
+
+pre_build() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    sed \
+      -i \
+      -e "/LINK_PROG.*OBJECTS_gen_test_char/s|.*|\t$BUILD_CC $BUILD_CFLAGS tools/gen_test_char.c -o tools/gen_test_char|" \
+      Makefile
+  fi
+}
+
+apr-devel_package() {
+  depends+=" apr>=${version}_$revision"
+  depends+=" libtool"
+  depends+=" libuuid-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/bin
+    vmove usr/share
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove "usr/lib/*.exp"
+    vmove usr/lib/pkgconfig
+    ln -sf /usr/bin/libtool "$PKGDESTDIR/usr/share/apr-1/build/libtool"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
