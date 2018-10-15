@@ -1,0 +1,26 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="create_ap"
+version=0.4.6
+revision=1
+short_desc="Script to create a NATed or Bridged WiFi Access Point"
+noarch="yes"
+depends+=" bash"
+depends+=" dnsmasq"
+depends+=" hostapd"
+depends+=" iproute2"
+depends+=" iptables"
+depends+=" iw"
+depends+=" procps-ng"
+depends+=" util-linux"
+homepage="https://github.com/oblique/create_ap"
+license="2-clause-BSD"
+distfiles="$homepage/archive/v$version.tar.gz"
+checksum="fc86c8ed8fce6543adf15587f9b987fd12d711ad4e5762250abe6f9801e2bbb1"
+conf_files="/etc/create_ap.conf"
+build_style="gnu-makefile"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
