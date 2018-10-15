@@ -21,10 +21,14 @@ conf_files="/etc/h2o.conf"
 build_style="cmake"
 configure_args+=" -DWITH_BUNDLED_SSL=off"
 configure_args+=" -DWITH_MRUBY=$(vopt_if mruby on off)"
-make_build_target="libh2o"
 system_accounts="h2o"
 build_options+=" mruby"
 desc_option_mruby="Enable mruby support"
+
+post_build() {
+  cd "${cmake_builddir:=build}"
+  make "$makejobs" libh2o
+}
 
 post_install() {
   vlicense LICENSE
@@ -47,8 +51,8 @@ h2o-devel_package() {
   depends+=" libh2o>=${version}_$revision"
   pkg_install() {
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
   }
 }
 
