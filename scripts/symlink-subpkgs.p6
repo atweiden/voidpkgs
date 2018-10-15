@@ -173,6 +173,7 @@ constant %PKG = Map.new(
     'gtest' => ['gtest-devel'],
     'guile' => qw<guile-devel
                   libguile>,
+    'h2o' => ['h2o-devel'],
     'haveged' => qw<libhaveged
                     libhaveged-devel>,
     'http-parser' => ['http-parser-devel'],
