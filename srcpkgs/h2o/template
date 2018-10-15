@@ -6,28 +6,47 @@ short_desc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 depends="perl"
 makedepends+=" libressl-devel"
 makedepends+=" libuv-devel"
+makedepends+=" wslay-devel"
 makedepends+=" zlib-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" bison"
+hostmakedepends+=" libtool"
+hostmakedepends+=" make"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" ruby-devel"
 homepage="https://h2o.examp1e.net/"
 license="MIT"
 distfiles="https://github.com/h2o/h2o/archive/v$version.tar.gz"
 checksum="eafb40aa2d93b3de1af472bb046c17b2335c3e5a894462310e1822e126c97d24"
 conf_files="/etc/h2o.conf"
 build_style="cmake"
+configure_args+=" -DWITH_BUNDLED_SSL=off"
+configure_args+=" -DWITH_MRUBY=on"
+make_build_target+=" libh2o"
 system_accounts="h2o"
 
 post_install() {
-  vsv h2o
-  vconf "$FILESDIR/h2o.conf"
   vlicense LICENSE
+  vdoc README.md
+  vconf "$FILESDIR/h2o.conf"
+  vsv h2o
+}
+
+libh2o_package() {
+  short_desc+=" - runtime libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
 
 h2o-devel_package() {
+  unset depends
   short_desc+=" - development files"
-  depends="$makedepends"
+  depends+=" $makedepends"
+  depends+=" libh2o>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
   }
 }
 
