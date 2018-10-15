@@ -1,27 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="just"
 version=0.3.12
-revision=1
+revision=2
 short_desc="Just a command runner"
-hostmakedepends="cargo"
 homepage="https://github.com/casey/just"
 license="CC0-1.0"
 changelog="https://raw.githubusercontent.com/casey/just/master/CHANGELOG.md"
 distfiles="https://github.com/casey/just/archive/v$version.tar.gz"
 checksum="e5ca71efd19db8f157131cddb14d75ba161851e79e1cc9fc709e2c674d2c943b"
-nocross="yes"
-
-do_build() {
-  cargo build --release "$makejobs"
-}
-
-do_check() {
-  cargo check --release
-}
-
-do_install() {
-  vbin target/release/just
-}
+build_style="cargo"
 
 post_install() {
   vlicense LICENSE
