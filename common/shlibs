@@ -211,6 +211,7 @@ libfdisk.so.1 libfdisk-2.26_1
 libffi.so.6 libffi-3.1_1
 libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
+libGeoIP.so.1 libgeoip-1.4.8_1
 libgfortran.so.5 libgfortran-8.2.0_1
 libgit2.so.27 libgit2-0.27.3_1
 libgo.so.13 libgo-8.2.0_1
