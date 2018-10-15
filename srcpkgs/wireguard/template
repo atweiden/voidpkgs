@@ -36,14 +36,16 @@ wireguard-tools_package() {
   unset depends
   short_desc+=" - tools"
   depends+=" bash"
+  depends+=" iproute2"
+  depends+=" iputils"
   depends+=" openresolv"
   pkg_install() {
     vmove usr/bin/wg
     vmove usr/bin/wg-quick
     vmove usr/share/bash-completion/completions/wg
     vmove usr/share/bash-completion/completions/wg-quick
-    vmove usr/share/man/man8/wg-quick.8
     vmove usr/share/man/man8/wg.8
+    vmove usr/share/man/man8/wg-quick.8
   }
 }
 
