@@ -31,13 +31,6 @@ post_install() {
   vlicense COPYING
   vdoc NEWS
   vdoc README
-  # prepend wslay- to unqualified binaries
-  for _bin in $(find "$DESTDIR/bin" \
-                        -mindepth 1 \
-                        -maxdepth 1 \
-                        -type f ! -name "wslay*" -printf '%f\n'); do
-    mv "$DESTDIR/bin/$_bin" "$DESTDIR/bin/wslay-$_bin"
-  done
 }
 
 libwslay_package() {
@@ -53,6 +46,7 @@ wslay-devel_package() {
   depends+=" libwslay>=${version}_$revision"
   pkg_install() {
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
