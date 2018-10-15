@@ -4,8 +4,6 @@ version=0.0.20181007
 revision=1
 short_desc="Fast, modern, secure VPN tunnel"
 depends+=" dkms"
-# for wg-quick DNS
-depends+=" openresolv"
 depends+=" wireguard-tools"
 makedepends="libmnl-devel"
 homepage="https://www.wireguard.com/"
@@ -35,8 +33,10 @@ post_install() {
 }
 
 wireguard-tools_package() {
+  unset depends
   short_desc+=" - tools"
-  depends="openresolv"
+  depends+=" bash"
+  depends+=" openresolv"
   pkg_install() {
     vmove usr/bin/wg
     vmove usr/bin/wg-quick
