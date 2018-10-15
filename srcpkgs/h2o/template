@@ -37,18 +37,11 @@ post_install() {
   vsv h2o
 }
 
-libh2o_package() {
-  short_desc+=" - runtime libraries"
-  pkg_install() {
-    vmove "usr/lib/*.so.*"
-  }
-}
-
 h2o-devel_package() {
   unset depends
   short_desc+=" - development files"
   depends+=" $makedepends"
-  depends+=" libh2o>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove usr/lib/pkgconfig
