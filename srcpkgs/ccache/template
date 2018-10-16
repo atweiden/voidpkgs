@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ccache"
-version=3.4.3
+version=3.5
 revision=1
 short_desc="A Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
 homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 distfiles="https://samba.org/ftp/$pkgname/$pkgname-$version.tar.xz"
-checksum="297e55a7622578395c1d5cfa163cc61e345ed69c52aaf94a9583634046c15f4a"
+checksum="bdd44b72ae4506a2e2deef9fefb15c606a474bbca7658cd2be26105155eec012"
 build_style="gnu-configure"
 bootstrap="yes"
 
