@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pkgconf"
-version=1.5.3
+version=1.5.4
 revision=1
 short_desc="Provides compiler and linker configuration"
 hostmakedepends="libtool"
@@ -9,7 +9,7 @@ homepage="https://git.dereferenced.org/pkgconf/pkgconf"
 license="MIT"
 changelog="https://git.dereferenced.org/pkgconf/pkgconf/raw/branch/master/NEWS"
 distfiles="https://distfiles.dereferenced.org/pkgconf/$pkgname-$version.tar.xz"
-checksum="d3468308553c94389dadfd10c4d1067269052b5364276a9d24a643c88485f715"
+checksum="9c5864a4e08428ef52f05a41c948529555458dec6d283b50f8b7d32463c54664"
 # cmake and meson also available
 build_style="gnu-configure"
 conflicts="pkg-config"
