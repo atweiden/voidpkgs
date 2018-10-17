@@ -1,26 +1,24 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="valgrind"
-version=3.13.0
-revision=2
+version=3.14.0
+revision=1
 short_desc="Tool for finding memory management bugs in programs"
-only_for_archs+=" armv7l"
-only_for_archs+=" armv7l-musl"
-only_for_archs+=" i686"
-only_for_archs+=" i686-musl"
-only_for_archs+=" x86_64"
-only_for_archs+=" x86_64-musl"
 depends="perl"
 makedepends="libgomp-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://valgrind.org/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="https://sourceware.org/pub/$pkgname/$pkgname-$version.tar.bz2"
-checksum="d76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b"
+checksum="037c11bfefd477cc6e9ebe8f193bb237fe397f7ce791b4a4ce3fa1c6a520baa5"
 build_style="gnu-configure"
+configure_args+=" --enable-lto=yes"
 configure_args+=" --enable-tls"
 configure_args+=" --without-mpicc"
+if [[ "$XBPS_TARGET_MACHINE" == "armv7l" ]]; then
+  configure_args+=" ac_cv_host=armv7l-unknown-linux-gnueabihf"
+fi
 lib32files+=" /usr/lib/valgrind/*-x86-linux"
 lib32files+=" /usr/lib/valgrind/default.supp"
 lib32symlinks+=" valgrind/cachegrind-x86-linux"
@@ -36,12 +34,14 @@ lib32symlinks+=" valgrind/massif-x86-linux"
 lib32symlinks+=" valgrind/memcheck-x86-linux"
 lib32symlinks+=" valgrind/none-x86-linux"
 
+case "$XBPS_TARGET_MACHINE" in
+  armv6*)
+    broken="Unsupported architecture"
+    ;;
+esac
+
 CFLAGS="-fno-stack-protector"
 CXXFLAGS="-fno-stack-protector"
-
-if [[ "$XBPS_TARGET_MACHINE" == "armv7l" ]]; then
-  configure_args+=" ac_cv_host=armv7l-unknown-linux-gnueabihf"
-fi
 
 pre_configure() {
   autoreconf -fi
