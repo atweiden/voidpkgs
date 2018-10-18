@@ -1,84 +1,109 @@
-# Template file for 'bind'
-pkgname=bind
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bind"
 version=9.11.4
 revision=2
-_fullver="${version}${_patchver:+-${_patchver}}"
-wrksrc="${pkgname}-${_fullver}"
-build_style=gnu-configure
-configure_args="--disable-static --enable-threads --enable-largefile
- --with-libtool --enable-atomic --sysconfdir=/etc/named --enable-epoll
- --enable-ipv6 --with-randomdev=/dev/random --with-ecdsa=yes --with-eddsa=no
- --with-libtool --with-openssl=${XBPS_CROSS_BASE}/usr --without-gssapi --without-gost
- --enable-openssl-hash --with-readline --with-tuning=default
- --enable-fetchlimit --enable-sit $(vopt_enable seccomp)
- $(vopt_if geoip "--with-geoip=${XBPS_CROSS_BASE}/usr" "--without-geoip")"
-hostmakedepends="automake libtool perl"
-makedepends="libressl-devel libxml2-devel libcap-devel readline-devel libatomic-devel
- $(vopt_if geoip geoip-devel) $(vopt_if seccomp libseccomp-devel)"
+_fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="ISC"
+makedepends+=" libatomic-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" readline-devel"
+makedepends+=" $(vopt_if geoip geoip-devel)"
+makedepends+=" $(vopt_if seccomp libseccomp-devel)"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
 homepage="https://www.isc.org/software/bind/"
-distfiles="https://ftp.isc.org/isc/bind9/${_fullver}/bind-${_fullver}.tar.gz"
-checksum=595070b031f869f8939656b5a5d11b121211967f15f6afeafa895df745279617
-
+license="ISC"
+distfiles="https://ftp.isc.org/isc/bind9/$_fullver/bind-$_fullver.tar.gz"
+checksum="595070b031f869f8939656b5a5d11b121211967f15f6afeafa895df745279617"
 conf_files="/etc/named/named.conf"
+wrksrc="$pkgname-$_fullver"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --enable-atomic"
+configure_args+=" --enable-epoll"
+configure_args+=" --enable-fetchlimit"
+configure_args+=" --enable-ipv6"
+configure_args+=" --enable-largefile"
+configure_args+=" --enable-openssl-hash"
+configure_args+=" --enable-sit"
+configure_args+=" --enable-threads"
+configure_args+=" --sysconfdir=/etc/named"
+configure_args+=" --with-ecdsa=yes"
+configure_args+=" --with-eddsa=no"
+configure_args+=" --with-libtool"
+configure_args+=" --with-libtool"
+configure_args+=" --with-openssl=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-randomdev=/dev/random"
+configure_args+=" --with-readline"
+configure_args+=" --with-tuning=default"
+configure_args+=" --without-gost"
+configure_args+=" --without-gssapi"
+configure_args+=" $(vopt_enable seccomp)"
+configure_args+=" $(vopt_if geoip --with-geoip=$XBPS_CROSS_BASE/usr --without-geoip)"
 system_accounts="named"
 named_descr="BIND DNS server"
 named_homedir="/var/named"
 make_dirs="/var/named 0770 root named"
-
-build_options="geoip seccomp"
-build_options_default="geoip"
-
-if [ -z "$CROSS_BUILD" ]; then
-	build_options_default+=" seccomp"
+build_options+=" geoip"
+build_options+=" seccomp"
+build_options_default+=" geoip"
+if [[ -z "$CROSS_BUILD" ]]; then
+  build_options_default+=" seccomp"
 fi
 
 pre_configure() {
-	autoreconf -fi
-	# disable bin tests for now.
-	sed -e "s,tests,,g" -i bin/Makefile.in
+  autoreconf -fi
+  # disable bin tests for now
+  sed \
+    -i \
+    -e "s,tests,,g" \
+    bin/Makefile.in
 }
 
 post_install() {
-	vsv named
-	vinstall ${FILESDIR}/named.logrotate 600 etc/logrotate.d named
-	vinstall ${FILESDIR}/named.conf 640 etc/named
-
-	vinstall bin/tests/system/common/root.hint 640 var/named
-	vinstall ${FILESDIR}/127.0.0.zone 640 var/named
-	vinstall ${FILESDIR}/localhost.zone 640 var/named
-	vlicense COPYRIGHT LICENSE
+  vsv named
+  vinstall "$FILESDIR/named.logrotate" 600 etc/logrotate.d named
+  vinstall "$FILESDIR/named.conf" 640 etc/named
+  vinstall bin/tests/system/common/root.hint 640 var/named
+  vinstall "$FILESDIR/127.0.0.zone" 640 var/named
+  vinstall "$FILESDIR/localhost.zone" 640 var/named
+  vlicense COPYRIGHT LICENSE
 }
 
 bind-libs_package() {
-	short_desc+=" - Runtime libraries"
-	pkg_install() {
-		vmove usr/lib/*.so.*
-	}
+  short_desc+=" - runtime libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
 
 bind-utils_package() {
-	short_desc+=" - DNS utils"
-	pkg_install() {
-		for f in dig host nslookup; do
-			vmove usr/bin/${f}
-			vmove usr/share/man/man1/${f}.1
-		done
-	}
+  short_desc+=" - DNS utils"
+  pkg_install() {
+    for f in dig \
+             host \
+             nslookup; do
+      vmove "usr/bin/$f"
+      vmove "usr/share/man/man1/$f.1"
+    done
+  }
 }
 
 bind-devel_package() {
-	depends="bind-libs>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/bin/isc-config.sh
-		vmove usr/bin/bind9-config
-		vmove usr/share/man/man1/isc-config.sh.1
-		vmove usr/share/man/man1/bind9-config.1
-		vmove usr/include
-		vmove usr/share/man/man3
-		vmove usr/lib/*.so
-	}
+  depends="bind-libs>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin/isc-config.sh
+    vmove usr/bin/bind9-config
+    vmove usr/share/man/man1/isc-config.sh.1
+    vmove usr/share/man/man1/bind9-config.1
+    vmove usr/include
+    vmove usr/share/man/man3
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
