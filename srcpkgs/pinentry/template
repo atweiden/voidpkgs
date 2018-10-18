@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pinentry"
 version=1.1.0
-revision=3
+revision=4
 short_desc="Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
 makedepends+=" libassuan-devel"
 makedepends+=" libgpg-error-devel"
@@ -30,6 +30,7 @@ configure_args+=" --without-libcap"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --host=$XBPS_CROSS_TRIPLET"
 fi
+alternatives="pinentry:pinentry:/usr/bin/pinentry-curses"
 
 pre_build() {
   sed \
@@ -45,6 +46,7 @@ post_install() {
 pinentry-tty_package() {
   depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - tty version"
+  alternatives="pinentry:pinentry:/usr/bin/pinentry-tty"
   pkg_install() {
     vmove usr/bin/pinentry-tty
   }
