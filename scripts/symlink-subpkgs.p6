@@ -54,6 +54,9 @@ constant %PKG = Map.new(
     'bcc' => qw<bcc-devel
                 bcc-tools
                 python-bcc>,
+    'bind' => qw<bind-devel
+                 bind-libs
+                 bind-utils>,
     'binutils' => ['binutils-devel'],
     'boost' => qw<boost-build
                   boost-devel
