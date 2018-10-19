@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dnsmasq"
-version=2.79
+version=2.80
 revision=1
 short_desc="Lightweight, easy to configure DNS forwarder and DHCP server"
 makedepends+=" dbus-devel"
@@ -11,7 +11,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.thekelleys.org.uk/dnsmasq/doc.html"
 license="GPL-2.0-or-later"
 distfiles="http://www.thekelleys.org.uk/$pkgname/$pkgname-$version.tar.gz"
-checksum="77512dd6f31ffd96718e8dcbbf54f02c083f051d4cca709bd32540aea269f789"
+checksum="9e4a58f816ce0033ce383c549b7d4058ad9b823968d352d2b76614f83ea39adc"
 conf_files="/etc/dnsmasq.conf"
 system_accounts="dnsmasq"
 dnsmasq_homedir="/var/chroot"
