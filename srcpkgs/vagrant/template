@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vagrant"
-version=2.1.5
+version=2.2.0
 revision=1
 short_desc="Tool for building and distributing virtualized development environments"
 only_for_archs+=" i686"
@@ -14,7 +14,7 @@ hostmakedepends="ruby"
 homepage="https://www.vagrantup.com/"
 license="MIT"
 distfiles="https://github.com/mitchellh/$pkgname/archive/v$version.tar.gz"
-checksum="347179564f5a8a56e2d6dcb82470e04d92a60ed0b3265efc07f9ff37cd5c7f5f"
+checksum="cb1476683f0e8479334be20b26c49d516a0e1c739b9f6f35a8c05f68e4a048f1"
 patch_args="-p1"
 nocross="yes"
 
