@@ -1,0 +1,32 @@
+# Template file for 'i2pd'
+pkgname=i2pd
+version=2.21.0
+revision=1
+build_style=gnu-makefile
+make_build_args="USE_UPNP=yes"
+makedepends="zlib-devel boost-devel libressl-devel miniupnpc-devel
+ libatomic-devel"
+short_desc="I2P Daemon - a full-featured C++ implementation of I2P client"
+maintainer="Obosob <obosob@riseup.net>"
+license="BSD"
+homepage="http://i2pd.website/"
+distfiles="https://github.com/PurpleI2P/i2pd/archive/${version}.tar.gz"
+checksum=96c15cf7b51feacd5bb3f7032c7d961961325102574a1a4d6cb8dd794e906e5b
+system_accounts="_i2pd"
+disable_parallel_build=true
+
+case "${XBPS_TARGET_MACHINE}" in
+	aarch64*|armv*|mips*) make_build_args+=" USE_AESNI=no USE_AVX=no" ;;
+esac
+
+do_install() {
+	vbin i2pd
+	vman debian/i2pd.1
+	vsconf contrib/i2pd.conf
+	vsconf contrib/tunnels.conf
+	vsconf contrib/subscriptions.txt
+	vlicense LICENSE
+}
+post_install() {
+	vsv i2pd
+}
