@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tmux"
-version=2.7
+version=2.8
 revision=1
 short_desc="A terminal multiplexer"
 makedepends+=" libevent-devel"
@@ -10,10 +10,10 @@ hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" pkgconf"
 license="ISC"
-homepage="http://tmux.github.io"
+homepage="https://tmux.github.io"
 changelog="https://raw.githubusercontent.com/tmux/tmux/master/CHANGES"
 distfiles="https://github.com/tmux/tmux/releases/download/$version/tmux-$version.tar.gz"
-checksum="9ded7d100313f6bc5a87404a4048b3745d61f2332f99ec1400a7c4ed9485d452"
+checksum="7f6bf335634fafecff878d78de389562ea7f73a7367f268b66d37ea13617a2ba"
 build_style="gnu-configure"
 configure_args="--enable-utempter"
 
