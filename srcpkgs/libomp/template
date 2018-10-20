@@ -32,7 +32,7 @@ do_install() {
 post_install() {
   vlicense LICENSE.txt
   # libgomp.so is also provided by libgomp; remove it to fix the conflict
-  rm -f "$PKGDESTDIR/usr/lib/libgomp.so"
+  rm -f "$DESTDIR/usr/lib/libgomp.so"
 }
 
 libomp-devel_package() {
