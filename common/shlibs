@@ -270,6 +270,10 @@ libobjc.so.4 libobjc-4.7.3_12
 libodbc.so.2 libodbc-2.3.1_1
 libodbcinst.so.2 libodbc-2.3.1_1
 libodbccr.so.2 libodbc-2.3.7_1
+libiomp5.so libomp-7.0.0_1
+libomp.so libomp-7.0.0_1
+libomptarget.rtl.x86_64.so libomp-7.0.0_1
+libomptarget.so libomp-7.0.0_1
 libparted-fs-resize.so.0 libparted-3.1_1
 libparted.so.2 libparted-3.1_1
 libpcap.so.1 libpcap-1.1.1_1
@@ -440,10 +444,6 @@ syncprov-2.4.so.2 openldap-2.4.45_7
 translucent-2.4.so.2 openldap-2.4.45_7
 unique-2.4.so.2 openldap-2.4.45_7
 valsort-2.4.so.2 openldap-2.4.45_7
-libiomp5.so openmp-devel-7.0.0_1
-libomp.so openmp-devel-7.0.0_1
-libomptarget.rtl.x86_64.so openmp-devel-7.0.0_1
-libomptarget.so openmp-devel-7.0.0_1
 libosp.so.5 opensp-1.5.2_1
 libp11-kit.so.0 p11-kit-0.7_1
 libpam.so.0 pam-libs-1.1.6_3
