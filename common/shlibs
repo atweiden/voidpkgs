@@ -272,6 +272,7 @@ libodbcinst.so.2 libodbc-2.3.1_1
 libodbccr.so.2 libodbc-2.3.7_1
 libiomp5.so libomp-7.0.0_1
 libomp.so libomp-7.0.0_1
+libomptarget.rtl.aarch64.so libomp-7.0.0_1
 libomptarget.rtl.x86_64.so libomp-7.0.0_1
 libomptarget.so libomp-7.0.0_1
 libparted-fs-resize.so.0 libparted-3.1_1
