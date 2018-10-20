@@ -17,11 +17,6 @@ wrksrc="openmp-$version.src"
 build_style="cmake"
 configure_args+=" -DLIBOMP_ENABLE_SHARED=ON"
 configure_args+=" -G Ninja"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
-    ;;
-esac
 make_cmd="ninja"
 
 do_install() {
