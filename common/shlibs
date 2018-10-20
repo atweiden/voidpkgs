@@ -87,9 +87,6 @@ libcom_err.so.2 e2fsprogs-libs-1.41.5_1_1
 libe2p.so.2 e2fsprogs-libs-1.41.5_1_1
 libext2fs.so.2 e2fsprogs-libs-1.41.5_1_1
 libss.so.2 e2fsprogs-libs-1.41.5_1_1
-libasm.so.1 elfutils-devel-0.174_1
-libdw.so.1 elfutils-devel-0.174_1
-libelf.so.1 elfutils-devel-0.174_1
 libudev.so.1 eudev-libudev-1.6_1
 libexpat.so.1 expat-2.0.0_1
 libf2fs.so.5 f2fs-tools-1.11.0_1
@@ -210,6 +207,9 @@ libdb_cxx-5.3.so libdb-cxx-5.3.21_1
 libedit.so.0 libedit-20130712.3.1_1
 libefiboot.so.1 libefivar-31_1
 libefivar.so.1 libefivar-31_1
+libasm.so.1 libelf-0.155_1
+libdw.so.1 libelf-0.155_1
+libelf.so.1 libelf-0.155_1
 libevent-2.1.so.6 libevent-2.1.8_1
 libevent_core-2.1.so.6 libevent-2.1.8_1
 libevent_pthreads-2.1.so.6 libevent-2.1.8_1
