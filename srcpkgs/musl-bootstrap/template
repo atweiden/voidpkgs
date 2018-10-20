@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="musl-bootstrap"
 version=1.1.20
-revision=1
+revision=2
 short_desc="The musl C library (bootstrap pkg)"
 homepage="http://www.musl-libc.org/"
 license="MIT"
@@ -18,6 +18,11 @@ lib32disabled="yes"
 
 post_install() {
   mv "$DESTDIR/lib"/* "$DESTDIR/usr/lib/"
+  # cc is an alternative and might actually be clang
+  sed \
+    -i \
+    -e "s/REALGCC:-cc/REALGCC:-gcc/" \
+    "$DESTDIR/usr/lib/musl/bin/musl-gcc"
   vmkdir usr/bin
   ln -sfr "$DESTDIR/usr/lib/musl/bin/musl-gcc" "$DESTDIR/usr/bin/musl-gcc"
   ln -sfr "$DESTDIR/usr/lib/musl/bin/musl-clang" "$DESTDIR/usr/bin/musl-clang"
