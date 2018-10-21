@@ -1,0 +1,33 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="zramen"
+version=0.0.1
+revision=1
+short_desc="Manage zram swap space"
+noarch="yes"
+depends+=" awk"
+depends+=" bash"
+depends+=" bc"
+depends+=" coreutils"
+depends+=" grep"
+depends+=" kmod"
+depends+=" util-linux"
+homepage="https://github.com/atweiden/zramen"
+license="Unlicense"
+distfiles="https://github.com/atweiden/zramen/releases/download/$version/$pkgname-$version.tar.gz"
+checksum="d0cc62bb86e460eeed23836d41f1f34319c80603359afe00bc5669fed6c8b1af"
+
+do_install() {
+  vbin zramen
+}
+
+post_install() {
+  vlicense UNLICENSE
+  vdoc README.md
+  vmkdir etc/sv
+  vcopy sv/zramen etc/sv
+  chmod 755 "$PKGDESTDIR/etc/sv/zramen/run"
+  chmod 755 "$PKGDESTDIR/etc/sv/zramen/control/d"
+  ln -s /run/runit/supervise.zramen "$PKGDESTDIR/etc/sv/zramen/supervise"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
