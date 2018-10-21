@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="zramen"
-version=0.0.3
+version=0.1.0
 revision=1
 short_desc="Manage zram swap space"
 noarch="yes"
@@ -14,7 +14,7 @@ depends+=" util-linux"
 homepage="https://github.com/atweiden/zramen"
 license="Unlicense"
 distfiles="https://github.com/atweiden/zramen/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="add637c0499207772dedc0f2543e93f045bd8ed6ddef48f720491eb23cc0e5c2"
+checksum="f657e6327e1f7a43d1e0ccc54c3fb917cfc5b0884447723def8796bbf0d354ff"
 
 do_install() {
   vbin zramen
@@ -26,8 +26,8 @@ post_install() {
   vmkdir etc/sv
   vcopy sv/zramen etc/sv
   chmod 644 "$PKGDESTDIR/etc/sv/zramen/conf"
+  chmod 755 "$PKGDESTDIR/etc/sv/zramen/finish"
   chmod 755 "$PKGDESTDIR/etc/sv/zramen/run"
-  chmod 755 "$PKGDESTDIR/etc/sv/zramen/control/d"
   ln -s /run/runit/supervise.zramen "$PKGDESTDIR/etc/sv/zramen/supervise"
 }
 
