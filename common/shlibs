@@ -253,6 +253,12 @@ libmpack.so.0 libmpack-1.0.5_1
 libmpc.so.3 libmpc-1.0.1_1
 libmpx.so.2 libmpx-6.2.1_1
 libmpxwrappers.so.2 libmpx-6.2.1_1
+libnetsnmp.so.35 libnet-snmp-5.8_1
+libnetsnmpagent.so.35 libnet-snmp-5.8_1
+libnetsnmphelpers.so.35 libnet-snmp-5.8_1
+libnetsnmpmibs.so.35 libnet-snmp-5.8_1
+libnetsnmptrapd.so.35 libnet-snmp-5.8_1
+libsnmp.so.35 libnet-snmp-5.8_1
 libnetfilter_conntrack.so.3 libnetfilter_conntrack-1.0.4_1
 libnfnetlink.so.0 libnfnetlink-1.0.1_1
 libnfs.so.12 libnfs-3.0.0_1
