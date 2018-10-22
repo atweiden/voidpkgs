@@ -241,6 +241,7 @@ constant %PKG = Map.new(
                        libcppunit-examples>,
     'libdaemon' => ['libdaemon-devel'],
     'libedit' => ['libedit-devel'],
+    'libev' => ['libev-devel'],
     'libevent' => ['libevent-devel'],
     'libffi' => ['libffi-devel'],
     'libgcrypt' => ['libgcrypt-devel'],
