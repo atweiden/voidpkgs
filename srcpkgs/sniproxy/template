@@ -1,23 +1,29 @@
-# Template file for 'sniproxy'
-pkgname=sniproxy
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sniproxy"
 version=0.5.0
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake libtool autoconf pkg-config udns-devel gettext-devel"
-makedepends="libev-devel pcre-devel"
 short_desc="Proxies incoming HTTP and TLS connections based on the hostname"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
+makedepends+=" libev-devel"
+makedepends+=" pcre-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" udns-devel"
 license="GPL-3"
-homepage="https://github.com/dlundquist/$pkgname"
+homepage="https://github.com/dlundquist/sniproxy"
 distfiles="$homepage/archive/$version.tar.gz"
-checksum=0b8dd06f9aa9e1c4151b572caf645ffceacdd35a139ded16a7fb0035452c17e5
-configure_args="--sbindir=/usr/bin"
-conf_files="/etc/$pkgname.conf"
+checksum="0b8dd06f9aa9e1c4151b572caf645ffceacdd35a139ded16a7fb0035452c17e5"
+conf_files="/etc/sniproxy.conf"
+build_style="gnu-configure"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	vconf $pkgname.conf
+  vconf sniproxy.conf
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
