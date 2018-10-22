@@ -1,27 +1,28 @@
-# Template file for 'libev'
-pkgname=libev
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libev"
 version=4.24
 revision=1
-build_style=gnu-configure
 short_desc="High-performance event loop loosely modelled after libevent"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2, 2-clause-BSD"
 homepage="http://software.schmorp.de/pkg/libev.html"
-distfiles="http://dist.schmorp.de/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=973593d3479abdf657674a55afe5f78624b0e440614e2b8cb3a07f16d4d7f821
+license="GPL-2, 2-clause-BSD"
+distfiles="http://dist.schmorp.de/$pkgname/$pkgname-$version.tar.gz"
+checksum="973593d3479abdf657674a55afe5f78624b0e440614e2b8cb3a07f16d4d7f821"
+build_style="gnu-configure"
 
 post_install() {
-	# Conflicts with libevent, not necessary.
-	rm -f ${DESTDIR}/usr/include/event.h
+  # rm to avoid conflict with libevent
+  rm -f "$DESTDIR/usr/include/event.h"
 }
 
 libev-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - Development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
-		vmove usr/share/man
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/man
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
