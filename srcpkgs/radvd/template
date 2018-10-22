@@ -1,20 +1,23 @@
-# Template file for 'radvd'
-pkgname=radvd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="radvd"
 version=2.17
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config flex"
-makedepends="check-devel libdaemon-devel"
-conf_files="/etc/radvd.conf"
 short_desc="IPv6 Router Advertisement Daemon"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="custom"
+makedepends+=" check-devel"
+makedepends+=" libdaemon-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" pkg-config"
 homepage="http://www.litech.org/radvd/"
-distfiles="http://www.litech.org/radvd/dist/${pkgname}-${version}.tar.xz"
-checksum=5b09d65af024d8ad716cead681836c2aaade43e5ee5cb03deac986a787b1a6d5
+license="custom"
+distfiles="http://www.litech.org/radvd/dist/$pkgname-$version.tar.xz"
+checksum="5b09d65af024d8ad716cead681836c2aaade43e5ee5cb03deac986a787b1a6d5"
+conf_files="/etc/radvd.conf"
+build_style="gnu-configure"
 
 post_install() {
-	vsv radvd
-	vconf radvd.conf.example radvd.conf
-	vlicense COPYRIGHT LICENSE
+  vlicense COPYRIGHT LICENSE
+  vsv radvd
+  vconf radvd.conf.example radvd.conf
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
