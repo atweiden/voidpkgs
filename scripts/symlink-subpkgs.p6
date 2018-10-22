@@ -349,6 +349,8 @@ constant %PKG = Map.new(
                     ncurses-devel
                     ncurses-libs
                     ncurses-term>,
+    'net-snmp' => qw<libnet-snmp
+                     net-snmp-devel>,
     'nettle' => qw<nettle-devel
                    nettle-tools>,
     'nftables' => qw<libnftables
