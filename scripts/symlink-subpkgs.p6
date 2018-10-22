@@ -69,6 +69,7 @@ constant %PKG = Map.new(
     'busybox' => ['busybox-static'],
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
+    'check' => ['check-devel'],
     'cmocka' => ['cmocka-devel'],
     'confuse' => ['confuse-devel'],
     'cracklib' => qw<cracklib-devel
