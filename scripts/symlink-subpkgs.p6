@@ -338,6 +338,8 @@ constant %PKG = Map.new(
                 lz4-devel>,
     'lzo' => ['lzo-devel'],
     'man-pages' => ['man-pages-devel'],
+    'mbedtls' => qw<mbedtls-devel
+                    mbedtls-utils>,
     'miniupnpc' => ['miniupnpc-devel'],
     'mit-krb5' => qw<mit-krb5-client
                      mit-krb5-devel

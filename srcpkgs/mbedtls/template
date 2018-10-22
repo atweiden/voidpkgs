@@ -1,0 +1,40 @@
+# Template file for 'mbedtls'
+pkgname=mbedtls
+version=2.13.1
+revision=1
+wrksrc="mbedtls-mbedtls-${version}"
+build_style=cmake
+hostmakedepends="python3 perl"
+configure_args="-DENABLE_TESTING=1 -DUSE_SHARED_MBEDTLS_LIBRARY=1"
+short_desc="Portable cryptographic TLS library"
+maintainer="Juan RP <xtraeme@voidlinux.eu>"
+license="Apache-2.0"
+homepage="https://tls.mbed.org/"
+changelog="https://raw.githubusercontent.com/ARMmbed/mbedtls/development/ChangeLog"
+distfiles="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${version}.tar.gz"
+checksum=e62fdea0110d3aa9082b3e1ccdbbaf520161830b1f3a57ae3124a7d5963c2a37
+
+pre_configure() {
+	sed -i include/mbedtls/config.h \
+		-e 's/.*\(#define MBEDTLS_THREADING_C\)/\1/' \
+		-e 's/.*\(#define MBEDTLS_THREADING_PTHREAD\)/\1/'
+}
+
+mbedtls-utils_package() {
+	short_desc+=" - additional utilities"
+	depends="${sourcepkg}-${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin
+	}
+}
+
+mbedtls-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}-${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
+
