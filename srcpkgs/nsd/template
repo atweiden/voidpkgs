@@ -1,25 +1,28 @@
-# Template file for 'nsd'
-pkgname=nsd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nsd"
 version=4.1.25
 revision=1
-build_style=gnu-configure
-configure_args="--enable-ratelimit --enable-ratelimit-default-is-off
- --with-libevent=${XBPS_CROSS_BASE}/usr --with-ssl=${XBPS_CROSS_BASE}/usr"
-makedepends="libevent-devel"
 short_desc="Authoritative only, high performance and simple DNS server"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-3-Clause"
+makedepends="libevent-devel"
 homepage="https://www.nlnetlabs.nl/projects/nsd/"
+license="BSD-3-Clause"
 changelog="https://www.nlnetlabs.nl/svn/nsd/tags/NSD_${version//./_}_REL/doc/ChangeLog"
-distfiles="https://www.nlnetlabs.nl/downloads/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=8f5bff5abbbb03c396afd7be575806cde1217e884c189fa34445e0ca4793df7f
+distfiles="https://www.nlnetlabs.nl/downloads/$pkgname/$pkgname-$version.tar.gz"
+checksum="8f5bff5abbbb03c396afd7be575806cde1217e884c189fa34445e0ca4793df7f"
+build_style="gnu-configure"
+configure_args+=" --enable-ratelimit"
+configure_args+=" --enable-ratelimit-default-is-off"
+configure_args+=" --with-libevent=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
 system_accounts="nsd"
-nsd_homedir=/var/db/nsd
+nsd_homedir="/var/db/nsd"
 make_dirs="/var/db/nsd 0755 nsd nsd"
 
 post_install() {
-	vsv nsd
-	vlicense LICENSE
-	rm -f ${DESTDIR}/etc/nsd/nsd.conf.sample
-	vsconf nsd.conf.sample
+  vlicense LICENSE
+  rm -f "$DESTDIR/etc/nsd/nsd.conf.sample"
+  vsconf nsd.conf.sample
+  vsv nsd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
