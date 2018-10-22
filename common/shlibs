@@ -494,6 +494,7 @@ libsudo_util.so.0 sudo-1.8.25_1
 libtalloc.so.2 talloc-2.0.1_1
 libtcl8.6.so tcl-8.6.0_1
 libtorsocks.so.0 torsocks-2.2.0_1
+libudns.so.0 udns-0.4_1
 libunbound.so.8 unbound-1.8.0_1
 libunibilium.so.4 unibilium-2.0.0_1
 libusbredirhost.so.1 usbredir-0.7_1
