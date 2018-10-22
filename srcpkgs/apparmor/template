@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apparmor"
-version=2.13.0
-revision=7
+version=2.13.1
+revision=1
 _short_ver=${version%\.*}
 short_desc="Mandatory access control to restrict programs"
 depends+=" libapparmor"
@@ -9,6 +9,7 @@ depends+=" python3"
 depends+=" runit-void-apparmor"
 makedepends+=" perl"
 makedepends+=" python3-devel"
+checkdepends="dejagnu"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" bison"
@@ -35,7 +36,7 @@ if [[ -z "$CROSS_BUILD" ]]; then
 fi
 
 pre_configure() {
-  NOCONFIGURE=1 ./autogen.sh
+  autoreconf -if
 }
 
 pre_build() {
@@ -44,41 +45,44 @@ pre_build() {
 
   # put in place our own profiles
   cp "$FILESDIR/profiles"/* profiles/apparmor.d/
-  mv profiles/apparmor.d/bin.ping profiles/apparmor/profiles/extras/
 }
 
 post_build() {
-  cd "$wrksrc/binutils"
-  make "$makejobs"
-
-  cd "$wrksrc/utils"
-  make "$makejobs"
-
-  cd "$wrksrc/parser"
-  sed -i 's#$(DESTDIR)/sbin#$(DESTDIR)/usr/bin#g' Makefile
-  sed -i 's#${DESTDIR}/lib#${DESTDIR}/usr/lib#g' Makefile
-  make "$makejobs"
-
-  cd "$wrksrc/profiles"
-  make "$makejobs"
+  cd "$wrksrc"
+  sed \
+    -i \
+    -e 's#$(DESTDIR)/sbin#$(DESTDIR)/usr/bin#g' \
+    parser/Makefile
+  make "$makejobs" -C binutils
+  make "$makejobs" -C utils
+  make "$makejobs" -C parser
+  make "$makejobs" -C profiles
 }
 
 post_install() {
-  cd "$wrksrc/binutils"
-  make DESTDIR="$DESTDIR" install
+  cd "$wrksrc"
 
-  cd "$wrksrc/utils"
-  make DESTDIR="$DESTDIR" BINDIR="$DESTDIR/usr/bin" install
-
-  cd "$wrksrc/parser"
-  make DESTDIR="$DESTDIR" install
-
-  cd "$wrksrc/profiles"
-  make DESTDIR="$DESTDIR" install
+  make \
+    DESTDIR="$DESTDIR" \
+    install -C binutils
+  make \
+    BINDIR="$DESTDIR/usr/bin" \
+    DESTDIR="$DESTDIR" \
+    install -C utils
+  make \
+    APPARMOR_BIN_PREFIX="$DESTDIR/usr/lib/apparmor" \
+    DESTDIR="$DESTDIR" \
+    SBINDIR="$DESTDIR/usr/bin" \
+    USR_SBINDIR="$DESTDIR/usr/bin" \
+    install -C parser
+  make \
+    DESTDIR="$DESTDIR" \
+    install -C profiles
 
   # put vim syntax in the correct place
   mkdir -p "$DESTDIR/usr/share/vim/vim$_vimver/syntax"
-  mv "$DESTDIR/usr/share/apparmor/apparmor.vim" \
+  mv \
+    "$DESTDIR/usr/share/apparmor/apparmor.vim" \
     "$DESTDIR/usr/share/vim/vim$_vimver/syntax"
 
   # requires perl bindings not generated when cross-compiling
