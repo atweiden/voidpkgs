@@ -87,11 +87,14 @@ post_install() {
   vsv adb
 }
 
-# REMARKS
-# - not all upstream updates has code changes for the parts of android
-#   used by android-tools, check for diff with:
-#   - `curl -L http://git.io/vvC0Z | sh -s 5.0.2_r1 5.1.0_r1`
-# - if there is any reason at all that fastboot may not be a position
-#   independent executable, please document it here
+# REMARKS:
+#
+# Not all upstream updates has code changes for the parts of android
+# used by android-tools, check for diff with:
+#
+#   curl -L http://git.io/vvC0Z | sh -s 5.0.2_r1 5.1.0_r1
+#
+# If there is any reason at all that fastboot may not be a position
+# independent executable, please document it here.
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
