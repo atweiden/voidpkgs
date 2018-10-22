@@ -223,6 +223,7 @@ libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
 libGeoIP.so.1 libgeoip-1.4.8_1
 libgfortran.so.5 libgfortran-8.2.0_1
+libgfshare.so.2 libgfshare-2.0.0_1
 libgit2.so.27 libgit2-0.27.3_1
 libgo.so.13 libgo-8.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
