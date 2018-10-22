@@ -1,38 +1,59 @@
-# Template file for 'haproxy'
-pkgname=haproxy
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="haproxy"
 version=1.8.14
 revision=1
-build_style=gnu-makefile
-make_build_args="TARGET=linux2628 USE_PCRE=1 USE_PCRE_JIT=1 USE_ZLIB=1
- USE_OPENSSL=1 USE_LIBCRYPT=1 USE_GETADDRINFO=1 USE_LUA=1"
-make_install_args="SBINDIR=${DESTDIR}/usr/bin DOCDIR=${DESTDIR}/usr/share/doc/${pkgname}"
-makedepends="libressl-devel lua-devel pcre-devel"
 short_desc="Reliable, high performance TCP/HTTP load balancer"
-maintainer="Eivind Uggedal <eivind@uggedal.com>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+makedepends+=" libressl-devel"
+makedepends+=" lua-devel"
+makedepends+=" pcre-devel"
 homepage="https://www.haproxy.org"
-distfiles="${homepage}/download/${version%.*}/src/${pkgname}-${version}.tar.gz"
-checksum=b17e402578be85e58af7a3eac99b1f675953bea9f67af2e964cf8bdbd1bd3fdf
-make_dirs="$haproxy_homedir 0750 ${pkgname} ${pkgname}"
-conf_files="/etc/${pkgname}/${pkgname}.cfg"
-system_accounts="$pkgname"
-haproxy_homedir="/var/lib/${pkgname}"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
+checksum="b17e402578be85e58af7a3eac99b1f675953bea9f67af2e964cf8bdbd1bd3fdf"
+conf_files="/etc/haproxy/haproxy.cfg"
+build_style="gnu-makefile"
+make_build_args+=" TARGET=linux2628"
+make_build_args+=" USE_GETADDRINFO=1"
+make_build_args+=" USE_LIBCRYPT=1"
+make_build_args+=" USE_LUA=1"
+make_build_args+=" USE_OPENSSL=1"
+make_build_args+=" USE_PCRE=1"
+make_build_args+=" USE_PCRE_JIT=1"
+make_build_args+=" USE_ZLIB=1"
+make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
+make_install_args+=" SBINDIR=$DESTDIR/usr/bin"
+system_accounts="haproxy"
+haproxy_homedir="/var/lib/haproxy"
+make_dirs="$haproxy_homedir 0750 haproxy haproxy"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) CFLAGS="-D__LINUX_NETFILTER_H";;
+  *-musl)
+    CFLAGS="-D__LINUX_NETFILTER_H"
+    ;;
 esac
 
 case "$XBPS_TARGET_MACHINE" in
-	armv[56]*|mips*) ADDLIB="-latomic"; makedepends+=" libatomic-devel";;
+  armv[56]*|mips*)
+    ADDLIB="-latomic"
+    makedepends+=" libatomic-devel"
+    ;;
 esac
 
 
 do_build() {
-	make ${makejobs} CC="$CC" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" EXTRA= \
-		ADDLIB="${ADDLIB}" ${make_build_args}
+  make \
+    "$makejobs" \
+    ADDLIB="$ADDLIB" \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    EXTRA= \
+    LDFLAGS="$LDFLAGS" \
+    $make_build_args
 }
 
 post_install() {
-	vinstall ${FILESDIR}/${pkgname}.cfg 644 etc/${pkgname}
-	vsv ${pkgname}
+  vinstall "$FILESDIR/haproxy.cfg" 644 "etc/haproxy"
+  vsv haproxy
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
