@@ -489,6 +489,7 @@ constant %PKG = Map.new(
     'tcl' => ['tcl-devel'],
     'tidy5' => qw<libtidy5
                   libtidy5-devel>,
+    'udns' => ['udns-devel'],
     'unbound' => ['unbound-devel'],
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
