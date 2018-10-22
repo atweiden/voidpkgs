@@ -1,32 +1,38 @@
-# Template file for 'shadowsocks-libev'
-pkgname=shadowsocks-libev
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="shadowsocks-libev"
 version=3.2.0
 revision=2
-build_style=gnu-configure
-configure_args="--with-pcre=${XBPS_CROSS_BASE}/usr"
-hostmakedepends="pkg-config asciidoc xmlto"
-makedepends="pcre-devel mbedtls-devel libsodium-devel c-ares-devel libev-devel"
 short_desc="Lightweight secured socks5 proxy for embedded devices and low end boxes"
-maintainer="whoami <whoami@systemli.org>"
-license="GPL-3.0-or-later"
+makedepends+=" c-ares-devel"
+makedepends+=" libev-devel"
+makedepends+=" libsodium-devel"
+makedepends+=" mbedtls-devel"
+makedepends+=" pcre-devel"
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" xmlto"
 homepage="https://github.com/shadowsocks/shadowsocks-libev"
-distfiles="${homepage}/releases/download/v${version}/${pkgname}-${version}.tar.gz"
-checksum=5521cf623a07fd1e393528516a83acd2b66c5d4bb4535a52662806a6a060c606
-
+license="GPL-3.0-or-later"
+distfiles="$homepage/releases/download/v$version/$pkgname-$version.tar.gz"
+checksum="5521cf623a07fd1e393528516a83acd2b66c5d4bb4535a52662806a6a060c606"
+build_style="gnu-configure"
+configure_args="--with-pcre=$XBPS_CROSS_BASE/usr"
 system_accounts="shadowsocks"
-make_dirs="/etc/${pkgname} 0750 shadowsocks shadowsocks"
+make_dirs="/etc/$pkgname 0750 shadowsocks shadowsocks"
 
 post_install() {
-	vsv ${pkgname}-server
-	vsv ${pkgname}-client
-	vsconf debian/config.json
+  vsv "$pkgname-server"
+  vsv "$pkgname-client"
+  vsconf debian/config.json
 }
 
 shadowsocks-libev-devel_package() {
-	depends="${sourcepkg}-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib
-	}
+  depends="$sourcepkg-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
