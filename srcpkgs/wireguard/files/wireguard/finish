@@ -1,0 +1,2 @@
+#!/bin/sh
+wg-quick down wg0 1>&2

@@ -46,6 +46,7 @@ wireguard-tools_package() {
     vmove usr/share/bash-completion/completions/wg-quick
     vmove usr/share/man/man8/wg.8
     vmove usr/share/man/man8/wg-quick.8
+    vsv wireguard
   }
 }
 
