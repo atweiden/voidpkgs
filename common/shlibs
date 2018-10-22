@@ -378,6 +378,9 @@ liblua5.1.so.5.1 lua51-5.1.5_1
 liblua5.2.so.5.2 lua52-5.2.4_2
 liblutok.so.3 lutok-0.4_1
 liblzo2.so.2 lzo-2.03_1
+libmbedtls.so.12 mbedtls-2.13.1_1
+libmbedcrypto.so.3 mbedtls-2.9.0_1
+libmbedx509.so.0 mbedtls-2.9.0_1
 libminiupnpc.so.17 miniupnpc-2.1_1
 db2.so.0 mit-krb5-1.16.1_1
 k5tls.so.0 mit-krb5-1.16.1_1
