@@ -472,6 +472,7 @@ constant %PKG = Map.new(
                         smake
                         star>,
     'serf' => ['serf-devel'],
+    'shadowsocks-libev' => ['shadowsocks-libev-devel'],
     'snappy' => ['snappy-devel'],
     'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
