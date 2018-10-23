@@ -1,30 +1,33 @@
-# Template file for 'toxcore'
-pkgname=toxcore
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="toxcore"
 version=0.2.8
 revision=1
-wrksrc="c-toxcore-${version}"
-configure_args="-DMUST_BUILD_TOXAV=ON -DBUILD_TOXAV=ON -DBUILD_AV_TEST=OFF"
-build_style=cmake
-hostmakedepends="pkg-config"
-makedepends="libconfig-devel libsodium-devel libvpx-devel opus-devel"
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
-maintainer="Spencer Hill <spencernh77@gmail.com>"
-license="GPL-3.0-or-later"
+makedepends+=" libconfig-devel"
+makedepends+=" libsodium-devel"
+hostmakedepends="pkg-config"
 homepage="https://tox.chat"
+license="GPL-3.0-or-later"
 changelog="https://raw.githubusercontent.com/TokTok/c-toxcore/master/CHANGELOG.md"
-distfiles="https://github.com/TokTok/c-toxcore/archive/v${version}.tar.gz"
-checksum=47fe125d8558775a03a3ded58e9faa07a01cfecd65257e24b544b4b5698d9362
+distfiles="https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz"
+checksum="47fe125d8558775a03a3ded58e9faa07a01cfecd65257e24b544b4b5698d9362"
+wrksrc="c-toxcore-$version"
+build_style="cmake"
+configure_args+=" -DBUILD_AV_TEST=OFF"
+configure_args+=" -DBUILD_TOXAV=OFF"
 
 post_install() {
-	vsconf other/bootstrap_daemon/tox-bootstrapd.conf
+  vsconf other/bootstrap_daemon/tox-bootstrapd.conf
 }
 
 toxcore-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove usr/lib/pkgconfig
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
