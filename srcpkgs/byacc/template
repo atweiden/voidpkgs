@@ -1,0 +1,19 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="byacc"
+version=20180609
+revision=1
+short_desc="Berkeley yacc, a LALR(1) parser generator"
+homepage="http://invisible-island.net/byacc/"
+license="Public Domain"
+distfiles="ftp://ftp.invisible-island.net/byacc/$pkgname-$version.tgz"
+checksum="5bbb0b3ec3da5981a2488383b652499d6c1e0236b47d8bac5fcdfa12954f749c"
+build_style="gnu-configure"
+configure_args="--program-transform=s,^,b,"
+alternatives+=" yacc:yacc:/usr/bin/byacc"
+alternatives+=" yacc:yacc.1:/usr/share/man/man1/byacc.1"
+
+post_install() {
+  vlicense README LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
