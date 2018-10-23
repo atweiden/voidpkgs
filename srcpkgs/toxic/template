@@ -16,10 +16,10 @@ changelog="https://raw.githubusercontent.com/JFreegman/toxic/master/CHANGELOG.md
 distfiles="https://github.com/JFreegman/toxic/archive/v$version.tar.gz"
 checksum="53bdbed3d72d000f9e43b8823523c589540b811bc237ed6f3b4ddf0fe6f9a6b7"
 build_style="gnu-makefile"
-make_build_args+=" DISABLE_X11=1"
 make_build_args+=" DISABLE_AV=1"
-make_build_args+=" DISABLE_SOUND_NOTIFY=1"
 make_build_args+=" DISABLE_DESKTOP_NOTIFY=1"
+make_build_args+=" DISABLE_SOUND_NOTIFY=1"
+make_build_args+=" DISABLE_X11=1"
 
 do_build() {
   make \
