@@ -1,0 +1,27 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ssss"
+version=0.5
+revision=1
+short_desc="Simple command-line implementation of Shamir's Secret Sharing Scheme"
+makedepends="gmp-devel"
+hostmakedepends="xmlto"
+license="GPL-2.0-or-later"
+homepage="http://point-at-infinity.org/ssss/"
+distfiles="http://point-at-infinity.org/ssss/$pkgname-$version.tar.gz"
+checksum="19030315f4fc1b4b2cdb9d7a317069a109f90e39d1fe4c9159b7aaa39030eb95"
+build_style="gnu-makefile"
+make_build_target="all"
+
+do_install() {
+  vbin ssss-combine
+  vbin ssss-split
+}
+
+post_install() {
+  vlicense LICENSE
+  vman ssss.1
+  vdoc doc.html
+  vdoc ssss.1.html
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
