@@ -5,6 +5,10 @@
 Original license retained from upstream sources, lightly modified to
 remove leading whitespace and wrap at 72 chars.
 
+## [DVCS.md](DVCS.md)
+
+List of distributed version control systems shipped with this repo.
+
 ## [LANGS.md](LANGS.md)
 
 List of programming languages shipped with this repo.
