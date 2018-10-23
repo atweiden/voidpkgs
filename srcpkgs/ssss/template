@@ -8,7 +8,7 @@ hostmakedepends="xmlto"
 license="GPL-2.0-or-later"
 homepage="http://point-at-infinity.org/ssss/"
 distfiles="http://point-at-infinity.org/ssss/$pkgname-$version.tar.gz"
-checksum="19030315f4fc1b4b2cdb9d7a317069a109f90e39d1fe4c9159b7aaa39030eb95"
+checksum="5d165555105606b8b08383e697fc48cf849f51d775f1d9a74817f5709db0f995"
 build_style="gnu-makefile"
 make_build_target="all"
 
