@@ -18,7 +18,8 @@ license="GPL-2.0-or-later"
 distfiles="https://github.com/cryptodotis/irssi-otr/archive/v$version.tar.gz"
 checksum="4619208b9c9171aa97a41960b3e892390b6473e2988a056b9fe8e110daa1ae9c"
 build_style="gnu-configure"
-configure_args="--with-gnu-ld"
+configure_args+=" --with-gnu-ld"
+configure_args+=" PKG_CONFIG_PATH=$XBPS_CROSS_BASE/usr/lib/pkgconfig:$XBPS_CROSS_BASE/usr/share/pkgconfig"
 
 pre_configure() {
   ./bootstrap
