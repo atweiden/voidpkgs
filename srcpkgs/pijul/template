@@ -1,22 +1,26 @@
-# Template file for 'pijul'
-pkgname=pijul
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pijul"
 version=0.10.0
 revision=2
-build_style=cargo
-hostmakedepends="pkg-config"
-makedepends="libsodium-devel libressl-devel"
 short_desc="Distributed version control system based on patches"
-maintainer="Toyam Cox <Vaelatern@voidlinux.eu>"
-license="GPL-2"
+makedepends+=" libressl-devel"
+makedepends+=" libsodium-devel"
+hostmakedepends="pkg-config"
 homepage="https://pijul.org/"
-distfiles="https://pijul.org/releases/pijul-${version}.tar.gz"
-checksum=da3fcba4ab39a4371cda7273691364c2355c9b216bb7867d92dae5812ebb71d2
+license="GPL-2"
+distfiles="https://pijul.org/releases/pijul-$version.tar.gz"
+checksum="da3fcba4ab39a4371cda7273691364c2355c9b216bb7867d92dae5812ebb71d2"
+build_style="cargo"
 
 case "$XBPS_TARGET_MACHINE" in
-	arm*) broken="mismatched types --> line/src/unix.rs:9:27 expect u32, found u64"
+  arm*)
+    broken="mismatched types --> line/src/unix.rs:9:27 expect u32, found u64"
+    ;;
 esac
 
-# We only want to install the binary, so don't run cargo install
+# we only want to install the binary, so don't run cargo install
 do_install() {
-	vbin target/${RUST_TARGET}/release/pijul
+  vbin "target/$RUST_TARGET/release/pijul"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
