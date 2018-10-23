@@ -22,11 +22,6 @@ from upstream.
 
 This file.
 
-## [STATUS.md](STATUS.md)
-
-Contains build status of voidpkgs contained in [srcpkgs](../srcpkgs)
-directory.
-
 ## [STYLE.md](STYLE.md)
 
 Style guide.
