@@ -16,15 +16,6 @@ make_build_args="tuntox_nostatic"
 system_accounts="tuntox"
 make_dirs="/etc/tuntox 0700 tuntox tuntox"
 
-pre_build() {
-  # remove this if a new release is made and DEPS= on Makefile is changed
-  # to toxcore, toxcore renamed libtoxcore to toxcore
-  sed \
-    -i \
-    -e 's|DEPS=libtoxcore|DEPS=toxcore|g' \
-    Makefile
-}
-
 do_install() {
   vbin tuntox_nostatic tuntox
   vbin scripts/tokssh
