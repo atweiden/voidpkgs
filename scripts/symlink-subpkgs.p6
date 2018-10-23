@@ -239,6 +239,9 @@ constant %PKG = Map.new(
                       libcap-ng-python3>,
     'libcppunit' => qw<libcppunit-devel
                        libcppunit-examples>,
+    'libconfig' => qw<libconfig++
+                      libconfig++-devel
+                      libconfig-devel>,
     'libdaemon' => ['libdaemon-devel'],
     'libedit' => ['libedit-devel'],
     'libev' => ['libev-devel'],
