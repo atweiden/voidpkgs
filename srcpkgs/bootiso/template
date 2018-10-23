@@ -25,8 +25,8 @@ depends+=" tar"
 depends+=" util-linux"
 homepage="https://github.com/jsamr/bootiso"
 license="MIT"
-changelog="https://raw.githubusercontent.com/jsamr/$pkgname/master/changelog.md"
-distfiles="https://github.com/jsamr/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+changelog="https://github.com/jsamr/bootiso/raw/master/changelog.md"
+distfiles="https://github.com/jsamr/bootiso/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="da00027f5ee0f87886ae7e5f74d20f8b5528b241548b4b7bd888a684abc97c1c"
 
 do_install() {
