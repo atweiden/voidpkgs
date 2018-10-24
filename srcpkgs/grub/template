@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="grub"
 version=2.02
-revision=2
+revision=3
 short_desc="GRand Unified Bootloader 2"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
