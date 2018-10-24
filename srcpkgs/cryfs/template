@@ -22,4 +22,6 @@ create_wrksrc="$pkgname-$version"
 build_style="cmake"
 configure_args="-DCRYFS_UPDATE_CHECKS=off"
 
+CXXFLAGS="-std=c++14"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
