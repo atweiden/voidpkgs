@@ -14,6 +14,7 @@ wrksrc="$pkgname-$_dist_ver"
 build_style="gnu-configure"
 configure_args+=" --enable-multibyte"
 configure_args+=" --with-curses"
+bootstrap="yes"
 
 pre_configure() {
   local url="$GNU_SITE/$pkgname/$pkgname-$_dist_ver-patches"
