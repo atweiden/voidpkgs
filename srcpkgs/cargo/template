@@ -14,7 +14,7 @@ hostmakedepends+=" python"
 hostmakedepends+=" rust"
 homepage="https://crates.io/"
 license="MIT, Apache-2.0"
-distfiles="https://github.com/rust-lang/cargo/archive/$version.tar.gz"
+distfiles="https://github.com/rust-lang/cargo/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="82f3ba49192b74b115b8aeca9db24deca022ee5e6351292611ab5b50e4455251"
 
 if [[ -n "$CROSS_BUILD" ]]; then

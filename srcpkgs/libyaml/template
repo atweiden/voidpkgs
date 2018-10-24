@@ -7,7 +7,7 @@ hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="http://pyyaml.org/wiki/LibYAML"
 license="MIT"
-distfiles="https://github.com/yaml/libyaml/archive/$version.tar.gz"
+distfiles="https://github.com/yaml/libyaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="1d2aeb87f7d317f1496e4c39410d913840714874a354970300f375eec9303dc4"
 build_style="gnu-configure"
 

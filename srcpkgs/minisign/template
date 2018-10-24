@@ -6,7 +6,7 @@ short_desc="A simple tool to sign files and verify signatures"
 makedepends="libsodium-devel"
 homepage="https://jedisct1.github.io/minisign"
 license="MIT"
-distfiles="https://github.com/jedisct1/minisign/archive/$version.tar.gz"
+distfiles="https://github.com/jedisct1/minisign/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="130eb5246076bc7ec42f13495a601382e566bb6733430d40a68de5e43a7f1082"
 build_style="cmake"
 

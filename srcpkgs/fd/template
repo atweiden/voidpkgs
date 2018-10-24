@@ -5,7 +5,7 @@ revision=2
 short_desc="Simple, fast and user-friendly alternative to find"
 homepage="https://github.com/sharkdp/fd"
 license="Apache-2.0, MIT"
-distfiles="https://github.com/sharkdp/fd/archive/v$version.tar.gz"
+distfiles="https://github.com/sharkdp/fd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="9385a55738947f69fd165781598de6c980398c6214a4927fce13a4f7f1e63d4d"
 build_style="cargo"
 

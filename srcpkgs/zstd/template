@@ -8,7 +8,7 @@ makedepends+=" zlib-devel"
 checkdepends="gtest-devel"
 homepage="http://www.zstd.net"
 license="BSD-3-Clause, GPL-2.0-or-later"
-distfiles="https://github.com/facebook/zstd/archive/v$version.tar.gz"
+distfiles="https://github.com/facebook/zstd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5dd1e90eb16c25425880c8a91327f63de22891ffed082fcc17e5ae84fce0d5fb"
 
 do_build() {

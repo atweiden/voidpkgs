@@ -19,7 +19,7 @@ fi
 homepage="https://github.com/fhunleth/fwup"
 license="Apache-2.0"
 changelog="https://github.com/fhunleth/fwup/raw/master/CHANGELOG.md"
-distfiles="https://github.com/fhunleth/fwup/archive/v$version.tar.gz"
+distfiles="https://github.com/fhunleth/fwup/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5bdcb8a5424b211fd35ddd4d8fdd6f74e8221cf432807dc8018f81ce54939b52"
 build_style="gnu-configure"
 configure_args="--with-bash-completion-dir=/usr/share/bash-completion/completions"

@@ -7,7 +7,7 @@ hostmakedepends+=" asciidoc"
 hostmakedepends+=" python"
 homepage="https://ninja-build.org/"
 license="Apache-2.0"
-distfiles="https://github.com/martine/ninja/archive/v$version.tar.gz"
+distfiles="https://github.com/martine/ninja/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="86b8700c3d0880c2b44c2ff67ce42774aaf8c28cbf57725cb881569288c1c6f4"
 
 do_configure() {

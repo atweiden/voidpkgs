@@ -8,7 +8,7 @@ makedepends+=" lua51-devel"
 hostmakedepends="libtool"
 homepage="https://github.com/libmpack/libmpack-lua"
 license="MIT"
-distfiles="https://github.com/libmpack/libmpack-lua/archive/$version.tar.gz"
+distfiles="https://github.com/libmpack/libmpack-lua/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="2ebe9c8972c378040c9b8505f5fb40a0c64d990cd68be6a62989362b18294d0a"
 wrksrc="libmpack-lua-$version"
 

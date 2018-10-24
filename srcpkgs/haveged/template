@@ -5,7 +5,7 @@ revision=1
 short_desc="Entropy harvesting daemon using CPU timings"
 license="GPL-3.0-or-later"
 homepage="http://www.issihosts.com/haveged"
-distfiles="https://github.com/jirka-h/haveged/archive/$version.tar.gz"
+distfiles="https://github.com/jirka-h/haveged/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c4959d3cb1fa6391d16a3aa1ba4d82cd3a0d497206ae4b87d638088c0664e5aa"
 build_style="gnu-configure"
 

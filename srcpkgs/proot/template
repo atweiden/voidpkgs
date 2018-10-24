@@ -7,7 +7,7 @@ makedepends+=" libarchive-devel"
 makedepends+=" talloc-devel"
 homepage="https://proot-me.github.io"
 license="GPL-2"
-distfiles="https://github.com/proot-me/PRoot/archive/v$version.tar.gz"
+distfiles="https://github.com/proot-me/PRoot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="50fcb882662b2de3e64e603b68d1af75e920d480191a49e11c0cb63d50040386"
 wrksrc="PRoot-$version"
 

@@ -9,7 +9,7 @@ hostmakedepends+=" perl"
 hostmakedepends+=" perl-XML-Parser"
 homepage="https://sourceforge.net/projects/xmltoman"
 license="GPL-3"
-distfiles="https://github.com/Distrotech/xmltoman/archive/$version.tar.gz"
+distfiles="https://github.com/Distrotech/xmltoman/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="2ab86b74fe364a866d84c14b20cbd42a09fa85c629deeff52376bbf890854feb"
 build_style="gnu-makefile"
 

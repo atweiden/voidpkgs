@@ -5,7 +5,7 @@ revision=1
 short_desc="Time zone and daylight-saving time utilities"
 homepage="https://www.iana.org/time-zones"
 license="Public Domain"
-distfiles="https://github.com/eggert/tz/archive/$version.tar.gz"
+distfiles="https://github.com/eggert/tz/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="4ef0c8dc6d5e8dbd895112eac314ca23a4dbab470e330e2a71b6621d49fd8d42"
 wrksrc="tz-$version"
 

@@ -9,7 +9,7 @@ hostmakedepends+=" flex"
 hostmakedepends+=" libtool"
 homepage="http://hyperrealm.com/libconfig/libconfig.html"
 license="LGPL-2.1"
-distfiles="https://github.com/hyperrealm/libconfig/archive/v$version.tar.gz"
+distfiles="https://github.com/hyperrealm/libconfig/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="f67ac44099916ae260a6c9e290a90809e7d782d96cdd462cac656ebc5b685726"
 build_style="gnu-configure"
 

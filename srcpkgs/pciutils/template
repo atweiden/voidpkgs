@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="http://mj.ucw.cz/pciutils.html"
 license="GPL-2.0-or-later"
 changelog="https://github.com/pciutils/pciutils/raw/master/ChangeLog"
-distfiles="https://github.com/pciutils/pciutils/archive/v$version.tar.gz"
+distfiles="https://github.com/pciutils/pciutils/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d84d7096a71890f0ddddc50e88ac5a3bc7412bf48d8100fc15857a411564687d"
 
 do_build() {

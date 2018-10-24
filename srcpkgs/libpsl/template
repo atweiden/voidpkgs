@@ -7,7 +7,7 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
 license="MIT"
 homepage="https://rockdaboot.github.io/libpsl/"
-distfiles="https://github.com/rockdaboot/libpsl/releases/download/libpsl-$version/libpsl-$version.tar.gz"
+distfiles="https://github.com/rockdaboot/libpsl/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
 checksum="f8fd0aeb66252dfcc638f14d9be1e2362fdaf2ca86bde0444ff4d5cc961b560f"
 build_style="gnu-configure"
 

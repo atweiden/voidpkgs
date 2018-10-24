@@ -9,7 +9,7 @@ depends+=" gawk"
 depends+=" wpa_supplicant"
 homepage="http://github.com/bougyman/wifish"
 license="wtfpl"
-distfiles="https://github.com/bougyman/wifish/archive/$version.tar.gz"
+distfiles="https://github.com/bougyman/wifish/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d90b42a92fa23521adf9ab0a9186c0f4517e71b5a26b3ae0c1f24fd45e1c0c36"
 
 do_install() {

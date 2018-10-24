@@ -8,7 +8,7 @@ makedepends+=" popt-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/rhinstaller/efibootmgr"
 license="GPL-2.0-or-later"
-distfiles="https://github.com/rhboot/efibootmgr/archive/$version.tar.gz"
+distfiles="https://github.com/rhboot/efibootmgr/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="22a95ebe0d5c9fb2915b3a100450f8f37484d1dbb8b296f55b343cc84f10397d"
 conf_files="/etc/default/efibootmgr-kernel-hook"
 

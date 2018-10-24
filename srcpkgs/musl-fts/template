@@ -17,7 +17,7 @@ hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="https://github.com/pullmoll/musl-fts"
 license="BSD"
-distfiles="https://github.com/pullmoll/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/pullmoll/musl-fts/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="49ae567a96dbab22823d045ffebe0d6b14b9b799925e9ca9274d47d26ff482a6"
 build_style="gnu-configure"
 

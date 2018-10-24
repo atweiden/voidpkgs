@@ -5,7 +5,7 @@ revision=1
 short_desc="Unit Testing Framework for C"
 homepage="https://libcheck.github.io/check/"
 license="LGPL-2.1"
-distfiles="https://github.com/libcheck/check/releases/download/$version/check-$version.tar.gz"
+distfiles="https://github.com/libcheck/check/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="464201098bee00e90f5c4bdfa94a5d3ead8d641f9025b560a27755a83b824234"
 build_style="gnu-configure"
 

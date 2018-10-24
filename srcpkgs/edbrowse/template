@@ -12,7 +12,7 @@ hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://edbrowse.org/"
 license="GPL-3.0-or-later"
-distfiles="https://github.com/CMB/$pkgname/archive/v$version.tar.gz"
+distfiles="https://github.com/CMB/edbrowse/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b79e6417c1170c96ef68968c33d585725f0f2d27859e3fe807c980a9c33ea719"
 build_style="cmake"
 
