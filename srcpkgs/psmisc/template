@@ -6,7 +6,7 @@ short_desc="Small set of utilities that use the linux proc filesystem"
 makedepends="ncurses-devel"
 homepage="https://gitlab.com/psmisc/psmisc"
 license="GPL-2.0-or-later"
-distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.tar.xz"
+distfiles="$SOURCEFORGE_SITE/psmisc/$pkgname-$version.tar.xz"
 checksum="4b7cbffdc9373474da49b85dc3457ae511c43dc7fa7d94513fe06f89dcb87880"
 build_style="gnu-configure"
 

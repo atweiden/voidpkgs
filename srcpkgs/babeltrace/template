@@ -10,7 +10,7 @@ makedepends+=" popt-devel"
 hostmakedepends="pkg-config"
 homepage="http://diamon.org/babeltrace"
 license="MIT, GPL-2.0-or-later, LGPL-2.1-or-later"
-distfiles="https://www.efficios.com/files/$pkgname/$pkgname-$version.tar.bz2"
+distfiles="https://www.efficios.com/files/babeltrace/$pkgname-$version.tar.bz2"
 checksum="5308bc217828dd571b3259f482a85533554064d4563906ff3c5774ecf915bbb7"
 build_style="gnu-configure"
 

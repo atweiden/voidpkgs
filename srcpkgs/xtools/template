@@ -12,7 +12,7 @@ depends+=" make"
 depends+=" xbps"
 homepage="http://git.vuxu.org/xtools"
 license="Public Domain"
-distfiles="http://git.vuxu.org/xtools/snapshot/xtools-$version.tar.gz"
+distfiles="http://git.vuxu.org/xtools/snapshot/$pkgname-$version.tar.gz"
 checksum="8ef8149e55f81922f0101a8a34148156737f0574e3d3ff0425da87539bc96ff4"
 build_style="gnu-makefile"
 

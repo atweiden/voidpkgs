@@ -5,7 +5,7 @@ revision=1
 short_desc="Utility to detect other OSes on a set of drives"
 homepage="http://packages.debian.org/sid/os-prober"
 license="GPL-2"
-distfiles="$DEBIAN_SITE/main/o/$pkgname/${pkgname}_$version.tar.xz"
+distfiles="$DEBIAN_SITE/main/o/os-prober/${pkgname}_$version.tar.xz"
 checksum="d3a580610e0148ee1fea98de993b27b856870fb0a31e9ce1a33be2654e2c64ed"
 make_dirs="/var/lib/os-prober 0755 root root"
 

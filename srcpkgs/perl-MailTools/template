@@ -9,9 +9,9 @@ makedepends="perl perl-TimeDate"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/MailTools"
 license="Artistic, GPL-1"
-distfiles="$CPAN_SITE/Mail/${pkgname/perl-/}-$version.tar.gz"
+distfiles="$CPAN_SITE/Mail/${pkgname#-*}-$version.tar.gz"
 checksum="f55606f7a9cc342ee9d5f996e2b6a4c0047e2ee47cd88c3250ecf0d0c5fb3196"
-wrksrc="${pkgname/perl-/}-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

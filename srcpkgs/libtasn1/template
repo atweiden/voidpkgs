@@ -6,7 +6,7 @@ short_desc="ASN.1 structure parser library"
 hostmakedepends="perl"
 homepage="https://www.gnu.org/software/libtasn1/"
 license="GPL-3, LGPL-2.1"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+distfiles="$GNU_SITE/libtasn1/$pkgname-$version.tar.gz"
 checksum="7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca"
 build_style="gnu-configure"
 

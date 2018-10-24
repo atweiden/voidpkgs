@@ -5,7 +5,7 @@ revision=1
 short_desc="Utility for controlling network drivers and hardware"
 homepage="http://www.kernel.org/pub/software/network/ethtool/"
 license="GPL-2.0-only"
-distfiles="http://www.kernel.org/pub/software/network/$pkgname/$pkgname-$version.tar.xz"
+distfiles="http://www.kernel.org/pub/software/network/ethtool/$pkgname-$version.tar.xz"
 checksum="90948555d4c017561d0d8795f2dc61893a4932c0f3b85e6d422afd7031b7c110"
 build_style="gnu-configure"
 

@@ -13,7 +13,7 @@ hostmakedepends+=" lua51"
 hostmakedepends+=" lua52"
 homepage="http://www.inf.puc-rio.br/~roberto/lpeg/"
 license="MIT"
-distfiles="$homepage/${pkgname#lua-}-$version.tar.gz"
+distfiles="http://www.inf.puc-rio.br/~roberto/lpeg/${pkgname#lua-}-$version.tar.gz"
 wrksrc="${pkgname#lua-}-$version"
 checksum="62d9f7a9ea3c1f215c77e0cadd8534c6ad9af0fb711c3f89188a8891c72f026b"
 

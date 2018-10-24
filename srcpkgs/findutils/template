@@ -5,7 +5,7 @@ revision=4
 short_desc="The GNU Find Utilities"
 homepage="http://www.gnu.org/software/findutils"
 license="GPL-3"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+distfiles="$GNU_SITE/findutils/$pkgname-$version.tar.gz"
 checksum="ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d"
 build_style="gnu-configure"
 configure_args="--program-prefix=g"

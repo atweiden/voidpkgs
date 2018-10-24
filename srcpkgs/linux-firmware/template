@@ -9,7 +9,7 @@ homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 depends+=" $pkgname-amd-${version}_$revision"
 depends+=" $pkgname-network-${version}_$revision"
-distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$_githash.tar.gz"
+distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$_githash.tar.gz>$pkgname-$version.tar.gz"
 checksum="bbcd63740019c9df823853274c799267c9436fbab8f40d2290736a07109c1763"
 wrksrc="$pkgname-$_githash"
 

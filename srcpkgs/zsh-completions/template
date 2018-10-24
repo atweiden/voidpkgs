@@ -7,7 +7,7 @@ noarch="yes"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-completions"
 license="BSD-3-Clause, Apache-2.0, MIT"
-distfiles="$homepage/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/zsh-users/zsh-completions/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="f5e6fbd3d67a8c149f8e332e916329def53459158b9075a6147daff3ae88d3d0"
 
 do_install() {

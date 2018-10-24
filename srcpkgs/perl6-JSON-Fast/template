@@ -10,7 +10,7 @@ homepage="https://github.com/timo/json_fast"
 license="Artistic-2.0"
 distfiles="https://github.com/timo/json_fast/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="35c50fa46eeb2733adf3de4dac11eb5f7ad3f756af93651633f84d54765462f0"
-wrksrc="json_fast-$_gitrev"
+wrksrc="$(basename $homepage)-$_gitrev"
 build_style="rakudo-perl6"
 
 post_install() {

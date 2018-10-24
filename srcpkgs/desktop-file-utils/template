@@ -7,7 +7,7 @@ makedepends="libglib-devel"
 hostmakedepends="pkg-config"
 homepage="http://www.freedesktop.org/wiki/Software/desktop-file-utils"
 license="GPL-2"
-distfiles="$FREEDESKTOP_SITE/$pkgname/releases/$pkgname-$version.tar.xz"
+distfiles="$FREEDESKTOP_SITE/desktop-file-utils/releases/$pkgname-$version.tar.xz"
 checksum="6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385"
 build_style="gnu-configure"
 

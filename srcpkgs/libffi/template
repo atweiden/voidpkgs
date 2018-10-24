@@ -5,7 +5,7 @@ revision=5
 short_desc="Library supporting Foreign Function Interfaces"
 homepage="http://sourceware.org/libffi"
 license="MIT"
-distfiles="ftp://sourceware.org/pub/$pkgname/$pkgname-$version.tar.gz"
+distfiles="ftp://sourceware.org/pub/libffi/$pkgname-$version.tar.gz"
 checksum="d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37"
 build_style="gnu-configure"
 configure_args+=" --includedir=/usr/include"

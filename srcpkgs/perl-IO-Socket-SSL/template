@@ -14,9 +14,9 @@ checkdepends="perl-IO-Socket-INET6"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Socket-SSL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/IO/${pkgname/perl-/}-$version.tar.gz"
+distfiles="$CPAN_SITE/IO/${pkgname#-*}-$version.tar.gz"
 checksum="fb5b2877ac5b686a5d7b8dd71cf5464ffe75d10c32047b5570674870e46b1b8c"
-wrksrc="${pkgname/perl-/}-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

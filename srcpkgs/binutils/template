@@ -5,7 +5,7 @@ revision=3
 short_desc="GNU binary utilities"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.bz2"
+distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.bz2"
 checksum="1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
 bootstrap="yes"
 

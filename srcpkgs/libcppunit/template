@@ -9,9 +9,9 @@ hostmakedepends+=" pkg-config"
 # see: https://mmohrhard.wordpress.com/2017/05/01/cppunit-1-14-released/
 homepage="http://cppunit.sourceforge.net"
 license="LGPL-2.1"
-distfiles="http://dev-www.libreoffice.org/src/cppunit-$version.tar.gz"
+distfiles="http://dev-www.libreoffice.org/src/${pkgname#lib}-$version.tar.gz"
 checksum="3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780"
-wrksrc="cppunit-$version"
+wrksrc="${pkgname#lib}-$version"
 build_style="gnu-configure"
 
 LDFLAGS="-dl"

@@ -8,9 +8,9 @@ makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Tty"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/IO/IO-Tty-$version.tar.gz"
+distfiles="$CPAN_SITE/IO/${pkgname#-*}-$version.tar.gz"
 checksum="a2ef8770d3309178203f8c8ac25e623e63cf76e97830fd3be280ade1a555290d"
-wrksrc="IO-Tty-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

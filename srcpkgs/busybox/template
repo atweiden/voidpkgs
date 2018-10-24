@@ -7,7 +7,7 @@ checkdepends="zip"
 hostmakedepends="perl"
 homepage="http://www.busybox.net"
 license="GPL-2.0-only"
-distfiles="$homepage/downloads/busybox-$version.tar.bz2"
+distfiles="http://www.busybox.net/downloads/$pkgname-$version.tar.bz2"
 checksum="97648636e579462296478e0218e65e4bc1e9cd69089a3b1aeb810bff7621efb7"
 alternatives+=" awk:awk:/usr/bin/busybox"
 alternatives+=" hostname:hostname:/usr/bin/busybox"
@@ -18,7 +18,8 @@ alternatives+=" vi:vi:/usr/bin/busybox"
 
 do_configure() {
   mkdir -p src
-  mv * src || true
+  mv * src \
+    || true
   for t in busybox \
            busybox-static; do
     mkdir -p "$t"

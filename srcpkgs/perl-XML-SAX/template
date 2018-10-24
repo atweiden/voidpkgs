@@ -13,9 +13,9 @@ makedepends+=" perl-XML-SAX-Base"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/XML-SAX"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/XML/XML-SAX-$version.tar.gz"
+distfiles="$CPAN_SITE/XML/${pkgname#-*}-$version.tar.gz"
 checksum="45ea6564ef8692155d57b2de0862b6442d3c7e29f4a9bc9ede5d7ecdc74c2ae3"
-wrksrc="${pkgname/perl-/}-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

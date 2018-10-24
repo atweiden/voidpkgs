@@ -9,6 +9,7 @@ distfiles="http://ftp.barfooze.de/pub/sabotage/tarballs/$pkgname-$version.tar.xz
 checksum="77502b3f67641214c2360b366b23e2068a2f1379cbd3def3cf83b807d1762810"
 conf_files="/etc/proxychains.conf"
 build_style="gnu-configure"
-make_install_target="install install-config"
+make_install_target+=" install"
+make_install_target+=" install-config"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

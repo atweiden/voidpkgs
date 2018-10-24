@@ -30,9 +30,9 @@ hostmakedepends+=" flex"
 hostmakedepends+=" perl"
 hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
-distfiles="$GNU_SITE/gcc/gcc-$version/gcc-$version.tar.xz"
+distfiles="$GNU_SITE/gcc/${pkgname%-*}-$version/${pkgname%-*}-$version.tar.xz"
 checksum="196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080"
-wrksrc="gcc-$version"
+wrksrc="${pkgname%-*}-$version"
 
 do_configure() {
   ldconfig &>/dev/null

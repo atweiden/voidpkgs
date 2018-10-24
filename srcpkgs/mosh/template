@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf-devel"
 homepage="https://mosh.org/"
 license="GPL-3"
-distfiles="https://mosh.org/mosh-$version.tar.gz"
+distfiles="https://mosh.org/$pkgname-$version.tar.gz"
 checksum="da600573dfa827d88ce114e0fed30210689381bbdcff543c931e4d6a2e851216"
 build_style="gnu-configure"
 

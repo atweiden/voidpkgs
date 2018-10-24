@@ -11,7 +11,7 @@ hostmakedepends+=" curl"
 hostmakedepends+=" ghc"
 homepage="https://hackage.haskell.org/package/cabal-install"
 license="BSD-3-Clause"
-distfiles="https://hackage.haskell.org/packages/archive/$pkgname/$version/$pkgname-$version.tar.gz"
+distfiles="https://hackage.haskell.org/packages/archive/cabal-install/$version/$pkgname-$version.tar.gz"
 checksum="c856a2dd93c5a7b909597c066b9f9ca27fbda1a502b3f96077b7918c0f64a3d9"
 nopie_files="/usr/bin/cabal"
 

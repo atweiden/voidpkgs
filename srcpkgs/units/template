@@ -9,7 +9,7 @@ makedepends="readline-devel"
 hostmakedepends="python"
 homepage="https://www.gnu.org/software/units/units.html"
 license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+distfiles="$GNU_SITE/units/$pkgname-$version.tar.gz"
 checksum="64959c231c280ceb4f3e6ae6a19b918247b6174833f7f1894704c444869c4678"
 build_style="gnu-configure"
 

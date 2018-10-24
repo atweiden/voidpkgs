@@ -9,9 +9,9 @@ makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/TimeDate"
 license="Artistic, GPL-1"
-distfiles="$CPAN_SITE/Date/${pkgname/perl-/}-$version.tar.gz"
+distfiles="$CPAN_SITE/Date/${pkgname#-*}-$version.tar.gz"
 checksum="75bd254871cb5853a6aa0403ac0be270cdd75c9d1b6639f18ecba63c15298e86"
-wrksrc="${pkgname/perl-/}-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

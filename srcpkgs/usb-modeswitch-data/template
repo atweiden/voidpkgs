@@ -6,7 +6,7 @@ short_desc="Mode switching tool for controlling 'multi-mode' USB devices (data f
 noarch="yes"
 homepage="http://www.draisberghof.de/usb_modeswitch/"
 license="GPL-2"
-distfiles="http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-$version.tar.bz2"
+distfiles="http://www.draisberghof.de/usb_modeswitch/$pkgname-$version.tar.bz2"
 checksum="ce413ef2a50e648e9c81bc3ea6110e7324a8bf981034fc9ec4467d3562563c2c"
 build_style="gnu-makefile"
 make_install_args="RULESDIR=/usr/lib/udev/rules.d"

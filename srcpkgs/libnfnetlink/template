@@ -5,7 +5,7 @@ revision=3
 short_desc="A low-level library for netfilter kernel/userspace communication"
 homepage="http://www.netfilter.org/projects/libnfnetlink/index.html"
 license="GPL-2"
-distfiles="http://www.netfilter.org/projects/$pkgname/files/$pkgname-$version.tar.bz2"
+distfiles="http://www.netfilter.org/projects/libnfnetlink/files/$pkgname-$version.tar.bz2"
 checksum="f270e19de9127642d2a11589ef2ec97ef90a649a74f56cf9a96306b04817b51a"
 build_style="gnu-configure"
 

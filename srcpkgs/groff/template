@@ -11,7 +11,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 homepage="http://www.gnu.org/software/groff/groff.html"
 license="GPL-2"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.gz"
+distfiles="$GNU_SITE/groff/$pkgname-$version.tar.gz"
 checksum="3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5"
 
 do_configure() {

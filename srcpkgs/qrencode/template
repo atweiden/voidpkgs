@@ -7,7 +7,7 @@ makedepends="libpng-devel"
 hostmakedepends="pkg-config"
 homepage="http://fukuchi.org/works/qrencode/index.html.en"
 license="LGPL-2.1-or-later"
-distfiles="http://fukuchi.org/works/qrencode/qrencode-$version.tar.bz2"
+distfiles="http://fukuchi.org/works/qrencode/$pkgname-$version.tar.bz2"
 checksum="c9cb278d3b28dcc36b8d09e8cad51c0eca754eb004cb0247d4703cb4472b58b4"
 build_style="gnu-configure"
 

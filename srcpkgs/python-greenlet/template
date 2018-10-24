@@ -10,9 +10,9 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/python-greenlet/greenlet"
 license="MIT"
 changelog="https://github.com/python-greenlet/greenlet/raw/master/NEWS"
-distfiles="$PYPI_SITE/g/greenlet/greenlet-$version.tar.gz"
+distfiles="$PYPI_SITE/g/greenlet/${pkgname#*-}-$version.tar.gz"
 checksum="9416443e219356e3c31f1f918a91badf2e37acf297e2fa13d24d1cc2380f8fbc"
-wrksrc="greenlet-$version"
+wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {

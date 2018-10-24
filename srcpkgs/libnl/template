@@ -5,7 +5,7 @@ revision=4
 short_desc="Library for applications dealing with netlink sockets"
 homepage="http://www.infradead.org/~tgr/libnl/"
 license="LGPL-2.1"
-distfiles="http://www.infradead.org/~tgr/libnl/files/libnl-$version.tar.gz"
+distfiles="http://www.infradead.org/~tgr/libnl/files/$pkgname-$version.tar.gz"
 checksum="4f80c21fe5bbcdde6e72b59b4f98306063a41421f909887c34e58d93e746d063"
 build_style="gnu-configure"
 

@@ -12,7 +12,7 @@ hostmakedepends+=" icu-devel"
 hostmakedepends+=" python-devel"
 homepage="http://www.boost.org/"
 license="Boost Software License 1.0"
-distfiles="$SOURCEFORGE_SITE/$pkgname/${pkgname}_${version//\./_}.tar.bz2"
+distfiles="$SOURCEFORGE_SITE/boost/${pkgname}_${version//\./_}.tar.bz2"
 checksum="7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7"
 wrksrc="${pkgname}_${version//\./_}"
 

@@ -5,7 +5,7 @@ revision=1
 short_desc="Library for encoding, decoding and manipulating JSON data"
 homepage="http://www.digip.org/jansson/"
 license="MIT"
-distfiles="http://www.digip.org/jansson/releases/jansson-$version.tar.bz2"
+distfiles="http://www.digip.org/jansson/releases/$pkgname-$version.tar.bz2"
 checksum="783132e2fc970feefc2fa54199ef65ee020bd8e0e991a78ea44b8586353a0947"
 build_style="gnu-configure"
 

@@ -5,7 +5,7 @@ revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
-distfiles="https://www.gnupg.org/ftp/gcrypt/$pkgname/$pkgname-$version.tar.bz2"
+distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
 checksum="c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca"
 build_style="gnu-configure"
 

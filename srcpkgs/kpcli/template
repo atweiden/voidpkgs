@@ -15,7 +15,7 @@ depends+=" perl-Term-ShellUI"
 depends+=" perl-XML-Parser"
 homepage="http://kpcli.sourceforge.net/"
 license="Artistic, GPL-1"
-distfiles="$SOURCEFORGE_SITE/$pkgname/$pkgname-$version.pl"
+distfiles="$SOURCEFORGE_SITE/kpcli/$pkgname-$version.pl"
 checksum="615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687"
 build_style="fetch"
 

@@ -7,7 +7,7 @@ hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="https://github.com/seccomp/libseccomp/"
 license="LGPL-2.1"
-distfiles="https://github.com/seccomp/$pkgname/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/seccomp/libseccomp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5a52495207f00d1254707f11226e17c16ec53f5038d65bbabf1892873fa2fe5b"
 build_style="gnu-configure"
 

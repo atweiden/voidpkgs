@@ -11,7 +11,7 @@ hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/jthornber/thin-provisioning-tools"
 license="GPL-3.0-or-later"
-distfiles="$homepage/archive/v$version.tar.gz"
+distfiles="https://github.com/jthornber/thin-provisioning-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="491358c1406414ab3f06b260bd9da8a2f9109c4c426dda899d4d985860dfc01f"
 build_style="gnu-configure"
 

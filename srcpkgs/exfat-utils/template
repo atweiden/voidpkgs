@@ -5,7 +5,7 @@ revision=1
 short_desc="Utilities for exFAT file system"
 homepage="https://github.com/relan/exfat"
 license="GPL-2.0-or-later"
-distfiles="$homepage/releases/download/v$version/$pkgname-$version.tar.gz"
+distfiles="https://github.com/relan/exfat/releases/download/v$version/$pkgname-$version.tar.gz"
 checksum="dfebd07a7b907e2d603d3a9626e6440bd43ec6c4e8c07ccfc57ce9502b724835"
 build_style="gnu-configure"
 

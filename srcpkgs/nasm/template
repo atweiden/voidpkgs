@@ -5,14 +5,17 @@ revision=1
 short_desc="An 80x86 assembler designed for portability and modularity"
 homepage="http://www.nasm.us"
 license="2-clause-BSD"
-distfiles="http://www.nasm.us/pub/nasm/releasebuilds/$version/nasm-$version.tar.bz2"
+distfiles="http://www.nasm.us/pub/nasm/releasebuilds/$version/$pkgname-$version.tar.bz2"
 checksum="8d3028d286be7c185ba6ae4c8a692fc5438c129b2a3ffad60cbdcedd2793bbbe"
 build_style="gnu-configure"
 make_build_args+=" all"
 make_build_args+=" rdf"
 
 do_install() {
-  make INSTALLROOT="$DESTDIR" install install_rdf
+  make \
+    INSTALLROOT="$DESTDIR" \
+    install \
+    install_rdf
   vlicense LICENSE
 }
 

@@ -13,23 +13,39 @@ makedepends+=" attr-devel"
 makedepends+=" e2fsprogs-devel"
 homepage="https://sourceforge.net/projects/schilytools/"
 license="CDDL-1.0"
-distfiles="$SOURCEFORGE_SITE/$pkgname/schily-${version//./-}.tar.bz2"
+distfiles="$SOURCEFORGE_SITE/schilytools/${pkgname%tools}-${version//./-}.tar.bz2"
 checksum="4d3967f31fe9e64065975bfb9ac604cbb59092c861ab0448aab72d1a5d0c5c4e"
-wrksrc="schily-${version//./-}"
+wrksrc="${pkgname%tools}-${version//./-}"
 build_style="meta"
 # configure + re-builds with itself
 nocross="yes"
 
 do_build() {
-  make "$makejobs" CC="$CC" COPTX="$CFLAGS" LDOPTX="$LDFLAGS" INS_BASE="/usr"
-  make -C sccs clean
-  make -C sccs CC="$CC" COPTX="$CFLAGS" LDOPTX="$LDFLAGS" INS_BASE="/usr/libexec/sccs"
+  make \
+    "$makejobs" \
+    CC="$CC" \
+    COPTX="$CFLAGS" \
+    INS_BASE="/usr" \
+    LDOPTX="$LDFLAGS"
+  make \
+    -C sccs \
+    clean
+  make \
+    -C sccs \
+    CC="$CC" \
+    COPTX="$CFLAGS" \
+    INS_BASE="/usr/libexec/sccs" \
+    LDOPTX="$LDFLAGS"
 }
 
 sccs_package() {
   short_desc+=" - SCCS"
   pkg_install() {
-    make install -C sccs DESTDIR="$PKGDESTDIR" INS_BASE="/usr/libexec/sccs"
+    make \
+      -C sccs \
+      DESTDIR="$PKGDESTDIR" \
+      INS_BASE="/usr/libexec/sccs" \
+      install
     vmkdir usr/bin
     vmkdir usr/share
     rm -f "$PKGDESTDIR/usr/libexec/sccs/share/man"/man?/[!s]*
@@ -43,7 +59,11 @@ sccs_package() {
 sdd_package() {
   short_desc+=" - sdd"
   pkg_install() {
-    make install -C sdd DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
+    make \
+      -C sdd \
+      DESTDIR="$PKGDESTDIR" \
+      INS_BASE="/usr" \
+      install
     vlicense CDDL.Schily.txt
   }
 }
@@ -51,7 +71,11 @@ sdd_package() {
 sfind_package() {
   short_desc+=" - sfind"
   pkg_install() {
-    make install -C sfind DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
+    make \
+      -C sfind \
+      DESTDIR="$PKGDESTDIR" \
+      INS_BASE="/usr" \
+      install
     vlicense CDDL.Schily.txt
   }
 }
@@ -59,7 +83,11 @@ sfind_package() {
 smake_package() {
   short_desc+=" - smake"
   pkg_install() {
-    make install -C smake DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
+    make \
+      -C smake \
+      DESTDIR="$PKGDESTDIR" \
+      INS_BASE="/usr" \
+      install
     vlicense CDDL.Schily.txt
   }
 }
@@ -70,7 +98,12 @@ star_package() {
   alternatives+=" pax:pax:/usr/bin/spax"
   alternatives+=" pax:pax.1:/usr/share/man/man1/spax.1"
   pkg_install() {
-    make install -C star DESTDIR="$PKGDESTDIR" INS_BASE="/usr" SYMLINKS="suntar scpio spax"
+    make \
+      -C star \
+      DESTDIR="$PKGDESTDIR" \
+      INS_BASE="/usr" \
+      SYMLINKS="suntar scpio spax" \
+      install
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/ustar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"

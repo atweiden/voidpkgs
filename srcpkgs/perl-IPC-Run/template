@@ -9,9 +9,9 @@ makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IPC-Run"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/IPC/IPC-Run-$version.tar.gz"
+distfiles="$CPAN_SITE/IPC/${pkgname#-*}-$version.tar.gz"
 checksum="3850d7edf8a4671391c6e99bb770698e1c45da55b323b31c76310913349b6c2f"
-wrksrc="${pkgname/perl-/}-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

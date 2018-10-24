@@ -10,9 +10,9 @@ hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
 homepage="http://www.spice-space.org/"
 license="BSD-3-Clause"
-distfiles="https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v$version/spice-protocol-v$version.tar.gz"
+distfiles="https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v$version/$pkgname-v$version.tar.gz"
 checksum="75989bed1bf8e8d163b4c4581e426199a5ad4155ace513b3344d13f0ddf462df"
-wrksrc="spice-protocol-v$version"
+wrksrc="$pkgname-v$version"
 build_style="gnu-configure"
 
 pre_configure() {

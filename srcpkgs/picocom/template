@@ -15,7 +15,11 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 do_build() {
-  make CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" "$makejobs"
+  make \
+    "$makejobs" \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS"
 }
 
 do_install() {

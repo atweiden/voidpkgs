@@ -7,7 +7,7 @@ hostmakedepends+=" python"
 hostmakedepends+=" xmlto"
 homepage="http://www.tortall.net/projects/yasm/"
 license="BSD, Artistic, GPL-2, LGPL-2.1"
-distfiles="http://www.tortall.net/projects/yasm/releases/yasm-$version.tar.gz"
+distfiles="http://www.tortall.net/projects/yasm/releases/$pkgname-$version.tar.gz"
 checksum="3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f"
 build_style="gnu-configure"
 

@@ -19,20 +19,20 @@ homepage="http://www.haskell.org/ghc/"
 license="BSD"
 case "$XBPS_TARGET_MACHINE" in
   x86_64)
-    distfiles="https://downloads.haskell.org/~ghc/${version%[!0-9]}/ghc-$version-x86_64-deb8-linux.tar.xz"
+    distfiles="https://downloads.haskell.org/~ghc/${version%[!0-9]}/${pkgname%-*}-$version-x86_64-deb8-linux.tar.xz"
     checksum="30a402c6d4754a6c020e0547f19ae3ac42e907e35349aa932d347f73e421a8e2"
     ;;
   x86_64-musl)
     # create with "make binary-dist"
-    distfiles="https://alpha.de.repo.voidlinux.org/distfiles/ghc-$version-x86_64-void-linux-musl.tar.xz"
+    distfiles="https://alpha.de.repo.voidlinux.org/distfiles/${pkgname%-*}-$version-x86_64-void-linux-musl.tar.xz"
     checksum="52d72673f3213a9f629f441583c58fad099fa8827a3e86ecddadf4f8334031f9"
     ;;
   i686)
-    distfiles="https://downloads.haskell.org/~ghc/${version%[!0-9]}/ghc-$version-i386-deb8-linux.tar.xz"
+    distfiles="https://downloads.haskell.org/~ghc/${version%[!0-9]}/${pkgname%-*}-$version-i386-deb8-linux.tar.xz"
     checksum="f5763983a26dedd88b65a0b17267359a3981b83a642569b26334423f684f8b8c"
     ;;
 esac
-wrksrc="ghc-${version%[!0-9]}"
+wrksrc="${pkgname%-*}-${version%[!0-9]}"
 nostrip="yes"
 noshlibprovides="yes"
 conflicts+=" ghc>=0"

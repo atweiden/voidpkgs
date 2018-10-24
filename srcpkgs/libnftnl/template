@@ -7,7 +7,7 @@ makedepends="libmnl-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.netfilter.org/projects/libnftnl/"
 license="GPL-2.0-or-later"
-distfiles="https://www.netfilter.org/projects/$pkgname/files/$pkgname-$version.tar.bz2"
+distfiles="https://www.netfilter.org/projects/libnftnl/files/$pkgname-$version.tar.bz2"
 checksum="5d6a65413f27ec635eedf6aba033f7cf671d462a2afeacc562ba96b19893aff2"
 build_style="gnu-configure"
 

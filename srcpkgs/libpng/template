@@ -6,7 +6,7 @@ short_desc="Library for manipulating PNG images"
 makedepends="zlib-devel"
 homepage="http://www.libpng.org/pub/png/libpng.html"
 license="Libpng"
-distfiles="$SOURCEFORGE_SITE/libpng/libpng-$version.tar.xz"
+distfiles="$SOURCEFORGE_SITE/libpng/$pkgname-$version.tar.xz"
 checksum="23912ec8c9584917ed9b09c5023465d71709dce089be503c7867fec68a93bcd7"
 build_style="gnu-configure"
 

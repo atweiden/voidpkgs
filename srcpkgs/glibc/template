@@ -17,7 +17,7 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
-distfiles="$GNU_SITE/glibc/glibc-$version.tar.xz"
+distfiles="$GNU_SITE/glibc/$pkgname-$version.tar.xz"
 checksum="b1900051afad76f7a4f73e71413df4826dce085ef8ddb785a945b66d7d513082"
 conf_files+=" /etc/gai.conf"
 conf_files+=" /etc/ld.so.conf"

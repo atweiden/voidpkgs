@@ -8,7 +8,7 @@ short_desc="The GNU Readline Library"
 makedepends="ncurses-devel"
 homepage="https://tiswww.cwru.edu/php/chet/readline/rltop.html"
 license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$_dist_ver.tar.gz"
+distfiles="$GNU_SITE/readline/$pkgname-$_dist_ver.tar.gz"
 checksum="750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334"
 wrksrc="$pkgname-$_dist_ver"
 build_style="gnu-configure"
@@ -40,11 +40,18 @@ pre_configure() {
 }
 
 do_build() {
-  make "$makejobs" LDFLAGS="-lncurses" SHLIB_LIBS="-lncurses"
+  make \
+    "$makejobs" \
+    LDFLAGS="-lncurses" \
+    SHLIB_LIBS="-lncurses"
 }
 
 do_install() {
-  make DESTDIR="$DESTDIR" LDFLAGS="-lncurses" SHLIB_LIBS="-lncurses" install
+  make \
+    DESTDIR="$DESTDIR" \
+    LDFLAGS="-lncurses" \
+    SHLIB_LIBS="-lncurses" \
+    install
 }
 
 readline-devel_package() {

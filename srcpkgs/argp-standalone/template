@@ -15,7 +15,7 @@ only_for_archs+=" mipsel-musl"
 only_for_archs+=" mipselhf-musl"
 homepage="https://www.freshports.org/devel/argp-standalone/"
 license="Public Domain"
-distfiles="http://www.lysator.liu.se/~nisse/misc/argp-standalone-$version.tar.gz"
+distfiles="http://www.lysator.liu.se/~nisse/misc/$pkgname-$version.tar.gz"
 checksum="dec79694da1319acd2238ce95df57f3680fea2482096e483323fddf3d818d8be"
 build_style="gnu-configure"
 

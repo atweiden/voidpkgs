@@ -12,7 +12,7 @@ homepage="https://github.com/erikrose/more-itertools"
 license="MIT"
 distfiles="https://github.com/erikrose/more-itertools/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ad2a4f23bb8a45015a887d450ec995daf9da46a100a56432702a91c43a859b70"
-wrksrc="more-itertools-$version"
+wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="more_itertools"
 

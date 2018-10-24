@@ -10,7 +10,7 @@ hostmakedepends+=" autoconf"
 hostmakedepends+=" perl"
 homepage="https://www.gnu.org/software/automake"
 license="GPL-2.0-or-later"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+distfiles="$GNU_SITE/automake/$pkgname-$version.tar.xz"
 checksum="5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
 build_style="gnu-configure"
 

@@ -9,9 +9,9 @@ makedepends+=" lzo-devel"
 makedepends+=" zlib-devel"
 homepage="http://squashfs.sf.net/"
 license="GPL-2"
-distfiles="$SOURCEFORGE_SITE/squashfs/squashfs$version.tar.gz"
+distfiles="$SOURCEFORGE_SITE/squashfs/${pkgname%-*}$version.tar.gz"
 checksum="0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6"
-wrksrc="squashfs$version"
+wrksrc="${pkgname%-*}$version"
 
 do_build() {
   make \

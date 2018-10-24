@@ -5,10 +5,11 @@ revision=3
 short_desc="The GNU diff utilities"
 homepage="http://www.gnu.org/software/diffutils"
 license="GPL-3"
-distfiles="$GNU_SITE/$pkgname/$pkgname-$version.tar.xz"
+distfiles="$GNU_SITE/diffutils/$pkgname-$version.tar.xz"
 checksum="d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6"
 build_style="gnu-configure"
-configure_args="gl_cv_func_gettimeofday_clobber=no gl_cv_func_tzset_clobber=no"
+configure_args+=" gl_cv_func_gettimeofday_clobber=no"
+configure_args+=" gl_cv_func_tzset_clobber=no"
 if [[ -n "$CROSS_BUILD" ]]; then
   # tell configure we have gnu getopt
   configure_args+=" gl_cv_func_getopt_gnu=yes"

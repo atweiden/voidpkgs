@@ -11,9 +11,9 @@ checkdepends+=" perl-Test-Pod-Coverage"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/File-Next"
 license="Artistic, GPL-1"
-distfiles="$CPAN_SITE/File/File-Next-$version.tar.gz"
+distfiles="$CPAN_SITE/File/${pkgname#-*}-$version.tar.gz"
 checksum="6965f25c2c132d0ba7a6f72b57b8bc6d25cf8c1b7032caa3a9bda8612e41d759"
-wrksrc="File-Next-$version"
+wrksrc="${pkgname#-*}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

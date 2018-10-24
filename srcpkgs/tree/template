@@ -5,7 +5,7 @@ revision=2
 short_desc="Resursive directory listing program"
 homepage="http://mama.indstate.edu/users/ice/tree"
 license="GPL-2"
-distfiles="$homepage/src/tree-$version.tgz"
+distfiles="http://mama.indstate.edu/users/ice/tree/src/$pkgname-$version.tgz"
 checksum="6957c20e82561ac4231638996e74f4cfa4e6faabc5a2f511f0b4e3940e8f7b12"
 build_style="gnu-makefile"
 
