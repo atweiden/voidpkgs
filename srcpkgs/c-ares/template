@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="c-ares"
-version=1.14.0
+version=1.15.0
 revision=1
 short_desc="C library that performs DNS requests and name resolves asynchronously"
 homepage="https://c-ares.haxx.se/"
 license="MIT"
 distfiles="https://c-ares.haxx.se/download/$pkgname-$version.tar.gz"
-checksum="45d3c1fd29263ceec2afc8ff9cd06d5f8f889636eb4e80ce3cc7f0eaf7aadc6e"
+checksum="6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852"
 build_style="gnu-configure"
 
 pre_configure() {
