@@ -102,7 +102,7 @@ subversion-python_package() {
   depends="python"
   pycompile_module+=" libsvn"
   pycompile_module+=" svn"
-  short_desc+=" - python bindings"
+  short_desc+=" - Python bindings"
   pkg_install() {
     vmove "usr/lib/libsvn_swig_py*"
     vmove "usr/lib/python*"
@@ -112,7 +112,7 @@ subversion-python_package() {
 subversion-perl_package() {
   lib32disabled="yes"
   depends="perl"
-  short_desc+=" - perl bindings"
+  short_desc+=" - Perl bindings"
   pkg_install() {
     vmove "usr/lib/libsvn_swig_perl*"
     vmove usr/lib/perl5

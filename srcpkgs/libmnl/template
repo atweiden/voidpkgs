@@ -11,7 +11,7 @@ build_style="gnu-configure"
 
 libmnl-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
-  short_desc+=" -- development files"
+  short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"

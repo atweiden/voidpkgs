@@ -71,7 +71,7 @@ libxml2-devel_package() {
 
 libxml2-python_package() {
   lib32disabled="yes"
-  short_desc+=" - python extension"
+  short_desc+=" - Python extension"
   pkg_install() {
     vmove "usr/lib/python*"
     vmove "usr/share/doc/$sourcepkg-python-$version"

@@ -96,7 +96,7 @@ do_install() {
 }
 
 busybox-static_package() {
-  short_desc+=" (statically linked)"
+  short_desc+=" - statically linked"
   pkg_install() {
     vbin busybox-static/busybox busybox.static
   }

@@ -102,7 +102,7 @@ apparmor-vim_package() {
 }
 
 libapparmor_package() {
-  short_desc+=" - Library"
+  short_desc+=" - library"
   pkg_install() {
     vmove "usr/lib/libapparmor.so*"
     if [[ -z "$CROSS_BUILD" ]]; then
@@ -115,7 +115,7 @@ libapparmor_package() {
 }
 
 libapparmor-devel_package() {
-  short_desc+=" - Library development files"
+  short_desc+=" - library - development files"
   depends="$sourcepkg-${version}_$revision"
   pkg_install() {
     vmove usr/include/

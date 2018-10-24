@@ -51,7 +51,7 @@ protobuf-devel_package() {
 }
 
 protobuf-lite_package() {
-  short_desc+=" - Lite version"
+  short_desc+=" - lite version"
   pkg_install() {
     vmove "usr/lib/libprotobuf-lite.so.*"
   }

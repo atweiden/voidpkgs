@@ -199,7 +199,7 @@ clang-analyzer_package() {
   pycompile_dirs="usr/share/scan-view"
   depends+=" clang-${version}_$revision"
   depends+=" python"
-  short_desc+=" - A source code analysis framework"
+  short_desc+=" - source code analysis framework"
   homepage="http://clang-analyzer.llvm.org/"
   pkg_install() {
     vmove usr/share/man/man1/scan-build.1
@@ -213,7 +213,7 @@ clang-tools-extra_package() {
   unset depends
   depends+=" clang-${version}_$revision"
   depends+=" python"
-  short_desc+=" - Extra Clang tools"
+  short_desc+=" - extra Clang tools"
   homepage="http://clang.llvm.org/extra/"
   pkg_install() {
     vmove usr/bin/clang-apply-replacements

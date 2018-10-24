@@ -64,7 +64,7 @@ post_install() {
 
 ghc-doc_package() {
   noarch="yes"
-  short_desc+=" -- documentation"
+  short_desc+=" - documentation"
   pkg_install() {
     vmove usr/share/doc
   }

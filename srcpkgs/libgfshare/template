@@ -32,7 +32,7 @@ libgfshare-devel_package() {
 }
 
 libgfshare-tools_package() {
-  short_desc+="gfsplit and gfcombine tools for multi-way secret-sharing"
+  short_desc+=" - gfsplit and gfcombine tools for multi-way secret-sharing"
   pkg_install() {
     vmove usr/bin/gfcombine
     vmove usr/bin/gfsplit

@@ -55,7 +55,7 @@ ntp-perl_package() {
   depends+=" ntp>=$version"
   depends+=" perl"
   noarch="yes"
-  short_desc+=" - perl scripts"
+  short_desc+=" - Perl scripts"
   pkg_install() {
     vmove usr/bin/ntp-wait
     vmove usr/bin/ntptrace

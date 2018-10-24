@@ -55,7 +55,7 @@ libxslt-devel_package() {
 
 libxslt-python_package() {
   lib32disabled="yes"
-  short_desc+=" - python extension"
+  short_desc+=" - Python extension"
   pycompile_module="libxslt.py"
   pkg_install() {
     vmove "usr/lib/python*"

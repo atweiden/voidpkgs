@@ -111,7 +111,7 @@ ncurses-libs_package() {
   shlib_provides+=" libmenuw.so.5"
   shlib_provides+=" libncursesw.so.5"
   shlib_provides+=" libpanelw.so.5"
-  short_desc+=" -- shared libraries"
+  short_desc+=" - shared libraries"
   pkg_install() {
     vmove "usr/lib/*.so.*"
   }

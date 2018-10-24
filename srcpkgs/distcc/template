@@ -57,7 +57,7 @@ post_install() {
 if [[ -z "$CROSS_BUILD" ]]; then
   distcc-pump_package() {
     depends="distcc-${version}_$revision"
-    short_desc+=" - Pump mode support files"
+    short_desc+=" - pump mode support files"
     pycompile_module="include_server"
     pkg_install() {
       vmove usr/bin/pump

@@ -39,7 +39,7 @@ do_build() {
 }
 
 sccs_package() {
-  short_desc+=" - SCCS"
+  short_desc+=" - sccs"
   pkg_install() {
     make \
       -C sccs \

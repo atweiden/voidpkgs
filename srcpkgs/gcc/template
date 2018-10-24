@@ -546,7 +546,7 @@ libquadmath_package() {
 
 libvtv-devel_package() {
   depends="libvtv>=$_majorver"
-  short_desc+=" - Vtable Verification Runtime Library - development files"
+  short_desc+=" - vtable verification runtime library - development files"
   pkg_install() {
     vmove usr/lib/libvtv.a
     vmove usr/lib/libvtv.so
@@ -554,7 +554,7 @@ libvtv-devel_package() {
 }
 
 libvtv_package() {
-  short_desc+=" - Vtable Verification Runtime Library"
+  short_desc+=" - vtable verification runtime library"
   pkg_install() {
     vmove "usr/lib/libvtv.so.*"
   }
@@ -562,7 +562,7 @@ libvtv_package() {
 
 libatomic-devel_package() {
   depends="libatomic>=$_majorver"
-  short_desc+=" - Atomics library - development files"
+  short_desc+=" - atomics library - development files"
   pkg_install() {
     vmove usr/lib/libatomic.a
     vmove usr/lib/libatomic.so
@@ -570,7 +570,7 @@ libatomic-devel_package() {
 }
 
 libatomic_package() {
-  short_desc+=" - Atomics library"
+  short_desc+=" - atomics library"
   pkg_install() {
     vmove "usr/lib/libatomic.so.*"
   }
@@ -623,7 +623,7 @@ libgomp_package() {
 
 libitm-devel_package() {
   depends="libitm>=$_majorver"
-  short_desc+=" - Transactional Memory library - development files"
+  short_desc+=" - transactional memory library - development files"
   replaces="libitm<4.9.0_1"
   pkg_install() {
     vmove usr/lib/libitm.a
@@ -635,7 +635,7 @@ libitm-devel_package() {
 }
 
 libitm_package() {
-  short_desc+=" - Transactional Memory library"
+  short_desc+=" - transactional memory library"
   pkg_install() {
     vmove "usr/lib/libitm.so.*"
   }
@@ -662,7 +662,7 @@ libmpx_package() {
 
 libsanitizer-devel_package() {
   depends="libsanitizer>=$_majorver"
-  short_desc+=" - Sanitizer libraries - development files"
+  short_desc+=" - sanitizer libraries - development files"
   pkg_install() {
     vmove "usr/lib/lib*san*.so"
     vmove "usr/lib/lib*san*.a"
@@ -672,7 +672,7 @@ libsanitizer-devel_package() {
 }
 
 libsanitizer_package() {
-  short_desc+=" - Sanitizer libraries"
+  short_desc+=" - sanitizer libraries"
   pkg_install() {
     vmove "usr/lib/lib*san*.so.*"
   }
@@ -697,7 +697,7 @@ libssp_package() {
 
 libstdc++-devel_package() {
   depends="libstdc++>=$_majorver"
-  short_desc+=" - Standard C++ Library - development files"
+  short_desc+=" - standard C++ Library - development files"
   pkg_install() {
     vmove "usr/lib/libstdc++.*a"
     vmove "usr/lib/libsupc++.*"
@@ -706,7 +706,7 @@ libstdc++-devel_package() {
 }
 
 libstdc++_package() {
-  short_desc+=" - Standard C++ Library"
+  short_desc+=" - standard C++ Library"
   pkg_install() {
     vmove "usr/lib/libstdc++.so*"
     vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION

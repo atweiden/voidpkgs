@@ -15,14 +15,14 @@ make_check_args="OPTTARGET=none"
 make_check_target="test"
 
 libargon2_package() {
-  short_desc+="Password hashing library"
+  short_desc="Password hashing library"
   pkg_install() {
     vmove "usr/lib/*.so.*"
   }
 }
 
 libargon2-devel_package() {
-  short_desc+="Password hashing library - development files"
+  short_desc="Password hashing library - development files"
   depends="libargon2>=${version}_$revision"
   pkg_install() {
     vmove usr/include

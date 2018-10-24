@@ -39,7 +39,7 @@ cracklib-devel_package() {
 
 cracklib-python_package() {
   depends="python"
-  short_desc+=" - python bindings"
+  short_desc+=" - Python bindings"
   lib32disabled="yes"
   pycompile_module="cracklib.py"
   pkg_install() {

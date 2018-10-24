@@ -2,7 +2,7 @@ maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ldns"
 version=1.7.0
 revision=7
-short_desc="Modern DNS/DNSSEC library -- utils"
+short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
@@ -44,7 +44,7 @@ libldns_package() {
 
 libldns-devel_package() {
   depends="libldns>=${version}_$revision"
-  short_desc="Modern DNS/DNSSEC library -- development files"
+  short_desc="Modern DNS/DNSSEC library - development files"
   pkg_install() {
     vmove usr/bin/ldns-config
     vmove usr/include
