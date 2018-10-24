@@ -490,6 +490,7 @@ constant %PKG = Map.new(
                        subversion-python>,
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
+    'systemtap' => ['systemtap-devel'],
     'talloc' => ['talloc-devel'],
     'tcl' => ['tcl-devel'],
     'tidy5' => qw<libtidy5
