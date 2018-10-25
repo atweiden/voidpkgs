@@ -252,6 +252,7 @@ constant %PKG = Map.new(
                        libgfshare-tools>,
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
+    'libgssglue' => ['libgssglue-devel'],
     'libgudev' => ['libgudev-devel'],
     'libidn' => ['libidn-devel'],
     'libimobiledevice' => ['libimobiledevice-devel'],
