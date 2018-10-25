@@ -293,6 +293,7 @@ constant %PKG = Map.new(
     'libtasn1' => qw<libtasn1-devel
                      libtasn1-tools>,
     'libtermkey' => ['libtermkey-devel'],
+    'libtirpc' => ['libtirpc-devel'],
     'libtomcrypt' => ['libtomcrypt-devel'],
     'libtommath' => ['libtommath-devel'],
     'libtool' => qw<libltdl
