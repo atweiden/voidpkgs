@@ -264,6 +264,7 @@ constant %PKG = Map.new(
     'libmpack' => ['libmpack-devel'],
     'libmpc' => ['libmpc-devel'],
     'libnetfilter_conntrack' => ['libnetfilter_conntrack-devel'],
+    'libnetfilter_cthelper' => ['libnetfilter_cthelper-devel'],
     'libnfnetlink' => ['libnfnetlink-devel'],
     'libnfs' => ['libnfs-devel'],
     'libnftnl' => ['libnftnl-devel'],
