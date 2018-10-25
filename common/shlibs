@@ -274,6 +274,8 @@ libnetfilter_acct.so.1 libnetfilter_acct-1.0.2_1
 libnetfilter_conntrack.so.3 libnetfilter_conntrack-1.0.4_1
 libnetfilter_cthelper.so.0 libnetfilter_cthelper-1.0.0_1
 libnetfilter_cttimeout.so.1 libnetfilter_cttimeout-1.0.0_1
+libnetfilter_log.so.1 libnetfilter_log-1.0.1_1
+libnetfilter_log_libipulog.so.1 libnetfilter_log-1.0.1_1
 libnetfilter_queue.so.1 libnetfilter_queue-1.0.2_1
 libnfnetlink.so.0 libnfnetlink-1.0.1_1
 libnfs.so.12 libnfs-3.0.0_1
