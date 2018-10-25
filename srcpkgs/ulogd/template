@@ -1,23 +1,28 @@
-# Template file for 'ulogd'
-pkgname=ulogd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ulogd"
 version=2.0.7
 revision=1
-build_style=gnu-configure
-maintainer="Cameron Nemo <camerontnorman@gmail.com>"
-hostmakedepends="pkg-config automake"
-makedepends="libnfnetlink-devel libmnl-devel libnetfilter_log-devel
- libnetfilter_conntrack-devel libnetfilter_acct-devel"
-license="GPL-2.0-only"
-homepage="http://www.netfilter.org/projects/ulogd/"
 short_desc="A userspace logging daemon for netfilter/iptables related logging"
-distfiles="${homepage}/files/${pkgname}-${version}.tar.bz2"
-checksum=990a05494d9c16029ba0a83f3b7294fc05c756546b8d60d1c1572dc25249a92b
-configure_args="--sbindir=/usr/bin"
-CFLAGS="-D_GNU_SOURCE"
+makedepends+=" libmnl-devel"
+makedepends+=" libnetfilter_acct-devel"
+makedepends+=" libnetfilter_conntrack-devel"
+makedepends+=" libnetfilter_log-devel"
+makedepends+=" libnfnetlink-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" pkg-config"
+homepage="http://www.netfilter.org/projects/ulogd/"
+license="GPL-2.0-only"
+distfiles="http://www.netfilter.org/projects/ulogd/files/$pkgname-$version.tar.bz2"
+checksum="990a05494d9c16029ba0a83f3b7294fc05c756546b8d60d1c1572dc25249a92b"
+build_style="gnu-configure"
 system_accounts="_ulogd"
 
+CFLAGS="-D_GNU_SOURCE"
+
 post_install() {
-	vinstall ulogd.conf 644 etc
-	vinstall ${FILESDIR}/ulogd.logrotate 644 etc/logrotate.d ulogd
-	vsv ulogd
+  vinstall ulogd.conf 644 etc
+  vinstall "$FILESDIR/ulogd.logrotate" 644 etc/logrotate.d ulogd
+  vsv ulogd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
