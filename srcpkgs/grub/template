@@ -3,6 +3,8 @@ pkgname="grub"
 version=2.02
 revision=3
 short_desc="GRand Unified Bootloader 2"
+only_for_archs+=" aarch64"
+only_for_archs+=" aarch64-musl"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
 only_for_archs+=" x86_64"
@@ -22,16 +24,27 @@ conf_files+=" /etc/default/grub"
 conf_files+=" /etc/grub.d/40_custom"
 nopie="yes"
 subpackages+=" grub-utils"
-subpackages+=" grub-i386-efi"
 
+# _SUPPLEMENTARY_BUILDS is a list of <TARGET>-<PLATFORM> versions of
+# grub to build
 case "$XBPS_TARGET_MACHINE" in
   x86_64*)
+    _NATIVE_PLATFORM="pc"
+    _SUPPLEMENTARY_BUILDS+=" i386-efi"
+    _SUPPLEMENTARY_BUILDS+=" x86_64-efi"
+    subpackages+=" grub-i386-efi"
     subpackages+=" grub-x86_64-efi"
-    _GRUBX64=1
     ;;
   i686*)
-    CFLAGS="-D_FILE_OFFSET_BITS=64"
     configure_args+=" ac_cv_sizeof_off_t=8"
+    CFLAGS="-D_FILE_OFFSET_BITS=64"
+    _NATIVE_PLATFORM="pc"
+    _SUPPLEMENTARY_BUILDS="i386-efi"
+    subpackages+=" grub-i386-efi"
+    ;;
+  aarch64*)
+    _NATIVE_PLATFORM="efi"
+    subpackages+=" grub-arm64-efi"
     ;;
 esac
 
@@ -43,11 +56,11 @@ post_extract() {
 }
 
 do_configure() {
-  unset CC
   unset AS
+  unset CC
+  unset CPP
   unset LD
   unset RANLIB
-  unset CPP
 
   CFLAGS+=" -fno-stack-protector"
 
@@ -60,75 +73,83 @@ do_configure() {
   configure_args+=" --sbindir=/usr/bin"
   configure_args+=" --with-gnu-ld"
 
-  # build BIOS version
-  mkdir "$wrksrc/bios_build"
-  cd "$wrksrc/bios_build"
-  ../configure $configure_args \
-    --with-platform="pc"
+  # fix unifont.bdf location so grub-mkfont can create *.pf2 files
+  sed \
+    -i \
+    -e 's|/usr/share/fonts/unifont|/usr/share/fonts/misc|' \
+    configure
 
-  # build i386 EFI version
-  mkdir "$wrksrc/efi_i386_build"
-  cd "$wrksrc/efi_i386_build"
-  ../configure $configure_args \
-    --with-platform="efi" \
-    --target="i386" \
-    --disable-efiemu \
-    --libdir="/usr/lib"
-
-  if [[ -n "$_GRUBX64" ]]; then
-    mkdir "$wrksrc/efi_build"
-    cd "$wrksrc/efi_build"
-    ../configure $configure_args \
-      --with-platform="efi" \
-      --target="x86_64" \
-      --disable-efiemu
+  # build tools
+  _configure_args="$configure_args"
+  if [[ -n "$_NATIVE_PLATFORM" ]]; then
+    _configure_args+=" --with-platform=$_NATIVE_PLATFORM"
   fi
+  msg_normal "Configuring grub tools...\n"
+  mkdir "$wrksrc/build"
+  cd "$wrksrc/build"
+  ../configure \
+    $_configure_args \
+    --host="$XBPS_TARGET_MACHINE"
+
+  for _SUPP_BUILD in $_SUPPLEMENTARY_BUILDS; do
+    _TARGET="${_SUPP_BUILD%%-*}"
+    _PLATFORM="${_SUPP_BUILD##*-}"
+    msg_normal "Configuring $_TARGET $_PLATFORM grub...\n"
+    mkdir "$wrksrc/${_PLATFORM}_${_TARGET}_build"
+    cd "$wrksrc/${_PLATFORM}_${_TARGET}_build"
+    ../configure \
+      $configure_args \
+      --disable-efiemu \
+      --host="$XBPS_TARGET_MACHINE" \
+      --libdir="/usr/lib" \
+      --target="$_TARGET" \
+      --with-platform="$_PLATFORM"
+  done
 }
 
 do_build() {
   # XXX remove the strip wrapper
   rm "$XBPS_WRAPPERDIR/strip"
 
-  msg_normal "Building BIOS grub...\n"
-  cd "$wrksrc/bios_build"
-  make "$makejobs"
+  msg_normal "Building grub tools...\n"
+  cd "$wrksrc/build"
+  make "$makejobs" &> make.log \
+    || tail -n 100 make.log
 
-  msg_normal "Building i386 EFI grub...\n"
-  cd "$wrksrc/efi_i386_build"
-  make "$makejobs"
-
-  if [[ -n "$_GRUBX64" ]]; then
-    msg_normal "Building EFI grub...\n"
-    cd "$wrksrc/efi_build"
-    make "$makejobs"
-  fi
+  for _SUPP_BUILD in $_SUPPLEMENTARY_BUILDS; do
+    _TARGET="${_SUPP_BUILD%%-*}"
+    _PLATFORM="${_SUPP_BUILD##*-}"
+    msg_normal "Building $_TARGET $_PLATFORM grub...\n"
+    cd "$wrksrc/${_PLATFORM}_${_TARGET}_build"
+    make "$makejobs" &> make.log \
+      || tail -n 100 make.log
+  done
 }
 
 do_install() {
   # XXX remove the strip wrapper
   rm "$XBPS_WRAPPERDIR/strip"
 
-  if [[ -n "$_GRUBX64" ]]; then
-    cd "$wrksrc/efi_build"
-    make DESTDIR="$DESTDIR/efi" install
+  for _SUPP_BUILD in $_SUPPLEMENTARY_BUILDS; do
+    _TARGET="${_SUPP_BUILD%%-*}"
+    _GRUB_TARGET="$_TARGET"
+    case "$_GRUB_TARGET" in
+    aarch64*)
+      _GRUB_TARGET="arm64"
+      ;;
+    esac
+    _PLATFORM="${_SUPP_BUILD##*-}"
+    cd "$wrksrc/${_PLATFORM}_${_TARGET}_build"
+    make DESTDIR="$DESTDIR/${_PLATFORM}_$_TARGET" install
     # remove non-platform specific files
-    rm -rf "$DESTDIR/efi"/{boot,etc,usr/{share,bin}}
-    rm -f "$DESTDIR/efi/usr/lib/grub/x86_64-efi"/x86_64-*
-    rm -f "$DESTDIR/efi/usr/lib/grub/x86_64-efi"/*.{module,image}
-    cp -r "$DESTDIR/efi"/* "$DESTDIR"
-    rm -rf "$DESTDIR/efi"
-  fi
+    rm -rf "$DESTDIR/${_PLATFORM}_$_TARGET"/{boot,etc,usr/{share,bin}}
+    rm -f "$DESTDIR/${_PLATFORM}_$_TARGET/usr/lib/grub/$_GRUB_TARGET-$_PLATFORM"/$_GRUB_TARGET-*
+    rm -f "$DESTDIR/${_PLATFORM}_$_TARGET/usr/lib/grub/$_GRUB_TARGET-$_PLATFORM"/*.{module,image}
+    cp -r "$DESTDIR/${_PLATFORM}_$_TARGET"/* "$DESTDIR"
+    rm -rf "$DESTDIR/${_PLATFORM}_${_TARGET}"
+  done
 
-  cd "$wrksrc/efi_i386_build"
-  make DESTDIR="$DESTDIR/efi_i386" install
-  # remove non-platform specific files
-  rm -rf "$DESTDIR/efi_i386"/{boot,etc,usr/{share,bin}}
-  rm -f "$DESTDIR/efi_i386/usr/lib/grub/i386-efi"/i386-*
-  rm -f "$DESTDIR/efi_i386/usr/lib/grub/i386-efi"/*.{module,image}
-  cp -r "$DESTDIR/efi_i386"/* "$DESTDIR"
-  rm -rf "$DESTDIR/efi_i386"
-
-  cd "$wrksrc/bios_build"
+  cd "$wrksrc/build"
   make DESTDIR="$DESTDIR" install
 
   # required to compress info files
@@ -136,19 +157,19 @@ do_install() {
   touch -f "$DESTDIR/usr/share/info/dir"
 
   vinstall "$FILESDIR/grub.default" 644 etc/default grub
-  # kernel hooks
-  vinstall "$FILESDIR/kernel.d/grub.post" 750 \
-    etc/kernel.d/post-install 50-grub
-  vinstall "$FILESDIR/kernel.d/grub.post" 750 \
-    etc/kernel.d/post-remove 50-grub
 
-  # update-grub for noobs
+  # kernel hooks
+  vinstall "$FILESDIR/kernel.d/grub.post" 750 etc/kernel.d/post-install 50-grub
+  vinstall "$FILESDIR/kernel.d/grub.post" 750 etc/kernel.d/post-remove 50-grub
+
+  # add update-grub executable for newbs
   printf "#!/bin/sh\ngrub-mkconfig -o /boot/grub/grub.cfg\nexit \$?\n" >> \
     "$DESTDIR/usr/bin/update-grub"
   chmod 755 "$DESTDIR/usr/bin/update-grub"
 
   vmkdir usr/share/bash-completion/completions
-  mv "$DESTDIR/etc/bash_completion.d/grub" \
+  mv \
+    "$DESTDIR/etc/bash_completion.d/grub" \
     "$DESTDIR/usr/share/bash-completion/completions"
 
   # remove useless tools
@@ -186,6 +207,18 @@ grub-i386-efi_package() {
   short_desc+=" - i386 EFI support"
   pkg_install() {
     vmove usr/lib/grub/i386-efi
+  }
+}
+
+grub-arm64-efi_package() {
+  unset depends
+  noarch="yes"
+  depends+=" dosfstools"
+  depends+=" efibootmgr"
+  depends+=" grub>=$version"
+  short_desc+=" - arm64 EFI support"
+  pkg_install() {
+    vmove usr/lib/grub/arm64-efi
   }
 }
 
