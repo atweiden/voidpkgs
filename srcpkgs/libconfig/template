@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libconfig"
 version=1.7.2
-revision=1
+revision=2
 short_desc="C Configuration File Library"
 hostmakedepends+=" automake"
 hostmakedepends+=" byacc"
