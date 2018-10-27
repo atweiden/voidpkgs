@@ -1,8 +1,8 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3"
-version=3.6.6
-revision=2
+version=3.6.7
+revision=1
 short_desc="Interpreted, interactive, object-oriented programming language (${version%.*} series)"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
@@ -18,7 +18,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
-checksum="d79bc15d456e73a3173a2938f18a17e5149c850ebdedf84a78067f501ee6e16f"
+checksum="81fd1401a9d66533b0a3e9e3f4ea1c7c6702d57d5b90d659f971e6f1b745f77d"
 wrksrc="Python-$version"
 alternatives+=" python:2to3:/usr/bin/2to3-${version%.*}"
 alternatives+=" python:idle:/usr/bin/idle${version%.*}"
