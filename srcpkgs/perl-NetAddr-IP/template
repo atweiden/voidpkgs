@@ -1,20 +1,21 @@
-# Template build file for 'perl-NetAddr-IP'.
-pkgname=perl-NetAddr-IP
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-NetAddr-IP"
 version=4.079
 revision=7
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="${hostmakedepends}"
-depends="${makedepends}"
 short_desc="NetAddr::IP - Manages IPv4 and IPv6 addresses and subnets"
+depends="perl"
+makedepends="perl"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/NetAddr-IP"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-distfiles="${CPAN_SITE}/NetAddr/NetAddr-IP-${version}.tar.gz"
-checksum=ec5a82dfb7028bcd28bb3d569f95d87dd4166cc19867f2184ed3a59f6d6ca0e7
+distfiles="$CPAN_SITE/NetAddr/${pkgname#*-}-$version.tar.gz"
+checksum="ec5a82dfb7028bcd28bb3d569f95d87dd4166cc19867f2184ed3a59f6d6ca0e7"
+wrksrc="${pkgname#*-}-$version"
+build_style="perl-module"
 
 post_configure() {
-	touch Lite/Util/config.h
-	touch Lite/Util/localperl.h
+  touch Lite/Util/config.h
+  touch Lite/Util/localperl.h
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
