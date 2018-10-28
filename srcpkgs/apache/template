@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apache"
-version=2.4.35
+version=2.4.37
 revision=1
 short_desc="A high performance Unix-based HTTP server"
 makedepends+=" apr-util-devel"
@@ -22,7 +22,7 @@ homepage="http://httpd.apache.org/"
 license="Apache-2.0"
 changelog="http://www.apache.org/dist/httpd/CHANGES_2.4"
 distfiles="http://www.apache.org/dist/httpd/httpd-$version.tar.bz2"
-checksum="2607c6fdd4d12ac3f583127629291e9432b247b782396a563bec5678aae69b56"
+checksum="3498dc5c6772fac2eb7307dc7963122ffe243b5e806e0be4fb51974ff759d726"
 conf_files+=" /etc/apache/extra/*.conf"
 conf_files+=" /etc/apache/httpd.conf"
 conf_files+=" /etc/apache/magic"
@@ -89,13 +89,13 @@ configure_args+=" --enable-usertrack"
 configure_args+=" --enable-vhost-alias"
 configure_args+=" --prefix="
 configure_args+=" --sbindir=/usr/bin"
-configure_args+=" --sysconfdir=/etc/$pkgname"
+configure_args+=" --sysconfdir=/etc/apache"
 configure_args+=" --with-apr-util=$XBPS_CROSS_BASE/usr/bin/apu-1-config"
 configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr/bin/apr-1-config"
 configure_args+=" --with-pcre=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-z=$XBPS_CROSS_BASE/usr"
-system_accounts="_$pkgname"
-_apache_homedir="/srv/www/$pkgname"
+system_accounts="_apache"
+_apache_homedir="/srv/www/apache"
 
 # do not redefine struct iovec in include/apr_want.h
 CFLAGS="-DAPR_IOVEC_DEFINED=1 -I$XBPS_CROSS_BASE/usr/include/apr-1"
