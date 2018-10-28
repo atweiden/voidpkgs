@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ansible"
-version=2.7.0
+version=2.7.1
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 noarch="yes"
@@ -13,7 +13,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="https://releases.ansible.com/ansible/$pkgname-$version.tar.gz"
-checksum="a1ab8e0f13e79a20661ad6546f45a142afeaeb664deb2c290e32362d8ae5b618"
+checksum="e7953472347fcc6dca10839111b576a9f790e00056344f2dcf448e6c452fe939"
 build_style="python3-module"
 pycompile_module="ansible"
 
@@ -21,9 +21,8 @@ post_install() {
   for m in docs/man/man1/*.1; do
     vman "$m"
   done
-  for f in examples/*; do
-    vsconf "$f"
-  done
+  vsconf examples/ansible.cfg
+  vsconf examples/hosts
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
