@@ -1,58 +1,88 @@
-# Template file for 'docker'
-pkgname=docker
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="docker"
 version=18.06.1
 revision=1
-_subversion='-ce'
+_subversion="-ce"
 _version="$version$_subversion"
-wrksrc="$pkgname$_subversion-$_version"
-hostmakedepends="git go pkg-config curl cmake"
-makedepends="libbtrfs-devel sqlite-devel device-mapper-devel libseccomp-devel libapparmor-devel libltdl-devel"
 short_desc="Pack, ship and run any application as a lightweight container"
-maintainer="Andrea Brancaleoni <abc@pompel.me>"
-license="Apache-2.0"
+only_for_archs+=" x86_64"
+only_for_archs+=" x86_64-musl"
+depends+=" git"
+depends+=" iptables"
+depends+=" xz"
+makedepends+=" device-mapper-devel"
+makedepends+=" libapparmor-devel"
+makedepends+=" libbtrfs-devel"
+makedepends+=" libltdl-devel"
+makedepends+=" libseccomp-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends+=" cmake"
+hostmakedepends+=" curl"
+hostmakedepends+=" git"
+hostmakedepends+=" go"
+hostmakedepends+=" pkg-config"
 homepage="http://www.docker.io"
+license="Apache-2.0"
 distfiles="https://github.com/docker/docker-ce/archive/v$_version.tar.gz"
-checksum=153cb489033686260dfe7a42acbdd1753d56f7a9c2d7ad90633f0c8cce563b23
-
-# These are required at run-time.
-depends="iptables xz git"
-nopie=yes
-nostrip=yes
-nocross=yes
-only_for_archs="x86_64 x86_64-musl"
+checksum="153cb489033686260dfe7a42acbdd1753d56f7a9c2d7ad90633f0c8cce563b23"
+wrksrc="$pkgname$_subversion-$_version"
+nopie="yes"
+nostrip="yes"
+nocross="yes"
 system_groups="docker"
 
-_docker_components="runc containerd tini proxy dockercli"
+_docker_components+=" runc"
+_docker_components+=" containerd"
+_docker_components+=" tini"
+_docker_components+=" proxy"
+_docker_components+=" dockercli"
 
 do_build() {
-	cd components/cli
-# AUTO_GOPATH=1 doesn't seem to work for CLI
-	rm -rf .gopath
-	mkdir -p .gopath/src/github.com/docker
-	ln -sf $wrksrc/components/cli .gopath/src/github.com/docker/
-	GOPATH=$wrksrc/components/cli/.gopath LDFLAGS='' \
-		make VERSION=$_version dynbinary
-	rm -rf .gopath
+  cd components/cli
+  # AUTO_GOPATH=1 doesn't seem to work for cli
+  rm -rf .gopath
+  mkdir -p .gopath/src/github.com/docker
+  ln -sf "$wrksrc/components/cli" .gopath/src/github.com/docker/
+  GOPATH="$wrksrc/components/cli/.gopath" \
+  LDFLAGS="" \
+    make VERSION="$_version" dynbinary
+  rm -rf .gopath
 
-	cd ../../components/engine
-	AUTO_GOPATH=1 DOCKER_BUILDTAGS='seccomp apparmor' VERSION=$_version DOCKER_GITCOMMIT=v$_version \
-		hack/make.sh dynbinary
+  cd ../../components/engine
+  AUTO_GOPATH=1 \
+  DOCKER_BUILDTAGS="seccomp apparmor" \
+  VERSION="$_version" \
+  DOCKER_GITCOMMIT="v$_version" \
+    hack/make.sh dynbinary
 }
 
 pre_build() {
-	cd components/engine
-	vmkdir usr/bin
-	sed -i "s|/usr/local|$DESTDIR/usr|g" hack/dockerfile/install/install.sh
-	for COMPONENT in $_docker_components; do
-		AUTO_GOPATH=1 LDFLAGS='' DOCKER_BUILDTAGS='seccomp apparmor' DOCKER_GITCOMMIT=v$_version \
-			hack/dockerfile/install/install.sh $COMPONENT
-	done
+  cd components/engine
+  vmkdir usr/bin
+  sed \
+    -i \
+    -e "s|/usr/local|$DESTDIR/usr|g" \
+    hack/dockerfile/install/install.sh
+  for COMPONENT in $_docker_components; do
+    AUTO_GOPATH=1 \
+    LDFLAGS="" \
+    DOCKER_BUILDTAGS="seccomp apparmor" \
+    DOCKER_GITCOMMIT="v$_version" \
+      hack/dockerfile/install/install.sh "$COMPONENT"
+  done
 }
 
 do_install() {
-	vbin ${wrksrc}/components/engine/bundles/dynbinary-daemon/dockerd dockerd
-	vbin ${wrksrc}/components/cli/build/docker docker
-	vinstall ${wrksrc}/components/cli/contrib/completion/bash/docker 644 usr/share/bash-completion/completions
-	vinstall ${wrksrc}/components/cli/contrib/completion/zsh/_docker 644 usr/share/zsh/site-functions
-	vsv docker
+  vbin "$wrksrc/components/engine/bundles/dynbinary-daemon/dockerd" dockerd
+  vbin "$wrksrc/components/cli/build/docker" docker
 }
+
+post_install() {
+  vinstall "$wrksrc/components/cli/contrib/completion/bash/docker" 644 \
+    usr/share/bash-completion/completions
+  vinstall "$wrksrc/components/cli/contrib/completion/zsh/_docker" 644 \
+    usr/share/zsh/site-functions
+  vsv docker
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
