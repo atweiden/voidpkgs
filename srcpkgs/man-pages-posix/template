@@ -1,19 +1,20 @@
-# Template file for 'man-pages-posix'
-pkgname=man-pages-posix
-_distver=2013
-_revver=a
-wrksrc="${pkgname}-${_distver}-${_revver}"
-version=${_distver}${_revver}
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="man-pages-posix"
+_distver="2013"
+_revver="a"
+version=$_distver$_revver
 revision=3
-noarch="yes"
 short_desc="Manual pages about POSIX systems"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="POSIX-COPYRIGHT"
+noarch="yes"
 homepage="https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/"
-distfiles="${KERNEL_SITE}/docs/man-pages/$pkgname/$pkgname-${_distver}-${_revver}.tar.xz"
-checksum=19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808
+license="POSIX-COPYRIGHT"
+distfiles="$KERNEL_SITE/docs/man-pages/$pkgname/$pkgname-$_distver-$_revver.tar.xz"
+checksum="19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808"
+wrksrc="$pkgname-$_distver-$_revver"
 
 do_install() {
-	make all prefix=${DESTDIR}/usr
-	vlicense POSIX-COPYRIGHT
+  make all prefix="$DESTDIR/usr"
+  vlicense POSIX-COPYRIGHT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
