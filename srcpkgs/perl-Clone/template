@@ -8,9 +8,9 @@ makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Clone"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/Clone/${pkgname#-*}-$version.tar.gz"
+distfiles="$CPAN_SITE/Clone/${pkgname#*-}-$version.tar.gz"
 checksum="e8c056dcf4bc8889079a09412af70194a54a269689ba72edcd91291a46a51518"
-wrksrc="${pkgname#-*}-$version"
+wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
