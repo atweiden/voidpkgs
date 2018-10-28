@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="icu"
 version=63.1
-revision=1
+revision=2
 short_desc="Robust and full-featured Unicode services"
 hostmakedepends="pkg-config"
 homepage="http://www.icu-project.org/"
