@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="voidvault"
-version=1.0.0
+version=1.2.0
 revision=1
 short_desc="Bootstrap Void with FDE"
 noarch="yes"
@@ -26,12 +26,12 @@ tags="perl6"
 homepage="https://github.com/atweiden/voidvault"
 license="Unlicense"
 distfiles="https://github.com/atweiden/voidvault/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="946f08ca8e89b5c3f0b9410570dd833673ffbb875787b6a1791a4c91a0e7f8e1"
+checksum="d6ebd4bf980f039e714b4971ef375a268d7e9cd0e955b32aa2f836df814482bb"
 build_style="rakudo-perl6"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
-    broken="Only valid for glibc systems"
+    broken="Only for glibc systems"
     ;;
   *)
     ;;
