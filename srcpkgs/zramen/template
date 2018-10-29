@@ -15,6 +15,7 @@ homepage="https://github.com/atweiden/zramen"
 license="Unlicense"
 distfiles="https://github.com/atweiden/zramen/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="f657e6327e1f7a43d1e0ccc54c3fb917cfc5b0884447723def8796bbf0d354ff"
+conf_files="/etc/sv/zramen/conf"
 
 do_install() {
   vbin zramen
