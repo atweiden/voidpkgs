@@ -1,26 +1,43 @@
-# Template file for 'mdadm'
-pkgname=mdadm
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mdadm"
 version=4.1
 revision=1
-hostmakedepends="pkg-config"
-makedepends="eudev-libudev-devel"
 short_desc="Tool for managing/monitoring Linux md device arrays"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2"
+makedepends="eudev-libudev-devel"
+hostmakedepends="pkg-config"
 homepage="https://git.kernel.org/cgit/utils/mdadm/mdadm.git/log/"
-distfiles="${KERNEL_SITE}/utils/raid/${pkgname}/${pkgname}-${version}.tar.xz"
-checksum=ab7688842908d3583a704d491956f31324c3a5fc9f6a04653cb75d19f1934f4a
+license="GPL-2"
+distfiles="$KERNEL_SITE/utils/raid/mdadm/$pkgname-$version.tar.xz"
+checksum="ab7688842908d3583a704d491956f31324c3a5fc9f6a04653cb75d19f1934f4a"
 
 pre_configure() {
-	sed -i 's,^install : mdadm mdmon,install: ,g' Makefile
+  sed \
+    -i \
+    -e 's,^install : mdadm mdmon,install: ,g' \
+    Makefile
 }
+
 do_build() {
-	make ${makejobs} CC=$CC \
-		CFLAGS="$CFLAGS -DNO_COROSYNC -DNO_DLM -Wno-error" \
-		BINDIR=/usr/bin LDFLAGS="$LDFLAGS"
+  make \
+    "$makejobs" \
+    BINDIR="/usr/bin" \
+    CC="$CC" \
+    CFLAGS="$CFLAGS -DNO_COROSYNC -DNO_DLM -Wno-error" \
+    LDFLAGS="$LDFLAGS"
 }
+
 do_install() {
-	make BINDIR=/usr/bin STRIP= PREFIX=/usr DESTDIR=${DESTDIR} install
-	vsv mdadm
-	vsconf mdadm.conf-example mdadm.conf
+  make \
+    BINDIR="/usr/bin" \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    STRIP= \
+    install
 }
+
+post_install() {
+  vsconf mdadm.conf-example mdadm.conf
+  vsv mdadm
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
