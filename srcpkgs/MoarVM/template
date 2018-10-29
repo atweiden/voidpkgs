@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="MoarVM"
-version=2018.09
+version=2018.10
 revision=1
 short_desc="A VM for NQP and Rakudo Perl 6"
 makedepends+=" libatomic_ops-devel"
@@ -15,7 +15,7 @@ tags="perl6"
 homepage="https://moarvm.org"
 license="Artistic-2.0"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="1a7f4363dee1feacc230928c81d280182d4d969398669bf145235f35b49f8fe7"
+checksum="acbaaa2695bbb5f2b965d65d0d1a947574efad7fe1af31237ed4e6b6b1225284"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --has-libatomic_ops"
