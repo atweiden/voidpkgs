@@ -1,20 +1,21 @@
-# Template file for 'keybase'
-pkgname=keybase
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="keybase"
 version=2.7.3
 revision=1
-wrksrc="client-${version}"
-build_style=go
-go_import_path="github.com/keybase/client"
-go_package="${go_import_path}/go/keybase"
-go_build_tags="production"
-depends="gnupg2"
 short_desc="Client for keybase.io"
-maintainer="Toyam Cox <Vaelatern@voidlinux.eu>"
-license="BSD-3-Clause"
+depends="gnupg2"
 homepage="https://keybase.io/"
-distfiles="https://github.com/keybase/client/archive/v${version}.tar.gz"
-checksum=cc14d469dd3c174c89d16c3ff5bf794f359b1c177af45a5c838f6dbbbcadf569
+license="BSD-3-Clause"
+distfiles="https://github.com/keybase/client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="cc14d469dd3c174c89d16c3ff5bf794f359b1c177af45a5c838f6dbbbcadf569"
+wrksrc="client-$version"
+build_style="go"
+go_import_path="github.com/keybase/client"
+go_package="github.com/keybase/client/go/keybase"
+go_build_tags="production"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
