@@ -1,6 +1,7 @@
 Programming Languages
 =====================
 
+- Ada
 - Bash
 - C
 - Elixir
