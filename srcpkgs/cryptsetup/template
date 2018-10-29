@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cryptsetup"
-version=2.0.4
+version=2.0.5
 revision=1
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
@@ -14,7 +14,7 @@ homepage="https://gitlab.com/cryptsetup/cryptsetup"
 license="GPL-2.0-or-later"
 changelog="https://gitlab.com/cryptsetup/cryptsetup/raw/master/docs/v$version-ReleaseNotes"
 distfiles="$KERNEL_SITE/utils/cryptsetup/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="9d3a3c7033293e0c97f0ad0501fd5b4d4913ae497cbf70cca06633ccc54b5734"
+checksum="a0f72ca2c824a5a555dc8924413dfe947eca23ab2e30bcff54eaafefe5fe301d"
 build_style="gnu-configure"
 configure_args+=" --enable-cryptsetup-reencrypt"
 configure_args+=" --enable-libargon2"
