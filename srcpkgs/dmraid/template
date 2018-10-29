@@ -1,29 +1,32 @@
-# Template file for 'dmraid'
-pkgname=dmraid
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dmraid"
 _distver=1.0.0.rc16
 _patchver=3
-version="${_distver}.${_patchver}"
+version=$_distver.$_patchver
 revision=11
-wrksrc="${pkgname}"
-build_wrksrc="${_distver}-${_patchver}/${pkgname}"
-build_style=gnu-configure
-configure_args="--enable-led --enable-intel_led --enable-shared_lib"
-makedepends="device-mapper-devel"
-lib32disabled=yes
-disable_parallel_build="yes"
 short_desc="Device mapper RAID interface"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2, LGPL-2.1"
+makedepends="device-mapper-devel"
 homepage="http://people.redhat.com/~heinzm/sw/dmraid/"
-distfiles="${homepage}/src/dmraid-${_distver}-${_patchver}.tar.bz2"
-checksum=93421bd169d71ff5e7d2db95b62b030bfa205a12010b6468dcdef80337d6fbd8
+license="GPL-2, LGPL-2.1"
+distfiles="http://people.redhat.com/~heinzm/sw/dmraid/src/$pkgname-$_distver-$_patchver.tar.bz2"
+checksum="93421bd169d71ff5e7d2db95b62b030bfa205a12010b6468dcdef80337d6fbd8"
+wrksrc="$pkgname"
+build_wrksrc="$_distver-$_patchver/$pkgname"
+build_style="gnu-configure"
+configure_args+=" --enable-intel_led"
+configure_args+=" --enable-led"
+configure_args+=" --enable-shared_lib"
+lib32disabled="yes"
+disable_parallel_build="yes"
 
 dmraid-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
