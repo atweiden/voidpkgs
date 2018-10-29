@@ -7,12 +7,13 @@ _isl_version=0.19
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gcc"
 version=$_majorver.0
-revision=4
+revision=5
 short_desc="The GNU C Compiler"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
 depends+=" libssp-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
+checkdepends="dejagnu"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
@@ -30,6 +31,22 @@ checksum+=" 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
 checksum+=" 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e"
 checksum+=" 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
 checksum+=" d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8"
+build_options="gnatboot"
+desc_option_gnatboot="Bootstrap Ada using AdaCore GNAT GPL binaries"
+case "$XBPS_TARGET_MACHINE" in
+  x86_64)
+    _gnat_tarball="gnat-gpl-2017-x86_64-linux-bin.tar.gz"
+    distfiles+=" http://mirrors.cdn.adacore.com/art/591c6d80c7a447af2deed1d7>$_gnat_tarball"
+    checksum+=" b942bcac20dea39748b39f8b624d9619f60a8dee2e8195dbe3829c835b0956e6"
+    build_options_default="gnatboot"
+    ;;
+  i686)
+    _gnat_tarball="gnat-gpl-2014-x86-linux-bin.tar.gz"
+    distfiles+=" http://mirrors.cdn.adacore.com/art/564b3e9dc8e196b040fbe248>$_gnat_tarball"
+    checksum+=" 3b693510f5d22a240abb3034934c1adbd80ccd6e4f61a4f491cc408fdfd9c042"
+    build_options_default="gnatboot"
+    ;;
+esac
 nopie="yes"
 lib32disabled="yes"
 bootstrap="yes"
@@ -68,6 +85,13 @@ fi
 subpackages+=" libstdc++-devel"
 subpackages+=" libstdc++"
 subpackages+=" libgcc-devel"
+
+if [[ -n "$build_option_gnatboot" ]]; then
+  subpackages+=" gcc-ada"
+  subpackages+=" libada-devel"
+  subpackages+=" libada"
+fi
+# TODO: is host's gcc able to compile ada and enable the subpackages?
 
 case "$XBPS_TARGET_MACHINE" in
   i686)
@@ -165,6 +189,20 @@ post_extract() {
   cp -ar "$XBPS_BUILDDIR/mpfr-$_mpfr_version"/* "$wrksrc/mpfr/"
   cp -ar "$XBPS_BUILDDIR/mpc-$_mpc_version"/* "$wrksrc/mpc/"
   cp -ar "$XBPS_BUILDDIR/isl-$_isl_version"/* "$wrksrc/isl/"
+  if [[ -n "$build_option_gnatboot" ]]; then
+    local f
+    f="$XBPS_SRCDISTDIR/$pkgname-$version/$_gnat_tarball"
+    msg_normal "Extracting $_gnat_tarball ...\n"
+    mkdir -p "$wrksrc/gnat-ins"
+    tar -x -f "$f" --strip-components=1 -C "$wrksrc/gnat-ins"
+    cd "$wrksrc/gnat-ins"
+    make ins-all prefix="$wrksrc/gnat"
+    cd "$wrksrc"
+    rm -rf "$wrksrc/gnat-ins"
+    # rename obsolete ld and as
+    find "$wrksrc/gnat" -name ld -exec mv -v {} {}.old \;
+    find "$wrksrc/gnat" -name as -exec mv -v {} {}.old \;
+  fi
 }
 
 pre_configure() {
@@ -234,28 +272,25 @@ do_configure() {
     export CC_FOR_TARGET="$CC"
     export GCC_FOR_TARGET="$CC"
     export CXX_FOR_TARGET="$CXX"
-    _args+=" --disable-multilib"
     _args+=" --enable-sjlj-exceptions=no"
     _args+=" --host=$XBPS_CROSS_TRIPLET"
     _args+=" --with-build-sysroot=$XBPS_CROSS_BASE"
     _langs+=",fortran"
+  elif [[ -z "$CHROOT_READY" ]]; then
+    export LD_LIBRARY_PATH="$XBPS_MASTERDIR/usr/lib"
+    _args+=" --build=$_triplet"
   else
-    if [[ -z "$CHROOT_READY" ]]; then
-      export LD_LIBRARY_PATH="$XBPS_MASTERDIR/usr/lib"
-      _args+=" --build=$_triplet"
-    else
-      _langs="c,c++,objc,obj-c++,fortran,lto"
-      case "$XBPS_TARGET_MACHINE" in
-        *-musl)
-          # linking libgo.so is broken for musl libc
-          ;;
-        *)
-          _langs+=",go"
-          ;;
-      esac
-      _args+=" --build=$_triplet"
-      _args+=" --enable-fast-character"
-    fi
+    _langs="c,c++,objc,obj-c++,fortran,lto"
+    case "$XBPS_TARGET_MACHINE" in
+      *-musl)
+        # linking libgo.so is broken for musl libc
+        ;;
+      *)
+        _langs+=",go"
+        ;;
+    esac
+    _args+=" --build=$_triplet"
+    _args+=" --enable-fast-character"
   fi
 
   case "$XBPS_TARGET_MACHINE" in
@@ -280,6 +315,7 @@ do_configure() {
   # disable explicit -fno-PIE, gcc will figure this out itself
   export CFLAGS="${CFLAGS//-fno-PIE/}"
   export CXXFLAGS="${CXXFLAGS//-fno-PIE/}"
+  export LDFLAGS="${LDFLAGS//-no-pie/}"
 
   _args+=" --disable-libstdcxx-pch"
   _args+=" --disable-libunwind-exceptions"
@@ -291,7 +327,6 @@ do_configure() {
   _args+=" --enable-checking=release"
   _args+=" --enable-default-pie"
   _args+=" --enable-default-ssp"
-  _args+=" --enable-languages=$_langs"
   _args+=" --enable-linker-build-id"
   _args+=" --enable-lto"
   _args+=" --enable-plugins"
@@ -309,7 +344,20 @@ do_configure() {
 
   mkdir -p build
   cd build
-  CONFIG_SHELL="/bin/bash" "$wrksrc/configure" $_args
+  if [[ -n "$build_option_gnatboot" ]]; then
+    _args+=" --enable-languages=$_langs,ada"
+    _args+=" --enable-libada"
+    CC="$wrksrc/gnat/bin/gcc" \
+    CONFIG_SHELL="/bin/bash" \
+    GNATBIND="$wrksrc/gnat/bin/gnatbind" \
+    GNATMAKE="$wrksrc/gnat/bin/gnatmake" \
+    PATH="$wrksrc/gnat/bin:$PATH" \
+      "$wrksrc/configure" $_args
+  else
+    _args+=" --enable-languages=$_langs"
+    CONFIG_SHELL="/bin/bash" \
+      "$wrksrc/configure" $_args
+  fi
 }
 
 do_build() {
@@ -317,7 +365,15 @@ do_build() {
     export LD_LIBRARY_PATH="$XBPS_MASTERDIR/usr/lib"
   fi
   cd build
-  make "$makejobs"
+  if [[ -n "$build_option_gnatboot" ]]; then
+    CC="$wrksrc/gnat/bin/gcc" \
+    GNATBIND="$wrksrc/gnat/bin/gnatbind" \
+    GNATMAKE="$wrksrc/gnat/bin/gnatmake" \
+    PATH="$wrksrc/gnat/bin:$PATH" \
+      make "$makejobs"
+  else
+    make "$makejobs"
+  fi
 }
 
 pre_install() {
@@ -388,6 +444,29 @@ do_install() {
       rm -f "$DESTDIR/usr/share/info/libquadmath.info"
       ;;
   esac
+}
+
+gcc-ada_package() {
+  unset depends
+  lib32disabled="yes"
+  depends+=" gcc>=$_majorver"
+  depends+=" libada>=$_majorver"
+  short_desc+=" - Ada compiler frontend"
+  pkg_install() {
+    for f in gnatbind \
+             gnatchop \
+             gnatclean \
+             gnatfind \
+             gnatkr \
+             gnatlink \
+             gnatls \
+             gnatmake \
+             gnatname \
+             gnatprep \
+             gnatxref; do
+      vmove "usr/bin/$f"
+    done
+  }
 }
 
 gcc-go_package() {
@@ -466,6 +545,22 @@ gcc-objc_package() {
   pkg_install() {
     vmove "usr/lib/gcc/$_triplet/$_majorver/include/objc"
     vmove "usr/lib/gcc/$_triplet/$_majorver/cc1obj"
+  }
+}
+
+libada-devel_package() {
+  depends="libada>=$_majorver"
+  short_desc+=" - Ada library - development files"
+  pkg_install() {
+    vmove "usr/lib/gcc/$_triplet/$_majorver/adainclude"
+    vmove "usr/lib/gcc/$_triplet/$_majorver/plugin/include/ada"
+  }
+}
+
+libada_package() {
+  short_desc=" - Ada library"
+  pkg_install() {
+    vmove "usr/lib/gcc/$_triplet/$_majorver/adalib"
   }
 }
 

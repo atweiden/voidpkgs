@@ -123,11 +123,14 @@ constant %PKG = Map.new(
     'flex' => ['libfl-devel'],
     'fuse' => ['fuse-devel'],
     'gc' => ['gc-devel'],
-    'gcc' => qw<gcc-fortran
+    'gcc' => qw<gcc-ada
+                gcc-fortran
                 gcc-go
                 gcc-go-tools
                 gcc-objc
                 gcc-objc++
+                libada
+                libada-devel
                 libatomic
                 libatomic-devel
                 libgcc
