@@ -7,7 +7,7 @@ noarch="yes"
 depends+=" bash"
 depends+=" encfs"
 homepage="https://xyne.archlinux.ca/projects/quixand/"
-license="GPL-2"
+license="GPL-2.0-only"
 distfiles="https://xyne.archlinux.ca/projects/quixand/src/$pkgname-$version.tar.xz"
 checksum="3d8f1b03de824d5b9357b5479ecdfcdce22985671eac5234199fb4504cb2ba11"
 
