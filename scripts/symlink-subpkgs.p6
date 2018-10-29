@@ -104,6 +104,7 @@ constant %PKG = Map.new(
                  dbus-libs>,
     'dhcp' => ['dhclient'],
     'distcc' => ['distcc-pump'],
+    'dmraid' => ['dmraid-devel'],
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
     'duktape' => ['duktape-devel'],
