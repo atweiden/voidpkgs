@@ -1,0 +1,36 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="politeia"
+version=20181025
+revision=1
+_gitrev="652443ae5d247f7f4e33c9cce8a1f01d87cf3e14"
+short_desc="Decred proposal system"
+hostmakedepends+=" dep"
+hostmakedepends+=" git"
+tags="decred"
+homepage="https://github.com/decred/politeia"
+license="ISC"
+distfiles="https://github.com/decred/politeia/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="4145e76f3bf16dbfb20eb01495cd1045f3bd8e4d192686cf3f5e17c5c650cb6b"
+wrksrc="$pkgname-$_gitrev"
+build_style="go"
+go_import_path="github.com/decred/politeia"
+
+do_build() {
+  cd "$GOSRCPATH"
+  dep ensure -v
+  go install -v ./...
+}
+
+post_install() {
+  vlicense "$GOSRCPATH/LICENSE"
+  vdoc "$GOSRCPATH/README.md"
+  vdoc "$GOSRCPATH/politeia.md"
+  vdoc "$GOSRCPATH/politeiad/sample-politeiad.conf"
+  vdoc "$GOSRCPATH/politeiavoter/sample-politeiavoter.conf"
+  vdoc "$GOSRCPATH/politeiawww/sample-politeiawww.conf"
+  vdoc "$GOSRCPATH/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf"
+  vdoc "$GOSRCPATH/cmd/politeiawwwcli/sample-politeiawwwcli.conf"
+  vcopy "$GOSRCPATH/examples" "usr/share/doc/$pkgname"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
