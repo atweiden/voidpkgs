@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apache"
-version=2.4.35
+version=2.4.37
 revision=2
 short_desc="A high performance Unix-based HTTP server"
 makedepends+=" apr-util-devel"
@@ -22,7 +22,7 @@ homepage="http://httpd.apache.org/"
 license="Apache-2.0"
 changelog="http://www.apache.org/dist/httpd/CHANGES_2.4"
 distfiles="https://archive.apache.org/dist/httpd/httpd-$version.tar.bz2"
-checksum="2607c6fdd4d12ac3f583127629291e9432b247b782396a563bec5678aae69b56"
+checksum="3498dc5c6772fac2eb7307dc7963122ffe243b5e806e0be4fb51974ff759d726"
 conf_files+=" /etc/apache/extra/*.conf"
 conf_files+=" /etc/apache/httpd.conf"
 conf_files+=" /etc/apache/magic"
