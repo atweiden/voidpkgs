@@ -36,7 +36,7 @@ if [[ -n "$(vopt_if clang clang)" ]]; then
   nopie="yes"
 fi
 build_options="clang"
-desc_option_png="Use clang instead of gcc to compile MoarVM"
+desc_option_clang="Use clang instead of gcc to compile MoarVM"
 shlib_provides="libmoar.so"
 
 post_install() {
