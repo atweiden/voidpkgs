@@ -1,32 +1,44 @@
-# Template file for 'strace'
-pkgname=strace
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="strace"
 version=4.25
 revision=1
-build_style=gnu-configure
-configure_args="--with-libunwind"
-makedepends="libunwind-devel"
 short_desc="A System Call Tracer"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-3-Clause"
+makedepends="libunwind-devel"
 homepage="https://strace.io/"
-distfiles="https://github.com/strace/strace/releases/download/v${version}/strace-${version}.tar.xz"
-checksum=d685f8e65470b7832c3aff60c57ab4459f26ff89f07c10f92bd70ee89efac701
+license="BSD-3-Clause"
+distfiles="https://github.com/strace/strace/releases/download/v$version/$pkgname-$version.tar.xz"
+checksum="d685f8e65470b7832c3aff60c57ab4459f26ff89f07c10f92bd70ee89efac701"
+build_style="gnu-configure"
+configure_args="--with-libunwind"
 
 case "$XBPS_TARGET_MACHINE" in
-	aarch64-musl) configure_args=; makedepends= ;;
+  aarch64-musl)
+    configure_args=
+    makedepends=
+    ;;
 esac
 
 case "$XBPS_TARGET_MACHINE" in
-	aarch64*) configure_args+=" --enable-mpers=no"
+  aarch64*)
+    configure_args+=" --enable-mpers=no"
+    ;;
 esac
 
 pre_configure() {
-	sed -i -e 's/include <linux\/socket.h>/include <sys\/socket.h>/g' configure
-	sed -i -e 's/include <sgidefs.h>/include <asm\/sgidefs.h>/g' configure
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl) export CFLAGS+=" -Dsigcontext_struct=sigcontext";;
-	esac
+  sed \
+    -i \
+    -e 's/include <linux\/socket.h>/include <sys\/socket.h>/g' \
+    -e 's/include <sgidefs.h>/include <asm\/sgidefs.h>/g' \
+    configure
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      export CFLAGS+=" -Dsigcontext_struct=sigcontext"
+      ;;
+  esac
 }
+
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
