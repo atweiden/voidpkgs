@@ -177,6 +177,8 @@ libjansson.so.4 jansson-2.4_1
 libjq.so.1 jq-devel-1.4_1
 libjson-c.so.4 json-c-0.13.1_1
 liblapack.so.3 lapack-3.5.0_1
+libgnarl-8.so libada-8.2.0_5
+libgnat-8.so libada-8.2.0_5
 libaio.so.1 libaio-0.3.109_1
 libapparmor.so.1 libapparmor-2.12.0_1
 libarchive.so.13 libarchive-3.1.2_1
