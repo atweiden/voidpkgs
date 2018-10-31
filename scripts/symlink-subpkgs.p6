@@ -352,6 +352,8 @@ constant %PKG = Map.new(
                  device-mapper-devel
                  liblvm2app
                  liblvm2app-devel>,
+    'lxc' => qw<liblxc
+                lxc-devel>,
     'lz4' => qw<liblz4
                 liblz4-devel
                 lz4-devel>,
