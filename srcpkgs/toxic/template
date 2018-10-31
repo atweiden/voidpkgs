@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="toxic"
-version=0.8.2
-revision=2
+version=0.8.3
+revision=1
 short_desc="An ncurses-based Tox client"
 makedepends+=" libconfig-devel"
 makedepends+=" libcurl-devel"
@@ -14,7 +14,7 @@ homepage="https://github.com/JFreegman/toxic"
 license="GPL-3.0-or-later"
 changelog="https://github.com/JFreegman/toxic/raw/master/CHANGELOG.md"
 distfiles="https://github.com/JFreegman/toxic/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="53bdbed3d72d000f9e43b8823523c589540b811bc237ed6f3b4ddf0fe6f9a6b7"
+checksum="97f26ba2c257c10439fd2ff280ca90c37ed225d86f46740a08f02ff2e4459e0e"
 build_style="gnu-makefile"
 make_build_args+=" DISABLE_AV=1"
 make_build_args+=" DISABLE_DESKTOP_NOTIFY=1"
