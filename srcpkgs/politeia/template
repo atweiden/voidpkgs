@@ -28,8 +28,8 @@ post_install() {
   vdoc "$GOSRCPATH/politeiad/sample-politeiad.conf"
   vdoc "$GOSRCPATH/politeiavoter/sample-politeiavoter.conf"
   vdoc "$GOSRCPATH/politeiawww/sample-politeiawww.conf"
-  vdoc "$GOSRCPATH/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf"
-  vdoc "$GOSRCPATH/cmd/politeiawwwcli/sample-politeiawwwcli.conf"
+  vdoc "$GOSRCPATH/politeiawww/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf"
+  vdoc "$GOSRCPATH/politeiawww/cmd/politeiawwwcli/sample-politeiawwwcli.conf"
   vcopy "$GOSRCPATH/examples" "usr/share/doc/$pkgname"
 }
 
