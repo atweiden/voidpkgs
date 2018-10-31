@@ -255,6 +255,7 @@ libldns.so.2 libldns-1.7.0_1
 libLLVM-6.0.so libllvm6.0-6.0.0_1
 libltdl.so.7 libltdl-2.2.6_1
 liblvm2app.so.2.2 liblvm2app-2.02.54_1
+liblxc.so.1 liblxc-1.0.0_1
 liblz4.so.1 liblz4-1.8.2_1
 liblzma.so.5 liblzma-5.0.0_1
 libmagic.so.1 libmagic-5.12_1
