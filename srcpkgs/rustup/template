@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
 version=1.14.0
-revision=2
+revision=3
 short_desc="The Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -16,18 +16,9 @@ wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
-conflicts+=" cargo"
-conflicts+=" rust"
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init" rustup
-  for cmd in cargo \
-             rust-gdb \
-             rust-lldb \
-             rustc \
-             rustdoc; do
-    ln -s rustup "$DESTDIR/usr/bin/$cmd"
-  done
 
   if ! [[ -n "$CROSS_BUILD" ]]; then
     # generate shell completions
