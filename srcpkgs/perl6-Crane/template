@@ -11,7 +11,7 @@ license="Unlicense"
 distfiles="https://github.com/atweiden/crane/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="4d1a96d41ccadeafe49427ae67042b52551e4c7d7a36047e669d220c992cb6b5"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 post_install() {
   vlicense UNLICENSE

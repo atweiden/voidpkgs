@@ -17,7 +17,7 @@ license="Unlicense"
 distfiles="https://github.com/atweiden/tantum/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="d39474c037980640dd14990c06829c827bfe89c7bdfd5121678242b6272e3502"
 wrksrc="${pkgname#perl6-}-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing

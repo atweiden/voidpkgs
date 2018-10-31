@@ -16,7 +16,7 @@ license="Unlicense"
 distfiles="https://github.com/atweiden/txn-remarshal/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="4c67b1e59a95d578f931568c28fe77580af5f5d8f85207e0831544a173126e94"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing

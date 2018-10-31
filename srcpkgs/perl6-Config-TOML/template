@@ -13,7 +13,7 @@ license="Unlicense"
 distfiles="https://github.com/atweiden/config-toml/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="7feb8328548aa86aaea27baccd45a510430546250d92f4a0457c3a3e7d0a0969"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 post_install() {
   vlicense UNLICENSE

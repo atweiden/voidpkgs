@@ -11,7 +11,7 @@ homepage="https://github.com/atweiden/sustenance"
 license="Unlicense"
 distfiles="https://github.com/atweiden/sustenance/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="84c4f9a76d378c227ba631fdf2f605338e37a9b58175f5e959a8229262a3e18e"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 post_install() {
   vlicense UNLICENSE

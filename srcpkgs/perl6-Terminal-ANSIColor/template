@@ -11,7 +11,7 @@ license="MIT"
 distfiles="https://github.com/tadzik/Terminal-ANSICOLOR/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="fc07868d1c0dc9220a771486c08d562fea2ccbcc409d0c3d304798d13a1417ac"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 post_install() {
   vlicense LICENSE

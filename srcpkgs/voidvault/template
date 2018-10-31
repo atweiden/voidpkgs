@@ -27,7 +27,7 @@ homepage="https://github.com/atweiden/voidvault"
 license="Unlicense"
 distfiles="https://github.com/atweiden/voidvault/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="d6ebd4bf980f039e714b4971ef375a268d7e9cd0e955b32aa2f836df814482bb"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)

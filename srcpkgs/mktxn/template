@@ -18,7 +18,7 @@ license="Unlicense"
 distfiles="https://github.com/atweiden/mktxn/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="530fc36e4066342b9717741194b51761924cfa7f59df8819442a0dd1d5942164"
 wrksrc="${pkgname#perl6-}-$_gitrev"
-build_style="rakudo-perl6"
+build_style="perl6-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing
