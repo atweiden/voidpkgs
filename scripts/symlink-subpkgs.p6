@@ -327,8 +327,6 @@ constant %PKG = Map.new(
                            linux-firmware-network
                            linux-firmware-nvidia>,
     'linux' => ['linux-headers'],
-    'linux4.17' => qw<linux4.17-dbg
-                      linux4.17-headers>,
     'linux4.18' => qw<linux4.18-dbg
                       linux4.18-headers>,
     'linux4.19' => qw<linux4.19-dbg
