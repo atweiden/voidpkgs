@@ -371,6 +371,13 @@ libunwind-mips.so.8 libunwind-1.1_4
 libunwind-coredump.so.0 libunwind-1.2.1_1
 libunwind-setjmp.so.0 libunwind-1.2.1_1
 libunwind-aarch64.so.8 libunwind-1.2rc1_1
+liburcu-bp.so.6 liburcu-0.10.0_1
+liburcu-cds.so.6 liburcu-0.10.0_1
+liburcu-common.so.6 liburcu-0.10.0_1
+liburcu-mb.so.6 liburcu-0.10.0_1
+liburcu-qsbr.so.6 liburcu-0.10.0_1
+liburcu-signal.so.6 liburcu-0.10.0_1
+liburcu.so.6 liburcu-0.10.0_1
 libusb-1.0.so.0 libusb-1.0.0_1
 libusb-0.1.so.4 libusb-compat-0.1.0_1
 libusbmuxd.so.4 libusbmuxd-1.0.10_1
