@@ -401,6 +401,7 @@ libzstd.so.1 libzstd-1.0.0_1
 liblldb.so.6 lldb-6.0.1_3
 liblldbIntelFeatures.so.6 lldb-6.0.1_3
 libLTO.so.6 llvm-6.0.1_3
+liblttng-ctl.so.0 lttng-tools-2.10.1_1
 liblttng-ust-ctl.so.4 lttng-ust-2.10.0_1
 liblttng-ust-fd.so.0 lttng-ust-2.10.0_1
 liblttng-ust-cyg-profile-fast.so.0 lttng-ust-2.7.2_1
