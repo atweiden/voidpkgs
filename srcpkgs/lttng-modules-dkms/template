@@ -1,22 +1,24 @@
-# Template file for 'lttng-modules-dkms'
-pkgname=lttng-modules-dkms
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="lttng-modules-dkms"
 version=2.10.8
 revision=1
-wrksrc="lttng-modules-${version}"
-depends="dkms"
 short_desc="The LTTng modules provide Linux kernel tracing capability"
-maintainer="Alexander Egorenkov <egorenar-dev@posteo.net>"
-license="LGPL-2.1-only, GPL-2.0-only, MIT"
+depends="dkms"
 homepage="https://lttng.org"
-distfiles="${homepage}/files/lttng-modules/lttng-modules-${version}.tar.bz2"
-checksum=fe1d269bca723e8948af871c322c37d3900e647cdc5eb3efbe821e434beee44c
-
-dkms_modules="lttng-modules ${version}"
+license="LGPL-2.1-only, GPL-2.0-only, MIT"
+distfiles="https://lttng.org/files/lttng-modules/${pkgname%-*}-$version.tar.bz2"
+checksum="fe1d269bca723e8948af871c322c37d3900e647cdc5eb3efbe821e434beee44c"
+wrksrc="${pkgname%-*}-$version"
+dkms_modules="${pkgname%-*} $version"
 
 do_install() {
-	vmkdir usr/src/lttng-modules-${version}
-	vcopy "*" usr/src/lttng-modules-${version}
-	vcopy ${FILESDIR}/dkms.conf usr/src/lttng-modules-${version}
-
-	vlicense mit-license.txt
+  vmkdir "usr/src/lttng-modules-$version"
+  vcopy "*" "usr/src/lttng-modules-$version"
+  vcopy "$FILESDIR/dkms.conf" "usr/src/lttng-modules-$version"
 }
+
+post_install() {
+  vlicense mit-license.txt
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
