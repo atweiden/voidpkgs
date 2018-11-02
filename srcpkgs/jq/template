@@ -1,15 +1,22 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="jq"
-version=1.5
-revision=7
+version=1.6
+revision=1
 short_desc="Command-line JSON processor"
 makedepends="oniguruma-devel"
 checkdepends="valgrind"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
 homepage="http://stedolan.github.io/jq/"
 license="MIT"
 distfiles="https://github.com/stedolan/jq/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="c4d2bfec6436341113419debf479d833692cc5cdab7eb0326b5a4d4fbe9f493c"
+checksum="70e822e3e7542736424d0afb33584f568b5e3a9bc4cdb16c14da678640b20756"
 build_style="gnu-configure"
+
+pre_configure() {
+  autoreconf -fi
+  echo "echo $version" >scripts/version
+}
 
 post_install() {
   vlicense COPYING
