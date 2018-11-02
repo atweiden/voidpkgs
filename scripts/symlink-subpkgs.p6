@@ -340,6 +340,7 @@ constant %PKG = Map.new(
                  lld-devel
                  lldb
                  lldb-devel>,
+    'lttng-tools' => ['lttng-tools-devel'],
     'lttng-ust' => ['lttng-ust-devel'],
     'lua' => ['lua-devel'],
     'LuaJIT' => ['LuaJIT-devel'],
