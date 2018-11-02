@@ -1,25 +1,30 @@
-# Template file for 'lttng-tools'
-pkgname=lttng-tools
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="lttng-tools"
 version=2.10.5
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="babeltrace-devel libxml2-devel lttng-modules-dkms lttng-ust-devel"
 short_desc="Set of tools to control LTTng tracing"
-maintainer="Alexander Egorenkov <egorenar-dev@posteo.net>"
-license="LGPL-2.1-only, GPL-2.0-only"
+makedepends+=" babeltrace-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" lttng-modules-dkms"
+makedepends+=" lttng-ust-devel"
+hostmakedepends="pkg-config"
 homepage="https://lttng.org"
-distfiles="${homepage}/files/${pkgname}/${pkgname}-${version}.tar.bz2"
-checksum=a4868078ef961e83dc236c4f24fd848161bfa755344b064dece62c4c81a07411
+license="LGPL-2.1-only, GPL-2.0-only"
+distfiles="https://lttng.org/files/lttng-tools/$pkgname-$version.tar.bz2"
+checksum="a4868078ef961e83dc236c4f24fd848161bfa755344b064dece62c4c81a07411"
+build_style="gnu-configure"
 system_groups="tracing"
 
 lttng-tools-devel_package() {
-	short_desc+=" - development files"
-	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove "usr/lib/*.a"
-	}
+  short_desc+=" - development files"
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove "usr/lib/*.a"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
