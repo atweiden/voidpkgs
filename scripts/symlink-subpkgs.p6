@@ -311,6 +311,7 @@ constant %PKG = Map.new(
     'libtommath' => ['libtommath-devel'],
     'libunistring' => ['libunistring-devel'],
     'libunwind' => ['libunwind-devel'],
+    'liburcu' => ['liburcu-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
     'libusbmuxd' => ['libusbmuxd-devel'],
