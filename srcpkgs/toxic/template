@@ -5,6 +5,7 @@ revision=1
 short_desc="An ncurses-based Tox client"
 makedepends+=" libconfig-devel"
 makedepends+=" libcurl-devel"
+makedepends+=" libpng-devel"
 makedepends+=" libsodium-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" qrencode-devel"
