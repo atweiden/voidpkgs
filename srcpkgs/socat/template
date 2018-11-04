@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="socat"
 version=1.7.3.2
-revision=4
+revision=5
 short_desc="Relay for bidirectional data transfer between two independent channels"
 makedepends+=" libressl-devel"
 makedepends+=" readline-devel"
