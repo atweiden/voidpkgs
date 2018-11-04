@@ -333,6 +333,8 @@ libsasl2.so.3 libsasl-2.1.26_1
 libseccomp.so.2 libseccomp-2.0.0_1
 libsecp256k1.so.0 libsecp256k1-20180531_1
 libsmartcols.so.1 libsmartcols-2.25_1
+libsmbios.so.2 libsmbios-2.2.28_1
+libsmbios_c.so.2 libsmbios-2.2.28_1
 libsodium.so.23 libsodium-1.0.15_1
 libssh2.so.1 libssh2-1.4.1_1
 libssl.so.45 libssl45-2.7.2_1
