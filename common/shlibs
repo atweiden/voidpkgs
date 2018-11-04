@@ -210,6 +210,7 @@ libcppunit-1.12.so.1 libcppunit-1.12.1_1
 libcppunit-1.14.so.0 libcppunit-1.14.0_1
 libcrack.so.2 libcracklib-2.8.22_2
 libcrypto.so.43 libcrypto43-2.7.2_1
+libcrypto.so.44 libcrypto44-2.8.2_1
 libcryptsetup.so.12 libcryptsetup-2.0.0_1
 libcurl-gnutls.so.4 libcurl-7.19_1
 libcurl.so.4 libcurl-7.19_1
@@ -335,6 +336,7 @@ libsmartcols.so.1 libsmartcols-2.25_1
 libsodium.so.23 libsodium-1.0.15_1
 libssh2.so.1 libssh2-1.4.1_1
 libssl.so.45 libssl45-2.7.2_1
+libssl.so.46 libssl46-2.8.2_1
 libssp.so.0 libssp-4.4.0_1
 libstdc++.so.6 libstdc++-4.4.0_1
 libsvn_client-1.so.0 libsvn-1.7.5_1
@@ -359,6 +361,7 @@ libtermkey.so.1 libtermkey-0.17_1
 libtidy.so.5 libtidy5-5.1.25_1
 libtirpc.so.3 libtirpc-1.0.2_1
 libtls.so.17 libtls17-2.7.2_1
+libtls.so.18 libtls18-2.8.2_1
 libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
 libunistring.so.2 libunistring-0.9.4_1
