@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libssh2"
 version=1.8.0
-revision=4
+revision=5
 short_desc="Library implementing the SSH2 protocol"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
