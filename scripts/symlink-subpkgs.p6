@@ -293,11 +293,11 @@ constant %PKG = Map.new(
                    libpng-progs>,
     'libpsl' => ['libpsl-devel'],
     'libpwquality' => ['libpwquality-devel'],
-    'libressl' => qw<libcrypto43
+    'libressl' => qw<libcrypto44
                      libressl-devel
                      libressl-netcat
-                     libssl45
-                     libtls17>,
+                     libssl46
+                     libtls18>,
     'libsasl' => ['libsasl-devel'],
     'libseccomp' => ['libseccomp-devel'],
     'libsmbios' => qw<libsmbios-devel
