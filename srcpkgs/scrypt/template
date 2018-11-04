@@ -1,16 +1,17 @@
-# Template file for 'scrypt'
-pkgname=scrypt
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="scrypt"
 version=1.2.1
 revision=6
-build_style=gnu-configure
-makedepends="libressl-devel"
 short_desc="The scrypt key derivation function"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD-2-Clause"
+makedepends="libressl-devel"
 homepage="https://www.tarsnap.com/scrypt.html"
-distfiles="https://www.tarsnap.com/scrypt/scrypt-${version}.tgz"
-checksum=4621f5e7da2f802e20850436219370092e9fcda93bd598f6d4236cce33f4c577
+license="BSD-2-Clause"
+distfiles="https://www.tarsnap.com/scrypt/$pkgname-$version.tgz"
+checksum="4621f5e7da2f802e20850436219370092e9fcda93bd598f6d4236cce33f4c577"
+build_style="gnu-configure"
 
 post_install() {
-	vlicense COPYRIGHT
+  vlicense COPYRIGHT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
