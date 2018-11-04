@@ -70,6 +70,8 @@ constant %PKG = Map.new(
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
     'check' => ['check-devel'],
+    'chicken' => qw<chicken-devel
+                    libchicken>,
     'cmocka' => ['cmocka-devel'],
     'confuse' => ['confuse-devel'],
     'cracklib' => qw<cracklib-devel

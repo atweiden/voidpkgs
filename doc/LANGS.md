@@ -7,7 +7,6 @@ Programming Languages
 - Elixir
 - Erlang
 - Go
-- Guile
 - Haskell
 - JavaScript
 - Lua
@@ -17,5 +16,6 @@ Programming Languages
 - Python
 - Ruby
 - Rust
+- Scheme
 - Tcl
 - Zig
