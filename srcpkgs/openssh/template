@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openssh"
 version=7.9p1
-revision=1
+revision=2
 short_desc="The OpenSSH implementation of SSH protocol"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
