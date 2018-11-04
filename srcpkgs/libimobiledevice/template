@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libimobiledevice"
 version=1.2.0
-revision=11
+revision=12
 short_desc="A library to communicate with Apple devices"
 makedepends+=" libglib-devel"
 makedepends+=" libplist-devel"
