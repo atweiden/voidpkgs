@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pkcs11-helper"
 version=1.25.1
-revision=1
+revision=2
 short_desc="A library to help simplify interacting with PKCS#11 providers"
 makedepends="libressl-devel"
 hostmakedepends+=" automake"
