@@ -1,53 +1,63 @@
-# Template file for 'libsmbios'
-pkgname=libsmbios
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libsmbios"
 version=2.4.2
 revision=1
-build_style=gnu-configure
-configure_args="--sbindir=/usr/bin --disable-static --disable-python"
-hostmakedepends="automake doxygen gettext-devel help2man libtool pkg-config"
+short_desc="Library for SMBIOS access"
+only_for_archs+=" i686"
+only_for_archs+=" i686-musl"
+only_for_archs+=" x86_64"
+only_for_archs+=" x86_64-musl"
 makedepends="libxml2-devel"
 checkdepends="python3"
-short_desc="Library for SMBIOS access"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
-license="GPL-2.0-or-later, OLS-2.1"
+hostmakedepends+=" automake"
+hostmakedepends+=" doxygen"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" help2man"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/dell/libsmbios"
-distfiles="https://github.com/dell/libsmbios/archive/v${version}.tar.gz"
-checksum=ebfe18415e24bbec06d0a9ea1066c8dcd82982555373712713d7e194138650de
-
-only_for_archs="i686 i686-musl x86_64 x86_64-musl"
+license="GPL-2.0-or-later, OLS-2.1"
+distfiles="https://github.com/dell/libsmbios/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ebfe18415e24bbec06d0a9ea1066c8dcd82982555373712713d7e194138650de"
+build_style="gnu-configure"
+configure_args+=" --disable-python"
+configure_args+=" --disable-static"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl )
-		broken="requires glibc specific outb_p and inb_p" ;;
+  *-musl )
+    broken="requires glibc specific outb_p and inb_p"
+    ;;
 esac
 
 pre_configure() {
-	./autogen.sh --no-configure
+  ./autogen.sh --no-configure
 }
 
 post_install() {
-	rm -rf ${DESTDIR}/etc/yum ${DESTDIR}/usr/lib/yum-plugins
-	rm -rf ${DESTDIR}/libsmbios_c ${DESTDIR}/etc/libsmbios
-	rm -rf ${DESTDIR}/usr/share/smbios-utils
-	vmkdir usr/include
-	cp -r ${wrksrc}/out/public-include/* ${DESTDIR}/usr/include
-	cp -r ${wrksrc}/src/include/smbios_c ${DESTDIR}/usr/include
+  rm -rf "$DESTDIR/etc/yum" "$DESTDIR/usr/lib/yum-plugins"
+  rm -rf "$DESTDIR/libsmbios_c" "$DESTDIR/etc/libsmbios"
+  rm -rf "$DESTDIR/usr/share/smbios-utils"
+  vmkdir usr/include
+  cp -r "$wrksrc/out/public-include"/* "$DESTDIR/usr/include"
+  cp -r "$wrksrc/src/include/smbios_c" "$DESTDIR/usr/include"
 }
 
 libsmbios-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
 
 libsmbios-utils_package() {
-	short_desc+=" - utilities"
-	pkg_install() {
-		vmove usr/bin
-		vmove usr/share/man/man1
-	}
+  short_desc+=" - utilities"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/share/man/man1
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
