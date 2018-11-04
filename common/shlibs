@@ -154,12 +154,6 @@ libgtest_main.so gtest-1.7.0_1
 libgmock.so gtest-1.8.1_1
 libgmock_main.so gtest-1.8.1_1
 libhttp_parser.so.2.8 http-parser-2.8.0_1
-libicudata.so.62 icu-libs-62.1_1
-libicui18n.so.62 icu-libs-62.1_1
-libicuio.so.62 icu-libs-62.1_1
-libicutest.so.62 icu-libs-62.1_1
-libicutu.so.62 icu-libs-62.1_1
-libicuuc.so.62 icu-libs-62.1_1
 libicudata.so.63 icu-libs-63.1_1
 libicui18n.so.63 icu-libs-63.1_1
 libicuio.so.63 icu-libs-63.1_1
