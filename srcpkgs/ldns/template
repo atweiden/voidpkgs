@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ldns"
 version=1.7.0
-revision=7
+revision=8
 short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
