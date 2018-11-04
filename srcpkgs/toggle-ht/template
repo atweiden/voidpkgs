@@ -1,0 +1,23 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="toggle-ht"
+version=0.0.1
+revision=1
+short_desc="Toggle hyperthreading on x86 systems"
+noarch="yes"
+depends+=" bash"
+depends+=" coreutils"
+homepage="https://github.com/atweiden/toggle-ht"
+license="Unlicense"
+distfiles="https://github.com/atweiden/toggle-ht/releases/download/$version/$pkgname-$version.tar.gz"
+checksum="8c1933327b1db2137e4def6e1b106ade21293c5d9e8f2315f74b480dddf437e8"
+
+do_install() {
+  vbin toggle-ht
+}
+
+post_install() {
+  vlicense UNLICENSE
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
