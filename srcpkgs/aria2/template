@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="aria2"
 version=1.34.0
-revision=3
+revision=4
 short_desc="Lightweight multi-protocol/multi-source command-line download utility"
 depends="ca-certificates"
 makedepends+=" c-ares-devel"
