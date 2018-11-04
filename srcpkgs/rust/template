@@ -29,7 +29,6 @@ make_build_args+=" dist"
 lib32disabled="yes"
 
 if [[ -n "$CROSS_BUILD" ]]; then
-  broken="build native compilers first"
   hostmakedepends+=" cargo"
   hostmakedepends+=" llvm"
   # required for building the buildhost's stage0/1
