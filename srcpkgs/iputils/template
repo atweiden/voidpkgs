@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iputils"
 version=20180629
-revision=1
+revision=2
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends+=" libcap-devel"
