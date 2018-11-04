@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ruby"
 version=2.5.3
-revision=1
+revision=2
 _ruby_abiver=2.5.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
