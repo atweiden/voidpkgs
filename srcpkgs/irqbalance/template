@@ -1,25 +1,32 @@
-# Template file for 'irqbalance'
-pkgname=irqbalance
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="irqbalance"
 version=1.5.0
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake libtool pkg-config"
-makedepends="libcap-ng-devel libglib-devel ncurses-devel"
 short_desc="Handholding your interrupts for power and performance"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-only"
+makedepends+=" libcap-ng-devel"
+makedepends+=" libglib-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/Irqbalance/irqbalance"
-distfiles="https://github.com/Irqbalance/irqbalance/archive/v${version}.tar.gz"
-checksum=3318eddc03782cfdad22b20eff18eaf378c498c5de286e8cbaa5521ddf4f810b
+license="GPL-2.0-only"
+distfiles="https://github.com/Irqbalance/irqbalance/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="3318eddc03782cfdad22b20eff18eaf378c498c5de286e8cbaa5521ddf4f810b"
+build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
-	i686*|x86_64*) makedepends+=" libnuma-devel";;
+  i686*|x86_64*)
+    makedepends+=" libnuma-devel"
+    ;;
 esac
 
 pre_configure() {
-	NOCONFIGURE=1 ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 post_install() {
-	vsv ${pkgname}
+  vsv irqbalance
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
