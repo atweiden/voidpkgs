@@ -1,19 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcwallet"
-version=20180813
+version=0.7.0alpha
 revision=1
+_gitrev="c4dd27e481f9801866cf5226bfe532084772ec2a"
 short_desc="A secure Bitcoin wallet daemon written in Go"
 hostmakedepends+=" git"
 hostmakedepends+=" glide"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
+distfiles="https://github.com/btcsuite/btcwallet/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="1ae4f5fef8945545a7de7abd69070dd7fecb8a1893cd9ab594f125ecf181a4ad"
+wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
-
-do_fetch() {
-  git clone "$homepage" "$wrksrc"
-}
 
 do_build() {
   cd "$GOSRCPATH"
