@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="toggle-ht"
-version=0.3.1
+version=0.4.0
 revision=1
 short_desc="Toggle hyperthreading on x86 systems"
 noarch="yes"
@@ -13,7 +13,7 @@ depends+=" coreutils"
 homepage="https://github.com/atweiden/toggle-ht"
 license="Unlicense"
 distfiles="https://github.com/atweiden/toggle-ht/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="2542387ea7ce4939ea18429efbad51bf85dcaa28c2d3e33304cfb468d84531ed"
+checksum="7b025c62083f7bcc2b5a02cbf37c15203e48b96a4faac7ef6be139e8568e9487"
 
 do_install() {
   vbin toggle-ht
