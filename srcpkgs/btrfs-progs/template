@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btrfs-progs"
-version=4.17.1
+version=4.19
 revision=1
 short_desc="Btrfs filesystem utilities"
 makedepends+=" acl-devel"
@@ -19,7 +19,7 @@ homepage="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license="GPL-2.0-only, LGPL-3.0-or-later"
 changelog="https://github.com/kdave/btrfs-progs/raw/master/CHANGES"
 distfiles="$KERNEL_SITE/kernel/people/kdave/btrfs-progs/$pkgname-v$version.tar.xz"
-checksum="bf0b34f1538c0b6e88f959937b0419678cadbf2ba7044336dcbfb2bcdc28cd74"
+checksum="d591fbe586cf83741fcf9df51859f8e9058ef5187c002b50d6fe84309e5ea349"
 wrksrc="$pkgname-v$version"
 build_style="gnu-configure"
 configure_args+=" --disable-backtrace"
