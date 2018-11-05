@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cargo"
 version=0.31.0
-revision=1
+revision=2
 _cargo_dist_version=0.30.0
 short_desc="Rust package manager"
 depends="rust"
@@ -23,8 +23,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
 else
   case "$XBPS_MACHINE" in
     x86_64-musl)
-      distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/cargo-$_cargo_dist_version-x86_64-unknown-linux-musl.tar.gz"
-      checksum+=" e9344cbf3db669383cb3492d12bcd42d9130665f577be9ad4d2028011c7b1fae"
+      distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/cargo-0.31.0-x86_64-unknown-linux-musl-libressl-2.8.tar.gz"
+      checksum+=" 61d72ac378f3ee592cd3c82b02518f717bfcf328946ad4a51d24a2dac546c1cb"
       ;;
     x86_64)
       distfiles+=" https://static.rust-lang.org/dist/cargo-$_cargo_dist_version-x86_64-unknown-linux-gnu.tar.gz"
