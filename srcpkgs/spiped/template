@@ -1,22 +1,30 @@
-# Template file for 'spiped'
-pkgname=spiped
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="spiped"
 version=1.6.0
 revision=4
-build_style=gnu-makefile
-makedepends="libressl-devel"
 short_desc="The spiped secure pipe daemon"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="2-clause-BSD"
+makedepends="libressl-devel"
 homepage="http://www.tarsnap.com/spiped.html"
-distfiles="http://www.tarsnap.com/spiped/spiped-${version}.tgz"
-checksum=e6f7f8f912172c3ad55638af8346ae7c4ecaa92aed6d3fb60f2bda4359cba1e4
+license="2-clause-BSD"
+distfiles="http://www.tarsnap.com/spiped/$pkgname-$version.tgz"
+checksum="e6f7f8f912172c3ad55638af8346ae7c4ecaa92aed6d3fb60f2bda4359cba1e4"
+build_style="gnu-makefile"
 
 pre_build() {
-	export LDADD_EXTRA="$LDFLAGS"
+  export LDADD_EXTRA="$LDFLAGS"
 }
+
 do_install() {
-	vmkdir usr/bin
-	vmkdir usr/share/man/man1
-	make BINDIR=${DESTDIR}/usr/bin MAN1DIR=${DESTDIR}/usr/share/man/man1 install
-	vlicense COPYRIGHT
+  vmkdir usr/bin
+  vmkdir usr/share/man/man1
+  make \
+    BINDIR="$DESTDIR/usr/bin" \
+    MAN1DIR="$DESTDIR/usr/share/man/man1" \
+    install
 }
+
+post_install() {
+  vlicense COPYRIGHT
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
