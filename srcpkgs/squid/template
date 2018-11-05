@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="squid"
 version=3.5.27
-revision=4
+revision=5
 short_desc="Caching proxy for the Web"
 depends="perl"
 makedepends+=" libcap-devel"
