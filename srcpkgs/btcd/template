@@ -1,19 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcd"
-version=20180813
+version=0.12.0beta
 revision=1
+_gitrev="67e573d211ace594f1366b4ce9d39726c4b19bd0"
 short_desc="An alternative full node Bitcoin implementation written in Go"
 hostmakedepends+=" git"
 hostmakedepends+=" glide"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcd"
 license="ISC"
+distfiles="https://github.com/btcsuite/btcd/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="51598dd6d9144e238f07b07d75f1efad9314699723714b1201ea6fa9cc75713a"
+wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/btcsuite/btcd"
-
-do_fetch() {
-  git clone "$homepage" "$wrksrc"
-}
 
 do_build() {
   cd "$GOSRCPATH"
