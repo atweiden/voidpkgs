@@ -1,101 +1,118 @@
-# Template file for 'postfix'
-pkgname=postfix
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="postfix"
 version=3.3.1
 revision=4
-hostmakedepends="perl"
-makedepends="icu-devel libldap-devel libmysqlclient-devel pcre-devel
- postgresql-libs-devel sqlite-devel"
 short_desc="High-performance mail transport agent"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="IPL-1.0, EPL-2.0"
+makedepends+=" icu-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libmysqlclient-devel"
+makedepends+=" pcre-devel"
+makedepends+=" postgresql-libs-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends+=" perl"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # XXX postfix-install needs native binaries
+  hostmakedepends+=" postfix"
+fi
 homepage="http://www.postfix.org/"
-distfiles="ftp://ftp.porcupine.org/mirrors/postfix-release/official/${pkgname}-${version}.tar.gz"
-checksum=54f514dae42b5275cb4bc9c69283f16c06200b71813d0bb696568c4ba7ae7e3b
-
+license="IPL-1.0, EPL-2.0"
+distfiles="ftp://ftp.porcupine.org/mirrors/postfix-release/official/$pkgname-$version.tar.gz"
+checksum="54f514dae42b5275cb4bc9c69283f16c06200b71813d0bb696568c4ba7ae7e3b"
+conf_files+=" /etc/postfix/access"
+conf_files+=" /etc/postfix/aliases"
+conf_files+=" /etc/postfix/canonical"
+conf_files+=" /etc/postfix/generic"
+conf_files+=" /etc/postfix/header_checks"
+conf_files+=" /etc/postfix/main.cf"
+conf_files+=" /etc/postfix/master.cf"
+conf_files+=" /etc/postfix/relocated"
+conf_files+=" /etc/postfix/transport"
+conf_files+=" /etc/postfix/virtual"
 system_accounts="postfix"
 postfix_homedir="/var/spool/postfix"
 system_groups="postdrop"
+make_dirs+=" /etc/postfix/postfix-files.d 0755 root root"
+make_dirs+=" /var/lib/postfix 0700 postfix root"
+make_dirs+=" /var/spool/postfix/active 0700 postfix root"
+make_dirs+=" /var/spool/postfix/bounce 0700 postfix root"
+make_dirs+=" /var/spool/postfix/corrupt 0700 postfix root"
+make_dirs+=" /var/spool/postfix/defer 0700 postfix root"
+make_dirs+=" /var/spool/postfix/deferred 0700 postfix root"
+make_dirs+=" /var/spool/postfix/flush 0700 postfix root"
+make_dirs+=" /var/spool/postfix/hold 0700 postfix root"
+make_dirs+=" /var/spool/postfix/incoming 0700 postfix root"
+make_dirs+=" /var/spool/postfix/maildrop 0730 postfix postdrop"
+make_dirs+=" /var/spool/postfix/pid 0755 root root"
+make_dirs+=" /var/spool/postfix/private 0700 postfix root"
+make_dirs+=" /var/spool/postfix/public 0710 postfix postdrop"
+make_dirs+=" /var/spool/postfix/saved 0700 postfix root"
+make_dirs+=" /var/spool/postfix/trace 0700 postfix root"
 provides="smtp-server-0_1"
 replaces="smtp-server>=0"
-conf_files="
-	/etc/postfix/access
-	/etc/postfix/aliases
-	/etc/postfix/canonical
-	/etc/postfix/generic
-	/etc/postfix/header_checks
-	/etc/postfix/main.cf
-	/etc/postfix/master.cf
-	/etc/postfix/relocated
-	/etc/postfix/transport
-	/etc/postfix/virtual"
-make_dirs="
-	/etc/postfix/postfix-files.d	0755	root	root
-	/var/lib/postfix		0700	postfix	root
-	/var/spool/postfix/active	0700	postfix	root
-	/var/spool/postfix/bounce	0700	postfix	root
-	/var/spool/postfix/corrupt	0700	postfix	root
-	/var/spool/postfix/defer	0700	postfix	root
-	/var/spool/postfix/deferred	0700	postfix	root
-	/var/spool/postfix/flush	0700	postfix	root
-	/var/spool/postfix/hold		0700	postfix	root
-	/var/spool/postfix/incoming	0700	postfix	root
-	/var/spool/postfix/private	0700	postfix	root
-	/var/spool/postfix/maildrop	0730	postfix	postdrop
-	/var/spool/postfix/public	0710	postfix	postdrop
-	/var/spool/postfix/pid		0755	root	root
-	/var/spool/postfix/saved	0700	postfix	root
-	/var/spool/postfix/trace	0700	postfix	root"
-
-if [ "$CROSS_BUILD" ]; then
-	# XXX postfix-install needs native binaries.
-	hostmakedepends+=" $pkgname"
-fi
 
 do_build() {
-	sed -e "s,\(/usr/include/db.h\),${XBPS_CROSS_BASE}/\1,g" \
-		-e 's,^\(\s\+\)CCARGS="$CCARGS -DNO_EAI",\1CCARGS="$CCARGS $icu_cppflags"\n\1SYSLIBS="$SYSLIBS $icu_ldflags",' \
-		-i makedefs
+  sed \
+    -i \
+    -e "s,\(/usr/include/db.h\),$XBPS_CROSS_BASE/\1,g" \
+    -e 's,^\(\s\+\)CCARGS="$CCARGS -DNO_EAI",\1CCARGS="$CCARGS $icu_cppflags"\n\1SYSLIBS="$SYSLIBS $icu_ldflags",' \
+    makedefs
 
-	make makefiles CCARGS=" \
-		-DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I${XBPS_CROSS_BASE}/usr/include/sasl \
-		-DNO_NIS \
-		-DHAS_LDAP \
-		-DUSE_TLS \
-		-DHAS_EAI -I${XBPS_CROSS_BASE}/usr/include \
-		-DHAS_MYSQL -I${XBPS_CROSS_BASE}/usr/include/mysql \
-		-DHAS_PGSQL -I${XBPS_CROSS_BASE}/usr/include/postgresql \
-		-DHAS_SQLITE \
-		-DDEF_COMMAND_DIR=\\\"/usr/bin\\\" \
-		-DDEF_SENDMAIL_PATH=\\\"/usr/bin/sendmail\\\" \
-		-DDEF_README_DIR=\\\"/usr/share/doc/postfix\\\" \
-		-DDEF_MANPAGE_DIR=\\\"/usr/share/man\\\" \
-	" AUXLIBS=' \
-		-lsasl2 \
-		-lldap -llber \
-		-lssl -lcrypto \
-		-lmysqlclient -lz -lm \
-		-lpq \
-		-lsqlite3 -lpthread \
-		-licuuc \
-	' OPT="${CFLAGS} ${LDFLAGS}"
+  make \
+    CCARGS=" \
+      -DDEF_COMMAND_DIR=\\\"/usr/bin\\\" \
+      -DDEF_MANPAGE_DIR=\\\"/usr/share/man\\\" \
+      -DDEF_README_DIR=\\\"/usr/share/doc/postfix\\\" \
+      -DDEF_SENDMAIL_PATH=\\\"/usr/bin/sendmail\\\" \
+      -DHAS_EAI \
+      -DHAS_LDAP \
+      -DHAS_MYSQL \
+      -DHAS_PGSQL \
+      -DHAS_SQLITE \
+      -DNO_NIS \
+      -DUSE_CYRUS_SASL \
+      -DUSE_SASL_AUTH \
+      -DUSE_TLS \
+      -I$XBPS_CROSS_BASE/usr/include \
+      -I$XBPS_CROSS_BASE/usr/include/mysql \
+      -I$XBPS_CROSS_BASE/usr/include/postgresql \
+      -I$XBPS_CROSS_BASE/usr/include/sasl \
+    " \
+    AUXLIBS=' \
+      -lcrypto \
+      -licuuc \
+      -llber \
+      -lldap \
+      -lm \
+      -lmysqlclient \
+      -lpq \
+      -lpthread \
+      -lsasl2 \
+      -lsqlite3 \
+      -lssl \
+      -lz \
+    ' \
+    OPT="$CFLAGS $LDFLAGS" \
+    makefiles
 
-	make ${makejobs}
+  make "$makejobs"
 }
 
 pre_install() {
-	if [ "$CROSS_BUILD" ]; then
-		sed -e 's,bin/postconf,/usr/bin/postconf,g' -i postfix-install
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    sed \
+      -i \
+      -e 's,bin/postconf,/usr/bin/postconf,g' \
+      postfix-install
+  fi
 }
 
 do_install() {
-	sh postfix-install -non-interactive install_root=${DESTDIR}
-
-	vlicense LICENSE
-	vlicense TLS_LICENSE
-
-	cd $DESTDIR
-	patch -p0 -i ${FILESDIR}/aliases.patch
-
-	vsv postfix
+  sh postfix-install -non-interactive install_root="$DESTDIR"
+  vlicense LICENSE
+  vlicense TLS_LICENSE
+  cd "$DESTDIR"
+  patch -p0 -i "$FILESDIR/aliases.patch"
+  vsv postfix
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
