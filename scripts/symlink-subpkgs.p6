@@ -167,6 +167,9 @@ constant %PKG = Map.new(
     'gettext' => qw<gettext-devel
                     gettext-devel-examples
                     gettext-libs>,
+    'git' => qw<git-all
+                git-cvs
+                git-svn>,
     'glib' => qw<glib-devel
                  libglib-devel>,
     'glibc' => qw<glibc-devel

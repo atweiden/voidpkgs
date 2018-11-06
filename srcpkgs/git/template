@@ -29,6 +29,7 @@ make_install_args+=" NO_INSTALL_HARDLINKS=1"
 make_install_args+=" perllibdir=/usr/share/perl5/vendor_perl"
 make_check_target="test"
 replaces="git-perl>=0"
+subpackages="git-cvs git-svn git-all"
 
 post_build() {
   make "$makejobs" -C Documentation man
@@ -41,6 +42,46 @@ post_install() {
     usr/share/bash-completion/completions git
   vinstall contrib/completion/git-prompt.sh 644 usr/share/git
   make -C contrib/subtree DESTDIR="$DESTDIR" prefix="/usr" install install-man
+}
+
+git-cvs_package() {
+  unset depends
+  noarch="yes"
+  depends+=" $sourcepkg-${version}_$revision"
+  depends+=" cvs"
+  depends+=" cvsps2"
+  depends+=" perl-DBD-SQLite"
+  short_desc+=" - CVS support"
+  pkg_install() {
+    vmove usr/bin/git-cvsserver
+    vmove usr/libexec/git-core/git-cvsexportcommit
+    vmove usr/libexec/git-core/git-cvsimport
+    vmove usr/libexec/git-core/git-cvsserver
+    vmove usr/share/man/man1/git-cvsexportcommit.1
+    vmove usr/share/man/man1/git-cvsimport.1
+    vmove usr/share/man/man1/git-cvsserver.1
+  }
+}
+
+git-svn_package() {
+  unset depends
+  depends+=" $sourcepkg-${version}_$revision"
+  depends+=" perl-Term-ReadKey"
+  depends+=" subversion-perl"
+  short_desc+=" - Subversion support"
+  pkg_install() {
+    vmove "usr/share/perl5/vendor_perl/Git/SVN*"
+    vmove usr/libexec/git-core/git-remote-testsvn
+    vmove usr/libexec/git-core/git-svn
+    vmove usr/share/man/man1/git-svn.1
+  }
+}
+
+git-all_package() {
+  build_style="meta"
+  noarch="yes"
+  depends="${subpackages/git-all/}"
+  short_desc+=" - meta-package for complete Git installation"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
