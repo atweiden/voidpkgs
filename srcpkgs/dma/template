@@ -1,27 +1,45 @@
-# Template file for 'dma'
-pkgname=dma
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dma"
 version=0.11
 revision=9
-conf_files="/etc/dma/*.conf"
-make_dirs="/var/spool/dma 2775 root mail"
-hostmakedepends="flex"
-makedepends="libressl-devel"
 short_desc="Small Mail Transport Agent (MTA), designed for home and office use"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="BSD"
+makedepends="libressl-devel"
+hostmakedepends="flex"
 homepage="https://github.com/corecode/dma"
-distfiles="https://github.com/corecode/dma/archive/v${version}.tar.gz"
-checksum=288bd57f17aba696b6423b1fa0cd0f7d9b7228d32811f1cd7b821d5f020051b8
+license="BSD"
+distfiles="https://github.com/corecode/dma/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="288bd57f17aba696b6423b1fa0cd0f7d9b7228d32811f1cd7b821d5f020051b8"
+conf_files="/etc/dma/*.conf"
 system_accounts="mail"
-
-provides="smtp-server-0_1 smtp-forwarder-0_1"
-replaces="smtp-server>=0 smtp-forwarder>=0"
+make_dirs="/var/spool/dma 2775 root mail"
+provides+=" smtp-forwarder-0_1"
+provides+=" smtp-server-0_1"
+replaces+=" smtp-forwarder>=0"
+replaces+=" smtp-server>=0"
 
 do_build() {
-	make PREFIX=/usr SBIN=/usr/bin CC=$CC LEX=flex ${makejobs}
+  make \
+    "$makejobs" \
+    CC="$CC" \
+    LEX="flex" \
+    PREFIX="/usr" \
+    SBIN="/usr/bin"
 }
+
 do_install() {
-	vmkdir usr/bin
-	make PREFIX=/usr SBIN=/usr/bin DESTDIR=${DESTDIR} sendmail-link mailq-link install-etc install
-	vlicense LICENSE
+  vmkdir usr/bin
+  make \
+    PREFIX="/usr" \
+    SBIN="/usr/bin" \
+    DESTDIR="$DESTDIR" \
+    sendmail-link \
+    mailq-link \
+    install-etc \
+    install
 }
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
