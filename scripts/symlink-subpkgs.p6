@@ -252,6 +252,7 @@ constant %PKG = Map.new(
     'libaio' => ['libaio-devel'],
     'libarchive' => qw<bsdtar
                        libarchive-devel>,
+    'libasr' => ['libasr-devel'],
     'libassuan' => ['libassuan-devel'],
     'libatomic_ops' => ['libatomic_ops-devel'],
     'libcacard' => ['libcacard-devel'],
