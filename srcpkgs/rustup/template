@@ -16,7 +16,10 @@ wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
-broken="uses incompatible openssl-sys"
+
+pre_build() {
+  cargo update --package openssl-sys --precise 0.9.35
+}
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init" rustup
