@@ -194,6 +194,8 @@ constant %PKG = Map.new(
     'grub' => qw<grub-i386-efi
                  grub-utils
                  grub-x86_64-efi>,
+    'gsasl' => qw<gsasl-devel
+                  libgsasl>,
     'gtest' => ['gtest-devel'],
     'guile' => qw<guile-devel
                   libguile>,
