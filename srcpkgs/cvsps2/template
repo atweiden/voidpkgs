@@ -1,22 +1,30 @@
-# Template file for 'cvsps2'
-pkgname=cvsps2
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cvsps2"
 version=2.1
 revision=4
-wrksrc=cvsps-${version}
-build_style=gnu-makefile
+short_desc="Generate patchsets from a CVS repo (for git-cvsimport)"
 makedepends="zlib-devel"
-short_desc="Generating 'patchsets' from a CVS repo (for git-cvsimport)"
-maintainer="Christian Neukirchen <chneukirchen@gmail.com>"
-license="GPL-2"
 homepage="http://cvsps.sourceforge.net/"
-distfiles="${SOURCEFORGE_SITE}/cvsps/cvsps-${version}.tar.gz"
-checksum=91d3198b33463861a581686d5fcf99a5c484e7c4d819384c04fda9cafec1075a
+license="GPL-2"
+distfiles="$SOURCEFORGE_SITE/cvsps/${pkgname%2}-$version.tar.gz"
+checksum="91d3198b33463861a581686d5fcf99a5c484e7c4d819384c04fda9cafec1075a"
+wrksrc="${pkgname%2}-$version"
+build_style="gnu-makefile"
 
 post_extract() {
-	sed -i 's/linux/__GLIBC__/g' cbtcommon/text_util.c
-	sed -i 's/CFLAGS+=/override &/' Makefile
-	sed -i 's/ -lz/ $(LDFLAGS) &/' Makefile
+  sed \
+    -i \
+    -e 's/linux/__GLIBC__/g' \
+    cbtcommon/text_util.c
+  sed \
+    -i \
+    -e 's/CFLAGS+=/override &/' \
+    -e 's/ -lz/ $(LDFLAGS) &/' \
+    Makefile
 }
+
 do_install() {
-	make install prefix=$DESTDIR/usr
+  make install prefix="$DESTDIR/usr"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
