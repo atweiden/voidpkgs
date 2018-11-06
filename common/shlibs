@@ -245,6 +245,7 @@ libgit2.so.27 libgit2-0.27.3_1
 libgo.so.13 libgo-8.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
+libgsasl.so.7 libgsasl-1.8.0_1
 libgssglue.so.1 libgssglue-0.3_1
 libgudev-1.0.so.0 libgudev-230_1
 libguile-2.0.so.22 libguile-2.0.9_3
