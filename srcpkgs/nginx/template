@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nginx"
 version=1.14.0
-revision=2
+revision=3
 short_desc="A high performance web and reverse proxy server"
 makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
