@@ -304,6 +304,7 @@ constant %PKG = Map.new(
     'libsmbios' => qw<libsmbios-devel
                       libsmbios-utils>,
     'libsodium' => ['libsodium-devel'],
+    'libssh' => ['libssh-devel'],
     'libssh2' => ['libssh2-devel'],
     'libtasn1' => qw<libtasn1-devel
                      libtasn1-tools>,
