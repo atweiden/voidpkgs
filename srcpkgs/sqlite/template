@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sqlite"
-version=3.25.2
+version=3.25.3
 _amalgamationver="$(printf "%d%02d%02d00\n" ${version//./ })"
 revision=1
 short_desc="SQL Database Engine in a C Library"
@@ -10,7 +10,7 @@ homepage="https://sqlite.org/"
 license="Public Domain"
 changelog="https://www.sqlite.org/releaselog/${version//./_}.html"
 distfiles="https://sqlite.org/2018/$pkgname-autoconf-$_amalgamationver.tar.gz"
-checksum="da9a1484423d524d3ac793af518cdf870c8255d209e369bd6a193e9f9d0e3181"
+checksum="00ebf97be13928941940cc71de3d67e9f852698233cd98ce2d178fd08092f3dd"
 wrksrc="sqlite-autoconf-$_amalgamationver"
 build_style="gnu-configure"
 configure_args+=" --enable-dynamic-extensions"
