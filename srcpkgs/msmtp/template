@@ -1,25 +1,27 @@
-# Template file for 'msmtp'
-pkgname=msmtp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="msmtp"
 version=1.6.6
 revision=5
-build_style=gnu-configure
-# Package build options
-build_options="idn sasl gnome"
-build_options_default="idn"
-configure_args="--with-tls=openssl $(vopt_with idn libidn)
- $(vopt_with sasl libgsasl) $(vopt_with gnome libsecret)"
-hostmakedepends="pkg-config"
-makedepends="libressl-devel $(vopt_if idn libidn-devel)
- $(vopt_if sasl gsasl-devel)
- $(vopt_if gnome libsecret-devel)"
 short_desc="A mini SMTP client"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" libressl-devel"
+makedepends+=" $(vopt_if idn libidn-devel)"
+makedepends+=" $(vopt_if sasl gsasl-devel)"
+hostmakedepends="pkg-config"
 homepage="http://msmtp.sourceforge.net"
 license="GPL-3"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.xz"
-checksum=da15db1f62bd0201fce5310adb89c86188be91cd745b7cb3b62b81a501e7fb5e
+distfiles="$SOURCEFORGE_SITE/msmtp/$pkgname-$version.tar.xz"
+checksum="da15db1f62bd0201fce5310adb89c86188be91cd745b7cb3b62b81a501e7fb5e"
+build_style="gnu-configure"
+build_options+=" idn"
+build_options+=" sasl"
+build_options_default="idn"
+configure_args+=" --with-tls=openssl"
+configure_args+=" $(vopt_with idn libidn)"
+configure_args+=" $(vopt_with sasl libgsasl)"
 
 post_install() {
-	vsconf doc/msmtprc-system.example
-	vsconf doc/msmtprc-user.example
+  vsconf doc/msmtprc-system.example
+  vsconf doc/msmtprc-user.example
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
