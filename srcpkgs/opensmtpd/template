@@ -1,58 +1,86 @@
-# Template file for 'opensmtpd'
-pkgname=opensmtpd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="opensmtpd"
 version=6.0.3p1
 revision=8
-build_style=gnu-configure
-configure_args="--sysconfdir=/etc/smtpd --sbindir=/usr/bin
- --with-path-socket=/run --with-mantype=doc --with-pie --with-table-db
- --with-path-CAfile=/etc/ssl/certs/ca-certificates.crt
- --with-maildir=/var/mail
- ac_cv_func_arc4random=yes
- ac_cv_func_arc4random_buf=yes
- ac_cv_func_arc4random_stir=no
- ac_cv_func_arc4random_uniform=yes
- ac_cv_search_arc4random=-lcrypto
- ac_cv_func_explicit_bzero=no
- ac_cv_func_reallocarray=no
- ac_cv_func_strlcat=no
- ac_cv_func_strlcpy=no"
-hostmakedepends="automake libtool pkg-config bison"
-makedepends="zlib-devel libressl-devel libevent-devel db-devel libasr-devel"
-depends="ca-certificates"
-conf_files="/etc/smtpd/smtpd.conf /etc/smtpd/aliases"
-provides="smtp-forwarder-0_1 smtp-server-0_1"
-replaces="smtp-forwarder>=0 smtp-server>=0"
 short_desc="Free implementation of the server-side SMTP protocol"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD, ISC, MIT"
+depends="ca-certificates"
+makedepends+=" db-devel"
+makedepends+=" libasr-devel"
+makedepends+=" libevent-devel"
+makedepends+=" libressl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" bison"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://www.opensmtpd.org"
-distfiles="https://www.opensmtpd.org/archives/${pkgname}-${version}.tar.gz"
-checksum=291881862888655565e8bbe3cfb743310f5dc0edb6fd28a889a9a547ad767a81
+license="BSD, ISC, MIT"
+distfiles="https://www.opensmtpd.org/archives/$pkgname-$version.tar.gz"
+checksum="291881862888655565e8bbe3cfb743310f5dc0edb6fd28a889a9a547ad767a81"
+conf_files+=" /etc/smtpd/aliases"
+conf_files+=" /etc/smtpd/smtpd.conf"
+build_style="gnu-configure"
+configure_args+=" --sysconfdir=/etc/smtpd"
+configure_args+=" --with-maildir=/var/mail"
+configure_args+=" --with-mantype=doc"
+configure_args+=" --with-path-CAfile=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --with-path-socket=/run"
+configure_args+=" --with-pie"
+configure_args+=" --with-table-db"
+configure_args+=" ac_cv_func_arc4random=yes"
+configure_args+=" ac_cv_func_arc4random_buf=yes"
+configure_args+=" ac_cv_func_arc4random_stir=no"
+configure_args+=" ac_cv_func_arc4random_uniform=yes"
+configure_args+=" ac_cv_func_explicit_bzero=no"
+configure_args+=" ac_cv_func_reallocarray=no"
+configure_args+=" ac_cv_func_strlcat=no"
+configure_args+=" ac_cv_func_strlcpy=no"
+configure_args+=" ac_cv_search_arc4random=-lcrypto"
+system_accounts+=" _smtpd"
+system_accounts+=" _smtpq"
+provides+=" smtp-forwarder-0_1"
+provides+=" smtp-server-0_1"
+replaces+=" smtp-forwarder>=0"
+replaces+=" smtp-server>=0"
 
-CFLAGS=-D_DEFAULT_SOURCE
-
-system_accounts="_smtpd _smtpq"
+CFLAGS="-D_DEFAULT_SOURCE"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) configure_args+=" --with-libfts=${XBPS_CROSS_BASE}/usr"
-		makedepends+=" musl-fts-devel"
-		;;
+  *-musl)
+    makedepends+=" musl-fts-devel"
+    configure_args+=" --with-libfts=$XBPS_CROSS_BASE/usr"
+    ;;
 esac
 
 pre_configure() {
-	touch README AUTHORS NEWS ChangeLog
-	autoreconf -fi
-	# XXX hardcode the libevent major version for now.
-	# XXX the configure test needs to execute a binary to
-	# XXX get this result.
-	sed -e 's,^\(libevent_major_version\)=.*$,\1=2,' -i configure
-	sed -ri 's,/etc/mail,/etc/smtpd,g' smtpd/smtpd.conf
+  touch AUTHORS
+  touch ChangeLog
+  touch NEWS
+  touch README
+  autoreconf -fi
+  # XXX hardcode the libevent major version for now
+  # XXX the configure test needs to execute a binary to get this result
+  sed \
+    -i \
+    -e 's,^\(libevent_major_version\)=.*$,\1=2,' \
+    configure
+  sed \
+    -i \
+    -r \
+    -e 's,/etc/mail,/etc/smtpd,g' \
+    smtpd/smtpd.conf
 }
+
 post_install() {
-	for f in newaliases mailq makemap sendmail; do
-		ln -s smtpctl ${DESTDIR}/usr/bin/$f
-	done
-	vsv opensmtpd
-	vlicense LICENSE
-	vinstall /dev/null 644 etc/smtpd aliases
+  for f in mailq \
+           makemap \
+           newaliases \
+           sendmail; do
+    ln -s smtpctl "$DESTDIR/usr/bin/$f"
+  done
+  vlicense LICENSE
+  vinstall /dev/null 644 etc/smtpd aliases
+  vsv opensmtpd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
