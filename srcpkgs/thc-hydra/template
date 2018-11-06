@@ -1,15 +1,22 @@
-# Template file for 'thc-hydra'
-pkgname=thc-hydra
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="thc-hydra"
 version=8.6
 revision=4
-nocross=yes
-build_style=gnu-configure
-makedepends="zlib-devel libressl-devel libidn-devel ncurses-devel pcre-devel
- postgresql-libs-devel libmysqlclient-devel libssh-devel"
-make_install_args="MANDIR=/share/man/man1"
 short_desc="A tool to guess/crack valid login/password pairs"
-maintainer="Michael Aldridge <maldridge@VoidLinux.eu>"
+nocross="yes"
+makedepends+=" libidn-devel"
+makedepends+=" libmysqlclient-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libssh-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pcre-devel"
+makedepends+=" postgresql-libs-devel"
+makedepends+=" zlib-devel"
+homepage="https://github.com/vanhauser-thc/thc-hydra"
 license="AGPL-3"
-homepage="https://github.com/vanhauser-thc/${pkgname}"
-distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=05a87eb018507b24afca970081f067e64441460319fb75ca1e64c4a1f322b80b
+distfiles="https://github.com/vanhauser-thc/thc-hydra/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="05a87eb018507b24afca970081f067e64441460319fb75ca1e64c4a1f322b80b"
+build_style="gnu-configure"
+make_install_args="MANDIR=/share/man/man1"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
