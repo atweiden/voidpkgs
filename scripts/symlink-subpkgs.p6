@@ -108,6 +108,12 @@ constant %PKG = Map.new(
     'dhcp' => ['dhclient'],
     'distcc' => ['distcc-pump'],
     'dmraid' => ['dmraid-devel'],
+    'dovecot' => qw<dovecot-devel
+                    dovecot-plugin-ldap
+                    dovecot-plugin-lucene
+                    dovecot-plugin-mysql
+                    dovecot-plugin-pgsql
+                    dovecot-plugin-sqlite>,
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
     'duktape' => ['duktape-devel'],
