@@ -1,24 +1,26 @@
-# Template file for 'offlineimap'
-pkgname=offlineimap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="offlineimap"
 version=7.2.1
 revision=1
-noarch=yes
-build_style=python2-module
-pycompile_module="offlineimap"
-hostmakedepends="python-six asciidoc"
-depends="python-six"
 short_desc="Powerful IMAP/Maildir synchronization and reader support"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later"
+noarch="yes"
+depends="python-six"
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" python-six"
 homepage="http://offlineimap.org/"
-changelog="https://raw.githubusercontent.com/OfflineIMAP/offlineimap/master/Changelog.md"
-distfiles="https://github.com/OfflineIMAP/offlineimap/archive/v${version}.tar.gz"
-checksum=1d4164941413234cf4669ae57d27176701a7e07214fe49fa265df5c085eb4280
+license="GPL-2.0-or-later"
+changelog="https://github.com/OfflineIMAP/offlineimap/raw/master/Changelog.md"
+distfiles="https://github.com/OfflineIMAP/offlineimap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="1d4164941413234cf4669ae57d27176701a7e07214fe49fa265df5c085eb4280"
+build_style="python2-module"
+pycompile_module="offlineimap"
 
 post_install() {
-	make -C docs man
-	vman docs/offlineimap.1
-	vman docs/offlineimapui.7
-	vsconf offlineimap.conf
-	vsconf offlineimap.conf.minimal
+  make -C docs man
+  vman docs/offlineimap.1
+  vman docs/offlineimapui.7
+  vsconf offlineimap.conf
+  vsconf offlineimap.conf.minimal
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
