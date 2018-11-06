@@ -366,6 +366,10 @@ constant %PKG = Map.new(
                 lz4-devel>,
     'lzo' => ['lzo-devel'],
     'man-pages' => ['man-pages-devel'],
+    'mariadb' => qw<libmariadbclient
+                    libmariadbclient-devel
+                    mariadb-client
+                    mytop>,
     'mbedtls' => qw<mbedtls-devel
                     mbedtls-utils>,
     'miniupnpc' => ['miniupnpc-devel'],
