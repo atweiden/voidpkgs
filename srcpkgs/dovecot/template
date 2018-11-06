@@ -1,122 +1,155 @@
-# Template file for 'dovecot'
-# revbump dovecot-plugin-pigeonhole when updating dovecot!
-pkgname=dovecot
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dovecot"
 version=2.3.3
 revision=2
-build_style=gnu-configure
-configure_args="--with-moduledir=/usr/lib/dovecot/modules --with-sql=plugin
- --disable-static --with-pam --with-mysql --with-pgsql --with-lucene
- --with-sqlite --with-ssl=openssl --with-ssldir=/etc/dovecot/ssl
- --with-gssapi --with-ldap=plugin --with-zlib --with-bzlib --with-lzma
- --with-lz4 --with-libcap --with-solr --with-docs --sbindir=/usr/bin"
-hostmakedepends="pkg-config perl"
-makedepends="
- liblz4-devel zlib-devel bzip2-devel liblzma-devel libressl-devel mit-krb5-devel
- libmysqlclient-devel postgresql-libs-devel sqlite-devel clucene-devel
- libldap-devel libcap-devel pam-devel libcurl-devel expat-devel libsodium-devel"
 short_desc="IMAP and POP3 server written with security primarily in mind"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later"
-homepage="https://dovecot.org"
-distfiles="${homepage}/releases/2.3/${pkgname}-${version}.tar.gz"
-checksum=15af27ee25258afb4ad9581f8df681be998b763597086bbae54ca7d77a066d8e
-keep_libtool_archives=yes
-
-
-if [ "$CROSS_BUILD" ]; then
-	configure_args+="
-		i_cv_epoll_works=yes
-		i_cv_inotify_works=yes
-		i_cv_posix_fallocate_works=yes
-		i_cv_signed_size_t=no
-		i_cv_gmtime_max_time_t=32
-		i_cv_signed_time_t=yes
-		i_cv_mmap_plays_with_write=yes
-		i_cv_fd_passing=yes
-		i_cv_c99_vsnprintf=yes
-		i_cv_gssapi_spnego=yes
-		lib_cv_va_copy=yes
-		lib_cv___va_copy=yes
-		lib_cv_va_val_copy=yes"
-fi
-
-# For SSL support.
+# for SSL support
 depends="ca-certificates"
-system_accounts="_dovecot _dovenull"
-conf_files="/etc/dovecot/*.conf /etc/dovecot/conf.d/*.conf /etc/ssl/dovecot-openssl.cnf"
+makedepends+=" bzip2-devel"
+makedepends+=" clucene-devel"
+makedepends+=" expat-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libldap-devel"
+makedepends+=" liblz4-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" libmysqlclient-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libsodium-devel"
+makedepends+=" mit-krb5-devel"
+makedepends+=" pam-devel"
+makedepends+=" postgresql-libs-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+homepage="https://dovecot.org"
+license="LGPL-2.1-or-later"
+distfiles="https://dovecot.org/releases/2.3/$pkgname-$version.tar.gz"
+checksum="15af27ee25258afb4ad9581f8df681be998b763597086bbae54ca7d77a066d8e"
+conf_files+=" /etc/dovecot/*.conf"
+conf_files+=" /etc/dovecot/conf.d/*.conf"
+conf_files+=" /etc/ssl/dovecot-openssl.cnf"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --with-bzlib"
+configure_args+=" --with-docs"
+configure_args+=" --with-gssapi"
+configure_args+=" --with-ldap=plugin"
+configure_args+=" --with-libcap"
+configure_args+=" --with-lucene"
+configure_args+=" --with-lz4"
+configure_args+=" --with-lzma"
+configure_args+=" --with-moduledir=/usr/lib/dovecot/modules"
+configure_args+=" --with-mysql"
+configure_args+=" --with-pam"
+configure_args+=" --with-pgsql"
+configure_args+=" --with-solr"
+configure_args+=" --with-sql=plugin"
+configure_args+=" --with-sqlite"
+configure_args+=" --with-ssl=openssl"
+configure_args+=" --with-ssldir=/etc/dovecot/ssl"
+configure_args+=" --with-zlib"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" i_cv_c99_vsnprintf=yes"
+  configure_args+=" i_cv_epoll_works=yes"
+  configure_args+=" i_cv_fd_passing=yes"
+  configure_args+=" i_cv_gmtime_max_time_t=32"
+  configure_args+=" i_cv_gssapi_spnego=yes"
+  configure_args+=" i_cv_inotify_works=yes"
+  configure_args+=" i_cv_mmap_plays_with_write=yes"
+  configure_args+=" i_cv_posix_fallocate_works=yes"
+  configure_args+=" i_cv_signed_size_t=no"
+  configure_args+=" i_cv_signed_time_t=yes"
+  configure_args+=" lib_cv___va_copy=yes"
+  configure_args+=" lib_cv_va_copy=yes"
+  configure_args+=" lib_cv_va_val_copy=yes"
+fi
+system_accounts+=" _dovecot"
+system_accounts+=" _dovenull"
+keep_libtool_archives="yes"
 
 post_install() {
-	local econfdir=usr/share/doc/dovecot/example-config
-	local econfdird=${econfdir}/conf.d
-
-	# install example conf files and ssl.conf
-	vmkdir etc/dovecot/conf.d
-	install -m644 ${DESTDIR}/${econfdird}/*.conf \
-		${DESTDIR}/etc/dovecot/conf.d
-	install -m644 ${DESTDIR}/${econfdird}/*.conf.ext \
-		${DESTDIR}/etc/dovecot/conf.d
-	install -m644 ${DESTDIR}/${econfdir}/dovecot.conf ${DESTDIR}/etc/dovecot
-	vinstall doc/dovecot-openssl.cnf 644 etc/ssl
-	vbin doc/mkcert.sh dovecot-mkcert.sh
-	rm ${DESTDIR}/etc/dovecot/README
-
-	vsv dovecot
+  local econfdir
+  local econfdird
+  econfdir="usr/share/doc/dovecot/example-config"
+  econfdird="$econfdir/conf.d"
+  # install example conf files and ssl.conf
+  vmkdir etc/dovecot/conf.d
+  install -m 644 "$DESTDIR/$econfdird"/*.conf "$DESTDIR/etc/dovecot/conf.d"
+  install -m 644 "$DESTDIR/$econfdird"/*.conf.ext "$DESTDIR/etc/dovecot/conf.d"
+  install -m 644 "$DESTDIR/$econfdir/dovecot.conf" "$DESTDIR/etc/dovecot"
+  vinstall doc/dovecot-openssl.cnf 644 etc/ssl
+  vbin doc/mkcert.sh dovecot-mkcert.sh
+  rm "$DESTDIR/etc/dovecot/README"
+  vsv dovecot
 }
 
 dovecot-devel_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/share/aclocal
-		vmove usr/lib/dovecot/dovecot-config
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/share/aclocal
+    vmove usr/lib/dovecot/dovecot-config
+  }
 }
+
 dovecot-plugin-ldap_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - LDAP plugin"
-	conf_files="/etc/dovecot/conf.d/auth-ldap.conf.ext"
-	pkg_install() {
-		vmove usr/lib/dovecot/libdovecot-ldap.*
-		vmove usr/lib/dovecot/modules/dict/libdict_ldap.so
-		vmove usr/lib/dovecot/modules/auth/libauthdb_ldap.so
-		vmove usr/share/doc/dovecot/example-config/conf.d/auth-ldap.conf.ext
-		vmove usr/share/doc/dovecot/example-config/dovecot-ldap.conf.ext
-		vmove etc/dovecot/conf.d/auth-ldap.conf.ext
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - LDAP plugin"
+  conf_files="/etc/dovecot/conf.d/auth-ldap.conf.ext"
+  pkg_install() {
+    vmove "usr/lib/dovecot/libdovecot-ldap.*"
+    vmove usr/lib/dovecot/modules/dict/libdict_ldap.so
+    vmove usr/lib/dovecot/modules/auth/libauthdb_ldap.so
+    vmove usr/share/doc/dovecot/example-config/conf.d/auth-ldap.conf.ext
+    vmove usr/share/doc/dovecot/example-config/dovecot-ldap.conf.ext
+    vmove etc/dovecot/conf.d/auth-ldap.conf.ext
+  }
 }
+
 dovecot-plugin-lucene_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - Full Text Search plugin (Lucene)"
-	pkg_install() {
-		vmove usr/lib/dovecot/modules/doveadm/lib20_doveadm_fts_lucene_plugin.so
-		vmove usr/lib/dovecot/modules/lib21_fts_lucene_plugin.so
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - Full Text Search plugin (Lucene)"
+  pkg_install() {
+    vmove usr/lib/dovecot/modules/doveadm/lib20_doveadm_fts_lucene_plugin.so
+    vmove usr/lib/dovecot/modules/lib21_fts_lucene_plugin.so
+  }
 }
+
 dovecot-plugin-mysql_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - MySQL plugin"
-	pkg_install() {
-		vmove usr/lib/dovecot/modules/auth/libdriver_mysql.so
-		vmove usr/lib/dovecot/modules/dict/libdriver_mysql.so
-		vmove usr/lib/dovecot/modules/libdriver_mysql.so
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - MySQL plugin"
+  pkg_install() {
+    vmove usr/lib/dovecot/modules/auth/libdriver_mysql.so
+    vmove usr/lib/dovecot/modules/dict/libdriver_mysql.so
+    vmove usr/lib/dovecot/modules/libdriver_mysql.so
+  }
 }
+
 dovecot-plugin-pgsql_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - PostgreSQL plugin"
-	pkg_install() {
-		vmove usr/lib/dovecot/modules/auth/libdriver_pgsql.so
-		vmove usr/lib/dovecot/modules/dict/libdriver_pgsql.so
-		vmove usr/lib/dovecot/modules/libdriver_pgsql.so
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - PostgreSQL plugin"
+  pkg_install() {
+    vmove usr/lib/dovecot/modules/auth/libdriver_pgsql.so
+    vmove usr/lib/dovecot/modules/dict/libdriver_pgsql.so
+    vmove usr/lib/dovecot/modules/libdriver_pgsql.so
+  }
 }
+
 dovecot-plugin-sqlite_package() {
-	depends="dovecot>=${version}"
-	short_desc+=" - SQLite plugin"
-	pkg_install() {
-		vmove usr/lib/dovecot/modules/auth/libdriver_sqlite.so
-		vmove usr/lib/dovecot/modules/dict/libdriver_sqlite.so
-		vmove usr/lib/dovecot/modules/libdriver_sqlite.so
-	}
+  depends="dovecot>=$version"
+  short_desc+=" - SQLite plugin"
+  pkg_install() {
+    vmove usr/lib/dovecot/modules/auth/libdriver_sqlite.so
+    vmove usr/lib/dovecot/modules/dict/libdriver_sqlite.so
+    vmove usr/lib/dovecot/modules/libdriver_sqlite.so
+  }
 }
+
+# REMARKS:
+#
+# revbump dovecot-plugin-pigeonhole when updating dovecot
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
