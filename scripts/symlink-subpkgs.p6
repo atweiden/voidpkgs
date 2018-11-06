@@ -114,6 +114,8 @@ constant %PKG = Map.new(
                     dovecot-plugin-mysql
                     dovecot-plugin-pgsql
                     dovecot-plugin-sqlite>,
+    'dovecot-plugin-pigeonhole' => qw<dovecot-plugin-pigeonhole-devel
+                                      dovecot-plugin-pigeonhole-ldap>,
     'dracut' => ['dracut-network'],
     'dtc' => ['dtc-devel'],
     'duktape' => ['duktape-devel'],
