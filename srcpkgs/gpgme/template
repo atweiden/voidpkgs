@@ -1,81 +1,75 @@
-# Template file for 'gpgme'
-pkgname=gpgme
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gpgme"
 version=1.12.0
 revision=1
-build_style=gnu-configure
-configure_args="--enable-fd-passing --disable-gpgconf-test
- --disable-gpg-test --disable-gpgsm-test
- --with-libgpg-error-prefix=$XBPS_CROSS_BASE/usr
- --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
-hostmakedepends="gnupg2 pkg-config qt5-host-tools qt5-qmake"
-makedepends="libassuan-devel qt5-tools-devel"
-depends="gnupg2"
 short_desc="GnuPG Made Easy"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+depends="gnupg2"
+makedepends="libassuan-devel"
+hostmakedepends+=" gnupg2"
+hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/software/gpgme/index.html"
-distfiles="https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-${version}.tar.bz2"
-checksum=b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="https://www.gnupg.org/ftp/gcrypt/gpgme/$pkgname-$version.tar.bz2"
+checksum="b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8"
+build_style="gnu-configure"
+configure_args+=" --disable-gpg-test"
+configure_args+=" --disable-gpgconf-test"
+configure_args+=" --disable-gpgsm-test"
+configure_args+=" --enable-fd-passing"
+configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-libgpg-error-prefix=$XBPS_CROSS_BASE/usr"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) configure_args+=" ac_cv_sys_file_offset_bits=no";;
-	i686*|arm*)
-		CFLAGS="-D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1"
-		CXXFLAGS="${CFLAGS}"
-		;;
+  *-musl)
+    configure_args+=" ac_cv_sys_file_offset_bits=no"
+    ;;
+  i686*|arm*)
+    CFLAGS="-D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1"
+    CXXFLAGS="$CFLAGS"
+    ;;
 esac
+
 CXXFLAGS+=" -D_GLIBCXX_USE_C99_STDIO=1"
 
 post_extract() {
-	sed -i 's|GPG = gpg|GPG = gpg2|g' tests/gpg/Makefile.* \
-		lang/qt/tests/Makefile.* lang/python/tests/Makefile.*
+  sed \
+    -i \
+    -e 's|GPG = gpg|GPG = gpg2|g' \
+    lang/python/tests/Makefile.* \
+    lang/qt/tests/Makefile.* \
+    tests/gpg/Makefile.*
 }
 
 gpgme-devel_package() {
-	depends="${makedepends/qt5-tools-devel/} gpgme>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/bin/gpgme-config
-		vmove usr/include/gpgme.h
-		vmove usr/share
-		vmove usr/lib/libgpgme.so
-	}
+  depends="gpgme>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin/gpgme-config
+    vmove usr/include/gpgme.h
+    vmove usr/share
+    vmove usr/lib/libgpgme.so
+  }
 }
 
 gpgmepp_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - C++ library"
-	pkg_install() {
-		vmove usr/lib/libgpgmepp.so.*
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - C++ library"
+  pkg_install() {
+    vmove "usr/lib/libgpgmepp.so.*"
+  }
 }
 
 gpgmepp-devel_package() {
-	depends="gpgme-devel>=${version}_${revision} gpgmepp>=${version}_${revision}"
-	short_desc+=" - C++ library development files"
-	pkg_install() {
-		vmove usr/include/gpgme++
-		vmove usr/lib/libgpgmepp.so
-		vmove usr/lib/cmake/Gpgmepp/GpgmeppConfig.cmake
-		vmove usr/lib/cmake/Gpgmepp/GpgmeppConfigVersion.cmake
-	}
+  unset depends
+  depends+=" gpgme-devel>=${version}_$revision"
+  depends+=" gpgmepp>=${version}_$revision"
+  short_desc+=" - C++ library - development files"
+  pkg_install() {
+    vmove usr/include/gpgme++
+    vmove usr/lib/libgpgmepp.so
+    vmove usr/lib/cmake/Gpgmepp/GpgmeppConfig.cmake
+    vmove usr/lib/cmake/Gpgmepp/GpgmeppConfigVersion.cmake
+  }
 }
 
-gpgmeqt_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - Qt binding"
-	pkg_install() {
-		vmove usr/lib/libqgpgme.so.*
-	}
-}
-
-gpgmeqt-devel_package() {
-	depends="gpgme-devel>=${version}_${revision} gpgmeqt>=${version}_${revision}"
-	short_desc+=" - Qt binding development files"
-	pkg_install() {
-		vmove usr/include/QGpgME
-		vmove usr/include/qgpgme
-		vmove usr/lib/libqgpgme.so
-		vmove usr/lib/cmake/QGpgme
-	}
-}
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
