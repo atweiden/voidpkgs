@@ -1,29 +1,35 @@
-# Template file for 'libssh'
-pkgname=libssh
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libssh"
 version=0.8.5
 revision=2
-build_style=cmake
-configure_args="-DUNIT_TESTING=ON"
-hostmakedepends="pkg-config python3"
-makedepends="zlib-devel libressl-devel cmocka-devel"
 short_desc="Multiplatform C library implementing the SSH v2 protocol"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="LGPL-2.1-or-later"
+makedepends+=" cmocka-devel"
+makedepends+=" libressl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
 homepage="https://www.libssh.org/"
-distfiles="https://git.libssh.org/projects/libssh.git/snapshot/${pkgname}-${version}.tar.bz2"
-checksum=3160293b02d4ef86ca17ac95302f172b2abe3258bbf8c9ee2950f458832c25c3
+license="LGPL-2.1-or-later"
+distfiles="https://git.libssh.org/projects/libssh.git/snapshot/$pkgname-$version.tar.bz2"
+checksum="3160293b02d4ef86ca17ac95302f172b2abe3258bbf8c9ee2950f458832c25c3"
+build_style="cmake"
+configure_args="-DUNIT_TESTING=ON"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) configure_args="-DHAVE_GLOB=0" ;;
+  *-musl)
+    configure_args="-DHAVE_GLOB=0"
+    ;;
 esac
 
 libssh-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/cmake
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/lib/cmake
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
