@@ -276,6 +276,7 @@ constant %PKG = Map.new(
     'libnetfilter_cttimeout' => ['libnetfilter_cttimeout-devel'],
     'libnetfilter_log' => ['libnetfilter_log-devel'],
     'libnetfilter_queue' => ['libnetfilter_queue-devel'],
+    'libnfc' => ['libnfc-devel'],
     'libnfnetlink' => ['libnfnetlink-devel'],
     'libnfs' => ['libnfs-devel'],
     'libnftnl' => ['libnftnl-devel'],
