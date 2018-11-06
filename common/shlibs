@@ -257,6 +257,7 @@ liblxc.so.1 liblxc-1.0.0_1
 liblz4.so.1 liblz4-1.8.2_1
 liblzma.so.5 liblzma-5.0.0_1
 libmagic.so.1 libmagic-5.12_1
+libmysqld.so.18 libmariadbclient-5.5.36_1
 libmbim-glib.so.4 libmbim-1.10.0_1
 libmnl.so.0 libmnl-1.0.3_1
 libmount.so.1 libmount-2.18_1
@@ -264,6 +265,8 @@ libmpack.so.0 libmpack-1.0.5_1
 libmpc.so.3 libmpc-1.0.1_1
 libmpx.so.2 libmpx-6.2.1_1
 libmpxwrappers.so.2 libmpx-6.2.1_1
+libmysqlclient.so.18 libmysqlclient-5.5.27_1
+libmysqlclient_r.so.18 libmysqlclient-5.5.27_1
 libnetsnmp.so.35 libnet-snmp-5.8_1
 libnetsnmpagent.so.35 libnet-snmp-5.8_1
 libnetsnmphelpers.so.35 libnet-snmp-5.8_1
