@@ -532,6 +532,8 @@ constant %PKG = Map.new(
     'systemtap' => ['systemtap-devel'],
     'talloc' => ['talloc-devel'],
     'tcl' => ['tcl-devel'],
+    'tdb' => qw<libtdb
+                tdb-devel>,
     'tidy5' => qw<libtidy5
                   libtidy5-devel>,
     'toxcore' => ['toxcore-devel'],
