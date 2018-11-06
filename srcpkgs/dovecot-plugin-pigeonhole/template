@@ -1,38 +1,41 @@
-# Template file for 'dovecot-plugin-pigeonhole'
-pkgname=dovecot-plugin-pigeonhole
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dovecot-plugin-pigeonhole"
 version=0.5.3
 revision=1
-wrksrc="dovecot-2.3-pigeonhole-${version}"
-build_style=gnu-configure
-configure_args="--prefix=/usr
- --with-dovecot=${XBPS_CROSS_BASE}/usr/lib/dovecot
- --with-moduledir=/usr/lib/dovecot/modules
- --with-ldap=plugin
- --disable-static"
-# Hack around dovecot-config for cross building.
-make_build_args="LIBDOVECOT_INCLUDE=-I${XBPS_CROSS_BASE}/usr/include/dovecot
- LIBS=-L${XBPS_CROSS_BASE}/usr/lib/dovecot"
-hostmakedepends="libldap-devel"
-makedepends="dovecot-devel libressl-devel libldap-devel"
 short_desc="Sieve implementation for Dovecot"
-maintainer="John Regan <john@jrjrtech.com>"
-license="LGPL-2.1-or-later"
+makedepends+=" dovecot-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libressl-devel"
+hostmakedepends="libldap-devel"
 homepage="https://pigeonhole.dovecot.org"
-distfiles="${homepage}/releases/2.3/${wrksrc}.tar.gz"
-checksum=e02f2741c05f9e2af1c5f46da35efb74997f9d4b941ba68936206d310ddf2622
+license="LGPL-2.1-or-later"
+distfiles="https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-$version.tar.gz"
+checksum="e02f2741c05f9e2af1c5f46da35efb74997f9d4b941ba68936206d310ddf2622"
+wrksrc="dovecot-2.3-pigeonhole-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-static"
+configure_args+=" --prefix=/usr"
+configure_args+=" --with-dovecot=$XBPS_CROSS_BASE/usr/lib/dovecot"
+configure_args+=" --with-ldap=plugin"
+configure_args+=" --with-moduledir=/usr/lib/dovecot/modules"
+# hack around dovecot-config for cross building
+make_build_args+=" LIBDOVECOT_INCLUDE=-I$XBPS_CROSS_BASE/usr/include/dovecot"
+make_build_args+=" LIBS=-L$XBPS_CROSS_BASE/usr/lib/dovecot"
 
 dovecot-plugin-pigeonhole-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include/dovecot
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include/dovecot
+  }
 }
 
 dovecot-plugin-pigeonhole-ldap_package() {
-	short_desc+=" - ldap plugin"
-	pkg_install() {
-		vmove usr/lib/dovecot/modules/sieve/lib10_sieve_storage_ldap_plugin.so
-		vmove usr/share/doc/dovecot/sieve/locations/ldap.txt
-	}
+  short_desc+=" - ldap plugin"
+  pkg_install() {
+    vmove usr/lib/dovecot/modules/sieve/lib10_sieve_storage_ldap_plugin.so
+    vmove usr/share/doc/dovecot/sieve/locations/ldap.txt
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
