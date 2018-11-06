@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
-version=2.32.1
-revision=2
+version=2.33
+revision=1
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
@@ -17,7 +17,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v${version%.1}/$pkgname-$version.tar.xz"
-checksum="86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2"
+checksum="f261b9d73c35bfeeea04d26941ac47ee1df937bd3b0583e748217c1ea423658a"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
@@ -66,7 +66,10 @@ do_check() {
 }
 
 do_install() {
-  make usrsbin_execdir="/usr/bin" DESTDIR="$DESTDIR" install
+  make \
+    DESTDIR="$DESTDIR" \
+    usrsbin_execdir="/usr/bin" \
+    install
   # correct perms for newgrp, chfn, chsh, wall and write
   chmod u+s "$DESTDIR/usr/bin"/{newgrp,chsh,chfn}
   mv "$DESTDIR/usr/bin"/{logger,"$pkgname-logger"}
