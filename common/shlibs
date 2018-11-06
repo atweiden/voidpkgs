@@ -369,6 +369,7 @@ libsvn_ra_serf-1.so.0 libsvn-1.8.1_1
 libsvn_fs_x-1.so.0 libsvn-1.9.0_1
 libsysfs.so.2 libsysfs-2.1.0_1
 libtasn1.so.6 libtasn1-3.2_1
+libtdb.so.1 libtdb-1.2.2_1
 libtermkey.so.1 libtermkey-0.17_1
 libtidy.so.5 libtidy5-5.1.25_1
 libtirpc.so.3 libtirpc-1.0.2_1
