@@ -1,15 +1,16 @@
-# Template file for 'perl-DBI'
-pkgname=perl-DBI
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-DBI"
 version=1.642
 revision=1
-wrksrc="DBI-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="$hostmakedepends"
-depends="$makedepends"
 short_desc="Database independent interface for Perl"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+depends="perl"
+makedepends="perl"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/DBI"
-distfiles="${CPAN_SITE}/DBI/DBI-${version}.tar.gz"
-checksum=3f2025023a56286cebd15cb495e36ccd9b456c3cc229bf2ce1f69e9ebfc27f5d
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/DBI/${pkgname#*-}-$version.tar.gz"
+checksum="3f2025023a56286cebd15cb495e36ccd9b456c3cc229bf2ce1f69e9ebfc27f5d"
+wrksrc="${pkgname#*-}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
