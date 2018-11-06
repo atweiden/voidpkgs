@@ -1,33 +1,40 @@
-# Template file for 'gsasl'
-pkgname=gsasl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gsasl"
 version=1.8.0
 revision=9
-build_style=gnu-configure
-configure_args="--with-gssapi-impl=mit"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-hostmakedepends="pkg-config"
-makedepends="readline-devel gnutls-devel libidn-devel mit-krb5-devel"
 short_desc="GNU SASL framework and a few common SASL mechanisms"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+makedepends+=" gnutls-devel"
+makedepends+=" libidn-devel"
+makedepends+=" mit-krb5-devel"
+makedepends+=" readline-devel"
+hostmakedepends="pkg-config"
 homepage="http://www.gnu.org/software/gsasl"
 license="GPL-3"
-checksum=310262d1ded082d1ceefc52d6dad265c1decae8d84e12b5947d9b1dd193191e5
+distfiles="$GNU_SITE/gsasl/$pkgname-$version.tar.gz"
+checksum="310262d1ded082d1ceefc52d6dad265c1decae8d84e12b5947d9b1dd193191e5"
+build_style="gnu-configure"
+configure_args="--with-gssapi-impl=mit"
 
 libgsasl_package() {
-	short_desc+=" - Runtime library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - runtime library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
 
 gsasl-devel_package() {
-	depends="libgcrypt-devel libgpg-error-devel libidn-devel libgsasl>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-	}
+  depends+=" libgcrypt-devel"
+  depends+=" libgpg-error-devel"
+  depends+=" libgsasl>=${version}_$revision"
+  depends+=" libidn-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
