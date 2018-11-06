@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="haproxy"
 version=1.8.14
-revision=1
+revision=2
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libressl-devel"
 makedepends+=" lua-devel"
