@@ -8,6 +8,7 @@ makedepends+=" db-devel"
 makedepends+=" expat-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" libldap-devel"
+makedepends+=" libmysqlclient-devel"
 makedepends+=" libressl-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
@@ -28,6 +29,7 @@ configure_args+=" --with-dbm=db53"
 configure_args+=" --with-expat=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gdbm=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-ldap"
+configure_args+=" --with-mysql=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-odbc=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-openssl"
 configure_args+=" --with-pgsql"
@@ -109,6 +111,15 @@ apr-util-odbc_package() {
   short_desc+=" - ODBC module"
   pkg_install() {
     vmove "usr/lib/apr-util-1/apr_dbd_odbc*"
+  }
+}
+
+apr-util-mysql_package() {
+  lib32disabled="yes"
+  depends="apr-util-${version}_$revision"
+  short_desc+=" - MySQL module"
+  pkg_install() {
+    vmove "usr/lib/apr-util-1/apr_dbd_mysql*"
   }
 }
 
