@@ -86,6 +86,12 @@ libdevmapper-event-lvm2snapshot.so.2.02 device-mapper-2.02.178_1
 libdevmapper-event-lvm2thin.so.2.02 device-mapper-2.02.178_1
 liblvm2cmd.so.2.02 device-mapper-2.02.54_1
 libdmraid.so.1 dmraid-1.0.0.rc16.3_5
+libdovecot-compression.so.0 dovecot-2.2.11_2
+libdovecot-lda.so.0 dovecot-2.2.11_2
+libdovecot-login.so.0 dovecot-2.2.11_2
+libdovecot-sql.so.0 dovecot-2.2.11_2
+libdovecot-storage.so.0 dovecot-2.2.11_2
+libdovecot.so.0 dovecot-2.2.11_2
 libfdt.so.1 dtc-1.4.1_1
 libduktape.so.203 duktape-2.3.0_1
 libcom_err.so.2 e2fsprogs-libs-1.41.5_1_1
