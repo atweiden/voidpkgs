@@ -190,6 +190,9 @@ constant %PKG = Map.new(
     'gnupg2' => ['gnupg2-scdaemon'],
     'gnutls' => qw<gnutls-devel
                    gnutls-tools>,
+    'gpgme' => qw<gpgme-devel
+                  gpgmepp
+                  gpgmepp-devel>,
     'groff' => ['groff-doc'],
     'grub' => qw<grub-i386-efi
                  grub-utils
