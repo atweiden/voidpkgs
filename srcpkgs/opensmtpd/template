@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="opensmtpd"
-version=6.0.3p1
-revision=8
+version=6.4.0p2
+revision=1
 short_desc="Free implementation of the server-side SMTP protocol"
 depends="ca-certificates"
 makedepends+=" db-devel"
@@ -16,7 +16,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.opensmtpd.org"
 license="BSD, ISC, MIT"
 distfiles="https://www.opensmtpd.org/archives/$pkgname-$version.tar.gz"
-checksum="291881862888655565e8bbe3cfb743310f5dc0edb6fd28a889a9a547ad767a81"
+checksum="76afcf7bf1af1fcb9475b937e304b4367bb8fc953c0ea1d43625369635b4faf8"
 conf_files+=" /etc/smtpd/aliases"
 conf_files+=" /etc/smtpd/smtpd.conf"
 build_style="gnu-configure"
@@ -24,6 +24,7 @@ configure_args+=" --sysconfdir=/etc/smtpd"
 configure_args+=" --with-maildir=/var/mail"
 configure_args+=" --with-mantype=doc"
 configure_args+=" --with-path-CAfile=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --with-path-pidfile=/run"
 configure_args+=" --with-path-socket=/run"
 configure_args+=" --with-pie"
 configure_args+=" --with-table-db"
@@ -69,6 +70,10 @@ pre_configure() {
     -r \
     -e 's,/etc/mail,/etc/smtpd,g' \
     smtpd/smtpd.conf
+  sed \
+    -i \
+    -e 's,"/usr/libexec/,&opensmtpd/,g' \
+    smtpd/parse.y
 }
 
 post_install() {
