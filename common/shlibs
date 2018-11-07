@@ -1,6 +1,11 @@
 libluajit-5.1.so.2 LuaJIT-2.0.0_1
 libmoar.so MoarVM-2015.11_1
 libacl.so.1 acl-2.2.47_1
+libaircrack-crypto-1.3.0.so aircrack-ng-1.4_2
+libaircrack-crypto-x86-avx-1.3.0.so aircrack-ng-1.4_2
+libaircrack-crypto-x86-avx2-1.3.0.so aircrack-ng-1.4_2
+libaircrack-crypto-x86-sse2-1.3.0.so aircrack-ng-1.4_2
+libaircrack-osdep-1.3.0.so aircrack-ng-1.4_2
 libapr-1.so.0 apr-1.4.2_1
 libaprutil-1.so.0 apr-util-1.3.9_1
 libatf-c++.so.2 atf-libs-0.21_1
