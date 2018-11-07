@@ -398,6 +398,9 @@ constant %PKG = Map.new(
     'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],
     'musl-fts' => ['musl-fts-devel'],
+    'mysql' => qw<libmysqlclient
+                  libmysqlclient-devel
+                  mysql-client>,
     'ncurses' => qw<ncurses-base
                     ncurses-devel
                     ncurses-libs
