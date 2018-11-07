@@ -1,117 +1,177 @@
-# Template file for 'mysql'
-pkgname=mysql
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mysql"
 version=5.6.38
 revision=4
-build_style=cmake
-configure_args="-DSYSCONFDIR=/etc/mysql -DMYSQL_DATADIR=/var/lib/mysql
- -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock -DDEFAULT_CHARSET=utf8
- -DDEFAULT_COLLATION=utf8_general_ci -DENABLED_LOCAL_INFILE=ON
- -DINSTALL_INFODIR=share/mysql/docs -DINSTALL_MANDIR=share/man
- -DINSTALL_PLUGINDIR=lib/mysql/plugin -DINSTALL_SCRIPTDIR=bin
- -DINSTALL_INCLUDEDIR=include/mysql -DINSTALL_DOCREADMEDIR=share/mysql
- -DINSTALL_SUPPORTFILESDIR=share/mysql -DINSTALL_MYSQLSHAREDIR=share/mysql
- -DINSTALL_DOCDIR=share/mysql/docs -DINSTALL_SHAREDIR=share/mysql
- -DWITH_ZLIB=system -DWITH_SSL=system -DWITH_LIBWRAP=OFF
- -DWITH_EXTRA_CHARSETS=complex -DWITH_EMBEDDED_SERVER=ON
- -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1
- -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 -DWITHOUT_ARCHIVE_STORAGE_ENGINE=1
- -DWITHOUT_BLACKHOLE_STORAGE_ENGINE=1 -DWITHOUT_FEDERATED_STORAGE_ENGINE=1
- -DSTACK_DIRECTION=1 -DHAVE_LLVM_LIBCPP_EXITCODE=0"
-lib32disabled=yes
-hostmakedepends="perl bison ncurses-devel"
-makedepends="zlib-devel libressl-devel readline-devel"
 depends="mysql-client"
-conf_files="/etc/mysql/my.cnf"
-system_accounts="mysql"
-mysql_homedir="/var/lib/mysql"
+makedepends+=" libressl-devel"
+makedepends+=" readline-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" bison"
+hostmakedepends+=" ncurses-devel"
+hostmakedepends+=" perl"
 short_desc="The world's most popular open source database"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="https://www.mysql.com/products/community/"
 license="GPL-2"
-distfiles="http://dev.mysql.com/get/Downloads/MySQL-${version%.*}/mysql-${version}.tar.gz"
-checksum=18f249752f6c64af6e39c5b99c89ee1c86d6eb7fac853707603453cf584c54f3
-
-disable_parallel_build=yes
+distfiles="http://dev.mysql.com/get/Downloads/MySQL-${version%.*}/mysql-$version.tar.gz"
+checksum="18f249752f6c64af6e39c5b99c89ee1c86d6eb7fac853707603453cf584c54f3"
+conf_files="/etc/mysql/my.cnf"
+build_style="cmake"
+configure_args+=" -DDEFAULT_CHARSET=utf8"
+configure_args+=" -DDEFAULT_COLLATION=utf8_general_ci"
+configure_args+=" -DENABLED_LOCAL_INFILE=ON"
+configure_args+=" -DHAVE_LLVM_LIBCPP_EXITCODE=0"
+configure_args+=" -DINSTALL_DOCDIR=share/mysql/docs"
+configure_args+=" -DINSTALL_DOCREADMEDIR=share/mysql"
+configure_args+=" -DINSTALL_INCLUDEDIR=include/mysql"
+configure_args+=" -DINSTALL_INFODIR=share/mysql/docs"
+configure_args+=" -DINSTALL_MANDIR=share/man"
+configure_args+=" -DINSTALL_MYSQLSHAREDIR=share/mysql"
+configure_args+=" -DINSTALL_PLUGINDIR=lib/mysql/plugin"
+configure_args+=" -DINSTALL_SCRIPTDIR=bin"
+configure_args+=" -DINSTALL_SHAREDIR=share/mysql"
+configure_args+=" -DINSTALL_SUPPORTFILESDIR=share/mysql"
+configure_args+=" -DMYSQL_DATADIR=/var/lib/mysql"
+configure_args+=" -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock"
+configure_args+=" -DSTACK_DIRECTION=1"
+configure_args+=" -DSYSCONFDIR=/etc/mysql"
+configure_args+=" -DWITHOUT_ARCHIVE_STORAGE_ENGINE=1"
+configure_args+=" -DWITHOUT_BLACKHOLE_STORAGE_ENGINE=1"
+configure_args+=" -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1"
+configure_args+=" -DWITHOUT_FEDERATED_STORAGE_ENGINE=1"
+configure_args+=" -DWITH_EMBEDDED_SERVER=ON"
+configure_args+=" -DWITH_EXTRA_CHARSETS=complex"
+configure_args+=" -DWITH_INNOBASE_STORAGE_ENGINE=1"
+configure_args+=" -DWITH_LIBWRAP=OFF"
+configure_args+=" -DWITH_PARTITION_STORAGE_ENGINE=1"
+configure_args+=" -DWITH_SSL=system"
+configure_args+=" -DWITH_ZLIB=system"
+system_accounts="mysql"
+mysql_homedir="/var/lib/mysql"
+lib32disabled="yes"
+disable_parallel_build="yes"
 
 CFLAGS="-D__STDC_ISO_10646__"
 
 pre_configure() {
-	# libressl major detection.
-	sed -i '/OPENSSL_MAJOR_VERSION/s/1/2/' cmake/ssl.cmake
-	sed -i 's/sys\/poll\.h/poll.h/' include/my_net.h
+  # libressl major detection
+  sed \
+    -i \
+    -e '/OPENSSL_MAJOR_VERSION/s/1/2/' \
+    cmake/ssl.cmake
+  sed \
+    -i \
+    -e 's/sys\/poll\.h/poll.h/' \
+    include/my_net.h
 
-	# We need some host binaries before starting cross compilation.
-	if [ "$CROSS_BUILD" ]; then
-		CC= CXX= CPP= LD= AR= AS= RANLIB= CFLAGS= CXXFLAGS= LDFLAGS= cmake .
-		make comp_err comp_sql gen_lex_hash gen_lex_token
-		mkdir bin.host
-		cp extra/comp_err bin.host
-		cp scripts/comp_sql bin.host
-		cp sql/gen_lex_hash bin.host
-		cp sql/gen_lex_token bin.host
-		make clean
-		rm CMakeCache.txt
-	fi
+  # we need some host binaries before starting cross compilation
+  if [[ -n "$CROSS_BUILD" ]]; then
+    AR= \
+    AS= \
+    CC= \
+    CFLAGS= \
+    CPP= \
+    CXX= \
+    CXXFLAGS= \
+    LD= \
+    LDFLAGS= \
+    RANLIB= \
+      cmake .
+    make \
+      comp_err \
+      comp_sql \
+      gen_lex_hash \
+      gen_lex_token
+    mkdir bin.host
+    cp extra/comp_err bin.host
+    cp scripts/comp_sql bin.host
+    cp sql/gen_lex_hash bin.host
+    cp sql/gen_lex_token bin.host
+    make clean
+    rm CMakeCache.txt
+  fi
 }
+
 pre_build() {
-	if [ "$CROSS_BUILD" ]; then
-		cp bin.host/comp_err ${wrksrc}/extra
-		cp bin.host/comp_sql ${wrksrc}/scripts
-		cp bin.host/gen_lex_hash ${wrksrc}/sql
-		cp bin.host/gen_lex_token ${wrksrc}/sql
-		export PATH=${PATH}:${wrksrc}/extra:${wrksrc}/scripts:${wrksrc}/sql
-	fi
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cp bin.host/comp_err "$wrksrc/extra"
+    cp bin.host/comp_sql "$wrksrc/scripts"
+    cp bin.host/gen_lex_hash "$wrksrc/sql"
+    cp bin.host/gen_lex_token "$wrksrc/sql"
+    export PATH="$PATH:$wrksrc/extra:$wrksrc/scripts:$wrksrc/sql"
+  fi
 }
+
 post_install() {
-	# Remove unneeded stuff.
-	rm -rf ${DESTDIR}/usr/{sql-bench,mysql-test,data}
-	rm -f ${DESTDIR}/usr/share/man/man1/mysql-test-run.pl.1
-
-	# Configuration file.
-	vinstall ${FILESDIR}/my.cnf 640 etc/mysql
-
-	# runit service
-	vsv mysqld
+  # remove unneeded stuff
+  rm -rf "$DESTDIR/usr"/{sql-bench,mysql-test,data}
+  rm -f "$DESTDIR/usr/share/man/man1/mysql-test-run.pl.1"
+  # configuration file
+  vinstall "$FILESDIR/my.cnf" 640 etc/mysql
+  vsv mysqld
 }
 
 libmysqlclient_package() {
-	short_desc+=" - client library"
-	pkg_install() {
-		vmove "usr/lib/libmysqlclient*.so.*"
-	}
+  short_desc+=" - client library"
+  pkg_install() {
+    vmove "usr/lib/libmysqlclient*.so.*"
+  }
 }
 libmysqlclient-devel_package() {
-	depends="libmysqlclient>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/bin/mysql_config
-		vmove usr/share/man/man1/mysql_config.1
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends="libmysqlclient>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/bin/mysql_config
+    vmove usr/share/man/man1/mysql_config.1
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
 mysql-client_package() {
-	depends="perl"
-	short_desc+=" - database client binaries"
-	pkg_install() {
-		for f in innochecksum innotop myisam_ftdump mysql mysql_client_test \
-			mysql_client_test_embedded mysqldumpslow mysqlbinlog \
-			mysql_find_rows mysql_fix_extensions mysql_waitpid mysqlaccess \
-			mysqladmin mysqlanalyze mysqlbug mysqlcheck mysqldump \
-			mysqlimport mysqloptimize mysqlrepair mysqlreport mysqlshow \
-			mysqlslap mysqltest_embedded mysqlmanager mysqltest \
-			mysqlhotcopy mysql_upgrade mysql_zap; do
-			if [ -f ${DESTDIR}/usr/bin/${f} ]; then
-				vmove usr/bin/${f}
-			elif [ -f ${DESTDIR}/usr/sbin/${f} ]; then
-				vmove usr/sbin/${f}
-			fi
-			if [ -f ${DESTDIR}/usr/share/man/man1/${f}.1 ]; then
-				vmove usr/share/man/man1/${f}.1
-			elif [ -f ${DESTDIR}/usr/share/man/man8/${f}.8 ]; then
-				vmove usr/share/man/man8/${f}.8
-			fi
-		done
-	}
+  depends="perl"
+  short_desc+=" - database client binaries"
+  pkg_install() {
+    for f in innochecksum \
+             innotop \
+             myisam_ftdump \
+             mysql \
+             mysql_client_test \
+             mysql_client_test_embedded \
+             mysql_find_rows \
+             mysql_fix_extensions \
+             mysql_upgrade \
+             mysql_waitpid \
+             mysqlaccess \
+             mysql_zap \
+             mysqladmin \
+             mysqlanalyze \
+             mysqlbinlog \
+             mysqlbug \
+             mysqlcheck \
+             mysqldump \
+             mysqldumpslow \
+             mysqlhotcopy \
+             mysqlimport \
+             mysqlmanager \
+             mysqloptimize \
+             mysqlrepair \
+             mysqlreport \
+             mysqlshow \
+             mysqlslap \
+             mysqltest \
+             mysqltest_embedded; do
+      if [[ -f "$DESTDIR/usr/bin/$f" ]]; then
+        vmove "usr/bin/$f"
+      elif [[ -f "$DESTDIR/usr/sbin/$f" ]]; then
+        vmove "usr/sbin/$f"
+      fi
+      if [[ -f "$DESTDIR/usr/share/man/man1/$f.1" ]]; then
+        vmove "usr/share/man/man1/$f.1"
+      elif [[ -f "$DESTDIR/usr/share/man/man8/$f.8" ]]; then
+        vmove "usr/share/man/man8/$f.8"
+      fi
+    done
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
