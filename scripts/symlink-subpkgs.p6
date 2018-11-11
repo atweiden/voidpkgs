@@ -342,8 +342,8 @@ constant %PKG = Map.new(
     'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
     'libvterm' => ['libvterm-devel'],
-    'libxml2' => qw<libxml2-devel
-                    libxml2-python>,
+    'libxml2' => ['libxml2-devel'],
+    'libxml2-python' => ['libxml2-python3'],
     'libxslt' => qw<libxslt-devel
                     libxslt-python>,
     'libyaml' => ['libyaml-devel'],
