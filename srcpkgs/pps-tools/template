@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pps-tools"
 version=20120407
-revision=1
+revision=2
 _githash="0deb9c7e135e9380a6d09e9d2e938a146bb698c8"
 short_desc="Tools for LinuxPPS (pulse-per-second)"
 homepage="http://linuxpps.org/wiki/index.php/Main_Page"
