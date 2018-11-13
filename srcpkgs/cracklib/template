@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cracklib"
 version=2.9.6
-revision=1
+revision=2
 short_desc="Password Checking Library"
 makedepends="python-devel"
 hostmakedepends+=" automake"
