@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux4.19"
-version=4.19.1
-revision=2
+version=4.19.2
+revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="The Linux kernel and modules (${version%.*} series)"
@@ -29,7 +29,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="64d637c65c0b210659ff1719bcc9e34c5576fc3a4df9aa67087fa00bc2e08829"
+checksum="c10c7f81019bd782ea77a25725f6d53e9affa4a0cfd3985c161f3a2a22f2df73"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
