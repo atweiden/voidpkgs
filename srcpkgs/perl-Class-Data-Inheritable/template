@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Class-Data-Inheritable"
 version=0.08
-revision=1
+revision=2
 short_desc="Class::Data::Inheritable - Inheritable, overridable class data"
 noarch="yes"
 depends="perl"
@@ -10,7 +10,7 @@ checkdepends+=" perl-Test-Pod"
 checkdepends+=" perl-Test-Pod-Coverage"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Class-Data-Inheritable"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Class/${pkgname#*-}-$version.tar.gz"
 checksum="9967feceea15227e442ec818723163eb6d73b8947e31f16ab806f6e2391af14a"
 wrksrc="${pkgname#*-}-$version"
