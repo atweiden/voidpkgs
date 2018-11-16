@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Pod-Coverage"
 version=1.10
-revision=1
+revision=2
 short_desc="Test::Pod::Coverage - Check for pod coverage in your distribution"
 noarch="yes"
 depends+=" perl"
@@ -9,7 +9,7 @@ depends+=" perl-Pod-Coverage"
 hostmakedepends+=" perl"
 hostmakedepends+=" perl-Pod-Coverage"
 homepage="https://metacpan.org/release/Test-Pod-Coverage"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="48c9cca9f7d99eee741176445b431adf09c029e1aa57c4703c9f46f7601d40d4"
 wrksrc="${pkgname#*-}-$version"
