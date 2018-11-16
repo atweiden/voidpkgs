@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-File-KeePass"
 version=2.03
-revision=2
+revision=3
 short_desc="File::KeePass - Interface to KeePass V1 and V2 database files"
 noarch="yes"
 depends+=" perl"
@@ -11,7 +11,7 @@ makedepends+=" perl-Crypt-Rijndael"
 checkdepends="perl-XML-Parser"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/File-KeePass"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/File/${pkgname#*-}-$version.tar.gz"
 checksum="c30c688027a52ff4f58cd69d6d8ef35472a7cf106d4ce94eb73a796ba7c7ffa7"
 wrksrc="${pkgname#*-}-$version"
