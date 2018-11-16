@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Exception"
 version=0.43
-revision=1
+revision=2
 short_desc="Test::Exception - Provides modules for testing exception based code."
 noarch="yes"
 depends+=" perl"
@@ -10,7 +10,7 @@ makedepends="perl"
 hostmakedepends+=" perl"
 hostmakedepends+=" perl-Sub-Uplevel"
 homepage="https://metacpan.org/release/Test-Exception"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="156b13f07764f766d8b45a43728f2439af81a3512625438deab783b7883eb533"
 wrksrc="${pkgname#*-}-$version"
