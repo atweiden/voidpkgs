@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-IO-stringy"
 version=2.111
-revision=1
+revision=2
 short_desc="IO::stringy - I/O on in-core objects like strings/arrays"
 noarch="yes"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-stringy"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
 checksum="8c67fd6608c3c4e74f7324f1404a856c331dbf48d9deda6aaa8296ea41bf199d"
 wrksrc="${pkgname#*-}-$version"
