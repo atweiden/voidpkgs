@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Sort-Naturally"
 version=1.03
-revision=2
+revision=3
 short_desc="Sort::Naturally - sort lexically, but sort numeral parts numerically"
 noarch="yes"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Sort-Naturally"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Sort/${pkgname#*-}-$version.tar.gz"
 checksum="eaab1c5c87575a7826089304ab1f8ffa7f18e6cd8b3937623e998e865ec1e746"
 wrksrc="${pkgname#*-}-$version"
