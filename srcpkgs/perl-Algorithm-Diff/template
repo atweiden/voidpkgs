@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Algorithm-Diff"
 version=1.1903
-revision=1
+revision=2
 short_desc="Algorithm::Diff - Compute differences between two files / lists"
 noarch="yes"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Algorithm-Diff"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Algorithm/${pkgname#*-}-$version.tar.gz"
 checksum="30e84ac4b31d40b66293f7b1221331c5a50561a39d580d85004d9c1fff991751"
 wrksrc="${pkgname#*-}-$version"
