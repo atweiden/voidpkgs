@@ -10,7 +10,7 @@ hostmakedepends="bc"
 homepage="https://github.com/hardkernel/u-boot"
 license="GPL-2"
 distfiles="https://github.com/hardkernel/u-boot/archive/$_githash.tar.gz>$pkgname-$version.tar.gz"
-checksum="da7ca9e6abdfedaa65ac4e0bd378155002bf5d0ccea663ddf03fa839dceb3724"
+checksum="6b5fb2c5f278cdeaf8361fbcb349a75ffa551db3f993143f87cefd32fdc38874"
 conf_files="/boot/boot.ini"
 wrksrc="u-boot-$_githash"
 
