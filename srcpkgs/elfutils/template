@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="elfutils"
-version=0.175
-revision=1
+version=0.174
+revision=3
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -21,6 +21,7 @@ distfiles="https://sourceware.org/elfutils/ftp/$version/$pkgname-$version.tar.bz
 checksum="f7ef925541ee32c6d15ae5cb27da5f119e01a5ccdbe9fe57bf836730d7b7a65b"
 build_style="gnu-configure"
 configure_args="--program-prefix=eu-"
+reverts="0.175_1"
 
 CFLAGS="-Wno-error"
 if [[ -n "$CROSS_BUILD" ]]; then
