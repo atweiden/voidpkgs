@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="git"
 version=2.19.1
-revision=2
+revision=3
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -22,14 +22,24 @@ configure_args+=" --with-curl"
 configure_args+=" --with-expat"
 configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
-configure_args+=" ac_cv_fread_reads_directories=no"
 configure_args+=" ac_cv_snprintf_returns_bogus=no"
 make_install_args+=" INSTALLDIRS=vendor"
 make_install_args+=" NO_INSTALL_HARDLINKS=1"
 make_install_args+=" perllibdir=/usr/share/perl5/vendor_perl"
 make_check_target="test"
 replaces="git-perl>=0"
-subpackages="git-cvs git-svn git-all"
+subpackages+=" git-cvs"
+subpackages+=" git-svn"
+subpackages+=" git-all"
+
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    configure_args+=" ac_cv_fread_reads_directories=yes"
+    ;;
+  *)
+    configure_args+=" ac_cv_fread_reads_directories=no"
+    ;;
+esac
 
 post_build() {
   make "$makejobs" -C Documentation man
