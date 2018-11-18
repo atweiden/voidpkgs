@@ -528,7 +528,6 @@ libpci.so.3 pciutils-3.5.0_1
 libperl.so.5.28 perl-5.28.0_1
 libpixman-1.so.0 pixman-0.14.0_1
 libpkcs11-helper.so.1 pkcs11-helper-1.22_1
-libpkgconf.so.3 pkgconf-1.5.3_1
 libpopt.so.0 popt-1.15_1
 libecpg.so.6 postgresql-libs-8.4.2_1
 libecpg_compat.so.3 postgresql-libs-8.4.2_1

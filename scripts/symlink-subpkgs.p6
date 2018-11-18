@@ -444,7 +444,6 @@ constant %PKG = Map.new(
     'pixman' => ['pixman-devel'],
     'pkcs11-helper' => qw<pkcs11-helper-devel
                           pkcs11-helper-doc>,
-    'pkgconf' => ['pkgconf-devel'],
     'popt' => ['popt-devel'],
     'postgresql' => qw<postgresql-client
                        postgresql-contrib

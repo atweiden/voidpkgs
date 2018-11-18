@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pkg-config"
 version=0.29.2
-revision=1
+revision=2
 short_desc="System for managing library compile/link flags"
 # required for gcc6 bootstrap
 hostmakedepends="gcc"
@@ -13,6 +13,9 @@ build_style="gnu-configure"
 configure_args+=" --disable-host-tool"
 configure_args+=" --with-internal-glib"
 bootstrap="yes"
+alternatives+=" pkg-config:pkg-config:/usr/bin/pkg-config.pkg-config"
+alternatives+=" pkg-config:pkg-config.1:/usr/share/man/man1/pkg-config.1.pkg-config"
+alternatives+=" pkg-config:pkg.m4:/usr/share/aclocal/pkg.m4.pkg-config"
 
 case "$XBPS_TARGET_MACHINE" in
   mips*)
@@ -20,5 +23,12 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" glib_cv_uscore=no"
     ;;
 esac
+
+post_install() {
+  # add pkg-config suffix to files that are on alternatives
+  mv "$DESTDIR/usr/bin"/pkg-config{,.pkg-config}
+  mv "$DESTDIR/usr/share/man/man1"/pkg-config.1{,.pkg-config}
+  mv "$DESTDIR/usr/share/aclocal"/pkg.m4{,.pkg-config}
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

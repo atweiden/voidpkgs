@@ -1,9 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pkgconf"
 version=1.5.4
-revision=1
+revision=2
 short_desc="Provides compiler and linker configuration"
-hostmakedepends="libtool"
 checkdepends="kyua"
 homepage="https://git.dereferenced.org/pkgconf/pkgconf"
 license="MIT"
@@ -12,23 +11,17 @@ distfiles="https://distfiles.dereferenced.org/pkgconf/$pkgname-$version.tar.xz"
 checksum="9c5864a4e08428ef52f05a41c948529555458dec6d283b50f8b7d32463c54664"
 # cmake and meson also available
 build_style="gnu-configure"
-conflicts="pkg-config"
+configure_args+=" --disable-shared"
+configure_args+=" --disable-static"
+alternatives=" pkg-config:pkg-config:/usr/bin/pkgconf"
+alternatives=" pkg-config:pkg-config.1:/usr/share/man/man1/pkgconf.1"
+alternatives=" pkg-config:pkg.m4:/usr/share/aclocal/pkg.m4.pkgconf"
 
 post_install() {
   vlicense COPYING
-}
-
-pkgconf-devel_package() {
-  depends="pkgconf-${version}_$revision"
-  short_desc+=" - development files"
-  pkg_install() {
-    vmove usr/include
-    vmove usr/lib/pkgconfig
-    vmove usr/share/aclocal
-    vmove usr/share/man/man7
-    vmove "usr/lib/*.so"
-    vmove "usr/lib/*.a"
-  }
+  rm -rf "$DESTDIR/usr/include"
+  # suffix file that conflicts with pkg-config
+  mv "$DESTDIR/usr/share/aclocal"/pkg.m4{,.pkgconf}
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
