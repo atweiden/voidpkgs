@@ -24,7 +24,7 @@ configure_args+=" --disable-python"
 configure_args+=" --disable-static"
 
 case "$XBPS_TARGET_MACHINE" in
-  *-musl )
+  *-musl)
     broken="requires glibc specific outb_p and inb_p"
     ;;
 esac
