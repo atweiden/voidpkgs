@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gambit"
-version=4.9.0
-revision=2
+version=4.9.1
+revision=1
 short_desc="Complete, portable, efficient and reliable implementation of Scheme"
 makedepends="libressl-devel"
 homepage="http://gambitscheme.org/"
 license="LGPL-2.1-only, Apache-2.0"
 distfiles="https://github.com/gambit/gambit/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="73eb2bc8650d3ce202d17b3e9711eb979ca200ba3b443733bcb24524acbe4688"
+checksum="667ae2ee657c22621a60b3eda6e242224d41853adb841e6ff9bc779f19921c18"
 build_style="gnu-configure"
 configure_args+=" --disable-absolute-shared-libs"
 configure_args+=" --docdir=/usr/share/doc/gambit"
