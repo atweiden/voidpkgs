@@ -1,15 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libev"
 version=4.24
-revision=1
+revision=2
 short_desc="High-performance event loop loosely modelled after libevent"
 homepage="http://software.schmorp.de/pkg/libev.html"
-license="GPL-2, 2-clause-BSD"
+license="GPL-2.0-or-later, BSD-2-Clause"
 distfiles="http://dist.schmorp.de/libev/$pkgname-$version.tar.gz"
 checksum="973593d3479abdf657674a55afe5f78624b0e440614e2b8cb3a07f16d4d7f821"
 build_style="gnu-configure"
 
 post_install() {
+  vlicense LICENSE
   # rm to avoid conflict with libevent
   rm -f "$DESTDIR/usr/include/event.h"
 }
