@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docbook-dsssl"
 version=1.79
-revision=2
+revision=3
 short_desc="DSSSL stylesheets for the DocBook DTD"
 noarch="yes"
 depends="xmlcatmgr docbook-xml"
@@ -16,6 +16,8 @@ do_install() {
   rm -rf "$wrksrc/docsrc"
   vmkdir usr/share/sgml/docbook/dsssl/modular
   cp -rp "$wrksrc"/* "$DESTDIR/usr/share/sgml/docbook/dsssl/modular"
+  sed -n '/Copyright/,/exist/p' README > LICENSE
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
