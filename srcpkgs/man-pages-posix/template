@@ -3,12 +3,12 @@ pkgname="man-pages-posix"
 _distver="2013"
 _revver="a"
 version=$_distver$_revver
-revision=3
+revision=4
 short_desc="Manual pages about POSIX systems"
 noarch="yes"
 homepage="https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/"
 license="POSIX-COPYRIGHT"
-distfiles="$KERNEL_SITE/docs/man-pages/$pkgname/$pkgname-$_distver-$_revver.tar.xz"
+distfiles="$KERNEL_SITE/docs/man-pages/man-pages-posix/$pkgname-$_distver-$_revver.tar.xz"
 checksum="19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808"
 wrksrc="$pkgname-$_distver-$_revver"
 
