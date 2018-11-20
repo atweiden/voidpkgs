@@ -248,6 +248,7 @@ libevent_pthreads-2.1.so.6 libevent-2.1.8_1
 libevent_extra-2.1.so.6 libevent-2.1.8_3
 libevent_openssl-2.1.so.6 libevent-2.1.8_3
 libfdisk.so.1 libfdisk-2.26_1
+libfetch.so.2 libfetch-2.34_8
 libffi.so.6 libffi-3.1_1
 libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
