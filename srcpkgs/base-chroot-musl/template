@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-chroot-musl"
 version=0.19
-revision=2
+revision=3
 short_desc="Bootstrap packages for xbps-src (musl libc)"
 only_for_archs+=" aarch64-musl"
 only_for_archs+=" armv5tel-musl"
@@ -40,6 +40,8 @@ depends+=" ccache"
 depends+=" xbps"
 depends+=" xz"
 depends+=" which"
+depends+=" libada-devel"
+depends+=" gcc-ada"
 homepage="https://www.voidlinux.eu"
 license="Public domain"
 build_style="meta"
