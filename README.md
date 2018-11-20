@@ -25,7 +25,7 @@ cd voidpkgs
 Bootstrap native libc architecture without remote repositories:
 
 ```sh
-./xbps-src -N bootstrap
+./xbps-src -o gnatboot -N bootstrap
 ./xbps-src -N pkg base-system
 ```
 
