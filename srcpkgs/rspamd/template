@@ -1,51 +1,87 @@
-# Template file for 'rspamd'
-pkgname=rspamd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="rspamd"
 version=1.8.2
 revision=1
-build_style=cmake
-configure_args="-DRSPAMD_USER=rspamd -DCONFDIR=/etc/rspamd
- -DDBDIR=/var/lib/rspamd"
-hostmakedepends="perl pkg-config ragel"
-makedepends="LuaJIT-devel fann-devel file-devel gd-devel gmime-devel
- hiredis-devel icu-devel libevent-devel sqlite-devel"
 short_desc="Fast, free and open-source spam filtering system"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="Apache-2.0"
+makedepends+=" LuaJIT-devel"
+makedepends+=" fann-devel"
+makedepends+=" file-devel"
+makedepends+=" glib-devel"
+makedepends+=" hiredis-devel"
+makedepends+=" icu-devel"
+makedepends+=" libevent-devel"
+makedepends+=" libfetch-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libunwind-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" ragel"
 homepage="https://rspamd.com/"
-changelog="https://raw.githubusercontent.com/vstakhov/rspamd/master/ChangeLog"
-distfiles="https://github.com/vstakhov/rspamd/archive/${version}.tar.gz"
-checksum=6cacf6ea0cd72eebc085aa70acef9b3c928c100c9d05232e760b94fe41ac90df
+license="Apache-2.0"
+changelog="https://github.com/vstakhov/rspamd/raw/master/ChangeLog"
+distfiles="https://github.com/vstakhov/rspamd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6cacf6ea0cd72eebc085aa70acef9b3c928c100c9d05232e760b94fe41ac90df"
+conf_files+=" /etc/rspamd/*.conf"
+conf_files+=" /etc/rspamd/*.inc"
+conf_files+=" /etc/rspamd/modules.d/*.conf"
+build_style="cmake"
+configure_args+=" -DCONFDIR=/etc/rspamd"
+configure_args+=" -DDBDIR=/var/lib/rspamd"
+configure_args+=" -DENABLE_FANN=OFF"
+configure_args+=" -DENABLE_GD=OFF"
+configure_args+=" -DENABLE_HYPERSCAN=ON"
+configure_args+=" -DENABLE_JEMALLOC=OFF"
+configure_args+=" -DENABLE_LIBUNWIND=ON"
+configure_args+=" -DENABLE_URL_INCLUDE=ON"
+configure_args+=" -DINSTALL_WEBUI=OFF"
+configure_args+=" -DRSPAMD_USER=rspamd"
 system_accounts="rspamd"
-rspamd_homedir=/var/lib/rspamd
-conf_files="/etc/rspamd/*.conf /etc/rspamd/*.inc /etc/rspamd/modules.d/*.conf"
+rspamd_homedir="/var/lib/rspamd"
 
 case "$XBPS_TARGET_MACHINE" in
-	arm*) broken="https://build.voidlinux.eu/builders/armv7l_builder/builds/8365/steps/shell_3/logs/stdio" ;;
+  arm*)
+    broken="https://build.voidlinux.eu/builders/armv7l_builder/builds/8365/steps/shell_3/logs/stdio"
+    ;;
 esac
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" ${makedepends}"
-
-	pre_build() {
-		make -C build_native/contrib/snowball
-		sed -i "s#\./snowball#../../../build_native/contrib/snowball/snowball#g" \
-			build/contrib/snowball/CMakeFiles/stemmer.dir/build.make
-	}
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" $makedepends"
+  pre_build() {
+    make -C build_native/contrib/snowball
+    sed \
+      -i \
+      -e "s#\./snowball#../../../build_native/contrib/snowball/snowball#g" \
+      build/contrib/snowball/CMakeFiles/stemmer.dir/build.make
+  }
 fi
 
 pre_configure() {
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl)	# Remove non existing library nsl
-			sed -i CMakeLists.txt -e "/LIST(APPEND CMAKE_REQUIRED_LIBRARIES nsl)/d"
-	esac
-	if [ "$CROSS_BUILD" ]; then
-		configure_args+=" -C ${FILESDIR}/TryRunResults.cmake"
-		mkdir -p build_native
-		( cd build_native; LD= CC= CFLAGS= LDFLAGS= cmake .. )
-	fi
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      # remove non existing library nsl
+      sed \
+        -i \
+        -e "/LIST(APPEND CMAKE_REQUIRED_LIBRARIES nsl)/d" \
+        CMakeLists.txt
+      ;;
+  esac
+  if [[ -n "$CROSS_BUILD" ]]; then
+    configure_args+=" -C $FILESDIR/TryRunResults.cmake"
+    mkdir -p build_native
+    (cd build_native
+     LD= \
+     CC= \
+     CFLAGS= \
+     LDFLAGS= \
+      cmake ..)
+  fi
 }
 
 post_install() {
-	vsv rspamd
-	vlicense LICENSE.md
+  vlicense LICENSE.md
+  vsv rspamd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
