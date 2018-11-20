@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libusb-compat"
 version=0.1.5
-revision=6
+revision=7
 short_desc="A libusb-0.1 compatibility library"
 makedepends="libusb-devel"
 hostmakedepends="pkg-config"
 homepage="http://libusb.sourceforge.net/"
-license="LGPL-2.1"
+license="LGPL-2.1-or-later"
 distfiles="$SOURCEFORGE_SITE/libusb/$pkgname-$version.tar.bz2"
 checksum="404ef4b6b324be79ac1bfb3d839eac860fbc929e6acb1ef88793a6ea328bc55a"
 build_style="gnu-configure"
