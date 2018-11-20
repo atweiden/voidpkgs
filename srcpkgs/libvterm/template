@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libvterm"
 version=0.0.20151229
-revision=1
+revision=2
 _gitrev="04c0777b139cfbddb057c0cbfc007677dd9f1b4f"
 short_desc="Abstract VT220/xterm/ECMA-48 emulation library"
 hostmakedepends+=" libtool"
