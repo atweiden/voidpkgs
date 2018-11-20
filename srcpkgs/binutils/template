@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="binutils"
-version=2.29.1
-revision=3
+version=2.31.1
+revision=1
 short_desc="GNU binary utilities"
 homepage="http://www.gnu.org/software/binutils/"
-license="GPL-3"
-distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.bz2"
-checksum="1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
+checksum="5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
@@ -19,18 +19,6 @@ else
 fi
 
 makedepends="zlib-devel"
-
-pre_configure() {
-  sed \
-    -i \
-    -e "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
-    libiberty/configure
-  # drop bashism
-  sed \
-    -i \
-    -e 's,source,\.,g' \
-    ld/scripttempl/elf32msp430.sc
-}
 
 do_configure() {
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
@@ -94,7 +82,9 @@ do_build() {
 }
 
 do_check() {
-  make -k check
+  # seems like upstream forgot to include their new test-driver executable
+  # in their tarball...
+  :
 }
 
 do_install() {
@@ -111,13 +101,13 @@ do_install() {
   ln -sfr "$DESTDIR/usr/bin/ld.bfd" "$DESTDIR/usr/bin/ld"
 
   # add some useful headers
-  install -m 644 include/libiberty.h "$DESTDIR/usr/include"
-  install -m 644 include/demangle.h "$DESTDIR/usr/include"
+  vinstall include/libiberty.h 644 usr/include
+  vinstall include/demangle.h 644 usr/include
 
   # install libraries rebuilt with -fPIC
-  install -m 644 libiberty-pic/libiberty.a "$DESTDIR/usr/lib"
-  install -m 644 bfd-pic/libbfd.a "$DESTDIR/usr/lib"
-  install -m 644 opcodes-pic/libopcodes.a "$DESTDIR/usr/lib"
+  vinstall libiberty-pic/libiberty.a 644 usr/lib
+  vinstall bfd-pic/libbfd.a 644 usr/lib
+  vinstall opcodes-pic/libopcodes.a 644 usr/lib
 
   # remove these symlinks, they are not ABI stable
   # programs should compile static to the .a file
