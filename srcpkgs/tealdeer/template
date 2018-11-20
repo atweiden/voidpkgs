@@ -1,19 +1,20 @@
-# Template file for 'tealdeer'
-pkgname=tealdeer
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tealdeer"
 version=1.1.0
 revision=1
-build_style=cargo
-hostmakedepends="pkg-config"
-makedepends="libressl-devel"
-depends="libressl"
 short_desc="A very fast implementation of tldr in Rust"
-maintainer="jcgruenhage <jan.christian@gruenhage.xyz>"
-license="MIT license or Apache License, Version 2"
+depends="libressl"
+makedepends="libressl-devel"
+hostmakedepends="pkg-config"
 homepage="https://github.com/dbrgn/tealdeer"
-changelog="https://raw.githubusercontent.com/dbrgn/tealdeer/v${version}/CHANGELOG.md"
-distfiles="https://github.com/dbrgn/tealdeer/archive/v${version}.tar.gz"
-checksum=647990936af527e9738e8befb432fdf8dd40e7b2ab0066afc652330fddd3dd0e
+license="MIT license or Apache License, Version 2"
+changelog="https://github.com/dbrgn/tealdeer/raw/v$version/CHANGELOG.md"
+distfiles="https://github.com/dbrgn/tealdeer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="647990936af527e9738e8befb432fdf8dd40e7b2ab0066afc652330fddd3dd0e"
+build_style="cargo"
 
 post_install() {
-	vlicense LICENSE-MIT
+  vlicense LICENSE-MIT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
