@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-chroot"
 version=0.65
-revision=2
+revision=3
 short_desc="Bootstrap packages for xbps-src"
 noarch="yes"
 homepage="http://www.voidlinux.eu"
