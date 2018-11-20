@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-Unidecode"
-version=1.0.22
+version=1.0.23
 revision=1
 short_desc="Python2 ASCII transliterations of Unicode text"
 noarch="yes"
@@ -8,13 +8,17 @@ depends="python-setuptools"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://pypi.org/project/Unidecode/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="$PYPI_SITE/U/Unidecode/${pkgname#*-}-$version.tar.gz"
-checksum="8c33dd588e0c9bc22a76eaa0c715a5434851f726131bd44a6c26471746efabf5"
+checksum="8b85354be8fd0c0e10adbf0675f6dc2310e56fda43fa8fe049123b6c475e52fb"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="unidecode"
 alternatives="unidecode:unidecode:/usr/bin/unidecode2"
+
+do_check() {
+  python3 setup.py test
+}
 
 python3-Unidecode_package() {
   noarch="yes"
