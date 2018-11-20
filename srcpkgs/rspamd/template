@@ -1,0 +1,51 @@
+# Template file for 'rspamd'
+pkgname=rspamd
+version=1.8.2
+revision=1
+build_style=cmake
+configure_args="-DRSPAMD_USER=rspamd -DCONFDIR=/etc/rspamd
+ -DDBDIR=/var/lib/rspamd"
+hostmakedepends="perl pkg-config ragel"
+makedepends="LuaJIT-devel fann-devel file-devel gd-devel gmime-devel
+ hiredis-devel icu-devel libevent-devel sqlite-devel"
+short_desc="Fast, free and open-source spam filtering system"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
+license="Apache-2.0"
+homepage="https://rspamd.com/"
+changelog="https://raw.githubusercontent.com/vstakhov/rspamd/master/ChangeLog"
+distfiles="https://github.com/vstakhov/rspamd/archive/${version}.tar.gz"
+checksum=6cacf6ea0cd72eebc085aa70acef9b3c928c100c9d05232e760b94fe41ac90df
+system_accounts="rspamd"
+rspamd_homedir=/var/lib/rspamd
+conf_files="/etc/rspamd/*.conf /etc/rspamd/*.inc /etc/rspamd/modules.d/*.conf"
+
+case "$XBPS_TARGET_MACHINE" in
+	arm*) broken="https://build.voidlinux.eu/builders/armv7l_builder/builds/8365/steps/shell_3/logs/stdio" ;;
+esac
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends+=" ${makedepends}"
+
+	pre_build() {
+		make -C build_native/contrib/snowball
+		sed -i "s#\./snowball#../../../build_native/contrib/snowball/snowball#g" \
+			build/contrib/snowball/CMakeFiles/stemmer.dir/build.make
+	}
+fi
+
+pre_configure() {
+	case "$XBPS_TARGET_MACHINE" in
+		*-musl)	# Remove non existing library nsl
+			sed -i CMakeLists.txt -e "/LIST(APPEND CMAKE_REQUIRED_LIBRARIES nsl)/d"
+	esac
+	if [ "$CROSS_BUILD" ]; then
+		configure_args+=" -C ${FILESDIR}/TryRunResults.cmake"
+		mkdir -p build_native
+		( cd build_native; LD= CC= CFLAGS= LDFLAGS= cmake .. )
+	fi
+}
+
+post_install() {
+	vsv rspamd
+	vlicense LICENSE.md
+}
