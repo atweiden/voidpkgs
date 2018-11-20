@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docbook-xml"
 version=4.5
-revision=3
+revision=4
 short_desc="XML DTD designed for computer documentation"
 noarch="yes"
 depends="xmlcatmgr"
@@ -52,6 +52,9 @@ do_install() {
   dir="$DESTDIR/usr/share/xml/docbook/4.2"
   sed -e 's|V4.2|V4.1.2|g' < "$dir/catalog" > "$dir/catalog-4.1.2"
   chmod 644 "$dir/catalog-4.1.2"
+  sed -n '/Copyright/,/maintenance/p' \
+    "$DESTDIR/usr/share/xml/docbook/$version/dbhierx.mod" > LICENSE
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
