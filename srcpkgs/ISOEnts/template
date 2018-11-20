@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ISOEnts"
 version=1986
-revision=3
+revision=4
 short_desc="Character entity sets from ISO 8879:1986 (SGML)"
 noarch="yes"
 depends="xmlcatmgr"
