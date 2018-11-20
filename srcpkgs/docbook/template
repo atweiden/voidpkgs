@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docbook"
 version=4.5
-revision=3
+revision=4
 short_desc="SGML DTD designed for computer documentation"
 noarch="yes"
 depends+=" ISOEnts"
@@ -43,7 +43,7 @@ do_extract() {
 
 do_install() {
   local dir
-  local ver
+  local vernodot
   for ver in 4.2 \
              4.3 \
              4.4 \
