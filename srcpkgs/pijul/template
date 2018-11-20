@@ -1,22 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pijul"
-version=0.10.0
-revision=2
+version=0.11.0
+revision=1
 short_desc="Distributed version control system based on patches"
 makedepends+=" libressl-devel"
 makedepends+=" libsodium-devel"
 hostmakedepends="pkg-config"
 homepage="https://pijul.org/"
-license="GPL-2"
+license="GPL-2.0-only"
 distfiles="https://pijul.org/releases/$pkgname-$version.tar.gz"
-checksum="da3fcba4ab39a4371cda7273691364c2355c9b216bb7867d92dae5812ebb71d2"
+checksum="e60793ab124e9054c1d5509698acbae507ebb2fab5364d964067bc9ae8b6b5e5"
 build_style="cargo"
-
-case "$XBPS_TARGET_MACHINE" in
-  arm*)
-    broken="mismatched types --> line/src/unix.rs:9:27 expect u32, found u64"
-    ;;
-esac
 
 # we only want to install the binary, so don't run cargo install
 do_install() {
