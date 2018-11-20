@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ipw2200-firmware"
 version=3.1
-revision=4
+revision=5
 short_desc="Firmware for the Intel PRO/Wireless 2200BG wifi cards"
 noarch="yes"
 homepage="http://ipw2200.sourceforge.net/"
