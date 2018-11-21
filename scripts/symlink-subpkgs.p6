@@ -566,6 +566,8 @@ constant %PKG = Map.new(
                        libuuid
                        libuuid-devel>,
     'valgrind' => ['valgrind-devel'],
+    'varnish' => qw<libvarnishapi
+                    libvarnishapi-devel>,
     'vde2' => qw<libvde2
                  vde2-devel>,
     'vim' => qw<vim-common
