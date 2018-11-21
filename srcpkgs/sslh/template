@@ -1,28 +1,43 @@
-# Template file for 'sslh'
-pkgname=sslh
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sslh"
 version=1.20
 revision=1
-hostmakedepends="perl"
-makedepends="pcre-devel libconfig-devel libcap-devel"
 short_desc="Applicative Protocol Multiplexer"
-maintainer="Markus Berger <pulux@pf4sh.de>"
-license="GPL-2.0-or-later"
+makedepends+=" libcap-devel"
+makedepends+=" libconfig-devel"
+makedepends+=" pcre-devel"
+hostmakedepends="perl"
 homepage="https://www.rutschle.net/tech/sslh/README.html"
-distfiles="https://github.com/yrutschle/sslh/archive/v${version}.tar.gz"
-checksum=8f1b3471009c217fb0c5034ec4942a2c32b4187be03cd2f14f6268edbd0ed1f2
+license="GPL-2.0-or-later"
+distfiles="https://github.com/yrutschle/sslh/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8f1b3471009c217fb0c5034ec4942a2c32b4187be03cd2f14f6268edbd0ed1f2"
 
 do_build() {
-	sed -i 's|^MAN=sslh.8.gz|MAN=sslh.8|g' Makefile
-	sed -i 's|sbin|bin|g' Makefile
-	sed -i 's|sslh.pod \| gzip -9 - > $(MAN)|sslh.pod > $(MAN)|g' Makefile
-	make CC=$CC ENABLE_REGEX=1 USELIBPCRE=1 USELIBCONFIG=1 USELIBCAP=1
+  sed \
+    -i \
+    -e 's|^MAN=sslh.8.gz|MAN=sslh.8|g' \
+    -e 's|sbin|bin|g' \
+    -e 's|sslh.pod \| gzip -9 - > $(MAN)|sslh.pod > $(MAN)|g' \
+    Makefile
+  make \
+    CC="$CC" \
+    ENABLE_REGEX=1 \
+    USELIBCAP=1 \
+    USELIBCONFIG=1 \
+    USELIBPCRE=1
 }
+
 do_install() {
-	make DESTDIR=${DESTDIR} PREFIX=/usr install
-	vman sslh.8
-	vsv sslh
-	for f in *.cfg; do
-		vdoc ${f}
-	done
-	vdoc README.md
+  make \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    install
+  vman sslh.8
+  for f in *.cfg; do
+    vdoc "$f"
+  done
+  vdoc README.md
+  vsv sslh
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
