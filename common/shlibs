@@ -247,6 +247,7 @@ libevent_core-2.1.so.6 libevent-2.1.8_1
 libevent_pthreads-2.1.so.6 libevent-2.1.8_1
 libevent_extra-2.1.so.6 libevent-2.1.8_3
 libevent_openssl-2.1.so.6 libevent-2.1.8_3
+libexecinfo.so.1 libexecinfo-1.1_1
 libfdisk.so.1 libfdisk-2.26_1
 libfetch.so.2 libfetch-2.34_8
 libffi.so.6 libffi-3.1_1
