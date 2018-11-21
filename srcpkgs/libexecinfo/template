@@ -1,32 +1,42 @@
-# Template file for 'libexecinfo'
-pkgname=libexecinfo
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libexecinfo"
 version=1.1
 revision=2
-build_style=gnu-makefile
 short_desc="A quick-n-dirty BSD licensed clone of the GNU libc backtrace facility"
-maintainer="John <johnz@posteo.net>"
-license="BSD-2"
+only_for_archs+=" aarch64-musl"
+only_for_archs+=" armv5te-musl"
+only_for_archs+=" armv6l-musl"
+only_for_archs+=" armv7l-musl"
+only_for_archs+=" i686-musl"
+only_for_archs+=" mips-musl"
+only_for_archs+=" mipsel-musl"
+only_for_archs+=" mipselhf-musl"
+only_for_archs+=" mipshf-musl"
+only_for_archs+=" x86_64-musl"
 homepage="http://www.freshports.org/devel/libexecinfo"
-distfiles="http://distcache.freebsd.org/local-distfiles/itetcu/libexecinfo-${version}.tar.bz2"
-checksum=c9a21913e7fdac8ef6b33250b167aa1fc0a7b8a175145e26913a4c19d8a59b1f
-only_for_archs="x86_64-musl i686-musl aarch64-musl armv7l-musl armv6l-musl armv5te-musl mips-musl mipsel-musl mipshf-musl mipselhf-musl"
+license="BSD-2"
+distfiles="http://distcache.freebsd.org/local-distfiles/itetcu/libexecinfo-$version.tar.bz2"
+checksum="c9a21913e7fdac8ef6b33250b167aa1fc0a7b8a175145e26913a4c19d8a59b1f"
+build_style="gnu-makefile"
 
 do_install() {
-	vinstall execinfo.h 644 usr/include
-	vinstall stacktraverse.h 644 usr/include
-	vinstall libexecinfo.a 755 usr/lib
-	vinstall libexecinfo.so.1 755 usr/lib
-	ln -s libexecinfo.so.1 ${DESTDIR}/usr/lib/libexecinfo.so
-	head -28 execinfo.c > LICENSE
-	vlicense LICENSE
+  vinstall execinfo.h 644 usr/include
+  vinstall stacktraverse.h 644 usr/include
+  vinstall libexecinfo.a 755 usr/lib
+  vinstall libexecinfo.so.1 755 usr/lib
+  ln -s libexecinfo.so.1 "$DESTDIR/usr/lib/libexecinfo.so"
+  head -28 execinfo.c > LICENSE
+  vlicense LICENSE
 }
 
 libexecinfo-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.so
-		vmove usr/lib/*.a
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove "usr/lib/*.a"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
