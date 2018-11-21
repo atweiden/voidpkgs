@@ -273,6 +273,7 @@ constant %PKG = Map.new(
     'libedit' => ['libedit-devel'],
     'libev' => ['libev-devel'],
     'libevent' => ['libevent-devel'],
+    'libexecinfo' => ['libexecinfo-devel'],
     'libfetch' => ['libfetch-devel'],
     'libffi' => ['libffi-devel'],
     'libgcrypt' => ['libgcrypt-devel'],
