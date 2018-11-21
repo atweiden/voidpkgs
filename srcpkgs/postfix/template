@@ -58,6 +58,7 @@ do_build() {
     makedefs
 
   make \
+    makefiles \
     CCARGS=" \
       -DDEF_COMMAND_DIR=\\\"/usr/bin\\\" \
       -DDEF_MANPAGE_DIR=\\\"/usr/share/man\\\" \
@@ -91,8 +92,7 @@ do_build() {
       -lssl \
       -lz \
     ' \
-    OPT="$CFLAGS $LDFLAGS" \
-    makefiles
+    OPT="$CFLAGS $LDFLAGS"
 
   make "$makejobs"
 }
