@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
 version=1.14.0
-revision=4
+revision=5
 short_desc="The Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -16,6 +16,8 @@ wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
+conflicts+=" cargo"
+conflicts+=" rust"
 
 pre_build() {
   cargo update --package openssl-sys --precise 0.9.35
@@ -23,6 +25,15 @@ pre_build() {
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init" rustup
+
+  # rustup doesn't set PATH correctly to include these
+  for cmd in cargo \
+             rust-gdb \
+             rust-lldb \
+             rustc \
+             rustdoc; do
+    ln -s rustup "$DESTDIR/usr/bin/$cmd"
+  done
 
   if ! [[ -n "$CROSS_BUILD" ]]; then
     # generate shell completions
