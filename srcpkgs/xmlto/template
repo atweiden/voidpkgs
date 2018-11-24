@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xmlto"
 version=0.0.28
-revision=1
+revision=2
 short_desc="Tool to help transform XML documents into other formats"
 depends+=" bash"
 depends+=" docbook-xsl"
@@ -9,7 +9,7 @@ depends+=" libxslt"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libxslt"
 homepage="http://cyberelk.net/tim/software/xmlto/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://anduin.linuxfromscratch.org/BLFS/xmlto/$pkgname-$version.tar.bz2"
 checksum="1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276"
 build_style="gnu-configure"
