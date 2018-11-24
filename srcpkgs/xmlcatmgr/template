@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xmlcatmgr"
 version=2.2
-revision=3
+revision=4
 short_desc="XML and SGML catalog manager"
 homepage="http://xmlcatmgr.sourceforge.net"
-license="BSD"
+license="BSD-3-Clause"
 distfiles="$SOURCEFORGE_SITE/xmlcatmgr/$pkgname-$version.tar.gz"
 checksum="ea1142b6aef40fbd624fc3e2130cf10cf081b5fa88e5229c92b8f515779d6fdc"
 conf_files+=" /etc/sgml/catalog"
@@ -42,6 +42,7 @@ post_install() {
   install -Dm 644 catalog.etc.sgml "$DESTDIR/etc/sgml/catalog"
   install -Dm 644 catalog.xml "$DESTDIR/usr/share/xml/catalog"
   install -Dm 644 catalog.etc.xml "$DESTDIR/etc/xml/catalog"
+  vlicense COPYING
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
