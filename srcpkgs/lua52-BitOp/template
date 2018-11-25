@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lua52-BitOp"
 version=1.0.2
-revision=2
+revision=3
 short_desc="C extension module for Lua which adds bitwise operations on numbers"
 depends="lua52>=5.2"
 makedepends+=" lua52"
