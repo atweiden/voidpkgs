@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="musl-obstack"
 version=1.1
-revision=2
+revision=3
 short_desc="Implementation of obstack for musl libc"
 only_for_archs+=" aarch64-musl"
 only_for_archs+=" armv5tel-musl"
@@ -16,7 +16,7 @@ only_for_archs+=" x86_64-musl"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="https://github.com/pullmoll/musl-obstack"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/pullmoll/musl-obstack/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="52a216613e7d55e8725e43d017bb2d49a4b1ffa1e06da472f03c7f9875df7d0d"
 build_style="gnu-configure"
