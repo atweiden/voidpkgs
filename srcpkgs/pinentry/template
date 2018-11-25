@@ -12,9 +12,7 @@ license="GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/pinentry/$pkgname-$version.tar.bz2"
 checksum="68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570"
 build_style="gnu-configure"
-configure_args+=" --disable-inside-emacs"
 configure_args+=" --disable-libsecret"
-configure_args+=" --disable-pinentry-emacs"
 configure_args+=" --disable-pinentry-fltk"
 configure_args+=" --disable-pinentry-gnome3"
 configure_args+=" --disable-pinentry-gtk2"
@@ -24,6 +22,7 @@ configure_args+=" --disable-pinentry-tqt"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-fallback-curses"
 configure_args+=" --enable-pinentry-curses"
+configure_args+=" --enable-pinentry-emacs"
 configure_args+=" --enable-pinentry-tty"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-libcap"
@@ -49,6 +48,15 @@ pinentry-tty_package() {
   alternatives="pinentry:pinentry:/usr/bin/pinentry-tty"
   pkg_install() {
     vmove usr/bin/pinentry-tty
+  }
+}
+
+pinentry-emacs_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - Emacs interface"
+  alternatives="pinentry:pinentry:/usr/bin/pinentry-emacs"
+  pkg_install() {
+    vmove usr/bin/pinentry-emacs
   }
 }
 
