@@ -1,23 +1,25 @@
-# Template file for 'gocryptfs'
-pkgname=gocryptfs
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="gocryptfs"
 version=1.6
 revision=1
+short_desc="Encrypted overlay filesystem written in Go"
+depends="fuse"
+hostmakedepends+=" man-db"
+hostmakedepends+=" pandoc"
+homepage="https://nuetzlich.net/gocryptfs"
+license="MIT"
+changelog="https://github.com/rfjakob/gocryptfs#changelog"
+distfiles="https://github.com/rfjakob/gocryptfs/releases/download/v$version/${pkgname}_v${version}_src-deps.tar.gz"
+checksum="98ff3bc0497ca195f65fa5912ebab33a0f80aa27205b0b35e73908d23dcefbe6"
 wrksrc="${pkgname}_v${version}_src-deps"
-build_style=go
+build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
 go_build_tags="without_openssl"
-hostmakedepends="pandoc man-db"
-depends="fuse"
-short_desc="Encrypted overlay filesystem written in Go"
-maintainer="mustaqim <mustaqim+void@pm.me>"
-license="MIT"
-homepage="https://nuetzlich.net/gocryptfs"
-changelog="https://github.com/rfjakob/gocryptfs#changelog"
-distfiles="https://github.com/rfjakob/${pkgname}/releases/download/v${version}/${pkgname}_v${version}_src-deps.tar.gz"
-checksum=98ff3bc0497ca195f65fa5912ebab33a0f80aa27205b0b35e73908d23dcefbe6
 
 post_install() {
-	vlicense $GOSRCPATH/LICENSE
-	$GOSRCPATH/Documentation/MANPAGE-render.bash
-	vman $GOSRCPATH/Documentation/gocryptfs.1
+  vlicense "$GOSRCPATH/LICENSE"
+  "$GOSRCPATH/Documentation/MANPAGE-render.bash"
+  vman "$GOSRCPATH/Documentation/gocryptfs.1"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
