@@ -235,6 +235,7 @@ constant %PKG = Map.new(
     'isl15' => ['isl15-devel'],
     'isl16' => ['isl16-devel'],
     'jansson' => ['jansson-devel'],
+    'jemalloc' => ['jemalloc-devel'],
     'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],
     'kbd' => ['kbd-data'],

@@ -1,0 +1,30 @@
+# Template file for 'jemalloc'
+pkgname=jemalloc
+version=5.1.0
+revision=1
+build_style=gnu-configure
+configure_args="je_cv_static_page_shift=12"
+short_desc="General-purpose scalable concurrent malloc(3) implementation"
+maintainer="Eivind Uggedal <eivind@uggedal.com>"
+license="BSD-2-Clause"
+homepage="http://jemalloc.net/"
+#changelog="https://raw.githubusercontent.com/jemalloc/jemalloc/master/ChangeLog"
+distfiles="https://github.com/jemalloc/jemalloc/releases/download/${version}/jemalloc-${version}.tar.bz2"
+checksum=5396e61cc6103ac393136c309fae09e44d74743c86f90e266948c50f3dbb7268
+
+post_install() {
+	vlicense COPYING
+}
+
+jemalloc-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/bin
+		vmove usr/share
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove usr/lib/pkgconfig
+	}
+}
