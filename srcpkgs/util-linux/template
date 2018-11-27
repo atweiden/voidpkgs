@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
 version=2.33
-revision=1
+revision=2
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
@@ -21,7 +21,7 @@ checksum="f261b9d73c35bfeeea04d26941ac47ee1df937bd3b0583e748217c1ea423658a"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
-_uuidd_homedir="/run/uuidd"
+_uuidd_homedir="/var/empty"
 provides+=" eject-${version}_1"
 provides+=" rfkill-${version}_1"
 replaces="rfkill>=0"
@@ -84,7 +84,7 @@ do_install() {
 }
 
 libfdisk_package() {
-  short_desc="A fdisk(8) library"
+  short_desc="Library for fdisk(8)"
   pkg_install() {
     vmove "usr/lib/libfdisk.so.*"
   }
@@ -94,7 +94,7 @@ libfdisk-devel_package() {
   unset depends
   depends+=" libblkid-devel-${version}_$revision"
   depends+=" libfdisk-${version}_$revision"
-  short_desc="fdisk(8) library development files"
+  short_desc="Library for fdisk(8) - development files"
   pkg_install() {
     vmove usr/lib/libfdisk.a
     vmove usr/lib/libfdisk.so
@@ -104,7 +104,7 @@ libfdisk-devel_package() {
 }
 
 libmount_package() {
-  short_desc="A mount(8) library"
+  short_desc="Library for mount(8)"
   pkg_install() {
     vmove "usr/lib/libmount.so.*"
   }
@@ -114,7 +114,7 @@ libmount-devel_package() {
   unset depends
   depends+=" libblkid-devel-${version}_$revision"
   depends+=" libmount-${version}_$revision"
-  short_desc="mount(8) library development files"
+  short_desc="Library for mount(8) - development files"
   pkg_install() {
     vmove usr/lib/libmount.a
     vmove usr/lib/libmount.so
@@ -135,7 +135,7 @@ libblkid-devel_package() {
   depends+=" libblkid-${version}_$revision"
   depends+=" libuuid-devel-${version}_$revision"
   depends+=" zlib-devel"
-  short_desc="libblkid development files"
+  short_desc="Library to handle device identification - development files"
   pkg_install() {
     vmove usr/include/blkid
     vmove usr/lib/libblkid.a
