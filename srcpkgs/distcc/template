@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="distcc"
 version=3.2rc1
-revision=15
+revision=16
 short_desc="Distributed compilation for faster C/C++ builds"
 makedepends+=" avahi-libs-devel"
 makedepends+=" popt-devel"
 makedepends+=" python-devel"
 hostmakedepends="pkg-config"
 homepage="https://distcc.github.io"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/distcc/distcc/releases/download/v$version/$pkgname-$version.tar.bz2"
 checksum="311671e844625d7fdb18dd3d096cd855751cfe8de13827682bcb7beff9133b30"
 conf_files+=" /etc/distcc/clients.allow"
