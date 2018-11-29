@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="shadowsocks-libev"
-version=3.2.2
+version=3.2.3
 revision=1
 short_desc="Lightweight secured socks5 proxy for embedded devices and low end boxes"
 makedepends+=" c-ares-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" xmlto"
 homepage="https://github.com/shadowsocks/shadowsocks-libev"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/shadowsocks/shadowsocks-libev/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="83906826135ba8e0c7cd3d46f892d28c7bf83583d15a91240ae2632dc90e28aa"
+checksum="2befc27b1cc62af0450702343d17e347936f0d4e3d4b04ba9246c4f9b409b742"
 build_style="gnu-configure"
 configure_args="--with-pcre=$XBPS_CROSS_BASE/usr"
 system_accounts="shadowsocks"
