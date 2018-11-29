@@ -1,22 +1,26 @@
-# Template file for 'pwnat'
-pkgname=pwnat
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pwnat"
 version=0.3
 revision=2
 # the git-hash of v0.3 as it isn't tagged
-_githash=572fcfb76a1b4b46faaa6b36817a39671b6f3c7e
-wrksrc="${pkgname}-${_githash}"
-build_style=gnu-makefile
+_gitrev="572fcfb76a1b4b46faaa6b36817a39671b6f3c7e"
 short_desc="Serverless NAT to NAT hole punching"
-maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="GPL-3.0-or-later"
 homepage="http://samy.pl/pwnat/"
-distfiles="https://github.com/samyk/pwnat/archive/${_githash}.tar.gz"
-checksum=365da981ba1a39d7e3c8427fbcd9e7fcd3dd16cd30ae7e3b0aca50511fd8e1b1
+license="GPL-3.0-or-later"
+distfiles="https://github.com/samyk/pwnat/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="365da981ba1a39d7e3c8427fbcd9e7fcd3dd16cd30ae7e3b0aca50511fd8e1b1"
+wrksrc="$pkgname-$_gitrev"
+build_style="gnu-makefile"
 
 do_configure() {
-	sed -i 's#sys/unistd.h#unistd.h#' $(find -name '*.[ch]')
+  sed \
+    -i \
+    -e 's#sys/unistd.h#unistd.h#' \
+    $(find -name '*.[ch]')
 }
 
 do_install() {
-	vbin pwnat
+  vbin pwnat
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
