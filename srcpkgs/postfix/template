@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="postfix"
-version=3.3.1
+version=3.3.2
 revision=4
 short_desc="High-performance mail transport agent"
 makedepends+=" icu-devel"
@@ -9,6 +9,7 @@ makedepends+=" libmysqlclient-devel"
 makedepends+=" pcre-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
+hostmakedepends+=" m4"
 hostmakedepends+=" perl"
 if [[ -n "$CROSS_BUILD" ]]; then
   # XXX postfix-install needs native binaries
@@ -17,7 +18,7 @@ fi
 homepage="http://www.postfix.org/"
 license="IPL-1.0, EPL-2.0"
 distfiles="ftp://ftp.porcupine.org/mirrors/postfix-release/official/$pkgname-$version.tar.gz"
-checksum="54f514dae42b5275cb4bc9c69283f16c06200b71813d0bb696568c4ba7ae7e3b"
+checksum="3c93f31eee49a58e592c31e62a058701cadde11e8e066ea441da19fddad7b35b"
 conf_files+=" /etc/postfix/access"
 conf_files+=" /etc/postfix/aliases"
 conf_files+=" /etc/postfix/canonical"
