@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dejagnu"
-version=1.6.1
+version=1.6.2
 revision=1
 short_desc="Framework for running test suites on GNU tools"
 depends="expect"
 makedepends="expect-devel"
 homepage="https://www.gnu.org/software/dejagnu/"
-license="GPL-3"
+license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/dejagnu/$pkgname-$version.tar.gz"
-checksum="bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692"
+checksum="0d0671e1b45189c5fc8ade4b3b01635fb9eeab45cf54f57db23e4c4c1a17d261"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
