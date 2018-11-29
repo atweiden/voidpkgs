@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="socklog"
 version=2.1.0
-revision=4
+revision=5
 short_desc="Small and secure syslogd replacement for use with runit"
 homepage="http://smarden.org/socklog/"
 license="custom"
