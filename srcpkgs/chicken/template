@@ -6,7 +6,7 @@ short_desc="A practical and portable Scheme system"
 # no arm support
 only_for_archs="i686 i686-musl x86_64 x86_64-musl"
 homepage="http://www.call-cc.org"
-license="BSD"
+license="BSD-3-Clause"
 distfiles="http://code.call-cc.org/releases/$version/$pkgname-$version.tar.gz"
 checksum="a8b94bb94c5d6a4348cedd75dc334ac80924bcd9a7a7a3d6af5121e57ef66595"
 
