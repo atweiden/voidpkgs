@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wget"
-version=1.19.5
-revision=2
+version=1.20
+revision=1
 short_desc="The GNU wget download utility"
 depends="ca-certificates"
 makedepends+=" libidn-devel"
 makedepends+=" libpsl-devel"
 makedepends+=" libuuid-devel"
-makedepends+=" pcre-devel"
+makedepends+=" pcre2-devel"
 makedepends+=" $(vopt_if gnutls gnutls-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
 checkdepends+=" perl-HTTP-Daemon"
@@ -18,7 +18,7 @@ homepage="http://www.gnu.org/software/wget/wget.html"
 license="GPL-3.0-or-later"
 #changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
 distfiles="$GNU_SITE/wget/$pkgname-$version.tar.gz"
-checksum="b39212abe1a73f2b28f4c6cb223c738559caac91d6e416a6d91d4b9d55c9faee"
+checksum="8a057925c74c059d9e37de63a63b450da66c5c1c8cef869a6df420b3bb45a0cf"
 conf_files="/etc/wgetrc"
 build_style="gnu-configure"
 configure_args+=" $(vopt_if ssl --with-ssl=openssl)"
@@ -29,7 +29,8 @@ build_options_default="ssl"
 vopt_conflict gnutls ssl
 
 post_install() {
-  echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> "$DESTDIR/etc/wgetrc"
+  echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> \
+    "$DESTDIR/etc/wgetrc"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
