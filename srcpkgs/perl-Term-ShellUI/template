@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Term-ShellUI"
 version=0.92
-revision=2
+revision=3
 short_desc="Term::ShellUI - A fully-featured shell-like command line environment"
 noarch="yes"
 depends="perl"
