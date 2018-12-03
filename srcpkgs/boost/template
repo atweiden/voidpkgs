@@ -6,10 +6,12 @@ short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
 makedepends+=" python-devel"
+makedepends+=" python3-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" bzip2-devel"
 hostmakedepends+=" icu-devel"
 hostmakedepends+=" python-devel"
+hostmakedepends+=" python3-devel"
 homepage="http://www.boost.org/"
 license="Boost Software License 1.0"
 distfiles="$SOURCEFORGE_SITE/boost/${pkgname}_${version//\./_}.tar.bz2"
@@ -47,10 +49,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 do_build() {
-  echo "using gcc : ${_toolset#gcc-} : $CXX $CXXFLAGS ;" >user-config.jam
-  if [[ -n "$CROSS_BUILD" ]]; then
-    echo "using python : 2.7 : : $XBPS_CROSS_BASE/usr/include/python2.7 : $XBPS_CROSS_BASE/usr/lib/python2.7 ;" >>user-config.jam
-  fi
   ./bootstrap.sh \
     --prefix="$DESTDIR/usr" \
     --with-python="$XBPS_CROSS_BASE/usr/bin/python2" \
@@ -61,9 +59,16 @@ do_build() {
   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2 clean
   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2
   )
+  echo "$py3_lib"
+  cat > user-config.jam <<-__EOF
+using gcc : ${_toolset#gcc-} : ${CXX} : <cxxflags>"${CXXFLAGS}" <linkflags>"${LDFLAGS}" ;
+using python : 2.7 : ${XBPS_CROSS_BASE}/usr/bin/python2 : ${XBPS_CROSS_BASE}/usr/include/python2.7 : ${XBPS_CROSS_BASE}/usr/lib/python2.7 ;
+using python : ${py3_ver} : ${XBPS_CROSS_BASE}/usr/bin/python3 : ${XBPS_CROSS_BASE}${py3_inc} : ${XBPS_CROSS_BASE}${py3_lib} ;
+__EOF
   ./bjam \
     abi="$_abi" \
     architecture="$_arch" \
+    python="2.7,$py3_ver" \
     "$makejobs" \
     --debug-building \
     --toolset="$_toolset" \
@@ -80,6 +85,7 @@ do_install() {
   ./bjam \
     abi="$_abi" \
     architecture="$_arch" \
+    python="2.7,$py3_ver" \
     --prefix="$DESTDIR/usr" \
     --user-config="$wrksrc/user-config.jam" \
     install
@@ -115,7 +121,16 @@ boost-python_package() {
   depends+=" python"
   short_desc+=" - Python bindings"
   pkg_install() {
-    vmove "usr/lib/libboost_python*"
+    vmove "usr/lib/libboost_python2*.so.*"
+  }
+}
+
+boost-python3_package() {
+  depends+=" boost-${version}_$revision"
+  depends+=" python3"
+  short_desc+=" - Python3 bindings"
+  pkg_install() {
+    vmove "usr/lib/libboost_python3*.so.*"
   }
 }
 

@@ -61,7 +61,8 @@ constant %PKG = Map.new(
     'boost' => qw<boost-build
                   boost-devel
                   boost-jam
-                  boost-python>,
+                  boost-python
+                  boost-python3>,
     'btrfs-progs' => qw<libbtrfs
                         libbtrfs-devel
                         libbtrfsutil
