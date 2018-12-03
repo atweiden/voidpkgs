@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
-version=1.14.0
-revision=5
+version=1.15.0
+revision=1
 short_desc="The Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -11,29 +11,14 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-lang-nursery/rustup.rs/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ab125d9b12bf0f3f7e7ad98e826035fa1ae3dbe6ba8b78be4c82f9cde00bc59f"
+checksum="470441d59dbb33f4e3e52e3f7420734dae0066598802c2b3b4f89f5b3a6a9e45"
 wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
-conflicts+=" cargo"
-conflicts+=" rust"
-
-pre_build() {
-  cargo update --package openssl-sys --precise 0.9.35
-}
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init" rustup
-
-  # rustup doesn't set PATH correctly to include these
-  for cmd in cargo \
-             rust-gdb \
-             rust-lldb \
-             rustc \
-             rustdoc; do
-    ln -s rustup "$DESTDIR/usr/bin/$cmd"
-  done
 
   if ! [[ -n "$CROSS_BUILD" ]]; then
     # generate shell completions
@@ -45,6 +30,8 @@ do_install() {
     vinstall rustup.fish 0644 usr/share/fish/completions/
     vinstall rustup.zsh 0644 usr/share/zsh/site-functions/ _rustup
   fi
+
+  vinstall "$FILESDIR/rustup.sh" 0644 etc/profile.d/
 
   vlicense LICENSE-APACHE
   vlicense LICENSE-MIT
