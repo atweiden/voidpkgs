@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="hostapd"
-version=2.6
-revision=7
+version=2.7
+revision=1
 short_desc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
@@ -9,9 +9,9 @@ hostmakedepends="pkg-config"
 homepage="http://w1.fi/hostapd/"
 license="BSD"
 distfiles="http://w1.fi/releases/$pkgname-$version.tar.gz"
-checksum="01526b90c1d23bec4b0f052039cc4456c2fd19347b4d830d1d58a0a6aea7117d"
+checksum="21b0dda3cc3abe75849437f6b9746da461f88f0ea49dd621216936f87440a141"
 conf_files="/etc/hostapd/hostapd.conf"
-build_wrksrc=$pkgname
+build_wrksrc="$pkgname"
 
 do_configure() {
   cp -f "$FILESDIR/config" .config
@@ -32,12 +32,15 @@ do_install() {
   vlicense "$wrksrc/COPYING"
   vman hostapd.8
   vman hostapd_cli.1
-  vsv hostapd
   vinstall hostapd.conf 644 etc/hostapd
+  vsv hostapd
   vmkdir usr/share/examples/hostapd
-  install -m 644 -t "$DESTDIR/usr/share/examples/hostapd" \
+  install \
+    -m 644 \
+    -t "$DESTDIR/usr/share/examples/hostapd" \
+    hlr_auc_gw.milenage_db \
     hostapd.{accept,conf,deny,eap_user,radius_clients,sim_db,vlan,wpa_psk} \
-    wired.conf hlr_auc_gw.milenage_db
+    wired.conf
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
