@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nettle"
-version=3.4
+version=3.4.1
 revision=1
 short_desc="A low-level cryptographic library"
 makedepends="gmp-devel"
 hostmakedepends="m4"
 homepage="http://www.lysator.liu.se/~nisse/nettle/"
-license="GPL-2"
+license="GPL-2.0-or-later, GPL-3.0-or-later"
 distfiles="$GNU_SITE/nettle/$pkgname-$version.tar.gz"
-checksum="ae7a42df026550b85daca8389b6a60ba6313b0567f374392e54918588a411e94"
+checksum="f941cf1535cd5d1819be5ccae5babef01f6db611f9b5a777bae9c7604b8a92ad"
 build_style="gnu-configure"
 configure_args="--enable-shared"
 
