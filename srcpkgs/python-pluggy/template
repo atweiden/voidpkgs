@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pluggy"
-version=0.7.1
+version=0.8.0
 revision=1
 short_desc="Minimalist production ready python2 plugin system"
 noarch="yes"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pytest-dev/pluggy"
 license="MIT"
 distfiles="$PYPI_SITE/p/pluggy/${pkgname#*-}-$version.tar.gz"
-checksum="95eb8364a4708392bae89035f45341871286a333f749c3141c20573d2b3876e1"
+checksum="447ba94990e8014ee25ec853339faf7b0fc8050cdc3289d4d71f7f410fb90095"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="pluggy"
