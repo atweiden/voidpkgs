@@ -235,10 +235,10 @@ do_configure() {
       _hash="sysv"
       ;;
     mipshf-musl)
-      _args+=" --with-arch=mip32r2 --with-float=hard"
+      _args+=" --with-arch=mips32r2 --with-float=hard"
       ;;
     mips-musl)
-      _args+=" --with-arch=mip32r2 --with-float=soft"
+      _args+=" --with-arch=mips32r2 --with-float=soft"
       ;;
     armv5*)
       _args+=" --with-arch=armv5te --with-float=soft"
