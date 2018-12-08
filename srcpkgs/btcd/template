@@ -1,23 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcd"
 version=0.12.0beta
-revision=1
-_gitrev="67e573d211ace594f1366b4ce9d39726c4b19bd0"
+revision=2
+_gitrev="7d2daa5bfef28c5e282571bc06416516936115ee"
 short_desc="An alternative full node Bitcoin implementation written in Go"
-hostmakedepends+=" git"
-hostmakedepends+=" glide"
+hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcd"
 license="ISC"
 distfiles="https://github.com/btcsuite/btcd/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="51598dd6d9144e238f07b07d75f1efad9314699723714b1201ea6fa9cc75713a"
+checksum="b7b6806be02dd936059f7878cc02fc5b46ca5092802f1e83c68e817a72968bff"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/btcsuite/btcd"
 
 do_build() {
-  cd "$GOSRCPATH"
-  glide install
+  go_package="${go_package:-$go_import_path}"
+  export GO111MODULE="on"
+  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
   go install . ./cmd/...
 }
 
