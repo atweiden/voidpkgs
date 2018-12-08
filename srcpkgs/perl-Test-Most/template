@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Most"
 version=0.35
-revision=2
+revision=3
 short_desc="Test::Most - Most commonly needed test functions and features"
 noarch="yes"
 depends+=" perl"
