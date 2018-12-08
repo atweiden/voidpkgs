@@ -1,23 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcwallet"
 version=0.7.0alpha
-revision=1
-_gitrev="c4dd27e481f9801866cf5226bfe532084772ec2a"
+revision=2
+_gitrev="e59e51f8e13c9e552686ef785edae838ca08ebd2"
 short_desc="A secure Bitcoin wallet daemon written in Go"
-hostmakedepends+=" git"
-hostmakedepends+=" glide"
+hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
 distfiles="https://github.com/btcsuite/btcwallet/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="1ae4f5fef8945545a7de7abd69070dd7fecb8a1893cd9ab594f125ecf181a4ad"
+checksum="8d457e7d98cc104df9d4a6d3ca3ae3673615a995b00c0ad9d2c144c7b1dab826"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
 
 do_build() {
-  cd "$GOSRCPATH"
-  glide install
+  go_package="${go_package:-$go_import_path}"
+  export GO111MODULE="on"
+  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
   go install . ./cmd/...
 }
 
