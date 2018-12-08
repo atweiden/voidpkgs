@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgpg-error"
-version=1.32
-revision=2
+version=1.33
+revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca"
+checksum="5d38826656e746c936e7742d9cde072b50baa3c4c49daa168a56813612bf03ff"
 build_style="gnu-configure"
 
 post_configure() {
@@ -28,6 +28,7 @@ libgpg-error-devel_package() {
     vmove usr/bin/gpgrt-config
     vmove usr/bin/gpg-error-config
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove usr/share/aclocal
     vmove "usr/lib/*.so"
   }
