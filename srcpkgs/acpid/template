@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="acpid"
 version=2.0.31
-revision=1
+revision=2
 short_desc="The ACPI Daemon (acpid) With Netlink Support"
 license="GPL-2.0-or-later"
-homepage="http://sourceforge.net/projects/acpid2/"
+homepage="https://sourceforge.net/projects/acpid2/"
 distfiles="$SOURCEFORGE_SITE/acpid2/$pkgname-$version.tar.xz"
 checksum="fc9dc669ed85d9a1739aa76915e0667c6697c5431160f8dfb253046c6a072cc3"
 conf_files+=" /etc/acpi/events/anything"
