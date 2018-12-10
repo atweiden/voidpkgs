@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnu-efi-libs"
 version=3.0.9
-revision=1
+revision=2
 short_desc="Library for building UEFI Applications using GNU toolchain"
 makedepends="pciutils-devel"
-homepage="http://sourceforge.net/projects/gnu-efi/"
+homepage="https://sourceforge.net/projects/gnu-efi/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/${pkgname%-libs}-$version.tar.bz2"
 checksum="6715ea7eae1c7e4fc5041034bd3f107ec2911962ed284a081e491646b12277f0"
