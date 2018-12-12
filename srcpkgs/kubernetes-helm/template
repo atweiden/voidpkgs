@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kubernetes-helm"
-version=2.11.0
+version=2.12.0
 revision=2
 short_desc="The Kubernetes Package Manager"
 hostmakedepends+=" git"
@@ -10,7 +10,7 @@ hostmakedepends+=" mercurial"
 homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz"
-checksum="eee403cc1e05ab2eb1c6802eb7ecc4a5c544cb5971b7ee828c0b8d60fe061eb0"
+checksum="5bfc368df2551d228a941286a59f31c53faebdc7a02edda2dc6df33998d1a438"
 wrksrc="helm-$version"
 nopie=true
 conflicts="helm"
