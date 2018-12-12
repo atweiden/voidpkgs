@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rebar3"
-version=3.6.2
+version=3.7.5
 revision=1
 short_desc="Erlang build tool to compile, test, and release applications"
 noarch="yes"
@@ -9,7 +9,7 @@ hostmakedepends="erlang"
 homepage="https://www.rebar3.org/"
 license="Apache-2.0"
 distfiles="https://github.com/erlang/rebar3/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7f358170025b54301bce9a10ec7ad07d4e88a80eaa7b977b73b32b45ea0b626e"
+checksum="46d9991c8af1dc85a1de8edc6618c3e6dc9c3de60c67e8139a98d2e4c2d047ad"
 
 do_build() {
   ./bootstrap
@@ -17,6 +17,8 @@ do_build() {
 
 do_install() {
   vbin rebar3
+  vsconf rebar.config.sample rebar.config
+  vman manpages/rebar3.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
