@@ -1,12 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kyua"
 version=0.13
-revision=1
+revision=2
 short_desc="Kyua (automated testing framework) - Command line interface"
 depends="atf>=0.21"
 makedepends+=" atf-devel"
 makedepends+=" lutok-devel"
 makedepends+=" sqlite-devel"
+checkdepends="atf"
 hostmakedepends+=" atf-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
@@ -27,6 +28,10 @@ configure_args+=" kyua_cv_signals_lastno=31"
 
 pre_configure() {
   autoreconf -fi
+}
+
+post_install() {
+  vlicense LICENSE
 }
 
 kyua-tests_package() {
