@@ -168,8 +168,8 @@ libgmp.so.10 gmp-5.0.1_1
 libgmpxx.so.4 gmpxx-6.0.0_2
 libgnutlsxx.so.28 gnutls-3.2.13_1
 libgnutls.so.30 gnutls-3.4.13_1
-libgpgme-pthread.so.11 gpgme-1.3.0_1
-libgpgme.so.11 gpgme-1.3.0_1
+libgpgme-pthread.so.11 libgpgme-1.12.0_2
+libgpgme.so.11 libgpgme-1.12.0_2
 libgpgmepp.so.6 gpgmepp-1.7.0_3
 libgtest.so gtest-1.7.0_1
 libgtest_main.so gtest-1.7.0_1

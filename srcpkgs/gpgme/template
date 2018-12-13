@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gpgme"
 version=1.12.0
-revision=1
+revision=2
 short_desc="GnuPG Made Easy"
 depends="gnupg2"
 makedepends="libassuan-devel"
@@ -40,8 +40,17 @@ post_extract() {
     tests/gpg/Makefile.*
 }
 
+libgpgme_package() {
+  short_desc+=" - library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
+}
+
 gpgme-devel_package() {
-  depends="gpgme>=${version}_$revision"
+  unset depends
+  depends+=" $makedepends"
+  depends+=" libgpgme>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/bin/gpgme-config
