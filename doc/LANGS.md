@@ -10,6 +10,7 @@ Programming Languages
 - Go
 - Haskell
 - JavaScript
+- Lisp
 - Lua
 - Nim
 - OCaml
