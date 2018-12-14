@@ -168,8 +168,6 @@ libgmp.so.10 gmp-5.0.1_1
 libgmpxx.so.4 gmpxx-6.0.0_2
 libgnutlsxx.so.28 gnutls-3.2.13_1
 libgnutls.so.30 gnutls-3.4.13_1
-libgpgme-pthread.so.11 libgpgme-1.12.0_2
-libgpgme.so.11 libgpgme-1.12.0_2
 libgpgmepp.so.6 gpgmepp-1.7.0_3
 libgtest.so gtest-1.7.0_1
 libgtest_main.so gtest-1.7.0_1
@@ -261,6 +259,8 @@ libgit2.so.27 libgit2-0.27.3_1
 libgo.so.13 libgo-8.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
+libgpgme-pthread.so.11 libgpgme-1.12.0_2
+libgpgme.so.11 libgpgme-1.12.0_2
 libgsasl.so.7 libgsasl-1.8.0_1
 libgssglue.so.1 libgssglue-0.3_1
 libgudev-1.0.so.0 libgudev-230_1
