@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dnscrypt-proxy"
 version=2.0.19
-revision=1
+revision=2
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/jedisct1/dnscrypt-proxy"
 license="ISC"
