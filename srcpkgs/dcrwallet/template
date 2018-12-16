@@ -1,16 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrwallet"
-version=1.4.0pre
-revision=3
-_gitrev="0bb307b1db2ee6b85519a1a535f94b113a105fb5"
+version=1.4.0rc1
+revision=1
 short_desc="Decred wallet daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
-distfiles="https://github.com/decred/dcrwallet/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="5915d45fd48e5c14f3bd26993a0c2a7b67e075562cc273235d8ed5f3ca50a38a"
-wrksrc="$pkgname-$_gitrev"
+distfiles="https://github.com/decred/dcrwallet/archive/release-v${version/rc1/-rc1}.tar.gz"
+checksum="356e87464e89bc38b8a655cd8f26a3e3d749ca32a1f33984851a00147b16b537"
+wrksrc="$pkgname-release-v${version/rc1/-rc1}"
 build_style="go"
 go_import_path="github.com/decred/dcrwallet"
 
