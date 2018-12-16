@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libasr"
 version=1.0.2
-revision=2
+revision=4
 short_desc="Simple and portable asynchronous resolver library"
 makedepends="libressl-devel"
 hostmakedepends+=" automake"
