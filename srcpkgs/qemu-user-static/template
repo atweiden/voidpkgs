@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu-user-static"
-version=3.0.0
+version=3.1.0
 revision=1
 short_desc="QEMU User-mode emulators (statically compiled)"
 makedepends+=" dtc-devel"
@@ -10,10 +10,10 @@ makedepends+=" pixman-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
-homepage="http://qemu.org"
+homepage="https://www.qemu.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
-distfiles="http://wiki.qemu.org/download/${pkgname%%-*}-$version.tar.bz2"
-checksum="933e62ad604f5f8d0a93f5e0a98fd95f9d2e23ff1dbd0c744c6c7506bba8ebe8"
+distfiles="https://wiki.qemu.org/download/${pkgname%%-*}-$version.tar.bz2"
+checksum="98fee0c86b299ebaf08587ba8df1dc8bb7152708d62937a0631875d95cc8d921"
 wrksrc="${pkgname%%-*}-$version"
 nopie="yes"
 
