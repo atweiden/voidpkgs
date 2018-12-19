@@ -1,23 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="politeia"
 version=1.3.1pre
-revision=3
-_gitrev="c6b0be997e878b288cc9636d34e970ff950b0be4"
+revision=4
+_gitrev="2eeea9db91b6d69d5818ddf5cdb0253db48bd072"
 short_desc="Decred proposal system"
-hostmakedepends+=" dep"
-hostmakedepends+=" git"
+hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/politeia"
 license="ISC"
 distfiles="https://github.com/decred/politeia/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="5303bf265edc311c285c7abe0eb64582be80e8c0a957eaf68f82dfa15c74be69"
+checksum="29e82c755a97b44ecf8f8a2685dbb03dac2d72b29844e9f9048fce370d73fbba"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/politeia"
 
 do_build() {
-  cd "$GOSRCPATH"
-  dep ensure -v
+  go_package="${go_package:-$go_import_path}"
+  export GO111MODULE="on"
+  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
   go install -v ./...
 }
 
