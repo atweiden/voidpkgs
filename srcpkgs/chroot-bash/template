@@ -11,10 +11,14 @@ distfiles="$GNU_SITE/bash/${pkgname#chroot-}-$_bash_distver.tar.gz"
 checksum="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
 wrksrc="bash-$_bash_distver"
 build_style="gnu-configure"
+# need `bash_cv_termcap_lib=gnutermcap` in order to force bash to use the
+# bundled termcap library when bootstrapping from source on a foreign
+# system
 configure_args+=" --disable-nls"
 configure_args+=" --without-bash-malloc"
 configure_args+=" --without-curses"
 configure_args+=" --without-installed-readline"
+configure_args+=" bash_cv_termcap_lib=gnutermcap"
 bootstrap="yes"
 provides="bash-${version}_$revision"
 conflicts+=" bash>=0"
