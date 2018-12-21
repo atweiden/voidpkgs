@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gocryptfs"
-version=1.6
+version=1.6.1
 revision=1
 short_desc="Encrypted overlay filesystem written in Go"
 depends="fuse"
@@ -10,7 +10,7 @@ homepage="https://nuetzlich.net/gocryptfs"
 license="MIT"
 changelog="https://github.com/rfjakob/gocryptfs#changelog"
 distfiles="https://github.com/rfjakob/gocryptfs/releases/download/v$version/${pkgname}_v${version}_src-deps.tar.gz"
-checksum="98ff3bc0497ca195f65fa5912ebab33a0f80aa27205b0b35e73908d23dcefbe6"
+checksum="fcaaf59cf7b062a6e216d2fcf69f374254018a9b8f99ae3177ac985f05b6c37b"
 wrksrc="${pkgname}_v${version}_src-deps"
 build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
