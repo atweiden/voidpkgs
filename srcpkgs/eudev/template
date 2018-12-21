@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="eudev"
 version=3.2.7
-revision=1
+revision=2
 short_desc="Gentoo's fork of systemd-udev (enhanced userland device daemon)"
 makedepends+=" libblkid-devel"
 makedepends+=" libkmod-devel"
@@ -29,6 +29,7 @@ pre_configure() {
 }
 
 post_install() {
+  mv "$DESTDIR/etc/udev/hwdb.d" "$DESTDIR/usr/lib/udev"
   vsv udevd
 }
 
