@@ -359,7 +359,10 @@ constant %PKG = Map.new(
                            linux-firmware-intel
                            linux-firmware-network
                            linux-firmware-nvidia>,
+    'linux-lts' => ['linux-lts-headers'],
     'linux' => ['linux-headers'],
+    'linux4.14' => qw<linux4.14-dbg
+                      linux4.14-headers>,
     'linux4.19' => qw<linux4.19-dbg
                       linux4.19-headers>,
     'llvm' => qw<clang
