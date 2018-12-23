@@ -1,0 +1,48 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sysdig"
+version=0.24.2
+revision=1
+short_desc="Open source system-level exploration and troubleshooting tool"
+only_for_archs+=" i686"
+only_for_archs+=" x86_64"
+depends="dkms"
+makedepends+=" LuaJIT-devel"
+makedepends+=" elfutils-devel"
+makedepends+=" jsoncpp-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libressl-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" tbb-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="wget"
+homepage="http://www.sysdig.org/"
+license="Apache-2.0, MIT, GPL-2.0-only"
+changelog="https://github.com/draios/sysdig/releases"
+distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="cd925afd2fb0a26728611666e017d480afd49158c2d70714c7461a97c8820807"
+build_style="cmake"
+configure_args+=" -DBUILD_DRIVER=OFF"
+configure_args+=" -DSYSDIG_VERSION=$version"
+configure_args+=" -DUSE_BUNDLED_B64=ON"
+configure_args+=" -DUSE_BUNDLED_DEPS=OFF"
+configure_args+=" -DUSE_BUNDLED_JQ=ON"
+nocross="yes"
+disable_parallel_build="yes"
+dkms_modules="sysdig $version"
+
+post_extract() {
+  sed \
+    -i \
+    -e 's,"${DIR_ETC}/bash_completion.d",share/bash-completion/completions,g' \
+    scripts/CMakeLists.txt
+  sed \
+    -i \
+    -e '1i#include <sys/select.h>' \
+    userspace/libsinsp/mesos_collector.h
+}
+
+post_install() {
+  rm -rf "$DESTDIR/usr/share/zsh/vendor-completions"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
