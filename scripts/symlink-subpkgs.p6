@@ -240,6 +240,7 @@ constant %PKG = Map.new(
     'jemalloc' => ['jemalloc-devel'],
     'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],
+    'jsoncpp' => ['jsoncpp-devel'],
     'kbd' => ['kbd-data'],
     'kmod' => qw<libkmod
                  libkmod-devel>,
