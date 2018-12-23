@@ -1,29 +1,32 @@
-# Template build file for 'jsoncpp'.
-pkgname=jsoncpp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="jsoncpp"
 version=1.8.4
 revision=2
-build_style=cmake
-configure_args="-DBUILD_STATIC_LIBS=1 -DBUILD_SHARED_LIBS=1 -DJSONCPP_WITH_TESTS=0"
 short_desc="A JSON implementation in C++"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="Public Domain, MIT"
 homepage="https://github.com/open-source-parsers/jsoncpp"
-distfiles="https://github.com/open-source-parsers/${pkgname}/archive/${version}.tar.gz"
-checksum=c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6
+license="Public Domain, MIT"
+distfiles="https://github.com/open-source-parsers/jsoncpp/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6"
+build_style="cmake"
+configure_args+=" -DBUILD_SHARED_LIBS=1"
+configure_args+=" -DBUILD_STATIC_LIBS=1"
+configure_args+=" -DJSONCPP_WITH_TESTS=0"
 
 CXXFLAGS="-D_GLIBCXX_USE_C99_STDIO=1"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 jsoncpp-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
