@@ -53,12 +53,10 @@ do_build() {
     --prefix="$DESTDIR/usr" \
     --with-python="$XBPS_CROSS_BASE/usr/bin/python2" \
     --with-python-root="$XBPS_CROSS_BASE/usr"
-  (
   # rebuild bjam for target
-  cd tools/build/src/engine
-  LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2 clean
-  LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2
-  )
+  (cd tools/build/src/engine
+   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2 clean
+   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2)
   echo "$py3_lib"
   cat > user-config.jam <<-__EOF
 using gcc : ${_toolset#gcc-} : ${CXX} : <cxxflags>"${CXXFLAGS}" <linkflags>"${LDFLAGS}" ;
@@ -98,9 +96,9 @@ do_install() {
     -exec rm -f '{}' \;
   rm -rf "$DESTDIR/usr/share/boost-build/src/engine/bootstrap"
   rm -rf "$DESTDIR/usr/share/boost-build/src/engine"/bin.*
-  ( echo '# System wide configuration file for Boost.Build.' ; \
-    echo ; \
-    echo 'using gcc ;' ; ) >"$wrksrc/site-config.jam"
+  (echo '# System wide configuration file for Boost.Build.' ; \
+   echo ; \
+   echo 'using gcc ;' ;) > "$wrksrc/site-config.jam"
   cd "$wrksrc"
   vconf site-config.jam
 
