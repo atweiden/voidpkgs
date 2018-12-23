@@ -398,12 +398,10 @@ do_install() {
   # extract debugging symbols
   msg_normal "$pkgver: extracting debug info, please wait...\n"
   install -Dm 644 vmlinux "$DESTDIR/usr/lib/debug/boot/vmlinux-$_kernver"
-  (
-    cd "$DESTDIR"
-    export DESTDIR
-    find ./ -name "*.ko" -print0 \
-      | xargs -0r -n1 -P "$XBPS_MAKEJOBS" "$FILESDIR/mv-debug"
-  )
+  (cd "$DESTDIR"
+   export DESTDIR
+   find ./ -name "*.ko" -print0 \
+     | xargs -0r -n1 -P "$XBPS_MAKEJOBS" "$FILESDIR/mv-debug")
   # ... and run depmod again
   depmod -b "$DESTDIR/usr" -F System.map "$_kernver"
 }
