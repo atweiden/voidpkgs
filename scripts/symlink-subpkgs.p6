@@ -551,6 +551,7 @@ constant %PKG = Map.new(
                        libsysfs-devel>,
     'systemtap' => ['systemtap-devel'],
     'talloc' => ['talloc-devel'],
+    'tbb' => ['tbb-devel'],
     'tcl' => ['tcl-devel'],
     'tdb' => qw<libtdb
                 tdb-devel>,
