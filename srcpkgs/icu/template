@@ -46,6 +46,7 @@ pre_configure() {
       CXX="g++" \
       CXXFLAGS="-Os -fPIE" \
       LD="ld" \
+      LDFLAGS="" \
       RANLIB="ranlib" \
       STRIP="strip" \
       ../configure --prefix="/"
