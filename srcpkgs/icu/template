@@ -36,27 +36,25 @@ pre_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     # configure and build for host
     mkdir host-build
-    (
-    cd host-build
-    env \
-      AR="ar" \
-      AS="as" \
-      CC="cc" \
-      CFLAGS="-Os -fPIE" \
-      CXX="g++" \
-      CXXFLAGS="-Os -fPIE" \
-      LD="ld" \
-      LDFLAGS="" \
-      RANLIB="ranlib" \
-      STRIP="strip" \
-      ../configure --prefix="/"
-    make "$makejobs"
-    mkdir -p "$wrksrc/host-icu/config"
-    cp config/icucross.* "$wrksrc/host-icu/config"
-    make DESTDIR="$wrksrc/host-icu" install
-    mv "$wrksrc/host-icu/sbin"/* "$wrksrc/host-icu/bin"
-    make distclean
-    )
+    (cd host-build
+     env \
+       AR="ar" \
+       AS="as" \
+       CC="cc" \
+       CFLAGS="-Os -fPIE" \
+       CXX="g++" \
+       CXXFLAGS="-Os -fPIE" \
+       LD="ld" \
+       LDFLAGS="" \
+       RANLIB="ranlib" \
+       STRIP="strip" \
+       ../configure --prefix="/"
+     make "$makejobs"
+     mkdir -p "$wrksrc/host-icu/config"
+     cp config/icucross.* "$wrksrc/host-icu/config"
+     make DESTDIR="$wrksrc/host-icu" install
+     mv "$wrksrc/host-icu/sbin"/* "$wrksrc/host-icu/bin"
+     make distclean)
   fi
 
   # libicudata must be linked to libc, otherwise it's soft-float on ARM
