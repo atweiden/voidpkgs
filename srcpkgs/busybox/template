@@ -77,16 +77,12 @@ do_check() {
   cp src/scripts/echo.c busybox-static/scripts
 
   # run testsuite for busybox
-  (
-    cd busybox/testsuite
-    SKIP_KNOWN_BUGS="yes" ./runtest -v
-  )
+  (cd busybox/testsuite
+   SKIP_KNOWN_BUGS="yes" ./runtest -v)
 
   # run testsuite for busybox-static
-  (
-    cd busybox-static/testsuite
-    SKIP_KNOWN_BUGS="yes" ./runtest -v
-  )
+  (cd busybox-static/testsuite
+   SKIP_KNOWN_BUGS="yes" ./runtest -v)
 }
 
 do_install() {
