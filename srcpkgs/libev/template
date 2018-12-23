@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libev"
-version=4.24
-revision=2
+version=4.25
+revision=1
 short_desc="High-performance event loop loosely modelled after libevent"
 homepage="http://software.schmorp.de/pkg/libev.html"
 license="GPL-2.0-or-later, BSD-2-Clause"
 distfiles="http://dist.schmorp.de/libev/$pkgname-$version.tar.gz"
-checksum="973593d3479abdf657674a55afe5f78624b0e440614e2b8cb3a07f16d4d7f821"
+checksum="78757e1c27778d2f3795251d9fe09715d51ce0422416da4abb34af3929c02589"
 build_style="gnu-configure"
 
 post_install() {
