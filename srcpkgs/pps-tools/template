@@ -2,13 +2,13 @@ maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pps-tools"
 version=20120407
 revision=2
-_githash="0deb9c7e135e9380a6d09e9d2e938a146bb698c8"
+_gitrev="0deb9c7e135e9380a6d09e9d2e938a146bb698c8"
 short_desc="Tools for LinuxPPS (pulse-per-second)"
 homepage="http://linuxpps.org/wiki/index.php/Main_Page"
 license="GPL-2"
-distfiles="https://github.com/ago/pps-tools/archive/$_githash.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/ago/pps-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="28d4e5aa845f659a6ab4174bbf579e22e2d2c87dc72fd6d07306a6a249c27c76"
-wrksrc="$pkgname-$_githash"
+wrksrc="$pkgname-$_gitrev"
 build_style="gnu-makefile"
 
 do_install() {
