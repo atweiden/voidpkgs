@@ -315,6 +315,9 @@ libnfnetlink.so.0 libnfnetlink-1.0.1_1
 libnfs.so.12 libnfs-3.0.0_1
 libnftables.so.0 libnftables-0.8.4_1
 libnftnl.so.11 libnftnl-1.1.2_1
+libnilfs.so.0 libnilfs-2.1.0_1
+libnilfscleaner.so.0 libnilfs-2.1.0_1
+libnilfsgc.so.0 libnilfs-2.1.0_1
 libnl.so.1 libnl-1.1_1
 libnl-3.so.200 libnl3-3.2.1_1
 libnl-cli-3.so.200 libnl3-3.2.1_1
