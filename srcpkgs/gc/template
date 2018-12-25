@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gc"
-version=8.0.0
+version=8.0.2
 revision=1
 short_desc="A garbage collector for C and C++"
 makedepends="libatomic_ops-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.hboehm.info/gc/"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/ivmai/bdwgc/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="8f23f9a20883d00af2bff122249807e645bdf386de0de8cbd6cce3e0c6968f04"
+checksum="4e8ca4b5b72a3a27971daefaa9b621f0a716695b23baa40b7eac78de2eeb51cb"
 build_style="gnu-configure"
 configure_args+=" --enable-mmap"
 configure_args+=" --enable-static"
