@@ -1,13 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sed"
-version=4.5
+version=4.7
 revision=1
 short_desc="The GNU stream editor"
 makedepends="acl-devel"
+checkdepends="perl"
 homepage="http://www.gnu.org/software/sed"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/sed/$pkgname-$version.tar.xz"
-checksum="7aad73c8839c2bdadca9476f884d2953cdace9567ecd0d90f9959f229d146b40"
+checksum="2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a"
 build_style="gnu-configure"
 configure_args+=" --enable-acl"
 configure_args+=" gl_cv_func_working_acl_get_file=yes"
