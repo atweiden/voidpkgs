@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="crystal"
 version=0.27.0
-revision=1
+revision=2
 _shardsversion=0.8.1
 _bootstrapversion=0.27.0
 _bootstraprevision=1
@@ -39,6 +39,7 @@ build_options="binary_bootstrap"
 build_options_default="binary_bootstrap"
 desc_option_binary_bootstrap="Bootstrap using precompiled binaries"
 nocross="FIXME: someone needs to sort out the llvm --cxxflags for cross building"
+broken="llvm7"
 
 _crystalflags+=" --no-debug"
 _crystalflags+=" --progress"
