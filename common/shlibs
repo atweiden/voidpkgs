@@ -73,7 +73,7 @@ libbz2.so.1 bzip2-1.0.5_1
 libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
 libcheck.so.0 check-0.9.12_1
-libclang.so.6 clang-6.0.0_1
+libclang.so.7 clang-7.0.0_1
 libclucene-contribs-lib.so.1 clucene-2.3.3.4_1
 libclucene-core.so.1 clucene-2.3.3.4_1
 libclucene-shared.so.1 clucene-2.3.3.4_1
@@ -281,6 +281,7 @@ libldap-2.4.so.2 libldap-2.4.21_1
 libldap_r-2.4.so.2 libldap-2.4.21_1
 libldns.so.2 libldns-1.7.0_1
 libLLVM-6.0.so libllvm6.0-6.0.0_1
+libLLVM-7.so libllvm7-7.0.0_1
 libltdl.so.7 libltdl-2.2.6_1
 liblvm2app.so.2.2 liblvm2app-2.02.54_1
 liblxc.so.1 liblxc-1.0.0_1
@@ -436,7 +437,7 @@ libxslt.so.1 libxslt-1.1.24_1
 libxxhash.so.0 libxxHash-0.6.5_2
 libyaml-0.so.2 libyaml-0.1.4_1
 libzstd.so.1 libzstd-1.0.0_1
-liblldb.so.6 lldb-6.0.0_1
+liblldb.so.7 lldb-7.0.0_1
 liblldbIntelFeatures.so.6 lldb-6.0.1_3
 libLTO.so.6 llvm-6.0.1_3
 liblttng-ctl.so.0 lttng-tools-2.10.1_1
