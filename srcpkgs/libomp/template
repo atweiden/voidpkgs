@@ -1,7 +1,7 @@
 # credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libomp"
-version=7.0.0
+version=7.0.1
 revision=1
 short_desc="LLVM OpenMP Runtime Library"
 makedepends+=" elfutils-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://openmp.llvm.org"
 license="NCSA"
 distfiles="https://releases.llvm.org/$version/openmp-$version.src.tar.xz"
-checksum="30662b632f5556c59ee9215c1309f61de50b3ea8e89dcc28ba9a9494bba238ff"
+checksum="bf16b78a678da67d68405214ec7ee59d86a15f599855806192a75dcfca9b0d0c"
 wrksrc="openmp-$version.src"
 build_style="cmake"
 configure_args+=" -DLIBOMP_ENABLE_SHARED=ON"
