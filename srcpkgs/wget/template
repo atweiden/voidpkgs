@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wget"
-version=1.20
+version=1.20.1
 revision=1
 short_desc="The GNU wget download utility"
 depends="ca-certificates"
@@ -18,7 +18,7 @@ homepage="http://www.gnu.org/software/wget/wget.html"
 license="GPL-3.0-or-later"
 #changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
 distfiles="$GNU_SITE/wget/$pkgname-$version.tar.gz"
-checksum="8a057925c74c059d9e37de63a63b450da66c5c1c8cef869a6df420b3bb45a0cf"
+checksum="b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3"
 conf_files="/etc/wgetrc"
 build_style="gnu-configure"
 configure_args+=" $(vopt_if ssl --with-ssl=openssl)"
