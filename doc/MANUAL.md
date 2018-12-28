@@ -354,6 +354,10 @@ in this directory such as `${XBPS_BUILDDIR}/${wrksrc}`.
 
 - `XBPS_FETCH_CMD` The utility to fetch files from `ftp`, `http` of `https` servers.
 
+- `XBPS_WRAPPERDIR` Full path to where xbps-src's wrappers for utilities are stored.
+
+- `XBPS_CROSS_BASE` Full path to where cross-compile dependencies are installed, varies according to the target architecture triplet. i.e `aarch64` -> `aarch64-unknown-linux-gnu`.
+
 <a id="available_vars"></a>
 ### Available variables
 
