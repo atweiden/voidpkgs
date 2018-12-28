@@ -436,8 +436,8 @@ libxslt.so.1 libxslt-1.1.24_1
 libxxhash.so.0 libxxHash-0.6.5_2
 libyaml-0.so.2 libyaml-0.1.4_1
 libzstd.so.1 libzstd-1.0.0_1
-liblldb.so.7 lldb-7.0.0_1
 liblldbIntelFeatures.so.6 lldb-6.0.1_3
+liblldb.so.7 lldb-7.0.0_1
 libLTO.so.6 llvm-6.0.1_3
 liblttng-ctl.so.0 lttng-tools-2.10.1_1
 liblttng-ust-ctl.so.4 lttng-ust-2.10.0_1
