@@ -597,8 +597,7 @@ constant %PKG = Map.new(
     'zeromq' => ['zeromq-devel'],
     'zlib' => ['zlib-devel'],
     'zstd' => qw<libzstd
-                 libzstd-devel
-                 zstd-devel>
+                 libzstd-devel>
 );
 
 sub mksymlinks(%pkg --> Nil)
