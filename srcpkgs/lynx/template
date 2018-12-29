@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lynx"
 _distver=2.8.9
-_patchver=2
+_patchver=1
 version="$_distver.$_patchver"
 revision=2
 short_desc="A text browser for the World Wide Web"
