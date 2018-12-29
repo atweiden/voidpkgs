@@ -1,12 +1,11 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cpio"
 version=2.12
-revision=1
+revision=2
 short_desc="GNU copy-in/out (cpio) with remote magnetic tape (rmt) support"
-# required for symlink-long test
 checkdepends="bash"
 homepage="http://www.gnu.org/software/cpio/"
-license="GPL-3"
+license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/cpio/$pkgname-$version.tar.bz2"
 checksum="70998c5816ace8407c8b101c9ba1ffd3ebbecba1f5031046893307580ec1296e"
 build_style="gnu-configure"
