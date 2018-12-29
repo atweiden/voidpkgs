@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Differences"
 version=0.64
-revision=1
+revision=2
 short_desc="Test::Differences - Test strings / data and show differences if not ok"
 noarch="yes"
 depends+=" perl"
