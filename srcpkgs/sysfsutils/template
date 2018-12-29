@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sysfsutils"
 version=2.1.0
-revision=6
+revision=7
 short_desc="System Utilities Based on Sysfs"
 homepage="http://linux-diag.sourceforge.net/Sysfsutils.html"
-license="GPL-2, LGPL-2.1"
+license="GPL-2.0-only, LGPL-2.1-or-later"
 distfiles="$SOURCEFORGE_SITE/linux-diag/$pkgname-$version.tar.gz"
 checksum="e865de2c1f559fff0d3fc936e660c0efaf7afe662064f2fb97ccad1ec28d208a"
 build_style="gnu-configure"
