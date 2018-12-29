@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vde2"
 version=2.3.2
-revision=19
+revision=20
 short_desc="Virtual Distributed Ethernet"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
