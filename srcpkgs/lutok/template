@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lutok"
 version=0.4
-revision=5
+revision=6
 short_desc="Lightweight C++ API for Lua"
 makedepends="lua-devel"
 hostmakedepends+=" doxygen"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/jmmv/lutok"
-license="BSD"
+license="BSD-3-Clause"
 distfiles="https://github.com/jmmv/lutok/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
 checksum="2cec51efa0c8d65ace8b21eaa08384b77abc5087b46e785f78de1c21fb754cd5"
 build_style="gnu-configure"
