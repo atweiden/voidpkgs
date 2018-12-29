@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-more-itertools"
-version=4.3.1
+version=5.0.0
 revision=1
 short_desc="More Python2 routines for operating on itertables"
 noarch="yes"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/erikrose/more-itertools"
 license="MIT"
 distfiles="https://github.com/erikrose/more-itertools/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ad2a4f23bb8a45015a887d450ec995daf9da46a100a56432702a91c43a859b70"
+checksum="a2dd59cdb7287d738b3c745558f0812b69b519cda21726b180b09d9d68d8b461"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="more_itertools"
