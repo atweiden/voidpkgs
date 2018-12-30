@@ -1,38 +1,24 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fish-shell"
-version=2.7.1
-revision=2
+version=3.0.0
+revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends+=" bc"
 depends+=" groff"
-makedepends="ncurses-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
-homepage="http://fishshell.com/"
-license="GPL-2"
+makedepends+=" gettext-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pcre2-devel"
+homepage="https://fishshell.com/"
+license="GPL-2.0-only"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
-checksum="e42bb19c7586356905a58578190be792df960fa81de35effb1ca5a5a981f0c5a"
-conf_files="/etc/fish/config.fish"
+checksum="ea9dd3614bb0346829ce7319437c6a93e3e1dfde3b7f6a469b543b0d2c68f2cf"
 wrksrc="fish-$version"
-build_style="gnu-configure"
-configure_args="ac_cv_file__proc_self_stat=yes"
+build_style="cmake"
 register_shell="/usr/bin/fish"
 
-if [[ -n "$CROSS_BUILD" ]]; then
-  case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    # nothing to add
-    ;;
-  *)
-    # add CXXFLAGS required for glibc
-    CXXFLAGS+=" -D_GNU_SOURCE=1"
-    CXXFLAGS+=" -D_ISO99_SOURCE=1"
-    ;;
-  esac
-fi
-
-pre_configure() {
-  autoreconf -fi
+post_install() {
+  # starting with fish-3.0.0 this is a skeleton file with only comments
+  rm -f "$DESTDIR/usr/etc/fish/config.fish"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
