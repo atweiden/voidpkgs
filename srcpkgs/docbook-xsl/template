@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docbook-xsl"
 version=1.79.1
-revision=4
+revision=5
 short_desc="Docbook XSL modular stylesheet"
 noarch="yes"
 depends+=" docbook-xml>=4.2"
