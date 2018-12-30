@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-parsing"
-version=2.2.2
+version=2.3.0
 revision=1
 short_desc="Python parsing module (Python2)"
 noarch="yes"
@@ -11,7 +11,7 @@ homepage="https://github.com/pyparsing/pyparsing"
 license="MIT"
 changelog="https://github.com/pyparsing/pyparsing/raw/master/CHANGES"
 distfiles="https://github.com/pyparsing/pyparsing/archive/${pkgname#*-}_$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="63cdff56a7af7aaf6d66ed0d995c18c5028dc53d0fd9b463972d732bf6d4bac6"
+checksum="1c43865daf37c14b183c8c46be537a31797973ec4db79a8b9f83dd1a4adf23cc"
 wrksrc="${pkgname#*-}-${pkgname#*-}_$version"
 build_style="python-module"
 pycompile_module="pyparsing.py"
