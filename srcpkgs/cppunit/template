@@ -9,7 +9,8 @@ license="LGPL-2.1-or-later"
 distfiles="http://dev-www.libreoffice.org/src/cppunit-$version.tar.gz"
 checksum="3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780"
 build_style="gnu-configure"
-configure_args="--disable-werror"
+configure_args+=" --disable-dot"
+configure_args+=" --disable-werror"
 
 cppunit-devel_package() {
   depends="cppunit-${version}_${revision}"
