@@ -1,9 +1,11 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nghttp2"
-version=1.34.0
+version=1.35.1
 revision=1
 short_desc="HTTP/2 C Library"
+makedepends+=" c-ares-devel"
 makedepends+=" jansson-devel"
+makedepends+=" libev-devel"
 makedepends+=" libevent-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
@@ -11,11 +13,16 @@ hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
 distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="ecb0c013141495e24bd6deca022b5a92097a7848a0c17c4e5af1243a97fa622e"
+checksum="9b7f5b09c3ca40a46118240bf476a5babf4bd93a1e4fde2337c308c4c5c3263a"
 build_style="gnu-configure"
+configure_args+=" --disable-examples"
 configure_args+=" --without-jemalloc"
 configure_args+=" --without-libxml2"
 configure_args+=" --without-spdylay"
+
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  makedepends+=" cppunit-devel"
+fi
 
 post_install() {
   vlicense COPYING
