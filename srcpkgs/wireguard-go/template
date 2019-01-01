@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireguard-go"
-version=0.0.20181018
+version=0.0.20181222
 revision=1
 short_desc="Implementation of WireGuard in Go"
 depends="wireguard-tools"
@@ -8,7 +8,7 @@ hostmakedepends="git"
 homepage="https://git.zx2c4.com/wireguard-go/about/"
 license="GPL-2"
 distfiles="https://git.zx2c4.com/wireguard-go/snapshot/$pkgname-$version.tar.xz"
-checksum="6bedec38d12596d55cfba4b3f7dfa99d5c2555c2f0bf3b3c9a26feb7c6b073ff"
+checksum="53dc611524c40cddd242c972a9559f9793e128a0ce772483f12a2704c9f48c54"
 build_style="go"
 go_import_path="git.zx2c4.com/wireguard-go"
 
