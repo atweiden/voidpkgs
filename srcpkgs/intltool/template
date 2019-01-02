@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="intltool"
 version=0.51.0
-revision=4
+revision=5
 short_desc="Toolbox for internationalization"
 noarch="yes"
 depends+=" gettext"
@@ -10,7 +10,7 @@ makedepends+=" gettext"
 makedepends+=" perl-XML-Parser"
 hostmakedepends="perl-XML-Parser"
 homepage="https://edge.launchpad.net/intltool"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://launchpad.net/intltool/trunk/$version/+download/$pkgname-$version.tar.gz"
 checksum="67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
 build_style="gnu-configure"
