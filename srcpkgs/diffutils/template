@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="diffutils"
-version=3.6
-revision=3
+version=3.7
+revision=1
 short_desc="The GNU diff utilities"
-homepage="http://www.gnu.org/software/diffutils"
-license="GPL-3"
+homepage="https://www.gnu.org/software/diffutils"
+license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/diffutils/$pkgname-$version.tar.xz"
-checksum="d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6"
+checksum="b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26"
 build_style="gnu-configure"
 configure_args+=" gl_cv_func_gettimeofday_clobber=no"
 configure_args+=" gl_cv_func_tzset_clobber=no"
