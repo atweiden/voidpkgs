@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="aircrack-ng"
-version=1.4
-revision=2
+version=1.5.2
+revision=1
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
@@ -12,10 +12,11 @@ hostmakedepends+=" ethtool"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
-homepage="http://www.aircrack-ng.org/"
+homepage="https://www.aircrack-ng.org/"
 license="GPL-2.0-or-later, BSD-3-Clause, OpenSSL"
+changelog="https://www.aircrack-ng.org/doku.php?id=changelog"
 distfiles="https://download.aircrack-ng.org/$pkgname-$version.tar.gz"
-checksum="96092a8af7af27cdc1923cd5167dfca4a17e9f5fd866973b7b6eb6d3b479e13b"
+checksum="9e592fe7658046220e0ac0a6d05c4026903f3077b248893e0056ccbe4ee88241"
 build_style="gnu-configure"
 
 pre_configure() {
