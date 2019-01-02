@@ -198,7 +198,8 @@ constant %PKG = Map.new(
     'gpgme' => qw<gpgme-devel
                   gpgmepp
                   gpgmepp-devel>,
-    'groff' => ['groff-doc'],
+    'groff' => qw<groff-doc
+                  libgroff>,
     'grub' => qw<grub-i386-efi
                  grub-utils
                  grub-x86_64-efi>,
