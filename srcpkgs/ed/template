@@ -1,17 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ed"
-version=1.14.2
-revision=2
+version=1.15
+revision=1
 short_desc="GNU Line-oriented text editor"
 hostmakedepends="lzip"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/ed/ed.html"
 distfiles="$GNU_SITE/ed/$pkgname-$version.tar.lz"
-checksum="f57962ba930d70d02fc71d6be5c5f2346b16992a455ab9c43be7061dec9810db"
+checksum="ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174"
 build_style="gnu-configure"
 
 do_build() {
-  make CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+  make \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
