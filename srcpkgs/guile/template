@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="guile"
 version=2.0.14
-revision=6
+revision=7
 short_desc="A portable, embeddable Scheme implementation written in C"
 makedepends+=" gc-devel"
 makedepends+=" gmp-devel"
+makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libunistring-devel"
-makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 hostmakedepends="pkg-config"
 license="GPL-3.0-or-later, LGPL-3.0-or-later"
