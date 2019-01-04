@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libxslt"
-version=1.1.32
+version=1.1.33
 revision=1
 short_desc="XSLT parser library from the GNOME project"
 makedepends+=" libgcrypt-devel"
@@ -10,7 +10,7 @@ makedepends+=" python-devel"
 homepage="http://xmlsoft.org/XSLT/"
 license="MIT"
 distfiles="ftp://xmlsoft.org/libxslt/$pkgname-$version.tar.gz"
-checksum="526ecd0abaf4a7789041622c3950c0e7f2c4c8835471515fd77eec684a355460"
+checksum="8e36605144409df979cab43d835002f63988f3dc94d5d3537c12796db90e38c8"
 build_style="gnu-configure"
 configure_args="--disable-static"
 
