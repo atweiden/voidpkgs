@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="elfutils"
 version=0.174
-revision=3
+revision=4
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
