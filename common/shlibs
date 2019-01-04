@@ -139,7 +139,7 @@ libgtest_main.so gtest-1.7.0_1
 libgmock.so gtest-1.8.1_1
 libgmock_main.so gtest-1.8.1_1
 libhiredis.so.0.14 hiredis-0.14.0_1
-libhttp_parser.so.2.8 http-parser-2.8.0_1
+libhttp_parser.so.2.9 http-parser-2.9.0_1
 libicudata.so.63 icu-libs-63.1_1
 libicui18n.so.63 icu-libs-63.1_1
 libicuio.so.63 icu-libs-63.1_1
