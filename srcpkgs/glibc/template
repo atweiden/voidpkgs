@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glibc"
 version=2.28
-revision=4
+revision=5
 short_desc="The GNU C library"
 # there's no point in building this for musl
 only_for_archs+=" aarch64"
