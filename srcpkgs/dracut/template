@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dracut"
 version=048
-revision=2
-short_desc="A new initramfs infrastructure"
+revision=3
+short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
 depends+=" cpio"
