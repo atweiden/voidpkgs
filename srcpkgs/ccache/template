@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ccache"
 version=3.5.1a
-revision=1
+revision=2
 short_desc="A Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
 homepage="https://ccache.samba.org"
@@ -32,7 +32,10 @@ post_install() {
              mips-linux-musl \
              mips-linux-muslhf \
              mipsel-linux-musl \
-             mipsel-linux-muslhf; do
+             mipsel-linux-muslhf \
+             powerpc64-linux-musl \
+             powerpc64le-linux-gnu \
+             powerpc64le-linux-musl; do
       ln -sfr "$DESTDIR/usr/bin/ccache" "$DESTDIR/usr/lib/ccache/bin/$x-$f"
     done
   done
