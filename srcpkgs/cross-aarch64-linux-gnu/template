@@ -235,13 +235,11 @@ _gcc_build() {
     sed \
       -i \
       -e "s, /lib/, $_sysroot/lib/,g;s, /usr/lib/, $_sysroot/usr/lib/,g" \
-      "$_sysroot/lib/libc.so" \
-      "$_sysroot/lib/libpthread.so"
+      "$_sysroot/lib/libc.so"
     sed \
       -i \
-      -e "s, /lib64/, $_sysroot/lib64/,g;s, /usr/lib/, $_sysroot/usr/lib/,g" \
-      "$_sysroot/lib/libc.so" \
-      "$_sysroot/lib/libpthread.so"
+      -e "s, /lib64/, $_sysroot/lib64/,g;s, /usr/lib64/, $_sysroot/usr/lib64/,g" \
+      "$_sysroot/lib/libc.so"
     touch .sed_subst_done
   fi
 
