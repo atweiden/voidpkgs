@@ -288,8 +288,7 @@ do_install() {
       mkdir -p "$DESTDIR/$_sysroot/usr/$f"
     fi
     if ! [[ -h "$DESTDIR/$_sysroot/$f" ]]; then
-      ln -sfr "$DESTDIR/$_sysroot/usr/$f" \
-        "$DESTDIR/$_sysroot/$f"
+      ln -sfr "$DESTDIR/$_sysroot/usr/$f" "$DESTDIR/$_sysroot/$f"
     fi
   done
 
