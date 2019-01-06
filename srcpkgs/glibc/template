@@ -9,6 +9,7 @@ only_for_archs+=" armv5tel"
 only_for_archs+=" armv6l"
 only_for_archs+=" armv7l"
 only_for_archs+=" i686"
+only_for_archs+=" ppc64le"
 only_for_archs+=" x86_64"
 makedepends="kernel-libc-headers"
 if [[ -n "$CHROOT_READY" ]]; then
@@ -171,15 +172,24 @@ do_install() {
   # ldd is a bash script, so make it run as such.
   replace_interpreter bash "$DESTDIR/usr/bin/ldd"
 
-  # on x86_64, add dynamic linker's 32bit version to ldd
-  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
-    rtldlist+=" /lib/ld-linux.so.2"
-    rtldlist+=" /lib/ld-linux-x86-64.so.2"
+  rtldlist=""
+  # On x86_64, add dynamic linker's 32bit version to ldd,
+  # on ppc64 substitute with our own dynamic linker path
+  case "$XBPS_TARGET_MACHINE" in
+    x86_64)
+      rtldlist="/lib/ld-linux.so.2 /lib/ld-linux-x86-64.so.2"
+      ;;
+    ppc64le)
+      rtldlist="/lib/ld64.so.2"
+      ;;
+  esac
+  if [[ -n "$rtldlist" ]]; then
     sed \
       -i \
       -e "s|^RTLDLIST.*$|RTLDLIST=\"$rtldlist\"|" \
       "$DESTDIR/usr/bin/ldd"
   fi
+
   install -d "$DESTDIR/etc/ld.so.conf.d"
   echo "/usr/local/lib" > "$DESTDIR/etc/ld.so.conf.d/usr_local.conf"
   chmod 644 "$DESTDIR/etc/ld.so.conf.d/usr_local.conf"
