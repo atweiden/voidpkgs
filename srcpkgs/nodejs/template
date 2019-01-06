@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs"
 version=10.15.0
-revision=1
+revision=2
 short_desc="Evented I/O for V8 javascript"
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
@@ -11,9 +11,16 @@ makedepends+=" $(vopt_if icu icu-devel)"
 makedepends+=" $(vopt_if libuv libuv-devel)"
 makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
+# need these for host v8 for torque, see https://github.com/nodejs/node/pull/21079
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
-hostmakedepends+=" $(vopt_if icu icu)"
+hostmakedepends+=" zlib-devel"
+hostmakedepends+=" $(vopt_if cares c-ares-devel)"
+hostmakedepends+=" $(vopt_if http_parser http-parser-devel)"
+hostmakedepends+=" $(vopt_if icu icu-devel)"
+hostmakedepends+=" $(vopt_if libuv libuv-devel)"
+hostmakedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
+hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
@@ -40,7 +47,6 @@ build_options_default+=" ssl"
 provides="nodejs-runtime-0_1"
 conflicts="nodejs-lts"
 replaces="iojs>=0"
-nocross="https://build.voidlinux.org/builders/armv7l_builder/builds/13788/steps/shell_3/logs/stdio"
 
 do_configure() {
   local _args
@@ -48,15 +54,14 @@ do_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
       arm*)
-        _args+=" --dest-cpu=arm"
-        _args+=" --without-snapshot"
+        msg_error "Can only build Node for ARMv[5-7] from a 32-bit host.\n"
         ;;
       aarch64*)
         _args+=" --dest-cpu=arm64"
         _args+=" --without-snapshot"
         ;;
       *)
-        msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE\n"
+        msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE.\n"
         ;;
     esac
   fi
