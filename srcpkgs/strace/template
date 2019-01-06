@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="strace"
 version=4.26
-revision=1
-short_desc="A System Call Tracer"
+revision=2
+short_desc="System Call Tracer"
 makedepends="libunwind-devel"
 homepage="https://strace.io/"
 license="LGPL-2.1-or-later"
@@ -19,7 +19,7 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 case "$XBPS_TARGET_MACHINE" in
-  aarch64*)
+  aarch64*|ppc64*)
     configure_args+=" --enable-mpers=no"
     ;;
 esac
