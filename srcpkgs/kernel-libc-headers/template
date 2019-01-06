@@ -30,6 +30,9 @@ case "$XBPS_TARGET_MACHINE" in
   mips*)
     _arch="mips"
     ;;
+  ppc64*)
+    _arch="powerpc"
+    ;;
   *)
     msg_error "$pkgname: unknown architecture.\n"
     ;;
