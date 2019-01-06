@@ -17,6 +17,11 @@ pre_configure() {
     -i \
     -e '/SUBDIRS/s/tests//' \
     Makefile.am
+  # libunwind explicitly sets lib64 for ppc64 by default
+  sed \
+    -i \
+    -e '/libdir/s/lib64/lib/' \
+    configure.ac
   autoreconf -fi
 }
 
