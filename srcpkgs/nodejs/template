@@ -48,14 +48,21 @@ provides="nodejs-runtime-0_1"
 conflicts="nodejs-lts"
 replaces="iojs>=0"
 
+case "$XBPS_TARGET_MACHINE" in
+  arm*)
+    case "$XBPS_MACHINE" in
+      x86_64*|aarch64*)
+        nocross="Can't cross-compile to 32bit-host from 64bit-host"
+        ;;
+    esac
+  ;;
+esac
+
 do_configure() {
   local _args
   export LD="$CXX"
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
-      arm*)
-        msg_error "Can only build Node for ARMv[5-7] from a 32-bit host.\n"
-        ;;
       aarch64*)
         _args+=" --dest-cpu=arm64"
         _args+=" --without-snapshot"
