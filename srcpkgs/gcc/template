@@ -132,6 +132,15 @@ case "$XBPS_TARGET_MACHINE" in
   aarch64-musl)
     _triplet="aarch64-linux-musl"
     ;;
+  ppc64le)
+    _triplet="powerpc64le-linux-gnu"
+    ;;
+  ppc64le-musl)
+    _triplet="powerpc64le-linux-musl"
+    ;;
+  ppc64-musl)
+    _triplet="powerpc64-linux-musl"
+    ;;
   mips-musl)
     _triplet="mips-linux-musl"
     ;;
@@ -161,6 +170,10 @@ case "$XBPS_TARGET_MACHINE" in
     subpackages+=" libquadmath-devel"
     subpackages+=" libvtv"
     subpackages+=" libvtv-devel"
+    ;;
+  ppc64le)
+    subpackages+=" libquadmath"
+    subpackages+=" libquadmath-devel"
     ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
@@ -254,6 +267,38 @@ do_configure() {
         -e '/m64=/s/lib64/lib/' \
         gcc/config/aarch64/t-aarch64-linux
       ;;
+    ppc64le*)
+      # use lib not lib64 by default
+      _args+=" --with-cpu=powerpc64le --with-abi=elfv2"
+      sed \
+        -i \
+        -e '/OSDIRNAMES/s/lib64/lib/' \
+        gcc/config/rs6000/t-linux
+      sed \
+        -i \
+        -e '/m64=/s/lib64/lib/' \
+        gcc/config/rs6000/t-linux64
+      sed \
+        -i \
+        -e 's/lib64/lib/' \
+        gcc/config/rs6000/linux64.h
+      ;;
+    ppc64*)
+      # use lib not lib64 by default
+      _args+=" --with-cpu=powerpc64 --with-abi=elfv2"
+      sed \
+        -i \
+        -e '/OSDIRNAMES/s/lib64/lib/' \
+        gcc/config/rs6000/t-linux
+      sed \
+        -i \
+        -e '/m64=/s/lib64/lib/' \
+        gcc/config/rs6000/t-linux64
+      sed \
+        -i \
+        -e 's/lib64/lib/' \
+        gcc/config/rs6000/linux64.h
+      ;;
     x86_64*)
       # use lib not lib64 by default
       sed \
@@ -264,6 +309,15 @@ do_configure() {
         -i \
         -e 's/lib64/lib/' \
         gcc/config/i386/linux64.h
+      ;;
+  esac
+
+  # fix: unknown long double size, cannot define BFP_FMT
+  case "$XBPS_TARGET_MACHINE" in
+    ppc64le-musl|ppc64-musl)
+      _args+=" --enable-decimal-float=no --disable-libquadmath --enable-secureplt"
+      ;;
+    *)
       ;;
   esac
 
@@ -312,6 +366,15 @@ do_configure() {
       ;;
   esac
 
+  case "$XBPS_TARGET_MACHINE" in
+    ppc64*)
+      _args+=" --disable-vtable-verify"
+      ;;
+    *)
+      _args+=" --enable-vtable-verify"
+      ;;
+  esac
+
   export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
   export CXXFLAGS="${CXXFLAGS/-D_FORTIFY_SOURCE=2/}"
 
@@ -333,10 +396,8 @@ do_configure() {
   _args+=" --enable-linker-build-id"
   _args+=" --enable-lto"
   _args+=" --enable-plugins"
-  _args+=" --enable-serial-configure"
   _args+=" --enable-shared"
   _args+=" --enable-threads=posix"
-  _args+=" --enable-vtable-verify"
   _args+=" --infodir=/usr/share/info"
   _args+=" --libdir=/usr/lib"
   _args+=" --libexecdir=/usr/lib"
@@ -344,6 +405,12 @@ do_configure() {
   _args+=" --prefix=/usr"
   _args+=" --with-isl"
   _args+=" --with-linker-hash-style=$_hash"
+
+  # --enable-serial-configure is broken when cross-compiling for some
+  # targets because it introduces make rule dependency cycles
+  if ! [[ -n "$CROSS_BUILD" ]]; then
+    _args+=" --enable-serial-configure"
+  fi
 
   mkdir -p build
   cd build
@@ -398,7 +465,7 @@ pre_install() {
 do_install() {
   cd build
   case "$XBPS_TARGET_MACHINE" in
-    x86_64*|aarch64*)
+    x86_64*|aarch64*|ppc64*)
       vmkdir usr/lib
       ln -sfr "$DESTDIR/usr/lib" "$DESTDIR/usr/lib64"
       ;;
@@ -445,7 +512,7 @@ do_install() {
   done
 
   case "$XBPS_TARGET_MACHINE" in
-    i686*|x86_64*)
+    i686*|x86_64*|ppc64le)
       ;;
     *)
       rm -f "$DESTDIR/usr/share/info/libquadmath.info"
