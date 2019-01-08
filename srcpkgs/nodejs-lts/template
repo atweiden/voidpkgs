@@ -32,6 +32,14 @@ provides="nodejs-runtime-0_1"
 conflicts="nodejs"
 replaces="iojs>=0"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc64le*)
+    ;;
+  ppc64*)
+    broken="Node is not supported on ppc64 BE Linux"
+    ;;
+esac
+
 do_configure() {
   local _args
   export LD="$CXX"
@@ -43,6 +51,10 @@ do_configure() {
         ;;
       aarch64*)
         _args+=" --dest-cpu=arm64"
+        _args+=" --without-snapshot"
+        ;;
+      ppc64le*)
+        _args+=" --dest-cpu=ppc64"
         _args+=" --without-snapshot"
         ;;
       *)
