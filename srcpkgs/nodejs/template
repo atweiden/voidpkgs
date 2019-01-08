@@ -55,6 +55,11 @@ case "$XBPS_TARGET_MACHINE" in
         nocross="Can't cross-compile to 32bit-host from 64bit-host"
         ;;
     esac
+  ppc64le*)
+    ;;
+  ppc64*)
+    broken="Node is not supported on ppc64 BE Linux"
+    ;;
   ;;
 esac
 
@@ -65,6 +70,10 @@ do_configure() {
     case "$XBPS_TARGET_MACHINE" in
       aarch64*)
         _args+=" --dest-cpu=arm64"
+        _args+=" --without-snapshot"
+        ;;
+      ppc64le*)
+        _args+=" --dest-cpu=ppc64"
         _args+=" --without-snapshot"
         ;;
       *)
