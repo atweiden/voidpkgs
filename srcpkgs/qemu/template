@@ -48,7 +48,7 @@ desc_option_smartcard="Enable smartcard support"
 desc_option_spice="Enable support for SPICE"
 
 case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*)
+  i686*|x86_64*|ppc64*)
     build_options_default+=" spice"
     ;;
   aarch64-musl)
