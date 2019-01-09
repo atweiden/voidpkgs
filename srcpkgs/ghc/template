@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ghc"
 # keep this synchronized with http://www.stackage.org/lts
-version=8.4.4
+version=8.6.3
 revision=1
 short_desc="Glorious Haskell Compiler"
 depends+=" gcc"
@@ -17,10 +17,11 @@ hostmakedepends+=" automake"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" ghc-bin"
 hostmakedepends+=" libxslt"
+hostmakedepends+=" python-Sphinx"
 homepage="http://www.haskell.org/ghc/"
 license="BSD"
 distfiles="http://www.haskell.org/ghc/dist/${version%[!0-9]}/$pkgname-${version%[!0-9]}-src.tar.xz"
-checksum="11117735a58e507c481c09f3f39ae5a314e9fbf49fc3109528f99ea7959004b2"
+checksum="9f9e37b7971935d88ba80426c36af14b1e0b3ec1d9c860f44a4391771bc07f23"
 wrksrc="ghc-${version%[!0-9]}"
 patch_args="-Np1"
 build_style="gnu-configure"
