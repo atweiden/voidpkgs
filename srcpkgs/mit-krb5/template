@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mit-krb5"
-version=1.16.2
-revision=2
+version=1.16.3
+revision=1
 short_desc="MIT Kerberos 5 implementation"
 #depends="mit-krb5-client>=${version}_$revision"
 makedepends+=" e2fsprogs-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
 distfiles="http://web.mit.edu/kerberos/dist/krb5/1.16/${pkgname#mit-}-$version.tar.gz"
-checksum="9f721e1fe593c219174740c71de514c7228a97d23eb7be7597b2ae14e487f027"
+checksum="e40499df7c6dbef0cf9b11870a0e167cde827737d8b2c06a9436334f08ab9b0d"
 wrksrc="${pkgname#mit-}-$version"
 build_style="gnu-configure"
 
