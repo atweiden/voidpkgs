@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="scons"
-version=3.0.2
+version=3.0.3
 revision=1
 short_desc="Software construction tool"
 depends="python"
@@ -10,7 +10,7 @@ homepage="https://www.scons.org/"
 license="MIT"
 distfiles+=" $SOURCEFORGE_SITE/scons/$pkgname-$version.tar.gz"
 distfiles+=" https://raw.githubusercontent.com/SCons/scons/master/LICENSE>LICENSE.txt"
-checksum+=" d0afcf8f4c2ea5fa7af3c9321c0cb3ea1c83d137196be10c4cb2c79cc5dade01"
+checksum+=" d8ec796b52586e269aec72c40b82289023c9ac9878c328bbf379a046460196f3"
 checksum+=" 159d5c59118f24519f12d39a129ee0dba4a601f8a41b8de324d399005aba6eb6"
 build_style="python2-module"
 pycompile_module="SCons"
