@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux4.20"
 version=4.20.0
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="The Linux kernel and modules (${version%.*} series)"
