@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libsodium"
-version=1.0.16
+version=1.0.17
 revision=1
 short_desc="A modern and easy-to-use crypto library"
 homepage="https://github.com/jedisct1/libsodium"
 license="ISC"
 distfiles="https://github.com/jedisct1/libsodium/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="eeadc7e1e1bcef09680fb4837d448fbdf57224978f865ac1c16745868fbd0533"
+checksum="0cc3dae33e642cc187b5ceb467e0ad0e1b51dcba577de1190e9ffa17766ac2b1"
 build_style="gnu-configure"
 configure_args="lt_cv_prog_compiler_static_works=yes"
 
