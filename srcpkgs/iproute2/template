@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iproute2"
-version=4.16.0
+version=4.20.0
 revision=1
 short_desc="IP Routing Utilities"
 makedepends+=" db-devel"
@@ -10,50 +10,24 @@ makedepends+=" libmnl-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-homepage="http://www.linux-foundation.org/en/Net:Iproute2"
-license="GPL-2"
+homepage="https://wiki.linuxfoundation.org/networking/iproute2"
+license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/net/iproute2/$pkgname-$version.tar.xz"
-checksum="0c5c24020fd7349fe25728c5edee9fb6a1bc8a38f08e23be5c57a6301e55ee0a"
+checksum="c8adaa6a40f888476b23acb283cfa30c0dd55f07b5aa20663ed5ba2ef1f6fda8"
 conf_files+=" /etc/iproute2/ematch_map"
 conf_files+=" /etc/iproute2/rt_dsfield"
 conf_files+=" /etc/iproute2/rt_protos"
 conf_files+=" /etc/iproute2/rt_realms"
 conf_files+=" /etc/iproute2/rt_scopes"
 conf_files+=" /etc/iproute2/rt_tables"
-
-do_configure() {
-  ./configure
-  sed \
-    -i \
-    -e 's,CCOPTS,HOSTCCOPTS,g' \
-    netem/Makefile
-  sed \
-    -i \
-    -e 's/^LDFLAGS +=/override &/' \
-    */Makefile
-}
-
-do_build() {
-  make \
-    AR="$AR" \
-    CC="$CC" \
-    CCOPTS="$CFLAGS" \
-    DBM_INCLUDE="$XBPS_CROSS_BASE/usr/include" \
-    HOSTCC="cc" \
-    HOSTCCOPTS="$XBPS_CFLAGS" \
-    LD="$LD" \
-    LDFLAGS="$LDFLAGS" \
-    RANLIB="$RANLIB" \
-    "$makejobs"
-}
+build_style="configure"
+make_install_args="SBINDIR=/usr/bin"
 
 do_check() {
-  cd testsuite
-  make
+  make -C testsuite
 }
 
-do_install() {
-  make DESTDIR="$DESTDIR" SBINDIR="/usr/bin" install
+post_install() {
   rm -r "$DESTDIR/usr/share/doc"
   rm -r "$DESTDIR/usr/share/man/man3"
 }
