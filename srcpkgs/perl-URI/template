@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-URI"
-version=1.74
+version=1.76
 revision=1
 short_desc="Perl Uniform Resource Identifiers class (URI, RFC 2396)"
 noarch="yes"
@@ -11,7 +11,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/URI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/URI/${pkgname#*-}-$version.tar.gz"
-checksum="a9c254f45f89cb1dd946b689dfe433095404532a4543bdaab0b71ce0fdcdd53d"
+checksum="b2c98e1d50d6f572483ee538a6f4ccc8d9185f91f0073fd8af7390898254413e"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
