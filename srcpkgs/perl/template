@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl"
-version=5.28.0
-revision=2
-_perl_cross_version=1.2
+version=5.28.1
+revision=1
+_perl_cross_version=1.2.1
 short_desc="Practical Extraction and Report Language"
 depends="less"
 makedepends+=" bzip2-devel"
@@ -10,12 +10,12 @@ makedepends+=" db-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="less"
-homepage="http://www.perl.org"
+homepage="https://www.perl.org"
 license="Artistic-1.0-perl, GPL-1.0-or-later"
 distfiles+=" https://www.cpan.org/src/5.0/perl-$version.tar.gz"
 distfiles+=" https://github.com/arsv/perl-cross/releases/download/$_perl_cross_version/perl-cross-$_perl_cross_version.tar.gz"
-checksum+=" 7e929f64d4cb0e9d1159d4a59fc89394e27fa1f7004d0836ca0d514685406ea8"
-checksum+=" 599077beb86af5e6097da8922a84474a5484f61475d2899eae0f8634e9619109"
+checksum+=" 3ebf85fe65df2ee165b22596540b7d5d42f84d4b72d84834f74e2e0b8956c347"
+checksum+=" 8b706bc688ddf71b62d649bde72f648669f18b37fe0c54ec6201142ca3943498"
 build_style="gnu-configure"
 disable_parallel_build="yes"
 # XXX: before updating this package to a new major version, run
