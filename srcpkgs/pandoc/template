@@ -1,21 +1,22 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
-version=2.2.1
+version=2.5
 revision=1
-_citeproc_version=0.14.3.1
+_citeproc_version=0.15.0.1
 short_desc="Universal converter between markup formats (with citeproc support)"
 makedepends="zlib-devel"
-hostmakedepends="unzip"
+hostmakedepends+=" unzip"
+hostmakedepends+=" wget"
 homepage="http://johnmacfarlane.net/pandoc/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles+=" http://hackage.haskell.org/package/$pkgname-$version/$pkgname-$version.tar.gz"
 distfiles+=" http://hackage.haskell.org/package/$pkgname-citeproc-$_citeproc_version/$pkgname-citeproc-$_citeproc_version.tar.gz"
-checksum+=" fe037f5fbb62fb27e7b1dbddfbd0aa45ea6e9fcdaff1f2203f7484c245b211b7"
-checksum+=" 42c0b2c8365441bf884daa6202e6ed01b42181cf255406c88b3b31cd27cb467a"
+checksum+=" d57dc5db78a0a304de70436fe59a7599ab0c6d0fb2ab6704eeae498a4536222e"
+checksum+=" 29db5f2aad3225859727271855461724574f3695ab3856ceac33b24a55ae92f8"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-12.0"
+stackage="lts-13.2"
 make_build_args+=" --flag pandoc:embed_data_files"
 make_build_args+=" --flag pandoc-citeproc:embed_data_files"
 nocross="yes"
@@ -26,6 +27,7 @@ post_extract() {
   sed \
     -i \
     -e 's/tasty .*,/tasty,/' \
+    -e 's/zip-archive .*,/zip-archive,/' \
     pandoc-*/pandoc.cabal
 }
 
