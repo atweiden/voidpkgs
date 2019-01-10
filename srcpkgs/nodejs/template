@@ -1,12 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs"
-version=10.15.0
-revision=2
+version=11.6.0
+revision=1
 short_desc="Evented I/O for V8 javascript"
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if cares c-ares-devel)"
 makedepends+=" $(vopt_if http_parser http-parser-devel)"
+makedepends+=" $(vopt_if http_parser llhttp-devel)"
 makedepends+=" $(vopt_if icu icu-devel)"
 makedepends+=" $(vopt_if libuv libuv-devel)"
 makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
@@ -17,6 +18,7 @@ hostmakedepends+=" python"
 hostmakedepends+=" zlib-devel"
 hostmakedepends+=" $(vopt_if cares c-ares-devel)"
 hostmakedepends+=" $(vopt_if http_parser http-parser-devel)"
+hostmakedepends+=" $(vopt_if http_parser llhttp-devel)"
 hostmakedepends+=" $(vopt_if icu icu-devel)"
 hostmakedepends+=" $(vopt_if libuv libuv-devel)"
 hostmakedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
@@ -24,7 +26,7 @@ hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="dbe467e3dabb6854fcb0cd96e04082268cb1e313ce97a4b7100b2ed152b0a0ab"
+checksum="39ef4f1866f75786baff5959439483fafdc99d3ee3a0568a13cc635d64cf5e0b"
 wrksrc="${pkgname%js}-v$version"
 build_options+=" cares"
 build_options+=" http_parser"
@@ -34,7 +36,7 @@ build_options+=" nghttp2"
 build_options+=" ssl"
 desc_option_ssl="Enable shared libressl"
 desc_option_libuv="Enable shared libuv"
-desc_option_http_parser="Enable shared http-parser"
+desc_option_http_parser="Enable shared http-parser and llhttp"
 desc_option_icu="Enable shared icu"
 desc_option_nghttp2="Enable shared nghttp2"
 desc_option_cares="Enable shared c-ares"
@@ -91,6 +93,15 @@ do_configure() {
     $(vopt_if libuv --shared-libuv) \
     $(vopt_if nghttp2 --shared-nghttp2) \
     $(vopt_if ssl --shared-openssl)
+}
+
+post_configure() {
+  # fix linking against llhttp
+  sed \
+    -i \
+    -e 's/http_parser/& -lllhttp/' \
+    out/cctest.target.mk \
+    out/node.target.mk
 }
 
 do_build() {
