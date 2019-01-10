@@ -375,6 +375,7 @@ constant %PKG = Map.new(
                       linux4.19-headers>,
     'linux4.20' => qw<linux4.20-dbg
                       linux4.20-headers>,
+    'llhttp' => ['llhttp-devel'],
     'llvm' => qw<clang
                  clang-analyzer
                  clang-tools-extra
