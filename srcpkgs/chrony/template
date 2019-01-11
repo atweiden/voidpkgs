@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chrony"
 version=3.4
-revision=1
+revision=2
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
@@ -16,7 +16,6 @@ conf_files="/etc/chrony.conf"
 # when updating, confirm upstream config still refers to make_dirs
 make_dirs+=" /var/lib/chrony 0755 chrony chrony"
 make_dirs+=" /var/log/chrony 0755 chrony chrony"
-make_dirs+=" /var/run/chrony 0755 chrony chrony"
 system_accounts="chrony"
 chrony_homedir="/var/lib/chrony"
 build_style="gnu-configure"
