@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ruby"
-version=2.5.3
-revision=2
-_ruby_abiver=2.5.0
+version=2.6.0
+revision=1
+_ruby_abiver=2.6.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
 makedepends+=" libffi-devel"
@@ -10,6 +10,7 @@ makedepends+=" libressl-devel"
 makedepends+=" libyaml-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
+checkdepends="tzdata"
 hostmakedepends+=" bison"
 hostmakedepends+=" groff"
 hostmakedepends+=" pkgconf"
@@ -19,7 +20,7 @@ fi
 homepage="http://www.ruby-lang.org/en/"
 license="Ruby, BSD-2-Clause"
 distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.bz2"
-checksum="228a787ba68a7b20ac6e1d5af3d176d36e8ed600eb754d6325da341c3088ed76"
+checksum="c89ca663ad9a6238f4b1ec4d04c7dff630560c6e6eca6d30857c4d394f01a599"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-shared"
@@ -47,19 +48,17 @@ pre_build() {
     ext/socket/extconf.rb
   # hack for cross-builds
   touch ext/ripper/check
-  if [[ "$XBPS_GCC_VERSION_MAJOR" -ge 7 ]]; then
-    # set -fno-stack-protector for i686* or otherwise linking fails with
-    # ...: undefined reference to '__stack_chk_fail_local'
-    case "$XBPS_TARGET_MACHINE" in
-      i686*)
-        sed \
-          -i \
-          -e "s;-fstack-protector-strong;;" \
-          -e "s;-fstack-protector;-fno-stack-protector;" \
-          Makefile
-        ;;
-    esac
-  fi
+  # set -fno-stack-protector for i686* or otherwise linking fails with
+  # ...: undefined reference to '__stack_chk_fail_local'
+  case "$XBPS_TARGET_MACHINE" in
+    i686*)
+      sed \
+        -i \
+        -e "s;-fstack-protector-strong;;" \
+        -e "s;-fstack-protector;-fno-stack-protector;" \
+        Makefile
+      ;;
+  esac
 }
 
 post_install() {
