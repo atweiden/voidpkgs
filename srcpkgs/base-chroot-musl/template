@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-chroot-musl"
 version=0.19
-revision=3
+revision=4
 short_desc="Bootstrap packages for xbps-src (musl libc)"
 only_for_archs+=" aarch64-musl"
 only_for_archs+=" armv5tel-musl"
