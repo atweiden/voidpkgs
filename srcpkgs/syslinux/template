@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="syslinux"
 version=6.03
-revision=6
-short_desc="A boot loader for the Linux operating system"
+revision=7
+short_desc="Boot loader for the Linux operating system"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
 only_for_archs+=" x86_64"
@@ -13,7 +13,7 @@ hostmakedepends+=" nasm"
 hostmakedepends+=" perl"
 hostmakedepends+=" python"
 homepage="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/boot/syslinux/$pkgname-$version.tar.xz"
 checksum="26d3986d2bea109d5dc0e4f8c4822a459276cf021125e8c9f23c3cca5d8c850e"
 patch_args="-Np1"
@@ -58,11 +58,15 @@ do_build() {
 }
 
 do_install() {
-  make INSTALLROOT="$DESTDIR" install
+  make \
+    INSTALLROOT="$DESTDIR" \
+    install \
+    SBINDIR="/usr/bin" \
+    AUXDIR="/usr/lib/syslinux"
   mv "$DESTDIR/sbin"/* "$DESTDIR/usr/bin"
   # remove completely development stuff
-  rm -r "$DESTDIR/usr/share/syslinux/com32/include"
-  rm "$DESTDIR/usr/share/syslinux/com32"/*.a
+  rm -r "$DESTDIR/usr/lib/syslinux/com32/include"
+  rm "$DESTDIR/usr/lib/syslinux/com32"/*.a
   # remove keytab-lilo to prevent conflict with LILO
   rm "$DESTDIR/usr/bin/keytab-lilo"
 }
