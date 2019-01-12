@@ -1,15 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libmbim"
-version=1.16.2
+version=1.18.0
 revision=1
 short_desc="MBIM modem protocol helper library"
 makedepends="libgudev-devel"
 hostmakedepends+=" glib-devel"
 hostmakedepends+=" pkg-config"
-homepage="http://www.freedesktop.org/wiki/Software/libmbim/"
+homepage="https://www.freedesktop.org/wiki/Software/libmbim/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="$FREEDESKTOP_SITE/libmbim/$pkgname-$version.tar.xz"
-checksum="eb494fee2c200daf4f5cc8a40061d24a3dfafe8c59151c95c6a826fd96dcb262"
+checksum="6cf40128d83d087946a7d8577e735526202e034d52f90047735329609097b282"
 build_style="gnu-configure"
 configure_args="--disable-static"
 
