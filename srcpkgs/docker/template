@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docker"
-version=18.09.0
+version=18.09.1
 revision=1
 short_desc="Pack, ship and run any application as a lightweight container"
 only_for_archs+=" x86_64"
@@ -22,7 +22,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.docker.io"
 license="Apache-2.0"
 distfiles="https://github.com/docker/docker-ce/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0f251f04b1973956f070c1d7ee2751a9663da2d9d701fbab7e957f0f5f310478"
+checksum="9eadb1eae1954b0322aadf6505f5397d1b1eccf6395ab511cadf8e6975cfc576"
 wrksrc="$pkgname-ce-$version"
 nopie="yes"
 nostrip="yes"
