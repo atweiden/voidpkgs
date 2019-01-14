@@ -77,8 +77,6 @@ constant %PKG = Map.new(
     'cmocka' => ['cmocka-devel'],
     'confuse' => ['confuse-devel'],
     'coreboot-utils' => ['coreboot-utils-me_cleaner'],
-    'cppunit' => qw<cppunit-devel
-                    cppunit-doc>,
     'cracklib' => qw<cracklib-devel
                      cracklib-python
                      libcracklib>,
