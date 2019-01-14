@@ -1,16 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libsasl"
-version=2.1.26
-revision=5
+version=2.1.27
+revision=1
 short_desc="Cyrus SASL - runtime shared libraries"
 makedepends="db-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="http://cyrusimap.web.cmu.edu/"
-license="BSD"
+homepage="https://www.cyrusimap.org/sasl/"
+license="BSD-3-Clause-Attribution"
 distfiles="https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-$version/cyrus-sasl-$version.tar.gz"
-checksum="8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f1345b7bc3"
+checksum="26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5"
 wrksrc="${pkgname/lib/cyrus-}-$version"
 patch_args="-Np1"
 build_style="gnu-configure"
@@ -29,45 +29,8 @@ configure_args+=" --enable-plain"
 configure_args+=" --with-configdir=/etc/sasl2:/etc/sasl:/usr/lib/sasl2"
 configure_args+=" --with-devrandom=/dev/random"
 
-# seems to be cured with libtool>=2.4.6
-#disable_parallel_build=yes
-
 pre_configure() {
-  # XXX
-  if [[ -n "$CROSS_BUILD" ]]; then
-    sed \
-      -i \
-      -e 's,AC_TRY_RUN,AC_TRY_LINK_FUNC,' \
-      cmulocal/sasl2.m4
-  fi
-
-  # remove outdated files
-  rm -f config/config.{guess,sub}
-  rm -f config/lt{config,main.sh} config/libtool.m4
-
-  # rename configure.in for fewer warnings
-  mv configure.{in,ac}
-
-  # avoid picking up the target LDFLAGS for makemd5
-  sed \
-    -i \
-    -e "/^CFLAGS/a LDFLAGS =" \
-    include/Makefile.am
-
-  # rename configure.in for fewer warnings
-  mv saslauthd/configure.{in,ac}
-
-  # remove check for KRB4; otherwise we would need mt-krb4-devel
-  rm -f config/kerberos_v4.m4
-
-  # remove placeholder for KRB4 library
-  find -name Makefile.am \
-    -exec sed \
-            -i \
-            -e "s;= @SASL_KRB_LIB@;= ;" \
-            "{}" \;
-
-  autoreconf -I "$(pwd)/config" -I "$(pwd)/cmulocal" -i -f
+  autoreconf -fi
 }
 
 post_install() {
