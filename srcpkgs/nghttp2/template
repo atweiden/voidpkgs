@@ -9,6 +9,7 @@ makedepends+=" libev-devel"
 makedepends+=" libevent-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
+checkdepends="libcppunit-devel"
 hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
@@ -19,10 +20,6 @@ configure_args+=" --disable-examples"
 configure_args+=" --without-jemalloc"
 configure_args+=" --without-libxml2"
 configure_args+=" --without-spdylay"
-
-if [[ -n "$XBPS_CHECK_PKGS" ]]; then
-  makedepends+=" cppunit-devel"
-fi
 
 post_install() {
   vlicense COPYING
