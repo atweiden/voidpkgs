@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="neovim"
-version=0.3.3
+version=0.3.4
 revision=1
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 makedepends+=" libtermkey-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://neovim.io"
 license="Apache-2.0, GPL-2.0-or-later"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9280f68c02dfe632815ce8063a621c6d73a40da91d0a18e1cb3104c32d0e724b"
+checksum="a641108bdebfaf319844ed46b1bf35d6f7c30ef5aeadeb29ba06e19c3274bc0e"
 build_style="cmake"
 configure_args+=" -DENABLE_JEMALLOC=0"
 configure_args+=" -DUSE_BUNDLED_LIBTERMKEY=OFF"
