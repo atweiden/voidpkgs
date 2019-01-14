@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="toxcore"
-version=0.2.8
+version=0.2.9
 revision=1
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
 makedepends+=" libconfig-devel"
@@ -10,7 +10,7 @@ homepage="https://tox.chat"
 license="GPL-3.0-or-later"
 changelog="https://github.com/TokTok/c-toxcore/raw/master/CHANGELOG.md"
 distfiles="https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="47fe125d8558775a03a3ded58e9faa07a01cfecd65257e24b544b4b5698d9362"
+checksum="a8c962709447fb9b0cbb1a90ec1945a1b2d272b4d322356c48a4e3882b1267e7"
 wrksrc="c-$pkgname-$version"
 build_style="cmake"
 configure_args+=" -DBUILD_AV_TEST=OFF"
