@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sniproxy"
-version=0.5.0
+version=0.6.0
 revision=1
 short_desc="Proxies incoming HTTP and TLS connections based on the hostname"
 makedepends+=" libev-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" udns-devel"
 license="GPL-3"
 homepage="https://github.com/dlundquist/sniproxy"
 distfiles="https://github.com/dlundquist/sniproxy/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0b8dd06f9aa9e1c4151b572caf645ffceacdd35a139ded16a7fb0035452c17e5"
+checksum="d73c77a9fa8199ae7ac551c0332d3e0a3ff234623f53d65369a8fa560d9880e2"
 conf_files="/etc/sniproxy.conf"
 build_style="gnu-configure"
 
