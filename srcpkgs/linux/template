@@ -21,6 +21,14 @@ case "$XBPS_TARGET_MACHINE" in
     depends="linux$version"
     _depends_headers="linux$version-headers"
     ;;
+  ppc64*)
+    depends+=" dracut"
+    depends+=" linux$version"
+    depends+=" linux-firmware-amd"
+    depends+=" linux-firmware-network"
+    depends+=" linux-firmware-nvidia"
+    _depends_headers="linux$version-headers"
+    ;;
   *)
     ;;
 esac
