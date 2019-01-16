@@ -61,7 +61,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*)
+  i686*|x86_64*|ppc64*)
     depends+=" linux"
     ;;
 esac
