@@ -7,6 +7,9 @@ only_for_archs+=" aarch64"
 only_for_archs+=" aarch64-musl"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
+only_for_archs+=" ppc64-musl"
+only_for_archs+=" ppc64le"
+only_for_archs+=" ppc64le-musl"
 only_for_archs+=" x86_64"
 only_for_archs+=" x86_64-musl"
 depends="os-prober"
@@ -45,6 +48,14 @@ case "$XBPS_TARGET_MACHINE" in
   aarch64*)
     _NATIVE_PLATFORM="efi"
     subpackages+=" grub-arm64-efi"
+    ;;
+  ppc64*)
+    # don't have a native platform for now, ieee1275 needs a compiler
+    # capable of generating big-endian 32-bit binaries; only build utils
+    # for now, so we can generate config files to be used by petitboot etc.
+    # TODO: look into building with the below later
+    #_NATIVE_PLATFORM=ieee1275
+    configure_args+=" --with-platform=none"
     ;;
 esac
 
