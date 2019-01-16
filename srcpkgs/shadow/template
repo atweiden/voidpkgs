@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="shadow"
 version=4.6
-revision=1
+revision=2
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
