@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iptables"
-version=1.6.2
-revision=4
+version=1.8.2
+revision=1
 short_desc="Linux IPv[46] packet filtering ruleset"
 makedepends+=" libfl-devel"
 makedepends+=" libmnl-devel"
@@ -11,25 +11,15 @@ makedepends+=" libnftnl-devel"
 makedepends+=" libpcap-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
-homepage="http://www.netfilter.org/"
+homepage="https://www.netfilter.org/"
 license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/iptables/files/$pkgname-$version.tar.bz2"
-checksum="55d02dfa46263343a401f297d44190f2a3e5113c8933946f094ed40237053733"
+checksum="a3778b50ed1a3256f9ca975de82c2204e508001fc2471238c8c97f3d1c4c12af"
 build_style="gnu-configure"
 configure_args+=" --enable-bpf-compiler"
 configure_args+=" --enable-devel"
 configure_args+=" --enable-libipq"
 configure_args+=" --enable-shared"
-disable_parallel_build="yes"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" automake"
-  hostmakedepends+=" gettext-devel"
-  hostmakedepends+=" libtool"
-  pre_configure() {
-    autoreconf -fi
-  }
-fi
 
 pre_build() {
   rm include/linux/types.h
