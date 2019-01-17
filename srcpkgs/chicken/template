@@ -6,6 +6,8 @@ short_desc="A practical and portable Scheme system"
 # no arm support
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
+only_for_archs+=" ppc64le"
+only_for_archs+=" ppc64le-musl"
 only_for_archs+=" x86_64"
 only_for_archs+=" x86_64-musl"
 homepage="http://www.call-cc.org"
