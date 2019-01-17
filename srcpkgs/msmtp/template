@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="msmtp"
 version=1.8.2
-revision=1
+revision=2
 short_desc="Mini SMTP client"
-makedepends+=" libressl-devel"
-makedepends+=" $(vopt_if idn libidn-devel)"
+makedepends+=" gnutls-devel"
+makedepends+=" $(vopt_if idn libidn2-devel)"
 makedepends+=" $(vopt_if sasl gsasl-devel)"
 hostmakedepends="pkg-config"
 homepage="https://marlam.de/msmtp/"
@@ -13,11 +13,14 @@ distfiles="https://marlam.de/msmtp/releases/$pkgname-$version.tar.xz"
 checksum="d1185c1969ed00d0e2c57dbcd5eb09a9f82156042b21309d558f761978a58793"
 build_style="gnu-configure"
 build_options+=" idn"
+build_options+=" msmtpd"
 build_options+=" sasl"
 build_options_default+=" idn"
+build_options_default+=" msmtpd"
 build_options_default+=" sasl"
 configure_args+=" --with-tls=openssl"
 configure_args+=" $(vopt_with idn libidn)"
+configure_args+=" $(vopt_with msmtpd)"
 configure_args+=" $(vopt_with sasl libgsasl)"
 
 post_install() {
