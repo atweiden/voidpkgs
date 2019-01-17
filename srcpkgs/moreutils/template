@@ -1,17 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="moreutils"
-version=0.62
-revision=2
+version=0.63
+revision=1
 short_desc="Unix tools that nobody thought to write, when Unix was young"
 depends+=" perl"
 depends+=" perl-IPC-Run"
 depends+=" perl-Time-Duration"
 depends+=" perl-TimeDate"
 hostmakedepends="docbook2x"
-license="GPL-2"
+license="GPL-2.0-only, BSD-2-Clause"
 homepage="https://joeyh.name/code/moreutils/"
-distfiles="http://http.debian.net/debian/pool/main/m/moreutils/${pkgname}_$version.orig.tar.xz"
-checksum="ffd0bfb2e490db63355e1a7d168c6f3f9802ee2c5e80880ca632e603b4b67d88"
+distfiles="https://git.joeyh.name/index.cgi/moreutils.git/snapshot/$pkgname-$version.tar.gz"
+checksum="4fc86d56a8a276a0cec71cdabda5ccca50c7a44a2a1ccd888476741d1ce6831d"
 build_style="gnu-makefile"
 make_build_args="DOCBOOK2XMAN=docbook2man"
 
@@ -22,6 +22,9 @@ post_install() {
     mv "$DESTDIR/usr/bin"/{,moreutils_}$conflict
     mv "$DESTDIR/usr/share/man/man1"/{,moreutils_}$conflict.1
   done
+
+  sed -n '/Copyright/,/DAMAGE/p' is_utf8/is_utf8.c > LICENSE-is-utf8
+  vlicense LICENSE-is-utf8
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
