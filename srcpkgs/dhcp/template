@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dhcp"
 version=4.4.1
-revision=1
+revision=2
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
 hostmakedepends="perl"
 homepage="https://www.isc.org/software/dhcp"
@@ -11,6 +11,7 @@ checksum="2a22508922ab367b4af4664a0472dc220cc9603482cf3c16d9aff14f3a76b608"
 conf_files="/etc/dhcpd.conf"
 wrksrc="dhcp-${version/P/-P}"
 build_style="gnu-configure"
+make_dirs="/var/lib/dhcp 0755 root root"
 disable_parallel_build="yes"
 
 pre_configure() {
