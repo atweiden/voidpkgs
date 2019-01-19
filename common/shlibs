@@ -105,6 +105,7 @@ ld-linux-x86-64.so.2 glibc-2.28_1 x86_64
 ld-linux.so.2 glibc-2.28_1 i686
 ld-linux.so.3 glibc-2.28_1 armv5tel
 ld.so.1 glibc-2.28_1 mips
+ld.so.1 glibc-2.28_1 ppc
 ld64.so.2 glibc-2.28_1 ppc64
 libBrokenLocale.so.1 glibc-2.28_1
 libSegFault.so glibc-2.28_1
