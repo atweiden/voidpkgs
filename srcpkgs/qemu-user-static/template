@@ -92,8 +92,11 @@ case "$XBPS_TARGET_MACHINE" in
   x86_64*|i386*)
     _omit="i386|x86_64"
     ;;
-  armv*|aarch64*)
-    _omit="arm|aarch64"
+  aarch64*)
+    _omit="aarch64"
+    ;;
+  armv*)
+    _omit="arm"
     ;;
   mips*)
     _omit="${XBPS_TARGET_MACHINE%-*}"
