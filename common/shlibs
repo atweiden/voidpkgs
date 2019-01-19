@@ -263,7 +263,7 @@ libgudev-1.0.so.0 libgudev-230_1
 libguilereadline-v-18.so.18 libguile-2.0.14_6
 libguile-2.0.so.22 libguile-2.0.9_3
 libhavege.so.1 libhaveged-1.9.1_1
-libidn.so.11 libidn-1.10_1
+libidn.so.12 libidn-1.35_1
 libidn2.so.4 libidn2-2.1.0_1
 libimobiledevice.so.6 libimobiledevice-1.2.0_1
 libitm.so.1 libitm-4.7.3_1
