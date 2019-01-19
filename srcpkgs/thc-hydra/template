@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="thc-hydra"
 version=8.8
-revision=1
+revision=2
 short_desc="Tool to guess/crack valid login/password pairs"
 makedepends+=" libidn-devel"
 makedepends+=" libmysqlclient-devel"
