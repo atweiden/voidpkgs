@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu-user-static"
 version=3.1.0
-revision=1
+revision=3
 short_desc="QEMU User-mode emulators (statically compiled)"
 makedepends+=" dtc-devel"
 makedepends+=" libglib-devel"
