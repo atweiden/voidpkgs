@@ -18,7 +18,7 @@ alternatives+=" pkg-config:pkg-config.1:/usr/share/man/man1/pkg-config.1.pkg-con
 alternatives+=" pkg-config:pkg.m4:/usr/share/aclocal/pkg.m4.pkg-config"
 
 case "$XBPS_TARGET_MACHINE" in
-  mips*)
+  mips*|ppc|ppc-musl)
     configure_args+=" glib_cv_stack_grows=no"
     configure_args+=" glib_cv_uscore=no"
     ;;
