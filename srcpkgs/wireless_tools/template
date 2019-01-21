@@ -10,7 +10,7 @@ distfiles="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/$pkgname.$versio
 checksum="6fb80935fe208538131ce2c4178221bab1078a1656306bce8909c19887e2e5a1"
 wrksrc="$pkgname.$version"
 
-XBPS_FETCH_CMD="wget --no-check-certificate"
+fetch_cmd="wget --no-check-certificate"
 
 do_build() {
   sed \
