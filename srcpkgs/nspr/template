@@ -24,7 +24,7 @@ do_configure() {
     _args+=" --target=$XBPS_CROSS_TRIPLET"
   fi
   case "$XBPS_TARGET_MACHINE" in
-    x86_64*)
+    x86_64*|ppc64*|aarch64*)
       _args+=" --enable-64bit"
       ;;
   esac
