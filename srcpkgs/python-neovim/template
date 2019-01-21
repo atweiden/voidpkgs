@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-neovim"
 version=0.3.2
-revision=1
+revision=2
 short_desc="Python2 client for Neovim"
 noarch="yes"
 depends+=" neovim"
@@ -16,7 +16,7 @@ distfiles="https://github.com/neovim/python-client/archive/$version.tar.gz>$pkgn
 checksum="0a44c540dd5790acfbc7e411b0ed4fb6c44914d866226ebebf370c24c2723dc2"
 wrksrc="pynvim-$version"
 build_style="python-module"
-pycompile_module="neovim"
+pycompile_module="pynvim"
 
 python3-neovim_package() {
   unset depends
@@ -24,7 +24,7 @@ python3-neovim_package() {
   depends+=" neovim"
   depends+=" python3-greenlet"
   depends+=" python3-msgpack"
-  pycompile_module="neovim"
+  pycompile_module="pynvim"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
