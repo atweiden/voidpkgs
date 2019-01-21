@@ -132,6 +132,12 @@ case "$XBPS_TARGET_MACHINE" in
   aarch64-musl)
     _triplet="aarch64-linux-musl"
     ;;
+  ppc)
+    _triplet="powerpc-linux-gnu"
+    ;;
+  ppc-musl)
+    _triplet="powerpc-linux-musl"
+    ;;
   ppc64le)
     _triplet="powerpc64le-linux-gnu"
     ;;
@@ -267,6 +273,12 @@ do_configure() {
         -e '/m64=/s/lib64/lib/' \
         gcc/config/aarch64/t-aarch64-linux
       ;;
+    ppc)
+      _args+=" --with-cpu=powerpc --target=powerpc-linux-gnu"
+      ;;
+    ppc-musl)
+      _args+=" --with-cpu=powerpc --target=powerpc-linux-musl --disable-decimal-float --with-long-double=64"
+      ;;
     ppc64le*)
       # use lib not lib64 by default
       _args+=" --with-cpu=powerpc64le --with-abi=elfv2"
@@ -367,7 +379,7 @@ do_configure() {
   esac
 
   case "$XBPS_TARGET_MACHINE" in
-    ppc64*)
+    ppc*)
       _args+=" --disable-vtable-verify"
       ;;
     *)
