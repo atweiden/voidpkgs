@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-neovim"
-version=0.3.1
+version=0.3.2
 revision=1
 short_desc="Python2 client for Neovim"
 noarch="yes"
@@ -13,8 +13,8 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/neovim/python-client"
 license="Apache-2.0"
 distfiles="https://github.com/neovim/python-client/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6007c2286ea6ccac3065b7b9b76d04713db818ca2fe7d214bde48cb27789ac0d"
-wrksrc="python-client-$version"
+checksum="0a44c540dd5790acfbc7e411b0ed4fb6c44914d866226ebebf370c24c2723dc2"
+wrksrc="pynvim-$version"
 build_style="python-module"
 pycompile_module="neovim"
 
