@@ -30,7 +30,7 @@ case "$XBPS_TARGET_MACHINE" in
   mips*)
     _arch="mips"
     ;;
-  ppc64*)
+  ppc*)
     _arch="powerpc"
     ;;
   *)
