@@ -12,6 +12,12 @@ build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --without-capabilities"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc|ppc-musl)
+    configure_args+=" ac_cv_sys_symbol_underscore=no"
+    ;;
+esac
+
 post_configure() {
   case "$XBPS_TARGET_MACHINE" in
   armv[5-6]*)
