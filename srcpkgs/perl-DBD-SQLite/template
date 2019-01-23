@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-DBD-SQLite"
-version=1.60
+version=1.62
 revision=1
 short_desc="DBD::SQLite - Self-contained RDBMS in a DBI driver"
 depends+=" perl"
@@ -11,17 +11,16 @@ hostmakedepends="$depends"
 homepage="https://metacpan.org/release/DBD-SQLite"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
-checksum="280b2e30e2d9fcd284febda656b80530c70b38cfcbf3132c94257f1e1d303fc3"
+checksum="bd82ef322a9e5469a7a62d845c32fad1188b76ccb49a88520cec768343cce85c"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 configure_args="SQLITE_LOCATION=$XBPS_CROSS_BASE/usr"
 
 post_extract() {
   # unlock system sqlite support
-  sed \
-    -i \
+  vsed \
     -e 's/^if ( 0 )/if ( 1 )/' \
-    Makefile.PL
+    -i Makefile.PL
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
