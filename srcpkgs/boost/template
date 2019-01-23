@@ -100,6 +100,11 @@ case "$XBPS_TARGET_MACHINE" in
     _arch="power"
     _toolset="gcc-powerpc64"
     ;;
+  ppc*)
+    _abi="sysv"
+    _arch="power"
+    _toolset="gcc-powerpc"
+    ;;
 esac
 
 do_build() {
