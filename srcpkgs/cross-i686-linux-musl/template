@@ -10,7 +10,7 @@ _archflags="-march=i686"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.29
-revision=1
+revision=2
 short_desc="Cross toolchain for i686 target (musl)"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
@@ -96,6 +96,7 @@ _gcc_bootstrap() {
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/no-stack_chk_fail_local.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
+  _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
 
   msg_normal "Building cross gcc bootstrap\n"
 
