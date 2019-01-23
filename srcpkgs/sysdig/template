@@ -4,6 +4,7 @@ version=0.24.2
 revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
 only_for_archs+=" i686"
+only_for_archs+=" ppc64le"
 only_for_archs+=" x86_64"
 depends="dkms"
 makedepends+=" LuaJIT-devel"
@@ -43,6 +44,7 @@ post_extract() {
 
 post_install() {
   rm -rf "$DESTDIR/usr/share/zsh/vendor-completions"
+  vlicense COPYING
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
