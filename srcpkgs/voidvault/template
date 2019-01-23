@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="voidvault"
-version=1.5.0
+version=1.5.1
 revision=1
 short_desc="Bootstrap Void with FDE"
 only_for_archs+=" i686"
@@ -28,7 +28,7 @@ tags="perl6"
 homepage="https://github.com/atweiden/voidvault"
 license="Unlicense"
 distfiles="https://github.com/atweiden/voidvault/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="5f7433fd65a21574befe5e3c357639064ecc54fb238ed4f6cc7829553d96ef90"
+checksum="aad7912ab29ea74dd38e78e0b104dca3f8b41b97cc487a315e89ab4e2154c4a0"
 build_style="perl6-dist"
 
 post_install() {
