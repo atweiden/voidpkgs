@@ -11,7 +11,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.29
-revision=1
+revision=2
 short_desc="Cross toolchain for ARMv7 LE Hard Float target (musl)"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
@@ -92,6 +92,7 @@ _gcc_bootstrap() {
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
+  _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
 
   msg_normal "Building cross gcc bootstrap\n"
 
