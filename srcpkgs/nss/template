@@ -63,6 +63,9 @@ do_build() {
       mips*)
         _ARCH="mips"
         ;;
+      ppc|ppc-musl)
+        _ARCH="ppc"
+        ;;
       *)
         msg_error "$pkgver: unknown target machine\n"
         ;;
