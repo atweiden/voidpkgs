@@ -165,7 +165,7 @@ pre_configure() {
     mips*)
       _arch="Mips"
       ;;
-    ppc64*)
+    ppc*)
       _arch="PowerPC"
       ;;
   esac
