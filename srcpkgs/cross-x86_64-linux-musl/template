@@ -9,7 +9,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.29
-revision=1
+revision=2
 short_desc="Cross toolchain for x86_64 with musl"
 only_for_archs+=" i686"
 only_for_archs+=" i686-musl"
@@ -94,6 +94,7 @@ _gcc_bootstrap() {
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
+  _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
 
   sed \
     -i \
