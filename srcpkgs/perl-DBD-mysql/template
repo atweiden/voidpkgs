@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-DBD-mysql"
-version=4.048
+version=4.050
 revision=1
 short_desc="DBD::mysql - MySQL DBI driver"
 depends="perl-DBI"
@@ -17,7 +17,7 @@ hostmakedepends+=" perl-Devel-CheckLib"
 homepage="https://metacpan.org/release/DBD-mysql"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
-checksum="1737ffcae68712c04bf529f098df53534ca9a60eb3ce0ad23700bfc40c6415ff"
+checksum="4f48541ff15a0a7405f76adc10f81627c33996fbf56c95c26c094444c0928d78"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
