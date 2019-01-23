@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-DBD-mysql"
-version=4.046
-revision=6
+version=4.048
+revision=1
 short_desc="DBD::mysql - MySQL DBI driver"
 depends="perl-DBI"
 makedepends+=" libmysqlclient-devel"
@@ -17,8 +17,17 @@ hostmakedepends+=" perl-Devel-CheckLib"
 homepage="https://metacpan.org/release/DBD-mysql"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
-checksum="6165652ec959d05b97f5413fa3dff014b78a44cf6de21ae87283b28378daf1f7"
+checksum="1737ffcae68712c04bf529f098df53534ca9a60eb3ce0ad23700bfc40c6415ff"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  pre_configure() {
+    sed \
+      -i \
+      -e "/^assert_lib/,+2d" \
+      Makefile.PL
+  }
+fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
