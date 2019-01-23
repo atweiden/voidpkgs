@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kbfs"
-version=2.10.1
+version=2.11.0
 revision=1
 short_desc="Keybase Filesystem"
 depends+=" keybase"
@@ -8,7 +8,7 @@ depends+=" util-linux"
 homepage="https://keybase.io/docs/kbfs"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/kbfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9ad8e86378ad6b70909754d401d8ecacc128092ff687b7a56f5f1ecd5c8cb432"
+checksum="0e97cab1c90592035ec6763e22c78c08a95dd3467419d15b9e45b3d0887b594d"
 build_style="go"
 go_import_path="github.com/keybase/kbfs"
 go_package+=" $go_import_path/kbfsfuse"
