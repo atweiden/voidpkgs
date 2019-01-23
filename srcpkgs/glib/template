@@ -35,8 +35,8 @@ configure_args+=" --with-pcre=system"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" glib-devel"
   case "$XBPS_TARGET_MACHINE" in
-    mips*)
-      # it seems common/environment/configure/autoconf_cache/mips-linux is not read?
+    mips*|ppc|ppc-musl)
+      # it seems mips/ppc autoconf cache is not read?
       configure_args+=" glib_cv_stack_grows=no"
       configure_args+=" glib_cv_rtldglobal_broken=no"
       configure_args+=" glib_cv_uscore=no"
