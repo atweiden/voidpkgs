@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ansible"
-version=2.7.5
+version=2.7.6
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 noarch="yes"
@@ -13,7 +13,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="https://releases.ansible.com/ansible/$pkgname-$version.tar.gz"
-checksum="aaf9e1974bd12840ca055ac156f37601c08d73d726a3a6b98a2fe759a57051bb"
+checksum="6d855ead966c1a24a7d583ddcea8dd9e1f6edab3207390b647149351e113eb38"
 build_style="python3-module"
 pycompile_module="ansible"
 
