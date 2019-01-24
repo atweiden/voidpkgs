@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wpa_supplicant"
 version=2.6
-revision=13
+revision=14
 short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
@@ -21,10 +21,9 @@ build_options_default+=" readline"
 reverts="2.7_1"
 
 pre_build() {
-  sed \
-    -i \
+  vsed \
     -e 's|/usr/local|$(PREFIX)|g' \
-    Makefile
+    -i Makefile
   cp -f "$FILESDIR/config" .config
 
   if [[ -n "$build_option_dbus" ]]; then
