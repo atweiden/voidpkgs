@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gsasl"
 version=1.8.0
-revision=10
+revision=11
 short_desc="GNU SASL framework and a few common SASL mechanisms"
 makedepends+=" gnutls-devel"
 makedepends+=" libidn-devel"
