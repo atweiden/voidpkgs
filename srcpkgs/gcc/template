@@ -286,15 +286,7 @@ do_configure() {
       ;;
     ppc64le*)
       # use lib not lib64 by default
-      _args+=" --with-cpu=powerpc64le --with-abi=elfv2"
-      sed \
-        -i \
-        -e '/OSDIRNAMES/s/lib64/lib/' \
-        gcc/config/rs6000/t-linux
-      sed \
-        -i \
-        -e '/m64=/s/lib64/lib/' \
-        gcc/config/rs6000/t-linux64
+      _args+=" --target=$_triplet --with-abi=elfv2 --enable-secureplt --enable-targets=powerpcle-linux"
       sed \
         -i \
         -e 's/lib64/lib/' \
@@ -302,15 +294,7 @@ do_configure() {
       ;;
     ppc64*)
       # use lib not lib64 by default
-      _args+=" --with-cpu=powerpc64 --with-abi=elfv2"
-      sed \
-        -i \
-        -e '/OSDIRNAMES/s/lib64/lib/' \
-        gcc/config/rs6000/t-linux
-      sed \
-        -i \
-        -e '/m64=/s/lib64/lib/' \
-        gcc/config/rs6000/t-linux64
+      _args+=" --target=$_triplet --with-abi=elfv2 --enable-secureplt --enable-targets=powerpc-linux"
       sed \
         -i \
         -e 's/lib64/lib/' \
@@ -332,7 +316,7 @@ do_configure() {
   # fix: unknown long double size, cannot define BFP_FMT
   case "$XBPS_TARGET_MACHINE" in
     ppc64le-musl|ppc64-musl)
-      _args+=" --enable-decimal-float=no --disable-libquadmath --enable-secureplt"
+      _args+=" --enable-decimal-float=no --disable-libquadmath"
       ;;
     *)
       ;;
