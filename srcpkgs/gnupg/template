@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnupg"
 version=1.4.23
-revision=1
+revision=2
 short_desc="The GNU Privacy Guard"
 makedepends+=" bzip2-devel"
 makedepends+=" libcurl-devel"
