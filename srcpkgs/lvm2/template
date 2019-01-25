@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lvm2"
 version=2.02.183
-revision=1
+revision=2
 short_desc="Logical Volume Manager 2 utilities"
 depends="thin-provisioning-tools"
 makedepends+=" eudev-libudev-devel"
