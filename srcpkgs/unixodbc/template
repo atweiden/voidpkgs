@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="unixodbc"
 version=2.3.7
-revision=1
+revision=2
 short_desc="Basic ODBC tools"
 makedepends+=" libltdl-devel"
 makedepends+=" readline-devel"
