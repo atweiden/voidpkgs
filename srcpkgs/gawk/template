@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gawk"
 version=4.2.1
-revision=1
+revision=2
 short_desc="The GNU awk utility"
 makedepends="readline-devel"
 homepage="https://directory.fsf.org/wiki/Gawk"
