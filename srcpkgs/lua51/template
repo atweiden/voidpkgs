@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lua51"
 version=5.1.5
-revision=7
+revision=8
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.1.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
