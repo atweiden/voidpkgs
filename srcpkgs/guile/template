@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="guile"
 version=2.0.14
-revision=7
+revision=8
 short_desc="A portable, embeddable Scheme implementation written in C"
 makedepends+=" gc-devel"
 makedepends+=" gmp-devel"
