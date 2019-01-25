@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sdcv"
 version=0.5.2
-revision=1
+revision=2
 short_desc="Console version of Stardict program"
 makedepends+=" glib-devel"
 makedepends+=" readline-devel"
