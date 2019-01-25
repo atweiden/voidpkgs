@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
 version=2.33.1
-revision=1
+revision=2
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
