@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="units"
 version=2.18
-revision=1
+revision=2
 short_desc="Converts between different units"
 depends+=" python"
 depends+=" python-Unidecode"
