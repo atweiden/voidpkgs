@@ -328,6 +328,8 @@ constant %PKG = Map.new(
                    libpng-progs>,
     'libpsl' => ['libpsl-devel'],
     'libpwquality' => ['libpwquality-devel'],
+    'libreadline8' => qw<libhistory8
+                         readline-devel>,
     'libressl' => qw<libcrypto44
                      libressl-devel
                      libressl-netcat
@@ -536,7 +538,6 @@ constant %PKG = Map.new(
     'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
-    'readline' => ['readline-devel'],
     'rhash' => ['rhash-devel'],
     'ruby' => qw<ruby-devel
                  ruby-devel-doc
