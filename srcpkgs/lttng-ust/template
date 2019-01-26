@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lttng-ust"
-version=2.10.2
+version=2.10.3
 revision=1
 short_desc="Low-overhead tracing capabilities for userspace"
 makedepends="liburcu-devel"
@@ -8,7 +8,7 @@ homepage="https://lttng.org"
 license="LGPL-2.1-only"
 changelog="https://github.com/lttng/lttng-ust/raw/master/ChangeLog"
 distfiles="https://lttng.org/files/lttng-ust/$pkgname-$version.tar.bz2"
-checksum="c4ca22b904eb08817b313a73d499e1b217ffee1f862156d0d52865317486c045"
+checksum="9e8420f90d5f963f7aa32bc6d44adc1e491136f687c69ffb7a3075d33b40852b"
 build_style="gnu-configure"
 
 lttng-ust-devel_package() {
