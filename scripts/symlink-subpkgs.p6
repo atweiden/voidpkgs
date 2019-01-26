@@ -203,7 +203,9 @@ constant %PKG = Map.new(
                   gpgmepp-devel>,
     'groff' => qw<groff-doc
                   libgroff>,
-    'grub' => qw<grub-i386-efi
+    'grub' => qw<grub-arm64-efi
+                 grub-i386-efi
+                 grub-powerpc-ieee1275
                  grub-utils
                  grub-x86_64-efi>,
     'gsasl' => qw<gsasl-devel
