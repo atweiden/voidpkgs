@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="h2o"
 version=2.2.5
-revision=2
+revision=3
 short_desc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 depends="perl"
 makedepends+=" libressl-devel"
@@ -22,6 +22,8 @@ build_style="cmake"
 configure_args+=" -DWITH_BUNDLED_SSL=off"
 configure_args+=" -DWITH_MRUBY=$(vopt_if mruby on off)"
 system_accounts="h2o"
+make_dirs+=" /srv/www/h2o 0755 h2o h2o"
+make_dirs+=" /var/log/h2o 0755 h2o h2o"
 build_options+=" mruby"
 desc_option_mruby="Enable mruby support"
 
