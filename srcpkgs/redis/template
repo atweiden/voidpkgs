@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="redis"
 version=5.0.3
-revision=1
+revision=2
 short_desc="Advanced key-value store"
 makedepends+=" jemalloc-devel"
 makedepends+=" libatomic-devel"
@@ -14,6 +14,7 @@ checksum="e290b4ddf817b26254a74d5d564095b11f9cd20d8f165459efa53eb63cd93e02"
 conf_files="/etc/redis/redis.conf"
 system_accounts="redis"
 redis_homedir="/var/lib/redis"
+make_dirs="/var/lib/redis 0700 redis redis"
 
 do_configure() {
   sed \
