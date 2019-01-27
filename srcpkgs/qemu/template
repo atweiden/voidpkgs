@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu"
 version=3.1.0
-revision=1
+revision=2
 short_desc="Open Source Processor Emulator"
 makedepends+=" bzip2-devel"
 makedepends+=" gnutls-devel"
@@ -82,6 +82,7 @@ do_configure() {
     $(vopt_enable spice) \
     $args \
     --audio-drv-list= \
+    --datadir="/usr/lib" \
     --disable-bluez \
     --disable-cocoa \
     --disable-glusterfs \
