@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bison"
-version=3.2.4
-revision=2
+version=3.3.1
+revision=1
 short_desc="GNU yacc(1) replacement"
 depends="m4"
 hostmakedepends+=" help2man"
@@ -10,15 +10,10 @@ hostmakedepends+=" m4"
 homepage="http://www.gnu.org/software/bison/bison.html"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/bison/$pkgname-$version.tar.xz"
-checksum="523d44419f4df68286503740c95c7b3400b748d7d8b797209195ee5d67f05634"
+checksum="fd22fc5ed02b42c88fa0efc6d5de3face8dfb5e253bf97e632573413969bc900"
 build_style="gnu-configure"
 alternatives+=" yacc:yacc:/usr/bin/bison-yacc"
 alternatives+=" yacc:yacc.1:/usr/share/man/man1/bison-yacc.1"
-
-do_check() {
-  # missing files for compilation
-  :
-}
 
 post_install() {
   mv "$DESTDIR/usr/bin"/{yacc,bison-yacc}
