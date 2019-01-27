@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dhcpcd"
-version=7.0.8
+version=7.1.0
 revision=1
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://roy.marples.name/projects/dhcpcd"
 license="BSD-2-Clause"
 distfiles="https://roy.marples.name/downloads/dhcpcd/$pkgname-$version.tar.xz"
-checksum="96968e883369ab4afd11eba9dfd9bb109f5dfff65b2814ce6c432f36362dc9b5"
+checksum="019ff03f4495c58be1b43a5543a4f427b6a2c3f6a3850a112bc0baca50771243"
 conf_files="/etc/dhcpcd.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
@@ -18,25 +18,14 @@ configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --sysconfdir=/etc"
 lib32disabled="yes"
 
-pre_install() {
-  # make wpa_supplicant log to syslog rather than stdout
-  sed \
-    -i \
-    -e 's,-B,& -s,' \
-    hooks/10-wpa_supplicant
-}
-
 post_install() {
-  sed 26q src/control.h > LICENSE
   vlicense LICENSE
   vsv dhcpcd
   vsv dhcpcd-eth0
   # enable controlgroup by default, to make dhcpcd-ui work
-  sed \
-    -i \
+  vsed \
     -e 's,^#\(controlgroup.*\),\1,' \
-    "$DESTDIR/etc/dhcpcd.conf"
-  ln -sf /usr/share/dhcpcd/hooks/10-wpa_supplicant "$DESTDIR/usr/libexec/dhcpcd-hooks/"
+    -i "$DESTDIR/etc/dhcpcd.conf"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
