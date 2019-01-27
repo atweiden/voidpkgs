@@ -1,12 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpipeline"
-version=1.5.0
+version=1.5.1
 revision=1
-short_desc="A pipeline manipulation library"
+short_desc="Pipeline manipulation library"
+checkdepends+=" check-devel"
+checkdepends+=" pkg-config"
 homepage="http://libpipeline.nongnu.org/"
-license="GPL-2"
-distfiles="$NONGNU_SITE/libpipeline/$pkgname-$version.tar.gz"
-checksum="0d72e12e4f2afff67fd7b9df0a24d7ba42b5a7c9211ac5b3dcccc5cd8b286f2b"
+license="GPL-3.0-or-alter"
+distfiles="https://download-mirror.savannah.gnu.org/releases/libpipeline/$pkgname-$version.tar.gz"
+checksum="d633706b7d845f08b42bc66ddbe845d57e726bf89298e2cee29f09577e2f902f"
 build_style="gnu-configure"
 
 libpipeline-devel_package() {
