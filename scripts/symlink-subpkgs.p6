@@ -100,6 +100,7 @@ constant %PKG = Map.new(
     'cross-powerpc64le-linux-gnu' => ['cross-powerpc64le-linux-gnu-libc'],
     'cross-powerpc64le-linux-musl' => ['cross-powerpc64le-linux-musl-libc'],
     'cross-x86_64-linux-musl' => ['cross-x86_64-linux-musl-libc'],
+    'cross-x86_64-w64-mingw32' => ['cross-i686-w64-mingw32'],
     'crypto++' => ['crypto++-devel'],
     'cryptsetup' => qw<cryptsetup-devel
                        cryptsetup-static
