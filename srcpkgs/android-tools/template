@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="android-tools"
-version=9.0.0r21
+version=9.0.0r30
 revision=1
 _distver=${version/r/_r}
 short_desc="Android platform tools (adb and fastboot)"
@@ -22,6 +22,7 @@ distfiles+=" $_baseurl/system/extras/+archive/android-$_distver.tar.gz>extras.ta
 distfiles+=" $_baseurl/external/selinux/+archive/android-$_distver.tar.gz>selinux.tar.gz"
 distfiles+=" $_baseurl/external/f2fs-tools/+archive/android-$_distver.tar.gz>f2fs-tools.tar.gz"
 distfiles+=" $_baseurl/external/e2fsprogs/+archive/android-$_distver.tar.gz>e2fsprogs.tar.gz"
+distfiles+=" $_baseurl/external/avb/+archive/android-$_distver.tar.gz>avb.tar.gz"
 distfiles+=" https://boringssl.googlesource.com/boringssl/+archive/3359.tar.gz>boringssl.tar.gz"
 # contents checksums because the tarballs change with every download
 checksum+=" @8799c86b9bdcfe3bf0fd47df41ba5e6df7f85b9cc57ba0ad297d5187766b900c"
@@ -29,6 +30,7 @@ checksum+=" @6569cc9bf9d303c099070cfb3d0687ab839d3203e082a865a236de616062f75c"
 checksum+=" @9f2b5e379eca4c56e2d422598831bfd7bdf2b7b3c3d011ce513c7603aa46b574"
 checksum+=" @f1efc86a1e78521f4754d184d682c1f6660c04f74496913f37cae9e2670db0e8"
 checksum+=" @e98509632e865e792dc4b344b0a1ada0662dda7571534fa7c5d1a8902dcfb0f4"
+checksum+=" @5c2fcb88154f9b6ffed8d24a069e4bad0a7aea1936be2ce18af972ad8762e09a"
 checksum+=" @9ec3dd8c7f6ec5f4d8b60e22d8dcba3dc4432763ec8a637c05ba24d3b58b2826"
 create_wrksrc="yes"
 nocross="error: requested alignment 64 is larger than 8 [-Werror=attributes]"
@@ -70,6 +72,7 @@ do_build() {
 
 do_install() {
   for i in adb \
+           avb/avbtool\
            core/mkbootimg/mkbootimg \
            e2fsdroid \
            ext2simg \
