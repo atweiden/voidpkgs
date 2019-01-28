@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="zsh"
-version=5.6.2
+version=5.7
 revision=1
-short_desc="The Z SHell"
+short_desc="Z SHell"
 makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
 makedepends+=" ncurses-devel"
@@ -12,7 +12,7 @@ homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
 changelog="https://github.com/zsh-users/zsh/raw/master/ChangeLog"
 distfiles="$SOURCEFORGE_SITE/zsh/$pkgname-$version.tar.xz"
-checksum="a50bd66c0557e8eca3b8fa24e85d0de533e775d7a22df042da90488623752e9e"
+checksum="7807b290b361d9fa1e4c2dfafc78cb7e976e7015652e235889c6eff7468bd613"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
 configure_args+=" --enable-etcdir=/etc/zsh"
