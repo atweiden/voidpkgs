@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ca-certificates"
-version=20180409
-revision=2
+version=20190110
+revision=1
 short_desc="Common CA certificates for SSL/TLS"
 noarch="yes"
 depends+=" libressl>=2.2.4_2"
@@ -10,7 +10,7 @@ hostmakedepends="libressl"
 homepage="https://tracker.debian.org/pkg/ca-certificates"
 license="GPL-2.0-or-later, MPL-2.0"
 distfiles="$DEBIAN_SITE/main/c/ca-certificates/${pkgname}_$version.tar.xz"
-checksum="7af6f5bfc619fd29cbf0258c1d95107c38ce840ad6274e343e1e0d971fc72b51"
+checksum="ee4bf0f4c6398005f5b5ca4e0b87b82837ac5c3b0280a1cb3a63c47555c3a675"
 conf_files="/etc/ca-certificates.conf"
 wrksrc="$pkgname"
 bootstrap="yes"
