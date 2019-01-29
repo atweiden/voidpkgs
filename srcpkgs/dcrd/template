@@ -1,22 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrd"
-version=1.4.0rc1
+version=1.4.0rc3
 revision=1
 short_desc="Decred daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
-distfiles="https://github.com/decred/dcrd/archive/release-v${version/rc1/-rc1}.tar.gz>$pkgname-$version.tar.gz"
-checksum="3a993f0f430b3dcc0ca199ead7a53d78d9923d539a8ead0b6c29a4bcfd4eae23"
-wrksrc="$pkgname-release-v${version/rc1/-rc1}"
+distfiles="https://github.com/decred/dcrd/archive/release-v${version/rc3/-rc3}.tar.gz>$pkgname-$version.tar.gz"
+checksum="108e32437c8bcf5fd1ea2ad6b481a8b5991fbf13291b889ccedadd25616bcbe4"
+wrksrc="$pkgname-release-v${version/rc3/-rc3}"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
 
-do_build() {
-  go_package="${go_package:-$go_import_path}"
-  export GO111MODULE="on"
-  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
+post_build() {
   go install . ./cmd/...
 }
 
@@ -31,11 +28,11 @@ pre_install() {
 }
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vdoc "$GOSRCPATH/CHANGES"
-  vdoc "$GOSRCPATH/README.md"
-  vdoc "$GOSRCPATH/cmd/dcrctl/sample-dcrctl.conf"
-  vcopy "$GOSRCPATH/docs" "usr/share/doc/$pkgname"
+  vlicense LICENSE
+  vdoc CHANGES
+  vdoc README.md
+  vdoc cmd/dcrctl/sample-dcrctl.conf
+  vcopy docs "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
