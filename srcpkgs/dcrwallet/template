@@ -1,24 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrwallet"
-version=1.4.0rc1
+version=1.4.0rc3
 revision=1
 short_desc="Decred wallet daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
-distfiles="https://github.com/decred/dcrwallet/archive/release-v${version/rc1/-rc1}.tar.gz"
-checksum="356e87464e89bc38b8a655cd8f26a3e3d749ca32a1f33984851a00147b16b537"
-wrksrc="$pkgname-release-v${version/rc1/-rc1}"
+distfiles="https://github.com/decred/dcrwallet/archive/release-v${version/rc3/-rc3}.tar.gz>$pkgname-$version.tar.gz"
+checksum="33609ee6174813dedb10baca9b697dc346f82b3394516f1e4a073af535d11603"
+wrksrc="$pkgname-release-v${version/rc3/-rc3}"
 build_style="go"
 go_import_path="github.com/decred/dcrwallet"
-
-do_build() {
-  go_package="${go_package:-$go_import_path}"
-  export GO111MODULE="on"
-  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
-  go install
-}
 
 pre_install() {
   # prepend dcr to unqualified binaries
@@ -31,10 +24,10 @@ pre_install() {
 }
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vdoc "$GOSRCPATH/README.md"
-  vdoc "$GOSRCPATH/sample-dcrwallet.conf"
-  vcopy "$GOSRCPATH/docs" "usr/share/doc/$pkgname"
+  vlicense LICENSE
+  vdoc README.md
+  vdoc sample-dcrwallet.conf
+  vcopy docs "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
