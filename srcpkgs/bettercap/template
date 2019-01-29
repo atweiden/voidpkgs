@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bettercap"
-version=2.12
+version=2.13
 revision=1
 short_desc="Network attack and monitoring framework"
 makedepends+=" libnetfilter_queue-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/bettercap/bettercap"
 license="GPL-3"
 distfiles="https://github.com/bettercap/bettercap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d4d85928d39134eccdb086570664d0927fef29f3caba6848c357e0df94f10fa2"
+checksum="fe7d1dff0f4de079a2cfab92c4593e56c62e666575b52d80401b523a83578a27"
 build_style="go"
 go_import_path="github.com/bettercap/bettercap"
 
