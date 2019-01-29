@@ -1,23 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcd"
 version=0.12.0beta
-revision=2
-_gitrev="7d2daa5bfef28c5e282571bc06416516936115ee"
+revision=3
+_gitrev="ed77733ec07dfc8a513741138419b8d9d3de9d2d"
 short_desc="An alternative full node Bitcoin implementation written in Go"
 hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcd"
 license="ISC"
 distfiles="https://github.com/btcsuite/btcd/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="b7b6806be02dd936059f7878cc02fc5b46ca5092802f1e83c68e817a72968bff"
+checksum="49b63776bf3b12cafbb94399003554eab6b1cc98bdcdc313f1c7a56f036470af"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/btcsuite/btcd"
 
-do_build() {
-  go_package="${go_package:-$go_import_path}"
-  export GO111MODULE="on"
-  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
+post_build() {
   go install . ./cmd/...
 }
 
@@ -32,11 +29,11 @@ pre_install() {
 }
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vdoc "$GOSRCPATH/CHANGES"
-  vdoc "$GOSRCPATH/README.md"
-  vdoc "$GOSRCPATH/sample-btcd.conf"
-  vcopy "$GOSRCPATH/docs" "usr/share/doc/$pkgname"
+  vlicense LICENSE
+  vdoc CHANGES
+  vdoc README.md
+  vdoc sample-btcd.conf
+  vcopy docs "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
