@@ -1,36 +1,34 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="politeia"
 version=1.3.1pre
-revision=4
-_gitrev="2eeea9db91b6d69d5818ddf5cdb0253db48bd072"
+revision=5
+_gitrev="052a120f7e377e43e2869274e0660725458d37a9"
 short_desc="Decred proposal system"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/politeia"
 license="ISC"
 distfiles="https://github.com/decred/politeia/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="29e82c755a97b44ecf8f8a2685dbb03dac2d72b29844e9f9048fce370d73fbba"
+checksum="df576f66a6af4c4d660ca79bc999736afa73548069ff780fc1c5679278829465"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/politeia"
+go_mod_mode="off"
 
-do_build() {
-  go_package="${go_package:-$go_import_path}"
-  export GO111MODULE="on"
-  go get -x -tags "$go_build_tags" -ldflags "$go_ldflags" "$go_package"
+post_build() {
   go install -v ./...
 }
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vdoc "$GOSRCPATH/README.md"
-  vdoc "$GOSRCPATH/politeia.md"
-  vdoc "$GOSRCPATH/politeiad/sample-politeiad.conf"
-  vdoc "$GOSRCPATH/politeiavoter/sample-politeiavoter.conf"
-  vdoc "$GOSRCPATH/politeiawww/sample-politeiawww.conf"
-  vdoc "$GOSRCPATH/politeiawww/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf"
-  vdoc "$GOSRCPATH/politeiawww/cmd/politeiawwwcli/sample-politeiawwwcli.conf"
-  vcopy "$GOSRCPATH/examples" "usr/share/doc/$pkgname"
+  vlicense LICENSE
+  vdoc README.md
+  vdoc politeia.md
+  vdoc politeiad/sample-politeiad.conf
+  vdoc politeiavoter/sample-politeiavoter.conf
+  vdoc politeiawww/sample-politeiawww.conf
+  vdoc politeiawww/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf
+  vdoc politeiawww/cmd/politeiawwwcli/sample-politeiawwwcli.conf
+  vcopy examples "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
