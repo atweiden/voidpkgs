@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="darcs"
-version=2.14.1
-revision=2
+version=2.14.2
+revision=1
 short_desc="Change-focused cross-platform version control system"
 makedepends+=" libcurl-devel"
 makedepends+=" ncurses-devel"
@@ -10,14 +10,13 @@ hostmakedepends="unzip"
 homepage="http://darcs.net/"
 license="GPL-2.0-or-later"
 distfiles="http://hackage.haskell.org/package/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="61ddbc99acaf06df3a114437064e9241e0da467c23d1d3fb520a782eee32cd35"
+checksum="65d160a43874960dcba114c0b74d9c7b25d098486f515655502f42ff0c22a27e"
 build_style="haskell-stack"
-stackage="lts-12.0"
 nopie_files="/usr/bin/darcs"
 nocross="yes"
 
 post_install() {
-  vinstall contrib/darcs_completion 644 etc/bash_completion.d
+  vinstall contrib/darcs_completion 644 usr/share/bash-completion/completions
   cd .stack-work/dist/*/*/build/darcs
   vman darcs.1
 }
