@@ -2,7 +2,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3"
 version=3.6.8
-revision=2
+revision=3
 short_desc="Interpreted, interactive, object-oriented programming language (${version%.*} series)"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
