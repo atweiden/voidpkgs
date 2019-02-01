@@ -2,7 +2,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python"
 version=2.7.15
-revision=4
+revision=5
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
