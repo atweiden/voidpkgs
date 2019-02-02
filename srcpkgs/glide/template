@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glide"
 version=0.13.2
-revision=1
+revision=2
 short_desc="Vendor package management for golang"
 depends+=" git"
 depends+=" go"
