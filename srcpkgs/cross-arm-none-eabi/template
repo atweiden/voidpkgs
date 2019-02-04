@@ -1,4 +1,4 @@
-_binutils_version=2.31.1
+_binutils_version=2.32
 _gcc_version=7.3.0
 _newlib_version=2.4.0.20161025
 
@@ -8,7 +8,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.3
-revision=1
+revision=2
 short_desc="GNU cross bare metal toolchain"
 makedepends+=" gmp-devel"
 makedepends+=" isl16-devel"
@@ -23,7 +23,7 @@ license="GPL-3, GPL-2, LGPL-2.1"
 distfiles+=" $GNU_SITE/binutils/binutils-$_binutils_version.tar.xz"
 distfiles+=" $GNU_SITE/gcc/gcc-$_gcc_version/gcc-$_gcc_version.tar.xz"
 distfiles+=" ftp://sources.redhat.com/pub/newlib/newlib-$_newlib_version.tar.gz"
-checksum+=" 5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86"
+checksum+=" 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
 checksum+=" 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c"
 checksum+=" cbecbc637496fcec02829c12babf8441c6500eb1933c776d2fa4e0a9a35f081f"
 create_wrksrc="yes"
