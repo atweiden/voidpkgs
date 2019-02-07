@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="go"
 version=1.11.5
-revision=1
+revision=2
 short_desc="Go Programming Language"
 hostmakedepends="go1.4-bootstrap"
 homepage="http://golang.org/"
