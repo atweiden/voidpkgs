@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="zsh"
-version=5.7
-revision=2
+version=5.7.1
+revision=1
 short_desc="Z SHell"
 makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
@@ -12,7 +12,7 @@ homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
 changelog="https://github.com/zsh-users/zsh/raw/master/ChangeLog"
 distfiles="$SOURCEFORGE_SITE/zsh/$pkgname-$version.tar.xz"
-checksum="7807b290b361d9fa1e4c2dfafc78cb7e976e7015652e235889c6eff7468bd613"
+checksum="7260292c2c1d483b2d50febfa5055176bd512b32a8833b116177bf5f01e77ee8"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
 configure_args+=" --enable-etcdir=/etc/zsh"
