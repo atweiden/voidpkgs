@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pkcs11-helper"
 version=1.25.1
-revision=2
-short_desc="A library to help simplify interacting with PKCS#11 providers"
+revision=3
+short_desc="Library to help simplify interacting with PKCS#11 providers"
 makedepends="libressl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" doxygen"
@@ -16,6 +16,11 @@ wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --enable-doc"
+configure_args+=" $(vopt_enable threading slotevent)"
+configure_args+=" $(vopt_enable threading)"
+build_options="threading"
+build_options_default="threading"
+desc_option_threading="Enable threading and slotevent support"
 
 pre_configure() {
   autoreconf -fi
