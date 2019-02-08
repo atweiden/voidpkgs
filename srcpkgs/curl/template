@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="curl"
-version=7.64.0
-revision=1
+version=7.63.0
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -20,7 +20,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="d573ba1c2d1cf9d8533fadcce480d778417964e8d04ccddcc76e591d544cf2eb"
+checksum="9bab7ed4ecff77020a312d84cc5fb7eb02d58419d218f267477a724a17fd8dd8"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
@@ -42,6 +42,7 @@ build_options+=" ssh"
 build_options+=" ssl"
 build_options_default+=" ssh"
 build_options_default+=" ssl"
+reverts="7.64.0_1"
 
 vopt_conflict "ssl" "gnutls"
 
