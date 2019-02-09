@@ -1,15 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrd"
-version=1.4.0rc3
+version=1.4.0
 revision=1
 short_desc="Decred daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
-distfiles="https://github.com/decred/dcrd/archive/release-v${version/rc3/-rc3}.tar.gz>$pkgname-$version.tar.gz"
-checksum="108e32437c8bcf5fd1ea2ad6b481a8b5991fbf13291b889ccedadd25616bcbe4"
-wrksrc="$pkgname-release-v${version/rc3/-rc3}"
+distfiles="https://github.com/decred/dcrd/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="db05f002e081db0cbc1f3b3521cb072489e59a7e24860f154e17e9934d4bc4c9"
+wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
 
