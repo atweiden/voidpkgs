@@ -1,6 +1,6 @@
 _binutils_version=2.32
 _gcc_version=8.2.0
-_glibc_version=2.28
+_glibc_version=2.29
 _linux_version=4.19
 
 _triplet="aarch64-linux-gnu"
@@ -10,20 +10,19 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.29
-revision=2
+revision=3
 short_desc="GNU Cross toolchain for the $_triplet LE target (binutils/gcc/glibc)"
 only_for_archs+=" ppc64le"
 only_for_archs+=" x86_64"
 depends="$pkgname-libc-${version}_$revision"
-makedepends+=" gmp-devel"
 makedepends+=" isl15-devel"
 makedepends+=" libmpc-devel"
-makedepends+=" mpfr-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" gcc-ada"
 hostmakedepends+=" libada-devel"
 hostmakedepends+=" perl"
+hostmakedepends+=" python3"
 homepage="https://www.voidlinux.org/"
 license="GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
 distfiles+=" $GNU_SITE/binutils/binutils-$_binutils_version.tar.xz"
@@ -32,7 +31,7 @@ distfiles+=" $GNU_SITE/glibc/glibc-$_glibc_version.tar.xz"
 distfiles+=" $KERNEL_SITE/kernel/v4.x/linux-$_linux_version.tar.xz"
 checksum+=" 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
 checksum+=" 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080"
-checksum+=" b1900051afad76f7a4f73e71413df4826dce085ef8ddb785a945b66d7d513082"
+checksum+=" f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b"
 checksum+=" 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1"
 create_wrksrc="yes"
 lib32disabled="yes"
@@ -142,9 +141,11 @@ _glibc_headers() {
     && return 0
 
   cd "$wrksrc/glibc-$_glibc_version"
-  for f in "$XBPS_SRCPKGDIR/glibc/patches"/*.patch; do
-    _apply_patch -p1 "$f"
-  done
+  if [[ -d "$XBPS_SRCPKGDIR/glibc/patches" ]]; then
+    for f in "$XBPS_SRCPKGDIR/glibc/patches"/*.patch; do
+      _apply_patch -p1 "$f"
+    done
+  fi
 
   cd "$wrksrc"
   msg_normal "Building cross glibc headers\n"
@@ -192,8 +193,9 @@ _glibc_build() {
 
   export AS="$_triplet-as"
   export CC="$_triplet-gcc"
-  export CFLAGS="-Os -pipe -Wno-error $_archflags"
+  export CFLAGS="-O1 -pipe -Wno-error $_archflags"
   export CPP="$_triplet-cpp"
+  export CXX="$_triplet-g++"
   export LD="$_triplet-ld"
   export NM="$_triplet-nm"
 
@@ -205,6 +207,7 @@ _glibc_build() {
   _args+=" --host=$_triplet"
   _args+=" --libdir=/usr/lib"
   _args+=" --prefix=/usr"
+  _args+=" --target=$_triplet"
   _args+=" --with-headers=$_sysroot/usr/include"
 
   "../glibc-$_glibc_version/configure" $_args
@@ -228,6 +231,7 @@ _gcc_build() {
 
   export CC="gcc"
   export CFLAGS="-Os -pipe"
+  export CXX="g++"
   unset AS
   unset LD
 
