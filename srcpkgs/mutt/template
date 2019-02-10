@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mutt"
 version=1.10.1
-revision=4
+revision=5
 short_desc="Mutt Mail Client"
 depends="mime-types"
 makedepends+=" gdbm-devel"
