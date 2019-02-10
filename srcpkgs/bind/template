@@ -50,9 +50,11 @@ make_dirs="/var/named 0770 root named"
 build_options+=" geoip"
 build_options+=" seccomp"
 build_options_default+=" geoip"
-if [[ -z "$CROSS_BUILD" ]]; then
-  build_options_default+=" seccomp"
-fi
+case "$XBPS_TARGET_MACHINE" in
+  x86_64*|i686*)
+    build_options_default+=" seccomp"
+    ;;
+esac
 reverts="9.13.6_1"
 
 pre_configure() {
