@@ -28,12 +28,6 @@ subpackages+=" libsmbios-devel"
 subpackages+=" python3-libsmbios"
 subpackages+=" libsmbios-utils"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    broken="requires glibc specific outb_p and inb_p"
-    ;;
-esac
-
 pre_configure() {
   ./autogen.sh --no-configure
 }
