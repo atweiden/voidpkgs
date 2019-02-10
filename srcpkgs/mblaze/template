@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mblaze"
-version=0.4
+version=0.5
 revision=1
 short_desc="Maildir-focused command line mail client"
 checkdepends="perl"
 homepage="https://github.com/chneukirchen/mblaze"
 license="Public Domain, MIT"
 distfiles="http://chneukirchen.org/releases/$pkgname-$version.tar.gz"
-checksum="83dffd7fe74fa871642e97db94e27c04506f746fa4d6ba2f95c1a880638d6e0c"
+checksum="33279cf0f468c03d32e8c1f8e056cf17005ec30212634150bfe0d90c6e4f926e"
 build_style="gnu-makefile"
 
 post_install() {
@@ -17,6 +17,7 @@ post_install() {
   vbin contrib/mp7m
   vbin contrib/mraw
   vbin contrib/mrecode
+  vbin contrib/msearch
   vbin contrib/msign
   vbin contrib/mverify
   vbin contrib/mvi
