@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="toxcore"
 version=0.2.9
-revision=1
+revision=2
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
 makedepends+=" libconfig-devel"
 makedepends+=" libsodium-devel"
