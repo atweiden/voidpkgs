@@ -341,7 +341,8 @@ constant %PKG = Map.new(
     'libsasl' => ['libsasl-devel'],
     'libseccomp' => ['libseccomp-devel'],
     'libsmbios' => qw<libsmbios-devel
-                      libsmbios-utils>,
+                      libsmbios-utils
+                      python3-libsmbios>,
     'libsodium' => ['libsodium-devel'],
     'libssh' => ['libssh-devel'],
     'libssh2' => ['libssh2-devel'],
