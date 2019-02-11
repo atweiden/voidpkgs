@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dkms"
 version=2.6.1
-revision=1
+revision=2
 short_desc="Dynamic Kernel Modules System"
 depends+=" bash"
 depends+=" coreutils"
@@ -9,6 +9,12 @@ depends+=" gcc"
 depends+=" kmod"
 depends+=" linux-headers"
 depends+=" make"
+if [[ -n "$CROSS_BUILD" ]]; then
+  depends+=" gmp-devel"
+  depends+=" libada-devel"
+  depends+=" libmpc-devel"
+  depends+=" libressl-devel"
+fi
 homepage="https://github.com/dell/dkms"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/dell/dkms/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
