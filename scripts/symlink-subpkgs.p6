@@ -390,6 +390,8 @@ constant %PKG = Map.new(
                  lld-devel
                  lldb
                  lldb-devel>,
+    'lm_sensors' => qw<libsensors
+                       libsensors-devel>,
     'lttng-tools' => ['lttng-tools-devel'],
     'lttng-ust' => ['lttng-ust-devel'],
     'lua' => ['lua-devel'],
