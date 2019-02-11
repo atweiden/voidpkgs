@@ -1,16 +1,18 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="net-snmp"
 version=5.8
-revision=2
+revision=3
 short_desc="Simple Network Management Protocol (SNMP) suite"
 makedepends+=" bzip2-devel"
 makedepends+=" libnl-devel"
 makedepends+=" libressl-devel"
+makedepends+=" libsensors-devel"
 makedepends+=" pciutils-devel"
+makedepends+=" pcre-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" unzip"
 homepage="http://www.net-snmp.org/"
-license="BSD"
+license="Net-SNMP"
 distfiles="$SOURCEFORGE_SITE/net-snmp/$pkgname-$version.tar.gz"
 checksum="b2fc3500840ebe532734c4786b0da4ef0a5f67e51ef4c86b3345d697e4976adf"
 
@@ -28,16 +30,16 @@ do_configure() {
     --sbindir="/usr/bin" \
     --with-default-snmp-version="3" \
     --with-logfile="/var/log/snmpd.log" \
-    --with-mib-modules="host misc/ipfwacc ucd-snmp/diskio tunnel ucd-snmp/dlmod" \
+    --with-mib-modules="host misc/ipfwacc ucd-snmp/diskio tunnel ucd-snmp/dlmod ucd-snmp/lmsensorsMib" \
     --with-persistent-directory="/var/net-snmp" \
     --with-sys-contact="root@localhost" \
-    --with-sys-location="Unknown" \
-    --without-perl \
-    --without-python
+    --with-sys-location="Unknown"
 }
 
 do_build() {
-  make "$makejobs" NETSNMP_DONT_CHECK_VERSION=1
+  make \
+    "$makejobs" \
+    NETSNMP_DONT_CHECK_VERSION=1
 }
 
 do_install() {
@@ -46,10 +48,6 @@ do_install() {
     INSTALLDIRS="vendor" \
     INSTALL_PREFIX="$DESTDIR" \
     install
-}
-
-post_install() {
-  vlicense COPYING LICENSE
 }
 
 libnet-snmp_package() {
