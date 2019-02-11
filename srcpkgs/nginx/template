@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nginx"
 version=1.14.2
-revision=1
-short_desc="A high performance web and reverse proxy server"
+revision=2
+short_desc="High performance web and reverse proxy server"
 makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" $(vopt_if geoip geoip-devel)"
 if [[ -n "$CROSS_BUILD" ]]; then
   # fake configure run on host
-  hostmakedepends="$makedepends"
+  hostmakedepends+=" $makedepends"
 fi
 homepage="https://nginx.org"
 license="BSD-2-Clause"
@@ -23,6 +23,7 @@ conf_files+=" /etc/nginx/nginx.conf"
 conf_files+=" /etc/nginx/scgi_params"
 conf_files+=" /etc/nginx/uwsgi_params"
 conf_files+=" /etc/nginx/win-utf"
+build_style="gnu-makefile"
 system_accounts="nginx"
 nginx_homedir="/var/tmp/nginx"
 make_dirs+=" /var/log/nginx 0750 root root"
@@ -75,7 +76,9 @@ do_configure() {
     --with-http_ssl_module \
     --with-http_stub_status_module \
     $(vopt_if geoip --with-http_geoip_module)
+}
 
+pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
       arm*|aarch64*)
@@ -90,28 +93,19 @@ do_configure() {
     objs/Makefile
 }
 
-do_build() {
-  make \
-    "$makejobs" \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    LDFLAGS="$LDFLAGS"
-}
-
-do_install() {
-  make DESTDIR="$DESTDIR" install
+post_install() {
   vlicense LICENSE
   vman man/nginx.8
-  vsv nginx
-  vmkdir usr/share/nginx
   sed \
     -i \
     -e 's|\<user\s\+\w\+;|user html;|g' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
     "$DESTDIR/etc/nginx/nginx.conf"
-  rm "$DESTDIR/etc/nginx"/*.default
-  mv "$DESTDIR/etc/nginx/html/" "$DESTDIR/usr/share/nginx"
+  rm -- "$DESTDIR"/etc/nginx/*.default
+  vmkdir usr/share/nginx
+  mv "$DESTDIR/etc/nginx/html" "$DESTDIR/usr/share/nginx"
+  vsv nginx
 }
 
 # REMARKS:
