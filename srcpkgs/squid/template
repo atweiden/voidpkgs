@@ -67,6 +67,13 @@ system_accounts="squid"
 make_dirs+=" /var/cache/squid 750 squid squid"
 make_dirs+=" /var/log/squid 750 squid squid"
 
+case "$XBPS_TARGET_MACHINE" in
+  armv[56]l*)
+    makedepends+=" libatomic-devel"
+    LDFLAGS+=" -latomic"
+    ;;
+esac
+
 post_install() {
   chmod u+s \
     "$DESTDIR/usr/libexec/squid/basic_ncsa_auth" \
