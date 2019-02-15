@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dkms"
 version=2.6.1
-revision=2
+revision=5
 short_desc="Dynamic Kernel Modules System"
 depends+=" bash"
 depends+=" coreutils"
@@ -10,6 +10,7 @@ depends+=" kmod"
 depends+=" linux-headers"
 depends+=" make"
 if [[ -n "$CROSS_BUILD" ]]; then
+  depends+=" flex"
   depends+=" gmp-devel"
   depends+=" libada-devel"
   depends+=" libmpc-devel"
