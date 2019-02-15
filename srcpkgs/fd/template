@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fd"
-version=7.2.0
+version=7.3.0
 revision=1
 short_desc="Simple, fast and user-friendly alternative to find"
 homepage="https://github.com/sharkdp/fd"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/sharkdp/fd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="153d0ac821901d9843b501dd6ba00e82aa73e3d61c27b2150af7ebc1fb6dff67"
+checksum="fbd48cc83c90a0ab09fc3bbe865708a3a528876a99f8304a17d07af7fb378170"
 build_style="cargo"
 
 case "$XBPS_TARGET_MACHINE" in
