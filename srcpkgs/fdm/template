@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fdm"
 version=2.0
-revision=1
+revision=2
 short_desc="Program to fetch and deliver mail"
 makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
@@ -17,6 +17,13 @@ build_style="gnu-configure"
 configure_args+=" ac_cv_func_strlcat=no"
 configure_args+=" ac_cv_func_strlcpy=no"
 configure_args+=" --enable-pcre"
+
+post_extract() {
+  sed -i '$d' Makefile.am
+  sed -i '$d' Makefile.am
+  sed -i '$d' Makefile.am
+  autoreconf -fi
+}
 
 post_install() {
   vmkdir "usr/share/doc/$pkgname"
