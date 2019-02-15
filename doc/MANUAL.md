@@ -356,7 +356,7 @@ as part of the source package.
 set to `<masterdir>/builddir`. The package `wrksrc` is always stored
 in this directory such as `${XBPS_BUILDDIR}/${wrksrc}`.
 
-- `XBPS_MACHINE` The machine architecture as returned by `uname -m`.
+- `XBPS_MACHINE` The machine architecture as returned by `xbps-uhelper arch`.
 
 - `XBPS_SRCDISTDIR` Full path to where the `source distfiles` are stored, i.e `$XBPS_HOSTDIR/sources`.
 
@@ -667,6 +667,21 @@ user's booting and module loading. Otherwise in the majority of cases it should 
 used.
 
 - `fetch_cmd` Executable to be used to fetch URLs in `distfiles` during the `do_fetch` phase.
+
+- `archs` Whitespace separated list of architectures that a package can be
+built for.
+Examples:
+
+  ```
+  # Build package only for musl architectures
+  archs="*-musl"
+  # Build package for x86_64-musl and any non-musl architecture
+  archs="x86_64-musl ~*-musl"
+  # Default value (all arches)
+  archs="*"
+  # Packages that do not depend on architecture-specific objects
+  archs=noarch
+  ```
 
 <a id="explain_depends"></a>
 #### About the many types of `depends` variable.
