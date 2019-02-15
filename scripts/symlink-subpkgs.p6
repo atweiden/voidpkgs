@@ -518,7 +518,6 @@ constant %PKG = Map.new(
     'python-idna' => ['python3-idna'],
     'python-imagesize' => ['python3-imagesize'],
     'python-msgpack' => ['python3-msgpack'],
-    'python-more-itertools' => ['python3-more-itertools'],
     'python-neovim' => ['python3-neovim'],
     'python-numpy' => ['python3-numpy'],
     'python-packaging' => ['python3-packaging'],
