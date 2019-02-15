@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux4.19"
 version=4.19.20
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="The Linux kernel and modules (${version%.*} series)"
@@ -271,6 +271,14 @@ do_install() {
   install -Dm 644 Makefile "$hdrdest/Makefile"
   install -Dm 644 kernel/Makefile "$hdrdest/kernel/Makefile"
   install -Dm 644 .config "$hdrdest/.config"
+  for file in $(find . -name Kconfig\*); do
+    mkdir -p "$hdrdest/$(dirname "$file")"
+    install -Dm 644 "$file" "$hdrdest/$file"
+  done
+  for file in $(find arch/${subarch:-$arch} -name module.lds -o -name Kbuild.platforms -o -name Platform); do
+    mkdir -p "$hdrdest/$(dirname "$file")"
+    install -Dm 644 "$file" "$hdrdest/$file"
+  done
   mkdir -p "$hdrdest/include"
   # remove firmware provided by the "linux-firmware" pkg
   rm -rf "$DESTDIR/usr/lib/firmware"
@@ -302,9 +310,23 @@ do_install() {
   mkdir -p "$hdrdest/arch/$arch"
   cp -a "arch/$arch/include" "$hdrdest/arch/$arch"
 
+  # remove helper binaries built for host
+  # if generated files from the scripts/ directory need to be included,
+  # they need to be copied to `$hdrdest` before this step
+  if [[ -n "$CROSS_BUILD" ]]; then
+    make \
+      "$makejobs" \
+      ARCH="${subarch:-$arch}" \
+      _mrproper_scripts
+  fi
+
   # copy files necessary for later builds, like nvidia and vmware
   cp Module.symvers "$hdrdest"
   cp -a scripts "$hdrdest"
+  mkdir -p "$hdrdest/security/selinux"
+  cp -a security/selinux/include "$hdrdest/security/selinux"
+  mkdir -p "$hdrdest/tools/include"
+  cp -a tools/include/tools "$hdrdest/tools/include"
 
   mkdir -p "$hdrdest/arch/$arch/kernel"
   cp "arch/$arch/Makefile" "$hdrdest/arch/$arch"
@@ -315,6 +337,9 @@ do_install() {
   if [[ "$arch" == "x86" ]]; then
     mkdir -p "$hdrdest/arch/x86/kernel"
     cp arch/x86/kernel/asm-offsets.s "$hdrdest/arch/x86/kernel"
+  elif [[ "$arch" == "arm64" ]]; then
+    mkdir -p "$hdrdest/arch/arm64/kernel"
+    cp -a arch/arm64/kernel/vdso "$hdrdest/arch/arm64/kernel/"
   fi
 
   # add headers for lirc package
@@ -388,12 +413,6 @@ do_install() {
       ;;
   esac
 
-  # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "$hdrdest/$(echo "$i" | sed 's|/Kconfig.*||')"
-    cp "$i" "$hdrdest/$i"
-  done
-
   # remove unneeded architectures
   case "$arch" in
     i386|x86_64)
@@ -421,6 +440,9 @@ do_install() {
               xtensa; do
     rm -rf "$hdrdest/arch/$arch"
   done
+  # keep arch/x86/ras/Kconfig as it is needed by drivers/ras/Kconfig
+  mkdir -p "$hdrdest/arch/x86/ras"
+  cp -a arch/x86/ras/Kconfig "$hdrdest/arch/x86/ras/Kconfig"
 
   # extract debugging symbols
   msg_normal "$pkgver: extracting debug info, please wait...\n"
