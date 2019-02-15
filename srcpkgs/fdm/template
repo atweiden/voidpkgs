@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fdm"
-version=1.9
-revision=8
+version=2.0
+revision=1
 short_desc="Program to fetch and deliver mail"
 makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
@@ -12,25 +12,11 @@ hostmakedepends+=" bison"
 homepage="https://github.com/nicm/fdm"
 license="ISC"
 distfiles="https://github.com/nicm/fdm/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="16416c38a9a7e32d187220cc5ae61a51463d5e4e47419c5c513f422523d39914"
+checksum="06b28cb6b792570bc61d7e29b13d2af46b92fea77e058b2b17e11e8f7ed0cea4"
 build_style="gnu-configure"
-configure_args+=" LIBS=-lpcre"
 configure_args+=" ac_cv_func_strlcat=no"
 configure_args+=" ac_cv_func_strlcpy=no"
-
-CFLAGS="-DPCRE"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    CFLAGS+=" -DACCESSPERMS=0777"
-    CFLAGS+=" -DGLOB_BRACE=0"
-    CFLAGS+=" -DWAIT_ANY=-1"
-    post_extract() {
-      cp "$FILESDIR/base64.c" compat
-      echo "nodist_fdm_SOURCES += compat/base64.c" >> Makefile.am
-      autoreconf -fi
-    }
-esac
+configure_args+=" --enable-pcre"
 
 post_install() {
   vmkdir "usr/share/doc/$pkgname"
