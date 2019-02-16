@@ -29,7 +29,8 @@ configure_args+=" -DCRYFS_UPDATE_CHECKS=off"
 configure_args+=" -DOpenMP_CXX_FLAGS=-I$XBPS_CROSS_BASE/usr/include"
 configure_args+=" -DOpenMP_CXX_LIB_NAMES=omp"
 configure_args+=" -DOpenMP_omp_LIBRARY=$XBPS_CROSS_BASE/usr/lib/libomp.so"
-
-CXXFLAGS="-std=c++14"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -DBUILD_TESTING=on"
+fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
