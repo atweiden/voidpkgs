@@ -22,12 +22,12 @@ make_cmd="ninja"
 do_install() {
   cd "${cmake_builddir:=build}"
   DESTDIR="$DESTDIR" ninja install
+  # libgomp.so is also provided by libgomp-devel, fix conflict
+  rm "$DESTDIR/usr/lib/libgomp.so"
 }
 
 post_install() {
   vlicense LICENSE.txt
-  # libgomp.so is also provided by libgomp-devel, fix conflict
-  rm usr/lib/libgomp.so
 }
 
 libomp-devel_package() {
