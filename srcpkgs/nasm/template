@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nasm"
-version=2.14
+version=2.14.02
 revision=1
 short_desc="An 80x86 assembler designed for portability and modularity"
 homepage="https://www.nasm.us"
 license="BSD-2-Clause"
 distfiles="https://www.nasm.us/pub/nasm/releasebuilds/$version/$pkgname-$version.tar.xz"
-checksum="97c615dbf02ef80e4e2b6c385f7e28368d51efc214daa98e600ca4572500eec0"
+checksum="e24ade3e928f7253aa8c14aa44726d1edf3f98643f87c9d72ec1df44b26be8f5"
 build_style="gnu-configure"
 make_build_args+=" all"
 make_build_args+=" rdf"
