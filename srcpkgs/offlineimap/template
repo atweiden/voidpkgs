@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="offlineimap"
-version=7.2.2
+version=7.2.3
 revision=1
 short_desc="Powerful IMAP/Maildir synchronization and reader support"
-noarch="yes"
+archs="noarch"
 depends="python-six"
 hostmakedepends+=" asciidoc"
 hostmakedepends+=" python-six"
@@ -11,7 +11,7 @@ homepage="http://offlineimap.org/"
 license="GPL-2.0-or-later"
 changelog="https://github.com/OfflineIMAP/offlineimap/raw/master/Changelog.md"
 distfiles="https://github.com/OfflineIMAP/offlineimap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4481da81c22da3b85c5bd3fff3da7930b8ccdc2675d52cf3fc7e19758498b04e"
+checksum="7dec9fa9ff98c09e2e371b1d721327ba23935de5ac8c8145d4e8caf715978350"
 build_style="python2-module"
 pycompile_module="offlineimap"
 
