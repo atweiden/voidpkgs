@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="avahi"
 version=0.7
-revision=6
+revision=7
 short_desc="Multicast DNS Service Discovery"
 makedepends+=" dbus-devel"
 makedepends+=" gdbm-devel"
