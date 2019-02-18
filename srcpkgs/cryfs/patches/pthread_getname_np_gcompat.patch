@@ -1,8 +1,8 @@
 diff --git a/src/cpp-utils/thread/debugging_nonwindows.cpp b/src/cpp-utils/thread/debugging_nonwindows.cpp
-index 3ed543ff..d613a31d 100644
+index 3ed543ff..148076ad 100644
 --- a/src/cpp-utils/thread/debugging_nonwindows.cpp
 +++ b/src/cpp-utils/thread/debugging_nonwindows.cpp
-@@ -28,9 +28,27 @@ void set_thread_name(const char* name) {
+@@ -28,9 +28,32 @@ void set_thread_name(const char* name) {
  }
  
  namespace {
@@ -12,17 +12,22 @@ index 3ed543ff..d613a31d 100644
 +  char dummy;
 +  if (fd < 0)
 +    return errno;
-+  if (read(fd, name, len) < 0)
++  ssize_t n = read(fd, name, len);
++  if (n < 0)
 +    return errno;
 +  // If there's more to read, the buffer was too small.
 +  if (read(fd, &dummy, 1) > 0)
 +    return ERANGE;
++  // null-terminate string
++  name[n-1] = 0;
 +  return 0;
 +}
 +
  std::string get_thread_name(pthread_t thread) {
    char name[MAX_NAME_LEN];
 +#ifdef __GLIBC__
++  int result = pthread_getname_np(thread, name, MAX_NAME_LEN);
++#elif defined(__APPLE__)
    int result = pthread_getname_np(thread, name, MAX_NAME_LEN);
 +#else
 +  int result = pthread_getname_np_gcompat(thread, name, MAX_NAME_LEN);
