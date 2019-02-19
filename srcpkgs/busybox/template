@@ -1,29 +1,43 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="busybox"
-version=1.29.3
-revision=2
+version=1.30.1
+revision=1
 short_desc="Swiss Army Knife of Embedded Linux"
 checkdepends="zip"
 hostmakedepends="perl"
 homepage="http://www.busybox.net"
 license="GPL-2.0-only"
 distfiles="http://www.busybox.net/downloads/$pkgname-$version.tar.bz2"
-checksum="97648636e579462296478e0218e65e4bc1e9cd69089a3b1aeb810bff7621efb7"
-alternatives+=" awk:awk:/usr/bin/busybox"
-alternatives+=" hostname:hostname:/usr/bin/busybox"
+checksum="3d1d04a4dbd34048f4794815a5c48ebb9eb53c5277e09ffffc060323b95dfbdc"
+_alternatives_common+=" awk:awk:/usr/bin/busybox"
+_alternatives_common+=" hostname:hostname:/usr/bin/busybox"
+_alternatives_common+=" logger:logger:/usr/bin/busybox"
+_alternatives_common+=" sh:sh:/usr/bin/busybox"
+_alternatives_common+=" vi:vi:/usr/bin/busybox"
+alternatives+=" $_alternatives_common"
 alternatives+=" ntpd:ntpd:/etc/sv/busybox-ntpd"
 alternatives+=" ntpd:ntpd:/usr/bin/busybox"
-alternatives+=" sh:sh:/usr/bin/busybox"
-alternatives+=" vi:vi:/usr/bin/busybox"
+
+_patch_config() {
+  local t="$1"
+  shift
+  while [[ -n "$1" ]]; do
+    local p="$1"
+    shift
+    patch "$t/.config" < "$FILESDIR/dotconfig.d/$p.patch"
+  done
+}
 
 do_configure() {
   mkdir -p src
   mv * src \
     || true
   for t in busybox \
+           busybox-core \
+           busybox-huge \
            busybox-static; do
     mkdir -p "$t"
-    cp -f "$FILESDIR/$t.dotconfig" "$t/.config"
+    cp -f "$FILESDIR/dotconfig" "$t/.config"
     case "$XBPS_TARGET_MACHINE" in
       *-musl)
         sed \
@@ -40,17 +54,23 @@ do_configure() {
         "s,\(CONFIG_CROSS_COMPILER_PREFIX\).*,\1=\"$XBPS_CROSS_TRIPLET-\",g" \
         "$t/.config"
     fi
+  done
+
+  _patch_config busybox udhcpc ntpd
+  _patch_config busybox-static udhcpc ntpd static
+  _patch_config busybox-huge udhcpc ntpd httpd mdev sysklogd
+
+  for t in busybox-core \
+           busybox \
+           busybox-static \
+           busybox-huge; do
     make \
       -C "$t" \
       KBUILD_SRC="$wrksrc/src" \
       -f "$wrksrc/src/Makefile" \
-      prepare \
-      "$makejobs"
+      prepare "$makejobs"
   done
-  sed \
-    -i \
-    -e '/CONFIG_STATIC/ s/.*/CONFIG_STATIC=y/' \
-    busybox-static/.config
+
   if [[ -n "$SOURCE_DATE_EPOCH" ]]; then
     # rewrite date with the one from the date wrapper
     d="$(date +"%F %T %Z")"
@@ -62,27 +82,30 @@ do_configure() {
 }
 
 do_build() {
-  make -C busybox SKIP_STRIP="y" "$makejobs"
-  make -C busybox-static SKIP_STRIP="y" "$makejobs"
+  for t in busybox-core \
+           busybox \
+           busybox-static \
+           busybox-huge; do
+    make \
+      -C "$t" \
+      SKIP_STRIP="y" \
+      "$makejobs"
+  done
 }
 
 do_check() {
-  # copy the testsuite into the busybox and its static counterpart
-  # directory
-  cp -r src/testsuite busybox
-  cp -r src/testsuite busybox-static
-
-  # this is required by the testsuite
-  cp src/scripts/echo.c busybox/scripts
-  cp src/scripts/echo.c busybox-static/scripts
-
-  # run testsuite for busybox
-  (cd busybox/testsuite
-   SKIP_KNOWN_BUGS="yes" ./runtest -v)
-
-  # run testsuite for busybox-static
-  (cd busybox-static/testsuite
-   SKIP_KNOWN_BUGS="yes" ./runtest -v)
+  for t in busybox-core \
+           busybox \
+           busybox-static \
+           busybox-huge; do
+    # copy the testsuite over
+    cp -r src/testsuite "$t"
+    # required by the testsuite
+    cp src/scripts/echo.c "$t/scripts"
+    # run the testsuite
+    (cd "${t}"
+     SKIP_KNOWN_BUGS="yes" ./runtest -v)
+  done
 }
 
 do_install() {
@@ -91,10 +114,33 @@ do_install() {
   vsv busybox-ntpd
 }
 
+busybox-core_package() {
+  short_desc+=" (essential applets)"
+  conflicts+=" busybox>=0"
+  conflicts+=" busybox-huge>=0"
+  alternatives="$_alternatives_common"
+  pkg_install() {
+    vbin busybox-core/busybox_unstripped busybox
+    vman busybox-core/docs/busybox.1
+  }
+}
+
 busybox-static_package() {
   short_desc+=" - statically linked"
   pkg_install() {
     vbin busybox-static/busybox busybox.static
+  }
+}
+
+busybox-huge_package() {
+  short_desc+=" (extra applets)"
+  conflicts+=" busybox>=0"
+  conflicts+=" busybox-core>=0"
+  pkg_install() {
+    vbin busybox-huge/busybox_unstripped busybox
+    vman busybox-huge/docs/busybox.1
+    vsv busybox-syslogd
+    vsv busybox-klogd
   }
 }
 

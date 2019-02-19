@@ -67,7 +67,9 @@ constant %PKG = Map.new(
                         libbtrfs-devel
                         libbtrfsutil
                         libbtrfsutil-devel>,
-    'busybox' => ['busybox-static'],
+    'busybox' => qw<busybox-core
+                    busybox-huge
+                    busybox-static>,
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
     'check' => ['check-devel'],
