@@ -1,13 +1,14 @@
 diff --git a/src/cpp-utils/thread/debugging_nonwindows.cpp b/src/cpp-utils/thread/debugging_nonwindows.cpp
-index 3ed543ff..148076ad 100644
+index 3ed543ff..80f3f364 100644
 --- a/src/cpp-utils/thread/debugging_nonwindows.cpp
 +++ b/src/cpp-utils/thread/debugging_nonwindows.cpp
 @@ -28,9 +28,32 @@ void set_thread_name(const char* name) {
  }
  
  namespace {
-+// Get the name of a thread.
-+int pthread_getname_np_gcompat(pthread_t thread, char *name, size_t len) {
++#if !defined(__GLIBC__) && !defined(__APPLE__)
++// get the name of a thread
++int pthread_getname_np_gcompat(pthread_t, char *name, size_t len) {
 +  int fd = open("/proc/thread-self/comm", O_RDONLY | O_CLOEXEC);
 +  char dummy;
 +  if (fd < 0)
@@ -15,22 +16,21 @@ index 3ed543ff..148076ad 100644
 +  ssize_t n = read(fd, name, len);
 +  if (n < 0)
 +    return errno;
-+  // If there's more to read, the buffer was too small.
++  // if there's more to read, the buffer was too small
 +  if (read(fd, &dummy, 1) > 0)
 +    return ERANGE;
 +  // null-terminate string
 +  name[n-1] = 0;
 +  return 0;
 +}
++#endif
 +
  std::string get_thread_name(pthread_t thread) {
    char name[MAX_NAME_LEN];
-+#ifdef __GLIBC__
-+  int result = pthread_getname_np(thread, name, MAX_NAME_LEN);
-+#elif defined(__APPLE__)
-   int result = pthread_getname_np(thread, name, MAX_NAME_LEN);
-+#else
++#if !defined(__GLIBC__) && !defined(__APPLE__)
 +  int result = pthread_getname_np_gcompat(thread, name, MAX_NAME_LEN);
++#else
+   int result = pthread_getname_np(thread, name, MAX_NAME_LEN);
 +#endif
    if (0 != result) {
      throw std::runtime_error("Error getting thread name with pthread_getname_np. Code: " + std::to_string(result));
