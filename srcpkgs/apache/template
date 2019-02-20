@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apache"
 version=2.4.38
-revision=1
+revision=2
 short_desc="High performance Unix-based HTTP server"
 makedepends+=" apr-util-devel"
 makedepends+=" db-devel"
@@ -17,7 +17,7 @@ makedepends+=" pcre-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" apr-util-devel"
 hostmakedepends+=" perl"
-hostmakedepends+=" pkg-config"
+hostmakedepends+=" pkgconf"
 homepage="http://httpd.apache.org/"
 license="Apache-2.0"
 changelog="http://www.apache.org/dist/httpd/CHANGES_2.4"
@@ -96,6 +96,8 @@ configure_args+=" --with-pcre=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-z=$XBPS_CROSS_BASE/usr"
 system_accounts="_apache"
 _apache_homedir="/srv/www/apache"
+make_dirs+=" /srv/www/apache 0755 _apache _apache"
+make_dirs+=" /var/log/httpd 0755 _apache _apache"
 reverts="2.4.37_1"
 
 # do not redefine struct iovec in include/apr_want.h
