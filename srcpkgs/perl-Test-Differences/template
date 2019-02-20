@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Differences"
-version=0.64
-revision=2
+version=0.65
+revision=1
 short_desc="Test::Differences - Test strings / data and show differences if not ok"
-noarch="yes"
+archs="noarch"
 depends+=" perl"
 depends+=" perl-Text-Diff"
 checkdepends+=" $depends"
@@ -12,7 +12,7 @@ hostmakedepends="$depends"
 homepage="https://metacpan.org/release/Test-Differences"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
-checksum="9f459dd9c2302a0a73e2f5528a0ce7d09d6766f073187ae2c69e603adf2eb276"
+checksum="83f4d1154b5638b01c0915559abc6adbc880631f1cd5d32d6214c1ee65315310"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
