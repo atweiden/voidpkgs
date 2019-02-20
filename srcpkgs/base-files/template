@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-files"
 version=0.140
-revision=1
+revision=2
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
-homepage="https://www.voidlinux.eu"
+homepage="https://www.voidlinux.org"
 license="Public domain"
 conf_files+=" /etc/crypttab"
 conf_files+=" /etc/fstab"
