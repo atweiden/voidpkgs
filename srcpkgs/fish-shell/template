@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fish-shell"
-version=3.0.0
+version=3.0.2
 revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends+=" bc"
@@ -11,7 +11,7 @@ makedepends+=" pcre2-devel"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
-checksum="ea9dd3614bb0346829ce7319437c6a93e3e1dfde3b7f6a469b543b0d2c68f2cf"
+checksum="14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e"
 wrksrc="fish-$version"
 build_style="cmake"
 register_shell="/usr/bin/fish"
