@@ -17,6 +17,7 @@ license="MIT, Apache-2.0"
 distfiles="https://github.com/rust-lang/cargo/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="914d715ff1a4ac4280b63d05c0f848d38889900a5559888d4a20c9600f87e6a4"
 build_helper="rust"
+build_options="static"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   makedepends+=" rust"
@@ -65,11 +66,22 @@ post_extract() {
 }
 
 do_build() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    cargo build --release
-  else
-    ./cargo build --release
+  if [[ -n "$build_option_static" ]]; then
+    unset LIBGIT2_SYS_USE_PKG_CONFIG
+    unset LIBSSH2_SYS_USE_PKG_CONFIG
+    export OPENSSL_STATIC=1
+    # rust-openssl can not be linked static if pkg-config is used
+    export OPENSSL_NO_PKG_CONFIG
+    export OPENSSL_DIR="$XBPS_CROSS_BASE/usr"
   fi
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cargo="cargo"
+  else
+    cargo="./cargo"
+  fi
+
+  $cargo build --release $(vopt_if static --features="all-static")
 }
 
 do_install() {
