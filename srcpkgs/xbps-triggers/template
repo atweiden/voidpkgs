@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xbps-triggers"
-version=0.111
+version=0.112
 revision=1
 short_desc="The XBPS triggers for Void Linux"
 homepage="https://voidlinux.org"
