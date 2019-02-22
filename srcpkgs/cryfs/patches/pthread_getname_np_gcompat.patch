@@ -1,5 +1,5 @@
 diff --git a/src/cpp-utils/thread/debugging_nonwindows.cpp b/src/cpp-utils/thread/debugging_nonwindows.cpp
-index 3ed543ff..80f3f364 100644
+index 3ed543ff..2c2aa04b 100644
 --- a/src/cpp-utils/thread/debugging_nonwindows.cpp
 +++ b/src/cpp-utils/thread/debugging_nonwindows.cpp
 @@ -28,9 +28,32 @@ void set_thread_name(const char* name) {
@@ -10,17 +10,17 @@ index 3ed543ff..80f3f364 100644
 +// get the name of a thread
 +int pthread_getname_np_gcompat(pthread_t, char *name, size_t len) {
 +  int fd = open("/proc/thread-self/comm", O_RDONLY | O_CLOEXEC);
-+  char dummy;
++  ssize_t n;
 +  if (fd < 0)
 +    return errno;
-+  ssize_t n = read(fd, name, len);
++  n = read(fd, name, len);
 +  if (n < 0)
 +    return errno;
-+  // if there's more to read, the buffer was too small
-+  if (read(fd, &dummy, 1) > 0)
++  // if the trailing newline was not read, the buffer was too small
++  if (n == 0 || name[n - 1] != '\n')
 +    return ERANGE;
 +  // null-terminate string
-+  name[n-1] = 0;
++  name[n - 1] = '\0';
 +  return 0;
 +}
 +#endif
