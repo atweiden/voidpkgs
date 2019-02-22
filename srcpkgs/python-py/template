@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-py"
-version=1.7.0
+version=1.8.0
 revision=1
 short_desc="Python2 development support library"
-noarch="yes"
+archs="noarch"
 depends="python"
 checkdepends="python3-pytest"
 hostmakedepends+=" python-setuptools"
@@ -12,7 +12,7 @@ homepage="https://github.com/pytest-dev/py"
 license="MIT"
 changelog="https://github.com/pytest-dev/py/raw/master/CHANGELOG"
 distfiles="$PYPI_SITE/p/py/${pkgname#*-}-$version.tar.gz"
-checksum="bf92637198836372b520efcba9e020c330123be8ce527e535d185ed4b6f45694"
+checksum="dc639b046a6e2cff5bbe40194ad65936d6ba360b52b3c3fe1d08a82dd50b5e53"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="py"
@@ -26,7 +26,7 @@ post_install() {
 }
 
 python3-py_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module="py"
   short_desc="${short_desc/Python2/Python3}"
