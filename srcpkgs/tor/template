@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tor"
-version=0.3.5.7
+version=0.3.5.8
 revision=1
 short_desc="Anonymity Online"
 depends+=" ca-certificates"
@@ -12,7 +12,7 @@ homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 changelog="https://blog.torproject.org/new-releases-tor-0357-03410-and-03311"
 distfiles="https://www.torproject.org/dist/$pkgname-$version.tar.gz"
-checksum="1b0887fc21ac535befea7243c5d5f1e31394d7458d64b30807a3e98cca0d839e"
+checksum="d5c56603942a8927670f50a4a469fb909e29d3571fdd013389d567e57abc0b47"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
 make_dirs="/var/lib/tor 0700 tor tor"
