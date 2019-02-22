@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="postgresql"
 version=9.6.12
-revision=1
+revision=2
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
 makedepends+=" libressl-devel"
@@ -90,7 +90,7 @@ post_install() {
 
 postgresql-doc_package() {
   short_desc="PostgreSQL documentation"
-  noarch="yes"
+  archs="noarch"
   pkg_install() {
     vmove usr/share/doc
   }
