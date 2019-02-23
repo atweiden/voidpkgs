@@ -1,11 +1,11 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-IO-Socket-SSL"
-version=2.060
+version=2.061
 revision=1
 short_desc="IO::Socket::SSL - SSL sockets with IO::Socket interface"
-noarch="yes"
+archs="noarch"
 depends+=" perl"
-depends+=" perl-Net-SSLeay"
+depends+=" perl-Net-SSLeay>=1.86"
 depends+=" perl-URI"
 makedepends+=" perl"
 makedepends+=" perl-Net-SSLeay"
@@ -15,7 +15,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Socket-SSL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="fb5b2877ac5b686a5d7b8dd71cf5464ffe75d10c32047b5570674870e46b1b8c"
+checksum="7b7dddc6c2653f567092f5a179504a6b299adfac8625c6f6839622a8b45200e5"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
