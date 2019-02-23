@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kmod"
 version=26
-revision=1
+revision=2
 short_desc="Linux kernel module handling"
 makedepends+=" liblzma-devel"
 makedepends+=" zlib-devel"
-hostmakedepends="pkg-config"
-homepage="http://git.profusion.mobi/cgit.cgi/kmod.git"
-license="GPL-2"
+hostmakedepends="pkgconf"
+homepage="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
+license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/kernel/kmod/$pkgname-$version.tar.xz"
 checksum="57bb22c8bb56435991f6b0810a042b0a65e2f1e217551efa58235b7034cdbb9d"
 build_style="gnu-configure"
