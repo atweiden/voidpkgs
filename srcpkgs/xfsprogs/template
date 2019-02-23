@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xfsprogs"
-version=4.19.0
-revision=2
+version=4.20.0
+revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" libblkid-devel"
 makedepends+=" readline-devel"
@@ -9,7 +9,7 @@ hostmakedepends="libuuid-devel"
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="47e1133bdca47f05f6f72a56655cb6c77657e477f3b82df021cee98741fcafa2"
+checksum="beafdfd080352a8c9d543491e0874d0e8809cb643a3b9d352d5feed38d77022a"
 build_style="gnu-configure"
 configure_args+=" --enable-lib64=no"
 configure_args+=" --enable-readline=yes"
