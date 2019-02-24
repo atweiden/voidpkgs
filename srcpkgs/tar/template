@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tar"
-version=1.31
+version=1.32
 revision=1
-short_desc="The GNU tape archiver with remote magnetic tape support"
+short_desc="GNU tape archiver with remote magnetic tape support"
 makedepends="acl-devel"
 homepage="https://www.gnu.org/software/tar/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/tar/$pkgname-$version.tar.xz"
-checksum="37f3ef1ceebd8b7e1ebf5b8cc6c65bb8ebf002c7d049032bf456860f25ec2dc1"
+checksum="d0d3ae07f103323be809bc3eac0dcc386d52c5262499fe05511ac4788af1fdd8"
 build_style="gnu-configure"
 configure_args="gl_cv_struct_dirent_d_ino=yes"
 bootstrap="yes"
