@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dhcp"
 version=4.4.1
-revision=2
+revision=3
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
 hostmakedepends="perl"
-homepage="https://www.isc.org/software/dhcp"
+homepage="https://www.isc.org/downloads/dhcp"
 license="ISC"
 distfiles="http://ftp.isc.org/isc/dhcp/${version/P/-P}/$pkgname-${version/P/-P}.tar.gz"
 checksum="2a22508922ab367b4af4664a0472dc220cc9603482cf3c16d9aff14f3a76b608"
