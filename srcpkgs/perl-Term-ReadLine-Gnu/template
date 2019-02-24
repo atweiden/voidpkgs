@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Term-ReadLine-Gnu"
-version=1.35
-revision=7
+version=1.36
+revision=1
 short_desc="Perl extension for the GNU readline/history library"
 makedepends+=" ncurses-devel"
 makedepends+=" perl"
@@ -10,15 +10,16 @@ hostmakedepends="$makedepends"
 homepage="https://metacpan.org/release/Term-ReadLine-Gnu"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Term/${pkgname#*-}-$version.tar.gz"
-checksum="575d32d4ab67cd656f314e8d0ee3d45d2491078f3b2421e520c4273e92eb9125"
+checksum="9a08f7a4013c9b865541c10dbba1210779eb9128b961250b746d26702bab6925"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 post_extract() {
-  sed \
-    -i \
-    -e '/if.*guess_malloc_names/s/.*/if(my $extra_defs=""){/' \
-    Makefile.PL
+  vsed -i '/if.*guess_malloc_names/s/.*/if(my $extra_defs=""){/' Makefile.PL
+}
+
+pre_check() {
+  export TERM="linux"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
