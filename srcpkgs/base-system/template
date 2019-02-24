@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-system"
 version=0.112
-revision=3
+revision=4
 short_desc="Void Linux base system meta package"
 depends+=" base-files>=0.77"
 depends+=" ncurses"
@@ -65,7 +65,7 @@ case "$XBPS_TARGET_MACHINE" in
     depends+=" linux"
     ;;
 esac
-homepage="https://www.voidlinux.eu/"
+homepage="https://www.voidlinux.org"
 license="Public domain"
 build_style="meta"
 
