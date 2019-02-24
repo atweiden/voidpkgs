@@ -1,11 +1,11 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-IO-Socket-SSL"
 version=2.061
-revision=1
+revision=2
 short_desc="IO::Socket::SSL - SSL sockets with IO::Socket interface"
 archs="noarch"
 depends+=" perl"
-depends+=" perl-Net-SSLeay>=1.86"
+depends+=" perl-Net-SSLeay"
 depends+=" perl-URI"
 makedepends+=" perl"
 makedepends+=" perl-Net-SSLeay"
