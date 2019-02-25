@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libtermkey"
 version=0.21.1
-revision=1
+revision=2
 short_desc="Library for processing keyboard entry from terminal-based programs"
 makedepends="unibilium-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
-hostmakedepends+=" pkgconf"
+hostmakedepends+=" pkg-config"
 homepage="http://www.leonerd.org.uk/code/libtermkey"
 license="MIT"
 distfiles="http://www.leonerd.org.uk/code/libtermkey/$pkgname-$version.tar.gz"
