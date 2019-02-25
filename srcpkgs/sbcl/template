@@ -1,20 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sbcl"
-version=1.4.16
+version=1.5.0
 revision=1
 short_desc="Steel Bank Common Lisp"
-only_for_archs+=" aarch64"
-only_for_archs+=" armv7l"
-only_for_archs+=" i686"
-only_for_archs+=" x86_64"
-only_for_archs+=" x86_64-musl"
+archs+=" aarch64"
+archs+=" armv7l"
+archs+=" i686"
+archs+=" x86_64"
+archs+=" x86_64-musl"
 makedepends="zlib-devel"
 hostmakedepends="iana-etc"
 homepage="http://www.sbcl.org/"
 license="custom"
 changelog="http://www.sbcl.org/news.html"
 distfiles="$SOURCEFORGE_SITE/sbcl/$pkgname-$version-source.tar.bz2"
-checksum="8d93ad1b64815854d0db042c00473fc04b284316c67734be2dd62ddb2727cfd7"
+checksum="1ff98f17f6ba40c0d987efc907161f729cc9bd8516fe1f28e124626c16418ca8"
 conf_files="/etc/sbclrc"
 nocross="yes"
 nopie="yes"
@@ -24,7 +24,7 @@ _bootstrap_lisp="bash ../sbcl-*-linux/run-sbcl.sh --no-sysinit --no-userinit --d
 case "$XBPS_TARGET_MACHINE" in
   x86_64)
     distfiles+=" $SOURCEFORGE_SITE/sbcl/$pkgname-$version-x86-64-linux-binary.tar.bz2"
-    checksum+=" df3d905d37656a7eeeba72d703577afc94a21d756a4dde0949310200f82ce575"
+    checksum+=" 5cad77d26eff98dd97d2109bfc945308e58e5fd2ee0015e60b953c2320980c2c"
     ;;
   i686)
     distfiles+=" $SOURCEFORGE_SITE/sbcl/$pkgname-1.4.3-x86-linux-binary.tar.bz2"
@@ -61,7 +61,7 @@ do_install() {
 }
 
 sbcl-source_package() {
-  noarch="yes"
+  archs="noarch"
   depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - source files"
   pkg_install() {
