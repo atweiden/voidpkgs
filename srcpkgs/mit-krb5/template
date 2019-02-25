@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mit-krb5"
 version=1.17
-revision=1
+revision=2
 short_desc="MIT Kerberos 5 implementation"
 #depends="mit-krb5-client>=${version}_$revision"
 makedepends+=" e2fsprogs-devel"
@@ -9,7 +9,7 @@ makedepends+=" libldap-devel"
 hostmakedepends+=" e2fsprogs-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" perl"
-hostmakedepends+=" pkgconf"
+hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
 distfiles="http://web.mit.edu/kerberos/dist/krb5/$version/${pkgname#mit-}-$version.tar.gz"
