@@ -1,17 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glibc"
 version=2.29
-revision=1
+revision=2
 short_desc="GNU C library"
 # there's no point in building this for musl
-only_for_archs+=" aarch64"
-only_for_archs+=" armv5tel"
-only_for_archs+=" armv6l"
-only_for_archs+=" armv7l"
-only_for_archs+=" i686"
-only_for_archs+=" ppc"
-only_for_archs+=" ppc64le"
-only_for_archs+=" x86_64"
+archs="~*-musl"
 makedepends="kernel-libc-headers"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" bison"
@@ -228,7 +221,7 @@ glibc-devel_package() {
 }
 
 glibc-locales_package() {
-  noarch="yes"
+  archs="noarch"
   conf_files="/etc/default/libc-locales"
   short_desc+=" - locale data files"
   pkg_install() {
