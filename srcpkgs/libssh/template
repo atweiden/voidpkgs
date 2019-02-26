@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libssh"
-version=0.8.6
+version=0.8.7
 revision=1
 short_desc="Multiplatform C library implementing the SSH v2 protocol"
 makedepends+=" cmocka-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3"
 homepage="https://www.libssh.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://www.libssh.org/files/0.8/libssh-$version.tar.xz"
-checksum="8f95d42930880be709fc4ef0965ab19261561b8a6e61c1440c1f906e0ca66ffd"
+checksum="a0ad10f49be6f512f1e09899c77082d0190852becbda0dc7f6146bde0f9217b0"
 build_style="cmake"
 configure_args="-DUNIT_TESTING=ON"
 
