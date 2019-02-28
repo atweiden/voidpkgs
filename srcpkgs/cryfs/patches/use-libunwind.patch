@@ -12,20 +12,6 @@ index 45682b44..00018bfb 100644
  
  require_gcc_version(5.0)
  require_clang_version(4.0)
-diff --git a/ChangeLog.txt b/ChangeLog.txt
-index 855e00a6..3f3e1de6 100644
---- a/ChangeLog.txt
-+++ b/ChangeLog.txt
-@@ -4,6 +4,9 @@ Fixed bugs:
- * If file system migration encounters files or folders with the wrong format in the base directory, it now just ignores them instead of crashing.
- * When trying to migrate a file system from CryFS 0.9.3 or older, show an error message suggesting to first open it with 0.9.10 because we can't load that anymore.
- 
-+Compatibility:
-+* Use libunwind instead of libbacktrace to build stack traces. This fixes a segfault issue with platforms using libexecinfo and is generally more portable.
-+
- Other:
- * Updated to crypto++ 8.1
- 
 diff --git a/README.md b/README.md
 index 1309fc0d..41a99aef 100644
 --- a/README.md
