@@ -451,6 +451,7 @@ constant %PKG = Map.new(
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
+    'oath-toolkit' => ['oath-toolkit-devel'],
     'odroid-c2-kernel' => ['odroid-c2-kernel-headers'],
     'oniguruma' => qw<oniguruma-devel
                       oniguruma-doc>,
