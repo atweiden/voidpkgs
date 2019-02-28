@@ -1,14 +1,13 @@
 diff --git a/src/cpp-utils/thread/debugging_nonwindows.cpp b/src/cpp-utils/thread/debugging_nonwindows.cpp
-index 3ed543ff..2f5ea3f8 100644
+index 3ed543ff..40bee615 100644
 --- a/src/cpp-utils/thread/debugging_nonwindows.cpp
 +++ b/src/cpp-utils/thread/debugging_nonwindows.cpp
-@@ -5,6 +5,13 @@
+@@ -5,6 +5,12 @@
  #include <thread>
  #include <pthread.h>
  #include <cpp-utils/assert/assert.h>
 +// for pthread_getname_np_gcompat
 +#if !defined(__GLIBC__) && !defined(__APPLE__)
-+#define _GNU_SOURCE
 +#include <errno.h> // errno
 +#include <fcntl.h> // O_CLOEXEC, O_RDONLY
 +#include <unistd.h> // open, read
@@ -16,7 +15,7 @@ index 3ed543ff..2f5ea3f8 100644
  
  namespace cpputils {
  
-@@ -28,9 +35,32 @@ void set_thread_name(const char* name) {
+@@ -28,9 +34,32 @@ void set_thread_name(const char* name) {
  }
  
  namespace {

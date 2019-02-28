@@ -5,16 +5,11 @@ revision=1
 short_desc="Cryptographic filesystem for the cloud"
 depends="fuse"
 makedepends+=" boost-devel"
-makedepends+=" crypto++-devel"
 makedepends+=" fuse-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libomp-devel"
 makedepends+=" libressl-devel"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    makedepends+=" libexecinfo-devel"
-    ;;
-esac
+makedepends+=" libunwind-devel"
 hostmakedepends+=" git"
 hostmakedepends+=" make"
 hostmakedepends+=" python"
