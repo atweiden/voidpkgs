@@ -3,7 +3,7 @@ pkgname="python-snowballstemmer"
 version=1.2.1
 revision=3
 short_desc="Snowball stemming library collection for Python2"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -16,7 +16,7 @@ build_style="python-module"
 pycompile_module="snowballstemmer"
 
 python3-snowballstemmer_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module="snowballstemmer"
   short_desc="${short_desc/Python2/Python3}"

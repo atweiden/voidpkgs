@@ -56,7 +56,7 @@ post_install() {
 
 git-cvs_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" $sourcepkg-${version}_$revision"
   depends+=" cvs"
   depends+=" cvsps2"
@@ -89,7 +89,7 @@ git-svn_package() {
 
 git-all_package() {
   build_style="meta"
-  noarch="yes"
+  archs="noarch"
   depends="${subpackages/git-all/}"
   short_desc+=" - meta-package for complete Git installation"
 }

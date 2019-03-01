@@ -3,7 +3,7 @@ pkgname="python-chardet"
 version=3.0.4
 revision=2
 short_desc="Universal encoding detector for Python 2 and 3 (Python2)"
-noarch="yes"
+archs="noarch"
 depends="python-setuptools"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -17,7 +17,7 @@ pycompile_module="chardet"
 alternatives="chardet:chardetect:/usr/bin/chardetect2"
 
 python3-chardet_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3-setuptools"
   pycompile_module="chardet"
   short_desc="${short_desc/Python2/Python3}"

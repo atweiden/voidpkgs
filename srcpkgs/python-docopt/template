@@ -3,7 +3,7 @@ pkgname="python-docopt"
 version=0.6.2
 revision=4
 short_desc="Pythonic argument parser, that will make you smile (Python2)"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +20,7 @@ post_install() {
 }
 
 python3-docopt_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module="docopt.py"
   short_desc="${short_desc/Python2/Python3}"

@@ -3,7 +3,7 @@ pkgname="python-docutils"
 version=0.14
 revision=1
 short_desc="Python2 documentation utilities"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -45,7 +45,7 @@ python3-docutils_package() {
   alternatives+=" docutils:rst2xetex:/usr/bin/rst2xetex.py3"
   alternatives+=" docutils:rst2xml:/usr/bin/rst2xml.py3"
   alternatives+=" docutils:rstpep2html:/usr/bin/rstpep2html.py3"
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module="docutils"
   short_desc="${short_desc/Python2/Python3}"

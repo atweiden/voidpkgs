@@ -3,7 +3,7 @@ pkgname="base-chroot"
 version=0.65
 revision=5
 short_desc="Bootstrap packages for xbps-src"
-noarch="yes"
+archs="noarch"
 homepage="http://www.voidlinux.eu"
 license="Public domain"
 depends+=" base-files>=0.127"

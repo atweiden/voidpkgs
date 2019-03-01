@@ -54,7 +54,7 @@ dracut-network_package() {
   depends+=" dhclient"
   depends+=" dracut-${version}_$revision"
   short_desc+=" - network modules"
-  noarch="yes"
+  archs="noarch"
   pkg_install() {
     for f in 40network \
              90livenet \

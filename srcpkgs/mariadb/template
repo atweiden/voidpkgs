@@ -211,7 +211,7 @@ mariadb-client_package() {
 
 mytop_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" perl-DBD-mysql"
   depends+=" perl-Term-ReadKey"

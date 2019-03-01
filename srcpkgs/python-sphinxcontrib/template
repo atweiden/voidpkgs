@@ -3,7 +3,7 @@ pkgname="python-sphinxcontrib"
 version=1.0
 revision=1
 short_desc="Namespace package declaration for sphinxcontrib (Python2)"
-noarch="yes"
+archs="noarch"
 depends="python-setuptools"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -23,7 +23,7 @@ EOF
 }
 
 python3-sphinxcontrib_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3-setuptools"
   pycompile_module="sphinxcontrib"
   short_desc="${short_desc/Python2/Python3}"

@@ -3,7 +3,7 @@ pkgname="python-cram"
 version=0.7
 revision=2
 short_desc="Simple testing framework for commandline applications (Python2)"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -17,7 +17,7 @@ pycompile_module="cram"
 alternatives="cram:cram:/usr/bin/cram2"
 
 python3-cram_package() {
-  noarch="yes"
+  archs="noarch"
   pycompile_module="cram"
   alternatives="cram:cram:/usr/bin/cram3"
   short_desc="${short_desc/Python2/Python3}"

@@ -3,7 +3,7 @@ pkgname="python-paramiko"
 version=2.4.2
 revision=1
 short_desc="Python2 SSH2 protocol library"
-noarch="yes"
+archs="noarch"
 depends+=" python-bcrypt"
 depends+=" python-cryptography"
 depends+=" python-pyasn1"
@@ -20,7 +20,7 @@ pycompile_module="paramiko"
 
 python3-paramiko_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   pycompile_module="paramiko"
   depends+=" python3-bcrypt"
   depends+=" python3-cryptography"

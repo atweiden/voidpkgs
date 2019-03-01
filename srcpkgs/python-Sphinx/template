@@ -3,7 +3,7 @@ pkgname="python-Sphinx"
 version=1.8.3
 revision=1
 short_desc="Python2 documentation generator"
-noarch="yes"
+archs="noarch"
 depends+=" python-Babel"
 depends+=" python-Jinja2"
 depends+=" python-Pygments"
@@ -42,7 +42,7 @@ python3-Sphinx_package() {
   alternatives+=" sphinx:sphinx-autogen:/usr/bin/sphinx-autogen3"
   alternatives+=" sphinx:sphinx-build:/usr/bin/sphinx-build3"
   alternatives+=" sphinx:sphinx-quickstart:/usr/bin/sphinx-quickstart3"
-  noarch="yes"
+  archs="noarch"
   depends+=" python3-Babel"
   depends+=" python3-Jinja2"
   depends+=" python3-Pygments"

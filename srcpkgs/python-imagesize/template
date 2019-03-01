@@ -3,7 +3,7 @@ pkgname="python-imagesize"
 version=1.1.0
 revision=1
 short_desc="Python2 library to get image size from png/jpeg/jpeg2000/gif file"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +20,7 @@ post_install() {
 }
 
 python3-imagesize_package() {
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module="imagesize.py"
   short_desc="${short_desc/Python2/Python3}"

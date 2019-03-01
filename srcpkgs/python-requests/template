@@ -3,7 +3,7 @@ pkgname="python-requests"
 version=2.21.0
 revision=1
 short_desc="Python2 HTTP library for human beings"
-noarch="yes"
+archs="noarch"
 depends+=" ca-certificates"
 depends+=" python-chardet"
 depends+=" python-idna"
@@ -27,7 +27,7 @@ pre_build() {
 
 python3-requests_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   pycompile_module="requests"
   depends+=" ca-certificates"
   depends+=" python3-chardet"

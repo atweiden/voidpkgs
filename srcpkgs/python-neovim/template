@@ -3,7 +3,7 @@ pkgname="python-neovim"
 version=0.3.2
 revision=2
 short_desc="Python2 client for Neovim"
-noarch="yes"
+archs="noarch"
 depends+=" neovim"
 depends+=" python-greenlet"
 depends+=" python-msgpack"
@@ -20,7 +20,7 @@ pycompile_module="pynvim"
 
 python3-neovim_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" neovim"
   depends+=" python3-greenlet"
   depends+=" python3-msgpack"

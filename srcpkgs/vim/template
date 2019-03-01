@@ -65,7 +65,7 @@ post_install() {
 vim-common_package() {
   short_desc+=" - common files"
   depends="xxd"
-  noarch="yes"
+  archs="noarch"
   conf_files+=" /etc/vimrc"
   conf_files+=" /usr/share/vim/vimfiles/voidlinux.vim"
   alternatives+=" vi:ex:/usr/bin/vim"

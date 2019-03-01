@@ -3,7 +3,7 @@ pkgname="python-setuptools"
 version=40.6.3
 revision=2
 short_desc="Easily build and distribute Python2 packages"
-noarch="yes"
+archs="noarch"
 depends="python"
 hostmakedepends+=" python-devel"
 hostmakedepends+=" python3-devel"
@@ -30,7 +30,7 @@ post_install() {
 
 python3-setuptools_package() {
   unset pycompile_module
-  noarch="yes"
+  archs="noarch"
   depends="python3"
   pycompile_module+=" easy_install.py"
   pycompile_module+=" pkg_resources"

@@ -3,7 +3,7 @@ pkgname="ca-certificates"
 version=20190110
 revision=1
 short_desc="Common CA certificates for SSL/TLS"
-noarch="yes"
+archs="noarch"
 depends+=" libressl>=2.2.4_2"
 depends+=" run-parts"
 hostmakedepends="libressl"

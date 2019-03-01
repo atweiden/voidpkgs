@@ -199,7 +199,7 @@ do_install() {
 
 clang-analyzer_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   pycompile_dirs="usr/share/scan-view"
   depends+=" clang-${version}_$revision"
   depends+=" python"

@@ -3,7 +3,7 @@ pkgname="icdiff"
 version=1.9.4
 revision=2
 short_desc="Improved colored diff (Python2)"
-noarch="yes"
+archs="noarch"
 depends+=" python"
 depends+=" python-setuptools"
 hostmakedepends+=" python-setuptools"
@@ -26,7 +26,7 @@ post_install() {
 python3-icdiff_package() {
   unset alternatives
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" python3"
   depends+=" python3-setuptools"
   pycompile_module="icdiff.py"

@@ -54,7 +54,7 @@ post_install() {
 ntp-perl_package() {
   depends+=" ntp>=$version"
   depends+=" perl"
-  noarch="yes"
+  archs="noarch"
   short_desc+=" - Perl scripts"
   pkg_install() {
     vmove usr/bin/ntp-wait

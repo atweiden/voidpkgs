@@ -3,7 +3,7 @@ pkgname="python-pytz"
 version=2018.7
 revision=1
 short_desc="Python2 timezone library"
-noarch="yes"
+archs="noarch"
 depends+=" python"
 depends+=" tzdata"
 hostmakedepends+=" python-setuptools"
@@ -27,7 +27,7 @@ post_install() {
 
 python3-pytz_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" python3"
   depends+=" tzdata"
   pycompile_module="pytz"

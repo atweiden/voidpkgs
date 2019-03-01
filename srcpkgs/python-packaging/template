@@ -3,7 +3,7 @@ pkgname="python-packaging"
 version=18.0
 revision=1
 short_desc="Core utilities for Python packages (Python2)"
-noarch="yes"
+archs="noarch"
 depends+=" python-parsing"
 depends+=" python-six"
 hostmakedepends+=" python-setuptools"
@@ -22,7 +22,7 @@ post_install() {
 
 python3-packaging_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   pycompile_module="packaging"
   depends+=" python3-parsing"
   depends+=" python3-six"

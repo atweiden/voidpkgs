@@ -3,7 +3,7 @@ pkgname="python-Babel"
 version=2.6.0
 revision=1
 short_desc="Tools for internationalizing Python applications (Python2)"
-noarch="yes"
+archs="noarch"
 depends+=" python-pytz"
 depends+=" python-setuptools"
 hostmakedepends+=" python-setuptools"
@@ -23,7 +23,7 @@ post_install() {
 
 python3-Babel_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   depends+=" python3-pytz"
   depends+=" python3-setuptools"
   pycompile_module="babel"

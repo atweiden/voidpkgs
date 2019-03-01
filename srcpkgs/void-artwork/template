@@ -3,7 +3,7 @@ pkgname="void-artwork"
 version=20170517
 revision=1
 short_desc="Void Linux artwork"
-noarch="yes"
+archs="noarch"
 homepage="http://www.voidlinux.eu"
 license="Public domain"
 
