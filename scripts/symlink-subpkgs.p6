@@ -135,6 +135,7 @@ constant %PKG = Map.new(
                    libefivar-devel>,
     'elfutils' => qw<elfutils-devel
                      libelf>,
+    'ell' => ['ell-devel'],
     'eudev' => qw<eudev-libudev
                   eudev-libudev-devel>,
     'expat' => qw<expat-devel
