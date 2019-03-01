@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="thc-hydra"
-version=8.8
-revision=2
+version=8.9.1
+revision=1
 short_desc="Tool to guess/crack valid login/password pairs"
 makedepends+=" libidn-devel"
 makedepends+=" libmysqlclient-devel"
@@ -12,9 +12,9 @@ makedepends+=" pcre-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" zlib-devel"
 homepage="https://github.com/vanhauser-thc/thc-hydra"
-license="AGPL-3"
+license="AGPL-3.0-or-later"
 distfiles="https://github.com/vanhauser-thc/thc-hydra/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bc895a7aebdf0279186d40140f0dc1546ac6f3a5c5bc9d13b13766bffea3e966"
+checksum="7c615622d9d22a65b007e545f2d85da06c422a042f720bd6c5578a1844dec40e"
 build_style="gnu-configure"
 make_install_args="MANDIR=/share/man/man1"
 
