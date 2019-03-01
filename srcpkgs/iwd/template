@@ -1,24 +1,30 @@
-# Template file for 'iwd'
-pkgname=iwd
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="iwd"
 version=0.14
 revision=2
-build_style=gnu-configure
-configure_args="--disable-systemd-service --enable-docs --enable-pie
- --enable-external-ell"
-hostmakedepends="asciidoc pkg-config"
-makedepends="readline-devel dbus-devel ell-devel"
-depends="dbus"
-checkdepends="python3"
 short_desc="Internet Wireless Daemon by Intel that aims to replace wpa_supplicant"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
-license="LGPL-2.1-or-later"
+depends="dbus"
+makedepends+=" dbus-devel"
+makedepends+=" ell-devel"
+makedepends+=" readline-devel"
+checkdepends="python3"
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" pkg-config"
 homepage="https://iwd.wiki.kernel.org/"
-distfiles="${KERNEL_SITE}/network/wireless/iwd-${version}.tar.xz"
-checksum=c4258b5789a8074a2dfdc33ed5f02415b62ff1ce0b7cba636402883933d6a643
-make_dirs="/var/lib/iwd 0600 root root
- /etc/iwd 755 root root"
+license="LGPL-2.1-or-later"
+distfiles="$KERNEL_SITE/network/wireless/iwd-$version.tar.xz"
+checksum="c4258b5789a8074a2dfdc33ed5f02415b62ff1ce0b7cba636402883933d6a643"
+build_style="gnu-configure"
+configure_args+=" --disable-systemd-service"
+configure_args+=" --enable-docs"
+configure_args+=" --enable-external-ell"
+configure_args+=" --enable-pie"
+make_dirs+=" /etc/iwd 755 root root"
+make_dirs+=" /var/lib/iwd 0600 root root"
 
 post_install() {
-	vsconf doc/main.conf
-	vsv iwd
+  vsconf doc/main.conf
+  vsv iwd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
