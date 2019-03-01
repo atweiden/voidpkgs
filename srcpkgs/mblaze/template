@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mblaze"
 version=0.5
-revision=1
+revision=2
 short_desc="Maildir-focused command line mail client"
 checkdepends="perl"
-homepage="https://github.com/chneukirchen/mblaze"
+homepage="https://github.com/leahneukirchen/mblaze"
 license="Public Domain, MIT"
 distfiles="http://chneukirchen.org/releases/$pkgname-$version.tar.gz"
 checksum="33279cf0f468c03d32e8c1f8e056cf17005ec30212634150bfe0d90c6e4f926e"
