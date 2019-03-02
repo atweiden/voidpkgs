@@ -11,8 +11,7 @@ pkgname="cross-x86_64-w64-mingw32"
 version=0.30
 revision=1
 short_desc="Cross toolchain for Win64 (GCC $_gcc_version)"
-archs+=" i686"
-archs+=" x86_64"
+archs="x86_64"
 # it's ok to build with current's -devel packages
 # although it might break the package during compiler updates
 #makedepends="zlib-devel gmp-devel mpfr-devel libmpc-devel isl15-devel"
@@ -40,8 +39,6 @@ nostrip="yes"
 nopie="yes"
 nodebug="yes"
 
-broken="configure: error: cannot compute suffix of object files: cannot compile"
-
 # https://sourceforge.net/p/mingw-w64/wiki2/Cross%20Win32%20and%20Win64%20compiler/
 # https://gcc.gnu.org/install/configure.html
 # http://mingw-w64.org/doku.php/configure
@@ -67,7 +64,7 @@ _binutils_build() {
     --with-sysroot="$_sysroot" \
     --with-system-zlib
 
-  make && make install
+  make "$makejobs" && make install
 }
 
 _mingw_headers() {
@@ -87,7 +84,7 @@ _mingw_headers() {
     --host="$_target" \
     --prefix="$_sysroot"
 
-  make && make install
+  make "$makejobs" && make install
 
   # manually create required symlinks
   (cd "$_sysroot" && ln -sfT "." "mingw")
@@ -126,7 +123,7 @@ _gcc_bootstrap() {
     --with-sysroot="$_sysroot" \
     --with-system-zlib
 
-  make all-gcc && make install-gcc
+  make "$makejobs" all-gcc && make install-gcc
 }
 
 _mingw_crt_build() {
@@ -158,7 +155,7 @@ _mingw_crt_build() {
     --prefix="$_sysroot" \
     $_crt_configure_args
 
-  make && make install
+  make "$makejobs" && make install
 }
 
 _mingw_winpthreads_build() {
@@ -185,7 +182,7 @@ _mingw_winpthreads_build() {
     --host="$_target" \
     --prefix="$_sysroot"
 
-  make && make install
+  make "$makejobs" && make install
 }
 
 _gcc_build() {
@@ -200,7 +197,7 @@ _gcc_build() {
 
   # should be already configured previously
   # no need for install since this is the last step
-  make
+  make "$makejobs"
 }
 
 _build_cross() {
