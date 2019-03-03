@@ -6,7 +6,7 @@ pkgname="gcc-multilib"
 version=$_majorver.0
 revision=2
 short_desc="The GNU C Compiler (multilib files)"
-only_for_archs="x86_64"
+archs="x86_64"
 homepage="http://gcc.gnu.org"
 license="GFDL-1.2, GPL-3, LGPL-2.1"
 depends+=" gcc>=$_majorver"
