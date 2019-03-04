@@ -12,6 +12,7 @@ version=0.30
 revision=1
 short_desc="Cross toolchain for x86_64 with musl"
 archs+=" i686*"
+archs+=" ppc64le"
 archs+=" x86_64"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
