@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cracklib"
-version=2.9.6
-revision=2
+version=2.9.7
+revision=1
 short_desc="Password Checking Library"
 makedepends="python-devel"
 hostmakedepends+=" automake"
@@ -9,11 +9,11 @@ hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" python"
 homepage="https://github.com/cracklib/cracklib"
-license="LGPL-2.1"
-distfiles+=" https://github.com/cracklib/cracklib/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/cracklib/cracklib/releases/download/$pkgname-$version/$pkgname-words-$version.bz2"
-checksum+=" 17cf76943de272fd579ed831a1fd85339b393f8d00bf9e0d17c91e972f583343"
-checksum+=" 460307bb9b46dfd5068d62178285ac2f70279e64b968972fe96f5ed07adc1a77"
+license="LGPL-2.1-or-later"
+distfiles+=" https://github.com/cracklib/cracklib/releases/download/v$version/$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/cracklib/cracklib/releases/download/v$version/$pkgname-words-$version.gz"
+checksum+=" 8b6fd202f3f1d8fa395d3b7a5d821227cfd8bb4a9a584a7ae30cf62cea6287dd"
+checksum+=" 7f0c45faf84a2494f15d1e2720394aca4a379163a70c4acad948186c0047d389"
 build_wrksrc="$pkgname-$version"
 create_wrksrc="yes"
 lib32disabled="yes"
@@ -34,6 +34,7 @@ cracklib-devel_package() {
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
+    vmove "usr/lib/*.so"
   }
 }
 
