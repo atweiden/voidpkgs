@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgit2"
-version=0.27.8
+version=0.28.1
 revision=1
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" python"
 homepage="https://libgit2.org"
 license="GPL-2.0-or-later WITH GCC-exception-2.0"
 distfiles="https://github.com/libgit2/libgit2/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8313873d49dc01e8b880ec334d7430ae67496a89aaa8c6e7bbd3affb47a00c76"
+checksum="0ca11048795b0d6338f2e57717370208c2c97ad66c6d5eac0c97a8827d13936b"
 build_style="cmake"
 configure_args="-DTHREADSAFE=ON"
 
