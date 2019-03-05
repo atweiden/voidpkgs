@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openssh"
 version=7.9p1
-revision=2
-short_desc="The OpenSSH implementation of SSH protocol"
+revision=3
+short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
 makedepends+=" zlib-devel"
@@ -43,8 +43,7 @@ build_options+=" ssl"
 build_options_default+=" ldns"
 build_options_default+=" ssl"
 
-CFLAGS+=" -Wno-format-truncation"
-CFLAGS+=" -Wno-stringop-truncation"
+CFLAGS="-Wno-format-truncation -Wno-stringop-truncation"
 
 case $XBPS_TARGET_MACHINE in
   i686-musl)
