@@ -25,6 +25,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 else
   case "$XBPS_MACHINE" in
     x86_64-musl)
+      broken="i am not adding libgit2-0.27 just so this arch can build correctly"
       distfiles+=" https://alpha.de.repo.voidlinux.org/distfiles/cargo-$_cargo_dist_version-x86_64-unknown-linux-musl.tar.xz"
       checksum+=" 6c519f5103e422650c3f69ac9b19303f829e9f9bb7e088d84dcd0318fd1b56c0"
       ;;
