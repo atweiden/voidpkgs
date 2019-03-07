@@ -1,25 +1,27 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="erlang"
-version=21.2
+version=21.2.6
 revision=1
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" unixodbc-devel"
 makedepends+=" zlib-devel"
+hostmakedepends+=" autoconf"
 hostmakedepends+=" libxslt"
 hostmakedepends+=" perl"
 license="Apache-2.0"
 homepage="http://www.erlang.org/"
-distfiles+=" http://erlang.org/download/otp_src_$version.tar.gz"
-distfiles+=" http://erlang.org/download/otp_doc_man_$version.tar.gz"
-checksum+=" f6b07bf8e6705915679a63363ce80faaa6b7c231e7236cde443d6445f7430334"
-checksum+=" e85a782e0fcd38b92098110b320e28ea8030cce318868d99a4fe6d17ae08b778"
+distfiles="https://github.com/erlang/otp/archive/OTP-$version.tar.gz"
+checksum="aa0b95031e7c01af8a7042a00974ab16ed8fec305a68d7dbaa4185e5d58ef4d5"
 create_wrksrc="yes"
-build_wrksrc="otp_src_$version"
+build_wrksrc="otp-OTP-$version"
 build_style="gnu-configure"
+make_install_target+=" install"
+make_install_target+=" install-docs"
 
 pre_configure() {
+  ./otp_build autoconf
   if [[ -n "$CROSS_BUILD" ]]; then
     # build the bootstrap compiler for the host platform
     env - PATH="/usr/bin:/usr/sbin" ./configure --enable-bootstrap-only
@@ -30,19 +32,38 @@ pre_configure() {
 }
 
 post_configure() {
-  sed \
+  vsed \
     -i \
     -e '/LDFLAGS =/s/=/+=/' \
     lib/odbc/c_src/*/Makefile
 }
 
 post_install() {
-  vmkdir usr/share/man
-  vmkdir usr/lib/erlang/man
-  vcopy ../man/man1 usr/share/man
-  vcopy ../man/man3 usr/lib/erlang/man
-  vcopy ../man/man4 usr/lib/erlang/man
-  vcopy ../man/man7 usr/lib/erlang/man
+  local manprefix
+  # remove PR template and PDF documentation
+  rm "$DESTDIR/usr/lib/erlang/PR.template"
+  find "$DESTDIR/usr/lib/erlang" -path '*/doc/pdf' -type d -exec rm -rf '{}' \;
+  find "$DESTDIR/usr/lib/erlang" -iname '*.pdf' -delete
+  # make section 1 pages available outside erlang
+  vmkdir usr/share/man/man1
+  manprefix="/usr/lib/erlang/man/man1"
+  for i in $(find "$DESTDIR$manprefix" -type f)
+  do
+    ln -sf "$manprefix/${i##*/}" "$DESTDIR/usr/share/man/man1"
+  done
+}
+
+erlang-doc_package() {
+  short_desc="Erlang programming language documentation and examples"
+  depends="$sourcepkg-${version}_$revision"
+  archs="noarch"
+  pkg_install() {
+    vmove usr/lib/erlang/doc
+    for i in $(cd "$DESTDIR"; find usr/lib/erlang -type d \( -path '*/examples' -o -path '*/doc/html' \))
+    do
+      vmove "$i"
+    done
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
