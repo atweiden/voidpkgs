@@ -24,7 +24,7 @@ case "$XBPS_TARGET_MACHINE" in
   x86_64-musl)
     broken="dlvsym not available"
     ;;
-easc
+esac
 
 pre_configure() {
   ./otp_build autoconf
