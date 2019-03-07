@@ -20,6 +20,12 @@ build_style="gnu-configure"
 make_install_target+=" install"
 make_install_target+=" install-docs"
 
+case "$XBPS_TARGET_MACHINE" in
+  x86_64-musl)
+    broken="dlvsym not available"
+    ;;
+easc
+
 pre_configure() {
   ./otp_build autoconf
   if [[ -n "$CROSS_BUILD" ]]; then
