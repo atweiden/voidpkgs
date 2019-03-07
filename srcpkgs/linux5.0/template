@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
-pkgname="linux4.20"
-version=4.20.14
+pkgname="linux5.0"
+version=5.0.0
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -24,9 +24,9 @@ hostmakedepends+=" perl"
 hostmakedepends+=" uboot-mkimage"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
-distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="0e08e6d0a9e30fe13d2de624e9072bb455ae1f54a0918dc6981003c2afdf1a81"
-wrksrc="linux-$version"
+distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
+checksum="437b141a6499159f5a7282d5eb4b2be055f8e862ccce44d7464e8759c31a2e43"
+wrksrc="linux-${version%.*}"
 patch_args="-Np1"
 # -dbg package is generated below manually
 nodebug="yes"
@@ -47,7 +47,7 @@ mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols.bin"
 
 do_configure() {
-  # 4.20 misses Documentation/DocBook
+  # 5.0 misses Documentation/DocBook
   # ship the directory from 4.12
   cp -a "$FILESDIR/DocBook" -t Documentation
 
@@ -449,7 +449,7 @@ do_install() {
   depmod -b "$DESTDIR/usr" -F System.map "$_kernver"
 }
 
-linux4.20-headers_package() {
+linux5.0-headers_package() {
   preserve="yes"
   nostrip="yes"
   noshlibprovides="yes"
@@ -460,7 +460,7 @@ linux4.20-headers_package() {
   }
 }
 
-linux4.20-dbg_package() {
+linux5.0-dbg_package() {
   preserve="yes"
   nostrip="yes"
   noverifyrdeps="yes"
