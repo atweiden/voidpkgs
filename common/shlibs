@@ -352,6 +352,9 @@ libpipeline.so.1 libpipeline-1.2.0_1
 libplist++.so.3 libplist++-1.12_1
 libplist.so.3 libplist-1.12_1
 libpng16.so.16 libpng-1.6.2_1
+libprotobuf-lite.so.18 libprotobuf-lite18-3.7.0_1
+libprotobuf.so.18 libprotobuf18-3.7.0_1
+libprotoc.so.18 libprotoc18-3.7.0_1
 libpsl.so.5 libpsl-0.20.2_1
 libpwquality.so.1 libpwquality-1.1.1_1
 libqrencode.so.4 libqrencode-4.0.0_1
@@ -553,9 +556,6 @@ libecpg_compat.so.3 postgresql-libs-8.4.2_1
 libpgtypes.so.3 postgresql-libs-8.4.2_1
 libpq.so.5 postgresql-libs-8.4.2_1
 libprocps.so.7 procps-ng-3.3.15_1
-libprotobuf.so.17 protobuf-3.6.1_1
-libprotoc.so.17 protobuf-3.6.1_1
-libprotobuf-lite.so.17 protobuf-lite-3.6.1_1
 libproxychains4.so proxychains-ng-4.13_1
 libpython2.7.so.1.0 python-2.7_1
 libpython3.6m.so.1.0 python3-3.6.2_1

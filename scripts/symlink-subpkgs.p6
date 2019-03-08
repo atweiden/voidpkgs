@@ -494,7 +494,11 @@ constant %PKG = Map.new(
     'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
-    'protobuf' => qw<protobuf-devel
+    'protobuf' => qw<libprotobuf-lite18
+                     libprotobuf18
+                     libprotoc-devel
+                     libprotoc18
+                     protobuf-devel
                      protobuf-lite>,
     'python' => ['python-devel'],
     'python-Babel' => ['python3-Babel'],

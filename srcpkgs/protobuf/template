@@ -1,20 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="protobuf"
-version=3.6.1.3
+version=3.7.0
 revision=1
-short_desc="Google's data interchange format"
+short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
-hostmakedepends+=" pkg-config"
+hostmakedepends="pkg-config"
 homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
-changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
-distfiles="https://github.com/google/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="73fdad358857e120fd0fa19e071a96e15c0f23bb25f85d3f7009abfd4f264a2a"
+changelog="https://github.com/protocolbuffers/protobuf/raw/master/CHANGES.txt"
+distfiles="https://github.com/protocolbuffers/protobuf/releases/download/v$version/$pkgname-all-$version.tar.gz"
+checksum="3e933375ecc58d01e52705479b82f155aea2d02cc55d833f8773213e74f88363"
 build_style="gnu-configure"
-
-CXXFLAGS="-std=c++14"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # needs host protoc
@@ -29,32 +25,64 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-pre_configure() {
-  autoreconf -fi
-}
-
 post_install() {
   vlicense LICENSE
 }
 
+libprotobuf18_package() {
+  short_desc="Protocol buffers C++ library"
+  pkg_install() {
+    vmove "usr/lib/libprotobuf.so.*"
+    vlicense LICENSE
+  }
+}
+
+libprotobuf-lite18_package() {
+  short_desc="Protocol buffers C++ library (lite version)"
+  pkg_install() {
+    vmove "usr/lib/libprotobuf-lite.so.*"
+    vlicense LICENSE
+  }
+}
+
+libprotoc18_package() {
+  short_desc="Protocol buffers compiler library"
+  pkg_install() {
+    vmove "usr/lib/libprotoc*.so.*"
+    vlicense LICENSE
+  }
+}
+
+libprotoc-devel_package() {
+  depends="libprotoc18-${version}_$revision"
+  short_desc="Protocol buffers compiler library - development files"
+  pkg_install() {
+    vmove usr/lib/libprotoc.a
+    vmove usr/lib/libprotoc.so
+    vmove usr/include/google/protobuf/compiler
+  }
+}
+
 protobuf-devel_package() {
-  depends+=" protobuf-${version}_$revision"
-  depends+=" protobuf-lite-${version}_$revision"
+  depends+=" libprotobuf-lite18-${version}_$revision"
+  depends+=" libprotobuf18-${version}_$revision"
   depends+=" zlib-devel"
-  short_desc+=" - development files"
+  short_desc+="Protocol buffers C++ library - development files"
   pkg_install() {
     vmove usr/include
+    vmove usr/lib/libprotobuf.a
+    vmove usr/lib/libprotobuf-lite.a
+    vmove usr/lib/libprotobuf.so
+    vmove usr/lib/libprotobuf-lite.so
     vmove usr/lib/pkgconfig
-    vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
   }
 }
 
 protobuf-lite_package() {
-  short_desc+=" - lite version"
-  pkg_install() {
-    vmove "usr/lib/libprotobuf-lite.so.*"
-  }
+  build_style="meta"
+  short_desc="Protocol buffers C++ library (lite version)"
+  depends="libprotobuf-lite18-${version}_$revision"
+  archs="noarch"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
