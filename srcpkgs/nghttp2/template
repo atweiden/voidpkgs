@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nghttp2"
-version=1.36.0
+version=1.37.0
 revision=1
 short_desc="HTTP/2 C Library"
 makedepends+=" c-ares-devel"
@@ -14,7 +14,7 @@ hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
 distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="e9bb86157b88eda5a6844a232e039febbb52c1aa44b640acbbfabe729b8287fc"
+checksum="aa090b164b17f4b91fe32310a1c0edf3e97e02cd9d1524eef42d60dd1e8d47b7"
 build_style="gnu-configure"
 configure_args+=" --disable-examples"
 configure_args+=" --without-jemalloc"
