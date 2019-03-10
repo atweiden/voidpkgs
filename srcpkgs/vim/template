@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vim"
-version=8.1.0800
+version=8.1.1002
 revision=1
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
@@ -13,7 +13,7 @@ hostmakedepends="pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
 distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ecc04dea54eb6b096c5df91a3ddbdfb19eebb2adf4aa481c758261555cbcf574"
+checksum="9278224aa2cbd6154a2405d678a0aa8e0fd23c8265ca9f33d0c3db8ae8d2e61a"
 build_style="gnu-configure"
 configure_args+=" --disable-cscope"
 configure_args+=" --disable-gpm"
