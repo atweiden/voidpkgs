@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rakudo"
-version=2018.12
+version=2019.03
 revision=1
 short_desc="Production-ready, stable implementation of the Perl 6 language"
 depends="nqp-${version}_$revision"
@@ -15,7 +15,7 @@ homepage="https://rakudo.org"
 license="Artistic-2.0"
 changelog="https://github.com/rakudo/rakudo/raw/master/docs/ChangeLog"
 distfiles="https://rakudo.perl6.org/downloads/rakudo/$pkgname-$version.tar.gz"
-checksum="67bb02b9afd4f2a2a8542e25ce2691bc2d77864668f0fc82e1d39dea31a584fa"
+checksum="dd5d223ccf4f4c67aef0e405851e4e4aafb082137b4f6b0118d2cd19a41b578d"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
