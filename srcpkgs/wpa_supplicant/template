@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wpa_supplicant"
 version=2.6
-revision=15
+revision=16
 short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
