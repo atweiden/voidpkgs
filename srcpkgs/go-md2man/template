@@ -1,17 +1,18 @@
-# Template file for 'go-md2man'
-pkgname=go-md2man
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="go-md2man"
 version=1.0.8
 revision=4
-build_style=go
-go_import_path=github.com/cpuguy83/go-md2man
-hostmakedepends="git"
 short_desc="Convert md to manpages"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
+hostmakedepends="git"
+homepage="https://github.com/cpuguy83/go-md2man"
 license="MIT"
-homepage="https://${go_import_path}"
-distfiles="https://github.com/cpuguy83/go-md2man/archive/v${version}.tar.gz"
-checksum=84e443c78d048f4a609743704b6bff5c83473691a0793c577ebb9b1f7577c9d5
+distfiles="https://github.com/cpuguy83/go-md2man/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="84e443c78d048f4a609743704b6bff5c83473691a0793c577ebb9b1f7577c9d5"
+build_style="go"
+go_import_path="github.com/cpuguy83/go-md2man"
 
 post_install() {
-	vlicense LICENSE.md
+  vlicense LICENSE.md
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
