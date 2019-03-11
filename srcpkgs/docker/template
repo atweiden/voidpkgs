@@ -1,12 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docker"
 version=18.09.3
-revision=1
+revision=2
 short_desc="Pack, ship and run any application as a lightweight container"
 archs+=" ppc64le*"
 archs+=" x86_64*"
+depends+=" containerd"
 depends+=" git"
 depends+=" iptables"
+depends+=" runc"
 depends+=" xz"
 makedepends+=" device-mapper-devel"
 makedepends+=" libapparmor-devel"
@@ -29,8 +31,6 @@ nostrip="yes"
 nocross="yes"
 system_groups="docker"
 
-_docker_components+=" runc"
-_docker_components+=" containerd"
 _docker_components+=" tini"
 _docker_components+=" proxy"
 _docker_components+=" dockercli"
@@ -71,15 +71,18 @@ pre_build() {
 }
 
 do_install() {
-  vbin "$wrksrc/components/engine/bundles/dynbinary-daemon/dockerd" dockerd
-  vbin "$wrksrc/components/cli/build/docker" docker
-}
-
-post_install() {
-  vinstall "$wrksrc/components/cli/contrib/completion/bash/docker" 644 \
+  vbin components/engine/bundles/dynbinary-daemon/dockerd dockerd
+  vbin components/cli/build/docker docker
+  vinstall components/cli/contrib/completion/bash/docker 644 \
     usr/share/bash-completion/completions
-  vinstall "$wrksrc/components/cli/contrib/completion/zsh/_docker" 644 \
+  vinstall components/cli/contrib/completion/zsh/_docker 644 \
     usr/share/zsh/site-functions
+  vinstall components/cli/contrib/completion/fish/docker.fish 644 \
+    usr/share/fish_vendor_completions.d/docker.fish
+  vinstall components/engine/contrib/syntax/vim/syntax/dockerfile.vim 644 \
+    usr/share/vim/vimfiles/snytax/dockerfile.vim
+  vinstall components/engine/contrib/syntax/vim/ftdetect/dockerfile.vim 644 \
+    usr/share/vim/vimfiles/ftdetect/dockerfile.vim
   vsv docker
 }
 
