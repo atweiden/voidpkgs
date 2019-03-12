@@ -22,12 +22,6 @@ configure_args="-DREVISION=$version"
 # https://github.com/voidlinux/void-packages/issues/4738
 nocross="yes"
 
-case "$XBPS_TARGET_MACHINE" in
-  i686*)
-    broken="__uint128t not available"
-    ;;
-esac
-
 post_extract() {
   rm -rf src/cc/libbpf
   mv ../libbpf* src/cc/libbpf
