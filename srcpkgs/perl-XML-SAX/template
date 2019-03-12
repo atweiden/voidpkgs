@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-XML-SAX"
 version=1.00
-revision=1
+revision=2
 short_desc="Perl interface to the SAX2 XML Parser"
 archs="noarch"
 depends+=" perl"
