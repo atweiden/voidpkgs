@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-XML-NamespaceSupport"
 version=1.12
-revision=1
+revision=2
 short_desc="Perl module to the SAX2 NamespaceSupport class"
 archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/XML-NamespaceSupport"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
 checksum="47e995859f8dd0413aa3f22d350c4a62da652e854267aa0586ae544ae2bae5ef"
 wrksrc="${pkgname#*-}-$version"
