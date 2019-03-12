@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-MIME-tools"
 version=5.509
-revision=1
+revision=2
 short_desc="MIME-tools - Parses streams to create MIME entities"
 archs="noarch"
 depends+=" perl"
@@ -14,7 +14,7 @@ makedepends+=" perl-IO-stringy"
 makedepends+=" perl-MailTools"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/MIME-tools"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/MIME/${pkgname#*-}-$version.tar.gz"
 checksum="64579f0c923d81d9a2194586e47c3475519e2646e4b5c102a8920759facf6973"
 wrksrc="${pkgname#*-}-$version"
