@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="coreutils"
-version=8.30
+version=8.31
 revision=1
-short_desc="The GNU core utilities"
+short_desc="GNU core utilities"
 makedepends+=" acl-devel"
 makedepends+=" gmp-devel"
 makedepends+=" libcap-devel"
@@ -10,7 +10,7 @@ homepage="https://www.gnu.org/software/coreutils"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/gitweb/?p=coreutils.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="$GNU_SITE/coreutils/$pkgname-$version.tar.xz"
-checksum="e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057"
+checksum="ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
 bootstrap="yes"
 replaces+=" b2sum>=0"
 replaces+=" chroot-coreutils>=0"
@@ -19,7 +19,7 @@ alternatives+=" hostname:hostname:/usr/bin/hostname-coreutils"
 alternatives+=" hostname:hostname.1:/usr/share/man/man1/hostname-coreutils.1"
 
 if [[ -n "$CHROOT_READY" ]]; then
-  hostmakedepends="perl"
+  hostmakedepends+=" perl"
 fi
 
 pre_configure() {
@@ -114,47 +114,27 @@ do_build() {
 }
 
 do_check() {
+  local exeext_tests
+
   # chgrp tests fail inside a chroot
   sed \
     -i \
     -e '/tests\/chgrp/d' \
     Makefile
 
-  exeext_tests+=" bind"
-  exeext_tests+=" bitrotate"
-  exeext_tests+=" byteswap"
-  exeext_tests+=" c-ctype"
-  exeext_tests+=" calloc-gnu"
-  exeext_tests+=" canonizalize"
-  exeext_tests+=" chdir"
+  # tests that fail due to being inside a chroot
   exeext_tests+=" chown"
-  exeext_tests+=" fchownat"
   exeext_tests+=" lchown"
-  sh_tests+=" btowc1"
-  sh_tests+=" btowc2"
-  sh_tests+=" c-strcase"
+  exeext_tests+=" fchownat"
 
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      # disable locale tests that fail on musl
-      exeext_tests+=" getcwd"
-      exeext_tests+=" getlogin"
-      exeext_tests+=" localename"
-      sh_tests+=" mbrtowc5"
-      ;;
-  esac
+  # tests that depend on the tests removed
+  exeext_tests+=" fchmodat"
+  exeext_tests+=" fchdir"
 
   for test in $exeext_tests; do
     sed \
       -i \
       -e "/test-$test\$(EXEEXT)/d" \
-      gnulib-tests/Makefile
-  done
-
-  for test in $sh_tests; do
-    sed \
-      -i \
-      -e "/test-$test.sh/d" \
       gnulib-tests/Makefile
   done
 
