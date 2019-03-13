@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glib"
 version=2.58.3
-revision=1
+revision=2
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
 makedepends+=" libffi-devel"
@@ -52,6 +52,7 @@ libglib-devel_package() {
   depends+=" $makedepends"
   depends+=" glib>=${version}_$revision"
   short_desc+=" - development files"
+  lib32files="/usr/lib/glib-2.0/include/glibconfig.h"
   pkg_install() {
     vmove usr/include
     vmove usr/lib/glib-2.0
