@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lttng-modules-dkms"
-version=2.10.8
+version=2.10.9
 revision=1
-short_desc="The LTTng modules provide Linux kernel tracing capability"
+short_desc="LTTng modules provide Linux kernel tracing capability"
 depends="dkms"
 homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only, MIT"
 distfiles="https://lttng.org/files/lttng-modules/${pkgname%-*}-$version.tar.bz2"
-checksum="fe1d269bca723e8948af871c322c37d3900e647cdc5eb3efbe821e434beee44c"
+checksum="a1855bbd02d0f71ebd180e9872309862036624f012442ab9cc5852eb60340145"
 wrksrc="${pkgname%-*}-$version"
 dkms_modules="${pkgname%-*} $version"
 
