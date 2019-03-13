@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libyaml"
-version=0.2.1
+version=0.2.2
 revision=1
 short_desc="Fast YAML 1.1 parser and emitter library"
 hostmakedepends+=" automake"
@@ -8,7 +8,7 @@ hostmakedepends+=" libtool"
 homepage="http://pyyaml.org/wiki/LibYAML"
 license="MIT"
 distfiles="https://github.com/yaml/libyaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1d2aeb87f7d317f1496e4c39410d913840714874a354970300f375eec9303dc4"
+checksum="46bca77dc8be954686cff21888d6ce10ca4016b360ae1f56962e6882a17aa1fe"
 build_style="gnu-configure"
 
 pre_configure() {
