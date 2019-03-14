@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux5.0"
-version=5.0.1
-revision=2
+version=5.0.2
+revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="The Linux kernel and modules (${version%.*} series)"
@@ -25,7 +25,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="3466214779db5bad716eb1c0a16747b5683009011ba3030bf942bba9640c333e"
+checksum="43bfea3a6b24b4e5f63190409a199bee8cb93dbea01c52ad7f017078ebdf7c9b"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
