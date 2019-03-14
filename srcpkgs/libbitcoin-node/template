@@ -30,12 +30,9 @@ checksum="e3a0a96155ca93aa6cba75789c18419f40686a69cbd40c77aa77ca84ccc43cab"
 conf_files="/etc/libbitcoin/bn.cfg"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
+configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
-  configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
-fi
 
 pre_configure() {
   ./autogen.sh

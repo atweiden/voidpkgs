@@ -18,12 +18,9 @@ checksum="bb29761d4275a9c993151707557008b23572a3d9adecc0e36a3075cfb101dd1e"
 build_style="gnu-configure"
 # XXX BOOST_UNIT_TEST_FRAMEWORK_LIB="-lboost_unit_test_framework"
 configure_args+=" ax_cv_boost_unit_test_framework=no"
+configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
-  configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
-fi
 
 pre_configure() {
   ./autogen.sh

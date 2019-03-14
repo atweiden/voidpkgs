@@ -20,16 +20,13 @@ distfiles="https://github.com/libbitcoin/libbitcoin/archive/v$version.tar.gz>$pk
 checksum="214d9cd6581330b0e1f6fd8f0c634c46b75ae5515806ecac189f21c0291ae2d9"
 wrksrc="${pkgname%-system}-$version"
 build_style="gnu-configure"
+configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --with-icu"
 configure_args+=" --with-png"
 configure_args+=" --with-qrencode"
 configure_args+=" --without-examples"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
-  configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
-fi
 
 pre_configure() {
   ./autogen.sh

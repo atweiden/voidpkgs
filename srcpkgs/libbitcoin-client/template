@@ -23,13 +23,10 @@ license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="bafa26647f334ecad04fc4bbef507a1954d7e0682f07bd38b90ab66dba5fe0d2"
 build_style="gnu-configure"
+configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-examples"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
-  configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
-fi
 
 pre_configure() {
   ./autogen.sh
