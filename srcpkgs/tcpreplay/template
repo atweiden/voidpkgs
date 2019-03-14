@@ -1,13 +1,17 @@
-# Template file for 'tcpreplay'
-pkgname=tcpreplay
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tcpreplay"
 version=4.3.1
 revision=1
-build_style=gnu-configure
-hostmakedepends="libpcap-devel"
-makedepends="libpcap-devel libnl-devel libdnet-devel libnet-devel"
 short_desc="Pcap editing and replay tool"
-maintainer="misuchiru03 <misuchiru03+void@gmail.com>"
-license="GPL-3.0-or-later"
+makedepends+=" libdnet-devel"
+makedepends+=" libnet-devel"
+makedepends+=" libnl-devel"
+makedepends+=" libpcap-devel"
+hostmakedepends="libpcap-devel"
 homepage="https://github.com/appneta/tcpreplay"
-distfiles="${homepage}/releases/download/v${version}/tcpreplay-${version}.tar.gz"
-checksum=95ba661011689a4a6c03896ba7fa549470c2c2d4d0e907dd0c4a4580bbe25e34
+license="GPL-3.0-or-later"
+distfiles="https://github.com/appneta/tcpreplay/releases/download/v$version/$pkgname-$version.tar.gz"
+checksum="95ba661011689a4a6c03896ba7fa549470c2c2d4d0e907dd0c4a4580bbe25e34"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
