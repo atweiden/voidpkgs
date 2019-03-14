@@ -287,6 +287,7 @@ constant %PKG = Map.new(
                       libconfig++-devel
                       libconfig-devel>,
     'libdaemon' => ['libdaemon-devel'],
+    'libdnet' => ['libdnet-devel'],
     'libedit' => ['libedit-devel'],
     'libev' => ['libev-devel'],
     'libevent' => ['libevent-devel'],
