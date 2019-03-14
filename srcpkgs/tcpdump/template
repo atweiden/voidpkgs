@@ -1,17 +1,19 @@
-# Template file for 'tcpdump'
-pkgname=tcpdump
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="tcpdump"
 version=4.9.2
 revision=4
-build_style=gnu-configure
-configure_args="td_cv_buggygetaddrinfo=no"
-makedepends="libpcap-devel libressl-devel"
 short_desc="A tool for network monitoring and data acquisition"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="BSD-3-Clause"
+makedepends+=" libpcap-devel"
+makedepends+=" libressl-devel"
 homepage="https://www.tcpdump.org"
-distfiles="https://www.tcpdump.org/release/${pkgname}-${version}.tar.gz"
-checksum=798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79
+license="BSD-3-Clause"
+distfiles="https://www.tcpdump.org/release/$pkgname-$version.tar.gz"
+checksum="798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79"
+build_style="gnu-configure"
+configure_args="td_cv_buggygetaddrinfo=no"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
