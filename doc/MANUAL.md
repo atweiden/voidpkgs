@@ -486,14 +486,6 @@ set to `${pkgname}-${version}`.
 - `create_wrksrc` Enable it to create the `${wrksrc}` directory. Required if a package
 contains multiple `distfiles`.
 
-- `only_for_archs` This expects a separated list of architectures where
-the package can be built matching `uname -m` output. Reserved for uses
-where the program really only will ever work on certain architectures, like
-binaries sources or when the program is written in assembly. Example:
-`only_for_archs="x86_64 armv6l"`.
-
-> NOTE: `only_for_archs` is deprecated and must be replaced by `archs=`
-
 - `build_style` This specifies the `build method` for a package. Read below to know more
 about the available package `build methods` or effect of leaving this not set.
 
@@ -567,11 +559,6 @@ Example: `conf_files="/etc/foo.conf /etc/foo2.conf /etc/foo/*.conf"`.
   itself contain spaces. `make_dirs="/dir 0750 user group"`. User and group and
   mode are required on every line, even if they are `755 root root`. By
   convention, there is only one entry of `dir perms user group` per line.
-
-- `noarch` If set, the binary package is not architecture specific and can be shared
-by all supported architectures.
-
-> NOTE: `noarch` is deprecated and must be replaced by `archs=noarch`
 
 - `repository` Defines the repository in which the package will be placed. See
   *Repositories* for a list of valid repositories.
@@ -673,7 +660,8 @@ used.
 - `fetch_cmd` Executable to be used to fetch URLs in `distfiles` during the `do_fetch` phase.
 
 - `archs` Whitespace separated list of architectures that a package can be
-built for.
+built for, available architectures can be found under `common/cross-profiles`
+alongside the `noarch` value for packages that do not contain any machine code.
 Examples:
 
   ```
