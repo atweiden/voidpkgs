@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl6-Config-TOML"
-version=0.1.0
+version=0.1.1
 revision=1
-_gitrev="128af01ca9285a1876ed9a44c9dcd402901020cc"
+_gitrev="99ba92036de046f20703e9aaf9e3147487f20dbb"
 short_desc="TOML file parser and writer"
 archs="noarch"
 depends="perl6-Crane"
@@ -11,7 +11,7 @@ tags="perl6"
 homepage="https://github.com/atweiden/config-toml"
 license="Unlicense"
 distfiles="https://github.com/atweiden/config-toml/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="7feb8328548aa86aaea27baccd45a510430546250d92f4a0457c3a3e7d0a0969"
+checksum="b6651364aba310e4099ea22ff6d62cd0bbf85410032845599d5668bce9272d1c"
 wrksrc="$(basename "$homepage")-$_gitrev"
 build_style="perl6-dist"
 
