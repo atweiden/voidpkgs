@@ -37,7 +37,14 @@ my role Pkg
         --> Pkg:D
     )
     {
-        self.bless(|%opts);
+        self.bless(
+            :$maintainer,
+            :$pkgname,
+            :$version,
+            :$revision,
+            :$short-desc,
+            :$license
+        );
     }
 }
 
@@ -54,17 +61,11 @@ my role Diff
     method new(Pkg:D :$pkg1!, Pkg:D :$pkg2! --> Diff:D)
     {
         my Order:D $maintainer = $pkg1.maintainer cmp $pkg2.maintainer;
-        #say('[DEBUG] $maintainer: ', $maintainer);
         my Order:D $pkgname = $pkg1.pkgname cmp $pkg2.pkgname;
-        #say('[DEBUG] $pkgname: ', $pkgname);
         my Order:D $version = $pkg1.version cmp $pkg2.version;
-        #say('[DEBUG] $version: ', $version);
         my Order:D $revision = $pkg1.revision cmp $pkg2.revision;
-        #say('[DEBUG] $revision: ', $revision);
         my Order:D $short-desc = $pkg1.short-desc cmp $pkg2.short-desc;
-        #say('[DEBUG] $short-desc: ', $short-desc);
         my Order:D $license = $pkg1.license cmp $pkg2.license;
-        #say('[DEBUG] $license: ', $license);
         my Diff:D $diff = self.bless(
             :$license,
             :$maintainer,
@@ -98,7 +99,6 @@ my %toml = from-toml($toml);
 # use void keys because atw has more pkgs
 my Diff:D @diff =
     %toml<void>.keys.map(-> Str:D $pkgname {
-        #say('[DEBUG] main $pkgname: ', $pkgname);
         my Diff:D $diff = %toml<atw>{$pkgname} diff %toml<void>{$pkgname};
     });
 
