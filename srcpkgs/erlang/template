@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="erlang"
 version=21.3
-revision=1
+revision=2
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
@@ -21,8 +21,8 @@ make_install_target+=" install"
 make_install_target+=" install-docs"
 
 case "$XBPS_TARGET_MACHINE" in
-  x86_64-musl)
-    broken="dlvsym not available"
+  *-musl)
+    configure_args+=" --disable-hipe"
     ;;
 esac
 
