@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cronie"
-version=1.5.2
+version=1.5.3
 revision=1
 short_desc="Runs specified programs at scheduled times"
 depends="run-parts"
@@ -9,7 +9,7 @@ homepage="https://github.com/cronie-crond/cronie"
 license="BSD-2-Clause"
 changelog="https://github.com/cronie-crond/cronie/raw/master/NEWS"
 distfiles="https://github.com/cronie-crond/cronie/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75"
+checksum="4f73b351273662f28bb392c34c1ca550d78eb97540ce3acc2d1d20548e1a2e7c"
 conf_files+=" /etc/anacrontab"
 conf_files+=" /etc/cron.deny"
 conf_files+=" /etc/pam.d/crond"
