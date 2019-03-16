@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bc"
 version=1.07.1
-revision=3
+revision=4
 short_desc="Arbitrary precision numeric processing language"
 makedepends="readline-devel"
 hostmakedepends+=" ed"
