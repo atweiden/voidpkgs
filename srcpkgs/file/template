@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="file"
-version=5.35
+version=5.36
 revision=1
 short_desc="File type identification utility"
 makedepends="zlib-devel"
 homepage="http://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="ftp://ftp.astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="30c45e817440779be7aac523a905b123cba2a6ed0bf4f5439e1e99ba940b5546"
+checksum="fb608290c0fd2405a8f63e5717abf6d03e22e183fb21884413d1edd918184379"
 build_style="gnu-configure"
 configure_args="--enable-static"
 bootstrap="yes"
