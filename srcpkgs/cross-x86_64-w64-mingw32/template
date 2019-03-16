@@ -9,7 +9,7 @@ _mingw_version=5.0.4
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-x86_64-w64-mingw32"
 version=0.30
-revision=1
+revision=5
 short_desc="Cross toolchain for Win64 (GCC $_gcc_version)"
 archs="x86_64"
 # it's ok to build with current's -devel packages
