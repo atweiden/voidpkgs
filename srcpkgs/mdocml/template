@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mdocml"
-version=1.14.4
+version=1.14.5
 revision=1
 short_desc="The mandoc UNIX manpage compiler toolset"
 depends="less"
@@ -9,7 +9,7 @@ checkdepends="perl"
 homepage="http://mandoc.bsd.lv"
 license="ISC"
 distfiles="http://mandoc.bsd.lv/snapshots/mandoc-$version.tar.gz"
-checksum="24eb72103768987dcc63b53d27fdc085796330782f44b3b40c4660b1e1ee9b9c"
+checksum="8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7"
 conf_files="/etc/man.conf"
 wrksrc="mandoc-$version"
 build_style="configure"
