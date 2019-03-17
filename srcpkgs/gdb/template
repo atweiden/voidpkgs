@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gdb"
 version=8.2.1
-revision=2
+revision=3
 short_desc="The GNU Debugger"
 makedepends+=" babeltrace-devel"
 makedepends+=" expat-devel"
