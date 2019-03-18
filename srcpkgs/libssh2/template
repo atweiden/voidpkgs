@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libssh2"
-version=1.8.0
-revision=5
+version=1.8.1
+revision=1
 short_desc="Library implementing the SSH2 protocol"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
 homepage="http://www.libssh2.org/"
-license="3-clause-BSD"
+license="BSD-3-Clause"
 distfiles="http://www.libssh2.org/download/$pkgname-$version.tar.gz"
-checksum="39f34e2f6835f4b992cafe8625073a88e5a28ba78f83e8099610a7b3af4676d4"
+checksum="40b517f35b1bb869d0075b15125c7a015557f53a5a3a6a8bffb89b69fd70f159"
 build_style="gnu-configure"
 configure_args="--with-libssl-prefix=$XBPS_CROSS_BASE/usr"
 
