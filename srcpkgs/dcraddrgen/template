@@ -14,11 +14,6 @@ wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcraddrgen"
 
-post_build() {
-  cd "$GOPATH"
-  GO111MODULE="on" go install -v
-}
-
 post_install() {
   vlicense "$GOSRCPATH/LICENSE"
   vdoc "$GOSRCPATH/README.md"
