@@ -1,24 +1,22 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcraddrgen"
-version=20180613
+version=0.0.1pre
 revision=1
-_gitrev="4c9d3e21584149d499557627db82f73234710310"
+_gitrev="f2570ef9e4ec844ef8fe4e5d4717163ff2b580c6"
 short_desc="Simple offline address generator for Decred"
-hostmakedepends+=" dep"
-hostmakedepends+=" git"
+hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcraddrgen"
 license="ISC"
 distfiles="https://github.com/decred/dcraddrgen/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="a8217ffa0478d9ea3eda63cf0423bffe9b01412710311d6d538d6930e50b718f"
+checksum="2c17134792bd2e6dafdab5f8937e71db073cfcc49aa77093fd72fcaea2a00c4c"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcraddrgen"
 
-do_build() {
+post_build() {
   cd "$GOSRCPATH"
-  dep ensure -v
-  go install
+  GO111MODULE="on" go install -v
 }
 
 post_install() {
