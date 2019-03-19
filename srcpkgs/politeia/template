@@ -15,7 +15,6 @@ build_style="go"
 go_import_path="github.com/decred/politeia"
 
 post_build() {
-  cd "$GOPATH"
   GO111MODULE="on" go install -v ./...
 }
 
