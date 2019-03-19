@@ -13,6 +13,7 @@ checksum="8eb3a476de79f577c21220a70520e9e023ac2d4b61f98d10040a09196738e589"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/politeia"
+go_mod_mode="off"
 
 post_build() {
   GO111MODULE="on" go install -v ./...
