@@ -1,24 +1,22 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dcrseeder"
-version=20180808
+version=0.0.1pre
 revision=1
-_gitrev="de0911b0a4a5f3f25e219fa386977414a9e9fc36"
+_gitrev="b2bbcbb0b93364e88c90e9c32556042026431bc5"
 short_desc="Decred DNS seeder"
-hostmakedepends+=" dep"
-hostmakedepends+=" git"
+hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrseeder"
 license="ISC"
 distfiles="https://github.com/decred/dcrseeder/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="0f583a9259a8561cbe97f3c3edfa96a114dfbc92d1424daa7de7d149e3e627ed"
+checksum="c3d56646ac079697d518ab32198e04c4f1ccb7adc7514e4ac2cb211687ded827"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
 
-do_build() {
+post_build() {
   cd "$GOSRCPATH"
-  dep ensure -v
-  go install . ./cmd/...
+  GO111MODULE="on" go install -v
 }
 
 post_install() {
