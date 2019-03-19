@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgpg-error"
-version=1.35
+version=1.36
 revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="cbd5ee62a8a8c88d48c158fff4fc9ead4132aacd1b4a56eb791f9f997d07e067"
+checksum="babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c"
 build_style="gnu-configure"
 
 post_configure() {
