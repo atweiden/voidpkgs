@@ -15,7 +15,7 @@ build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
 
 post_build() {
-  go install . ./cmd/...
+  GO111MODULE="on" go install -v . ./cmd/...
 }
 
 pre_install() {
