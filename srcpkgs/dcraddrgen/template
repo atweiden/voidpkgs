@@ -15,8 +15,8 @@ build_style="go"
 go_import_path="github.com/decred/dcraddrgen"
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vdoc "$GOSRCPATH/README.md"
+  vlicense LICENSE
+  vdoc README.md
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
