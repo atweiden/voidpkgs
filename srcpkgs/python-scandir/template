@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-scandir"
-version=1.9.0
+version=1.10.0
 revision=1
 short_desc="Backport of the scandir module from Python 3.5+"
 makedepends="python-devel"
@@ -8,7 +8,7 @@ hostmakedepends="python-setuptools"
 homepage="https://github.com/benhoyt/scandir"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/s/scandir/${pkgname#*-}-$version.tar.gz"
-checksum="44975e209c4827fc18a3486f257154d34ec6eaec0f90fef0cca1caa482db7064"
+checksum="4d4631f6062e658e9007ab3149a9b914f3548cb38bfb021c64f39a025ce578ae"
 wrksrc="${pkgname#*-}-$version"
 build_style="python2-module"
 pycompile_module="scandir.py"
