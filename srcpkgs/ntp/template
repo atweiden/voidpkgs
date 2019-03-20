@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ntp"
 version=4.2.8p13
-revision=1
+revision=2
 short_desc="Network Time Protocol daemon and utilities"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" bison"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://www.ntp.org/"
-license="BSD-2-Clause"
+license="NTP"
 distfiles="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$pkgname-${version%.*}/$pkgname-$version.tar.gz"
 checksum="288772cecfcd9a53694ffab108d1825a31ba77f3a8466b0401baeca3bc232a38"
 conf_files="/etc/ntp.conf"
