@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux4.20"
-version=4.20.16
+version=4.20.17
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -25,7 +25,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="5e6427b368880e958c05467967b001426cb00e1c5984f5eaf73ca7ee1d54fc96"
+checksum="d011245629b980d4c15febf080b54804aaf215167b514a3577feddb2495f8a3e"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
