@@ -1,13 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xxHash"
-version=0.6.5
-revision=2
+version=0.7.0
+revision=1
 short_desc="Fast non-cryptographic hashing algorithm"
 license="BSD-2-Clause, GPL-2.0-or-later"
 homepage="https://cyan4973.github.io/xxHash/"
 distfiles="https://github.com/Cyan4973/xxHash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="19030315f4fc1b4b2cdb9d7a317069a109f90e39d1fe4c9159b7aaa39030eb95"
+checksum="b34792646d5e19964bb7bba24f06cb13aecaac623ab91a54da08aa19d3686d7e"
 build_style="gnu-makefile"
+make_use_env="yes"
 make_build_target="all"
 make_check_target="test"
 
