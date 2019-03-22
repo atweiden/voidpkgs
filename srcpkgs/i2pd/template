@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="i2pd"
-version=2.23.0
+version=2.24.0
 revision=1
 short_desc="I2P Daemon - a full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
@@ -11,7 +11,7 @@ makedepends+=" zlib-devel"
 homepage="http://i2pd.website/"
 license="BSD-3-Clause"
 distfiles="https://github.com/PurpleI2P/i2pd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="19e8573b44b94ce83bd5705569934049cb1dc39db11449abcb9e4b36afe5a279"
+checksum="809b37100f0f176432b01ab6edee96dc62b0f65d5bf7531e008a87117e742566"
 build_style="gnu-makefile"
 make_build_args+=" USE_UPNP=yes"
 case "$XBPS_TARGET_MACHINE" in
