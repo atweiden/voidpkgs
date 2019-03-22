@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="git-lfs"
-version=2.6.1
+version=2.7.1
 revision=1
 short_desc="Git extension for versioning large files"
 hostmakedepends="git"
 homepage="https://git-lfs.github.com/"
 license="MIT"
 distfiles="https://github.com/git-lfs/git-lfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e17cd9d4e66d1116be32f7ddc7e660c7f8fabbf510bc01b01ec15a22dd934ead"
+checksum="af60c2370d135ab13724d302a0b1c226ec9fb0ee6d29ecc335e9add4c86497b4"
 build_style="go"
 go_import_path="github.com/git-lfs/git-lfs"
 
