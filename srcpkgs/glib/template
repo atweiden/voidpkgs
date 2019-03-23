@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glib"
-version=2.58.3
-revision=2
+version=2.60.0
+revision=1
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
 makedepends+=" libffi-devel"
@@ -11,42 +11,20 @@ makedepends+=" zlib-devel"
 checkdepends+=" desktop-file-utils"
 checkdepends+=" shared-mime-info"
 checkdepends+=" tzdata"
-hostmakedepends+=" autoconf"
-hostmakedepends+=" automake"
 hostmakedepends+=" docbook-xsl"
-hostmakedepends+=" libtool"
 hostmakedepends+=" libxslt"
-hostmakedepends+=" m4"
-hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python3"
 short_desc="GNU library of C routines"
 homepage="https://wiki.gnome.org/Projects/GLib"
 license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/$pkgname-$version.tar.xz"
-checksum="8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481"
-build_style="gnu-configure"
-configure_args+=" --disable-fam"
-configure_args+=" --enable-libelf"
-configure_args+=" --enable-static"
-configure_args+=" --with-pcre=system"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" glib-devel"
-  case "$XBPS_TARGET_MACHINE" in
-    mips*|ppc|ppc-musl)
-      # it seems mips/ppc autoconf cache is not read?
-      configure_args+=" glib_cv_stack_grows=no"
-      configure_args+=" glib_cv_rtldglobal_broken=no"
-      configure_args+=" glib_cv_uscore=no"
-      ;;
-  esac
-fi
-
-pre_configure() {
-  ./autogen.sh
-}
+checksum="20865d8b96840d89d9340fc485b4b1131c1bb24d16a258a22d642c3bb1b44353"
+build_style="meson"
+configure_args+=" -Dfam=false"
+configure_args+=" -Dman=true"
+configure_args+=" -Dselinux=disabled"
+configure_args+=" -Dgtk_doc=false"
 
 libglib-devel_package() {
   depends+=" $makedepends"
@@ -57,7 +35,6 @@ libglib-devel_package() {
     vmove usr/include
     vmove usr/lib/glib-2.0
     vmove usr/lib/pkgconfig
-    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
 }
