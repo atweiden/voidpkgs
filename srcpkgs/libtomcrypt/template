@@ -1,14 +1,18 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libtomcrypt"
 version=1.18.2
-revision=1
+revision=2
 short_desc="Fairly comprehensive, modular and portable cryptographic toolkit"
+makedepends+=" gmp-devel"
+makedepends+=" libtommath-devel"
 hostmakedepends="libtool"
 homepage="http://www.libtom.net/?page=features&newsitems=5&whatfile=crypt"
 license="Public domain"
 distfiles="https://github.com/libtom/libtomcrypt/releases/download/v$version/${pkgname#libtom}-$version.tar.xz"
 checksum="96ad4c3b8336050993c5bc2cf6c057484f2b0f9f763448151567fbab5e767b84"
 patch_args="-Np1"
+
+CFLAGS="-DGMP_DESC -DLTM_DESC -DUSE_LTM"
 
 do_build() {
   sed \
@@ -26,7 +30,11 @@ do_build() {
       -e 's,libtool,./libtool,g' \
       makefile.shared
   fi
-  make RANLIB="$RANLIB" -f makefile.shared "$makejobs"
+  make \
+    EXTRALIBS="-lgmp -ltommath" \
+    RANLIB="$RANLIB" \
+    -f makefile.shared \
+    "$makejobs"
 }
 
 do_check() {
@@ -35,12 +43,21 @@ do_check() {
 }
 
 do_install() {
-  make -f makefile.shared GROUP="$(whoami)" USER="$(whoami)" NODOCS=1 DESTDIR="$DESTDIR" PREFIX="/usr" install
+  make \
+    -f makefile.shared \
+    GROUP="$(whoami)" \
+    USER="$(whoami)" \
+    NODOCS=1 \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    install
   vman "$sourcepkg.3"
 }
 
 libtomcrypt-devel_package() {
-  depends="$sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" gmp-devel"
+  depends+=" libtommath-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
