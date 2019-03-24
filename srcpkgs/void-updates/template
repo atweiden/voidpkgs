@@ -1,0 +1,22 @@
+# Template file for 'void-updates'
+pkgname=void-updates
+version=20190323
+revision=1
+archs=noarch
+build_style=gnu-makefile
+depends="git curl"
+short_desc="Void Linux package updates"
+maintainer="Eivind Uggedal <eivind@uggedal.com>"
+license="ISC"
+homepage="https://github.com/void-linux/void-updates"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=b3c47559ffc46928a7c269131f60267acf93a62768d225e7dd06d04480bb26a5
+
+system_accounts="voidupdates"
+voidupdates_homedir="/var/cache/void-updates"
+voidupdates_groups="xbuilder"
+make_dirs="/var/cache/void-updates 0755 voidupdates voidupdates"
+
+post_install() {
+	vlicense LICENSE
+}
