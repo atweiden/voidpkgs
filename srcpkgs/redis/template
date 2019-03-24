@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="redis"
-version=5.0.3
-revision=2
+version=5.0.4
+revision=1
 short_desc="Advanced key-value store"
 makedepends+=" jemalloc-devel"
 makedepends+=" libatomic-devel"
@@ -10,20 +10,20 @@ homepage="https://redis.io"
 license="BSD-3-Clause"
 changelog="https://github.com/antirez/redis/raw/5.0/00-RELEASENOTES"
 distfiles="http://download.redis.io/releases/$pkgname-$version.tar.gz"
-checksum="e290b4ddf817b26254a74d5d564095b11f9cd20d8f165459efa53eb63cd93e02"
+checksum="3ce9ceff5a23f60913e1573f6dfcd4aa53b42d4a2789e28fa53ec2bd28c987dd"
 conf_files="/etc/redis/redis.conf"
 system_accounts="redis"
 redis_homedir="/var/lib/redis"
 make_dirs="/var/lib/redis 0700 redis redis"
 
 do_configure() {
-  sed \
+  vsed \
     -i \
     -e "s|^# bind 127.0.0.1|bind 127.0.0.1|" \
     -e "s|^dir .*|dir $redis_homedir|" \
     -e "s|^pidfile .*|pidfile /run/redis/redis.pid|" \
     redis.conf
-  sed \
+  vsed \
     -i \
     -e "s|^FINAL_LIBS=.*|& -latomic|" \
     src/Makefile
