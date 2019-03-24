@@ -1,21 +1,24 @@
-# Template file for 'easyrsa'
-pkgname=easyrsa
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="easyrsa"
 version=3.0.6
 revision=1
-archs=noarch
-wrksrc=EasyRSA-v$version
-depends="libressl"
 short_desc="Simple shell based CA utility"
-maintainer="Adam Gausmann <agausmann@fastmail.com>"
-license="GPL-2.0-only"
+archs="noarch"
+depends="libressl"
 homepage="https://github.com/OpenVPN/easy-rsa"
+license="GPL-2.0-only"
 distfiles="https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-unix-v$version.tgz"
-checksum=cb29aed2d27824e59dbaad547f11dcab380a53c9fe05681249e804af436f1396
-conf_files="/etc/easyrsa/vars /etc/easyrsa/openssl-easyrsa.cnf /etc/easyrsa/x509-types/*"
+checksum="cb29aed2d27824e59dbaad547f11dcab380a53c9fe05681249e804af436f1396"
+conf_files+=" /etc/easyrsa/openssl-easyrsa.cnf"
+conf_files+=" /etc/easyrsa/vars"
+conf_files+=" /etc/easyrsa/x509-types/*"
+wrksrc="EasyRSA-v$version"
 
 do_install() {
-	vinstall easyrsa 755 etc/easyrsa
-	vinstall openssl-easyrsa.cnf 644 etc/easyrsa
-	vinstall vars.example 644 etc/easyrsa vars
-	vcopy x509-types etc/easyrsa
+  vinstall easyrsa 755 etc/easyrsa
+  vinstall openssl-easyrsa.cnf 644 etc/easyrsa
+  vinstall vars.example 644 etc/easyrsa vars
+  vcopy x509-types etc/easyrsa
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
