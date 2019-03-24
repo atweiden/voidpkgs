@@ -1,22 +1,23 @@
-# Template file for 'void-updates'
-pkgname=void-updates
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="void-updates"
 version=20190323
 revision=1
-archs=noarch
-build_style=gnu-makefile
-depends="git curl"
 short_desc="Void Linux package updates"
-maintainer="Eivind Uggedal <eivind@uggedal.com>"
-license="ISC"
+archs="noarch"
+depends+=" curl"
+depends+=" git"
 homepage="https://github.com/void-linux/void-updates"
-distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=b3c47559ffc46928a7c269131f60267acf93a62768d225e7dd06d04480bb26a5
-
+license="ISC"
+distfiles="https://github.com/void-linux/void-updates/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="b3c47559ffc46928a7c269131f60267acf93a62768d225e7dd06d04480bb26a5"
+build_style="gnu-makefile"
 system_accounts="voidupdates"
 voidupdates_homedir="/var/cache/void-updates"
 voidupdates_groups="xbuilder"
 make_dirs="/var/cache/void-updates 0755 voidupdates voidupdates"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
