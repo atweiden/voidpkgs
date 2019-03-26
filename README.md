@@ -48,16 +48,21 @@ Bootstrap 32-bit architecture without remote repositories:
 Install pkg easily with xtools/xi:
 
 ```sh
-./xbps-src -N pkg quixand
 ./xbps-src -N pkg xtools
 xbps-install --repository=hostdir/binpkgs xtools
-xi quixand
+xi xtools
 ```
 
 Ignore upstream repo pkg updates:
 
 ```sh
 xbps-pkgdb -m hold xtools
+```
+
+Fetch pkg sources:
+
+```sh
+./xbps-src -I fetch xtools
 ```
 
 
