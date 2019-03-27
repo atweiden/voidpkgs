@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnupg2"
-version=2.2.14
+version=2.2.15
 revision=1
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
@@ -17,7 +17,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="1bf9ed46dc1ec5d8cfa13ba1ad47f94981f3b6a7ec16ad9123cc2549c4cbf87b"
+checksum="cb8ce298d7b36558ffc48aec961b14c830ff1783eef7a623411188b5e0f5d454"
 wrksrc="gnupg-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-gpg-is-gpg2"
