@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tzutils"
-version=2018i
+version=2019a
 revision=1
 short_desc="Time zone and daylight-saving time utilities"
 homepage="https://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="https://github.com/eggert/tz/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b5d41b1b7cd4a763cff858e5d01f2af884103e91c3cee0980e2dca8c4e16c923"
+checksum="b8d449925e7883cbeb656fd660737cc5dcc7689f961b0b44c65d6644baf1a21a"
 wrksrc="tz-$version"
 
 do_build() {
