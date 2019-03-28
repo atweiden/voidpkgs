@@ -1,15 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="protobuf"
-version=3.7.0
+version=3.7.1
 revision=1
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/protocolbuffers/protobuf/raw/master/CHANGES.txt"
-distfiles="https://github.com/protocolbuffers/protobuf/releases/download/v$version/$pkgname-all-$version.tar.gz"
-checksum="3e933375ecc58d01e52705479b82f155aea2d02cc55d833f8773213e74f88363"
+distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f1748989842b46fa208b2a6e4e2785133cfcc3e4d43c17fecb023733f0f5443f"
 build_style="gnu-configure"
 
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -24,6 +26,10 @@ case "$XBPS_TARGET_MACHINE" in
     LDFLAGS+=" -latomic"
     ;;
 esac
+
+pre_configure() {
+  autoreconf -fi
+}
 
 post_install() {
   vlicense LICENSE
