@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tzdata"
-version=2018i
+version=2019a
 revision=1
 short_desc="Time zone and daylight-saving time data"
 archs="noarch"
@@ -8,7 +8,7 @@ hostmakedepends="tzutils"
 homepage="http://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="http://www.iana.org/time-zones/repository/releases/$pkgname$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="82c45ef84ca3bc01d0a4a397ba8adeb8f7f199c6550740587c6ac5a7108c00d9"
+checksum="90366ddf4aa03e37a16cd49255af77f801822310b213f195e2206ead48c59772"
 wrksrc="$pkgname"
 create_wrksrc="yes"
 
