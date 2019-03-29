@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="void-updates"
-version=20190323
+version=20190328
 revision=1
 short_desc="Void Linux package updates"
 archs="noarch"
@@ -9,7 +9,7 @@ depends+=" git"
 homepage="https://github.com/void-linux/void-updates"
 license="ISC"
 distfiles="https://github.com/void-linux/void-updates/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b3c47559ffc46928a7c269131f60267acf93a62768d225e7dd06d04480bb26a5"
+checksum="bbb5fa49642aaf14fb15717acd4479a8ac3af9cc83a4bfa16680a444296a3bcf"
 build_style="gnu-makefile"
 system_accounts="voidupdates"
 voidupdates_homedir="/var/cache/void-updates"
