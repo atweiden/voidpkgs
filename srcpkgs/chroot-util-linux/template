@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-util-linux"
 version=2.32.1
-revision=1
+revision=2
 short_desc="Miscellaneous linux utilities - for xbps-src use"
 makedepends="zlib-devel"
 homepage="http://userweb.kernel.org/~kzak/util-linux-ng"
@@ -50,6 +50,7 @@ post_install() {
   rm -rf "$DESTDIR/sbin"
   rm -rf "$DESTDIR/usr/sbin"
   rm -rf "$DESTDIR/usr/share/man"
+  rm -rf "$DESTDIR/usr/share/bash-completion"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
