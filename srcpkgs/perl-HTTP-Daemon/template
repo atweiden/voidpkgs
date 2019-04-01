@@ -1,16 +1,19 @@
-# Template file for 'perl-HTTP-Daemon'
-pkgname=perl-HTTP-Daemon
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-HTTP-Daemon"
 version=6.02
 revision=1
-archs=noarch
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl-HTTP-Message perl-LWP-MediaTypes"
-depends="$makedepends"
 short_desc="HTTP::Daemon - a simple http server class"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+archs="noarch"
+depends+=" perl-HTTP-Message"
+depends+=" perl-LWP-MediaTypes"
+makedepends+=" perl-HTTP-Message"
+makedepends+=" perl-LWP-MediaTypes"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/HTTP-Message"
-distfiles="${CPAN_SITE}/HTTP/HTTP-Daemon-${version}.tar.gz"
-checksum=333a653b38d5aa47fc8d6a44bdac0684a06b39919670422a9ce2689227880f58
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/HTTP/HTTP-Daemon-$version.tar.gz"
+checksum="333a653b38d5aa47fc8d6a44bdac0684a06b39919670422a9ce2689227880f58"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
