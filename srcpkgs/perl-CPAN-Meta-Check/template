@@ -1,17 +1,19 @@
-# Template file for 'perl-CPAN-Meta-Check'
-pkgname=perl-CPAN-Meta-Check
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-CPAN-Meta-Check"
 version=0.014
 revision=2
-archs=noarch
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-checkdepends="perl-Test-Differences perl-Test-Deep"
-depends="$makedepends"
 short_desc="CPAN::Meta::Check - Verify requirements in a CPAN::Meta object"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+archs="noarch"
+depends="perl"
+makedepends="perl"
+checkdepends+=" perl-Test-Differences"
+checkdepends+=" perl-Test-Deep"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/CPAN-Meta-Check"
-distfiles="${CPAN_SITE}/CPAN/${pkgname/perl-/}-${version}.tar.gz"
-checksum=28a0572bfc1c0678d9ce7da48cf521097ada230f96eb3d063fcbae1cfe6a351f
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/CPAN/${pkgname/perl-/}-$version.tar.gz"
+checksum="28a0572bfc1c0678d9ce7da48cf521097ada230f96eb3d063fcbae1cfe6a351f"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
