@@ -1,15 +1,16 @@
-# Template build file for 'perl-Parser'.
-pkgname=perl-HTML-Parser
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-HTML-Parser"
 version=3.72
 revision=7
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl-HTML-Tagset"
-depends="${makedepends}"
 short_desc="HTML::Parser - HTML parser class"
+depends="perl-HTML-Tagset"
+makedepends="perl-HTML-Tagset"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/HTML-Parser"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-distfiles="${CPAN_SITE}/HTML/HTML-Parser-$version.tar.gz"
-checksum=ec28c7e1d9e67c45eca197077f7cdc41ead1bb4c538c7f02a3296a4bb92f608b
+distfiles="$CPAN_SITE/HTML/HTML-Parser-$version.tar.gz"
+checksum="ec28c7e1d9e67c45eca197077f7cdc41ead1bb4c538c7f02a3296a4bb92f608b"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
