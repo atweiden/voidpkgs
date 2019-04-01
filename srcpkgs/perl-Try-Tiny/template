@@ -1,21 +1,23 @@
-# Template build file for 'perl-Try-Tiny'.
-pkgname=perl-Try-Tiny
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Try-Tiny"
 version=0.30
 revision=1
-wrksrc="Try-Tiny-$version"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-checkdepends="perl-Capture-Tiny perl-CPAN-Meta-Check"
-depends="perl"
 short_desc='Try::Tiny - Minimal try/catch with proper preservation of $@'
-maintainer="Leah Neukirchen <leah@vuxu.org>"
+archs="noarch"
+depends="perl"
+makedepends="perl"
+checkdepends+=" perl-Capture-Tiny"
+checkdepends+=" perl-CPAN-Meta-Check"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Try-Tiny"
 license="MIT"
-distfiles="${CPAN_SITE}/XML/ETHER/Try-Tiny-${version}.tar.gz"
-checksum=da5bd0d5c903519bbf10bb9ba0cb7bcac0563882bcfe4503aee3fb143eddef6b
-archs=noarch
+distfiles="$CPAN_SITE/XML/ETHER/Try-Tiny-$version.tar.gz"
+checksum="da5bd0d5c903519bbf10bb9ba0cb7bcac0563882bcfe4503aee3fb143eddef6b"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
 
 post_install() {
-	vlicense LICENCE LICENSE
+  vlicense LICENCE LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
