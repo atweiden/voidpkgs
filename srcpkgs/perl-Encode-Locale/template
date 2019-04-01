@@ -1,16 +1,17 @@
-# Template file for 'perl-Encode-Locale'
-pkgname=perl-Encode-Locale
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-Encode-Locale"
 version=1.05
 revision=2
-archs=noarch
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="${hostmakedepends}"
-depends="${makedepends}"
 short_desc="Encode::Locale - Determine the locale encoding"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+archs="noarch"
+depends="perl"
+makedepends="perl"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Encode-Locale"
-distfiles="${CPAN_SITE}/Encode/Encode-Locale-${version}.tar.gz"
-checksum=176fa02771f542a4efb1dbc2a4c928e8f4391bf4078473bd6040d8f11adb0ec1
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/Encode/Encode-Locale-$version.tar.gz"
+checksum="176fa02771f542a4efb1dbc2a4c928e8f4391bf4078473bd6040d8f11adb0ec1"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
