@@ -3,7 +3,7 @@ pkgname="chroot-bash"
 _bash_distver=5.0
 _bash_patchlevel=003
 version=$_bash_distver.$_bash_patchlevel
-revision=1
+revision=2
 short_desc="GNU Bourne Again Shell - for xbps-src use"
 homepage="http://www.gnu.org/software/bash/bash.html"
 license="GPL-3.0-or-later"
@@ -35,6 +35,8 @@ pre_configure() {
 
 post_install() {
   ln -s bash "$DESTDIR/usr/bin/sh"
+  rm -rf "$DESTDIR/usr/include"
+  rm -rf "$DESTDIR/usr/lib/pkgconfig/bash.pc"
   rm -rf "$DESTDIR/usr/share"
 }
 
