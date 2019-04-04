@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mdadm"
 version=4.1
-revision=1
+revision=2
 short_desc="Tool for managing/monitoring Linux md device arrays"
 makedepends="eudev-libudev-devel"
 hostmakedepends="pkg-config"
@@ -22,7 +22,7 @@ do_build() {
     "$makejobs" \
     BINDIR="/usr/bin" \
     CC="$CC" \
-    CFLAGS="$CFLAGS -DNO_COROSYNC -DNO_DLM -Wno-error" \
+    CFLAGS="$CFLAGS -DNO_COROSYNC -DNO_DLM -Wno-error -DSendmail='\"sendmail -t\"'" \
     LDFLAGS="$LDFLAGS"
 }
 
