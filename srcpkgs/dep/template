@@ -1,18 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dep"
 version=0.5.1
-revision=1
+revision=2
 short_desc="Go dependency management tool"
 depends+=" git"
 depends+=" go"
 hostmakedepends="git"
 homepage="https://github.com/golang/dep"
-license="Apache"
+license="BSD-3-Clause"
 distfiles="https://github.com/golang/dep/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="720752ee3a089a8c6ee6a8ebecc7c70881bf2d994d3183d192a588398484b8d4"
 build_style="go"
 go_import_path="github.com/golang/dep"
 go_package="$go_import_path/cmd/dep"
+go_ldflags="-X main.version=v$version"
 
 pre_build() {
   git config --global http.https://gopkg.in.followRedirects true
