@@ -1,16 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gocryptfs"
-version=1.6.1
+version=1.7
 revision=1
 short_desc="Encrypted overlay filesystem written in Go"
 depends="fuse"
-hostmakedepends+=" man-db"
-hostmakedepends+=" pandoc"
 homepage="https://nuetzlich.net/gocryptfs"
 license="MIT"
 changelog="https://github.com/rfjakob/gocryptfs#changelog"
 distfiles="https://github.com/rfjakob/gocryptfs/releases/download/v$version/${pkgname}_v${version}_src-deps.tar.gz"
-checksum="fcaaf59cf7b062a6e216d2fcf69f374254018a9b8f99ae3177ac985f05b6c37b"
+checksum="2d1a2cfd072d554a28ee6e6807474b00ac710fb1aaf7aa81f3d8e94e80f6a703"
 wrksrc="${pkgname}_v${version}_src-deps"
 build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
@@ -18,7 +16,6 @@ go_build_tags="without_openssl"
 
 post_install() {
   vlicense "$GOSRCPATH/LICENSE"
-  "$GOSRCPATH/Documentation/MANPAGE-render.bash"
   vman "$GOSRCPATH/Documentation/gocryptfs.1"
 }
 
