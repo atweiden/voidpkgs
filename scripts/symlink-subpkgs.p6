@@ -274,6 +274,12 @@ constant %PKG = Map.new(
     'libasr' => ['libasr-devel'],
     'libassuan' => ['libassuan-devel'],
     'libatomic_ops' => ['libatomic_ops-devel'],
+    'libbitcoin-client' => ['libbitcoin-client-devel'],
+    'libbitcoin-explorer' => ['libbitcoin-explorer-devel'],
+    'libbitcoin-network' => ['libbitcoin-network-devel'],
+    'libbitcoin-protocol' => ['libbitcoin-protocol-devel'],
+    'libbitcoin-secp256k1' => ['libbitcoin-secp256k1-devel'],
+    'libbitcoin-system' => ['libbitcoin-system-devel'],
     'libcacard' => ['libcacard-devel'],
     'libcap' => qw<libcap-devel
                    libcap-progs>,
