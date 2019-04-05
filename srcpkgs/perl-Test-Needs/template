@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Test-Needs"
-version=0.002005
-revision=3
+version=0.002006
+revision=1
 short_desc="Test::Needs - Skip tests when modules not available"
 archs="noarch"
 depends="perl"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Needs"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
-checksum="5a4f33983586edacdbe00a3b429a9834190140190dab28d0f873c394eb7df399"
+checksum="77f9fff0c96c5e09f34d0416b3533c3319f7cd0bb1f7fe8f8072ad59f433f0e5"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
