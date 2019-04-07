@@ -373,6 +373,7 @@ constant %PKG = Map.new(
     'libtool' => qw<libltdl
                     libltdl-devel>,
     'libtommath' => ['libtommath-devel'],
+    'libtorrent' => ['libtorrent-devel'],
     'libunistring' => ['libunistring-devel'],
     'libunwind' => ['libunwind-devel'],
     'liburcu' => ['liburcu-devel'],
