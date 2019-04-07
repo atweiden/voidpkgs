@@ -1,38 +1,52 @@
-# Template file for 'libtorrent'
-pkgname=libtorrent
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libtorrent"
 version=0.13.7
 revision=3
-build_style=gnu-configure
-configure_args="--enable-static --disable-debug --without-kqueue
- --enable-aligned --with-posix-fallocate"
-hostmakedepends="automake libtool pkg-config"
-makedepends="libcppunit-devel libressl-devel zlib-devel"
 short_desc="BitTorrent library written in C++"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
+makedepends+=" libcppunit-devel"
+makedepends+=" libressl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
+homepage="https://github.com/rakshasa/libtorrent"
 license="GPL-2.0-or-later"
-homepage="https://github.com/rakshasa/${pkgname}"
-distfiles="https://github.com/rakshasa/${pkgname}/archive/v${version}.tar.gz"
-checksum=86b4b1753385aaddf9e59ad94f1292eee5102139eb57520e84d1af2f04693708
+distfiles="https://github.com/rakshasa/libtorrent/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="86b4b1753385aaddf9e59ad94f1292eee5102139eb57520e84d1af2f04693708"
+build_style="gnu-configure"
+configure_args+=" --disable-debug"
+configure_args+=" --enable-aligned"
+configure_args+=" --enable-static"
+configure_args+=" --with-posix-fallocate"
+configure_args+=" --without-kqueue"
 
 pre_configure() {
-	autoreconf -fi
-	sed -e 's,test "$cross_compiling" = yes, false,' -i configure
+  autoreconf -fi
+  sed \
+    -i \
+    -e 's,test "$cross_compiling" = yes, false,' \
+    configure
 }
 
 post_configure() {
-	# Replace wrong (for cross buidls) -L/lib in Makefiles
-	for f in $(find ${wrksrc} -name Makefile); do
-		sed -i $f -e "s;-L/lib;-L${XBPS_CROSS_BASE}/lib;g"
-	done
+  # replace wrong (for cross buidls) -L/lib in Makefiles
+  for f in $(find "$wrksrc" -name Makefile); do
+    sed \
+      -i \
+      -e "s;-L/lib;-L$XBPS_CROSS_BASE/lib;g" \
+      "$f"
+  done
 }
 
 libtorrent-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
