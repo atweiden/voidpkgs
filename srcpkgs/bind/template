@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bind"
-version=9.11.5
-revision=7
+version=9.11.6
+revision=1
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
 makedepends+=" libatomic-devel"
@@ -18,7 +18,7 @@ hostmakedepends+=" perl"
 homepage="https://www.isc.org/downloads/bind/"
 license="ISC"
 distfiles="https://ftp.isc.org/isc/bind9/$_fullver/bind-$_fullver.tar.gz"
-checksum="a4cae11dad954bdd4eb592178f875bfec09fcc7e29fe0f6b7a4e5b5c6bc61322"
+checksum="4499007f3a6b8bba84fc757053caeabf36466d6f7d278baccef9fd109beac6d4"
 conf_files="/etc/named/named.conf"
 wrksrc="$pkgname-$_fullver"
 build_style="gnu-configure"
@@ -41,6 +41,7 @@ configure_args+=" --with-readline"
 configure_args+=" --with-tuning=default"
 configure_args+=" --without-gost"
 configure_args+=" --without-gssapi"
+configure_args+=" --without-python"
 configure_args+=" $(vopt_if geoip --with-geoip=$XBPS_CROSS_BASE/usr --without-geoip)"
 configure_args+=" $(vopt_enable seccomp)"
 system_accounts="named"
@@ -57,13 +58,9 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 reverts="9.13.6_1"
 
-pre_configure() {
-  autoreconf -fi
-  # disable bin tests for now
-  sed \
-    -i \
-    -e "s,tests,,g" \
-    bin/Makefile.in
+do_check() {
+  # requires special network setup
+  :
 }
 
 post_install() {
