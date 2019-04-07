@@ -1,20 +1,29 @@
-# Template file for 'rtorrent'
-pkgname=rtorrent
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="rtorrent"
 version=0.9.7
 revision=4
-build_style=gnu-configure
-configure_args="--with-xmlrpc-c"
-hostmakedepends="automake libtool pkg-config"
-makedepends="libcppunit-devel libsigc++-devel libtorrent-devel ncurses-devel
- xmlrpc-c-devel"
 short_desc="Ncurses BitTorrent client based on libTorrent"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends+=" libcppunit-devel"
+makedepends+=" libsigc++-devel"
+makedepends+=" libtorrent-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" xmlrpc-c-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/rakshasa/rtorrent"
-distfiles="https://github.com/rakshasa/${pkgname}/archive/v${version}.tar.gz"
-checksum=5a7c9ded6b92d5ffc5ae32c19816f2328848d70841a4ce7d2739a5024d3587ca
+license="GPL-2.0-or-later"
+distfiles="https://github.com/rakshasa/rtorrent/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5a7c9ded6b92d5ffc5ae32c19816f2328848d70841a4ce7d2739a5024d3587ca"
+build_style="gnu-configure"
+configure_args="--with-xmlrpc-c"
 
 pre_configure() {
-	autoreconf -fi
-	sed -e 's,test "$cross_compiling" = yes, false,' -i configure
+  autoreconf -fi
+  sed \
+    -i \
+    -e 's,test "$cross_compiling" = yes, false,' \
+    configure
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
