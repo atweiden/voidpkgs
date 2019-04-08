@@ -282,6 +282,9 @@ libldap_r-2.4.so.2 libldap-2.4.21_1
 libldns.so.2 libldns-1.7.0_1
 libLLVM-6.0.so libllvm6.0-6.0.0_1
 libLLVM-7.so libllvm7-7.0.0_1
+libLLVM-8.so libllvm8-8.0.0_1
+libLTO.so.8 libllvm8-8.0.0_1
+libOptRemarks.so.8 libllvm8-8.0.0_1
 libltdl.so.7 libltdl-2.2.6_1
 liblvm2app.so.2.2 liblvm2app-2.02.54_1
 liblxc.so.1 liblxc-1.0.0_1
