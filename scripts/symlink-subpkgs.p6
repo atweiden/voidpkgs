@@ -585,6 +585,9 @@ constant %PKG = Map.new(
     'serf' => ['serf-devel'],
     'shadowsocks-libev' => ['shadowsocks-libev-devel'],
     'snappy' => ['snappy-devel'],
+    'spdx-licenses-list' => qw<spdx-licenses-html
+                               spdx-licenses-json
+                               spdx-licenses-text>,
     'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
     'subversion' => qw<libsvn
