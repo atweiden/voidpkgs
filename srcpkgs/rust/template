@@ -94,27 +94,6 @@ else
   esac
 fi
 
-# in rust terminology, `build` is the build host ($CBUILD) and `target`
-# and `host` are the triplets that are supposed to run the built binaries
-# ($CTARGET)
-case $XBPS_MACHINE in
-  ppc64le)
-    _build_triplet="powerpc64le-unknown-linux-gnu"
-    ;;
-  ppc64le-musl)
-    _build_triplet="powerpc64le-unknown-linux-musl"
-    ;;
-  ppc64-musl)
-    _build_triplet="powerpc64-unknown-linux-musl"
-    ;;
-  *-musl)
-    _build_triplet="${XBPS_MACHINE%-musl}-unknown-linux-musl"
-    ;;
-  *)
-    _build_triplet="$XBPS_MACHINE-unknown-linux-gnu"
-    ;;
-esac
-
 post_extract() {
   if [[ -z "$CROSS_BUILD" ]]; then
     mkdir -p stage0
@@ -161,7 +140,7 @@ post_patch() {
 do_configure() {
   export LD_LIBRARY_PATH="$wrksrc/stage0/lib"
 
-  configure_args+=" --build=$_build_triplet"
+  configure_args+=" --build=$RUST_BUILD"
   configure_args+=" --disable-codegen-tests"
   configure_args+=" --disable-docs"
   configure_args+=" --disable-full-bootstrap"
@@ -175,17 +154,17 @@ do_configure() {
     configure_args+=" --enable-llvm-link-shared"
     configure_args+=" --llvm-root=/usr"
     configure_args+=" --set=target.$RUST_TARGET.llvm-config=/usr/bin/llvm-config"
-    configure_args+=" --set=target.$_build_triplet.llvm-config=/usr/bin/llvm-config"
+    configure_args+=" --set=target.$RUST_BUILD.llvm-config=/usr/bin/llvm-config"
   fi
 
   if [[ -n "$CROSS_BUILD" ]]; then
     configure_args+=" --enable-local-rebuild"
     configure_args+=" --local-rust-root=/usr"
     # set the appropriate values for the native compilation tools
-    configure_args+=" --set=target.$_build_triplet.cc=$CC_host"
-    configure_args+=" --set=target.$_build_triplet.cxx=$CXX_host"
-    configure_args+=" --set=target.$_build_triplet.ar=$AR_host"
-    configure_args+=" --set=target.$_build_triplet.linker=$CC_host"
+    configure_args+=" --set=target.$RUST_BUILD.cc=$CC_host"
+    configure_args+=" --set=target.$RUST_BUILD.cxx=$CXX_host"
+    configure_args+=" --set=target.$RUST_BUILD.ar=$AR_host"
+    configure_args+=" --set=target.$RUST_BUILD.linker=$CC_host"
   else
     configure_args+=" --local-rust-root=$wrksrc/stage0"
   fi
@@ -214,7 +193,7 @@ do_build() {
   # libbacktrace for it during stage1
   # otherwise it attemps to use CFLAGS, which are the CFLAGS of the
   # cross host
-  env CFLAGS_$_build_triplet="$CFLAGS_host" LDFLAGS='' make "$makejobs" $make_build_args
+  env CFLAGS_$RUST_BUILD="$CFLAGS_host" LDFLAGS='' make "$makejobs" $make_build_args
 }
 
 do_install() {
