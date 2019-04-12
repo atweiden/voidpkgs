@@ -30,7 +30,6 @@ build_options="internal_llvm"
 lib32disabled="yes"
 
 if [[ -n "$CROSS_BUILD" ]]; then
-  broken="build host rustc first"
   hostmakedepends+=" cargo"
   hostmakedepends+=" $(vopt_if internal_llvm '' llvm)"
   # required for building the buildhost's stage0/1
