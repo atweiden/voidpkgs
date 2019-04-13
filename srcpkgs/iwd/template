@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iwd"
-version=0.16
-revision=2
+version=0.17
+revision=1
 short_desc="Internet Wireless Daemon by Intel that aims to replace wpa_supplicant"
 depends="dbus"
 makedepends+=" dbus-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://iwd.wiki.kernel.org/"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/network/wireless/iwd-$version.tar.xz"
-checksum="406f6c0bbd57647e18612026e58406f2f8e889d74dcdc8e3995866db23a81245"
+checksum="3eda38305738a7992c03a02d29423bc5eaf5e76247bb45ae1dad8fd261e4f4d6"
 build_style="gnu-configure"
 configure_args+=" ac_cv_func_explicit_bzero=yes"
 configure_args+=" --disable-systemd-service"
@@ -26,12 +26,6 @@ configure_args+=" --enable-pie"
 configure_args+=" --enable-wired"
 make_dirs+=" /etc/iwd 755 root root"
 make_dirs+=" /var/lib/iwd 0600 root root"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    broken="Fails to detect musl has explicit_bzero"
-    ;;
-esac
 
 pre_configure() {
   autoreconf -fi
