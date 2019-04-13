@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-gawk"
-version=4.2.1
-revision=2
+version=5.0.0
+revision=1
 short_desc="GNU awk utility - for xbps-src use"
 homepage="https://directory.fsf.org/wiki/Gawk"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gawk/${pkgname#chroot-}-$version.tar.xz"
-checksum="d1119785e746d46a8209d28b2de404a57f983aa48670f4e225531d3bdc175551"
+checksum="50f091ed0eb485ad87dbb620d773a3e2c31a27f75f5e008f7bf065055f024406"
 wrksrc="gawk-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-nls"
