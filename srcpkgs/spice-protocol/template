@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="spice-protocol"
-version=0.12.15
+version=0.14.0
 revision=1
 short_desc="SPICE protocol headers"
 archs="noarch"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.spice-space.org/"
 license="BSD-3-Clause"
 distfiles="https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v$version/$pkgname-v$version.tar.gz"
-checksum="d372ed4b694899308abcea8ba73400064f4de948166637a9aa54f01abf859032"
+checksum="e92f85f5b82b786bf101c516e7809c0f77a2f6efd1c087de8d358df92cfd4e68"
 wrksrc="$pkgname-v$version"
 build_style="gnu-configure"
 
