@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpng"
-version=1.6.36
+version=1.6.37
 revision=1
 short_desc="Library for manipulating PNG images"
 makedepends="zlib-devel"
 homepage="http://www.libpng.org/pub/png/libpng.html"
 license="Libpng"
 distfiles="$SOURCEFORGE_SITE/libpng/$pkgname-$version.tar.xz"
-checksum="eceb924c1fa6b79172fdfd008d335f0e59172a86a66481e09d4089df872aa319"
+checksum="505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca"
 build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
@@ -17,7 +17,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 post_install() {
-  rm -f "$DESTDIR/usr/lib"/*.la
   vlicense LICENSE
 }
 
