@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="http-parser"
-version=2.9.1
+version=2.9.2
 revision=1
 short_desc="HTTP request/response parser for c"
 homepage="https://github.com/joyent/http-parser"
 license="MIT"
 distfiles="https://github.com/joyent/http-parser/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="33220771208bcacecd970b6de03bebe239374a8e9cf3baeda79b4f3920bede21"
+checksum="5199500e352584852c95c13423edc5f0cb329297c81dd69c3c8f52a75496da08"
 build_style="gnu-makefile"
 make_build_target="library"
 
