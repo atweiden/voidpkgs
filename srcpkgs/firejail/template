@@ -1,19 +1,21 @@
-# Template file for 'firejail'
-pkgname=firejail
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="firejail"
 version=0.9.58.2
 revision=1
-build_style=gnu-configure
-configure_args="--enable-apparmor"
-makedepends="libapparmor-devel"
 short_desc="SUID security sandbox program"
-maintainer="Duncaen <duncaen@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends="libapparmor-devel"
 homepage="https://firejail.wordpress.com"
-#changelog="https://raw.githubusercontent.com/netblue30/firejail/master/RELNOTES"
-distfiles="https://github.com/netblue30/firejail/archive/${version}.tar.gz"
-checksum=80a7afb2aa128cbffe537eaa2cad82fe8ecd7879184f5aa0d2ff12268e8edab8
-conf_files="/etc/firejail/* /etc/apparmor.d/local/firejail-local"
+license="GPL-2.0-or-later"
+changelog="https://github.com/netblue30/firejail/raw/master/RELNOTES"
+distfiles="https://github.com/netblue30/firejail/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="80a7afb2aa128cbffe537eaa2cad82fe8ecd7879184f5aa0d2ff12268e8edab8"
+conf_files+=" /etc/apparmor.d/local/firejail-local"
+conf_files+=" /etc/firejail/*"
+build_style="gnu-configure"
+configure_args="--enable-apparmor"
 
-if [ "$CROSS_BUILD" ]; then
-	configure_args+=" --disable-seccomp"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --disable-seccomp"
 fi
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
