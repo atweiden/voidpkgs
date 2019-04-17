@@ -246,6 +246,7 @@ constant %PKG = Map.new(
     'iproute2' => ['iproute2-tc-ipt'],
     'iptables' => ['iptables-devel'],
     'irssi' => qw<irssi-devel
+                  irssi-otr
                   irssi-perl>,
     'isl15' => ['isl15-devel'],
     'isl16' => ['isl16-devel'],

@@ -1,10 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="irssi"
 version=1.2.0
-revision=1
+revision=2
 short_desc="Secure and modular IRC client with text mode user interface"
 depends="ca-certificates"
+makedepends+=" libgcrypt-devel"
 makedepends+=" libglib-devel"
+makedepends+=" libotr-devel"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
 hostmakedepends="pkg-config"
@@ -16,8 +18,10 @@ conf_files="/etc/irssi.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --enable-true-color"
+configure_args+=" --with-otr"
 configure_args+=" --with-proxy"
 subpackages+=" irssi-devel"
+subpackages+=" irssi-otr"
 
 LDFLAGS="-lncursesw"
 
@@ -34,6 +38,14 @@ irssi-perl_package() {
     vmove usr/lib/perl5
     vmove "usr/lib/irssi/modules/*perl*"
     vmove usr/share/irssi/scripts
+  }
+}
+
+irssi-otr_package() {
+  depends="irssi"
+  short_desc+=" - OTR support"
+  pkg_install() {
+    vmove "usr/lib/irssi/modules/*otr*"
   }
 }
 
