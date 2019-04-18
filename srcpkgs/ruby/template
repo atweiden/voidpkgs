@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ruby"
-version=2.6.2
+version=2.6.3
 revision=1
 _ruby_abiver=2.6.0
 short_desc="Ruby programming language"
@@ -20,7 +20,7 @@ fi
 homepage="http://www.ruby-lang.org/en/"
 license="Ruby, BSD-2-Clause"
 distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.bz2"
-checksum="d126ada7f4147ce1029a80c2a37a0c4bfb37e9e82da8816662241a43faeb8915"
+checksum="dd638bf42059182c1d04af0d5577131d4ce70b79105231c4cc0a60de77b14f2e"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-shared"
