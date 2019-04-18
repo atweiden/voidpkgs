@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rspamd"
-version=1.9.1
+version=1.9.2
 revision=1
 short_desc="Fast, free and open-source spam filtering system"
 makedepends+=" LuaJIT-devel"
@@ -22,7 +22,7 @@ homepage="https://rspamd.com/"
 license="Apache-2.0"
 changelog="https://github.com/vstakhov/rspamd/raw/master/ChangeLog"
 distfiles="https://github.com/vstakhov/rspamd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a4509294ca565e0a86424ae67ab49f282349b5fa3bfc9aeb16c1c03cbe422aa5"
+checksum="69a39cb83a4d28da2fc2fc2dc7c8e07435557e50e19cfdf73bd1ebd964da80f9"
 conf_files+=" /etc/rspamd/*.conf"
 conf_files+=" /etc/rspamd/*.inc"
 conf_files+=" /etc/rspamd/modules.d/*.conf"
