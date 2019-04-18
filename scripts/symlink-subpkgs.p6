@@ -430,8 +430,7 @@ constant %PKG = Map.new(
     'lxc' => qw<liblxc
                 lxc-devel>,
     'lz4' => qw<liblz4
-                liblz4-devel
-                lz4-devel>,
+                liblz4-devel>,
     'lzo' => ['lzo-devel'],
     'man-pages' => ['man-pages-devel'],
     'mariadb' => qw<libmariadbclient

@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lz4"
-version=1.8.3
+version=1.9.0
 revision=1
-short_desc="The LZ4 compression utilities"
-homepage="http://www.lz4.org/"
-license="BSD-2-Clause, GPL-2"
+short_desc="LZ4 compression utilities"
+homepage="https://lz4.github.io/lz4"
+license="BSD-2-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/lz4/lz4/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="33af5936ac06536805f9745e0b6d61da606a1f8b4cc5c04dd3cbaca3b9b4fc43"
+checksum="f8b6d5662fa534bd61227d313535721ae41a68c9d84058b7b7d86e143572dcfb"
 build_style="gnu-makefile"
 make_check_target="test"
 reverts+=" 131_1"
@@ -20,8 +20,11 @@ reverts+=" 124_1"
 reverts+=" 123_1"
 reverts+=" 122_1"
 
+post_install() {
+  vlicense lib/LICENSE
+}
+
 liblz4_package() {
-  replaces="lz4<${version}_$revision"
   short_desc="LZ4 compression library"
   pkg_install() {
     vmove "usr/lib/*.so.*"
@@ -29,7 +32,6 @@ liblz4_package() {
 }
 
 liblz4-devel_package() {
-  replaces="lz4-devel<${version}_$revision"
   short_desc="LZ4 compression library - development files"
   depends="liblz4-${version}_$revision"
   pkg_install() {
@@ -38,12 +40,6 @@ liblz4-devel_package() {
     vmove "usr/lib/*.so"
     vmove usr/lib/pkgconfig
   }
-}
-
-lz4-devel_package() {
-  build_style="meta"
-  short_desc="LZ4 compression library - development files (transitional dummy package)"
-  depends="liblz4-devel>=${version}_$revision"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
