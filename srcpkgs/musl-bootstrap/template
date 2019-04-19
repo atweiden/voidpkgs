@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="musl-bootstrap"
-version=1.1.21
+version=1.1.22
 revision=1
 short_desc="The musl C library (bootstrap pkg)"
 homepage="http://www.musl-libc.org/"
 license="MIT"
 distfiles="http://www.musl-libc.org/releases/${pkgname%-*}-$version.tar.gz"
-checksum="c742b66f6f49c9e5f52f64d8b79fecb5a0f6e0203fca176c70ca20f6be285f44"
+checksum="8b0941a48d2f980fd7036cfbd24aa1d414f03d9a0652ecbd5ec5c7ff1bee29e3"
 wrksrc="${pkgname%-*}-$version"
 build_style="configure"
 configure_args="--prefix=/usr/lib/musl"
