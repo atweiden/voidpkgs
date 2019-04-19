@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="thin-provisioning-tools"
-version=0.7.6
-revision=2
+version=0.8.0
+revision=1
 short_desc="Tools for manipulating the metadata of dm-thin device-mapper targets"
 makedepends+=" boost-devel"
 makedepends+=" expat-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/jthornber/thin-provisioning-tools"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/jthornber/thin-provisioning-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="491358c1406414ab3f06b260bd9da8a2f9109c4c426dda899d4d985860dfc01f"
+checksum="af4288954303af2fc39684ba7dbe9ff1683ed51c3290649a472a2f3adffebba5"
 build_style="gnu-configure"
 
 pre_configure() {
