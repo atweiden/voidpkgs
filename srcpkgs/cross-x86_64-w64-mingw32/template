@@ -1,17 +1,19 @@
-_binutils_version=2.29.1
+_binutils_version=2.32
 _gcc_version=8.3.0
 _gmp_version=6.1.2
 _mpfr_version=4.0.1
 _mpc_version=1.1.0
 _isl_version=0.19
-_mingw_version=5.0.4
+_mingw_version=6.0.0
 
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-x86_64-w64-mingw32"
-version=0.30
-revision=5
+version="$_mingw_version"
+revision=1
 short_desc="Cross toolchain for Win64 (GCC $_gcc_version)"
-archs="x86_64"
+archs+=" i686"
+archs+=" x86_64"
+depends="$pkgname-crt-${version}_$revision"
 # it's ok to build with current's -devel packages
 # although it might break the package during compiler updates
 #makedepends="zlib-devel gmp-devel mpfr-devel libmpc-devel isl15-devel"
@@ -27,23 +29,42 @@ distfiles+=" https://gmplib.org/download/gmp/gmp-$_gmp_version.tar.xz"
 distfiles+=" http://www.mpfr.org/mpfr-$_mpfr_version/mpfr-$_mpfr_version.tar.xz"
 distfiles+=" http://isl.gforge.inria.fr/isl-$_isl_version.tar.bz2"
 distfiles+=" $SOURCEFORGE_SITE/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$_mingw_version.tar.bz2"
-checksum+=" 1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
+checksum+=" de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d"
 checksum+=" 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
 checksum+=" 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
 checksum+=" 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
 checksum+=" 67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e"
 checksum+=" d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8"
-checksum+=" 5527e1f6496841e2bb72f97a184fc79affdcd37972eaa9ebf7a5fd05c31ff803"
+checksum+=" 805e11101e26d7897fce7d49cbb140d7bac15f3e085a91e0001e80b2adaf48f0"
 create_wrksrc="yes"
-nostrip="yes"
 nopie="yes"
 nodebug="yes"
+noverifyrdeps="yes"
+noshlibprovides="yes"
+# disable build of 32bits packages
+lib32disabled="yes"
+nostrip_files+=" libatomic.a"
+nostrip_files+=" libatomic.dll.a"
+nostrip_files+=" libgcc.a"
+nostrip_files+=" libgcc_eh.a"
+nostrip_files+=" libgcc_s.a"
+nostrip_files+=" libgcov.a"
+nostrip_files+=" libquadmath.a"
+nostrip_files+=" libquadmath.dll.a"
+nostrip_files+=" libssp.a"
+nostrip_files+=" libssp.dll.a"
+nostrip_files+=" libssp_nonshared.a"
+nostrip_files+=" libstdc++.a"
+nostrip_files+=" libstdc++.dll.a"
+nostrip_files+=" libsupc++.a"
 
 # https://sourceforge.net/p/mingw-w64/wiki2/Cross%20Win32%20and%20Win64%20compiler/
 # https://gcc.gnu.org/install/configure.html
 # http://mingw-w64.org/doku.php/configure
 
 _binutils_build() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -54,20 +75,22 @@ _binutils_build() {
   mkdir -p "$_builddir" && cd "$_builddir"
 
   "../binutils-$_binutils_version/configure" \
+    --prefix="/usr" \
+    --with-sysroot="$_sysroot" \
+    --target="$_target" \
     --disable-multilib \
-    --disable-nls \
     --disable-shared \
+    --disable-nls \
     --disable-werror \
     --enable-lto \
-    --prefix="/usr" \
-    --target="$_target" \
-    --with-sysroot="$_sysroot" \
     --with-system-zlib
 
   make "$makejobs" && make install
 }
 
 _mingw_headers() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -79,7 +102,7 @@ _mingw_headers() {
 
   "../mingw-w64-v$_mingw_version/mingw-w64-headers/configure" \
     --disable-werror \
-    --enable-sdk=all \
+    --enable-sdk="all" \
     --enable-secure-api \
     --host="$_target" \
     --prefix="$_sysroot"
@@ -92,6 +115,8 @@ _mingw_headers() {
 }
 
 _gcc_bootstrap() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -113,11 +138,11 @@ _gcc_bootstrap() {
     --disable-multilib \
     --disable-nls \
     --disable-werror \
-    --enable-languages=c,c++,lto \
+    --enable-languages="c,c++,lto" \
     --enable-lto \
     --enable-shared \
     --enable-static \
-    --enable-threads=posix \
+    --enable-threads="posix" \
     --prefix="/usr" \
     --target="$_target" \
     --with-sysroot="$_sysroot" \
@@ -127,6 +152,8 @@ _gcc_bootstrap() {
 }
 
 _mingw_crt_build() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -134,9 +161,9 @@ _mingw_crt_build() {
 
   msg_normal "Building MinGW CRT: $_target\n"
 
-  if [[ $_target == "i686-w64-mingw32" ]]; then
+  if [[ "$_target" == "i686-w64-mingw32" ]]; then
     _crt_configure_args="--disable-lib64 --enable-lib32"
-  elif [[ $_target == "x86_64-w64-mingw32" ]]; then
+  elif [[ "$_target" == "x86_64-w64-mingw32" ]]; then
     _crt_configure_args="--disable-lib32 --enable-lib64"
   fi
 
@@ -159,6 +186,8 @@ _mingw_crt_build() {
 }
 
 _mingw_winpthreads_build() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -186,6 +215,8 @@ _mingw_winpthreads_build() {
 }
 
 _gcc_build() {
+  local _builddir
+  local _sysroot
   local _target
   _target="$1"
   _sysroot="/usr/$_target"
@@ -201,7 +232,25 @@ _gcc_build() {
 }
 
 _build_cross() {
-  local _target
+  # ensure we use sane environment
+  unset AR
+  unset AS
+  unset CC
+  unset CFLAGS
+  unset CPP
+  unset CPPFLAGS
+  unset CXX
+  unset CXXFLAGS
+  unset LD
+  unset LDFLAGS
+  unset NM
+  unset OBJDUMP
+  unset OBJDUMP
+  unset RANLIB
+  unset READELF
+  unset STRIP
+  unset WINDRES
+
   _target="$1"
 
   (_binutils_build "$_target")
@@ -217,24 +266,30 @@ do_build() {
   (_build_cross "i686-w64-mingw32")
 }
 
-_install_cross() {
+_install_toolchain() {
   local _target
   _target="$1"
 
   (cd "$wrksrc/build-binutils-$_target" && DESTDIR="$DESTDIR" make install)
   (cd "$wrksrc/build-gcc-$_target" && DESTDIR="$DESTDIR" make install)
-  (cd "$wrksrc/build-mingw-headers-$_target" && DESTDIR="$DESTDIR" make install)
-  (cd "$wrksrc/build-mingw-crt-$_target" && DESTDIR="$DESTDIR" make install)
-  (cd "$wrksrc/build-mingw-winpthreads-$_target" && DESTDIR="$DESTDIR" make install)
 
   # remove unnecessary stuff
   rm -rf "$DESTDIR/usr/share/"
   rm -rf "$DESTDIR/usr/lib"/libcc1*
 }
 
+_install_crt() {
+  local _target
+  _target="$1"
+
+  (cd "$wrksrc/build-mingw-headers-$_target" && DESTDIR="$DESTDIR" make install)
+  (cd "$wrksrc/build-mingw-crt-$_target" && DESTDIR="$DESTDIR" make install)
+  (cd "$wrksrc/build-mingw-winpthreads-$_target" && DESTDIR="$DESTDIR" make install)
+}
+
 do_install() {
+  (_install_toolchain "x86_64-w64-mingw32")
   # i686 version will be installed in subpackage (below)
-  _install_cross "x86_64-w64-mingw32"
 }
 
 _clean_cross() {
@@ -248,18 +303,62 @@ _clean_cross() {
 }
 
 do_clean() {
-  _clean_cross "x86_64-w64-mingw32"
-  _clean_cross "i686-w64-mingw32"
+  (_clean_cross "x86_64-w64-mingw32")
+  (_clean_cross "i686-w64-mingw32")
+}
+
+cross-x86_64-w64-mingw32-crt_package() {
+  short_desc="CRT for Win64 cross toolchain"
+  nopie="yes"
+  nodebug="yes"
+  # this subpackage exists to skip strip step on CRT files
+  nostrip="yes"
+  noverifyrdeps="yes"
+  noshlibsprovides="yes"
+  lib32disabled="yes"
+  pkg_install() {
+    DESTDIR="$PKGDESTDIR" _install_crt "x86_64-w64-mingw32"
+  }
 }
 
 cross-i686-w64-mingw32_package() {
+  unset nostrip_files
   short_desc="Cross toolchain for Win32 (GCC $_gcc_version)"
-  nostrip="yes"
+  depends="$pkgname-crt-${version}_$revision"
   nopie="yes"
   nodebug="yes"
-
+  noverifyrdeps="yes"
+  noshlibsprovides="yes"
+  lib32disabled="yes"
+  nostrip_files+=" libatomic.a"
+  nostrip_files+=" libatomic.dll.a"
+  nostrip_files+=" libgcc.a"
+  nostrip_files+=" libgcc_eh.a"
+  nostrip_files+=" libgcc_s.a"
+  nostrip_files+=" libgcov.a"
+  nostrip_files+=" libquadmath.a"
+  nostrip_files+=" libquadmath.dll.a"
+  nostrip_files+=" libssp.a"
+  nostrip_files+=" libssp.dll.a"
+  nostrip_files+=" libssp_nonshared.a"
+  nostrip_files+=" libstdc++.a"
+  nostrip_files+=" libstdc++.dll.a"
+  nostrip_files+=" libsupc++.a"
   pkg_install() {
-    DESTDIR="$PKGDESTDIR" _install_cross "i686-w64-mingw32"
+    DESTDIR="$PKGDESTDIR" _install_toolchain "i686-w64-mingw32"
+  }
+}
+
+cross-i686-w64-mingw32-crt_package() {
+  short_desc="CRT for Win32 cross toolchain"
+  nopie="yes"
+  nodebug="yes"
+  nostrip="yes"
+  noverifyrdeps="yes"
+  noshlibsprovides="yes"
+  lib32disabled="yes"
+  pkg_install() {
+    DESTDIR="$PKGDESTDIR" _install_crt "i686-w64-mingw32"
   }
 }
 
