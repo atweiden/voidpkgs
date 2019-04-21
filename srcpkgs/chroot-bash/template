@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-bash"
 _bash_distver=5.0
-_bash_patchlevel=003
+_bash_patchlevel=007
 version=$_bash_distver.$_bash_patchlevel
 revision=2
 short_desc="GNU Bourne Again Shell - for xbps-src use"
