@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="boost"
 version=1.69.0
-revision=2
+revision=3
 short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
@@ -199,7 +199,7 @@ boost-build_package() {
   short_desc+=" - Boost.Build framework"
   pkg_install() {
     vmove usr/share/boost-build
-    vmove etc
+    vmove etc/site-config.jam
   }
 }
 
