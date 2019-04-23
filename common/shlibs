@@ -381,6 +381,7 @@ libsigc-2.0.so.0 libsigc++-1.1_1
 libsmartcols.so.1 libsmartcols-2.25_1
 libsmbios.so.2 libsmbios-2.2.28_1
 libsmbios_c.so.2 libsmbios-2.2.28_1
+libsndfile.so.1 libsndfile-1.0.20_1
 libsodium.so.23 libsodium-1.0.15_1
 libssh.so.4 libssh-0.5.4_1
 libssh2.so.1 libssh2-1.4.1_1
