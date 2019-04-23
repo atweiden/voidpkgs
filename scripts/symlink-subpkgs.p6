@@ -646,6 +646,8 @@ constant %PKG = Map.new(
     'wireguard' => ['wireguard-tools'],
     'wimlib' => ['wimlib-devel'],
     'wireless_tools' => ['wireless_tools-devel'],
+    'wireshark' => qw<libwireshark
+                      libwireshark-devel>,
     'wvstreams' => ['wvstreams-devel'],
     'xbps' => qw<libxbps
                  libxbps-devel
