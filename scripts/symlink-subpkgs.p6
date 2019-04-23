@@ -25,6 +25,7 @@ constant $SRCPKGS = sprintf(Q{%s/srcpkgs}, $ROOT);
 constant %PKG = Map.new(
     'acl' => qw<acl-devel
                 acl-progs>,
+    'alsa-lib' => ['alsa-lib-devel'],
     'atf' => qw<atf-devel
                 atf-libs>,
     'apparmor' => qw<apparmor-vim
