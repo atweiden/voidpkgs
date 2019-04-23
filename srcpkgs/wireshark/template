@@ -1,77 +1,81 @@
-# Template file for 'wireshark'
-pkgname=wireshark
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="wireshark"
 version=3.0.1
 revision=2
-build_style=cmake
-hostmakedepends="pkg-config flex perl python3-devel mit-krb5-devel qt5-tools
- qt5-host-tools qt5-qmake"
-makedepends="libpcap-devel zlib-devel lua52-devel mit-krb5-devel gnutls-devel
- libmaxminddb-devel libgcrypt-devel libcap-devel sbc-devel c-ares-devel libxml2-devel
- libssh-devel libnl3-devel spandsp-devel tiff-devel libcap-progs liblz4-devel
- nghttp2-devel qt5-devel qt5-tools-devel qt5-multimedia-devel qt5-svg-devel"
-depends="libcap-progs"
 short_desc="Network protocol analyzer"
-maintainer="Enno Boland <gottox@voidlinux.org>"
-license="GPL-2.0-or-later"
+depends="libcap-progs"
+makedepends+=" c-ares-devel"
+makedepends+=" gnutls-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libcap-progs"
+makedepends+=" libgcrypt-devel"
+makedepends+=" libglib-devel"
+makedepends+=" liblz4-devel"
+makedepends+=" libmaxminddb-devel"
+makedepends+=" libnl3-devel"
+makedepends+=" libpcap-devel"
+makedepends+=" libssh-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" lua52-devel"
+makedepends+=" mit-krb5-devel"
+makedepends+=" nghttp2-devel"
+makedepends+=" sbc-devel"
+makedepends+=" spandsp-devel"
+makedepends+=" tiff-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" mit-krb5-devel"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-devel"
 homepage="https://www.wireshark.org"
-distfiles="https://www.wireshark.org/download/src/${pkgname}-${version}.tar.xz"
-checksum=86864c3d0f6c2311992a98d8ea7dfd429097fe62dae2e5516e1a2f6bef2ac08c
+license="GPL-2.0-or-later"
+distfiles="https://www.wireshark.org/download/src/$pkgname-$version.tar.xz"
+checksum="86864c3d0f6c2311992a98d8ea7dfd429097fe62dae2e5516e1a2f6bef2ac08c"
+build_style="cmake"
+configure_args="-DBUILD_wireshark=OFF"
 system_groups="wireshark"
 
-CFLAGS="-I${XBPS_CROSS_BASE}/usr/include/lua5.2"
-CXXFLAGS="-I${XBPS_CROSS_BASE}/usr/include/lua5.2"
+CFLAGS="-I$XBPS_CROSS_BASE/usr/include/lua5.2"
+CXXFLAGS="-I$XBPS_CROSS_BASE/usr/include/lua5.2"
 
 post_install() {
-	rm -f -- "${DESTDIR}/usr/bin/lemon"
-	rm -f -- "${DESTDIR}/usr/lib/wireshark/cmake/UseLemon.cmake"
+  local _include_dir
+  _include_dir="usr/include/wireshark"
 
-	local _includeDir=usr/include/wireshark
+  rm -f -- "$DESTDIR/usr/bin/lemon"
+  rm -f -- "$DESTDIR/usr/lib/wireshark/cmake/UseLemon.cmake"
 
-	# Headers
-	vmkdir $_includeDir
-	vcopy ws_symbol_export.h $_includeDir
+  # headers
+  vmkdir "$_include_dir"
+  vcopy ws_symbol_export.h "$_include_dir"
+  for i in wiretap \
+           wsutil; do
+    vmkdir "$_include_dir/$i"
+    vcopy "$i/*.h" "$_include_dir/$i"
+  done
 
-	for i in wiretap wsutil; do
-		vmkdir $_includeDir/$i
-		vcopy "$i/*.h" $_includeDir/$i
-	done
-
-	chmod 0750 $DESTDIR/usr/bin/dumpcap
+  chmod 0750 "$DESTDIR/usr/bin/dumpcap"
 }
 
 libwireshark_package() {
-	short_desc+=" - library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-		vmove usr/lib/wireshark/extcap
-		vmove usr/lib/wireshark/plugins
-	}
+  short_desc+=" - library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+    vmove usr/lib/wireshark/extcap
+    vmove usr/lib/wireshark/plugins
+  }
 }
 
 libwireshark-devel_package() {
-	short_desc+=" - development files"
-	depends="libwireshark>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove usr/lib/wireshark/cmake
-	}
+  short_desc+=" - development files"
+  depends="libwireshark>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove usr/lib/wireshark/cmake
+  }
 }
 
-wireshark-gtk_package() {
-	build_style=meta
-	archs=noarch
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - GTK+ frontend (removed package)"
-}
-
-wireshark-qt_package() {
-	depends="${sourcepkg}>=${version}_${revision} desktop-file-utils"
-	short_desc+=" - Qt frontend"
-	pkg_install() {
-		vmove usr/bin/wireshark
-		vmove usr/share/man/man1/wireshark.1
-		vmove usr/share/applications/wireshark.desktop
-	}
-}
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
