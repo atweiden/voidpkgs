@@ -606,6 +606,7 @@ constant %PKG = Map.new(
                 tdb-devel>,
     'tidy5' => qw<libtidy5
                   libtidy5-devel>,
+    'tiff' => ['tiff-devel'],
     'toxcore' => ['toxcore-devel'],
     'udns' => ['udns-devel'],
     'unbound' => ['unbound-devel'],
