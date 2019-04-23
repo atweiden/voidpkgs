@@ -385,6 +385,7 @@ constant %PKG = Map.new(
     'libusbmuxd' => ['libusbmuxd-devel'],
     'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
+    'libvorbis' => ['libvorbis-devel'],
     'libvterm' => ['libvterm-devel'],
     'libxml2' => ['libxml2-devel'],
     'libxml2-python' => ['libxml2-python3'],
