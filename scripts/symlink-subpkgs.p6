@@ -339,6 +339,7 @@ constant %PKG = Map.new(
     'libnl' => ['libnl-devel'],
     'libnl3' => qw<libnl3-devel
                    libnl3-progs>,
+    'libogg' => ['libogg-devel'],
     'libomp' => ['libomp-devel'],
     'libotr' => qw<libotr-devel
                    libotr-progs>,
