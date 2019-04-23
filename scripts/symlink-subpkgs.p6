@@ -147,6 +147,8 @@ constant %PKG = Map.new(
     'fann' => ['fann-devel'],
     'file' => qw<file-devel
                  libmagic>,
+    'flac' => qw<libflac
+                 libflac-devel>,
     'flex' => ['libfl-devel'],
     'fuse' => ['fuse-devel'],
     'gc' => ['gc-devel'],

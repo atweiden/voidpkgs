@@ -250,6 +250,8 @@ libexecinfo.so.1 libexecinfo-1.1_1
 libfdisk.so.1 libfdisk-2.26_1
 libfetch.so.2 libfetch-2.34_8
 libffi.so.6 libffi-3.1_1
+libFLAC++.so.6 libflac-1.2.1_1
+libFLAC.so.8 libflac-1.2.1_1
 libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
 libGeoIP.so.1 libgeoip-1.4.8_1
