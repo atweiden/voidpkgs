@@ -1,25 +1,30 @@
-# Template file for 'ngrep'
-pkgname=ngrep
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ngrep"
 version=1.47
 revision=1
-wrksrc="ngrep-${version/./_}"
-build_style=gnu-configure
-configure_args="--enable-ipv6 --enable-pcre EXTRA_LIBS=-lpcre"
-hostmakedepends="pkg-config"
-makedepends="pcre-devel libpcap-devel libressl-devel"
 short_desc="Like GNU grep applied to the network layer"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="MIT"
+makedepends+=" libpcap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" pcre-devel"
+hostmakedepends="pkg-config"
 homepage="https://github.com/jpr5/ngrep"
-distfiles="https://github.com/jpr5/ngrep/archive/V${version/./_}.tar.gz"
-checksum=dc4dbe20991cc36bac5e97e99475e2a1522fd88c59ee2e08f813432c04c5fff3
+license="MIT"
+distfiles="https://github.com/jpr5/ngrep/archive/V${version/./_}.tar.gz>$pkgname-$version.tar.gz"
+checksum="dc4dbe20991cc36bac5e97e99475e2a1522fd88c59ee2e08f813432c04c5fff3"
+wrksrc="ngrep-${version/./_}"
+build_style="gnu-configure"
+configure_args+=" --enable-ipv6"
+configure_args+=" --enable-pcre"
+configure_args+=" EXTRA_LIBS=-lpcre"
 
-if [ "$CROSS_BUILD" ]; then
-	configure_args+=" --with-pcap-includes=$XBPS_CROSS_BASE/usr/include/pcap"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --with-pcap-includes=$XBPS_CROSS_BASE/usr/include/pcap"
 else
-	configure_args+=" --with-pcap-includes=/usr/include/pcap"
+  configure_args+=" --with-pcap-includes=/usr/include/pcap"
 fi
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
