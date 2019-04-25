@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mysql"
 version=5.6.43
-revision=1
+revision=2
 depends="mysql-client"
 makedepends+=" libressl-devel"
 makedepends+=" readline-devel"
@@ -45,10 +45,13 @@ configure_args+=" -DWITH_LIBWRAP=OFF"
 configure_args+=" -DWITH_PARTITION_STORAGE_ENGINE=1"
 configure_args+=" -DWITH_SSL=system"
 configure_args+=" -DWITH_ZLIB=system"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" -DHAVE_LLVM_LIBCPP_EXITCODE=1"
+  configure_args+=" -DHAVE_LLVM_LIBCPP_EXITCODE__TRYRUN_OUTPUT=0"
+fi
 system_accounts="mysql"
 mysql_homedir="/var/lib/mysql"
 lib32disabled="yes"
-disable_parallel_build="yes"
 
 CFLAGS="-D__STDC_ISO_10646__"
 
@@ -81,7 +84,7 @@ pre_configure() {
       comp_sql \
       gen_lex_hash \
       gen_lex_token
-    mkdir bin.host
+    mkdir -p bin.host
     cp extra/comp_err bin.host
     cp scripts/comp_sql bin.host
     cp sql/gen_lex_hash bin.host
