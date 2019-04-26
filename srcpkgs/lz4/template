@@ -1,12 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lz4"
-version=1.9.0
+version=1.9.1
 revision=1
 short_desc="LZ4 compression utilities"
 homepage="https://lz4.github.io/lz4"
 license="BSD-2-Clause, GPL-2.0-or-later"
+changelog="https://github.com/lz4/lz4/raw/master/NEWS"
 distfiles="https://github.com/lz4/lz4/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f8b6d5662fa534bd61227d313535721ae41a68c9d84058b7b7d86e143572dcfb"
+checksum="f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4"
 build_style="gnu-makefile"
 make_check_target="test"
 reverts+=" 131_1"
