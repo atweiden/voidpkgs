@@ -174,7 +174,7 @@ do_install() {
     x86_64)
       rtldlist="/lib/ld-linux.so.2 /lib/ld-linux-x86-64.so.2"
       ;;
-    ppc64le)
+    ppc64|pc64le)
       rtldlist="/lib/ld64.so.2"
       ;;
   esac
