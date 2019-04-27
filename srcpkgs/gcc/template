@@ -144,6 +144,9 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64le-musl)
     _triplet="powerpc64le-linux-musl"
     ;;
+  ppc64)
+    _triplet="powerpc64-linux-gnu"
+    ;;
   ppc64-musl)
     _triplet="powerpc64-linux-musl"
     ;;
@@ -317,6 +320,9 @@ do_configure() {
   case "$XBPS_TARGET_MACHINE" in
     ppc64le-musl|ppc64-musl)
       _args+=" --enable-decimal-float=no --disable-libquadmath"
+      ;;
+    ppc64)
+      _args+=" --disable-libquadmath"
       ;;
     *)
       ;;
