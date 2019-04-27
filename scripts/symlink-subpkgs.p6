@@ -99,6 +99,7 @@ constant %PKG = Map.new(
     'cross-mipsel-linux-muslhf' => ['cross-mipsel-linux-muslhf-libc'],
     'cross-powerpc-linux-gnu' => ['cross-powerpc-linux-gnu-libc'],
     'cross-powerpc-linux-musl' => ['cross-powerpc-linux-musl-libc'],
+    'cross-powerpc64-linux-gnu' => ['cross-powerpc64-linux-gnu-libc'],
     'cross-powerpc64-linux-musl' => ['cross-powerpc64-linux-musl-libc'],
     'cross-powerpc64le-linux-gnu' => ['cross-powerpc64le-linux-gnu-libc'],
     'cross-powerpc64le-linux-musl' => ['cross-powerpc64le-linux-musl-libc'],
