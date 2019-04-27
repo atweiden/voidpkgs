@@ -11,6 +11,7 @@ pkgname="cross-$_triplet"
 version=0.30
 revision=2
 short_desc="Cross toolchain for powerpc64 with musl"
+archs+=" ppc64"
 archs+=" ppc64le"
 archs+=" x86_64*"
 depends="$pkgname-libc-${version}_$revision"
