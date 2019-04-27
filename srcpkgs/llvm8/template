@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm8"
 version=8.0.0
-revision=1
+revision=2
 short_desc="Low Level Virtual Machine"
 depends="libllvm8"
 makedepends+=" binutils-devel"
