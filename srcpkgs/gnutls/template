@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnutls"
 version=3.6.7
-revision=1
+revision=2
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libgpg-error-devel"
