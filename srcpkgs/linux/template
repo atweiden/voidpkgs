@@ -21,7 +21,7 @@ case "$XBPS_TARGET_MACHINE" in
     depends="linux$version"
     _depends_headers="linux$version-headers"
     ;;
-  ppc64*)
+  ppc*)
     depends+=" dracut"
     depends+=" linux$version"
     depends+=" linux-firmware-amd"
