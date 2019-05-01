@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ccache"
-version=3.7
+version=3.7.1
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
@@ -8,8 +8,8 @@ checkdepends="perl"
 homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.samba.org/news.html"
-distfiles="https://github.com/ccache/ccache/releases/download/v3.7/$pkgname-$version.tar.xz"
-checksum="409f38bec6161288749a499c82060c99a551c3aced406827e28d183e9c070575"
+distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
+checksum="66fc121a2a33968f9ec428e02f48ff4b8896fbabb759e9c09352267014dcbe65"
 build_style="gnu-configure"
 make_check_args="CC=gcc"
 wrksrc="$pkgname-${version%a}"
@@ -35,6 +35,8 @@ post_install() {
              mips-linux-muslhf \
              mipsel-linux-musl \
              mipsel-linux-muslhf \
+             powerpc-linux-gnu \
+             powerpc-linux-musl \
              powerpc64-linux-gnu \
              powerpc64-linux-musl \
              powerpc64le-linux-gnu \
