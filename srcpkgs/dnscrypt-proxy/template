@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dnscrypt-proxy"
-version=2.0.22
+version=2.0.23
 revision=1
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/jedisct1/dnscrypt-proxy"
 license="ISC"
 changelog="https://github.com/jedisct1/dnscrypt-proxy/raw/master/ChangeLog"
 distfiles="https://github.com/jedisct1/dnscrypt-proxy/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ac8ad326b6da47bb1e515d29a354511a8dc9a5ebfcf4be816b6791532d02d564"
+checksum="d405a562b0d4b0101a11347c1647bb55351945d82d67565b396794babf296905"
 conf_files="/etc/dnscrypt-proxy.toml"
 system_accounts="dnscrypt_proxy"
 make_dirs="/var/log/dnscrypt-proxy 0750 dnscrypt_proxy dnscrypt_proxy"
