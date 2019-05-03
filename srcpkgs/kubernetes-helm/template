@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kubernetes-helm"
 version=2.13.1
-revision=1
+revision=2
 short_desc="Kubernetes Package Manager"
 hostmakedepends+=" git"
 hostmakedepends+=" go"
@@ -69,7 +69,7 @@ do_build() {
     bootstrap \
     build-cross \
     APP="..." \
-    LDFLAGS="-X k8s.io/helm/pkg/version.BuildMetadata="
+    LDFLAGS="-X k8s.io/helm/pkg/version.Version=v$version -X k8s.io/helm/pkg/version.BuildMetadata="
   "_dist/linux-$_go_host_arch/helm" completion bash > completion.bash
   "_dist/linux-$_go_host_arch/helm" completion zsh > completion.zsh
 }
