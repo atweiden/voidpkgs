@@ -113,6 +113,16 @@ post_extract() {
   fi
 }
 
+# we need this because cargo verifies checksums of all files in vendor
+# crates when it builds and gives us no way to override or update the
+# file sanely... so just clear out the file list
+_clear_vendor_checksums() {
+  sed \
+    -i \
+    -e 's/\("files":{\)[^}]*/\1/' \
+    "vendor/$1/.cargo-checksum.json"
+}
+
 post_patch() {
   if [[ -n "$build_option_internal_llvm" ]]; then
     # patches for rust's bundled llvm
@@ -135,6 +145,10 @@ post_patch() {
     -i \
     -e "/LD_LIBRARY_PATH/d" \
     src/bootstrap/bootstrap.py
+
+  # clear out all the checksum nonsense of patched vendor crates
+  _clear_vendor_checksums libc
+  _clear_vendor_checksums lzma-sys
 }
 
 do_configure() {
@@ -145,6 +159,7 @@ do_configure() {
   configure_args+=" --disable-docs"
   configure_args+=" --disable-full-bootstrap"
   configure_args+=" --disable-rpath"
+  configure_args+=" --enable-vendor"
   configure_args+=" --host=$RUST_TARGET"
   configure_args+=" --prefix=/usr"
   configure_args+=" --release-channel=stable"
@@ -193,7 +208,7 @@ do_build() {
   # libbacktrace for it during stage1
   # otherwise it attemps to use CFLAGS, which are the CFLAGS of the
   # cross host
-  env CFLAGS_$RUST_BUILD="$CFLAGS_host" LDFLAGS='' make "$makejobs" $make_build_args
+  env CFLAGS_$RUST_BUILD="$CFLAGS_host" make "$makejobs" $make_build_args
 }
 
 do_install() {
