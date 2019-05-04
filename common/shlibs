@@ -223,6 +223,7 @@ libcacard.so.0 libcacard-1.6.1_1
 libcap.so.2 libcap-2.16_1
 libcap-ng.so.0 libcap-ng-0.6.2_1
 libchicken.so.9 libchicken-5.0.0_1
+libcli.so.1.9 libcli-1.9.8.4_1
 libconfig++.so.11 libconfig++-1.7.1_1
 libconfig.so.11 libconfig-1.7.1_1
 libcppunit-1.14.so.0 libcppunit-1.14.0_1
