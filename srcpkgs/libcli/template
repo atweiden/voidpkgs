@@ -1,23 +1,24 @@
-# Template file for 'libcli'
-pkgname=libcli
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="libcli"
 version=1.9.8.4
 _distver="${version%.*}-${version##*.}"
 revision=1
-wrksrc="libcli-${_distver}"
-build_style=gnu-makefile
 short_desc="Library for cisco style telnet interfaces"
-maintainer="Robert Lowry <bobertlo@gmail.com>"
-license="GPL-2.0-or-later"
 homepage="https://github.com/dparrish/libcli"
-distfiles="https://github.com/dparrish/libcli/archive/v${_distver}.tar.gz"
-checksum=c80e268be48c7a52105877995e126034df281096d9785a394b7afcadc9d30e9a
+license="GPL-2.0-or-later"
+distfiles="https://github.com/dparrish/libcli/archive/v$_distver.tar.gz>$pkgname-$version.tar.gz"
+checksum="c80e268be48c7a52105877995e126034df281096d9785a394b7afcadc9d30e9a"
+wrksrc="$pkgname-$_distver"
+build_style="gnu-makefile"
 
 libcli-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
