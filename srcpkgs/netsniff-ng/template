@@ -1,30 +1,43 @@
-# Template file for 'netsniff-ng'
-pkgname=netsniff-ng
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="netsniff-ng"
 version=0.6.5
 revision=1
-build_style=configure
-configure_args="--prefix=/usr --disable-geoip"
-hostmakedepends="pkg-config flex bison"
-makedepends="libcli-devel libnetfilter_conntrack-devel libpcap-devel
- libnet-devel libsodium-devel liburcu-devel ncurses-devel zlib-devel"
 short_desc="Free Linux networking toolkit"
-maintainer="Robert Lowry <bobertlo@gmail.com>"
-license="GPL-3.0-or-later"
+makedepends+=" libcli-devel"
+makedepends+=" libnet-devel"
+makedepends+=" libnetfilter_conntrack-devel"
+makedepends+=" libpcap-devel"
+makedepends+=" libsodium-devel"
+makedepends+=" liburcu-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" bison"
+hostmakedepends+=" flex"
+hostmakedepends+=" pkg-config"
 homepage="http://netsniff-ng.org/"
-distfiles="http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${version}.tar.gz"
-checksum=9d8ef156356b05a303061a5b86e1fe0c27c3fcceaa4f790f3c0cb2367c54589a
+license="GPL-3.0-or-later"
+distfiles="http://pub.netsniff-ng.org/netsniff-ng/$pkgname-$version.tar.gz"
+checksum="9d8ef156356b05a303061a5b86e1fe0c27c3fcceaa4f790f3c0cb2367c54589a"
+build_style="configure"
+configure_args+=" --disable-geoip"
+configure_args+=" --prefix=/usr"
 
 post_extract() {
-	vsed -i "s|/sbin|/bin|g" Makefile
+  vsed \
+    -i \
+    -e "s|/sbin|/bin|g" \
+    Makefile
 }
 
 pre_configure() {
-	export NACL_INC_DIR=${XBPS_CROSS_BASE}/usr/include/sodium
-	export NACL_LIB=sodium
-	export NACL_LIB_DIR=${XBPS_CROSS_BASE}/usr/lib
+  export NACL_INC_DIR="$XBPS_CROSS_BASE/usr/include/sodium"
+  export NACL_LIB="sodium"
+  export NACL_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
 }
 
 
 pre_install() {
-	vmkdir usr/bin
+  vmkdir usr/bin
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
