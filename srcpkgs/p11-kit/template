@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="p11-kit"
 version=0.23.15
-revision=1
+revision=2
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
@@ -14,8 +14,7 @@ distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgna
 checksum="f7c139a0c77a1f0012619003e542060ba8f94799a0ef463026db390680e4d798"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="gnu-configure"
-configure_args+=" --with-module-path=/usr/lib/pkcs11"
-configure_args+=" --without-trust-paths"
+configure_args="--with-module-path=/usr/lib/pkcs11"
 
 pre_configure() {
   NOCONFIGURE=1 autoreconf -fi
