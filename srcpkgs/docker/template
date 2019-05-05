@@ -1,8 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docker"
 version=18.09.5
-revision=1
+revision=2
 short_desc="Pack, ship and run any application as a lightweight container"
+archs+=" armv7l*"
 archs+=" ppc64le*"
 archs+=" x86_64*"
 depends+=" containerd"
