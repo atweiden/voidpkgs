@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-system"
 version=0.112
-revision=5
+revision=6
 short_desc="Void Linux base system meta package"
 depends+=" base-files>=0.77"
 depends+=" ncurses"
@@ -61,7 +61,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*|ppc64*)
+  i686*|x86_64*|ppc*)
     depends+=" linux"
     ;;
 esac
