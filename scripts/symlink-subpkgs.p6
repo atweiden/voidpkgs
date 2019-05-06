@@ -386,6 +386,7 @@ constant %PKG = Map.new(
                     libltdl-devel>,
     'libtommath' => ['libtommath-devel'],
     'libtorrent' => ['libtorrent-devel'],
+    'libucontext' => ['libucontext-devel'],
     'libunistring' => ['libunistring-devel'],
     'libunwind' => ['libunwind-devel'],
     'liburcu' => ['liburcu-devel'],
