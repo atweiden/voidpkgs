@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sysdig"
-version=0.24.2
+version=0.25
 revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
 archs+=" i686"
@@ -8,19 +8,25 @@ archs+=" ppc64le"
 archs+=" x86_64"
 depends="dkms"
 makedepends+=" LuaJIT-devel"
+makedepends+=" c-ares-devel"
 makedepends+=" elfutils-devel"
+makedepends+=" grpc-devel"
 makedepends+=" jsoncpp-devel"
 makedepends+=" libcurl-devel"
+makedepends+=" libprotoc-devel"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" protobuf-devel"
 makedepends+=" tbb-devel"
 makedepends+=" zlib-devel"
-hostmakedepends="wget"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" protobuf"
+hostmakedepends+=" wget"
 homepage="http://www.sysdig.org/"
 license="Apache-2.0, MIT, GPL-2.0-only"
 changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="cd925afd2fb0a26728611666e017d480afd49158c2d70714c7461a97c8820807"
+checksum="038e274b624e2d4d21b4535a672e205e40a1a08b203a9e8d967f10a49b6d14a9"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
 configure_args+=" -DSYSDIG_VERSION=$version"
@@ -45,6 +51,7 @@ post_extract() {
 post_install() {
   rm -rf "$DESTDIR/usr/share/zsh/vendor-completions"
   vlicense COPYING
+  vlicense NOTICES
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
