@@ -1,8 +1,8 @@
 # credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libomp"
-version=7.0.1
-revision=2
+version=8.0.0
+revision=1
 short_desc="LLVM OpenMP Runtime Library"
 makedepends+=" elfutils-devel"
 makedepends+=" libffi-devel"
@@ -12,10 +12,11 @@ hostmakedepends+=" pkg-config"
 homepage="https://openmp.llvm.org"
 license="NCSA"
 distfiles="https://releases.llvm.org/$version/openmp-$version.src.tar.xz"
-checksum="bf16b78a678da67d68405214ec7ee59d86a15f599855806192a75dcfca9b0d0c"
+checksum="f7b1705d2f16c4fc23d6531f67d2dd6fb78a077dd346b02fed64f4b8df65c9d5"
 wrksrc="openmp-$version.src"
 build_style="cmake"
 configure_args+=" -DLIBOMP_ENABLE_SHARED=ON"
+configure_args+=" -DLIBOMP_INSTALL_ALIASES=OFF"
 configure_args+=" -G Ninja"
 make_cmd="ninja"
 
@@ -26,8 +27,6 @@ do_install() {
 
 post_install() {
   vlicense LICENSE.txt
-  # libgomp.so is also provided by libgomp-devel, fix conflict
-  rm "$DESTDIR/usr/lib/libgomp.so"
 }
 
 libomp-devel_package() {
