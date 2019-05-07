@@ -29,6 +29,8 @@ distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$ve
 checksum="4ab2d3cebb49e3b059bf974d68cef4cedc141d1544fa2b252cfa1cdf3ee33fdd"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
+configure_args+=" -DLUA_INCLUDE_DIR=$XBPS_CROSS_BASE/usr/include/luajit-2.1"
+configure_args+=" -DLUA_LIBRARY=libluajit-5.1.so"
 configure_args+=" -DSYSDIG_VERSION=$version"
 configure_args+=" -DUSE_BUNDLED_B64=ON"
 configure_args+=" -DUSE_BUNDLED_DEPS=OFF"
@@ -36,6 +38,7 @@ configure_args+=" -DUSE_BUNDLED_JQ=ON"
 nocross="yes"
 disable_parallel_build="yes"
 dkms_modules="sysdig $version"
+broken="https://build.voidlinux.org/builders/x86_64_builder/builds/17544/steps/shell_3/logs/stdio"
 
 post_extract() {
   sed \
