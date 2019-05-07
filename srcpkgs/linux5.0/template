@@ -10,7 +10,7 @@ archs+=" armv5tel*"
 archs+=" armv6l*"
 archs+=" armv7l*"
 archs+=" i686*"
-archs+=" ppc64*"
+archs+=" ppc*"
 archs+=" x86_64*"
 hostmakedepends+=" bc"
 hostmakedepends+=" elfutils-devel"
@@ -79,6 +79,9 @@ do_configure() {
     ppc64*)
       arch="powerpc"
       subarch="ppc64"
+      ;;
+    ppc*)
+      arch="powerpc"
       ;;
   esac
 
@@ -152,7 +155,7 @@ do_build() {
       _args="Image modules dtbs"
       arch="arm64"
       ;;
-    ppc64*)
+    ppc*)
       _args="zImage modules"
       arch="powerpc"
       ;;
@@ -199,7 +202,7 @@ do_install() {
     aarch64*)
       arch="arm64"
       ;;
-    ppc64*)
+    ppc*)
       arch="powerpc"
       ;;
   esac
