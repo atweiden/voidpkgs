@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cryfs"
 version=0.10.1
-revision=1
+revision=2
 short_desc="Cryptographic filesystem for the cloud"
 depends="fuse"
 makedepends+=" boost-devel"
