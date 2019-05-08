@@ -3,6 +3,7 @@ pkgname="libffi"
 version=3.2.1
 revision=5
 short_desc="Library supporting Foreign Function Interfaces"
+checkdepends="dejagnu"
 homepage="http://sourceware.org/libffi"
 license="MIT"
 distfiles="ftp://sourceware.org/pub/libffi/$pkgname-$version.tar.gz"
@@ -18,7 +19,7 @@ pre_install() {
 
 post_install() {
   # fix includedir for pkg-config file
-  sed \
+  vsed \
     -i \
     -e "s|\${libdir}/libffi-$version|/usr|" \
     "$DESTDIR/usr/lib/pkgconfig/libffi.pc"
