@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="inadyn"
 version=2.5
-revision=2
+revision=3
 short_desc="Small DynDNS client with SSL/TLS support"
 makedepends+=" confuse-devel"
 makedepends+=" libressl-devel"
@@ -16,7 +16,7 @@ conf_files="/etc/inadyn.conf"
 build_style="gnu-configure"
 configure_args="--enable-openssl"
 system_accounts="inadyn"
-inadyn_homedir="/run/inadyn"
+inadyn_homedir="/var/empty"
 
 pre_configure() {
   autoreconf -fi
