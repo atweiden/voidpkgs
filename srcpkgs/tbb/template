@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tbb"
-version=2019.U5
-revision=2
+version=2019.U6
+revision=1
 # version rewrite: 2017_U7 (upstream) => 2017.7 (xbps)
 _ver=${version/./_}
 short_desc="Intel Threading Building Blocks"
@@ -14,8 +14,8 @@ archs+=" x86_64*"
 hostmakedepends="cmake"
 homepage="https://www.threadingbuildingblocks.org"
 license="Apache-2.0"
-distfiles="https://github.com/01org/tbb/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="2ea82d74dec50e18075b4982b8d360f8bd2bf2950f38e2db483aef82e0047444"
+distfiles="https://github.com/intel/tbb/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
+checksum="2ba197b3964fce8a84429dd15b75eba7434cb89afc54f86d5ee6f726fdbe97fd"
 wrksrc="$pkgname-$_ver"
 build_style="gnu-makefile"
 
