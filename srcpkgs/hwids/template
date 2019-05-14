@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="hwids"
-version=20180917
+version=20190316
 revision=1
 short_desc="Hardware Identification Databases"
 archs="noarch"
 homepage="https://github.com/gentoo/hwids"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/gentoo/hwids/archive/$pkgname-$version.tar.gz"
-checksum="44c7556c2bda100f927ccde1afbfeb16da1529f26380d712d00fd54451978fe2"
+checksum="e4498020b2c1a1ea5faf1e9d30bda0ae161aaf8e8fb17f40e1c6b8dc896c5d9e"
 wrksrc="hwids-hwids-$version"
 
 do_install() {
