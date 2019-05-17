@@ -1,11 +1,15 @@
-# Template file for 'cross-arm-none-eabi'
-_triplet=arm-none-eabi
-pkgname=cross-arm-none-eabi
+_triplet="arm-none-eabi"
+
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cross-arm-none-eabi"
 version=0.4
 revision=1
-build_style=meta
-depends="cross-arm-none-eabi-binutils cross-arm-none-eabi-gcc cross-arm-none-eabi-newlib"
 short_desc="GNU cross bare metal toolchain"
-maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
-license="metapackage"
+depends+=" cross-arm-none-eabi-binutils"
+depends+=" cross-arm-none-eabi-gcc"
+depends+=" cross-arm-none-eabi-newlib"
 homepage="https://www.voidlinux.org/"
+license="metapackage"
+build_style="meta"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
