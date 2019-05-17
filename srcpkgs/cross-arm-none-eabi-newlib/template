@@ -1,28 +1,29 @@
-# Template file for 'cross-${_triplet}-${_pkgname}'
-_triplet=arm-none-eabi
-_pkgname=newlib
-pkgname=cross-${_triplet}-${_pkgname}
+_triplet="arm-none-eabi"
+_pkgname="newlib"
+
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cross-$_triplet-$_pkgname"
 version=3.1.0.20181231
 revision=1
-wrksrc="${_pkgname}-${version}"
-build_style=gnu-configure
-configure_args="
- --disable-newlib-supplied-syscalls
- --disable-nls
- --enable-interwork
- --enable-newlib-io-long-long
- --enable-newlib-register-fini
- --host=${XBPS_CROSS_TRIPLET}
- --prefix=/usr
- --target=${_triplet}
- --with-gnu-as
- --with-gnu-ld
-"
-hostmakedepends="cross-arm-none-eabi-binutils cross-arm-none-eabi-gcc"
 short_desc="C library intended for use on embedded systems"
-maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+hostmakedepends+=" cross-arm-none-eabi-binutils"
+hostmakedepends+=" cross-arm-none-eabi-gcc"
+homepage="https://www.sourceware.org/$_pkgname/"
 license="GPL-3.0-or-later"
-homepage="https://www.sourceware.org/${_pkgname}/"
-distfiles="ftp://sources.redhat.com/pub/${_pkgname}/${_pkgname}-${version}.tar.gz"
-checksum=9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0
-nostrip=yes
+distfiles="ftp://sources.redhat.com/pub/$_pkgname/$_pkgname-$version.tar.gz"
+checksum="9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0"
+wrksrc="$_pkgname-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-newlib-supplied-syscalls"
+configure_args+=" --disable-nls"
+configure_args+=" --enable-interwork"
+configure_args+=" --enable-newlib-io-long-long"
+configure_args+=" --enable-newlib-register-fini"
+configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+configure_args+=" --prefix=/usr"
+configure_args+=" --target=$_triplet"
+configure_args+=" --with-gnu-as"
+configure_args+=" --with-gnu-ld"
+nostrip="yes"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
