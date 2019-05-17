@@ -1,68 +1,77 @@
-# Template file for 'cross-${_triplet}-${_pkgname}'
-_triplet=arm-none-eabi
-_pkgname=gcc
-pkgname=cross-${_triplet}-${_pkgname}
+_triplet="arm-none-eabi"
+_pkgname="gcc"
+
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cross-$_triplet-$_pkgname"
 version=8.3.0
 revision=1
-wrksrc="${_pkgname}-${version}"
-build_style=gnu-configure
-configure_args="
- --disable-decimal-float
- --disable-libffi
- --disable-libgomp
- --disable-libmudflap
- --disable-libquadmath
- --disable-libssp
- --disable-libstdcxx-pch
- --disable-nls
- --disable-shared
- --disable-threads
- --disable-tls
- --disable-werror
- --enable-__cxa_atexit
- --enable-c99
- --enable-gnu-indirect-function
- --enable-interwork
- --enable-languages=c,c++
- --enable-long-long
- --enable-multilib
- --enable-plugins
- --host=${XBPS_CROSS_TRIPLET}
- --libdir=/usr/lib
- --libexecdir=/usr/lib
- --prefix=/usr
- --target=${_triplet}
- --with-gmp
- --with-gnu-as
- --with-gnu-ld
- --with-headers=/usr/${_triplet}/include
- --with-host-libstdcxx='-static-libgcc'
- --with-isl
- --with-libelf
- --with-mpc
- --with-mpfr
- --with-multilib-list=rmprofile
- --with-native-system-header-dir=/include
- --with-newlib
- --with-python-dir=share/${_pkgname}-${_triplet}
- --with-sysroot=/usr/${_triplet}
- --with-system-zlib
-"
+short_desc="GNU Compiler Collection"
+depends="cross-arm-none-eabi-binutils"
+makedepends+=" gmp-devel"
+makedepends+=" isl15-devel"
+makedepends+=" libmpc-devel"
+makedepends+=" mpfr-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" bison"
+hostmakedepends+=" cross-arm-none-eabi-binutils"
+hostmakedepends+=" flex"
+hostmakedepends+=" perl"
+homepage="https://gcc.gnu.org"
+license="GFDL-1.2-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
+distfiles="$GNU_SITE/$_pkgname/$_pkgname-$version/$_pkgname-$version.tar.xz"
+checksum="64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+wrksrc="$_pkgname-$version"
+build_style="gnu-configure"
+configure_args+=" --disable-decimal-float"
+configure_args+=" --disable-libffi"
+configure_args+=" --disable-libgomp"
+configure_args+=" --disable-libmudflap"
+configure_args+=" --disable-libquadmath"
+configure_args+=" --disable-libssp"
+configure_args+=" --disable-libstdcxx-pch"
+configure_args+=" --disable-nls"
+configure_args+=" --disable-shared"
+configure_args+=" --disable-threads"
+configure_args+=" --disable-tls"
+configure_args+=" --disable-werror"
+configure_args+=" --enable-__cxa_atexit"
+configure_args+=" --enable-c99"
+configure_args+=" --enable-gnu-indirect-function"
+configure_args+=" --enable-interwork"
+configure_args+=" --enable-languages=c,c++"
+configure_args+=" --enable-long-long"
+configure_args+=" --enable-multilib"
+configure_args+=" --enable-plugins"
+configure_args+=" --host=$XBPS_CROSS_TRIPLET"
+configure_args+=" --libdir=/usr/lib"
+configure_args+=" --libexecdir=/usr/lib"
+configure_args+=" --prefix=/usr"
+configure_args+=" --target=$_triplet"
+configure_args+=" --with-gmp"
+configure_args+=" --with-gnu-as"
+configure_args+=" --with-gnu-ld"
+configure_args+=" --with-headers=/usr/$_triplet/include"
+configure_args+=" --with-host-libstdcxx='-static-libgcc'"
+configure_args+=" --with-isl"
+configure_args+=" --with-libelf"
+configure_args+=" --with-mpc"
+configure_args+=" --with-mpfr"
+configure_args+=" --with-multilib-list=rmprofile"
+configure_args+=" --with-native-system-header-dir=/include"
+configure_args+=" --with-newlib"
+configure_args+=" --with-python-dir=share/$_pkgname-$_triplet"
+configure_args+=" --with-sysroot=/usr/$_triplet"
+configure_args+=" --with-system-zlib"
 make_build_target="all-gcc"
 make_install_target="install-gcc"
-hostmakedepends="autoconf automake cross-arm-none-eabi-binutils bison flex perl"
-makedepends="gmp-devel isl15-devel libmpc-devel mpfr-devel zlib-devel"
-depends="cross-arm-none-eabi-binutils"
-short_desc="GNU Compiler Collection"
-maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
-license="GFDL-1.2-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
-homepage="https://gcc.gnu.org"
-distfiles="${GNU_SITE}/${_pkgname}/${_pkgname}-${version}/${_pkgname}-${version}.tar.xz"
-checksum=64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
 alternatives="arm-none-eabi:/usr/bin/arm-none-eabi-cc:/usr/bin/arm-none-eabi-gcc"
-nocross=yes
-nopie=yes
+nocross="yes"
+nopie="yes"
 
 post_install() {
-	rm -fr ${DESTDIR}/usr/share/{info,man/man7}
+  rm -fr "$DESTDIR/usr/share"/{info,man/man7}
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
