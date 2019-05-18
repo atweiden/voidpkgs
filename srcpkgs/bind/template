@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bind"
-version=9.11.6
+version=9.11.7
 revision=1
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
@@ -18,7 +18,7 @@ hostmakedepends+=" perl"
 homepage="https://www.isc.org/downloads/bind/"
 license="ISC"
 distfiles="https://ftp.isc.org/isc/bind9/$_fullver/bind-$_fullver.tar.gz"
-checksum="4499007f3a6b8bba84fc757053caeabf36466d6f7d278baccef9fd109beac6d4"
+checksum="5b9e86dc5711a1a7448356c02ddb23bb1dd78c9e02a69f9b2e2ce31d39f5a0fd"
 conf_files="/etc/named/named.conf"
 wrksrc="$pkgname-$_fullver"
 build_style="gnu-configure"
