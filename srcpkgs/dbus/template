@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dbus"
-version=1.12.12
+version=1.12.14
 revision=1
 short_desc="Message bus system"
 makedepends+=" expat-devel"
@@ -13,7 +13,7 @@ homepage="https://dbus.freedesktop.org/"
 license="GPL-2.0-or-later"
 changelog="https://github.com/freedesktop/dbus/raw/dbus-${version%.*}/NEWS"
 distfiles="https://dbus.freedesktop.org/releases/$pkgname/$pkgname-$version.tar.gz"
-checksum="9546f226011a1e5d9d77245fe5549ef25af4694053189d624d0d6ac127ecf5f8"
+checksum="44f9c290ae8f6cadeb2c329316c03716f171ce10daddd85c0bffd0f7df514c8d"
 conf_files+=" /etc/dbus-1/session.conf"
 conf_files+=" /etc/dbus-1/system.conf"
 build_style="gnu-configure"
