@@ -649,3 +649,4 @@ libxmlrpc_abyss++.so.8 xmlrpc-c-1.39.11_1
 libxmlrpc_util++.so.8 xmlrpc-c-1.39.11_1
 libzmq.so.5 zeromq-4.1.2_1
 libz.so.1 zlib-1.2.3_1
+libzuluplay.so.1.1 zuluplay-1.1_1

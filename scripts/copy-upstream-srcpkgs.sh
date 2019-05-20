@@ -829,7 +829,8 @@ readonly PKGS=('ISOEnts'
                'zsh'
                'zsh-completions'
                'zsh-syntax-highlighting'
-               'zstd')
+               'zstd'
+               'zuluplay')
 
 # end constants }}}
 # ==============================================================================
