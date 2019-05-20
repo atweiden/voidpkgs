@@ -173,7 +173,6 @@ libipq.so.0 iptables-1.4.7_1
 libiptc.so.0 iptables-1.4.7_1
 libxtables.so.12 iptables-1.6.1_1
 libisl.so.19 isl15-0.19_1
-libisl.so.15 isl16-0.16_1
 libjansson.so.4 jansson-2.4_1
 libjemalloc.so.2 jemalloc-4.0.0_1
 libjq.so.1 jq-devel-1.4_1
