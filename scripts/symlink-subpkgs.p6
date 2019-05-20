@@ -664,6 +664,7 @@ constant %PKG = Map.new(
     'zlib' => ['zlib-devel'],
     'zstd' => qw<libzstd
                  libzstd-devel>,
+    'zulucrypt' => ['zulucrypt-devel'],
     'zuluplay' => ['zuluplay-devel']
 );
 
