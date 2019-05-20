@@ -14,6 +14,7 @@ license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/bison/$pkgname-$version.tar.xz"
 checksum="6f3582cce1bb040fa09cfa238d6ee8643c03c79e34d0d203a7466b8cc1038efa"
 build_style="gnu-configure"
+disable_parallel_build="yes"
 alternatives+=" yacc:yacc:/usr/bin/bison-yacc"
 alternatives+=" yacc:yacc.1:/usr/share/man/man1/bison-yacc.1"
 
