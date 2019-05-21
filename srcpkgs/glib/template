@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glib"
-version=2.60.1
+version=2.60.2
 revision=1
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
@@ -19,7 +19,7 @@ homepage="https://wiki.gnome.org/Projects/GLib"
 license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/$pkgname-$version.tar.xz"
-checksum="89f884f5d5c6126140ec868cef184c42ce72902c13cd08f36e660371779b5560"
+checksum="2ef15475060addfda0443a7e8a52b28a10d5e981e82c083034061daf9a8f80d9"
 build_style="meson"
 configure_args+=" -Dfam=false"
 configure_args+=" -Dman=true"
@@ -66,6 +66,9 @@ glib-devel_package() {
              glib-2.0; do
       vmove "usr/share/$f"
     done
+    if [[ -d "$DESTDIR/usr/share/gtk-doc" ]]; then
+      vmove usr/share/gtk-doc
+    fi
   }
 }
 
