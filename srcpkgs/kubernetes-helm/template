@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kubernetes-helm"
-version=2.13.1
-revision=2
+version=2.14.0
+revision=1
 short_desc="Kubernetes Package Manager"
 hostmakedepends+=" git"
 hostmakedepends+=" go"
@@ -10,9 +10,9 @@ hostmakedepends+=" mercurial"
 homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz"
-checksum="328f355050ebaecf6420aba85e44c1e86c1aa429991ec9102cc2b28ba9bc5536"
+checksum="5ee68580431254044996da0d2347a394e917e18a81047cc1b0f3d8949a371d75"
 wrksrc="helm-$version"
-nopie=true
+nopie="true"
 conflicts="helm"
 
 _convert_arch() {
