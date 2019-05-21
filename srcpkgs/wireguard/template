@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireguard"
 version=0.0.20190406
-revision=1
+revision=2
 short_desc="Fast, modern, secure VPN tunnel"
 depends+=" dkms"
 depends+=" wireguard-tools"
