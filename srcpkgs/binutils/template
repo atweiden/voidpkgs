@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="binutils"
 version=2.32
-revision=1
+revision=2
 short_desc="GNU binary utilities"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
@@ -42,6 +42,9 @@ do_configure() {
 
   if [[ "${XBPS_TARGET_MACHINE%-musl}" == "x86_64" ]]; then
     CONFIGFLAG+=" --enable-targets=x86_64-pep"
+  elif [[ "${XBPS_TARGET_MACHINE%-musl}" == "i686" ]]; then
+    CONFIGFLAG+=" --enable-64-bit-bfd"
+    CONFIGFLAG+=" --enable-targets=x86_64-linux-gnu,x86_64-pep"
   fi
 
   ./configure \
