@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
-version=1.17.0
+version=1.18.3
 revision=1
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-lang-nursery/rustup.rs/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6db73f9684b4d93de47cd511ebd56c2821c37bb41054a4a60060b496764f1f4d"
+checksum="9a2ae2c85bbbfc838b25d86d049bc677532950d78765725beabb8a61df1c2710"
 wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
