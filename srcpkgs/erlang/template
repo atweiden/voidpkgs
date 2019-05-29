@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="erlang"
-version=22.0
+version=22.0.1
 revision=1
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" libressl-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" perl"
 license="Apache-2.0"
 homepage="http://www.erlang.org/"
 distfiles="https://github.com/erlang/otp/archive/OTP-$version.tar.gz"
-checksum="7efb93a542d66137ba4f38f9734ee7b03adc17d949fac561cca3b2d8f6fafcd2"
+checksum="694f133abfca3c7fb8376b223ea484413bcd16b82354f178fba798f37335f163"
 create_wrksrc="yes"
 build_wrksrc="otp-OTP-$version"
 build_style="gnu-configure"
