@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glibc"
 version=2.29
-revision=3
+revision=4
 short_desc="GNU C library"
 # there's no point in building this for musl
 archs="~*-musl"
