@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="grub"
 version=2.02
-revision=4
+revision=5
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
@@ -67,6 +67,13 @@ do_configure() {
   unset RANLIB
 
   CFLAGS+=" -fno-stack-protector"
+
+  # building with altivec generates broken grub core
+  case "$XBPS_TARGET_MACHINE" in
+    ppc64*)
+      CFLAGS="$CFLAGS -mno-altivec"
+      ;;
+  esac
 
   configure_args+=" --disable-grub-mkfont"
   configure_args+=" --disable-werror"
