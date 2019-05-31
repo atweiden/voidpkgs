@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="binutils"
 version=2.32
-revision=2
+revision=3
 short_desc="GNU binary utilities"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
@@ -10,9 +10,10 @@ checksum="0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
+  depends="binutils-doc"
+  checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
-  checkdepends="bc"
 else
   unset XBPS_CHECK_PKGS
   XBPS_TRIPLET="x86_64-unknown-linux-gnu"
