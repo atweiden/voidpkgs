@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnutls"
-version=3.6.7
+version=3.6.8
 revision=2
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
@@ -20,7 +20,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2"
+checksum="aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83"
 build_style="gnu-configure"
 configure_args+=" --disable-guile"
 configure_args+=" --disable-rpath"
