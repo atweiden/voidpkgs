@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="os-prober"
 version=1.77
-revision=1
+revision=2
 short_desc="Utility to detect other OSes on a set of drives"
 homepage="https://packages.debian.org/sid/os-prober"
 license="GPL-2.0-or-later"
@@ -9,6 +9,17 @@ distfiles="$DEBIAN_SITE/main/o/os-prober/${pkgname}_$version.tar.xz"
 checksum="8d8ea4afbe1aeef3c8b73f74a0fb37b06185e21a6abc78f80fc2160009cf705f"
 build_style="gnu-makefile"
 make_dirs="/var/lib/os-prober 0755 root root"
+
+case "$XBPS_TARGET_MACHINE" in
+  i686*|x86_64*)
+    _ARCH="x86"
+    ;;
+  ppc*)
+    _ARCH="powerpc"
+    ;;
+  *)
+    ;;
+esac
 
 do_install() {
   vbin linux-boot-prober
@@ -22,10 +33,11 @@ do_install() {
              os-probes/mounted; do
     vmkdir "usr/lib/$dir"
     install -m 755 -t "$DESTDIR/usr/lib/$dir" "$dir/common"/*
-    [[ -d "$dir/x86" ]] \
-      && cp -r "$dir/x86"/* "$DESTDIR/usr/lib/$dir"
+    [[ -n "$_ARCH" && -d $dir/$_ARCH ]] \
+      && cp -r "$dir/$_ARCH"/* "$DESTDIR/usr/lib/$dir"
   done
-  vinstall os-probes/mounted/powerpc/20macosx 755 usr/lib/os-probes/mounted
+  [[ -n "$_ARCH" && "$_ARCH" == "x86" ]] \
+    && vinstall os-probes/mounted/powerpc/20macosx 755 usr/lib/os-probes/mounted
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
