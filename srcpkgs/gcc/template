@@ -291,10 +291,10 @@ do_configure() {
         gcc/config/aarch64/t-aarch64-linux
       ;;
     ppc)
-      _args+=" --with-cpu=powerpc --target=powerpc-linux-gnu"
+      _args+=" --target=powerpc-linux-gnu --enable-secureplt"
       ;;
     ppc-musl)
-      _args+=" --with-cpu=powerpc --target=powerpc-linux-musl --disable-decimal-float --with-long-double=64"
+      _args+=" --target=powerpc-linux-musl --enable-secureplt --disable-decimal-float"
       ;;
     ppc64le*)
       # use lib not lib64 by default
