@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bcc"
-version=0.9.0
-revision=2
+version=0.10.0
+revision=1
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
 makedepends+=" elfutils-devel"
@@ -14,9 +14,9 @@ hostmakedepends="flex"
 homepage="https://github.com/iovisor/bcc"
 license="Apache-2.0"
 distfiles+=" https://github.com/iovisor/bcc/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/libbpf/libbpf/archive/5beb8a2ebffd1045e3edb9b522d6ff5bb477c541.tar.gz"
-checksum+=" 0703b752c501b37065f11436e6b38fd66a8153e963cec4989a730d8498451216"
-checksum+=" 36d1f67c3648d4556bcf560e18cd20dac99e4c35c3a1b447b06e4d39724e3f9f"
+distfiles+=" https://github.com/libbpf/libbpf/archive/75db50f4a09d9dbac49b1ace9e4b6a722bdf0519.tar.gz"
+checksum+=" b02a75bc469a33e6781c915361a49a97d4ec7b45d74cfeffb22693247438d4b0"
+checksum+=" 22a7ba2343df699a0332015aa54d4a8aeba1756f58308fed120b60a8900e9d55"
 build_style="cmake"
 configure_args="-DREVISION=$version"
 # https://github.com/voidlinux/void-packages/issues/4738
