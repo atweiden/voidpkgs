@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apparmor"
 version=2.13.2
-revision=5
+revision=6
 short_desc="Mandatory access control to restrict programs"
 depends+=" libapparmor"
 depends+=" python3"
