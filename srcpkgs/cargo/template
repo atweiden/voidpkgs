@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cargo"
 version=0.36.0
-revision=1
+revision=2
 _cargo_dist_version=0.36.0
 short_desc="Rust package manager"
 depends="rust"
@@ -86,6 +86,8 @@ do_build() {
     cargo="./cargo"
   fi
 
+  $cargo update
+  $cargo update --package libc --precise 0.2.55
   $cargo build --release $(vopt_if static --features="all-static")
 }
 
