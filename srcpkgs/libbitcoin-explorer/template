@@ -33,7 +33,7 @@ configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
 
 case "$XBPS_TARGET_MACHINE" in
-  armv6*)
+  armv6*|ppc|ppc-musl)
     makedepends+=" libatomic-devel"
     LDFLAGS="-latomic"
     ;;
