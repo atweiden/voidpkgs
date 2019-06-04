@@ -20,7 +20,7 @@ build_style="cmake"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args="-DBUILD_UNIT_TESTS=0"
   case "$XBPS_TARGET_MACHINE" in
-    armv[56]*)
+    armv[56]*|ppc|ppc-musl)
       makedepends+=" libatomic-devel"
       LDFLAGS="-latomic"
       ;;
