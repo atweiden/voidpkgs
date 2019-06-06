@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-hypothesis"
-version=4.16.0
+version=4.24.2
 revision=1
 short_desc="Python2 library for property based testing"
 archs="noarch"
@@ -21,7 +21,7 @@ homepage="https://hypothesis.works/"
 license="MPL-2.0"
 changelog="https://github.com/HypothesisWorks/hypothesis/raw/master/hypothesis-python/docs/changes.rst"
 distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
-checksum="fae5b4271292e351f87fa74443b6e9c220f431372af8cbc42fa365206df3626c"
+checksum="127f590504b10a7558b51e3e258e5f77c1a97f5708abd1296209132bc6c30e01"
 wrksrc="hypothesis-hypothesis-python-$version"
 build_wrksrc="hypothesis-python"
 build_style="python-module"
