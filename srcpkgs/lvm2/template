@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lvm2"
-version=2.02.184
+version=2.02.185
 revision=1
 short_desc="Logical Volume Manager 2 utilities"
 depends="thin-provisioning-tools"
@@ -13,9 +13,8 @@ homepage="https://sourceware.org/lvm2/"
 license="GPL-2.0-only, LGPL-2.1-only"
 changelog="https://abi-laboratory.pro/?view=changelog&l=lvm2&v=$version"
 distfiles="https://mirrors.kernel.org/sourceware/lvm2/releases/${pkgname^^}.$version.tgz"
-checksum="d12da937ce5c0753d4ea8b5215afaa3b12061ea961268693e24e81b19918f514"
-conf_files+=" /etc/lvm/lvm.conf"
-conf_files+=" /etc/lvm/lvmlocal.conf"
+checksum="070b2e7d34c8069602741c7483be715327f62875f5ce1f5727627fbea2481f4d"
+conf_files+=" /etc/lvm/*.conf"
 conf_files+=" /etc/lvm/profile/*"
 wrksrc="${pkgname^^}.$version"
 build_style="gnu-configure"
