@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gettext"
-version=0.19.8.1
-revision=4
+version=0.20.1
+revision=1
 short_desc="Internationalized Message Handling Library and tools"
 homepage="http://www.gnu.org/software/gettext/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gettext/$pkgname-$version.tar.gz"
-checksum="ff942af0e438ced4a8b0ea4b0b6e0d6d657157c5e2364de57baa279c1c125c43"
+checksum="66415634c6e8c3fa8b71362879ec7575e27da43da562c798a8a2f223e6e47f5c"
 build_style="gnu-configure"
 configure_args+=" --disable-acl"
 configure_args+=" --disable-csharp"

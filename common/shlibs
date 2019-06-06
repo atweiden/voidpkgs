@@ -94,8 +94,9 @@ libgdbm.so.6 gdbm-1.16_1
 libgettextpo.so.0 gettext-libs-0.17_1
 libgnuintl.so.8 gettext-libs-0.19.2_1
 libintl.so.8 gettext-libs-0.19.2_1
-libgettextlib-0.19.8.1.so gettext-libs-0.19.8.1_1
-libgettextsrc-0.19.8.1.so gettext-libs-0.19.8.1_1
+libgettextlib-0.20.1.so gettext-libs-0.20.1_1
+libgettextsrc-0.20.1.so gettext-libs-0.20.1_1
+libtextstyle.so.0 gettext-libs-0.20.1_1
 libgio-2.0.so.0 glib-2.18.0_1
 libglib-2.0.so.0 glib-2.18.0_1
 libgmodule-2.0.so.0 glib-2.18.0_1
