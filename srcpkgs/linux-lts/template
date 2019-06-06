@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux-lts"
 version=4.14
-revision=1
+revision=2
 short_desc="Linux LTS (Long Term Support) kernel meta package"
-homepage="http://www.voidlinux.eu/"
+homepage="http://www.voidlinux.org/"
 license="Public domain"
 build_style="meta"
 

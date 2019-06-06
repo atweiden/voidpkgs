@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-devel"
 version=20181003
-revision=1
+revision=2
 short_desc="Void Linux development tools meta package"
 depends+=" autoconf"
 depends+=" automake"
@@ -29,7 +29,7 @@ case "$XBPS_TARGET_MACHINE" in
     depends+=" glibc-devel"
     ;;
 esac
-homepage="http://www.voidlinux.eu/"
+homepage="http://www.voidlinux.org/"
 license="Public Domain"
 build_style="meta"
 

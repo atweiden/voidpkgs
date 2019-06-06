@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="musl-legacy-compat"
 version=0.3
-revision=2
+revision=3
 short_desc="Legacy compatibility headers for the musl libc"
-homepage="http://www.voidlinux.eu"
+homepage="http://www.voidlinux.eu/"
 license="BSD-2-Clause, BSD-3-Clause"
 bootstrap="yes"
 

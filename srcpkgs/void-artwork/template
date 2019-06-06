@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="void-artwork"
 version=20170517
-revision=1
+revision=2
 short_desc="Void Linux artwork"
 archs="noarch"
-homepage="http://www.voidlinux.eu"
+homepage="http://www.voidlinux.org"
 license="Public domain"
 
 do_install() {

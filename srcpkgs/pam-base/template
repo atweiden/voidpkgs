@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pam-base"
 version=0.3
-revision=4
+revision=5
 short_desc="PAM base configuration files"
 archs="noarch"
-homepage="http://www.voidlinux.eu"
+homepage="http://www.voidlinux.org"
 license="public domain"
 conf_files+=" /etc/pam.d/other"
 conf_files+=" /etc/pam.d/system-auth"

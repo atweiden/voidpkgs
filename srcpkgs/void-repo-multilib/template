@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="void-repo-multilib"
 version=6
-revision=2
+revision=3
 short_desc="Void Linux drop-in file for the multilib repository"
 archs="x86_64"
-homepage="http://www.voidlinux.eu"
+homepage="http://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
 

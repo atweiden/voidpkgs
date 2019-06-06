@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-minimal"
 version=0.1
-revision=1
+revision=2
 short_desc="Void Linux base system meta with minimal tools"
 depends+=" base-files"
 depends+=" coreutils"

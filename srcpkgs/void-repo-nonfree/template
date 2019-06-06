@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="void-repo-nonfree"
 version=9
-revision=3
+revision=4
 short_desc="Void Linux drop-in file for the nonfree repository"
 archs="noarch"
-homepage="http://www.voidlinux.eu"
+homepage="http://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
 
