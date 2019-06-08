@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ccache"
 version=3.7.1
-revision=1
+revision=2
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
 checkdepends="perl"
@@ -17,6 +17,12 @@ bootstrap="yes"
 
 post_install() {
   vmkdir usr/lib/ccache/bin
+  # clang
+  for f in clang \
+           clang++; do
+    ln -sfr "$DESTDIR/usr/bin/ccache" "$DESTDIR/usr/lib/ccache/bin/$f"
+  done
+  # gcc
   for f in c++ \
            cc \
            g++ \
