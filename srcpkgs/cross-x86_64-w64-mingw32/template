@@ -11,8 +11,8 @@ pkgname="cross-x86_64-w64-mingw32"
 version="$_mingw_version"
 revision=1
 short_desc="Cross toolchain for Win64 (GCC $_gcc_version)"
-archs+=" i686"
-archs+=" x86_64"
+archs+=" i686*"
+archs+=" x86_64*"
 depends="$pkgname-crt-${version}_$revision"
 # it's ok to build with current's -devel packages
 # although it might break the package during compiler updates
