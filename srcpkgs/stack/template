@@ -1,10 +1,11 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="stack"
 version=1.9.3
-revision=1
+revision=2
 _stackage="lts-13.2"
 short_desc="Cross-platform program for developing Haskell projects"
 depends+=" git"
+depends+=" gmp-devel"
 depends+=" iana-etc"
 makedepends+=" pcre-devel"
 makedepends+=" zlib-devel"
