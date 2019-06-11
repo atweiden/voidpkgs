@@ -23,6 +23,12 @@ nocross="yes"
 nopie_files+=" /usr/bin/pandoc"
 nopie_files+=" /usr/bin/pandoc-citeproc"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc*)
+    broken="broken stack"
+    ;;
+esac
+
 post_extract() {
   sed \
     -i \
