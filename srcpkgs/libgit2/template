@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgit2"
 version=0.28.2
-revision=1
+revision=2
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
 makedepends+=" libressl-devel"
