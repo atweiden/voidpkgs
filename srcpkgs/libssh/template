@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libssh"
 version=0.8.7
-revision=1
+revision=2
 short_desc="Multiplatform C library implementing the SSH v2 protocol"
 makedepends+=" cmocka-devel"
 makedepends+=" libressl-devel"
