@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ppp"
 version=2.4.7
-revision=9
+revision=10
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
