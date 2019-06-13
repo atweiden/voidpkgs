@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tcpdump"
 version=4.9.2
-revision=4
+revision=5
 short_desc="A tool for network monitoring and data acquisition"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
