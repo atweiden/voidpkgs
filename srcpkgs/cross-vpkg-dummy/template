@@ -1,71 +1,81 @@
-# Template file for 'cross-vpkg-dummy'
-pkgname=cross-vpkg-dummy
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cross-vpkg-dummy"
 version=0.30
 revision=1
-build_style=meta
 short_desc="Dummy meta-pkg for cross building packages with xbps-src"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="Public domain"
-homepage="https://www.voidlinux.org/"
-
 depends="base-files>=0.126"
-
-provides="
-	kernel-libc-headers-9999_1
-	binutils-9999_1
-	libada-9999_1
-	libada-devel-9999_1
-	libgcc-9999_1
-	libstdc++-9999_1
-	libstdc++-devel-9999_1
-	libgfortran-9999_1
-	libgfortran-devel-9999_1
-	libgomp-9999_1
-	libgomp-devel-9999_1
-	gcc-9999_1
-	gcc-fortran-9999_1
-	gcc-ada-9999_1"
-conflicts="
-	kernel-libc-headers>=0
-	binutils>=0
-	libada>=0
-	libada-devel>=0
-	libgcc>=0
-	libstdc++>=0
-	libstdc++-devel>=0
-	libgfortran>=0
-	libgfortran-devel>=0
-	libgomp>=0
-	libgomp-devel>=0
-	gcc>=0
-	gcc-fortran>=0
-	gcc-ada>=0"
-shlib_provides="
-	libgcc_s.so.1
-	libgnat-8.so
-	libgnarl-8.so
-	libgomp.so.1
-	libstdc++.so.6
-	libgfortran.so.5"
+homepage="https://www.voidlinux.org/"
+license="Public domain"
+build_style="meta"
+provides+=" kernel-libc-headers-9999_1"
+provides+=" binutils-9999_1"
+provides+=" libada-9999_1"
+provides+=" libada-devel-9999_1"
+provides+=" libgcc-9999_1"
+provides+=" libstdc++-9999_1"
+provides+=" libstdc++-devel-9999_1"
+provides+=" libgfortran-9999_1"
+provides+=" libgfortran-devel-9999_1"
+provides+=" libgomp-9999_1"
+provides+=" libgomp-devel-9999_1"
+provides+=" gcc-9999_1"
+provides+=" gcc-fortran-9999_1"
+provides+=" gcc-ada-9999_1"
+conflicts+=" kernel-libc-headers>=0"
+conflicts+=" binutils>=0"
+conflicts+=" libada>=0"
+conflicts+=" libada-devel>=0"
+conflicts+=" libgcc>=0"
+conflicts+=" libstdc++>=0"
+conflicts+=" libstdc++-devel>=0"
+conflicts+=" libgfortran>=0"
+conflicts+=" libgfortran-devel>=0"
+conflicts+=" libgomp>=0"
+conflicts+=" libgomp-devel>=0"
+conflicts+=" gcc>=0"
+conflicts+=" gcc-fortran>=0"
+conflicts+=" gcc-ada>=0"
+shlib_provides+=" libgcc_s.so.1"
+shlib_provides+=" libgnat-8.so"
+shlib_provides+=" libgnarl-8.so"
+shlib_provides+=" libgomp.so.1"
+shlib_provides+=" libstdc++.so.6"
+shlib_provides+=" libgfortran.so.5"
 
 case "$XBPS_TARGET_MACHINE" in
-*-musl) depends+=" musl-legacy-compat"
-	provides+=" musl-9999_1 musl-devel-9999_1"
-	conflicts+=" musl>=0"
-	shlib_provides+=" libc.so"
-	;;
-# glibc
-*)	provides+=" glibc-9999_1 glibc-devel-9999_1"
-	conflicts+=" glibc>=0"
-	shlib_provides+=" libc.so.6 libm.so.6 librt.so.1 libpthread.so.0"
-	shlib_provides+=" libcrypt.so.1 libdl.so.2 libresolv.so.2"
-	shlib_provides+=" libnsl.so.1 libutil.so.1"
-	shlib_provides+=" ld-linux.so.2 ld-linux.so.3 ld-linux-x86_64.so.2"
-	shlib_provides+=" ld-linux-armhf.so.3 ld-linux-aarch64.so.1"
-	shlib_provides+=" ld64.so.2 ld.so.1"
-	;;
+  *-musl)
+    depends+=" musl-legacy-compat"
+    provides+=" musl-9999_1"
+    provides+=" musl-devel-9999_1"
+    conflicts+=" musl>=0"
+    shlib_provides+=" libc.so"
+    ;;
+  # glibc
+  *)
+    provides+=" glibc-9999_1"
+    provides+=" glibc-devel-9999_1"
+    conflicts+=" glibc>=0"
+    shlib_provides+=" libc.so.6"
+    shlib_provides+=" libm.so.6"
+    shlib_provides+=" librt.so.1"
+    shlib_provides+=" libpthread.so.0"
+    shlib_provides+=" libcrypt.so.1"
+    shlib_provides+=" libdl.so.2"
+    shlib_provides+=" libresolv.so.2"
+    shlib_provides+=" libnsl.so.1"
+    shlib_provides+=" libutil.so.1"
+    shlib_provides+=" ld-linux.so.2"
+    shlib_provides+=" ld-linux.so.3"
+    shlib_provides+=" ld-linux-x86_64.so.2"
+    shlib_provides+=" ld-linux-armhf.so.3"
+    shlib_provides+=" ld-linux-aarch64.so.1"
+    shlib_provides+=" ld64.so.2"
+    shlib_provides+=" ld.so.1"
+    ;;
 esac
 
-if [ -z "$XBPS_CROSS_BUILD" ]; then
-	broken="This package is only meant to be used by xbps-src to cross compile."
+if [[ -z "$XBPS_CROSS_BUILD" ]]; then
+  broken="This package is only meant to be used by xbps-src to cross compile."
 fi
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
