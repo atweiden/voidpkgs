@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="scrypt"
 version=1.2.1
-revision=6
+revision=7
 short_desc="The scrypt key derivation function"
 makedepends="libressl-devel"
 homepage="https://www.tarsnap.com/scrypt.html"
