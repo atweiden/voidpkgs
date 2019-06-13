@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tor"
 version=0.4.0.5
-revision=1
+revision=2
 short_desc="Anonymity Online"
 depends+=" ca-certificates"
 depends+=" torsocks"
