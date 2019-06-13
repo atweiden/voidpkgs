@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="spiped"
 version=1.6.0
-revision=4
+revision=5
 short_desc="The spiped secure pipe daemon"
 makedepends="libressl-devel"
 homepage="http://www.tarsnap.com/spiped.html"
