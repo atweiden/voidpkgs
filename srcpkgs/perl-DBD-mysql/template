@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-DBD-mysql"
 version=4.050
-revision=1
+revision=2
 short_desc="DBD::mysql - MySQL DBI driver"
 depends="perl-DBI"
 makedepends+=" libmysqlclient-devel"
