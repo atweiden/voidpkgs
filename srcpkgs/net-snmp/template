@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="net-snmp"
 version=5.8
-revision=3
+revision=4
 short_desc="Simple Network Management Protocol (SNMP) suite"
 makedepends+=" bzip2-devel"
 makedepends+=" libnl-devel"
