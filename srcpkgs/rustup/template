@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
 version=1.18.3
-revision=1
+revision=2
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -16,6 +16,11 @@ wrksrc="$pkgname.rs-$version"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
+
+pre_build() {
+  cargo update --package openssl-sys --precise 0.9.46
+  cargo update --package openssl --precise 0.10.22
+}
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init"
