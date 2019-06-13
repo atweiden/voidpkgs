@@ -1,6 +1,6 @@
 pkgname="grpc"
 version=1.19.1
-revision=1
+revision=2
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
 makedepends+=" gperftools-devel"
