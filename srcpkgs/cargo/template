@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cargo"
 version=0.36.0
-revision=2
+revision=3
 _cargo_dist_version=0.36.0
 short_desc="Rust package manager"
 depends="rust"
