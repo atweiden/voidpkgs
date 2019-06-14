@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openntpd"
 version=6.2p3
-revision=4
+revision=5
 short_desc="Free, easy to use implementation of the Network Time Protocol"
 depends="ca-certificates"
 makedepends="libressl-devel"
