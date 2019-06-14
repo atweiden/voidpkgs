@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="aircrack-ng"
 version=1.5.2
-revision=1
+revision=2
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
