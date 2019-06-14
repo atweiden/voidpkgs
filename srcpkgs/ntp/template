@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ntp"
 version=4.2.8p13
-revision=2
+revision=3
 short_desc="Network Time Protocol daemon and utilities"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
