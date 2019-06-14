@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libtorrent"
 version=0.13.7
-revision=3
+revision=4
 short_desc="BitTorrent library written in C++"
 makedepends+=" libcppunit-devel"
 makedepends+=" libressl-devel"
