@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="coWPAtty"
 version=4.8
-revision=1
+revision=2
 short_desc="WPA-PSK dictionary attack"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
