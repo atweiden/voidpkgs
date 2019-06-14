@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gambit"
 version=4.9.3
-revision=2
+revision=3
 short_desc="Complete, portable, efficient and reliable implementation of Scheme"
 makedepends="libressl-devel"
 homepage="https://github.com/gambit/gambit"
