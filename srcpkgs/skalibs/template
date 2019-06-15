@@ -1,52 +1,63 @@
-# Template file for 'skalibs'
-pkgname=skalibs
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="skalibs"
 version=2.8.1.0
 revision=1
-_sysdepspkg=skaware-void-sysdeps
-build_style=configure
-configure_args="--libdir=/usr/lib --enable-static --enable-shared --enable-clock
- --enable-monotonic --enable-force-devr --datadir=/usr/share/$pkgname --libdir=/usr/lib
- --bindir=/usr/bin --dynlibdir=/usr/lib"
 short_desc="General purpose libraries for building software from skarnet.org"
-maintainer="bougyman <bougyman@voidlinux.org>"
-license="ISC"
 homepage="https://skarnet.org/software/skalibs/"
-distfiles="https://skarnet.org/software/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=431c6507b4a0f539b6463b4381b9b9153c86ad75fa3c6bfc9dc4722f00b166ba
+license="ISC"
+distfiles="https://skarnet.org/software/skalibs/$pkgname-$version.tar.gz"
+checksum="431c6507b4a0f539b6463b4381b9b9153c86ad75fa3c6bfc9dc4722f00b166ba"
+build_style="configure"
+configure_args+=" --bindir=/usr/bin"
+configure_args+=" --datadir=/usr/share/$pkgname"
+configure_args+=" --dynlibdir=/usr/lib"
+configure_args+=" --enable-clock"
+configure_args+=" --enable-force-devr"
+configure_args+=" --enable-monotonic"
+configure_args+=" --enable-shared"
+configure_args+=" --enable-static"
+configure_args+=" --libdir=/usr/lib"
+configure_args+=" --libdir=/usr/lib"
 
 CFLAGS="-D_DEFAULT_SOURCE"
 
-if [ "$CROSS_BUILD" ]; then
-	distfiles+=" https://github.com/CMB/${_sysdepspkg}/archive/${version}.tar.gz"
-	checksum+=" b5a56d24caeb731f9a8468fa61ab0e9ae139370609ef4acb36888e69bbe8d98d"
-	configure_args+=" --with-sysdeps=../${_sysdepspkg}-${version}/${XBPS_CROSS_TRIPLET}"
-
-	case "$XBPS_TARGET_MACHINE" in
-		aarch64*|armv6*|armv7l*|i686|x86_64*|ppc*) ;;
-		*) nocross="Missing cross sysdeps" ;;
-	esac
+if [[ -n "$CROSS_BUILD" ]]; then
+  _sysdepspkg="skaware-void-sysdeps"
+  distfiles+=" https://github.com/CMB/$_sysdepspkg/archive/$version.tar.gz"
+  checksum+=" b5a56d24caeb731f9a8468fa61ab0e9ae139370609ef4acb36888e69bbe8d98d"
+  configure_args+=" --with-sysdeps=../$_sysdepspkg-$version/$XBPS_CROSS_TRIPLET"
+  case "$XBPS_TARGET_MACHINE" in
+    aarch64*|armv6*|armv7l*|i686|x86_64*|ppc*)
+      ;;
+    *)
+      nocross="Missing cross sysdeps"
+      ;;
+  esac
 fi
 
 post_install() {
-	vlicense COPYING LICENSE
+  vlicense COPYING LICENSE
 }
 
 skalibs-doc_package() {
-	archs=noarch
-	short_desc+=" - documentation"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmkdir usr/share/doc/skalibs
-		vcopy "doc/*" usr/share/doc/skalibs
-	}
+  archs="noarch"
+  short_desc+=" - documentation"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmkdir usr/share/doc/skalibs
+    vcopy "doc/*" usr/share/doc/skalibs
+  }
 }
+
 skalibs-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/skalibs/sysdeps
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/skalibs/sysdeps
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
