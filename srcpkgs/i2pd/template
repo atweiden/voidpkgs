@@ -26,7 +26,6 @@ esac
 system_accounts="_i2pd"
 _i2pd_homedir="/var/lib/i2pd"
 make_dirs="/var/lib/i2pd 0700 _i2pd _i2pd"
-disable_parallel_build="true"
 
 pre_install() {
   # log errors to syslog
