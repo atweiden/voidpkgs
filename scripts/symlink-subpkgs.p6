@@ -144,6 +144,8 @@ constant %PKG = Map.new(
     'erlang' => ['erlang-doc'],
     'eudev' => qw<eudev-libudev
                   eudev-libudev-devel>,
+    'execline' => qw<execline-devel
+                     execline-doc>,
     'expat' => qw<expat-devel
                   xmlwf>,
     'expect' => ['expect-devel'],
