@@ -604,6 +604,8 @@ constant %PKG = Map.new(
                         star>,
     'serf' => ['serf-devel'],
     'shadowsocks-libev' => ['shadowsocks-libev-devel'],
+    'skalibs' => qw<skalibs-devel
+                    skalibs-doc>,
     'snappy' => ['snappy-devel'],
     'spandsp' => ['spandsp-devel'],
     'spdx-licenses-list' => qw<spdx-licenses-html
