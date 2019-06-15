@@ -23,6 +23,8 @@ constant $ROOT = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 constant $SRCPKGS = sprintf(Q{%s/srcpkgs}, $ROOT);
 # array of subpackages indexed by base pkg
 constant %PKG = Map.new(
+    '66' => qw<66-devel
+               66-doc>,
     'acl' => qw<acl-devel
                 acl-progs>,
     'alsa-lib' => ['alsa-lib-devel'],
