@@ -14,7 +14,7 @@ build_style="gnu-configure"
 
 # LDFLAGS is necessary because libunwind.so itself uses getcontext/setcontext
 case "$XBPS_TARGET_MACHINE" in
-  ppc*-musl)
+  i686-musl|ppc*-musl)
     makedepends+=" libucontext-devel"
     LDFLAGS=" -lucontext"
     ;;
@@ -38,7 +38,7 @@ pre_configure() {
   # it needs to be here because it's used directly in a macro in a public
   # header, so things using libunwind need linkage against it
   case "$XBPS_TARGET_MACHINE" in
-    ppc*-musl)
+    i686-musl|ppc*-musl)
       sed \
         -i \
         -e 's/\-lunwind/\-lunwind \-lucontext/' \
@@ -56,7 +56,7 @@ post_install() {
 libunwind-devel_package() {
   depends="$sourcepkg>=$version"
   case "$XBPS_TARGET_MACHINE" in
-    ppc*-musl)
+    i686-musl|ppc*-musl)
       depends+=" libucontext-devel"
       ;;
     *)
