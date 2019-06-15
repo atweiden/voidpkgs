@@ -1,22 +1,33 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-cffi"
-version=1.11.5
-revision=2
+version=1.12.3
+revision=1
 short_desc="C foreign function interface for Python2"
 depends="python-pycparser"
 makedepends+=" libffi-devel"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
+checkdepends+=" python-pycparser"
+checkdepends+=" python-pytest"
+checkdepends+=" python3-pycparser"
+checkdepends+=" python3-pytest"
 hostmakedepends+=" libffi-devel"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://cffi.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/c/cffi/${pkgname#*-}-$version.tar.gz"
-checksum="e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
+checksum="041c81822e9f84b1d9c401182e174996f0bae9991f33725d059b771744290774"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="cffi"
+
+do_check() {
+  python2 setup.py build_ext -i
+  python2 -m pytest c/ testing/
+  python3 setup.py build_ext -i
+  python3 -m pytest c/ testing/
+}
 
 post_install() {
   vlicense LICENSE
