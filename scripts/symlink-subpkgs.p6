@@ -483,6 +483,8 @@ constant %PKG = Map.new(
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
     'nss' => ['nss-devel'],
+    'nsss' => qw<nsss-devel
+                 nsss-doc>,
     'ntfs-3g' => ['ntfs-3g-devel'],
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
