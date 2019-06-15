@@ -1,45 +1,51 @@
-# Template file for 'execline'
-pkgname=execline
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="execline"
 version=2.5.1.0
 revision=1
-build_style=configure
-makedepends="skalibs-devel"
-configure_args="--libdir=/usr/lib --bindir=/usr/bin
- --with-sysdeps=${XBPS_CROSS_BASE}/usr/lib/skalibs/sysdeps
- --with-lib=${XBPS_CROSS_BASE}/usr/lib"
 short_desc="A non-interactive scripting language"
-maintainer="bougyman <bougyman@voidlinux.org>"
-license="ISC"
+makedepends="skalibs-devel"
 homepage="https://skarnet.org/software/execline/"
+license="ISC"
 changelog="https://skarnet.org/software/execline/upgrade.html"
-distfiles="https://skarnet.org/software/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=b1a756842947488404db8173bbae179d6e78b6ef551ec683acca540ecaf22677
+distfiles="https://skarnet.org/software/execline/$pkgname-$version.tar.gz"
+checksum="b1a756842947488404db8173bbae179d6e78b6ef551ec683acca540ecaf22677"
+build_style="configure"
+configure_args+=" --bindir=/usr/bin"
+configure_args+=" --libdir=/usr/lib"
+configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
 
 CFLAGS="-fPIC"
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) makedepends+=" nsss-devel" configure_args+=" --enable-nsss" ;;
+  *-musl)
+    makedepends+=" nsss-devel"
+    configure_args+=" --enable-nsss"
+    ;;
 esac
 
 post_install() {
-	vlicense COPYING
-	vdoc README
-	vcopy "doc/*" usr/share/doc/${pkgname}
+  vlicense COPYING
+  vdoc README
+  vcopy "doc/*" "usr/share/doc/$pkgname"
 }
 
 execline-doc_package() {
-	archs=noarch
-	short_desc+=" - Documentation"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/share/doc
-	}
+  archs="noarch"
+  short_desc+=" - documentation"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
+
 execline-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
