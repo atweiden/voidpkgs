@@ -1,37 +1,41 @@
-# Template file for 's6-dns'
-pkgname=s6-dns
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="s6-dns"
 version=2.3.0.2
 revision=2
-build_style=configure
-configure_args="--prefix=/usr --libdir=/usr/lib
- --with-sysdeps=${XBPS_CROSS_BASE}/usr/lib/skalibs/sysdeps
- --with-lib=${XBPS_CROSS_BASE}/usr/lib"
-makedepends="execline-devel skalibs-devel"
 short_desc="Suite of DNS client programs and libraries for Unix systems"
-maintainer="lemmi <lemmi@nerd2nerd.org>"
+makedepends+=" execline-devel"
+makedepends+=" skalibs-devel"
+homepage="https://skarnet.org/software/s6-dns/"
 license="ISC"
-homepage="https://skarnet.org/software/${pkgname}/"
-distfiles="https://skarnet.org/software/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=4806c8b1dadb582029c92986f0b09763090e03b38e565a70174be385fa862bf9
+distfiles="https://skarnet.org/software/s6-dns/$pkgname-$version.tar.gz"
+checksum="4806c8b1dadb582029c92986f0b09763090e03b38e565a70174be385fa862bf9"
+build_style="configure"
+configure_args+=" --libdir=/usr/lib"
+configure_args+=" --prefix=/usr"
+configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
 
 post_install() {
-	vlicense COPYING
-	vdoc README
-	vcopy "doc/*" usr/share/doc/${pkgname}
+  vlicense COPYING
+  vdoc README
+  vcopy "doc/*" "usr/share/doc/$pkgname"
 }
 
 s6-dns-doc_package() {
-	archs=noarch
-	short_desc+=" - documentation"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/share/doc
-	}
+  archs="noarch"
+  short_desc+=" - documentation"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
+
 s6-dns-devel_package() {
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.a
-	}
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
