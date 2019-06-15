@@ -599,6 +599,8 @@ constant %PKG = Map.new(
                  rust-std>,
     's6' => qw<s6-devel
                s6-doc>,
+    's6-dns' => qw<s6-dns-devel
+                   s6-dns-doc>,
     'sbc' => ['sbc-devel'],
     'sbcl' => ['sbcl-source'],
     'schilytools' => qw<sccs
