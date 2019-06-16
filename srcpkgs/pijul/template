@@ -1,18 +1,29 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pijul"
 version=0.12.0
-revision=1
+revision=2
 short_desc="Distributed version control system based on patches"
 makedepends+=" libressl-devel"
 makedepends+=" libsodium-devel"
 makedepends+=" nettle-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" clang"
+hostmakedepends+=" pkg-config"
 homepage="https://pijul.org/"
 license="GPL-2.0-only"
 distfiles="https://pijul.org/releases/$pkgname-$version.tar.gz"
 checksum="987820fa2a6fe92a9f516f5e9b41ad59a597973e72cb0c7a44ca0f38e741a7e6"
 build_style="cargo"
-broken="Links clang to build. Can't build on arm* with clang."
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  export HOST_CC="$BUILD_CC"
+  export HOST_CFLAGS="$BUILD_CFLAGS"
+  export BINDGEN_EXTRA_CLANG_ARGS="--sysroot=$XBPS_CROSS_BASE"
+fi
+
+pre_build() {
+  cargo update --package openssl-sys --precise 0.9.46
+  cargo update --package openssl --precise 0.10.22
+}
 
 # we only want to install the binary, so don't run cargo install
 do_install() {
