@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kubernetes"
-version=1.14.2
+version=1.14.3
 revision=1
 short_desc="Container Cluster Manager for Docker"
 archs+=" ppc64le*"
@@ -12,7 +12,7 @@ hostmakedepends+=" rsync"
 homepage="http://kubernetes.io"
 license="Apache-2.0"
 distfiles="https://github.com/kubernetes/kubernetes/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1effa926aedb0ed51eadcef3d5d49fd9799ec4d018200f95f51fcaa2a2d2cbf4"
+checksum="3896f5beb1f381cd022ca3dcac2ff4ec4660f7471a1f50cca91a4916ddf54eaa"
 conf_files="/etc/kubernetes/*"
 build_style="go"
 go_import_path="github.com/kubernetes/kubernetes"
