@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libarchive"
 version=3.3.3
-revision=4
+revision=5
 short_desc="Library to read/write several different streaming archive formats"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -11,7 +11,7 @@ makedepends+=" $(vopt_if expat expat-devel)"
 makedepends+=" $(vopt_if lz4 liblz4-devel)"
 makedepends+=" $(vopt_if lzo lzo-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
-makedepends+=" $(vopt_if zstd zstd-devel)"
+makedepends+=" $(vopt_if zstd libzstd-devel)"
 homepage="http://www.libarchive.org/"
 license="BSD-2-Clause"
 distfiles="http://www.libarchive.org/downloads/$pkgname-$version.tar.gz"
@@ -36,9 +36,11 @@ build_options+=" lz4"
 build_options+=" lzo"
 build_options+=" ssl"
 build_options+=" zstd"
-# enable acl and ssl by default
+# enable acl, ssl, lz4 and zstd by default
 build_options_default+=" acl"
+build_options_default+=" lz4"
 build_options_default+=" ssl"
+build_options_default+=" zstd"
 
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"

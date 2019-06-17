@@ -10,6 +10,7 @@ distfiles="https://github.com/lz4/lz4/archive/v$version.tar.gz>$pkgname-$version
 checksum="f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4"
 build_style="gnu-makefile"
 make_check_target="test"
+bootstrap="yes"
 reverts+=" 131_1"
 reverts+=" 130_1"
 reverts+=" 129_1"

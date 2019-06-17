@@ -11,6 +11,7 @@ homepage="http://www.zstd.net"
 license="BSD-3-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/facebook/zstd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="63be339137d2b683c6d19a9e34f4fb684790e864fee13c7dd40e197a64c705c1"
+bootstrap="yes"
 
 do_build() {
   make "$makejobs"
