@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
-version=2.33.2
+version=2.34
 revision=1
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
@@ -16,8 +16,8 @@ hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
-distfiles="$KERNEL_SITE/utils/util-linux/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="631be8eac6cf6230ba478de211941d526808dba3cd436380793334496013ce97"
+distfiles="$KERNEL_SITE/utils/util-linux/v$version/$pkgname-$version.tar.xz"
+checksum="743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
