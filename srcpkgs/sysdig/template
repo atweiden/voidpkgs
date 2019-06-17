@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sysdig"
-version=0.25
-revision=2
+version=0.26.1
+revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
 archs+=" i686"
 archs+=" ppc64le"
@@ -26,7 +26,7 @@ homepage="http://www.sysdig.org/"
 license="Apache-2.0, MIT, GPL-2.0-only"
 changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4ab2d3cebb49e3b059bf974d68cef4cedc141d1544fa2b252cfa1cdf3ee33fdd"
+checksum="4bc59f4e958c9b971ecb4d6fe98fe0be27a185b87106c76aaf4614ab3ef7129e"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
 configure_args+=" -DLUA_INCLUDE_DIR=$XBPS_CROSS_BASE/usr/include/luajit-2.1"
@@ -48,6 +48,14 @@ post_extract() {
     -i \
     -e '1i#include <sys/select.h>' \
     userspace/libsinsp/mesos_collector.h
+  sed \
+    -i \
+    -e '1i#include <sys/sysmacros.h>' \
+    userspace/libscap/scap_fds.c
+  sed \
+    -i \
+    -e '1iset(CMAKE_EXE_LINKER_FLAGS "-ltbb -lcurl")' \
+    CMakeLists.txt
 }
 
 post_install() {
