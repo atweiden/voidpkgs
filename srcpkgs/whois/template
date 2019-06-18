@@ -1,26 +1,32 @@
-# Template file for 'whois'
-pkgname=whois
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="whois"
 version=5.4.3
 revision=1
-hostmakedepends="perl pkg-config"
-makedepends="libidn2-devel"
 short_desc="Improved whois client"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends="libidn2-devel"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="https://www.linux.it/~md/software"
-distfiles="${DEBIAN_SITE}/main/w/${pkgname}/${pkgname}_${version}.tar.xz"
-checksum=fefa84029f70985db19743e51c4a8b318a169426babeaa824a27110c26090fc3
-
-alternatives="
- whois:whois:/usr/bin/gwhois
- whois:whois.1:/usr/share/man/man1/gwhois.1"
+license="GPL-2.0-or-later"
+distfiles="$DEBIAN_SITE/main/w/$pkgname/${pkgname}_$version.tar.xz"
+checksum="fefa84029f70985db19743e51c4a8b318a169426babeaa824a27110c26090fc3"
+alternatives+=" whois:whois:/usr/bin/gwhois"
+alternatives+=" whois:whois.1:/usr/share/man/man1/gwhois.1"
 
 do_build() {
-	make CC=$CC prefix=/usr HAVE_ICONV=1
+  make \
+    CC="$CC" \
+    HAVE_ICONV=1 \
+    prefix="/usr"
 }
 
 do_install() {
-	make prefix=/usr BASEDIR=${DESTDIR} install-whois
-	mv ${DESTDIR}/usr/bin/{whois,gwhois}
-	mv ${DESTDIR}/usr/share/man/man1/{whois,gwhois}.1
+  make \
+    BASEDIR="$DESTDIR" \
+    prefix="/usr" \
+    install-whois
+  mv "$DESTDIR/usr/bin"/{whois,gwhois}
+  mv "$DESTDIR/usr/share/man/man1"/{whois,gwhois}.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
