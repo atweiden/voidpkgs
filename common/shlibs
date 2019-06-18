@@ -542,6 +542,7 @@ libmenuw.so.5 ncurses-libs-5.9_13 ignore
 libpanelw.so.5 ncurses-libs-5.9_13 ignore
 libncurses.so.5 ncurses-libs-6.0_1 ignore
 libncurses.so.6 ncurses-libs-6.0_1 ignore
+libndpi.so.1 ndpi-1.6_1
 libhogweed.so.4 nettle-3.2_1
 libnettle.so.6 nettle-3.2_1
 libnghttp2.so.14 nghttp2-1.0.2_1
