@@ -1,20 +1,31 @@
-# Template file for 'nethogs'
-pkgname=nethogs
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nethogs"
 version=0.8.5
 revision=1
-makedepends="libpcap-devel ncurses-devel"
 short_desc="Small net top tool grouping bandwidth by process"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="GPL-1"
+makedepends+=" libpcap-devel"
+makedepends+=" ncurses-devel"
 homepage="https://github.com/raboof/nethogs"
-distfiles="https://github.com/raboof/nethogs/archive/v${version}.tar.gz"
-checksum=6a9392726feca43228b3f0265379154946ef0544c2ca2cac59ec35a24f469dcc
+license="GPL-1"
+distfiles="https://github.com/raboof/nethogs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6a9392726feca43228b3f0265379154946ef0544c2ca2cac59ec35a24f469dcc"
 
 do_build() {
-	sed -i 's,all: decpcap_test test nethogs,all: nethogs,' Makefile
-	make CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" ${makejobs}
+  sed \
+    -i \
+    -e 's,all: decpcap_test test nethogs,all: nethogs,' \
+    Makefile
+  make \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    CXX="$CXX" \
+    CXXFLAGS="$CXXFLAGS" \
+    "$makejobs"
 }
+
 do_install() {
-	vbin src/nethogs
-	vman doc/nethogs.8
+  vbin src/nethogs
+  vman doc/nethogs.8
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
