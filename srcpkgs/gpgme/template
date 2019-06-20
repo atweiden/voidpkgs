@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gpgme"
 version=1.13.1
-revision=1
+revision=2
 short_desc="GnuPG Made Easy"
 depends="gnupg2"
 makedepends="libassuan-devel"
@@ -51,6 +51,7 @@ gpgme-devel_package() {
   depends+=" libgpgme>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
+    vmove usr/lib/pkgconfig
     vmove usr/bin/gpgme-config
     vmove usr/include/gpgme.h
     vmove usr/share
@@ -59,7 +60,6 @@ gpgme-devel_package() {
 }
 
 gpgmepp_package() {
-  depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - C++ library"
   pkg_install() {
     vmove "usr/lib/libgpgmepp.so.*"
