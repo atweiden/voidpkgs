@@ -476,7 +476,7 @@ libwireshark.so.12 libwireshark-3.0.0_1
 libwiretap.so.9 libwireshark-3.0.0_1
 libwsutil.so.10 libwireshark-3.0.0_1
 libwslay.so.0 libwslay-1.1.0_1
-libxbps.so.3 libxbps-0.53_1
+libxbps.so.4 libxbps-0.54_1
 libxml2.so.2 libxml2-2.7.0_1
 libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1

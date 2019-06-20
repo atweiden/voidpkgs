@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xbps"
-version=0.53
-revision=10
-short_desc="The XBPS package system utilities"
+version=0.54
+revision=1
+short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
 makedepends+=" libarchive-devel"
@@ -13,7 +13,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/void-linux/xbps"
 license="BSD-2-Clause"
 distfiles="https://github.com/void-linux/xbps/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4"
+checksum="f7e97a342d9eb3f38274bef3136f91398692f50d84fd23bc7990da2000936a98"
 build_style="configure"
 make_dirs="/etc/xbps.d 0755 root root"
 bootstrap="yes"
@@ -29,12 +29,10 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 
 do_configure() {
-  HAVE_VASPRINTF=1 ./configure \
-    "${CHROOT_READY:+--enable-tests}" \
-    --bindir="/usr/bin" \
-    --enable-debug \
+  ./configure \
     --prefix="/usr" \
-    --sysconfdir="/etc"
+    --sysconfdir="/etc" \
+    ${CHROOT_READY:+--enable-tests}
 }
 
 post_install() {
@@ -54,8 +52,8 @@ post_install() {
         "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
       ;;
   esac
-  vlicense COPYING
-  vlicense COPYING.3RDPARTY
+  vlicense LICENSE
+  vlicense LICENSE.3RDPARTY
 }
 
 libxbps_package() {
@@ -69,7 +67,7 @@ libxbps-devel_package() {
   unset depends
   short_desc+=" - runtime library - development files"
   depends+=" libarchive-devel"
-  depends+=" libxbps>=$version"
+  depends+=" libxbps>=${version}_$revision"
   depends+=" zlib-devel"
   pkg_install() {
     vmove usr/include
