@@ -184,7 +184,7 @@ libgnarl-8.so libada-8.2.0_5
 libgnat-8.so libada-8.2.0_5
 libaio.so.1 libaio-0.3.109_1
 libapparmor.so.1 libapparmor-2.12.0_1
-libarchive.so.13 libarchive-3.1.2_1
+libarchive.so.13 libarchive-3.3.3_5
 libargon2.so.1 libargon2-20171227_1
 libaria2.so.0 libaria2-1.33.1_3
 libasr.so.0 libasr-1.0.0_1
