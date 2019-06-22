@@ -60,6 +60,7 @@ post_install() {
   cd "$DESTDIR/usr/bin"
   ln -sf vim vim-ex
   rm -f "$DESTDIR/usr/bin"/{ex,view}
+  rm -rf "$DESTDIR/usr/share/applications"
 }
 
 vim-common_package() {
