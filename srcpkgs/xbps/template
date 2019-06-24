@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xbps"
-version=0.55
-revision=4
+version=0.56
+revision=1
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
@@ -14,7 +14,7 @@ homepage="https://github.com/void-linux/xbps"
 license="BSD-2-Clause"
 changelog="https://github.com/void-linux/xbps/blob/master/NEWS"
 distfiles="https://github.com/void-linux/xbps/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="982620ec3c207a8b935ebb3b50f81ce553e53a5da291be2719609adf0a5f48d2"
+checksum="e46521513b0c0ff486cc190089277381b18db45e770b04f799dc4eec99ffccd4"
 build_style="configure"
 make_dirs="/etc/xbps.d 0755 root root"
 bootstrap="yes"
@@ -67,9 +67,8 @@ libxbps_package() {
 libxbps-devel_package() {
   unset depends
   short_desc+=" - runtime library - development files"
-  depends+=" libarchive-devel"
+  depends+=" $makedepends"
   depends+=" libxbps>=${version}_$revision"
-  depends+=" zlib-devel"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
