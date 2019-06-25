@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="redis"
-version=5.0.4
+version=5.0.5
 revision=1
 short_desc="Advanced key-value store"
 makedepends+=" jemalloc-devel"
@@ -10,7 +10,7 @@ homepage="https://redis.io"
 license="BSD-3-Clause"
 changelog="https://github.com/antirez/redis/raw/5.0/00-RELEASENOTES"
 distfiles="http://download.redis.io/releases/$pkgname-$version.tar.gz"
-checksum="3ce9ceff5a23f60913e1573f6dfcd4aa53b42d4a2789e28fa53ec2bd28c987dd"
+checksum="2139009799d21d8ff94fc40b7f36ac46699b9e1254086299f8d3b223ca54a375"
 conf_files="/etc/redis/redis.conf"
 system_accounts="redis"
 redis_homedir="/var/lib/redis"
