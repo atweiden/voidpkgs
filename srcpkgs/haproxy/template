@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="haproxy"
-version=1.8.19
-revision=2
+version=1.8.20
+revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libressl-devel"
 makedepends+=" lua-devel"
@@ -9,7 +9,7 @@ makedepends+=" pcre-devel"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="64f5fbfd4e09ffeaf26cb6667398ba780704a14e96e60000caa8bf69962ba734"
+checksum="3228f78d5fe1dfbaccf41bf387e36b08eeef6e16330053cafde5fa303e262b16"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_build_args+=" TARGET=linux2628"
