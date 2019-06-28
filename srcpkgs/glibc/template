@@ -113,15 +113,16 @@ do_configure() {
     --disable-werror \
     --enable-add-ons="libidn" \
     --enable-bind-now \
-    --enable-kernel=3.2.0 \
+    --enable-kernel="3.2.0" \
     --enable-multi-arch \
     --enable-obsolete-nsl \
     --enable-obsolete-rpc \
     --enable-stack-guard-randomization \
-    --enable-stack-protector=strong \
+    --enable-stack-protector="strong" \
     --libdir="$_libdir" \
     --libexecdir="$_libdir" \
     --sbindir="/usr/bin" \
+    --with-headers="$XBPS_CROSS_BASE/usr/include" \
     --without-cvs \
     --without-gd \
     --without-selinux \
