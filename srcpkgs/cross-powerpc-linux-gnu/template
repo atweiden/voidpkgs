@@ -1,5 +1,5 @@
 _binutils_version=2.32
-_gcc_version=8.3.0
+_gcc_version=9.1.0
 _glibc_version=2.29
 _linux_version=4.19
 
@@ -20,8 +20,6 @@ makedepends+=" isl15-devel"
 makedepends+=" libmpc-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" flex"
-hostmakedepends+=" gcc-ada"
-hostmakedepends+=" libada-devel"
 hostmakedepends+=" perl"
 hostmakedepends+=" python3"
 homepage="http://www.voidlinux.org"
@@ -31,7 +29,7 @@ distfiles+=" $GNU_SITE/gcc/gcc-$_gcc_version/gcc-$_gcc_version.tar.xz"
 distfiles+=" $GNU_SITE/glibc/glibc-$_glibc_version.tar.xz"
 distfiles+=" $KERNEL_SITE/kernel/v4.x/linux-$_linux_version.tar.xz"
 checksum+=" 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
-checksum+=" 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+checksum+=" 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0"
 checksum+=" f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b"
 checksum+=" 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1"
 lib32disabled="yes"
@@ -118,6 +116,7 @@ _gcc_bootstrap() {
 
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
+  _apply_patch -p0 "$FILESDIR/non-nullness.patch"
 
   msg_normal "Building cross gcc bootstrap\n"
 
