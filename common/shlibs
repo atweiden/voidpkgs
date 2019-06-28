@@ -180,8 +180,8 @@ libjq.so.1 jq-devel-1.4_1
 libjson-c.so.4 json-c-0.13.1_1
 libjsoncpp.so.19 jsoncpp-1.8.3_1
 liblapack.so.3 lapack-3.5.0_1
-libgnarl-8.so libada-8.2.0_5
-libgnat-8.so libada-8.2.0_5
+libgnarl-9.so libada-9.1.0_1
+libgnat-9.so libada-9.1.0_1
 libaio.so.1 libaio-0.3.109_1
 libapparmor.so.1 libapparmor-2.12.0_1
 libarchive.so.13 libarchive-3.3.3_5
@@ -278,7 +278,7 @@ libGeoIP.so.1 libgeoip-1.4.8_1
 libgfortran.so.5 libgfortran-8.2.0_1
 libgfshare.so.2 libgfshare-2.0.0_1
 libgit2.so.28 libgit2-0.28.0_1
-libgo.so.13 libgo-8.2.0_1
+libgo.so.14 libgo-9.1.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
 libgpgme-pthread.so.11 libgpgme-1.12.0_2

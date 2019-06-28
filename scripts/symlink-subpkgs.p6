@@ -179,8 +179,6 @@ constant %PKG = Map.new(
                 libgomp-devel
                 libitm
                 libitm-devel
-                libmpx
-                libmpx-devel
                 libobjc
                 libobjc-devel
                 libquadmath
