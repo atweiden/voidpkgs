@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-vpkg-dummy"
-version=0.30
+version=0.31
 revision=1
 short_desc="Dummy meta-pkg for cross building packages with xbps-src"
 depends="base-files>=0.126"
@@ -36,8 +36,8 @@ conflicts+=" gcc>=0"
 conflicts+=" gcc-fortran>=0"
 conflicts+=" gcc-ada>=0"
 shlib_provides+=" libgcc_s.so.1"
-shlib_provides+=" libgnat-8.so"
-shlib_provides+=" libgnarl-8.so"
+shlib_provides+=" libgnat-9.so"
+shlib_provides+=" libgnarl-9.so"
 shlib_provides+=" libgomp.so.1"
 shlib_provides+=" libstdc++.so.6"
 shlib_provides+=" libgfortran.so.5"
