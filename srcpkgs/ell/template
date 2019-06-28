@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ell"
-version=0.17
+version=0.20
 revision=1
 short_desc="Linux library for embedded development"
 hostmakedepends="pkg-config"
 homepage="https://01.org/ell"
 license="GPL-2.0-only"
 distfiles="https://mirrors.edge.kernel.org/pub/linux/libs/ell/$pkgname-$version.tar.xz"
-checksum="8badc134a5f2cc4818d9e63573574604ecd89270d058da750570c46306ce5058"
+checksum="d4aa08915f4058ecaab509dffbe22665d71dba6fe9626caff63c0e5f4b78a394"
 build_style="gnu-configure"
 
 ell-devel_package() {
