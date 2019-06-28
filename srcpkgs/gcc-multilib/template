@@ -1,5 +1,5 @@
 _triplet="x86_64-unknown-linux-gnu"
-_majorver=8.3
+_majorver=9.1
 
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gcc-multilib"
@@ -15,7 +15,6 @@ depends+=" libatomic-devel-32bit>=$_majorver"
 depends+=" libgcc-32bit>=$_majorver"
 depends+=" libgomp-devel-32bit>=$_majorver"
 depends+=" libitm-devel-32bit>=$_majorver"
-depends+=" libmpx-devel-32bit>=$_majorver"
 depends+=" libsanitizer-devel-32bit>=$_majorver"
 depends+=" libssp-devel-32bit>=$_majorver"
 depends+=" libvtv-devel-32bit>=$_majorver"
@@ -31,8 +30,9 @@ hostmakedepends+=" perl"
 hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
 distfiles="$GNU_SITE/gcc/${pkgname%-*}-$version/${pkgname%-*}-$version.tar.xz"
-checksum="64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+checksum="79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0"
 wrksrc="${pkgname%-*}-$version"
+replaces="libmpx-devel-32bit>=0"
 
 do_configure() {
   ldconfig &>/dev/null
