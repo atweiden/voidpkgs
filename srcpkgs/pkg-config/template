@@ -17,6 +17,8 @@ alternatives+=" pkg-config:pkg-config:/usr/bin/pkg-config.pkg-config"
 alternatives+=" pkg-config:pkg-config.1:/usr/share/man/man1/pkg-config.1.pkg-config"
 alternatives+=" pkg-config:pkg.m4:/usr/share/aclocal/pkg.m4.pkg-config"
 
+CFLAGS="-Wno-missing-include-dirs"
+
 case "$XBPS_TARGET_MACHINE" in
   mips*|ppc|ppc-musl)
     configure_args+=" glib_cv_stack_grows=no"
