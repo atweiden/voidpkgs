@@ -1,5 +1,5 @@
 _binutils_version=2.32
-_gcc_version=8.3.0
+_gcc_version=9.1.0
 _musl_version=1.1.22
 _linux_version=4.19
 
@@ -22,9 +22,8 @@ makedepends+=" libmpc-devel"
 makedepends+=" mpfr-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" flex"
-hostmakedepends+=" gcc-ada"
-hostmakedepends+=" libada-devel"
 hostmakedepends+=" perl"
+hostmakedepends+=" python3"
 homepage="http://www.voidlinux.org"
 license="GPL-3.0-or-later, GPL-2.0-only, MIT"
 distfiles+=" $GNU_SITE/binutils/binutils-$_binutils_version.tar.xz"
@@ -32,7 +31,7 @@ distfiles+=" $GNU_SITE/gcc/gcc-$_gcc_version/gcc-$_gcc_version.tar.xz"
 distfiles+=" $KERNEL_SITE/kernel/v4.x/linux-$_linux_version.tar.xz"
 distfiles+=" http://www.musl-libc.org/releases/musl-$_musl_version.tar.gz"
 checksum+=" 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
-checksum+=" 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+checksum+=" 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0"
 checksum+=" 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1"
 checksum+=" 8b0941a48d2f980fd7036cfbd24aa1d414f03d9a0652ecbd5ec5c7ff1bee29e3"
 lib32disabled="yes"
@@ -100,6 +99,7 @@ _gcc_bootstrap() {
 
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
+  _apply_patch -p0 "$FILESDIR/non-nullness.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
   _apply_patch -p0 "$FILESDIR/no-stack_chk_fail_local.patch"
   _apply_patch -p0 "$FILESDIR/0010-ldbl128-config.patch"
