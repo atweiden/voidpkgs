@@ -1,5 +1,5 @@
 _binutils_version=2.32
-_gcc_version=8.3.0
+_gcc_version=9.1.0
 _musl_version=1.1.22
 _linux_version=4.19
 
@@ -10,19 +10,18 @@ _sysroot="/usr/$_triplet"
 
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
-version=0.30
-revision=3
+version=0.31
+revision=1
 short_desc="Cross toolchain for MIPS32r2 LE softfloat target (musl)"
 depends="$pkgname-libc-${version}_$revision"
-hostmakedepends+=" flex"
-hostmakedepends+=" gcc-ada"
-hostmakedepends+=" libada-devel"
-hostmakedepends+=" perl"
 makedepends+=" gmp-devel"
 makedepends+=" isl15-devel"
 makedepends+=" libmpc-devel"
 makedepends+=" mpfr-devel"
 makedepends+=" zlib-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" perl"
+hostmakedepends+=" python3"
 homepage="https://www.voidlinux.org/"
 license="GPL-2.0-or-later, GPL-3.0-or-later, MIT"
 distfiles+=" $GNU_SITE/binutils/binutils-$_binutils_version.tar.xz"
@@ -30,7 +29,7 @@ distfiles+=" $GNU_SITE/gcc/gcc-$_gcc_version/gcc-$_gcc_version.tar.xz"
 distfiles+=" http://www.musl-libc.org/releases/musl-$_musl_version.tar.gz"
 distfiles+=" $KERNEL_SITE/kernel/v4.x/linux-$_linux_version.tar.xz"
 checksum+=" 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
-checksum+=" 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+checksum+=" 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0"
 checksum+=" 8b0941a48d2f980fd7036cfbd24aa1d414f03d9a0652ecbd5ec5c7ff1bee29e3"
 checksum+=" 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1"
 create_wrksrc="yes"
@@ -91,6 +90,7 @@ _gcc_bootstrap() {
 
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
+  _apply_patch -p0 "$FILESDIR/non-nullness.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
   _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
 
