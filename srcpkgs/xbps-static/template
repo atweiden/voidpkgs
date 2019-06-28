@@ -2,7 +2,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xbps-static"
 version=0.56
-revision=4
+revision=5
 short_desc="XBPS package system utilities - static binaries"
 # only musl
 archs="*-musl"
