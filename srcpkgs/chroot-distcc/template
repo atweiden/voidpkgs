@@ -17,6 +17,7 @@ configure_args+=" --with-included-popt"
 configure_args+=" --without-avahi"
 configure_args+=" --without-gnome"
 configure_args+=" --without-gtk"
+configure_args+=" --without-libiberty"
 make_install_target="install-programs"
 conflicts="distcc>=0"
 
