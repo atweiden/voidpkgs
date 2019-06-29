@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="eudev"
 version=3.2.8
-revision=1
+revision=2
 short_desc="Gentoo's fork of systemd-udev (enhanced userland device daemon)"
 makedepends+=" libblkid-devel"
 makedepends+=" libkmod-devel"
@@ -22,7 +22,7 @@ configure_args+=" --enable-hwdb"
 configure_args+=" --enable-manpages"
 
 # compatible udev version provided
-_UDEV_VERSION="220"
+_UDEV_VERSION="228"
 
 pre_configure() {
   autoreconf -fi
