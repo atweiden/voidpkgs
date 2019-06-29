@@ -108,12 +108,6 @@ _gcc_bootstrap() {
     -e 's/lib64/lib/' \
     gcc/config/rs6000/linux64.h
 
-  # remove with 9.1
-  sed \
-    -i \
-    -e 's/ \-D__gnu_linux__//' \
-    gcc/config/rs6000/sysv4.h
-
   msg_normal "Building cross gcc bootstrap\n"
 
   ! [[ -d "../gcc-bootstrap" ]] \
