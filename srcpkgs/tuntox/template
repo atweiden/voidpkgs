@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tuntox"
 version=0.0.9
-revision=1
+revision=2
 short_desc="Tunnel TCP connections over the Tox protocol"
 makedepends+=" libevent-devel"
 makedepends+=" libsodium-devel"
