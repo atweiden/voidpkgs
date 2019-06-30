@@ -9,7 +9,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.31
-revision=1
+revision=2
 short_desc="Cross toolchain for powerpc64le with musl"
 archs+=" ppc64le"
 archs+=" x86_64*"
@@ -102,6 +102,7 @@ _gcc_bootstrap() {
   _apply_patch -p0 "$FILESDIR/libgcc-musl-ldbl128-config.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
   _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
+  _apply_patch -p0 "$FILESDIR/invalid_tls_model.patch"
 
   sed \
     -i \
