@@ -11,7 +11,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.31
-revision=1
+revision=2
 short_desc="Cross toolchain for ARMv5 TE target (musl)"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
@@ -93,6 +93,7 @@ _gcc_bootstrap() {
   _apply_patch -p0 "$FILESDIR/non-nullness.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
   _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
+  _apply_patch -p0 "$FILESDIR/invalid_tls_model.patch"
 
   msg_normal "Building cross gcc bootstrap\n"
 
