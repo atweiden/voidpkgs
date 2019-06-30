@@ -1,14 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bzip2"
-version=1.0.6
-revision=14
-short_desc="The bzip2 compression library"
-homepage="http://sources.redhat.com/bzip2"
+version=1.0.7
+revision=1
+short_desc="Freely available, patent free, high-quality data compressor"
+homepage="https://sourceware.org/bzip2/"
 license="bzip2-1.0.6"
-# currently not available
-# distfiles="http://sources.redhat.com/pub/bzip2/v${version/./}/$pkgname-$version.tar.gz"
-distfiles="https://fossies.org/linux/misc/$pkgname-$version.tar.gz"
-checksum="a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd"
+changelog="https://sourceware.org/bzip2/CHANGES"
+distfiles="https://sourceware.org/pub/bzip2/$pkgname-$version.tar.gz"
+checksum="e768a87c5b1a79511499beb41500bcc4caf203726fff46a6f5f9ad27fe08ab2b"
 bootstrap="yes"
 
 do_build() {
