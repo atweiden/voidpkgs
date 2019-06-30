@@ -1,35 +1,54 @@
-# Template file for 'alpine'
-pkgname=alpine
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="alpine"
 version=2.21.99999
 revision=1
-_githash=abeb2c25935ef8c75f1e5deef0f81276754dc975
-_gitshort="${_githash:0:7}"
-wrksrc="${pkgname}-${_gitshort}"
-build_style=gnu-configure
-configure_args="--without-passfile --without-tcl --disable-shared
- --with-ssl-dir=${XBPS_CROSS_BASE}/usr alpine_SSLPROVIDER=libressl
- --with-system-pinerc=/etc/${pkgname}.d/pine.conf
- --with-system-fixed-pinerc=/etc/${pkgname}.d/pine.conf.fixed"
-hostmakedepends="hunspell"
-makedepends="pam-devel ncurses-devel gettext-devel libldap-devel mit-krb5-devel"
+_gitrev="abeb2c25935ef8c75f1e5deef0f81276754dc975"
 short_desc="Apache-licensed PINE mail user agent (with Chappa patches)"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="Apache-2.0"
+makedepends+=" gettext-devel"
+makedepends+=" libldap-devel"
+makedepends+=" mit-krb5-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pam-devel"
+hostmakedepends="hunspell"
 homepage="http://repo.or.cz/alpine.git"
-distfiles="http://repo.or.cz/alpine.git/snapshot/${_githash}.tar.gz"
-checksum=983f04e1c5f1beba767877303c682d3c995e0cd93ad6888f2d9933ef4236c25f
+license="Apache-2.0"
+distfiles="http://repo.or.cz/alpine.git/snapshot/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="983f04e1c5f1beba767877303c682d3c995e0cd93ad6888f2d9933ef4236c25f"
+wrksrc="$pkgname-${_gitrev:0:7}"
+build_style="gnu-configure"
+configure_args+=" --disable-shared"
+configure_args+=" --with-ssl-dir=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-system-fixed-pinerc=/etc/alpine.d/pine.conf.fixed"
+configure_args+=" --with-system-pinerc=/etc/alpine.d/pine.conf"
+configure_args+=" --without-passfile"
+configure_args+=" --without-tcl"
+configure_args+=" alpine_SSLPROVIDER=libressl"
 
 post_extract() {
-	sed -i -e '/run test program/s/^/: /' \
-		-e 's/linux-gnu/linux-/g' ${wrksrc}/configure
+  sed \
+    -i \
+    -e '/run test program/s/^/: /' \
+    -e 's/linux-gnu/linux-/g' \
+    "$wrksrc/configure"
 }
 
 do_build() {
-	make -C pith help_c_gen help_h_gen \
-		CC="$BUILD_CC" CFLAGS="$BUILD_CFLAGS" CPPFLAGS= LDFLAGS="$BUILD_LDFLAGS"
-	make ${makejobs} all CC="$CC"
+  make \
+    -C pith \
+    help_c_gen \
+    help_h_gen \
+    CC="$BUILD_CC" \
+    CFLAGS="$BUILD_CFLAGS" \
+    CPPFLAGS= \
+    LDFLAGS="$BUILD_LDFLAGS"
+  make \
+    "$makejobs" \
+    all \
+    CC="$CC"
 }
 
 post_install() {
-	vlicense NOTICE
+  vlicense NOTICE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
