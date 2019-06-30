@@ -234,6 +234,8 @@ constant %PKG = Map.new(
                     libhaveged-devel>,
     'hiredis' => ['hiredis-devel'],
     'http-parser' => ['http-parser-devel'],
+    'hunspell' => qw<hunspell-devel
+                     libhunspell1.7>,
     'icdiff' => ['python3-icdiff'],
     'icu' => qw<icu-devel
                 icu-libs>,
