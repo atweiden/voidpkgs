@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="schilytools"
-version=2019.03.11
+version=2019.06.13
 revision=1
 short_desc="Schily's portable tools"
 depends+=" sccs"
@@ -14,7 +14,7 @@ makedepends+=" e2fsprogs-devel"
 homepage="https://sourceforge.net/projects/schilytools/"
 license="CDDL-1.0"
 distfiles="$SOURCEFORGE_SITE/schilytools/${pkgname%tools}-${version//./-}.tar.bz2"
-checksum="ec59236281f9c6a698db9b43a8739baba68d981280c6a2d3f4b6b5817207efb5"
+checksum="619d6e5260633e4109ebebcf84aadfcd68ddb3cadb46989578d3f80d9ca66aa4"
 wrksrc="${pkgname%tools}-${version//./-}"
 build_style="meta"
 # configure + re-builds with itself
