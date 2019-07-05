@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="stack"
 version=1.9.3
-revision=2
+revision=3
 _stackage="lts-13.2"
 short_desc="Cross-platform program for developing Haskell projects"
 depends+=" git"
@@ -17,7 +17,7 @@ license="3-clause-BSD"
 distfiles+=" https://github.com/commercialhaskell/$pkgname/releases/download/v$version/$pkgname-$version-sdist-1.tar.gz"
 distfiles+=" https://www.stackage.org/$_stackage/cabal.config>cabal.config-$_stackage"
 checksum+=" 14e06a71bf6fafbb2d468f83c70fd4e9490395207d6530ab7b9fc056f8972a46"
-checksum+=" 82b066829f560b5860cafd2ba5d5ccb48098ea5d34a7dc2cb6ec20e3780dea29"
+checksum+=" 6e8bfc4b0971cf536235350d967e4101b285640d708bc11ccfe424d94caf4194"
 skip_extraction="cabal.config-$_stackage"
 nocross="yes"
 nopie_files="/usr/bin/stack"
