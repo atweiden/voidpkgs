@@ -51,10 +51,8 @@ do_configure() {
   cp -a "$FILESDIR/DocBook" -t Documentation
 
   # if there's a file called <arch>-dotconfig, use it to configure
-  # the kernel
-  #
-  # otherwise use arch defaults and all stuff as modules
-  # (defconfig+allmodconfig)
+  # the kernel; otherwise use arch defaults and all stuff as modules
+  # (allmodconfig)
   local _args
   local arch
   local subarch
@@ -114,12 +112,7 @@ do_configure() {
       ARCH="$arch" \
       oldconfig
   else
-    msg_normal "Defaulting to 'defconfig and allmodconfig'.\n"
-    make \
-      "$makejobs" \
-      $_args \
-      ARCH="$arch" \
-      defconfig
+    msg_normal "Defaulting to 'allmodconfig'.\n"
     make \
       "$makejobs" \
       $_args \
