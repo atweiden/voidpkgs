@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bc-gh"
-version=2.0.0
+version=2.1.0
 revision=1
 short_desc="Implementation of POSIX bc with GNU extensions"
 homepage="https://github.com/gavinhoward/bc"
 license="BSD-2-Clause"
 distfiles="https://github.com/gavinhoward/bc/releases/download/$version/${pkgname%-*}-$version.tar.xz"
-checksum="0ddfc78f6588d9c4d33334cb6862e6db96b2e499a8a650701e98de745e3f549e"
+checksum="b6b25a44323e42959b2ba4885f54fcc6d889070dbb53c7d0f8db9f56a4faafc8"
 wrksrc="${pkgname%-*}-$version"
 alternatives+=" bc:bc:/usr/bin/bc-gh"
 alternatives+=" dc:dc:/usr/bin/dc-gh"
