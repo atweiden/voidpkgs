@@ -5,7 +5,8 @@ revision=7
 short_desc="Command line option parsing library"
 homepage="http://rpm5.org"
 license="MIT"
-distfiles="http://rpm5.org/files/popt/$pkgname-$version.tar.gz"
+#distfiles="http://rpm5.org/files/popt/$pkgname-$version.tar.gz"
+distfiles="https://fossies.org/linux/misc/popt-$version.tar.gz"
 checksum="e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8"
 build_style="gnu-configure"
 
@@ -14,7 +15,7 @@ post_install() {
 }
 
 popt-devel_package() {
-  depends="popt>=${version}_${revision}"
+  depends="popt>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
