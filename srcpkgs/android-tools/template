@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="android-tools"
-version=9.0.0r35
+version=9.0.0r45
 revision=1
 _distver=${version/r/_r}
 short_desc="Android platform tools (adb and fastboot)"
@@ -25,15 +25,15 @@ distfiles+=" $_baseurl/external/selinux/+archive/android-$_distver.tar.gz>selinu
 distfiles+=" $_baseurl/external/f2fs-tools/+archive/android-$_distver.tar.gz>f2fs-tools.tar.gz"
 distfiles+=" $_baseurl/external/e2fsprogs/+archive/android-$_distver.tar.gz>e2fsprogs.tar.gz"
 distfiles+=" $_baseurl/external/avb/+archive/android-$_distver.tar.gz>avb.tar.gz"
-distfiles+=" https://boringssl.googlesource.com/boringssl/+archive/3359.tar.gz>boringssl.tar.gz"
+distfiles+=" https://boringssl.googlesource.com/boringssl/+archive/3538.tar.gz>boringssl.tar.gz"
 # contents checksums because the tarballs change with every download
-checksum+=" @d12d5abc025b9e57cf6e1bcb6b7421a017ab315802e04278ab4a6a6c38a0052f"
+checksum+=" @dfaea8c40be4a8bbd1df513ab3516ff88e92430ee0fde399dd7e7e09ec21cd29"
 checksum+=" @0a43d228088faabe8b7150fa752c8b0c002503c0d830d8470ecea351f195bbb3"
 checksum+=" @9f2b5e379eca4c56e2d422598831bfd7bdf2b7b3c3d011ce513c7603aa46b574"
 checksum+=" @f1efc86a1e78521f4754d184d682c1f6660c04f74496913f37cae9e2670db0e8"
 checksum+=" @e98509632e865e792dc4b344b0a1ada0662dda7571534fa7c5d1a8902dcfb0f4"
 checksum+=" @5c2fcb88154f9b6ffed8d24a069e4bad0a7aea1936be2ce18af972ad8762e09a"
-checksum+=" @9ec3dd8c7f6ec5f4d8b60e22d8dcba3dc4432763ec8a637c05ba24d3b58b2826"
+checksum+=" @452e29d95f8da494896e3335931e928d9b7c94500a5793101bb19629cd7dea8c"
 create_wrksrc="yes"
 nocross="error: requested alignment 64 is larger than 8 [-Werror=attributes]"
 
