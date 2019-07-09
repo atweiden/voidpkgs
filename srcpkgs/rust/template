@@ -30,7 +30,6 @@ build_options="static_llvm"
 _bootstrap_dir="stage0-bootstrap"
 
 if [[ -n "$CROSS_BUILD" ]]; then
-  broken="update on native arches first"
   hostmakedepends+=" cargo"
   hostmakedepends+=" llvm"
   # these are required for building the buildhost's stage0/1
