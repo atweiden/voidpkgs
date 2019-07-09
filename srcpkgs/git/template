@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="git"
 version=2.22.0
-revision=2
+revision=3
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -27,6 +27,7 @@ make_install_args+=" INSTALLDIRS=vendor"
 make_install_args+=" NO_INSTALL_HARDLINKS=1"
 make_install_args+=" perllibdir=/usr/share/perl5/vendor_perl"
 make_check_target="test"
+register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
 subpackages+=" git-cvs"
 subpackages+=" git-svn"
