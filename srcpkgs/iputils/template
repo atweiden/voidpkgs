@@ -1,60 +1,33 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iputils"
-version=20180629
-revision=3
+version=20190515
+revision=1
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends+=" libcap-devel"
 makedepends+=" libressl-devel"
+hostmakedepends+=" docbook-xsl-ns"
+hostmakedepends+=" docbook2x"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/iputils/iputils"
 license="BSD-3-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/iputils/iputils/archive/s$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="da14105291dd491f28ea91ade854ed10aee8ba019641c80eed233de3908be7c5"
+checksum="9b5125eb5ef9f4e947ad8fdddcf77f538f53b8f47b53eb5bc5347cb16d01c8fd"
 wrksrc="$pkgname-s$version"
-patch_args="-Np1"
+build_style="meson"
+configure_args+=" -DBUILD_NINFOD=false"
+configure_args+=" -DBUILD_TFTPD=false"
+configure_args+=" -DNO_SETCAP_OR_SUID=true"
+configure_args+=" -DUSE_IDN=false"
 alternatives+=" ping:ping:/usr/bin/$pkgname-ping"
 alternatives+=" ping:ping.8:/usr/share/man/man8/$pkgname-ping.8"
 alternatives+=" ping6:ping6:/usr/bin/$pkgname-ping"
 alternatives+=" ping6:ping6.8:/usr/share/man/man8/$pkgname-ping.8"
 
-do_build() {
-  make \
-    "$makejobs" \
-    CC="$CC" \
-    CCOPTOPT="$CFLAGS" \
-    LD="$LD" \
-    LDFLAGS="$LDFLAGS" \
-    USE_GCRYPT="no" \
-    USE_GNUTLS="no" \
-    USE_IDN="no" \
-    USE_NETTLE="no" \
-    arping \
-    clockdiff \
-    ping \
-    rdisc \
-    tracepath
-}
-
-do_install() {
-  vbin ping "$pkgname-ping"
-  for f in arping \
-           clockdiff \
-           rdisc \
-           tracepath; do
-    vbin "$f"
-  done
-  for f in arping \
-           clockdiff \
-           ping \
-           rdisc \
-           tracepath; do
-    vman "doc/$f.8"
-  done
-  mv "$DESTDIR/usr/share/man/man8"/{ping,"$pkgname-ping"}.8
-}
-
 post_install() {
-  vlicense LICENSE.BSD3
+  mv "$DESTDIR/usr/share/man/man8"/{ping,$pkgname-ping}.8
+  mv "$DESTDIR/usr/bin"/{ping,$pkgname-ping}
+  vlicense Documentation/LICENSE.BSD3
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
