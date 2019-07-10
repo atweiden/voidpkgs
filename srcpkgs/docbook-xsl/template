@@ -1,3 +1,4 @@
+# keep in sync with docbook-xsl-ns
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docbook-xsl"
 version=1.79.1
