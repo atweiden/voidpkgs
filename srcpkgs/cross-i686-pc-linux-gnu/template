@@ -10,7 +10,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.31
-revision=1
+revision=2
 short_desc="GNU Cross toolchain for the $_triplet target (binutils/gcc/glibc)"
 archs+=" armv6l"
 archs+=" armv7l"
@@ -92,6 +92,7 @@ _gcc_bootstrap() {
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/non-nullness.patch"
   _apply_patch -p0 "$FILESDIR/no-stack_chk_fail_local.patch"
+  _apply_patch -p0 "$FILESDIR/bug90756.patch"
 
   msg_normal "Building cross gcc bootstrap\n"
 
