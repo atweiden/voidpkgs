@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="meson"
-version=0.51.0
-revision=2
+version=0.51.1
+revision=1
 short_desc="Super fast build system"
 archs="noarch"
 depends+=" ninja"
@@ -12,7 +12,7 @@ homepage="http://mesonbuild.com"
 license="Apache-2.0"
 changelog="https://github.com/mesonbuild/meson/raw/master/docs/markdown/Release-notes-for-${version%.?}.0.md"
 distfiles="https://github.com/mesonbuild/meson/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ec1e3942215a858d82c3d2e095d18adcf1ede94a34144662643d88db4dcb5263"
+checksum="92cf7f095fe2d1c3f23824805480c29eaa381e71ae0a90ac85949d1e10f9041c"
 build_style="python3-module"
 pycompile_module="mesonbuild"
 
