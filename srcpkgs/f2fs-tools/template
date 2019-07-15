@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="f2fs-tools"
 version=1.12.0
-revision=1
+revision=2
 short_desc="Tools for the Linux Flash-Friendly File System (F2FS)"
 makedepends+=" libblkid-devel"
 makedepends+=" libuuid-devel"
@@ -25,6 +25,10 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 pre_configure() {
+  vsed \
+    -i \
+    -e '/sg_write_buffer/d' \
+    tools/Makefile.am
   autoreconf -fi
 }
 
