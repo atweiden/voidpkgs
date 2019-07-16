@@ -1,38 +1,27 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pluggy"
 version=0.9.0
-revision=1
-short_desc="Minimalist production ready python2 plugin system"
+revision=2
+short_desc="Minimalist production ready plugin system (Python2)"
 archs="noarch"
 depends="python"
-checkdepends="python3-pytest"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+checkdepends+=" python"
+checkdepends+=" python-pytest"
+hostmakedepends="python-setuptools"
 homepage="https://github.com/pytest-dev/pluggy"
 license="MIT"
-distfiles="$PYPI_SITE/p/pluggy/${pkgname#*-}-$version.tar.gz"
+distfiles="$PYPI_SITE/p/pluggy/pluggy-$version.tar.gz"
 checksum="19ecf9ce9db2fce065a7a0586e07cfb4ac8614fe96edf628a264b1c70116cf8f"
-wrksrc="${pkgname#*-}-$version"
-build_style="python-module"
+wrksrc="pluggy-$version"
+build_style="python2-module"
 pycompile_module="pluggy"
 
 do_check() {
-  python3 -m pytest
+  python -m pytest
 }
 
 post_install() {
   vlicense LICENSE
-}
-
-python3-pluggy_package() {
-  archs="noarch"
-  pycompile_module="pluggy"
-  depends="python3"
-  short_desc="${short_desc/python2/python3}"
-  pkg_install() {
-    vmove "usr/lib/python3*"
-    vlicense LICENSE
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
