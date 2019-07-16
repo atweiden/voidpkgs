@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm8"
 version=8.0.0
-revision=5
+revision=6
 short_desc="Low Level Virtual Machine"
 depends="libllvm8"
 makedepends+=" binutils-devel"
@@ -214,7 +214,7 @@ do_install() {
 
 clang-analyzer_package() {
   unset depends
-  noarch="yes"
+  archs="noarch"
   pycompile_dirs="usr/share/scan-view"
   depends+=" clang-${version}_$revision"
   depends+=" python"
