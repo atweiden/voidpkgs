@@ -1,8 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="android-tools"
 version=9.0.0r45
-revision=1
+revision=2
 _distver=${version/r/_r}
+# see: https://android.googlesource.com/platform/development/+/refs/tags/android-${_distver}/sdk/plat_tools_source.prop_template
+_apiver="28.0.0 rc1"
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -52,7 +54,8 @@ do_extract() {
 }
 
 pre_configure() {
-  PKGVER="$_distver" "$FILESDIR/generate_build.rb" > build.ninja
+  PKGVER="$_apiver-void-${version}_$revision" "$FILESDIR/generate_build.rb" > \
+    build.ninja
 
   mkdir -p boringssl/build
   cd boringssl/build
