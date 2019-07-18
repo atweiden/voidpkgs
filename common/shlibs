@@ -23,6 +23,8 @@ libbabeltrace-ctf.so.1 babeltrace-1.5.3_1
 libbabeltrace-dummy.so.1 babeltrace-1.5.3_1
 libbabeltrace-lttng-live.so.1 babeltrace-1.5.3_1
 libbabeltrace.so.1 babeltrace-1.5.3_1
+libbcc.so.0 bcc-0.10.0_1
+libbcc_bpf.so.0 bcc-0.10.0_1
 libbcc.so.0 bcc-0.7.0_1
 libbpf.so.0 bcc-0.7.0_1
 libbind9.so.161 bind-libs-9.11.5_1
