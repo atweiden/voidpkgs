@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="66"
-version=0.1.0.1
+version=0.2.0.2
 revision=1
 short_desc="Helpers tools around s6-rc"
 depends+=" s6-portable-utils"
@@ -9,28 +9,41 @@ makedepends+=" execline-devel"
 makedepends+=" oblibs-devel"
 makedepends+=" procps-ng-devel"
 makedepends+=" s6-devel"
-makedepends+=" s6-portable-utils"
 makedepends+=" s6-rc"
 makedepends+=" skalibs-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" scdoc"
 homepage="http://web.obarun.org/software/"
 license="ISC"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="6633b7cf810aa3b59f84b567a57914f51247f7a96fca0879a2f8141b87bd674c"
+checksum="98a0ba012f472b7e03657e3a063cca3e19bc1d4d4accae093fadaee74924b83b"
+conf_files+=" /etc/66/init"
+conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
 build_style="configure"
-configure_args+=" --dynlibdir=/usr/lib"
-configure_args+=" --libdir=/usr/lib"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+make_dirs+=" /etc/66/conf 0755 root root"
+make_dirs+=" /etc/66/service 0755 root root"
+make_dirs+=" /usr/share/66/service 0755 root root"
+make_dirs+=" /var/lib/66 0755 root root"
+make_dirs+=" /var/log/66 0755 root root"
+
+
+pre_build() {
+  make man
+}
 
 post_install() {
   vlicense COPYING
-  for i in doc/*.html; do
+  for i in doc/html/*.html; do
     vdoc "$i"
   done
   vdoc README
+  for i in doc/man/*.{1,5,8} ; do
+    vman "$i"
+  done
 }
 
 66-doc_package() {
@@ -39,6 +52,7 @@ post_install() {
   depends="$sourcepkg-${version}_$revision"
   pkg_install() {
     vmove usr/share/doc
+    vmove usr/share/man
   }
 }
 
@@ -47,7 +61,7 @@ post_install() {
   depends="$sourcepkg-${version}_$revision"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/*.a"
+    vmove usr/lib
   }
 }
 
