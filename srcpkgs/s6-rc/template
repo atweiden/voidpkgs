@@ -1,8 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-rc"
 version=0.5.0.0
-revision=2
+revision=4
 short_desc="Service manager of the s6 init system"
+depends+=" execline>=2.5.1.0_1"
+depends+=" s6>=2.8.0.0_1"
 makedepends+=" execline-devel"
 makedepends+=" s6-devel"
 makedepends+=" skalibs-devel"
