@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="glib"
-version=2.60.4
+version=2.60.5
 revision=1
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
@@ -19,7 +19,7 @@ homepage="https://wiki.gnome.org/Projects/GLib"
 license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/$pkgname-$version.tar.xz"
-checksum="2b941ec5dcb92e5ea83fe42f9eb55a827bc8a12c153ad2489d551c31d04733dd"
+checksum="3edf1df576ee82b2ecb8ba85c343644e48ee62e68290e71e6084b00d6ba2622e"
 build_style="meson"
 configure_args+=" -Dfam=false"
 configure_args+=" -Dman=true"
