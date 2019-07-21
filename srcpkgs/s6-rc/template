@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-rc"
 version=0.5.0.0
-revision=4
+revision=5
 short_desc="Service manager of the s6 init system"
 depends+=" execline>=2.5.1.0_1"
 depends+=" s6>=2.8.0.0_1"
@@ -25,6 +25,16 @@ post_install() {
   vcopy "doc/*" "usr/share/doc/$pkgname"
   vmkdir "usr/share/examples/$pkgname"
   vcopy "examples/source/*" "usr/share/examples/$pkgname/"
+}
+
+s6-rc-devel_package() {
+  archs="noarch"
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+  }
 }
 
 s6-rc-doc_package() {

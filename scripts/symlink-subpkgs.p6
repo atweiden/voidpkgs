@@ -605,7 +605,8 @@ constant %PKG = Map.new(
     's6-networking' => qw<s6-networking-devel
                           s6-networking-doc>,
     's6-portable-utils' => ['s6-portable-utils-doc'],
-    's6-rc' => ['s6-rc-doc'],
+    's6-rc' => qw<s6-rc-devel
+                  s6-rc-doc>,
     'sbc' => ['sbc-devel'],
     'sbcl' => ['sbcl-source'],
     'schilytools' => qw<sccs
