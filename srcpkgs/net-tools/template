@@ -1,19 +1,19 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="net-tools"
-version=1.60.20150526git
-revision=4
+version=1.60.20181103git
+revision=1
+_gitrev="0eebece8c964e3cfa8a018f42b2e7e751a7009a0"
 short_desc="Basic networking tools"
 hostmakedepends="git"
-homepage="http://sourceforge.net/projects/$pkgname/"
-license="GPL-2"
+homepage="https://github.com/ecki/net-tools"
+license="GPL-2.0-only"
+distfiles="https://github.com/ecki/net-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+wrksrc="$pkgname-$_gitrev"
+checksum="795cb4dd2618ed7ff9a48b9cb63b33780b47dfd7464c8e52ba734e6796cbab17"
 alternatives+=" hostname:/usr/share/man/man1/hostname.1:/usr/share/man/man8/$pkgname-hostname.1"
 alternatives+=" hostname:hostname:/usr/bin/$pkgname-hostname"
 alternatives+=" ifconfig:/usr/share/man/man1/ifconfig.1:/usr/share/man/man8/$pkgname-ifconfig.8"
 alternatives+=" ifconfig:ifconfig:/usr/bin/$pkgname-ifconfig"
-
-do_fetch() {
-  git clone git://git.code.sf.net/p/net-tools/code "$pkgname-$version"
-}
 
 pre_build() {
   sed \
