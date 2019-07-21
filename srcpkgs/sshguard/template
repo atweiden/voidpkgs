@@ -1,23 +1,26 @@
-# Template file for 'sshguard'
-pkgname=sshguard
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sshguard"
 version=2.4.0
 revision=1
-build_style=gnu-configure
-hostmakedepends="flex"
-depends="iptables"
 short_desc="Protects networked hosts from brute force attacks"
-maintainer="Lodvær <lodvaer@gmail.com>"
-license="BSD-3-Clause"
+depends="iptables"
+hostmakedepends="flex"
 homepage="https://www.sshguard.net/"
-distfiles="${SOURCEFORGE_SITE}/sshguard/sshguard-${version}.tar.gz"
-checksum=065ca4091b3a96802714b560dbbc3d9f0e67574e99e2b6e8857aa1027d17d6c0
-
-make_dirs="/var/db/sshguard 0755 root root"
+license="BSD-3-Clause"
+distfiles="$SOURCEFORGE_SITE/sshguard/$pkgname-$version.tar.gz"
+checksum="065ca4091b3a96802714b560dbbc3d9f0e67574e99e2b6e8857aa1027d17d6c0"
 conf_files="/etc/sshguard.conf"
+build_style="gnu-configure"
+make_dirs="/var/db/sshguard 0755 root root"
 
 post_install() {
-	vsv sshguard-socklog
-	vconf examples/sshguard.conf.sample sshguard.conf
-	vsed -i 's@/usr/local/@/usr/@g' ${DESTDIR}/etc/sshguard.conf
-	vlicense COPYING
+  vsv sshguard-socklog
+  vconf examples/sshguard.conf.sample sshguard.conf
+  vsed \
+    -i \
+    -e 's@/usr/local/@/usr/@g' \
+    "$DESTDIR/etc/sshguard.conf"
+  vlicense COPYING
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
