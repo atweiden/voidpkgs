@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libmnl"
 version=1.0.4
-revision=1
+revision=2
 short_desc="Minimalistic user-space library oriented to Netlink developers"
 homepage="http://www.netfilter.org/projects/libmnl/"
-license="LGPL-2.1"
+license="LGPL-2.1-or-later"
 distfiles="http://www.netfilter.org/projects/libmnl/files/$pkgname-$version.tar.bz2"
 checksum="171f89699f286a5854b72b91d06e8f8e3683064c5901fb09d954a9ab6f551f81"
 build_style="gnu-configure"
