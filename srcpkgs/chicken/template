@@ -3,10 +3,6 @@ pkgname="chicken"
 version=5.1.0
 revision=1
 short_desc="Practical and portable Scheme system"
-# no arm support
-archs+=" i686*"
-archs+=" ppc64le*"
-archs+=" x86_64*"
 homepage="http://www.call-cc.org"
 license="BSD-3-Clause"
 changelog="https://code.call-cc.org/releases/$version/NEWS"
@@ -23,7 +19,7 @@ do_configure() {
 
 do_build() {
   make \
-    -j1 \
+    C_COMPILER="$CC" \
     C_COMPILER_OPTIMIZATION_OPTIONS="$CFLAGS" \
     LINKER_LINK_SHARED_PROGRAM_OPTIONS="$LDFLAGS" \
     PLATFORM="linux" \
@@ -32,7 +28,7 @@ do_build() {
 
 do_install() {
   make \
-    -j1 \
+    C_COMPILER="$CC" \
     C_COMPILER_OPTIMIZATION_OPTIONS="$CFLAGS" \
     DESTDIR="$DESTDIR" \
     LINKER_LINK_SHARED_PROGRAM_OPTIONS="$LDFLAGS" \
