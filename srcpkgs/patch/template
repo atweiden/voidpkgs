@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="patch"
 version=2.7.6
-revision=3
+revision=4
 short_desc="Patch files using diff output"
 makedepends="attr-devel"
 homepage="http://www.gnu.org/software/patch/patch.html"
