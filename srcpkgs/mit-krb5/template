@@ -105,4 +105,9 @@ mit-krb5-libs_package() {
   }
 }
 
+# REMARKS:
+#
+# if there is a bump in .so version, also update
+# srcpkgs/libgssglue/files/gssapi_mech.conf
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
