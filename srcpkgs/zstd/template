@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="zstd"
-version=1.4.1
+version=1.4.2
 revision=1
 short_desc="Fast real-time compression algorithm - CLI tool"
 makedepends+=" liblz4-devel"
@@ -10,7 +10,7 @@ checkdepends="gtest-devel"
 homepage="http://www.zstd.net"
 license="BSD-3-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/facebook/zstd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f91ea3397e6cc65d398e1bc0713cf2f0b0de2fb85ea9dabb1eb3e8f1b22f8d6f"
+checksum="7a6e1dad34054b35e2e847eb3289be8820a5d378228802239852f913c6dcf6a7"
 bootstrap="yes"
 
 do_build() {
