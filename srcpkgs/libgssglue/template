@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgssglue"
 version=0.4
-revision=7
+revision=8
 short_desc="Mechanism-switch gssapi library"
 homepage="http://www.citi.umich.edu/projects/nfsv4/linux/"
 license="BSD-3-Clause"
