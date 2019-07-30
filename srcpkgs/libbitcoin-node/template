@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-node"
 version=3.5.0
-revision=1
+revision=2
 short_desc="Bitcoin Full Node"
 archs+=" aarch64*"
 archs+=" ppc64*"
