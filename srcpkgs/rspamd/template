@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rspamd"
 version=1.9.2
-revision=2
+revision=3
 short_desc="Fast, free and open-source spam filtering system"
 makedepends+=" LuaJIT-devel"
 makedepends+=" fann-devel"
