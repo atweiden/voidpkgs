@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs-lts"
 version=8.15.0
-revision=1
+revision=2
 short_desc="Evented I/O for V8 javascript"
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
