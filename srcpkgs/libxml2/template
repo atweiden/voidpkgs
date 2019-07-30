@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libxml2"
 version=2.9.9
-revision=2
+revision=3
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
