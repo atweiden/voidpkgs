@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kbd"
 version=2.1.0
-revision=1
+revision=2
 short_desc="Linux keyboard utilities"
 depends="kbd-data"
 makedepends="pam-devel"
