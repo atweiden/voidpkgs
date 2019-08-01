@@ -1,16 +1,17 @@
-# Template file for 'dsvpn'
-pkgname=dsvpn
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="dsvpn"
 version=0.1.0
 revision=1
-build_style=gnu-makefile
 short_desc="Dead simple VPN"
-maintainer="Piraty <piraty1@inbox.ru>"
-license="GPL-3.0-or-later"
 homepage="https://github.com/jedisct1/dsvpn"
-distfiles="https://github.com/jedisct1/dsvpn/archive/${version}.tar.gz"
-checksum=97bf922c957827b01123796c7089ad4c8b84f0ef6ae4f600ace21fe07598b46f
+license="GPL-3.0-or-later"
+distfiles="https://github.com/jedisct1/dsvpn/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="97bf922c957827b01123796c7089ad4c8b84f0ef6ae4f600ace21fe07598b46f"
+build_style="gnu-makefile"
 
 do_install() {
-	vbin dsvpn
-	vlicense LICENSE
+  vbin dsvpn
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
