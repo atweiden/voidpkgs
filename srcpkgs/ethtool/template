@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ethtool"
-version=5.1
+version=5.2
 revision=1
 short_desc="Utility for controlling network drivers and hardware"
 homepage="http://www.kernel.org/pub/software/network/ethtool/"
 license="GPL-2.0-only"
 distfiles="http://www.kernel.org/pub/software/network/ethtool/$pkgname-$version.tar.xz"
-checksum="65feac1fec6565290b7784b2efc925dee900a9b11202ce7c6c30a967c3da3387"
+checksum="665fd70841860d6cb974387e3ab97e0dde7745f95cb3ef35b98ef9aace137805"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
