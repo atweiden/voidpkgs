@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kbd"
-version=2.1.0
-revision=2
+version=2.2.0
+revision=1
 short_desc="Linux keyboard utilities"
 depends="kbd-data"
 makedepends="pam-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.kbd-project.org/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/kbd/$pkgname-$version.tar.xz"
-checksum="6740e896b9fe62b7234ff64e4b41cf5f3e1c3a4032cbd963eefebe04f2457cc1"
+checksum="21a1bc5f6fb3b18ce9fdd717e4533368060a3182a39c7155eaf7ec0f5f83e9f7"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/kbd"
 configure_args+=" --localedir=/usr/share/kbd/locale"
