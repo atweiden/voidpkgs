@@ -53,7 +53,7 @@ pre_configure() {
     -e 's,tests ,,g' \
     Makefile.am
 
-  $XBPS_FETCH_CMD http://git.alpinelinux.org/cgit/aports/plain/main/kbd/error.h
+  cp "$FILESDIR/error.h" .
   autoreconf -fi
 }
 
