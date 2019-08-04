@@ -1,19 +1,24 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="shellcheck"
-version=0.6.0
+version=0.7.0
 revision=1
 short_desc="Static analysis tool for shell scripts"
+hostmakedepends="pandoc"
 homepage="https://www.shellcheck.net/"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/koalaman/shellcheck/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="78f90aa8e618dc468bc1c36b6929216dc7a0c2679cd157e50919f7d8cc1899bc"
+checksum="946cf3421ffd418f0edc380d1184e4cb08c2ec7f098c79b1c8a2c482fe91d877"
 build_style="haskell-stack"
-stackage="lts-13.2"
+stackage="lts-13.26"
 nocross="yes"
 nopie_files="/usr/bin/shellcheck"
 
+pre_configure() {
+  pandoc -s -t man shellcheck.1.md -o shellcheck.1
+}
+
 post_install() {
-  vdoc shellcheck.1.md
+  vdoc shellcheck.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
