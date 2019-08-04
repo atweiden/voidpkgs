@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs"
-version=11.14.0
-revision=2
+version=12.7.0
+revision=1
 short_desc="Evented I/O for V8 javascript"
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
@@ -26,7 +26,7 @@ hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="b903ba6dc8131b9357e7c5e26967a0f48aa460c708154244a6348d49a7d8ff9a"
+checksum="d5e63fd4ee88d539a69b9e71631d03014bd8e98596e741515e3d7aa930f4630a"
 wrksrc="${pkgname%js}-v$version"
 build_options+=" cares"
 build_options+=" http_parser"
@@ -66,12 +66,10 @@ do_configure() {
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
       aarch64*)
-        _args+=" --dest-cpu=arm64"
-        _args+=" --without-snapshot"
+        _args="--dest-cpu=arm64"
         ;;
       ppc64*)
-        _args+=" --dest-cpu=ppc64"
-        _args+=" --without-snapshot"
+        _args="--dest-cpu=ppc64"
         ;;
       *)
         msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE.\n"
@@ -94,9 +92,8 @@ post_configure() {
   # fix linking against llhttp
   sed \
     -i \
-    -e 's/http_parser/& -lllhttp/' \
-    out/cctest.target.mk \
-    out/node.target.mk
+    -e 's/-lhttp_parser/& -lllhttp/' \
+    out/*.target.mk
 }
 
 do_build() {
