@@ -13,6 +13,7 @@ pkgname="cross-$_triplet"
 version=0.31
 revision=3
 short_desc="Cross toolchain for PowerPC (musl)"
+archs+=" i686*"
 archs+=" ppc64*"
 archs+=" x86_64*"
 depends="$pkgname-libc-${version}_$revision"
