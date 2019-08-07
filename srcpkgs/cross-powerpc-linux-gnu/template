@@ -12,6 +12,7 @@ pkgname="cross-$_triplet"
 version=0.31
 revision=1
 short_desc="GNU Cross toolchain for the $_triplet target (binutils/gcc/glibc)"
+archs+=" i686"
 archs+=" ppc64"
 archs+=" ppc64le"
 archs+=" x86_64"
