@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ncdu"
-version=1.14
+version=1.14.1
 revision=1
 short_desc="NCurses Disk Usage utility"
 makedepends="ncurses-devel"
 homepage="http://dev.yorhel.nl/ncdu"
 license="MIT"
 distfiles="http://dev.yorhel.nl/download/$pkgname-$version.tar.gz"
-checksum="c694783aab21e27e64baad314b7c1ff34541bfa219fe9645ef6780f1c5558c44"
+checksum="be31e0e8c13a0189f2a186936f7e298c6390ebdc573bb4a1330bc1fcbf56e13e"
 build_style="gnu-configure"
 
 post_install() {
