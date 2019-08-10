@@ -257,7 +257,8 @@ constant %PKG = Map.new(
                       inetutils-uucpd
                       inetutils-whois>,
     'iproute2' => ['iproute2-tc-ipt'],
-    'iptables' => ['iptables-devel'],
+    'iptables' => qw<iptables-devel
+                     iptables-nft>,
     'irssi' => qw<irssi-devel
                   irssi-otr
                   irssi-perl>,
