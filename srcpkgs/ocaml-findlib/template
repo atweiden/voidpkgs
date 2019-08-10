@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ocaml-findlib"
 version=1.7.3
-revision=3
+revision=5
 short_desc="OCaml package manager"
 makedepends+=" m4"
 makedepends+=" ncurses-devel"
