@@ -1,34 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ocaml"
-version=4.07.1
+version=4.08.1
 revision=1
-short_desc="A functional language with OO extensions"
+short_desc="Main implementation of the Caml language"
 makedepends="ncurses-devel"
 homepage="http://ocaml.org/"
 license="QPL-1.0, LGPL-2.1-only"
 distfiles="https://github.com/ocaml/ocaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="83683ddad54bd23773591a9f757e702fa5cfa2ea1b124d8fe75a73729e592bfe"
+checksum="b53ed3d487b83fd49bc181bded066ae8e6fb592cf40514261d27d36050d5db85"
 patch_args="-Np1"
+build_style="gnu-configure"
+configure_args="--with-pic"
+make_build_target="world.opt"
 nocross="yes"
-disable_parallel_build="yes"
 
-do_configure() {
-  ./configure \
-    -fPIC \
-    -mandir /usr/share/man \
-    -prefix /usr
-}
-
-do_build() {
-  make "$makejobs" world.opt
-}
-
-do_install() {
-  make \
-    MANDIR="$DESTDIR/usr/share/man" \
-    PREFIX="$DESTDIR/usr" \
-    install
-}
+export ASPP="cc -c"
 
 post_install() {
   vlicense LICENSE
