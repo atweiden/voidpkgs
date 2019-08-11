@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-client"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Bitcoin Client Query Library"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
@@ -21,7 +21,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-client"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bafa26647f334ecad04fc4bbef507a1954d7e0682f07bd38b90ab66dba5fe0d2"
+checksum="1c70c309ef46725ec042fefd5848c4817ca14b8db51e7a4ce7225859bef12104"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
