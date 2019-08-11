@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-node"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Bitcoin Full Node"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -27,7 +27,7 @@ tags+=" obelisk"
 homepage="https://github.com/libbitcoin/libbitcoin-node"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-node/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e3a0a96155ca93aa6cba75789c18419f40686a69cbd40c77aa77ca84ccc43cab"
+checksum="3803e8dcf70dd1e7043e98bb4a78e9f2007288297f0046c5ed43c7a75058dcb5"
 conf_files="/etc/libbitcoin/bn.cfg"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
