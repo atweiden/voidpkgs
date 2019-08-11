@@ -1,80 +1,122 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs-lts"
-version=8.15.0
-revision=2
+version=10.16.2
+revision=1
 short_desc="Evented I/O for V8 javascript"
+# need these for host v8 for torque, see https://github.com/nodejs/node/pull/21079
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if cares c-ares-devel)"
 makedepends+=" $(vopt_if http_parser http-parser-devel)"
 makedepends+=" $(vopt_if icu icu-devel)"
 makedepends+=" $(vopt_if libuv libuv-devel)"
+makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
-hostmakedepends+=" $(vopt_if icu icu)"
+hostmakedepends+=" zlib-devel"
+hostmakedepends+=" $(vopt_if cares c-ares-devel)"
+hostmakedepends+=" $(vopt_if http_parser http-parser-devel)"
+hostmakedepends+=" $(vopt_if icu icu-devel)"
+hostmakedepends+=" $(vopt_if libuv libuv-devel)"
+hostmakedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
+hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
-distfiles="https://nodejs.org/dist/v$version/${pkgname%js*}-v$version.tar.gz"
-checksum="590fc8b09c2466f8f7854ce3342ae1d0ba421c104999b7bd54ec0c690321d2aa"
-wrksrc="${pkgname%js*}-v$version"
+distfiles="https://nodejs.org/dist/v$version/node-v$version.tar.gz"
+checksum="5936ef12ab3f0ce5fbb6751c1bb41f626b6058f414a297b3d8c5eb418a27e8fe"
+wrksrc="node-v$version"
+build_options+=" cares"
 build_options+=" http_parser"
 build_options+=" icu"
 build_options+=" libuv"
+build_options+=" nghttp2"
 build_options+=" ssl"
-desc_option_libuv="Enable shared libuv"
+desc_option_cares="Enable shared c-ares"
 desc_option_http_parser="Enable shared http-parser"
 desc_option_icu="Enable shared icu"
+desc_option_libuv="Enable shared libuv"
+desc_option_nghttp2="Enable shared nghttp2"
+desc_option_ssl="Enable shared libressl"
+build_options_default+=" cares"
 build_options_default+=" http_parser"
 build_options_default+=" icu"
 build_options_default+=" libuv"
-build_options_default+=" ssl"
+build_options_default+=" nghttp2"
 provides="nodejs-runtime-0_1"
 conflicts="nodejs"
 replaces="iojs>=0"
 
+case "$XBPS_TARGET_MACHINE" in
+  arm*)
+    case "$XBPS_MACHINE" in
+      x86_64*|aarch64*)
+        nocross="Can't cross-compile to 32bit-host from 64bit-host"
+        ;;
+    esac
+    ;;
+  ppc64le*)
+    ;;
+  ppc64*)
+    broken="Node is not supported on ppc64 BE Linux"
+    ;;
+esac
+
 do_configure() {
   local _args
+
   export LD="$CXX"
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
-      arm*)
-        _args+=" --dest-cpu=arm"
-        _args+=" --without-snapshot"
-        ;;
       aarch64*)
         _args+=" --dest-cpu=arm64"
         _args+=" --without-snapshot"
         ;;
-      ppc64*)
+      ppc64le*)
         _args+=" --dest-cpu=ppc64"
         _args+=" --without-snapshot"
         ;;
       *)
-        msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE\n"
+        msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE.\n"
         ;;
     esac
   fi
   ./configure \
-    $_args \
     --prefix="/usr" \
     --shared-zlib \
-    $(vopt_if http_parser --shared-http-parser) \
-    $(vopt_if icu --with-intl=system-icu) \
-    $(vopt_if libuv --shared-libuv) \
-    $(vopt_if ssl --shared-openssl)
+    "$(vopt_if cares --shared-cares)" \
+    "$(vopt_if http_parser --shared-http-parser)" \
+    "$(vopt_if icu --with-intl="system-icu")" \
+    "$(vopt_if libuv --shared-libuv)" \
+    "$(vopt_if nghttp2 --shared-nghttp2)" \
+    "$(vopt_if ssl --shared-openssl)" \
+    $_args
 }
 
 do_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
-    make LD="$CXX" LDFLAGS+="-ldl" "$makejobs" PORTABLE=1 V=1
+    make \
+      "$makejobs" \
+      LD="$CXX" \
+      LDFLAGS+="-ldl" \
+      PORTABLE=1 \
+      V=1
   else
-    make LD="$CXX" LDFLAGS+="-ldl" "$makejobs" V=1
+    make \
+      "$makejobs" \
+      LD="$CXX" \
+      LDFLAGS+="-ldl" \
+      V=1
   fi
 }
 
 do_install() {
+  make \
+    DESTDIR="$DESTDIR" \
+    LD="$CXX" \
+    LDFLAGS+="-ldl" \
+    install
   vlicense LICENSE
-  make LD="$CXX" LDFLAGS+="-ldl" DESTDIR="$DESTDIR" install
   rm -r "$DESTDIR/usr/include"
 }
 
