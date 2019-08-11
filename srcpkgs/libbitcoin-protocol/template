@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-protocol"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Bitcoin Blockchain Query Protocol"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
@@ -20,7 +20,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-protocol"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-protocol/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9deac6908489e2d59fb9f89c895c49b00e01902d5fdb661f67d4dbe45b22af76"
+checksum="dc3ed57512c1de68ec76838e41380ee03417c916c84d44ef3d5ef18e1b93bd72"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
