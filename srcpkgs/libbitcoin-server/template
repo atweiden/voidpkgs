@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-server"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Bitcoin Full Node and Query Server"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -31,7 +31,7 @@ tags+=" obelisk"
 homepage="https://github.com/libbitcoin/libbitcoin-server"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-server/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="37ef8d572fb7400565655501ffdea5d07a1de10f3d9fa823d33e2bf68ef8c3ce"
+checksum="7280e6995f2a2123356e8ee6a5913f4a5fa6d0fd473ff2277145e55ba7104920"
 conf_files="/etc/libbitcoin/bs.cfg"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
