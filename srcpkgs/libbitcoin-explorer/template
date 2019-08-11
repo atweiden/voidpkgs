@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libbitcoin-explorer"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Bitcoin Command Line Tool"
 makedepends+=" bash-completion"
 makedepends+=" boost-devel"
@@ -24,7 +24,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-explorer"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-explorer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="630cffd577c0d10345b44ce8160f4604519b0ca69bf201f524f104c207b930aa"
+checksum="20c8ccc30b090309bee2b13a4b07f17ae6b16421dac804423f034c32dc1c518c"
 conf_files="/etc/libbitcoin/bx.cfg"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
