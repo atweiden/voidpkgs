@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nmap"
 version=7.70
-revision=5
+revision=6
 short_desc="Utility for network discovery and security auditing"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
@@ -24,6 +24,8 @@ build_options="lua"
 if [[ -z "$CROSS_BUILD" ]]; then
   build_options_default="lua"
 fi
+alternatives+=" nc:nc.1:/usr/share/man/man1/ncat.1"
+alternatives+=" nc:nc:/usr/bin/ncat"
 
 pre_check() {
   # disable zenmap tests
