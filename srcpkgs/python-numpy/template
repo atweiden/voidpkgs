@@ -1,50 +1,31 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-numpy"
-version=1.15.4
-revision=2
+version=1.16.4
+revision=1
 short_desc="Fast and sophisticated array facility to Python2"
 makedepends+=" cblas-devel"
 makedepends+=" lapack-devel"
 makedepends+=" python-devel"
-makedepends+=" python3-devel"
 hostmakedepends+=" gcc-fortran"
 hostmakedepends+=" python-Cython"
 hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-Cython"
-hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3b1744b96ce41fff1c7e19144ca85cbbfb11e4b4e0e13080ca374df212801dbb"
+checksum="3bdabda4a2ac4f1986b4bc55f865cd0b68b71edc9420b03e911e0ee52743e9c4"
 wrksrc="${pkgname#*-}-$version"
-build_style="python-module"
+build_style="python2-module"
 pycompile_module="numpy"
 nocross="https://build.voidlinux.org/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
 alternatives="numpy:f2py:/usr/bin/f2py2"
 
-export ATLAS="None"
-LDFLAGS="-shared"
-
 post_install() {
-  vlicense LICENSE.txt LICENSE
-  rm -f "$DESTDIR/usr/lib"/python*/site-packages/numpy/LICENSE.txt
   # create compat symlinks for .h files
   vmkdir "$py2_inc"
   ln -sfr "$DESTDIR/$py2_sitelib/numpy/core/include/numpy" "$DESTDIR/$py2_inc"
-  vmkdir "$py3_inc"
-  ln -sfr "$DESTDIR/$py3_sitelib/numpy/core/include/numpy" "$DESTDIR/$py3_inc"
-}
-
-python3-numpy_package() {
-  alternatives="numpy:f2py:/usr/bin/f2py3"
-  pycompile_module="numpy"
-  short_desc="${short_desc/Python2/Python3}"
-  pkg_install() {
-    vmove usr/bin/f2py3
-    vmove "$py3_sitelib"
-    vmove "$py3_inc"
-    vlicense LICENSE.txt LICENSE
-  }
+  rm -f "$DESTDIR/usr/bin/f2py"
+  rm -f "$DESTDIR/usr/lib"/python*/site-packages/numpy/LICENSE.txt
+  vlicense LICENSE.txt LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
