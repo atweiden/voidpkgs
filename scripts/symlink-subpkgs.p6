@@ -567,7 +567,6 @@ constant %PKG = Map.new(
     'python-imagesize' => ['python3-imagesize'],
     'python-msgpack' => ['python3-msgpack'],
     'python-nose' => ['python3-nose'],
-    'python-numpy' => ['python3-numpy'],
     'python-packaging' => ['python3-packaging'],
     'python-paramiko' => ['python3-paramiko'],
     'python-parsing' => ['python3-parsing'],
