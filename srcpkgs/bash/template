@@ -3,7 +3,7 @@ pkgname="bash"
 _bash_distver=5.0
 _bash_patchlevel=007
 version=$_bash_distver.$_bash_patchlevel
-revision=1
+revision=2
 short_desc="GNU Bourne Again Shell"
 makedepends="ncurses-devel"
 hostmakedepends="bison"
@@ -17,7 +17,8 @@ configure_args+=" --with-curses"
 configure_args+=" --without-bash-malloc"
 configure_args+=" --without-installed-readline"
 make_build_args="TERMCAP_LIB=$XBPS_CROSS_BASE/usr/lib/libncursesw.a"
-register_shell="/bin/bash"
+register_shell+=" /bin/bash"
+register_shell+=" /usr/bin/bash"
 make_dirs="/etc/bash/bashrc.d 755 root root"
 conflicts="chroot-bash>=0"
 alternatives+=" sh:sh:/usr/bin/bash"
