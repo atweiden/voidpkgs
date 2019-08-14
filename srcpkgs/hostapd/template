@@ -1,15 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="hostapd"
-version=2.8
+version=2.9
 revision=1
 short_desc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
 hostmakedepends="pkg-config"
 homepage="http://w1.fi/hostapd/"
-license="BSD"
+license="BSD-3-Clause"
 distfiles="http://w1.fi/releases/$pkgname-$version.tar.gz"
-checksum="929f522be6eeec38c53147e7bc084df028f65f148a3f7e4fa6c4c3f955cee4b0"
+checksum="881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7"
 conf_files="/etc/hostapd/hostapd.conf"
 build_wrksrc="$pkgname"
 
