@@ -438,7 +438,7 @@ libtls.so.18 libtls18-2.8.2_1
 libtls.so.19 libtls19-2.9.2_1
 libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
-libtorrent.so.20 libtorrent-0.13.7_1
+libtorrent.so.21 libtorrent-0.13.8_1
 libucontext.so.0 libucontext-0.1.1_1
 libunistring.so.2 libunistring-0.9.4_1
 libunwind-ptrace.so.0 libunwind-1.1_1
