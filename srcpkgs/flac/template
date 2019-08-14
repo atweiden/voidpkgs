@@ -18,6 +18,12 @@ configure_args+=" --disable-thorough-tests"
 configure_args+=" --disable-xmms-plugin"
 configure_args+=" --with-ogg=$XBPS_CROSS_BASE/usr"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc64|ppc64-musl)
+    configure_args+=" --disable-vsx"
+    ;;
+esac
+
 post_install() {
   vlicense COPYING.Xiph
 }
