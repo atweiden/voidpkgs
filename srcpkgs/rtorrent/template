@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rtorrent"
-version=0.9.7
-revision=4
+version=0.9.8
+revision=1
 short_desc="Ncurses BitTorrent client based on libTorrent"
 makedepends+=" libcppunit-devel"
 makedepends+=" libsigc++-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/rakshasa/rtorrent"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/rakshasa/rtorrent/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5a7c9ded6b92d5ffc5ae32c19816f2328848d70841a4ce7d2739a5024d3587ca"
+checksum="bc889ce1dde475ec56aa72ae996912ff58723226a4f4256fef4f1f8636d991d4"
 build_style="gnu-configure"
 configure_args="--with-xmlrpc-c"
 
