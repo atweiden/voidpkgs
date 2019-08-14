@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dash"
 version=0.5.10.2
-revision=1
+revision=2
 hostmakedepends="bison"
 short_desc="POSIX-compliant Unix shell, much smaller than GNU bash"
 homepage="http://gondor.apana.org.au/~herbert/dash/"
@@ -9,7 +9,10 @@ license="BSD-3-Clause"
 distfiles="http://gondor.apana.org.au/~herbert/dash/files/$pkgname-$version.tar.gz"
 checksum="3c663919dc5c66ec991da14c7cf7e0be8ad00f3db73986a987c118862b5f6071"
 build_style="gnu-configure"
-register_shell="/bin/sh /bin/dash"
+register_shell+=" /bin/dash"
+register_shell+=" /bin/sh"
+register_shell+=" /usr/bin/dash"
+register_shell+=" /usr/bin/sh"
 alternatives+=" sh:sh:/usr/bin/dash"
 alternatives+=" sh:sh.1:/usr/share/man/man1/dash.1"
 
