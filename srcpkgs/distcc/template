@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="distcc"
-version=3.3.2
-revision=2
+version=3.3.3
+revision=1
 short_desc="Distributed compilation for faster C/C++ builds"
 makedepends+=" avahi-libs-devel"
 makedepends+=" binutils-devel"
@@ -12,10 +12,9 @@ hostmakedepends+=" pkg-config"
 homepage="https://distcc.github.io"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/distcc/distcc/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="64894de2970c631801d29c9962553673ea7a1d150e6855d7e166d273fca5cdfc"
+checksum="bead25471d5a53ecfdf8f065a6fe48901c14d5008956c318c700e56bc87bf0bc"
 conf_files+=" /etc/distcc/clients.allow"
 conf_files+=" /etc/distcc/hosts"
-wrksrc="$pkgname"
 build_style="gnu-configure"
 configure_args+=" --disable-Werror"
 configure_args+=" --without-gnome"
@@ -44,10 +43,12 @@ post_install() {
 
   vsv distccd
 
-  # gcc wrappers
+  # cc wrappers
   vmkdir usr/lib/distcc/bin
   for f in c++ \
            cc \
+           clang \
+           clang++ \
            g++ \
            gcc; do
     ln -sfr "$DESTDIR/usr/bin/distcc" "$DESTDIR/usr/lib/distcc/bin/$f"
