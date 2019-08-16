@@ -58,7 +58,7 @@ replaces="mysql>=0"
 CFLAGS="-w"
 
 case "$XBPS_TARGET_MACHINE" in
-  armv[56]*)
+  armv[56]*|ppc|ppc-musl)
     LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -latomic"
     makedepends+=" libatomic-devel"
     hostmakedepends+=" libatomic-devel"
@@ -67,7 +67,7 @@ esac
 
 pre_configure() {
   case "$XBPS_TARGET_MACHINE" in
-    armv[56]*)
+    armv[56]*|ppc|ppc-musl)
       find -name CMakeLists.txt -exec \
         sed \
           -i \
