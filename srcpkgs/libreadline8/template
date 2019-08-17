@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libreadline8"
 _dist_ver=8.0
-_patch_ver=000
+_patch_ver=001
 version="$_dist_ver.$_patch_ver"
 revision=1
 short_desc="GNU Readline Library"
