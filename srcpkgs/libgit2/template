@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgit2"
-version=0.28.2
-revision=2
+version=0.28.3
+revision=1
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
 makedepends+=" libressl-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" python"
 homepage="https://libgit2.org"
 license="GPL-2.0-or-later WITH GCC-exception-2.0"
 distfiles="https://github.com/libgit2/libgit2/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="42b5f1e9b9159d66d86fff0394215c5733b6ef8f9b9d054cdd8c73ad47177fc3"
+checksum="ee5344730fe11ce7c86646e19c2d257757be293f5a567548d398fb3af8b8e53b"
 build_style="cmake"
 configure_args="-DTHREADSAFE=ON"
 
