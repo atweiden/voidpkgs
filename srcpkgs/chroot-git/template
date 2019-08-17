@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chroot-git"
-version=2.22.0
+version=2.23.0
 revision=1
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
-checksum="159e4b599f8af4612e70b666600a3139541f8bacc18124daf2cbe8d1b934f29f"
+checksum="234fa05b6839e92dc300b2dd78c92ec9c0c8d439f65e1d430a7034f60af16067"
 wrksrc="git-$version"
 build_style="gnu-configure"
 configure_args+=" --without-curl"
