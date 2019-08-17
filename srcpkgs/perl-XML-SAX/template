@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-XML-SAX"
-version=1.00
-revision=2
+version=1.02
+revision=1
 short_desc="Perl interface to the SAX2 XML Parser"
 archs="noarch"
 depends+=" perl"
@@ -14,7 +14,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/XML-SAX"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
-checksum="45ea6564ef8692155d57b2de0862b6442d3c7e29f4a9bc9ede5d7ecdc74c2ae3"
+checksum="4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
