@@ -1,17 +1,21 @@
-# Template file for 'bubblewrap'
-pkgname=bubblewrap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bubblewrap"
 version=0.3.3
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake libxslt docbook-xsl pkg-config"
-makedepends="libcap-devel"
 short_desc="Unprivileged sandboxing tool"
-maintainer="Duncaen <duncaen@voidlinux.org>"
-license="LGPL-2.0-or-later"
+makedepends="libcap-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/projectatomic/bubblewrap"
-distfiles="https://github.com/projectatomic/bubblewrap/archive/v${version}.tar.gz"
-checksum=439e4cd84d9d19c9e5b0c6aa0f0c3a55bbb893ae5ec112a5b575eadd2165f039
+license="LGPL-2.0-or-later"
+distfiles="https://github.com/projectatomic/bubblewrap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="439e4cd84d9d19c9e5b0c6aa0f0c3a55bbb893ae5ec112a5b575eadd2165f039"
+build_style="gnu-configure"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
