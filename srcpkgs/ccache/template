@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ccache"
-version=3.7.2
+version=3.7.3
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
@@ -9,7 +9,7 @@ homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.samba.org/news.html"
 distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="a5da0008512ff9e882097acaffb3616fae98ec25827167bb4bd1e4acf0b66793"
+checksum="73d2ec69fcf4fd3b956304036974a779b443d88882b69c5d81b62b5dc8630e04"
 build_style="gnu-configure"
 make_check_args="CC=gcc"
 wrksrc="$pkgname-${version%a}"
