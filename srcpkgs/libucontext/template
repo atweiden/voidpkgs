@@ -1,13 +1,13 @@
 maintainer="Peter Bui <pbui@github.bx612.space>"
 pkgname="libucontext"
-version=0.1.3
+version=0.9.0
 revision=1
 short_desc="Compatibility layer providing ucontext functions"
 archs="*-musl"
-homepage="https://github.com/kaniini/libucontext"
+homepage="https://code.foxkit.us/adelie/libucontext"
 license="ISC"
-distfiles="https://distfiles.dereferenced.org/libucontext/$pkgname-$version.tar.xz"
-checksum="da530b2f4469f9adcef678b9c1bf07f2a66ea922251d9bcf13b691f09a08883e"
+distfiles="https://distfiles.adelielinux.org/source/libucontext/$pkgname-$version.tar.xz"
+checksum="0d53a415a307ef175153bbe60a572c940a922cb736ce13530b666e7ec2795d68"
 
 case "$XBPS_TARGET_MACHINE" in
   arm*)
@@ -27,21 +27,27 @@ esac
 do_build() {
   case "$XBPS_TARGET_MACHINE" in
     i686*)
-      sed \
+      vsed \
         -i \
         -e "s;__i686.get_pc_thunk.bx;i686_get_pc_thunk_bx;g" \
         arch/x86/startcontext.S
       ;;
   esac
-  make ARCH="$LIBUCONTEXT_ARCH"
+  make \
+    ARCH="$LIBUCONTEXT_ARCH"
 }
 
 do_check() {
-  make ARCH="$LIBUCONTEXT_ARCH" check
+  make \
+    ARCH="$LIBUCONTEXT_ARCH" \
+    check
 }
 
 do_install() {
-  make ARCH="$LIBUCONTEXT_ARCH" DESTDIR="$DESTDIR/usr" install
+  make \
+    ARCH="$LIBUCONTEXT_ARCH" \
+    DESTDIR="$DESTDIR/usr" \
+    install
 }
 
 post_install() {
@@ -53,6 +59,7 @@ libucontext-devel_package() {
   short_desc+=" - development files"
   pkg_install() {
     vmove "usr/lib/*.so"
+    vmove "usr/lib/*.a"
   }
 }
 
