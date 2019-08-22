@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libfetch"
 version=2.34
-revision=19
+revision=20
 short_desc="File Transfer Library for URLs"
 makedepends="libressl-devel"
 homepage="http://www.NetBSD.org"
