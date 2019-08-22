@@ -1,15 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pps-tools"
-version=20120407
-revision=2
-_gitrev="0deb9c7e135e9380a6d09e9d2e938a146bb698c8"
+version=1.0.2
+revision=1
 short_desc="Tools for LinuxPPS (pulse-per-second)"
-homepage="http://linuxpps.org/wiki/index.php/Main_Page"
-license="GPL-2"
-distfiles="https://github.com/ago/pps-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="28d4e5aa845f659a6ab4174bbf579e22e2d2c87dc72fd6d07306a6a249c27c76"
-wrksrc="$pkgname-$_gitrev"
+homepage="http://linuxpps.org/"
+license="GPL-2.0-or-later"
+distfiles="https://github.com/ago/pps-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="1a7efd66152e5439b69143f1f380b40ac5decbbbef516b37a017410b8ba7dff4"
 build_style="gnu-makefile"
+reverts="20120407_1 20120407_2"
 
 do_install() {
   mkdir -p "$DESTDIR/usr/bin" "$DESTDIR/usr/include/sys"
