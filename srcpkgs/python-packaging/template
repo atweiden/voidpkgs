@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-packaging"
-version=18.0
+version=19.0
 revision=1
 short_desc="Core utilities for Python packages (Python2)"
 archs="noarch"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
 distfiles="$PYPI_SITE/p/packaging/${pkgname#*-}-$version.tar.gz"
-checksum="0886227f54515e592aaa2e5a553332c73962917f2831f1b0f9b9f4380a4b9807"
+checksum="0c98a5d0be38ed775798ece1b9727178c4469d9c3b4ada66e8e6b7849f8732af"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="packaging"
