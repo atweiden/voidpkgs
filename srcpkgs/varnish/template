@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="varnish"
 version=6.1.1
-revision=1
+revision=4
 short_desc="A fast caching HTTP reverse proxy"
 makedepends+=" pcre-devel"
 makedepends+=" readline-devel"
