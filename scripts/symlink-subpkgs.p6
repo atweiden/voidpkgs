@@ -578,6 +578,7 @@ constant %PKG = Map.new(
     'python-pytest' => ['python3-pytest'],
     'python-pytz' => ['python3-pytz'],
     'python-requests' => ['python3-requests'],
+    'python-scandir' => ['python3-scandir'],
     'python-setuptools' => ['python3-setuptools'],
     'python-six' => ['python3-six'],
     'python-snowballstemmer' => ['python3-snowballstemmer'],
