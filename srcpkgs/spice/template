@@ -30,6 +30,10 @@ configure_args+=" --enable-smartcard"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --with-sasl"
 
+if [[ "$XBPS_TARGET_ENDIAN" != "le" ]]; then
+  broken="SPICE server only works on little endian architectures"
+fi
+
 post_extract() {
   # detects cpu from triplet
   sed \
