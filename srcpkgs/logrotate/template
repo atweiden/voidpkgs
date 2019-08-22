@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="logrotate"
 version=3.15.0
-revision=1
+revision=2
 short_desc="Log file rotation and periodic maintenance"
 makedepends+=" acl-devel"
 makedepends+=" popt-devel"
@@ -11,6 +11,7 @@ distfiles="https://github.com/logrotate/logrotate/releases/download/$version/$pk
 checksum="313612c4776a305393454c874ef590d8acf84c9ffa648717731dfe902284ff8f"
 conf_files="/etc/logrotate.conf"
 build_style="gnu-configure"
+make_dirs="/etc/logrotate.d 0755 root root"
 
 post_install() {
   vconf "$FILESDIR/logrotate.conf"
