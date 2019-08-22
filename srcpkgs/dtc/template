@@ -1,15 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dtc"
-version=1.4.7
+version=1.5.0
 revision=1
 short_desc="Device Tree Compiler"
+makedepends="libyaml-devel"
 hostmakedepends+=" bison"
 hostmakedepends+=" flex"
 hostmakedepends+=" git"
-homepage="http://www.devicetree.org/Device_Tree_Compiler"
-license="GPL-2"
+hostmakedepends+=" pkg-config"
+homepage="https://git.kernel.org/pub/scm/utils/dtc/dtc.git"
+license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/utils/dtc/$pkgname-$version.tar.xz"
-checksum="6643e8f00ff86350f465bb54b2185058b5b1b7bac01a0842c81a52b86589cde7"
+checksum="c672e443c9f7e39f5a7c8e602da6777f9ad55ad70de87de300a43828c8050172"
 build_style="gnu-makefile"
 make_build_args="NO_PYTHON=1"
 make_install_args="$make_build_args"
