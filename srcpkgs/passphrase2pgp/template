@@ -1,13 +1,14 @@
-# Template file for 'passphrase2pgp'
-pkgname=passphrase2pgp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="passphrase2pgp"
 version=0.1.0
 revision=1
-build_style=go
-go_import_path="github.com/skeeto/passphrase2pgp"
-hostmakedepends="git"
 short_desc="Generate a PGP key from a passphrase"
-maintainer="Daniel Lewan <vision360.daniel@gmail.com>"
-license="Unlicense"
+hostmakedepends="git"
 homepage="https://github.com/skeeto/passphrase2pgp"
-distfiles="https://github.com/skeeto/passphrase2pgp/archive/v${version}.tar.gz"
-checksum=15d26a836d9df2fa6e487d7224e6ab7d6f51139211ceb77b8ecd8c594b86699a
+license="Unlicense"
+distfiles="https://github.com/skeeto/passphrase2pgp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="15d26a836d9df2fa6e487d7224e6ab7d6f51139211ceb77b8ecd8c594b86699a"
+build_style="go"
+go_import_path="github.com/skeeto/passphrase2pgp"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
