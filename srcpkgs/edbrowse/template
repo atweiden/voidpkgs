@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="edbrowse"
-version=3.7.4
-revision=3
+version=3.7.5
+revision=1
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" duktape-devel"
 makedepends+=" libcurl-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://edbrowse.org/"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/CMB/edbrowse/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b79e6417c1170c96ef68968c33d585725f0f2d27859e3fe807c980a9c33ea719"
+checksum="7d7c44d2c01cf23880ed0514c7fcfb8c19e21dff8ef937297cb14506fab1da7f"
 build_style="cmake"
 
 do_install() {
