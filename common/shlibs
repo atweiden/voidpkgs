@@ -390,6 +390,7 @@ libprotobuf.so.18 libprotobuf18-3.7.0_1
 libprotoc.so.18 libprotoc18-3.7.0_1
 libpsl.so.5 libpsl-0.20.2_1
 libpwquality.so.1 libpwquality-1.1.1_1
+libqb.so.0 libqb-1.0.5_1
 libqrencode.so.4 libqrencode-4.0.0_1
 libquadmath.so.0 libquadmath-4.4.0_1
 libreadline.so.8 libreadline8-8.0_1
