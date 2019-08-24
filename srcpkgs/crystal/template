@@ -87,12 +87,12 @@ do_build() {
   fi
   make \
     "$makejobs" \
-    $(vopt_if binary_bootstrap PATH="$wrksrc/bootstrap/bin:$PATH")
     CRYSTAL_CACHE_DIR="/tmp/crystal" \
     CRYSTAL_CONFIG_PATH="lib:/usr/lib/crystal" \
     CRYSTAL_CONFIG_VERSION="$version" \
     FLAGS="$_crystalflags" \
     release=1 \
+    $(vopt_if binary_bootstrap PATH="$wrksrc/bootstrap/bin:$PATH")
   make \
     "$makejobs" \
     CRYSTAL_CACHE_DIR="/tmp/crystal" \
@@ -111,7 +111,9 @@ do_check() {
     spec
 
   cd shards
-  make test CRYSTAL_BIN="$wrksrc/bin/crystal"
+  make \
+    CRYSTAL_BIN="$wrksrc/bin/crystal" \
+    test
 }
 
 do_install() {
