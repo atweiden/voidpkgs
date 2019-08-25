@@ -1,71 +1,98 @@
-# Template file for 'cyrus-sasl'
-pkgname=cyrus-sasl
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="cyrus-sasl"
 version=2.1.27
 revision=2
-build_style=gnu-configure
-configure_args="--disable-static --enable-shared --enable-checkapop
- --enable-cram --enable-digest --disable-otp --disable-srp
- --disable-srp-setpass --disable-krb4 --enable-gssapi --enable-auth-sasldb
- --enable-plain --enable-anon --enable-login --enable-ntlm --disable-passdss
- --enable-sql --enable-ldapdb --disable-macos-framework --with-pam
- --with-saslauthd=/run/saslauthd --with-ldap --with-devrandom=/dev/urandom
- --with-configdir=/etc/sasl2:/etc/sasl:/usr/lib/sasl2
- --with-mysql=${XBPS_CROSS_BASE}/usr"
-hostmakedepends="automake libtool groff pkg-config"
-makedepends="libsasl-devel libressl-devel db-devel libldap-devel
- mit-krb5-devel pam-devel sqlite-devel postgresql-libs-devel
- libmysqlclient-devel"
-depends="libsasl>=${version}"
 short_desc="Cyrus SASL - auth daemon and administration tools"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-3-Clause-Attribution"
+depends="libsasl>=$version"
+makedepends+=" db-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libmysqlclient-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libsasl-devel"
+makedepends+=" mit-krb5-devel"
+makedepends+=" pam-devel"
+makedepends+=" postgresql-libs-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" groff"
+hostmakedepends+=" pkg-config"
 homepage="https://www.cyrusimap.org/sasl/"
-distfiles="https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-${version}/cyrus-sasl-${version}.tar.gz"
-checksum=26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5
+license="BSD-3-Clause-Attribution"
+distfiles="https://github.com/cyrusimap/cyrus-sasl/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
+checksum="26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5"
 patch_args="-Np1"
+build_style="gnu-configure"
+configure_args+=" --disable-krb4"
+configure_args+=" --disable-macos-framework"
+configure_args+=" --disable-otp"
+configure_args+=" --disable-passdss"
+configure_args+=" --disable-srp"
+configure_args+=" --disable-srp-setpass"
+configure_args+=" --disable-static"
+configure_args+=" --enable-anon"
+configure_args+=" --enable-auth-sasldb"
+configure_args+=" --enable-checkapop"
+configure_args+=" --enable-cram"
+configure_args+=" --enable-digest"
+configure_args+=" --enable-gssapi"
+configure_args+=" --enable-ldapdb"
+configure_args+=" --enable-login"
+configure_args+=" --enable-ntlm"
+configure_args+=" --enable-plain"
+configure_args+=" --enable-shared"
+configure_args+=" --enable-sql"
+configure_args+=" --with-configdir=/etc/sasl2:/etc/sasl:/usr/lib/sasl2"
+configure_args+=" --with-devrandom=/dev/urandom"
+configure_args+=" --with-ldap"
+configure_args+=" --with-mysql=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-pam"
+configure_args+=" --with-saslauthd=/run/saslauthd"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	# Remove libsasl{,-devel} files.
-	rm -rf ${DESTDIR}/usr/include
-	rm -f ${DESTDIR}/usr/lib/libsasl*
-	rm -rf ${DESTDIR}/usr/share/man/man3
-	rm ${DESTDIR}/usr/lib/pkgconfig/libsasl2.pc
+  # remove libsasl{,-devel} files
+  rm -rf "$DESTDIR/usr/include"
+  rm -f "$DESTDIR/usr/lib"/libsasl*
+  rm -rf "$DESTDIR/usr/share/man/man3"
+  rm "$DESTDIR/usr/lib/pkgconfig/libsasl2.pc"
 
-	vlicense COPYING LICENSE
+  vlicense COPYING LICENSE
 }
 
 cyrus-sasl-modules-ldap_package() {
-	depends="cyrus-sasl>=${version}_${revision}"
-	short_desc="Cyrus SASL - pluggable authentication modules (LDAP)"
-	pkg_install() {
-		vmove "usr/lib/sasl2/libldapdb.*"
-	}
+  depends="cyrus-sasl>=${version}_$revision"
+  short_desc="Cyrus SASL - pluggable authentication modules (LDAP)"
+  pkg_install() {
+    vmove "usr/lib/sasl2/libldapdb.*"
+  }
 }
 
 cyrus-sasl-modules-sql_package() {
-	depends="cyrus-sasl>=${version}_${revision}"
-	short_desc="Cyrus SASL - pluggable authentication modules (SQL)"
-	pkg_install() {
-		vmove "usr/lib/sasl2/libsql.*"
-	}
+  depends="cyrus-sasl>=${version}_$revision"
+  short_desc="Cyrus SASL - pluggable authentication modules (SQL)"
+  pkg_install() {
+    vmove "usr/lib/sasl2/libsql.*"
+  }
 }
 
 cyrus-sasl-modules-gssapi_package() {
-	depends="cyrus-sasl>=${version}_${revision}"
-	short_desc="Cyrus SASL - pluggable authentication modules (GSSAPI)"
-	pkg_install() {
-		vmove "usr/lib/sasl2/libgssapi*"
-	}
+  depends="cyrus-sasl>=${version}_$revision"
+  short_desc="Cyrus SASL - pluggable authentication modules (GSSAPI)"
+  pkg_install() {
+    vmove "usr/lib/sasl2/libgssapi*"
+  }
 }
 
 cyrus-sasl-modules_package() {
-	depends="cyrus-sasl>=${version}_${revision}"
-	short_desc="Cyrus SASL - pluggable authentication modules"
-	pkg_install() {
-		vmove usr/lib/sasl2
-	}
+  depends="cyrus-sasl>=${version}_$revision"
+  short_desc="Cyrus SASL - pluggable authentication modules"
+  pkg_install() {
+    vmove usr/lib/sasl2
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
