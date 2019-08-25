@@ -1,9 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mutt"
 version=1.12.1
-revision=2
+revision=3
 short_desc="Mutt Mail Client"
-depends="mime-types"
+depends+=" cyrus-sasl-modules"
+depends+=" mime-types"
 makedepends+=" gdbm-devel"
 makedepends+=" gpgme-devel"
 makedepends+=" libassuan-devel"
