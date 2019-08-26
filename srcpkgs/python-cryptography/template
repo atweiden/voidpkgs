@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-cryptography"
-version=2.4.2
-revision=2
+version=2.7
+revision=1
 depends+=" python-asn1crypto"
 depends+=" python-cffi"
 depends+=" python-enum34"
@@ -11,6 +11,19 @@ depends+=" python-six"
 makedepends+=" libressl-devel"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
+checkdepends+=" $depends"
+checkdepends+=" python-cryptography_vectors"
+checkdepends+=" python-hypothesis"
+checkdepends+=" python-iso-8601"
+checkdepends+=" python-pretend"
+checkdepends+=" python-pytest"
+checkdepends+=" python-pytz"
+checkdepends+=" python3-cryptography_vectors"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-iso-8601"
+checkdepends+=" python3-pretend"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytz"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" python-asn1crypto"
 hostmakedepends+=" python-cffi"
@@ -28,13 +41,14 @@ short_desc="Python2 library that provides cryptographic recipes and primitives"
 homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 distfiles="$PYPI_SITE/c/cryptography/${pkgname#*-}-$version.tar.gz"
-checksum="05a6052c6a9f17ff78ba78f8e6eb1d777d25db3b763343a1ae89a7a8670386dd"
+checksum="e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="cryptography"
 
 post_install() {
   vlicense LICENSE
+  vlicense LICENSE.BSD
 }
 
 python3-cryptography_package() {
@@ -48,6 +62,7 @@ python3-cryptography_package() {
   pkg_install() {
     vmove "usr/lib/python3*"
     vlicense LICENSE
+    vlicense LICENSE.BSD
   }
 }
 
