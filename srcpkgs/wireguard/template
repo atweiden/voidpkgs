@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireguard"
 version=0.0.20190702
-revision=1
+revision=2
 short_desc="Fast, modern, secure VPN tunnel"
 depends+=" dkms"
 depends+=" wireguard-tools"
@@ -40,6 +40,7 @@ wireguard-tools_package() {
   depends+=" iputils"
   depends+=" openresolv"
   conf_files="/etc/sv/wireguard/conf"
+  make_dirs="/etc/wireguard 0700 root root"
   pkg_install() {
     vmove usr/bin/wg
     vmove usr/bin/wg-quick
