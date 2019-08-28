@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnutls"
 version=3.6.9
-revision=1
+revision=2
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libgpg-error-devel"
@@ -26,6 +26,7 @@ configure_args+=" --disable-guile"
 configure_args+=" --disable-rpath"
 configure_args+=" --disable-static"
 configure_args+=" --disable-valgrind-tests"
+configure_args+=" --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
 configure_args+=" --with-zlib"
 
 gnutls-devel_package() {
