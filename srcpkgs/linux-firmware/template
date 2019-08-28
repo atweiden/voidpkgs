@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux-firmware"
-version=20190717
+version=20190815
 revision=1
-_gitrev="bf13a71b18af229b4c900b321ef1f8443028ded8"
+_gitrev="07b925b450bfb4cf3e141c612ec5b104658cd020"
 short_desc="Binary firmware blobs for the Linux kernel"
 archs="noarch"
 depends+=" $pkgname-amd-${version}_$revision"
@@ -10,7 +10,7 @@ depends+=" $pkgname-network-${version}_$revision"
 homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="306b4cbd4237d2cf013e27923df2b721d5d570882a6bf27782c03429be244887"
+checksum="b1d1f77d34ed1af6267bdfcde0d63dc77efbf22c1e92d6da0e01496551fabe8f"
 wrksrc="$pkgname-$_gitrev"
 
 do_install() {
@@ -73,6 +73,7 @@ linux-firmware-network_package() {
     vmove usr/lib/firmware/mrvl
     vmove usr/lib/firmware/ueagle-atm
     vmove usr/lib/firmware/ti-connectivity
+    vmove usr/lib/firmware/dpaa2
   }
 }
 
