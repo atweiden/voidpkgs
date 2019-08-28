@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="unbound"
-version=1.9.2
+version=1.9.3
 revision=1
 short_desc="Validating, recursive, and caching DNS resolver"
 depends="dnssec-anchors"
@@ -10,7 +10,7 @@ makedepends+=" libsodium-devel"
 homepage="https://unbound.net/"
 license="BSD-3-Clause"
 distfiles="https://unbound.net/downloads/$pkgname-$version.tar.gz"
-checksum="6f7acec5cf451277fcda31729886ae7dd62537c4f506855603e3aa153fcb6b95"
+checksum="1b55dd9170e4bfb327fb644de7bbf7f0541701149dff3adf1b63ffa785f16dfa"
 conf_files="/etc/unbound/unbound.conf"
 build_style="gnu-configure"
 configure_args+=" --enable-dnscrypt"
