@@ -1,23 +1,28 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-numpy"
-version=1.17.0
+version=1.17.1
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 makedepends+=" cblas-devel"
 makedepends+=" lapack-devel"
 makedepends+=" python3-devel"
+checkdepends="python3-pytest"
 hostmakedepends+=" gcc-fortran"
 hostmakedepends+=" python3-Cython"
 hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="56b53127c1d9dbb91fe1493646d71d8d95feea8320a1fa9808c9d983d1dc4a87"
+checksum="c47202690e013ea2ee170f0e8f5dd7f5f667e2180c84d5b6e7ec2e284c34228a"
 wrksrc="numpy-$version"
 build_style="python3-module"
 pycompile_module="numpy"
-nocross="https://build.voidlinux.org/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
 alternatives="numpy:f2py:/usr/bin/f2py3"
+nocross="https://build.voidlinux.org/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
+
+do_check() {
+  ./runtests.py
+}
 
 post_install() {
   # create compat symlinks for .h files
