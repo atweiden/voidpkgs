@@ -4,7 +4,6 @@ Programming Languages
 - Ada
 - Bash
 - C
-- Crystal
 - Elixir
 - Erlang
 - Go
