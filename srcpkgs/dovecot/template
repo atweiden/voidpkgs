@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dovecot"
-version=2.3.7.1
+version=2.3.7.2
 revision=1
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
@@ -26,7 +26,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://dovecot.org"
 license="LGPL-2.1-or-later"
 distfiles="https://dovecot.org/releases/2.3/$pkgname-$version.tar.gz"
-checksum="c5a51d6f76e6e9c843df69e52a364a4c65c4c60e0c51d992eaa45f22f71803c3"
+checksum="666ce084760a47e601d49a9be3c7993c48789d332631e8dfb45f443b367b1260"
 conf_files+=" /etc/dovecot/*.conf"
 conf_files+=" /etc/dovecot/conf.d/*.conf"
 conf_files+=" /etc/ssl/dovecot-openssl.cnf"
