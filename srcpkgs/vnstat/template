@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vnstat"
-version=2.3
+version=2.4
 revision=1
 short_desc="Terminal based network traffic monitor"
 checkdepends="check-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://humdi.net/vnstat/"
 license="GPL-2.0-only"
 distfiles="https://humdi.net/vnstat/$pkgname-$version.tar.gz"
-checksum="280af973a7c54b84ef254c69808a9ef2ff894d80ac0b2d584fa5e68e5b3a1a8d"
+checksum="a0955999abd56d5463d257ffdccc9b1e9ad9ea504de81e64ba4c197f1245abaa"
 conf_files="/etc/vnstat.conf"
 build_style="gnu-configure"
 make_dirs="/var/lib/vnstat 0755 root root"
