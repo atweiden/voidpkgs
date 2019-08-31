@@ -10,17 +10,12 @@ license="GPL-2.0-or-later"
 distfiles="https://github.com/proot-me/PRoot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ce0a3baca8312613bd10f65bb436a3aaa28e1034f498a22c35ad0693600e01dd"
 build_wrksrc="src"
+build_style="gnu-makefile"
+make_use_env="yes"
 
 pre_build() {
   # fix glibc ptrace.h specific constants for musl libc
   cp "$FILESDIR/ptrace_compat.h" .
-}
-
-do_build() {
-  make \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    "$makejobs"
 }
 
 do_install() {
