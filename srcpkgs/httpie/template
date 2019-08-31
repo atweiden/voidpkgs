@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="httpie"
-version=1.0.2
+version=1.0.3
 revision=1
 short_desc="Human-friendly command line HTTP client"
 archs="noarch"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://httpie.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/jakubroztocil/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f11f5ecdbcc0571aa865fb29cd5db68ba6bce4f15a5aae3f27a32d19b0854dc9"
+checksum="ecfb1ecdfd1468100bd9ffecebe1bea6d7d72c72149ea91f3d0112dc8ef03c7a"
 build_style="python3-module"
 pycompile_module="httpie"
 
