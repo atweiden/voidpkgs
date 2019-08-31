@@ -33,7 +33,7 @@ libisc.so.1100 bind-libs-9.11.5_1
 libisccc.so.161 bind-libs-9.11.5_1
 libisccfg.so.163 bind-libs-9.11.5_1
 liblwres.so.161 bind-libs-9.11.5_1
-libdns.so.1106 bind-libs-9.11.7_1
+libdns.so.1107 bind-libs-9.11.10_1
 libblas.so.3 blas-3.5.0_1
 libboost_python27.so.1.69.0 boost-python1.69-1.69.0_1<1.70.0
 libboost_python36.so.1.69.0 boost-python3-1.69-1.69.0_1<1.70.0
