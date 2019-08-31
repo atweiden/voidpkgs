@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="scdoc"
-version=1.9.6
+version=1.9.7
 revision=1
 short_desc="Tool for generating roff manual pages"
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -9,7 +9,7 @@ fi
 homepage="https://git.sr.ht/~sircmpwn/scdoc"
 license="MIT"
 distfiles="https://git.sr.ht/~sircmpwn/scdoc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="89a5f2294b4b72ee1d20b8a478d16bee1f96b6202bfeedb6df76c27881ed5928"
+checksum="7e0ef0b2fdbe40d66461b1b2900aadd889a2d91eaecd2505e85fabf6db003779"
 build_style="gnu-makefile"
 make_build_args="PREFIX=/usr"
 
