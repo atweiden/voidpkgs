@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="irssi"
-version=1.2.1
+version=1.2.2
 revision=1
 short_desc="Secure and modular IRC client with text mode user interface"
 depends="ca-certificates"
@@ -13,7 +13,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.irssi.org"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/irssi/irssi/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="fd8b0ef2544fdb691211293dded3dcf6ed87f21781db19e7df62ead797f18a06"
+checksum="53182861d4d2be6db35fa7e3f0524a64d2a54a374307574dab5f5362bfea563c"
 conf_files="/etc/irssi.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
