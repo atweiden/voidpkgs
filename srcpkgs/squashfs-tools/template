@@ -1,22 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="squashfs-tools"
-version=4.3
-revision=6
+version=4.4
+revision=1
 short_desc="Tool to create and append to squashfs filesystems"
 makedepends+=" liblz4-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" lzo-devel"
 makedepends+=" zlib-devel"
 homepage="http://squashfs.sf.net/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/squashfs/${pkgname%-*}$version.tar.gz"
-checksum="0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6"
+checksum="a981b3f3f2054b5a2e658851a3c06a2460ad04a9a8a645e0afe063a63fdbb07e"
 wrksrc="${pkgname%-*}$version"
+build_wrksrc="squashfs-tools"
+build_style="gnu-makefile"
 
 do_build() {
   make \
     "$makejobs" \
-    -C "$pkgname" \
     LZ4_SUPPORT=1 \
     LZMA_XZ_SUPPORT=1 \
     LZO_SUPPORT=1 \
@@ -24,8 +25,8 @@ do_build() {
 }
 
 do_install() {
-  vbin "$pkgname/mksquashfs"
-  vbin "$pkgname/unsquashfs"
+  vbin mksquashfs
+  vbin unsquashfs
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
