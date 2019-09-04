@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="edbrowse"
 version=3.7.5
-revision=1
+revision=2
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" duktape-devel"
 makedepends+=" libcurl-devel"
