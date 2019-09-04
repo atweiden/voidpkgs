@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nss"
-version=3.44.1
+version=3.46
 revision=1
-_nsprver=4.21
+_nsprver=4.22
 short_desc="Mozilla Network Security Services"
 depends="nspr>=$_nsprver"
 makedepends+=" nspr-devel"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://www.mozilla.org/projects/security/pki/nss"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="fce4cb80c989cde35416ecbe55920856015a35151c4f21be64470e4dd4de12f8"
+checksum="6b699649d285602ba258a4b0957cb841eafc94eff5735a9da8da0adbb9a10cef"
 
 do_build() {
   # respect LDFLAGS
