@@ -368,7 +368,8 @@ constant %PKG = Map.new(
     'libpng' => qw<libpng-devel
                    libpng-progs>,
     'libpsl' => ['libpsl-devel'],
-    'libpwquality' => ['libpwquality-devel'],
+    'libpwquality' => qw<libpwquality-devel
+                         libpwquality-python3>,
     'libqb' => ['libqb-devel'],
     'libreadline8' => qw<libhistory8
                          readline-devel>,
