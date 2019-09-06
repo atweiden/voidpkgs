@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="h2o"
-version=2.2.5
-revision=4
+version=2.2.6
+revision=1
 short_desc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 depends="perl"
 makedepends+=" libressl-devel"
@@ -16,7 +16,7 @@ hostmakedepends+=" $(vopt_if mruby ruby-devel)"
 homepage="https://h2o.examp1e.net/"
 license="MIT"
 distfiles="https://github.com/h2o/h2o/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="eafb40aa2d93b3de1af472bb046c17b2335c3e5a894462310e1822e126c97d24"
+checksum="f8cbc1b530d85ff098f6efc2c3fdbc5e29baffb30614caac59d5c710f7bda201"
 conf_files="/etc/h2o.conf"
 build_style="cmake"
 configure_args+=" -DWITH_BUNDLED_SSL=off"
