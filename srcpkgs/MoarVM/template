@@ -7,6 +7,9 @@ makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
+# XXX: next release, makedepends+=libzstd-devel
+# https://github.com/MoarVM/MoarVM/commit/e417bb5088fef51c339b0b30769cec1eb4b7ab8f
+#makedepends+=" libzstd-devel"
 hostmakedepends+=" binutils"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkgconf"
