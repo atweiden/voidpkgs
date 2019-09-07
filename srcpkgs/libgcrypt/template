@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libgcrypt"
-version=1.8.4
-revision=2
+version=1.8.5
+revision=1
 short_desc="GNU cryptographic library"
 makedepends="libgpg-error-devel"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/libgcrypt/$pkgname-$version.tar.bz2"
-checksum="f638143a0672628fde0cad745e9b14deb85dffb175709cacc1f4fe24b93f2227"
+checksum="3b4a2a94cb637eff5bdebbcaf46f4d95c4f25206f459809339cdada0eb577ac3"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --without-capabilities"
@@ -37,6 +37,7 @@ libgcrypt-devel_package() {
   pkg_install() {
     vmove usr/bin/libgcrypt-config
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove usr/share
     vmove "usr/lib/*.so"
     vmove "usr/lib/*.a"
