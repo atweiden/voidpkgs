@@ -61,6 +61,7 @@ replaces+=" gcc-gcj<7.2.0"
 replaces+=" libmpx>=0"
 replaces+=" libmpx-devel>=0"
 alternatives="cc:cc:/usr/bin/gcc"
+nocross="yes"
 _have_gccgo="yes"
 # mips does not have libucontext yet
 case "$XBPS_TARGET_MACHINE" in
