@@ -61,7 +61,13 @@ replaces+=" gcc-gcj<7.2.0"
 replaces+=" libmpx>=0"
 replaces+=" libmpx-devel>=0"
 alternatives="cc:cc:/usr/bin/gcc"
-nocross="yes"
+_have_gccgo="yes"
+# mips does not have libucontext yet
+case "$XBPS_TARGET_MACHINE" in
+  mips*-musl)
+    _have_gccgo="no"
+    ;;
+esac
 subpackages+=" libgcc"
 subpackages+=" libgomp"
 subpackages+=" libgomp-devel"
@@ -73,11 +79,11 @@ if [[ -n "$CHROOT_READY" ]]; then
   subpackages+=" gcc-fortran"
   subpackages+=" libgfortran-devel"
   subpackages+=" libgfortran"
-  if [[ -z "$CROSS_BUILD" ]]; then
-    subpackages+=" gcc-objc"
-    subpackages+=" gcc-objc++"
-    subpackages+=" libobjc-devel"
-    subpackages+=" libobjc"
+  subpackages+=" gcc-objc"
+  subpackages+=" gcc-objc++"
+  subpackages+=" libobjc-devel"
+  subpackages+=" libobjc"
+  if [[ "$_have_gccgo" == "yes" ]]; then
     subpackages+=" gcc-go"
     subpackages+=" gcc-go-tools"
     subpackages+=" libgo-devel"
@@ -200,7 +206,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" cross-$_triplet"
-  export GFORTRAN_FOR_TARGET=" $_triplet-gfortran"
   if [[ -n "$build_option_ada" ]]; then
     hostmakedepends+=" gcc-ada"
     hostmakedepends+=" libada-devel"
@@ -336,17 +341,23 @@ do_configure() {
     export CC_FOR_TARGET="$CC"
     export GCC_FOR_TARGET="$CC"
     export CXX_FOR_TARGET="$CXX"
+    export GOC_FOR_TARGET="$_triplet-gccgo"
+    export GFORTRAN_FOR_TARGET="$_triplet-gfortran"
     _args+=" --enable-sjlj-exceptions=no"
     _args+=" --host=$XBPS_CROSS_TRIPLET"
     _args+=" --with-build-sysroot=$XBPS_CROSS_BASE"
-    _langs+=",fortran"
+    _langs+=",objc,obj-c++,fortran"
   elif [[ -z "$CHROOT_READY" ]]; then
     export LD_LIBRARY_PATH="$XBPS_MASTERDIR/usr/lib"
     _args+=" --build=$_triplet"
   else
-    _langs="c,c++,objc,obj-c++,go,fortran,lto"
+    _langs="c,c++,objc,obj-c++,fortran,lto"
     _args+=" --build=$_triplet"
     _args+=" --enable-fast-character"
+  fi
+
+  if [[ "$_have_gccgo" == "yes" ]]; then
+    _langs+=",go"
   fi
 
   case "$XBPS_TARGET_MACHINE" in
