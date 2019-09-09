@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-numpy"
-version=1.17.1
+version=1.17.2
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 makedepends+=" cblas-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c47202690e013ea2ee170f0e8f5dd7f5f667e2180c84d5b6e7ec2e284c34228a"
+checksum="689d9852d162dc7cda4aa563cdd1f5af166b6878493aeb98d584b5edefcea4b2"
 wrksrc="numpy-$version"
 build_style="python3-module"
 pycompile_module="numpy"
