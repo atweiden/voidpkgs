@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu"
 version=4.1.0
-revision=2
+revision=3
 short_desc="Open Source Processor Emulator"
 makedepends+=" bzip2-devel"
 makedepends+=" gnutls-devel"
@@ -104,6 +104,7 @@ do_configure() {
     --enable-cap-ng \
     --enable-curl \
     --enable-curses \
+    --enable-docs \
     --enable-kvm \
     --enable-libssh2 \
     --enable-libusb \
