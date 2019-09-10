@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openresolv"
-version=3.9.1
+version=3.9.2
 revision=1
 short_desc="Management framework for resolv.conf"
 archs="noarch"
@@ -8,7 +8,7 @@ hostmakedepends="runit"
 homepage="http://roy.marples.name/projects/openresolv/home"
 license="BSD"
 distfiles="http://roy.aydogan.net/openresolv/$pkgname-$version.tar.xz"
-checksum="38b8e7e131a39b1c0d4e5688618b8572adf92a5bf757ae9f272e9f81108a9ff2"
+checksum="14d7e241682e5566f6b8bf4c7316c86d7a9b8e7ed48e1de4967dbf1ea84ed373"
 conf_files="/etc/resolvconf.conf"
 build_style="gnu-configure"
 
