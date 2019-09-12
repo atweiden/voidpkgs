@@ -1,8 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpsl"
 version=0.21.0
-revision=1
+revision=2
 short_desc="Public Suffix List library functions"
+makedepends="icu-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
 license="MIT"
