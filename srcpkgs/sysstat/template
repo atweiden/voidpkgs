@@ -1,31 +1,43 @@
-# Template file for 'sysstat'
-pkgname=sysstat
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="sysstat"
 version=12.1.6
 revision=1
-build_style=gnu-configure
-configure_args="--enable-copy-only --disable-file-attr
- --with-systemdsystemunitdir= --enable-install-cron"
-conf_files="/etc/default/sysstat /etc/default/sysstat.ioconf"
-hostmakedepends="pkg-config"
-depends="lm_sensors"
 short_desc="Collection of performance monitoring tools"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+depends="lm_sensors"
+hostmakedepends="pkg-config"
 homepage="http://pagesperso-orange.fr/sebastien.godard/"
-distfiles="http://pagesperso-orange.fr/sebastien.godard/${pkgname}-${version}.tar.xz"
-checksum=f752f3c406153a6fc446496f1102872505ace3f0931d975c1d664c81ec09f129
+license="GPL-2.0-or-later"
+distfiles="http://pagesperso-orange.fr/sebastien.godard/sysstat-$version.tar.xz"
+checksum="f752f3c406153a6fc446496f1102872505ace3f0931d975c1d664c81ec09f129"
+conf_files+=" /etc/default/sysstat"
+conf_files+=" /etc/default/sysstat.ioconf"
+build_style="gnu-configure"
+configure_args+=" --disable-file-attr"
+configure_args+=" --enable-copy-only"
+configure_args+=" --enable-install-cron"
+configure_args+=" --with-systemdsystemunitdir="
 
 post_extract() {
-	sed -i 's/lib64/lib/' configure
-	sed -i '/LFLAGS =/d; s/LFLAGS/LDFLAGS/g' Makefile.in
+  sed \
+    -i \
+    -e 's/lib64/lib/' \
+    configure
+  sed \
+    -i \
+    -e '/LFLAGS =/d; s/LFLAGS/LDFLAGS/g' \
+    Makefile.in
 }
+
 pre_configure() {
-	export conf_dir=/etc/default
-	export cron_owner=$(whoami)
-	vmkdir etc/cron.daily
-	vmkdir etc/cron.hourly
+  export conf_dir="/etc/default"
+  export cron_owner="$(whoami)"
+  vmkdir etc/cron.daily
+  vmkdir etc/cron.hourly
 }
+
 post_install() {
-	vbin contrib/isag/isag
-	vman contrib/isag/isag.1
+  vbin contrib/isag/isag
+  vman contrib/isag/isag.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
