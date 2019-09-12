@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="keybase"
-version=4.4.0
+version=4.4.1
 revision=1
 short_desc="Client for keybase.io"
 depends="gnupg2"
 homepage="https://keybase.io/"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9e4d7c8bbf087347fcdb5f150205560a56912848d30e2e0630c1c3469ec07b06"
+checksum="dfac5ff4ecd5cd75f22ebece24c2e074cc83e38c7b207e074ca2c96ec3c96b7b"
 wrksrc="client-$version"
 build_style="go"
 go_import_path="github.com/keybase/client"
