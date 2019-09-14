@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="whois"
 version=5.5.1
-revision=1
+revision=2
 short_desc="Improved whois client"
 makedepends="libidn2-devel"
 hostmakedepends+=" perl"
@@ -28,6 +28,17 @@ do_install() {
     install-whois
   mv "$DESTDIR/usr/bin"/{whois,gwhois}
   mv "$DESTDIR/usr/share/man/man1"/{whois,gwhois}.1
+}
+
+mkpasswd_package() {
+  unset alternatives
+  short_desc="Feature-rich front end to crypt(3) password encryption"
+  alternatives+=" mkpasswd:mkpasswd:/usr/bin/gmkpasswd"
+  alternatives+=" mkpasswd:mkpasswd.1:/usr/share/man/man1/gmkpasswd.1"
+  pkg_install() {
+    vbin mkpasswd gmkpasswd
+    vman mkpasswd.1 gmkpasswd.1
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -676,6 +676,7 @@ constant %PKG = Map.new(
                 xxd>,
     'void-repo-multilib' => ['void-repo-multilib-nonfree'],
     'void-repo-nonfree' => ['void-repo-debug'],
+    'whois' => ['mkpasswd'],
     'wireguard' => ['wireguard-tools'],
     'wimlib' => ['wimlib-devel'],
     'wireless_tools' => ['wireless_tools-devel'],
