@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="man-db"
 version=2.8.7
-revision=1
-short_desc="The on-line manual database"
+revision=2
+short_desc="On-line manual database"
 depends+=" bzip2"
 depends+=" coreutils"
 depends+=" grep"
@@ -13,10 +13,11 @@ makedepends+=" db-devel"
 makedepends+=" gettext-devel"
 makedepends+=" groff"
 makedepends+=" libpipeline-devel"
+makedepends+=" libseccomp-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" groff"
 hostmakedepends+=" pkg-config"
-homepage="http://www.nongnu.org/man-db/"
+homepage="https://www.nongnu.org/man-db/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="$NONGNU_SITE/man-db/$pkgname-$version.tar.xz"
 checksum="b9cd5bb996305d08bfe9e1114edc30b4c97be807093b88af8033ed1cf9beb326"
@@ -29,11 +30,13 @@ configure_args+=" --enable-threads=posix"
 configure_args+=" --with-bzip2=/usr/bin/bzip2"
 configure_args+=" --with-db=db"
 configure_args+=" --with-gzip=/usr/bin/gzip"
+configure_args+=" --with-libseccomp"
 configure_args+=" --with-lzma=/usr/bin/lzma"
 configure_args+=" --with-pager=less"
-configure_args+=" --with-systemdsystemunitdir=no"
 configure_args+=" --with-xz=/usr/bin/xz"
 configure_args+=" --without-included-regex"
+configure_args+=" --without-systemdsystemunitdir"
+configure_args+=" --without-systemdtmpfilesdir"
 lib32disabled="yes"
 provides="man-0_1"
 alternatives+=" man:man:/usr/bin/mandb-man"
@@ -53,7 +56,6 @@ pre_configure() {
 }
 
 post_install() {
-  rm -r "$DESTDIR/usr/lib/tmpfiles.d"
   # rename files for alternatives
   for f in apropos \
            man \
