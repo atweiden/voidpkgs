@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="politeia"
 version=1.3.1pre
-revision=9
-_gitrev="017a042f0ca3b604dbdcfae7c5a09ee88f274432"
+revision=10
+_gitrev="aa25ccd062e7d44ea45f2ce19912a2166235567c"
 short_desc="Decred proposal system"
 hostmakedepends="git"
 tags="decred"
@@ -13,7 +13,6 @@ checksum="aa75d61c2b289ed6ac4eba6405acb430d38206c3873a26f13ba2372659d18ea5"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/politeia"
-go_mod_mode="off"
 
 post_build() {
   GO111MODULE="on" go install -v ./...
@@ -22,13 +21,16 @@ post_build() {
 post_install() {
   vlicense LICENSE
   vdoc README.md
+  vdoc cms-instructions.md
   vdoc politeia.md
   vdoc politeiad/sample-politeiad.conf
-  vdoc politeiavoter/sample-politeiavoter.conf
-  vdoc politeiawww/sample-politeiawww.conf
+  vdoc politeiawww/cmd/cmswww/sample-cmswww.conf
+  vdoc politeiawww/cmd/piwww/sample-piwww.conf
+  vdoc politeiawww/cmd/politeiavoter/sample-politeiavoter.conf
   vdoc politeiawww/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf
-  vdoc politeiawww/cmd/politeiawwwcli/sample-politeiawwwcli.conf
+  vdoc politeiawww/sample-politeiawww.conf
   vcopy examples "usr/share/doc/$pkgname"
+  vcopy scripts "usr/share/doc/$pkgname"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
