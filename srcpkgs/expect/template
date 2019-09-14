@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="expect"
 version=5.45.4
-revision=1
+revision=2
 makedepends="tcl-devel"
 short_desc="Programmed dialogue with interactive programs"
 homepage="http://www.nist.gov/el/msid/expect.cfm"
@@ -12,11 +12,15 @@ wrksrc="$pkgname$version"
 build_style="gnu-configure"
 make_check_target="test"
 nocross="yes"
+alternatives+=" mkpasswd:mkpasswd:/usr/bin/expect-mkpasswd"
+alternatives+=" mkpasswd:mkpasswd.1:/usr/share/man/man1/expect-mkpasswd.1"
 
 LDFLAGS+=" -Wl,-rpath=/usr/lib:/usr/lib/$pkgname$version"
 
 post_install() {
   rm "$DESTDIR/usr/bin/weather"
+  mv "$DESTDIR/usr/bin"/{,expect-}mkpasswd
+  mv "$DESTDIR/usr/share/man/man1"/{,expect-}mkpasswd.1
 }
 
 expect-devel_package() {
