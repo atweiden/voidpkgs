@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rclone"
-version=1.49.2
+version=1.49.3
 revision=1
 short_desc="Rsync for cloud storage"
 hostmakedepends="git"
 homepage="https://rclone.org/"
 license="MIT"
 distfiles="https://github.com/rclone/rclone/releases/download/v$version/$pkgname-v$version.tar.gz"
-checksum="12e967185def0f1247bbced1146036264c96422e872addc3da0a8a070b7214e1"
+checksum="1688a5c4e58ec74614c049a131290778b34b53d8a3ad339a891f8a7af5b37411"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
