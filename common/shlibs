@@ -418,6 +418,7 @@ libsndfile.so.1 libsndfile-1.0.20_1
 libsodium.so.23 libsodium-1.0.15_1
 libsoxr-lsr.so.0 libsoxr-0.1.2_1
 libsoxr.so.0 libsoxr-0.1.2_1
+libspeex.so.1 libspeex-1.1_1
 libssh.so.4 libssh-0.5.4_1
 libssh2.so.1 libssh2-1.4.1_1
 libssl.so.46 libssl46-2.8.2_1

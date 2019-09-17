@@ -639,6 +639,8 @@ constant %PKG = Map.new(
     'spdx-licenses-list' => qw<spdx-licenses-html
                                spdx-licenses-json
                                spdx-licenses-text>,
+    'speex' => qw<libspeex
+                  speex-devel>,
     'speexdsp' => ['speexdsp-devel'],
     'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
