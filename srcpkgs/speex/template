@@ -1,37 +1,42 @@
-# Template file for 'speex'.
-pkgname=speex
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="speex"
 version=1.2.0
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="fftw-devel libogg-devel speexdsp-devel"
 short_desc="A free codec for free speech"
+makedepends+=" fftw-devel"
+makedepends+=" libogg-devel"
+makedepends+=" speexdsp-devel"
+hostmakedepends="pkg-config"
 homepage="http://www.speex.org"
 license="BSD"
-maintainer="Orphaned <orphan@voidlinux.org>"
-distfiles="http://downloads.xiph.org/releases/speex/speex-$version.tar.gz"
-checksum=eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094
+distfiles="http://downloads.xiph.org/releases/speex/$pkgname-$version.tar.gz"
+checksum="eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094"
+build_style="gnu-configure"
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
 
 libspeex_package() {
-	short_desc+=" - shared libraries"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-		vlicense COPYING
-	}
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+    vlicense COPYING
+  }
 }
+
 speex-devel_package() {
-	depends="speexdsp-devel libspeex-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
-		vmove usr/share/doc
-		vmove usr/share/aclocal
-	}
+  depends+=" libspeex-${version}_$revision"
+  depends+=" speexdsp-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/doc
+    vmove usr/share/aclocal
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
