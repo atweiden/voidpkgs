@@ -389,6 +389,8 @@ constant %PKG = Map.new(
     'libsndfile' => qw<libsndfile-devel
                        libsndfile-progs>,
     'libsodium' => ['libsodium-devel'],
+    'libsoxr' => qw<libsoxr-devel
+                    libsoxr-doc>,
     'libssh' => ['libssh-devel'],
     'libssh2' => ['libssh2-devel'],
     'libtasn1' => qw<libtasn1-devel
