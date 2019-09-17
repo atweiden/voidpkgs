@@ -1,13 +1,17 @@
-# Template file for 'minimodem'
-pkgname=minimodem
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="minimodem"
 version=0.24
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="fftw-devel alsa-lib-devel libsndfile-devel pulseaudio-devel"
 short_desc="Generate or decode modem tones using various FSK protocols"
-maintainer="Nejc Bertoncelj <nejcbe@windowslive.com>"
-license="GPL-3.0-or-later"
+makedepends+=" alsa-lib-devel"
+makedepends+=" fftw-devel"
+makedepends+=" libsndfile-devel"
+makedepends+=" pulseaudio-devel"
+hostmakedepends="pkg-config"
 homepage="http://www.whence.com/minimodem"
-distfiles="http://www.whence.com/minimodem/minimodem-${version}.tar.gz"
-checksum=f8cca4db8e3f284d67f843054d6bb4d88a3db5e77b26192410e41e9a06f4378e
+license="GPL-3.0-or-later"
+distfiles="http://www.whence.com/minimodem/$pkgname-$version.tar.gz"
+checksum="f8cca4db8e3f284d67f843054d6bb4d88a3db5e77b26192410e41e9a06f4378e"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
