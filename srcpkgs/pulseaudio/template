@@ -1,74 +1,104 @@
-# Template file for 'pulseaudio'
-pkgname=pulseaudio
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="pulseaudio"
 version=12.2
 revision=6
-build_style=gnu-configure
-configure_args="--disable-oss-output --disable-oss-wrapper --disable-tcpwrap
- --enable-jack --disable-lirc --disable-hal-compat --disable-gconf --enable-orc
- --with-database=tdb --with-udev-rules-dir=/usr/lib/udev/rules.d --disable-bluez4
- --disable-esound --disable-gtk3 --enable-bluez5 --disable-bluez5-ofono-headset
- --disable-systemd-login --disable-systemd-daemon --disable-systemd-journal
- --enable-webrtc-aec --with-bash-completion-dir=/usr/share/bash-completion/completions
- --enable-bluez5-native-headset"
-hostmakedepends="automake autoconf gettext-devel glib-devel intltool libtool
- orc-devel pkg-config"
-makedepends="avahi-libs-devel eudev-libudev-devel fftw-devel jack-devel
- libSM-devel libXtst-devel libasyncns-devel libbluetooth-devel
- libcap-devel libcap-progs libglib-devel libltdl-devel libressl-devel
- libsndfile-devel libsoxr-devel orc-devel sbc-devel speex-devel tdb-devel
-webrtc-audio-processing-devel xcb-util-devel"
-depends="rtkit"
-conf_files="/etc/pulse/*"
 short_desc="Featureful, general-purpose sound server"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="LGPL-2.1-or-later"
+makedepends+=" alsa-lib-devel"
+makedepends+=" eudev-libudev-devel"
+makedepends+=" fftw-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libcap-progs"
+makedepends+=" libltdl-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libsndfile-devel"
+makedepends+=" libsoxr-devel"
+makedepends+=" orc-devel"
+makedepends+=" speex-devel"
+makedepends+=" tdb-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" intltool"
+hostmakedepends+=" libtool"
+hostmakedepends+=" orc-devel"
+hostmakedepends+=" pkg-config"
 homepage="https://www.freedesktop.org/wiki/Software/PulseAudio"
-distfiles="${FREEDESKTOP_SITE}/${pkgname}/releases/${pkgname}-${version}.tar.xz"
-checksum=809668ffc296043779c984f53461c2b3987a45b7a25eb2f0a1d11d9f23ba4055
+license="LGPL-2.1-or-later"
+distfiles="$FREEDESKTOP_SITE/pulseaudio/releases/$pkgname-$version.tar.xz"
+checksum="809668ffc296043779c984f53461c2b3987a45b7a25eb2f0a1d11d9f23ba4055"
+conf_files="/etc/pulse/*"
+build_style="gnu-configure"
+configure_args+=" --disable-asyncns"
+configure_args+=" --disable-avahi"
+configure_args+=" --disable-bluez4"
+configure_args+=" --disable-bluez5"
+configure_args+=" --disable-bluez5-native-headset"
+configure_args+=" --disable-bluez5-ofono-headset"
+configure_args+=" --disable-dbus"
+configure_args+=" --disable-esound"
+configure_args+=" --disable-gconf"
+configure_args+=" --disable-glib2"
+configure_args+=" --disable-gtk3"
+configure_args+=" --disable-hal-compat"
+configure_args+=" --disable-jack"
+configure_args+=" --disable-lirc"
+configure_args+=" --disable-oss-output"
+configure_args+=" --disable-oss-wrapper"
+configure_args+=" --disable-systemd-daemon"
+configure_args+=" --disable-systemd-journal"
+configure_args+=" --disable-systemd-login"
+configure_args+=" --disable-tcpwrap"
+configure_args+=" --disable-webrtc-aec"
+configure_args+=" --disable-x11"
+configure_args+=" --enable-adrian-aec"
+configure_args+=" --enable-alsa"
+configure_args+=" --enable-orc"
+configure_args+=" --with-bash-completion-dir=/usr/share/bash-completion/completions"
+configure_args+=" --with-database=tdb"
+configure_args+=" --with-udev-rules-dir=/usr/lib/udev/rules.d"
 system_groups="pulse-access"
 system_accounts="pulse"
 pulse_groups="audio"
 pulse_homedir="/var/empty"
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" glib"
-fi
-
 case "$XBPS_TARGET_MACHINE" in
-	# Disable neon optimizations for the arm* architectures
-	arm*) configure_args+=" --disable-neon-opt" ;;
+  # disable neon optimizations for the arm* architectures
+  arm*)
+    configure_args+=" --disable-neon-opt"
+    ;;
 esac
 
 pre_configure() {
-	NOCONFIGURE=1 ./bootstrap.sh
+  NOCONFIGURE=1 ./bootstrap.sh
 }
 
 post_install() {
-	rm -f ${DESTDIR}/etc/dbus-1/system.d/pulseaudio-system.conf
-	vsv pulseaudio
+  rm -f "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"
+  vsv pulseaudio
 }
 
 libpulseaudio_package() {
-	shlib_provides="libpulsecore-${version}.so libpulsecommon-${version}.so"
-	short_desc+=" - shared libraries"
-	pkg_install() {
-		vmove "usr/lib/libpulse.so.*"
-		vmove "usr/lib/libpulse-simple.so.*"
-		vmove "usr/lib/libpulse-mainloop-glib.so.*"
-		vmove usr/lib/pulseaudio
-	}
+  shlib_provides+=" libpulsecommon-$version.so"
+  shlib_provides+=" libpulsecore-$version.so"
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/libpulse.so.*"
+    vmove "usr/lib/libpulse-simple.so.*"
+    vmove usr/lib/pulseaudio
+  }
 }
 
 pulseaudio-devel_package() {
-	depends="libasyncns-devel dbus-devel libXtst-devel libpulseaudio>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/lib/cmake
-		vmove usr/lib/libpulse.so
-		vmove usr/lib/libpulse-simple.so
-		vmove usr/lib/libpulse-mainloop-glib.so
-		vmove usr/share/vala
-	}
+  depends="libpulseaudio>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove usr/lib/cmake
+    vmove usr/lib/libpulse.so
+    vmove usr/lib/libpulse-simple.so
+    vmove usr/share/vala
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
