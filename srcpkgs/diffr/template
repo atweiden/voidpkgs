@@ -12,6 +12,7 @@ build_style="cargo"
 
 do_install() {
   vbin "target/$RUST_TARGET/release/diffr"
+  vlicense LICENSE.txt
   vdoc README.md
 }
 
