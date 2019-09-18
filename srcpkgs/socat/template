@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="socat"
 version=1.7.3.3
-revision=2
+revision=3
 short_desc="Relay for bidirectional data transfer between two independent channels"
 makedepends+=" libressl-devel"
 makedepends+=" readline-devel"
@@ -10,13 +10,22 @@ license="GPL-2.0-only"
 distfiles="http://www.dest-unreach.org/socat/download/$pkgname-$version.tar.bz2"
 checksum="0dd63ffe498168a4aac41d307594c5076ff307aa0ac04b141f8f1cec6594d04a"
 build_style="gnu-configure"
-configure_args+=" --disable-fips"
 configure_args+=" --disable-libwrap"
+configure_args+=" --enable-fips"
 configure_args+=" ac_cv_have_z_modifier=yes"
 configure_args+=" ac_cv_ispeed_offset=13"
-configure_args+=" sc_cv_sys_crdly_shift=9"
-configure_args+=" sc_cv_sys_csize_shift=4"
-configure_args+=" sc_cv_sys_tabdly_shift=11"
+case "$XBPS_TARGET_MACHINE" in
+  ppc*)
+    configure_args+=" sc_cv_sys_crdly_shift=12"
+    configure_args+=" sc_cv_sys_csize_shift=8"
+    configure_args+=" sc_cv_sys_tabdly_shift=10"
+    ;;
+  *)
+    configure_args+=" sc_cv_sys_crdly_shift=9"
+    configure_args+=" sc_cv_sys_csize_shift=4"
+    configure_args+=" sc_cv_sys_tabdly_shift=11"
+    ;;
+esac
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
