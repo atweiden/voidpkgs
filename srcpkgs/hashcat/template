@@ -1,27 +1,35 @@
-# Template file for 'hashcat'
-pkgname=hashcat
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="hashcat"
 version=5.1.0
 revision=1
-build_style=gnu-makefile
-make_build_args="PREFIX=/usr
- USE_SYSTEM_OPENCL=1 USE_SYSTEM_XXHASH=1
- DEPS_OPENCL_PATH=${XBPS_CROSS_BASE}/usr/include
- DEPS_XXHASH_PATH=${XBPS_CROSS_BASE}/usr/include"
-make_use_env=yes
-makedepends="gmp-devel opencl2-headers xxHash-devel"
-checkdepends="perl"
 short_desc="Advanced CPU-based password recovery utility"
-maintainer="Duncaen <duncaen@voidlinux.org>"
-license="MIT"
+makedepends+=" gmp-devel"
+makedepends+=" opencl2-headers"
+makedepends+=" xxHash-devel"
+checkdepends="perl"
 homepage="https://hashcat.net/hashcat/"
-changelog="https://raw.githubusercontent.com/hashcat/hashcat/master/docs/changes.txt"
-distfiles="https://hashcat.net/files/hashcat-${version}.tar.gz"
-checksum=283beaa68e1eab41de080a58bb92349c8e47a2bb1b93d10f36ea30f418f1e338
+license="MIT"
+changelog="https://github.com/hashcat/hashcat/raw/master/docs/changes.txt"
+distfiles="https://hashcat.net/files/hashcat-$version.tar.gz"
+checksum="283beaa68e1eab41de080a58bb92349c8e47a2bb1b93d10f36ea30f418f1e338"
+build_style="gnu-makefile"
+make_build_args+=" DEPS_OPENCL_PATH=$XBPS_CROSS_BASE/usr/include"
+make_build_args+=" DEPS_XXHASH_PATH=$XBPS_CROSS_BASE/usr/include"
+make_build_args+=" PREFIX=/usr"
+make_build_args+=" USE_SYSTEM_OPENCL=1"
+make_build_args+=" USE_SYSTEM_XXHASH=1"
+make_use_env="yes"
 
 post_extract() {
-	sed '/^CC/d' -i src/Makefile
+  sed \
+    -i \
+    -e '/^CC/d' \
+    src/Makefile
 }
+
 post_install() {
-	rm -f ${DESTDIR}/usr/share/docs/hashcat/license.txt
-	vlicense docs/license.txt
+  rm -f "$DESTDIR/usr/share/docs/hashcat/license.txt"
+  vlicense docs/license.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
