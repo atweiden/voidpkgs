@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireshark"
-version=3.0.3
+version=3.0.4
 revision=1
 short_desc="Network protocol analyzer"
 depends="libcap-progs"
@@ -31,7 +31,7 @@ hostmakedepends+=" python3-devel"
 homepage="https://www.wireshark.org"
 license="GPL-2.0-or-later"
 distfiles="https://www.wireshark.org/download/src/$pkgname-$version.tar.xz"
-checksum="af92729c781d870110885c31ebcbe4c4224ed51bb580d00c896fe9746994211c"
+checksum="773bd57df2aeae1694a0b7fbfb34283ba24799cfd6299eed696630fc9ebeecbf"
 build_style="cmake"
 configure_args="-DBUILD_wireshark=OFF"
 system_groups="wireshark"
