@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="pulseaudio"
-version=12.2
-revision=6
+version=13.0
+revision=1
 short_desc="Featureful, general-purpose sound server"
 makedepends+=" alsa-lib-devel"
 makedepends+=" eudev-libudev-devel"
@@ -15,17 +15,16 @@ makedepends+=" libsoxr-devel"
 makedepends+=" orc-devel"
 makedepends+=" speex-devel"
 makedepends+=" tdb-devel"
-hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
-hostmakedepends+=" intltool"
 hostmakedepends+=" libtool"
 hostmakedepends+=" orc-devel"
+hostmakedepends+=" perl-XML-Parser"
 hostmakedepends+=" pkg-config"
 homepage="https://www.freedesktop.org/wiki/Software/PulseAudio"
 license="LGPL-2.1-or-later"
 distfiles="$FREEDESKTOP_SITE/pulseaudio/releases/$pkgname-$version.tar.xz"
-checksum="809668ffc296043779c984f53461c2b3987a45b7a25eb2f0a1d11d9f23ba4055"
+checksum="961b23ca1acfd28f2bc87414c27bb40e12436efcf2158d29721b1e89f3f28057"
 conf_files="/etc/pulse/*"
 build_style="gnu-configure"
 configure_args+=" --disable-asyncns"
@@ -67,10 +66,6 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" --disable-neon-opt"
     ;;
 esac
-
-pre_configure() {
-  NOCONFIGURE=1 ./bootstrap.sh
-}
 
 post_install() {
   rm -f "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"
