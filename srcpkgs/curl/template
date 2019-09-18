@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="curl"
-version=7.65.3
+version=7.66.0
 revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
@@ -12,7 +12,7 @@ makedepends+=" $(vopt_if ldap libldap-devel)"
 makedepends+=" $(vopt_if rtmp librtmp-devel)"
 makedepends+=" $(vopt_if ssh libssh2-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
-checkdepends="python"
+checkdepends="python3"
 hostmakedepends+=" groff"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
@@ -20,7 +20,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="0a855e83be482d7bc9ea00e05bdb1551a44966076762f9650959179c89fce509"
+checksum="6618234e0235c420a21f4cb4c2dd0badde76e6139668739085a70c4e2fe7a141"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
@@ -29,7 +29,7 @@ configure_args+=" --without-libidn2"
 configure_args+=" ac_cv_sizeof_off_t=8"
 configure_args+=" $(vopt_enable ldap ldaps)"
 configure_args+=" $(vopt_enable ldap)"
-configure_args+=" $(vopt_with gnuts)"
+configure_args+=" $(vopt_with gnutls)"
 configure_args+=" $(vopt_with gssapi)"
 configure_args+=" $(vopt_with rtmp)"
 configure_args+=" $(vopt_with ssh libssh2)"
@@ -60,7 +60,7 @@ libcurl_package() {
   shlib_provides="libcurl-gnutls.so.4"
   pkg_install() {
     vmove "usr/lib/*.so.*"
-    ln -sf libcurl.so.4.5.0 "$PKGDESTDIR/usr/lib/libcurl-gnutls.so.4"
+    ln -sf libcurl.so.4.6.0 "$PKGDESTDIR/usr/lib/libcurl-gnutls.so.4"
   }
 }
 libcurl-devel_package() {
