@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="run-parts"
-version=4.8.6.3
+version=4.9
 revision=1
 short_desc="Run scripts or programs in a directory"
 homepage="https://tracker.debian.org/pkg/debianutils"
 license="GPL-2.0-or-later"
 changelog="http://metadata.ftp-master.debian.org/changelogs/main/d/debianutils/debianutils_${version}_changelog"
 distfiles="$DEBIAN_SITE/main/d/debianutils/debianutils_$version.tar.xz"
-checksum="2cc7de3afc6df1cf6d00af9938efac7ee8f739228e548e512ddc186b6a7be221"
+checksum="20975c5cb8cb305f28c2ac35dd99fd9f594f25b6140b5d478a0a364e9fa8073f"
 wrksrc="debianutils-$version"
 build_style="gnu-configure"
 make_build_target="run-parts"
