@@ -1,28 +1,36 @@
-# Template file for 'aerc'
-pkgname=aerc
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="aerc"
 version=0.2.1
 revision=1
-build_style=go
-hostmakedepends="scdoc git"
 short_desc="Terminal email client"
-maintainer="shtayerc <david.murko@mailbox.org>"
-license="MIT"
+hostmakedepends+=" git"
+hostmakedepends+=" scdoc"
 homepage="https://aerc-mail.org"
-distfiles="https://git.sr.ht/~sircmpwn/aerc/archive/${version}.tar.gz"
-checksum=560cee4e284ed35623d28a5e793db79c5e4700296b0aa6ac2c8e92b20ab5c1cf
+license="MIT"
+distfiles="https://git.sr.ht/~sircmpwn/aerc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="560cee4e284ed35623d28a5e793db79c5e4700296b0aa6ac2c8e92b20ab5c1cf"
+build_style="go"
 
 do_configure() {
-	:
+  :
 }
 
 do_build() {
-	make ${makejobs} PREFIX=/usr
+  make \
+    "$makejobs" \
+    PREFIX="/usr"
 }
 
 do_install() {
-	make STRIP=true PREFIX=/usr DESTDIR=${DESTDIR} install
+  make \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    STRIP="true" \
+    install
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
