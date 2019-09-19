@@ -1,22 +1,28 @@
-# Template file for 'nzbget'
-pkgname=nzbget
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nzbget"
 version=21.0
 revision=2
-build_style=gnu-configure
-configure_args="--with-tlslib=OpenSSL
- --with-libcurses-includes=${XBPS_CROSS_BASE}/usr/include
- --with-libcurses-libraries=${XBPS_CROSS_BASE}/usr/lib
- --with-zlib-includes=${XBPS_CROSS_BASE}/usr/include
- --with-zlib-libraries=${XBPS_CROSS_BASE}/usr/lib"
-hostmakedepends="pkg-config"
-makedepends="libxml2-devel ncurses-devel libressl-devel"
 short_desc="Download from Usenet using .nzb files"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+makedepends+=" libressl-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends="pkg-config"
 homepage="http://nzbget.net/"
-distfiles="https://github.com/${pkgname}/${pkgname}/releases/download/v${version}/${pkgname}-${version}-src.tar.gz"
-checksum=65a5d58eb8f301e62cf086b72212cbf91de72316ffc19182ae45119ddd058d53
+license="GPL-2.0-or-later"
+distfiles="https://github.com/nzbget/nzbget/releases/download/v$version/$pkgname-$version-src.tar.gz"
+checksum="65a5d58eb8f301e62cf086b72212cbf91de72316ffc19182ae45119ddd058d53"
+build_style="gnu-configure"
+configure_args+=" --with-libcurses-includes=$XBPS_CROSS_BASE/usr/include"
+configure_args+=" --with-libcurses-libraries=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-tlslib=OpenSSL"
+configure_args+=" --with-zlib-includes=$XBPS_CROSS_BASE/usr/include"
+configure_args+=" --with-zlib-libraries=$XBPS_CROSS_BASE/usr/lib"
 
 post_extract() {
-	sed -i '1i#include <stdint.h>' daemon/remote/MessageBase.h
+  sed \
+    -i \
+    -e '1i#include <stdint.h>' \
+    daemon/remote/MessageBase.h
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
