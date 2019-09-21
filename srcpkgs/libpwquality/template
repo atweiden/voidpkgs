@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpwquality"
-version=1.4.0
-revision=2
+version=1.4.1
+revision=1
 short_desc="Library for password quality checking and generating random passwords"
 makedepends+=" cracklib-devel"
 makedepends+=" pam-devel"
@@ -11,8 +11,9 @@ hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 homepage="https://github.com/libpwquality/libpwquality"
 license="GPL-2.0-or-later"
+changelog="https://github.com/libpwquality/libpwquality/raw/master/NEWS"
 distfiles="https://github.com/libpwquality/libpwquality/releases/download/$pkgname-$version/$pkgname-$version.tar.bz2"
-checksum="1de6ff046cf2172d265a2cb6f8da439d894f3e4e8157b056c515515232fade6b"
+checksum="a97d72b5c56b7e279c6e86dad70c1493ea5796f00a596fb9f3173b96f9bf5e46"
 conf_files="/etc/security/pwquality.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
@@ -26,6 +27,10 @@ fi
 
 pre_configure() {
   autoreconf -fi
+  vsed \
+    -i \
+    -e 's|CFLAGS=.*|LDSHARED="${CC} -pthread -shared" &|g' \
+    python/Makefile.am
 }
 
 libpwquality-devel_package() {
