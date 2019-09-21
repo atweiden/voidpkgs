@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux4.14"
-version=4.14.145
+version=4.14.146
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -21,7 +21,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="eb05b5806713263a6d5bfa1e018ad07c3f4b3c6e71032306a94d7113ed594929"
+checksum="a3c54b887ea3e679382bd4c0536e6a281b071dab2258bd3ee8af75baef2023f5"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
