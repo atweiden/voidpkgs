@@ -18,21 +18,7 @@ configure_args+=" --enable-monotonic"
 configure_args+=" --enable-shared"
 configure_args+=" --enable-static"
 configure_args+=" --libdir=/usr/lib"
-configure_args+=" --libdir=/usr/lib"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  _sysdepspkg="skaware-void-sysdeps"
-  distfiles+=" https://github.com/CMB/$_sysdepspkg/archive/2.8.1.0.tar.gz"
-  checksum+=" b5a56d24caeb731f9a8468fa61ab0e9ae139370609ef4acb36888e69bbe8d98d"
-  configure_args+=" --with-sysdeps=../$_sysdepspkg-2.8.1.0/$XBPS_CROSS_TRIPLET"
-  case "$XBPS_TARGET_MACHINE" in
-    aarch64*|armv6*|armv7l*|i686|x86_64*|ppc*)
-      ;;
-    *)
-      nocross="Missing cross sysdeps"
-      ;;
-  esac
-fi
+configure_args+=" --with-sysdep-devurandom=yes"
 
 post_install() {
   vlicense COPYING LICENSE
