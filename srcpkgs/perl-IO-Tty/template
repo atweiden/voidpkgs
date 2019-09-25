@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-IO-Tty"
 version=1.12
-revision=7
+revision=8
 short_desc="IO::Tty - Perl interface to Low-level allocate a pseudo-Tty"
 depends="perl"
 makedepends="perl"
