@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-HTML-Parser"
 version=3.72
-revision=7
+revision=8
 short_desc="HTML::Parser - HTML parser class"
 depends="perl-HTML-Tagset"
 makedepends="perl-HTML-Tagset"
