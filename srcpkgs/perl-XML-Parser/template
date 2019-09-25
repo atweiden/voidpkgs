@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-XML-Parser"
 version=2.44
-revision=11
+revision=12
 short_desc="Perl extension interface to James Clark's XML parser, expat"
 depends="perl>=5.20"
 makedepends+=" expat-devel"
