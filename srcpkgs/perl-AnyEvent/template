@@ -1,16 +1,17 @@
-# Template file for 'perl-AnyEvent'
-pkgname=perl-AnyEvent
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="perl-AnyEvent"
 version=7.15
 revision=1
-archs=noarch
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-depends="perl"
 short_desc="Perl event loop framework"
-maintainer="Oliver Kiddle <okiddle@yahoo.co.uk>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+archs="noarch"
+depends="perl"
+makedepends="perl"
+hostmakedepends="perl"
 homepage="http://software.schmorp.de/pkg/AnyEvent.html"
-distfiles="${CPAN_SITE}/AnyEvent/AnyEvent-${version}.tar.gz"
-checksum=111db2335c71f789edaec271126b3810356691eb1214dd3f67b527a88ec9e354
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/AnyEvent/AnyEvent-$version.tar.gz"
+checksum="111db2335c71f789edaec271126b3810356691eb1214dd3f67b527a88ec9e354"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
