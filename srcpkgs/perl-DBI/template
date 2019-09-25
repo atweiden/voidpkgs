@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-DBI"
 version=1.642
-revision=1
+revision=2
 short_desc="Database independent interface for Perl"
 depends="perl"
 makedepends="perl"
