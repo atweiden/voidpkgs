@@ -19,6 +19,7 @@ readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 # select pkgs to copy
 readonly PKGS=('66'
+               '66-tools'
                'ISOEnts'
                'LuaJIT'
                'MoarVM'
