@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Net-SSLeay"
 version=1.88
-revision=2
+revision=3
 short_desc="Net::SSLeay - Perl extension for using OpenSSL"
 depends="perl"
 makedepends+=" libressl-devel"
