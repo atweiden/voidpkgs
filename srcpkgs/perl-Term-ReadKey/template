@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Term-ReadKey"
 version=2.33
-revision=8
+revision=9
 short_desc="Perl module for simple terminal control"
 depends="perl"
 makedepends="perl"
