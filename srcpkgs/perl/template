@@ -9,6 +9,10 @@ makedepends+=" bzip2-devel"
 makedepends+=" db-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" zlib-devel"
+checkdepends+=" iana-etc"
+checkdepends+=" perl-AnyEvent"
+checkdepends+=" perl-Test-Pod"
+checkdepends+=" procps-ng"
 hostmakedepends="less"
 homepage="https://www.perl.org"
 license="Artistic-1.0-perl, GPL-1.0-or-later"
@@ -209,6 +213,11 @@ do_configure() {
       cat ./config.log
       return 42
     }
+}
+
+do_check() {
+  export LD="$CC"
+  TEST_JOBS="$XBPS_MAKEJOBS" make test
 }
 
 post_install() {
