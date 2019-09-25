@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Term-ReadLine-Gnu"
 version=1.36
-revision=1
+revision=2
 short_desc="Perl extension for the GNU readline/history library"
 makedepends+=" ncurses-devel"
 makedepends+=" perl"
