@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="postgresql"
 version=9.6.15
-revision=1
+revision=2
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
 makedepends+=" libressl-devel"
