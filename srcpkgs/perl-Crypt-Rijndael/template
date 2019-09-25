@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Crypt-Rijndael"
 version=1.13
-revision=8
+revision=9
 short_desc="Crypt::Rijndael - Crypt::CBC compliant Rijndael module"
 depends="perl"
 makedepends="perl"
