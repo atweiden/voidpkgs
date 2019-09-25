@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Locale-gettext"
 version=1.07
-revision=8
+revision=9
 short_desc="Permits access from Perl to the gettext() family of functions"
 depends="perl"
 makedepends="perl"
