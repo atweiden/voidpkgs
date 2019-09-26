@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnupg2"
 version=2.2.17
-revision=1
+revision=2
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -25,6 +25,9 @@ configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE"
 configure_args+=" --with-libgcrypt-prefix=$XBPS_CROSS_BASE"
 configure_args+=" --with-npth-prefix=$XBPS_CROSS_BASE"
+configure_args+=" $(vopt_enable ldap)"
+build_options="ldap"
+build_options_default="ldap"
 
 pre_configure() {
   vsed \
