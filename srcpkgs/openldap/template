@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openldap"
 version=2.4.48
-revision=1
+revision=2
 short_desc="OpenLDAP (Lightweight Directory Access Protocol)"
 depends="openldap-tools>=${version}_$revision"
 makedepends+=" db-devel"
@@ -68,6 +68,7 @@ post_install() {
   mv \
     "$DESTDIR/etc/openldap"/*.{example,default} \
     "$DESTDIR/usr/share/examples/openldap"
+  chmod 0644 "$DESTDIR/usr/share/examples/openldap"/*
 }
 
 libldap-devel_package() {
