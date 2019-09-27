@@ -433,14 +433,16 @@ constant %PKG = Map.new(
     'linux5.2' => qw<linux5.2-dbg
                      linux5.2-headers>,
     'llhttp' => ['llhttp-devel'],
-    'llvm' => qw<clang
-                 clang-analyzer
-                 clang-tools-extra
-                 libllvm6.0
-                 lld
-                 lld-devel
-                 lldb
-                 lldb-devel>,
+    'llvm7' => ['libllvm7'],
+    'llvm8' => ['libllvm8'],
+    'llvm9' => qw<clang
+                  clang-analyzer
+                  clang-tools-extra
+                  libllvm9
+                  lld
+                  lld-devel
+                  lldb
+                  lldb-devel>,
     'lm_sensors' => qw<libsensors
                        libsensors-devel>,
     'lttng-tools' => ['lttng-tools-devel'],
