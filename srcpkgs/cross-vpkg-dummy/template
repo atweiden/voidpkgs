@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-vpkg-dummy"
-version=0.32
+version=0.33
 revision=1
 short_desc="Dummy meta-pkg for cross building packages with xbps-src"
 depends="base-files>=0.126"
@@ -12,6 +12,7 @@ provides+=" binutils-9999_1"
 provides+=" libada-9999_1"
 provides+=" libada-devel-9999_1"
 provides+=" libgcc-9999_1"
+provides+=" libgcc-devel-9999_1"
 provides+=" libstdc++-9999_1"
 provides+=" libstdc++-devel-9999_1"
 provides+=" libgfortran-9999_1"
@@ -31,6 +32,7 @@ conflicts+=" binutils>=0"
 conflicts+=" libada>=0"
 conflicts+=" libada-devel>=0"
 conflicts+=" libgcc>=0"
+conflicts+=" libgcc-devel>=0"
 conflicts+=" libstdc++>=0"
 conflicts+=" libstdc++-devel>=0"
 conflicts+=" libgfortran>=0"
