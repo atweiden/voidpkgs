@@ -1,9 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm"
-version=8.0.0
+version=9.0.0
 revision=1
 short_desc="LLVM meta package"
-depends="llvm8"
+depends="llvm9"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
