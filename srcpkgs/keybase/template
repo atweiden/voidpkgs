@@ -1,21 +1,44 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="keybase"
-version=4.4.2
+version=4.5.0
 revision=1
 short_desc="Client for keybase.io"
 depends="gnupg2"
+hostmakedepends="git"
 homepage="https://keybase.io/"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9d19f684d1e375605449f7c37aaecea6518d095ee54837386281c538ebac61f1"
+checksum="c74a909b53a3d62c2d71a7209e74c3f5721782a007eba8e48ddd80121343a8da"
 wrksrc="client-$version"
 build_style="go"
 go_import_path="github.com/keybase/client"
-go_package="github.com/keybase/client/go/keybase"
+go_package+=" $go_import_path/go/keybase"
+go_package+=" $go_import_path/go/kbfs/kbfsfuse"
+go_package+=" $go_import_path/go/kbfs/kbfsgit/git-remote-keybase"
+go_package+=" $go_import_path/go/kbfs/kbfstool"
+go_package+=" $go_import_path/go/kbfs/redirector"
 go_build_tags="production"
 
 post_install() {
   vlicense LICENSE
+}
+
+kbfs_package() {
+  unset depends
+  depends+=" fuse"
+  depends+=" keybase"
+  short_desc="Keybase Filesystem"
+  pkg_install() {
+    vmove usr/bin/redirector
+    mv \
+      "$PKGDESTDIR/usr/bin/redirector" \
+      "$PKGDESTDIR/usr/bin/keybase-redirector"
+    # setuid
+    chmod 4755 "$PKGDESTDIR/usr/bin/keybase-redirector"
+    vmove usr/bin/kbfsfuse
+    vmove usr/bin/kbfstool
+    vmove usr/bin/git-remote-keybase
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

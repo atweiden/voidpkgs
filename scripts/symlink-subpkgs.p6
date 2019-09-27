@@ -276,6 +276,7 @@ constant %PKG = Map.new(
     'json-c' => ['json-c-devel'],
     'jsoncpp' => ['jsoncpp-devel'],
     'kbd' => ['kbd-data'],
+    'keybase' => ['kbfs'],
     'kmod' => qw<libkmod
                  libkmod-devel>,
     'kubernetes' => ['kubectl'],
