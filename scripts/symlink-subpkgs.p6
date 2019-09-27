@@ -240,6 +240,7 @@ constant %PKG = Map.new(
                     libhaveged-devel>,
     'hiredis' => ['hiredis-devel'],
     'http-parser' => ['http-parser-devel'],
+    'httrack' => ['httrack-devel'],
     'hunspell' => qw<hunspell-devel
                      libhunspell1.7>,
     'icdiff' => ['python3-icdiff'],
