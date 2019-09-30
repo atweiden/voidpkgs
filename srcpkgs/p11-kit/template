@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="p11-kit"
-version=0.23.16.1
+version=0.23.17
 revision=1
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="4b34e92ae36fa493e0d94366c767f06d5f9951e3d8581d10fd935d738db1574d"
+checksum="5447b25d66c05f86cce5bc8856f7a074be84c186730e32c74069ca03386d7c1e"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="gnu-configure"
 configure_args="--with-module-path=/usr/lib/pkcs11"
