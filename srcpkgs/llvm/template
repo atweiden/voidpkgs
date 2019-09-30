@@ -1,11 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm"
 version=9.0.0
-revision=1
+revision=2
 short_desc="LLVM meta package"
 depends="llvm9"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
+replaces+=" llvm3.9>=0"
+replaces+=" llvm6.0>=0"
+replaces+=" llvm7>=0"
+replaces+=" llvm8>=0"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
