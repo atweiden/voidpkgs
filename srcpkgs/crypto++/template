@@ -1,14 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="crypto++"
-version=565
-revision=3
-short_desc="A free C++ class library of cryptographic schemes"
+version=820
+revision=1
+short_desc="Free C++ class library of cryptographic schemes"
 hostmakedepends="unzip"
 homepage="http://www.cryptopp.com/"
-license="Boost Software License 1.0, Public domain"
+license="BSL-1.0"
 distfiles="http://www.cryptopp.com/${pkgname/++/pp}$version.zip"
-checksum="a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34"
+checksum="03f0e2242e11b9d19b28d0ec5a3fa8ed5cc7b27640e6bed365744f593e858058"
 build_style="gnu-makefile"
+if [[ -n "$XBPS_CROSS" ]]; then
+  make_build_args="-f GNUmakefile-cross"
+fi
 make_build_target+=" libcryptopp.a"
 make_build_target+=" libcryptopp.so"
 create_wrksrc="yes"
