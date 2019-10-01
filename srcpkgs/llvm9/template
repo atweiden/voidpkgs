@@ -147,7 +147,6 @@ post_patch() {
         "$wrksrc/projects/compiler-rt/cmake/config-ix.cmake"
       ;;
   esac
-
 }
 
 pre_configure() {
