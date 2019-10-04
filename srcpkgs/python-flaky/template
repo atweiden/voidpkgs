@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-flaky"
-version=3.5.3
+version=3.6.1
 revision=1
 short_desc="Plugin for nose/py.test that automatically reruns flaky tests (Python2)"
 archs="noarch"
@@ -10,7 +10,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/box/flaky"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/f/flaky/${pkgname#*-}-$version.tar.gz"
-checksum="12bd5e41f372b2190e8d754b6e5829c2f11dbc764e10b30f57e59f829c9ca1da"
+checksum="8cd5455bb00c677f787da424eaf8c4a58a922d0e97126d3085db5b279a98b698"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="flaky"
