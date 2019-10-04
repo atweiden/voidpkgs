@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iproute2"
-version=5.2.0
+version=5.3.0
 revision=1
 short_desc="IP Routing Utilities"
 makedepends+=" db-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://wiki.linuxfoundation.org/networking/iproute2"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/net/iproute2/$pkgname-$version.tar.xz"
-checksum="a5b95dec26353fc71dba9bb403e9343fad2a06bd69fb154a22a2aa2914f74da8"
+checksum="cb1c1e45993a3bd2438543fd4332d70f1726a6e6ff97dc613a8258c993117b3f"
 conf_files+=" /etc/iproute2/ematch_map"
 conf_files+=" /etc/iproute2/rt_dsfield"
 conf_files+=" /etc/iproute2/rt_protos"
