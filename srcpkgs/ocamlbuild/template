@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ocamlbuild"
 version=0.14.0
-revision=2
+revision=3
 short_desc="OCaml build tool"
 hostmakedepends="ocaml"
 homepage="https://github.com/ocaml/ocamlbuild"
