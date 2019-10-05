@@ -341,6 +341,7 @@ constant %PKG = Map.new(
     'libjpeg-turbo' => qw<libjpeg-turbo-devel
                           libjpeg-turbo-tools>,
     'libksba' => ['libksba-devel'],
+    'libluv' => ['libluv-devel'],
     'libmaxminddb' => ['libmaxminddb-devel'],
     'libmbim' => ['libmbim-devel'],
     'libmnl' => ['libmnl-devel'],
