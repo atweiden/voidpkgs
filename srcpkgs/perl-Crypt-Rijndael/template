@@ -1,15 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="perl-Crypt-Rijndael"
-version=1.13
-revision=9
+version=1.14
+revision=1
 short_desc="Crypt::Rijndael - Crypt::CBC compliant Rijndael module"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Crypt-Rijndael"
-license="LGPL-3"
+license="LGPL-2.0-or-later"
 distfiles="$CPAN_SITE/Crypt/${pkgname#*-}-$version.tar.gz"
-checksum="cd7209a6dfe0a3dc8caffe1aa2233b0e6effec7572d76a7a93feefffe636214e"
+checksum="6451c3dffe8703523be2bb08d1adca97e77df2a8a4dd46944d18a99330b7850e"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
