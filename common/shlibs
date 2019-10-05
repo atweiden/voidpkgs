@@ -485,7 +485,7 @@ libusbmuxd.so.4 libusbmuxd-1.0.10_1
 libutempter.so.0 libutempter-1.1.5_1
 libuuid.so.1 libuuid-2.18_1
 libuv.so.1 libuv-1.0.0_1
-libvarnishapi.so.2 libvarnishapi-6.1.1_1
+libvarnishapi.so.2 libvarnishapi-6.3.0_1
 libvdehist.so.0 libvde2-2.3.2_1
 libvdemgmt.so.0 libvde2-2.3.2_1
 libvdeplug.so.3 libvde2-2.3.2_1
