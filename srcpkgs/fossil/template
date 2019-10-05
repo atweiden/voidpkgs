@@ -16,6 +16,14 @@ build_style="configure"
 configure_args+=" --disable-internal-sqlite"
 configure_args+=" --prefix=/usr"
 
+post_extract() {
+  # failing on cross
+  vsed \
+    -i \
+    -e 's/test_system_sqlite$/# &/' \
+    auto.def
+}
+
 post_install() {
   vlicense COPYRIGHT-BSD2.txt LICENSE
   vman fossil.1
