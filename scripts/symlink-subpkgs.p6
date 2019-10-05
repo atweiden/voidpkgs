@@ -56,7 +56,7 @@ constant %PKG = Map.new(
     'babeltrace' => ['babeltrace-devel'],
     'bcc' => qw<bcc-devel
                 bcc-tools
-                python-bcc>,
+                python3-bcc>,
     'bind' => qw<bind-devel
                  bind-libs
                  bind-utils>,
