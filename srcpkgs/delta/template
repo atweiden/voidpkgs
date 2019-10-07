@@ -1,15 +1,16 @@
-# Template file for 'delta'
-pkgname=delta
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="delta"
 version=0.0.9
 revision=1
-build_style=cargo
 short_desc="Syntax-highlighting pager for git"
-maintainer="Andrew Benson <abenson+void@gmail.com>"
-license="MIT"
 homepage="https://github.com/dandavison/delta"
-distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=ecff734a0bf23ff379ac38215a70b946ea646279fa7165dcf3869ab2cf42bae5
+license="MIT"
+distfiles="https://github.com/dandavison/delta/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ecff734a0bf23ff379ac38215a70b946ea646279fa7165dcf3869ab2cf42bae5"
+build_style="cargo"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
