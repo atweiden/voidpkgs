@@ -4,7 +4,7 @@ version=29.0.3
 revision=1
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
-archs+=" armv7l*"
+archs+=" armv*"
 archs+=" i686*"
 archs+=" x86_64*"
 makedepends+=" gtest-devel"
@@ -12,6 +12,11 @@ makedepends+=" libressl-devel"
 makedepends+=" libusb-devel"
 makedepends+=" pcre2-devel"
 makedepends+=" zlib-devel"
+case "$XBPS_TARGET_MACHINE" in
+  armv[56]*)
+    makedepends+=" libatomic-devel"
+    ;;
+esac
 hostmakedepends+=" go"
 hostmakedepends+=" perl"
 homepage="http://developer.android.com/tools/help/adb.html"
@@ -38,6 +43,14 @@ pre_configure() {
       configure_args+=" $boring_ssl_cmake_args"
   fi
 
+  case "$XBPS_TARGET_MACHINE" in
+    armv[56]*)
+      sed \
+        -i \
+        -e "/target_link_libraries/s;$; atomic;" \
+        vendor/CMakeLists.adb.txt
+      ;;
+  esac
 }
 
 post_install() {
