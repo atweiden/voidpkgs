@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux5.2"
-version=5.2.18
+version=5.2.19
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -25,7 +25,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="6d090f866c9739403f78b08470209d1e825c44ce5dbaa237a4a2c8c6609dca60"
+checksum="de98e4c28e08cd992c3aadc32450b3fa738b6101c509093192bb344f4f41b18a"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
