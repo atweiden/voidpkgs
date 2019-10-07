@@ -1,7 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="grpc"
-version=1.22.0
+version=1.24.1
 revision=1
+_upbver="931bbecbd3230ae7f22efa5d203639facc47f719"
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
 makedepends+=" gperftools-devel"
@@ -12,8 +13,10 @@ makedepends+=" zlib-devel"
 hostmakedepends="protobuf"
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
-distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
-checksum="f869c648090e8bddaa1260a271b1089caccbe735bf47ac9cd7d44d35a02fb129"
+distfiles+=" https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/protocolbuffers/upb/archive/$_upbver/upb-$_upbver.tar.gz"
+checksum+=" ffadb8c6bcd725b60c370484062363c4c476335fbd5f377dcc66ac9c91aeae03"
+checksum+=" 95150db57b51b65f3422c38953956e0f786945d842d76f8ab685fbcd93ab5caa"
 build_style="gnu-makefile"
 make_build_args+=" prefix=\$(DESTDIR)/usr"
 make_build_args+=" AROPTS=rc"
@@ -27,7 +30,10 @@ post_extract() {
     -r \
     -e 's/-Werror//g;/ldconfig/d;s/ strip-(static|shared)_c(xx)? / /' \
     Makefile
+  rm -rf third_party/upb
+  mv "../upb-$_upbver" third_party/upb
 }
+
 post_install() {
   vlicense NOTICE.txt
 }
