@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs"
-version=12.10.0
+version=12.11.1
 revision=1
 short_desc="Evented I/O for V8 javascript"
 makedepends+=" python-devel"
@@ -26,7 +26,7 @@ hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="371a3e39f1a14adbd7b37dee57641075ccfa240bd990630ff213298f16ad49b4"
+checksum="37043ddbe60f18a52ec31e0381b66adebbc0ec24669d72f132a1fdfacdf029ae"
 wrksrc="${pkgname%js}-v$version"
 build_options+=" cares"
 build_options+=" http_parser"
