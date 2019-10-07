@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="openssh"
 version=8.0p1
-revision=3
+revision=4
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -60,6 +60,10 @@ esac
 
 pre_configure() {
   autoreconf -fi
+  vsed \
+    -i \
+    -e 's|#include <sys/sysctl.h>||' \
+    servconf.c
 }
 
 post_install() {
