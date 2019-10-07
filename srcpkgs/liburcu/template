@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="liburcu"
-version=0.10.2
+version=0.11.1
 revision=1
 short_desc="Userspace RCU (read-copy-update) library"
 homepage="https://liburcu.org"
 license="LGPL-2.1-or-later"
 distfiles="https://www.lttng.org/files/urcu/userspace-rcu-$version.tar.bz2"
-checksum="b3f6888daf6fe02c1f8097f4a0898e41b5fe9975e121dc792b9ddef4b17261cc"
+checksum="92b9971bf3f1c443edd6c09e7bf5ff3b43531e778841f16377a812c8feeb3350"
 wrksrc="userspace-rcu-$version"
 build_style="gnu-configure"
 configure_args="--disable-static"
