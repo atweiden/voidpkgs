@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="delta"
-version=0.0.9
+version=0.0.12
 revision=1
 short_desc="Syntax-highlighting pager for git"
 homepage="https://github.com/dandavison/delta"
 license="MIT"
 distfiles="https://github.com/dandavison/delta/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ecff734a0bf23ff379ac38215a70b946ea646279fa7165dcf3869ab2cf42bae5"
+checksum="ca15401c59da7dca4ff2bb8d07b3612e171351fce834bcf12a6edeb19195b58e"
 build_style="cargo"
 
 post_install() {
