@@ -1,21 +1,34 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gperftools"
 version=2.7
-revision=2
+revision=3
 short_desc="Multi-threaded malloc() and performance analysis tools"
 makedepends="libunwind-devel"
 checkdepends="perl"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
 homepage="https://github.com/gperftools/gperftools"
 license="BSD-3-Clause"
 distfiles="https://github.com/gperftools/gperftools/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
 checksum="1ee8c8699a0eff6b6a203e59b43330536b22bbcbe6448f54c7091e5efb0763c9"
 build_style="gnu-configure"
 
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  # needed by some newly enabled code
+  CXXFLAGS+=" -D__WORDSIZE=$XBPS_TARGET_WORDSIZE"
+  # needed on musl other than x86_64
+  if [[ "$XBPS_TARGET_MACHINE" != "x86_64-musl" ]]; then
+    makedepends+=" libucontext-devel"
+    LDFLAGS+=" -lucontext"
+  fi
+fi
+
 case "$XBPS_TARGET_MACHINE" in
   arm*-musl|aarch64-musl)
+    # having libunwind in makedepends still causes failures...
     makedepends="libucontext-devel"
-    LDFLAGS=" -lucontext"
-    configure_args="--disable-libunwind"
+    configure_args+=" --disable-libunwind"
+    ;;
 esac
 
 post_extract() {
@@ -24,6 +37,10 @@ post_extract() {
     -e 's/__off64_t/off64_t/' \
     src/base/linux_syscall_support.h \
     src/malloc_hook_mmap_linux.h
+}
+
+pre_configure() {
+  autoreconf -fi
 }
 
 post_install() {
