@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tmux"
 version=2.9a
-revision=1
+revision=2
 short_desc="Terminal Multiplexer"
 makedepends+=" libevent-devel"
 makedepends+=" libutempter-devel"
