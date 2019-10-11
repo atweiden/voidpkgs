@@ -16,15 +16,12 @@ configure_args+=" --enable-fd-passing"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libgpg-error-prefix=$XBPS_CROSS_BASE/usr"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" ac_cv_sys_file_offset_bits=no"
-    ;;
-  i686*|arm*)
-    CFLAGS="-D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1"
-    CXXFLAGS="$CFLAGS"
-    ;;
-esac
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  configure_args+=" ac_cv_sys_file_offset_bits=no"
+elif [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
+  CFLAGS="-D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1"
+  CXXFLAGS="$CFLAGS"
+fi
 
 CXXFLAGS+=" -D_GLIBCXX_USE_C99_STDIO=1"
 
