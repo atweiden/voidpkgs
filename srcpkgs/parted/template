@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="parted"
-version=3.2
-revision=7
+version=3.3
+revision=1
 short_desc="GNU Parted disk partition resizing program"
 makedepends+=" device-mapper-devel"
 makedepends+=" libblkid-devel"
@@ -12,7 +12,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.gnu.org/software/parted/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/parted/$pkgname-$version.tar.xz"
-checksum="858b589c22297cacdf437f3baff6f04b333087521ab274f7ab677cb8c6bb78e4"
+checksum="57e2b4bd87018625c515421d4524f6e3b55175b472302056391c5f7eccb83d44"
 build_style="gnu-configure"
 # parted wants off_t as 64bit type
 configure_args="ac_cv_sizeof_off_t=8"
