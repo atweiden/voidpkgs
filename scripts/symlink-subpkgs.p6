@@ -610,6 +610,7 @@ constant %PKG = Map.new(
     'python-sphinxcontrib-websupport' => ['python3-sphinxcontrib-websupport'],
     'python-urllib3' => ['python3-urllib3'],
     'python-yaml' => ['python3-yaml'],
+    'python-zope.interface' => ['python3-zope.interface'],
     'python3' => ['python3-devel'],
     'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
