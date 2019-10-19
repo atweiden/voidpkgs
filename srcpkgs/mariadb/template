@@ -1,15 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mariadb"
 version=10.1.30
-revision=6
+revision=7
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
+makedepends+=" libatomic-devel"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" bison"
+hostmakedepends+=" libatomic-devel"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" ncurses-devel"
 hostmakedepends+=" perl"
@@ -57,24 +59,7 @@ replaces="mysql>=0"
 
 CFLAGS="-w"
 
-case "$XBPS_TARGET_MACHINE" in
-  armv[56]*|ppc|ppc-musl)
-    LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -latomic"
-    makedepends+=" libatomic-devel"
-    hostmakedepends+=" libatomic-devel"
-    ;;
-esac
-
 pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    armv[56]*|ppc|ppc-musl)
-      find -name CMakeLists.txt -exec \
-        sed \
-          -i \
-          -e "/TARGET_LINK_LIBRARIES/s;); atomic);" \
-          "{}" \;
-      ;;
-  esac
   # we need some host binaries before starting cross compilation
   if [[ -n "$CROSS_BUILD" ]]; then
     # XXX still broken: jemalloc configure execs host bins
