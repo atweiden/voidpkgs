@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bootiso"
-version=3.2.2
+version=3.3.1
 revision=1
 short_desc="Create a USB bootable device from an ISO image easily and securely"
 archs="noarch"
@@ -28,7 +28,7 @@ homepage="https://github.com/jsamr/bootiso"
 license="MIT"
 changelog="https://github.com/jsamr/bootiso/raw/master/changelog.md"
 distfiles="https://github.com/jsamr/bootiso/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="50d3d4ce855db8b3328e4f7bbe677de2531a341276cc2b546e5fefc9f593a9f9"
+checksum="b716d23b4ab65543b5571f302f5d26a43bea9f9ea91bffe999d5faff99f2bdda"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*)
