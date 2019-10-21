@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="crypto++"
 version=820
-revision=1
+revision=2
 short_desc="Free C++ class library of cryptographic schemes"
 hostmakedepends="unzip"
 homepage="http://www.cryptopp.com/"
@@ -9,11 +9,14 @@ license="BSL-1.0"
 distfiles="http://www.cryptopp.com/${pkgname/++/pp}$version.zip"
 checksum="03f0e2242e11b9d19b28d0ec5a3fa8ed5cc7b27640e6bed365744f593e858058"
 build_style="gnu-makefile"
+make_build_args="PREFIX=/usr"
 if [[ -n "$XBPS_CROSS" ]]; then
-  make_build_args="-f GNUmakefile-cross"
+  make_build_args+=" -f GNUmakefile-cross"
 fi
-make_build_target+=" libcryptopp.a"
-make_build_target+=" libcryptopp.so"
+make_build_target+=" dynamic"
+make_build_target+=" libcryptopp.pc"
+make_build_target+=" static"
+make_install_target="install-lib"
 create_wrksrc="yes"
 
 CXXFLAGS+=" -DNDEBUG"
@@ -27,11 +30,6 @@ post_extract() {
 }
 
 post_install() {
-  vinstall "$FILESDIR/libcrypto++.pc" 644 usr/lib/pkgconfig
-  sed \
-    -i \
-    -e "s,@@VERSION@@,$version,g" \
-    "$DESTDIR/usr/lib/pkgconfig/libcrypto++.pc"
   vlicense License.txt LICENSE
 }
 
