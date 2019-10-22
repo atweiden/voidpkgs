@@ -201,6 +201,7 @@ constant %PKG = Map.new(
     'gdbm' => ['gdbm-devel'],
     'geoip' => qw<geoip-devel
                   libgeoip>,
+    'getdns' => ['getdns-devel'],
     'gettext' => qw<gettext-devel
                     gettext-devel-examples
                     gettext-libs>,
