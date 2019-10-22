@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libevent"
-version=2.1.10
-revision=2
+version=2.1.11
+revision=1
 short_desc="Abstract asynchronous event notification library"
 makedepends="libressl-devel"
 homepage="http://libevent.org/"
-license="3-clause-BSD"
+license="BSD-3-Clause"
 distfiles="https://github.com/libevent/libevent/releases/download/release-$version-stable/$pkgname-$version-stable.tar.gz"
-checksum="e864af41a336bb11dab1a23f32993afe963c1f69618bd9292b89ecf6904845b0"
+checksum="a65bac6202ea8c5609fd5c7e480e6d25de467ea1917c08290c521752f147283d"
 wrksrc="$pkgname-$version-stable"
 build_style="gnu-configure"
 
