@@ -1,32 +1,32 @@
-# Template file for 'stubby'
-pkgname=stubby
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="stubby"
 version=0.2.6
 revision=1
-build_style=gnu-configure
-conf_files="/etc/stubby/stubby.yml"
-hostmakedepends="automake"
-makedepends="getdns-devel libyaml-devel"
-depends="libcap-progs"	# For setcap(8)
 short_desc="DNS Privacy stub resolver"
-maintainer="Frank Steinborn <steinex@nognu.de>"
-license="BSD-3-Clause"
+# for setcap(8)
+depends="libcap-progs"
+makedepends+=" getdns-devel"
+makedepends+=" libyaml-devel"
+hostmakedepends="automake"
 homepage="https://github.com/getdnsapi/stubby"
-changelog="https://raw.githubusercontent.com/getdnsapi/stubby/v${version}/ChangeLog"
-distfiles="https://github.com/getdnsapi/stubby/archive/v${version}.tar.gz"
-checksum=634b0b9fb8f36416e210fa65800a6c1672bcf9f4f276a042ccf89567ad8ef781
-
-# Create stubby system user/group
-system_accounts="_${pkgname}"
-_stubby_homedir="/var/lib/${pkgname}"
-make_dirs="/var/lib/${pkgname} 0755 _${pkgname} _${pkgname}"
+license="BSD-3-Clause"
+changelog="https://github.com/getdnsapi/stubby/raw/v$version/ChangeLog"
+distfiles="https://github.com/getdnsapi/stubby/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="634b0b9fb8f36416e210fa65800a6c1672bcf9f4f276a042ccf89567ad8ef781"
+conf_files="/etc/stubby/stubby.yml"
+build_style="gnu-configure"
+system_accounts="_stubby"
+_stubby_homedir="/var/lib/stubby"
+make_dirs="/var/lib/stubby 0755 _stubby _stubby"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	rm ${DESTDIR}/etc/stubby/stubby.yml.example
-
-	vlicense COPYING
-	vsv stubby
+  rm "$DESTDIR/etc/stubby/stubby.yml.example"
+  vlicense COPYING
+  vsv stubby
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
