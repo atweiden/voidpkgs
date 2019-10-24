@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="runit-void"
 version=20190906
-revision=1
+revision=2
 short_desc="Void Linux runit scripts"
 depends+=" virtual?awk"
 depends+=" procps-ng"
 depends+=" runit"
 homepage="https://github.com/void-linux/void-runit"
-license="Public Domain"
+license="CC0-1.0"
 distfiles="https://github.com/void-linux/void-runit/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="9e1027c07124ff4efad63bef74b9f1ae0659e43f9d4e7cfde996be271706570c"
 conf_files+=" /etc/hostname"
