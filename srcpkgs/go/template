@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="go"
-version=1.13.1
+version=1.13.3
 revision=1
 short_desc="Go Programming Language"
 hostmakedepends="go1.4-bootstrap"
 homepage="http://golang.org/"
 license="BSD-3-Clause"
 distfiles="https://golang.org/dl/$pkgname$version.src.tar.gz"
-checksum="81f154e69544b9fa92b1475ff5f11e64270260d46e7e36c34aafc8bc96209358"
+checksum="4f7123044375d5c404280737fbd2d0b17064b66182a65919ffe20ffe8620e3df"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
