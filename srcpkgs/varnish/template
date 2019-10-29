@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="varnish"
-version=6.3.0
+version=6.3.1
 revision=1
 short_desc="Fast caching HTTP reverse proxy"
 makedepends+=" pcre-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" python3-docutils"
 homepage="https://varnish-cache.org/"
 license="BSD-2-Clause"
 distfiles="https://varnish-cache.org/_downloads/varnish-$version.tgz"
-checksum="95ccdec5f1dcba8b41d24e685b3f2379fbc6b9701d106cc78011d4d09a73947f"
+checksum="d1a26c7dad43b842c97e48f1c6422bb0b24c02cd6a74c53a2cf17e64da254175"
 conf_files="/etc/varnish/default.vcl"
 build_style="gnu-configure"
 configure_args+=" --cache-file=config.void"
