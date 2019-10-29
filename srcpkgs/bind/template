@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bind"
 version=9.11.11
-revision=1
+revision=2
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
 makedepends+=" libatomic-devel"
@@ -57,6 +57,18 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 reverts="9.13.6_1"
+
+pre_configure() {
+  # various bind-utils segfault with musl-1.1.24 in catgets
+  # TODO: actually fix instead of disabling it
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      vsed \
+        -i \
+        -e 's/#define HAVE_CATGETS 1//g' \
+        configure
+  esac
+}
 
 do_check() {
   # requires special network setup
