@@ -1,9 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iwd"
-version=0.22
+version=0.23
 revision=1
 short_desc="Internet Wireless Daemon by Intel that aims to replace wpa_supplicant"
-depends="dbus"
+depends+=" dbus"
+depends+=" ell>=0.25"
 makedepends+=" dbus-devel"
 makedepends+=" ell-devel"
 makedepends+=" readline-devel"
@@ -15,7 +16,7 @@ hostmakedepends+=" python3-docutils"
 homepage="https://iwd.wiki.kernel.org/"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/network/wireless/iwd-$version.tar.xz"
-checksum="b50c778716a2a1f9da961de0cac4711ad43ab104a67405935248f33ea8a6559a"
+checksum="e113b908c60537357b48c389317625e02cd1daa1b6e500bb356f7978a2a61280"
 build_style="gnu-configure"
 configure_args+=" --disable-systemd-service"
 configure_args+=" --enable-dbus-policy"
