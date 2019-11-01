@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tcpreplay"
 version=4.3.2
-revision=1
+revision=2
 short_desc="Pcap editing and replay tool"
 makedepends+=" libdnet-devel"
 makedepends+=" libnet-devel"
