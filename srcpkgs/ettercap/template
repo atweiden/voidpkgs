@@ -1,16 +1,23 @@
-# Template file for 'ettercap'
-pkgname=ettercap
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="ettercap"
 version=0.8.2
 revision=13
-build_style=cmake
-configure_args="-DENABLE_GTK=OFF"
-hostmakedepends="flex"
-makedepends="ncurses-devel libressl-devel libcurl-devel libltdl-devel libnet-devel libpcap-devel pcre-devel"
-conf_files="/etc/${pkgname}/etter.conf"
 short_desc="Network sniffer/interceptor/logger for ethernet LANs"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-only"
+makedepends+=" libcurl-devel"
+makedepends+=" libltdl-devel"
+makedepends+=" libnet-devel"
+makedepends+=" libpcap-devel"
+makedepends+=" libressl-devel"
+makedepends+=" ncurses-devel"
+makedepends+=" pcre-devel"
+hostmakedepends="flex"
 homepage="http://ettercap.github.com/ettercap/"
-distfiles="https://github.com/Ettercap/ettercap/archive/v${version}.tar.gz"
-checksum=f38514f35bea58bfe6ef1902bfd4761de0379942a9aa3e175fc9348f4eef2c81
-lib32disabled=yes
+license="GPL-2.0-only"
+distfiles="https://github.com/Ettercap/ettercap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f38514f35bea58bfe6ef1902bfd4761de0379942a9aa3e175fc9348f4eef2c81"
+conf_files="/etc/ettercap/etter.conf"
+build_style="cmake"
+configure_args="-DENABLE_GTK=OFF"
+lib32disabled="yes"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
