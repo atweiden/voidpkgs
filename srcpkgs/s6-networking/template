@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-networking"
-version=2.3.1.0
+version=2.3.1.1
 revision=1
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
@@ -12,7 +12,7 @@ homepage="https://skarnet.org/software/s6-networking/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-networking/upgrade.html"
 distfiles="https://skarnet.org/software/s6-networking/$pkgname-$version.tar.gz"
-checksum="814fa3b70718d2423c742e920d31f64088272f7987c2cf7bebc86a63a75596b8"
+checksum="9d411b5f742529be8e14da0a21635fcc304a4d7ac05fe0e45cf2355e5e3cf188"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --enable-ssl=libressl"
