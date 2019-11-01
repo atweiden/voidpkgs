@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux5.3"
 version=5.3.8
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -314,6 +314,8 @@ do_install() {
       "$makejobs" \
       ARCH="${subarch:-$arch}" \
       _mrproper_scripts
+    # remove host specific objects as well
+    find scripts -name "*.o" -delete
   fi
 
   # copy files necessary for later builds, like nvidia and vmware
