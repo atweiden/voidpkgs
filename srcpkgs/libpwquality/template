@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpwquality"
-version=1.4.1
+version=1.4.2
 revision=1
 short_desc="Library for password quality checking and generating random passwords"
 makedepends+=" cracklib-devel"
@@ -13,7 +13,7 @@ homepage="https://github.com/libpwquality/libpwquality"
 license="GPL-2.0-or-later"
 changelog="https://github.com/libpwquality/libpwquality/raw/master/NEWS"
 distfiles="https://github.com/libpwquality/libpwquality/releases/download/$pkgname-$version/$pkgname-$version.tar.bz2"
-checksum="a97d72b5c56b7e279c6e86dad70c1493ea5796f00a596fb9f3173b96f9bf5e46"
+checksum="5263e09ee62269c092f790ac159112aed3e66826a795e3afec85fdeac4281c8e"
 conf_files="/etc/security/pwquality.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
