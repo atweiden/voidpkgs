@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lttng-tools"
-version=2.10.8
+version=2.11.0
 revision=1
 short_desc="Set of tools to control LTTng tracing"
 makedepends+=" libuuid-devel"
@@ -12,7 +12,7 @@ hostmakedepends="pkg-config"
 homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only"
 distfiles="https://lttng.org/files/lttng-tools/$pkgname-$version.tar.bz2"
-checksum="664a1145f9fd7a574da18aa3dfbbe97983985a471ca2992d6b272f1cebe6b30d"
+checksum="dce493c82db673c96049b5fad155a760fa449fab3d92467a69fcb0ddaf3f0fbc"
 build_style="gnu-configure"
 system_groups="tracing"
 
