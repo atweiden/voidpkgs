@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="file"
 version=5.37
-revision=1
+revision=2
 short_desc="File type identification utility"
 makedepends="zlib-devel"
 homepage="http://www.darwinsys.com/file/"
