@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="chrony"
 version=3.5
-revision=1
+revision=2
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
@@ -28,22 +28,9 @@ alternatives+=" ntpd:ntpd.8:/usr/share/man/man8/chronyd.8"
 alternatives+=" ntpd:ntpd:/etc/sv/chronyd"
 
 post_install() {
-  vconf examples/chrony.conf.example3 chrony.conf
-  # modify default configuration so it works out-of-the-box
-  vsed \
-    -i \
-    -e 's,! pool pool.ntp.org iburst,pool pool.ntp.org iburst,' \
-    "$DESTDIR/etc/chrony.conf"
-  vsed \
-    -i \
-    -e 's,! rtcfile /var/lib/chrony/rtc,rtcfile /var/lib/chrony/rtc,' \
-    "$DESTDIR/etc/chrony.conf"
-  vsed \
-    -i \
-    -e 's,! makestep 1.0 3,makestep 1.0 3,' \
-    "$DESTDIR/etc/chrony.conf"
-  vsconf examples/chrony.conf.example1
+  vconf examples/chrony.conf.example1 chrony.conf
   vsconf examples/chrony.conf.example2
+  vsconf examples/chrony.conf.example3
   vsv chronyd
 }
 
