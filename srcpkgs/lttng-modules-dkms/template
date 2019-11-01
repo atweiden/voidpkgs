@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="lttng-modules-dkms"
-version=2.10.11
+version=2.11.0
 revision=1
 short_desc="LTTng modules provide Linux kernel tracing capability"
 depends="dkms"
 homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only, MIT"
 distfiles="https://lttng.org/files/lttng-modules/${pkgname%-*}-$version.tar.bz2"
-checksum="7f91e39b2e8e46d8bbba2b4c8c1614f1fb380611cd1a1fccc1d1859be26112f1"
+checksum="98af92d8c2e00f4eb63bc637a6967103cf6997434493f36e7a535a491e4fad5f"
 wrksrc="${pkgname%-*}-$version"
 dkms_modules="${pkgname%-*} $version"
 
@@ -15,10 +15,7 @@ do_install() {
   vmkdir "usr/src/lttng-modules-$version"
   vcopy "*" "usr/src/lttng-modules-$version"
   vcopy "$FILESDIR/dkms.conf" "usr/src/lttng-modules-$version"
-}
-
-post_install() {
-  vlicense mit-license.txt
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
