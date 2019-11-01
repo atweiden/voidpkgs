@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="spdx-licenses-list"
-version=3.6
+version=3.7
 revision=1
 short_desc="SPDX License List"
 archs="noarch"
 homepage="https://spdx.org"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="601e63613a7b0a3a353f1871970d33742fad6b8d040e54c70d6d24b2bc0a9d26"
+checksum="3f3a121ad331261d0997b3c6526d0db030d8b1468afce862921eaea22099f909"
 wrksrc="license-list-data-$version"
 
 do_install() {
