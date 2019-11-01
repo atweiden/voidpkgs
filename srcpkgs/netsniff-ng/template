@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="netsniff-ng"
 version=0.6.6
-revision=1
+revision=2
 short_desc="Free Linux networking toolkit"
 makedepends+=" libcli-devel"
 makedepends+=" libnet-devel"
