@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-dns"
-version=2.3.1.0
+version=2.3.1.1
 revision=1
 short_desc="Suite of DNS client programs and libraries for Unix systems"
 makedepends+=" execline-devel"
@@ -8,7 +8,7 @@ makedepends+=" skalibs-devel"
 homepage="https://skarnet.org/software/s6-dns/"
 license="ISC"
 distfiles="https://skarnet.org/software/s6-dns/$pkgname-$version.tar.gz"
-checksum="b11ce255668b683d785a1ef8ba89551a9586481b8888bc1a66d4b997e68892ca"
+checksum="415e3e8a8baaa39b3eac57eef8b3023d63bcdb33d9f9b03bcb298fd940589132"
 build_style="configure"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --prefix=/usr"
