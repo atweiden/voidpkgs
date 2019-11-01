@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libedit"
-_datever=20190324
+_datever=20191025
 _distver=3.1
 version=$_datever.$_distver
 revision=1
@@ -9,7 +9,7 @@ makedepends="ncurses-devel"
 homepage="http://www.thrysoee.dk/editline/"
 license="BSD-3-Clause"
 distfiles="http://www.thrysoee.dk/editline/$pkgname-$_datever-$_distver.tar.gz"
-checksum="ac8f0f51c1cf65492e4d1e3ed2be360bda41e54633444666422fbf393bba1bae"
+checksum="6dff036660d478bfaa14e407fc5de26d22da1087118c897b1a3ad2e90cb7bf39"
 wrksrc="$pkgname-$_datever-$_distver"
 build_style="gnu-configure"
 
