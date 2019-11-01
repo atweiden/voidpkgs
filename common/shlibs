@@ -345,7 +345,7 @@ libmpx.so.2 libmpx-6.2.1_1
 libmpxwrappers.so.2 libmpx-6.2.1_1
 libmysqlclient.so.18 libmysqlclient-5.5.27_1
 libmysqlclient_r.so.18 libmysqlclient-5.5.27_1
-libnet.so.1 libnet-1.1.6_1
+libnet.so.9 libnet-1.2_1
 libnetsnmp.so.35 libnet-snmp-5.8_1
 libnetsnmpagent.so.35 libnet-snmp-5.8_1
 libnetsnmphelpers.so.35 libnet-snmp-5.8_1
