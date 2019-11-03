@@ -1,16 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libasr"
-version=1.0.2
-revision=4
+version=1.0.3
+revision=1
 short_desc="Simple and portable asynchronous resolver library"
 makedepends="libressl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="https://www.opensmtpd.org/"
 license="BSD-2-Clause"
-distfiles="https://github.com/OpenSMTPD/libasr/archive/$pkgname-$version.tar.gz"
-checksum="4ab54264206e255fd6c2de982764bb5ce7857ec8f649ad3ee45771244593b6e1"
-wrksrc="$pkgname-$pkgname-$version"
+distfiles="https://github.com/OpenSMTPD/libasr/releases/download/$version/$pkgname-$version.tar.gz"
+checksum="9cd88e0172e6d426438875e09229d1d473d56db546d02b630f9dd14db226d68d"
 build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
