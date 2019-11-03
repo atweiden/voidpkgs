@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-cryptography_vectors"
-version=2.7
+version=2.8
 revision=1
 short_desc="Test vectors for python-cryptography"
 archs="noarch"
@@ -9,7 +9,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 distfiles="$PYPI_SITE/c/cryptography_vectors/cryptography_vectors-$version.tar.gz"
-checksum="f12dfb9bd669a68004074cb5b26df6e93ed1a95ebd1a999dff0a840212ff68bc"
+checksum="6cd32174c56a3eca72f64af43c1daacaae758cfa5ff9d280dfcf818fa11ef116"
 wrksrc="cryptography_vectors-$version"
 build_style="python-module"
 pycompile_module="cryptography_vectors"
