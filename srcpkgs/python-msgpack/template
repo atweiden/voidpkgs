@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-msgpack"
-version=0.5.6
-revision=3
+version=0.6.2
+revision=1
 short_desc="Python module for Msgpack serializer (Python2)"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
@@ -11,11 +11,10 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/msgpack/msgpack-python"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/m/msgpack/${pkgname#*-}-$version.tar.gz"
-checksum="0ee8c8c85aa651be3aa0cd005b5931769eaa658c948ce79428766f1bd46ae2c3"
+checksum="ea3c2f859346fcd55fc46e96885301d9c2f7a36d453f5d8f2967840efa1e1830"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="msgpack"
-reverts="0.6.0_1"
 
 do_check() {
   python3 -m pytest
