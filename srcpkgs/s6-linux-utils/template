@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-linux-utils"
-version=2.5.1.0
+version=2.5.1.1
 revision=1
 short_desc="Minimalistic Linux-specific system utilities (s6-chroot, s6-mount etc.)"
 makedepends="skalibs-devel"
@@ -8,7 +8,7 @@ homepage="https://skarnet.org/software/s6-linux-utils/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-linux-utils/upgrade.html"
 distfiles="https://skarnet.org/software/s6-linux-utils/$pkgname-$version.tar.gz"
-checksum="58d6cbbaabf5c03739716e208f1690f7e7241480583cc9f5396093b428941bba"
+checksum="25f61961f3247b9a833536ebd1e19f3b024fa095fce30f93d82fdfd4e015dc02"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --includedir=/usr/include"
