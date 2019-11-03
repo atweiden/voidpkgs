@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-rc"
-version=0.5.1.0
+version=0.5.1.1
 revision=1
 short_desc="Service manager of the s6 init system"
 depends+=" execline>=2.5.2.0_1"
@@ -12,7 +12,7 @@ homepage="https://skarnet.org/software/s6-rc/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-rc/upgrade.html"
 distfiles="https://skarnet.org/software/s6-rc/$pkgname-$version.tar.gz"
-checksum="93c02d0b505c036c332e13769154d82c9e31e4dd99f3ba80aa97d377ca9ac11c"
+checksum="257e2c428336c2b57cd17b65382bc55592759acc65e053e23ad646444f28af52"
 build_style="configure"
 configure_args+=" --includedir=/usr/include"
 configure_args+=" --libdir=/usr/lib"
