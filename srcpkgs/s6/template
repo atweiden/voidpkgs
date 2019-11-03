@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6"
-version=2.9.0.0
+version=2.9.0.1
 revision=1
 short_desc="Small suite of programs for UNIX, designed to allow process supervision"
 makedepends+=" execline-devel"
@@ -9,7 +9,7 @@ homepage="http://skarnet.org/software/s6/"
 license="ISC"
 changelog="https://skarnet.org/software/s6/upgrade.html"
 distfiles="http://skarnet.org/software/s6/$pkgname-$version.tar.gz"
-checksum="1cac59bf9ff7c011b189ae2def3c76b147c2c431b0a901029fcaf957a6d9a343"
+checksum="e0cdbaf26e3ba1c41ecc0a8d1f45fb78194f96109b55cabeb849528b7e966c57"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --exec-prefix=/usr"
@@ -32,7 +32,7 @@ post_install() {
 
 s6-doc_package() {
   archs="noarch"
-  short_desc="s6 supervision documentation"
+  short_desc="Documentation for s6"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/share/doc
@@ -40,7 +40,7 @@ s6-doc_package() {
 }
 
 s6-devel_package() {
-  short_desc="s6 supervision library and headers"
+  short_desc="Library and headers for s6"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
