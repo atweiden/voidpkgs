@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="s6-portable-utils"
-version=2.2.2.0
+version=2.2.2.1
 revision=1
 short_desc="Tiny portable generic utilities (s6-cat, s6-chmod, etc.)"
 makedepends="skalibs-devel"
 homepage="https://skarnet.org/software/s6-portable-utils/"
 license="ISC"
 distfiles="https://skarnet.org/software/s6-portable-utils/$pkgname-$version.tar.gz"
-checksum="0503841a2aee1cd79122c9ecf49dbefad5c5d21be7114e83e71c210e106abf0a"
+checksum="1e473224350c6ebedd7adf162b68303e2e0a32ca2e99d7afee7573d9e78f931c"
 build_style="configure"
 configure_args+=" --includedir=/usr/include"
 configure_args+=" --libdir=/usr/lib"
