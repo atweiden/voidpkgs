@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="runit-void"
 version=20190906
-revision=2
+revision=3
 short_desc="Void Linux runit scripts"
 depends+=" virtual?awk"
 depends+=" procps-ng"
@@ -16,6 +16,8 @@ conf_files+=" /etc/rc.conf"
 conf_files+=" /etc/rc.local"
 conf_files+=" /etc/rc.shutdown"
 conf_files+=" /etc/sv/agetty-console/conf"
+conf_files+=" /etc/sv/agetty-hvc0/conf"
+conf_files+=" /etc/sv/agetty-hvsi0/conf"
 conf_files+=" /etc/sv/agetty-serial/conf"
 conf_files+=" /etc/sv/agetty-tty1/conf"
 wrksrc="void-runit-$version"
