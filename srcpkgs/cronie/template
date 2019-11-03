@@ -34,22 +34,14 @@ alternatives+=" crond:crontab:/usr/bin/cronie-crontab"
 alternatives+=" crond:crontab.1:/usr/share/man/man1/cronie-crontab.1"
 alternatives+=" crond:crond.8:/usr/share/man/man8/cronie-crond.8"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    makedepends+=" musl-obstack"
-    ;;
-esac
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-obstack"
+fi
 
-pre_build() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      sed \
-        -i \
-        -e "s; -lpam; -lobstack&;" \
-        Makefile \
-        */Makefile
-      ;;
-  esac
+pre_configure() {
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    export LIBS="-lobstack"
+  fi
 }
 
 post_install() {
