@@ -1,8 +1,9 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="util-linux"
 version=2.34
-revision=2
+revision=3
 short_desc="Miscellaneous linux utilities"
+makedepends+=" eudev-libudev-devel"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
@@ -53,8 +54,7 @@ do_configure() {
     --libdir="/usr/lib" \
     --sbindir="/usr/bin" \
     --with-systemdsystemunitdir="no" \
-    --without-python \
-    --without-udev
+    --without-python
 }
 
 do_build() {
