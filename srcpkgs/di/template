@@ -1,16 +1,17 @@
-# Template file for 'di'
-pkgname=di
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="di"
 version=4.47.2
 revision=1
-build_style=gnu-makefile
 short_desc="A disk information utility"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="Zlib"
 homepage="https://gentoo.com/di"
-distfiles="https://gentoo.com/di/${pkgname}-${version}.tar.gz"
-checksum=2205b86f68e054dbe61806f288d94207eddadef7f71a0a27c553db0fc5bd27bd
+license="Zlib"
+distfiles="https://gentoo.com/di/$pkgname-$version.tar.gz"
+checksum="2205b86f68e054dbe61806f288d94207eddadef7f71a0a27c553db0fc5bd27bd"
+build_style="gnu-makefile"
 make_install_args="INSTALL_DIR=\${DESTDIR}/usr"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
