@@ -1,12 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="packer"
-version=1.4.4
+version=1.4.5
 revision=1
 short_desc="Create identical multiplatform machine images from a single source"
 homepage="http://www.packer.io"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="df5abcace27d81c6952d81bfd280fb5e8ec968bb72e53cfbd322417d2be61d2a"
+checksum="4b45217ca0fdb19b3258d31d0559255d855b0163ced8a3fcdda0838aeabf966a"
 build_style="go"
 go_import_path="github.com/hashicorp/packer"
 replaces="packer-bin>=0"
