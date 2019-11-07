@@ -53,7 +53,6 @@ desc_option_spice="Enable support for SPICE"
 reverts+=" 4.1.0_1"
 reverts+=" 4.1.0_2"
 reverts+=" 4.1.0_3"
-reverts+=" 4.1.0_4"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*|ppc64le*)
