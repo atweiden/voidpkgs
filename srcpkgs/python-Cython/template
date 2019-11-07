@@ -22,6 +22,12 @@ alternatives+=" cython:cygdb:/usr/bin/cygdb2"
 alternatives+=" cython:cython:/usr/bin/cython2"
 alternatives+=" cython:cythonize:/usr/bin/cythonize2"
 
+case "$XBPS_TARGET_MACHINE" in
+  arm*)
+    broken="leaks host CFLAGS into build, works locally and on travis"
+    ;;
+esac
+
 # skip build phase, otherwise Cython gets confused when cross compiling
 do_build() {
   :
