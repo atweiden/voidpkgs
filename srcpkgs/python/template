@@ -1,8 +1,8 @@
 # this pkg must be synchronized with "srcpkgs/python-tkinter"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python"
-version=2.7.16
-revision=2
+version=2.7.17
+revision=1
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
@@ -17,7 +17,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://www.python.org/ftp/python/$version/${pkgname^}-$version.tar.xz"
-checksum="f222ef602647eecb6853681156d32de4450a2c39f4de93bd5b20235f2e660ed7"
+checksum="4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41"
 wrksrc="${pkgname^}-$version"
 alternatives+=" python:idle:/usr/bin/idle2.7"
 alternatives+=" python:2to3:/usr/bin/2to3-2.7"
