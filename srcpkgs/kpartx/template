@@ -1,22 +1,34 @@
-# Template file for 'kpartx'
-pkgname=kpartx
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="kpartx"
 version=0.8.3
 revision=1
-wrksrc="multipath-tools-${version}"
-build_wrksrc=kpartx
-build_style=gnu-makefile
-make_install_args="libudevdir=/usr/lib/udev bindir=/usr/bin"
-makedepends="device-mapper-devel"
 short_desc="Create device maps from partition tables"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+makedepends="device-mapper-devel"
 homepage="http://christophe.varoqui.free.fr/"
-distfiles="https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=refs/tags/${version}>kpartx-${version}.tar.gz"
-checksum=08c77873181832e4b5684bad5d08199602e6a708f43987fa459d054827f5f2d5
+license="GPL-2.0-or-later"
+distfiles="https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=refs/tags/$version>$pkgname-$version.tar.gz"
+checksum="08c77873181832e4b5684bad5d08199602e6a708f43987fa459d054827f5f2d5"
+wrksrc="multipath-tools-$version"
+build_wrksrc="kpartx"
+build_style="gnu-makefile"
+make_install_args+=" bindir=/usr/bin"
+make_install_args+=" libudevdir=/usr/lib/udev"
+
+CFLAGS+=" -DLIBDM_API_COOKIE"
+CFLAGS+=" -D_FILE_OFFSET_BITS=64"
+CFLAGS+=" -D_LARGEFILE64_SOURCE"
+CFLAGS+=" -I../libmultipath"
 LDFLAGS="-ldevmapper"
-CFLAGS="-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DLIBDM_API_COOKIE -I../libmultipath"
 
 post_extract() {
-	sed -i 's/__kernel_uint32_t/uint32_t/g' kpartx/solaris.c
-	sed -i 's,<sysmacros.h>,<sys/sysmacros.h>,g' kpartx/lopart.c
+  sed \
+    -i \
+    -e 's/__kernel_uint32_t/uint32_t/g' \
+    kpartx/solaris.c
+  sed \
+    -i \
+    -e 's,<sysmacros.h>,<sys/sysmacros.h>,g' \
+    kpartx/lopart.c
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
