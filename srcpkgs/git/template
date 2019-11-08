@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="git"
 version=2.24.0
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -29,6 +29,7 @@ replaces="git-perl>=0"
 subpackages+=" git-cvs"
 subpackages+=" git-svn"
 subpackages+=" git-all"
+subpackages+=" git-netrc"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -42,10 +43,10 @@ esac
 
 post_configure() {
   cat <<-EOF >config.mak
-  NO_INSTALL_HARDLINKS=Yes
-  INSTALLDIRS=vendor
-  perllibdir=/usr/share/perl5/vendor_perl
-  EOF
+NO_INSTALL_HARDLINKS=Yes
+INSTALLDIRS=vendor
+perllibdir=/usr/share/perl5/vendor_perl
+EOF
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       echo "ICONV_OMITS_BOM=Yes" >>config.mak
@@ -71,6 +72,7 @@ post_install() {
   vinstall contrib/git-jump/git-jump 755 usr/libexec/git-core
   vinstall contrib/git-jump/README 644 usr/share/doc/git-jump
   make -C contrib/subtree DESTDIR="$DESTDIR" prefix="/usr" install install-man
+  vinstall contrib/credential/netrc/git-credential-netrc 755 usr/libexec/git-core
 }
 
 git-cvs_package() {
@@ -111,6 +113,15 @@ git-all_package() {
   archs="noarch"
   depends="${subpackages/git-all/}"
   short_desc+=" - meta-package for complete Git installation"
+}
+
+git-netrc_package() {
+  depends="git-${version}_$revision"
+  archs="noarch"
+  short_desc+=" - netrc credential helper"
+  pkg_install() {
+    vmove usr/libexec/git-core/git-credential-netrc
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
