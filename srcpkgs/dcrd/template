@@ -13,6 +13,15 @@ checksum="8d6761444eb3ea31bbc7a2aad7af240b1b6c4e549da8226e576b21e98535e7e2"
 wrksrc="$pkgname-release-v$version-$_rcver"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
+go_package+=" $go_import_path"
+go_package+=" $go_import_path/cmd/addblock"
+go_package+=" $go_import_path/cmd/dcrctl"
+go_package+=" $go_import_path/cmd/findcheckpoint"
+go_package+=" $go_import_path/cmd/gencerts"
+go_package+=" $go_import_path/cmd/promptsecret"
+go_ldflags="-X main.appBuild=release"
+
+export CGO_ENABLED=0
 
 post_build() {
   GO111MODULE="on" go install -v . ./cmd/...
