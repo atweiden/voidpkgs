@@ -13,11 +13,16 @@ checksum="cf3fda3a1498c7c3bf3a452652c36dfa315bf717edf8a3dac75a0aeda197131c"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/politeia"
-go_mod_mode="off"
-
-post_build() {
-  GO111MODULE="on" go install -v ./...
-}
+go_package+=" $go_import_path/politeiad"
+go_package+=" $go_import_path/politeiad/cmd/politeia"
+go_package+=" $go_import_path/politeiad/cmd/politeia_verify"
+go_package+=" $go_import_path/politeiad/cmd/politeiaimport"
+go_package+=" $go_import_path/politeiawww"
+go_package+=" $go_import_path/politeiawww/cmd/cmswww"
+go_package+=" $go_import_path/politeiawww/cmd/piwww"
+go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
+go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dataload"
+go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
 
 post_install() {
   vlicense LICENSE
