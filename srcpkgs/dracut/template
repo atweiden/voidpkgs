@@ -1,12 +1,17 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dracut"
 version=049
-revision=2
+revision=3
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
 depends+=" cpio"
+depends+=" eudev"
+depends+=" gzip"
+depends+=" kmod>=3.7"
+depends+=" kpartx"
 depends+=" psmisc"
+depends+=" util-linux"
 makedepends="libkmod-devel"
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
