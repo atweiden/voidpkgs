@@ -12,11 +12,8 @@ distfiles="https://github.com/decred/dcrwallet/archive/v$version-$_rcver.tar.gz>
 checksum="212b7b4428e03b6e161b7b755372974fff92543695a7829fadb217974fe12533"
 wrksrc="$pkgname-$version-$_rcver"
 build_style="go"
-go_import_path="github.com/decred/dcrwallet"
-
-post_build() {
-  GO111MODULE="on" go install -v . ./cmd/...
-}
+go_import_path="decred.org/dcrwallet"
+go_ldflags="-X github.com/decred/dcrwallet/version.BuildMetadata=release"
 
 pre_install() {
   # prepend dcr to unqualified binaries
