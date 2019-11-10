@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cpio"
-version=2.12
-revision=3
+version=2.13
+revision=1
 short_desc="GNU copy-in/out (cpio) with remote magnetic tape (rmt) support"
 checkdepends="bash"
 hostmakedepends+=" automake"
@@ -9,7 +9,7 @@ hostmakedepends+=" gettext-devel"
 homepage="http://www.gnu.org/software/cpio/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/cpio/$pkgname-$version.tar.bz2"
-checksum="70998c5816ace8407c8b101c9ba1ffd3ebbecba1f5031046893307580ec1296e"
+checksum="eab5bdc5ae1df285c59f2a4f140a98fc33678a0bf61bdba67d9436ae26b46f6d"
 build_style="gnu-configure"
 configure_args="--with-rmt=/usr/bin/rmt"
 
