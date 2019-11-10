@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dracut"
 version=049
-revision=3
+revision=4
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -34,7 +34,7 @@ make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
 do_build() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      make "$makejobs" LDLIBS="$XBPS_CROSS_BASE/usr/lib/libfts.a"
+      make "$makejobs" LDLIBS="-lfts"
       ;;
   esac
 }
