@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libseccomp"
-version=2.4.1
+version=2.4.2
 revision=1
 short_desc="High level interface to the Linux Kernel's seccomp filter"
 hostmakedepends+=" automake"
@@ -8,7 +8,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/seccomp/libseccomp/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/seccomp/libseccomp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="36aa502c0461ae9efc6c93ec2430d6badd9bf91ecbe73806baf7b7c6f687ab4f"
+checksum="c988dc3f6c641e12c68285afb57d69361f3bfd5b7235d067b3991bf9a57cca7e"
 build_style="gnu-configure"
 
 post_extract() {
