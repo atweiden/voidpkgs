@@ -10,7 +10,7 @@ _sysroot="/usr/$_triplet"
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cross-$_triplet"
 version=0.32
-revision=2
+revision=3
 short_desc="Cross toolchain for powerpc64 with musl"
 archs+=" ppc64"
 archs+=" ppc64le"
@@ -190,7 +190,7 @@ _musl_build() {
   AR="$_triplet-ar" \
   AS="$_triplet-as" \
   CC="$_triplet-gcc" \
-  CFLAGS="-Os -pipe $_archflags" \
+  CFLAGS="-Os -pipe -fPIC $_archflags" \
   LD="$_triplet-ld" \
   RANLIB="$_triplet-ranlib" \
     ./configure --prefix="/usr"
