@@ -1,24 +1,27 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libxslt"
-version=1.1.33
+version=1.1.34
 revision=1
 short_desc="XSLT parser library from the GNOME project"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" libxml2-python"
 makedepends+=" python-devel"
+hostmakedepends="libtool"
 homepage="http://xmlsoft.org/XSLT/"
 license="MIT"
-distfiles="ftp://xmlsoft.org/libxslt/$pkgname-$version.tar.gz"
-checksum="8e36605144409df979cab43d835002f63988f3dc94d5d3537c12796db90e38c8"
+distfiles+=" http://xmlsoft.org/sources/libxslt-$version.tar.gz"
+distfiles+=" ftp://xmlsoft.org/libxslt/$pkgname-$version.tar.gz"
+checksum+=" 98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f"
+checksum+=" 98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f"
 build_style="gnu-configure"
-configure_args="--disable-static"
+configure_args+=" --disable-static"
+configure_args+=" --disable-dependency-tracking"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" $makedepends"
   hostmakedepends+=" automake"
   hostmakedepends+=" gettext-devel"
-  hostmakedepends+=" libtool"
   pre_build() {
     sed \
       -i \
@@ -27,6 +30,17 @@ if [[ -n "$CROSS_BUILD" ]]; then
       python/Makefile
   }
 fi
+
+post_configure() {
+  # remove missing seperators and errors
+  # on don't know how to make target, needed
+  # by usage:
+  # Makefile is created after configure so fix here
+  find "$wrksrc" -type f -name Makefile \
+    | xargs sed \
+              -i \
+              -e '/Usage/,/--version/d'
+}
 
 post_install() {
   vlicense COPYING
