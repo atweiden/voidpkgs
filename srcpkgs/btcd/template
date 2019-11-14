@@ -1,21 +1,34 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcd"
-version=0.12.0beta
-revision=5
-_gitrev="4063feeff79a0da1b08cc857e89d4602e91a294c"
-short_desc="An alternative full node Bitcoin implementation written in Go"
+version=0.20.1beta
+revision=1
+short_desc="Alternative full node Bitcoin implementation written in Go"
 hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcd"
 license="ISC"
-distfiles="https://github.com/btcsuite/btcd/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="350ce6eacaec9985c104d0cbb275fc839134ab65345a07067c81f6d204ccc904"
-wrksrc="$pkgname-$_gitrev"
+changelog="https://github.com/btcsuite/btcd/raw/master/CHANGES"
+distfiles+=" https://github.com/btcsuite/btcd/releases/download/v${version%beta}-beta/$pkgname-source-v${version%beta}-beta.tar.gz"
+distfiles+=" https://github.com/btcsuite/btcd/releases/download/v${version%beta}-beta/vendor.tar.gz"
+checksum+=" 3c11faff60ec28cab5d776d74e4b9d4e4ecd60606f3cb9787fbc089fa752514c"
+checksum+=" 95cb92189c5797210b606a3d2358428a13400f3942b97c41544d4fefa42bceb1"
+wrksrc="$pkgname-v${version%beta}-beta"
+create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/btcsuite/btcd"
+go_mod_mode="vendor"
+go_package+=" $go_import_path"
+go_package+=" $go_import_path/cmd/addblock"
+go_package+=" $go_import_path/cmd/btcctl"
+go_package+=" $go_import_path/cmd/findcheckpoint"
+go_package+=" $go_import_path/cmd/gencerts"
+go_ldflags="-s -w -buildid="
 
-post_build() {
-  GO111MODULE="on" go install -v . ./cmd/...
+export CGO_ENABLED=0
+
+do_configure() {
+  # upstream ships required dependencies
+  ln -s "$wrksrc/vendor" "$GOPATH"
 }
 
 pre_install() {
