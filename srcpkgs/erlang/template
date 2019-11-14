@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="erlang"
 version=22.1.7
-revision=1
+revision=2
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
