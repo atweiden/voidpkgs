@@ -1,22 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcwallet"
-version=0.7.0alpha
-revision=5
-_gitrev="505acf51507f40be4b96384b4d73869df6daea12"
-short_desc="A secure Bitcoin wallet daemon written in Go"
+version=0.11.0
+revision=1
+short_desc="Secure Bitcoin wallet daemon written in Go"
 hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
-distfiles="https://github.com/btcsuite/btcwallet/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="9565f2b88f84fc38edc70be15c5e4c2968bebf4532f43c9e70b903ad2cd1b762"
-wrksrc="$pkgname-$_gitrev"
+changelog="https://github.com/btcsuite/btcwallet/raw/master/CHANGES"
+distfiles="https://github.com/btcsuite/btcwallet/archive/v0.11.0.tar.gz>$pkgname-$version.tar.gz"
+checksum="3f53a55ef02a20e5ad3ae3f9ece9bfd041a8e5cce53ede2363aea5382327beed"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
-
-post_build() {
-  GO111MODULE="on" go install -v . ./cmd/...
-}
+go_package+=" $go_import_path"
+go_package+=" $go_import_path/cmd/dropwtxmgr"
+go_package+=" $go_import_path/cmd/sweepaccount"
 
 pre_install() {
   # prepend btc to unqualified binaries
