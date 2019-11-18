@@ -7,6 +7,7 @@ libaircrack-crypto-x86-avx2-1.3.0.so aircrack-ng-1.4_2
 libaircrack-crypto-x86-sse2-1.3.0.so aircrack-ng-1.4_2
 libaircrack-osdep-1.3.0.so aircrack-ng-1.4_2
 libasound.so.2 alsa-lib-1.0.20_1
+libatopology.so.2 alsa-lib-1.2.1_1
 libapr-1.so.0 apr-1.4.2_1
 libaprutil-1.so.0 apr-util-1.3.9_1
 libatf-c++.so.2 atf-libs-0.21_1
