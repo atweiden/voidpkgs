@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu"
-version=4.0.1
+version=4.1.1
 revision=1
 short_desc="Open Source Processor Emulator"
 makedepends+=" bzip2-devel"
@@ -40,7 +40,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.qemu.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://wiki.qemu.org/download/$pkgname-$version.tar.bz2"
-checksum="10bd1c945999b7c78be122e7253131b18a1cde824794ccb2b9b52c9ca02ebb86"
+checksum="459718738964a8036c741ed8dbef3d1346828ebac4bcacb1076faf2e2ad8bb8c"
 nostrip="yes"
 build_options+=" numa"
 build_options+=" smartcard"
@@ -50,9 +50,6 @@ build_options_default+=" smartcard"
 desc_option_numa="Enable support for host NUMA"
 desc_option_smartcard="Enable smartcard support"
 desc_option_spice="Enable support for SPICE"
-reverts+=" 4.1.0_1"
-reverts+=" 4.1.0_2"
-reverts+=" 4.1.0_3"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*|ppc64le*)
