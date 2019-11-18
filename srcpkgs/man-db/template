@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="man-db"
 version=2.9.0
-revision=1
+revision=2
 short_desc="On-line manual database"
 depends+=" bzip2"
 depends+=" coreutils"
@@ -26,6 +26,7 @@ build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --disable-setuid"
 configure_args+=" --enable-automatic-create"
+configure_args+=" --enable-cache-owner=_man"
 configure_args+=" --enable-threads=posix"
 configure_args+=" --with-bzip2=/usr/bin/bzip2"
 configure_args+=" --with-db=db"
@@ -37,6 +38,9 @@ configure_args+=" --with-xz=/usr/bin/xz"
 configure_args+=" --without-included-regex"
 configure_args+=" --without-systemdsystemunitdir"
 configure_args+=" --without-systemdtmpfilesdir"
+system_accounts="_man"
+_man_homedir="/var/cache/man"
+make_dirs="/var/cache/man 0755 _man _man"
 lib32disabled="yes"
 provides="man-0_1"
 alternatives+=" man:man:/usr/bin/mandb-man"
@@ -46,14 +50,12 @@ alternatives+=" man:man.1:/usr/share/man/man1/mandb-man.1"
 alternatives+=" man:whatis.1:/usr/share/man/man1/mandb-whatis.1"
 alternatives+=" man:apropos.1:/usr/share/man/man1/mandb-apropos.1"
 
-pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/gettext"
-      LDFLAGS+=" -lintl"
-      ;;
-  esac
-}
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/gettext"
+    LDFLAGS+=" -lintl"
+    ;;
+esac
 
 post_install() {
   # rename files for alternatives
