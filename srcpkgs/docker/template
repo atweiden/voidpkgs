@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="docker"
-version=19.03.4
+version=19.03.5
 revision=1
 short_desc="Pack, ship and run any application as a lightweight container"
 archs+=" armv7l*"
@@ -25,7 +25,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.docker.io"
 license="Apache-2.0"
 distfiles="https://github.com/docker/docker-ce/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b279493f74f0d91253c7cb4b49e0b4be139de0a1d164303ce6814028d642d656"
+checksum="d7948256e32bb4c104285d78e652ba9ead898c2e4dcee05f05ede2eaba719919"
 wrksrc="$pkgname-ce-$version"
 nopie="yes"
 nostrip="yes"
