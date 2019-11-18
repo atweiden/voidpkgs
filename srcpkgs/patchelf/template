@@ -1,11 +1,12 @@
-# Template file for 'patchelf'
-pkgname=patchelf
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="patchelf"
 version=0.10
 revision=1
-build_style=gnu-configure
 short_desc="Utility for modifing existing ELF executables and libraries"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-3.0-or-later"
 homepage="https://nixos.org/patchelf.html"
-distfiles="https://nixos.org/releases/patchelf/patchelf-${version}/patchelf-${version}.tar.bz2"
-checksum=f670cd462ac7161588c28f45349bc20fb9bd842805e3f71387a320e7a9ddfcf3
+license="GPL-3.0-or-later"
+distfiles="https://nixos.org/releases/patchelf/$pkgname-$version/$pkgname-$version.tar.bz2"
+checksum="f670cd462ac7161588c28f45349bc20fb9bd842805e3f71387a320e7a9ddfcf3"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
