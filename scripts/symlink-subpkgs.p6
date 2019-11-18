@@ -676,6 +676,7 @@ constant %PKG = Map.new(
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,
+    'usbguard' => ['usbguard-devel'],
     'usbredir' => ['usbredir-devel'],
     'util-linux' => qw<libblkid
                        libblkid-devel

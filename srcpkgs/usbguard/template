@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="usbguard"
-version=0.7.5
+version=0.7.6
 revision=1
 makedepends+=" bash-completion"
 makedepends+=" libatomic-devel"
@@ -18,7 +18,7 @@ short_desc="Tool for whitelisting and blacklisting USB devices"
 homepage="https://usbguard.github.io"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/USBGuard/usbguard/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="ab98091969bf4ea68d7a950997cd7af98ddac84558aa6dfe733e8fa0a936454a"
+checksum="7234d5a30b964eb4cd3564d645e24c23454dca376345c96635484d4534d2f03f"
 conf_files="/etc/usbguard/*"
 build_style="gnu-configure"
 configure_args+=" --with-bundled-catch"
@@ -31,6 +31,18 @@ make_dirs="/var/log/usbguard 0755 root root"
 
 post_install() {
   vsv usbguard
+}
+
+usbguard-devel_package() {
+  short_desc+=" - development files"
+  depends+=" $sourcepkg-${version}_$revision"
+  depends+=" libqb-devel"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
