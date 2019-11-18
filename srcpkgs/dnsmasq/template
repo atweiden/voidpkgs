@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dnsmasq"
 version=2.80
-revision=5
+revision=6
 short_desc="Lightweight, easy to configure DNS forwarder and DHCP server"
 makedepends+=" dbus-devel"
 makedepends+=" libcap-devel"
@@ -25,14 +25,22 @@ do_build() {
   if [[ -n "$build_option_dnssec" ]]; then
     echo '#define HAVE_DNSSEC' >> src/config.h
   fi
-  make CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" "$makejobs"
+  make \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    LDFLAGS="$LDFLAGS" \
+    "$makejobs"
 }
 
 do_install() {
-  make PREFIX="/usr" BINDIR="/usr/bin" DESTDIR="$DESTDIR" install
+  make \
+    BINDIR="/usr/bin" \
+    DESTDIR="$DESTDIR" \
+    PREFIX="/usr" \
+    install
   vsv dnsmasq
   vconf dnsmasq.conf.example dnsmasq.conf
-  vinstall dbus/dnsmasq.conf 644 etc/dbus-1/system.d
+  vinstall "$FILESDIR/dbus.conf" 644 etc/dbus-1/system.d
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
