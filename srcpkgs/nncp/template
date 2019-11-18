@@ -1,21 +1,25 @@
-# Template file for 'nncp'
-pkgname=nncp
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nncp"
 version=5.0.0
 revision=1
-build_style=go
-go_import_path=cypherpunks.ru/nncp
 short_desc="Node to Node copy, utilities for secure store-and-forward"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-3.0-only"
 homepage="http://www.nncpgo.org/"
-distfiles="http://www.nncpgo.org/download/${pkgname}-${version}.tar.xz"
-checksum=3696d7eeb0783e9187e5eef4efc35235104523537c51fa4c9bd3cbeea22678b3
+license="GPL-3.0-only"
+distfiles="http://www.nncpgo.org/download/nncp-$version.tar.xz"
+checksum="3696d7eeb0783e9187e5eef4efc35235104523537c51fa4c9bd3cbeea22678b3"
+build_style="go"
+go_import_path="cypherpunks.ru/nncp"
 
 do_build() {
-	make
+  make
 }
 
 do_install() {
-	make install DESTDIR="$DESTDIR" PREFIX=/usr \
-		INFODIR=$DESTDIR/usr/share/info
+  make \
+    DESTDIR="$DESTDIR" \
+    INFODIR="$DESTDIR/usr/share/info" \
+    PREFIX="/usr" \
+    install
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
