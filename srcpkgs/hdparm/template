@@ -1,16 +1,18 @@
-# Template file for 'hdparm'
-pkgname=hdparm
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="hdparm"
 version=9.58
 revision=1
-build_style=gnu-makefile
-make_install_args="exec_prefix=/usr sbindir=/usr/bin"
 short_desc="Utility to access IDE device parameters"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="0BSD" # Upstream is very unclear and names their stuff 'bsd-style'
 homepage="https://sourceforge.net/projects/hdparm/"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=9ae78e883f3ce071d32ee0f1b9a2845a634fc4dd94a434e653fdbef551c5e10f
+# upstream is very unclear and names their stuff 'bsd-style'
+license="0BSD"
+distfiles="$SOURCEFORGE_SITE/hdparm/$pkgname-$version.tar.gz"
+checksum="9ae78e883f3ce071d32ee0f1b9a2845a634fc4dd94a434e653fdbef551c5e10f"
+build_style="gnu-makefile"
+make_install_args="exec_prefix=/usr sbindir=/usr/bin"
 
 post_install() {
-	vlicense LICENSE.TXT
+  vlicense LICENSE.TXT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
