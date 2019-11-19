@@ -1,7 +1,8 @@
+# NOTE: also update common/environment/configure/automake when updating!
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="automake"
 version=1.16.1
-revision=2
+revision=3
 short_desc="GNU Standards-compliant Makefile generator"
 archs="noarch"
 depends+=" autoconf"
