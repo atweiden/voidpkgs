@@ -1,19 +1,23 @@
-# Template file for 'nwipe'
-pkgname=nwipe
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="nwipe"
 version=0.26
 revision=1
-build_style=gnu-configure
-hostmakedepends="automake pkg-config"
-makedepends="libuuid-devel libparted-devel ncurses-devel"
 short_desc="Utility to securely erase disks"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-only"
+makedepends+=" libparted-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/martijnvanbrummelen/nwipe"
-distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=b8f37b4f1529931bdd5635d33baa35b7c08755e7ef5f0556b629c0360c85c920
+license="GPL-2.0-only"
+distfiles="https://github.com/martijnvanbrummelen/nwipe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="b8f37b4f1529931bdd5635d33baa35b7c08755e7ef5f0556b629c0360c85c920"
+build_style="gnu-configure"
 
 CFLAGS="-D_FILE_OFFSET_BITS=64"
 
 pre_configure() {
-	sh init.sh
+  sh init.sh
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
