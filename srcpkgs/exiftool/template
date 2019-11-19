@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="exiftool"
-version=11.75
+version=11.76
 revision=1
 short_desc="Reader and rewriter of EXIF information that supports raw files"
 archs="noarch"
@@ -11,7 +11,7 @@ homepage="https://www.sno.phy.queensu.ca/~phil/exiftool/"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://sno.phy.queensu.ca/~phil/exiftool/history.html"
 distfiles="https://www.sno.phy.queensu.ca/~phil/exiftool/Image-ExifTool-$version.tar.gz"
-checksum="2e2c511c3e2b6006baa913e4699316d541630fd34b38e7a5ebd22405f2f87c69"
+checksum="fc5ffd17d4fe2c4571b618c34c3fa211c9d60b31826309a293a58bd44ee6d3a5"
 wrksrc="Image-ExifTool-$version"
 build_style="perl-module"
 
