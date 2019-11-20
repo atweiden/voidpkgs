@@ -23,10 +23,6 @@ go_ldflags="-X main.appBuild=release"
 
 export CGO_ENABLED=0
 
-post_build() {
-  GO111MODULE="on" go install -v . ./cmd/...
-}
-
 pre_install() {
   # prepend dcr to unqualified binaries
   for _bin in $(find "$GOPATH/bin"  \
