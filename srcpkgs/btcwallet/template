@@ -16,6 +16,8 @@ go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/dropwtxmgr"
 go_package+=" $go_import_path/cmd/sweepaccount"
 
+export GOFLAGS="-trimpath"
+
 pre_install() {
   # prepend btc to unqualified binaries
   for _bin in $(find "$GOPATH/bin"  \

@@ -12,6 +12,8 @@ checksum="052f167455e09b1c37f5e7db399952a8e8cd69661d5fff8462f39de7db0c5bf8"
 build_style="go"
 go_import_path="github.com/majewsky/pwget"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   cd "$wrksrc"
   vlicense LICENSE

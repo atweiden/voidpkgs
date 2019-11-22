@@ -20,6 +20,8 @@ system_accounts="kube"
 make_dirs="/var/lib/kubelet 0755 kube kube"
 nocross="yes"
 
+export GOFLAGS="-trimpath"
+
 do_build() {
   make
   hack/generate-docs.sh

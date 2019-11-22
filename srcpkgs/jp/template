@@ -10,6 +10,8 @@ checksum="77a2c5e631fbbf7fed4331f7c0b8934bb5cdbc9dbaddd4fa1bec5e0546430365"
 build_style="go"
 go_import_path="github.com/jmespath/jp"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

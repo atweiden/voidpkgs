@@ -15,6 +15,8 @@ build_style="go"
 go_import_path="decred.org/dcrwallet"
 go_ldflags="-X github.com/decred/dcrwallet/version.BuildMetadata=release"
 
+export GOFLAGS="-trimpath"
+
 pre_install() {
   # prepend dcr to unqualified binaries
   for _bin in $(find "$GOPATH/bin"  \

@@ -18,6 +18,8 @@ go_import_path="github.com/opencontainers/runc"
 go_build_tags+=" seccomp"
 go_build_tags+=" apparmor"
 
+export GOFLAGS="-trimpath"
+
 post_build() {
   make man
 }

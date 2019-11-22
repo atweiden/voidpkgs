@@ -13,6 +13,8 @@ build_style="go"
 go_import_path="github.com/gcla/termshark"
 go_package="$go_import_path/cmd/termshark"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

@@ -25,6 +25,7 @@ go_package+=" $go_import_path/cmd/gencerts"
 go_ldflags="-s -w -buildid="
 
 export CGO_ENABLED=0
+export GOFLAGS="-trimpath"
 
 do_configure() {
   # upstream ships required dependencies

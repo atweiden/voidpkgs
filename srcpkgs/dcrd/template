@@ -22,6 +22,7 @@ go_package+=" $go_import_path/cmd/promptsecret"
 go_ldflags="-X main.appBuild=release"
 
 export CGO_ENABLED=0
+export GOFLAGS="-trimpath"
 
 pre_install() {
   # prepend dcr to unqualified binaries

@@ -15,6 +15,8 @@ checksum="75530015ee27e5ba05faff0295486ca85489ecd9de3161ca398a9b577522c578"
 build_style="go"
 go_import_path="github.com/bettercap/bettercap"
 
+export GOFLAGS="-trimpath"
+
 case "$XBPS_TARGET_MACHINE" in
   x86_64-musl)
     broken="fails to build"

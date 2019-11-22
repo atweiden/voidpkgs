@@ -11,6 +11,8 @@ build_style="go"
 go_import_path="github.com/hashicorp/packer"
 replaces="packer-bin>=0"
 
+export GOFLAGS="-trimpath"
+
 case "$XBPS_TARGET_MACHINE" in
   i686*|arm*)
     broken="https://build.voidlinux.org/builders/i686_builder/builds/9375/steps/shell_3/logs/stdio"

@@ -11,4 +11,6 @@ checksum="15d26a836d9df2fa6e487d7224e6ab7d6f51139211ceb77b8ecd8c594b86699a"
 build_style="go"
 go_import_path="github.com/skeeto/passphrase2pgp"
 
+export GOFLAGS="-trimpath"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -10,6 +10,8 @@ checksum="a1879caba7caee970e38b57aa81575b9b3e5a17f0ceef05e1f3d09d94f296e5c"
 build_style="go"
 go_import_path="github.com/go-delve/delve/cmd/dlv"
 
+export GOFLAGS="-trimpath"
+
 case "$XBPS_TARGET_MACHINE" in
   i686*|arm*|aarch64*|ppc*)
     broken="yes"

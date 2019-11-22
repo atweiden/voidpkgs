@@ -14,6 +14,8 @@ checksum="817dad2f25303d835789c889bf2fac5e141ad2442b9f75da7b164650f0de3fee"
 build_style="go"
 go_import_path="github.com/Masterminds/glide"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

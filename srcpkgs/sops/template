@@ -11,4 +11,6 @@ checksum="65f680ada424094dcdb80b44e3c11c86235618ef1ab10f5f632fcda954a06363"
 build_style="go"
 go_import_path="go.mozilla.org/sops/cmd/sops"
 
+export GOFLAGS="-trimpath"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

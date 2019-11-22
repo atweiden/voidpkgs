@@ -23,6 +23,8 @@ go_build_tags+=" seccomp"
 go_build_tags+=" apparmor"
 make_dirs="/var/lib/containerd 0755 root root"
 
+export GOFLAGS="-trimpath"
+
 post_build() {
   # build the man pages
   for _i in config.toml.5

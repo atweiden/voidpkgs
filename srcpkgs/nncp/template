@@ -10,6 +10,8 @@ checksum="3696d7eeb0783e9187e5eef4efc35235104523537c51fa4c9bd3cbeea22678b3"
 build_style="go"
 go_import_path="cypherpunks.ru/nncp"
 
+export GOFLAGS="-trimpath"
+
 do_build() {
   make
 }

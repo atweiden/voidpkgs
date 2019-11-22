@@ -12,6 +12,8 @@ wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense COPYING
   vman rclone.1

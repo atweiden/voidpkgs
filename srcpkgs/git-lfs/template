@@ -11,6 +11,8 @@ checksum="f1963ad88747577ffeeb854649aeacaa741c59be74683da4d46b129a72d111b7"
 build_style="go"
 go_import_path="github.com/git-lfs/git-lfs"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE.md
 }

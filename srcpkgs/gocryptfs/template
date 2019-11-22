@@ -15,6 +15,8 @@ go_import_path="github.com/rfjakob/gocryptfs"
 go_build_tags="without_openssl"
 go_ldflags="-X main.GitVersion=v$version -X main.GitVersionFuse="[vendored]" -X main.BuildDate=$(date +%Y-%m-%d)"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense "$GOSRCPATH/LICENSE"
   vman "$GOSRCPATH/Documentation/gocryptfs.1"

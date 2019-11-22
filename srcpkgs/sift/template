@@ -11,4 +11,6 @@ checksum="bbbd5c472c36b78896cd7ae673749d3943621a6d5523d47973ed2fc6800ae4c8"
 build_style="go"
 go_import_path="github.com/svent/sift"
 
+export GOFLAGS="-trimpath"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

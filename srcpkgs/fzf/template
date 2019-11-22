@@ -12,6 +12,8 @@ checksum="4d7ee0b621287e64ed450d187e5022d906aa378c5390d8c7c1f843417d2f3422"
 build_style="go"
 go_import_path="github.com/junegunn/fzf"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   cd "$wrksrc"
 

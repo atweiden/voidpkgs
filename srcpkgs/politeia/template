@@ -24,6 +24,8 @@ go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dataload"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
   vdoc README.md

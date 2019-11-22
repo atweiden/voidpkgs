@@ -19,6 +19,8 @@ go_package+=" $go_import_path/go/kbfs/kbfstool"
 go_package+=" $go_import_path/go/kbfs/redirector"
 go_build_tags="production"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

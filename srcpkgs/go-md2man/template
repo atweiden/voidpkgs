@@ -11,6 +11,8 @@ checksum="50537880d42fc28b9c2e9aaa36b137349d43cc73d46436a499f8c928cd2fc576"
 build_style="go"
 go_import_path="github.com/cpuguy83/go-md2man/v2"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE.md
 }

@@ -13,4 +13,6 @@ build_style="go"
 go_import_path="github.com/jteeuwen/go-bindata"
 go_package="github.com/jteeuwen/go-bindata/go-bindata"
 
+export GOFLAGS="-trimpath"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

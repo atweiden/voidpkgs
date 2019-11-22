@@ -11,6 +11,8 @@ distfiles="https://git.sr.ht/~sircmpwn/aerc/archive/$version.tar.gz>$pkgname-$ve
 checksum="560cee4e284ed35623d28a5e793db79c5e4700296b0aa6ac2c8e92b20ab5c1cf"
 build_style="go"
 
+export GOFLAGS="-trimpath"
+
 do_configure() {
   :
 }
