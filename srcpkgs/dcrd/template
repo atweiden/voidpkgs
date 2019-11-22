@@ -18,7 +18,8 @@ go_package+=" $go_import_path/cmd/dcrctl"
 go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
 go_package+=" $go_import_path/cmd/promptsecret"
-go_ldflags="-X main.appBuild=release"
+go_ldflags+=" -X github.com/decred/dcrd/internal/version.PreRelease=rc2"
+go_ldflags+=" -X github.com/decred/dcrd/internal/version.BuildMetadata=release"
 
 export CGO_ENABLED=0
 export GOFLAGS="-trimpath"
