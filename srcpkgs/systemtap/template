@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="systemtap"
-version=4.1
+version=4.2
 revision=1
 short_desc="Infrastructure to simplify the gathering of information"
 archs+=" aarch64"
@@ -15,7 +15,7 @@ hostmakedepends="python"
 homepage="https://sourceware.org/systemtap/"
 license="GPL-3.0-or-later"
 distfiles="https://sourceware.org/systemtap/ftp/releases/systemtap-$version.tar.gz"
-checksum="8efa1ee2b34f1c6b2f33a25313287d59c8ed1b00265e900aea874da8baca1e1d"
+checksum="0984ebe3162274988252ec35074021dc1e8420d87a8b35f437578562fce08781"
 build_style="gnu-configure"
 
 systemtap-devel_package() {
