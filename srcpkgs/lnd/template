@@ -1,0 +1,67 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="lnd"
+version=0.8.1beta
+revision=1
+short_desc="Lightning Network Daemon"
+hostmakedepends="git"
+tags+=" btcsuite"
+tags+=" lightningnetwork"
+homepage="https://github.com/lightningnetwork/lnd"
+license="MIT"
+distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/$pkgname-source-v${version%beta}-beta.tar.gz"
+distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/vendor.tar.gz"
+checksum+=" b91d290b3a1e00c6ea4a1d7e88fb498e33cb387763eec6b987630d5ff5976521"
+checksum+=" c925ff41db8d786585f2b78f0a63c6a6f44cdd33be2471683f0d0651f5fb77cd"
+wrksrc="$pkgname-v${version%beta}-beta"
+create_wrksrc="yes"
+build_style="go"
+go_import_path="github.com/lightningnetwork/lnd"
+go_mod_mode="vendor"
+go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -X $go_import_path/build.Commit=v${version%beta}-beta"
+go_build_tags_lnd+=" autopilotrpc"
+go_build_tags_lnd+=" chainrpc"
+go_build_tags_lnd+=" invoicesrpc"
+go_build_tags_lnd+=" routerrpc"
+go_build_tags_lnd+=" signrpc"
+go_build_tags_lnd+=" walletrpc"
+go_build_tags_lnd+=" watchtowerrpc"
+go_build_tags_lncli+=" autopilotrpc"
+go_build_tags_lncli+=" invoicesrpc"
+go_build_tags_lncli+=" routerrpc"
+go_build_tags_lncli+=" walletrpc"
+go_build_tags_lncli+=" watchtowerrpc"
+
+export CGO_ENABLED=0
+export GOFLAGS="-trimpath"
+
+do_configure() {
+  # upstream ships required dependencies
+  ln -s "$wrksrc/vendor" "$GOPATH"
+}
+
+do_build() {
+  go install \
+    -p "$XBPS_MAKEJOBS" \
+    -mod="$go_mod_mode" \
+    -x \
+    -tags "$go_build_tags_lnd" \
+    -ldflags "$go_ldflags" \
+    "$go_import_path/cmd/lnd"
+  go install \
+    -p "$XBPS_MAKEJOBS" \
+    -mod="$go_mod_mode" \
+    -x \
+    -tags "$go_build_tags_lncli" \
+    -ldflags "$go_ldflags" \
+    "$go_import_path/cmd/lncli"
+}
+
+post_install() {
+  vlicense LICENSE
+  vdoc README.md
+  vdoc sample-lnd.conf
+  vcopy docs "usr/share/doc/$pkgname"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
