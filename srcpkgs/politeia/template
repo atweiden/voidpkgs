@@ -23,6 +23,8 @@ go_package+=" $go_import_path/politeiawww/cmd/piwww"
 go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dataload"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
+go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease=pre"
+go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata=dev"
 
 export GOFLAGS="-trimpath"
 
