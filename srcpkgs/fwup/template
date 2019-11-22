@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fwup"
-version=1.4.0
+version=1.5.0
 revision=1
 short_desc="Configurable embedded Linux firmware update creator and runner"
 makedepends+=" confuse-devel"
@@ -20,7 +20,7 @@ homepage="https://github.com/fhunleth/fwup"
 license="Apache-2.0"
 changelog="https://github.com/fhunleth/fwup/raw/master/CHANGELOG.md"
 distfiles="https://github.com/fhunleth/fwup/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5f744364b9c4604153f3eb178426db110fecfa7f9b4e396cd58022d88f26e7f1"
+checksum="a440a28a7bfe240d586747007668c1df58bd7e9307a01551899d8eefd20e925a"
 build_style="gnu-configure"
 configure_args="--with-bash-completion-dir=/usr/share/bash-completion/completions"
 
