@@ -14,6 +14,13 @@ configure_args="--with-pic"
 make_build_target="world.opt"
 nocross="yes"
 
+case "$XBPS_TARGET_MACHINE" in
+  # also just segfaults when compiled without PIE (BSS-PLT?)
+  ppc-musl)
+    broken="/usr/bin/ocamlc: unsupported relocation type 6"
+    ;;
+esac
+
 export ASPP="cc -c"
 
 post_install() {
