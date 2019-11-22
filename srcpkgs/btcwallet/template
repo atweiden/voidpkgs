@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="btcwallet"
-version=0.11.0
+version=0.11.0alpha
 revision=1
 short_desc="Secure Bitcoin wallet daemon written in Go"
 hostmakedepends="git"
@@ -10,6 +10,7 @@ license="ISC"
 changelog="https://github.com/btcsuite/btcwallet/raw/master/CHANGES"
 distfiles="https://github.com/btcsuite/btcwallet/archive/v0.11.0.tar.gz>$pkgname-$version.tar.gz"
 checksum="3f53a55ef02a20e5ad3ae3f9ece9bfd041a8e5cce53ede2363aea5382327beed"
+wrksrc="$pkgname-${version%alpha}"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
 go_package+=" $go_import_path"
