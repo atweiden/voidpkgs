@@ -8,7 +8,7 @@ _isl_version=0.21
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gcc"
 version=$_minorver.0
-revision=2
+revision=3
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -60,7 +60,6 @@ replaces+=" gcc-gcj-jdk-compat<7.2.0"
 replaces+=" gcc-gcj<7.2.0"
 replaces+=" libmpx>=0"
 replaces+=" libmpx-devel>=0"
-alternatives="cc:cc:/usr/bin/gcc"
 _have_gccgo="yes"
 # mips does not have libucontext yet
 case "$XBPS_TARGET_MACHINE" in
@@ -491,6 +490,8 @@ do_install() {
   ln -sfr "$DESTDIR/usr/include/c++/$_minorver" \
     "$DESTDIR/usr/include/c++/$version"
 
+  # cc symlink
+  ln -sfr "$DESTDIR/usr/bin/gcc" "$DESTDIR/usr/bin/cc"
   # rpcgen wants /lib/cpp, make a symlink
   ln -sfr "$DESTDIR/usr/bin/cpp" "$DESTDIR/usr/lib/cpp"
 
