@@ -1,30 +1,32 @@
-# Template file for 'opendoas'.
-pkgname=opendoas
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="opendoas"
 version=6.6
 revision=1
-wrksrc="OpenDoas-$version"
-build_style=configure
-configure_args="$(vopt_with 'pam')"
-conf_files="$(vopt_if 'pam' '/etc/pam.d/doas')"
-hostmakedepends="bison"
-makedepends="$(vopt_if 'pam' 'pam-devel')"
 short_desc="Portable OpenBSD doas to execute commands as another user"
-maintainer="Duncaen <duncaen@voidlinux.org>"
-license="ISC, BSD"
+makedepends="$(vopt_if 'pam' 'pam-devel')"
+hostmakedepends="bison"
 homepage="https://github.com/Duncaen/OpenDoas"
-distfiles="https://github.com/Duncaen/OpenDoas/archive/v${version}.tar.gz"
-checksum=83ca7e6d75b834f0a03604a4e5dd3879534de5ab8e75b36bbe169b53666f8ec8
-
+license="ISC, BSD"
+distfiles="https://github.com/Duncaen/OpenDoas/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="83ca7e6d75b834f0a03604a4e5dd3879534de5ab8e75b36bbe169b53666f8ec8"
+conf_files="$(vopt_if 'pam' '/etc/pam.d/doas')"
+wrksrc="OpenDoas-$version"
+build_style="configure"
+configure_args="$(vopt_with 'pam')"
 build_options="pam"
 build_options_default="pam"
 
 pre_configure() {
-	cp ${FILESDIR}/doas.pam pam.d__doas__linux
-	vsed -i bsd.prog.mk \
-		-e '/chown ${BINOWN}:${BINGRP}/d' \
-		-e '/chmod ${BINMODE}/d'
+  cp "$FILESDIR/doas.pam" pam.d__doas__linux
+  vsed \
+    -i \
+    -e '/chown ${BINOWN}:${BINGRP}/d' \
+    -e '/chmod ${BINMODE}/d' \
+    bsd.prog.mk
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
