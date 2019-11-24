@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tcl"
-version=8.6.9
+version=8.6.10
 revision=1
-short_desc="The TCL scripting language"
+short_desc="TCL scripting language"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 homepage="http://www.tcl.tk"
 license="TCL"
 distfiles="$SOURCEFORGE_SITE/tcl/$pkgname$version-src.tar.gz"
-checksum="ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e"
+checksum="5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed"
 wrksrc="$pkgname$version"
 build_wrksrc="unix"
 build_style="gnu-configure"
