@@ -1,17 +1,23 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libusbmuxd"
-version=1.0.10
-revision=2
+version=2.0.0
+revision=1
 short_desc="USB Multiplex Daemon library"
 makedepends+=" libusb-devel"
 makedepends+=" libplist-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkgconf"
 homepage="https://marcan.st/blog/iphonelinux/usbmuxd/"
-license="GPL-2,LGPL-2.1"
-distfiles="http://www.libimobiledevice.org/downloads/$pkgname-$version.tar.bz2"
-checksum="1aa21391265d2284ac3ccb7cf278126d10d354878589905b35e8102104fec9f2"
+license="LGPL-2.1-only"
+distfiles="https://github.com/libimobiledevice/libusbmuxd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ecf287b9d5fa28645a6b5ed640b6bd174134227c4fd8fde28d0678df2be0e97a"
 patch_args="-Np1"
 build_style="gnu-configure"
+
+pre_configure() {
+  autoreconf -fi
+}
 
 libusbmuxd-devel_package() {
   short_desc+=" - development files"
