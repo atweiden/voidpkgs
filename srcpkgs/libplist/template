@@ -1,20 +1,20 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libplist"
-version=2.0.0
-revision=3
+version=2.1.0
+revision=1
 short_desc="Apple Property List library"
 makedepends+=" libglib-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" python-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
-hostmakedepends+=" pkg-config"
+hostmakedepends+=" pkgconf"
 hostmakedepends+=" python-Cython"
 hostmakedepends+=" python-devel"
-homepage="http://libimobiledevice.org/"
-license="GPL-2, LGPL-2.1"
-distfiles="http://www.libimobiledevice.org/downloads/$pkgname-$version.tar.bz2"
-checksum="3a7e9694c2d9a85174ba1fa92417cfabaea7f6d19631e544948dc7e17e82f602"
+homepage="https://github.com/libimobiledevice/libplist"
+license="LGPL-2.1-only"
+distfiles="https://github.com/libimobiledevice/libplist/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="4b33f9af3f9208d54a3c3e1a8c149932513f451c98d1dd696fe42c06e30b7f03"
 build_style="gnu-configure"
 configure_args="--disable-static"
 
