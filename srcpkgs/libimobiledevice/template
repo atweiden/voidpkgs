@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libimobiledevice"
 version=1.2.0
-revision=13
+revision=14
 short_desc="Library to communicate with Apple devices"
 makedepends+=" libglib-devel"
 makedepends+=" libplist-devel"
@@ -11,18 +11,19 @@ makedepends+=" libusbmuxd-devel"
 makedepends+=" python-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
-hostmakedepends+=" pkg-config"
-hostmakedepends+=" python-devel"
-homepage="http://www.libimobiledevice.org/"
-license="GPL-2,LGPL-2.1"
-distfiles="http://www.libimobiledevice.org/downloads/$pkgname-$version.tar.bz2"
-checksum="786b0de0875053bf61b5531a86ae8119e320edab724fc62fe2150cc931f11037"
-patch_args="-Np1"
+hostmakedepends+=" pkgconf"
+hostmakedepends+=" python-Cython"
+homepage="https://github.com/libimobiledevice/libimobiledevice"
+license="LGPL-2.1-only"
+distfiles="https://github.com/libimobiledevice/libimobiledevice/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8ba1ea817691b3548b83371f8ec22d73d1e37f8fda7c899ac9c7121d924ca830"
 build_style="gnu-configure"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" ac_cv_sys_file_offset_bits=yes"
   configure_args+=" ac_cv_sys_large_file=yes"
 fi
+
+CFLAGS="-I/usr/include/python3.6"
 
 pre_configure() {
   sed \
