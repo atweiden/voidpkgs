@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ansible"
-version=2.8.6
+version=2.9.0
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 archs="noarch"
@@ -14,7 +14,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="https://releases.ansible.com/ansible/$pkgname-$version.tar.gz"
-checksum="31203b27c9d61123e8c86b6eb5116a21859ed4f26d55a1a71eaf27bd92bce355"
+checksum="9f9a9ace1d63cd8a4692ab6ee6ed04823743f1bd339a6ef188860c02cf7f46f1"
 build_style="python3-module"
 pycompile_module="ansible"
 
