@@ -4,6 +4,11 @@ pkgname="libomp"
 version=8.0.0
 revision=1
 short_desc="LLVM OpenMP Runtime Library"
+archs+=" aarch64*"
+archs+=" armv[67]*"
+archs+=" i686*"
+archs+=" ppc64*"
+archs+=" x86_64*"
 makedepends+=" elfutils-devel"
 makedepends+=" libffi-devel"
 hostmakedepends+=" ninja"
@@ -19,6 +24,11 @@ configure_args+=" -DLIBOMP_ENABLE_SHARED=ON"
 configure_args+=" -DLIBOMP_INSTALL_ALIASES=OFF"
 configure_args+=" -G Ninja"
 make_cmd="ninja"
+
+do_check() {
+  # requires lit and clang, lit is not packaged
+  :
+}
 
 do_install() {
   cd "${cmake_builddir:=build}"
