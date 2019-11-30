@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libuv"
-version=1.32.0
+version=1.33.1
 revision=1
 short_desc="Multi-platform support library with a focus on asynchronous I/O"
 hostmakedepends+=" automake"
@@ -10,7 +10,7 @@ homepage="https://libuv.org/"
 license="MIT, CC-BY-SA-4.0"
 changelog="https://github.com/libuv/libuv/raw/v1.x/ChangeLog"
 distfiles="https://github.com/libuv/libuv/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c9818f38eee79d4e56f3ae55320d207ab183c5d4aff0fb148b5d6f5702f371cd"
+checksum="63794499bf5da1720e249d3fc14ff396b70b8736effe6ce5b4e47e0f3d476467"
 build_style="gnu-configure"
 
 LDFLAGS="-pthread"
