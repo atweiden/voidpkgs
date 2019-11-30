@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rustup"
 version=1.20.2
-revision=1
+revision=3
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
