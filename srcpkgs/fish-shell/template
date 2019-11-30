@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fish-shell"
 version=3.0.2
-revision=1
+revision=2
 short_desc="User friendly shell intended mostly for interactive use"
 depends+=" bc"
 depends+=" groff"
@@ -14,7 +14,8 @@ distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/$
 checksum="14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e"
 wrksrc="fish-$version"
 build_style="cmake"
-register_shell="/usr/bin/fish"
+register_shell+=" /bin/fish"
+register_shell+=" /usr/bin/fish"
 
 post_install() {
   # starting with fish-3.0.0 this is a skeleton file with only comments
