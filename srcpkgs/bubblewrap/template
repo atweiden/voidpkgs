@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="bubblewrap"
-version=0.3.3
+version=0.4.0
 revision=1
 short_desc="Unprivileged sandboxing tool"
 makedepends="libcap-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/projectatomic/bubblewrap"
 license="LGPL-2.0-or-later"
 distfiles="https://github.com/projectatomic/bubblewrap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="439e4cd84d9d19c9e5b0c6aa0f0c3a55bbb893ae5ec112a5b575eadd2165f039"
+checksum="dedea228f53dd5f589d8225b4584a9b354849a221caf7304874ca2e4d4bcdafb"
 build_style="gnu-configure"
 
 pre_configure() {
