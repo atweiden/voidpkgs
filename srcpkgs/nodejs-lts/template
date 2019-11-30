@@ -1,13 +1,15 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nodejs-lts"
-version=10.16.2
+version=12.13.1
 revision=1
 short_desc="Evented I/O for V8 javascript"
-# need these for host v8 for torque, see https://github.com/nodejs/node/pull/21079
+# need these for host v8 for torque
+# see: https://github.com/nodejs/node/pull/21079
 makedepends+=" python-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if cares c-ares-devel)"
 makedepends+=" $(vopt_if http_parser http-parser-devel)"
+makedepends+=" $(vopt_if http_parser llhttp-devel)"
 makedepends+=" $(vopt_if icu icu-devel)"
 makedepends+=" $(vopt_if libuv libuv-devel)"
 makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
@@ -17,6 +19,7 @@ hostmakedepends+=" python"
 hostmakedepends+=" zlib-devel"
 hostmakedepends+=" $(vopt_if cares c-ares-devel)"
 hostmakedepends+=" $(vopt_if http_parser http-parser-devel)"
+hostmakedepends+=" $(vopt_if http_parser llhttp-devel)"
 hostmakedepends+=" $(vopt_if icu icu-devel)"
 hostmakedepends+=" $(vopt_if libuv libuv-devel)"
 hostmakedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
@@ -24,7 +27,7 @@ hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/node-v$version.tar.gz"
-checksum="5936ef12ab3f0ce5fbb6751c1bb41f626b6058f414a297b3d8c5eb418a27e8fe"
+checksum="4ee710087687c8de142329d95085f5cba66e454a2c9ea7ec11e1f4b476d6d1ac"
 wrksrc="node-v$version"
 build_options+=" cares"
 build_options+=" http_parser"
@@ -33,7 +36,7 @@ build_options+=" libuv"
 build_options+=" nghttp2"
 build_options+=" ssl"
 desc_option_cares="Enable shared c-ares"
-desc_option_http_parser="Enable shared http-parser"
+desc_option_http_parser="Enable shared http-parser and llhttp"
 desc_option_icu="Enable shared icu"
 desc_option_libuv="Enable shared libuv"
 desc_option_nghttp2="Enable shared nghttp2"
@@ -44,16 +47,33 @@ build_options_default+=" icu"
 build_options_default+=" libuv"
 build_options_default+=" nghttp2"
 provides="nodejs-runtime-0_1"
-conflicts="nodejs"
+conflicts+=" nodejs"
+conflicts+=" nodejs-lts-10"
 replaces="iojs>=0"
 
 if [[ "$XBPS_WORDSIZE" -ne "$XBPS_TARGET_WORDSIZE" ]]; then
   nocross="host and target must have the same pointer size"
 fi
 
-case "$XBPS_MACHINE" in
+case "$XBPS_TARGET_MACHINE" in
   ppc64*)
     ;;
+  ppc*)
+    broken="node 12.x does not support 32-bit ppc"
+    ;;
+esac
+
+# v8 requires libatomic on ppc*/s390x/mips*
+case "$XBPS_TARGET_MACHINE" in
+  mips*|ppc*)
+    makedepends+=" libatomic-devel"
+    ;;
+  *)
+    ;;
+esac
+
+# also need it on host when it's one of those archs
+case "$XBPS_MACHINE" in
   mips*|ppc*)
     hostmakedepends+=" libatomic-devel"
     ;;
@@ -95,7 +115,7 @@ do_configure() {
         msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE.\n"
         ;;
     esac
-    _args+=" --without-snapshot"
+    _args+=" --cross-compiling"
   fi
   # their pregenerated asm is for ELFv1...
   case "$XBPS_TARGET_MACHINE" in
@@ -113,6 +133,14 @@ do_configure() {
     "$(vopt_if nghttp2 --shared-nghttp2)" \
     "$(vopt_if ssl --shared-openssl)" \
     $_args
+}
+
+post_configure() {
+  # fix linking against llhttp
+  sed \
+    -i \
+    -e 's/-lhttp_parser/& -lllhttp/' \
+    out/*.target.mk
 }
 
 do_build() {
@@ -138,8 +166,18 @@ do_install() {
     LD="$CXX" \
     LDFLAGS+="-ldl" \
     install
+  rm -rf "$DESTDIR/usr/include/node/openssl"
   vlicense LICENSE
-  rm -r "$DESTDIR/usr/include"
+}
+
+nodejs-lts-devel_package() {
+  unset conflicts
+  conflicts+=" nodejs-devel"
+  conflicts+=" nodejs-lts-10-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
