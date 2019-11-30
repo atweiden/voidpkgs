@@ -499,6 +499,7 @@ constant %PKG = Map.new(
     'nghttp2' => ['nghttp2-devel'],
     'nilfs-utils' => qw<libnilfs
                         nilfs-utils-devel>,
+    'nodejs' => ['nodejs-devel'],
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
     'nss' => ['nss-devel'],
