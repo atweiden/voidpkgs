@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnupg2"
 version=2.2.18
-revision=1
+revision=4
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
