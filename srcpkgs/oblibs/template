@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="oblibs"
-version=0.0.2.1
-revision=2
+version=0.0.3.2
+revision=1
 short_desc="Obarun library"
 makedepends+=" execline-devel"
 makedepends+=" skalibs-devel"
 homepage="https://framagit.org/Obarun/oblibs"
 license="ISC"
 distfiles="https://framagit.org/Obarun/oblibs/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="16e12024183c464ef6a5e05caa9121ebd08c02f3b83190890d0680e6c04e799c"
+checksum="ba8292881e2c7e5c82fdeb991f77cabedb09d92aad969e86ad683032d0c136cc"
 wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --libdir=/usr/lib"
