@@ -1,10 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-docutils"
 version=0.15.2
-revision=1
+revision=2
 short_desc="Python2 documentation utilities"
 archs="noarch"
-depends="python"
+# docutils/writers/odf_odt/pygmentsformatter.py
+depends+=" python"
+depends+=" python-Pygments"
+checkdepends+=" $depends"
+checkdepends+=" python3-Pygments"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="http://docutils.sourceforge.net"
@@ -12,6 +16,7 @@ license="custom:Public Domain, BSD-2-Clause, GPL-3.0-or-later, Python-2.0"
 distfiles="$PYPI_SITE/d/docutils/${pkgname#*-}-$version.tar.gz"
 checksum="a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"
 wrksrc="${pkgname#*-}-$version"
+patch_args="-Np1"
 build_style="python-module"
 pycompile_module="docutils"
 alternatives+=" docutils:rst2html4:/usr/bin/rst2html4.py2"
@@ -33,6 +38,7 @@ post_install() {
 
 python3-docutils_package() {
   unset alternatives
+  unset depends
   alternatives+=" docutils:rst2html4:/usr/bin/rst2html4.py3"
   alternatives+=" docutils:rst2html5:/usr/bin/rst2html5.py3"
   alternatives+=" docutils:rst2html:/usr/bin/rst2html.py3"
@@ -46,7 +52,8 @@ python3-docutils_package() {
   alternatives+=" docutils:rst2xml:/usr/bin/rst2xml.py3"
   alternatives+=" docutils:rstpep2html:/usr/bin/rstpep2html.py3"
   archs="noarch"
-  depends="python3"
+  depends+=" python3"
+  depends+=" python3-Pygments"
   pycompile_module="docutils"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
