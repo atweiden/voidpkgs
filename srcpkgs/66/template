@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="66"
 version=0.2.2.2
-revision=1
+revision=2
 short_desc="Small tools built around s6 and s6-rc programs"
 depends="s6-portable-utils"
 makedepends+=" execline-devel"
