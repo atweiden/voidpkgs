@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="linux-firmware"
-version=20190923
+version=20191022
 revision=1
 short_desc="Binary firmware blobs for the Linux kernel"
 archs="noarch"
@@ -9,7 +9,7 @@ depends+=" $pkgname-network-${version}_$revision"
 homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$version.tar.gz"
-checksum="b3ff9e692467555d29bf12680e7578a53d860ce77ddf23a52be6983d60afdae0"
+checksum="dc3fb7f542f4d91c1ea17f242d117db929e67ad08b3c3bbb868563101b1563dd"
 
 do_install() {
   vmkdir usr/lib/firmware
