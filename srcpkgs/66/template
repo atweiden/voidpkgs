@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="66"
-version=0.2.1.2
+version=0.2.2.2
 revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
 depends="s6-portable-utils"
@@ -16,7 +16,7 @@ homepage="http://web.obarun.org/software/"
 license="ISC"
 changelog="https://framagit.org/Obarun/66/raw/master/NEWS"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="9c3430ab291ec83e74faa05634614e1d851e2bc18fe173963d8fe5313c2dd337"
+checksum="1aaa73f0567fcc2d8f110004c143496a715571016a228a9a1108741c9153df2e"
 conf_files+=" /etc/66/init"
 conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
