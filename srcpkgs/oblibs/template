@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="oblibs"
 version=0.0.2.1
-revision=1
+revision=2
 short_desc="Obarun library"
 makedepends+=" execline-devel"
 makedepends+=" skalibs-devel"
