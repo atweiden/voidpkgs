@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="ncurses"
 version=6.1
-revision=4
+revision=5
 short_desc="System V Release 4.0 curses emulation library"
 depends="ncurses-base-${version}_$revision"
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -12,6 +12,7 @@ homepage="http://www.gnu.org/software/ncurses/"
 license="MIT"
 distfiles="$GNU_SITE/ncurses/$pkgname-$version.tar.gz"
 checksum="aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17"
+configure_args="--enable-big-core"
 bootstrap="yes"
 
 do_configure() {
