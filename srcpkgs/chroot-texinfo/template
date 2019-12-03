@@ -16,7 +16,7 @@ conflicts="texinfo>=0"
 reverts="6.5_1"
 
 do_configure() {
-  cp -f "$XBPS_CROSSPFDIR/config.sub" build-aux
+  cp -f "$XBPS_COMMONDIR/environment/configure/automake/config.sub" build-aux
   ./configure \
     $configure_args \
     --disable-nls
