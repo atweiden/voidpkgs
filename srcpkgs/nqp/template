@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nqp"
-version=2019.07.1
+version=2019.11
 revision=1
-short_desc="A lightweight Perl 6-like environment for virtual machines, with MoarVM support"
+short_desc="Lightweight Perl 6-like environment for virtual machines, with MoarVM support"
 depends="MoarVM-${version}_$revision"
 makedepends="MoarVM"
 hostmakedepends="perl"
@@ -10,7 +10,7 @@ tags="perl6"
 homepage="https://github.com/perl6/nqp"
 license="Artistic-2.0"
 distfiles="https://github.com/perl6/nqp/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="7324e5b84903c5063303a3c9fb6205bdf5f071c9778cc695ea746e7d41b12224"
+checksum="b47f911def8aafded041b079ac86e5df23b726c190664c3217c567835f481328"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
