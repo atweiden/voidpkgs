@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tmux"
-version=3.0
+version=3.0a
 revision=1
 short_desc="Terminal Multiplexer"
 makedepends+=" libevent-devel"
@@ -13,7 +13,7 @@ homepage="https://tmux.github.io"
 license="ISC"
 changelog="https://github.com/tmux/tmux/raw/master/CHANGES"
 distfiles="https://github.com/tmux/tmux/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="9edcd78df80962ee2e6471a8f647602be5ded62bb41c574172bb3dc3d0b9b4b4"
+checksum="4ad1df28b4afa969e59c08061b45082fdc49ff512f30fc8e43217d7b0e5f8db9"
 build_style="gnu-configure"
 configure_args="--enable-utempter"
 
