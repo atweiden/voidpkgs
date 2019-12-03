@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libseccomp"
 version=2.4.2
-revision=1
+revision=2
 short_desc="High level interface to the Linux Kernel's seccomp filter"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
