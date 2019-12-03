@@ -7,6 +7,8 @@ depends="MoarVM-${version}_$revision"
 makedepends+=" MoarVM"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
+# XXX: will probably need this once MoarVM can build with system libtommath
+#makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
 hostmakedepends="perl"
 tags="perl6"
