@@ -1,15 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="MoarVM"
-version=2019.07.1
+version=2019.11
 revision=1
-short_desc="A VM for NQP and Rakudo Perl 6"
+short_desc="VM for NQP and Rakudo Perl 6"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
-# XXX: next release, makedepends+=libzstd-devel
-# https://github.com/MoarVM/MoarVM/commit/e417bb5088fef51c339b0b30769cec1eb4b7ab8f
-#makedepends+=" libzstd-devel"
+makedepends+=" libzstd-devel"
 hostmakedepends+=" binutils"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkgconf"
@@ -19,7 +17,7 @@ homepage="https://moarvm.org"
 license="Artistic-2.0"
 changelog="https://github.com/MoarVM/MoarVM/raw/master/docs/ChangeLog"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="253c945ee6b589ede6949b8e77814542befcbc326190e18ef549634db4955988"
+checksum="d882c5114e35800eba2226f2104997052e98b3efdea6463e7edb213a87870201"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --has-libatomic_ops"
