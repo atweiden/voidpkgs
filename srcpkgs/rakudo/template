@@ -21,7 +21,7 @@ checksum="36e19160d7a8b5dd723e5602d851ccef9e4cf0970e1c67589bf88935ceb65531"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
-configure_args+=" --perl6-home=/usr/lib"
+configure_args+=" --perl6-home=/usr/lib/perl6"
 configure_args+=" --prefix=/usr"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
