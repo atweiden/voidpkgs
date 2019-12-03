@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="rakudo"
-version=2019.07.1
-revision=2
+version=2019.11
+revision=1
 short_desc="Production-ready, stable implementation of the Perl 6 language"
 depends="nqp>=${version}_1"
 makedepends+=" libatomic_ops-devel"
@@ -15,11 +15,11 @@ homepage="https://rakudo.org"
 license="Artistic-2.0"
 changelog="https://github.com/rakudo/rakudo/raw/master/docs/ChangeLog"
 distfiles="https://github.com/rakudo/rakudo/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="d91dce95ec3f6fca1723c7eacfcbcc823269ba73dc945d778f608f0c878444f7"
+checksum="36e19160d7a8b5dd723e5602d851ccef9e4cf0970e1c67589bf88935ceb65531"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
-configure_args+=" --libdir=/usr/lib"
+configure_args+=" --perl6-home=/usr/lib"
 configure_args+=" --prefix=/usr"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
