@@ -20,6 +20,15 @@ configure_args+=" --enable-static"
 configure_args+=" --with-posix-fallocate"
 configure_args+=" --without-kqueue"
 
+# https://github.com/rakshasa/rtorrent/issues/156
+case "$XBPS_TARGET_MACHINE" in
+  ppc64*)
+    ;;
+  ppc*|mips*)
+    configure_args+=" --disable-instrumentation"
+    ;;
+esac
+
 pre_configure() {
   autoreconf -fi
   sed \
