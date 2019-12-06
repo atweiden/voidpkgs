@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nftables"
-version=0.9.2
+version=0.9.3
 revision=1
 short_desc="Netfilter nftables userspace tools"
 makedepends+=" gmp-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://netfilter.org/projects/nftables/"
 license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/nftables/files/$pkgname-$version.tar.bz2"
-checksum="5cb66180143e6bfc774f4eb316206d40ac1cb6df269a90882404cbf7165513f5"
+checksum="956b915ce2a7aeaff123e49006be7a0690a0964e96c062703181a36e2e5edb78"
 build_style="gnu-configure"
 configure_args="--with-json"
 
