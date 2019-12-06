@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="dovecot-plugin-pigeonhole"
-version=0.5.8
+version=0.5.9
 revision=1
 short_desc="Sieve implementation for Dovecot"
 makedepends+=" dovecot-devel"
@@ -10,7 +10,7 @@ hostmakedepends="libldap-devel"
 homepage="https://pigeonhole.dovecot.org"
 license="LGPL-2.1-or-later"
 distfiles="https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-$version.tar.gz"
-checksum="8fb860d50c1b1a09aea9e25f8ee89c22e34ecedfb0e11a1c48a7f67310759022"
+checksum="36da68aae5157b83e21383f711b8977e5b6f5477f369f71e7e22e76a738bbd05"
 wrksrc="dovecot-2.3-pigeonhole-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
