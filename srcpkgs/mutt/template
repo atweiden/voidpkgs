@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mutt"
-version=1.12.2
+version=1.13.0
 revision=1
 short_desc="Mutt Mail Client"
 depends+=" cyrus-sasl-modules"
@@ -20,7 +20,7 @@ homepage="http://www.mutt.org"
 license="GPL-2.0-or-later"
 changelog="http://mutt.org/relnotes/1.12"
 distfiles="http://ftp.mutt.org/pub/mutt/$pkgname-$version.tar.gz"
-checksum="bc42750ce8237742b9382f2148fc547a8d8601aa4a7cd28c55fe7ca045196882"
+checksum="a00ddc21084f45f53653c35a8a991ca86d68c7162b7c8ec1625d63cfeaf5f5b7"
 conf_files="/etc/mutt/Muttrc"
 build_style="gnu-configure"
 configure_args+=" --enable-gpgme"
