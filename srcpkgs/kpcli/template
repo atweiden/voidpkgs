@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="kpcli"
-version=3.2
+version=3.3
 revision=1
 short_desc="KeePass Command Line Interface"
 archs="noarch"
@@ -14,9 +14,9 @@ depends+=" perl-Term-ReadLine-Gnu"
 depends+=" perl-Term-ShellUI"
 depends+=" perl-XML-Parser"
 homepage="http://kpcli.sourceforge.net/"
-license="Artistic, GPL-1"
+license="Artistic-1.0, GPL-1.0-or-later"
 distfiles="$SOURCEFORGE_SITE/kpcli/$pkgname-$version.pl"
-checksum="615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687"
+checksum="04de984d6b79bdeb84689bf8eaa0e2e3aa8756b7cca9ffdf36e1a9d1c0f1cdfc"
 build_style="fetch"
 
 do_install() {
