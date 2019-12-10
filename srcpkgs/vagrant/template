@@ -1,10 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="vagrant"
 version=2.2.6
-revision=1
+revision=2
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
-archs+=" x86_64"
+archs+=" x86_64*"
 depends+=" bsdtar"
 depends+=" curl"
 depends+=" openssh"
