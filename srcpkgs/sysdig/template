@@ -40,6 +40,12 @@ nocross="yes"
 disable_parallel_build="yes"
 dkms_modules="sysdig $version"
 
+case "$XBPS_TARGET_MACHINE" in
+  i686*)
+    broken="https://build.voidlinux.org/builders/i686_builder/builds/21617/steps/shell_3/logs/stdio"
+    ;;
+esac
+
 post_extract() {
   sed \
     -i \
