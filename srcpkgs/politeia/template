@@ -36,7 +36,6 @@ post_install() {
   vdoc politeiad/sample-politeiad.conf
   vdoc politeiawww/cmd/cmswww/sample-cmswww.conf
   vdoc politeiawww/cmd/piwww/sample-piwww.conf
-  vdoc politeiawww/cmd/politeiavoter/sample-politeiavoter.conf
   vdoc politeiawww/cmd/politeiawww_dataload/sample-politeiawww_dataload.conf
   vdoc politeiawww/sample-politeiawww.conf
   vcopy examples "usr/share/doc/$pkgname"
