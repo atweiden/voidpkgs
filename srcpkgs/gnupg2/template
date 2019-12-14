@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="gnupg2"
 version=2.2.19
-revision=1
+revision=2
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -38,10 +38,10 @@ pre_configure() {
 
 post_install() {
   # remove conflicts with gpg1
-  rm "$DESTDIR/usr/share/man/man7/gnupg.7"
+  mv "$DESTDIR/usr/share/man/man7/gnupg.7" "$DESTDIR/usr/share/man/man7/gnupg2.7"
   vmkdir usr/share/examples
   mv "$DESTDIR/usr/share/doc/gnupg/examples" "$DESTDIR/usr/share/examples/gnupg2"
-  rm -rf "$DESTDIR/usr/share/doc/gnupg"
+  mv "$DESTDIR/usr/share/doc/gnupg" "$DESTDIR/usr/share/doc/gnupg2"
 }
 
 gnupg2-scdaemon_package() {
