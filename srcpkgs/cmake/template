@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="cmake"
-version=3.15.5
+version=3.16.1
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -12,12 +12,19 @@ makedepends+=" rhash-devel"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="fbdd7cef15c0ced06bb13024bfda0ecc0dedbcaaaa6b8a5d368c75255243beb4"
+checksum="a275b3168fa8626eca4465da7bb159ff07c8c6cb0fb7179be59e12cbdfa725fd"
 build_style="configure"
+configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
+configure_args+=" --docdir=/share/doc/cmake"
+configure_args+=" --mandir=/share/man"
+configure_args+=" --no-system-jsoncpp"
+configure_args+=" --prefix=/usr"
+configure_args+=" --system-libs"
 make_check_target="test"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # XXX ugly :-)
+  unset configure_args
   build_style="cmake"
   hostmakedepends+=" cmake"
   hostmakedepends+=" gcc-fortran"
@@ -29,14 +36,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" -DCMAKE_USE_SYSTEM_LIBLZMA=1"
   configure_args+=" -DCMAKE_USE_SYSTEM_ZLIB=1"
   configure_args+=" -DKWSYS_LFS_WORKS=1"
-else
-  build_style="configure"
-  configure_args+=" --prefix=/usr"
-  configure_args+=" --mandir=/share/man"
-  configure_args+=" --docdir=/share/doc/cmake"
-  configure_args+=" --system-libs"
-  configure_args+=" --no-system-jsoncpp"
-  configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
 fi
 
 post_install() {
