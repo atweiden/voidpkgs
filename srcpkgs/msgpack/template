@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="msgpack"
-version=3.2.0
+version=3.2.1
 revision=1
 short_desc="Binary-based efficient object serialization library"
 makedepends="zlib-devel"
@@ -9,7 +9,7 @@ homepage="https://msgpack.org/"
 license="Apache-2.0"
 changelog="https://github.com/msgpack/msgpack-c/raw/master/CHANGELOG.md"
 distfiles="https://github.com/msgpack/msgpack-c/archive/cpp-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ff865a36bad5c72b8e7ebc4b7cf5f27a820fce4faff9c571c1791e3728355a39"
+checksum="464f46744a6be778626d11452c4db3c2d09461080c6db42e358e21af19d542f6"
 wrksrc="$pkgname-c-cpp-$version"
 build_style="cmake"
 
