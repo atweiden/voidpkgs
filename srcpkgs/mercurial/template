@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mercurial"
-version=5.2
+version=5.2.1
 revision=1
 short_desc="Fast, lightweight source control management system"
 depends="ca-certificates"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/$pkgname-$version.tar.gz"
-checksum="ff030e923f03ee15c91191996fcb099bfcfa60c7df263be227f67b6a65d36194"
+checksum="18b1550abf9872a6905eb67527bc73e13f2a448830cca9be883528b0ce68b3df"
 build_style="python3-module"
 pycompile_module+=" hgdemandimport"
 pycompile_module+=" hgext"
@@ -19,14 +19,13 @@ pycompile_module+=" hgext3rd"
 pycompile_module+=" mercurial"
 
 post_install() {
-  vmkdir usr/share/man/man1
-  vmkdir usr/share/man/man5
-  install -m 644 doc/*.1 "$DESTDIR/usr/share/man/man1"
-  install -m 644 doc/*.5 "$DESTDIR/usr/share/man/man5"
-  install -m 644 -D contrib/bash_completion \
-    "$DESTDIR/usr/share/bash-completion/completions/hg"
-  install -m 644 -D contrib/zsh_completion \
-    "$DESTDIR/usr/share/zsh/site-functions/_hg"
+  for i in doc/*.1 doc/*.8 doc/*.5 ; do
+    vman "$i"
+  done
+  vinstall contrib/bash_completion 644 \
+    usr/share/bash-completion/completions/hg
+  vinstall contrib/zsh_completion 644 \
+    usr/share/zsh/site-functions/_hg
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
