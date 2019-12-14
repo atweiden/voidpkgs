@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="apr"
-version=1.6.5
+version=1.7.0
 revision=1
 short_desc="Apache Portable Runtime Library"
 makedepends+=" expat-devel"
@@ -8,7 +8,7 @@ makedepends+=" libuuid-devel"
 homepage="http://apr.apache.org/"
 license="Apache-2.0"
 distfiles="http://www.apache.org/dist/apr/$pkgname-$version.tar.bz2"
-checksum="a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105"
+checksum="e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
 build_style="gnu-configure"
 configure_args="--with-installbuilddir=/usr/share/apr-1/build"
 # can't run test programs when cross compiling
