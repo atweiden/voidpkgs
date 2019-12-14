@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="enchive"
-version=3.4
+version=3.5
 revision=1
 short_desc="Encrypted personal archives"
 homepage="https://github.com/skeeto/enchive"
 license="Unlicense"
 changelog="https://github.com/skeeto/enchive/raw/master/NEWS.md"
 distfiles="https://github.com/skeeto/enchive/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="1e8551df0bb98a4f20930a010b3a6b01f60078af86288370ef93895a3918505e"
+checksum="e66d0417db2bcc7ddd2dea1e0e1e88df6b4be07e85173710cba254af342585ef"
 build_style="gnu-makefile"
 
 CFLAGS+=" -ansi"
