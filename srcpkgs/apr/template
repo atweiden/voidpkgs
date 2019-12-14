@@ -17,6 +17,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" apr_cv_mutex_robust_shared=yes"
 fi
 
+nocross="mutex_proc_pthread_methods undeclared, configure args need to be fixed"
+
 # do not redefine struct iovec in include/apr_want.h
 CFLAGS="-DAPR_IOVEC_DEFINED=1"
 
