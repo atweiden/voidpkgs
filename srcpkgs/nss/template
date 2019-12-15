@@ -1,8 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nss"
-version=3.47.1
+version=3.48
 revision=1
-_nsprver=4.23
+_nsprver=4.24
 short_desc="Mozilla Network Security Services"
 depends="nspr>=$_nsprver"
 makedepends+=" nspr-devel"
@@ -12,11 +12,11 @@ hostmakedepends="perl"
 homepage="https://www.mozilla.org/projects/security/pki/nss"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="1ae3d1cb1de345b258788f2ef6b10a460068034c3fd64f42427a183d8342a6fb"
+checksum="3f9c822a86a4e3e1bfe63e2ed0f922d8b7c2e0b7cafe36774b1c627970d0f8ac"
 
 do_build() {
   # respect LDFLAGS
-  sed \
+  vsed \
     -i \
     -e 's/\$(MKSHLIB) -o/\$(MKSHLIB) \$(LDFLAGS) -o/g' \
     nss/coreconf/rules.mk
@@ -24,6 +24,8 @@ do_build() {
   export BUILD_OPT=1
   export FREEBL_NO_DEPEND=1
   export LIBRUNPATH=
+  export NATIVE_CC="$BUILD_CC"
+  export NATIVE_FLAGS="$BUILD_CFLAGS"
   export NSS_ENABLE_ECC=1
   export NSS_ENABLE_WERROR=0
   export NSS_USE_SYSTEM_SQLITE=1
@@ -38,11 +40,9 @@ do_build() {
 
   # build nsinstall for host
   make \
-    $_native_use64 \
-    CC="$BUILD_CC" \
-    CFLAGS="$BUILD_CFLAGS" \
     LD="$BUILD_LD" \
     LDFLAGS="$BUILD_LDFLAGS" \
+    "$_native_use64" \
     -C coreconf
 
   if [[ -n "$CROSS_BUILD" ]]; then
@@ -104,6 +104,32 @@ do_build() {
     make $_native_use64 -C lib/dbm
     make $_native_use64
   fi
+}
+
+do_check() {
+  export BUILD_OPT=1
+  export FREEBL_NO_DEPEND=1
+  export LIBRUNPATH=
+  export NATIVE_CC="$BUILD_CC"
+  export NATIVE_FLAGS="$BUILD_CFLAGS"
+  # we couldn't run test in cross compile
+  export NSPR_INCLUDE_DIR="/usr/include/nspr"
+  export NSPR_LIB_DIR="/usr/lib"
+  export NSS_ENABLE_ECC=1
+  export NSS_ENABLE_WERROR=0
+  export NSS_USE_SYSTEM_SQLITE=1
+  export XCFLAGS="$CFLAGS"
+  case "$XBPS_MACHINE" in
+    aarch64*|x86_64*|ppc64*)
+      _use_64="USE_64=1"
+      ;;
+  esac
+  cd nss/tests
+  env \
+    "$_use_64" \
+    DOMSUF="localdomain" \
+    HOST="localhost" \
+    ./all.sh
 }
 
 do_install() {
