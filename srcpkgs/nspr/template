@@ -1,13 +1,13 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nspr"
-version=4.23
+version=4.24
 revision=1
 short_desc="NetScape Portable Runtime"
 makedepends="zlib-devel"
 homepage="http://www.mozilla.org/projects/nspr/"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/nspr/releases/v$version/src/$pkgname-$version.tar.gz"
-checksum="4b9d821037faf5723da901515ed9cac8b23ef1ea3729022259777393453477a4"
+checksum="90a59a0df6a11528749647fe18401cc7e03881e3e63c309f8c520ce06dd413d0"
 build_wrksrc="nspr"
 build_style="gnu-configure"
 
