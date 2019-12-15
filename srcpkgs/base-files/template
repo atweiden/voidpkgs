@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-files"
 version=0.140
-revision=8
+revision=9
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
 homepage="https://www.voidlinux.org"
@@ -29,10 +29,27 @@ bootstrap="yes"
 replaces="base-directories>=0"
 
 do_install() {
-  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
-    vmkdir usr/lib
+  # create bin and lib dirs and symlinks
+  for d in bin \
+           lib; do
+    vmkdir "usr/$d"
+    ln -snrf "$DESTDIR/usr/$d" "$DESTDIR/$d"
+  done
+  # symlink sbin paths to /usr/bin
+  for d in sbin \
+           usr/sbin; do
+    ln -snrf "$DESTDIR/usr/bin" "$DESTDIR/$d"
+  done
+  # symlink word-specific lib paths to /usr/lib
+  for d in lib \
+           usr/lib; do
+    ln -snrf "$DESTDIR/usr/lib" "$DESTDIR/$d$XBPS_TARGET_WORDSIZE"
+  done
+  # populate 32-bit lib files on 64-bit systems, for multilib
+  if [[ "$XBPS_TARGET_WORDSIZE" == "64" ]]; then
     vmkdir usr/lib32
-    ln -s ../lib/locale "$DESTDIR/usr/lib32/locale"
+    ln -snrf "$DESTDIR/usr/lib32" "$DESTDIR/lib32"
+    ln -sf ../lib/locale "$DESTDIR/usr/lib32/locale"
     vinstall "$FILESDIR/ld.so.lib32.conf" 644 etc/ld.so.conf.d lib32.conf
   fi
 
@@ -70,7 +87,7 @@ do_install() {
   # sysctl(8) files
   vinstall "$FILESDIR/sysctl.conf" 644 usr/lib/sysctl.d 10-void.conf
 
-  # Install common licenses, from Debian.
+  # install common licenses, from debian
   vmkdir usr/share/licenses
   install -m 644 "$FILESDIR/licenses"/* "$DESTDIR/usr/share/licenses"
 
@@ -80,10 +97,10 @@ do_install() {
 
   vbin "$FILESDIR/lsb_release"
 
-  # Install default dracut configuration.
+  # install default dracut configuration
   vinstall "$FILESDIR/dracut.conf.d.voidlinux.conf" 644 usr/lib/dracut/dracut.conf.d 00-void.conf
 
-  # Create /proc/self/mounts -> /etc/mtab symlink.
+  # create /proc/self/mounts -> /etc/mtab symlink
   ln -sf /proc/self/mounts "$DESTDIR/etc/mtab"
 
   # udev rules
