@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="iw"
-version=5.3
+version=5.4
 revision=1
 short_desc="nl80211 based CLI configuration utility for wireless devices"
 makedepends="libnl3-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 license="ISC"
 homepage="http://wireless.kernel.org/en/users/Documentation/iw"
 distfiles="http://www.kernel.org/pub/software/network/iw/$pkgname-$version.tar.xz"
-checksum="04afe857bc8dea67e461946de30ae1b012954b6965839c5c3fda7d0ed15505d5"
+checksum="a2469f677088d7b1070a7fbb28f3c747041697e8f6ec70783339cb1bc27a395f"
 
 do_build() {
   make \
