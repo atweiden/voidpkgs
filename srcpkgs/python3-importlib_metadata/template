@@ -6,13 +6,23 @@ short_desc="Read metadata from Python packages"
 archs="noarch"
 depends="python3-zipp"
 checkdepends="python3-zipp"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="https://importlib-metadata.readthedocs.io/en/latest/"
 license="Apache-2.0"
 changelog="https://importlib-metadata.readthedocs.io/en/latest/changelog%20(links).html"
 distfiles="$PYPI_SITE/i/importlib_metadata/importlib_metadata-$version.tar.gz"
 checksum="41e688146d000891f32b1669e8573c57e39e5060e7f5f647aa617cd9a9568278"
 wrksrc="importlib_metadata-$version"
-build_style="python3-module"
+build_style="python-module"
+pycompile_module="importlib_metadata"
+
+python-importlib_metadata_package() {
+  depends="python-zipp"
+  short_desc="${short_desc/Python/Python 2/}"
+  pkg_install() {
+    vmove "usr/lib/python2.7"
+  }
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
