@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="66-tools"
-version=0.0.2.0
+version=0.0.3.0
 revision=1
 short_desc="Small tools and helpers for service scripts execution"
 makedepends+=" execline-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" scdoc"
 homepage="http://web.obarun.org/software/index.html"
 license="ISC"
 distfiles="https://framagit.org/Obarun/66-tools/-/archive/v$version/$pkgname-v$version.tar.gz"
-checksum="de263425a61709698ec1012223c9691bc76e32b978fd845e3e2cd05b379c5eac"
+checksum="147c314e2d964672c420f0fe0171afd64e4f3543bf2482d7036a0fdb3ee630e9"
 wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
