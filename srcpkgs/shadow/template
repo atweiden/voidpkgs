@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="shadow"
-version=4.7
+version=4.8
 revision=1
 short_desc="Shadow password file utilities"
 depends="pam"
@@ -12,7 +12,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/shadow-maint/shadow"
 license="BSD-3-Clause"
 distfiles="https://github.com/shadow-maint/shadow/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="e5e196a4a7e3b228c812f3163d368be3e932e6eaa4e616677a148d9ec921e16c"
+checksum="64b46683b9c1f35b2cd2da9fa87a1383917666e85a56b35e081c7257d10dac64"
 conf_files+=" /etc/default/*"
 conf_files+=" /etc/login.defs"
 conf_files+=" /etc/pam.d/*"
@@ -56,8 +56,6 @@ do_build() {
 
 post_install() {
   vlicense "$FILESDIR/LICENSE"
-
-  mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
 
   # install our pam files not the ones supplied with shadow
   rm -f "$DESTDIR/etc/pam.d"/*
