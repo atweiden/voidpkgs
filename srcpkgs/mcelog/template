@@ -1,24 +1,31 @@
-# Template file for 'mcelog'
-pkgname=mcelog
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="mcelog"
 version=167
 revision=1
-archs="i686* x86_64*"
-conf_files="/etc/mcelog/mcelog.conf"
 short_desc="Decode kernel machine check log on x86 machines"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-only"
+archs+=" i686* x86_64*"
 homepage="http://www.mcelog.org/"
-distfiles="https://github.com/andikleen/${pkgname}/archive/v${version}.tar.gz"
-checksum=446465239a6a0ea35fcdc8e674caedbd515e04ec0dae8dbd2ba4b65edc831ba8
+license="GPL-2.0-only"
+distfiles="https://github.com/andikleen/mcelog/archive/v$version.tar.gz"
+checksum="446465239a6a0ea35fcdc8e674caedbd515e04ec0dae8dbd2ba4b65edc831ba8"
+conf_files="/etc/mcelog/mcelog.conf"
 
 do_build() {
-	make CC=$CC CFLAGS="$CFLAGS $LDFLAGS" ${makejobs}
+  make \
+    CC="$CC" \
+    CFLAGS="$CFLAGS $LDFLAGS" \
+    "$makejobs"
 }
 
 do_install() {
-	vmkdir usr/share/man/man5
-	vmkdir usr/share/man/man8
-	make PREFIX=/usr DESTDIR=${DESTDIR} install
-	mv ${DESTDIR}/usr/sbin ${DESTDIR}/usr/bin
-	vsv mcelog
+  vmkdir usr/share/man/man5
+  vmkdir usr/share/man/man8
+  make \
+    PREFIX="/usr" \
+    DESTDIR="$DESTDIR" \
+    install
+  mv "$DESTDIR/usr/sbin" "$DESTDIR/usr/bin"
+  vsv mcelog
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
