@@ -3,6 +3,7 @@ pkgname="cargo"
 version=0.40.0
 revision=1
 _cargo_dist_version=0.39.0
+_git2_ver=0.10.1
 _libgit2_ver=0.9.1
 short_desc="Rust package manager"
 depends="rust"
@@ -113,6 +114,7 @@ do_build() {
 
   # gotta pin out libgit2-sys at the version
   $cargo update
+  $cargo update --package git2 --precise "$_git2_ver"
   $cargo update --package libgit2-sys --precise "$_libgit2_ver"
   $cargo build --release $(vopt_if static --features="all-static")
 }
