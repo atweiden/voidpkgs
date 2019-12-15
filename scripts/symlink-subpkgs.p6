@@ -611,6 +611,7 @@ constant %PKG = Map.new(
     'python-snowballstemmer' => ['python3-snowballstemmer'],
     'python-sphinxcontrib' => ['python3-sphinxcontrib'],
     'python-sphinxcontrib-websupport' => ['python3-sphinxcontrib-websupport'],
+    'python-toml' => ['python3-toml'],
     'python-urllib3' => ['python3-urllib3'],
     'python-wcwidth' => ['python3-wcwidth'],
     'python-yaml' => ['python3-yaml'],
