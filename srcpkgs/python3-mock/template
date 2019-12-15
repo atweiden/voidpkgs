@@ -1,18 +1,19 @@
-# Template file for 'python3-mock'
-pkgname=python3-mock
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python3-mock"
 version=3.0.5
 revision=1
-archs=noarch
-wrksrc="mock-${version}"
-build_style=python3-module
-hostmakedepends="python3-setuptools"
 short_desc="Python3 mock library"
-maintainer="Alex Childs <misuchiru03+void@gmail.com>"
-license="BSD-2-Clause"
+archs="noarch"
+hostmakedepends="python3-setuptools"
 homepage="http://mock.readthedocs.org/en/latest/"
-distfiles="${PYPI_SITE}/m/mock/mock-${version}.tar.gz"
-checksum=83657d894c90d5681d62155c82bda9c1187827525880eda8ff5df4ec813437c3
+license="BSD-2-Clause"
+distfiles="$PYPI_SITE/m/mock/mock-$version.tar.gz"
+checksum="83657d894c90d5681d62155c82bda9c1187827525880eda8ff5df4ec813437c3"
+wrksrc="mock-$version"
+build_style="python3-module"
 
 post_install() {
-	vlicense LICENSE.txt
+  vlicense LICENSE.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
