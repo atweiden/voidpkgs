@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="grpc"
-version=1.25.0
+version=1.26.0
 revision=1
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
@@ -13,7 +13,7 @@ hostmakedepends="protobuf"
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
 distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
-checksum="ffbe61269160ea745e487f79b0fd06b6edd3d50c6d9123f053b5634737cf2f69"
+checksum="2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81"
 build_style="gnu-makefile"
 make_build_args+=" prefix=\$(DESTDIR)/usr"
 make_build_args+=" AROPTS=rc"
