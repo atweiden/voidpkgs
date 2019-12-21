@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="base-files"
 version=0.140
-revision=10
+revision=11
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
 homepage="https://www.voidlinux.org"
