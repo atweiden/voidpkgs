@@ -20,6 +20,10 @@ checksum="9e592fe7658046220e0ac0a6d05c4026903f3077b248893e0056ccbe4ee88241"
 build_style="gnu-configure"
 
 pre_configure() {
+  # does runtime detection, this actually breaks build
+  CFLAGS="${CFLAGS/-mno-altivec/}"
+  CXXFLAGS="${CXXFLAGS/-mno-altivec/}"
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
