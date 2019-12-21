@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireguard"
-version=0.0.20191212
+version=0.0.20191219
 revision=1
 short_desc="Fast, modern, secure VPN tunnel"
 depends+=" dkms"
@@ -9,7 +9,7 @@ makedepends="libmnl-devel"
 homepage="https://www.wireguard.com/"
 license="GPL-2.0-only"
 distfiles="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-$version.tar.xz"
-checksum="b0d718380f7a8822b2f12d75e462fa4eafa3a77871002981f367cd4fe2a1b071"
+checksum="5aba6f0c38e97faa0b155623ba594bb0e4bd5e29deacd8d5ed8bda8d8283b0e7"
 wrksrc="WireGuard-$version"
 build_wrksrc="src/tools"
 build_style="gnu-makefile"
