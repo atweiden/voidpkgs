@@ -193,7 +193,7 @@ _glibc_build() {
 
   export AS="$_triplet-as"
   export CC="$_triplet-gcc"
-  export CFLAGS="-O1 -pipe -Wno-error -Wno-attribute-alias $_archflags"
+  export CFLAGS="-O1 -pipe $_archflags"
   export CPP="$_triplet-cpp"
   export CXX="$_triplet-g++"
   export LD="$_triplet-ld"
@@ -201,6 +201,7 @@ _glibc_build() {
 
   _args+=" --config-cache"
   _args+=" --disable-profile"
+  _args+=" --disable-werror"
   _args+=" --enable-kernel=2.6.27"
   _args+=" --enable-obsolete-nsl"
   _args+=" --enable-obsolete-rpc"
