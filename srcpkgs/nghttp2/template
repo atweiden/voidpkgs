@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nghttp2"
-version=1.39.2
+version=1.40.0
 revision=1
 short_desc="HTTP/2 C Library"
 makedepends+=" c-ares-devel"
@@ -14,12 +14,13 @@ hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
 distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="a2d216450abd2beaf4e200c168957968e89d602ca4119338b9d7ab059fd4ce8b"
-build_style="gnu-configure"
-configure_args+=" --disable-examples"
-configure_args+=" --without-jemalloc"
-configure_args+=" --without-libxml2"
-configure_args+=" --without-spdylay"
+checksum="09fc43d428ff237138733c737b29fb1a7e49d49de06d2edbed3bc4cdcee69073"
+build_style="cmake"
+configure_args+=" -DENABLE_EXAMPLES=OFF"
+configure_args+=" -DENABLE_FAILMALLOC=OFF"
+configure_args+=" -DENABLE_STATIC_LIB=ON"
+configure_args+=" -DWITH_JEMALLOC=OFF"
+configure_args+=" -DWITH_LIBXML2=OFF"
 
 post_install() {
   vlicense COPYING
