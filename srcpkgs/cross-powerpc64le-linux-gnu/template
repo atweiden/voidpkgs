@@ -228,7 +228,7 @@ _glibc_build() {
   export CXX="$_triplet-g++"
   export LD="$_triplet-ld"
   export NM="$_triplet-nm"
-  export CFLAGS="-O2 -pipe -Wno-error"
+  export CFLAGS="-O2 -pipe -Wno-error -Wno-attribute-alias"
 
   _args+=" --config-cache"
   _args+=" --disable-profile"
