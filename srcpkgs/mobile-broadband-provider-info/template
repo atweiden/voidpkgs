@@ -1,15 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mobile-broadband-provider-info"
-version=20190116
+version=20190618
 revision=1
 short_desc="Database of mobile broadband service providers"
 archs="noarch"
 checkdepends="libxml2"
-hostmakedepends="automake"
+hostmakedepends+=" automake"
+hostmakedepends+=" libxslt"
 homepage="https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/"
 license="custom:Creative Commons Public Domain"
 distfiles="https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/$version/$pkgname-$version.tar.bz2"
-checksum="ed7def2bbbb1e4ad5f5bf9861acae4d1d6d38f4b0aa998034371345c469a196f"
+checksum="d0cb1648e7d21c6bd899ab6be0e7963a69521296b43b8b191c9edaf243bf3748"
 build_style="gnu-configure"
 
 pre_configure() {
