@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="shadow"
 version=4.8
-revision=1
+revision=2
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
@@ -17,6 +17,7 @@ conf_files+=" /etc/default/*"
 conf_files+=" /etc/login.defs"
 conf_files+=" /etc/pam.d/*"
 build_style="gnu-configure"
+configure_args+=" --disable-account-tools-setuid"
 configure_args+=" --disable-nls"
 configure_args+=" --disable-static"
 configure_args+=" --enable-shared"
