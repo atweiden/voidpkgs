@@ -1,9 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mit-krb5"
-version=1.17
-revision=3
+version=1.17.1
+revision=1
 short_desc="MIT Kerberos 5 implementation"
-#depends="mit-krb5-client>=${version}_$revision"
 makedepends+=" e2fsprogs-devel"
 makedepends+=" libldap-devel"
 hostmakedepends+=" e2fsprogs-devel"
@@ -12,8 +11,8 @@ hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
-distfiles="http://web.mit.edu/kerberos/dist/krb5/$version/${pkgname#mit-}-$version.tar.gz"
-checksum="5a6e2284a53de5702d3dc2be3b9339c963f9b5397d3fbbc53beb249380a781f5"
+distfiles="http://web.mit.edu/kerberos/dist/krb5/${version%.*}/${pkgname#mit-}-$version.tar.gz"
+checksum="3706d7ec2eaa773e0e32d3a87bf742ebaecae7d064e190443a3acddfd8afb181"
 wrksrc="${pkgname#mit-}-$version"
 build_style="gnu-configure"
 
