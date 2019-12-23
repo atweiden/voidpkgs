@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm"
-version=9.0.0
-revision=2
+version=9.0.1
+revision=1
 short_desc="LLVM meta package"
 depends="llvm9"
 homepage="https://www.voidlinux.org"
