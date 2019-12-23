@@ -12,6 +12,8 @@ go_import_path="github.com/hekmekk/git-team"
 go_package+=" $go_import_path/cmd/git-team"
 go_package+=" $go_import_path/cmd/prepare-commit-msg"
 
+export GOFLAGS="-trimpath"
+
 pre_build() {
   vsed \
     -i \
