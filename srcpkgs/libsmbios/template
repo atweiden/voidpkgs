@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libsmbios"
 version=2.4.2
-revision=2
+revision=3
 short_desc="Library for SMBIOS access"
 archs+=" i686*"
 archs+=" x86_64*"
