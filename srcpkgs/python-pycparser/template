@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pycparser"
 version=2.19
-revision=1
+revision=2
 short_desc="Complete C99 parser in pure Python (Python2)"
 archs="noarch"
 depends="python-ply"
