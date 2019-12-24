@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-rfc6555"
 version=0.0.0
-revision=1
+revision=2
 short_desc="Python2 implementation of the Happy Eyeballs Algorithm"
 archs="noarch"
 depends="python-selectors2"
