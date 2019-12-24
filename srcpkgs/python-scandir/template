@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-scandir"
 version=1.10.0
-revision=2
+revision=3
 short_desc="Better directory iterator and faster os.walk() (Python2)"
 depends="python"
 makedepends+=" python-devel"
