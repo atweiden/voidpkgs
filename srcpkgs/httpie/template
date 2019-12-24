@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="httpie"
 version=1.0.3
-revision=1
+revision=2
 short_desc="Human-friendly command line HTTP client"
 archs="noarch"
 depends+=" python3-Pygments"
