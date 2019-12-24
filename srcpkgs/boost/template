@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="boost"
 version=1.69.0
-revision=5
+revision=6
 short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
@@ -127,7 +127,7 @@ __EOF
     architecture="$_arch" \
     python="2.7,$py3_ver" \
     "$makejobs" \
-    --debug-building \
+    --prefix="$DESTDIR/usr" \
     --toolset="$_toolset" \
     --user-config="$wrksrc/user-config.jam"
 }
@@ -144,6 +144,7 @@ do_install() {
     architecture="$_arch" \
     python="2.7,$py3_ver" \
     --prefix="$DESTDIR/usr" \
+    --toolset="$_toolset" \
     --user-config="$wrksrc/user-config.jam" \
     install
 

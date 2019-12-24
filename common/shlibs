@@ -37,7 +37,7 @@ libisccfg.so.163 bind-libs-9.11.5_1
 liblwres.so.161 bind-libs-9.11.5_1
 libblas.so.3 blas-3.5.0_1
 libboost_python27.so.1.69.0 boost-python1.69-1.69.0_1<1.70.0
-libboost_python36.so.1.69.0 boost-python3-1.69-1.69.0_1<1.70.0
+libboost_python38.so.1.69.0 boost-python3-1.69-1.69.0_1<1.70.0
 libbz2.so.1 bzip2-1.0.5_1
 libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
