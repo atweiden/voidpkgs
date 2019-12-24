@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-Pygments"
 version=2.4.2
-revision=1
+revision=2
 short_desc="Python2 syntax highlighter"
 archs="noarch"
 depends="python-setuptools"
