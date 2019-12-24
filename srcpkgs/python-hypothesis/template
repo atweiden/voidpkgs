@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-hypothesis"
 version=4.38.2
-revision=1
+revision=2
 short_desc="Python2 library for property based testing"
 archs="noarch"
 depends+=" python-attrs"
