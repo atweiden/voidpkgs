@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-iso-8601"
 version=0.3.0
-revision=1
+revision=2
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 archs="noarch"
 depends="python"
