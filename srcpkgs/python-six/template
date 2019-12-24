@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-six"
 version=1.12.0
-revision=1
+revision=2
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
 archs="noarch"
 depends="python"
