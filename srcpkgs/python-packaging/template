@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-packaging"
 version=19.1
-revision=2
+revision=3
 short_desc="Core utilities for Python packages (Python2)"
 archs="noarch"
 depends+=" python-attrs"
