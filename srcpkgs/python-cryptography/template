@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-cryptography"
 version=2.7
-revision=1
+revision=2
 depends+=" python-asn1crypto"
 depends+=" python-cffi"
 depends+=" python-enum34"
