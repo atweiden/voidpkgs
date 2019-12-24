@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-zope.interface"
 version=4.6.0
-revision=2
+revision=3
 short_desc="Zope interfaces for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
