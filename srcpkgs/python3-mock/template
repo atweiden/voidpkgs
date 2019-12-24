@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-mock"
 version=3.0.5
-revision=1
+revision=2
 short_desc="Python3 mock library"
 archs="noarch"
 hostmakedepends="python3-setuptools"
