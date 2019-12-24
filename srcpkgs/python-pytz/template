@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pytz"
 version=2019.3
-revision=1
+revision=2
 short_desc="Python2 timezone library"
 archs="noarch"
 depends+=" python"
