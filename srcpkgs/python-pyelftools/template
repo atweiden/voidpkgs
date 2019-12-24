@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pyelftools"
 version=0.25
-revision=1
+revision=2
 short_desc="Python2 library for parsing ELF and DWARF"
 archs="noarch"
 depends="python"
