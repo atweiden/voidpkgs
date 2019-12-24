@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-docopt"
 version=0.6.2
-revision=4
+revision=5
 short_desc="Pythonic argument parser, that will make you smile (Python2)"
 archs="noarch"
 depends="python"
