@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="llvm9"
 version=9.0.1
-revision=1
+revision=2
 short_desc="Low Level Virtual Machine"
 depends="libllvm9"
 makedepends+=" binutils-devel"
