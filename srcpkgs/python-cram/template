@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-cram"
 version=0.7
-revision=2
+revision=3
 short_desc="Simple testing framework for commandline applications (Python2)"
 archs="noarch"
 depends="python"
