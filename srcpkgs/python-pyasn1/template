@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-pyasn1"
 version=0.4.6
-revision=1
+revision=2
 short_desc="ASN.1 library for Python2"
 archs="noarch"
 depends="python"
