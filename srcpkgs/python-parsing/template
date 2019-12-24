@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-parsing"
 version=2.4.2
-revision=1
+revision=2
 short_desc="Python parsing module (Python2)"
 archs="noarch"
 depends="python"
