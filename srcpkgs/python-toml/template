@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-toml"
 version=0.10.0
-revision=1
+revision=2
 short_desc="Python2 library for TOML"
 archs="noarch"
 depends="python"
