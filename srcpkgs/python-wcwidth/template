@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-wcwidth"
 version=0.1.7
-revision=2
+revision=3
 short_desc="Measures number of terminal column cells of wide-character codes (Python2)"
 archs="noarch"
 depends="python"
