@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="distcc"
 version=3.3.3
-revision=2
+revision=3
 short_desc="Distributed compilation for faster C/C++ builds"
 makedepends+=" avahi-libs-devel"
 makedepends+=" binutils-devel"
