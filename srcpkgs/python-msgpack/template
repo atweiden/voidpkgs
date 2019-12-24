@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-msgpack"
 version=0.6.2
-revision=1
+revision=2
 short_desc="Python module for Msgpack serializer (Python2)"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
