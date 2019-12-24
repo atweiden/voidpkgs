@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-pytest"
 version=5.3.2
-revision=1
+revision=2
 short_desc="Simple powerful testing with Python 3"
 archs="noarch"
 depends+=" python3-atomicwrites"
