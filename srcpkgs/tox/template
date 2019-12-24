@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tox"
 version=3.14.2
-revision=1
+revision=2
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-filelock"
 depends+=" python3-importlib_metadata"
