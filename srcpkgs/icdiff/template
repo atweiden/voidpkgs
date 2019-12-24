@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="icdiff"
 version=1.9.5
-revision=1
+revision=2
 short_desc="Improved colored diff (Python2)"
 archs="noarch"
 depends+=" python"
