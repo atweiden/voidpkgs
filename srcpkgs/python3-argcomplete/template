@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-argcomplete"
 version=1.10.3
-revision=1
+revision=2
 short_desc="Bash tab completion for argparse"
 archs="noarch"
 hostmakedepends="python3-setuptools"
