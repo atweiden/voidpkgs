@@ -15,12 +15,7 @@ license="MIT"
 homepage="https://nghttp2.org"
 distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/$pkgname-$version.tar.xz"
 checksum="09fc43d428ff237138733c737b29fb1a7e49d49de06d2edbed3bc4cdcee69073"
-build_style="cmake"
-configure_args+=" -DENABLE_EXAMPLES=OFF"
-configure_args+=" -DENABLE_FAILMALLOC=OFF"
-configure_args+=" -DENABLE_STATIC_LIB=ON"
-configure_args+=" -DWITH_JEMALLOC=OFF"
-configure_args+=" -DWITH_LIBXML2=OFF"
+build_style="gnu-configure"
 
 post_install() {
   vlicense COPYING
