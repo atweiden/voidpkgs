@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libpwquality"
 version=1.4.2
-revision=1
+revision=2
 short_desc="Library for password quality checking and generating random passwords"
 makedepends+=" cracklib-devel"
 makedepends+=" pam-devel"
