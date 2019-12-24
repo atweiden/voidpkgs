@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-urllib3"
 version=1.25.6
-revision=1
+revision=2
 short_desc="HTTP library with thread-safe connection pooling (Python2)"
 archs="noarch"
 depends="python-six"
