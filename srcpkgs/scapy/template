@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="scapy"
 version=2.4.3
-revision=1
+revision=2
 short_desc="Powerful interactive packet manipulation program written in Python"
 archs="noarch"
 depends+=" python3"
