@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="peru"
 version=1.2.0
-revision=1
+revision=2
 short_desc="Tool for fetching code"
 archs="noarch"
 depends+=" curl"
