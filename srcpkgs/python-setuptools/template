@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-setuptools"
 version=41.2.0
-revision=2
+revision=3
 short_desc="Easily build and distribute Python2 packages"
 archs="noarch"
 depends="python"
