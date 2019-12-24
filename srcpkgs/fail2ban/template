@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="fail2ban"
 version=0.10.4
-revision=1
+revision=2
 short_desc="Authentication failure monitor system"
 archs="noarch"
 depends="python3"
