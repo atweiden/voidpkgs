@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-pluggy"
 version=0.13.1
-revision=1
+revision=2
 short_desc="Minimalist production ready plugin system (Python3)"
 archs="noarch"
 depends="python3-importlib_metadata"
