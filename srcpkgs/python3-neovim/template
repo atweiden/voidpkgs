@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-neovim"
 version=0.3.2
-revision=3
+revision=4
 short_desc="Python3 client for Neovim"
 archs="noarch"
 depends+=" neovim"
