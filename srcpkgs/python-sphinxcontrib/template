@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-sphinxcontrib"
 version=1.0
-revision=2
+revision=3
 short_desc="Namespace package declaration for sphinxcontrib (Python2)"
 archs="noarch"
 depends="python-setuptools"
