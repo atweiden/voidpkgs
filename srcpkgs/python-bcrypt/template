@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-bcrypt"
 version=3.1.7
-revision=1
+revision=2
 short_desc="Modern password hashing for software and servers (Python2)"
 depends+=" python-cffi"
 depends+=" python-six"
