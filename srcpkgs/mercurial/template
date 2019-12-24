@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="mercurial"
 version=5.2.1
-revision=1
+revision=2
 short_desc="Fast, lightweight source control management system"
 depends="ca-certificates"
 makedepends="python3-devel"
