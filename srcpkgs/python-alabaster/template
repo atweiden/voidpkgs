@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-alabaster"
 version=0.7.12
-revision=1
+revision=2
 short_desc="Configurable sidebar-enabled Sphinx theme (Python2)"
 archs="noarch"
 depends="python"
