@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="meson"
 version=0.52.1
-revision=1
+revision=2
 short_desc="Super fast build system"
 archs="noarch"
 depends+=" ninja"
