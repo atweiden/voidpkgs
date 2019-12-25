@@ -512,7 +512,6 @@ constant %PKG = Map.new(
                     libnuma-devel>,
     'oath-toolkit' => ['oath-toolkit-devel'],
     'oblibs' => ['oblibs-devel'],
-    'odroid-c2-kernel' => ['odroid-c2-kernel-headers'],
     'oniguruma' => qw<oniguruma-devel
                       oniguruma-doc>,
     'openldap' => qw<libldap
