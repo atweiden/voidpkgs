@@ -6,7 +6,7 @@ short_desc="Encrypted personal archives"
 homepage="https://github.com/skeeto/enchive"
 license="Unlicense"
 changelog="https://github.com/skeeto/enchive/raw/master/NEWS.md"
-distfiles="https://github.com/skeeto/enchive/releases/download/$version/$pkgname-$version.tar.xz"
+distfiles="https://github.com/skeeto/enchive/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="e66d0417db2bcc7ddd2dea1e0e1e88df6b4be07e85173710cba254af342585ef"
 build_style="gnu-makefile"
 
