@@ -6,6 +6,7 @@ short_desc="VM for NQP and Rakudo Perl 6"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 # XXX: MoarVM-2019.11 fails to build with libtommath-1.2.0
+# see: https://github.com/MoarVM/MoarVM/pull/1221
 #makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
 makedepends+=" libzstd-devel"
