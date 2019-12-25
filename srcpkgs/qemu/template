@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="qemu"
 version=4.2.0
-revision=1
+revision=2
 short_desc="Open Source Processor Emulator"
 makedepends+=" bzip2-devel"
 makedepends+=" gnutls-devel"
