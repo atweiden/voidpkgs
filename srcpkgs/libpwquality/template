@@ -41,6 +41,10 @@ pre_build() {
   fi
 }
 
+pre_install() {
+  pre_build
+}
+
 libpwquality-devel_package() {
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" cracklib-devel"
