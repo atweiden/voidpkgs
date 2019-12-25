@@ -1,8 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="nsss"
 version=0.0.2.1
-revision=1
+revision=2
 short_desc="Minimal competing implementation of glibc's Name Switch Service"
+# only available for musl
+archs="*-musl"
 makedepends="skalibs-devel"
 homepage="https://skarnet.org/software/nsss/"
 license="ISC"
@@ -16,14 +18,6 @@ configure_args+=" --enable-shared"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    ;;
-  *)
-    broken="Only available on musl"
-    ;;
-esac
 
 post_install() {
   vlicense COPYING
