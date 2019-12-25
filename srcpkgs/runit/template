@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="runit"
 version=2.1.2
-revision=10
+revision=11
 short_desc="A UNIX init scheme with service supervision"
 homepage="http://smarden.org/runit/"
 license="BSD-3-Clause"
