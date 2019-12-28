@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="unzip"
 version=6.0
-revision=12
+revision=13
 short_desc="List, test and extract compressed files in a ZIP archive"
 makedepends="bzip2-devel"
 homepage="http://infozip.sf.net/"
