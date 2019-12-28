@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libtirpc"
-version=1.1.4
+version=1.2.5
 revision=1
 short_desc="Transport Independent RPC library (SunRPC replacement)"
 makedepends+=" libgssglue-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://libtirpc.sourceforge.net/"
 license="BSD-3-Clause"
 distfiles="$SOURCEFORGE_SITE/libtirpc/$pkgname-$version.tar.bz2"
-checksum="2ca529f02292e10c158562295a1ffd95d2ce8af97820e3534fe1b0e3aec7561d"
+checksum="f3b6350c7e9c3cd9c58fc7a5e5f8e6be469cc571bb5eb31eb9790b3e675186ca"
 conf_files+=" /etc/bindresvport.blacklist"
 conf_files+=" /etc/netconfig"
 build_style="gnu-configure"
