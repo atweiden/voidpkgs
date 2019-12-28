@@ -1,13 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="tmux"
 version=3.0a
-revision=1
+revision=2
 short_desc="Terminal Multiplexer"
 makedepends+=" libevent-devel"
 makedepends+=" libutempter-devel"
 makedepends+=" ncurses-devel"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
+hostmakedepends+=" byacc"
 hostmakedepends+=" pkgconf"
 homepage="https://tmux.github.io"
 license="ISC"
