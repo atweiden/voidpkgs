@@ -567,7 +567,6 @@ constant %PKG = Map.new(
     'python-M2Crypto' => ['python3-M2Crypto'],
     'python-MarkupSafe' => ['python3-MarkupSafe'],
     'python-Pygments' => ['python3-Pygments'],
-    'python-Sphinx' => ['python3-Sphinx'],
     'python-Unidecode' => ['python3-Unidecode'],
     'python-alabaster' => ['python3-alabaster'],
     'python-atomicwrites' => ['python3-atomicwrites'],

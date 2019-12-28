@@ -1,0 +1,43 @@
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python3-Sphinx"
+version=2.3.1
+revision=1
+short_desc="Python 3 documentation generator"
+archs="noarch"
+depends+=" python3-Babel"
+depends+=" python3-Jinja2"
+depends+=" python3-Pygments"
+depends+=" python3-alabaster"
+depends+=" python3-docutils"
+depends+=" python3-imagesize"
+depends+=" python3-packaging"
+depends+=" python3-requests"
+depends+=" python3-snowballstemmer"
+depends+=" python3-sphinxcontrib-applehelp"
+depends+=" python3-sphinxcontrib-devhelp"
+depends+=" python3-sphinxcontrib-htmlhelp"
+depends+=" python3-sphinxcontrib-jsmath"
+depends+=" python3-sphinxcontrib-qthelp"
+depends+=" python3-sphinxcontrib-serializinghtml"
+hostmakedepends="python3-setuptools"
+homepage="http://sphinx-doc.org"
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
+checksum="e6e766b74f85f37a5f3e0773a1e1be8db3fcb799deb58ca6d18b70b0b44542a5"
+wrksrc="Sphinx-$version"
+build_style="python3-module"
+pycompile_module="sphinx"
+alternatives+=" sphinx:sphinx-apidoc:/usr/bin/sphinx-apidoc3"
+alternatives+=" sphinx:sphinx-autogen:/usr/bin/sphinx-autogen3"
+alternatives+=" sphinx:sphinx-build:/usr/bin/sphinx-build3"
+alternatives+=" sphinx:sphinx-quickstart:/usr/bin/sphinx-quickstart3"
+
+post_install() {
+  mv "$DESTDIR/usr/bin/sphinx-apidoc" "$DESTDIR/usr/bin/sphinx-apidoc3"
+  mv "$DESTDIR/usr/bin/sphinx-autogen" "$DESTDIR/usr/bin/sphinx-autogen3"
+  mv "$DESTDIR/usr/bin/sphinx-build" "$DESTDIR/usr/bin/sphinx-build3"
+  mv "$DESTDIR/usr/bin/sphinx-quickstart" "$DESTDIR/usr/bin/sphinx-quickstart3"
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
