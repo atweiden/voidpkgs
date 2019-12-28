@@ -503,10 +503,9 @@ libvorbisenc.so.2 libvorbis-1.2.1rc1_1
 libvorbisfile.so.3 libvorbis-1.2.1rc1_1
 libvterm.so.0 libvterm-0.0.20151005_1
 libvtv.so.0 libvtv-6.3.0_1
-libwscodecs.so.2 libwireshark-2.6.2_1
-libwireshark.so.12 libwireshark-3.0.0_1
-libwiretap.so.9 libwireshark-3.0.0_1
-libwsutil.so.10 libwireshark-3.0.0_1
+libwireshark.so.13 libwireshark-3.2.0_1
+libwiretap.so.10 libwireshark-3.2.0_1
+libwsutil.so.11 libwireshark-3.2.0_1
 libwslay.so.0 libwslay-1.1.0_1
 libxbps.so.4 libxbps-0.54_1
 libxml2.so.2 libxml2-2.7.0_1
