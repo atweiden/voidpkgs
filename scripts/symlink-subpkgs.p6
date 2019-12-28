@@ -475,6 +475,7 @@ constant %PKG = Map.new(
     'mbedtls' => qw<mbedtls-devel
                     mbedtls-utils>,
     'miniupnpc' => ['miniupnpc-devel'],
+    'minizip' => ['minizip-devel'],
     'mit-krb5' => qw<mit-krb5-client
                      mit-krb5-devel
                      mit-krb5-libs>,
