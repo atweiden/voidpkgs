@@ -18,6 +18,8 @@ checkdepends="dejagnu"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
+  hostmakedepends+=" tar"
+  hostmakedepends+=" texinfo"
 fi
 homepage="http://gcc.gnu.org"
 license="GFDL-1.2-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
