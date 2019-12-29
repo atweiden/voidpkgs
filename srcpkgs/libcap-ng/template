@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libcap-ng"
 version=0.7.10
-revision=2
+revision=3
 short_desc="Alternate POSIX capabilities library"
 homepage="http://people.redhat.com/sgrubb/libcap-ng/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
@@ -14,10 +14,9 @@ subpackages+=" libcap-ng-devel"
 subpackages+=" libcap-ng-progs"
 
 if [[ -z "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" python-devel"
   hostmakedepends+=" python3-devel"
   hostmakedepends+=" swig"
-  configure_args+=" --with-python"
+  configure_args+=" --without-python"
   configure_args+=" --with-python3"
   subpackages+=" libcap-ng-python"
   subpackages+=" libcap-ng-python3"
@@ -55,13 +54,10 @@ libcap-ng-python3_package() {
 }
 
 libcap-ng-python_package() {
-  lib32disabled="yes"
-  short_desc+=" - Python2 bindings"
-  depends="python"
-  pycompile_module="capng.py"
-  pkg_install() {
-    vmove "$py2_sitelib"
-  }
+  build_style="meta"
+  archs="noarch"
+  short_desc+=" - transitional dummy pkg"
+  depends="libcap-ng-python3-${version}_$revision"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
