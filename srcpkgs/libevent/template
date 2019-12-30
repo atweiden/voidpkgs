@@ -1,7 +1,8 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libevent"
 version=2.1.11
-revision=1
+revision=2
+python_version=3
 short_desc="Abstract asynchronous event notification library"
 makedepends="libressl-devel"
 homepage="http://libevent.org/"
