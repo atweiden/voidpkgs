@@ -1,14 +1,14 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="sysstat"
-version=12.2.0
-revision=2
+version=12.2.1
+revision=1
 short_desc="Collection of performance monitoring tools"
 depends="lm_sensors"
 hostmakedepends="pkg-config"
 homepage="http://pagesperso-orange.fr/sebastien.godard/"
 license="GPL-2.0-or-later"
 distfiles="http://pagesperso-orange.fr/sebastien.godard/sysstat-$version.tar.xz"
-checksum="61aa98eb8b38542eb97defcc2472adee1a24df8252f41b96e20d64c6064a8375"
+checksum="8edb0e19b514ac560a098a02933a4735b881296d61014db89bf80f05dd7a4732"
 conf_files+=" /etc/default/sysstat"
 conf_files+=" /etc/default/sysstat.ioconf"
 build_style="gnu-configure"
