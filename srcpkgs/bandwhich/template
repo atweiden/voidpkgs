@@ -1,15 +1,16 @@
-# Template file for 'bandwhich'
-pkgname=bandwhich
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="bandwhich"
 version=0.6.0
 revision=1
-build_style=cargo
 short_desc="Terminal bandwidth utilization tool"
-maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
-license="MIT"
 homepage="https://github.com/imsnif/bandwhich"
-distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=df13a4641bee77d1199baffaedd27f99fe3d8e36408e318b85b280cdb76ab62e
+license="MIT"
+distfiles="https://github.com/imsnif/bandwhich/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="df13a4641bee77d1199baffaedd27f99fe3d8e36408e318b85b280cdb76ab62e"
+build_style="cargo"
 
 post_install() {
-	vlicense LICENSE.md
+  vlicense LICENSE.md
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
