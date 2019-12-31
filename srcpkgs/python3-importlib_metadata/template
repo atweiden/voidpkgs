@@ -1,11 +1,12 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python3-importlib_metadata"
 version=1.2.0
-revision=2
+revision=3
 short_desc="Read metadata from Python packages"
 archs="noarch"
 depends="python3-zipp"
-checkdepends="python3-zipp"
+checkdepends+=" python3-packaging"
+checkdepends+=" python3-zipp"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://importlib-metadata.readthedocs.io/en/latest/"
@@ -17,8 +18,14 @@ wrksrc="importlib_metadata-$version"
 build_style="python-module"
 pycompile_module="importlib_metadata"
 
+do_check() {
+  python3 setup.py test
+}
+
 python-importlib_metadata_package() {
-  depends="python-zipp"
+  depends+=" python-backports.configparser"
+  depends+=" python-contextlib2"
+  depends+=" python-zipp"
   short_desc="${short_desc/Python/Python 2/}"
   pkg_install() {
     vmove "usr/lib/python2.7"
