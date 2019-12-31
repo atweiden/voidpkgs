@@ -1,20 +1,21 @@
-# Template file for 'python-contextlib2'
-pkgname=python-contextlib2
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="python-contextlib2"
 version=0.5.5
 revision=1
-archs=noarch
-wrksrc="contextlib2-${version}"
-build_style=python2-module
-pycompile_module="contextlib2.py"
-hostmakedepends="python-setuptools"
-depends="python"
 short_desc="Backports and enhancements for the contextlib module"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+archs="noarch"
+depends="python"
+hostmakedepends="python-setuptools"
 homepage="https://contextlib2.readthedocs.io/"
 license="PSF"
-distfiles="${PYPI_SITE}/c/contextlib2/contextlib2-${version}.tar.gz"
-checksum=509f9419ee91cdd00ba34443217d5ca51f5a364a404e1dce9e8979cea969ca48
+distfiles="$PYPI_SITE/c/contextlib2/contextlib2-$version.tar.gz"
+checksum="509f9419ee91cdd00ba34443217d5ca51f5a364a404e1dce9e8979cea969ca48"
+wrksrc="contextlib2-$version"
+build_style="python2-module"
+pycompile_module="contextlib2.py"
 
 post_install() {
-       vlicense LICENSE.txt
+  vlicense LICENSE.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
