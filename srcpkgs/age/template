@@ -1,18 +1,21 @@
-# Template file for 'age'
-pkgname=age
+maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+pkgname="age"
 version=1.0.0.beta2
 revision=1
-wrksrc="${pkgname}-${version/.b/-b}"
-build_style=go
-go_import_path="filippo.io/age"
-go_package="${go_import_path}/cmd/..."
 short_desc="Simple, modern and secure encryption tool"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-3-Clause"
 homepage="https://age-encryption.org/"
-distfiles="https://github.com/FiloSottile/age/archive/v${version/.b/-b}.tar.gz"
-checksum=ca0fcfe45415c03c637c2332231f1793bf4dbd6a03e663a71ef2b7554647d763
+license="BSD-3-Clause"
+distfiles="https://github.com/FiloSottile/age/archive/v${version/.b/-b}.tar.gz>$pkgname-${version/.b/-b}.tar.gz"
+checksum="ca0fcfe45415c03c637c2332231f1793bf4dbd6a03e663a71ef2b7554647d763"
+wrksrc="$pkgname-${version/.b/-b}"
+build_style="go"
+go_import_path="filippo.io/age"
+go_package="$go_import_path/cmd/..."
+
+export GOFLAGS="-trimpath"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
