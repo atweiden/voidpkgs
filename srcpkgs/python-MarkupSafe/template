@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="python-MarkupSafe"
 version=1.1.1
-revision=4
+revision=5
 short_desc="Implements a XML/HTML/XHTML Markup safe string for Python2"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
