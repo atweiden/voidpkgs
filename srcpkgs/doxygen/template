@@ -1,6 +1,6 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="doxygen"
-version=1.8.16
+version=1.8.17
 revision=1
 short_desc="Source code documentation generator tool"
 hostmakedepends+=" flex"
@@ -10,7 +10,7 @@ hostmakedepends+=" python"
 homepage="http://www.doxygen.org/"
 license="GPL-2.0-only"
 distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
-checksum="ff981fb6f5db4af9deb1dd0c0d9325e0f9ba807d17bd5750636595cf16da3c82"
+checksum="2cba988af2d495541cbbe5541b3bee0ee11144dcb23a81eada19f5501fd8b599"
 build_style="cmake"
 
 post_install() {
