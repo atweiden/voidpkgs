@@ -1,18 +1,18 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libimobiledevice"
 version=1.2.0
-revision=14
+revision=15
 short_desc="Library to communicate with Apple devices"
 makedepends+=" libglib-devel"
 makedepends+=" libplist-devel"
 makedepends+=" libressl-devel"
 makedepends+=" libusb-devel"
 makedepends+=" libusbmuxd-devel"
-makedepends+=" python-devel"
+makedepends+=" python3-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkgconf"
-hostmakedepends+=" python-Cython"
+hostmakedepends+=" python3-Cython"
 homepage="https://github.com/libimobiledevice/libimobiledevice"
 license="LGPL-2.1-only"
 distfiles="https://github.com/libimobiledevice/libimobiledevice/archive/$version.tar.gz>$pkgname-$version.tar.gz"
@@ -23,8 +23,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" ac_cv_sys_large_file=yes"
 fi
 
-CFLAGS="-I/usr/include/python3.6"
-
 pre_configure() {
   sed \
     -i \
@@ -34,8 +32,8 @@ pre_configure() {
     -i \
     -e 's,-L$(libdir),,g' \
     cython/Makefile.am
-  export PYTHON_CPPFLAGS="-I$XBPS_CROSS_BASE/usr/include/python2.7"
-  export PYTHON_LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -lpython2.7"
+  export PYTHON_CPPFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
+  export PYTHON_LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -lpython$py3_ver"
   autoreconf -fi
 }
 
