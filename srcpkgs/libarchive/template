@@ -45,7 +45,7 @@ build_options_default+=" zstd"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"
   hostmakedepends+=" libtool"
-  hostmakedepends+=" pkg-config"
+  hostmakedepends+=" pkgconf"
 fi
 
 pre_configure() {
