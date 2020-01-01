@@ -16,7 +16,8 @@ checksum="b265934f9ddfb24d9b6229547a0e46134f2c7c1a29f02321aaedf511dd4bbafd"
 build_style="fetch"
 
 do_install() {
-  cd "$wrksrc"
+  tar -xzvf "$pkgname-$version.tar.gz"
+  cd "$pkgname-$version"
   vlicense LICENSE
   vdoc README.md
   vcopy examples "usr/share/doc/$pkgname"
