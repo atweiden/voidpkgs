@@ -16,6 +16,12 @@ make_build_args+=" ALL_TOOLS+=obj/ld.musl-clang"
 make_install_args="$make_build_args"
 lib32disabled="yes"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc*)
+    CFLAGS+=" -mlong-double-64"
+    ;;
+esac
+
 post_install() {
   mv "$DESTDIR/lib"/* "$DESTDIR/usr/lib/"
   # cc is an alternative and might actually be clang
