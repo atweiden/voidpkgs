@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="opencl2-headers"
 version=20160105.2.0
-revision=1
+revision=2
 _gitrev="ad68ab31a430c033868574fb49c769ac09d6b6d8"
 short_desc="OpenCL 2.0 (Open Computing Language) header files"
 archs="noarch"
