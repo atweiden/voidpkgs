@@ -13,6 +13,10 @@ distfiles="https://github.com/dbrgn/tealdeer/archive/v$version.tar.gz>$pkgname-$
 checksum="5cf286059b823501d05da445b9b7a609ec2da91d711d990df76397f79d800c52"
 build_style="cargo"
 
+pre_build() {
+  cargo update --package openssl-sys --precise 0.9.53
+}
+
 post_install() {
   vlicense LICENSE-MIT
 }
