@@ -10,6 +10,7 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" bison"
   hostmakedepends+=" perl"
   hostmakedepends+=" python3"
+  hostmakedepends+=" texinfo"
 fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
