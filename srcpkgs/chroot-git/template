@@ -21,7 +21,9 @@ configure_args+=" ac_cv_snprintf_returns_bogus=no"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
-  hostmakedepends="perl"
+  hostmakedepends+=" gettext"
+  hostmakedepends+=" perl"
+  hostmakedepends+=" tar"
 else
   configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
 fi
