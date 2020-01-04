@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="libarchive"
-version=3.4.0
-revision=2
+version=3.4.1
+revision=1
 short_desc="Library to read/write several different streaming archive formats"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -15,7 +15,7 @@ makedepends+=" $(vopt_if zstd libzstd-devel)"
 homepage="http://www.libarchive.org/"
 license="BSD-2-Clause"
 distfiles="https://github.com/libarchive/libarchive/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="8643d50ed40c759f5412a3af4e353cffbce4fdf3b5cf321cb72cacf06b2d825e"
+checksum="fcf87f3ad8db2e4f74f32526dee62dd1fb9894782b0a503a89c9d7a70a235191"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --without-nettle"
@@ -36,7 +36,6 @@ build_options+=" lz4"
 build_options+=" lzo"
 build_options+=" ssl"
 build_options+=" zstd"
-# enable acl, ssl, lz4 and zstd by default
 build_options_default+=" acl"
 build_options_default+=" lz4"
 build_options_default+=" ssl"
