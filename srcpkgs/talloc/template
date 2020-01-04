@@ -1,16 +1,16 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="talloc"
-version=2.1.14
+version=2.3.1
 revision=1
 short_desc="Hierarchical pool based memory allocator with destructors"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libxslt"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python"
+hostmakedepends+=" python3"
 homepage="https://talloc.samba.org/"
 license="GPL-3.0-or-later"
 distfiles="http://samba.org/ftp/talloc/$pkgname-$version.tar.gz"
-checksum="b185602756a628bac507fa8af8b9df92ace69d27c0add5dab93190ad7c3367ce"
+checksum="ef4822d2fdafd2be8e0cabc3ec3c806ae29b8268e932c5e9a4cd5585f37f9f77"
 build_style="configure"
 
 do_configure() {
@@ -18,7 +18,7 @@ do_configure() {
     cp "$FILESDIR/cross-32bit.answers" .
     _args+=" --cross-answers=cross-32bit.answers"
     _args+=" --cross-compile"
-    _args+=" --hostcc=cc"
+    _args+=" --hostcc=$CC"
   fi
   ./configure \
     $_args \
