@@ -79,7 +79,7 @@ mkpkgs() {
   done
 }
 
-# perl6 script to double-quote pkgname in toml key
+# raku script to double-quote pkgname in toml key
 read -r -d '' rakudo <<'EOF'
 my token meta
 {

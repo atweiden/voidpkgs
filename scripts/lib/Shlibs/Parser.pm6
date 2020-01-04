@@ -18,7 +18,7 @@ C<Shlibs::Parser>
 Parse soname mappings in C<common/shlibs>, e.g.
 C<libzmq.so.5 zeromq-4.1.2_1>.
 
-Results in Perl 6 roles, punned.
+Results in Raku roles, punned.
 
 Role C<Pkg> contains attributes:
 
@@ -281,4 +281,4 @@ grammar Shlibs::Parser::Grammar
 
 # end grammar Shlibs::Parser::Grammar }}}
 
-# vim: set filetype=perl6 foldmethod=marker foldlevel=0:
+# vim: set filetype=raku foldmethod=marker foldlevel=0:

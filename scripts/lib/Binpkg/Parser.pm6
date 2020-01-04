@@ -19,7 +19,7 @@ C<Binpkg::Parser>
 Parse *.xbps binpkgs in C<hostdir/binpkgs>, e.g.
 C<zeromq-4.2.5_1.x86_64.xbps>.
 
-Results in Perl 6 role, punned, containing attributes:
+Results in Raku role, punned, containing attributes:
 
 =for item
 C<$.source>: complete *.xbps file string in binpkgs directory
@@ -210,4 +210,4 @@ grammar Binpkg::Parser::Grammar
 
 # end grammar Binpkg::Parser::Grammar }}}
 
-# vim: set filetype=perl6 foldmethod=marker foldlevel=0:
+# vim: set filetype=raku foldmethod=marker foldlevel=0:

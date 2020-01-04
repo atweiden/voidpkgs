@@ -91,4 +91,4 @@ my Str:D &as = sub (Mapping:D $mapping --> Str:D)
     .join("\n")
     .say;
 
-# vim: set filetype=perl6 foldmethod=marker foldlevel=0:
+# vim: set filetype=raku foldmethod=marker foldlevel=0:
