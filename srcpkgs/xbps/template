@@ -1,7 +1,7 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="xbps"
 version=0.57.1
-revision=5
+revision=6
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
