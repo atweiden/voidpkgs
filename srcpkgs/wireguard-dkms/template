@@ -1,9 +1,10 @@
 maintainer="Andy Weidenbaum <archbaum@gmail.com>"
 pkgname="wireguard-dkms"
 version=0.0.20191226
-revision=1
+revision=2
 short_desc="Fast, modern, secure VPN tunnel (DKMS module for Linux <= 5.5)"
 depends+=" dkms"
+depends+=" perl"
 depends+=" wireguard-tools"
 homepage="https://www.wireguard.com/"
 license="GPL-2.0-only"
