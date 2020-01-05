@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="xfsprogs"
-version=5.3.0
+version=5.4.0
 revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" libblkid-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" libuuid-devel"
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="b29a64d04ad81f1f121d4683deae0bbb928abd1c891fe766b2c4bcdf61ab09c1"
+checksum="fa9c3a50bbd9f1619bb42249106f83a22883b79a02de6606ce14afb2f807213f"
 build_style="gnu-configure"
 configure_args+=" --enable-lib64=no"
 configure_args+=" --enable-readline=yes"
