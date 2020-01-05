@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="ngrep"
 version=1.47
 revision=1

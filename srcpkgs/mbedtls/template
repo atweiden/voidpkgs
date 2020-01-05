@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="mbedtls"
 version=2.17.0
 revision=1

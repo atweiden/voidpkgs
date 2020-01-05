@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="libcap-ng"
 version=0.7.10
 revision=3

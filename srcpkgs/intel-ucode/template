@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="intel-ucode"
 version=20191115
 revision=1

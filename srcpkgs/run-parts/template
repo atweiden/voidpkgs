@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="run-parts"
 version=4.9.1
 revision=1

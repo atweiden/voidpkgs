@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="dmraid"
 _distver=1.0.0.rc16
 _patchver=3

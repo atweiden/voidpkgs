@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="sqlite"
 version=3.30.1
 _amalgamationver="$(printf "%d%02d%02d00\n" ${version//./ })"

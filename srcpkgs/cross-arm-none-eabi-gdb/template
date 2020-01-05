@@ -1,7 +1,7 @@
 _triplet="arm-none-eabi"
 _pkgname="gdb"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet-$_pkgname"
 version=8.3
 revision=1

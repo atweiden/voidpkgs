@@ -8,7 +8,7 @@ _triplet="i686-linux-musl"
 _sysroot="/usr/$_triplet"
 _archflags="-march=i686"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=3

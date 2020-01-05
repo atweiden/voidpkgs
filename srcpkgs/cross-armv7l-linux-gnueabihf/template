@@ -8,7 +8,7 @@ _fpuflags="--with-arch=armv7-a --with-fpu=vfpv3 --with-float=hard"
 _archflags="-march=armv7-a -mfpu=vfpv3 -mfloat-abi=hard"
 _sysroot="/usr/$_triplet"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=1

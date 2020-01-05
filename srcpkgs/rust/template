@@ -1,5 +1,5 @@
 # partially adapted from Alpine/Adélie's Rust APKBUILD
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="rust"
 version=1.40.0
 revision=1

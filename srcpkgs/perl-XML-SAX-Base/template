@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="perl-XML-SAX-Base"
 version=1.09
 revision=2

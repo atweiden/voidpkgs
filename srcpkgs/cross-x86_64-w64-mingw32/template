@@ -6,7 +6,7 @@ _mpc_version=1.1.0
 _isl_version=0.19
 _mingw_version=6.0.0
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-x86_64-w64-mingw32"
 version=$_mingw_version
 revision=3

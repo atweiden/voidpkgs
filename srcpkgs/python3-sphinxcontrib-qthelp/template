@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="python3-sphinxcontrib-qthelp"
 version=1.0.2
 revision=1

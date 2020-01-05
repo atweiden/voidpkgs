@@ -1,5 +1,5 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="python3"
 version=3.8.1
 revision=1

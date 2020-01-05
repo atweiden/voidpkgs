@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 _triplet="arm-none-eabi"
 pkgname="cross-$_triplet-libstdc++"
 version=9.2.0

@@ -9,7 +9,7 @@ _fpuflags="--with-arch=armv5te --without-fp --with-float=soft"
 _archflags="-march=armv5te -msoft-float -mfloat-abi=soft"
 _sysroot="/usr/$_triplet"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=3

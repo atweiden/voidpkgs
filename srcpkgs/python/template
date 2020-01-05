@@ -1,5 +1,5 @@
 # this pkg must be synchronized with "srcpkgs/python-tkinter"
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="python"
 version=2.7.17
 revision=2

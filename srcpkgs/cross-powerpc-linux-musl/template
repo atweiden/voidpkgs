@@ -9,7 +9,7 @@ _fpuflags=
 _archflags="-mcpu=powerpc -msecure-plt"
 _sysroot="/usr/$_triplet"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=4

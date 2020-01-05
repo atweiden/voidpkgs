@@ -1,5 +1,5 @@
 # credit: https://www.archlinux.org/packages/extra/x86_64/openmp/
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="libomp"
 version=8.0.0
 revision=1

@@ -7,7 +7,7 @@ _triplet="i686-pc-linux-gnu"
 _archflags="-march=i686 -mtune=generic"
 _sysroot="/usr/$_triplet"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=1

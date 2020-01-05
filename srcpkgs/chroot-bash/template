@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="chroot-bash"
 _bash_distver=5.0
 _bash_patchlevel=007

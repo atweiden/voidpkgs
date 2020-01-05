@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="s6-portable-utils"
 version=2.2.2.1
 revision=1

@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="s6-linux-utils"
 version=2.5.1.1
 revision=1

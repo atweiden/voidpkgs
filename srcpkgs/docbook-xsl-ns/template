@@ -1,5 +1,5 @@
 # keep in sync with docbook-xsl
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="docbook-xsl-ns"
 version=1.79.1
 revision=1

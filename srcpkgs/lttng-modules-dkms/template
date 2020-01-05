@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="lttng-modules-dkms"
 version=2.11.0
 revision=1

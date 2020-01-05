@@ -1,5 +1,5 @@
 # NOTE: also update common/environment/configure/automake when updating!
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="automake"
 version=1.16.1
 revision=3

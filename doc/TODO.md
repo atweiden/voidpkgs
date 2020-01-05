@@ -1,12 +1,6 @@
 Todo
 ====
 
-pick up where you left off:
-
-```sh
-comm -3 <(find . -type f -name 'template' | sed 's,./,,' | sort ) <(ag Weidenbaum -l | sort) | ag srcpkgs
-```
-
 - write script that monitors [upstream][upstream] for pertinent changes
   - *pkg* component
     - extract `pkgname`, `version`, `release` from `template`s and cmp to

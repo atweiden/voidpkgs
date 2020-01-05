@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 _triplet="arm-none-eabi"
 _pkgname="newlib"
 pkgname="cross-$_triplet-$_pkgname"

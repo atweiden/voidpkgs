@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="libbitcoin-secp256k1"
 version=0.1.0.13
 revision=1

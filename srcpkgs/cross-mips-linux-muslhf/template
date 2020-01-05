@@ -8,7 +8,7 @@ _fpuflags="--with-float=hard --with-fp"
 _archflags="-march=mips32r2 -mhard-float"
 _sysroot="/usr/$_triplet"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.32
 revision=3

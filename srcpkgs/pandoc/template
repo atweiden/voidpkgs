@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
 version=2.7.3

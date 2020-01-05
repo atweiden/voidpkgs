@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="dovecot-plugin-pigeonhole"
 version=0.5.9
 revision=1

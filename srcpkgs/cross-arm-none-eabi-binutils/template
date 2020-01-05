@@ -1,7 +1,7 @@
 _triplet="arm-none-eabi"
 _pkgname="binutils"
 
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="cross-$_triplet-$_pkgname"
 version=2.32
 revision=2

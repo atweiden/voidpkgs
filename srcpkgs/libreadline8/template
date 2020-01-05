@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="libreadline8"
 _dist_ver=8.0
 _patch_ver=001

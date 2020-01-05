@@ -1,5 +1,5 @@
 # NOTE: keep this package synchronized with "srcpkgs/xbps"
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="xbps-static"
 version=0.57.1
 revision=3

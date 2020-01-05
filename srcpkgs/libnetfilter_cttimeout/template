@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <archbaum@gmail.com>"
+maintainer="nox"
 pkgname="libnetfilter_cttimeout"
 version=1.0.0
 revision=1
