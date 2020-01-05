@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libressl"
 version=3.0.2
-revision=1
+revision=2
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 homepage="http://www.libressl.org/"
 license="OpenSSL-License, SSLeay-License, ISC"
