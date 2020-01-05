@@ -2,8 +2,7 @@
 
 ## [COPYING.xtraeme](COPYING.xtraeme)
 
-Original license retained from upstream sources, lightly modified to
-remove leading whitespace and wrap at 72 chars.
+Original license retained from upstream sources.
 
 ## [DVCS.md](DVCS.md)
 
