@@ -1,16 +1,11 @@
 maintainer="nox"
 pkgname="atf"
 version=0.21
-revision=3
+revision=4
 short_desc="Automated Testing Framework"
 depends+=" gdb"
 depends+=" xmlcatmgr"
-hostmakedepends+=" automake"
-hostmakedepends+=" gdb"
-hostmakedepends+=" libtool"
-xml_entries+=" system"
-xml_entries+=" http://www.NetBSD.org/XML/atf/tests-results.dtd"
-xml_entries+=" /usr/share/xml/atf/tests-results.dtd"
+hostmakedepends="gdb"
 homepage="https://github.com/jmmv/atf"
 license="BSD-2-Clause"
 distfiles="https://github.com/jmmv/atf/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
@@ -21,10 +16,9 @@ configure_args+=" kyua_cv_getcwd_works=yes"
 configure_args+=" kyua_cv_getopt_optreset=no"
 configure_args+=" kyua_cv_getopt_plus=yes"
 configure_args+=" kyua_cv_signal_lastno=31"
-
-pre_configure() {
-  autoreconf -fi
-}
+xml_entries+=" system"
+xml_entries+=" http://www.NetBSD.org/XML/atf/tests-results.dtd"
+xml_entries+=" /usr/share/xml/atf/tests-results.dtd"
 
 post_install() {
   sed '/^$/q' < atf-c.h > LICENSE
