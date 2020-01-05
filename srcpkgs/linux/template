@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux"
-version=5.3
+version=5.4
 revision=1
 short_desc="The Linux kernel meta package"
 homepage="http://www.voidlinux.org/"
