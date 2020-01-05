@@ -8,4 +8,4 @@ hostdir*
 etc/conf
 etc/virtual
 .precomp
-.xbps-checkvers.plist
+.xbps-checkvers*.plist
