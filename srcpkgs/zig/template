@@ -1,26 +1,29 @@
 maintainer="nox"
 pkgname="zig"
-version=0.3.0
+version=0.5.0
 revision=1
-short_desc="A programming language designed for robustness, optimality, and clarity"
-makedepends+=" clang"
+short_desc="Programming language designed for robustness, optimality, and clarity"
+archs="x86_64*"
 makedepends+=" libxml2-devel"
-makedepends+=" llvm"
 makedepends+=" ncurses-devel"
 makedepends+=" zlib-devel"
-homepage="https://ziglang.org"
+hostmakedepends+=" clang"
+hostmakedepends+=" llvm9"
+homepage="https://ziglang.org/"
 license="MIT"
-distfiles="https://github.com/ziglang/zig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="23ebb962823b2c78fd7bb16dd033b189c3050eee9991070debbd79c9b8648772"
-patch_args="-Np1"
+distfiles="https://ziglang.org/download/$version/$pkgname-$version.tar.xz"
+checksum="55ae16960f152bcb9cf98b4f8570902d0e559a141abf927f0d3555b7cc838a31"
 build_style="cmake"
-configure_args+=" -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o))"
-configure_args+=" -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-)"
-configure_args+=" -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))"
-broken="yes"
+configure_args="-DZIG_STATIC=FALSE"
+nopie="yes"
+nocross="yes"
 
-do_check() {
-  bin/zig build --build-file ../build.zig test
+post_extract() {
+  # don't install build artefacts
+  vsed \
+    -i \
+    -e '/${ZIG_CPP_LIB_DIR}/d' \
+    CMakeLists.txt
 }
 
 post_install() {
