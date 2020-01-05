@@ -12,6 +12,7 @@ makedepends+=" $(vopt_if lz4 liblz4-devel)"
 makedepends+=" $(vopt_if lzo lzo-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
 makedepends+=" $(vopt_if zstd libzstd-devel)"
+hostmakedepends="pkgconf"
 homepage="http://www.libarchive.org/"
 license="BSD-2-Clause"
 distfiles="https://github.com/libarchive/libarchive/releases/download/v$version/$pkgname-$version.tar.gz"
@@ -40,16 +41,6 @@ build_options_default+=" acl"
 build_options_default+=" lz4"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
-
-if [[ -n "$CHROOT_READY" ]]; then
-  hostmakedepends+=" automake"
-  hostmakedepends+=" libtool"
-  hostmakedepends+=" pkgconf"
-fi
-
-pre_configure() {
-  autoreconf -if
-}
 
 post_install() {
   vlicense COPYING
