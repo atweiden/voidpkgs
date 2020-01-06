@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libpipeline"
-version=1.5.1
+version=1.5.2
 revision=1
 short_desc="Pipeline manipulation library"
 checkdepends+=" check-devel"
@@ -8,7 +8,7 @@ checkdepends+=" pkg-config"
 homepage="http://libpipeline.nongnu.org/"
 license="GPL-3.0-or-later"
 distfiles="https://download-mirror.savannah.gnu.org/releases/libpipeline/$pkgname-$version.tar.gz"
-checksum="d633706b7d845f08b42bc66ddbe845d57e726bf89298e2cee29f09577e2f902f"
+checksum="fd59c649c1ae9d67604d1644f116ad4d297eaa66f838e3dfab96b41e85b059fb"
 build_style="gnu-configure"
 
 libpipeline-devel_package() {
