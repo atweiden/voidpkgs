@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="texinfo"
-version=6.5
-revision=2
+version=6.7
+revision=1
 short_desc="GNU Documentation System"
 depends+=" gzip"
 depends+=" perl"
@@ -13,7 +13,7 @@ hostmakedepends+=" perl"
 homepage="http://www.gnu.org/software/texinfo/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/texinfo/$pkgname-$version.tar.xz"
-checksum="77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62"
+checksum="988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa"
 build_style="gnu-configure"
 configure_args="--disable-static"
 
