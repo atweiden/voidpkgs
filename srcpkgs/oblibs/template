@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="oblibs"
-version=0.0.4.0
+version=0.0.5.0
 revision=1
 short_desc="Obarun library"
 makedepends+=" execline-devel"
@@ -8,7 +8,7 @@ makedepends+=" skalibs-devel"
 homepage="https://framagit.org/Obarun/oblibs"
 license="ISC"
 distfiles="https://framagit.org/Obarun/oblibs/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="e045b837bb3a2ff87cdde5ed1cb40cfac5a84ff8b82e8286b342c0a767581e0d"
+checksum="f72c598e99848c88270ace3cd70b21b100d830601831a8666b9b5b3ea89d5ea2"
 wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --libdir=/usr/lib"
