@@ -20,6 +20,10 @@ make_build_args+=" USE_SYSTEM_OPENCL=1"
 make_build_args+=" USE_SYSTEM_XXHASH=1"
 make_use_env="yes"
 
+if [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
+  broken="Not supported on big endian"
+fi
+
 post_extract() {
   sed \
     -i \
