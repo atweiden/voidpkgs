@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="curl"
-version=7.67.0
+version=7.68.0
 revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
@@ -20,7 +20,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="dd5f6956821a548bf4b44f067a530ce9445cc8094fd3e7e3fc7854815858586c"
+checksum="207f54917dd6a2dc733065ccf18d61bb5bebeaceb5df49cd9445483e8623eeb9"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
