@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="bandwhich"
-version=0.6.0
+version=0.7.0
 revision=1
 short_desc="Terminal bandwidth utilization tool"
 homepage="https://github.com/imsnif/bandwhich"
 license="MIT"
 distfiles="https://github.com/imsnif/bandwhich/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="df13a4641bee77d1199baffaedd27f99fe3d8e36408e318b85b280cdb76ab62e"
+checksum="6f08b0e1bf07fc8397bf9d4c5e8211368dbbcad4c0cfc2c369066f711a343152"
 build_style="cargo"
 
 post_install() {
