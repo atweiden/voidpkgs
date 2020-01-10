@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="chroot-git"
 version=2.24.1
-revision=1
+revision=2
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
@@ -15,6 +15,7 @@ configure_args+=" --without-expat"
 configure_args+=" --without-openssl"
 configure_args+=" --without-python"
 configure_args+=" --without-tcltk"
+configure_args+=" ac_cv_fread_reads_directories=yes"
 configure_args+=" ac_cv_lib_curl_curl_global_init=no"
 configure_args+=" ac_cv_lib_expat_XML_ParserCreate=no"
 configure_args+=" ac_cv_snprintf_returns_bogus=no"
@@ -27,15 +28,6 @@ if [[ -n "$CHROOT_READY" ]]; then
 else
   configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
 fi
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" ac_cv_fread_reads_directories=yes"
-    ;;
-  *)
-    configure_args+=" ac_cv_fread_reads_directories=no"
-    ;;
-esac
 
 post_configure() {
   cat <<-EOF >config.mak
