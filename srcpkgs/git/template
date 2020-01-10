@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
 version=2.24.1
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -24,6 +24,7 @@ configure_args+=" --with-curl"
 configure_args+=" --with-expat"
 configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
+configure_args+=" ac_cv_fread_reads_directories=yes"
 configure_args+=" ac_cv_snprintf_returns_bogus=no"
 make_check_target="test"
 register_shell="/usr/bin/git-shell"
@@ -35,11 +36,7 @@ subpackages+=" git-netrc"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
-    configure_args+=" ac_cv_fread_reads_directories=yes"
     export GIT_SKIP_TESTS='t3900'
-    ;;
-  *)
-    configure_args+=" ac_cv_fread_reads_directories=no"
     ;;
 esac
 
