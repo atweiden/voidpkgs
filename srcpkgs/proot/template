@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="proot"
 version=5.1.0
-revision=6
+revision=7
 short_desc="User-space implementation of chroot, mount --bind, and binfmt_misc"
 makedepends+=" libarchive-devel"
 makedepends+=" talloc-devel"
