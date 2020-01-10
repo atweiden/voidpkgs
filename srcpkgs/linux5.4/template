@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux5.4"
 version=5.4.10
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -289,6 +289,7 @@ do_install() {
            config \
            crypto \
            drm \
+           dt-bindings \
            generated \
            linux \
            math-emu \
