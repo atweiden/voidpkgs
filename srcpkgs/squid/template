@@ -68,7 +68,9 @@ make_dirs+=" /var/cache/squid 750 squid squid"
 make_dirs+=" /var/log/squid 750 squid squid"
 
 case "$XBPS_TARGET_MACHINE" in
-  armv[56]l*)
+  ppc64*)
+    ;;
+  armv[56]l*|ppc*)
     makedepends+=" libatomic-devel"
     LDFLAGS+=" -latomic"
     ;;
