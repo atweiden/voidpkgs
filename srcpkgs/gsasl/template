@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gsasl"
-version=1.8.0
-revision=11
+version=1.8.1
+revision=1
 short_desc="GNU SASL framework and a few common SASL mechanisms"
 makedepends+=" gnutls-devel"
 makedepends+=" libidn-devel"
@@ -11,7 +11,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnu.org/software/gsasl/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gsasl/$pkgname-$version.tar.gz"
-checksum="310262d1ded082d1ceefc52d6dad265c1decae8d84e12b5947d9b1dd193191e5"
+checksum="4dda162a511976bfef14ad1fecd7733719dfd9c361b5d09dc8414ea9d472d8d2"
 build_style="gnu-configure"
 configure_args="--with-gssapi-impl=mit"
 
