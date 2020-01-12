@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="e2fsprogs"
-version=1.45.4
+version=1.45.5
 revision=1
 short_desc="Ext2/3/4 Filesystem Utilities"
 makedepends+=" libblkid-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" texinfo"
 homepage="http://e2fsprogs.sourceforge.net/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/kernel/people/tytso/e2fsprogs/v$version/$pkgname-$version.tar.xz"
-checksum="65faf6b590ca1da97440d6446bd11de9e0914b42553740ba5d9d2a796fa0dc02"
+checksum="f9faccc0d90f73556e797dc7cc5979b582bd50d3f8609c0f2ad48c736d44aede"
 conf_files+=" /etc/e2scrub.conf"
 conf_files+=" /etc/mke2fs.conf"
 build_style="gnu-configure"
