@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apr"
 version=1.7.0
-revision=1
+revision=2
 short_desc="Apache Portable Runtime Library"
 makedepends+=" expat-devel"
 makedepends+=" libuuid-devel"
@@ -16,11 +16,19 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" apr_cv_process_shared_works=yes"
   configure_args+=" apr_cv_mutex_robust_shared=yes"
 fi
-
 nocross="mutex_proc_pthread_methods undeclared, configure args need to be fixed"
 
 # do not redefine struct iovec in include/apr_want.h
 CFLAGS="-DAPR_IOVEC_DEFINED=1"
+
+case "$XBPS_TARGET_MACHINE" in
+  ppc64*)
+    ;;
+  ppc*|armv[56]*|mips*)
+    makedepends+=" libatomic-devel"
+    LDFLAGS="-latomic"
+    ;;
+esac
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
