@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.14"
-version=4.14.163
+version=4.14.164
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -21,7 +21,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="eb29cc9cfd54158789064b3d6e5b3eab108facec048b8d405a63e9863329b049"
+checksum="a2031061f3f1472b7fa929f7d0274dd985c8d03ca847acfec1c47847fb7deb4b"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
