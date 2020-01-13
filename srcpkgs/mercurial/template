@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mercurial"
-version=5.2.1
-revision=2
+version=5.2.2
+revision=1
 short_desc="Fast, lightweight source control management system"
 depends="ca-certificates"
 makedepends="python3-devel"
@@ -11,12 +11,8 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/$pkgname-$version.tar.gz"
-checksum="18b1550abf9872a6905eb67527bc73e13f2a448830cca9be883528b0ce68b3df"
+checksum="ffc5ff47488c7b5dae6ead3d99f08ef469500d6567592a25311838320106c03b"
 build_style="python3-module"
-pycompile_module+=" hgdemandimport"
-pycompile_module+=" hgext"
-pycompile_module+=" hgext3rd"
-pycompile_module+=" mercurial"
 
 post_install() {
   for i in doc/*.1 doc/*.8 doc/*.5 ; do
