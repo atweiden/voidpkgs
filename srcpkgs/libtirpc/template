@@ -15,6 +15,12 @@ conf_files+=" /etc/bindresvport.blacklist"
 conf_files+=" /etc/netconfig"
 build_style="gnu-configure"
 
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    makedepends+=" musl-legacy-compat"
+    ;;
+esac
+
 post_install() {
   vconf "$wrksrc/doc/netconfig"
   vlicense COPYING
