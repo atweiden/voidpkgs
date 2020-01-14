@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
-version=2.24.1
-revision=2
+version=2.25.0
+revision=1
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -18,7 +18,7 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/git/git/raw/master/Documentation/RelNotes/$version.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/$pkgname-$version.tar.xz"
-checksum="723f24dce8fdd621a308b6187553fce7d5244205c065fe0a3aebd0b7c3f88562"
+checksum="c060291a3ffb43d7c99f4aa5c4d37d3751cf6bca683e7344ea407ea504d9a8d0"
 build_style="gnu-configure"
 configure_args+=" --with-curl"
 configure_args+=" --with-expat"
@@ -26,6 +26,14 @@ configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
 configure_args+=" ac_cv_fread_reads_directories=yes"
 configure_args+=" ac_cv_snprintf_returns_bogus=no"
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    configure_args+=" ac_cv_iconv_omits_bom=yes"
+    ;;
+  *)
+    configure_args+=" ac_cv_iconv_omits_bom=no"
+    ;;
+esac
 make_check_target="test"
 register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
@@ -34,23 +42,12 @@ subpackages+=" git-svn"
 subpackages+=" git-all"
 subpackages+=" git-netrc"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    export GIT_SKIP_TESTS='t3900'
-    ;;
-esac
-
 post_configure() {
   cat <<-EOF >config.mak
 NO_INSTALL_HARDLINKS=Yes
 INSTALLDIRS=vendor
 perllibdir=/usr/share/perl5/vendor_perl
 EOF
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      echo "ICONV_OMITS_BOM=Yes" >>config.mak
-      ;;
-  esac
 }
 
 post_build() {
