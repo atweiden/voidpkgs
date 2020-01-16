@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="opam"
-version=2.0.5
-revision=2
+version=2.0.6
+revision=1
 short_desc="OCaml package manager"
 depends+=" curl"
 depends+=" patch"
@@ -10,13 +10,14 @@ makedepends+=" curl"
 makedepends+=" ncurses-devel"
 makedepends+=" ocaml"
 makedepends+=" ocaml-findlib"
+makedepends+=" tar"
 checkdepends+=" $depends"
 checkdepends+=" git"
 checkdepends+=" rsync"
 homepage="http://opam.ocamlpro.com"
 license="LGPL-3.0-only"
 distfiles="https://github.com/ocaml/opam/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f07f3ea3d4507c8a43cddbd409869377c7878d330c3e8a668424287b989d4fb9"
+checksum="16ee7a4df617861dad2154e945f342727c169c747f1e40ec32213d98705f891a"
 build_style="gnu-configure"
 configure_args="--docdir=/usr/share/doc/$pkgname"
 make_build_args+=" lib-ext"
