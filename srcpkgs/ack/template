@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ack"
-version=3.1.1
+version=3.3.1
 revision=1
 short_desc="Tool like grep, optimized for programmers"
 archs="noarch"
@@ -11,7 +11,7 @@ hostmakedepends="$depends"
 homepage="https://beyondgrep.com/"
 license="Artistic-2.0"
 distfiles="$CPAN_SITE/App/ack-v$version.tar.gz"
-checksum="f4778d6d7ef829a7cfd1c7a25f5ae191c4233d002535f3718cc357301008fb92"
+checksum="ae3b62049f046139470933e460f2434f881f522b6b2c2b4a94cd624fef4fd589"
 wrksrc="$pkgname-v$version"
 build_style="perl-module"
 
