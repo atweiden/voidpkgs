@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rtorrent"
 version=0.9.8
-revision=1
+revision=2
 short_desc="Ncurses BitTorrent client based on libTorrent"
 makedepends+=" libcppunit-devel"
 makedepends+=" libsigc++-devel"
@@ -24,6 +24,11 @@ pre_configure() {
     -i \
     -e 's,test "$cross_compiling" = yes, false,' \
     configure
+}
+
+post_install() {
+  vman doc/old/rtorrent.1
+  vsconf doc/rtorrent.rc-example rtorrent.rc
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
