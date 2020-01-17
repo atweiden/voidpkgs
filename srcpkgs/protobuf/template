@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="protobuf"
 version=3.7.1
-revision=1
+revision=2
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
 hostmakedepends+=" automake"
@@ -73,7 +73,7 @@ protobuf-devel_package() {
   depends+=" libprotobuf-lite18-${version}_$revision"
   depends+=" libprotobuf18-${version}_$revision"
   depends+=" zlib-devel"
-  short_desc+="Protocol buffers C++ library - development files"
+  short_desc="Protocol buffers C++ library - development files"
   pkg_install() {
     vmove usr/include
     vmove usr/lib/libprotobuf.a

@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="argon2"
 version=20190702
-revision=2
+revision=3
 short_desc="Password hashing function"
 homepage="https://github.com/P-H-C/phc-winner-argon2"
 license="CC0-1.0, Apache-2.0"
