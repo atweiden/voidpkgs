@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tmuxer"
-version=2.2.0
+version=2.2.1
 revision=1
 short_desc="Tmux layout generator and command executor"
 archs="noarch"
@@ -12,7 +12,7 @@ depends+=" tmux"
 homepage="https://github.com/tjhop/tmuxer"
 license="MIT"
 distfiles="https://github.com/tjhop/tmuxer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b265934f9ddfb24d9b6229547a0e46134f2c7c1a29f02321aaedf511dd4bbafd"
+checksum="624737dc62130235210e005a2dcf8ed8359aaabac52b93028e014ed03e69787b"
 
 do_install() {
   vlicense LICENSE
