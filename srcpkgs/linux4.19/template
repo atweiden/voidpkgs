@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.19"
-version=4.19.96
+version=4.19.97
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -24,7 +24,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="23c1d1d5ba7bc14f9850e5ce78006712fe6c65dedcf67d3c99cec9c16a631d4d"
+checksum="8fb2a328e05e545274e721cf84baaf612b9330febc6f581b9ead81eaf41496da"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
