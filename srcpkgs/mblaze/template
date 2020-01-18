@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="mblaze"
-version=0.5.1
-revision=3
+version=0.6
+revision=1
 short_desc="Maildir-focused command line mail client"
 checkdepends="perl"
 homepage="https://github.com/leahneukirchen/mblaze"
 license="Public Domain, MIT"
 distfiles="http://leahneukirchen.org/releases/$pkgname-$version.tar.gz"
-checksum="5d9d0515072c1596f834b2111a770bf1a0d1c42a43df2489f8e42ec31f74b953"
+checksum="9d1847d474ff3eea3ef37738f3b7096cb6cc86461e0d378a684142df80e7254e"
 build_style="gnu-makefile"
 
 post_install() {
