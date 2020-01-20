@@ -3,7 +3,8 @@ pkgname="make"
 version=4.3
 revision=1
 short_desc="The GNU make system"
-makedepends="$(vopt_if guile 'gc-devel guile-devel')"
+makedepends+=" xz"
+makedepends+=" $(vopt_if guile 'gc-devel guile-devel')"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"
   hostmakedepends+=" gettext-devel"
