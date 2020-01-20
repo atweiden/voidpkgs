@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ansible"
-version=2.9.2
-revision=2
+version=2.9.3
+revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 archs="noarch"
 depends+=" python3-Jinja2"
@@ -14,7 +14,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="https://releases.ansible.com/ansible/$pkgname-$version.tar.gz"
-checksum="2f83f8ccc50640aa41a24f6e7757ac06b0ee6189fdcaacab68851771d3b42f3a"
+checksum="36f501a17fb15d210722b649d53582acf47835ea0bbda7eab79e13c945e4eac2"
 build_style="python3-module"
 pycompile_module="ansible"
 
