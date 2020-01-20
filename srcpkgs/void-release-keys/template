@@ -1,15 +1,16 @@
-# Template file for 'void-release-keys'
-pkgname=void-release-keys
+maintainer="nox"
+pkgname="void-release-keys"
 version=1
 revision=1
-archs=noarch
 short_desc="Void Linux Release Keys"
-maintainer="Void Release Engineering <releases@voidlinux.org>"
-license="Public domain"
+archs="noarch"
 homepage="http://www.voidlinux.org"
+license="Public domain"
 
 do_install() {
-	for _i in ${FILESDIR}/* ; do
-		vinstall $_i 644 etc/signify/
-	done
+  for _i in "$FILESDIR"/* ; do
+    vinstall "$_i" 644 etc/signify/
+  done
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
