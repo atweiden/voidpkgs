@@ -3,7 +3,8 @@ pkgname="make"
 version=4.3
 revision=1
 short_desc="The GNU make system"
-makedepends="$(vopt_if guile 'gc-devel guile-devel')"
+makedepends+=" xz"
+makedepends+=" $(vopt_if guile 'gc-devel guile-devel')"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" automake"
   hostmakedepends+=" gettext-devel"
@@ -12,8 +13,8 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 homepage="http://www.gnu.org/software/make"
 license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/make/$pkgname-$version.tar.gz"
-checksum="e05fdde47c5f7ca45cb697e973894ff4f5d79e13b750ed57d7b66d8defc78e19"
+distfiles="$GNU_SITE/make/$pkgname-$version.tar.lz"
+checksum="de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args="$(vopt_with guile)"
