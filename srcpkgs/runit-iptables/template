@@ -1,14 +1,16 @@
-# Template file for 'runit-iptables'
-pkgname=runit-iptables
+maintainer="nox"
+pkgname="runit-iptables"
 version=20180616
 revision=1
-archs=noarch
-depends="runit-void iptables"
 short_desc="Restore iptables rules on boot"
-maintainer="Nicolas Porcel <nicolasporcel06@gmail.com>"
-license="Public Domain"
+archs="noarch"
+depends+=" iptables"
+depends+=" runit-void"
 homepage="http://www.voidlinux.org/"
+license="Public Domain"
 
 do_install() {
-	vinstall ${FILESDIR}/91-iptables.sh 0644 etc/runit/core-services
+  vinstall "$FILESDIR/91-iptables.sh" 0644 etc/runit/core-services
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
