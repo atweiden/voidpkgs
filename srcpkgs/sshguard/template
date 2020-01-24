@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="sshguard"
 version=2.4.0
-revision=1
+revision=2
 short_desc="Protects networked hosts from brute force attacks"
-depends="iptables"
 hostmakedepends="flex"
 homepage="https://www.sshguard.net/"
 license="BSD-3-Clause"
