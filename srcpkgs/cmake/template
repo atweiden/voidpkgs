@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cmake"
 version=3.16.3
-revision=1
+revision=2
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
 makedepends+=" libarchive-devel"
