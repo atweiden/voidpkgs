@@ -1,14 +1,16 @@
-# Template file for 'runit-nftables'
-pkgname=runit-nftables
+maintainer="nox"
+pkgname="runit-nftables"
 version=20200123
 revision=1
-archs=noarch
-depends="runit-void nftables"
 short_desc="Restore nftables rules on boot"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="Public Domain"
+archs="noarch"
+depends+=" nftables"
+depends+=" runit-void"
 homepage="https://www.voidlinux.org"
+license="Public Domain"
 
 do_install() {
-	vinstall ${FILESDIR}/91-nftables.sh 0644 etc/runit/core-services
+  vinstall "$FILESDIR/91-nftables.sh" 0644 etc/runit/core-services
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
