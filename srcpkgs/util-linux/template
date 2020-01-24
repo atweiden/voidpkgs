@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="util-linux"
-version=2.34
-revision=4
+version=2.35
+revision=1
 short_desc="Miscellaneous linux utilities"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
@@ -18,7 +18,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v$version/$pkgname-$version.tar.xz"
-checksum="743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5"
+checksum="b3081b560268c1ec3367e035234e91616fa7923a0afc2b1c80a2a6d8b9dfe2c9"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
