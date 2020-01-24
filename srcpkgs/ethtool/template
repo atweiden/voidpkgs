@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="ethtool"
-version=5.3
+version=5.4
 revision=1
 short_desc="Utility for controlling network drivers and hardware"
 homepage="http://www.kernel.org/pub/software/network/ethtool/"
 license="GPL-2.0-only"
 distfiles="http://www.kernel.org/pub/software/network/ethtool/$pkgname-$version.tar.xz"
-checksum="f3dac0dbce7066af05fbe92812cc33a042d03fb00a45bcf9959f20455efe24c4"
+checksum="22f81e4927d6eb6a13a259d705248a96005fce2005e15257f639f5a1c8c52b6b"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
