@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-consensus"
 version=3.6.0
-revision=1
+revision=2
 short_desc="Bitcoin Consensus Library"
 makedepends+=" boost-devel"
 makedepends+=" libbitcoin-secp256k1-devel"
