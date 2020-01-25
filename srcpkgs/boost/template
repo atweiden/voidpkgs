@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="boost"
-version=1.69.0
-revision=6
+version=1.72.0
+revision=1
 short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
@@ -16,136 +16,131 @@ hostmakedepends+=" which"
 homepage="https://www.boost.org/"
 license="BSL-1.0"
 distfiles="https://dl.bintray.com/boostorg/release/$version/source/boost_${version//./_}.tar.bz2"
-checksum="8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406"
+checksum="59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722"
 wrksrc="${pkgname}_${version//\./_}"
 
 CXXFLAGS="-std=c++14"
 
-subpackages+=" libboost_program_options1.69"
-subpackages+=" libboost_math_c99f1.69"
-subpackages+=" libboost_stacktrace_basic1.69"
-subpackages+=" libboost_stacktrace_noop1.69"
-subpackages+=" libboost_iostreams1.69"
-subpackages+=" libboost_math_tr1l1.69"
-subpackages+=" libboost_filesystem1.69"
-subpackages+=" libboost_chrono1.69"
-subpackages+=" libboost_math_tr1f1.69"
-subpackages+=" libboost_wave1.69"
-subpackages+=" libboost_graph1.69"
-subpackages+=" libboost_locale1.69"
-subpackages+=" libboost_regex1.69"
-subpackages+=" libboost_fiber1.69"
-subpackages+=" libboost_type_erasure1.69"
-subpackages+=" libboost_coroutine1.69"
-subpackages+=" libboost_atomic1.69"
-subpackages+=" libboost_prg_exec_monitor1.69"
-subpackages+=" libboost_math_c991.69"
-subpackages+=" boost-python3-1.69"
-subpackages+=" libboost_log_setup1.69"
+subpackages+=" libboost_program_options1.72"
+subpackages+=" libboost_math_c99f1.72"
+subpackages+=" libboost_stacktrace_basic1.72"
+subpackages+=" libboost_stacktrace_noop1.72"
+subpackages+=" libboost_iostreams1.72"
+subpackages+=" libboost_math_tr1l1.72"
+subpackages+=" libboost_filesystem1.72"
+subpackages+=" libboost_chrono1.72"
+subpackages+=" libboost_math_tr1f1.72"
+subpackages+=" libboost_wave1.72"
+subpackages+=" libboost_graph1.72"
+subpackages+=" libboost_locale1.72"
+subpackages+=" libboost_regex1.72"
+subpackages+=" libboost_fiber1.72"
+subpackages+=" libboost_type_erasure1.72"
+subpackages+=" libboost_coroutine1.72"
+subpackages+=" libboost_atomic1.72"
+subpackages+=" libboost_prg_exec_monitor1.72"
+subpackages+=" libboost_math_c991.72"
+subpackages+=" boost-python3-1.72"
+subpackages+=" libboost_log_setup1.72"
 subpackages+=" boost-devel"
-subpackages+=" libboost_timer1.69"
-subpackages+=" libboost_system1.69"
-subpackages+=" libboost_unit_test_framework1.69"
-subpackages+=" libboost_serialization1.69"
-subpackages+=" libboost_math_tr11.69"
+subpackages+=" libboost_timer1.72"
+subpackages+=" libboost_system1.72"
+subpackages+=" libboost_unit_test_framework1.72"
+subpackages+=" libboost_serialization1.72"
+subpackages+=" libboost_math_tr11.72"
 subpackages+=" boost-build"
-subpackages+=" libboost_math_c99l1.69"
-subpackages+=" boost-python1.69"
-subpackages+=" libboost_contract1.69"
-subpackages+=" libboost_date_time1.69"
-subpackages+=" libboost_log1.69"
-subpackages+=" libboost_random1.69"
-subpackages+=" libboost_thread1.69"
-subpackages+=" libboost_container1.69"
+subpackages+=" libboost_math_c99l1.72"
+subpackages+=" boost-python1.72"
+subpackages+=" libboost_contract1.72"
+subpackages+=" libboost_date_time1.72"
+subpackages+=" libboost_log1.72"
+subpackages+=" libboost_random1.72"
+subpackages+=" libboost_thread1.72"
+subpackages+=" libboost_container1.72"
 subpackages+=" boost-jam"
-subpackages+=" libboost_wserialization1.69"
-subpackages+=" libboost_context1.69"
+subpackages+=" libboost_wserialization1.72"
+subpackages+=" libboost_context1.72"
 
 if [[ -z "$CROSS_BUILD" ]]; then
-  subpackages+=" libboost_stacktrace_addr2line1.69"
+  subpackages+=" libboost_stacktrace_addr2line1.72"
 fi
 
 case "$XBPS_TARGET_MACHINE" in
   i686*)
-    _abi="sysv"
     _arch="x86"
-    _toolset="gcc-i386"
+    _abi="sysv"
     ;;
   x86_64*)
-    _abi="sysv"
     _arch="x86"
-    _toolset="gcc-x86_64"
+    _abi="sysv"
     ;;
   arm*)
-    _abi="aapcs"
     _arch="arm"
-    _toolset="gcc-arm"
+    _abi="aapcs"
     ;;
   aarch64*)
-    _abi="aapcs"
     _arch="arm"
-    _toolset="gcc-aarch64"
+    _abi="aapcs"
     ;;
   mips*)
-    _abi="o32"
     _arch="mips32r2"
-    _toolset="gcc-mips"
-    ;;
-  ppc64le*)
-    _abi="sysv"
-    _arch="power"
-    _toolset="gcc-powerpc64le"
-    ;;
-  ppc64*)
-    _abi="sysv"
-    _arch="power"
-    _toolset="gcc-powerpc64"
+    _abi="o32"
     ;;
   ppc*)
-    _abi="sysv"
     _arch="power"
-    _toolset="gcc-powerpc"
+    _abi="sysv"
     ;;
 esac
 
 do_build() {
+  CXX="$BUILD_CXX" \
+  CXXFLAGS="$BUILD_CXXFLAGS" \
   ./bootstrap.sh \
     --prefix="$DESTDIR/usr" \
-    --with-python="$XBPS_CROSS_BASE/usr/bin/python2" \
+    --with-python="$XBPS_CROSS_BASE/usr/bin/python3" \
     --with-python-root="$XBPS_CROSS_BASE/usr"
   # rebuild bjam for target
   (cd tools/build/src/engine
-   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2 clean
-   LIBS="$LDFLAGS" "$wrksrc/bjam" -f build.jam --toolset=cc --toolset-root= -d+2)
+   ./build.sh gcc)
   cat > user-config.jam <<-__EOF
-using gcc : ${_toolset#gcc-} : ${CXX} : <cxxflags>"${CXXFLAGS}" <linkflags>"${LDFLAGS}" ;
-using python : 2.7 : ${XBPS_CROSS_BASE}/usr/bin/python2 : ${XBPS_CROSS_BASE}/usr/include/python2.7 : ${XBPS_CROSS_BASE}/usr/lib/python2.7 ;
-using python : ${py3_ver} : ${XBPS_CROSS_BASE}/usr/bin/python3 : ${XBPS_CROSS_BASE}${py3_inc} : ${XBPS_CROSS_BASE}${py3_lib} ;
+using gcc : : $CXX : <cxxflags>"$CXXFLAGS" <linkflags>"$LDFLAGS" ;
+using python : 2.7 : $XBPS_CROSS_BASE/usr/bin/python2 : $XBPS_CROSS_BASE/usr/include/python2.7 : $XBPS_CROSS_BASE/usr/lib/python2.7 ;
+using python : $py3_ver : $XBPS_CROSS_BASE/usr/bin/python3 : $XBPS_CROSS_BASE$py3_inc : $XBPS_CROSS_BASE$py3_lib ;
 
-__EOF
-  ./bjam \
+  __EOF
+  # --no-cmake-config should be removed with boost-1.71 or later
+  ./b2 \
     abi="$_abi" \
     architecture="$_arch" \
+    link="shared,static"
     python="2.7,$py3_ver" \
+    runtime-link="shared" \
+    threading="multi" \
     "$makejobs" \
-    --prefix="$DESTDIR/usr" \
-    --toolset="$_toolset" \
-    --user-config="$wrksrc/user-config.jam"
+    --user-config="$wrksrc/user-config.jam" \
+    --debug-building \
+    --no-cmake-config \
+    --toolset="gcc"
 }
 
 do_install() {
   # install bjam
-  for _b in tools/build/src/engine/bin.*/*; do
-    vbin "$_b"
+  # XXX: make bjam a symlink to b2
+  for _b in b2 \
+            bjam; do
+    vbin "tools/build/src/engine/$_b"
   done
 
   # install headers/libs
-  ./bjam \
+  ./b2 \
     abi="$_abi" \
     architecture="$_arch" \
+    link="shared,static" \
     python="2.7,$py3_ver" \
+    runtime-link="shared" \
+    threading="multi" \
+    --no-cmake-config \
     --prefix="$DESTDIR/usr" \
-    --toolset="$_toolset" \
     --user-config="$wrksrc/user-config.jam" \
     install
 
@@ -155,7 +150,7 @@ do_install() {
   find "$DESTDIR/usr/share/boost-build" -type f -name "*.orig" \
     -exec rm -f '{}' \;
   rm -rf "$DESTDIR/usr/share/boost-build/src/engine/bootstrap"
-  rm -rf "$DESTDIR/usr/share/boost-build/src/engine"/bin.*
+  rm -rf "$DESTDIR/usr/share/boost-build/src/engine"/{b2,bjam}
   (echo '# System wide configuration file for Boost.Build.' ; \
    echo ; \
    echo 'using gcc ;' ;) > "$wrksrc/site-config.jam"
@@ -175,8 +170,8 @@ boost-jam_package() {
   }
 }
 
-boost-python1.69_package() {
-  depends+=" boost>=${version}_$revision"
+boost-python1.72_package() {
+  depends+=" boost"
   depends+=" python"
   replaces="boost-python>=0"
   short_desc+=" - Python bindings"
@@ -185,8 +180,8 @@ boost-python1.69_package() {
   }
 }
 
-boost-python3-1.69_package() {
-  depends+=" boost>=${version}_$revision"
+boost-python3-1.72_package() {
+  depends+=" boost"
   depends+=" python3"
   replaces="boost-python3>=0"
   short_desc+=" - Python3 bindings"
@@ -207,7 +202,7 @@ boost-build_package() {
 
 boost-devel_package() {
   noverifyrdeps="yes"
-  depends+=" boost>=${version}_$revision"
+  depends+=" boost"
   depends+=" ${subpackages/boost-devel}"
   short_desc+=" - development files"
   pkg_install() {
@@ -217,280 +212,280 @@ boost-devel_package() {
   }
 }
 
-libboost_atomic1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_atomic1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_atomic"
   pkg_install() {
     vmove "usr/lib/libboost_atomic.so.*"
   }
 }
 
-libboost_chrono1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_chrono1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_chrono"
   pkg_install() {
     vmove "usr/lib/libboost_chrono.so.*"
   }
 }
 
-libboost_container1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_container1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_container"
   pkg_install() {
     vmove "usr/lib/libboost_container.so.*"
   }
 }
 
-libboost_context1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_context1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_context"
   pkg_install() {
     vmove "usr/lib/libboost_context.so.*"
   }
 }
 
-libboost_contract1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_contract1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_contract"
   pkg_install() {
     vmove "usr/lib/libboost_contract.so.*"
   }
 }
 
-libboost_coroutine1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_coroutine1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_coroutine"
   pkg_install() {
     vmove "usr/lib/libboost_coroutine.so.*"
   }
 }
 
-libboost_date_time1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_date_time1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_date_time"
   pkg_install() {
     vmove "usr/lib/libboost_date_time.so.*"
   }
 }
 
-libboost_fiber1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_fiber1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_fiber"
   pkg_install() {
     vmove "usr/lib/libboost_fiber.so.*"
   }
 }
 
-libboost_filesystem1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_filesystem1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_filesystem"
   pkg_install() {
     vmove "usr/lib/libboost_filesystem.so.*"
   }
 }
 
-libboost_graph1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_graph1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_graph"
   pkg_install() {
     vmove "usr/lib/libboost_graph.so.*"
   }
 }
 
-libboost_iostreams1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_iostreams1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_iostreams"
   pkg_install() {
     vmove "usr/lib/libboost_iostreams.so.*"
   }
 }
 
-libboost_locale1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_locale1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_locale"
   pkg_install() {
     vmove "usr/lib/libboost_locale.so.*"
   }
 }
 
-libboost_log1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_log1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_log"
   pkg_install() {
     vmove "usr/lib/libboost_log.so.*"
   }
 }
 
-libboost_log_setup1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_log_setup1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_log_setup"
   pkg_install() {
     vmove "usr/lib/libboost_log_setup.so.*"
   }
 }
 
-libboost_math_c991.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_c991.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_c99"
   pkg_install() {
     vmove "usr/lib/libboost_math_c99.so.*"
   }
 }
 
-libboost_math_c99f1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_c99f1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_c99f"
   pkg_install() {
     vmove "usr/lib/libboost_math_c99f.so.*"
   }
 }
 
-libboost_math_c99l1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_c99l1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_c99l"
   pkg_install() {
     vmove "usr/lib/libboost_math_c99l.so.*"
   }
 }
 
-libboost_math_tr11.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_tr11.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_tr1"
   pkg_install() {
     vmove "usr/lib/libboost_math_tr1.so.*"
   }
 }
 
-libboost_math_tr1f1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_tr1f1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_tr1f"
   pkg_install() {
     vmove "usr/lib/libboost_math_tr1f.so.*"
   }
 }
 
-libboost_math_tr1l1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_math_tr1l1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_math_tr1l"
   pkg_install() {
     vmove "usr/lib/libboost_math_tr1l.so.*"
   }
 }
 
-libboost_prg_exec_monitor1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_prg_exec_monitor1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_prg_exec_monitor"
   pkg_install() {
     vmove "usr/lib/libboost_prg_exec_monitor.so.*"
   }
 }
 
-libboost_program_options1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_program_options1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_program_options"
   pkg_install() {
     vmove "usr/lib/libboost_program_options.so.*"
   }
 }
 
-libboost_random1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_random1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_random"
   pkg_install() {
     vmove "usr/lib/libboost_random.so.*"
   }
 }
 
-libboost_regex1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_regex1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_regex"
   pkg_install() {
     vmove "usr/lib/libboost_regex.so.*"
   }
 }
 
-libboost_serialization1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_serialization1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_serialization"
   pkg_install() {
     vmove "usr/lib/libboost_serialization.so.*"
   }
 }
 
-libboost_stacktrace_addr2line1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_stacktrace_addr2line1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_stacktrace_addr2line"
   pkg_install() {
     vmove "usr/lib/libboost_stacktrace_addr2line.so.*"
   }
 }
 
-libboost_stacktrace_basic1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_stacktrace_basic1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_stacktrace_basic"
   pkg_install() {
     vmove "usr/lib/libboost_stacktrace_basic.so.*"
   }
 }
 
-libboost_stacktrace_noop1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_stacktrace_noop1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_stacktrace_noop"
   pkg_install() {
     vmove "usr/lib/libboost_stacktrace_noop.so.*"
   }
 }
 
-libboost_system1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_system1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_system"
   pkg_install() {
     vmove "usr/lib/libboost_system.so.*"
   }
 }
 
-libboost_thread1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_thread1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_thread"
   pkg_install() {
     vmove "usr/lib/libboost_thread.so.*"
   }
 }
 
-libboost_timer1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_timer1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_timer"
   pkg_install() {
     vmove "usr/lib/libboost_timer.so.*"
   }
 }
 
-libboost_type_erasure1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_type_erasure1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_type_erasure"
   pkg_install() {
     vmove "usr/lib/libboost_type_erasure.so.*"
   }
 }
 
-libboost_unit_test_framework1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_unit_test_framework1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_unit_test_framework"
   pkg_install() {
     vmove "usr/lib/libboost_unit_test_framework.so.*"
   }
 }
 
-libboost_wave1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_wave1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_wave"
   pkg_install() {
     vmove "usr/lib/libboost_wave.so.*"
   }
 }
 
-libboost_wserialization1.69_package() {
-  depends="boost>=${version}_$revision"
+libboost_wserialization1.72_package() {
+  depends="boost"
   short_desc+=" - libboost_wserialization"
   pkg_install() {
     vmove "usr/lib/libboost_wserialization.so.*"

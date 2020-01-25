@@ -65,8 +65,43 @@ constant %PKG = Map.new(
     'boost' => qw<boost-build
                   boost-devel
                   boost-jam
-                  boost-python
-                  boost-python3>,
+                  boost-python1.72
+                  boost-python3-1.72
+                  libboost_atomic1.72
+                  libboost_chrono1.72
+                  libboost_container1.72
+                  libboost_context1.72
+                  libboost_contract1.72
+                  libboost_coroutine1.72
+                  libboost_date_time1.72
+                  libboost_fiber1.72
+                  libboost_filesystem1.72
+                  libboost_graph1.72
+                  libboost_iostreams1.72
+                  libboost_locale1.72
+                  libboost_log1.72
+                  libboost_log_setup1.72
+                  libboost_math_c991.72
+                  libboost_math_c99f1.72
+                  libboost_math_c99l1.72
+                  libboost_math_tr11.72
+                  libboost_math_tr1f1.72
+                  libboost_math_tr1l1.72
+                  libboost_prg_exec_monitor1.72
+                  libboost_program_options1.72
+                  libboost_random1.72
+                  libboost_regex1.72
+                  libboost_serialization1.72
+                  libboost_stacktrace_addr2line1.72
+                  libboost_stacktrace_basic1.72
+                  libboost_stacktrace_noop1.72
+                  libboost_system1.72
+                  libboost_thread1.72
+                  libboost_timer1.72
+                  libboost_type_erasure1.72
+                  libboost_unit_test_framework1.72
+                  libboost_wave1.72
+                  libboost_wserialization1.72>,
     'brotli' => ['brotli-devel'],
     'btrfs-progs' => qw<libbtrfs
                         libbtrfs-devel
