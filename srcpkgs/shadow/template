@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="shadow"
 version=4.8
-revision=2
+revision=3
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
@@ -9,6 +9,7 @@ makedepends+=" pam-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
+hostmakedepends+=" xz"
 homepage="https://github.com/shadow-maint/shadow"
 license="BSD-3-Clause"
 distfiles="https://github.com/shadow-maint/shadow/releases/download/$version/$pkgname-$version.tar.xz"
