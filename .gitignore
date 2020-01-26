@@ -7,5 +7,6 @@ masterdir*
 hostdir*
 etc/conf
 etc/virtual
-.precomp
+etc/xbps.d/custom
 .xbps-checkvers*.plist
+.precomp
