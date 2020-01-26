@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="minijail"
-version=10
+version=12
 revision=1
 short_desc="Sandboxing and containment tool used in Chrome OS and Android"
 makedepends="libcap-devel"
 homepage="https://android.googlesource.com/platform/external/minijail"
 license="BSD-3-Clause"
 distfiles="https://gitlab.com/chinstrap/minijail/-/archive/linux-v$version/$pkgname-linux-v$version.tar.gz"
-checksum="29334d1bcd16c1ea09e49cef3b47a000e98be7ffe7fa9a28c8cab81643033612"
+checksum="2f8ef7a0f0f3b21752fb629b3ff8a5bb713eb448306ccfa34331deff4491ea52"
 wrksrc="$pkgname-linux-v$version"
 build_style="gnu-makefile"
 
