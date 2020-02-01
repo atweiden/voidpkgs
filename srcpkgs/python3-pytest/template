@@ -1,12 +1,11 @@
 maintainer="nox"
 pkgname="python3-pytest"
 version=5.3.2
-revision=2
+revision=3
 short_desc="Simple powerful testing with Python 3"
 archs="noarch"
 depends+=" python3-atomicwrites"
 depends+=" python3-attrs"
-depends+=" python3-importlib_metadata"
 depends+=" python3-more-itertools"
 depends+=" python3-packaging"
 depends+=" python3-pluggy"
@@ -41,7 +40,7 @@ post_patch() {
 }
 
 do_check() {
-  tox -e py36
+  tox -e "py${py3_ver/./}"
 }
 
 post_install() {
