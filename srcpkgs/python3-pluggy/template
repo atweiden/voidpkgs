@@ -1,12 +1,11 @@
 maintainer="nox"
 pkgname="python3-pluggy"
 version=0.13.1
-revision=2
+revision=3
 short_desc="Minimalist production ready plugin system (Python3)"
 archs="noarch"
-depends="python3-importlib_metadata"
-checkdepends+=" python3-importlib_metadata"
-checkdepends+=" python3-pytest"
+depends="python3"
+checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/pytest-dev/pluggy"
 license="MIT"
@@ -14,7 +13,6 @@ distfiles="$PYPI_SITE/p/pluggy/pluggy-$version.tar.gz"
 checksum="15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"
 wrksrc="pluggy-$version"
 build_style="python3-module"
-pycompile_module="pluggy"
 
 do_check() {
   python3 -m pytest
