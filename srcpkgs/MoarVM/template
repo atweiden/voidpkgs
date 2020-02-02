@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="MoarVM"
-version=2019.11
+version=2020.01.1
 revision=1
-short_desc="VM for NQP and Rakudo Perl 6"
+short_desc="VM with adaptive optimization and JIT compilation, built for Rakudo"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
-# XXX: MoarVM-2019.11 fails to build with libtommath-1.2.0
+# XXX: re-enable system libtommath for MoarVM-2020.02
 # see: https://github.com/MoarVM/MoarVM/pull/1221
 #makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
@@ -14,17 +14,17 @@ hostmakedepends+=" binutils"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkgconf"
 hostmakedepends+=" $(vopt_if clang clang)"
-tags="perl6"
+tags="raku"
 homepage="https://moarvm.org"
 license="Artistic-2.0"
 changelog="https://github.com/MoarVM/MoarVM/raw/master/docs/ChangeLog"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="d882c5114e35800eba2226f2104997052e98b3efdea6463e7edb213a87870201"
+checksum="dcb61e44a098e8375c385eb9d52bd6394255a388697b2f6a52d88e6cf4a53587"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --has-libatomic_ops"
 configure_args+=" --has-libffi"
-# XXX: MoarVM-2019.11 fails to build with libtommath-1.2.0
+# XXX: re-enable system libtommath for MoarVM-2020.02
 #configure_args+=" --has-libtommath"
 configure_args+=" --has-libuv"
 configure_args+=" --optimize"
