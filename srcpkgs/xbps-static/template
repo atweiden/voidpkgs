@@ -1,8 +1,8 @@
 # NOTE: keep this package synchronized with "srcpkgs/xbps"
 maintainer="nox"
 pkgname="xbps-static"
-version=0.57.1
-revision=9
+version=0.58
+revision=1
 short_desc="XBPS package system utilities - static binaries"
 # only musl
 archs="*-musl"
@@ -13,13 +13,9 @@ homepage="https://www.voidlinux.org/xbps"
 license="BSD-2-Clause"
 changelog="https://github.com/void-linux/xbps/blob/master/NEWS"
 distfiles="https://github.com/void-linux/xbps/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bccad7c4187c467f322e6905fbe96839c00d2cbdda254c0c99b38eabeedb8678"
+checksum="c9cb0823d4aa72e57b1531bc01eb17dc66d64b461b8861bc4e081465a5dff144"
 wrksrc="xbps-$version"
 build_style="configure"
-
-# lto objects break static builds, override
-CFLAGS="-fno-lto"
-LDFLAGS="-fno-lto"
 
 do_configure() {
   ./configure \
