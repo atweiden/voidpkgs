@@ -36,6 +36,15 @@ configure_args+=" --with-pgsql"
 configure_args+=" --with-sqlite3=$XBPS_CROSS_BASE/usr"
 configure_args+=" --without-oracle"
 
+case "$XBPS_TARGET_MACHINE" in
+  ppc64*)
+    ;;
+  ppc*|armv[56]*|mips*)
+    makedepends+=" libatomic-devel"
+    LDFLAGS="-latomic"
+    ;;
+esac
+
 pre_configure() {
   sed \
     -i \
