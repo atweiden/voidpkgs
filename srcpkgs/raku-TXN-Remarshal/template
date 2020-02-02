@@ -1,27 +1,27 @@
 maintainer="nox"
-pkgname="perl6-TXN-Remarshal"
+pkgname="raku-TXN-Remarshal"
 version=0.1.0
 revision=1
 _gitrev="f4b1e9bc870c4e278bcf3919a5e7ef3561e40bf0"
 short_desc="Double-entry accounting ledger file format converter"
 archs="noarch"
-depends+=" perl6-File-Path-Resolve"
-depends+=" perl6-File-Presence"
-depends+=" perl6-TXN-Parser"
+depends+=" raku-File-Path-Resolve"
+depends+=" raku-File-Presence"
+depends+=" raku-TXN-Parser"
 makedepends="$depends"
 checkdepends="peru"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/txn-remarshal"
 license="Unlicense"
 distfiles="https://github.com/atweiden/txn-remarshal/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="4c67b1e59a95d578f931568c28fe77580af5f5d8f85207e0831544a173126e94"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing
   peru \
-    --file=.peru.yml \
+    --file=".peru.yml" \
     --sync-dir="$PWD" \
     sync
 }

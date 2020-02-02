@@ -1,19 +1,19 @@
 maintainer="nox"
-pkgname="perl6-Debugger-UI-CommandLine"
+pkgname="raku-Debugger-UI-CommandLine"
 version=0.0.1
 revision=1
 _gitrev="f81ab6323f1fb1051aa750e414c75797e6b1bb00"
 short_desc="Command-line debugger frontend for Rakudo"
 archs="noarch"
-depends="perl6-Terminal-ANSIColor"
-makedepends="perl6-Terminal-ANSIColor"
-tags="perl6"
+depends="raku-Terminal-ANSIColor"
+makedepends="raku-Terminal-ANSIColor"
+tags="raku"
 homepage="https://github.com/jnthn/rakudo-debugger"
 license="Artistic-2.0"
 distfiles="https://github.com/jnthn/rakudo-debugger/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="819426e76d9a78b82ac5c6e825eaac1b50a5dc8f85d4d3f515f3e104a5baade3"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 do_check() {
   # no tests to run

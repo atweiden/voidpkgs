@@ -1,25 +1,25 @@
 maintainer="nox"
-pkgname="perl6-TXN-Parser"
+pkgname="raku-TXN-Parser"
 version=0.1.0
 revision=1
 _gitrev="753a6db8caec9b68de966d2f887b11485abd3f97"
 short_desc="Double-entry accounting ledger parser"
 archs="noarch"
-depends="perl6-Digest-xxHash"
-makedepends="perl6-Digest-xxHash"
+depends="raku-Digest-xxHash"
+makedepends="raku-Digest-xxHash"
 checkdepends="peru"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/txn-parser"
 license="Unlicense"
 distfiles="https://github.com/atweiden/txn-parser/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="c5f2596b6246a6fb42e398d1ead5b479ce328bcfccc0b0820161b3c9d3827fc4"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing
   peru \
-    --file=.peru.yml \
+    --file=".peru.yml" \
     --sync-dir="$PWD" \
     sync
 }

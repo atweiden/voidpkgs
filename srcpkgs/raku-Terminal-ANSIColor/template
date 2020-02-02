@@ -1,17 +1,17 @@
 maintainer="nox"
-pkgname="perl6-Terminal-ANSIColor"
+pkgname="raku-Terminal-ANSIColor"
 version=0.5
 revision=1
 _gitrev="eeb2dadd2cc2b7df34588be7869768213fd9fff4"
 short_desc="Colorize terminal output"
 archs="noarch"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/tadzik/Terminal-ANSIColor"
 license="MIT"
 distfiles="https://github.com/tadzik/Terminal-ANSICOLOR/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="fc07868d1c0dc9220a771486c08d562fea2ccbcc409d0c3d304798d13a1417ac"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vlicense LICENSE

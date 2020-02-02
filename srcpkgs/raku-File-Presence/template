@@ -1,17 +1,17 @@
 maintainer="nox"
-pkgname="perl6-File-Presence"
+pkgname="raku-File-Presence"
 version=0.2.0
 revision=1
 _gitrev="7566a9bed70e3137d30a6425ff6fdd85a453ee2a"
 short_desc="Check permissions of potentially nonexistent files"
 archs="noarch"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/file-presence"
 license="Unlicense"
 distfiles="https://github.com/atweiden/file-presence/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="604429add4f4f6d0fa9c773eff580782f2f4fd75324960c779ace1844a3239b8"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vlicense UNLICENSE

@@ -1,19 +1,19 @@
 maintainer="nox"
-pkgname="perl6-Digest-xxHash"
+pkgname="raku-Digest-xxHash"
 version=1.0.1
 revision=1
 _gitrev="f172db31cec09292583d9c06a03a873b392e7e27"
-short_desc="Perl 6 bindings for xxHash"
+short_desc="Raku bindings for xxHash"
 archs="noarch"
 depends="xxHash-devel"
 makedepends="xxHash-devel"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/digest-xxhash"
 license="Unlicense"
 distfiles="https://github.com/atweiden/digest-xxhash/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="1e6dd4e1e5563391b327072c7e684fff23bff994b85e3b6304cb7ac7f5d17d33"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vlicense UNLICENSE

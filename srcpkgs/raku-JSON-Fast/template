@@ -1,17 +1,17 @@
 maintainer="nox"
-pkgname="perl6-JSON-Fast"
+pkgname="raku-JSON-Fast"
 version=0.9.10
 revision=1
 _gitrev="65fac7d3722862752e463862340adccb5d98892f"
 short_desc="A naive, fast json parser and serializer"
 archs="noarch"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/timo/json_fast"
 license="Artistic-2.0"
 distfiles="https://github.com/timo/json_fast/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="35c50fa46eeb2733adf3de4dac11eb5f7ad3f756af93651633f84d54765462f0"
 wrksrc="$(basename $homepage)-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vlicense LICENSE

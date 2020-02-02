@@ -1,19 +1,19 @@
 maintainer="nox"
-pkgname="perl6-Grammar-Debugger"
+pkgname="raku-Grammar-Debugger"
 version=1.0.1
 revision=1
 _gitrev="0375008027c8caa216bd869476ce59ae09b2a702"
-short_desc="Simple tracing and debugging support for Perl 6 grammars"
+short_desc="Simple tracing and debugging support for Raku grammars"
 archs="noarch"
-depends="perl6-Terminal-ANSIColor"
-makedepends="perl6-Terminal-ANSIColor"
-tags="perl6"
+depends="raku-Terminal-ANSIColor"
+makedepends="raku-Terminal-ANSIColor"
+tags="raku"
 homepage="https://github.com/jnthn/grammar-debugger"
 license="Artistic-2.0"
 distfiles="https://github.com/jnthn/grammar-debugger/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="e9bc6ccea812b04cf0f8a3c8bb20a27cfb3b1cd23989b540118195a982263fee"
 wrksrc="$(basename "$homepage")-$_gitrev"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vdoc README.markdown

@@ -6,23 +6,23 @@ _gitrev="07a2e9d302548fcc4418988014255786350655d1"
 short_desc="Double-entry accounting system"
 archs="noarch"
 depends+=" mktxn"
-depends+=" perl6-Config-TOML"
-depends+=" perl6-File-Path-Resolve"
-depends+=" perl6-File-Presence"
+depends+=" raku-Config-TOML"
+depends+=" raku-File-Path-Resolve"
+depends+=" raku-File-Presence"
 makedepends="$depends"
 checkdepends="peru"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/tantum"
 license="Unlicense"
 distfiles="https://github.com/atweiden/tantum/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="d39474c037980640dd14990c06829c827bfe89c7bdfd5121678242b6272e3502"
-wrksrc="${pkgname#perl6-}-$_gitrev"
-build_style="perl6-dist"
+wrksrc="${pkgname#raku-}-$_gitrev"
+build_style="raku-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing
   peru \
-    --file=.peru.yml \
+    --file=".peru.yml" \
     --sync-dir="$PWD" \
     sync
 }

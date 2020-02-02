@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="zef"
 version=0.5.3
 revision=1
-short_desc="A Perl 6 module manager"
+short_desc="Raku module manager"
 archs="noarch"
 depends+=" curl"
 depends+=" git"
@@ -10,12 +10,12 @@ depends+=" perl"
 depends+=" tar"
 depends+=" unzip"
 depends+=" wget"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/ugexe/zef"
 license="Artistic-2.0"
 distfiles="https://github.com/ugexe/zef/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="71679926211d06a52dd2be83295ec4028d5cdbd4228fed896de3935c7a4a4903"
-build_style="perl6-dist"
+build_style="raku-dist"
 
 post_install() {
   vlicense LICENSE

@@ -5,25 +5,25 @@ revision=1
 _gitrev="8136e10137cc432b5491231061762a15401fc3b3"
 short_desc="Double-entry accounting ledger packager"
 archs="noarch"
-depends+=" perl6-Config-TOML"
-depends+=" perl6-File-Path-Resolve"
-depends+=" perl6-File-Presence"
-depends+=" perl6-TXN-Parser"
-depends+=" perl6-TXN-Remarshal"
+depends+=" raku-Config-TOML"
+depends+=" raku-File-Path-Resolve"
+depends+=" raku-File-Presence"
+depends+=" raku-TXN-Parser"
+depends+=" raku-TXN-Remarshal"
 makedepends="$depends"
 checkdepends="peru"
-tags="perl6"
+tags="raku"
 homepage="https://github.com/atweiden/mktxn"
 license="Unlicense"
 distfiles="https://github.com/atweiden/mktxn/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="530fc36e4066342b9717741194b51761924cfa7f59df8819442a0dd1d5942164"
-wrksrc="${pkgname#perl6-}-$_gitrev"
-build_style="perl6-dist"
+wrksrc="${pkgname#raku-}-$_gitrev"
+build_style="raku-dist"
 
 pre_check() {
   # fetch https://github.com/atweiden/txn-examples for testing
   peru \
-    --file=.peru.yml \
+    --file=".peru.yml" \
     --sync-dir="$PWD" \
     sync
 }
