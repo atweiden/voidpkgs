@@ -3,6 +3,7 @@ pkgname="apache"
 version=2.4.41
 revision=2
 short_desc="High performance Unix-based HTTP server"
+depends="apache-htpasswd"
 makedepends+=" apr-util-devel"
 makedepends+=" db-devel"
 makedepends+=" expat-devel"
@@ -190,6 +191,13 @@ post_install() {
 
   vinstall "$FILESDIR/apache.logrotate" 644 etc/logrotate.d apache
   vsv apache
+}
+
+apache-htpasswd_package() {
+  short_desc+=" - htpasswd"
+  pkg_install() {
+    vmove usr/bin/htpasswd
+  }
 }
 
 apache-devel_package() {

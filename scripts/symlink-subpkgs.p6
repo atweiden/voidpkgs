@@ -28,8 +28,8 @@ constant %PKG = Map.new(
     'acl' => qw<acl-devel
                 acl-progs>,
     'alsa-lib' => ['alsa-lib-devel'],
-    'atf' => qw<atf-devel
-                atf-libs>,
+    'apache' => qw<apache-devel
+                   apache-htpasswd>,
     'apparmor' => qw<apparmor-vim
                      libapparmor
                      libapparmor-devel>,
@@ -45,6 +45,8 @@ constant %PKG = Map.new(
                    libargon2-devel>,
     'aria2' => qw<libaria2
                   libaria2-devel>,
+    'atf' => qw<atf-devel
+                atf-libs>,
     'attr' => qw<attr-devel
                  attr-progs>,
     'avahi' => qw<avahi-autoipd
