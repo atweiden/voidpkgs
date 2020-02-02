@@ -1,32 +1,21 @@
 maintainer="nox"
-pkgname="python3-zipp"
+pkgname="python-zipp"
 version=0.6.0
 revision=2
 short_desc="Pathlib-compatible Zipfile object wrapper"
 archs="noarch"
-depends="python3"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+depends="python"
+hostmakedepends="python-setuptools"
 homepage="https://github.com/jaraco/zipp"
 license="MIT"
 changelog="https://github.com/jaraco/zipp/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/z/zipp/zipp-$version.tar.gz"
 checksum="3718b1cbcd963c7d4c5511a8240812904164b7f381b647143a89d3b98f9bcd8e"
 wrksrc="zipp-$version"
-build_style="python-module"
-pycompile_module="zipp.py"
+build_style="python2-module"
 
 post_install() {
   vlicense LICENSE
-}
-
-python-zipp_package() {
-  depends="python"
-  short_desc+=" - Python 2"
-  pkg_install() {
-    vmove "usr/lib/python2.7"
-    vlicense LICENSE
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
