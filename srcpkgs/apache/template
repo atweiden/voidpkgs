@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apache"
 version=2.4.41
-revision=1
+revision=2
 short_desc="High performance Unix-based HTTP server"
 makedepends+=" apr-util-devel"
 makedepends+=" db-devel"
