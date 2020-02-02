@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apr"
 version=1.7.0
-revision=2
+revision=3
 short_desc="Apache Portable Runtime Library"
 makedepends+=" expat-devel"
 makedepends+=" libuuid-devel"
@@ -42,6 +42,7 @@ pre_build() {
     vsed \
       -i \
       -e "/#define APR_HAVE_SHMEM_MMAP_ZERO/s;0;1;" \
+      -e "/#define APR_HAVE_IOVEC/s;0;1;" \
       -e "/#define APR_HAS_POSIXSEM_SERIALIZE/s;0;1;" \
       -e "/#define APR_HAS_PROC_PTHREAD_SERIALIZE/s;0;1;" \
       include/apr.h
