@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.4"
-version=5.4.16
+version=5.4.17
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -27,7 +27,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="911541df2974782062f551ba0a818d7822ec69db4c41e590bcc7422398bada7a"
+checksum="945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
@@ -169,6 +169,7 @@ do_build() {
   if [[ -n "$_patchver" ]]; then
     _version="EXTRAVERSION=$_patchver"
   fi
+  xbps-alternatives -g tar -s tar
   export LDFLAGS=
   make \
     ARCH="$arch" \
