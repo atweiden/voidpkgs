@@ -13,10 +13,12 @@ build_style="gnu-configure"
 configure_args="--with-installbuilddir=/usr/share/apr-1/build"
 # can't run test programs when cross compiling
 if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" apr_cv_pthreads_cflags=-pthread"
   configure_args+=" apr_cv_process_shared_works=yes"
   configure_args+=" apr_cv_mutex_robust_shared=yes"
+  configure_args+=" apr_cv_tcp_nodelay_with_cork=yes"
+  configure_args+=" ac_cv_func_sem_open=sem_open"
 fi
-nocross="mutex_proc_pthread_methods undeclared, configure args need to be fixed"
 
 # do not redefine struct iovec in include/apr_want.h
 CFLAGS="-DAPR_IOVEC_DEFINED=1"
@@ -32,10 +34,17 @@ esac
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
-    sed \
+    vsed \
       -i \
       -e "/LINK_PROG.*OBJECTS_gen_test_char/s|.*|\t$BUILD_CC $BUILD_CFLAGS tools/gen_test_char.c -o tools/gen_test_char|" \
       Makefile
+    # fixup some not detected configure results to match native builds
+    vsed \
+      -i \
+      -e "/#define APR_HAVE_SHMEM_MMAP_ZERO/s;0;1;" \
+      -e "/#define APR_HAS_POSIXSEM_SERIALIZE/s;0;1;" \
+      -e "/#define APR_HAS_PROC_PTHREAD_SERIALIZE/s;0;1;" \
+      include/apr.h
   fi
 }
 
