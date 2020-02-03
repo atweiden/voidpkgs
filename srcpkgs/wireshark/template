@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="wireshark"
-version=3.0.7
+version=3.2.1
 revision=1
 short_desc="Network protocol analyzer"
 depends="libcap-progs"
@@ -35,7 +35,7 @@ hostmakedepends+=" python3-devel"
 homepage="https://www.wireshark.org"
 license="GPL-2.0-or-later"
 distfiles="https://www.wireshark.org/download/src/$pkgname-$version.tar.xz"
-checksum="4cfd33a19a454ff4002243e9d04d6afd64280a109a21ae652a192f2be2b1b66c"
+checksum="589f640058d6408ebbd695a80ebbd6e7bd99d8db64ecda253d27100dfd27e85b"
 build_style="cmake"
 configure_args="-DBUILD_wireshark=OFF"
 system_groups="wireshark"
