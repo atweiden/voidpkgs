@@ -3,15 +3,10 @@ pkgname="musl-legacy-compat"
 version=0.3
 revision=3
 short_desc="Legacy compatibility headers for the musl libc"
+archs="*-musl"
 homepage="http://www.voidlinux.eu/"
 license="BSD-2-Clause, BSD-3-Clause"
 bootstrap="yes"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    ;;
-  #*) broken="Only valid for musl systems";;
-esac
 
 do_install() {
   for f in "$FILESDIR"/*.h; do
