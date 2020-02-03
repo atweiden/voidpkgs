@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="binutils"
-version=2.33.1
+version=2.34
 revision=1
 short_desc="GNU binary utilities"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
-checksum="ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf"
+checksum="f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
@@ -14,6 +14,7 @@ if [[ -n "$CHROOT_READY" ]]; then
   checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
+  hostmakedepends+=" texinfo"
 else
   unset XBPS_CHECK_PKGS
   XBPS_TRIPLET="x86_64-unknown-linux-gnu"
