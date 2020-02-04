@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="opendoas"
-version=6.6
+version=6.6.1
 revision=1
 short_desc="Portable OpenBSD doas to execute commands as another user"
 makedepends="$(vopt_if 'pam' 'pam-devel')"
@@ -8,13 +8,17 @@ hostmakedepends="bison"
 homepage="https://github.com/Duncaen/OpenDoas"
 license="ISC, BSD"
 distfiles="https://github.com/Duncaen/OpenDoas/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="83ca7e6d75b834f0a03604a4e5dd3879534de5ab8e75b36bbe169b53666f8ec8"
+checksum="baf5a2c73116781519cf03b5b9147eee8db69e8b052eaa81caf093107226b4fe"
 conf_files="$(vopt_if 'pam' '/etc/pam.d/doas')"
 wrksrc="OpenDoas-$version"
 build_style="configure"
-configure_args="$(vopt_with 'pam')"
-build_options="pam"
-build_options_default="pam"
+configure_args+=" $(vopt_with 'pam')"
+configure_args+=" $(vopt_with 'timestamp')"
+build_options+=" pam"
+build_options+=" timestamp"
+build_options_default+=" pam"
+build_options_default+=" timestamp"
+desc_option_timestamp="enable persistent auth using timestamps"
 
 pre_configure() {
   cp "$FILESDIR/doas.pam" pam.d__doas__linux
