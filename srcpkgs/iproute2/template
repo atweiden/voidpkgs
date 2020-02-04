@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iproute2"
-version=5.4.0
+version=5.5.0
 revision=1
 short_desc="IP Routing Utilities"
 makedepends+=" db-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://wiki.linuxfoundation.org/networking/iproute2"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/net/iproute2/$pkgname-$version.tar.xz"
-checksum="fe97aa60a0d4c5ac830be18937e18dc3400ca713a33a89ad896ff1e3d46086ae"
+checksum="bac543435cac208a11db44c9cc8e35aa902befef8750594654ee71941c388f7b"
 conf_files+=" /etc/iproute2/ematch_map"
 conf_files+=" /etc/iproute2/rt_dsfield"
 conf_files+=" /etc/iproute2/rt_protos"
