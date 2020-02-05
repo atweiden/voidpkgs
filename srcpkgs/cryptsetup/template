@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cryptsetup"
-version=2.2.2
+version=2.3.0
 revision=1
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
@@ -16,7 +16,7 @@ homepage="https://gitlab.com/cryptsetup/cryptsetup"
 license="GPL-2.0-or-later"
 changelog="https://gitlab.com/cryptsetup/cryptsetup/raw/master/docs/v$version-ReleaseNotes"
 distfiles="$KERNEL_SITE/utils/cryptsetup/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="2af0ec9551ab9c870074cae9d3f68d82cab004f4095fa89db0e4413713424a46"
+checksum="395690de99509428354d3cd15cf023bed01487e6f1565b2181e013dc847bbc85"
 build_style="gnu-configure"
 configure_args+=" --enable-cryptsetup-reencrypt"
 configure_args+=" --enable-libargon2"
