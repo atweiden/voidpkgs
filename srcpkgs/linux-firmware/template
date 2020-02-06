@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux-firmware"
-version=20191215
+version=20200122
 revision=1
 short_desc="Binary firmware blobs for the Linux kernel"
 archs="noarch"
@@ -9,7 +9,7 @@ depends+=" $pkgname-network-${version}_$revision"
 homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$version.tar.gz"
-checksum="cdfe80a49bcd8fc448401d0b3a2f820cf6f6c8658983921fa2fc0fbbd4559608"
+checksum="fac1b252dc7c65fa20f70b6f854284df6f562d2200ab6246effe9d7021fad396"
 
 do_install() {
   vmkdir usr/lib/firmware
