@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tbb"
-version=2019.U9
+version=2020.U1
 revision=1
 # version rewrite: 2017_U7 (upstream) => 2017.7 (xbps)
 _ver=${version/./_}
@@ -14,7 +14,7 @@ hostmakedepends="cmake"
 homepage="https://www.threadingbuildingblocks.org"
 license="Apache-2.0"
 distfiles="https://github.com/intel/tbb/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="15652f5328cf00c576f065e5cd3eaf3317422fe82afb67a9bcec0dc065bd2abe"
+checksum="72cffaeac3b50b117c4e2279f9162308d35873b3e744aff5a088beff6f65c9af"
 wrksrc="$pkgname-$_ver"
 build_style="gnu-makefile"
 
