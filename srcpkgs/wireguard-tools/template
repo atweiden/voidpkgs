@@ -4,7 +4,6 @@ version=1.0.20200206
 revision=1
 short_desc="Fast, modern, secure VPN tunnel - userland tools"
 depends="openresolv"
-makedepends="libmnl-devel"
 homepage="https://www.wireguard.com/"
 license="GPL-2.0-only"
 distfiles="https://git.zx2c4.com/wireguard-tools/snapshot/$pkgname-$version.tar.xz"
