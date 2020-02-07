@@ -6,11 +6,11 @@ use Shlibs::Parser;
 =begin pod
 =head NAME
 
-gen-common-shlibs.p6
+gen-common-shlibs.raku
 
 =head SYNOPSIS
 
-    perl6 scripts/gen-common-shlibs.p6 > common/shlibs
+    raku scripts/gen-common-shlibs.raku > common/shlibs
 
 =head DESCRIPTION
 
@@ -25,8 +25,8 @@ Orders soname mappings alphabetically by pkgname then by soname.
 =head BUGS
 
 =for item
-C<sort-common-shlibs.p6> produces different sort order of mappings than
-C<gen-common-shlibs.p6>.
+C<sort-common-shlibs.raku> produces different sort order of mappings
+than C<gen-common-shlibs.raku>.
 =end pod
 
 # path to https://github.com/atweiden/voidpkgs

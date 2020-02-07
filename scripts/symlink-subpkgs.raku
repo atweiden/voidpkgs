@@ -3,11 +3,11 @@ use v6;
 =begin pod
 =head NAME
 
-symlink-subpkgs.p6
+symlink-subpkgs.raku
 
 =head SYNOPSIS
 
-    scripts/symlink-subpkgs.p6
+    scripts/symlink-subpkgs.raku
 
 =head DESCRIPTION
 

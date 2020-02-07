@@ -4,11 +4,11 @@ use Config::TOML;
 =begin pod
 =head NAME
 
-diff-upstream-srcpkgs.p6
+diff-upstream-srcpkgs.raku
 
 =head SYNOPSIS
 
-    perl6 scripts/diff-upstream-srcpkgs.p6
+    raku scripts/diff-upstream-srcpkgs.raku
 
 =head DESCRIPTION
 

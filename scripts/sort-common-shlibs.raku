@@ -3,11 +3,11 @@ use v6;
 =begin pod
 =head NAME
 
-sort-common-shlibs.p6
+sort-common-shlibs.raku
 
 =head SYNOPSIS
 
-    scripts/sort-common-shlibs.p6 > common/shlibs
+    scripts/sort-common-shlibs.raku > common/shlibs
 
 =head DESCRIPTION
 

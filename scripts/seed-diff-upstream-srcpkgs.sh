@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # -----------------------------------------------------------------------------
-# seed-diff-upstream-srcpkgs.sh: seed diff.p6 atw/voidpkgs void/void-packages
+# seed-diff-upstream-srcpkgs.sh: seed diff.raku atw/voidpkgs void/void-packages
 # -----------------------------------------------------------------------------
 
 # ==============================================================================
@@ -102,14 +102,14 @@ main_atw() {
   mkpkgs "atw"
   for k in "${!pkgs_atw[@]}"; do
     echo "$k = \"${pkgs_atw[$k]}\""
-  done | perl6 -e "$rakudo"
+  done | raku -e "$rakudo"
 }
 
 main_void() {
   mkpkgs "void"
   for k in "${!pkgs_void[@]}"; do
     echo "$k = \"${pkgs_void[$k]}\""
-  done | perl6 -e "$rakudo"
+  done | raku -e "$rakudo"
 }
 
 main() {

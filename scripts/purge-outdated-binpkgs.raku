@@ -1,4 +1,4 @@
-#!/usr/bin/env perl6
+#!/usr/bin/env raku
 use v6;
 constant $LIB = sprintf(Q{%s/lib}, $*PROGRAM.dirname);
 use lib $LIB;
@@ -7,23 +7,23 @@ use Binpkg::Parser;
 =begin pod
 =head NAME
 
-purge-outdated-binpkgs.p6
+purge-outdated-binpkgs.raku
 
 =head SYNOPSIS
 
 List all duplicate pkgs, all versions, including latest version:
 
-    scripts/purge-outdated-binpkgs.p6 --all ls dupes
+    scripts/purge-outdated-binpkgs.raku --all ls dupes
 
 Dry run:
 
-    scripts/purge-outdated-binpkgs.p6 ls dupes \
-        | scripts/purge-outdated-binpkgs.p6 --dry-run rm
+    scripts/purge-outdated-binpkgs.raku ls dupes \
+        | scripts/purge-outdated-binpkgs.raku --dry-run rm
 
 Purge:
 
-    scripts/purge-outdated-binpkgs.p6 ls dupes \
-        | scripts/purge-outdated-binpkgs.p6 rm
+    scripts/purge-outdated-binpkgs.raku ls dupes \
+        | scripts/purge-outdated-binpkgs.raku rm
 
 =head DESCRIPTION
 

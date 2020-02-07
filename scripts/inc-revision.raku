@@ -1,14 +1,14 @@
-#!/usr/bin/env perl6
+#!/usr/bin/env raku
 use v6;
 
 =begin pod
 =head NAME
 
-inc-revision.p6
+inc-revision.raku
 
 =head SYNOPSIS
 
-    perl6 scripts/inc-revision.p6 srcpkgs/cross-x86_64-linux-musl/template
+    raku scripts/inc-revision.raku srcpkgs/cross-x86_64-linux-musl/template
 
 =head DESCRIPTION
 
@@ -72,7 +72,7 @@ multi sub USAGE($? --> Nil)
 {
     constant $HELP = q:to/EOF/.trim;
     Usage:
-      inc-revision.p6 [-h] <file> [<file> <file>...]
+      inc-revision.raku [-h] <file> [<file> <file>...]
 
     Options:
       --in-place

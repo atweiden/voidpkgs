@@ -6,11 +6,11 @@ use Binpkg::Parser;
 =begin pod
 =head NAME
 
-diff-srcpkgs-binpkgs.p6
+diff-srcpkgs-binpkgs.raku
 
 =head SYNOPSIS
 
-    perl6 scripts/diff-srcpkgs-binpkgs.p6
+    raku scripts/diff-srcpkgs-binpkgs.raku
 
 =head DESCRIPTION
 

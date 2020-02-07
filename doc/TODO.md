@@ -10,7 +10,6 @@ Todo
         - `e04fcbefd2d31280935f243e402562c582ccd500 .. HEAD`
   - *xbps* component
     - monitors changes to core xbps utils and libs
-- create `build_style=perl6-module`
 - adhere to style guide
   - convert tabs to spaces
   - put all `&&` conditional on separate line

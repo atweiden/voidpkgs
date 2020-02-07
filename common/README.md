@@ -20,15 +20,16 @@ When multiple packages provide the same SONAME, the first one (order
 top->bottom) is preferred over the next ones.
 
 [shlibs][shlibs] is generated with
-[scripts/gen-common-shlibs.p6][scripts/gen-common-shlibs.p6], then sorted
-with [scripts/sort-common-shlibs.p6][scripts/sort-common-shlibs.p6]:
+[scripts/gen-common-shlibs.raku][scripts/gen-common-shlibs.raku],
+then sorted with
+[scripts/sort-common-shlibs.raku][scripts/sort-common-shlibs.raku]:
 
 ```sh
-perl6 scripts/gen-common-shlibs.p6 > common/shlibs
-perl6 scripts/sort-common-shlibs.p6 > common/shlibs
+raku scripts/gen-common-shlibs.raku > common/shlibs
+raku scripts/sort-common-shlibs.raku > common/shlibs
 ```
 
 [options.description]: options.description
-[scripts/gen-common-shlibs.p6]: ../scripts/gen-common-shlibs.p6
-[scripts/sort-common-shlibs.p6]: ../scripts/sort-common-shlibs.p6
+[scripts/gen-common-shlibs.raku]: ../scripts/gen-common-shlibs.raku
+[scripts/sort-common-shlibs.raku]: ../scripts/sort-common-shlibs.raku
 [shlibs]: shlibs
