@@ -15,6 +15,7 @@ Programming Languages
 - OCaml
 - Perl
 - Python
+- Raku
 - Ruby
 - Rust
 - Scheme
