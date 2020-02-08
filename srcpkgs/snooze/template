@@ -1,15 +1,19 @@
-# Template file for 'snooze'
-pkgname=snooze
+maintainer="nox"
+pkgname="snooze"
 version=0.4
 revision=1
-build_style=gnu-makefile
 short_desc="Run a command at a particular time"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="Public Domain"
 homepage="https://github.com/leahneukirchen/snooze"
-distfiles="https://github.com/leahneukirchen/snooze/archive/v${version}.tar.gz"
-checksum=1d1dc49edb3a96ddc6411b19e40e665dae47489fcc73465dd254e31816ca8eb0
+license="Public Domain"
+distfiles="https://github.com/leahneukirchen/snooze/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="1d1dc49edb3a96ddc6411b19e40e665dae47489fcc73465dd254e31816ca8eb0"
+build_style="gnu-makefile"
 
 post_install() {
-	make -C sv install DESTDIR="$DESTDIR"
+  make \
+    DESTDIR="$DESTDIR" \
+    install \
+    -C sv
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
