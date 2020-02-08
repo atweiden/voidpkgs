@@ -3,6 +3,8 @@ pkgname="dhcp"
 version=4.4.2
 revision=1
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
 hostmakedepends+=" tar"
 homepage="https://www.isc.org/downloads/dhcp"
@@ -16,10 +18,25 @@ make_dirs="/var/lib/dhcp 0755 root root"
 disable_parallel_build="yes"
 
 case "$XBPS_TARGET_MACHINE" in
-  armv[56]*|ppc|ppc-musl*)
-    broken="libisc must be linked against libatomic"
+  ppc64*)
+    ;;
+  armv[56]*|ppc*)
+    makedepends+=" libatomic-devel"
     ;;
 esac
+
+post_patch() {
+  case "$XBPS_TARGET_MACHINE" in
+    ppc64*)
+      ;;
+    armv[56]*|ppc*|mips*)
+      sed \
+        -i \
+        -e "/LIBATOMIC=/s/$/-latomic/" \
+        configure.ac
+      ;;
+  esac
+}
 
 pre_configure() {
   local _args
@@ -32,6 +49,7 @@ pre_configure() {
   cargs="$(echo $configure_args | tr '\n' ' ')"
   # set real configure_args
   export configure_args+=" $_args"
+  autoreconf -if
 }
 
 post_install() {
