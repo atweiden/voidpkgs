@@ -5,30 +5,100 @@ revision=1
 short_desc="A modern concurrent version control system"
 depends="ca-certificates"
 makedepends+=" apache-devel"
+makedepends+=" file-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" liblz4-devel"
+makedepends+=" perl"
 makedepends+=" python-devel"
 makedepends+=" serf-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" swig"
 makedepends+=" zlib-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" apache-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python"
 homepage="http://subversion.apache.org/"
 license="Apache-2.0, BSD-3-Clause"
 distfiles="http://apache.uvigo.es/subversion/$pkgname-$version.tar.bz2"
 checksum="bc50ce2c3faa7b1ae9103c432017df98dfd989c4239f9f8270bb3a314ed9e5bd"
 build_style="gnu-configure"
+configure_args+=" --config-cache"
 configure_args+=" --disable-javahl"
 configure_args+=" --disable-keychain"
 configure_args+=" --disable-mod-activation"
 configure_args+=" --disable-static"
-configure_args+=" --with-apxs"
 configure_args+=" --with-editor=vi"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --with-utf8proc=internal"
 configure_args+=" --without-gnome-keyring"
 configure_args+=" --without-kwallet"
-nocross="serf-devel is nocross"
+
+pre_configure() {
+  # based on native build values
+  cat <<-EOF >config.cache
+ac_cv_python_includes=-I$XBPS_CROSS_BASE/usr/include/python$py2_ver
+ac_cv_python_compile="$CC -fPIC"
+ac_cv_python_link="$CC -shared $LDFLAGS"
+ac_cv_python_libs="$LDFLAGS"
+EOF
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cp -a "$XBPS_CROSS_BASE/usr/bin/apxs" \
+      "$wrksrc"
+    cp -a "$XBPS_CROSS_BASE/usr/share/apache/webroot/build/config_vars.mk" \
+      "$wrksrc"
+
+    # use the modified apxs
+    configure_args+=" --with-apxs=$wrksrc/apxs"
+
+    # use the $wrksrc/config_vars.mk
+    vsed \
+      -i \
+      -e "s;[$]installbuilddir/config_vars.mk;$wrksrc/config_vars.mk;g" \
+      apxs
+
+    # use apr-1-config and apu-1-config wrappers
+    vsed \
+      -i \
+      -e "s;/usr/bin/\(ap.-1-config\);$XBPS_WRAPPERDIR/\1;g" \
+      -e "s;-I/usr/include;-I$XBPS_CROSS_BASE/usr/include;g" \
+      config_vars.mk
+
+    export PERL5LIB="$XBPS_STATEDIR/perlprefix/$XBPS_TARGET_MACHINE-linux"
+    mkdir -p "$PERL5LIB"
+    cp "$XBPS_CROSS_BASE/usr/lib/perl5/core_perl/Config"*.p? \
+      "$PERL5LIB"
+    cp "$XBPS_CROSS_BASE/usr/lib/perl5/core_perl/Errno.pm" \
+      "$PERL5LIB"
+    vsed \
+      -i \
+      -e "s;archlibexp => '\(.*\)';archlibexp => '$XBPS_CROSS_BASE\1';" \
+      "$PERL5LIB/Config.pm" \
+      "$PERL5LIB/Config_heavy.pl"
+  else
+    configure_args+=" --with-apxs"
+  fi
+  NOCONFIGURE=1 autoreconf -fi
+}
+
+post_configure() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    cd subversion/bindings/swig/perl/native
+    CC="$CC" \
+    CCFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    CFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    INSTALLDIRS="vendor" \
+    LD="$CC" \
+    LDDLFLAGS="-shared $CFLAGS -L$XBPS_CROSS_BASE/usr/lib" \
+    LDFLAGS="$LDFLAGS -L$XBPS_CROSS_BASE/usr/lib -lperl" \
+    OPTIMIZE="$CFLAGS" \
+    PERL_MM_USE_DEFAULT=1 \
+      perl Makefile.PL PREFIX="/usr"
+  fi
+}
 
 do_build() {
   make \
@@ -36,9 +106,20 @@ do_build() {
     LT_LDFLAGS="-L$Fdestdir/usr/lib"
   make \
     "$makejobs" \
-    swig_pydir="/usr/lib/python2.7/site-packages/libsvn" \
-    swig_pydir_extra="/usr/lib/python2.7/site-packages/svn" \
-    swig-py \
+    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/libsvn" \
+    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/svn" \
+    swig-py
+  make \
+    "$makejobs" \
+    CC="$CC" \
+    CCFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    CFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    INSTALLDIRS="vendor" \
+    LD="$CC" \
+    LDDLFLAGS="-shared $CFLAGS -L$XBPS_CROSS_BASE/usr/lib" \
+    LDFLAGS="$LDFLAGS -L$XBPS_CROSS_BASE/usr/lib -lperl" \
+    OPTIMIZE="$CFLAGS" \
+    PERL_MM_USE_DEFAULT=1 \
     swig-pl
 }
 
@@ -48,10 +129,24 @@ do_install() {
   make \
     DESTDIR="$DESTDIR" \
     INSTALLDIRS="vendor" \
-    swig_pydir="/usr/lib/python2.7/site-packages/libsvn" \
-    swig_pydir_extra="/usr/lib/python2.7/site-packages/svn" \
-    install \
-    install-swig-py \
+    install
+  make \
+    DESTDIR="$DESTDIR" \
+    INSTALLDIRS="vendor" \
+    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/libsvn" \
+    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/svn" \
+    install-swig-py
+  make \
+    CC="$CC" \
+    CCFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    CFLAGS="$CFLAGS -I$XBPS_CROSS_BASE/usr/include" \
+    DESTDIR="$DESTDIR" \
+    INSTALLDIRS="vendor" \
+    LD="$CC" \
+    LDDLFLAGS="-shared $CFLAGS -L$XBPS_CROSS_BASE/usr/lib" \
+    LDFLAGS="$LDFLAGS -L$XBPS_CROSS_BASE/usr/lib -lperl" \
+    OPTIMIZE="$CFLAGS" \
+    PERL_MM_USE_DEFAULT=1 \
     install-swig-pl
 
   rm -rf "$DESTDIR/usr/lib/perl5/core_perl"
@@ -102,8 +197,6 @@ subversion-devel_package() {
 subversion-python_package() {
   lib32disabled="yes"
   depends="python"
-  pycompile_module+=" libsvn"
-  pycompile_module+=" svn"
   short_desc+=" - Python bindings"
   pkg_install() {
     vmove "usr/lib/libsvn_swig_py*"
