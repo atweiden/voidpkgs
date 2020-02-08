@@ -17,12 +17,12 @@ build_style="gnu-configure"
 make_dirs="/var/lib/dhcp 0755 root root"
 disable_parallel_build="yes"
 
-if [[ -n "$XBPS_TARGET_NEED_ATOMIC" ]]; then
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
 
 post_patch() {
-  if [[ -n "$XBPS_TARGET_NEED_ATOMIC" ]]; then
+  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
     vsed \
       -i \
       -e "/LIBATOMIC=/s/$/-latomic/" \
