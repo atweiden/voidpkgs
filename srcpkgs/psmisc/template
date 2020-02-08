@@ -7,7 +7,7 @@ makedepends="ncurses-devel"
 homepage="https://gitlab.com/psmisc/psmisc"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/psmisc/$pkgname-$version.tar.xz"
-checksum="a4e93dde60ff5a3c1d4dfe61c73555f31cd523c67e2c7c5ada73c668bb448878"
+checksum="41750e1a5abf7ed2647b094f58127c73dbce6876f77ba4e0a7e0995ae5c7279a"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
