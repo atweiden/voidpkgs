@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="python3-mock"
-version=3.0.5
-revision=2
+version=4.0.0
+revision=1
 short_desc="Python3 mock library"
 archs="noarch"
 hostmakedepends="python3-setuptools"
 homepage="http://mock.readthedocs.org/en/latest/"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/m/mock/mock-$version.tar.gz"
-checksum="83657d894c90d5681d62155c82bda9c1187827525880eda8ff5df4ec813437c3"
+checksum="8fff3fd7c5796ea78ae2847f32e87ad4e111e03fef6e90d03b5efb4882211d78"
 wrksrc="mock-$version"
 build_style="python3-module"
 
