@@ -17,25 +17,17 @@ build_style="gnu-configure"
 make_dirs="/var/lib/dhcp 0755 root root"
 disable_parallel_build="yes"
 
-case "$XBPS_TARGET_MACHINE" in
-  ppc64*)
-    ;;
-  armv[56]*|ppc*)
-    makedepends+=" libatomic-devel"
-    ;;
-esac
+if [[ -n "$XBPS_TARGET_NEED_ATOMIC" ]]; then
+  makedepends+=" libatomic-devel"
+fi
 
 post_patch() {
-  case "$XBPS_TARGET_MACHINE" in
-    ppc64*)
-      ;;
-    armv[56]*|ppc*|mips*)
-      sed \
-        -i \
-        -e "/LIBATOMIC=/s/$/-latomic/" \
-        configure.ac
-      ;;
-  esac
+  if [[ -n "$XBPS_TARGET_NEED_ATOMIC" ]]; then
+    vsed \
+      -i \
+      -e "/LIBATOMIC=/s/$/-latomic/" \
+      configure.ac
+  fi
 }
 
 pre_configure() {
