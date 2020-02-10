@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=049
-revision=4
+revision=5
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -10,7 +10,6 @@ depends+=" eudev"
 depends+=" gzip"
 depends+=" kmod>=3.7"
 depends+=" kpartx"
-depends+=" psmisc"
 depends+=" util-linux"
 makedepends="libkmod-devel"
 case "$XBPS_TARGET_MACHINE" in
