@@ -67,14 +67,10 @@ system_accounts="squid"
 make_dirs+=" /var/cache/squid 750 squid squid"
 make_dirs+=" /var/log/squid 750 squid squid"
 
-case "$XBPS_TARGET_MACHINE" in
-  ppc64*)
-    ;;
-  armv[56]l*|ppc*)
-    makedepends+=" libatomic-devel"
-    LDFLAGS+=" -latomic"
-    ;;
-esac
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  LDFLAGS+=" -latomic"
+fi
 
 post_install() {
   chmod u+s \
