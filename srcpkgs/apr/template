@@ -23,14 +23,10 @@ fi
 # do not redefine struct iovec in include/apr_want.h
 CFLAGS="-DAPR_IOVEC_DEFINED=1"
 
-case "$XBPS_TARGET_MACHINE" in
-  ppc64*)
-    ;;
-  ppc*|armv[56]*|mips*)
-    makedepends+=" libatomic-devel"
-    LDFLAGS="-latomic"
-    ;;
-esac
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  LDFLAGS="-latomic"
+fi
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
