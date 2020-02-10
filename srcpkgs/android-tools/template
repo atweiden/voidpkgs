@@ -12,11 +12,9 @@ makedepends+=" libressl-devel"
 makedepends+=" libusb-devel"
 makedepends+=" pcre2-devel"
 makedepends+=" zlib-devel"
-case "$XBPS_TARGET_MACHINE" in
-  armv[56]*)
-    makedepends+=" libatomic-devel"
-    ;;
-esac
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+fi
 hostmakedepends+=" go"
 hostmakedepends+=" perl"
 homepage="http://developer.android.com/tools/help/adb.html"
@@ -41,14 +39,12 @@ pre_configure() {
       configure_args+=" $boring_ssl_cmake_args"
   fi
 
-  case "$XBPS_TARGET_MACHINE" in
-    armv[56]*)
-      sed \
-        -i \
-        -e "/target_link_libraries/s;$; atomic;" \
-        vendor/CMakeLists.adb.txt
-      ;;
-  esac
+  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+    sed \
+      -i \
+      -e "/target_link_libraries/s;$; atomic;" \
+      vendor/CMakeLists.adb.txt
+  fi
 }
 
 post_install() {
