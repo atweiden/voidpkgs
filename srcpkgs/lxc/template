@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="lxc"
 version=3.2.1
-revision=2
+revision=3
 _desc="Linux Containers"
 short_desc="$_desc - utilities"
 depends+=" gnupg"
+depends+=" wget"
 depends+=" xz"
 makedepends+=" gnutls-devel"
 makedepends+=" libapparmor-devel"
