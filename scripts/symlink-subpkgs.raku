@@ -56,6 +56,7 @@ constant %PKG = Map.new(
                   avahi-libs-devel
                   avahi-utils>,
     'babeltrace' => ['babeltrace-devel'],
+    'bash' => ['bash-devel'],
     'bcc' => qw<bcc-devel
                 bcc-tools
                 python3-bcc>,
