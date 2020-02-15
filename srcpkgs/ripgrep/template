@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ripgrep"
 version=11.0.2
-revision=1
+revision=2
 short_desc="Fast search tool inspired by ag and grep"
 hostmakedepends="asciidoc"
 homepage="https://github.com/BurntSushi/ripgrep/"
@@ -16,7 +16,6 @@ post_install() {
   vman rg.1
   cd "target/$RUST_TARGET/release/build"/ripgrep-*/out
   vinstall rg.bash 0644 usr/share/bash-completion/completions rg
-  vinstall rg.fish 0644 usr/share/fish/completions
   vinstall complete/_rg 0644 usr/share/zsh/site-functions
 }
 
