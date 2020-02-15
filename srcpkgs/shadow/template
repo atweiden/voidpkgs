@@ -1,35 +1,34 @@
 maintainer="nox"
 pkgname="shadow"
-version=4.8
-revision=3
+version=4.8.1
+revision=1
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
 makedepends+=" pam-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
-hostmakedepends+=" xz"
+hostmakedepends="libtool"
 homepage="https://github.com/shadow-maint/shadow"
 license="BSD-3-Clause"
 distfiles="https://github.com/shadow-maint/shadow/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="64b46683b9c1f35b2cd2da9fa87a1383917666e85a56b35e081c7257d10dac64"
+checksum="a3ad4630bdc41372f02a647278a8c3514844295d36eefe68ece6c3a641c1ae62"
 conf_files+=" /etc/default/*"
 conf_files+=" /etc/login.defs"
 conf_files+=" /etc/pam.d/*"
 build_style="gnu-configure"
+configure_args+=" --bindir=/usr/bin"
 configure_args+=" --disable-account-tools-setuid"
 configure_args+=" --disable-nls"
 configure_args+=" --disable-static"
 configure_args+=" --enable-shared"
 configure_args+=" --enable-subordinate-ids"
+configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --with-acl"
 configure_args+=" --with-attr"
 configure_args+=" --with-libpam"
 configure_args+=" --without-selinux"
+configure_args+=" --without-su"
 
 pre_configure() {
-  autoreconf -fi
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # completely disable unportable ruserok()
@@ -57,7 +56,7 @@ do_build() {
 }
 
 post_install() {
-  vlicense "$FILESDIR/LICENSE"
+  mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
 
   # install our pam files not the ones supplied with shadow
   rm -f "$DESTDIR/etc/pam.d"/*
@@ -100,7 +99,7 @@ post_install() {
 
   # remove utilities provided by util-linux and logoutd
   mv "$DESTDIR/usr/bin"/{newgrp,sg}
-  rm "$DESTDIR/usr/bin"/{login,su,chsh,chfn}
+  rm "$DESTDIR/usr/bin"/{login,chsh,chfn}
   rm "$DESTDIR/usr/bin"/{nologin,logoutd,vipw,vigr}
 
   # ...and their many man pages
@@ -115,6 +114,8 @@ post_install() {
      -o -name 'nologin.8' \
      -o -name 'newgrp.1' ')' \
      -delete
+
+  vlicense "$FILESDIR/LICENSE"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
