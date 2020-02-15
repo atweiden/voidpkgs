@@ -36,7 +36,7 @@ pre_configure() {
 post_install() {
   ln -s bash "$DESTDIR/usr/bin/sh"
   rm -rf "$DESTDIR/usr/include"
-  rm -rf "$DESTDIR/usr/lib/pkgconfig/bash.pc"
+  rm -rf "$DESTDIR/usr/lib"
   rm -rf "$DESTDIR/usr/share"
 }
 
