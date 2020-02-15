@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-system"
-version=0.112
-revision=6
+version=0.113
+revision=2
 short_desc="Void Linux base system meta package"
 depends+=" base-files>=0.77"
 depends+=" ncurses"
@@ -28,7 +28,6 @@ depends+=" btrfs-progs"
 depends+=" xfsprogs"
 depends+=" f2fs-tools"
 depends+=" dosfstools"
-depends+=" psmisc"
 depends+=" procps-ng"
 depends+=" tzdata"
 depends+=" pciutils"
@@ -66,8 +65,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 homepage="https://www.voidlinux.org"
-license="Public domain"
+license="Public Domain"
 build_style="meta"
-reverts="0.113_1"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
