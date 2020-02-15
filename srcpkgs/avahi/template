@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="avahi"
 version=0.7
-revision=8
+revision=9
 short_desc="Multicast DNS Service Discovery"
 makedepends+=" dbus-devel"
 makedepends+=" gdbm-devel"
@@ -67,11 +67,6 @@ post_extract() {
 
 post_install() {
   rm -rf "$DESTDIR/usr/lib"/python*
-  # enable 'disallow_other_stacks' option by default
-  sed \
-    -i \
-    -e 's,\#\(disallow-other-stacks\).*,\1=yes,' \
-    "$DESTDIR/etc/avahi/avahi-daemon.conf"
   # set 'enable-dbus=warn' option by default to not require dbus
   sed \
     -i \
