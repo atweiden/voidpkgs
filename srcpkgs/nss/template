@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="nss"
-version=3.49.2
+version=3.50
 revision=1
-_nsprver=4.24
+_nsprver=4.25
 short_desc="Mozilla Network Security Services"
 depends="nspr>=$_nsprver"
 makedepends+=" nspr-devel"
@@ -12,9 +12,12 @@ hostmakedepends="perl"
 homepage="https://www.mozilla.org/projects/security/pki/nss"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="faa7502c3ce9240d4be2aa88f63d88cf7d1cc512060e63ef21a7813c236160b2"
+checksum="185df319775243f5f5daa9d49b7f9cc5f2b389435be3247c3376579bee063ba7"
 
 do_build() {
+  local _native_use64
+  local _target_use64
+
   # respect LDFLAGS
   vsed \
     -i \
@@ -30,34 +33,40 @@ do_build() {
   export NSS_ENABLE_WERROR=0
   export NSS_USE_SYSTEM_SQLITE=1
 
-  case "$XBPS_MACHINE" in
-    aarch64*|x86_64*|ppc64*)
-      _native_use64="USE_64=1"
+  if [[ "$XBPS_WORDSIZE" == "64" ]]; then
+    _native_use64="USE_64=1"
+  fi
+  if [[ "$XBPS_TARGET_WORDSIZE" == "64" ]]; then
+    _target_use64="USE_64=1"
+  fi
+
+  # it's actually VSX, so disable on all BE ppc
+  case "$XBPS_TARGET_MACHINE" in
+    ppc64le*)
+      ;;
+    ppc*)
+      export NSS_DISABLE_ALTIVEC=1
       ;;
   esac
 
   cd nss
   # build nsinstall for host
   make \
+    $_native_use64 \
     LD="$BUILD_LD" \
     LDFLAGS="$BUILD_LDFLAGS" \
-    $_native_use64 \
     -C coreconf
 
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
-      aarch64*)
-        _ARCH="aarch64"
-        _target_use64="USE_64=1"
-        CFLAGS+=" -DNS_PTR_GT_32"
-        ;;
-      ppc64*)
-        _ARCH="ppc64"
-        _target_use64="USE_64=1"
+      aarch64*|ppc64*)
+        _ARCH="${XBPS_TARGET_MACHINE%-*}"
         CFLAGS+=" -DNS_PTR_GT_32"
         ;;
       armv7*)
         _ARCH="arm"
+        # gcm-arm32-neon.c use mfpu=neon
+        # force mfpu=neon for everything else
         CFLAGS+=" -mfpu=neon"
         CXXFLAGS+=" -mfpu=neon"
         ;;
@@ -67,7 +76,7 @@ do_build() {
       mips*)
         _ARCH="mips"
         ;;
-      ppc|ppc-musl)
+      ppc*)
         _ARCH="ppc"
         ;;
       *)
@@ -75,7 +84,8 @@ do_build() {
         ;;
     esac
     # ... and then copy it to $wrksrc
-    find "$wrksrc" -type f -name nsinstall -exec cp {} "$wrksrc" \;
+    find "$wrksrc" -type f -name nsinstall \
+      -exec cp {} "$wrksrc" \;
     make clean
 
     export NSPR_INCLUDE_DIR="$XBPS_CROSS_BASE/usr/include/nspr"
@@ -83,22 +93,22 @@ do_build() {
     export XCFLAGS="$CFLAGS"
 
     make \
+      $_target_use64 \
       CC="$CC" \
       CCC="$CXX" \
       CROSS_COMPILE=1 \
       NSINSTALL="$wrksrc/nsinstall" \
       OS_TEST="$_ARCH" \
       RANLIB="$RANLIB" \
-      $_target_use64 \
       -C lib/dbm
     make \
+      $_target_use64 \
       CC="$CC" \
       CCC="$CXX" \
       CROSS_COMPILE=1 \
       NSINSTALL="$wrksrc/nsinstall" \
       OS_TEST="$_ARCH" \
-      RANLIB="$RANLIB" \
-      $_target_use64
+      RANLIB="$RANLIB"
   else
     # native build
     export NSPR_INCLUDE_DIR="/usr/include/nspr"
@@ -114,6 +124,7 @@ do_build() {
 }
 
 do_check() {
+  local _use_64
   export BUILD_OPT=1
   export FREEBL_NO_DEPEND=1
   export LIBRUNPATH=
@@ -126,11 +137,9 @@ do_check() {
   export NSS_ENABLE_WERROR=0
   export NSS_USE_SYSTEM_SQLITE=1
   export XCFLAGS="$CFLAGS"
-  case "$XBPS_MACHINE" in
-    aarch64*|x86_64*|ppc64*)
-      _use_64="USE_64=1"
-      ;;
-  esac
+  if [[ "$XBPS_WORDSIZE" == "64" ]]; then
+    _use_64="USE_64=1"
+  fi
   cd nss/tests
   env \
     DOMSUF="localdomain" \
