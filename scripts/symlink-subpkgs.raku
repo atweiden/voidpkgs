@@ -713,6 +713,7 @@ constant %PKG = Map.new(
                   libtidy5-devel>,
     'tiff' => ['tiff-devel'],
     'toxcore' => ['toxcore-devel'],
+    'trousers' => ['trousers-devel'],
     'u-boot-tools' => ['uboot-mkimage'],
     'udns' => ['udns-devel'],
     'unbound' => ['unbound-devel'],
