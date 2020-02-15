@@ -1,28 +1,20 @@
 maintainer="nox"
 pkgname="gmp"
-version=6.1.2
+version=6.2.0
 revision=1
 short_desc="Library for arbitrary precision arithmetic"
 makedepends="zlib-devel"
 hostmakedepends="m4"
 homepage="http://gmplib.org/"
-license="LGPL-3"
+license="LGPL-3.0-or-later"
 distfiles="https://gmplib.org/download/gmp/$pkgname-$version.tar.xz"
-checksum="87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
+checksum="258e6cd51b3fbdfc185c716d55f82c08aff57df0c6fbd143cf6ed561267a1526"
 build_style="gnu-configure"
 configure_args="--enable-cxx"
 bootstrap="yes"
 subpackages+=" gmpxx"
 subpackages+=" gmpxx-devel"
 subpackages+=" gmp-devel"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" automake"
-  hostmakedepends+=" libtool"
-  pre_configure() {
-    autoreconf -if
-  }
-fi
 
 gmpxx_package() {
   short_desc+=" - C++ support"
@@ -32,12 +24,14 @@ gmpxx_package() {
 }
 
 gmpxx-devel_package() {
-  depends="gmpxx-${version}_$revision"
+  depends+=" gmp-devel-${version}_$revision"
+  depends+=" gmpxx-${version}_$revision"
   short_desc+=" - C++ development files"
   pkg_install() {
     vmove usr/include/gmpxx.h
     vmove usr/lib/libgmpxx.a
     vmove usr/lib/libgmpxx.so
+    vmove usr/lib/pkgconfig/gmpxx.pc
   }
 }
 
@@ -48,6 +42,7 @@ gmp-devel_package() {
     vmove usr/include
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
     vmove usr/share
   }
 }
