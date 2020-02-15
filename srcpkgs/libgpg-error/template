@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libgpg-error"
-version=1.36
-revision=3
+version=1.37
+revision=1
 short_desc="Library for error values used by GnuPG component"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends="qemu-user-static"
@@ -9,7 +9,7 @@ fi
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c"
+checksum="b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763"
 build_style="gnu-configure"
 
 post_configure() {
