@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libtasn1"
-version=4.15.0
+version=4.16.0
 revision=1
 short_desc="ASN.1 structure parser library"
 hostmakedepends="perl"
 homepage="https://www.gnu.org/software/libtasn1/"
 license="GPL-3.0-only, LGPL-2.1-only"
 distfiles="$GNU_SITE/libtasn1/$pkgname-$version.tar.gz"
-checksum="dd77509fe8f5304deafbca654dc7f0ea57f5841f41ba530cff9a5bf71382739e"
+checksum="0e0fb0903839117cb6e3b56e68222771bebf22ad7fc2295a0ed7d576e8d4329d"
 build_style="gnu-configure"
 
 libtasn1-devel_package() {
