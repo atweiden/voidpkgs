@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnutls"
-version=3.6.11.1
+version=3.6.12
 revision=1
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
@@ -12,21 +12,25 @@ makedepends+=" lzo-devel"
 makedepends+=" nettle-devel"
 makedepends+=" p11-kit-devel"
 makedepends+=" readline-devel"
+makedepends+=" trousers-devel"
+makedepends+=" unbound-devel"
 makedepends+=" zlib-devel"
 # add autogen when #6550 is solved
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" which"
 homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
-distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*.*}/$pkgname-$version.tar.xz"
-checksum="fbba12f3db9a55dbf027e14111755817ec44b57eabec3e8089aac8ac6f533cf8"
+distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
+checksum="bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b"
 build_style="gnu-configure"
 configure_args+=" --disable-guile"
 configure_args+=" --disable-rpath"
 configure_args+=" --disable-static"
 configure_args+=" --disable-valgrind-tests"
 configure_args+=" --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
+configure_args+=" --with-trousers-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-zlib"
 
 gnutls-devel_package() {
