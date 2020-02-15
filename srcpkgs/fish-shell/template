@@ -1,21 +1,24 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.0.2
-revision=2
+version=3.1.0
+revision=1
 short_desc="User friendly shell intended mostly for interactive use"
-depends+=" bc"
-depends+=" groff"
+depends="groff"
 makedepends+=" gettext-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
-checksum="14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e"
+checksum="e5db1e6839685c56f172e1000c138e290add4aa521f187df4cd79d4eab294368"
 wrksrc="fish-$version"
 build_style="cmake"
 register_shell+=" /bin/fish"
 register_shell+=" /usr/bin/fish"
+
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+fi
 
 post_install() {
   # starting with fish-3.0.0 this is a skeleton file with only comments
