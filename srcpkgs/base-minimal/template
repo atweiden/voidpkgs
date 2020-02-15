@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-minimal"
-version=0.1
-revision=3
+version=0.2
+revision=1
 short_desc="Void Linux base system meta with minimal tools"
 depends+=" base-files"
 depends+=" coreutils"
@@ -16,14 +16,14 @@ depends+=" util-linux"
 depends+=" which"
 depends+=" tar"
 depends+=" shadow"
-depends+=" psmisc"
+depends+=" procps-ng"
 depends+=" iana-etc"
 depends+=" xbps"
 depends+=" nvi"
 depends+=" tzdata"
 depends+=" runit-void"
-homepage="http://www.voidlinux.org/"
-license="Public domain"
+homepage="https://www.voidlinux.org/"
+license="Public Domain"
 build_style="meta"
 
 case "$XBPS_TARGET_MACHINE" in
