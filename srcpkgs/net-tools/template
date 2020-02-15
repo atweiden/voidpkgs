@@ -6,7 +6,7 @@ _gitrev="0eebece8c964e3cfa8a018f42b2e7e751a7009a0"
 short_desc="Basic networking tools"
 hostmakedepends="git"
 homepage="https://github.com/ecki/net-tools"
-license="GPL-2.0-only"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/ecki/net-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 wrksrc="$pkgname-$_gitrev"
 checksum="795cb4dd2618ed7ff9a48b9cb63b33780b47dfd7464c8e52ba734e6796cbab17"
@@ -16,47 +16,31 @@ alternatives+=" ifconfig:/usr/share/man/man1/ifconfig.1:/usr/share/man/man8/$pkg
 alternatives+=" ifconfig:ifconfig:/usr/bin/$pkgname-ifconfig"
 
 pre_build() {
-  sed \
+  vsed \
     -i \
     -e "s#/sbin#/bin#" \
     Makefile
-  sed \
+  vsed \
     -i \
     -e "s#/usr##" \
     man/Makefile
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
-      # include file is <linux/ipv6_route.h>
-      sed \
-        -i \
-        -e "s#netinet6/#linux/#" \
-        "$wrksrc/lib/inet6_gr.c"
-      sed \
-        -i \
-        -e "s#netinet6/#linux/#" \
-        "$wrksrc/lib/inet6_sr.c"
-
       # HZ is defined in <asm/param.h>
-      sed \
+      vsed \
         -i \
         -e "/#include <sys\/param.h>/a #include <asm\/param.h>" \
         "$wrksrc/lib/inet_sr.c"
-      sed \
+      vsed \
         -i \
         -e "/#include <sys\/param.h>/a #include <asm\/param.h>" \
         "$wrksrc/netstat.c"
 
       # need <termios.h> for tty constants and structure
-      sed \
+      vsed \
         -i \
         -e "/#include <limits.h>/a #include <termios.h>" \
         "$wrksrc/slattach.c"
-
-      # disable obsolete non-glibc includes
-      sed \
-        -i \
-        -e "s/#ifndef __GLIBC__/#if 0/" \
-        "$wrksrc/mii-tool.c"
   esac
 }
 
