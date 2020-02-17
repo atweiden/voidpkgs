@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zsh"
-version=5.7.1
+version=5.8
 revision=1
 short_desc="Z SHell"
 makedepends+=" gdbm-devel"
@@ -13,7 +13,7 @@ homepage="http://www.zsh.org"
 license="MIT, GPL-3.0-or-later"
 changelog="https://github.com/zsh-users/zsh/raw/master/ChangeLog"
 distfiles="$SOURCEFORGE_SITE/zsh/$pkgname-$version.tar.xz"
-checksum="7260292c2c1d483b2d50febfa5055176bd512b32a8833b116177bf5f01e77ee8"
+checksum="dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
 configure_args+=" --enable-etcdir=/etc/zsh"
@@ -36,7 +36,8 @@ configure_args+=" zsh_cv_sys_dynamic_execsyms=yes"
 make_build_target+=" all"
 make_build_target+=" info"
 make_install_args="install.info"
-register_shell="/bin/zsh"
+register_shell+=" /bin/zsh"
+register_shell+=" /usr/bin/zsh"
 lib32disabled="yes"
 
 pre_configure() {
