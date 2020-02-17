@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dma"
-version=0.12
+version=0.13
 revision=1
 short_desc="Small Mail Transport Agent (MTA), designed for home and office use"
 makedepends="libressl-devel"
@@ -8,7 +8,7 @@ hostmakedepends="flex"
 homepage="https://github.com/corecode/dma"
 license="BSD-3-Clause"
 distfiles="https://github.com/corecode/dma/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="054a40203d43bc1182dcadf2375ccf01944329dce472444acb42d56cf01de367"
+checksum="9d4b903f2b750d888f51d668d08d2ea18404dedb0a52cffeb3c81376023c1946"
 conf_files="/etc/dma/*.conf"
 system_accounts="mail"
 make_dirs="/var/spool/dma 2775 root mail"
