@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libcap"
-version=2.31
+version=2.32
 revision=1
 short_desc="POSIX.1e capabilities suite"
 makedepends="attr-devel"
 homepage="http://sites.google.com/site/fullycapable/"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/libs/security/linux-privs/libcap2/$pkgname-$version.tar.xz"
-checksum="c6088de41e1c97fa8047e2e7de0e4ee0cd13e6cc16538022230ae76727a87c46"
+checksum="1005e3d227f2340ad1e3360ef8b69d15e3c72a29c09f4894d7aac038bd26e2be"
 build_style="gnu-makefile"
 make_install_args+=" LIBDIR=/usr/lib"
 make_install_args+=" PKGCONFIGDIR=/usr/lib/pkgconfig"
