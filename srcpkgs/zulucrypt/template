@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zulucrypt"
-version=5.7.0
+version=5.7.1
 revision=1
 short_desc="Frontend to cryptsetup and Veracrypt for harddrive and file encryption"
 makedepends+=" cryptsetup-devel"
@@ -13,9 +13,9 @@ makedepends+=" $(vopt_if pwquality libpwquality-devel)"
 hostmakedepends="pkg-config"
 homepage="https://mhogomchungu.github.io/zuluCrypt"
 license="GPL-2.0-or-later"
-changelog="https://github.com/mhogomchungu/zuluCrypt/blob/master/changelog"
+changelog="https://github.com/mhogomchungu/zuluCrypt/raw/master/changelog"
 distfiles="https://github.com/mhogomchungu/zuluCrypt/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="53c1a450a7c5c18f7b6a8cf46bd4f051174f9d98c77f79a20c733e96b463f2d5"
+checksum="39bd7f5bd31514636f617f670e451e3313be1ba1094f7f55532a086b6aaf0096"
 wrksrc="zuluCrypt-$version"
 build_style="cmake"
 # set this to false once lxqt_wallet is available in void-packages
@@ -40,6 +40,8 @@ desc_option_homemount="Use homedir as mountpoint, not /run/media/private"
 post_install() {
   # delete redundant icons
   rm "$DESTDIR/usr/share/icons"/zulu*.png
+
+  chmod 644 "$DESTDIR/usr/share/applications"/*
 }
 
 zulucrypt-devel_package() {
