@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="scons"
 version=3.1.2
-revision=1
+revision=2
 short_desc="Software construction tool"
 depends="python"
 hostmakedepends+=" python"
@@ -9,11 +9,12 @@ hostmakedepends+=" python-setuptools"
 homepage="https://www.scons.org/"
 license="MIT"
 distfiles+=" $SOURCEFORGE_SITE/scons/$pkgname-$version.tar.gz"
-distfiles+=" https://raw.githubusercontent.com/SCons/scons/master/LICENSE>LICENSE.txt"
+distfiles+=" https://github.com/SCons/scons/raw/$version/LICENSE>LICENSE.txt"
 checksum+=" 7801f3f62f654528e272df780be10c0e9337e897650b62ddcee9f39fde13f8fb"
 checksum+=" 72ed889165fb28378cadac14552be4a959f1ebab6b148abb5dd2b49712c3c6f6"
+create_wrksrc="yes"
+build_wrksrc="scons-$version"
 build_style="python2-module"
-pycompile_module="SCons"
 make_install_args+=" --install-data=/usr/share"
 make_install_args+=" --standard-lib"
 
