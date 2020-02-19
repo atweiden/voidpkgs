@@ -1,6 +1,6 @@
 Taken from the Optware fork Optware-ng:
 alllexx88 libffi: mips: fix build for soft-float
-https://raw.githubusercontent.com/Optware/Optware-ng/master/sources/libffi/mips.softfloat.patch
+https://github.com/Optware/Optware-ng/raw/master/sources/libffi/mips.softfloat.patch
 
 --- src/mips/o32.S.orig	2014-11-08 14:47:24.000000000 +0200
 +++ src/mips/o32.S	2015-04-16 12:03:11.302116104 +0300

@@ -15,7 +15,7 @@ fi
 homepage="https://github.com/luvit/luv"
 license="Apache-2.0"
 distfiles+=" https://github.com/luvit/luv/releases/download/$_distver/luv-$_distver.tar.gz"
-distfiles+=" https://raw.githubusercontent.com/luvit/luv/$_distver/libluv.pc.in"
+distfiles+=" https://github.com/luvit/luv/raw/$_distver/libluv.pc.in"
 checksum+=" 25a34b2aecf02d1fd32352c855577dcecd20c756dee9eb7ebecd206bf1de26d3"
 checksum+=" be2a4909c724e09a50de42b1caa3c82c1b1afee8b80abf20c6944f1df1c7fd0e"
 skip_extraction="libluv.pc.in"
