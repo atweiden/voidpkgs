@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pinebookpro-uboot"
-version=20200212
-revision=2
+version=0.0.20200212
+revision=1
 _gitrev_uboot="365495a329c8e92ca4c134562d091df71b75845e"
 _gitrev_atf="22d12c4148c373932a7a81e5d1c59a767e143ac2"
 short_desc="U-Boot for Pinebook Pro"
@@ -15,6 +15,7 @@ hostmakedepends+=" git"
 hostmakedepends+=" python3"
 homepage="https://git.eno.space/pbp-uboot"
 license="GPL-2.0-only, BSD-3-Clause"
+reverts="20200212_1"
 
 do_fetch() {
   mkdir -p "$wrksrc"
