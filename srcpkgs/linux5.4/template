@@ -172,14 +172,14 @@ do_build() {
   export LDFLAGS=
   make \
     ARCH="$arch" \
-    "$_version" \
-    "$_cross" \
+    $_version \
+    $_cross \
     "$makejobs" \
     prepare
   make \
     ARCH="$arch" \
-    "$_version" \
-    "$_cross" \
+    $_version \
+    $_cross \
     "$makejobs" \
     $_args
 }
