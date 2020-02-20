@@ -574,6 +574,8 @@ constant %PKG = Map.new(
                   pcre2-devel>,
     'pcsclite' => qw<libpcsclite
                      pcsclite-devel>,
+    'pinebookpro-kernel' => qw<pinebookpro-kernel-dbg
+                               pinebookpro-kernel-headers>,
     'pinentry' => qw<pinentry-emacs
                      pinentry-tty>,
     'pixman' => ['pixman-devel'],
