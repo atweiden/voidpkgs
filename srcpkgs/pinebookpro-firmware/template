@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="pinebookpro-firmware"
-version=20200215
+version=0.0.20200215
 revision=1
 _gitrev="58820c428d2ecae6aaf5e4f00997652b9479853a"
 short_desc="Firmware files for the Pinebook Pro"
-archs="noarch"
+archs="aarch64*"
 homepage="https://github.com/rockchip-linux/rkwifibt"
 license="Apache-2.0"
 distfiles="https://github.com/rockchip-linux/rkwifibt/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="20161cf3011f57dc9912db7270be1a83e543a61ea8757c23eaf983542fb021e0"
 wrksrc="rkwifibt-$_gitrev"
+reverts="20200215_1"
 
 do_install() {
   vinstall firmware/broadcom/AP6256/bt/BCM4345C5.hcd 644 usr/lib/firmware/brcm
