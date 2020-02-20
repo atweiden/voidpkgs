@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="kubernetes-helm"
-version=2.16.1
+version=3.1.0
 revision=1
 short_desc="Kubernetes Package Manager"
 hostmakedepends+=" git"
 hostmakedepends+=" go"
 hostmakedepends+=" make"
 hostmakedepends+=" mercurial"
+hostmakedepends+=" tar"
 homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz"
-checksum="7c3773a8ad316829145fcb10a7cb5093a799909af568309250ff158325c0a33c"
+checksum="46799de982807cd3e215c82f844f2a41c96c6c360d097797872517d03bceaeae"
 wrksrc="helm-$version"
 nopie="true"
 conflicts="helm"
@@ -66,7 +67,6 @@ do_build() {
   cd golib/src/k8s.io/helm
   TARGETS="linux/$_go_target_arch linux/$_go_host_arch" \
     make \
-    bootstrap \
     build-cross \
     APP="..." \
     LDFLAGS="-X k8s.io/helm/pkg/version.Version=v$version -X k8s.io/helm/pkg/version.BuildMetadata="
@@ -76,17 +76,9 @@ do_build() {
 
 do_install() {
   cd golib/src/k8s.io/helm
-  # binaries and license
+  # copy helm binary
   vbin "_dist/linux-$_go_target_arch/helm"
-  vbin "_dist/linux-$_go_target_arch/tiller"
-  vlicense LICENSE
-  # documentation and examples
-  vmkdir "usr/share/examples/$pkgname"
-  vcopy "docs/examples/*" "usr/share/examples/$pkgname"
-  for file in docs/man/man1/*.1; do
-    vman "$file"
-  done
-  # completion
+  # copy completion files
   vinstall completion.bash 644 usr/share/bash-completion/completions helm
   vinstall completion.zsh 644 "usr/share/$pkgname"
 }
