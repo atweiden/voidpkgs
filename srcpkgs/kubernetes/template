@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kubernetes"
-version=1.17.0
+version=1.17.3
 revision=1
 short_desc="Container Cluster Manager for Docker"
 archs+=" ppc64le*"
@@ -9,10 +9,11 @@ depends="kubectl"
 hostmakedepends+=" git"
 hostmakedepends+=" go-bindata"
 hostmakedepends+=" rsync"
+hostmakedepends+=" which"
 homepage="http://kubernetes.io"
 license="Apache-2.0"
 distfiles="https://github.com/kubernetes/kubernetes/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b4f82f5006ff945edc17726ac93489173876313855020e7760b1c189fb402bb1"
+checksum="e28c1aaac0bc155ffb6ea7fba7ef1e156c56f81664d60f5eccb1148a714c91a9"
 conf_files="/etc/kubernetes/*"
 build_style="go"
 go_import_path="github.com/kubernetes/kubernetes"
@@ -45,7 +46,6 @@ do_install() {
 }
 
 post_install() {
-  vlicense LICENSE
   for _man in docs/man/man1/*.1; do
     vman "$_man"
   done
@@ -62,7 +62,6 @@ kubectl_package() {
   short_desc="Controls the Kubernetes cluster manager"
   pkg_install() {
     vmove usr/bin/kubectl
-    vlicense LICENSE
     vmove "usr/share/man/man1/kubectl*"
     vinstall completion.bash 644 usr/share/bash-completion/completions kubectl
     vinstall completion.zsh 644 usr/share/kubectl
