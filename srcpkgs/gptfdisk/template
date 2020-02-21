@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gptfdisk"
-version=1.0.4
+version=1.0.5
 revision=1
 short_desc="GPT fdisk text-mode partitioning tool"
 makedepends+=" icu-devel"
@@ -10,8 +10,15 @@ makedepends+=" popt-devel"
 homepage="http://www.rodsbooks.com/gdisk/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gptfdisk/$pkgname-$version.tar.gz"
-checksum="b663391a6876f19a3cd901d862423a16e2b5ceaa2f4a3b9bb681e64b9c7ba78d"
+checksum="0e7d3987cd0488ecaf4b48761bc97f40b1dc089e5ff53c4b37abe30bc67dcb2f"
 build_style="gnu-makefile"
+
+pre_build() {
+  sed \
+    -i \
+    -e 's#<ncursesw/ncurses.h>#<ncurses.h>#' \
+    gptcurses.cc
+}
 
 do_install() {
   for f in cgdisk \
