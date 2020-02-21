@@ -356,6 +356,7 @@ constant %PKG = Map.new(
                       libcap-ng-progs
                       libcap-ng-python
                       libcap-ng-python3>,
+    'libcbor' => ['libcbor-devel'],
     'libcli' => ['libcli-devel'],
     'libconfig' => qw<libconfig++
                       libconfig++-devel
