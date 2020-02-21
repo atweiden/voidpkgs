@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby"
 version=2.6.5
-revision=1
+revision=2
 _ruby_abiver=2.6.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
@@ -39,6 +39,14 @@ case "$XBPS_TARGET_MACHINE" in
     hostmakedepends+=" doxygen"
     ;;
 esac
+
+post_patch() {
+  [[ "$XBPS_TARGET_LIBC" == "glibc" ]] \
+    && return 0
+
+  echo "Patching out using binary gems for non-glibc..."
+  patch -sNp1 -i "$FILESDIR/rubygems-avoid-platform-specific-gems.patch"
+}
 
 pre_build() {
   # force getaddrinfo detection
