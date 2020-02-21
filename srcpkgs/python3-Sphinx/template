@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
-version=2.4.0
+version=2.4.2
 revision=1
 short_desc="Python 3 documentation generator"
 archs="noarch"
@@ -22,14 +22,15 @@ depends+=" python3-sphinxcontrib-serializinghtml"
 # XXX: testing requires gui deps
 #checkdepends+=" $depends"
 #checkdepends+=" ImageMagick"
+#checkdepends+=" gettext"
 #checkdepends+=" python3-html5lib"
 #checkdepends+=" python3-mypy"
-#checkdepends+=" tox"
+#checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="fb2ce74c28154872757925edda0060b4c4102cdc86b8b30063f23399678de2ca"
+checksum="525527074f2e0c2585f68f73c99b4dc257c34bbe308b27f5f8c7a6e20642742f"
 wrksrc="Sphinx-$version"
 build_style="python3-module"
 alternatives+=" sphinx:sphinx-apidoc:/usr/bin/sphinx-apidoc3"
