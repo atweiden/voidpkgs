@@ -371,6 +371,7 @@ constant %PKG = Map.new(
     'libexecinfo' => ['libexecinfo-devel'],
     'libfetch' => ['libfetch-devel'],
     'libffi' => ['libffi-devel'],
+    'libfido2' => ['libfido2-devel'],
     'libgcrypt' => ['libgcrypt-devel'],
     'libgfshare' => qw<libgfshare-devel
                        libgfshare-tools>,
