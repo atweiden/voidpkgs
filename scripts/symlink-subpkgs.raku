@@ -629,6 +629,7 @@ constant %PKG = Map.new(
     'python-greenlet' => qw<python-greenlet-devel
                             python3-greenlet
                             python3-greenlet-devel>,
+    'python-html5lib' => ['python3-html5lib'],
     'python-hypothesis' => ['python3-hypothesis'],
     'python-idna' => ['python3-idna'],
     'python-imagesize' => ['python3-imagesize'],
