@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="xbps-static"
 version=0.58
-revision=5
+revision=6
 short_desc="XBPS package system utilities - static binaries"
 # only musl
 archs="*-musl"
