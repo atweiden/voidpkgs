@@ -655,6 +655,7 @@ constant %PKG = Map.new(
     'python-setuptools' => ['python3-setuptools'],
     'python-six' => ['python3-six'],
     'python-snowballstemmer' => ['python3-snowballstemmer'],
+    'python-soupsieve' => ['python3-soupsieve'],
     'python-sphinxcontrib' => ['python3-sphinxcontrib'],
     'python-sphinxcontrib-websupport' => ['python3-sphinxcontrib-websupport'],
     'python-toml' => ['python3-toml'],
