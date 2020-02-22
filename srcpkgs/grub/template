@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grub"
 version=2.04
-revision=2
+revision=3
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
@@ -34,15 +34,19 @@ case "$XBPS_TARGET_MACHINE" in
     _NATIVE_PLATFORM="pc"
     _SUPPLEMENTARY_BUILDS+=" i386-efi"
     _SUPPLEMENTARY_BUILDS+=" x86_64-efi"
+    _SUPPLEMENTARY_BUILDS+=" x86_64-xen"
     subpackages+=" grub-i386-efi"
     subpackages+=" grub-x86_64-efi"
+    subpackages+=" grub-xen"
     ;;
   i686*)
     configure_args+=" ac_cv_sizeof_off_t=8"
     CFLAGS="-D_FILE_OFFSET_BITS=64"
     _NATIVE_PLATFORM="pc"
-    _SUPPLEMENTARY_BUILDS="i386-efi"
+    _SUPPLEMENTARY_BUILDS+=" i386-efi"
+    _SUPPLEMENTARY_BUILDS+=" i386-xen"
     subpackages+=" grub-i386-efi"
+    subpackages+=" grub-xen"
     ;;
   aarch64*)
     _NATIVE_PLATFORM="efi"
@@ -220,6 +224,21 @@ grub-i386-efi_package() {
   short_desc+=" - i386 EFI support"
   pkg_install() {
     vmove usr/lib/grub/i386-efi
+  }
+}
+
+grub-xen_package() {
+  depends="grub>=$version"
+  short_desc+=" - Xen PV support"
+  pkg_install() {
+    case "$XBPS_TARGET_MACHINE" in
+      x86_64*)
+        vmove usr/lib/grub/x86_64-xen
+        ;;
+      i686*)
+        vmove usr/lib/grub/i386-xen
+        ;;
+    esac
   }
 }
 

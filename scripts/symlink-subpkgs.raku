@@ -271,7 +271,8 @@ constant %PKG = Map.new(
                  grub-i386-efi
                  grub-powerpc-ieee1275
                  grub-utils
-                 grub-x86_64-efi>,
+                 grub-x86_64-efi
+                 grub-xen>,
     'gsasl' => qw<gsasl-devel
                   libgsasl>,
     'gtest' => ['gtest-devel'],
