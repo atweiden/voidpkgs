@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="erlang"
-version=22.2.6
+version=22.2.7
 revision=1
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" libressl-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" tar"
 license="Apache-2.0"
 homepage="http://www.erlang.org/"
 distfiles="https://github.com/erlang/otp/archive/OTP-$version.tar.gz"
-checksum="4cf44ed12f657c309a2c00e7806f36f56a88e5b74de6814058796561f3842f66"
+checksum="29487837a2dd6e3184257cdec067cd3f5c0cd9517fbfb2ffc962589d46afbf75"
 create_wrksrc="yes"
 build_wrksrc="otp-OTP-$version"
 build_style="gnu-configure"
