@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="python-zipp"
-version=0.6.0
-revision=2
+version=1.2.0
+revision=1
 short_desc="Pathlib-compatible Zipfile object wrapper"
 archs="noarch"
-depends="python"
+depends+=" python-contextlib2"
+depends+=" python-more-itertools"
 hostmakedepends="python-setuptools"
 homepage="https://github.com/jaraco/zipp"
 license="MIT"
 changelog="https://github.com/jaraco/zipp/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/z/zipp/zipp-$version.tar.gz"
-checksum="3718b1cbcd963c7d4c5511a8240812904164b7f381b647143a89d3b98f9bcd8e"
+checksum="c70410551488251b0fee67b460fb9a536af8d6f9f008ad10ac51f615b6a521b1"
 wrksrc="zipp-$version"
 build_style="python2-module"
 
