@@ -659,6 +659,7 @@ constant %PKG = Map.new(
     'python-urllib3' => ['python3-urllib3'],
     'python-virtualenv' => ['python3-virtualenv'],
     'python-wcwidth' => ['python3-wcwidth'],
+    'python-webencodings' => ['python3-webencodings'],
     'python-yaml' => ['python3-yaml'],
     'python-zope.interface' => ['python3-zope.interface'],
     'python3' => ['python3-devel'],
