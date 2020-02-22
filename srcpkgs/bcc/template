@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bcc"
-version=0.12.0
-revision=2
+version=0.13.0
+revision=1
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
 makedepends+=" elfutils-devel"
@@ -14,7 +14,7 @@ hostmakedepends="flex"
 homepage="https://github.com/iovisor/bcc"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bcc/releases/download/v$version/$pkgname-src-with-submodule.tar.gz"
-checksum="a7acf0e7a9d3ca03a91f22590e695655a5f0ccf8e3dc29e454c2e4c5d476d8aa"
+checksum="dd393ec0b05bb6da5aa5b4a62633e0e5b632b47b8ca0c57860418a7e82e3b797"
 wrksrc="$pkgname"
 build_style="cmake"
 configure_args="-DREVISION=$version"
@@ -70,7 +70,6 @@ python3-bcc_package() {
   short_desc+=" - Python 3 module"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" python3"
-  pycompile_module="bcc"
   pkg_install() {
     vmove "usr/lib/python*"
   }
