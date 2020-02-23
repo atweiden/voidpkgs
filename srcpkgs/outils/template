@@ -1,19 +1,24 @@
-# Template file for 'outils'
-pkgname=outils
+maintainer="nox"
+pkgname="outils"
 version=0.9
 revision=1
-build_style=gnu-makefile
-make_install_args="install install-calendars"
-depends="gcc"  # for cpp(1)
 short_desc="Some non-standard OpenBSD tools"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="ISC, BSD-3-Clause"
+# for cpp(1)
+depends="gcc"
 homepage="https://github.com/leahneukirchen/outils"
-distfiles="https://github.com/leahneukirchen/${pkgname}/archive/v${version}.tar.gz"
-checksum=b7afdf1a0d11b9d5a0e1ea165ad2841e32b21245ec573170cb6498a13bf43b73
-conflicts="signify>=0 openbsd-rs>=0"
+license="ISC, BSD-3-Clause"
+distfiles="https://github.com/leahneukirchen/outils/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="b7afdf1a0d11b9d5a0e1ea165ad2841e32b21245ec573170cb6498a13bf43b73"
+build_style="gnu-makefile"
+make_install_args+=" install"
+make_install_args+=" install-calendars"
+conflicts+=" openbsd-rs>=0"
+conflicts+=" signify>=0"
 
 post_install() {
-	rm ${DESTDIR}/usr/bin/cksum ${DESTDIR}/usr/share/man/man1/cksum.1
-	vlicense LICENSE
+  rm "$DESTDIR/usr/bin/cksum"
+  rm "$DESTDIR/usr/share/man/man1/cksum.1"
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
