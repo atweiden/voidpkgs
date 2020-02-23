@@ -25,6 +25,7 @@ constant $SRCPKGS = sprintf(Q{%s/srcpkgs}, $ROOT);
 constant %PKG = Map.new(
     '66' => qw<66-devel
                66-doc>,
+    'NetAuth' => ['NetAuth-server'],
     'acl' => qw<acl-devel
                 acl-progs>,
     'alsa-lib' => ['alsa-lib-devel'],
