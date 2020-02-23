@@ -1,21 +1,20 @@
 maintainer="nox"
 pkgname="nqp"
-version=2020.01
+version=2020.02
 revision=1
 short_desc="Lightweight Raku-like environment for virtual machines"
-depends="MoarVM-${version}.1_$revision"
+depends="MoarVM-${version}_$revision"
 makedepends+=" MoarVM"
 makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
-# XXX: uncomment once MoarVM builds with system libtommath
-#makedepends+=" libtommath-devel"
+makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
 hostmakedepends="perl"
 tags="raku"
 homepage="https://github.com/perl6/nqp"
 license="Artistic-2.0"
 distfiles="https://rakudo.org/dl/nqp/$pkgname-$version.tar.gz"
-checksum="4ccc9c194322c73f4c8ba681e277231479fcc2307642eeeb0f7caa149332965b"
+checksum="d3825d30f29baa596592be0efe27bb540df47545c6c9453b0e5d76ee99766346"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
