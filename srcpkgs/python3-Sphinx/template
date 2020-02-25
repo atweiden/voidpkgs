@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
-version=2.4.2
+version=2.4.3
 revision=1
 short_desc="Python 3 documentation generator"
 archs="noarch"
@@ -30,7 +30,7 @@ hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="525527074f2e0c2585f68f73c99b4dc257c34bbe308b27f5f8c7a6e20642742f"
+checksum="ca762da97c3b5107cbf0ab9e11d3ec7ab8d3c31377266fd613b962ed971df709"
 wrksrc="Sphinx-$version"
 build_style="python3-module"
 alternatives+=" sphinx:sphinx-apidoc:/usr/bin/sphinx-apidoc3"
