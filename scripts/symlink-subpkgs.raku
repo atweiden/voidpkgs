@@ -429,6 +429,7 @@ constant %PKG = Map.new(
                      libressl-netcat
                      libssl47
                      libtls19>,
+    'librsync' => ['librsync-devel'],
     'libsasl' => ['libsasl-devel'],
     'libseccomp' => ['libseccomp-devel'],
     'libsigc++' => ['libsigc++-devel'],

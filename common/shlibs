@@ -428,6 +428,7 @@ libqb.so.0 libqb-1.0.5_1
 libqrencode.so.4 libqrencode-4.0.0_1
 libquadmath.so.0 libquadmath-4.4.0_1
 libreadline.so.8 libreadline8-8.0_1
+librsync.so.2 librsync-1.0.0_1
 liblsan.so.0 libsanitizer-6.3.0_1
 libtsan.so.0 libsanitizer-6.3.0_1
 libasan.so.5 libsanitizer-8.2.0_1
