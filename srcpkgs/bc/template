@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bc"
 version=1.07.1
-revision=4
+revision=5
 short_desc="Arbitrary precision numeric processing language"
 makedepends="readline-devel"
 hostmakedepends+=" ed"
@@ -14,7 +14,9 @@ checksum="62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a"
 build_style="gnu-configure"
 configure_args="--with-readline"
 disable_parallel_build="yes"
+alternatives+=" bc:bc.1:/usr/share/man/man1/gnu-bc.1"
 alternatives+=" bc:bc:/usr/bin/gnu-bc"
+alternatives+=" dc:dc.1:/usr/share/man/man1/gnu-dc.1"
 alternatives+=" dc:dc:/usr/bin/gnu-dc"
 
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -61,6 +63,8 @@ do_check() {
 post_install() {
   mv "$DESTDIR/usr/bin"/{,gnu-}bc
   mv "$DESTDIR/usr/bin"/{,gnu-}dc
+  mv "$DESTDIR/usr/share/man/man1"/{,gnu-}bc.1
+  mv "$DESTDIR/usr/share/man/man1"/{,gnu-}dc.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
