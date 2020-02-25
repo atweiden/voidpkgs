@@ -271,6 +271,7 @@ constant %PKG = Map.new(
                   libgroff>,
     'grpc' => ['grpc-devel'],
     'grub' => qw<grub-arm64-efi
+                 grub-i386-coreboot
                  grub-i386-efi
                  grub-powerpc-ieee1275
                  grub-utils

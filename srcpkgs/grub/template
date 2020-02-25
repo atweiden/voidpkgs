@@ -32,9 +32,11 @@ subpackages+=" grub-utils"
 case "$XBPS_TARGET_MACHINE" in
   x86_64*)
     _NATIVE_PLATFORM="pc"
+    _SUPPLEMENTARY_BUILDS+=" i386-coreboot"
     _SUPPLEMENTARY_BUILDS+=" i386-efi"
     _SUPPLEMENTARY_BUILDS+=" x86_64-efi"
     _SUPPLEMENTARY_BUILDS+=" x86_64-xen"
+    subpackages+=" grub-i386-coreboot"
     subpackages+=" grub-i386-efi"
     subpackages+=" grub-x86_64-efi"
     subpackages+=" grub-xen"
@@ -43,8 +45,10 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" ac_cv_sizeof_off_t=8"
     CFLAGS="-D_FILE_OFFSET_BITS=64"
     _NATIVE_PLATFORM="pc"
+    _SUPPLEMENTARY_BUILDS+=" i386-coreboot"
     _SUPPLEMENTARY_BUILDS+=" i386-efi"
     _SUPPLEMENTARY_BUILDS+=" i386-xen"
+    subpackages+=" grub-i386-coreboot"
     subpackages+=" grub-i386-efi"
     subpackages+=" grub-xen"
     ;;
@@ -224,6 +228,15 @@ grub-i386-efi_package() {
   short_desc+=" - i386 EFI support"
   pkg_install() {
     vmove usr/lib/grub/i386-efi
+  }
+}
+
+grub-i386-coreboot_package() {
+  archs="noarch"
+  depends="grub>=$version"
+  short_desc+=" - i386 coreboot support"
+  pkg_install() {
+    vmove usr/lib/grub/i386-coreboot
   }
 }
 
