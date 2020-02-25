@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="bc-gh"
 version=2.5.3
-revision=1
+revision=2
 short_desc="Implementation of POSIX bc with GNU extensions"
 homepage="https://github.com/gavinhoward/bc"
 license="BSD-2-Clause"
 distfiles="https://github.com/gavinhoward/bc/releases/download/$version/${pkgname%-*}-$version.tar.xz"
 checksum="f7cec2a1bf6be2e805dfda6955b4631ec64d3397e96ce33f5a69909ba7aaf5c5"
 wrksrc="${pkgname%-*}-$version"
+alternatives+=" bc:bc.1:/usr/share/man/man1/bc-gh.1"
 alternatives+=" bc:bc:/usr/bin/bc-gh"
+alternatives+=" dc:dc.1:/usr/share/man/man1/dc-gh.1"
 alternatives+=" dc:dc:/usr/bin/dc-gh"
 
 do_configure() {
@@ -33,8 +35,8 @@ do_check() {
 do_install() {
   # note that make install is used because of a symlink
   make install
-  vman manuals/bc.1
-  vman manuals/dc.1
+  vman manuals/bc.1 bc-gh.1
+  vman manuals/dc.1 dc-gh.1
   vlicense LICENSE.md
 }
 
