@@ -4,7 +4,8 @@ version=12.2.1
 revision=1
 short_desc="Collection of performance monitoring tools"
 depends="lm_sensors"
-hostmakedepends="pkg-config"
+hostmakedepends+=" gettext"
+hostmakedepends+=" pkg-config"
 homepage="http://pagesperso-orange.fr/sebastien.godard/"
 license="GPL-2.0-or-later"
 distfiles="http://pagesperso-orange.fr/sebastien.godard/sysstat-$version.tar.xz"
@@ -18,11 +19,11 @@ configure_args+=" --enable-install-cron"
 configure_args+=" --with-systemdsystemunitdir="
 
 post_extract() {
-  sed \
+  vsed \
     -i \
     -e 's/lib64/lib/' \
     configure
-  sed \
+  vsed \
     -i \
     -e '/LFLAGS =/d; s/LFLAGS/LDFLAGS/g' \
     Makefile.in
