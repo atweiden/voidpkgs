@@ -16,9 +16,7 @@ distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$ver
 checksum="96af6ec6c24e2df0d1591076a102b36bcc0c622411cbb191bca9a1ae724c4606"
 wrksrc="numpy-$version"
 build_style="python3-module"
-pycompile_module="numpy"
 alternatives="numpy:f2py:/usr/bin/f2py3"
-nocross="https://build.voidlinux.org/builders/armv7l_builder/builds/1408/steps/shell_3/logs/stdio"
 
 do_check() {
   ./runtests.py
