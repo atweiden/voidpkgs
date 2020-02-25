@@ -1,50 +1,63 @@
-# Template file for 'dar'
-pkgname=dar
+maintainer="nox"
+pkgname="dar"
 version=2.6.8
 revision=1
-build_style=gnu-configure
-configure_args="--disable-upx --disable-build-html"
-conf_files="/etc/darrc"
-hostmakedepends="automake gettext-devel gpgme-devel libtool pkg-config"
-makedepends="acl-devel bzip2-devel e2fsprogs-devel libgcrypt-devel liblzma-devel
- lzo-devel librsync-devel libcurl-devel"
 short_desc="Shell command that backs up directory trees and files"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends+=" acl-devel"
+makedepends+=" bzip2-devel"
+makedepends+=" e2fsprogs-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libgcrypt-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" librsync-devel"
+makedepends+=" lzo-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" gpgme-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="http://dar.linux.free.fr/"
-distfiles="${SOURCEFORGE_SITE}/dar/dar-${version}.tar.gz"
-checksum=4365943798add9554a1ccf6514186a6146d421812eb9d767b7744a524035bc16
+license="GPL-2.0-or-later"
+distfiles="$SOURCEFORGE_SITE/dar/dar-$version.tar.gz"
+checksum="4365943798add9554a1ccf6514186a6146d421812eb9d767b7744a524035bc16"
+conf_files="/etc/darrc"
+build_style="gnu-configure"
+configure_args+=" --disable-build-html"
+configure_args+=" --disable-upx"
 
-if [ "$CROSS_BUILD" ]; then
-	configure_args+=" --with-gpgme-prefix=${XBPS_CROSS_BASE}/usr
-	 ac_cv_lib_gcrypt_gcry_check_version=false"
-	LDFLAGS="-L${XBPS_CROSS_BASE}/usr/lib -lgcrypt"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --with-gpgme-prefix=$XBPS_CROSS_BASE/usr"
+  configure_args+=" ac_cv_lib_gcrypt_gcry_check_version=false"
+  LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -lgcrypt"
 fi
 
 do_check() {
-	# need to be run as root
-	:
+  # need to be run as root
+  :
 }
 
 post_install() {
-	# Prevent writing memory pages to disk,
-	# which gives "Warning: using insecure memory"
-	chmod u+s ${DESTDIR}/usr/bin/dar
+  # prevent writing memory pages to disk, which gives "warning: using
+  # insecure memory"
+  chmod u+s "$DESTDIR/usr/bin/dar"
 }
 
 libdar_package() {
-	short_desc+=" - runtime library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - runtime library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
 libdar-devel_package() {
-	short_desc+=" - development files"
-	depends="libdar>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  short_desc+=" - development files"
+  depends="libdar>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
