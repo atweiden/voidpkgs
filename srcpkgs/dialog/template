@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dialog"
 _distver=1.3
-_date=20191110
+_date=20191210
 version=$_distver.$_date
 revision=1
 short_desc="Tool to display dialog boxes from shell scripts"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://invisible-island.net/dialog/"
 license="LGPL-2.1-only"
 distfiles="https://invisible-mirror.net/archives/dialog/$pkgname-$_distver-$_date.tgz"
-checksum="d92a7d0910404c02c908e3ce774ac652edc822f45c6536c7d72fafa10e1d0e63"
+checksum="10f7c02ee5dea311e61b0d3e29eb6e18bcedd6fb6672411484c1a37729cbd7a6"
 wrksrc="$pkgname-$_distver-$_date"
 build_style="gnu-configure"
 configure_args+=" --disable-nls"
