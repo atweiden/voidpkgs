@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-IO-stringy"
-version=2.111
-revision=2
+version=2.113
+revision=1
 short_desc="IO::stringy - I/O on in-core objects like strings/arrays"
 archs="noarch"
 depends="perl"
@@ -9,9 +9,9 @@ makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-stringy"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="8c67fd6608c3c4e74f7324f1404a856c331dbf48d9deda6aaa8296ea41bf199d"
-wrksrc="${pkgname#*-}-$version"
+distfiles="https://github.com/genio/IO-Stringy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="faf40bbd657835ebcc87e556b802fbecaecc13776a03a8137cf935846108d022"
+wrksrc="IO-Stringy-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
