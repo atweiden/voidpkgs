@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-IO-CaptureOutput"
-version=1.1104
-revision=2
+version=1.1105
+revision=1
 short_desc="Capture STOUT/ERR from perl code"
 archs="noarch"
 depends="perl"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-CaptureOutput"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="fcc732fcb438f97a72b30e8c7796484bef2562e374553b207028e2fbf73f8330"
+checksum="ae99009fca1273800f169ecb82f4ed1cc6c76795f156bee5c0093005d572f487"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
