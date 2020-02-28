@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-DBI"
-version=1.642
-revision=2
+version=1.643
+revision=1
 short_desc="Database independent interface for Perl"
 depends="perl"
 makedepends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/DBI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBI/${pkgname#*-}-$version.tar.gz"
-checksum="3f2025023a56286cebd15cb495e36ccd9b456c3cc229bf2ce1f69e9ebfc27f5d"
+checksum="8a2b993db560a2c373c174ee976a51027dd780ec766ae17620c20393d2e836fa"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
