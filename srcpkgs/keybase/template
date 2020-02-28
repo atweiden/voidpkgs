@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="keybase"
-version=5.2.0
+version=5.2.1
 revision=1
 short_desc="Client for keybase.io"
 depends="gnupg2"
@@ -8,7 +8,7 @@ hostmakedepends="git"
 homepage="https://keybase.io/"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/client/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="fa3a9e64532122f587847a19082a291b5964a4ce75f4f18dc20f1eae6c147e8d"
+checksum="209860c9b8c8e7d24b93b53afa2865aea543c2b83a3110f822d54b569f4deffe"
 wrksrc="client-$version"
 build_style="go"
 go_import_path="github.com/keybase/client"
