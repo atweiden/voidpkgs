@@ -1,8 +1,7 @@
 maintainer="nox"
 pkgname="python-cryptography"
-version=2.7
-revision=2
-depends+=" python-asn1crypto"
+version=2.8
+revision=1
 depends+=" python-cffi"
 depends+=" python-enum34"
 depends+=" python-idna"
@@ -25,14 +24,12 @@ checkdepends+=" python3-pretend"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-pytz"
 hostmakedepends+=" libressl-devel"
-hostmakedepends+=" python-asn1crypto"
 hostmakedepends+=" python-cffi"
 hostmakedepends+=" python-enum34"
 hostmakedepends+=" python-idna"
 hostmakedepends+=" python-ipaddress"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python-six"
-hostmakedepends+=" python3-asn1crypto"
 hostmakedepends+=" python3-cffi"
 hostmakedepends+=" python3-idna"
 hostmakedepends+=" python3-setuptools"
@@ -40,8 +37,9 @@ hostmakedepends+=" python3-six"
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
+changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cryptography/${pkgname#*-}-$version.tar.gz"
-checksum="e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6"
+checksum="3cda1f0ed8747339bbdf71b9f38ca74c7b592f24f65cdb3ab3765e4b02871651"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="cryptography"
@@ -53,7 +51,6 @@ post_install() {
 
 python3-cryptography_package() {
   unset depends
-  depends+=" python3-asn1crypto"
   depends+=" python3-cffi"
   depends+=" python3-idna"
   depends+=" python3-six"
