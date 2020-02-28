@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.4"
-version=5.4.21
+version=5.4.22
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -27,7 +27,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="6d23724e92c6a012a5cbb0deafdff81bdc03f6f9295e36259164cd431e465bfa"
+checksum="661bcb8d7e390dcc28e53795485e648f2bdc9b697b731459cc2bcc9ceb4a7d1a"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # -dbg package is generated below manually
