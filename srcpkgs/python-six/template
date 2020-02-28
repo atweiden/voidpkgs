@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-six"
-version=1.12.0
-revision=2
+version=1.14.0
+revision=1
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
 archs="noarch"
 depends="python"
@@ -9,11 +9,11 @@ hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/benjaminp/six"
 license="MIT"
+changelog="https://github.com/benjaminp/six/raw/master/CHANGES"
 distfiles="$PYPI_SITE/s/six/${pkgname#*-}-$version.tar.gz"
-checksum="d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
+checksum="236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module="six.py"
 
 post_install() {
   vlicense LICENSE
@@ -22,7 +22,6 @@ post_install() {
 python3-six_package() {
   archs="noarch"
   depends="python3"
-  pycompile_module="six.py"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
