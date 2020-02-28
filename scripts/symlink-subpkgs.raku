@@ -621,7 +621,6 @@ constant %PKG = Map.new(
     'python-Unidecode' => ['python3-Unidecode'],
     'python-alabaster' => ['python3-alabaster'],
     'python-atomicwrites' => ['python3-atomicwrites'],
-    'python-asn1crypto' => ['python3-asn1crypto'],
     'python-attrs' => ['python3-attrs'],
     'python-bcrypt' => ['python3-bcrypt'],
     'python-cffi' => ['python3-cffi'],
