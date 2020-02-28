@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-cffi"
-version=1.12.3
-revision=2
+version=1.14.0
+revision=1
 short_desc="C foreign function interface for Python2"
 depends="python-pycparser"
 makedepends+=" libffi-devel"
@@ -16,11 +16,11 @@ hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://cffi.readthedocs.io/"
 license="MIT"
+changelog="https://cffi.readthedocs.io/en/latest/whatsnew.html"
 distfiles="$PYPI_SITE/c/cffi/${pkgname#*-}-$version.tar.gz"
-checksum="041c81822e9f84b1d9c401182e174996f0bae9991f33725d059b771744290774"
+checksum="2d384f4a127a15ba701207f7639d94106693b6cd64173d6c8988e2c25f3ac2b6"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module="cffi"
 
 do_check() {
   python2 setup.py build_ext -i
@@ -35,7 +35,6 @@ post_install() {
 
 python3-cffi_package() {
   depends="python3-pycparser"
-  pycompile_module="cffi"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
