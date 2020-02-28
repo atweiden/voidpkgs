@@ -734,7 +734,8 @@ constant %PKG = Map.new(
     'trousers' => ['trousers-devel'],
     'u-boot-tools' => ['uboot-mkimage'],
     'udns' => ['udns-devel'],
-    'unbound' => ['unbound-devel'],
+    'unbound' => qw<libunbound
+                    unbound-devel>,
     'unibilium' => ['unibilium-devel'],
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,

@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="unbound"
 version=1.10.0
-revision=1
+revision=2
 short_desc="Validating, recursive, and caching DNS resolver"
 depends="dnssec-anchors"
 makedepends+=" expat-devel"
@@ -33,11 +33,18 @@ post_install() {
   vlicense LICENSE
 }
 
+libunbound_package() {
+  short_desc+=" - shared library"
+  pkg_install() {
+    vmove "usr/lib/libunbound.so.*"
+  }
+}
+
 unbound-devel_package() {
   unset depends
   depends+=" libevent-devel"
   depends+=" libressl-devel"
-  depends+=" unbound>=$version"
+  depends+=" libunbound>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include

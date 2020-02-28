@@ -481,6 +481,7 @@ libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
 libtorrent.so.21 libtorrent-0.13.8_1
 libucontext.so.0 libucontext-0.1.1_1
+libunbound.so.8 libunbound-1.10.0_2
 libunistring.so.2 libunistring-0.9.4_1
 libunwind-ptrace.so.0 libunwind-1.1_1
 libunwind-x86.so.8 libunwind-1.1_1
@@ -678,7 +679,6 @@ libtorsocks.so.0 torsocks-2.2.0_1
 libtoxcore.so.2 toxcore-0.2.0_1
 libtspi.so.1 trousers-0.3.13_1
 libudns.so.0 udns-0.4_1
-libunbound.so.8 unbound-1.8.0_1
 libunibilium.so.4 unibilium-2.0.0_1
 libusbguard.so.0 usbguard-0.7.5_1
 libusbredirhost.so.1 usbredir-0.7_1
