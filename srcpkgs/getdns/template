@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="getdns"
 version=1.5.1
-revision=4
+revision=5
 short_desc="Modern asynchronous DNS API"
 makedepends+=" libev-devel"
 makedepends+=" libidn-devel"
