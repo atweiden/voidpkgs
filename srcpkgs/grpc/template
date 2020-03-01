@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.26.0
-revision=1
+revision=2
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
 makedepends+=" gperftools-devel"
@@ -9,7 +9,8 @@ makedepends+=" libprotoc-devel"
 makedepends+=" libressl-devel"
 makedepends+=" protobuf-devel"
 makedepends+=" zlib-devel"
-hostmakedepends="protobuf"
+hostmakedepends+=" protobuf"
+hostmakedepends+=" which"
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
 distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
@@ -27,10 +28,6 @@ post_extract() {
     -r \
     -e 's/-Werror//g;/ldconfig/d;s/ strip-(static|shared)_c(xx)? / /' \
     Makefile
-}
-
-post_install() {
-  vlicense NOTICE.txt
 }
 
 grpc-devel_package() {
