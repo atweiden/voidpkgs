@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mosh"
 version=1.3.2
-revision=14
+revision=15
 short_desc="Mobile shell, remote terminal application that allows roaming"
 depends="perl-IO-Tty"
 makedepends+=" libressl-devel"
