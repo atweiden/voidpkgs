@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rustup"
 version=1.21.1
-revision=1
+revision=2
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -31,7 +31,7 @@ do_install() {
     ./rustup completions fish > rustup.fish
     ./rustup completions zsh > rustup.zsh
     vinstall rustup.bash 0644 usr/share/bash-completion/completions/ rustup
-    vinstall rustup.fish 0644 usr/share/fish/completions/
+    vinstall rustup.fish 0644 usr/share/fish/vendor_completions.d/
     vinstall rustup.zsh 0644 usr/share/zsh/site-functions/ _rustup
   fi
 
