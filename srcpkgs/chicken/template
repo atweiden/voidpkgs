@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="chicken"
-version=5.1.0
+version=5.2.0
 revision=1
 short_desc="Practical and portable Scheme system"
 homepage="http://www.call-cc.org"
 license="BSD-3-Clause"
 changelog="https://code.call-cc.org/releases/$version/NEWS"
 distfiles="http://code.call-cc.org/releases/$version/$pkgname-$version.tar.gz"
-checksum="5c1101a8d8faabfd500ad69101e0c7c8bd826c68970f89c270640470e7b84b4b"
+checksum="819149c8ce7303a9b381d3fdc1d5765c5f9ac4dee6f627d1652f47966a8780fa"
 
 do_configure() {
   make \
