@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="xbps-triggers"
-version=0.113
-revision=3
-short_desc="The XBPS triggers for Void Linux"
+version=0.114
+revision=1
+short_desc="XBPS triggers for Void Linux"
 homepage="https://voidlinux.org"
-license="BSD-2-clause"
+license="Public Domain"
 archs="noarch"
 bootstrap="yes"
 
