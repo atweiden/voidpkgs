@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-Devel-StackTrace"
-version=2.03
+version=2.04
 revision=1
 short_desc="Devel::StackTrace - An object representing a stack trace"
 archs="noarch"
@@ -8,9 +8,9 @@ depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Devel-StackTrace"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Devel/${pkgname#*-}-$version.tar.gz"
-checksum="7618cd4ebe24e254c17085f4b418784ab503cb4cb3baf8f48a7be894e59ba848"
+checksum="cd3c03ed547d3d42c61fa5814c98296139392e7971c092e09a431f2c9f5d6855"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
