@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-TimeDate"
-version=2.31
+version=2.32
 revision=1
 short_desc="TimeDate - Date formating subroutines"
 archs="noarch"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/TimeDate"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Date/${pkgname#*-}-$version.tar.gz"
-checksum="5c720fedb245122d073ea9c030aca24b06a615c71d40c46f832a8a1809354d81"
+checksum="34eca099e375e2d142ea6cc935922c4980dc21c65ce7c24823ca08457c4bb3d6"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
