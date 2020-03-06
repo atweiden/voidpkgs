@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tealdeer"
-version=1.2.0
-revision=2
+version=1.3.0
+revision=1
 short_desc="Very fast implementation of tldr in Rust"
 depends="libressl"
 makedepends="libressl-devel"
@@ -10,19 +10,15 @@ homepage="https://github.com/dbrgn/tealdeer"
 license="MIT, Apache-2.0"
 changelog="https://github.com/dbrgn/tealdeer/raw/v$version/CHANGELOG.md"
 distfiles="https://github.com/dbrgn/tealdeer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5cf286059b823501d05da445b9b7a609ec2da91d711d990df76397f79d800c52"
+checksum="d384176263c1377b241f4e41f8efd564052e506af00e014240f3874419e187e0"
 build_style="cargo"
 alternatives="tldr:/usr/bin/tldr:/usr/bin/tealdeer"
-
-pre_build() {
-  cargo update --package openssl --precise 0.10.26
-  cargo update --package openssl-sys --precise 0.9.53
-}
 
 post_install() {
   vlicense LICENSE-MIT
   vlicense LICENSE-APACHE
   mv "$DESTDIR/usr/bin/tldr" "$DESTDIR/usr/bin/tealdeer"
+  vinstall zsh_tealdeer 644 usr/share/zsh/site-functions
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
