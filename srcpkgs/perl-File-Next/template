@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-File-Next"
-version=1.16
+version=1.18
 revision=1
 short_desc="File-finding iterator"
 archs="noarch"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/File-Next"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/File/${pkgname#*-}-$version.tar.gz"
-checksum="6965f25c2c132d0ba7a6f72b57b8bc6d25cf8c1b7032caa3a9bda8612e41d759"
+checksum="f900cb39505eb6e168a9ca51a10b73f1bbde1914b923a09ecd72d9c02e6ec2ef"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
