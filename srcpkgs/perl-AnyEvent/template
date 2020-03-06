@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-AnyEvent"
-version=7.15
+version=7.17
 revision=1
 short_desc="Perl event loop framework"
 archs="noarch"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="http://software.schmorp.de/pkg/AnyEvent.html"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/AnyEvent/AnyEvent-$version.tar.gz"
-checksum="111db2335c71f789edaec271126b3810356691eb1214dd3f67b527a88ec9e354"
+checksum="50beea689c098fe4aaeb83806c40b9fe7f946d5769acf99f849f099091a4b985"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
