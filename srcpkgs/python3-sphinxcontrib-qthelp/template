@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-qthelp"
-version=1.0.2
+version=1.0.3
 revision=1
 short_desc="Sphinx extension which outputs QtHelp document"
 archs="noarch"
 depends="python3"
+checkdepends="python3-Sphinx"
 hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-qthelp/sphinxcontrib-qthelp-$version.tar.gz"
-checksum="79465ce11ae5694ff165becda529a600c754f4bc459778778c7017374d4d406f"
+checksum="4c33767ee058b70dba89a6fc5c1892c0d57a54be67ddd3e7875a18d14cba5a72"
 wrksrc="sphinxcontrib-qthelp-$version"
 build_style="python3-module"
 
