@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Test-Deep"
-version=1.128
-revision=3
+version=1.130
+revision=1
 short_desc="Test::Deep - Extremely flexible deep comparison"
 archs="noarch"
 depends="perl"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Deep"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
-checksum="852d7e836fba8269b0b755082051a24a1a309d015a8b76838790af9e3760092f"
+checksum="4064f494f5f62587d0ae501ca439105821ee5846c687dc6503233f55300a7c56"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
