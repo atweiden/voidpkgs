@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ppp"
 version=2.4.7
-revision=10
+revision=11
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
@@ -99,6 +99,9 @@ do_install() {
 
   vinstall etc.ppp/pap-secrets 600 etc/ppp
   vinstall etc.ppp/chap-secrets 600 etc/ppp
+
+  head -n67 pppd/main.c > LICENSE
+  vlicense LICENSE
 }
 
 ppp-devel_package() {
