@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lvm2"
-version=2.02.185
+version=2.02.186
 revision=1
 short_desc="Logical Volume Manager 2 utilities"
 depends="thin-provisioning-tools"
@@ -13,7 +13,7 @@ homepage="https://sourceware.org/lvm2/"
 license="GPL-2.0-only, LGPL-2.1-only"
 changelog="https://abi-laboratory.pro/?view=changelog&l=lvm2&v=$version"
 distfiles="https://mirrors.kernel.org/sourceware/lvm2/releases/${pkgname^^}.$version.tgz"
-checksum="070b2e7d34c8069602741c7483be715327f62875f5ce1f5727627fbea2481f4d"
+checksum="d8421eee702982dc0d8b0c9e40cc1443ee487eff1460a00244a9f4bf439a27be"
 conf_files+=" /etc/lvm/*.conf"
 conf_files+=" /etc/lvm/profile/*"
 wrksrc="${pkgname^^}.$version"
