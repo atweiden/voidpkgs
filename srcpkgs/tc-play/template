@@ -1,23 +1,33 @@
-# Template file for 'tc-play'
-pkgname=tc-play
+maintainer="nox"
+pkgname="tc-play"
 version=3.3
 revision=1
-build_style=gnu-makefile
-make_build_args="-f Makefile.classic PBKDF_BACKEND=gcrypt"
-make_build_target="tcplay"
-make_install_args="-f Makefile.classic PBKDF_BACKEND=gcrypt SBINDIR=/usr/bin"
-make_install_target="install_program"
-makedepends="device-mapper-devel libuuid-devel libgcrypt-devel"
 short_desc="Free and simple TrueCrypt implementation based on dm-crypt"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-2-clause"
+makedepends+=" device-mapper-devel"
+makedepends+=" libgcrypt-devel"
+makedepends+=" libuuid-devel"
 homepage="https://github.com/bwalex/tc-play"
-distfiles="https://github.com/bwalex/${pkgname}/archive/v${version}.tar.gz"
-checksum=ad53cd814a23b4f61a1b2b6dc2539624ffb550504c400c45cbd8cd1da4c7d90a
+license="BSD-2-clause"
+distfiles="https://github.com/bwalex/tc-play/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ad53cd814a23b4f61a1b2b6dc2539624ffb550504c400c45cbd8cd1da4c7d90a"
+build_style="gnu-makefile"
+make_build_args+=" -f Makefile.classic"
+make_build_args+=" PBKDF_BACKEND=gcrypt"
+make_build_target="tcplay"
+make_install_args+=" -f Makefile.classic"
+make_install_args+=" PBKDF_BACKEND=gcrypt"
+make_install_args+=" SBINDIR=/usr/bin"
+make_install_target="install_program"
 
 pre_build() {
-	sed -i Makefile.classic -e"s; -o tcplay; ${LDFLAGS}&;"
+  sed \
+    -i \
+    -e "s; -o tcplay; $LDFLAGS&;" \
+    Makefile.classic
 }
+
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
