@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="coreutils"
-version=8.31
+version=8.32
 revision=1
 short_desc="GNU core utilities"
 makedepends+=" acl-devel"
@@ -10,7 +10,7 @@ homepage="https://www.gnu.org/software/coreutils"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/gitweb/?p=coreutils.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="$GNU_SITE/coreutils/$pkgname-$version.tar.xz"
-checksum="ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
+checksum="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
 bootstrap="yes"
 replaces+=" b2sum>=0"
 replaces+=" chroot-coreutils>=0"
