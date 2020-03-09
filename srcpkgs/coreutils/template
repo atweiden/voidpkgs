@@ -20,6 +20,10 @@ alternatives+=" hostname:hostname.1:/usr/share/man/man1/hostname-coreutils.1"
 
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" perl"
+  # allow run ./configure by root in ethereal chroot
+  if [[ -n "$XBPS_ALLOW_CHROOT_BREAKOUT" ]]; then
+    _force_unsafe_configure="FORCE_UNSAFE_CONFIGURE=1"
+  fi
 fi
 
 pre_configure() {
@@ -33,6 +37,7 @@ pre_configure() {
     LD="ld" \
     LDFLAGS= \
     RANLIB="ranlib" \
+    $_force_unsafe_configure \
       ./configure \
         --enable-install-program="arch,hostname" \
         --enable-no-install-program="kill,uptime" \
@@ -57,16 +62,18 @@ do_configure() {
   esac
   # do not install kill (provided by util-linux)
   # do not install uptime (provided by procps-ng)
-  ./configure \
-    $configure_args \
-    --disable-rpath \
-    --enable-install-program=arch,hostname \
-    --enable-no-install-program=kill,uptime
+  env $_force_unsafe_configure \
+    ./configure \
+      $configure_args \
+      --disable-rpath \
+      --enable-install-program=arch,hostname \
+      --enable-no-install-program=kill,uptime
   if [[ -n "$CROSS_BUILD" ]]; then
     # use install when cross compiling
+    cp Makefile Makefile.cfg.orig
     sed \
-      -i \
       -e 's;^\(cu_install_program =\).*;\1 install;' \
+      Makefile.cfg.orig > \
       Makefile
   fi
 }
