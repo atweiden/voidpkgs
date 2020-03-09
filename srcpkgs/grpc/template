@@ -29,9 +29,23 @@ configure_args+=" -DgRPC_PROTOBUF_PROVIDER=package"
 configure_args+=" -DgRPC_SSL_PROVIDER=package"
 configure_args+=" -DgRPC_ZLIB_PROVIDER=package"
 
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
+fi
+
 post_extract() {
   rm -rf third_party/abseil-cpp
   mv "../abseil-cpp-$_abseilver" third_party/abseil-cpp
+
+  case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    sed \
+      -i \
+      -e 's/stacktrace_generic/stacktrace_unimplemented/g' \
+      third_party/abseil-cpp/absl/debugging/internal/stacktrace_config.h
+    ;;
+  esac
 }
 
 grpc-devel_package() {
