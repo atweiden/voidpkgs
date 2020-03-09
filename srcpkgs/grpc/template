@@ -1,7 +1,8 @@
 maintainer="nox"
 pkgname="grpc"
-version=1.26.0
-revision=2
+version=1.27.3
+revision=1
+_abseilver="37dd2562ec830d547a1524bb306be313ac3f2556"
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
 makedepends+=" gperftools-devel"
@@ -11,23 +12,26 @@ makedepends+=" protobuf-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" protobuf"
 hostmakedepends+=" which"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # need host grpc_cpp_plugin
+  hostmakedepends+=" grpc"
+fi
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
-distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
-checksum="2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81"
-build_style="gnu-makefile"
-make_build_args+=" prefix=\$(DESTDIR)/usr"
-make_build_args+=" AROPTS=rc"
-make_build_args+=" LD=\$(CC)"
-make_install_args="prefix=\$(DESTDIR)/usr"
-nocross="yes"
+distfiles+=" https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/abseil/abseil-cpp/archive/$_abseilver/abseil-cpp-$_abseilver.tar.gz"
+checksum+=" c2ab8a42a0d673c1acb596d276055adcc074c1116e427f118415da3e79e52969"
+checksum+=" 19391fb4882601a65cb648d638c11aa301ce5f525ef02da1a9eafd22f72d7c59"
+build_style="cmake"
+configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DgRPC_CARES_PROVIDER=package"
+configure_args+=" -DgRPC_PROTOBUF_PROVIDER=package"
+configure_args+=" -DgRPC_SSL_PROVIDER=package"
+configure_args+=" -DgRPC_ZLIB_PROVIDER=package"
 
 post_extract() {
-  sed \
-    -i \
-    -r \
-    -e 's/-Werror//g;/ldconfig/d;s/ strip-(static|shared)_c(xx)? / /' \
-    Makefile
+  rm -rf third_party/abseil-cpp
+  mv "../abseil-cpp-$_abseilver" third_party/abseil-cpp
 }
 
 grpc-devel_package() {
@@ -35,8 +39,9 @@ grpc-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/*.so"
     vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/cmake
     vmove usr/lib/pkgconfig
   }
 }
