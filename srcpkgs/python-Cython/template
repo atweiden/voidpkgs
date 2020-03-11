@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-Cython"
-version=0.29.14
-revision=2
+version=0.29.15
+revision=1
 short_desc="C-Extensions for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
@@ -12,25 +12,18 @@ homepage="https://cython.org/"
 license="Apache-2.0"
 changelog="https://github.com/cython/cython/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/C/Cython/${pkgname#*-}-$version.tar.gz"
-checksum="e4d6bb8703d0319eb04b7319b12ea41580df44fd84d83ccda13ea463c6801414"
+checksum="60d859e1efa5cc80436d58aecd3718ff2e74b987db0518376046adedba97ac30"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module+=" Cython"
-pycompile_module+=" cython.py"
-pycompile_module+=" pyximport"
 alternatives+=" cython:cygdb:/usr/bin/cygdb2"
 alternatives+=" cython:cython:/usr/bin/cython2"
 alternatives+=" cython:cythonize:/usr/bin/cythonize2"
 
 python3-Cython_package() {
   unset alternatives
-  unset pycompile_module
   alternatives+=" cython:cygdb:/usr/bin/cygdb3"
   alternatives+=" cython:cython:/usr/bin/cython3"
   alternatives+=" cython:cythonize:/usr/bin/cythonize3"
-  pycompile_module+=" Cython"
-  pycompile_module+=" cython.py"
-  pycompile_module+=" pyximport"
   short_desc="${short_desc/Python2/Python3}"
   depends="python3-setuptools"
   pkg_install() {
