@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dbus"
 version=1.12.16
-revision=1
+revision=2
 short_desc="Message bus system"
 makedepends+=" expat-devel"
 makedepends+=" libcap-devel"
@@ -19,9 +19,7 @@ build_style="gnu-configure"
 configure_args+=" --disable-asserts"
 configure_args+=" --disable-doxygen-docs"
 configure_args+=" --disable-selinux"
-configure_args+=" --disable-static"
 configure_args+=" --disable-systemd"
-configure_args+=" --disable-tests"
 configure_args+=" --disable-user-session"
 configure_args+=" --disable-x11-autolaunch"
 configure_args+=" --enable-epoll"
@@ -49,6 +47,7 @@ dbus-devel_package() {
     vmove usr/include
     vmove "usr/lib/dbus-*"
     vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
     vmove usr/share/doc
     vmove usr/lib/cmake
