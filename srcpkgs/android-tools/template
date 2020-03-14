@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="android-tools"
-version=29.0.4
+version=29.0.6
 revision=1
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
@@ -20,7 +20,7 @@ hostmakedepends+=" perl"
 homepage="http://developer.android.com/tools/help/adb.html"
 license="Apache-2.0, ISC, GPL-2.0-only, MIT"
 distfiles="https://github.com/nmeum/android-tools/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="5428e16a2baba79665cac0b11be81aa0cfa6920dc20da039711cc3d3b96a333b"
+checksum="7fb1c127c36b0752657593838b6823743bf8e5730f9f8b0f7ba2c185424cf376"
 build_style="cmake"
 
 pre_configure() {
