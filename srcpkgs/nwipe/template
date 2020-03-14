@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nwipe"
-version=0.26
+version=0.28
 revision=1
 short_desc="Utility to securely erase disks"
 makedepends+=" libparted-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/martijnvanbrummelen/nwipe"
 license="GPL-2.0-only"
 distfiles="https://github.com/martijnvanbrummelen/nwipe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b8f37b4f1529931bdd5635d33baa35b7c08755e7ef5f0556b629c0360c85c920"
+checksum="4f1ccf952cd3cdb00c8ccbfe4c47f94eaecf20a98248aaf83a0c1b2198e2ce13"
 build_style="gnu-configure"
 
 CFLAGS="-D_FILE_OFFSET_BITS=64"
