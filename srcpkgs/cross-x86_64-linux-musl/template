@@ -10,7 +10,7 @@ _sysroot="/usr/$_triplet"
 maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.33
-revision=1
+revision=2
 short_desc="Cross toolchain for x86_64 with musl"
 archs+=" i686*"
 archs+=" ppc64le"
@@ -230,6 +230,7 @@ _gcc_build() {
   _args+=" --enable-libquadmath"
   _args+=" --enable-lto"
   _args+=" --enable-shared"
+  _args+=" --libexecdir=/usr/lib"
   _args+=" --prefix=/usr"
   _args+=" --target=$_triplet"
   _args+=" --with-sysroot=$_sysroot"
