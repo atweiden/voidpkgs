@@ -10,7 +10,7 @@ _sysroot="/usr/$_triplet"
 maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.33
-revision=1
+revision=2
 short_desc="GNU Cross toolchain for the $_triplet target (binutils/gcc/glibc)"
 archs+=" i686"
 archs+=" ppc64"
@@ -233,7 +233,6 @@ _glibc_build() {
   _args+=" --enable-obsolete-nsl"
   _args+=" --enable-obsolete-rpc"
   _args+=" --host=$_triplet"
-  _args+=" --libdir=/usr/lib"
   _args+=" --prefix=/usr"
   _args+=" --with-headers=$_sysroot/usr/include"
 
@@ -302,7 +301,7 @@ _gcc_build() {
   _args+=" --enable-secureplt"
   _args+=" --enable-shared"
   _args+=" --enable-threads=posix"
-  _args+=" --libdir=/usr/lib"
+  _args+=" --libexecdir=/usr/lib"
   _args+=" --prefix=/usr"
   _args+=" --target=$_triplet"
   _args+=" --with-gnu-as"
