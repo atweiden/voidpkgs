@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ripgrep"
-version=11.0.2
-revision=4
+version=12.0.0
+revision=1
 short_desc="Fast search tool inspired by ag and grep"
 makedepends="pcre2-devel"
 hostmakedepends+=" asciidoc"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/BurntSushi/ripgrep/"
 license="Unlicense, MIT"
 distfiles="https://github.com/BurntSushi/ripgrep/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0983861279936ada8bc7a6d5d663d590ad34eb44a44c75c2d6ccd0ab33490055"
+checksum="3c84c3a4c80cee961a2b0d00a4e5d1bc9eb58ba587cf69c06d84aff72fedbeff"
 build_style="cargo"
 configure_args="--features=pcre2"
 
