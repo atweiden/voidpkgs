@@ -207,6 +207,7 @@ _glibc_build() {
   _args+=" --enable-obsolete-nsl"
   _args+=" --enable-obsolete-rpc"
   _args+=" --host=$_triplet"
+  _args+=" --libdir=/usr/lib"
   _args+=" --prefix=/usr"
   _args+=" --target=$_triplet"
   _args+=" --with-headers=$_sysroot/usr/include"
