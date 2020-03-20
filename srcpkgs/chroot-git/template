@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="chroot-git"
-version=2.25.1
+version=2.25.2
 revision=1
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
-checksum="222796cc6e3bf2f9fd765f8f097daa3c3999bb7865ac88a8c974d98182e29f26"
+checksum="9b937103e048e2d3bf964d4132a0e7edccc2583d4ef30bc8a516f93a76de7123"
 wrksrc="git-$version"
 build_style="gnu-configure"
 configure_args+=" --without-curl"
@@ -15,18 +15,8 @@ configure_args+=" --without-expat"
 configure_args+=" --without-openssl"
 configure_args+=" --without-python"
 configure_args+=" --without-tcltk"
-configure_args+=" ac_cv_fread_reads_directories=yes"
 configure_args+=" ac_cv_lib_curl_curl_global_init=no"
 configure_args+=" ac_cv_lib_expat_XML_ParserCreate=no"
-configure_args+=" ac_cv_snprintf_returns_bogus=no"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" ac_cv_iconv_omits_bom=yes"
-    ;;
-  *)
-    configure_args+=" ac_cv_iconv_omits_bom=no"
-    ;;
-esac
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
