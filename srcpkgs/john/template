@@ -20,6 +20,17 @@ build_wrksrc="src"
 build_style="gnu-configure"
 configure_args="--with-systemwide"
 
+# the build system checks the host cpu for features, so when building
+# on a modern power9 system, it will attempt to shove in -mvsx and so on,
+# which breaks builds for 970 and 32-bit
+case "$XBPS_TARGET_MACHINE" in
+  ppc64le*)
+    ;;
+  ppc*)
+    configure_args+=" --disable-simd"
+    ;;
+esac
+
 pre_configure() {
   unset AS
   unset CPP
