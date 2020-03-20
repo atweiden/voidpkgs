@@ -62,6 +62,7 @@ post_install() {
   vdoc README.md
   vdoc sample-lnd.conf
   vcopy docs "usr/share/doc/$pkgname"
+  vinstall contrib/lncli.bash-completion 0644 usr/share/bash-completion/completions lncli
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
