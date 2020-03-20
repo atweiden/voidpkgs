@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="git"
-version=2.25.1
+version=2.25.2
 revision=1
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
@@ -18,23 +18,12 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/git/git/raw/master/Documentation/RelNotes/$version.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/$pkgname-$version.tar.xz"
-checksum="222796cc6e3bf2f9fd765f8f097daa3c3999bb7865ac88a8c974d98182e29f26"
+checksum="9b937103e048e2d3bf964d4132a0e7edccc2583d4ef30bc8a516f93a76de7123"
 build_style="gnu-configure"
 configure_args+=" --with-curl"
 configure_args+=" --with-expat"
 configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
-configure_args+=" ac_cv_fread_reads_directories=yes"
-configure_args+=" ac_cv_snprintf_returns_bogus=no"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" ac_cv_iconv_omits_bom=yes"
-    ;;
-  *)
-    configure_args+=" ac_cv_iconv_omits_bom=no"
-    ;;
-esac
-make_check_target="test"
 register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
 subpackages+=" git-cvs"
@@ -54,7 +43,14 @@ post_build() {
   make "$makejobs" -C Documentation man
   make "$makejobs" -C contrib/contacts all git-contacts.1
   make "$makejobs" -C contrib/diff-highlight all
-  make "$makejobs" -C contrib/subtree all git-subtree.1
+  make "$makejobs" -C contrib/subtree all man
+}
+
+do_check() {
+  make test
+  make -C contrib/diff-highlight test
+  make -C contrib/subtree test
+  make -C contrib/credential/netrc test
 }
 
 post_install() {
