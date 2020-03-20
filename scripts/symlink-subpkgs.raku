@@ -665,7 +665,6 @@ constant %PKG = Map.new(
     'python-requests' => ['python3-requests'],
     'python-rfc6555' => ['python3-rfc6555'],
     'python-scandir' => ['python3-scandir'],
-    'python-setuptools' => ['python3-setuptools'],
     'python-six' => ['python3-six'],
     'python-snowballstemmer' => ['python3-snowballstemmer'],
     'python-soupsieve' => ['python3-soupsieve'],
