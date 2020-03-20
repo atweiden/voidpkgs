@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="c-ares"
-version=1.15.0
+version=1.16.0
 revision=1
 short_desc="C library that performs DNS requests and name resolves asynchronously"
 homepage="https://c-ares.haxx.se/"
 license="MIT"
 distfiles="https://c-ares.haxx.se/download/$pkgname-$version.tar.gz"
-checksum="6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852"
+checksum="de058ad7c128156e2db6dc98b8a359924d6f210a1b99dd36ba15c8f839a83a89"
 build_style="gnu-configure"
 
 pre_configure() {
