@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dcrlnd"
-version=0.2.0
+version=0.2.1
 revision=1
 short_desc="Decred Lightning Network Daemon"
 hostmakedepends="git"
@@ -9,7 +9,7 @@ tags+=" lightningnetwork"
 homepage="https://github.com/decred/dcrlnd"
 license="MIT"
 distfiles="https://github.com/decred/dcrlnd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="49462188d61dbf2ce80544ab9d4299e11bff6b0780415dfc00982c25830aaaeb"
+checksum="ff9970e87bf13433aebe50dc30f369769ab38fd76c9a32dab6a31eb1dadfde68"
 build_style="go"
 go_import_path="github.com/decred/dcrlnd"
 go_mod_mode=""
@@ -55,6 +55,7 @@ post_install() {
   vdoc README.md
   vdoc sample-dcrlnd.conf
   vcopy docs "usr/share/doc/$pkgname"
+  vinstall contrib/dcrlncli.bash-completion 0644 usr/share/bash-completion/completions dcrlncli
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
