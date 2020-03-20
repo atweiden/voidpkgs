@@ -5,6 +5,9 @@ revision=11
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-legacy-compat"
+fi
 homepage="https://ppp.samba.org/"
 license="BSD-3-Clause, LGPL-2.0-or-later, GPL-2.0-or-later, Public Domain"
 distfiles="https://ftp.samba.org/pub/ppp/$pkgname-$version.tar.gz"
