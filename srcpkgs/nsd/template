@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nsd"
-version=4.2.4
+version=4.3.0
 revision=1
 short_desc="Authoritative only, high performance and simple DNS server"
 makedepends="libevent-devel"
@@ -8,7 +8,7 @@ homepage="https://www.nlnetlabs.nl/projects/nsd/"
 license="BSD-3-Clause"
 changelog="https://github.com/NLnetLabs/nsd/blob/NSD_${version//./_}_REL/doc/ChangeLog"
 distfiles="https://www.nlnetlabs.nl/downloads/nsd/$pkgname-$version.tar.gz"
-checksum="9ebd6d766765631a56c0eb332eac26b310fa39f662e5582c8210488cf91ef27c"
+checksum="7a007d655d30f1edd001206839107e651966e1e519d53ba2c036491044111e97"
 build_style="gnu-configure"
 configure_args+=" --enable-ratelimit"
 configure_args+=" --enable-ratelimit-default-is-off"
