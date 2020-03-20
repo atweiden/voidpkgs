@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kubernetes-helm"
-version=3.1.0
+version=3.1.2
 revision=1
 short_desc="Kubernetes Package Manager"
 hostmakedepends+=" git"
@@ -11,7 +11,7 @@ hostmakedepends+=" tar"
 homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz"
-checksum="46799de982807cd3e215c82f844f2a41c96c6c360d097797872517d03bceaeae"
+checksum="06c7a43be1841b07c4737999d90c1d194b80b55c6d80829349121e8e95f4a1e1"
 wrksrc="helm-$version"
 nopie="true"
 conflicts="helm"
