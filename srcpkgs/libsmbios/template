@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libsmbios"
-version=2.4.2
-revision=3
+version=2.4.3
+revision=1
 short_desc="Library for SMBIOS access"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -10,6 +10,7 @@ makedepends+=" python3-devel"
 checkdepends="python3"
 hostmakedepends+=" automake"
 hostmakedepends+=" doxygen"
+hostmakedepends+=" gettext"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" help2man"
 hostmakedepends+=" libtool"
@@ -17,7 +18,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/dell/libsmbios"
 license="GPL-2.0-or-later, OLS-2.1"
 distfiles="https://github.com/dell/libsmbios/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ebfe18415e24bbec06d0a9ea1066c8dcd82982555373712713d7e194138650de"
+checksum="36c36a0f6b59190d6b4fef11696886e4511091929a5eb7ae7cf5fea0c32d3f58"
 build_style="gnu-configure"
 configure_args="--disable-static"
 # explicitly list the subpackages to make sure they are installed in
@@ -51,7 +52,6 @@ python3-libsmbios_package() {
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" python3"
   short_desc+=" - python bindings"
-  pycompile_module="libsmbios_c"
   pkg_install() {
     vmove "$py3_sitelib"
     vmove usr/share/smbios-utils/cli.py
