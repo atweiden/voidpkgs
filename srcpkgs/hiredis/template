@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="hiredis"
-version=0.14.0
+version=0.14.1
 revision=1
 short_desc="Minimalistic C client for Redis"
+checkdepends="redis"
 homepage="https://github.com/redis/hiredis"
 license="BSD-3-Clause"
 distfiles="https://github.com/redis/hiredis/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="042f965e182b80693015839a9d0278ae73fae5d5d09d8bf6d0e6a39a8c4393bd"
+checksum="2663b2aed9fd430507e30fc5e63274ee40cdd1a296026e22eafd7d99b01c8913"
 build_style="gnu-makefile"
 
 post_install() {
