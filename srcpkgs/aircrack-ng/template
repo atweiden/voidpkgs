@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="aircrack-ng"
-version=1.5.2
-revision=2
+version=1.6
+revision=1
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libnl3-devel"
 makedepends+=" libressl-devel"
@@ -16,7 +16,7 @@ homepage="https://www.aircrack-ng.org/"
 license="GPL-2.0-or-later, BSD-3-Clause, OpenSSL"
 changelog="https://www.aircrack-ng.org/doku.php?id=changelog"
 distfiles="https://download.aircrack-ng.org/$pkgname-$version.tar.gz"
-checksum="9e592fe7658046220e0ac0a6d05c4026903f3077b248893e0056ccbe4ee88241"
+checksum="4f0bfd486efc6ea7229f7fbc54340ff8b2094a0d73e9f617e0a39f878999a247"
 build_style="gnu-configure"
 
 pre_configure() {
@@ -24,7 +24,13 @@ pre_configure() {
   CFLAGS="${CFLAGS/-mno-altivec/}"
   CXXFLAGS="${CXXFLAGS/-mno-altivec/}"
 
-  NOCONFIGURE=1 ./autogen.sh
+  ACLOCAL="/usr/bin/aclocal" \
+  AUTOCONF="/usr/bin/autoconf" \
+  AUTOHEADER="/usr/bin/autoheader" \
+  AUTOMAKE="/usr/bin/automake" \
+  LIBTOOLIZE="/usr/bin/libtoolize" \
+  NOCONFIGURE=1 \
+    ./autogen.sh
 }
 
 post_install() {
