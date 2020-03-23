@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="toxcore"
-version=0.2.10
+version=0.2.11
 revision=1
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
 makedepends+=" libconfig-devel"
@@ -10,11 +10,10 @@ homepage="https://tox.chat"
 license="GPL-3.0-or-later"
 changelog="https://github.com/TokTok/c-toxcore/raw/master/CHANGELOG.md"
 distfiles="https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5ccc4ecd79b95c367efe8341b06bf2a81f853032e6fcd7cb2bc0ad0ef7419d40"
+checksum="f111285b036d7746ce8d1321cf0b89ec93b4fad8ae90767a24e50230bbee27e1"
 wrksrc="c-$pkgname-$version"
 build_style="cmake"
-configure_args+=" -DBUILD_AV_TEST=OFF"
-configure_args+=" -DBUILD_TOXAV=OFF"
+configure_args="-DBUILD_TOXAV=OFF"
 
 post_install() {
   vsconf other/bootstrap_daemon/tox-bootstrapd.conf
