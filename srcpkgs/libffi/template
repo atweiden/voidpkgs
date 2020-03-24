@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libffi"
-version=3.2.1
-revision=6
+version=3.3
+revision=1
 short_desc="Library supporting Foreign Function Interfaces"
 checkdepends="dejagnu"
 homepage="http://sourceware.org/libffi"
 license="MIT"
 distfiles="ftp://sourceware.org/pub/libffi/$pkgname-$version.tar.gz"
-checksum="d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37"
+checksum="72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056"
 build_style="gnu-configure"
 configure_args+=" --includedir=/usr/include"
 configure_args+=" --with-pic"
