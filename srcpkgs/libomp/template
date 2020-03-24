@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="libomp"
 version=8.0.0
-revision=1
+revision=2
 short_desc="LLVM OpenMP Runtime Library"
 archs+=" aarch64*"
 archs+=" armv[67]*"
