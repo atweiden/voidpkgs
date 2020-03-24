@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cabal-install"
 version=2.4.1.0
-revision=3
+revision=4
 short_desc="Command-line interface for Cabal and Hackage"
 depends="ghc"
 makedepends+=" gmp-devel"
