@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="rust"
 version=1.41.1
-revision=1
+revision=2
 _rust_dist_version=1.40.0
 _cargo_dist_version=0.41.0
 # always make sure custom distfiles used for bootstrap are uploaded to
