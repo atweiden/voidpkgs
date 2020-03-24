@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="ghc"
 # keep this synchronized with http://www.stackage.org/lts
 version=8.6.5
-revision=1
+revision=2
 short_desc="Glorious Haskell Compiler"
 depends+=" gcc"
 depends+=" gmp-devel"
