@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="python3"
 version=3.8.1
-revision=1
+revision=2
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
