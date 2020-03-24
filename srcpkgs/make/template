@@ -3,7 +3,7 @@ pkgname="make"
 # NOTE: do not upgrade to >= 4.3 unless you can still build
 # `Aegisub` and `openjdk9-bootstrap` with the updated version.
 version=4.2.1
-revision=6
+revision=7
 short_desc="The GNU make system"
 makedepends+=" xz"
 makedepends+=" $(vopt_if guile 'gc-devel guile-devel')"
