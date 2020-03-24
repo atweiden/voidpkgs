@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="make"
-version=4.3
-revision=1
+version=4.2.1
+revision=6
 short_desc="The GNU make system"
 makedepends+=" xz"
 makedepends+=" $(vopt_if guile 'gc-devel guile-devel')"
@@ -13,14 +13,15 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 homepage="http://www.gnu.org/software/make"
 license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/make/$pkgname-$version.tar.lz"
-checksum="de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82"
+distfiles="$GNU_SITE/make/$pkgname-$version.tar.bz2"
+checksum="d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args="$(vopt_with guile)"
 build_options="guile"
 build_options_default="guile"
 bootstrap="yes"
+reverts="4.3_1"
 
 # this should be temporary until upstream releases new version with fixes
 pre_configure() {
