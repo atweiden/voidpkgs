@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libglib-static"
 version=2.58.3
-revision=3
+revision=4
 depends+=" dbus-devel"
 depends+=" elfutils-devel"
 depends+=" libffi-devel"
