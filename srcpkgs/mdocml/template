@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mdocml"
 version=1.14.5
-revision=3
+revision=4
 short_desc="The mandoc UNIX manpage compiler toolset"
 depends="less"
 makedepends+=" less"
@@ -32,6 +32,10 @@ post_extract() {
     -i \
     -e 's,.Xr more,.Xr less,g' \
     *.1
+  sed \
+    -i \
+    -e 's/^CC=.*/CC=cc/' \
+    configure
 }
 
 pre_configure() {
