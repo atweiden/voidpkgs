@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ghc-bin"
 version=8.6.5
-revision=1
+revision=2
 short_desc="Glorious Haskell Compiler - precompiled binaries"
 archs+=" i686"
 archs+=" x86_64*"
