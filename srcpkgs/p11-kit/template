@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="p11-kit"
 version=0.23.18.1
-revision=1
+revision=2
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
