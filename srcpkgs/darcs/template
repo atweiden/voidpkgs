@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="darcs"
 version=2.14.2
-revision=1
+revision=2
 short_desc="Change-focused cross-platform version control system"
 makedepends+=" libcurl-devel"
 makedepends+=" ncurses-devel"
