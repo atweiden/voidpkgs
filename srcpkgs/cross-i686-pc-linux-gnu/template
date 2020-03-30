@@ -185,8 +185,8 @@ _glibc_headers() {
   _args+=" --enable-kernel=2.6.27"
   _args+=" --enable-obsolete-nsl"
   _args+=" --enable-obsolete-rpc"
+  _args+=" --host=$_triplet"
   _args+=" --prefix=/usr"
-  _args+=" --target=$_triplet"
   _args+=" --with-headers=$_sysroot/usr/include"
 
   "../glibc-$_glibc_version/configure" $_args
