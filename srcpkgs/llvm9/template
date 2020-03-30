@@ -71,12 +71,6 @@ fi
 subpackages+=" lld"
 subpackages+=" lld-devel"
 
-case "$XBPS_TARGET_MACHINE" in
-  armv5*)
-    broken="Tries to assemble VFP instructions with armv5tel arch"
-    ;;
-esac
-
 post_patch() {
   # patches
   cd "$XBPS_BUILDDIR/llvm-$version.src"
@@ -90,6 +84,16 @@ post_patch() {
     msg_normal "Applying $i to clang\n"
     patch -sNp1 -i "$i"
   done
+
+  case "$XBPS_TARGET_MACHINE" in
+    armv5*)
+      cd "$XBPS_BUILDDIR/compiler-rt-$version.src"
+      for i in "$FILESDIR/patches/compiler-rt"/compiler-rt-*.patch; do
+        msg_normal "Applying $i to compiler-rt\n"
+        patch -sNp1 -i "$i"
+      done
+    ;;
+  esac
 
   if [[ "$_lldb_enable" == "yes" ]]; then
     cd "$XBPS_BUILDDIR/lldb-$version.src"
