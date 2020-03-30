@@ -20,9 +20,6 @@ case "$XBPS_TARGET_MACHINE" in
   arm*)
     _goarch="arm"
     ;;
-  mips*)
-    _goarch="mips"
-    ;;
   i686*)
     _goarch="386"
     ;;
@@ -32,14 +29,8 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64le*)
     _goarch="ppc64le"
     ;;
-  ppc64*)
-    _goarch="ppc64"
-    ;;
-  ppc*)
-    broken="Upstream does not support 32-bit ppc"
-    ;;
   *)
-    _goarch="$XBPS_TARGET_MACHINE"
+    broken="Unsupported architecture $XBPS_TARGET_MACHINE"
     ;;
 esac
 
