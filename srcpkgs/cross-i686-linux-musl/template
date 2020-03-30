@@ -25,8 +25,6 @@ hostmakedepends+=" gcc-objc"
 hostmakedepends+=" perl"
 hostmakedepends+=" python3"
 hostmakedepends+=" tar"
-archs+=" i686"
-archs+=" x86_64*"
 homepage="https://www.voidlinux.org/"
 license="GPL-2.0-or-later, GPL-3.0-or-later, MIT"
 distfiles+=" $GNU_SITE/binutils/binutils-$_binutils_version.tar.xz"
@@ -52,6 +50,10 @@ nostrip_files+=" libgnarl.a"
 nostrip_files+=" libgnarl_pic.a"
 nostrip_files+=" libgnat.a"
 nostrip_files+=" libgnat_pic.a"
+
+if [[ "$XBPS_TARGET_MACHINE" == "i686-musl" ]]; then
+  broken="Can't build crosstoolchain to itself"
+fi
 
 _apply_patch() {
   local args="$1"
