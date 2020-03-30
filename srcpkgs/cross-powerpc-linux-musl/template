@@ -14,9 +14,6 @@ pkgname="cross-$_triplet"
 version=0.33
 revision=1
 short_desc="Cross toolchain for PowerPC (musl)"
-archs+=" i686*"
-archs+=" ppc64*"
-archs+=" x86_64*"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
 makedepends+=" isl15-devel"
@@ -54,6 +51,10 @@ nostrip_files+=" libgnarl.a"
 nostrip_files+=" libgnarl_pic.a"
 nostrip_files+=" libgnat.a"
 nostrip_files+=" libgnat_pic.a"
+
+if [[ "$XBPS_TARGET_MACHINE" == "ppc-musl" ]]; then
+  broken="Can't build crosstoolchain to itself"
+fi
 
 _apply_patch() {
   local args
