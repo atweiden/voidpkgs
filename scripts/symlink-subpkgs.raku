@@ -147,6 +147,7 @@ constant %PKG = Map.new(
     'cross-powerpc64-linux-musl' => ['cross-powerpc64-linux-musl-libc'],
     'cross-powerpc64le-linux-gnu' => ['cross-powerpc64le-linux-gnu-libc'],
     'cross-powerpc64le-linux-musl' => ['cross-powerpc64le-linux-musl-libc'],
+    'cross-x86_64-linux-gnu' => ['cross-x86_64-linux-gnu-libc'],
     'cross-x86_64-linux-musl' => ['cross-x86_64-linux-musl-libc'],
     'cross-x86_64-w64-mingw32' => qw<cross-i686-w64-mingw32
                                      cross-i686-w64-mingw32-crt
