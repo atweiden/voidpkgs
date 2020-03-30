@@ -12,8 +12,6 @@ pkgname="cross-$_triplet"
 version=0.33
 revision=2
 short_desc="GNU Cross toolchain for the $_triplet LE target (binutils/gcc/glibc)"
-archs+=" ppc64le"
-archs+=" x86_64"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" isl15-devel"
 makedepends+=" libmpc-devel"
@@ -46,6 +44,18 @@ nostrip_files+=" libgnarl.a"
 nostrip_files+=" libgnarl_pic.a"
 nostrip_files+=" libgnat.a"
 nostrip_files+=" libgnat_pic.a"
+
+if [[ "$XBPS_TARGET_LIBC" != "glibc" ]]; then
+  broken="glibc crosstoolchain only available on glibc"
+fi
+
+if [[ "$XBPS_TARGET_WORDSIZE" != "64" ]]; then
+  broken="64-bit crosstoolchain only available on 64-bit host"
+fi
+
+if [[ "$XBPS_TARGET_MACHINE" = "aarch64" ]]; then
+  broken="Can't build crosstoolchain to itself"
+fi
 
 _apply_patch() {
   local args="$1"
