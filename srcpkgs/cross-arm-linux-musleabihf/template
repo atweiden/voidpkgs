@@ -52,6 +52,10 @@ nostrip_files+=" libgnarl_pic.a"
 nostrip_files+=" libgnat.a"
 nostrip_files+=" libgnat_pic.a"
 
+if [[ "$XBPS_TARGET_MACHINE" == "armv6l-musl" ]]; then
+  broken="Can't build crosstoolchain to itself"
+fi
+
 _apply_patch() {
   local args="$1"
   local pname="$(basename $2)"
