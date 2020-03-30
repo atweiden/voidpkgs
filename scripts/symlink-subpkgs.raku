@@ -318,6 +318,7 @@ constant %PKG = Map.new(
                   irssi-otr
                   irssi-perl>,
     'isl15' => ['isl15-devel'],
+    'janet' => ['janet-devel'],
     'jansson' => ['jansson-devel'],
     'jemalloc' => ['jemalloc-devel'],
     'jq' => ['jq-devel'],

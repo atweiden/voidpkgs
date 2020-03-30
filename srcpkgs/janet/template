@@ -1,0 +1,30 @@
+# Template file for 'janet'
+pkgname=janet
+version=1.8.0
+revision=1
+build_style=meson
+short_desc="Dynamic Lisp dialect and bytecode VM"
+maintainer="Leah Neukirchen <leah@vuxu.org>"
+license="MIT"
+homepage="https://janet-lang.org/"
+distfiles="https://github.com/janet-lang/janet/archive/v${version}.tar.gz"
+checksum=e02ae5c7b4579a23e3f30636c16d248273ed119467a076d18c9362e858eb9812
+
+case "$XBPS_TARGET_MACHINE" in
+	ppc*) broken="testsuite fails";;
+esac
+
+post_install() {
+	vlicense LICENSE
+}
+
+janet-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/*.a
+		vmove usr/lib/*.so
+		vmove usr/lib/pkgconfig
+	}
+}
