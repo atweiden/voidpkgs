@@ -7,13 +7,8 @@ homepage="https://janet-lang.org/"
 license="MIT"
 distfiles="https://github.com/janet-lang/janet/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="e02ae5c7b4579a23e3f30636c16d248273ed119467a076d18c9362e858eb9812"
+patch_args="-Np1"
 build_style="meson"
-
-case "$XBPS_TARGET_MACHINE" in
-  ppc*)
-    broken="testsuite fails"
-    ;;
-esac
 
 post_install() {
   vlicense LICENSE
