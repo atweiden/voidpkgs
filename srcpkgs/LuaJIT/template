@@ -13,7 +13,7 @@ checksum="1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3"
 wrksrc="$pkgname-$_dist_version"
 
 _cross_cc="cc"
-if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_WORDSIZE" != "$XBPS_TARGET_WORDSIZE" ]]; then
+if [[ "$XBPS_WORDSIZE" != "$XBPS_TARGET_WORDSIZE" ]]; then
   if [[ "$XBPS_MACHINE" == "x86_64" ]]; then
     hostmakedepends+=" gcc-multilib"
     _cross_cc="cc -m32"
