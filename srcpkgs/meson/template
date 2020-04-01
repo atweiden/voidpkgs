@@ -14,8 +14,6 @@ changelog="https://github.com/mesonbuild/meson/raw/master/docs/markdown/Release-
 distfiles="https://github.com/mesonbuild/meson/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="dde5726d778112acbd4a67bb3633ab2ee75d33d1e879a6283a7b4a44c3363c27"
 build_style="python3-module"
-reverts+=" 0.52.0_1"
-reverts+=" 0.52.0_2"
 
 do_check() {
   # meson depends on a trillion pkgs to run tests, see: arch checkdepends
