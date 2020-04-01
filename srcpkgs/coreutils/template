@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coreutils"
 version=8.32
-revision=1
+revision=3
 short_desc="GNU core utilities"
 makedepends+=" acl-devel"
 makedepends+=" gmp-devel"
@@ -58,6 +58,11 @@ do_configure() {
     # XXX: syncfs() in src/sync.c expects a return value
     *-musl)
       configure_args+=" ac_cv_func_syncfs=no"
+      ;;
+    # XXX disable statx(), needs glibc>=2.28 and linux>=4.11
+    # XXX seems to fail on travis always returning EACCES.
+    *)
+      configure_args+=" ac_cv_func_statx=no"
       ;;
   esac
   # do not install kill (provided by util-linux)
