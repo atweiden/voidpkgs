@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="elfutils"
-version=0.178
+version=0.179
 revision=1
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://sourceware.org/elfutils/"
 license="GPL-3.0-or-later"
 distfiles="https://sourceware.org/elfutils/ftp/$version/$pkgname-$version.tar.bz2"
-checksum="31e7a00e96d4e9c4bda452e1f2cdac4daf8abd24f5e154dee232131899f3a0f2"
+checksum="25a545566cbacaa37ae6222e58f1c48ea4570f53ba991886e2f5ce96e22a23a2"
 build_style="gnu-configure"
 configure_args+=" --disable-debuginfod"
 configure_args+=" --program-prefix=eu-"
