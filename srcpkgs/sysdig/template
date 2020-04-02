@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sysdig"
-version=0.26.5
-revision=3
+version=0.26.6
+revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
 archs+=" i686"
 archs+=" ppc64le"
@@ -26,7 +26,7 @@ homepage="http://www.sysdig.org/"
 license="Apache-2.0, MIT, GPL-2.0-only"
 changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3a251eca408e71df9582eac93632d8927c5abcc8d09b25aa32ef6d9c99a07bd4"
+checksum="d215d9b5835db6eec0dc6f0bac96552fd8bd7c71d3d6ed482423cdddd5b1c93e"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
 configure_args+=" -DCREATE_TEST_TARGETS=OFF"
