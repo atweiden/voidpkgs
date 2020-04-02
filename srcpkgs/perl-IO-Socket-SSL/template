@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-IO-Socket-SSL"
-version=2.067
+version=2.068
 revision=1
 short_desc="IO::Socket::SSL - SSL sockets with IO::Socket interface"
 archs="noarch"
@@ -15,7 +15,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Socket-SSL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="ef8842806d047cf56e2af64add4ed30b24547bcbb50e8df33cee0c54609af1c1"
+checksum="4420fc0056f1827b4dd1245eacca0da56e2182b4ef6fc078f107dc43c3fb8ff9"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
