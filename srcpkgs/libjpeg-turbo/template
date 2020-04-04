@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libjpeg-turbo"
 version=2.0.4
-revision=1
+revision=2
 short_desc="Derivative of libjpeg which uses SIMD instructions"
 hostmakedepends="yasm"
 homepage="https://libjpeg-turbo.org/"
@@ -17,6 +17,7 @@ replaces="jpeg>=0"
 post_install() {
   vlicense LICENSE.md
   vinstall jpegint.h 644 usr/include
+  vinstall transupp.h 644 usr/include
   rm -r "$DESTDIR/usr/bin/tjbench"
   rm -r "$DESTDIR/usr/share/doc"
 }
