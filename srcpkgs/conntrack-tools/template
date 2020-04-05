@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="conntrack-tools"
-version=1.4.5
+version=1.4.6
 revision=1
 short_desc="Tools to interact with the netfilter connection tracking system"
 makedepends+=" libmnl-devel"
@@ -12,9 +12,9 @@ makedepends+=" libnfnetlink-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
 homepage="http://conntrack-tools.netfilter.org/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/conntrack-tools/files/$pkgname-$version.tar.bz2"
-checksum="36c6d99c7684851d4d72e75bd07ff3f0ff1baaf4b6f069eb7244990cd1a9a462"
+checksum="590859cc848245dbfd9c6487761dd303b3a1771e007f4f42213063ca56205d5f"
 build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
