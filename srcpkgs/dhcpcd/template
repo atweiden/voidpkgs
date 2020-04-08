@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dhcpcd"
 version=9.0.0
-revision=1
+revision=2
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
 hostmakedepends+=" ntp"
@@ -13,7 +13,7 @@ checksum="4a31ae9edcb469dc626e9e70f61c7a87104c26936126ccac24be6d45d4cfe46a"
 conf_files="/etc/dhcpcd.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
-configure_args+=" --rundir=/run"
+configure_args+=" --rundir=/run/dhcpcd"
 configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --sysconfdir=/etc"
 make_check_target="test"
