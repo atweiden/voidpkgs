@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ocamlbuild"
 version=0.14.0
-revision=3
+revision=4
 short_desc="OCaml build tool"
 hostmakedepends="ocaml"
 homepage="https://github.com/ocaml/ocamlbuild"
