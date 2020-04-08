@@ -1,23 +1,41 @@
 # NOTE: also update common/environment/configure/automake when updating!
 maintainer="nox"
 pkgname="automake"
-version=1.16.1
-revision=3
+version=1.16.2
+revision=1
 short_desc="GNU Standards-compliant Makefile generator"
 archs="noarch"
 depends+=" autoconf"
 depends+=" perl"
+#checkdepends+=" cscope"
+#checkdepends+=" dejagnu"
+#checkdepends+=" emacs"
+#checkdepends+=" expect"
+#checkdepends+=" flex"
+#checkdepends+=" gettext-devel"
+#checkdepends+=" glib-devel"
+#checkdepends+=" libtool"
+#checkdepends+=" lzip"
+#checkdepends+=" perl"
+#checkdepends+=" pkg-config"
+#checkdepends+=" sharutils"
+#checkdepends+=" texinfo"
+#checkdepends+=" vala"
+#checkdepends+=" xz"
+#checkdepends+=" zip"
+#checkdepends+=" zstd"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" perl"
 homepage="https://www.gnu.org/software/automake"
 license="GPL-2.0-or-later"
 distfiles="$GNU_SITE/automake/$pkgname-$version.tar.xz"
-checksum="5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
+checksum="ccc459de3d710e066ab9e12d2f119bd164a08c9341ca24ba22c9adaa179eedd0"
 build_style="gnu-configure"
+make_check_args="-j$(nproc)"
 
 pre_check() {
   # source: http://www.linuxfromscratch.org/lfs/view/development/chapter06/automake.html
-  sed \
+  vsed \
     -i \
     -e "s:./configure:LEXLIB=/usr/lib/libfl.a &:" \
     t/lex-{clean,depend}-cxx.sh
