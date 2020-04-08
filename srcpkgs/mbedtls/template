@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mbedtls"
-version=2.17.0
+version=2.16.5
 revision=1
 short_desc="Portable cryptographic TLS library"
 hostmakedepends+=" perl"
@@ -9,11 +9,12 @@ homepage="https://tls.mbed.org/"
 license="Apache-2.0"
 changelog="https://github.com/ARMmbed/mbedtls/raw/development/ChangeLog"
 distfiles="https://github.com/ARMmbed/mbedtls/archive/$pkgname-$version.tar.gz"
-checksum="321a2c0220d9f75703e929c01dabba7b77da4cf2e39944897fc41d888bb1ef0d"
+checksum="d8894abcaa23fe55d684ec73b2cd42cafe965eb162c993041fccfe68e3ef73c3"
 wrksrc="$pkgname-$pkgname-$version"
 build_style="cmake"
 configure_args+=" -DENABLE_TESTING=1"
 configure_args+=" -DUSE_SHARED_MBEDTLS_LIBRARY=1"
+reverts="2.17.0_1"
 
 pre_configure() {
   sed \
