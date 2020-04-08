@@ -4,12 +4,18 @@ version=2.26.0
 revision=1
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
+if [[ -n "$CHROOT_READY" ]]; then
+  hostmakedepends+=" gettext"
+  hostmakedepends+=" perl"
+  hostmakedepends+=" tar"
+fi
 homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
 checksum="9ece0dcb07a5e0d7366a92b613b201cca11ae368ab7687041364b3e756e495d6"
 wrksrc="git-$version"
 build_style="gnu-configure"
+configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
 configure_args+=" --without-curl"
 configure_args+=" --without-expat"
 configure_args+=" --without-openssl"
@@ -19,19 +25,12 @@ configure_args+=" ac_cv_lib_curl_curl_global_init=no"
 configure_args+=" ac_cv_lib_expat_XML_ParserCreate=no"
 bootstrap="yes"
 
-if [[ -n "$CHROOT_READY" ]]; then
-  hostmakedepends+=" gettext"
-  hostmakedepends+=" perl"
-  hostmakedepends+=" tar"
-else
-  configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
-fi
-
 post_configure() {
   cat <<-EOF >config.mak
-  CC_LD_DYNPATH=-L
-  NO_INSTALL_HARDLINKS=Yes
-  EOF
+CC_LD_DYNPATH=-L
+NO_INSTALL_HARDLINKS=Yes
+NO_GETTEXT=Yes
+EOF
 }
 
 do_install() {
