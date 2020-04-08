@@ -51,6 +51,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
   ppc-musl)
     makedepends+=" libucontext-devel"
+    configure_args+=" LIBS=-lucontext"
     ;;
 esac
 
@@ -60,19 +61,6 @@ post_patch() {
 
   echo "Patching out using binary gems for non-glibc..."
   patch -sNp1 -i "$FILESDIR/rubygems-avoid-platform-specific-gems.patch"
-
-  case "$XBPS_TARGET_MACHINE" in
-    ppc-musl)
-      vsed \
-        -i \
-        -e 's,^EXTLIBS =$,EXTLIBS = -lucontext,' \
-        template/Makefile.in
-      vsed \
-        -i \
-        -e 's, \-lc\",-lc -lucontext\",g' \
-        configure
-      ;;
-  esac
 }
 
 pre_build() {
