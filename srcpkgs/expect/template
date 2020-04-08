@@ -3,6 +3,9 @@ pkgname="expect"
 version=5.45.4
 revision=2
 makedepends="tcl-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" tcl-devel"
 short_desc="Programmed dialogue with interactive programs"
 homepage="http://www.nist.gov/el/msid/expect.cfm"
 license="Public Domain"
@@ -10,12 +13,16 @@ distfiles="$SOURCEFORGE_SITE/expect/Expect/$version/$pkgname$version.tar.gz"
 checksum="49a7da83b0bdd9f46d04a04deec19c7767bb9a323e40c4781f89caf760b92c34"
 wrksrc="$pkgname$version"
 build_style="gnu-configure"
+configure_args="expect_cv_wnohang_value=1"
 make_check_target="test"
-nocross="yes"
 alternatives+=" mkpasswd:mkpasswd:/usr/bin/expect-mkpasswd"
 alternatives+=" mkpasswd:mkpasswd.1:/usr/share/man/man1/expect-mkpasswd.1"
 
 LDFLAGS+=" -Wl,-rpath=/usr/lib:/usr/lib/$pkgname$version"
+
+pre_configure() {
+  autoreconf -fi
+}
 
 post_install() {
   rm "$DESTDIR/usr/bin/weather"
