@@ -5,14 +5,7 @@ pkgname="make"
 version=4.2.1
 revision=7
 short_desc="The GNU make system"
-makedepends+=" xz"
-makedepends+=" $(vopt_if guile 'gc-devel guile-devel')"
-if [[ -n "$CHROOT_READY" ]]; then
-  hostmakedepends+=" automake"
-  hostmakedepends+=" gettext-devel"
-  hostmakedepends+=" pkg-config"
-  hostmakedepends+=" tar"
-fi
+makedepends="$(vopt_if guile 'gc-devel guile-devel')"
 homepage="http://www.gnu.org/software/make"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/make/$pkgname-$version.tar.bz2"
@@ -24,10 +17,5 @@ build_options="guile"
 build_options_default="guile"
 bootstrap="yes"
 reverts="4.3_1"
-
-# this should be temporary until upstream releases new version with fixes
-pre_configure() {
-  autoreconf -fi
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
