@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vagrant"
 version=2.2.7
-revision=1
+revision=2
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
 archs+=" x86_64*"
@@ -21,7 +21,7 @@ nocross="yes"
 post_extract() {
   sed \
     -i \
-    -e 's|\,\ "<\ 2\.5"||g' \
+    -e 's|\,\ "<\ 2\.7"||g' \
     "$pkgname.gemspec"
 }
 
