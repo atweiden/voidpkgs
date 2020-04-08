@@ -40,6 +40,13 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
+case "$XBPS_TARGET_MACHINE" in
+  arm*-musl)
+    # default is ucontext
+    configure_args+=" --with-coroutine=arm32"
+    ;;
+esac
+
 post_patch() {
   [[ "$XBPS_TARGET_LIBC" == "glibc" ]] \
     && return 0
