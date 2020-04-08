@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cross-vpkg-dummy"
-version=0.33
+version=0.34
 revision=1
 short_desc="Dummy meta-pkg for cross building packages with xbps-src"
 depends="base-files>=0.126"
@@ -73,6 +73,7 @@ case "$XBPS_TARGET_MACHINE" in
     shlib_provides+=" libcrypt.so.1"
     shlib_provides+=" libdl.so.2"
     shlib_provides+=" libresolv.so.2"
+    shlib_provides+=" libanl.so.1 "
     shlib_provides+=" libnsl.so.1"
     shlib_provides+=" libutil.so.1"
     shlib_provides+=" ld-linux.so.2"
