@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mdocml"
 version=1.14.5
-revision=4
+revision=5
 short_desc="The mandoc UNIX manpage compiler toolset"
 depends="less"
 makedepends+=" less"
@@ -14,6 +14,9 @@ checksum="8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7"
 conf_files="/etc/man.conf"
 wrksrc="mandoc-$version"
 build_style="configure"
+make_build_args+=" all"
+make_build_args+=" man.cgi"
+make_check_target="regress"
 provides="man-0_1"
 alternatives+=" man:apropos.1:/usr/share/man/man1/mandoc-apropos.1"
 alternatives+=" man:apropos:/usr/bin/mandoc"
@@ -36,6 +39,8 @@ post_extract() {
     -i \
     -e 's/^CC=.*/CC=cc/' \
     configure
+  cat "$FILESDIR/void.css" >>mandoc.css
+  cp "$FILESDIR/cgi.h" .
 }
 
 pre_configure() {
@@ -58,10 +63,6 @@ EOF
   esac
 }
 
-do_check() {
-  make regress
-}
-
 post_install() {
   vlicense LICENSE
   # rename mans for alternatives
@@ -76,6 +77,18 @@ post_install() {
   rm -rf "$DESTDIR/usr"/{include,lib,share/man/man3}
   # daily cron job to generate man db
   vinstall "$FILESDIR/makewhatis.cron.daily" 755 etc/cron.daily makewhatis
+}
+
+void-man-cgi_package() {
+  short_desc="CGI manpage formatter for man.voidlinux.org"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmkdir usr/libexec/mandoc
+    vinstall man.cgi 0755 usr/libexec/mandoc
+    vsconf mandoc.css
+    vman man.cgi.3
+    vman man.cgi.8
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
