@@ -45,7 +45,11 @@ case "$XBPS_TARGET_MACHINE" in
     # default is ucontext
     configure_args+=" --with-coroutine=arm32"
     ;;
-  ppc64-musl|ppc-musl)
+  ppc64*)
+    # default is ucontext on BE, but ppc64le really just means ELFv2
+    configure_args+=" --with-coroutine=ppc64le"
+    ;;
+  ppc-musl)
     makedepends+=" libucontext-devel"
     ;;
 esac
@@ -58,7 +62,7 @@ post_patch() {
   patch -sNp1 -i "$FILESDIR/rubygems-avoid-platform-specific-gems.patch"
 
   case "$XBPS_TARGET_MACHINE" in
-    ppc64-musl|ppc-musl)
+    ppc-musl)
       vsed \
         -i \
         -e 's,^EXTLIBS =$,EXTLIBS = -lucontext,' \
