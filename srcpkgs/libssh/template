@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libssh"
-version=0.9.3
+version=0.9.4
 revision=1
 short_desc="Multiplatform C library implementing the SSH v2 protocol"
 makedepends+=" cmocka-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3"
 homepage="https://www.libssh.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://www.libssh.org/files/0.8/libssh-$version.tar.xz"
-checksum="9ea92257d368d95df0f9ae73da4a1637e02d30f8cc28cb8dc17aad51a5ef18a4"
+checksum="10cde12a5bdc86387f70de460006520fae01ad5e493782b38b6ddc2c8f187fe7"
 build_style="cmake"
 configure_args="-DUNIT_TESTING=ON"
 
