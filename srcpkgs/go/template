@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="go"
-version=1.14
+version=1.14.2
 revision=1
 short_desc="Go Programming Language"
 hostmakedepends="go1.12-bootstrap"
 homepage="http://golang.org/"
 license="BSD-3-Clause"
 distfiles="https://golang.org/dl/$pkgname$version.src.tar.gz"
-checksum="6d643e46ad565058c7a39dac01144172ef9bd476521f42148be59249e4b74389"
+checksum="98de84e69726a66da7b4e58eac41b99cbe274d7e8906eeb8a5b7eb0aadee7f7c"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
