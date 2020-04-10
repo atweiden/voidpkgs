@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql"
 version=9.6.17
-revision=1
+revision=2
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
 makedepends+=" libressl-devel"
@@ -55,6 +55,17 @@ postgres_shell="/bin/sh"
 postgres_descr="PostgreSQL database server user"
 make_dirs="/var/lib/postgresql 0750 postgres postgres"
 
+post_patch() {
+  sed \
+    -e "s/@VERSION@/$version/" \
+    "$FILESDIR"/pg_config.sh.in > \
+      src/common/pg_config.sh.in
+  vsed \
+    -i \
+    -e "s,@XBPS_SYSROOT@,${XBPS_CROSS_BASE%/}," \
+    src/common/Makefile
+}
+
 pre_build() {
   # http://www.postgresql.org/docs/9.3/static/docguide-toolsets.html
   SGML_CATALOG_FILES+="/usr/share/sgml/openjade/catalog"
@@ -82,6 +93,7 @@ post_install() {
   vinstall "$FILESDIR/$pkgname.pam" 644 etc/pam.d "$pkgname"
   vinstall "$DESTDIR/usr/share/$pkgname/$pkgname.conf.sample" \
     644 "etc/$pkgname" "$pkgname.conf"
+  vbin src/common/pg_config.sh
 
   sed \
     -i \
@@ -119,6 +131,7 @@ postgresql-libs-devel_package() {
       vmove "usr/bin/$f"
       vmove "usr/share/man/man1/$(basename $f)*"
     done
+    vmove usr/bin/pg_config.sh
     vmove usr/include
     vmove "usr/lib/*.a"
     vmove "usr/lib/pkgconfig/*"
