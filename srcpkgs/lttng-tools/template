@@ -16,12 +16,6 @@ checksum="405661d27617dc79a42712174a051a45c7ca12d167576c0d93f2de708ed29445"
 build_style="gnu-configure"
 system_groups="tracing"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    broken="https://build.voidlinux.org/builders/x86_64-musl_builder/builds/27478/steps/shell_3/logs/stdio"
-    ;;
-esac
-
 lttng-tools-devel_package() {
   short_desc+=" - development files"
   depends+=" $makedepends"
