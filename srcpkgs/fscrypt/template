@@ -1,15 +1,30 @@
 maintainer="nox"
 pkgname="fscrypt"
-version=0.2.6
+version=0.2.7
 revision=1
 short_desc="Tool for managing Linux filesystem encryption"
 makedepends="pam-devel"
+hostmakedepends="m4"
 homepage="https://github.com/google/fscrypt"
 license="Apache-2.0"
 distfiles="https://github.com/google/fscrypt/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bce54ebb716706150b759052665a29d01963d8df334ad9beb34105ce62d2de94"
+checksum="08e7f1bb5481f5ee76a90d79b9d9e2632f167d43100438ba08bd637e2dfb0f22"
+conf_files="/etc/pam.d/fscrypt"
 build_style="go"
 go_import_path="github.com/google/fscrypt"
 go_package="$go_import_path/cmd/fscrypt"
+
+if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
+  broken="fscrypt can't be built for 32-bit targets"
+fi
+
+post_install() {
+  # build and install the pam module
+  LDFLAGS= make PREFIX="/usr" DESTDIR="$DESTDIR" install-pam
+  # remove ubuntu specific pam-config files
+  rm -rf "$DESTDIR/usr/share/pam-configs/"
+  # add pam config file
+  vinstall "$FILESDIR/pam_config" 644 etc/pam.d fscrypt
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
