@@ -1,31 +1,25 @@
 maintainer="nox"
 pkgname="nethogs"
-version=0.8.5
+version=0.8.6
 revision=1
 short_desc="Small net top tool grouping bandwidth by process"
 makedepends+=" libpcap-devel"
 makedepends+=" ncurses-devel"
 homepage="https://github.com/raboof/nethogs"
-license="GPL-1"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/raboof/nethogs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6a9392726feca43228b3f0265379154946ef0544c2ca2cac59ec35a24f469dcc"
+checksum="317c1d5235d4be677e494e931c41d063a783ac0ac51e35e345e621d261c2e5a0"
+build_style="gnu-makefile"
 
-do_build() {
-  sed \
+pre_build() {
+  vsed \
     -i \
     -e 's,all: decpcap_test test nethogs,all: nethogs,' \
     Makefile
-  make \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    CXX="$CXX" \
-    CXXFLAGS="$CXXFLAGS" \
-    "$makejobs"
-}
-
-do_install() {
-  vbin src/nethogs
-  vman doc/nethogs.8
+  vsed \
+    -i \
+    -e 's,/sbin,/bin,' \
+    src/MakeApp.mk
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
