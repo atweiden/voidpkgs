@@ -1,20 +1,21 @@
-# Template file for 'lft'
-pkgname=lft
+maintainer="nox"
+pkgname="lft"
 # upstream version order is 3.7 < 3.71 < 3.8
 # 3.8 become 3.80 for release
 # 3.71 become 3.7.1 for update-check
 version=3.90
 revision=1
-wrksrc="${pkgname}-${version%0}"
-build_style=gnu-configure
-makedepends="libpcap-devel"
 short_desc="Layer Four Traceroute"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="VOSTROM"
+makedepends="libpcap-devel"
 homepage="https://pwhois.org/lft/"
-distfiles="https://pwhois.org/dl/index.who?file=${pkgname}-${version%0}.tar.gz"
-checksum=dbec812eeb307b20caa88af80eb843fe7c8adde4d3a25159dad77a9f0afe040a
+license="VOSTROM"
+distfiles="https://pwhois.org/dl/index.who?file=$pkgname-${version%0}.tar.gz"
+checksum="dbec812eeb307b20caa88af80eb843fe7c8adde4d3a25159dad77a9f0afe040a"
+wrksrc="$pkgname-${version%0}"
+build_style="gnu-configure"
 
 post_install() {
-	vlicense COPYING
+  vlicense COPYING
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
