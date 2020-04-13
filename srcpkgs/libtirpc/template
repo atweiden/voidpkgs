@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libtirpc"
-version=1.2.5
+version=1.2.6
 revision=1
 short_desc="Transport Independent RPC library (SunRPC replacement)"
 makedepends+=" libgssglue-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://libtirpc.sourceforge.net/"
 license="BSD-3-Clause"
 distfiles="$SOURCEFORGE_SITE/libtirpc/$pkgname-$version.tar.bz2"
-checksum="f3b6350c7e9c3cd9c58fc7a5e5f8e6be469cc571bb5eb31eb9790b3e675186ca"
+checksum="4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc"
 conf_files+=" /etc/bindresvport.blacklist"
 conf_files+=" /etc/netconfig"
 build_style="gnu-configure"
