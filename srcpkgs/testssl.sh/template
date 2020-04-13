@@ -1,25 +1,29 @@
-# Template file for 'testssl.sh'
-pkgname=testssl.sh
+maintainer="nox"
+pkgname="testssl.sh"
 version=3.0
 revision=1
-archs=noarch
-depends="libressl"
 short_desc="Command line tool which checks a server for the support of TLS/SSL"
-maintainer="Enno Boland <gottox@voidlinux.org>"
-license="GPL-2.0-only"
+archs="noarch"
+depends="libressl"
 homepage="https://testssl.sh"
-distfiles="https://github.com/drwetter/testssl.sh/archive/${version}.tar.gz"
-checksum=ab3c9a000f0f6703e4fc94821e06f531de6d2799322bf534188ebf766365a9c1
+license="GPL-2.0-only"
+distfiles="https://github.com/drwetter/testssl.sh/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ab3c9a000f0f6703e4fc94821e06f531de6d2799322bf534188ebf766365a9c1"
 
 pre_install() {
-	# Set TESTSSL_INSTALL_DIR so that we can install to a custom dir
-	vsed 's|LL_DIR:-""|LL_DIR:-/usr/share/testssl.sh/|' -i testssl.sh
+  # set TESTSSL_INSTALL_DIR so that we can install to a custom dir
+  vsed \
+    -i \
+    -e 's|LL_DIR:-""|LL_DIR:-/usr/share/testssl.sh/|' \
+    testssl.sh
 }
 
 do_install() {
-	vbin testssl.sh
-	vmkdir /usr/share/testssl.sh
-	vcopy etc/ /usr/share/testssl.sh/
-	vdoc Readme.md
-	vman doc/testssl.1
+  vbin testssl.sh
+  vmkdir /usr/share/testssl.sh
+  vcopy etc/ /usr/share/testssl.sh/
+  vdoc Readme.md
+  vman doc/testssl.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
