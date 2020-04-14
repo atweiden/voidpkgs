@@ -1,13 +1,15 @@
-# Template file for 'mpop'
-pkgname=mpop
+maintainer="nox"
+pkgname="mpop"
 version=1.4.8
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="gnutls-devel libidn2-devel"
 short_desc="POP3 client"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-3.0-or-later"
+makedepends+=" gnutls-devel"
+makedepends+=" libidn2-devel"
+hostmakedepends="pkg-config"
 homepage="https://marlam.de/mpop/"
-distfiles="https://marlam.de/mpop/releases/mpop-${version}.tar.xz"
-checksum=13e97f8d1828f70c09ccdaab6c8dc7bebefaf5e28fc4afa4faf1bb80030e4805
+license="GPL-3.0-or-later"
+distfiles="https://marlam.de/mpop/releases/mpop-$version.tar.xz"
+checksum="13e97f8d1828f70c09ccdaab6c8dc7bebefaf5e28fc4afa4faf1bb80030e4805"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
