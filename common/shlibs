@@ -660,7 +660,7 @@ libsnappy.so.1 snappy-1.1.0_1
 libspandsp.so.2 spandsp-0.0.6_1
 libspeexdsp.so.1 speexdsp-1.2rc2_1
 libspice-server.so.1 spice-0.6.4_1
-libsqlite3.so.0 sqlite-3.8.11.1_3
+libsqlite3.so.0 sqlite-3.31.1_3
 libsvn_swig_perl-1.so.0 subversion-perl-1.7.5_1
 libsvn_swig_py-1.so.0 subversion-python-1.7.5_1
 libsudo_util.so.0 sudo-1.8.25_1
