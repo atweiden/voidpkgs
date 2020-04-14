@@ -6,7 +6,7 @@ short_desc="Library for parsing and generating CBOR, a binary data format"
 homepage="https://github.com/PJK/libcbor"
 license="MIT"
 distfiles="https://github.com/PJK/libcbor/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="19309b84d4d88ae1179f3686bd246d977710801c1603915c51f618ba76727e94"
+checksum="2f805f5fa2790c4fdd16046287f5814703229547da2b83009dd32357623aa182"
 build_style="cmake"
 make_build_args="cbor_shared"
 
