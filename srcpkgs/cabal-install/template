@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cabal-install"
-version=2.4.1.0
-revision=4
+version=3.0.0.0
+revision=1
 short_desc="Command-line interface for Cabal and Hackage"
 depends="ghc"
 makedepends+=" gmp-devel"
@@ -14,10 +14,14 @@ hostmakedepends+=" which"
 homepage="https://hackage.haskell.org/package/cabal-install"
 license="BSD-3-Clause"
 distfiles="https://hackage.haskell.org/packages/archive/cabal-install/$version/$pkgname-$version.tar.gz"
-checksum="69bcb2b54a064982412e1587c3c5c1b4fada3344b41b568aab25730034cb21ad"
+checksum="a432a7853afe96c0fd80f434bd80274601331d8c46b628cd19a0d8e96212aaf1"
 nopie_files="/usr/bin/cabal"
 
 do_build() {
+  vsed \
+    -i \
+    -e 's/< *4/<5/' \
+    "$pkgname.cabal"
   PREFIX="$PWD/build" sh bootstrap.sh --user
 }
 
