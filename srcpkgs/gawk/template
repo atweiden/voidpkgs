@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gawk"
-version=5.0.1
+version=5.1.0
 revision=1
 short_desc="GNU awk utility"
 makedepends="readline-devel"
 homepage="https://directory.fsf.org/wiki/Gawk"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gawk/$pkgname-$version.tar.xz"
-checksum="8e4e86f04ed789648b66f757329743a0d6dfb5294c3b91b756a474f1ce05a794"
+checksum="cf5fea4ac5665fd5171af4716baab2effc76306a9572988d5ba1078f196382bd"
 build_style="gnu-configure"
 configure_args="--with-readline"
 lib32disabled="yes"
