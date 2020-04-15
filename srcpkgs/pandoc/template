@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
 version=2.9.1.1
-revision=2
+revision=3
 _citeproc_version=0.16.4.1
 _sidenote_version=0.20.0
 _monad_gen_version=0.3.0.1
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" unzip"
 hostmakedepends+=" wget"
 homepage="http://johnmacfarlane.net/pandoc/"
-license="GPL-2.0-or-later"
+license="GPL-2.0-or-later, BSD-3-Clause, MIT"
 distfiles+=" http://hackage.haskell.org/package/$pkgname-$version/$pkgname-$version.tar.gz"
 distfiles+=" http://hackage.haskell.org/package/$pkgname-citeproc-$_citeproc_version/$pkgname-citeproc-$_citeproc_version.tar.gz"
 distfiles+=" https://github.com/jez/pandoc-sidenote/archive/${_sidenote_version}.tar.gz"
@@ -24,7 +24,7 @@ checksum+=" 34ee7f46d6472c04884b1dcb030d701a32b885d9b0d4307d2c0da327a359cb7a"
 checksum+=" be8485023fce236b5b915f2f6074f7b0470a2040f84cdd137c5227f1b4c98465"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-15.3"
+stackage="lts-15.4"
 make_build_args+=" --flag pandoc-citeproc:embed_data_files"
 make_build_args+=" --flag pandoc:embed_data_files"
 make_build_args+=" --flag=hslua:pkg-config"
