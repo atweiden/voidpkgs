@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pax-utils"
-version=1.2.5
+version=1.2.6
 revision=1
 short_desc="PaX aware and related utilities for ELF binaries"
 makedepends="libcap-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://cgit.gentoo.org/proj/pax-utils.git/"
 license="GPL-2.0-only"
 distfiles="http://distfiles.gentoo.org/distfiles/pax-utils-$version.tar.xz"
-checksum="7ce7170ceed255bb47cac03b88bcbc636b0e412cac974e213e8017a1dae292ec"
+checksum="9742d2a31d53a4e0f6df0d3721ab6f7cf8b0404c95fee3b00e678c1ff6db7f21"
 build_style="gnu-configure"
 configure_args="--with-caps"
 
