@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tcl"
 version=8.6.10
-revision=1
+revision=2
 short_desc="TCL scripting language"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
@@ -45,7 +45,6 @@ tcl-devel_package() {
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove usr/share/man/man3
-    vmove usr/share/man/mann
   }
 }
 
