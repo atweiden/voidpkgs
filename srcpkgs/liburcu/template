@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="liburcu"
-version=0.11.1
+version=0.12.0
 revision=1
 short_desc="Userspace RCU (read-copy-update) library"
 homepage="https://liburcu.org"
 license="LGPL-2.1-or-later"
 distfiles="https://www.lttng.org/files/urcu/userspace-rcu-$version.tar.bz2"
-checksum="92b9971bf3f1c443edd6c09e7bf5ff3b43531e778841f16377a812c8feeb3350"
+checksum="409b1be506989e1d26543194df1a79212be990fe5d4fd84f34f019efed989f97"
 wrksrc="userspace-rcu-$version"
 build_style="gnu-configure"
 configure_args="--disable-static"
