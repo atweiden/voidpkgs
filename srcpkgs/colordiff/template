@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="colordiff"
-version=1.0.18
+version=1.0.19
 revision=1
 short_desc="Colorizes output of diff"
 archs="noarch"
 depends="perl"
 homepage="http://www.colordiff.org/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.colordiff.org/$pkgname-$version.tar.gz"
-checksum="29cfecd8854d6e19c96182ee13706b84622d7b256077df19fbd6a5452c30d6e0"
+checksum="46e8c14d87f6c4b77a273cdd97020fda88d5b2be42cf015d5d84aca3dfff3b19"
 conf_files+=" /etc/colordiffrc"
 conf_files+=" /etc/colordiffrc-gitdiff"
 conf_files+=" /etc/colordiffrc-lightbg"
