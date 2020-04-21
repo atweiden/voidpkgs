@@ -1,8 +1,8 @@
 # this pkg must be synchronized with "srcpkgs/python-tkinter"
 maintainer="nox"
 pkgname="python"
-version=2.7.17
-revision=3
+version=2.7.18
+revision=1
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
@@ -17,7 +17,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://www.python.org/ftp/python/$version/${pkgname^}-$version.tar.xz"
-checksum="4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41"
+checksum="b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43"
 wrksrc="${pkgname^}-$version"
 alternatives+=" python:idle:/usr/bin/idle2.7"
 alternatives+=" python:2to3:/usr/bin/2to3-2.7"
@@ -32,7 +32,7 @@ pre_configure() {
   rm -r Modules/_ctypes/libffi*
   rm -r Modules/zlib
   # enable loading sqlite extensions
-  sed \
+  vsed \
     -i \
     -e '/SQLITE_OMIT_LOAD_EXTENSION/d' \
     setup.py
@@ -103,22 +103,15 @@ post_install() {
   # remove test module and tests that fail to be byte-compiled
   rm -r "$DESTDIR/usr/lib/python2.7/test"
   rm -r "$DESTDIR/usr/lib/python2.7/lib2to3/tests"
-  # remove references to hardening -specs
-  sed \
-    -i \
-    -e 's|\(-specs=.*hardened-ld\)||g' \
-    -e 's|\(-specs=.*hardened-cc1\)||g' \
-    "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata.py" \
-    "$DESTDIR/usr/lib/python${version%.*}/config/Makefile"
   # remove references to the install(1) wrapper
-  sed \
+  vsed \
     -i \
     -e "s,$XBPS_WRAPPERDIR,/usr/bin,g" \
     "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata.py" \
     "$DESTDIR/usr/lib/python${version%.*}/config/Makefile"
   if [[ -n "$CROSS_BUILD" ]]; then
     # remove references to cross toolchain
-    sed \
+    vsed \
       -i \
       -e "s/$XBPS_CROSS_TRIPLET-//g" \
       "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata.py" \
