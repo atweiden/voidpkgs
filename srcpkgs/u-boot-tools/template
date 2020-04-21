@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="u-boot-tools"
-version=2020.01
+version=2020.04
 revision=1
 short_desc="Das U-Boot tools"
 makedepends="libressl-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" flex"
 homepage="https://www.denx.de/wiki/U-Boot/"
 license="GPL-2.0-or-later"
 distfiles="ftp://ftp.denx.de/pub/u-boot/u-boot-$version.tar.bz2"
-checksum="aa453c603208b1b27bd03525775a7f79b443adec577fdc6e8f06974025a135f1"
+checksum="fe732aaf037d9cc3c0909bad8362af366ae964bbdac6913a34081ff4ad565372"
 wrksrc="u-boot-$version"
 build_style="gnu-makefile"
 make_build_args+=" HOSTSTRIP=:"
