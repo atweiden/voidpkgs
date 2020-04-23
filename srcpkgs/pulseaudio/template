@@ -55,6 +55,8 @@ configure_args+=" --enable-orc"
 configure_args+=" --with-bash-completion-dir=/usr/share/bash-completion/completions"
 configure_args+=" --with-database=tdb"
 configure_args+=" --with-udev-rules-dir=/usr/lib/udev/rules.d"
+# unverified
+python_version=2
 system_groups="pulse-access"
 system_accounts="pulse"
 pulse_groups="audio"
