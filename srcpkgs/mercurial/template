@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mercurial"
 version=5.3.2
-revision=1
+revision=2
 short_desc="Fast, lightweight source control management system"
 depends+=" ca-certificates"
 depends+=" python3"
@@ -22,9 +22,9 @@ post_install() {
     vman "$i"
   done
   vinstall contrib/bash_completion 644 \
-    usr/share/bash-completion/completions/hg
+    usr/share/bash-completion/completions hg
   vinstall contrib/zsh_completion 644 \
-    usr/share/zsh/site-functions/_hg
+    usr/share/zsh/site-functions _hg
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
