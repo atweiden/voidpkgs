@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libsigc++"
-version=2.10.2
+version=2.10.3
 revision=1
 short_desc="Type-safe callback system for C++ programs"
 hostmakedepends="m4"
 homepage="https://libsigcplusplus.github.io/libsigcplusplus/"
 license="LGPL-2.1-or-later"
 distfiles="$GNOME_SITE/libsigc++/${version%.*}/$pkgname-$version.tar.xz"
-checksum="b1ca0253379596f9c19f070c83d362b12dfd39c0a3ea1dd813e8e21c1a097a98"
+checksum="0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786"
 build_style="gnu-configure"
 configure_args+=" --disable-benchmark"
 configure_args+=" --disable-documentation"
