@@ -1,40 +1,24 @@
 maintainer="nox"
 pkgname="strace"
-version=5.5
+version=5.6
 revision=1
 short_desc="System Call Tracer"
 makedepends="libunwind-devel"
 homepage="https://strace.io/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/strace/strace/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="9f58958c8e59ea62293d907d10572e352b582bd7948ed21aa28ebb47e5bf30ff"
+checksum="189968eeae06ed9e20166ec55a830943c84374676a457c9fe010edc7541f1b01"
 build_style="gnu-configure"
 configure_args="--with-libunwind"
-
-case "$XBPS_TARGET_MACHINE" in
-  aarch64-musl)
-    configure_args=
-    makedepends=
-    ;;
-esac
 
 case "$XBPS_TARGET_MACHINE" in
   aarch64*|ppc64*)
     configure_args+=" --enable-mpers=no"
     ;;
+  x86_64-musl)
+    # work around https://github.com/strace/strace/issues/133
+    configure_args+=" --enable-mpers=no"
+  ;;
 esac
-
-pre_configure() {
-  sed \
-    -i \
-    -e 's/include <linux\/socket.h>/include <sys\/socket.h>/g' \
-    -e 's/include <sgidefs.h>/include <asm\/sgidefs.h>/g' \
-    configure
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      export CFLAGS+=" -Dsigcontext_struct=sigcontext"
-      ;;
-  esac
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
