@@ -19,6 +19,8 @@ wrksrc="$pkgname-$version-jumbo-$_jumbover"
 build_wrksrc="src"
 build_style="gnu-configure"
 configure_args="--with-systemwide"
+# unverified
+python_version=2
 
 # the build system checks the host cpu for features, so when building
 # on a modern power9 system, it will attempt to shove in -mvsx and so on,
