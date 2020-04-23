@@ -30,6 +30,8 @@ distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
 checksum="b5579621302a6169b389b64dd9ef084df3bb2f11d91dd73273f76e2323223861"
 wrksrc="linux-$version"
 patch_args="-Np1"
+# unverified
+python_version=2
 # -dbg package is generated below manually
 nodebug="yes"
 nostrip="yes"
