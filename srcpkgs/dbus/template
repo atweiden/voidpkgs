@@ -31,6 +31,8 @@ configure_args+=" --with-gnu-ld"
 configure_args+=" --with-system-pid-file=/run/dbus/pid"
 configure_args+=" --with-system-socket=/run/dbus/system_bus_socket"
 configure_args+=" --without-x"
+# unverified
+python_version=2
 
 # Create dbus:22 system account.
 system_accounts="dbus:22"
