@@ -44,7 +44,7 @@ glib-devel_package() {
   depends+=" libglib-devel>=${version}_$revision"
   depends+=" python3"
   short_desc+=" - development files"
-  pycompile_version="$py3_ver"
+  python_version=3
   pycompile_dirs+=" usr/share/glib-2.0/codegen"
   pycompile_dirs+=" usr/share/glib-2.0/gdb"
   pkg_install() {
