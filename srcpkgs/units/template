@@ -12,6 +12,8 @@ license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/units/$pkgname-$version.tar.gz"
 checksum="4262136bdfc152b63ff5a9b93a7d80ce18b5e8bebdcffddc932dda769e306556"
 build_style="gnu-configure"
+# unverified
+python_version=2
 
 post_install() {
   # tries to install to /usr/com/currency.units
