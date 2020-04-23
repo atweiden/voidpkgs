@@ -12,6 +12,8 @@ changelog="https://github.com/lttng/lttng-ust/raw/master/ChangeLog"
 distfiles="https://lttng.org/files/lttng-ust/$pkgname-$version.tar.bz2"
 checksum="1983edb525f3f27e3494088d8d5389b4c71af66bbfe63c6f1df2ad95aa44a528"
 build_style="gnu-configure"
+# unverified
+python_version=2
 
 lttng-ust-devel_package() {
   unset depends
