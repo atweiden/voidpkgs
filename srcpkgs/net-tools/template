@@ -4,7 +4,6 @@ version=1.60.20181103git
 revision=1
 _gitrev="0eebece8c964e3cfa8a018f42b2e7e751a7009a0"
 short_desc="Basic networking tools"
-hostmakedepends="git"
 homepage="https://github.com/ecki/net-tools"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/ecki/net-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
