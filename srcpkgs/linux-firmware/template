@@ -10,6 +10,7 @@ homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$version.tar.gz"
 checksum="fac1b252dc7c65fa20f70b6f854284df6f562d2200ab6246effe9d7021fad396"
+python_version=3
 
 do_install() {
   vmkdir usr/lib/firmware
