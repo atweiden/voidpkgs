@@ -7,6 +7,7 @@ homepage="https://dev.maxmind.com/geoip/legacy/geolite/"
 license="CC-BY-SA-4.0"
 create_wrksrc="yes"
 archs="noarch"
+broken="broken URLs, downloads unversioned files that change daily!"
 
 do_fetch() {
   $XBPS_FETCH_CMD http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
