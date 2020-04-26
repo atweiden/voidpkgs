@@ -31,6 +31,7 @@ configure_args+=" --with-system-zlib"
 configure_args+=" $(vopt_enable gdbserver)"
 configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
 configure_args+=" $(vopt_if python --with-python=/usr/bin/python3)"
+python_version=3
 pycompile_dirs="/usr/share/gdb"
 build_options+=" gdbserver"
 build_options+=" python"
