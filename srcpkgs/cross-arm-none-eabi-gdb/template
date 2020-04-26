@@ -41,6 +41,8 @@ configure_args+=" --with-system-zlib"
 configure_args+=" --without-isl"
 configure_args+=" $(vopt_with guile)"
 configure_args+=" $(vopt_with python)"
+# unverified
+python_version=2
 build_options+=" guile"
 build_options+=" python"
 # don't enable guile and python interfaces until they are moved into
