@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.18.2
-revision=2
+version=1.18.3
+revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
 makedepends+=" cblas-devel"
@@ -14,13 +14,13 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="fdf3ed4e260e1af08b6743527634e85f999caba60d2525c1d6f5aea79f5a6d1f"
+checksum="a44fe209fdfe7fd59d76e6297637367b57f3d9bd3b2b10ea7efc0028818db2de"
 wrksrc="numpy-$version"
 build_style="python3-module"
 alternatives="numpy:f2py:/usr/bin/f2py3"
 
 do_check() {
-  ./runtests.py
+  ./runtests.py -v
 }
 
 post_install() {
