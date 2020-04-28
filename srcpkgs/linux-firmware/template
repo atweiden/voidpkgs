@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux-firmware"
 version=20200122
-revision=1
+revision=2
 short_desc="Binary firmware blobs for the Linux kernel"
 archs="noarch"
 depends+=" $pkgname-amd-${version}_$revision"
@@ -70,6 +70,7 @@ linux-firmware-network_package() {
     vmove usr/lib/firmware/kaweth
     vmove usr/lib/firmware/libertas
     vmove usr/lib/firmware/mrvl
+    vmove "usr/lib/firmware/mt*.bin"
     vmove usr/lib/firmware/ueagle-atm
     vmove usr/lib/firmware/ti-connectivity
     vmove usr/lib/firmware/dpaa2
