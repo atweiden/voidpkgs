@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libfido2"
-version=1.3.1
-revision=3
+version=1.4.0
+revision=1
 short_desc="Library for FIDO 2.0, including communication with a device over USB"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libcbor-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/Yubico/libfido2"
 license="BSD-2-Clause"
 distfiles="https://github.com/Yubico/libfido2/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ba35e22016b60c1e4be66dff3cd6a60c1fe4bfa0d91ec0b89ca9da25ebeaaf41"
+checksum="ad921fbe7d4bb70e4a971e564cd01f341daf9b5ed5d69b3cbab94a8a811d2a6c"
 build_style="cmake"
 
 case "$XBPS_TARGET_MACHINE" in
