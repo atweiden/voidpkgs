@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="boringtun"
-version=0.2.0
+version=0.3.0
 revision=1
 short_desc="Implementation of the WireGuard protocol"
 homepage="https://github.com/cloudflare/boringtun"
 license="BSD-3-Clause"
 distfiles="https://github.com/cloudflare/boringtun/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="544c72fc482b636e7f6460bfee205adafc55de534067819e4e4914980f0d1350"
+checksum="7ba22dcb785c9dfa99d70fc3ea0fa86908debd59eabc278f65db50a22bcc731c"
 build_style="cargo"
 
 case "$XBPS_TARGET_MACHINE" in
