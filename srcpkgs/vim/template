@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="vim"
-version=8.2.0496
+version=8.2.0654
 revision=1
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
@@ -14,7 +14,7 @@ hostmakedepends+=" pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
 distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="76a7f9b356f030ff426096a16b77b87a5c059a66d4d0ed4a21a9e60fc2ef8364"
+checksum="27c0b18a47055a0249d5410e484b7257188a7103151bdd6e4ad59db0af84643d"
 build_style="gnu-configure"
 configure_args+=" --disable-cscope"
 configure_args+=" --disable-gpm"
@@ -54,6 +54,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" vim_cv_tty_mode=0620"
 fi
 make_install_args="VIMRCLOC=/etc"
+python_version=3
 
 post_install() {
   vlicense runtime/doc/uganda.txt LICENSE
