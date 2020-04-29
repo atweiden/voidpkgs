@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hashcat"
 version=5.1.0
-revision=1
+revision=2
 short_desc="Advanced CPU-based password recovery utility"
 makedepends+=" gmp-devel"
 makedepends+=" opencl2-headers"
@@ -19,6 +19,7 @@ make_build_args+=" PREFIX=/usr"
 make_build_args+=" USE_SYSTEM_OPENCL=1"
 make_build_args+=" USE_SYSTEM_XXHASH=1"
 make_use_env="yes"
+make_install_args="$make_build_args"
 
 if [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
   broken="Not supported on big endian"
