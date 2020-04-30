@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.4"
-version=5.4.35
+version=5.4.36
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -28,7 +28,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="e16bd5f7284a80a41328bf712e1136b0adf5b71cc0bd263efa7cac75539806d4"
+checksum="b9faea98122e8316af8fb428c942e81797b5d28a8fc59a24a4e47959e3765b8d"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # unverified
