@@ -1,0 +1,28 @@
+maintainer="nox"
+pkgname="dcrctl"
+version=1.6.0pre
+revision=1
+_gitrev="2a1a14c2d0df2578832f120da637ac04af9857aa"
+short_desc="Command-line client for interacting with the JSON-RPC servers of dcrd and dcrwallet"
+hostmakedepends="git"
+tags="decred"
+homepage="https://github.com/decred/dcrctl"
+license="ISC"
+distfiles="https://github.com/decred/dcrctl/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="cd3ecd7e7728304e95a226c5d3de04245ea0bb793af3d7a857cbbf88769ce1b7"
+wrksrc="$pkgname-$_gitrev"
+build_style="go"
+go_import_path="decred.org/dcrctl"
+go_ldflags+=" -X github.com/decred/dcrctl/version.PreRelease=pre"
+go_ldflags+=" -X github.com/decred/dcrctl/version.BuildMetadata="
+
+export CGO_ENABLED=0
+export GOFLAGS="-trimpath"
+
+post_install() {
+  vlicense LICENSE
+  vdoc README.md
+  vdoc sample-dcrctl.conf
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
