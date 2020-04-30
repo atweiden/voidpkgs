@@ -1,17 +1,19 @@
 maintainer="nox"
 pkgname="ccl"
-version=1.11.5
-revision=2
+version=1.12
+revision=1
 short_desc="Clozure Common Lisp interpreter and compiler"
 archs+=" i686*"
 archs+=" x86_64*"
 hostmakedepends="m4"
-homepage="http://ccl.clozure.com/"
+homepage="https://ccl.clozure.com/"
 license="Apache-2.0"
-distfiles="https://github.com/Clozure/ccl/releases/download/v$version/$pkgname-$version-linuxx86.tar.gz"
-checksum="b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143"
-wrksrc="ccl"
-build_style="gnu-makefile"
+distfiles+=" https://github.com/Clozure/ccl/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/Clozure/ccl/releases/download/v$version/linuxx86.tar.gz"
+checksum+=" 774a06b4fb6dc4b51dfb26da8e1cc809c605e7706c12180805d1be6f2885bd52"
+checksum+=" 7fbdb04fb1b19f0307c517aa5ee329cb4a21ecc0a43afd1b77531e4594638796"
+create_wrksrc="yes"
+python_version=3
 nopie=1
 nostrip=1
 disable_parallel_build=1
@@ -27,6 +29,10 @@ case $XBPS_MACHINE in
     _arch=''
     ;;
 esac
+
+post_extract() {
+  mv "ccl-$version"/* .
+}
 
 do_build() {
   # recompile kernel, mandatory for musl
