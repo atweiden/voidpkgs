@@ -64,8 +64,9 @@ replaces+=" libmpx>=0"
 replaces+=" libmpx-devel>=0"
 _have_gccgo="yes"
 # mips does not have libucontext yet
+# no support for ppcle in gccgo (missing GOARCH and stuff)
 case "$XBPS_TARGET_MACHINE" in
-  mips*-musl)
+  mips*-musl|ppcle*)
     _have_gccgo="no"
     ;;
 esac
@@ -145,6 +146,12 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
   ppc-musl)
     _triplet="powerpc-linux-musl"
+    ;;
+  ppcle)
+    _triplet="powerpcle-linux-gnu"
+    ;;
+  ppcle-musl)
+    _triplet="powerpcle-linux-musl"
     ;;
   ppc64le)
     _triplet="powerpc64le-linux-gnu"
@@ -292,6 +299,12 @@ do_configure() {
       ;;
     ppc-musl)
       _args+=" --target=powerpc-linux-musl --enable-secureplt --disable-decimal-float"
+      ;;
+    ppcle)
+      _args+=" --target=powerpcle-linux-gnu --enable-secureplt"
+      ;;
+    ppcle-musl)
+      _args+=" --target=powerpcle-linux-musl --enable-secureplt --disable-decimal-float"
       ;;
     ppc64le*)
       # use lib not lib64 by default
