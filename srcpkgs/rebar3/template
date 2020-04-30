@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rebar3"
-version=3.13.0
+version=3.13.2
 revision=1
 short_desc="Erlang build tool to compile, test, and release applications"
 archs="noarch"
@@ -9,7 +9,7 @@ hostmakedepends="erlang"
 homepage="https://www.rebar3.org/"
 license="Apache-2.0"
 distfiles="https://github.com/erlang/rebar3/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="49ecf89d04676d077712a10d8252bbda73998a3badf8b342481530fbc685a123"
+checksum="e14cdc1f5b7d363a238a9f555f89e878bc4fc836c970571b41b90ee947f91505"
 
 do_build() {
   ./bootstrap
