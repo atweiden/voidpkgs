@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="66"
-version=0.2.5.2
-revision=2
+version=0.3.0.1
+revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
 depends="s6-portable-utils"
 makedepends+=" execline-devel"
@@ -14,15 +14,16 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" scdoc"
 homepage="http://web.obarun.org/software/"
 license="ISC"
-changelog="https://framagit.org/Obarun/66/raw/master/NEWS"
+changelog="https://framagit.org/Obarun/66/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="a097e96b4a7470aac33168920789e0061d1c15e462a469ffc680d5938a1e4462"
+checksum="65f88882ff7bdd6c3e87782149c2878f2969e4be015e9a086cd5f58e4cd591ab"
 conf_files+=" /etc/66/init"
 conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-s6-log-timestamp=iso"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
 make_dirs+=" /etc/66/conf 0755 root root"
 make_dirs+=" /etc/66/service 0755 root root"
@@ -40,7 +41,7 @@ post_install() {
   for i in doc/html/*.html; do
     vdoc "$i"
   done
-  vdoc README
+  vdoc README.md
   for i in doc/man/*.{1,5,8} ; do
     vman "$i"
   done
