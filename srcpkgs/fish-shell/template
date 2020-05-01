@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.1.0
+version=3.1.2
 revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
@@ -10,7 +10,7 @@ makedepends+=" pcre2-devel"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
-checksum="e5db1e6839685c56f172e1000c138e290add4aa521f187df4cd79d4eab294368"
+checksum="d5b927203b5ca95da16f514969e2a91a537b2f75bec9b21a584c4cd1c7aa74ed"
 wrksrc="fish-$version"
 build_style="cmake"
 register_shell+=" /bin/fish"
