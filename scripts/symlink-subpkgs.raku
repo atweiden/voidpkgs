@@ -208,6 +208,7 @@ constant %PKG = Map.new(
                  libflac-devel>,
     'flex' => ['libfl-devel'],
     'fuse' => ['fuse-devel'],
+    'fuse3' => ['fuse3-devel'],
     'gc' => ['gc-devel'],
     'gcc' => qw<gcc-ada
                 gcc-fortran

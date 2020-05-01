@@ -90,6 +90,7 @@ libfixedfann.so.2 fann-2.2.0_1
 libfloatfann.so.2 fann-2.2.0_1
 libfuse.so.2 fuse-2.8.1_1
 libulockmgr.so.1 fuse-2.9.7_1
+libfuse3.so.3 fuse3-3.1.0_1
 libgambit.so.4 gambit-4.9.3_1
 libcord.so.1 gc-7.4_1
 libgc.so.1 gc-7.6.4_1
