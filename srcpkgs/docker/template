@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="docker"
 version=19.03.8
-revision=1
+revision=2
 short_desc="Pack, ship and run any application as a lightweight container"
 archs+=" aarch64*"
 archs+=" armv7l*"
@@ -60,7 +60,7 @@ do_build() {
 pre_build() {
   cd components/engine
   vmkdir usr/bin
-  sed \
+  vsed \
     -i \
     -e "s|/usr/local|$DESTDIR/usr|g" \
     hack/dockerfile/install/install.sh
