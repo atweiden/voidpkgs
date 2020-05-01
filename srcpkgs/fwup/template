@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fwup"
-version=1.5.2
+version=1.6.0
 revision=1
 short_desc="Configurable embedded Linux firmware update creator and runner"
 makedepends+=" confuse-devel"
@@ -20,7 +20,7 @@ homepage="https://github.com/fhunleth/fwup"
 license="Apache-2.0"
 changelog="https://github.com/fhunleth/fwup/raw/master/CHANGELOG.md"
 distfiles="https://github.com/fhunleth/fwup/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7df1b5454d903ea605fde86950a76d356b5dfade9c445925a74d0802bc48ed52"
+checksum="56373e2efa15e3494cf75d09b738c07b409a6d7be00829d64c108f86db9bb438"
 build_style="gnu-configure"
 configure_args="--with-bash-completion-dir=/usr/share/bash-completion/completions"
 
