@@ -1,31 +1,35 @@
-# Template file for 'fuse3'
-pkgname=fuse3
+maintainer="nox"
+pkgname="fuse3"
 version=3.9.1
 revision=1
-wrksrc="fuse-${version}"
-build_style=meson
-configure_args="--sbindir=bin -Db_lto=false -Dexamples=false -Duseroot=false"
-hostmakedepends="pkg-config"
-makedepends="eudev-libudev-devel"
 short_desc="Filesystem in Userspace 3.x"
-maintainer="Anthony Iliopoulos <ailiop@altatus.com>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+makedepends="eudev-libudev-devel"
+hostmakedepends="pkg-config"
 homepage="https://github.com/libfuse/libfuse"
-distfiles="https://github.com/libfuse/libfuse/releases/download/fuse-${version}/fuse-${version}.tar.xz"
-checksum=1bafcfd6c66ba35b7b0beb822532a9106eb8409ad6cde988888fde85f89be645
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.xz"
+checksum="1bafcfd6c66ba35b7b0beb822532a9106eb8409ad6cde988888fde85f89be645"
 conf_files="/etc/fuse.conf"
+wrksrc="fuse-$version"
+build_style="meson"
+configure_args+=" --sbindir=bin"
+configure_args+=" -Db_lto=false"
+configure_args+=" -Dexamples=false"
+configure_args+=" -Duseroot=false"
 
 post_install() {
-	chmod u+s ${DESTDIR}/usr/bin/fusermount3
-	rm ${DESTDIR}/etc/init.d/fuse3
+  chmod u+s "$DESTDIR/usr/bin/fusermount3"
+  rm "$DESTDIR/etc/init.d/fuse3"
 }
 
 fuse3-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
