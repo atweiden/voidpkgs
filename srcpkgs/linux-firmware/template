@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux-firmware"
-version=20200122
-revision=2
+version=20200421
+revision=1
 short_desc="Binary firmware blobs for the Linux kernel"
 archs="noarch"
 depends+=" $pkgname-amd-${version}_$revision"
@@ -9,7 +9,7 @@ depends+=" $pkgname-network-${version}_$revision"
 homepage="https://www.kernel.org/"
 license="See /usr/share/licenses/$pkgname"
 distfiles="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/$pkgname-$version.tar.gz"
-checksum="fac1b252dc7c65fa20f70b6f854284df6f562d2200ab6246effe9d7021fad396"
+checksum="556fecb36ee3b956a81c2cf03ce5fb4c9c6a2e39072594812481e65a12fff7bc"
 python_version=3
 
 do_install() {
