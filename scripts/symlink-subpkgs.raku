@@ -783,6 +783,10 @@ constant %PKG = Map.new(
                liblzma-devel>,
     'zeromq' => ['zeromq-devel'],
     'zlib' => ['zlib-devel'],
+    'znc' => qw<znc-devel
+                znc-perl
+                znc-python3
+                znc-tcl>,
     'zstd' => qw<libzstd
                  libzstd-devel>,
     'zulucrypt' => ['zulucrypt-devel'],
