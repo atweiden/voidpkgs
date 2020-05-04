@@ -549,6 +549,8 @@ constant %PKG = Map.new(
                      net-snmp-devel>,
     'nettle' => qw<nettle-devel
                    nettle-tools>,
+    'nfs-utils' => qw<libnfsidmap
+                      libnfsidmap-devel>,
     'nftables' => qw<libnftables
                      libnftables-devel>,
     'nghttp2' => ['nghttp2-devel'],
