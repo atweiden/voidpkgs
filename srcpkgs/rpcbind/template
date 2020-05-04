@@ -1,23 +1,26 @@
-# Template file for 'rpcbind'
-pkgname=rpcbind
+maintainer="nox"
+pkgname="rpcbind"
 version=1.2.5
 revision=1
-build_style=gnu-configure
-configure_args="--enable-warmstarts --with-statedir=/run --with-rpcuser=rpc
- --with-systemdsystemunitdir=no"
-hostmakedepends="pkg-config"
-makedepends="libtirpc-devel"
-system_accounts="rpc"
 short_desc="Converts RPC program numbers into universal addresses"
-maintainer="Orphaned <orphan@voidlinux.org>"
+makedepends="libtirpc-devel"
+hostmakedepends="pkg-config"
 homepage="http://rpcbind.sourceforge.net"
 license="BSD"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.bz2"
-checksum=2ce360683963b35c19c43f0ee2c7f18aa5b81ef41c3fdbd15ffcb00b8bffda7a
+distfiles="$SOURCEFORGE_SITE/rpcbind/$pkgname-$version.tar.bz2"
+checksum="2ce360683963b35c19c43f0ee2c7f18aa5b81ef41c3fdbd15ffcb00b8bffda7a"
+build_style="gnu-configure"
+configure_args+=" --enable-warmstarts"
+configure_args+=" --with-rpcuser=rpc"
+configure_args+=" --with-statedir=/run"
+configure_args+=" --with-systemdsystemunitdir=no"
+system_accounts="rpc"
 
 post_install() {
-	vlicense COPYING
-	vsv rpcbind
-	vman man/rpcbind.8
-	vman man/rpcinfo.8
+  vlicense COPYING
+  vsv rpcbind
+  vman man/rpcbind.8
+  vman man/rpcinfo.8
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
