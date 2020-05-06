@@ -8,7 +8,7 @@ _isl_version=0.21
 maintainer="nox"
 pkgname="gcc"
 version=$_minorver.0
-revision=3
+revision=4
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -216,7 +216,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" cross-$_triplet"
   if [[ -n "$build_option_ada" ]]; then
     hostmakedepends+=" gcc-ada"
-    hostmakedepends+=" libada-devel"
   fi
 fi
 
@@ -552,7 +551,7 @@ gcc-ada_package() {
   unset depends
   lib32disabled="yes"
   depends+=" gcc>=$_minorver"
-  depends+=" libada>=$_minorver"
+  depends+=" libada-devel>=$_minorver"
   short_desc+=" - Ada compiler frontend"
   pkg_install() {
     for f in gnatbind \
