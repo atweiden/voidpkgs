@@ -8,7 +8,7 @@ _isl_version=0.21
 maintainer="nox"
 pkgname="gcc"
 version=$_minorver.0
-revision=2
+revision=3
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -793,10 +793,8 @@ libatomic_package() {
 }
 
 libgcc_package() {
-  unset replaces
   short_desc+=" - GCC library"
-  replaces+=" libcilkrts<8.2.0"
-  replaces+=" libgcj<7.2.0"
+  replaces="libcilkrts<8.2.0"
   noverifyrdeps="yes"
   pkg_install() {
     vmove "usr/lib/libgcc_s.so*"
@@ -805,11 +803,9 @@ libgcc_package() {
 }
 
 libgcc-devel_package() {
-  unset replaces
   depends="libgcc-${version}_$revision"
   short_desc+=" - GCC library - development files"
-  replaces+=" libcilkrts-devel<8.2.0"
-  replaces+=" libgcj-devel<7.2.0"
+  replaces="libcilkrts-devel<8.2.0"
   pkg_install() {
     vmove "usr/lib/gcc/$_triplet/$_minorver/*.o"
     vmove "usr/lib/gcc/$_triplet/$_minorver/*.a"
