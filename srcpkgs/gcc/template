@@ -8,7 +8,7 @@ _isl_version=0.21
 maintainer="nox"
 pkgname="gcc"
 version=$_minorver.0
-revision=4
+revision=5
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -572,10 +572,15 @@ gcc-ada_package() {
 
 gcc-go_package() {
   unset depends
+  unset nostrip_files
   lib32disabled="yes"
   depends+=" gcc>=$_minorver"
   depends+=" libgo-devel>=$_minorver"
   short_desc+=" - Go compiler frontend"
+  nostrip_files+=" buildid"
+  nostrip_files+=" cgo"
+  nostrip_files+=" test2json"
+  nostrip_files+=" vet"
   pkg_install() {
     for f in "$_triplet-gccgo" \
              gccgo; do
@@ -600,6 +605,7 @@ gcc-go-tools_package() {
   depends="gcc-go>=$_minorver"
   short_desc+=" - Go tools"
   conflicts="go>=0"
+  nostrip="yes"
   pkg_install() {
     vmove usr/bin/go
     vmove usr/bin/gofmt
@@ -708,6 +714,7 @@ libgfortran_package() {
 libgo-devel_package() {
   depends="libgo>=$_minorver"
   short_desc+=" - Go library - development files"
+  nostrip="yes"
   pkg_install() {
     vmove usr/lib/libgo.a
     vmove usr/lib/libgobegin.a
@@ -718,6 +725,7 @@ libgo-devel_package() {
 
 libgo_package() {
   short_desc+=" - Go library"
+  nostrip="yes"
   pkg_install() {
     vmove "usr/lib/libgo.so*"
     vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
