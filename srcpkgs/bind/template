@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bind"
-version=9.11.13
+version=9.16.2
 revision=1
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
@@ -8,6 +8,7 @@ makedepends+=" libatomic-devel"
 makedepends+=" libcap-devel"
 makedepends+=" libidn2-devel"
 makedepends+=" libressl-devel"
+makedepends+=" libuv-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" readline-devel"
 makedepends+=" $(vopt_if geoip geoip-devel)"
@@ -15,10 +16,12 @@ makedepends+=" $(vopt_if seccomp libseccomp-devel)"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="https://www.isc.org/downloads/bind/"
-license="ISC"
-distfiles="https://ftp.isc.org/isc/bind9/$_fullver/bind-$_fullver.tar.gz"
-checksum="fd3f3cc9fcfcdaa752db35eb24598afa1fdcc2509d3227fc90a8631b7b400f7d"
+license="MPL-2.0"
+changelog="https://gitlab.isc.org/isc-projects/bind9/-/blob/v9_16/CHANGES"
+distfiles="https://ftp.isc.org/isc/bind9/$_fullver/bind-$_fullver.tar.xz"
+checksum="d9e5b77cfca5ccad97f19cddc87128758ec15c16e6585000c6b2f84fc225993f"
 conf_files="/etc/named/named.conf"
 wrksrc="$pkgname-$_fullver"
 build_style="gnu-configure"
@@ -56,19 +59,6 @@ case "$XBPS_TARGET_MACHINE" in
     build_options_default+=" seccomp"
     ;;
 esac
-reverts="9.13.6_1"
-
-pre_configure() {
-  # various bind-utils segfault with musl-1.1.24 in catgets
-  # TODO: actually fix instead of disabling it
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      vsed \
-        -i \
-        -e 's/#define HAVE_CATGETS 1//g' \
-        configure
-  esac
-}
 
 do_check() {
   # requires special network setup
@@ -108,12 +98,7 @@ bind-devel_package() {
   depends="bind-libs>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
-    vmove usr/bin/isc-config.sh
-    vmove usr/bin/bind9-config
-    vmove usr/share/man/man1/isc-config.sh.1
-    vmove usr/share/man/man1/bind9-config.1
     vmove usr/include
-    vmove usr/share/man/man3
     vmove "usr/lib/*.so"
   }
 }
