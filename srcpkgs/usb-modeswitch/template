@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="usb-modeswitch"
-version=2.5.2
+version=2.6.0
 revision=1
 short_desc="Mode switching tool for controlling multi-mode USB devices"
 depends+=" $pkgname-data"
@@ -11,7 +11,7 @@ hostmakedepends+=" tcl"
 homepage="http://www.draisberghof.de/usb_modeswitch/"
 license="GPL-2"
 distfiles="http://www.draisberghof.de/usb_modeswitch/$pkgname-$version.tar.bz2"
-checksum="abffac09c87eacd78e101545967dc25af7e989745b4276756d45dbf4008a2ea6"
+checksum="c215236e6bada6e659fc195a31d611ea298a4bdb4d57a0d68c553b56585f8ba3"
 conf_files="/etc/usb_modeswitch.conf"
 build_style="gnu-makefile"
 make_install_args+=" SBINDIR=/usr/bin"
