@@ -1,12 +1,11 @@
 maintainer="nox"
 pkgname="libgit2"
-version=0.28.4
+version=1.0.0
 revision=1
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
 makedepends+=" libressl-devel"
 makedepends+=" libssh2-devel"
-makedepends+=" libuv-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" git"
 hostmakedepends+=" pkg-config"
@@ -14,16 +13,8 @@ hostmakedepends+=" python3"
 homepage="https://libgit2.org"
 license="custom:GPL-2.0-or-later WITH GCC-exception-2.0"
 distfiles="https://github.com/libgit2/libgit2/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="30f3877469d09f2e4a21be933b4e2800560d16646028dd800744dc5f7fb0c749"
+checksum="6a1fa16a7f6335ce8b2630fbdbb5e57c4027929ebc56fcd1ac55edb141b409b4"
 build_style="cmake"
-configure_args="-DTHREADSAFE=ON"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    # don't use qsort_r, see src/util.c
-    CFLAGS="-D__ANDROID_API__"
-    ;;
-esac
 
 post_install() {
   vlicense COPYING
