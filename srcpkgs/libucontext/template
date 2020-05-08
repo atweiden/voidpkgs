@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="libucontext"
-version=0.9.0
+version=0.10.0
 revision=1
 short_desc="Compatibility layer providing ucontext functions"
 archs="*-musl"
-homepage="https://code.foxkit.us/adelie/libucontext"
+homepage="https://github.com/kaniini/libucontext"
 license="ISC"
-distfiles="https://distfiles.adelielinux.org/source/libucontext/$pkgname-$version.tar.xz"
-checksum="0d53a415a307ef175153bbe60a572c940a922cb736ce13530b666e7ec2795d68"
+distfiles="https://github.com/kaniini/libucontext/archive/$pkgname-$version.tar.gz"
+checksum="e77dee222a31d6ad66c7668ceab197ac683349ab943f66cfe8c324324778ac9f"
+wrksrc="$pkgname-$pkgname-$version"
 
 case "$XBPS_TARGET_MACHINE" in
   arm*)
@@ -18,6 +19,9 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
   ppc64*)
     export LIBUCONTEXT_ARCH="ppc64"
+    ;;
+  mips*)
+    export LIBUCONTEXT_ARCH="mips"
     ;;
   *)
     export LIBUCONTEXT_ARCH="${XBPS_TARGET_MACHINE%%-musl}"
