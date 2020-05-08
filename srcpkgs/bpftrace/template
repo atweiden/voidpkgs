@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bpftrace"
-version=0.9.4
+version=0.10.0
 revision=1
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 makedepends+=" bcc-devel"
@@ -13,14 +13,14 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/iovisor/bpftrace"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bpftrace/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6f978d27cb44f69776f477dada420a70bb0a366123140f33be193ba5e752c5af"
+checksum="50ea80c0e337c4aaa260911e013b92ae09bdd5a062b23eb748290409bc2844db"
 build_style="cmake"
 # needs root to run
 configure_args="-DBUILD_TESTING=OFF"
 
 post_install() {
-  # clashes with bcc-tools anyway
-  rm -rf "$DESTDIR/usr/man"
+  # clashes with bcc-tools
+  rm -rf "$DESTDIR/usr/share/man"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
