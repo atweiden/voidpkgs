@@ -18,6 +18,10 @@ build_style="cmake"
 # needs root to run
 configure_args="-DBUILD_TESTING=OFF"
 
+if [[ "$XBPS_TARGET_WORDSIZE" != 64 ]]; then
+  broken="Only 64 bit targets are supported. $XBPS_TARGET_MACHINE is $XBPS_TARGET_WORDSIZE bit."
+fi
+
 post_install() {
   # clashes with bcc-tools
   rm -rf "$DESTDIR/usr/share/man"
