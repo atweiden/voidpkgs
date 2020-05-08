@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mutt"
-version=1.13.5
+version=1.14.0
 revision=1
 short_desc="Mutt Mail Client"
 depends+=" cyrus-sasl-modules"
@@ -18,9 +18,9 @@ hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://www.mutt.org"
 license="GPL-2.0-or-later"
-changelog="http://mutt.org/relnotes/1.13"
+changelog="http://mutt.org/relnotes/1.14"
 distfiles="http://ftp.mutt.org/pub/mutt/$pkgname-$version.tar.gz"
-checksum="6cd71b5b3e6b255afef6bed3b5e1e8ee9819b3d7c9839fd95e798045882aa653"
+checksum="df2e82a83ad38c9a9fd36f44c5ab2b726defa4bb1a17de794dd3800f3353f9f8"
 conf_files="/etc/mutt/Muttrc"
 build_style="gnu-configure"
 configure_args+=" --enable-gpgme"
@@ -39,11 +39,6 @@ configure_args+=" --with-ssl"
 configure_args+=" mutt_cv_regex_broken=no"
 
 pre_build() {
-  make \
-    CC="$BUILD_CC" \
-    CFLAGS="$BUILD_CFLAGS -fPIC" \
-    CPPFLAGS= \
-    mutt_md5
   make \
     CC="$BUILD_CC" \
     CFLAGS="$BUILD_CFLAGS -fPIC" \
