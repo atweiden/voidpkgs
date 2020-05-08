@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="offlineimap"
-version=7.3.2
+version=7.3.3
 revision=1
 short_desc="Powerful IMAP/Maildir synchronization and reader support"
 archs="noarch"
@@ -13,9 +13,8 @@ homepage="http://offlineimap.org/"
 license="GPL-2.0-or-later"
 changelog="https://github.com/OfflineIMAP/offlineimap/raw/master/Changelog.md"
 distfiles="https://github.com/OfflineIMAP/offlineimap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d47b564858c3e9fc7726ef58c9a4ee518d2958c5de3dcad6cd78b7cfe0a6bdef"
+checksum="bf1a777e63d2174eef0fe864ea577d843515b64d4f3a8630ad2d1b34a4afcaa6"
 build_style="python2-module"
-pycompile_module="offlineimap"
 
 post_install() {
   make -C docs man
