@@ -11,7 +11,7 @@ short_desc="Safe, concurrent, practical systems language"
 depends="rust-std"
 makedepends+=" libffi-devel"
 makedepends+=" libxml2-devel"
-makedepends+=" llvm"
+makedepends+=" llvm9"
 makedepends+=" ncurses-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" cmake"
@@ -32,7 +32,7 @@ _bootstrap_dir="stage0-bootstrap"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" cargo"
-  hostmakedepends+=" llvm"
+  hostmakedepends+=" llvm9"
   # these are required for building the buildhost's stage0/1
   hostmakedepends+=" libffi-devel"
   hostmakedepends+=" libxml2-devel"
