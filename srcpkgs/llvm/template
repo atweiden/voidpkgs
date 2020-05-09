@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm"
 version=10.0.0
-revision=1
+revision=2
 short_desc="LLVM meta package"
 depends="llvm10"
 homepage="https://www.voidlinux.org"
@@ -11,5 +11,6 @@ replaces+=" llvm3.9>=0"
 replaces+=" llvm6.0>=0"
 replaces+=" llvm7>=0"
 replaces+=" llvm8>=0"
+replaces+=" llvm9>=0"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
