@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="llvm"
-version=9.0.1
+version=10.0.0
 revision=1
 short_desc="LLVM meta package"
-depends="llvm9"
+depends="llvm10"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
