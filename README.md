@@ -72,7 +72,12 @@ Licensing
 This is free and unencumbered public domain software. For more
 information, see http://unlicense.org/ or the accompanying UNLICENSE file.
 
+All unmodified works retained from [upstream][void-linux/void-packages]
+are made available under the terms of the [original license][original
+license].
 
+
+[original license]: doc/COPYING.xtraeme
 [srcpkgs]: srcpkgs/
 [style guide]: doc/STYLE.md
 [void-linux/void-packages]: https://github.com/void-linux/void-packages
