@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm10"
 version=10.0.0
-revision=1
+revision=2
 short_desc="Low Level Virtual Machine"
 depends="libllvm10"
 makedepends+=" binutils-devel"
@@ -265,7 +265,12 @@ clang-tools-extra_package() {
     vmove usr/bin/clang-query
     vmove usr/bin/clang-rename
     vmove usr/bin/clang-tidy
+    vmove usr/bin/diagtool
+    vmove usr/bin/find-all-symbols
+    vmove usr/bin/hmaptool
     vmove usr/bin/modularize
+    vmove usr/bin/pp-trace
+    vmove usr/bin/sancov
     vmove "usr/lib/libclangApplyReplacements*"
     vmove "usr/lib/libclangQuery*"
     vmove "usr/lib/libclangTidy*"
@@ -279,14 +284,7 @@ clang_package() {
   depends+=" binutils"
   depends+=" libgcc-devel"
   depends+=" libstdc++-devel"
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      depends+=" musl-devel"
-      ;;
-    *)
-      depends+=" glibc-devel"
-      ;;
-  esac
+  depends+=" $XBPS_TARGET_LIBC-devel"
   short_desc+=" - C language family frontend"
   homepage="https://clang.llvm.org/"
   pkg_install() {
