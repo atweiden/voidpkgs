@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="llhttp"
-version=1.1.4
+version=2.0.5
 revision=1
 short_desc="Port of http_parser to llparse"
 homepage="https://llhttp.org/"
@@ -8,7 +8,7 @@ license="MIT"
 # _always_ use releases for the generated C code, otherwise we'd have
 # a dep loop: nodejs<->llhttp
 distfiles="https://github.com/nodejs/llhttp/archive/release/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="eeb07e60a8f4113b110dd758756da3db69e4e2575b0407afb0a7755aef504dbb"
+checksum="48f882f0b6cecc48aec8f81072ee4d80fe9a4b5e1bce009e3cf8aecbe5892c1a"
 wrksrc="llhttp-release-v$version"
 build_style="gnu-makefile"
 
