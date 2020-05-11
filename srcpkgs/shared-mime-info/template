@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="shared-mime-info"
-version=1.15
+version=2.0
 revision=1
 short_desc="Core database of common types"
 makedepends+=" libglib-devel"
@@ -9,12 +9,13 @@ hostmakedepends+=" gettext-devel"
 hostmakedepends+=" intltool"
 hostmakedepends+=" itstool"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" xmlto"
 license="GPL-2.0-or-later"
 homepage="http://freedesktop.org/Software/shared-mime-info"
-distfiles="https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$version.tar.xz"
-checksum="f482b027437c99e53b81037a9843fccd549243fd52145d016e9c7174a4f5db90"
-build_style="gnu-configure"
-configure_args="--disable-update-mimedb"
+distfiles="https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0440063a2e6823a4b1a6fb2f2af8350f/$pkgname-$version.tar.xz"
+checksum="23c1cb7919f31cf97aeb5225548f75705f706aa5cc7d1c4c503364bcc8681e06"
+build_style="meson"
+configure_args="-Dupdate-mimedb=false"
 disable_parallel_build="yes"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
