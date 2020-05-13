@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="qemu"
 version=5.0.0
-revision=1
+revision=2
 short_desc="Open Source Processor Emulator"
 makedepends+=" bzip2-devel"
 makedepends+=" gnutls-devel"
@@ -66,8 +66,8 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_extract() {
-  sed \
+pre_configure() {
+  vsed \
     -i \
     -e 's/__u64/unsigned long/' \
     linux-user/host/aarch64/hostdep.h
@@ -75,11 +75,6 @@ post_extract() {
 
 do_configure() {
   local args
-
-  sed \
-    -i \
-    -e 's,-rpath /usr/local/lib,,g' \
-    configure
 
   if [[ -n "$CROSS_BUILD" ]]; then
     args+=" --cross-prefix=$XBPS_CROSS_TRIPLET-"
