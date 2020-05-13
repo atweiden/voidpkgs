@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llhttp"
 version=2.0.5
-revision=1
+revision=2
 short_desc="Port of http_parser to llparse"
 homepage="https://llhttp.org/"
 license="MIT"
@@ -26,7 +26,7 @@ do_install() {
 }
 
 llhttp-devel_package() {
-  short_desc="- development files"
+  short_desc+=" - development files"
   depends="$sourcepkg-${version}_$revision"
   pkg_install() {
     vmove usr/include
