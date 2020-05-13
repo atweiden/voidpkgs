@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="nettle"
-version=3.5.1
+version=3.6
 revision=1
-short_desc="A low-level cryptographic library"
+short_desc="Low-level cryptographic library"
 makedepends="gmp-devel"
 hostmakedepends+=" m4"
 hostmakedepends+=" texinfo"
-homepage="http://www.lysator.liu.se/~nisse/nettle/"
+homepage="https://www.lysator.liu.se/~nisse/nettle/"
 license="GPL-2.0-or-later, GPL-3.0-or-later"
 distfiles="$GNU_SITE/nettle/$pkgname-$version.tar.gz"
-checksum="75cca1998761b02e16f2db56da52992aef622bf55a3b45ec538bc2eedadc9419"
+checksum="d24c0d0f2abffbc8f4f34dcf114b0f131ec3774895f3555922fe2f40f3d5e3f1"
 build_style="gnu-configure"
 configure_args="--enable-shared"
 
