@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kubernetes-helm"
-version=3.1.2
+version=3.2.1
 revision=1
 short_desc="Kubernetes Package Manager"
 hostmakedepends+=" git"
@@ -11,7 +11,7 @@ hostmakedepends+=" tar"
 homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz"
-checksum="06c7a43be1841b07c4737999d90c1d194b80b55c6d80829349121e8e95f4a1e1"
+checksum="6596e3ec8f9b91e43a03c190d8326f45844b31817ce1e6935c1864e58c93a56d"
 wrksrc="helm-$version"
 nopie="true"
 conflicts="helm"
@@ -65,11 +65,11 @@ pre_build() {
 
 do_build() {
   cd golib/src/k8s.io/helm
-  TARGETS="linux/$_go_target_arch linux/$_go_host_arch" \
-    make \
+  make \
     build-cross \
     APP="..." \
-    LDFLAGS="-X k8s.io/helm/pkg/version.Version=v$version -X k8s.io/helm/pkg/version.BuildMetadata="
+    LDFLAGS="-X k8s.io/helm/pkg/version.Version=v$version -X k8s.io/helm/pkg/version.BuildMetadata=" \
+    TARGETS="linux/$_go_target_arch linux/$_go_host_arch"
   "_dist/linux-$_go_host_arch/helm" completion bash > completion.bash
   "_dist/linux-$_go_host_arch/helm" completion zsh > completion.zsh
 }
