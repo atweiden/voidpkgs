@@ -18,7 +18,8 @@ readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 # path to https://github.com/void-linux/void-packages/srcpkgs
 readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 # select pkgs to copy
-readonly PKGS=('66'
+readonly PKGS=('3mux'
+               '66'
                '66-tools'
                'ISOEnts'
                'LuaJIT'
