@@ -15,7 +15,8 @@ makedepends+=" readline-devel"
 makedepends+=" trousers-devel"
 makedepends+=" unbound-devel"
 makedepends+=" zlib-devel"
-# add autogen when #6550 is solved
+checkdepends="iproute2"
+hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
@@ -32,6 +33,15 @@ configure_args+=" --disable-valgrind-tests"
 configure_args+=" --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
 configure_args+=" --with-trousers-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-zlib"
+
+pre_configure() {
+  autoreconf -vfi
+}
+
+pre_check() {
+  # same as $PASS in tests/cert-tests/certtool
+  export GNUTLS_PIN=1234
+}
 
 gnutls-devel_package() {
   depends+=" $makedepends"
