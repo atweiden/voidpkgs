@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bison"
-version=3.6
+version=3.6.1
 revision=1
 short_desc="GNU yacc(1) replacement"
 depends="m4"
@@ -12,7 +12,7 @@ hostmakedepends+=" perl"
 homepage="http://www.gnu.org/software/bison/bison.html"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/bison/$pkgname-$version.tar.xz"
-checksum="e16f26baa2ebff141333e452c3cc5d8ea26bda6d2cd8b0b7a5604faa3a4ad47b"
+checksum="67ff4539783569884cbecaf781ceb665fc92e4ef3cf44c507a49d06a87421398"
 build_style="gnu-configure"
 disable_parallel_build="yes"
 alternatives+=" yacc:yacc:/usr/bin/bison-yacc"
