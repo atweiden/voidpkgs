@@ -1,32 +1,35 @@
-# Template file for 'memcached'
-pkgname=memcached
+maintainer="nox"
+pkgname="memcached"
 version=1.6.6
 revision=1
-build_style=gnu-configure
-configure_args="--enable-seccomp"
-hostmakedepends="autoconf automake"
-makedepends="libevent-devel libseccomp-devel"
 short_desc="Distributed memory object caching system"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-3-Clause"
+makedepends+=" libevent-devel"
+makedepends+=" libseccomp-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
 homepage="http://www.memcached.org"
+license="BSD-3-Clause"
 changelog="https://github.com/memcached/memcached/wiki/ReleaseNotes${version//./}"
-distfiles="http://memcached.org/files/${pkgname}-${version}.tar.gz"
-checksum=908f0eecfa559129c9e44edc46f02e73afe8faca355b4efc5c86d902fc3e32f7
+distfiles="http://memcached.org/files/$pkgname-$version.tar.gz"
+checksum="908f0eecfa559129c9e44edc46f02e73afe8faca355b4efc5c86d902fc3e32f7"
+build_style="gnu-configure"
+configure_args="--enable-seccomp"
 
-# Rebuild configure script, due to patching configure.ac
+# rebuild configure script, due to patching configure.ac
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	vlicense COPYING LICENSE
+  vlicense COPYING LICENSE
 }
 
 memcached-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
