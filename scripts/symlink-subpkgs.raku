@@ -50,12 +50,6 @@ constant %PKG = Map.new(
                 atf-libs>,
     'attr' => qw<attr-devel
                  attr-progs>,
-    'avahi' => qw<avahi-autoipd
-                  avahi-compat-libs
-                  avahi-compat-libs-devel
-                  avahi-libs
-                  avahi-libs-devel
-                  avahi-utils>,
     'babeltrace' => ['babeltrace-devel'],
     'base-chroot' => ['base-chroot-musl'],
     'bash' => ['bash-devel'],
@@ -171,7 +165,6 @@ constant %PKG = Map.new(
     'dbus' => qw<dbus-devel
                  dbus-libs>,
     'dhcp' => ['dhclient'],
-    'distcc' => ['distcc-pump'],
     'dmraid' => ['dmraid-devel'],
     'dovecot' => qw<dovecot-devel
                     dovecot-plugin-ldap
