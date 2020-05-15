@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="passphrase2pgp"
-version=1.0.2
+version=1.1.0
 revision=1
 short_desc="Generate a PGP key from a passphrase"
 hostmakedepends="git"
 homepage="https://github.com/skeeto/passphrase2pgp"
 license="Unlicense"
 distfiles="https://github.com/skeeto/passphrase2pgp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="920863bb7d3fb672469bff377d9c8ffd20abf141ff0394df243181b5787a33bb"
+checksum="80f445cf3e3a0328f7eb3e1bfdf72ebbd027915fe5391941ed61f9ba3bfd730f"
 build_style="go"
 go_import_path="nullprogram.com/x/passphrase2pgp"
 
