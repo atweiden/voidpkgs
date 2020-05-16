@@ -1,15 +1,16 @@
-# Template file for 'ruby-asciidoctor'
-pkgname=ruby-asciidoctor
+maintainer="nox"
+pkgname="ruby-asciidoctor"
 version=2.0.10
 revision=2
-archs=noarch
-build_style=gem
 short_desc="Ruby implementation of AsciiDoc"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="MIT"
+archs="noarch"
 homepage="https://asciidoctor.org"
-checksum=7f3df92816f75344d36bb15e49a6fbc07ac0999a1cd2938fd0802ea587964aac
+license="MIT"
+checksum="7f3df92816f75344d36bb15e49a6fbc07ac0999a1cd2938fd0802ea587964aac"
+build_style="gem"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
