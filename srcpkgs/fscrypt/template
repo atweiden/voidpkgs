@@ -18,6 +18,8 @@ if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
   broken="fscrypt can't be built for 32-bit targets"
 fi
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   # build and install the pam module
   LDFLAGS= make PREFIX="/usr" DESTDIR="$DESTDIR" install-pam

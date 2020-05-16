@@ -10,6 +10,8 @@ checksum="fa938fd68a9afbea0acaf0d4e22e1e1cd957ba78411f9398e90420f8d8ca2519"
 build_style="go"
 go_import_path="github.com/aaronjanse/3mux"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

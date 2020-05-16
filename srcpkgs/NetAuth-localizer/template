@@ -14,6 +14,8 @@ build_style="go"
 go_import_path="github.com/netauth/localizer"
 go_package="$go_import_path/cmd/localize"
 
+export GOFLAGS="-trimpath"
+
 do_check() {
   go test -v ./...
 }
