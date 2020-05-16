@@ -684,6 +684,7 @@ constant %PKG = Map.new(
     'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
+    'raft' => ['raft-devel'],
     'rhash' => ['rhash-devel'],
     'ruby' => qw<ruby-devel
                  ruby-devel-doc
