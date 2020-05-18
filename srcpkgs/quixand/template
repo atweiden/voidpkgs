@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="quixand"
 version=2020
 revision=1
-short_desc="A tool for creating single-use unrecoverable encrypted sandboxes"
+short_desc="Tool for creating single-use unrecoverable encrypted sandboxes"
 archs="noarch"
 depends+=" bash"
 depends+=" encfs"
@@ -16,7 +16,6 @@ do_install() {
 }
 
 post_install() {
-  vlicense COPYING
   vman man/quixand.1.gz
 }
 
