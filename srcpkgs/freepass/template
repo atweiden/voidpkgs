@@ -1,0 +1,29 @@
+maintainer="nox"
+pkgname="freepass"
+version=0.0.0
+revision=1
+_gitrev="7861153baae6f557faacecbda5412b307ca220b8"
+short_desc="Free password manager for power users - CLI"
+makedepends="libsodium-devel"
+hostmakedepends="git"
+homepage="https://github.com/myfreeweb/freepass"
+license="Unlicense"
+_basedir="$pkgname-$_gitrev"
+wrksrc="$_basedir/cli"
+build_style="cargo"
+
+do_fetch() {
+  git clone "$homepage" "$_basedir"
+  cd "$_basedir"
+  git reset --hard "$_gitrev"
+  git submodule update --init --recursive
+}
+
+do_install() {
+  vlicense ../UNLICENSE
+  vdoc ../README.md
+  vdoc README.md README-cli.md
+  vbin "target/$RUST_TARGET/release/freepass"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
