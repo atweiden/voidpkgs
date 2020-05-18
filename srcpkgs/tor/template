@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tor"
-version=0.4.2.7
+version=0.4.3.5
 revision=1
 short_desc="Anonymizing overlay network"
 depends+=" ca-certificates"
@@ -12,7 +12,7 @@ homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 changelog="https://gitweb.torproject.org/tor.git/plain/ReleaseNotes"
 distfiles="https://dist.torproject.org/$pkgname-$version.tar.gz"
-checksum="06a1d835ddf382f6bca40a62e8fb40b71b2f73d56f0d53523c8bd5caf9b3026d"
+checksum="616a0e4ae688d0e151d46e3e4258565da4d443d1ddbd316db0b90910e2d5d868"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
 make_dirs="/var/lib/tor 0700 tor tor"
