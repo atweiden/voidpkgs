@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bootiso"
-version=3.3.1
+version=4.0.1
 revision=1
 short_desc="Create a USB bootable device from an ISO image easily and securely"
 archs="noarch"
@@ -16,19 +16,20 @@ depends+=" file"
 depends+=" findutils"
 depends+=" gawk"
 depends+=" grep"
+depends+=" jq"
 depends+=" mtools"
 depends+=" ntfs-3g"
-depends+=" parted"
 depends+=" rsync"
 depends+=" syslinux"
 depends+=" tar"
 depends+=" util-linux"
 depends+=" wimlib"
 homepage="https://github.com/jsamr/bootiso"
-license="MIT"
+license="GPL-3.0-only"
 changelog="https://github.com/jsamr/bootiso/raw/master/changelog.md"
 distfiles="https://github.com/jsamr/bootiso/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b716d23b4ab65543b5571f302f5d26a43bea9f9ea91bffe999d5faff99f2bdda"
+checksum="19fe3e2bde727bff3af9ff91463092ff2130e32cd5cbceebcf4b6f5ec5a72a38"
+build_style="gnu-makefile"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*)
@@ -38,12 +39,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-do_install() {
-  vbin bootiso
-}
-
 post_install() {
-  vlicense LICENSE
   vdoc changelog.md
   vdoc readme.md
   vcopy images/ "usr/share/doc/$pkgname"
