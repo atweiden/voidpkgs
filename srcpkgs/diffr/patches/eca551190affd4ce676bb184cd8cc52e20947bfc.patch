@@ -1,3 +1,13 @@
+From eca551190affd4ce676bb184cd8cc52e20947bfc Mon Sep 17 00:00:00 2001
+From: Nathan Moreau <nathan.moreau@m4x.org>
+Date: Thu, 19 Mar 2020 23:47:50 +0100
+Subject: [PATCH] Fix build on 32 bits plateforms.
+
+---
+ src/main.rs | 8 ++++----
+ src/test.rs | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
 diff --git a/src/main.rs b/src/main.rs
 index bccc6c4..333438f 100644
 --- a/src/main.rs
