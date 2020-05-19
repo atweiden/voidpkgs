@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxml2"
 version=2.9.10
-revision=2
+revision=3
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
@@ -17,7 +17,6 @@ license="MIT"
 distfiles="http://xmlsoft.org/sources/$pkgname-$version.tar.gz"
 checksum="aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f"
 build_style="gnu-configure"
-configure_args+=" --disable-static"
 configure_args+=" --with-history"
 configure_args+=" --with-icu"
 configure_args+=" --with-threads"
@@ -52,6 +51,7 @@ libxml2-devel_package() {
     vmove "usr/share/doc/$sourcepkg-$version"
     vmove "usr/share/man/man1/xml2-config*"
     vmove usr/share/man/man3
+    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
 }
