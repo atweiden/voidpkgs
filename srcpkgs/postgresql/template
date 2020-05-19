@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql"
 version=9.6.18
-revision=1
+revision=2
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
 makedepends+=" libressl-devel"
