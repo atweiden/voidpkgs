@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="apr-util"
 version=1.6.1
 revision=7
-short_desc="The Apache Portable Runtime Utility Library"
+short_desc="Apache Portable Runtime Utility Library"
 makedepends+=" apr-devel"
 makedepends+=" db-devel"
 makedepends+=" expat-devel"
@@ -66,6 +66,12 @@ post_configure() {
 post_install() {
   # remove static libs
   find "$DESTDIR" -type f -name \*.a -delete
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s,$XBPS_CROSS_BASE,,g" \
+      "$DESTDIR/usr/bin/apu-1-config"
+  fi
 }
 
 apr-util-devel_package() {
