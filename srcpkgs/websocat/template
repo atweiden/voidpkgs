@@ -1,0 +1,16 @@
+maintainer="nox"
+pkgname="websocat"
+version=1.5.0
+revision=1
+short_desc="Command-line client for WebSockets"
+homepage="https://github.com/vi/websocat"
+license="MIT"
+distfiles="https://github.com/vi/websocat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="3ffdb25e937095d95b564eafd805cb7ca141570f95c1296b6dd336d4d016445f"
+build_style="cargo"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
