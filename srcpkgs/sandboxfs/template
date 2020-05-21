@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sandboxfs"
-version=0.1.0
+version=0.2.0
 revision=1
 short_desc="Virtual filesystem for sandboxing"
 makedepends="fuse-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/bazelbuild/sandboxfs"
 license="Apache-2.0"
 distfiles="https://github.com/bazelbuild/sandboxfs/archive/$pkgname-$version.tar.gz"
-checksum="3ecead7fb1587f3c59a47d00980217c4fb1d5cc81b8ee7b6cdd86e98dec5ec8f"
+checksum="bff68e7d33ae56a3f34a79a74b2576599f5ccc381a237bbc10b5a3c3ea106b60"
 wrksrc="$pkgname-$pkgname-$version"
 build_style="cargo"
 
