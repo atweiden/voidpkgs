@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apr"
 version=1.7.0
-revision=3
+revision=4
 short_desc="Apache Portable Runtime Library"
 makedepends+=" expat-devel"
 makedepends+=" libuuid-devel"
@@ -45,6 +45,16 @@ pre_build() {
   fi
 }
 
+post_install() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s,$XBPS_CROSS_BASE,,g" \
+      "$DESTDIR/usr/bin/apr-1-config" \
+      "$DESTDIR/usr/share/apr-1/build/apr_rules.mk"
+  fi
+}
+
 apr-devel_package() {
   depends+=" apr>=${version}_$revision"
   depends+=" libtool"
@@ -58,7 +68,7 @@ apr-devel_package() {
     vmove "usr/lib/*.so"
     vmove "usr/lib/*.exp"
     vmove usr/lib/pkgconfig
-    ln -sf /usr/bin/libtool "$PKGDESTDIR/usr/share/apr-1/build/libtool"
+    ln -sf ../../../bin/libtool "$PKGDESTDIR/usr/share/apr-1/build/"
   }
 }
 
