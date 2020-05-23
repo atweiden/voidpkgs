@@ -22,7 +22,6 @@ distfiles="http://www.apache.org/dist/apr/$pkgname-$version.tar.bz2"
 checksum="d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
 build_style="gnu-configure"
 configure_args+=" --enable-util-dso"
-configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr/bin/apr-1-config"
 configure_args+=" --with-berkeley-db=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-crypto"
 configure_args+=" --with-dbm=db53"
@@ -35,6 +34,11 @@ configure_args+=" --with-openssl"
 configure_args+=" --with-pgsql"
 configure_args+=" --with-sqlite3=$XBPS_CROSS_BASE/usr"
 configure_args+=" --without-oracle"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --with-apr=$XBPS_WRAPPERDIR/apr-1-config"
+else
+  configure_args+=" --with-apr=/usr/bin/apr-1-config"
+fi
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
