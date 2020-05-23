@@ -611,6 +611,11 @@ constant %PKG = Map.new(
                      libprotoc22
                      protobuf-devel
                      protobuf-lite>,
+    'protobuf23' => qw<libprotobuf23
+                       libprotobuf23-lite
+                       libprotoc23
+                       libprotoc23-devel
+                       protobuf23-devel>,
     'pulseaudio' => qw<libpulseaudio
                        pulseaudio-devel>,
     'python' => ['python-devel'],
