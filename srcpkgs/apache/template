@@ -91,10 +91,15 @@ configure_args+=" --enable-vhost-alias"
 configure_args+=" --prefix="
 configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --sysconfdir=/etc/apache"
-configure_args+=" --with-apr-util=$XBPS_CROSS_BASE/usr/bin/apu-1-config"
-configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr/bin/apr-1-config"
 configure_args+=" --with-pcre=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-z=$XBPS_CROSS_BASE/usr"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" --with-apr-util=$XBPS_WRAPPERDIR/apu-1-config"
+  configure_args+=" --with-apr=$XBPS_WRAPPERDIR/apr-1-config"
+else
+  configure_args+=" --with-apr-util=/usr/bin/apu-1-config"
+  configure_args+=" --with-apr=/usr/bin/apr-1-config"
+fi
 system_accounts="_apache"
 _apache_homedir="/srv/www/apache"
 make_dirs+=" /srv/www/apache 0755 _apache _apache"
