@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.70.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -53,6 +53,11 @@ pre_configure() {
 }
 
 post_install() {
+  # don't touch --configure, it reflects how curl was built
+  vsed \
+    -i \
+    -e "/[  ]*--static-libs)/,/[  ]*;;/ s,-L$XBPS_CROSS_BASE,-L," \
+    "$DESTDIR/usr/bin/curl-config"
   vlicense COPYING
 }
 
