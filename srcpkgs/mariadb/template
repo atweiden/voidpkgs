@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.1.30
-revision=7
+revision=8
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" libatomic-devel"
@@ -15,8 +15,9 @@ hostmakedepends+=" libatomic-devel"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" ncurses-devel"
 hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="https://mariadb.org/"
-license="GPL-2"
+license="GPL-2.0-only"
 distfiles="http://archive.mariadb.org/mariadb-$version/source/$pkgname-$version.tar.gz"
 checksum="173a5e5a24819e0a469c3bd09b5c98491676c37c6095882a2ea34c5af0996c88"
 conf_files="/etc/mysql/my.cnf"
@@ -91,10 +92,15 @@ pre_configure() {
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
+    # cmake complains if those binaries ain't in build
     cp bin.host/comp_err "$wrksrc/extra"
+    cp bin.host/comp_err "$wrksrc/build/extra"
     cp bin.host/comp_sql "$wrksrc/scripts"
+    cp bin.host/comp_sql "$wrksrc/build/scripts"
     cp bin.host/gen_lex_hash "$wrksrc/sql"
+    cp bin.host/gen_lex_hash "$wrksrc/build/sql"
     cp bin.host/gen_lex_token "$wrksrc/sql"
+    cp bin.host/gen_lex_token "$wrksrc/build/sql"
     export PATH="$PATH:$wrksrc/extra:$wrksrc/scripts:$wrksrc/sql"
   fi
   export LD_LIBRARY_PATH="$wrksrc/build/storage/tokudb/ft-index/portability"
