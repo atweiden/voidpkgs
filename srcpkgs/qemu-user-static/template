@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="qemu-user-static"
 version=5.0.0
-revision=1
+revision=2
 short_desc="QEMU User-mode emulators (statically compiled)"
 makedepends+=" dtc-devel"
 makedepends+=" libglib-static"
@@ -133,15 +133,20 @@ do_configure() {
     --enable-linux-user \
     --libexecdir="/usr/libexec" \
     --prefix="/usr" \
+    --static \
     --sysconfdir="/etc"
 }
 
 do_build() {
-  make "$makejobs" LDFLAGS="-static -lrt -luuid"
+  make \
+    "$makejobs" \
+    LDFLAGS="-static -lrt -luuid"
 }
 
 do_install() {
-  make DESTDIR="$DESTDIR" install
+  make \
+    DESTDIR="$DESTDIR" \
+    install
   for f in io \
            img \
            nbd; do
