@@ -18,6 +18,7 @@ license="BSL-1.0"
 distfiles="https://dl.bintray.com/boostorg/release/$version/source/boost_${version//./_}.tar.bz2"
 checksum="59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722"
 wrksrc="${pkgname}_${version//\./_}"
+python_version=3
 
 CXXFLAGS="-std=c++14"
 
@@ -164,6 +165,7 @@ do_install() {
 boost-jam_package() {
   short_desc+=" - Boost.Jam utility"
   depends="boost-build>=${version}_$revision"
+  python_version=3
   pkg_install() {
     vmove usr/bin/bjam
     vmove usr/bin/b2
@@ -175,7 +177,7 @@ boost-python1.72_package() {
   depends+=" python"
   replaces="boost-python>=0"
   short_desc+=" - Python bindings"
-  python_ver=3
+  python_version=3
   pkg_install() {
     vmove "usr/lib/libboost_python2*.so.*"
   }
@@ -186,7 +188,7 @@ boost-python3-1.72_package() {
   depends+=" python3"
   replaces="boost-python3>=0"
   short_desc+=" - Python3 bindings"
-  python_ver=3
+  python_version=3
   pkg_install() {
     vmove "usr/lib/libboost_python3*.so.*"
   }
