@@ -1,22 +1,21 @@
 maintainer="nox"
 pkgname="nasm"
 version=2.14.02
-revision=1
-short_desc="An 80x86 assembler designed for portability and modularity"
+revision=2
+short_desc="80x86 assembler designed for portability and modularity"
 homepage="https://www.nasm.us"
 license="BSD-2-Clause"
 distfiles="https://www.nasm.us/pub/nasm/releasebuilds/$version/$pkgname-$version.tar.xz"
 checksum="e24ade3e928f7253aa8c14aa44726d1edf3f98643f87c9d72ec1df44b26be8f5"
 build_style="gnu-configure"
-make_build_args+=" all"
-make_build_args+=" rdf"
+make_build_args="all"
 
-do_install() {
-  make \
-    INSTALLROOT="$DESTDIR" \
-    install \
-    install_rdf
+post_install() {
   vlicense LICENSE
 }
+
+# REMARKS:
+#
+# Update nasm-doc which is separate to avoid dependency cycles.
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
