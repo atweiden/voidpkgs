@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="pkgconf"
-version=1.6.3
+version=1.7.0
 revision=1
 short_desc="Provides compiler and linker configuration"
 checkdepends="kyua"
-homepage="https://git.dereferenced.org/pkgconf/pkgconf"
+homepage="http://pkgconf.org/"
 license="MIT"
-changelog="https://git.dereferenced.org/pkgconf/pkgconf/raw/branch/master/NEWS"
+changelog="https://github.com/pkgconf/pkgconf/raw/master/NEWS"
 distfiles="https://distfiles.dereferenced.org/pkgconf/$pkgname-$version.tar.xz"
-checksum="61f0b31b0d5ea0e862b454a80c170f57bad47879c0c42bd8de89200ff62ea210"
+checksum="1e6eb09ede29faf33d86be21435955face4c6302f80f5db68d56e1f8a8506169"
 # cmake and meson also available
 build_style="gnu-configure"
 configure_args+=" --disable-shared"
