@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="bootiso"
-version=4.0.1
+version=4.1.0
 revision=1
 short_desc="Create a USB bootable device from an ISO image easily and securely"
 archs="noarch"
 depends+=" bash"
+depends+=" binutils"
 depends+=" coreutils"
 depends+=" curl"
 depends+=" dosfstools"
@@ -17,7 +18,7 @@ depends+=" findutils"
 depends+=" gawk"
 depends+=" grep"
 depends+=" jq"
-depends+=" mtools"
+depends+=" ncurses"
 depends+=" ntfs-3g"
 depends+=" rsync"
 depends+=" syslinux"
@@ -28,7 +29,7 @@ homepage="https://github.com/jsamr/bootiso"
 license="GPL-3.0-only"
 changelog="https://github.com/jsamr/bootiso/raw/master/changelog.md"
 distfiles="https://github.com/jsamr/bootiso/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="19fe3e2bde727bff3af9ff91463092ff2130e32cd5cbceebcf4b6f5ec5a72a38"
+checksum="0a81f18ce356ec823f64b9235b4c1c1d5067a6f7f25175e74a7279078ecf81b1"
 build_style="gnu-makefile"
 
 case "$XBPS_TARGET_MACHINE" in
