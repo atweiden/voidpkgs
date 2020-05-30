@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ncurses"
 version=6.2
-revision=1
+revision=2
 short_desc="System V Release 4.0 curses emulation library"
 depends="ncurses-base-${version}_$revision"
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -90,7 +90,18 @@ do_install() {
 
   # non-widec compatibility library
   cd "$wrksrc/ncurses-build"
-  install -Dm 755 "lib/libncurses.so.$version" "$DESTDIR/usr/lib/libncurses.so.$version"
+  install -Dm 755 "lib/libncurses.so.$version" \
+    "$DESTDIR/usr/lib/libncurses.so.$version"
+
+  # create libtinfo symlinks
+  ln -sfr "$DESTDIR/usr/lib/libncursesw.so" \
+      "$DESTDIR/usr/lib/libtinfo.so"
+  ln -sfr "$DESTDIR/usr/lib/libncursesw.so.$version" \
+      "$DESTDIR/usr/lib/libtinfo.so.$version"
+  ln -sfr "$DESTDIR/usr/lib/libtinfo.so.$version" \
+      "$DESTDIR/usr/lib/libtinfo.so.${version:0:1}"
+  ln -sfr "$DESTDIR/usr/lib/pkgconfig/ncursesw.pc" \
+      "$DESTDIR/usr/lib/pkgconfig/tinfo.pc"
 
   # create compat symlinks
   for f in form \
@@ -114,7 +125,10 @@ ncurses-libs_package() {
   shlib_provides+=" libpanelw.so.5"
   short_desc+=" - shared libraries"
   pkg_install() {
-    vmove "usr/lib/*.so.*"
+    vmove "usr/lib/libform*.so.*"
+    vmove "usr/lib/libmenu*.so.*"
+    vmove "usr/lib/libncurses*.so.*"
+    vmove "usr/lib/libpanel*.so.*"
   }
 }
 
@@ -124,9 +138,17 @@ ncurses-devel_package() {
   pkg_install() {
     vmove "usr/bin/ncurses*-config"
     vmove usr/include
-    vmove usr/lib/pkgconfig
+    vmove usr/lib/pkgconfig/ncursesw.pc
+    vmove usr/lib/pkgconfig/formw.pc
+    vmove usr/lib/pkgconfig/menuw.pc
+    vmove usr/lib/pkgconfig/ncurses++w.pc
+    vmove usr/lib/pkgconfig/panelw.pc
     vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
+    vmove "usr/lib/libcurses*.so"
+    vmove "usr/lib/libform*.so"
+    vmove "usr/lib/libmenu*.so"
+    vmove "usr/lib/libncurses*.so"
+    vmove "usr/lib/libpanel*.so"
     vmove usr/share/man/man3
     vmove usr/share/man/man1/ncursesw6-config.1
   }
@@ -149,6 +171,24 @@ ncurses-term_package() {
   pkg_install() {
     vmove usr/share/tabset
     vmove usr/share/terminfo
+  }
+}
+
+ncurses-libtinfo-libs_package() {
+  depends="ncurses-libs-${version}_$revision"
+  short_desc+=" - libtinfo.so symlink"
+  pkg_install() {
+    vmove "usr/lib/libtinfo*.so.*"
+  }
+}
+
+ncurses-libtinfo-devel_package() {
+  depends="ncurses-devel-${version}_$revision"
+  depends+=" ncurses-libtinfo-libs-${version}_$revision"
+  short_desc+=" - libtinfo.so symlink - development files"
+  pkg_install() {
+    vmove usr/lib/libtinfo.so
+    vmove "usr/lib/pkgconfig/tinfo.pc"
   }
 }
 

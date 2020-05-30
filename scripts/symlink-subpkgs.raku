@@ -538,6 +538,8 @@ constant %PKG = Map.new(
     'ncurses' => qw<ncurses-base
                     ncurses-devel
                     ncurses-libs
+                    ncurses-libtinfo-devel
+                    ncurses-libtinfo-libs
                     ncurses-term>,
     'ndpi' => ['ndpi-devel'],
     'net-snmp' => qw<libnet-snmp
