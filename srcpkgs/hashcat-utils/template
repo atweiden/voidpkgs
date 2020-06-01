@@ -1,4 +1,4 @@
-maintainer="Andy Weidenbaum <atweiden@dismail.de>"
+maintainer="nox"
 pkgname="hashcat-utils"
 version=1.9
 revision=1
