@@ -1,22 +1,28 @@
-# Template file for 'python-llfuse'
-pkgname=python-llfuse
+maintainer="nox"
+pkgname="python-llfuse"
 version=1.3.6
 revision=2
-wrksrc="llfuse-${version}"
-build_style=python-module
-hostmakedepends="python-setuptools python3-setuptools pkg-config"
-makedepends="python-devel python3-devel fuse-devel attr-devel"
-depends="python-contextlib2"
 short_desc="Python2 bindings for the low level FUSE API"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="LGPL-2.0-or-later"
+depends="python-contextlib2"
+makedepends+=" attr-devel"
+makedepends+=" fuse-devel"
+makedepends+=" python-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python-setuptools"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/python-llfuse/python-llfuse"
-distfiles="${PYPI_SITE}/l/llfuse/llfuse-${version}.tar.bz2"
-checksum=31a267f7ec542b0cd62e0f1268e1880fdabf3f418ec9447def99acfa6eff2ec9
+license="LGPL-2.0-or-later"
+distfiles="$PYPI_SITE/l/llfuse/llfuse-$version.tar.bz2"
+checksum="31a267f7ec542b0cd62e0f1268e1880fdabf3f418ec9447def99acfa6eff2ec9"
+wrksrc="llfuse-$version"
+build_style="python-module"
 
 python3-llfuse_package() {
-	short_desc="${short_desc/Python2/Python3}"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  short_desc="${short_desc/Python2/Python3}"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
