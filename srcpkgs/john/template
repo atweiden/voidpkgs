@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="john"
 version=1.9.0
-revision=1
+revision=2
 _jumbover=1
 short_desc="John the Ripper password cracker (jumbo-$_jumbover patch included)"
 makedepends+=" bzip2-devel"
@@ -18,20 +18,11 @@ conf_files="/etc/john/john.conf"
 wrksrc="$pkgname-$version-jumbo-$_jumbover"
 build_wrksrc="src"
 build_style="gnu-configure"
-configure_args="--with-systemwide"
+configure_args+=" --with-systemwide"
+configure_args+=" $(vopt_enable simd)"
 # unverified
 python_version=2
-
-# the build system checks the host cpu for features, so when building
-# on a modern power9 system, it will attempt to shove in -mvsx and so on,
-# which breaks builds for 970 and 32-bit
-case "$XBPS_TARGET_MACHINE" in
-  ppc64le*)
-    ;;
-  ppc*)
-    configure_args+=" --disable-simd"
-    ;;
-esac
+build_options="simd"
 
 pre_configure() {
   unset AS
