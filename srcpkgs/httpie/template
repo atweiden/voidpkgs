@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="httpie"
-version=2.0.0
+version=2.1.0
 revision=1
 short_desc="Human-friendly command line HTTP client"
 archs="noarch"
@@ -12,7 +12,7 @@ homepage="https://httpie.org/"
 license="BSD-3-Clause"
 changelog="https://github.com/jakubroztocil/httpie/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/jakubroztocil/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="92ebdced5620ab56fd9f24e494c7c97eb0afee0f03a55bee41f773395c59dc5c"
+checksum="aea482da09341a3d205761d828c7125884c9d0eb77a53cd4d2e6042e4670182b"
 build_style="python3-module"
 
 post_install() {
