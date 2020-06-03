@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.17.2
+version=3.17.3
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -9,11 +9,12 @@ makedepends+=" libcurl-devel"
 makedepends+=" libuv-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" rhash-devel"
-checkdepends="pax"
+checkdepends+=" pax"
+checkdepends+=" pkg-config"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="fc77324c4f820a09052a7785549b8035ff8d3461ded5bbd80d252ae7d1cd3aa5"
+checksum="0bd60d512275dc9f6ef2a2865426a184642ceb3761794e6b65bff233b91d8c40"
 build_style="configure"
 configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
 configure_args+=" --docdir=/share/doc/cmake"
