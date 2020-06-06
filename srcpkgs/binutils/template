@@ -37,7 +37,8 @@ do_configure() {
     CONFIGFLAG+=" --with-build-sysroot=$XBPS_CROSS_BASE"
   fi
 
-  if [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
+  if [[ "$XBPS_TARGET_MACHINE" == "mips-musl" ]] \
+    || [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
     CONFIGFLAG+=" --with-float=soft"
     CONFIGFLAG+=" --without-fp"
   fi
