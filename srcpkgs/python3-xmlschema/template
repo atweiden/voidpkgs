@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-xmlschema"
-version=1.1.3
+version=1.2.0
 revision=1
 short_desc="XML Schema validator and decoder for Python"
 archs="noarch"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/sissaschool/xmlschema"
 license="MIT"
 distfiles="$PYPI_SITE/x/xmlschema/xmlschema-$version.tar.gz"
-checksum="6562e94719a1b49edba2f3bd3815c34f7868293e2b01cfa34b0343a4d439a318"
+checksum="079169d8e3393e2605b0dd4d66d2450c9e828c2a7baa8692df949057b123da9c"
 wrksrc="xmlschema-$version"
 build_style="python3-module"
 
