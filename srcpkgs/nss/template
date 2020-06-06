@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nss"
-version=3.52.1
+version=3.53
 revision=1
 _nsprver=4.25
 short_desc="Mozilla Network Security Services"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://www.mozilla.org/projects/security/pki/nss"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="bcc81ac33aeb4ecad182dc21e34d2c97bcc148fd7b9e76f85bebb892405a9278"
+checksum="08d36dc1a56325f02e626626d4eeab9c4d126dbd99dfaf419b91d0a696f58917"
 
 do_build() {
   local _native_use64
@@ -52,6 +52,7 @@ do_build() {
   cd nss
   # build nsinstall for host
   make \
+    "$makejobs" \
     $_native_use64 \
     LD="$BUILD_LD" \
     LDFLAGS="$BUILD_LDFLAGS" \
@@ -93,6 +94,7 @@ do_build() {
     export XCFLAGS="$CFLAGS"
 
     make \
+      "$makejobs" \
       $_target_use64 \
       CC="$CC" \
       CCC="$CXX" \
@@ -100,15 +102,7 @@ do_build() {
       NSINSTALL="$wrksrc/nsinstall" \
       OS_TEST="$_ARCH" \
       RANLIB="$RANLIB" \
-      -C lib/dbm
-    make \
-      $_target_use64 \
-      CC="$CC" \
-      CCC="$CXX" \
-      CROSS_COMPILE=1 \
-      NSINSTALL="$wrksrc/nsinstall" \
-      OS_TEST="$_ARCH" \
-      RANLIB="$RANLIB"
+      all
   else
     # native build
     export NSPR_INCLUDE_DIR="/usr/include/nspr"
@@ -116,10 +110,9 @@ do_build() {
     export XCFLAGS="$CFLAGS"
 
     make \
+      "$makejobs" \
       $_native_use64 \
-      -C lib/dbm
-    make \
-      $_native_use64
+      all
   fi
 }
 
