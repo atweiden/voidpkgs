@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apache"
 version=2.4.43
-revision=1
+revision=2
 short_desc="High performance Unix-based HTTP server"
 depends="apache-htpasswd"
 makedepends+=" apr-util-devel"
@@ -202,6 +202,7 @@ apache-htpasswd_package() {
   short_desc+=" - htpasswd"
   pkg_install() {
     vmove usr/bin/htpasswd
+    vmove usr/share/man/man1/htpasswd.1
   }
 }
 
