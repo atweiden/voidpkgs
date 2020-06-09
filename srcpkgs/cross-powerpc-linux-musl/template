@@ -12,7 +12,7 @@ _sysroot="/usr/$_triplet"
 maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.33
-revision=1
+revision=2
 short_desc="Cross toolchain for PowerPC (musl)"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
@@ -108,10 +108,10 @@ _gcc_bootstrap() {
   cd "$wrksrc/gcc-$_gcc_version"
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
-  _apply_patch -p0 "$FILESDIR/no-stack_chk_fail_local.patch"
   _apply_patch -p0 "$FILESDIR/0010-ldbl128-config.patch"
   _apply_patch -p0 "$FILESDIR/libgcc-ibm128-no-tag.patch"
   _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
+  _apply_patch -p1 "$FILESDIR/libssp-musl.patch"
   _apply_patch -p0 "$FILESDIR/invalid_tls_model.patch"
   _apply_patch -p0 "$FILESDIR/gccgo-musl.patch"
 
@@ -244,6 +244,7 @@ _gcc_build() {
   _args+=" --enable-default-ssp"
   _args+=" --enable-languages=c,ada,c++,objc,obj-c++,go,fortran,lto"
   _args+=" --enable-libada"
+  _args+=" --enable-libssp"
   _args+=" --enable-lto"
   _args+=" --enable-secureplt"
   _args+=" --enable-shared"
