@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="glib"
-version=2.64.2
+version=2.64.3
 revision=1
 makedepends+=" dbus-devel"
 makedepends+=" elfutils-devel"
@@ -20,7 +20,7 @@ homepage="https://wiki.gnome.org/Projects/GLib"
 license="LGPL-2.1-or-later"
 changelog="https://gitlab.gnome.org/GNOME/glib/raw/master/NEWS"
 distfiles="$GNOME_SITE/glib/${version%.*}/$pkgname-$version.tar.xz"
-checksum="9a2f21ed8f13b9303399de13a0252b7cbcede593d26971378ec6cb90e87f2277"
+checksum="fe9cbc97925d14c804935f067a3ad77ef55c0bbe9befe68962318f5a767ceb22"
 build_style="meson"
 configure_args+=" -Dfam=false"
 configure_args+=" -Dman=true"
