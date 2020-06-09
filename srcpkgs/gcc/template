@@ -8,7 +8,7 @@ _isl_version=0.21
 maintainer="nox"
 pkgname="gcc"
 version=$_minorver.0
-revision=5
+revision=6
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -66,7 +66,7 @@ _have_gccgo="yes"
 # mips does not have libucontext yet
 # no support for ppcle in gccgo (missing GOARCH and stuff)
 case "$XBPS_TARGET_MACHINE" in
-  mips*-musl|ppcle*)
+  i686-musl|mips*-musl|ppcle*)
     _have_gccgo="no"
     ;;
 esac
@@ -250,6 +250,7 @@ pre_configure() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       patch -p1 -i "$FILESDIR/libgnarl-musl.patch"
+      patch -p1 -i "$FILESDIR/libssp-musl.patch"
       patch -p0 -i "$FILESDIR/gccgo-musl.patch"
       ;;
   esac
