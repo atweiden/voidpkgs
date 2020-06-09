@@ -1,0 +1,12 @@
+# Template file for 'terraform'
+pkgname=terraform
+version=0.12.26
+revision=1
+build_style=go
+go_import_path="github.com/hashicorp/$pkgname"
+short_desc="Tool for building, changing, and combining infrastructure"
+maintainer="Andrea Brancaleoni <abc@pompel.me>"
+license="MPL-2.0"
+homepage="https://www.terraform.io/"
+distfiles="https://$go_import_path/archive/v$version.tar.gz"
+checksum=4db5deb8c6a81956bf603196a1300aacbe80dd5716244ae20c2f9b3df571df4e
