@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lxd"
-version=4.0.1
+version=4.2
 revision=1
 short_desc="Next generation system container manager"
 depends+=" acl"
@@ -20,7 +20,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://linuxcontainers.org/lxd"
 license="Apache-2.0"
 distfiles="https://linuxcontainers.org/downloads/lxd/$pkgname-$version.tar.gz"
-checksum="bdcdf74553533824cc63d6760ab3a09a5354e8bcb4ad3d938fde1feb95f4b36b"
+checksum="a4269555bf9ea7d7d0bc7dda0c6900db97101332df9102274937bf68b927685f"
 build_style="go"
 go_import_path="github.com/lxc/lxd"
 go_build_tags="libsqlite3"
