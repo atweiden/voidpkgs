@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gdb"
-version=9.1
+version=9.2
 revision=1
 short_desc="GNU Debugger"
 makedepends+=" babeltrace-devel"
@@ -20,7 +20,7 @@ hostmakedepends+=" $(vopt_if python python3-devel)"
 homepage="https://www.gnu.org/software/gdb/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gdb/$pkgname-$version.tar.xz"
-checksum="699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737"
+checksum="360cd7ae79b776988e89d8f9a01c985d0b1fa21c767a4295e5f88cb49175c555"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-nls"
