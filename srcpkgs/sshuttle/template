@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sshuttle"
-version=0.78.5
-revision=2
+version=1.0.1
+revision=1
 short_desc="Transparent proxy server that forwards TCP packets over ssh"
 archs="noarch"
 depends+=" iptables"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/sshuttle/sshuttle"
 license="LGPL-2.1-or-later"
 distfiles="$PYPI_SITE/s/sshuttle/$pkgname-$version.tar.gz"
-checksum="a88b59bd9a25510a6643451ec2d5fc35e149098a6a7fafdf37957498791fe16e"
+checksum="84427797f75958361dd06327a33e80845abb2b0b5fec871bec1a1ba46e1ad7bc"
 build_style="python3-module"
 pycompile_module="sshuttle"
 
