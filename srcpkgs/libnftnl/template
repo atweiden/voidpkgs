@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libnftnl"
-version=1.1.6
+version=1.1.7
 revision=1
 short_desc="Low-level netlink interface to nf_tables"
 makedepends="libmnl-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.netfilter.org/projects/libnftnl/"
 license="GPL-2.0-or-later"
 distfiles="https://www.netfilter.org/projects/libnftnl/files/$pkgname-$version.tar.bz2"
-checksum="c1eb5a696fc1d4b3b412770586017bc01af93da3ddd25233d34a62979dee1eca"
+checksum="20dbc13f11004aea2c9e479cfb90359cb11fe3446c3140811c18e4ec1648ed8f"
 build_style="gnu-configure"
 
 libnftnl-devel_package() {
