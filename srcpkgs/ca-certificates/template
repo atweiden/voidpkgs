@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ca-certificates"
-version=20190110
-revision=2
+version=20200601
+revision=1
 short_desc="Common CA certificates for SSL/TLS"
 archs="noarch"
 depends+=" libressl>=2.2.4_2"
@@ -10,9 +10,9 @@ hostmakedepends="libressl"
 homepage="https://tracker.debian.org/pkg/ca-certificates"
 license="GPL-2.0-or-later, MPL-2.0"
 distfiles="$DEBIAN_SITE/main/c/ca-certificates/${pkgname}_$version.tar.xz"
-checksum="ee4bf0f4c6398005f5b5ca4e0b87b82837ac5c3b0280a1cb3a63c47555c3a675"
+checksum="43766d5a436519503dfd65ab83488ae33ab4d4ca3d0993797b58c92eb9ed4e63"
 conf_files="/etc/ca-certificates.conf"
-wrksrc="$pkgname"
+wrksrc="work"
 bootstrap="yes"
 
 post_extract() {
