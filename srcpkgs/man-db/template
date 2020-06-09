@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="man-db"
-version=2.9.1
+version=2.9.2
 revision=1
 short_desc="On-line manual database"
 depends+=" bzip2"
@@ -21,7 +21,7 @@ homepage="https://www.nongnu.org/man-db/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 changelog="https://git.savannah.gnu.org/cgit/man-db.git/plain/NEWS"
 distfiles="$NONGNU_SITE/man-db/$pkgname-$version.tar.xz"
-checksum="ba3d8afc5c09a7265a8dabfa0e7c1f4b3ab97df9abf1f6810faa8f301056c74f"
+checksum="7b383f26c67525205f96a4a3bfb27993396992794adda6fe05ad565f369f047c"
 conf_files="/etc/man_db.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
