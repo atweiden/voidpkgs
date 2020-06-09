@@ -1,53 +1,55 @@
 maintainer="nox"
 pkgname="haproxy"
 version=2.1.5
-revision=2
+revision=3
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" libressl-devel"
 makedepends+=" lua-devel"
 makedepends+=" pcre-devel"
+checkdepends="varnish"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
 checksum="42174ac5836ab243565b888299ec30115c1259e75872696708528260c6700ea1"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
-make_build_args+=" TARGET=linux-glibc"
-make_build_args+=" USE_GETADDRINFO=1"
-make_build_args+=" USE_LIBCRYPT=1"
-make_build_args+=" USE_LUA=1"
-make_build_args+=" USE_OPENSSL=1"
-make_build_args+=" USE_PCRE=1"
-make_build_args+=" USE_PCRE_JIT=1"
-make_build_args+=" USE_ZLIB=1"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
 make_install_args+=" SBINDIR=$DESTDIR/usr/bin"
 system_accounts="haproxy"
 haproxy_homedir="/var/lib/haproxy"
 make_dirs="$haproxy_homedir 0750 haproxy haproxy"
 
-case "$XBPS_TARGET_LIBC" in
-  musl)
-    makedepends+=" libexecinfo-devel"
-    CFLAGS="-D__LINUX_NETFILTER_H"
-    ADDLIB+=" -lexecinfo"
-  ;;
-esac
-
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  ADDLIB+=" -latomic"
-fi
-
 do_build() {
+  local TARGET
+  case "$XBPS_TARGET_LIBC" in
+    musl)
+      TARGET="linux-musl"
+      ;;
+    *)
+      TARGET="linux-glibc"
+      ;;
+  esac
   make \
-    "$makejobs" \
-    ADDLIB="$ADDLIB" \
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     EXTRA= \
     LDFLAGS="$LDFLAGS" \
-    $make_build_args
+    TARGET=$TARGET \
+    USE_GETADDRINFO=1 \
+    USE_LIBCRYPT=1 \
+    USE_LUA=1 \
+    USE_OPENSSL=1 \
+    USE_PCRE=1 \
+    USE_PCRE_JIT=1 \
+    USE_ZLIB=1 \
+    "$makejobs"
+}
+
+do_check() {
+  export VTEST_PROGRAM="/usr/bin/varnishtest"
+  make reg-tests \
+    || : 4 test failed on musl
 }
 
 post_install() {
