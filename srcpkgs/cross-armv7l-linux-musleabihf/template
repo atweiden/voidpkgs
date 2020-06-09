@@ -12,7 +12,7 @@ _sysroot="/usr/$_triplet"
 maintainer="nox"
 pkgname="cross-$_triplet"
 version=0.33
-revision=2
+revision=3
 short_desc="Cross toolchain for ARMv7 LE Hard Float target (musl)"
 depends="$pkgname-libc-${version}_$revision"
 makedepends+=" gmp-devel"
@@ -102,6 +102,7 @@ _gcc_bootstrap() {
   _apply_patch -p0 "$FILESDIR/fix-cxxflags-passing.patch"
   _apply_patch -p0 "$FILESDIR/musl-ada.patch"
   _apply_patch -p1 "$FILESDIR/libgnarl-musl.patch"
+  _apply_patch -p1 "$FILESDIR/libssp-musl.patch"
   _apply_patch -p0 "$FILESDIR/invalid_tls_model.patch"
   _apply_patch -p0 "$FILESDIR/gccgo-musl.patch"
 
@@ -219,6 +220,7 @@ _gcc_build() {
   _args+=" --enable-default-ssp"
   _args+=" --enable-languages=c,ada,c++,objc,obj-c++,go,fortran,lto"
   _args+=" --enable-libada"
+  _args+=" --enable-libssp"
   _args+=" --enable-lto"
   _args+=" --enable-shared"
   _args+=" --libexecdir=/usr/lib"
