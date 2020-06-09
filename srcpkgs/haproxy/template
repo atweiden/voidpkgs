@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="haproxy"
 version=2.1.5
-revision=1
+revision=2
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" libressl-devel"
@@ -27,14 +27,16 @@ system_accounts="haproxy"
 haproxy_homedir="/var/lib/haproxy"
 make_dirs="$haproxy_homedir 0750 haproxy haproxy"
 
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
+case "$XBPS_TARGET_LIBC" in
+  musl)
+    makedepends+=" libexecinfo-devel"
     CFLAGS="-D__LINUX_NETFILTER_H"
-    ;;
+    ADDLIB+=" -lexecinfo"
+  ;;
 esac
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  ADDLIB="-latomic"
+  ADDLIB+=" -latomic"
 fi
 
 do_build() {
