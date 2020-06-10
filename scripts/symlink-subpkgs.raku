@@ -374,7 +374,6 @@ constant %PKG = Map.new(
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
     'libgssglue' => ['libgssglue-devel'],
-    'libgudev' => ['libgudev-devel'],
     'libidn' => ['libidn-devel'],
     'libidn2' => ['libidn2-devel'],
     'libimobiledevice' => ['libimobiledevice-devel'],
