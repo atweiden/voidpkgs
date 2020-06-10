@@ -16,9 +16,6 @@ hostmakedepends+=" gperf"
 hostmakedepends+=" lua51-lpeg"
 hostmakedepends+=" lua51-mpack"
 hostmakedepends+=" pkg-config"
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" qemu-user-static"
-fi
 homepage="https://neovim.io"
 license="Apache-2.0, custom:Vim"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
@@ -32,6 +29,8 @@ alternatives+=" vi:view.1:/usr/share/man/man1/nvim.1"
 alternatives+=" vi:view:/usr/bin/nvim"
 alternatives+=" vim:vim.1:/usr/share/man/man1/nvim.1"
 alternatives+=" vim:vim:/usr/bin/nvim"
+# cross-compilation requires `qemu-user-static`, see: upstream
+nocross="yes"
 
 pre_configure() {
   vsed \
