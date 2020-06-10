@@ -192,7 +192,6 @@ constant %PKG = Map.new(
     'expat' => qw<expat-devel
                   xmlwf>,
     'expect' => ['expect-devel'],
-    'fann' => ['fann-devel'],
     'fftw' => qw<fftw-devel
                  libfftw>,
     'file' => qw<file-devel
