@@ -409,8 +409,6 @@ constant %PKG = Map.new(
                    libnl3-progs>,
     'libogg' => ['libogg-devel'],
     'libomp' => ['libomp-devel'],
-    'libotr' => qw<libotr-devel
-                   libotr-progs>,
     'libpcap' => ['libpcap-devel'],
     'libpipeline' => ['libpipeline-devel'],
     'libplist' => qw<libplist++
