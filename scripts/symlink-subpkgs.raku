@@ -100,7 +100,6 @@ constant %PKG = Map.new(
                   libboost_unit_test_framework1.72
                   libboost_wave1.72
                   libboost_wserialization1.72>,
-    'brotli' => ['brotli-devel'],
     'btrfs-progs' => qw<libbtrfs
                         libbtrfs-devel
                         libbtrfsutil
