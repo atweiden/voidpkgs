@@ -745,8 +745,6 @@ constant %PKG = Map.new(
     'whois' => ['mkpasswd'],
     'wimlib' => ['wimlib-devel'],
     'wireless_tools' => ['wireless_tools-devel'],
-    'wireshark' => qw<libwireshark
-                      libwireshark-devel>,
     'wvstreams' => ['wvstreams-devel'],
     'xbps' => qw<libxbps
                  libxbps-devel
