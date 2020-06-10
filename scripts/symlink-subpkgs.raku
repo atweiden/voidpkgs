@@ -667,7 +667,6 @@ constant %PKG = Map.new(
     'python-yaml' => ['python3-yaml'],
     'python-zope.interface' => ['python3-zope.interface'],
     'python3' => ['python3-devel'],
-    'qemu' => ['qemu-ga'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'raft' => ['raft-devel'],
