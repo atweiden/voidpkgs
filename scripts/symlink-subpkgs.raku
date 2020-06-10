@@ -383,7 +383,6 @@ constant %PKG = Map.new(
     'libksba' => ['libksba-devel'],
     'libluv' => ['libluv-devel'],
     'libmaxminddb' => ['libmaxminddb-devel'],
-    'libmbim' => ['libmbim-devel'],
     'libmnl' => ['libmnl-devel'],
     'libmpack' => ['libmpack-devel'],
     'libmpc' => ['libmpc-devel'],
