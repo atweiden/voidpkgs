@@ -277,7 +277,6 @@ constant %PKG = Map.new(
     'h2o' => ['h2o-devel'],
     'haveged' => qw<libhaveged
                     libhaveged-devel>,
-    'hiredis' => ['hiredis-devel'],
     'http-parser' => ['http-parser-devel'],
     'httrack' => ['httrack-devel'],
     'hunspell' => qw<hunspell-devel

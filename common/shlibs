@@ -156,7 +156,6 @@ libgtest.so gtest-1.7.0_1
 libgtest_main.so gtest-1.7.0_1
 libgmock.so gtest-1.8.1_1
 libgmock_main.so gtest-1.8.1_1
-libhiredis.so.0.14 hiredis-0.14.0_1
 libhttp_parser.so.2.9 http-parser-2.9.0_1
 libhtsjava.so.2 httrack-3.48.21_1
 libhttrack.so.2 httrack-3.48.21_1
