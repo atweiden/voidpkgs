@@ -3,30 +3,13 @@ pkgname="libgpg-error"
 version=1.37
 revision=1
 short_desc="Library for error values used by GnuPG component"
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends="qemu-user-static"
-fi
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
 checksum="b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763"
 build_style="gnu-configure"
-
-post_configure() {
-  local lock_obj_pub
-  lock_obj_pub="src/syscfg/lock-obj-pub.${XBPS_CROSS_TRIPLET#*-}.h"
-  if [[ -n "$CROSS_BUILD" ]]; then
-    $CC \
-      -DHAVE_CONFIG_H \
-      -I. \
-      -pthread \
-      -o gen-posix-lock-obj src/gen-posix-lock-obj.c
-    "qemu-$XBPS_TARGET_QEMU_MACHINE-static" -L "$XBPS_CROSS_BASE" \
-      gen-posix-lock-obj > "$lock_obj_pub"
-    msg_normal "Generated $lock_obj_pub ...\n"
-    cat "$lock_obj_pub"
-  fi
-}
+# cross-compilation requires `qemu-user-static`, see: upstream
+nocross="yes"
 
 post_install() {
   rm -rf "$DESTDIR/usr/share/common-lisp"
