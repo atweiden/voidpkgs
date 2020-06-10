@@ -306,9 +306,6 @@ constant %PKG = Map.new(
     'iproute2' => ['iproute2-tc-ipt'],
     'iptables' => qw<iptables-devel
                      iptables-nft>,
-    'irssi' => qw<irssi-devel
-                  irssi-otr
-                  irssi-perl>,
     'isl15' => ['isl15-devel'],
     'janet' => ['janet-devel'],
     'jansson' => ['jansson-devel'],
