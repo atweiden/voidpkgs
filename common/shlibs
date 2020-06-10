@@ -13,12 +13,6 @@ libaprutil-1.so.0 apr-util-1.3.9_1
 libatf-c++.so.2 atf-libs-0.21_1
 libatf-c.so.1 atf-libs-0.21_1
 libattr.so.1 attr-2.4.43_1
-libbabeltrace-ctf-metadata.so.1 babeltrace-1.5.3_1
-libbabeltrace-ctf-text.so.1 babeltrace-1.5.3_1
-libbabeltrace-ctf.so.1 babeltrace-1.5.3_1
-libbabeltrace-dummy.so.1 babeltrace-1.5.3_1
-libbabeltrace-lttng-live.so.1 babeltrace-1.5.3_1
-libbabeltrace.so.1 babeltrace-1.5.3_1
 libbcc.so.0 bcc-0.10.0_1
 libbcc_bpf.so.0 bcc-0.10.0_1
 libbcc.so.0 bcc-0.7.0_1

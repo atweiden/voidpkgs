@@ -3,7 +3,6 @@ pkgname="gdb"
 version=9.2
 revision=1
 short_desc="GNU Debugger"
-makedepends+=" babeltrace-devel"
 makedepends+=" expat-devel"
 makedepends+=" guile-devel"
 makedepends+=" liblzma-devel"
