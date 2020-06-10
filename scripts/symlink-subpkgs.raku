@@ -701,7 +701,6 @@ constant %PKG = Map.new(
     'speex' => qw<libspeex
                   speex-devel>,
     'speexdsp' => ['speexdsp-devel'],
-    'spice' => ['spice-devel'],
     'sqlite' => ['sqlite-devel'],
     'sqlite-replication' => qw<sqlite-replication-bin
                                sqlite-replication-devel>,
