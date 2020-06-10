@@ -54,7 +54,7 @@ nostrip_files+=" libgnat_pic.a"
 
 _apply_patch() {
   local args="$1" pname="$(basename $2)"
-  if [ ! -f ".${pname}_done" ]; then
+  if ! [[ -f ".${pname}_done" ]]; then
     patch -N "$args" -i "$2"
     touch ".${pname}_done"
   fi
