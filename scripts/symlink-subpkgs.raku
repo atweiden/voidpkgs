@@ -376,7 +376,6 @@ constant %PKG = Map.new(
     'libgssglue' => ['libgssglue-devel'],
     'libidn' => ['libidn-devel'],
     'libidn2' => ['libidn2-devel'],
-    'libimobiledevice' => ['libimobiledevice-devel'],
     'libiscsi' => qw<libiscsi-devel
                      libiscsi-tools>,
     'libjpeg-turbo' => qw<libjpeg-turbo-devel
