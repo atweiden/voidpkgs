@@ -452,7 +452,6 @@ constant %PKG = Map.new(
     'liburcu' => ['liburcu-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
-    'libusbmuxd' => ['libusbmuxd-devel'],
     'libutempter' => ['libutempter-devel'],
     'libuv' => ['libuv-devel'],
     'libvorbis' => ['libvorbis-devel'],
