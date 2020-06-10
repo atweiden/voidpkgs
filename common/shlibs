@@ -518,7 +518,6 @@ libmbedtls.so.12 mbedtls-2.13.1_1
 libmbedcrypto.so.3 mbedtls-2.9.0_1
 libmbedx509.so.0 mbedtls-2.9.0_1
 libminiupnpc.so.17 miniupnpc-2.1_1
-libminizip.so.1 minizip-1.2.7_1
 db2.so.0 mit-krb5-1.16.1_1
 k5tls.so.0 mit-krb5-1.16.1_1
 kldap.so.0 mit-krb5-1.16.1_1

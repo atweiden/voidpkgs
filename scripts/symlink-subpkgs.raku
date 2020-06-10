@@ -502,7 +502,6 @@ constant %PKG = Map.new(
     'mdocml' => ['void-man-cgi'],
     'memcached' => ['memcached-devel'],
     'miniupnpc' => ['miniupnpc-devel'],
-    'minizip' => ['minizip-devel'],
     'mit-krb5' => qw<mit-krb5-client
                      mit-krb5-devel
                      mit-krb5-libs>,
