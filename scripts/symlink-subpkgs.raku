@@ -404,9 +404,6 @@ constant %PKG = Map.new(
     'libomp' => ['libomp-devel'],
     'libpcap' => ['libpcap-devel'],
     'libpipeline' => ['libpipeline-devel'],
-    'libplist' => qw<libplist++
-                     libplist-devel
-                     libplist-python>,
     'libpng' => qw<libpng-devel
                    libpng-progs>,
     'libpsl' => ['libpsl-devel'],
