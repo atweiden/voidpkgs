@@ -572,7 +572,6 @@ constant %PKG = Map.new(
                                pinebookpro-kernel-headers>,
     'pinentry' => qw<pinentry-emacs
                      pinentry-tty>,
-    'pixman' => ['pixman-devel'],
     'pkcs11-helper' => qw<pkcs11-helper-devel
                           pkcs11-helper-doc>,
     'popt' => ['popt-devel'],
