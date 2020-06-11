@@ -1,1 +1,1 @@
-pattern='\d{8}(?=<br />\(Latest\))'
+pattern="microcode-\K[0-9]+(?=.tar)"
