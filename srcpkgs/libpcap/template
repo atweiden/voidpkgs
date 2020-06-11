@@ -4,7 +4,6 @@ version=1.9.1
 revision=1
 short_desc="System-independent interface for user-level packet capture"
 makedepends+=" libnl3-devel"
-makedepends+=" $(vopt_if dbus dbus-devel)"
 makedepends+=" $(vopt_if usb libusb-devel)"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
@@ -16,10 +15,8 @@ build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --with-libnl"
 configure_args+=" --with-pcap=linux"
-configure_args+=" $(vopt_enable dbus)"
 configure_args+=" $(vopt_enable usb)"
-build_options+=" dbus"
-build_options+=" usb"
+build_options="usb"
 build_options_default="usb"
 
 # for libnl
