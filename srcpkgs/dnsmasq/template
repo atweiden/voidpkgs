@@ -3,7 +3,6 @@ pkgname="dnsmasq"
 version=2.81
 revision=1
 short_desc="Lightweight, easy to configure DNS forwarder and DHCP server"
-makedepends+=" dbus-devel"
 makedepends+=" libcap-devel"
 makedepends+=" libidn2-devel"
 makedepends+=" $(vopt_if dnssec nettle-devel)"
@@ -21,7 +20,6 @@ build_options_default="dnssec"
 desc_option_dnssec="Enable DNSSEC support via nettle"
 
 do_build() {
-  echo '#define HAVE_DBUS' >> src/config.h
   echo '#define HAVE_LIBIDN2' >> src/config.h
   if [[ -n "$build_option_dnssec" ]]; then
     echo '#define HAVE_DNSSEC' >> src/config.h
@@ -41,7 +39,6 @@ do_install() {
     install
   vsv dnsmasq
   vconf dnsmasq.conf.example dnsmasq.conf
-  vinstall "$FILESDIR/dbus.conf" 644 etc/dbus-1/system.d
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
