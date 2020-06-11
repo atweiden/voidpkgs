@@ -16,6 +16,5 @@ Todo
 - trim non-`template` files
 - s/voidlinux.eu/voidlinux.org
 - replace `http://` links with `https://`
-- rm dbus
 
 [upstream]: https://github.com/void-linux/void-packages
