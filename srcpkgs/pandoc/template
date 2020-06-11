@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
-version=2.9.1.1
-revision=3
-_citeproc_version=0.16.4.1
+version=2.9.2.1
+revision=1
+_citeproc_version=0.17
 _sidenote_version=0.20.0
 _monad_gen_version=0.3.0.1
 short_desc="Universal converter between markup formats (with citeproc support)"
@@ -18,13 +18,13 @@ distfiles+=" http://hackage.haskell.org/package/$pkgname-$version/$pkgname-$vers
 distfiles+=" http://hackage.haskell.org/package/$pkgname-citeproc-$_citeproc_version/$pkgname-citeproc-$_citeproc_version.tar.gz"
 distfiles+=" https://github.com/jez/pandoc-sidenote/archive/${_sidenote_version}.tar.gz"
 distfiles+=" https://hackage.haskell.org/package/monad-gen-$_monad_gen_version/monad-gen-$_monad_gen_version.tar.gz"
-checksum+=" 9d21c5efe2074f9b3097a20e0798de9d8b89a86a1ce04a307f476c7b4aa3816d"
-checksum+=" bd726878595ca66376c9536addc81a19bbab8f3517d41aa72165582dd0336dc9"
+checksum+=" c26d35372cf8b7d53062c9c495c0bca2ee370891c2349d3798a44f9ca33bdf57"
+checksum+=" 47a9e7aac348d55eb935bee5ced30529974f4a680d67c38ea68be1d83edaf5b1"
 checksum+=" 34ee7f46d6472c04884b1dcb030d701a32b885d9b0d4307d2c0da327a359cb7a"
 checksum+=" be8485023fce236b5b915f2f6074f7b0470a2040f84cdd137c5227f1b4c98465"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-15.4"
+stackage="lts-16.0"
 make_build_args+=" --flag pandoc-citeproc:embed_data_files"
 make_build_args+=" --flag pandoc:embed_data_files"
 make_build_args+=" --flag=hslua:pkg-config"
