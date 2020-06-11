@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dnscrypt-proxy"
-version=2.0.42
+version=2.0.43
 revision=1
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/DNSCrypt/dnscrypt-proxy"
 license="ISC"
 changelog="https://github.com/DNSCrypt/dnscrypt-proxy/raw/master/ChangeLog"
 distfiles="https://github.com/DNSCrypt/dnscrypt-proxy/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c000ca4e159c6606cb3476ea9e34ed64b5c46c710d70cc5651f14f1125c8d352"
+checksum="5e3a300ca3d6303dc272afb2583e177dfcb2eea3f640f3181e383c22360a57d4"
 conf_files="/etc/dnscrypt-proxy.toml"
 system_accounts="dnscrypt_proxy"
 make_dirs="/var/log/dnscrypt-proxy 0750 dnscrypt_proxy dnscrypt_proxy"
