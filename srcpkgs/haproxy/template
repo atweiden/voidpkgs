@@ -21,21 +21,22 @@ haproxy_homedir="/var/lib/haproxy"
 make_dirs="$haproxy_homedir 0750 haproxy haproxy"
 
 do_build() {
-  local TARGET
-  case "$XBPS_TARGET_LIBC" in
-    musl)
-      TARGET="linux-musl"
-      ;;
-    *)
-      TARGET="linux-glibc"
-      ;;
-  esac
+  local atomic
+  local target
+
+  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+    atomic="-latomic"
+  fi
+
+  target="linux-$XBPS_TARGET_LIBC"
+
   make \
+    ADDLIB="$atomic" \
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     EXTRA= \
     LDFLAGS="$LDFLAGS" \
-    TARGET=$TARGET \
+    TARGET=$target \
     USE_GETADDRINFO=1 \
     USE_LIBCRYPT=1 \
     USE_LUA=1 \
