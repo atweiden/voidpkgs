@@ -28,18 +28,15 @@ configure_args+=" --optimize"
 configure_args+=" --pkgconfig=/usr/bin/pkgconf"
 configure_args+=" --prefix=/usr"
 configure_args+=" --toolchain=gnu"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --build=$XBPS_CROSS_TRIPLET"
-  configure_args+=" --host=$XBPS_CROSS_TRIPLET"
-  export PKG_CONFIG_PATH="$XBPS_CROSS_BASE/usr/lib/pkgconfig:$XBPS_CROSS_BASE/usr/share/pkgconfig"
-fi
+build_options="clang"
+desc_option_clang="Use clang instead of gcc to compile MoarVM"
+shlib_provides="libmoar.so"
+nocross="yes"
+
 if [[ -n "$(vopt_if clang clang)" ]]; then
   configure_args+=" --compiler=clang"
   nopie="yes"
 fi
-build_options="clang"
-desc_option_clang="Use clang instead of gcc to compile MoarVM"
-shlib_provides="libmoar.so"
 
 post_install() {
   vlicense Artistic2.txt
