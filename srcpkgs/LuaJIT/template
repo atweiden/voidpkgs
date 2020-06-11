@@ -11,16 +11,8 @@ license="MIT"
 distfiles="http://luajit.org/download/$pkgname-$_dist_version.tar.gz"
 checksum="1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3"
 wrksrc="$pkgname-$_dist_version"
-
-_cross_cc="cc"
-if [[ "$XBPS_WORDSIZE" != "$XBPS_TARGET_WORDSIZE" ]]; then
-  if [[ "${XBPS_MACHINE/-musl/}" == "x86_64" ]]; then
-    hostmakedepends+=" cross-i686-linux-musl"
-    _cross_cc="i686-linux-musl-gcc -static"
-  else
-    broken="Host and target wordsize must match"
-  fi
-fi
+# cross-compilation may require `cross-i686-linux-musl`, see: upstream
+nocross="yes"
 
 # the ppc64 patchset subtly breaks ppc, needs investigation; for now
 # apply patches conditionally, separately for ppc64 and ppc
@@ -52,22 +44,17 @@ do_build() {
   _cflags="$CFLAGS"
   _ldflags="$LDFLAGS"
 
-  if [[ -n "$CROSS_BUILD" ]]; then
-    local cross="CROSS=$XBPS_CROSS_TRIPLET-"
-  fi
-
   unset CFLAGS
   unset LDFLAGS
   make \
     "$makejobs" \
-    HOST_CC="$_cross_cc" \
+    HOST_CC="cc" \
     HOST_CFLAGS="$XBPS_CFLAGS" \
     HOST_LDFLAGS="$XBPS_LDFLAGS" \
     HOST_LUA="lua5.2" \
     PREFIX="/usr" \
     TARGET_CFLAGS="$_cflags" \
-    TARGET_LDFLAGS="$_ldflags" \
-    $cross
+    TARGET_LDFLAGS="$_ldflags"
 }
 
 do_install() {
