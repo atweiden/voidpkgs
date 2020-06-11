@@ -64,7 +64,6 @@ libcom_err.so.2 e2fsprogs-libs-1.41.5_1_1
 libe2p.so.2 e2fsprogs-libs-1.41.5_1_1
 libext2fs.so.2 e2fsprogs-libs-1.41.5_1_1
 libss.so.2 e2fsprogs-libs-1.41.5_1_1
-libell.so.0 ell-0.20_1
 libudev.so.1 eudev-libudev-1.6_1
 libexpat.so.1 expat-2.0.0_1
 libf2fs.so.5 f2fs-tools-1.11.0_1
