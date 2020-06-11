@@ -8,9 +8,9 @@ Description
 -----------
 
 A fork of [void-linux/void-packages][void-linux/void-packages] with GUI
-support removed from [srcpkgs][srcpkgs]. Also removes [glib][glib] and
-cross-compilation support. Templates adhere to my [style guide][style
-guide].
+support removed from [srcpkgs][srcpkgs]. Also removes [dbus][dbus],
+[glib][glib] and cross-compilation support. Templates adhere to my
+[style guide][style guide].
 
 
 Usage
@@ -78,6 +78,7 @@ are made available under the terms of the [original license][original
 license].
 
 
+[dbus]: https://dbus.freedesktop.org/
 [glib]: https://wiki.gnome.org/Projects/GLib
 [original license]: doc/COPYING.xtraeme
 [srcpkgs]: srcpkgs/
