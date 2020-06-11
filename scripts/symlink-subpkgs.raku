@@ -119,31 +119,6 @@ constant %PKG = Map.new(
     'cracklib' => qw<cracklib-devel
                      cracklib-python
                      libcracklib>,
-    'cross-aarch64-linux-gnu' => ['cross-aarch64-linux-gnu-libc'],
-    'cross-aarch64-linux-musl' => ['cross-aarch64-linux-musl-libc'],
-    'cross-arm-linux-gnueabi' => ['cross-arm-linux-gnueabi-libc'],
-    'cross-arm-linux-gnueabihf' => ['cross-arm-linux-gnueabihf-libc'],
-    'cross-arm-linux-musleabi' => ['cross-arm-linux-musleabi-libc'],
-    'cross-arm-linux-musleabihf' => ['cross-arm-linux-musleabihf-libc'],
-    'cross-armv7l-linux-gnueabihf' => ['cross-armv7l-linux-gnueabihf-libc'],
-    'cross-armv7l-linux-musleabihf' => ['cross-armv7l-linux-musleabihf-libc'],
-    'cross-i686-linux-musl' => ['cross-i686-linux-musl-libc'],
-    'cross-i686-pc-linux-gnu' => ['cross-i686-pc-linux-gnu-libc'],
-    'cross-mips-linux-musl' => ['cross-mips-linux-musl-libc'],
-    'cross-mips-linux-muslhf' => ['cross-mips-linux-muslhf-libc'],
-    'cross-mipsel-linux-musl' => ['cross-mipsel-linux-musl-libc'],
-    'cross-mipsel-linux-muslhf' => ['cross-mipsel-linux-muslhf-libc'],
-    'cross-powerpc-linux-gnu' => ['cross-powerpc-linux-gnu-libc'],
-    'cross-powerpc-linux-musl' => ['cross-powerpc-linux-musl-libc'],
-    'cross-powerpc64-linux-gnu' => ['cross-powerpc64-linux-gnu-libc'],
-    'cross-powerpc64-linux-musl' => ['cross-powerpc64-linux-musl-libc'],
-    'cross-powerpc64le-linux-gnu' => ['cross-powerpc64le-linux-gnu-libc'],
-    'cross-powerpc64le-linux-musl' => ['cross-powerpc64le-linux-musl-libc'],
-    'cross-x86_64-linux-gnu' => ['cross-x86_64-linux-gnu-libc'],
-    'cross-x86_64-linux-musl' => ['cross-x86_64-linux-musl-libc'],
-    'cross-x86_64-w64-mingw32' => qw<cross-i686-w64-mingw32
-                                     cross-i686-w64-mingw32-crt
-                                     cross-x86_64-w64-mingw32-crt>,
     'crypto++' => ['crypto++-devel'],
     'cryptsetup' => qw<cryptsetup-devel
                        cryptsetup-static
