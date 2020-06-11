@@ -40,7 +40,6 @@ libcmocka.so.0 cmocka-1.1.1_1
 libconfuse.so.2 confuse-3.2.1_1
 libreg.so crda-3.18_5
 libcryptopp.so.8 crypto++-820_1
-libdbus-1.so.3 dbus-libs-1.2.10_1
 libdevmapper-event-lvm2.so.2.02 device-mapper-2.02.110_1
 libdevmapper-event.so.1.02 device-mapper-2.02.110_1
 libdevmapper.so.1.02 device-mapper-2.02.110_1

@@ -135,8 +135,6 @@ constant %PKG = Map.new(
                db-doc
                libdb
                libdb-cxx>,
-    'dbus' => qw<dbus-devel
-                 dbus-libs>,
     'dhcp' => ['dhclient'],
     'dmraid' => ['dmraid-devel'],
     'dovecot' => qw<dovecot-devel
