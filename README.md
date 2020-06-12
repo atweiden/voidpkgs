@@ -30,40 +30,16 @@ Bootstrap native libc architecture without remote repositories:
 ./xbps-src -N pkg base-system
 ```
 
-Bootstrap cross-compiled musl architecture without remote repositories:
-
-```sh
-_arch=$(uname -m)
-./xbps-src -N pkg cross-$_arch-linux-musl
-./xbps-src -N -a $_arch-musl pkg base-chroot-musl
-XBPS_TARGET_ARCH=$_arch-musl xbps-rindex -a hostdir/binpkgs/*
-./xbps-src -N bootstrap -m masterdir-$_arch-musl $_arch-musl
-```
-
-Bootstrap 32-bit architecture without remote repositories:
-
-```sh
-./xbps-src -N -m masterdir-i686 bootstrap i686
-```
-
-Install pkg easily with xtools/xi:
-
-```sh
-./xbps-src -N pkg xtools
-xbps-install --repository=hostdir/binpkgs xtools
-xi xtools
-```
-
 Ignore upstream repo pkg updates:
 
 ```sh
-xbps-pkgdb -m hold xtools
+xbps-pkgdb -m hold fd
 ```
 
 Fetch pkg sources:
 
 ```sh
-./xbps-src -I fetch xtools
+./xbps-src -I fetch fd
 ```
 
 
