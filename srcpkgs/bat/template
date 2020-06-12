@@ -1,27 +1,32 @@
-# Template file for 'bat'
-pkgname=bat
+maintainer="nox"
+pkgname="bat"
 version=0.15.4
 revision=1
-build_style=cargo
-hostmakedepends="cmake llvm clang"
-makedepends="libcurl-devel libssh2-devel oniguruma-devel"
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
-maintainer="John <johnz@posteo.net>"
-license="Apache-2.0, MIT"
+makedepends+=" libcurl-devel"
+makedepends+=" libssh2-devel"
+makedepends+=" oniguruma-devel"
+hostmakedepends+=" clang"
+hostmakedepends+=" cmake"
+hostmakedepends+=" llvm"
 homepage="https://github.com/sharkdp/bat"
-distfiles="https://github.com/sharkdp/bat/archive/v${version}.tar.gz"
-checksum=03b7c8ad6221ca87cecd71f9e3e2167f04f750401e2d3dcc574183aabeb76a8b
+license="Apache-2.0, MIT"
+distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="03b7c8ad6221ca87cecd71f9e3e2167f04f750401e2d3dcc574183aabeb76a8b"
+build_style="cargo"
 
 pre_build() {
-	export CFLAGS_${RUST_BUILD//-/_}="${CFLAGS_host}"
-	export CC_${RUST_BUILD//-/_}="${BUILD_CC}"
+  export CFLAGS_${RUST_BUILD//-/_}="$CFLAGS_host"
+  export CC_${RUST_BUILD//-/_}="$BUILD_CC"
 }
 
 post_install() {
-	local manpage
-	vlicense LICENSE-MIT
-	vdoc README.md
-	# The manual page is hidden somewhere deep in the build tree
-	manpage=$(find ${wrksrc}/target -name bat.1)
-	vman ${manpage}
+  local manpage
+  vlicense LICENSE-MIT
+  vdoc README.md
+  # the manual page is hidden somewhere deep in the build tree
+  manpage="$(find "$wrksrc/target" -name bat.1)"
+  vman "$manpage"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
