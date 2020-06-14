@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="libnetfilter_queue"
-version=1.0.3
+version=1.0.4
 revision=1
-short_desc="An API to packets that have been queued by the kernel packet filter"
+short_desc="API to packets that have been queued by the kernel packet filter"
 makedepends+=" libmnl-devel"
 makedepends+=" libnfnetlink-devel"
 hostmakedepends="pkg-config"
 homepage="http://www.netfilter.org/projects/libnetfilter_queue/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/libnetfilter_queue/files/$pkgname-$version.tar.bz2"
-checksum="9859266b349d74c5b1fdd59177d3427b3724cd72a97c49cc2fffe3b55da8e774"
+checksum="51f93233f7d1bffdc9268b9b3523317ce6c7e79daa750b490d90cdb8d033fa70"
 build_style="gnu-configure"
 
 CFLAGS="-D_GNU_SOURCE"
