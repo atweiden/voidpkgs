@@ -1,28 +1,19 @@
 maintainer="nox"
 pkgname="lua52"
 version=5.2.4
-revision=7
+revision=8
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.2.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
-homepage="http://www.lua.org"
+homepage="https://www.lua.org"
 license="MIT"
-distfiles="http://www.lua.org/ftp/${pkgname%52}-$version.tar.gz"
+distfiles="https://www.lua.org/ftp/lua-$version.tar.gz"
 checksum="b9e2e4aad6789b3b63a056d442f7b39f0ecfca3ae0f1fc0ae4e9614401b69f4b"
-wrksrc="${pkgname%52}-$version"
+wrksrc="lua-$version"
 alternatives+=" lua:lua:/usr/bin/lua5.2"
 alternatives+=" lua:luac:/usr/bin/luac5.2"
 alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.2.1"
 alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.2.1"
-alternatives+=" lua:lua:/usr/include/lua5.2"
-alternatives+=" lua:/usr/include/lua.h:/usr/include/lua5.2/lua.h"
-alternatives+=" lua:/usr/include/luaconf.h:/usr/include/lua5.2/luaconf.h"
-alternatives+=" lua:/usr/include/lua.hpp:/usr/include/lua5.2/lua.hpp"
-alternatives+=" lua:/usr/include/lualib.h:/usr/include/lua5.2/lualib.h"
-alternatives+=" lua:/usr/include/lauxlib.h:/usr/include/lua5.2/lauxlib.h"
-alternatives+=" lua:lua.pc:/usr/lib/pkgconfig/lua5.2.pc"
-alternatives+=" lua:liblua.a:/usr/lib/liblua5.2.a"
-alternatives+=" lua:liblua.so:/usr/lib/liblua5.2.so"
 alternatives+=" lua:lua:/usr/share/doc/lua5.2"
 
 do_build() {
@@ -74,9 +65,19 @@ do_install() {
 }
 
 lua52-devel_package() {
+  unset alternatives
   depends+=" $makedepends"
   depends+=" lua52>=${version}_$revision"
   short_desc+=" - development files"
+  alternatives+=" lua-devel:lua:/usr/include/lua5.2"
+  alternatives+=" lua-devel:/usr/include/lua.h:/usr/include/lua5.2/lua.h"
+  alternatives+=" lua-devel:/usr/include/luaconf.h:/usr/include/lua5.2/luaconf.h"
+  alternatives+=" lua-devel:/usr/include/lua.hpp:/usr/include/lua5.2/lua.hpp"
+  alternatives+=" lua-devel:/usr/include/lualib.h:/usr/include/lua5.2/lualib.h"
+  alternatives+=" lua-devel:/usr/include/lauxlib.h:/usr/include/lua5.2/lauxlib.h"
+  alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.2.pc"
+  alternatives+=" lua-devel:liblua.a:/usr/lib/liblua5.2.a"
+  alternatives+=" lua-devel:liblua.so:/usr/lib/liblua5.2.so"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
