@@ -1,27 +1,18 @@
 maintainer="nox"
 pkgname="lua"
 version=5.3.5
-revision=2
+revision=3
 short_desc="Powerful, fast, lightweight, embeddable scripting language"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
-homepage="http://www.lua.org"
+homepage="https://www.lua.org"
 license="MIT"
-distfiles="http://www.lua.org/ftp/$pkgname-$version.tar.gz"
+distfiles="https://www.lua.org/ftp/$pkgname-$version.tar.gz"
 checksum="0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac"
 alternatives+=" lua:lua:/usr/bin/lua5.3"
 alternatives+=" lua:luac:/usr/bin/luac5.3"
 alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.3.1"
 alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.3.1"
-alternatives+=" lua:lua:/usr/include/lua5.3"
-alternatives+=" lua:/usr/include/lua.h:/usr/include/lua5.3/lua.h"
-alternatives+=" lua:/usr/include/luaconf.h:/usr/include/lua5.3/luaconf.h"
-alternatives+=" lua:/usr/include/lua.hpp:/usr/include/lua5.3/lua.hpp"
-alternatives+=" lua:/usr/include/lualib.h:/usr/include/lua5.3/lualib.h"
-alternatives+=" lua:/usr/include/lauxlib.h:/usr/include/lua5.3/lauxlib.h"
-alternatives+=" lua:lua.pc:/usr/lib/pkgconfig/lua5.3.pc"
-alternatives+=" lua:liblua.a:/usr/lib/liblua5.3.a"
-alternatives+=" lua:liblua.so:/usr/lib/liblua5.3.so"
 alternatives+=" lua:lua:/usr/share/doc/lua5.3"
 
 pre_build() {
@@ -82,9 +73,19 @@ do_install() {
 }
 
 lua-devel_package() {
+  unset alternatives
   depends+=" $makedepends"
   depends+=" lua>=${version}_$revision"
   short_desc+=" - development files"
+  alternatives+=" lua-devel:lua:/usr/include/lua5.3"
+  alternatives+=" lua-devel:/usr/include/lua.h:/usr/include/lua5.3/lua.h"
+  alternatives+=" lua-devel:/usr/include/luaconf.h:/usr/include/lua5.3/luaconf.h"
+  alternatives+=" lua-devel:/usr/include/lua.hpp:/usr/include/lua5.3/lua.hpp"
+  alternatives+=" lua-devel:/usr/include/lualib.h:/usr/include/lua5.3/lualib.h"
+  alternatives+=" lua-devel:/usr/include/lauxlib.h:/usr/include/lua5.3/lauxlib.h"
+  alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.3.pc"
+  alternatives+=" lua-devel:liblua.a:/usr/lib/liblua5.3.a"
+  alternatives+=" lua-devel:liblua.so:/usr/lib/liblua5.3.so"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
