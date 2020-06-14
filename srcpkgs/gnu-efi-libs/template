@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gnu-efi-libs"
-version=3.0.11
+version=3.0.12
 revision=1
 short_desc="Library for building UEFI Applications using GNU toolchain"
 makedepends="pciutils-devel"
 homepage="https://sourceforge.net/projects/gnu-efi/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/${pkgname%-libs}-$version.tar.bz2"
-checksum="f28da792a2532e91e18e0101468811739a22cde9eee5eacfd0efb9bf3a61d6b9"
+checksum="0196f2e1fd3c334b66e610a608a0e59233474c7a01bec7bc53989639aa327669"
 wrksrc="${pkgname%-libs}-$version"
 nostrip="yes"
 # not an actual revert, xbps considers 3.0w higher than 3.0.8
