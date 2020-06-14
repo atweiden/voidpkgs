@@ -1,15 +1,21 @@
 maintainer="nox"
 pkgname="libgpg-error"
-version=1.37
+version=1.38
 revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
-distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763"
+distfiles+=" https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
+distfiles+=" https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob_plain;f=src/gen-lock-obj.sh;h=13858cfbf6c5f69f5f5fd64cd6fcc6a6c80eca3b>gen-lock-obj.sh"
+checksum+=" d8988275aa69d7149f931c10442e9e34c0242674249e171592b430ff7b3afd02"
+checksum+=" 83892a9ebe3e19e8fd754a7ad02b6c81240e64554aab6490a4ea5aa36ea49a81"
+skip_extraction="gen-lock-obj.sh"
 build_style="gnu-configure"
-# cross-compilation requires `qemu-user-static`, see: upstream
-nocross="yes"
+
+pre_configure() {
+  cp -p "$XBPS_SRCDISTDIR/$pkgname-$version/gen-lock-obj.sh" "$wrksrc/src"
+  chmod +x "$wrksrc/src/gen-lock-obj.sh"
+}
 
 post_install() {
   rm -rf "$DESTDIR/usr/share/common-lisp"
