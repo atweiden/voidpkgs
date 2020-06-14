@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="pinebookpro-kernel"
-version=5.6.0
+version=5.7.0
 revision=1
-_gitrev="93293259039d6fc3a725961d42b4f11bfc3f5127"
+_gitrev="a8f4db8a726e5e4552e61333dcd9ea1ff35f39f9"
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel for Pinebook Pro (${version%.*} series)"
@@ -22,9 +22,10 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://gitlab.manjaro.org/tsys/linux-pinebook-pro/-/archive/$_gitrev/linux-pinebook-pro-$_gitrev.tar.gz"
-checksum="61f59cd28fa560f939917f1c1315fecce0db4b1bf0a5b64296cd9aaee9f0adb1"
+checksum="c76b54d62bdf58e40497846fe7cf236d9a923eeb7972c97d41a917329843268b"
 wrksrc="linux-pinebook-pro-$_gitrev"
 patch_args="-Np1"
+python_version=3
 # -dbg package is generated below manually
 nodebug="yes"
 nostrip="yes"
