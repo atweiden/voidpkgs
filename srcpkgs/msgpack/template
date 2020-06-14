@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="msgpack"
-version=3.2.1
+version=3.3.0
 revision=1
 short_desc="Binary-based efficient object serialization library"
 makedepends="zlib-devel"
@@ -9,7 +9,7 @@ homepage="https://msgpack.org/"
 license="Apache-2.0"
 changelog="https://github.com/msgpack/msgpack-c/raw/master/CHANGELOG.md"
 distfiles="https://github.com/msgpack/msgpack-c/archive/cpp-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="464f46744a6be778626d11452c4db3c2d09461080c6db42e358e21af19d542f6"
+checksum="754c3ace499a63e45b77ef4bcab4ee602c2c414f58403bce826b76ffc2f77d0b"
 wrksrc="$pkgname-c-cpp-$version"
 build_style="cmake"
 
