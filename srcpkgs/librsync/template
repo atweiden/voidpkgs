@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="librsync"
-version=2.2.1
+version=2.3.1
 revision=1
 short_desc="Library that implements the rsync remote-delta algorithm (rdiff)"
 makedepends+=" bzip2-devel"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="http://librsync.sourceforge.net/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/librsync/librsync/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b5ab8e2092b82b7d7bb9c1dd52e6a77083a89f8ad9b9309da611f490d0b49a71"
+checksum="dbd7eb643665691bdf4009174461463737b19b4814b789baad62914cabfe4569"
 build_style="cmake"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" -C disableRuntimeTests.cmake"
