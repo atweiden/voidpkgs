@@ -31,8 +31,6 @@ libbz2.so.1 bzip2-1.0.5_1
 libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
 libcheck.so.0 check-0.9.12_1
-libclang-cpp.so.10 clang-10.0.0_1
-libclang.so.10 clang-10.0.0_1
 libclucene-contribs-lib.so.1 clucene-2.3.3.4_1
 libclucene-core.so.1 clucene-2.3.3.4_1
 libclucene-shared.so.1 clucene-2.3.3.4_1
@@ -236,6 +234,8 @@ libcap.so.2 libcap-2.16_1
 libcap-ng.so.0 libcap-ng-0.6.2_1
 libcbor.so.0.7 libcbor-0.7.0_1
 libchicken.so.11 libchicken-5.1.0_1
+libclang.so.10 libclang-10.0.0_3
+libclang-cpp.so.10 libclang-cpp-10.0.0_3
 libcli.so.1.9 libcli-1.9.8.4_1
 libco.so.0 libco-20_1
 libconfig++.so.11 libconfig++-1.7.1_1

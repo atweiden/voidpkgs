@@ -438,6 +438,8 @@ constant %PKG = Map.new(
     'llvm10' => qw<clang
                    clang-analyzer
                    clang-tools-extra
+                   libclang
+                   libclang-cpp
                    libllvm10
                    lld
                    lld-devel

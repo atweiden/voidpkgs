@@ -60,6 +60,8 @@ esac
 subpackages+=" clang-tools-extra"
 subpackages+=" clang"
 subpackages+=" clang-analyzer"
+subpackages+=" libclang"
+subpackages+=" libclang-cpp"
 subpackages+=" libllvm10"
 if [[ "$_lldb_enable" == "yes" ]]; then
   # XXX fails to cross compile due to python
@@ -256,6 +258,7 @@ clang-analyzer_package() {
 
 clang-tools-extra_package() {
   unset depends
+  lib32disabled="yes"
   depends+=" clang-${version}_$revision"
   depends+=" python3"
   short_desc+=" - extra Clang tools"
@@ -282,6 +285,7 @@ clang_package() {
   unset depends
   lib32disabled="yes"
   depends+=" binutils"
+  depends+=" libclang-${version}_$revision"
   depends+=" libgcc-devel"
   depends+=" libstdc++-devel"
   depends+=" $XBPS_TARGET_LIBC-devel"
@@ -294,8 +298,23 @@ clang_package() {
     vmove usr/bin/c-index-test
     vmove usr/lib/clang
     vmove usr/lib/cmake/clang
-    vmove "usr/lib/libclang*"
+    vmove "usr/lib/libclang*.a"
+    vmove "usr/lib/libclang*.so"
     vmove "usr/share/clang"
+  }
+}
+
+libclang_package() {
+  short_desc+=" - C frontend runtime library"
+  pkg_install() {
+    vmove "usr/lib/libclang.so.*"
+  }
+}
+
+libclang-cpp_package() {
+  short_desc+=" - C frontend runtime library (C++ interface)"
+  pkg_install() {
+    vmove "usr/lib/libclang-cpp.so.*"
   }
 }
 
@@ -335,6 +354,7 @@ lldb_package() {
 }
 
 lldb-devel_package() {
+  lib32disabled="yes"
   depends="lldb>=${version}_$revision"
   short_desc+=" - LLDB debugger - development files"
   pkg_install() {
