@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="meson"
-version=0.54.2
+version=0.54.3
 revision=1
 short_desc="Super fast build system"
 archs="noarch"
@@ -12,7 +12,7 @@ homepage="https://mesonbuild.com"
 license="Apache-2.0"
 changelog="https://github.com/mesonbuild/meson/raw/master/docs/markdown/Release-notes-for-${version%.?}.0.md"
 distfiles="https://github.com/mesonbuild/meson/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="a7716eeae8f8dff002e4147642589ab6496ff839e4376a5aed761f83c1fa0455"
+checksum="f2bdf4cf0694e696b48261cdd14380fb1d0fe33d24744d8b2df0c12f33ebb662"
 build_style="python3-module"
 
 do_check() {
