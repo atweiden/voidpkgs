@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="subversion"
-version=1.13.0
+version=1.14.0
 revision=1
 short_desc="A modern concurrent version control system"
 depends="ca-certificates"
@@ -9,10 +9,10 @@ makedepends+=" file-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" liblz4-devel"
 makedepends+=" perl"
-makedepends+=" python-devel"
+makedepends+=" py3c"
+makedepends+=" python3-devel"
 makedepends+=" serf-devel"
 makedepends+=" sqlite-devel"
-makedepends+=" swig"
 makedepends+=" zlib-devel"
 hostmakedepends+=" apache-devel"
 hostmakedepends+=" automake"
@@ -20,11 +20,13 @@ hostmakedepends+=" gettext"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python"
+hostmakedepends+=" python3"
+hostmakedepends+=" swig"
 homepage="http://subversion.apache.org/"
 license="Apache-2.0, BSD-3-Clause"
+changelog="https://subversion.apache.org/docs/release-notes/${version%.*}.html"
 distfiles="http://apache.uvigo.es/subversion/$pkgname-$version.tar.bz2"
-checksum="bc50ce2c3faa7b1ae9103c432017df98dfd989c4239f9f8270bb3a314ed9e5bd"
+checksum="6ba8e218f9f97a83a799e58a3c6da1221d034b18d9d8cbbcb6ec52ab11722102"
 build_style="gnu-configure"
 configure_args+=" --config-cache"
 configure_args+=" --disable-javahl"
@@ -40,7 +42,7 @@ configure_args+=" --without-kwallet"
 pre_configure() {
   # based on native build values
   cat <<-EOF >config.cache
-ac_cv_python_includes=-I$XBPS_CROSS_BASE/usr/include/python$py2_ver
+ac_cv_python_includes=-I$XBPS_CROSS_BASE/usr/include/python$py3_ver
 ac_cv_python_compile="$CC -fPIC"
 ac_cv_python_link="$CC -shared $LDFLAGS"
 ac_cv_python_libs="$LDFLAGS"
@@ -107,8 +109,8 @@ do_build() {
     LT_LDFLAGS="-L$Fdestdir/usr/lib"
   make \
     "$makejobs" \
-    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/libsvn" \
-    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/svn" \
+    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py3_ver/site-packages/libsvn" \
+    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py3_ver/site-packages/svn" \
     swig-py
   make \
     "$makejobs" \
@@ -134,8 +136,8 @@ do_install() {
   make \
     DESTDIR="$DESTDIR" \
     INSTALLDIRS="vendor" \
-    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/libsvn" \
-    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py2_ver/site-packages/svn" \
+    swig_pydir="$XBPS_CROSS_BASE/usr/lib/python$py3_ver/site-packages/libsvn" \
+    swig_pydir_extra="$XBPS_CROSS_BASE/usr/lib/python$py3_ver/site-packages/svn" \
     install-swig-py
   make \
     CC="$CC" \
@@ -197,7 +199,7 @@ subversion-devel_package() {
 
 subversion-python_package() {
   lib32disabled="yes"
-  depends="python"
+  depends="python3"
   short_desc+=" - Python bindings"
   pkg_install() {
     vmove "usr/lib/libsvn_swig_py*"
