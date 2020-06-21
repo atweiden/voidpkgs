@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tcpreplay"
-version=4.3.2
-revision=2
+version=4.3.3
+revision=1
 short_desc="Pcap editing and replay tool"
 makedepends+=" libdnet-devel"
 makedepends+=" libnet-devel"
@@ -11,7 +11,7 @@ hostmakedepends="libpcap-devel"
 homepage="https://github.com/appneta/tcpreplay"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/appneta/tcpreplay/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="4f479bd9196cafde70c58ab072ca4959ecc5278555cf1aa7cf42f7f210daa951"
+checksum="ed2402caa9434ff5c74b2e7b31178c73e7c7c5c4ea1e1d0e2e39a7dc46958fde"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
