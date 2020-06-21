@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gocryptfs"
-version=1.7.1
+version=1.8.0
 revision=1
 short_desc="Encrypted overlay filesystem written in Go"
 depends="fuse"
@@ -8,7 +8,7 @@ homepage="https://nuetzlich.net/gocryptfs"
 license="MIT"
 changelog="https://github.com/rfjakob/gocryptfs#changelog"
 distfiles="https://github.com/rfjakob/gocryptfs/releases/download/v$version/${pkgname}_v${version}_src-deps.tar.gz"
-checksum="d3fc2c87b869025cd51e4abea030e58e7383197a7458f26bf99a71b224402bda"
+checksum="c4ca576c2a47f0ed395b96f70fb58fc8f7b4beced8ae67e356eeed6898f8352a"
 wrksrc="${pkgname}_v${version}_src-deps"
 build_style="go"
 go_import_path="github.com/rfjakob/gocryptfs"
@@ -18,8 +18,8 @@ go_ldflags="-X main.GitVersion=v$version -X main.GitVersionFuse="[vendored]" -X 
 export GOFLAGS="-trimpath"
 
 post_install() {
-  vlicense "$GOSRCPATH/LICENSE"
-  vman "$GOSRCPATH/Documentation/gocryptfs.1"
+  vlicense LICENSE
+  vman Documentation/gocryptfs.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
