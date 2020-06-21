@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nftables"
-version=0.9.5
+version=0.9.6
 revision=1
 short_desc="Netfilter nftables userspace tools"
 makedepends+=" gmp-devel"
@@ -16,7 +16,7 @@ hostmakedepends+=" python3"
 homepage="http://netfilter.org/projects/nftables/"
 license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/nftables/files/$pkgname-$version.tar.bz2"
-checksum="f2c1957eabc370057c4576b8f33a71d91a6ad019b8b335abafe61c9c42cc7e16"
+checksum="68d6fdfe8ab02303e6b1f13968a4022da5b0120110eaee3233d806857937b66e"
 build_style="gnu-configure"
 configure_args+=" --with-json"
 configure_args+=" --with-python-bin=/bin/python3"
