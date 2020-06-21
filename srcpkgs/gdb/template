@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gdb"
 version=9.2
-revision=1
+revision=2
 short_desc="GNU Debugger"
 makedepends+=" expat-devel"
 makedepends+=" guile-devel"
@@ -31,7 +31,7 @@ configure_args+=" $(vopt_enable gdbserver)"
 configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
 configure_args+=" $(vopt_if python --with-python=/usr/bin/python3)"
 python_version=3
-pycompile_dirs="/usr/share/gdb"
+pycompile_dirs="/usr/share/gdb/python"
 build_options+=" gdbserver"
 build_options+=" python"
 build_options+=" static"
