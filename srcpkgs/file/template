@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="file"
-version=5.38
+version=5.39
 revision=1
 short_desc="File type identification utility"
 makedepends="zlib-devel"
 homepage="http://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="593c2ffc2ab349c5aea0f55fedfe4d681737b6b62376a9b3ad1e77b2cc19fa34"
+checksum="f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1"
 build_style="gnu-configure"
 configure_args="--enable-static"
 bootstrap="yes"
