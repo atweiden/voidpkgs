@@ -450,12 +450,14 @@ constant %PKG = Map.new(
     'lowdown' => ['lowdown-devel'],
     'lttng-tools' => ['lttng-tools-devel'],
     'lttng-ust' => ['lttng-ust-devel'],
-    'lua' => ['lua-devel'],
     'LuaJIT' => ['LuaJIT-devel'],
+    'lua' => ['lua-devel'],
     'lua-lpeg' => qw<lua51-lpeg
                      lua52-lpeg>,
     'lua51' => ['lua51-devel'],
     'lua52' => ['lua52-devel'],
+    'luarocks' => qw<luarocks-lua51
+                     luarocks-lua52>,
     'lutok' => ['lutok-devel'],
     'lvm2' => qw<device-mapper
                  device-mapper-devel
