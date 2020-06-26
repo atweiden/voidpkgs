@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-elementpath"
-version=1.4.4
+version=1.4.6
 revision=1
 short_desc="XPath 1.0/2.0 parsers and selectors for ElementTree and lxml"
 archs="noarch"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/sissaschool/elementpath"
 license="MIT"
 distfiles="$PYPI_SITE/e/elementpath/elementpath-$version.tar.gz"
-checksum="edef8099a6c606cf0fa7b8a4845bd90875af1649f12288228950eb936ccbc44a"
+checksum="653b863cca106a8e45699f07f1b6eb47efcf4b37f9402849dc339f0e1fb1ecb8"
 wrksrc="elementpath-$version"
 build_style="python3-module"
 
