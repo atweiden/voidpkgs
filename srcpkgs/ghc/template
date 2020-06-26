@@ -33,6 +33,8 @@ build_options="bindist"
 desc_option_bindist="Create a binary distribution"
 # ask leah2 before wasting time trying to do that
 nocross="yes"
+# work around assembler error "Fatal error: duplicate .debug_line sections"
+nodebug="yes"
 _bindir="/usr/lib/$pkgname-$version/bin"
 nopie_files+=" $_bindir/ghc"
 nopie_files+=" $_bindir/ghc-iserv"
