@@ -1,8 +1,7 @@
 maintainer="nox"
 pkgname="systemtap"
-version=4.2
-revision=3
-python_version=3
+version=4.3
+revision=1
 short_desc="Infrastructure to simplify the gathering of information"
 archs+=" aarch64"
 archs+=" armv6l"
@@ -16,8 +15,9 @@ hostmakedepends="python3"
 homepage="https://sourceware.org/systemtap/"
 license="GPL-3.0-or-later"
 distfiles="https://sourceware.org/systemtap/ftp/releases/systemtap-$version.tar.gz"
-checksum="0984ebe3162274988252ec35074021dc1e8420d87a8b35f437578562fce08781"
+checksum="f8e206ed654c13a8b42245a342c1b5a4aafdf817c97bf3becbe3c8a43a4489ce"
 build_style="gnu-configure"
+python_version=3
 
 systemtap-devel_package() {
   depends="systemtap-${version}_$revision"
