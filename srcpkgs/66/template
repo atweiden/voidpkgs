@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="66"
-version=0.3.0.3
+version=0.4.0.1
 revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
 depends="s6-portable-utils"
@@ -10,13 +10,13 @@ makedepends+=" procps-ng-devel"
 makedepends+=" s6-devel"
 makedepends+=" s6-rc-devel"
 makedepends+=" skalibs-devel"
+hostmakedepends+=" lowdown"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" scdoc"
 homepage="http://web.obarun.org/software/"
 license="ISC"
 changelog="https://framagit.org/Obarun/66/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="3ea126721cb29ee8623de927c688de418efe1d6ff737c32fb701048c2380c62b"
+checksum="c8d9ed887e0ae1f6cb39159c8d5a4bb5eceaa4bacdbf32575848e92e262955c3"
 conf_files+=" /etc/66/init"
 conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
@@ -31,18 +31,13 @@ make_dirs+=" /usr/share/66/service 0755 root root"
 make_dirs+=" /var/lib/66 0755 root root"
 make_dirs+=" /var/log/66 0755 root root"
 
-
-pre_build() {
-  make man
-}
-
 post_install() {
   vlicense COPYING
   for i in doc/html/*.html; do
     vdoc "$i"
   done
   vdoc README.md
-  for i in doc/man/*.{1,5,8} ; do
+  for i in doc/man/man{1,5,8}/* ; do
     vman "$i"
   done
 }
