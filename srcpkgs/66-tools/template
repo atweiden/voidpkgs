@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="66-tools"
-version=0.0.5.1
+version=0.0.6.1
 revision=1
 short_desc="Small tools and helpers for service scripts execution"
 makedepends+=" execline-devel"
@@ -12,7 +12,7 @@ homepage="http://web.obarun.org/software/index.html"
 license="ISC"
 changelog="https://framagit.org/Obarun/66-tools/-/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66-tools/-/archive/v$version/$pkgname-v$version.tar.gz"
-checksum="df562211f10f749e7857dd9eedc369b119e496ab3c2918ac65aba08b8716473f"
+checksum="aab4de9d6ecc3febf384f8ebc8db44ce7b3a2282b66af71425e99640760caabc"
 wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
