@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="check"
-version=0.13.0
+version=0.15.0
 revision=1
 short_desc="Unit Testing Framework for C"
 homepage="https://libcheck.github.io/check/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/libcheck/check/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="c4336b31447acc7e3266854f73ec188cdb15554d0edd44739631da174a569909"
+checksum="aea2e3c68fa6e1e92378e744b1c0db350ccda4b6bd0d19530d0ae185b3d1ac60"
 build_style="gnu-configure"
 
 check-devel_package() {
