@@ -1,8 +1,8 @@
 # keep this package sync with util-linux
 maintainer="nox"
 pkgname="util-linux-libs"
-version=2.35.1
-revision=2
+version=2.35.2
+revision=1
 short_desc="Miscellaneous linux utilities - meta libraries"
 depends+=" libblkid"
 depends+=" libfdisk"
@@ -17,6 +17,7 @@ makedepends+=" zlib-devel"
 checkdepends="ncurses"
 hostmakedepends+=" automake"
 hostmakedepends+=" bison"
+hostmakedepends+=" gettext"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
@@ -24,7 +25,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.35/util-linux-$version.tar.xz"
-checksum="d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9"
+checksum="21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a"
 wrksrc="util-linux-$version"
 build_style="meta"
 
