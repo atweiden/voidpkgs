@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="MoarVM"
-version=2020.05
+version=2020.06
 revision=1
 short_desc="VM with adaptive optimization and JIT compilation, built for Rakudo"
 makedepends+=" libatomic_ops-devel"
@@ -17,7 +17,7 @@ homepage="https://moarvm.org"
 license="Artistic-2.0"
 changelog="https://github.com/MoarVM/MoarVM/raw/master/docs/ChangeLog"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="9368d2c691ea8710459a48c323915df6648c4a67d2ce24c27fc74f6b084a824b"
+checksum="db9759f16f76cb6d3b1f4baff9616c5ddb99fbb47ea62f54a5cc251b6ea99dc2"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --has-libatomic_ops"
