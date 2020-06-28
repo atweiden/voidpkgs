@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ntp"
-version=4.2.8p14
+version=4.2.8p15
 revision=1
 short_desc="Network Time Protocol daemon and utilities"
 makedepends+=" libcap-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.ntp.org/"
 license="NTP"
 distfiles="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$pkgname-${version%.*}/$pkgname-$version.tar.gz"
-checksum="1960e4f081f6aafd108d721bc3ab15f9e8dfd08dc08339aa95bca9d2545e4eb7"
+checksum="f65840deab68614d5d7ceb2d0bb9304ff70dcdedd09abb79754a87536b849c19"
 conf_files="/etc/ntp.conf"
 build_style="gnu-configure"
 configure_args+=" --enable-all-clocks"
