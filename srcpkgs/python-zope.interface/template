@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-zope.interface"
-version=4.7.1
+version=5.1.0
 revision=1
 short_desc="Zope interfaces for Python2"
 depends="python-setuptools"
@@ -11,10 +11,9 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/zopefoundation/zope.interface"
 license="ZPL-2.1"
 distfiles="$PYPI_SITE/z/zope.interface/zope.interface-$version.tar.gz"
-checksum="4bb937e998be9d5e345f486693e477ba79e4344674484001a0b646be1d530487"
+checksum="40e4c42bd27ed3c11b2c983fecfb03356fae1209de10686d03c02c8696a1d90e"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module="zope"
 
 post_install() {
   # zope.interface provides the zope namespace
@@ -25,7 +24,6 @@ post_install() {
 }
 
 python3-zope.interface_package() {
-  pycompile_module="zope"
   depends="python3-setuptools"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
