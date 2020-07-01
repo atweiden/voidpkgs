@@ -1,14 +1,15 @@
 maintainer="nox"
-pkgname="lua"
+pkgname="lua53"
 version=5.3.5
-revision=3
-short_desc="Powerful, fast, lightweight, embeddable scripting language"
+revision=4
+short_desc="Powerful, fast, lightweight, embeddable scripting language (5.3.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 homepage="https://www.lua.org"
 license="MIT"
 distfiles="https://www.lua.org/ftp/$pkgname-$version.tar.gz"
 checksum="0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac"
+wrksrc="lua-$version"
 alternatives+=" lua:lua:/usr/bin/lua5.3"
 alternatives+=" lua:luac:/usr/bin/luac5.3"
 alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.3.1"
@@ -16,8 +17,8 @@ alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.3.1"
 alternatives+=" lua:lua:/usr/share/doc/lua5.3"
 
 pre_build() {
-  # lua 5.3.4 has wrong release version in its Makefile; fix it
-  sed \
+  # 5.3.5 has 5.3.4 in the Makefile
+  vsed \
     -i \
     -e "s/^R= \$V.4/R= \$V.5/" \
     Makefile
@@ -52,12 +53,9 @@ do_install() {
     install
 
   sed \
-    "$FILESDIR/lua.pc" \
     -e "s;%VER%;${version%.*};g;s;%REL%;$version;g" \
-    -e "s;llua;llua5.3;" \
-    -e "s;/include;/include/lua5.3;" \
-    > lua5.3.pc
-
+    "$FILESDIR/lua.pc" > \
+    lua5.3.pc
   vinstall lua5.3.pc 644 usr/lib/pkgconfig
 
   # install the documentation
@@ -72,10 +70,10 @@ do_install() {
   mv "$DESTDIR/usr/share/man/man1"/luac{,5.3}.1
 }
 
-lua-devel_package() {
+lua53-devel_package() {
   unset alternatives
   depends+=" $makedepends"
-  depends+=" lua>=${version}_$revision"
+  depends+=" lua53>=${version}_$revision"
   short_desc+=" - development files"
   alternatives+=" lua-devel:lua:/usr/include/lua5.3"
   alternatives+=" lua-devel:/usr/include/lua.h:/usr/include/lua5.3/lua.h"
@@ -93,6 +91,18 @@ lua-devel_package() {
     vmove usr/lib/pkgconfig
     vmove usr/share/doc
   }
+}
+
+lua_package() {
+  depends="lua53>=${version}_$revision"
+  short_desc+=" (transitional dummy package)"
+  build_style="meta"
+}
+
+lua-devel_package() {
+  depends="lua53-devel>=${version}_$revision"
+  short_desc+=" - development files (transitional dummy package)"
+  build_style="meta"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

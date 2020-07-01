@@ -46,7 +46,7 @@ do_install() {
 
   sed \
     -e "s;%VER%;${version%.*};g;s;%REL%;$version;g" \
-    "$FILESDIR"/lua.pc > \
+    "$FILESDIR/lua.pc" > \
     lua5.2.pc
   vinstall lua5.2.pc 644 usr/lib/pkgconfig
 

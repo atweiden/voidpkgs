@@ -503,9 +503,9 @@ liblttng-ust-libc-wrapper.so.0 lttng-ust-2.7.2_1
 liblttng-ust-pthread-wrapper.so.0 lttng-ust-2.7.2_1
 liblttng-ust-tracepoint.so.0 lttng-ust-2.7.2_1
 liblttng-ust.so.0 lttng-ust-2.7.2_1
-liblua5.3.so.5.3 lua-5.3.1_2
 liblua5.1.so.5.1 lua51-5.1.5_1
 liblua5.2.so.5.2 lua52-5.2.4_2
+liblua5.3.so.5.3 lua53-5.3.5_4
 liblutok.so.3 lutok-0.4_1
 liblzo2.so.2 lzo-2.03_1
 libmbedtls.so.12 mbedtls-2.13.1_1
