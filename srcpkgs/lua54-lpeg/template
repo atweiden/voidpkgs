@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua54-lpeg"
 version=1.0.2
-revision=3
+revision=4
 _desc="Pattern-matching library for Lua based on Parsing Expression Grammars"
 short_desc="$_desc (5.4.x)"
 depends="lua54"
@@ -108,7 +108,7 @@ lua53-lpeg_package() {
 
 lua-lpeg_package() {
   depends="lua53-lpeg>=${version}_$revision"
-  short_desc+="$_desc (5.3.x) (transitional dummy package)"
+  short_desc="$_desc (5.3.x) (transitional dummy package)"
   build_style="meta"
 }
 
