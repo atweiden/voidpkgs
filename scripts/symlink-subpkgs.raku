@@ -451,14 +451,16 @@ constant %PKG = Map.new(
     'lttng-tools' => ['lttng-tools-devel'],
     'lttng-ust' => ['lttng-ust-devel'],
     'LuaJIT' => ['LuaJIT-devel'],
-    'lua-lpeg' => qw<lua51-lpeg
-                     lua52-lpeg>,
     'lua51' => ['lua51-devel'],
     'lua52' => ['lua52-devel'],
     'lua53' => qw<lua
                   lua-devel
                   lua53-devel>,
     'lua54' => ['lua54-devel'],
+    'lua54-lpeg' => qw<lua-lpeg
+                       lua51-lpeg
+                       lua52-lpeg
+                       lua53-lpeg>,
     'luarocks' => qw<luarocks-lua51
                      luarocks-lua52>,
     'lutok' => ['lutok-devel'],
