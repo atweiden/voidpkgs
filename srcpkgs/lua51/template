@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua51"
 version=5.1.5
-revision=9
+revision=10
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.1.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
@@ -18,7 +18,7 @@ alternatives+=" lua:lua:/usr/share/doc/lua5.1"
 
 do_build() {
   export CFLAGS="$CFLAGS -fPIC"
-  sed \
+  vsed \
     -i \
     -e 's:llua:llua5.1:' \
     -e 's:/include:/include/lua5.1:' \
@@ -50,7 +50,11 @@ do_install() {
     TO_LIB="liblua5.1.a liblua5.1.so liblua5.1.so.5.1 liblua5.1.so.$version" \
     install
 
-  vinstall etc/lua.pc 644 usr/lib/pkgconfig lua5.1.pc
+  sed \
+    -e "s;%VER%;${version%.*};g;s;%REL%;$version;g" \
+    "$FILESDIR/lua.pc" > \
+    lua5.1.pc
+  vinstall lua5.1.pc 644 usr/lib/pkgconfig
 
   # install the documentation
   rm -f doc/*.1
@@ -66,9 +70,8 @@ do_install() {
 
 lua51-devel_package() {
   unset alternatives
+  depends+=" $makedepends"
   depends+=" lua51>=${version}_$revision"
-  depends+=" ncurses-devel"
-  depends+=" readline-devel>=6.3"
   short_desc+=" - development files"
   alternatives+=" lua-devel:lua:/usr/include/lua5.1"
   alternatives+=" lua-devel:/usr/include/lua.h:/usr/include/lua5.1/lua.h"
