@@ -461,8 +461,10 @@ constant %PKG = Map.new(
                        lua51-lpeg
                        lua52-lpeg
                        lua53-lpeg>,
-    'luarocks' => qw<luarocks-lua51
-                     luarocks-lua52>,
+    'luarocks-lua53' => qw<luarocks
+                           luarocks-lua51
+                           luarocks-lua52
+                           luarocks-lua54>,
     'lutok' => ['lutok-devel'],
     'lvm2' => qw<device-mapper
                  device-mapper-devel

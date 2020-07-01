@@ -1,18 +1,20 @@
 maintainer="nox"
-pkgname="luarocks"
+pkgname="luarocks-lua53"
 version=3.3.1
-revision=1
-short_desc="Package management for Lua modules"
+revision=2
+_desc="Package management for Lua modules"
+short_desc="$_desc (5.3.x)"
 archs="noarch"
 depends+=" curl"
-depends+=" lua"
+depends+=" lua53"
 depends+=" unzip"
-hostmakedepends="lua-devel"
+hostmakedepends="lua53-devel"
 homepage="https://luarocks.org/"
 license="MIT"
 distfiles="https://luarocks.org/releases/$pkgname-$version.tar.gz"
 checksum="eb20cd9814df05535d9aae98da532217c590fc07d48d90ca237e2a7cdcf284fe"
 conf_files="/etc/luarocks/config-5.3.lua"
+wrksrc="luarocks-$version"
 build_style="configure"
 configure_args+=" --lua-version=5.3"
 configure_args+=" --prefix=/usr"
@@ -31,7 +33,8 @@ post_extract() {
 
 post_build() {
   for lv in 5.1 \
-            5.2; do
+            5.2 \
+            5.4; do
     make \
       LUA_INCDIR="/usr/include/lua$lv" \
       LUA_INTERPRETER="lua$lv" \
@@ -52,7 +55,8 @@ post_install() {
 
   vmkdir usr/bin
   for lv in 5.1 \
-            5.2; do
+            5.2 \
+            5.4; do
     make \
       DESTDIR="$DESTDIR" \
       LUA_VERSION="$lv" \
@@ -75,11 +79,28 @@ post_install() {
   mv "$DESTDIR/usr/bin"/luarocks-admin{,-5.3}
 }
 
+luarocks-lua54_package() {
+  unset alternatives
+  unset depends
+  archs="noarch"
+  short_desc="$_desc (5.4.x)"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" lua54"
+  conf_files="/etc/luarocks/config-5.4.lua"
+  alternatives+=" luarocks:luarocks:/usr/bin/luarocks-5.4"
+  alternatives+=" luarocks:luarocks-admin:/usr/bin/luarocks-admin-5.4"
+  pkg_install() {
+    vmove usr/bin/luarocks-5.4
+    vmove usr/bin/luarocks-admin-5.4
+    vmove etc/luarocks/config-5.4.lua
+  }
+}
+
 luarocks-lua52_package() {
   unset alternatives
   unset depends
   archs="noarch"
-  short_desc+=" - for Lua 5.2"
+  short_desc="$_desc (5.2.x)"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" lua52"
   conf_files="/etc/luarocks/config-5.2.lua"
@@ -96,7 +117,7 @@ luarocks-lua51_package() {
   unset alternatives
   unset depends
   archs="noarch"
-  short_desc+=" - for Lua 5.1"
+  short_desc="$_desc (5.1.x)"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" lua51"
   conf_files="/etc/luarocks/config-5.1.lua"
@@ -107,6 +128,12 @@ luarocks-lua51_package() {
     vmove usr/bin/luarocks-admin-5.1
     vmove etc/luarocks/config-5.1.lua
   }
+}
+
+luarocks_package() {
+  depends="luarocks-lua53>=${version}_$revision"
+  short_desc+="$_desc (5.3.x) (transitional dummy package)"
+  build_style="meta"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
