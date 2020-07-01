@@ -1,13 +1,12 @@
 maintainer="nox"
 pkgname="android-tools"
 version=29.0.6
-revision=2
+revision=3
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
 archs+=" i686*"
 archs+=" x86_64*"
-depends="android-udev-rules"
 makedepends+=" gtest-devel"
 makedepends+=" libressl-devel"
 makedepends+=" libusb-devel"
