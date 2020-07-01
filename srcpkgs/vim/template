@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="vim"
-version=8.2.0891
+version=8.2.1095
 revision=1
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
@@ -14,7 +14,7 @@ hostmakedepends+=" pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
 distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1848dbc78d21e119b9314de06ce9852137d740f8c3fb97f558dea3f7f01bed44"
+checksum="d33a7229e2ec7f96dd8ae496f64a58712e1d76637ad30730ce1a14655b4d2cef"
 build_style="gnu-configure"
 configure_args+=" --disable-cscope"
 configure_args+=" --disable-gpm"
