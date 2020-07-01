@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua52"
 version=5.2.4
-revision=8
+revision=9
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.2.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
@@ -45,11 +45,9 @@ do_install() {
     install
 
   sed \
-    "$FILESDIR"/lua.pc \
     -e "s;%VER%;${version%.*};g;s;%REL%;$version;g" \
-    -e "s;llua;llua5.2;" \
-    -e "s;/include;/include/lua5.2;" \
-    > lua5.2.pc
+    "$FILESDIR"/lua.pc > \
+    lua5.2.pc
   vinstall lua5.2.pc 644 usr/lib/pkgconfig
 
   # install the documentation
