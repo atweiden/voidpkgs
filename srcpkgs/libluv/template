@@ -1,12 +1,11 @@
 maintainer="nox"
 pkgname="libluv"
 version=1.32.0.0
-revision=1
+revision=2
 _distver="${version%.*}-${version##*.}"
-short_desc="Bare libuv bindings for lua"
+short_desc="Bare libuv bindings for LuaJIT"
 depends+=" LuaJIT"
 depends+=" libuv"
-depends+=" lua"
 makedepends+=" LuaJIT-devel"
 makedepends+=" libuv-devel"
 if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_MACHINE" == "x86_64" ]]; then
