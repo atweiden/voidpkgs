@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="autoconf"
 version=2.69
-revision=7
+revision=8
 short_desc="Generates automatic source code configuration scripts"
 archs="noarch"
 depends+=" virtual?awk"
 depends+=" m4"
 depends+=" perl"
+hostmakedepends+=" help2man"
 hostmakedepends+=" m4"
 hostmakedepends+=" perl"
 homepage="http://www.gnu.org/software/autoconf"
