@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="luarocks-lua53"
 version=3.3.1
-revision=2
+revision=3
 _desc="Package management for Lua modules"
 short_desc="$_desc (5.3.x)"
 archs="noarch"
@@ -132,7 +132,7 @@ luarocks-lua51_package() {
 
 luarocks_package() {
   depends="luarocks-lua53>=${version}_$revision"
-  short_desc+="$_desc (5.3.x) (transitional dummy package)"
+  short_desc="$_desc (5.3.x) (transitional dummy package)"
   build_style="meta"
 }
 
