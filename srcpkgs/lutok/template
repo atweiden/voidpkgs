@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="lutok"
 version=0.4
-revision=6
+revision=7
 short_desc="Lightweight C++ API for Lua"
-makedepends="lua-devel"
+makedepends="lua53-devel"
 hostmakedepends+=" doxygen"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/jmmv/lutok"
@@ -18,7 +18,7 @@ post_install() {
 }
 
 lutok-devel_package() {
-  depends+=" lua-devel"
+  depends+=" lua53-devel"
   depends+=" lutok>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
