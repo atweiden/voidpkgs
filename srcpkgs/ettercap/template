@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ettercap"
 version=0.8.2
-revision=13
+revision=14
 short_desc="Network sniffer/interceptor/logger for ethernet LANs"
 makedepends+=" libcurl-devel"
 makedepends+=" libltdl-devel"
