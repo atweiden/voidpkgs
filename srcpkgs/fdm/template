@@ -7,6 +7,9 @@ makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" tdb-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-legacy-compat"
+fi
 hostmakedepends+=" automake"
 hostmakedepends+=" bison"
 homepage="https://github.com/nicm/fdm"
