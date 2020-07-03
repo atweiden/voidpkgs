@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="transmission"
 version=3.00
-revision=2
+revision=3
 short_desc="Fast, easy and free BitTorrent client"
 makedepends+=" libcurl-devel"
 makedepends+=" libevent-devel"
