@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rustup"
 version=1.21.1
-revision=3
+revision=4
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -16,8 +16,8 @@ configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
 
 pre_build() {
-  cargo update --package openssl-sys --precise 0.9.57
-  cargo update --package openssl --precise 0.10.29
+  cargo update --package openssl-sys --precise 0.9.58
+  cargo update --package openssl --precise 0.10.30
 }
 
 do_install() {
