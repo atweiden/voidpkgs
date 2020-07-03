@@ -1,32 +1,36 @@
 maintainer="nox"
 pkgname="transmission"
 version=3.00
-revision=1
+revision=2
 short_desc="Fast, easy and free BitTorrent client"
 makedepends+=" libcurl-devel"
 makedepends+=" libevent-devel"
-hostmakedepends="pkg-config"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-legacy-compat"
+fi
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://www.transmissionbt.com"
 license="MIT, GPL-2.0-or-later"
 distfiles="https://github.com/transmission/transmission-releases/raw/master/$pkgname-$version.tar.xz"
 checksum="9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
-build_style="gnu-configure"
-configure_args+=" --disable-gtk"
-configure_args+=" --disable-libnotify"
-configure_args+=" --disable-nls"
-configure_args+=" --enable-cli"
-configure_args+=" --enable-daemon"
-configure_args+=" --enable-utp"
-configure_args+=" --without-systemd-daemon"
+build_style="cmake"
+configure_args+=" -DENABLE_CLI=ON"
+configure_args+=" -DENABLE_DAEMON=ON"
+configure_args+=" -DENABLE_GTK=OFF"
+configure_args+=" -DENABLE_MAC=OFF"
+configure_args+=" -DENABLE_NLS=OFF"
+configure_args+=" -DENABLE_QT=OFF"
+configure_args+=" -DENABLE_UTILS=ON"
+configure_args+=" -DENABLE_UTP=ON"
+configure_args+=" -DWITH_SYSTEMD=OFF"
 
 # create transmission system user/group
 system_accounts="transmission"
 transmission_homedir="/var/lib/transmission"
 make_dirs="/var/lib/transmission 0755 transmission transmission"
-
-if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  makedepends+=" musl-legacy-compat"
-fi
 
 post_configure() {
   # add missing includes which happen as side-effects with glibc
@@ -35,26 +39,6 @@ post_configure() {
     -e "/#include <inttypes.h>.*/i #include <sys/types.h> /* ssize_t */" \
     -e "/#include <inttypes.h>.*/i #include <stdio.h> /* off_t */" \
     libtransmission/transmission.h
-}
-
-do_build() {
-  make \
-    CXXFLAGS="$CXXFLAGS -std=c++17" \
-    LDFLAGS="$LDFLAGS" \
-    "$makejobs"
-}
-
-do_install() {
-  # install cli tools, daemon and web client
-  for dir in cli \
-             daemon \
-             utils \
-             web; do
-    make \
-      -C "$dir" \
-      DESTDIR="$DESTDIR" \
-      install
-  done
 }
 
 post_install() {
