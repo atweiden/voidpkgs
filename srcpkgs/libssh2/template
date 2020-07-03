@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libssh2"
 version=1.9.0
-revision=1
+revision=2
 short_desc="Library implementing the SSH2 protocol"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
