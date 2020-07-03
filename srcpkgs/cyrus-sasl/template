@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cyrus-sasl"
 version=2.1.27
-revision=2
+revision=3
 short_desc="Cyrus SASL - auth daemon and administration tools"
 depends="libsasl>=$version"
 makedepends+=" db-devel"
