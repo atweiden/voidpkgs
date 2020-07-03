@@ -151,6 +151,7 @@ constant %PKG = Map.new(
     'duktape' => ['duktape-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
                       e2fsprogs-libs>,
+    'efitools' => ['efitools-efi'],
     'efivar' => qw<libefivar
                    libefivar-devel>,
     'elfutils' => qw<elfutils-devel
