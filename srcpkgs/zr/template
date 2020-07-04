@@ -19,6 +19,7 @@ go_package+=" $go_import_path/cmd/zr-stdin"
 export GOFLAGS="-trimpath"
 
 post_install() {
+  vlicense LICENSE
   vdoc README.txt
 }
 
