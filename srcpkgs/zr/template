@@ -1,0 +1,25 @@
+maintainer="nox"
+pkgname="zr"
+version=0.0.17
+revision=1
+short_desc="Offline, local, serverless search of StackOverflow/man/etc"
+depends="sqlite"
+homepage="https://github.com/jackdoe/zr"
+license="BSD-3-Clause"
+distfiles="https://github.com/jackdoe/zr/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6b998c062ffd1543a44dc07ec302db06bbaf682188936e61d5aab765540dd331"
+build_style="go"
+go_import_path="github.com/jackdoe/zr"
+go_package+=" $go_import_path/cmd/zr"
+go_package+=" $go_import_path/cmd/zr-fetch"
+go_package+=" $go_import_path/cmd/zr-reindex"
+go_package+=" $go_import_path/cmd/zr-stackexchange"
+go_package+=" $go_import_path/cmd/zr-stdin"
+
+export GOFLAGS="-trimpath"
+
+post_install() {
+  vdoc README.txt
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
