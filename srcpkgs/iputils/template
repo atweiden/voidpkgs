@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="iputils"
 version=20190709
-revision=2
+revision=3
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends+=" libcap-devel"
