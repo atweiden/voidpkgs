@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tealdeer"
 version=1.3.0
-revision=1
+revision=2
 short_desc="Very fast implementation of tldr in Rust"
 depends="libressl"
 makedepends="libressl-devel"
@@ -13,6 +13,10 @@ distfiles="https://github.com/dbrgn/tealdeer/archive/v$version.tar.gz>$pkgname-$
 checksum="d384176263c1377b241f4e41f8efd564052e506af00e014240f3874419e187e0"
 build_style="cargo"
 alternatives="tldr:/usr/bin/tldr:/usr/bin/tealdeer"
+
+pre_build() {
+  cargo update --package openssl-sys --precise 0.9.58
+}
 
 post_install() {
   vlicense LICENSE-MIT
