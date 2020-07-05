@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openvpn"
 version=2.4.9
-revision=1
+revision=2
 short_desc="Easy-to-use, robust, and highly configurable VPN"
 depends="iproute2"
 makedepends+=" cmocka-devel"
