@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="opmsg"
 version=1.78s
-revision=2
+revision=3
 short_desc="Replacement for gpg which can encrypt/sign/verify your mails"
 makedepends="libressl-devel"
 homepage="https://github.com/stealth/opmsg"
