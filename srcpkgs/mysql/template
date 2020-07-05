@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mysql"
 version=5.6.43
-revision=3
+revision=4
 depends="mysql-client"
 makedepends+=" libressl-devel"
 makedepends+=" readline-devel"
