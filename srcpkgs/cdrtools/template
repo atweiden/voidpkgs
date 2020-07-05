@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="cdrtools"
 version=3.02a09
-revision=1
+revision=2
 short_desc="Highly portable CD/DVD/BluRay command line recording software"
 makedepends+=" acl-devel"
+makedepends+=" e2fsprogs-devel"
 makedepends+=" libcap-devel"
 hostmakedepends="smake"
 homepage="http://cdrtools.sourceforge.net/private/cdrecord.html"
@@ -13,9 +14,16 @@ checksum="aa28438f458ef3f314b79f2029db27679dae1d5ffe1569b6de57742511915e81"
 conf_files+=" /etc/default/cdrecord"
 conf_files+=" /etc/default/rscsi"
 wrksrc="$pkgname-${version%a*}"
+# cross-compilation requires `qemu`, see: upstream
 nocross="yes"
 
 do_build() {
+  mkdir -p xinclude/linux
+  for _file in "$XBPS_CROSS_BASE/usr/include/ext2fs"/*; do
+    ln -sf "$_file" xinclude/linux
+  done
+  CPPFLAGS+=" -I$wrksrc/xinclude"
+  CFLAGS+=" -I$wrksrc/xinclude"
   sed \
     -i \
     -e 's|/opt/schily|/usr|g' \
@@ -38,10 +46,18 @@ do_build() {
 }
 
 do_install() {
+  CPPFLAGS+=" -I$wrksrc/xinclude"
+  CFLAGS+=" -I$wrksrc/xinclude"
   smake \
-    DESTDIR="$DESTDIR" \
+    CC="$CC" \
+    COPTX="$CFLAGS" \
+    DESTDIR=$DESTDIR \
     INS_BASE="/usr" \
+    LDOPTX="$LDFLAGS" \
+    LDPATH= \
     MANDIR="/man" \
+    NOWARN=1 \
+    RUNPATH= \
     install
   # remove useless stuff
   rm -rf "$DESTDIR/usr/include"
