@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="s6-networking"
 version=2.3.1.2
-revision=1
+revision=2
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
 makedepends+=" libressl-devel"
