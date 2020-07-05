@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="h2o"
 version=2.2.6
-revision=1
+revision=2
 short_desc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 depends="perl"
 makedepends+=" libressl-devel"
