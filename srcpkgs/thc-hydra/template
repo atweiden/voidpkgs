@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="thc-hydra"
 version=9.0
-revision=1
+revision=2
 short_desc="Tool to guess/crack valid login/password pairs"
 makedepends+=" libidn-devel"
 makedepends+=" libmysqlclient-devel"
