@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.1.30
-revision=8
+revision=9
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" libatomic-devel"
