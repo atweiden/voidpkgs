@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mutt"
 version=1.14.5
-revision=1
+revision=2
 short_desc="Mutt Mail Client"
 depends+=" cyrus-sasl-modules"
 depends+=" mime-types"
