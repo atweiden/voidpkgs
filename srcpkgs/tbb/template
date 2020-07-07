@@ -8,9 +8,9 @@ short_desc="Intel Threading Building Blocks"
 hostmakedepends="cmake"
 homepage="https://www.threadingbuildingblocks.org"
 license="Apache-2.0"
-distfiles="https://github.com/intel/tbb/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="72cffaeac3b50b117c4e2279f9162308d35873b3e744aff5a088beff6f65c9af"
-wrksrc="$pkgname-$_ver"
+distfiles="https://github.com/oneapi-src/oneTBB/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
+checksum="d80ca22c224ab7ef913dfae72c23fc1434b6aa46bfd472916d8c874c90881f5e"
+wrksrc="oneTBB-$_ver"
 build_style="gnu-makefile"
 
 case "$XBPS_TARGET_MACHINE" in
