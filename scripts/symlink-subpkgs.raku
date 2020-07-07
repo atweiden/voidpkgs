@@ -558,8 +558,8 @@ constant %PKG = Map.new(
     'postgresql' => qw<postgresql-client
                        postgresql-contrib
                        postgresql-doc
-                       postgresql-libs
-                       postgresql-libs-devel
+                       postgresql9.6-libs
+                       postgresql9.6-libs-devel
                        postgresql-plperl
                        postgresql-plpython
                        postgresql-pltcl>,

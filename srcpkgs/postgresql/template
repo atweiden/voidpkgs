@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql"
 version=9.6.18
-revision=3
+revision=4
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
 makedepends+=" libressl-devel"
@@ -20,6 +20,7 @@ hostmakedepends+=" gettext"
 hostmakedepends+=" openjade"
 homepage="https://www.postgresql.org"
 license="PostgreSQL"
+changelog="https://www.postgresql.org/docs/current/release-${version//./-}.html"
 distfiles="https://ftp.postgresql.org/pub/source/v$version/$pkgname-$version.tar.bz2"
 checksum="517ec282b785e6d22f360c30ba0c5e2a506fca5ca07dcc545427511d94c89999"
 conf_files+=" /etc/default/postgresql"
@@ -110,7 +111,7 @@ postgresql-doc_package() {
   }
 }
 
-postgresql-libs_package() {
+postgresql9.6-libs_package() {
   short_desc="PostgreSQL shared libraries"
   pkg_install() {
     vmove "usr/lib/*.so*"
@@ -123,7 +124,7 @@ postgresql-libs_package() {
   }
 }
 
-postgresql-libs-devel_package() {
+postgresql9.6-libs-devel_package() {
   depends="postgresql-libs>=$version"
   short_desc="PostgreSQL shared libraries (development files)"
   pkg_install() {
