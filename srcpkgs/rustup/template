@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rustup"
-version=1.21.1
-revision=4
+version=1.22.0
+revision=1
 short_desc="Rust toolchain installer"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
@@ -10,15 +10,10 @@ hostmakedepends="pkg-config"
 homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-lang/rustup/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3dd54cb15313ff01c930ad4e36326f7d60caadd2d6707790d83bea26fbb8bbe1"
+checksum="1810c0b12f32d85cd0302c1cc73b88893fb8aa7f20ec22cb4bf53ed25bb130fe"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
-
-pre_build() {
-  cargo update --package openssl-sys --precise 0.9.58
-  cargo update --package openssl --precise 0.10.30
-}
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init"
