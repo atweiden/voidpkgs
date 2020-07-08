@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mercurial"
-version=5.4.1
+version=5.4.2
 revision=1
 short_desc="Fast, lightweight source control management system"
 depends+=" ca-certificates"
@@ -17,7 +17,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/$pkgname-$version.tar.gz"
-checksum="c31c026b09e8e1301ff23b5acc8a8563eeecbf7ff3495110b13688f01ba88ac6"
+checksum="5c8b93da701ee39e312da9e35a7f3163e17ed173a4707857bc467c3b3ab74853"
 build_style="python3-module"
 
 do_check() {
