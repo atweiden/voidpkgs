@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libyaml"
-version=0.2.4
+version=0.2.5
 revision=1
 short_desc="Fast YAML 1.1 parser and emitter library"
 hostmakedepends+=" automake"
@@ -8,7 +8,7 @@ hostmakedepends+=" libtool"
 homepage="https://pyyaml.org/wiki/LibYAML"
 license="MIT"
 distfiles="https://github.com/yaml/libyaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="02265e0229675aea3a413164b43004045617174bdb2c92bf6782f618f8796b55"
+checksum="fa240dbf262be053f3898006d502d514936c818e422afdcf33921c63bed9bf2e"
 build_style="gnu-configure"
 
 pre_configure() {
