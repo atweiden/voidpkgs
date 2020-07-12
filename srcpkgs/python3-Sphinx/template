@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
-version=3.1.1
+version=3.1.2
 revision=1
 short_desc="Python 3 documentation generator"
 archs="noarch"
@@ -30,13 +30,10 @@ hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="74fbead182a611ce1444f50218a1c5fc70b6cc547f64948f5182fb30a2a20258"
+checksum="b9daeb9b39aa1ffefc2809b43604109825300300b987a24f45976c001ba1a8fd"
 wrksrc="Sphinx-$version"
 build_style="python3-module"
-alternatives+=" sphinx:sphinx-apidoc:/usr/bin/sphinx-apidoc3"
-alternatives+=" sphinx:sphinx-autogen:/usr/bin/sphinx-autogen3"
-alternatives+=" sphinx:sphinx-build:/usr/bin/sphinx-build3"
-alternatives+=" sphinx:sphinx-quickstart:/usr/bin/sphinx-quickstart3"
+conflicts="python-Sphinx>=0"
 
 # XXX: testing requires gui deps
 #do_check() {
@@ -44,10 +41,6 @@ alternatives+=" sphinx:sphinx-quickstart:/usr/bin/sphinx-quickstart3"
 #}
 
 post_install() {
-  mv "$DESTDIR/usr/bin/sphinx-apidoc" "$DESTDIR/usr/bin/sphinx-apidoc3"
-  mv "$DESTDIR/usr/bin/sphinx-autogen" "$DESTDIR/usr/bin/sphinx-autogen3"
-  mv "$DESTDIR/usr/bin/sphinx-build" "$DESTDIR/usr/bin/sphinx-build3"
-  mv "$DESTDIR/usr/bin/sphinx-quickstart" "$DESTDIR/usr/bin/sphinx-quickstart3"
   vlicense LICENSE
 }
 
