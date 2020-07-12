@@ -640,7 +640,6 @@ constant %PKG = Map.new(
     'python-six' => ['python3-six'],
     'python-snowballstemmer' => ['python3-snowballstemmer'],
     'python-soupsieve' => ['python3-soupsieve'],
-    'python-sphinxcontrib' => ['python3-sphinxcontrib'],
     'python-toml' => ['python3-toml'],
     'python-urllib3' => ['python3-urllib3'],
     'python-virtualenv' => ['python3-virtualenv'],

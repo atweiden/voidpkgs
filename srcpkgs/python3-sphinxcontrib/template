@@ -1,0 +1,20 @@
+maintainer="nox"
+pkgname="python3-sphinxcontrib"
+version=1.0
+revision=4
+short_desc="Namespace package declaration for sphinxcontrib"
+archs="noarch"
+depends="python3-setuptools"
+hostmakedepends="python3-setuptools"
+homepage="https://www.voidlinux.org/"
+license="Public Domain"
+create_wrksrc="yes"
+
+do_install() {
+  vmkdir "$py3_sitelib/sphinxcontrib"
+  cat > "$DESTDIR/$py3_sitelib/sphinxcontrib/__init__.py" <<-EOF
+__import__('pkg_resources').declare_namespace(__name__)
+EOF
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
