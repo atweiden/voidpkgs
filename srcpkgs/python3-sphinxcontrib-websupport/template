@@ -9,7 +9,7 @@ hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org/"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-websupport/sphinxcontrib-websupport-$version.tar.gz"
-checksum="1501befb0fdf1d1c29a800fdbf4ef5dc5369377300ddbdd16d2cd40e54c6eefc"
+checksum="ee1d43e6e0332558a66fcb4005b9ba7313ad9764d0df0e6703ae869a028e451f"
 wrksrc="sphinxcontrib-websupport-$version"
 build_style="python3-module"
 
