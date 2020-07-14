@@ -932,6 +932,9 @@ matching the `build_style` name, Example:
 
     `common/environment/build-style/gnu-configure.sh`
 
+- `texmf` For texmf zip/tarballs that need to go into /usr/share/texmf-dist. Includes
+duplicates handling.
+
 <a id="build_helper"></a>
 ### build helper scripts
 
