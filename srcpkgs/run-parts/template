@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="run-parts"
-version=4.9.1
+version=4.11
 revision=1
 short_desc="Run scripts or programs in a directory"
 homepage="https://tracker.debian.org/pkg/debianutils"
 license="GPL-2.0-or-later"
 changelog="http://metadata.ftp-master.debian.org/changelogs/main/d/debianutils/debianutils_${version}_changelog"
 distfiles="$DEBIAN_SITE/main/d/debianutils/debianutils_$version.tar.xz"
-checksum="af826685d9c56abfa873e84cd392539cd363cb0ba04a09d21187377e1b764091"
+checksum="bb5ce6290696b0d623377521ed217f484aa98f7346c5f7c48f9ae3e1acfb7151"
 wrksrc="debianutils-$version"
 build_style="gnu-configure"
 make_build_target="run-parts"
