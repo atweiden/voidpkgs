@@ -1,0 +1,18 @@
+maintainer="nox"
+pkgname="so"
+version=0.4.1
+revision=1
+short_desc="Terminal interface for Stack Overflow"
+makedepends="libressl-devel"
+hostmakedepends="pkg-config"
+homepage="https://github.com/samtay/so"
+license="MIT"
+distfiles="https://github.com/samtay/so/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="36da89d40f485c1405ee267935a245e8db3ef7e3cfc69f20c787c63c5a3c84be"
+build_style="cargo"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
