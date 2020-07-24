@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.18.5
+version=1.19.1
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
@@ -14,7 +14,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="355d45df163499593c91bd2d78281e88164ee3eeeb221be357b1dac09ac1f618"
+checksum="65123e53a00b84d03a5a18ae049f4647d1fd100c9010ca1fdf997900ee13875d"
 wrksrc="numpy-$version"
 build_style="python3-module"
 alternatives="numpy:f2py:/usr/bin/f2py3"
