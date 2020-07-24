@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-Cython"
-version=0.29.20
+version=0.29.21
 revision=1
 short_desc="C-Extensions for Python2"
 depends="python-setuptools"
@@ -12,7 +12,7 @@ homepage="https://cython.org/"
 license="Apache-2.0"
 changelog="https://github.com/cython/cython/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/C/Cython/${pkgname#*-}-$version.tar.gz"
-checksum="22d91af5fc2253f717a1b80b8bb45acb655f643611983fd6f782b9423f8171c7"
+checksum="e57acb89bd55943c8d8bf813763d20b9099cc7165c0f16b707631a7654be9cad"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 alternatives+=" cython:cygdb:/usr/bin/cygdb2"
