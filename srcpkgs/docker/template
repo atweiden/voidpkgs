@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="docker"
-version=19.03.11
+version=19.03.12
 revision=1
 short_desc="Pack, ship and run any application as a lightweight container"
 archs+=" aarch64*"
@@ -27,7 +27,7 @@ hostmakedepends+=" tar"
 homepage="http://www.docker.io"
 license="Apache-2.0"
 distfiles="https://github.com/docker/docker-ce/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5821b189056d64ca7961c4c93cfa60c1805d0fbe4a1ea2d57ff2122b3dc61ea1"
+checksum="d321f959e41fd9b24c23d95779d30d9ead1120bfddedf157ef5c047cf3d997a1"
 wrksrc="$pkgname-ce-$version"
 nopie="yes"
 nostrip="yes"
