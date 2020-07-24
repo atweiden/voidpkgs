@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sqlite-replication"
-version=3.32.1
+version=3.32.3
 revision=1
 short_desc="Replication Enabled SQL Database Engine in a C Library"
 makedepends="libedit-devel"
@@ -8,7 +8,7 @@ hostmakedepends="tcl"
 homepage="https://github.com/canonical/sqlite"
 license="Public Domain"
 distfiles="https://github.com/canonical/sqlite/archive/version-$version+replication4.tar.gz>$pkgname-$version.tar.gz"
-checksum="0a451907b81bc21e546264aaf18fc28af2a4bad1a8ac009075f4dfccb93cf32b"
+checksum="8caab8703e8b7314e93dfcd6aa09ff306e416fb398bf421f194368ced821d4e6"
 wrksrc="sqlite-version-$version-replication4"
 build_style="gnu-configure"
 configure_args+=" --enable-dynamic-extensions"
