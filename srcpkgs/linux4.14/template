@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.14"
-version=4.14.185
+version=4.14.188
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -21,7 +21,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="f333b10c68d59d7dc7f92684452993c225a34b5f1c95bc44147a94db22ef3dc6"
+checksum="766fe01387b1d1b7bd37ca45a5048cdad13e3a51c6c43746dbb657a0ba67064b"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # unverified
