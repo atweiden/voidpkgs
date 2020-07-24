@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="sops"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Simple and flexible tool for managing secrets"
 hostmakedepends="git"
 homepage="https://github.com/mozilla/sops"
 license="MPL-2.0"
 distfiles="https://github.com/mozilla/sops/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a9c257dc5ddaab736dce08b8c5b1f00e6ca1e3171909b6d7385689044ebe759b"
+checksum="fee1c27f14f9f45b5955627e301aafcc38973c9458b25f99ef241bdd0a3b082c"
 build_style="go"
 go_import_path="go.mozilla.org/sops/v3/cmd/sops"
 
