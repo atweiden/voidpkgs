@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="protobuf"
-version=3.12.3
+version=3.12.4
 revision=1
 short_desc="Protocol buffers compiler (meta package)"
 archs="noarch"
