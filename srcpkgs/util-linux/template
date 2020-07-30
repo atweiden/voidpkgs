@@ -1,7 +1,7 @@
 # keep this package sync with util-linux-libs
 maintainer="nox"
 pkgname="util-linux"
-version=2.35.2
+version=2.36
 revision=1
 short_desc="Miscellaneous linux utilities"
 depends="util-linux-libs-${version}_$revision"
@@ -21,8 +21,8 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" xz"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
-distfiles="$KERNEL_SITE/utils/util-linux/v2.35/$pkgname-$version.tar.xz"
-checksum="21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a"
+distfiles="$KERNEL_SITE/utils/util-linux/v2.36/$pkgname-$version.tar.xz"
+checksum="9e4b1c67eb13b9b67feb32ae1dc0d50e08ce9e5d82e1cccd0ee771ad2fa9e0b1"
 conf_files="/etc/pam.d/*"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
