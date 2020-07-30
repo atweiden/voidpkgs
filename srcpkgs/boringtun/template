@@ -10,7 +10,9 @@ checksum="7ba22dcb785c9dfa99d70fc3ea0fa86908debd59eabc278f65db50a22bcc731c"
 build_style="cargo"
 
 case "$XBPS_TARGET_MACHINE" in
-  ppc*)
+  x86_64*|i686*|arm*|aarch64*)
+    ;;
+  *)
     broken="ftbfs in ring"
     ;;
 esac
