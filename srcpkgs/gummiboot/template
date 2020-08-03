@@ -1,36 +1,43 @@
-# Template file for 'gummiboot'
-pkgname=gummiboot
+maintainer="nox"
+pkgname="gummiboot"
 version=48.1
 revision=5
-archs="i686* x86_64* aarch64*"
-build_style=gnu-configure
-conf_files="/etc/default/gummiboot"
-hostmakedepends="automake pkg-config libxslt docbook-xsl"
-makedepends="gnu-efi-libs liblzma-devel libblkid-devel"
 short_desc="Simple UEFI Boot Manager"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="LGPL-2.0-or-later"
-# Homepage is long dead and the project has an unofficial release under Alpine
-# homepage="http://freedesktop.org/wiki/Software/gummiboot"
+archs+=" aarch64*"
+archs+=" i686*"
+archs+=" x86_64*"
+makedepends+=" gnu-efi-libs"
+makedepends+=" libblkid-devel"
+makedepends+=" liblzma-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" pkg-config"
+# homepage is long dead, gummiboot has an unofficial release under alpine
+#homepage="http://freedesktop.org/wiki/Software/gummiboot"
 homepage="https://pkgs.alpinelinux.org/package/edge/main/x86/gummiboot"
-distfiles="https://dev.alpinelinux.org/archive/gummiboot/gummiboot-${version}.tar.gz"
-checksum=2b649a6eb22007cd34bb355ba4ca6c1a8058e115c13048985f09a0f11f3d5295
+license="LGPL-2.0-or-later"
+distfiles="https://dev.alpinelinux.org/archive/gummiboot/$pkgname-$version.tar.gz"
+checksum="2b649a6eb22007cd34bb355ba4ca6c1a8058e115c13048985f09a0f11f3d5295"
+conf_files="/etc/default/gummiboot"
+build_style="gnu-configure"
+configure_args+=" --with-efi-includedir=$XBPS_CROSS_BASE/usr/include"
+configure_args+=" --with-efi-ldsdir=$XBPS_CROSS_BASE/usr/lib"
+configure_args+=" --with-efi-libdir=$XBPS_CROSS_BASE/usr/lib"
 
 CFLAGS="-std=gnu89"
 
-configure_args="--with-efi-ldsdir=${XBPS_CROSS_BASE}/usr/lib
-		--with-efi-libdir=${XBPS_CROSS_BASE}/usr/lib
-		--with-efi-includedir=${XBPS_CROSS_BASE}/usr/include"
-
 pre_configure() {
-	./autogen.sh
+  ./autogen.sh
 }
 
 post_install() {
-	vinstall ${FILESDIR}/kernel.d/gummiboot.post-install 744 \
-		etc/kernel.d/post-install 50-gummiboot
-	vinstall ${FILESDIR}/kernel.d/gummiboot.post-remove 744 \
-		etc/kernel.d/post-remove 50-gummiboot
-	vinstall ${FILESDIR}/kernel.d/gummiboot.confd 644 \
-		etc/default gummiboot
+  vinstall "$FILESDIR/kernel.d/gummiboot.post-install" 744 \
+    etc/kernel.d/post-install 50-gummiboot
+  vinstall "$FILESDIR/kernel.d/gummiboot.post-remove" 744 \
+    etc/kernel.d/post-remove 50-gummiboot
+  vinstall "$FILESDIR/kernel.d/gummiboot.confd" 644 \
+    etc/default gummiboot
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
