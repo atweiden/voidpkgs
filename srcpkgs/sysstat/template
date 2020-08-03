@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sysstat"
-version=12.2.2
+version=12.4.0
 revision=1
 short_desc="Collection of performance monitoring tools"
 depends="lm_sensors"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://pagesperso-orange.fr/sebastien.godard/"
 license="GPL-2.0-or-later"
 distfiles="http://pagesperso-orange.fr/sebastien.godard/sysstat-$version.tar.xz"
-checksum="78388b64acec81378b962e66b40e57acd4b18ff17a849bc9308f95d290248c9c"
+checksum="78556c339795ecd07eb10ee09e3f5d52901d3a29f874ae92b45efd0de7b62d16"
 conf_files+=" /etc/default/sysstat"
 conf_files+=" /etc/default/sysstat.ioconf"
 build_style="gnu-configure"
