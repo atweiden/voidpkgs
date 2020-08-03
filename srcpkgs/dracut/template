@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=050
-revision=3
+revision=4
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -29,6 +29,15 @@ configure_args+=" --prefix=/usr"
 configure_args+=" --sysconfdir=/etc"
 make_dirs+=" /etc/dracut.conf.d 0755 root root"
 make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
+subpackages="dracut-network"
+
+case "$XBPS_TARGET_MACHINE" in
+  # archs supported by dracut for EFI bundle
+  i686*|x86_64*)
+    _efi_bundle=1
+    subpackages+=" dracut-uefi"
+  ;;
+esac
 
 do_build() {
   case "$XBPS_TARGET_MACHINE" in
@@ -47,6 +56,13 @@ post_install() {
   # kernel hooks
   vinstall "$FILESDIR/kernel-hook-postinst" 755 etc/kernel.d/post-install 20-dracut
   vinstall "$FILESDIR/kernel-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut
+
+  if [[ -n "$_efi_bundle" ]]; then
+    vinstall "$FILESDIR/dracut-uefi-hook.confd" 644 etc/default dracut-uefi-hook
+    vinstall "$FILESDIR/kernel-uefi-hook-postinst" 755 etc/kernel.d/post-install 20-dracut-uefi
+    vinstall "$FILESDIR/kernel-uefi-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut-uefi
+  fi
+
   # we don't need the systemd stuff
   rm -rf "$DESTDIR/usr/lib/dracut/modules.d"/*systemd*
   rm -f "$DESTDIR/usr/share/man/man8"/*.service.*
@@ -70,6 +86,20 @@ dracut-network_package() {
              95znet; do
       vmove "usr/lib/dracut/modules.d/$f"
     done
+  }
+}
+
+dracut-uefi_package() {
+  unset depends
+  depends+=" binutils"
+  depends+=" dracut-${version}_$revision"
+  depends+=" gummiboot"
+  short_desc+=" - UEFI bundle hook"
+  conf_files="/etc/default/dracut-uefi-hook"
+  pkg_install() {
+    vmove etc/kernel.d/post-install/20-dracut-uefi
+    vmove etc/kernel.d/post-remove/20-dracut-uefi
+    vmove etc/default/dracut-uefi-hook
   }
 }
 
