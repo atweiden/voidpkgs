@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm10"
 version=10.0.0
-revision=2
+revision=4
 short_desc="Low Level Virtual Machine"
 depends="libllvm10"
 makedepends+=" binutils-devel"
@@ -130,11 +130,14 @@ post_patch() {
       "$wrksrc/tools/lld"
   fi
   # move lldb files into the llvm source
-  if [[ "$_lldb_enable" == "yes" ]] \
-  && [[ -d "$XBPS_BUILDDIR/lldb-$version.src" ]]; then
-    mv \
-      "$XBPS_BUILDDIR/lldb-$version.src" \
-      "$wrksrc/tools/lldb"
+  if [[ -d "$XBPS_BUILDDIR/lldb-$version.src" ]]; then
+    if [[ "$_lldb_enable" == "yes" ]]; then
+      mv \
+        "$XBPS_BUILDDIR/lldb-$version.src" \
+        "$wrksrc/tools/lldb"
+    else
+      rm -rf "$XBPS_BUILDDIR/lldb-$version.src"
+    fi
   fi
   # move compiler-rt files into the llvm source
   if [[ -d "$XBPS_BUILDDIR/compiler-rt-$version.src" ]]; then
@@ -211,6 +214,7 @@ pre_configure() {
       ;;
   esac
   configure_args+=" -DLLVM_TARGET_ARCH=$_arch"
+  configure_args+=" -DLLVM_HOST_TRIPLE=${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}"
   configure_args+=" -DLLVM_DEFAULT_TARGET_TRIPLE=${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}"
 }
 
