@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=050
-revision=4
+revision=5
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -92,7 +92,7 @@ dracut-network_package() {
 dracut-uefi_package() {
   unset depends
   depends+=" binutils"
-  depends+=" dracut-${version}_$revision"
+  depends+=" dracut>=${version}_$revision"
   depends+=" gummiboot"
   short_desc+=" - UEFI bundle hook"
   conf_files="/etc/default/dracut-uefi-hook"
