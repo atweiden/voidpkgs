@@ -9,29 +9,20 @@ makedepends="ncurses-devel"
 homepage="https://tiswww.cwru.edu/php/chet/readline/rltop.html"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/readline/readline-$_dist_ver.tar.gz"
-checksum="e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461"
+_url="$GNU_SITE/readline/readline-$_dist_ver-patches"
+for _p in $(seq -w 001 $_patch_ver); do
+  distfiles+=" $_url/readline${_dist_ver/./}-$_p"
+  skip_extraction+=" readline${_dist_ver/./}-$_p"
+done
+checksum+=" e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461"
+checksum+=" d8e5e98933cf5756f862243c0601cb69d3667bb33f2c7b751fe4e40b2c3fd069"
 wrksrc="readline-$_dist_ver"
 build_style="gnu-configure"
 configure_args+=" --enable-multibyte"
 configure_args+=" --with-curses"
 bootstrap="yes"
 
-pre_configure() {
-  local url
-  url="$GNU_SITE/readline/readline-$_dist_ver-patches"
-
-  cd "$XBPS_SRCDISTDIR/$pkgname-$version"
-  if [[ "$_patch_ver" -gt 000 ]]; then
-    for p in $(seq -w 001 "$_patch_ver"); do
-      if [[ -f "readline${version/./}-$p" ]]; then
-        continue
-      fi
-      local patch_url
-      patch_url="$url/readline${_dist_ver/./}-$p"
-      msg_normal " Fetching $patch_url ...\n"
-      $XBPS_FETCH_CMD "$patch_url"
-    done
-  fi
+post_patch() {
   cd "$wrksrc"
   for p in $(seq -w 001 "$_patch_ver"); do
     patch -s -Np0 \
@@ -39,8 +30,9 @@ pre_configure() {
     msg_normal " Applying patch readline${_dist_ver/./}-$p.\n"
   done
   vsed \
+    -i \
     -e 's|-Wl,-rpath,$(libdir) ||g' \
-    -i support/shobj-conf
+    support/shobj-conf
 }
 
 do_build() {
