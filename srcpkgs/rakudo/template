@@ -23,10 +23,6 @@ configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
 configure_args+=" --rakudo-home=/usr/lib/raku"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
-  configure_args+=" --sysroot=$XBPS_CROSS_BASE"
-fi
 make_check_target="test"
 make_install_args+=" RAKUDO_LOG_PRECOMP=1"
 make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
