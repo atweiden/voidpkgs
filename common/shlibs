@@ -20,8 +20,8 @@ libbpf.so.0 bcc-0.7.0_1
 libbind9.so.1600 bind-libs-9.16.2_1
 libisccc.so.1600 bind-libs-9.16.2_1
 libisccfg.so.1600 bind-libs-9.16.2_1
-libdns.so.1605 bind-libs-9.16.5_1
 libirs.so.1601 bind-libs-9.16.3_1
+libdns.so.1605 bind-libs-9.16.5_1
 libisc.so.1605 bind-libs-9.16.5_1
 libns.so.1604 bind-libs-9.16.5_1
 libblas.so.3 blas-3.5.0_1
@@ -585,6 +585,9 @@ libosp.so.5 opensp-1.5.2_1
 liborc-0.4.so.0 orc-0.4.11_1
 liborc-test-0.4.so.0 orc-0.4.11_1
 libp11-kit.so.0 p11-kit-0.7_1
+libdwarves.so.1 pahole-1.12_1
+libdwarves_emit.so.1 pahole-1.12_1
+libdwarves_reorganize.so.1 pahole-1.12_1
 libpam.so.0 pam-libs-1.1.6_3
 libpam_misc.so.0 pam-libs-1.1.6_3
 libpamc.so.0 pam-libs-1.1.6_3

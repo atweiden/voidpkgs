@@ -536,6 +536,7 @@ constant %PKG = Map.new(
     'openssh' => ['openssh-sk-helper'],
     'orc' => ['orc-devel'],
     'p11-kit' => ['p11-kit-devel'],
+    'pahole' => ['pahole-devel'],
     'pam' => qw<pam-devel
                 pam-libs
                 pam-userdb>,
