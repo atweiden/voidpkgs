@@ -3,7 +3,6 @@ pkgname="cpio"
 version=2.13
 revision=1
 short_desc="GNU copy-in/out (cpio) with remote magnetic tape (rmt) support"
-checkdepends="bash"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" tar"
