@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="66"
 version=0.5.0.0
-revision=1
+revision=2
 short_desc="Small tools built around s6 and s6-rc programs"
 depends="s6-portable-utils"
 makedepends+=" execline-devel"
