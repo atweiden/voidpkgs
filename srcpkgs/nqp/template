@@ -20,10 +20,6 @@ build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --sdkroot=$XBPS_CROSS_BASE"
-  configure_args+=" --sysroot=$XBPS_CROSS_BASE"
-fi
 make_check_target="test"
 nocross="yes"
 
