@@ -10,9 +10,9 @@
 # path to this script
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # path to https://github.com/atweiden/voidpkgs
-readonly ROOT_ATW="$(realpath "$DIR/..")"
+readonly ROOT_NOX="$(realpath "$DIR/..")"
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
-readonly SRCPKGS_ATW="$ROOT_ATW/srcpkgs/"
+readonly SRCPKGS_NOX="$ROOT_NOX/srcpkgs/"
 # path to https://github.com/void-linux/void-packages
 readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 # path to https://github.com/void-linux/void-packages/srcpkgs
@@ -966,7 +966,7 @@ main() {
     _dir="$SRCPKGS_VOID/$_pkg"
     echo "Copying $_dir..."
     if [[ -d "$_dir" ]]; then
-      cp -a "$_dir" "$SRCPKGS_ATW"
+      cp -a "$_dir" "$SRCPKGS_NOX"
     else
       echo "not found"
       exit 1

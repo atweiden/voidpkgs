@@ -30,11 +30,11 @@ than C<gen-common-shlibs.raku>.
 =end pod
 
 # path to https://github.com/atweiden/voidpkgs
-constant $ROOT-ATW = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
+constant $ROOT-NOX = sprintf(Q{%s/..}, $*PROGRAM.dirname).IO.resolve;
 # path to https://github.com/atweiden/voidpkgs/common/shlibs
-constant $COMMON-SHLIBS-ATW = sprintf(Q{%s/common/shlibs}, $ROOT-ATW);
+constant $COMMON-SHLIBS-NOX = sprintf(Q{%s/common/shlibs}, $ROOT-NOX);
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
-constant $SRCPKGS-ATW = sprintf(Q{%s/srcpkgs/}, $ROOT-ATW);
+constant $SRCPKGS-NOX = sprintf(Q{%s/srcpkgs/}, $ROOT-NOX);
 # path to https://github.com/void-linux/void-packages
 constant $ROOT-VOID = sprintf(Q{%s/Sandbox/void-linux/void-packages}, $*HOME);
 # path to https://github.com/void-linux/void-packages/common/shlibs
@@ -48,8 +48,8 @@ sub gen-shlibs(Str:D $path-common-shlibs --> Shlibs:D)
 }
 
 # list pkgs in https://github.com/atweiden/voidpkgs/srcpkgs
-my Str:D @pkg-atw =
-    dir($SRCPKGS-ATW)
+my Str:D @pkg-nox =
+    dir($SRCPKGS-NOX)
     .map(-> IO::Path:D $p { $p.basename })
     .sort;
 
@@ -60,21 +60,21 @@ my Shlibs:D $shlibs-void = gen-shlibs($COMMON-SHLIBS-VOID);
 my Str:D @pkg-void =
     $shlibs-void.mapping.map(-> Mapping:D $m { $m.pkg.pkgname }).unique.sort;
 
-# take intersection of atw and void pkgs
-my Set:D $pkg-atw-void = @pkg-atw (&) @pkg-void;
-my Str:D @pkg-atw-void = Array[Str:D].new($pkg-atw-void.keys.sort);
+# take intersection of nox and void pkgs
+my Set:D $pkg-nox-void = @pkg-nox (&) @pkg-void;
+my Str:D @pkg-nox-void = Array[Str:D].new($pkg-nox-void.keys.sort);
 
 # parse shlibs from https://github.com/atweiden/voidpkgs/common/shlibs
-my Shlibs:D $shlibs-atw = gen-shlibs($COMMON-SHLIBS-ATW);
+my Shlibs:D $shlibs-nox = gen-shlibs($COMMON-SHLIBS-NOX);
 
-# take union of atw shlibs and intersection of atw and void
-my Mapping:D @mapping-atw = $shlibs-atw.mapping;
+# take union of nox shlibs and intersection of nox and void
+my Mapping:D @mapping-nox = $shlibs-nox.mapping;
 my Mapping:D @mapping-void =
-    @pkg-atw-void.map(-> Str:D $pkgname {
+    @pkg-nox-void.map(-> Str:D $pkgname {
         $shlibs-void.mapping.grep({ .pkg.pkgname eqv $pkgname })
     }).flat;
-my Set:D $mapping-atw-void = @mapping-atw (|) @mapping-void;
-my Mapping:D @mapping-atw-void = Array[Mapping:D].new($mapping-atw-void.keys);
+my Set:D $mapping-nox-void = @mapping-nox (|) @mapping-void;
+my Mapping:D @mapping-nox-void = Array[Mapping:D].new($mapping-nox-void.keys);
 
 # needed where multiple pkgs provide same soname
 my Str:D &as = sub (Mapping:D $mapping --> Str:D)
@@ -83,7 +83,7 @@ my Str:D &as = sub (Mapping:D $mapping --> Str:D)
 }
 
 # write sorted shlibs to stdout
-@mapping-atw-void
+@mapping-nox-void
     .unique(:&as)
     .sort({ $^a.soname cmp $^b.soname })
     .sort({ $^a.pkg.pkgname cmp $^b.pkg.pkgname })

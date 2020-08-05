@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # -----------------------------------------------------------------------------
-# seed-diff-upstream-srcpkgs.sh: seed diff.raku atw/voidpkgs void/void-packages
+# seed-diff-upstream-srcpkgs.sh: seed diff.raku nox/voidpkgs void/void-packages
 # -----------------------------------------------------------------------------
 
 # ==============================================================================
@@ -10,22 +10,22 @@
 # path to this script
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # path to https://github.com/atweiden/voidpkgs
-readonly ROOT_ATW="$(realpath "$DIR/..")"
+readonly ROOT_NOX="$(realpath "$DIR/..")"
 # path to https://github.com/atweiden/voidpkgs/srcpkgs
-readonly SRCPKGS_ATW="$ROOT_ATW/srcpkgs/"
+readonly SRCPKGS_NOX="$ROOT_NOX/srcpkgs/"
 # path to https://github.com/void-linux/void-packages
 readonly ROOT_VOID="$HOME/Sandbox/void-linux/void-packages"
 # path to https://github.com/void-linux/void-packages/srcpkgs
 readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 # target pkgs, directories only
-readonly PKGS=($(find "$SRCPKGS_ATW" -mindepth 1 -maxdepth 1 -type d \
+readonly PKGS=($(find "$SRCPKGS_NOX" -mindepth 1 -maxdepth 1 -type d \
   -exec basename '{}' \;))
 
 # end constants }}}
 # ==============================================================================
 # global variables {{{
 
-declare -A pkgs_atw
+declare -A pkgs_nox
 declare -A pkgs_void
 
 # end global variables }}}
@@ -48,7 +48,7 @@ gen_path_srcpkgs() {
 }
 
 mkpkgs() {
-  # subject must be atw or void
+  # subject must be nox or void
   local subject
   subject="$1"
 
@@ -98,10 +98,10 @@ $*IN.lines.map(-> Str:D $line {
 });
 EOF
 
-main_atw() {
-  mkpkgs "atw"
-  for k in "${!pkgs_atw[@]}"; do
-    echo "$k = \"${pkgs_atw[$k]}\""
+main_nox() {
+  mkpkgs "nox"
+  for k in "${!pkgs_nox[@]}"; do
+    echo "$k = \"${pkgs_nox[$k]}\""
   done | raku -e "$rakudo"
 }
 
@@ -113,8 +113,8 @@ main_void() {
 }
 
 main() {
-  echo "[atw]"
-  main_atw | sort
+  echo "[nox]"
+  main_nox | sort
   echo
   echo "[void]"
   main_void | sort

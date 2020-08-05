@@ -96,10 +96,10 @@ my Str:D $toml = qx{./scripts/seed-diff-upstream-srcpkgs.sh}.trim;
 # very slow 180s
 my %toml = from-toml($toml);
 
-# use void keys because atw has more pkgs
+# use void keys because nox has more pkgs
 my Diff:D @diff =
     %toml<void>.keys.map(-> Str:D $pkgname {
-        my Diff:D $diff = %toml<atw>{$pkgname} diff %toml<void>{$pkgname};
+        my Diff:D $diff = %toml<nox>{$pkgname} diff %toml<void>{$pkgname};
     });
 
 @diff.perl.say;
