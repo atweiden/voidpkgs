@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kakoune"
-version=2020.01.16
+version=2020.08.04
 revision=1
 short_desc="Selection-based vim-like editor with less keystrokes"
 makedepends="ncurses-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="https://kakoune.org"
 license="Unlicense"
 distfiles="https://github.com/mawww/kakoune/releases/download/v$version/$pkgname-$version.tar.bz2"
-checksum="a094f1689f0228308f631e371b382b0c0522391fc8b6c23a6cbc71ff404a0dae"
+checksum="02469fac1ff83191165536fa52f01907db5be0a734bc90570924b3edbb9cf121"
 build_wrksrc="src"
 build_style="gnu-makefile"
 make_build_args="debug=no"
