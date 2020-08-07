@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="spdx-licenses-list"
-version=3.9
+version=3.10
 revision=1
 short_desc="SPDX License List"
 archs="noarch"
 homepage="https://spdx.org"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="759fad360a6c1b0c2cf8cd851b65cd1027848dbf4c8541a25f7cebb29182c290"
+checksum="d41b2fd17127393a5a938dd016c566fadc5a0c4c4095106e4f5f4b71f983004c"
 wrksrc="license-list-data-$version"
 
 do_install() {
@@ -44,5 +44,9 @@ spdx-licenses-html_package() {
     vcopy html usr/share/spdx
   }
 }
+
+# REMARKS:
+#
+# common/travis/license.lst should be updated in sync with this package
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
