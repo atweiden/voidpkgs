@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pahole"
 version=1.17
-revision=1
+revision=2
 _bpfver=0.0.7
 short_desc="Various DWARF utils"
 makedepends+=" elfutils-devel"
@@ -9,7 +9,7 @@ makedepends+=" zlib-devel"
 case $XBPS_TARGET_MACHINE in
   *-musl)
     makedepends+=" argp-standalone"
-    makedepends+=" musl-obstack"
+    makedepends+=" musl-obstack-devel"
 esac
 homepage="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license="GPL-2.0-only"
