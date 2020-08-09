@@ -1,12 +1,14 @@
 maintainer="nox"
 pkgname="gcompat"
-version=0.4.0
+version=0.9.0
 revision=1
 short_desc="Compatibility layer to allow running glibc binaries on musl systems"
+makedepends="musl-obstack-devel"
+hostmakedepends="pkg-config"
 homepage="https://code.foxkit.us/adelie/gcompat"
 license="ISC"
 distfiles="https://distfiles.AdelieLinux.org/source/gcompat/$pkgname-$version.tar.xz"
-checksum="9903fac7b70de3ba7736ae2987fa00bbafff7bfcf6a9c88731c292dff19e44e2"
+checksum="4555d045d7d2831d11b907719005c5dfbc77642c32f8c0172d40883026ffaf53"
 build_style="gnu-makefile"
 build_options="libucontext"
 desc_option_libucontext="Build with ucontext support via libucontext"
@@ -98,12 +100,12 @@ make_build_args+=" LIBGCOMPAT_PATH=/usr/lib/libgcompat.so.0"
 make_build_args+=" LINKER_PATH=/usr/lib/$_musl"
 make_build_args+=" LOADER_NAME=$_glibc"
 make_build_args+=" LOADER_PATH=/usr/lib/$LOADER_NAME"
-make_build_args+=" WITH_OBSTACK=no"
+make_build_args+=" WITH_OBSTACK=musl-obstack"
 make_install_args+=" LIBGCOMPAT_PATH=/usr/lib/libgcompat.so.0"
 make_install_args+=" LINKER_PATH=/usr/lib/$_musl"
 make_install_args+=" LOADER_NAME=$_glibc"
 make_install_args+=" LOADER_PATH=/usr/lib/$LOADER_NAME"
-make_install_args+=" WITH_OBSTACK=no"
+make_install_args+=" WITH_OBSTACK=musl-obstack"
 
 if [[ -n "$build_option_libucontext" ]]; then
   makedepends+=" libucontext-devel"
