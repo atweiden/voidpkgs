@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="elfutils"
 version=0.180
-revision=1
+revision=2
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -10,7 +10,7 @@ case "$XBPS_TARGET_MACHINE" in
   *-musl)
     makedepends+=" argp-standalone"
     makedepends+=" musl-fts-devel"
-    makedepends+=" musl-obstack"
+    makedepends+=" musl-obstack-devel"
     ;;
 esac
 hostmakedepends+=" automake"
