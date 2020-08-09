@@ -494,6 +494,7 @@ constant %PKG = Map.new(
     'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],
     'musl-fts' => ['musl-fts-devel'],
+    'musl-obstack' => ['musl-obstack-devel'],
     'mysql' => qw<libmysqlclient
                   libmysqlclient-devel
                   mysql-client>,

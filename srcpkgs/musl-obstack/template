@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="musl-obstack"
 version=1.1
-revision=3
+revision=4
 short_desc="Implementation of obstack for musl libc"
 archs="*-musl"
 hostmakedepends+=" automake"
@@ -11,7 +11,6 @@ license="GPL-2.0-or-later"
 distfiles="https://github.com/void-linux/musl-obstack/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="52a216613e7d55e8725e43d017bb2d49a4b1ffa1e06da472f03c7f9875df7d0d"
 build_style="gnu-configure"
-configure_args="--disable-shared"
 
 CFLAGS="-fPIC"
 
@@ -26,5 +25,16 @@ pre_configure() {
 post_install() {
   vinstall "$pkgname.pc" 644 usr/lib/pkgconfig
 }
+
+musl-obstack-devel_package() {
+  depends="$sourcepkg-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/libobstack.a
+    vmove usr/lib/libobstack.so
+    vmove usr/lib/pkgconfig
+  }
+ }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
