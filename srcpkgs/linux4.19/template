@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.19"
-version=4.19.137
+version=4.19.138
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -24,7 +24,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="18f836dfe93fdfe267f07baaa7a239d3d6702fdad6b2866609c76e33c1486c59"
+checksum="d15c27d05f6c527269b75b30cc72972748e55720e7e00ad8abbaa4fe3b1d5e02"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # unverified
