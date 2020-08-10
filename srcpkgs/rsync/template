@@ -1,18 +1,26 @@
 maintainer="nox"
 pkgname="rsync"
-version=3.1.3
+version=3.2.3
 revision=1
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
+makedepends+=" liblz4-devel"
+makedepends+=" libressl-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" popt-devel"
+makedepends+=" xxHash-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="perl"
 homepage="http://samba.anu.edu.au/rsync/"
 license="GPL-3.0-only"
+changelog="https://download.samba.org/pub/rsync/NEWS"
 distfiles="http://www.samba.org/ftp/rsync/src/$pkgname-$version.tar.gz"
-checksum="55cc554efec5fdaad70de921cd5a5eeb6c29a95524c715f3bbf849235b0800c0"
+checksum="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
 conf_files="/etc/rsyncd.conf"
 build_style="gnu-configure"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args=" --disable-simd"
+fi
 
 pre_check() {
   # chgrp tests fail inside chroot
