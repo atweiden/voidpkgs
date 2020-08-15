@@ -14,8 +14,14 @@ configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+build_options="static"
 
 CFLAGS="-fPIC"
+
+if [[ -n "$build_option_static" ]]; then
+  CFLAGS+=" -static"
+  LDFLAGS+=" -static"
+fi
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
