@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Test-Fatal"
-version=0.014
-revision=2
+version=0.016
+revision=1
 short_desc="Incredibly simple helpers for testing code with exceptions"
 archs="noarch"
 depends+=" perl"
@@ -10,9 +10,9 @@ makedepends+=" perl"
 makedepends+=" perl-Try-Tiny"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Fatal"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname/perl-/}-$version.tar.gz"
-checksum="bcdcef5c7b2790a187ebca810b0a08221a63256062cfab3c3b98685d91d1cbb0"
+checksum="7283d430f2ba2030b8cd979ae3039d3f1b2ec3dde1a11ca6ae09f992a66f788f"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
