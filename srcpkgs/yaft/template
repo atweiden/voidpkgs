@@ -1,0 +1,19 @@
+maintainer="nox"
+pkgname="yaft"
+version=0.2.9
+revision=1
+short_desc="Yet another framebuffer terminal"
+makedepends="ncurses-devel"
+# needs host tic(1)
+hostmakedepends="ncurses"
+homepage="https://github.com/uobikiemukot/yaft"
+license="MIT"
+distfiles="https://github.com/uobikiemukot/yaft/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="80f7e6937ff0a34f77859c684d6f8e23c55d696e0bac4ac8b2f11f785db0374c"
+build_style="gnu-makefile"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
