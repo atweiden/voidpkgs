@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="NetAuth"
 version=0.3.4
-revision=2
+revision=3
 short_desc="Network authentication and identity system"
 hostmakedepends="git"
 tags="netauth"
