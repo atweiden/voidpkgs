@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
 version=2.28.0
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -36,6 +36,7 @@ post_configure() {
 NO_INSTALL_HARDLINKS=Yes
 INSTALLDIRS=vendor
 perllibdir=/usr/share/perl5/vendor_perl
+PYTHON_PATH=/usr/bin/python3
 EOF
 }
 
