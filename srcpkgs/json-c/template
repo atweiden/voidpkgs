@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="json-c"
-version=0.14
+version=0.15
 revision=1
 short_desc="JSON implementation in C"
 hostmakedepends="doxygen"
 homepage="https://json-c.github.io/json-c"
 license="MIT"
 distfiles="https://s3.amazonaws.com/json-c_releases/releases/$pkgname-$version.tar.gz"
-checksum="b377de08c9b23ca3b37d9a9828107dff1de5ce208ff4ebb35005a794f30c6870"
+checksum="b8d80a1ddb718b3ba7492916237bbf86609e9709fb007e7f7d4322f02341a4c6"
+patch_args="-Np1"
 build_style="cmake"
 configure_args+=" -DBUILD_STATIC_LIBS=ON"
 configure_args+=" -DENABLE_RDRAND=$(vopt_if rdrand ON OFF)"
