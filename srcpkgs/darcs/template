@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="darcs"
-version=2.14.4
+version=2.16.1
 revision=1
 short_desc="Change-focused cross-platform version control system"
 makedepends+=" libcurl-devel"
@@ -10,7 +10,7 @@ hostmakedepends="unzip"
 homepage="http://darcs.net/"
 license="GPL-2.0-or-later"
 distfiles="http://hackage.haskell.org/package/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="e7721151000857a6ab53d7ee82a3d3e8e741b19c2cff0da2a2c9dc1285026762"
+checksum="00efd85509724e278412ec4317ea23a5ac491833b464f64c75c39de4563c03e1"
 build_style="haskell-stack"
 nopie_files="/usr/bin/darcs"
 nocross="yes"
