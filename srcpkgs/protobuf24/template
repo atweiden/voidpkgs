@@ -1,6 +1,6 @@
 maintainer="nox"
-pkgname="protobuf23"
-version=3.12.4
+pkgname="protobuf24"
+version=3.13.0
 revision=1
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
@@ -11,7 +11,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="512e5a674bf31f8b7928a64d8adf73ee67b8fe88339ad29adaa3b84dbaa570d8"
+checksum="9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a"
 wrksrc="protobuf-$version"
 build_style="gnu-configure"
 # switch to versioned package
@@ -45,7 +45,7 @@ post_install() {
   vlicense LICENSE
 }
 
-libprotobuf23_package() {
+libprotobuf24_package() {
   short_desc="Protocol buffers C++ library"
   pkg_install() {
     vmove "usr/lib/libprotobuf.so.*"
@@ -53,7 +53,7 @@ libprotobuf23_package() {
   }
 }
 
-libprotobuf23-lite_package() {
+libprotobuf24-lite_package() {
   short_desc="Protocol buffers C++ library (lite version)"
   pkg_install() {
     vmove "usr/lib/libprotobuf-lite.so.*"
@@ -61,7 +61,7 @@ libprotobuf23-lite_package() {
   }
 }
 
-libprotoc23_package() {
+libprotoc24_package() {
   short_desc="Protocol buffers compiler library"
   pkg_install() {
     vmove "usr/lib/libprotoc*.so.*"
@@ -69,8 +69,8 @@ libprotoc23_package() {
   }
 }
 
-libprotoc23-devel_package() {
-  depends="libprotoc23-${version}_$revision"
+libprotoc24-devel_package() {
+  depends="libprotoc24-${version}_$revision"
   short_desc="Protocol buffers compiler library - development files"
   # switch to versioned package
   replaces="libprotoc-devel<=3.11.4_1"
@@ -82,10 +82,10 @@ libprotoc23-devel_package() {
   }
 }
 
-protobuf23-devel_package() {
+protobuf24-devel_package() {
   unset depends
-  depends+=" libprotobuf23-${version}_$revision"
-  depends+=" libprotobuf23-lite-${version}_$revision"
+  depends+=" libprotobuf24-${version}_$revision"
+  depends+=" libprotobuf24-lite-${version}_$revision"
   depends+=" zlib-devel"
   short_desc="Protocol buffers C++ library - development files"
   # switch to versioned package
@@ -99,6 +99,30 @@ protobuf23-devel_package() {
     vmove usr/lib/libprotobuf-lite.so
     vmove usr/lib/pkgconfig
   }
+}
+
+protobuf_package() {
+  build_style="meta"
+  short_desc="Protocol buffers compiler (meta package)"
+  depends="protobuf24"
+}
+
+protobuf-devel_package() {
+  build_style="meta"
+  short_desc="Protocol buffers C++ library - development files (meta package)"
+  depends="protobuf24-devel"
+}
+
+protobuf-lite_package() {
+  build_style="meta"
+  short_desc="Protocol buffers C++ library - lite version (meta package)"
+  depends="libprotobuf24-lite"
+}
+
+libprotoc-devel_package() {
+  build_style="meta"
+  short_desc="Protocol buffers compiler library - development files (meta package)"
+  depends="libprotoc24-devel"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
