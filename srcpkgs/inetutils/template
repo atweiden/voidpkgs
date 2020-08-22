@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="inetutils"
 version=1.9.4
-revision=11
+revision=12
 short_desc="GNU network utilities"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
@@ -205,11 +205,12 @@ inetutils-tftp_package() {
   conf_files="/etc/xinetd.d/tftp"
   alternatives+=" tftp:tftp:/usr/bin/$pkgname"
   alternatives+=" tftp:tftp.1:/usr/share/man/man1/$pkgname.1"
+  alternatives+=" tftp:tftpd.8:/usr/share/man/man8/inetutils-tftpd.8"
   pkg_install() {
     vbin src/tftp "$pkgname"
     vman man/tftp.1 "$pkgname.1"
     vbin src/tftpd
-    vman man/tftpd.8
+    vman man/tftpd.8 inetutils-tftpd.8
     vinstall "$FILESDIR/tftp.xinetd" 644 etc/xinetd.d tftp
     # TODO: write etc/inet.d/tftp.conf or add an etc/inetd.conf line
   }
