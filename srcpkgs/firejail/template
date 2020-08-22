@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="firejail"
-version=0.9.62.2
+version=0.9.62.4
 revision=1
 short_desc="SUID security sandbox program"
 makedepends="libapparmor-devel"
@@ -9,17 +9,13 @@ homepage="https://firejail.wordpress.com"
 license="GPL-2.0-or-later"
 changelog="https://github.com/netblue30/firejail/raw/master/RELNOTES"
 distfiles="https://github.com/netblue30/firejail/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="acf7248b4a496cf35d3648998e4d030f39ee722ef7e3e6fde29da708a1b1ed24"
-conf_files+=" /etc/apparmor.d/local/firejail-local"
+checksum="e165b61d80957846cf18c0ae169e626a1056bafee3214972534a33c97ea492ae"
 conf_files+=" /etc/firejail/*"
+conf_files+=" /etc/apparmor.d/local/firejail-default"
 build_style="gnu-configure"
 configure_args="--enable-apparmor"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --disable-seccomp"
 fi
-
-post_install() {
-  vinstall etc/firejail-local 644 etc/apparmor.d/local
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
