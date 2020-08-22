@@ -7,7 +7,6 @@ depends+=" bash"
 depends+=" coreutils"
 depends+=" gcc"
 depends+=" kmod"
-depends+=" linux-headers"
 depends+=" make"
 if [[ -n "$CROSS_BUILD" ]]; then
   depends+=" flex"
@@ -21,6 +20,15 @@ license="GPL-2.0-or-later"
 distfiles="https://github.com/dell/dkms/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="0fcbb2691aa8231927b000edf3594d2798211c3944fd4a2a8b1864aa1c06eaaf"
 conf_files="/etc/dkms/framework.conf"
+
+case "$XBPS_TARGET_MACHINE" in
+  # too many competing kernels for arm* to depend on linux-headers
+  arm*)
+    ;;
+  *)
+    depends+=" linux-headers"
+    ;;
+esac
 
 do_install() {
   # we are only interested in the bare minimum
