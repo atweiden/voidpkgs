@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="ocaml"
-version=4.10.0
+version=4.11.0
 revision=1
 short_desc="Main implementation of the Caml language"
 makedepends="ncurses-devel"
 homepage="http://ocaml.org/"
 license="QPL-1.0, LGPL-2.1-only"
 distfiles="https://github.com/ocaml/ocaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="58bae0f0a79daf86ec755a173e593fef4ef588f15c6185993af88ceb9722bc39"
+checksum="060a26420ad868e192076138a103dbe28fa39d7a0a80f7db349a1d5143dea506"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-force-safe-string"
