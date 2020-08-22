@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="curl"
-version=7.71.1
+version=7.72.0
 revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
@@ -25,7 +25,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="9d52a4d80554f9b0d460ea2be5d7be99897a1a9f681ffafe739169afd6b4f224"
+checksum="ad91970864102a59765e20ce16216efc9d6ad381471f7accceceab7d905703ef"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
