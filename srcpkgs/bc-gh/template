@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="bc-gh"
-version=3.0.1
+version=3.1.5
 revision=1
 short_desc="Implementation of POSIX bc with GNU extensions"
 homepage="https://github.com/gavinhoward/bc"
 license="BSD-2-Clause"
 distfiles="https://github.com/gavinhoward/bc/releases/download/$version/${pkgname%-*}-$version.tar.xz"
-checksum="a06a7791030e98b69004ba0f02d7dc625c444ccf0882c04c454e397aeb481283"
+checksum="0493c1eb76e94ace7a00532824121ab901ac1bd3580a340ea5de92a7d9c1a19e"
 wrksrc="${pkgname%-*}-$version"
 alternatives+=" bc:bc.1:/usr/share/man/man1/bc-gh.1"
 alternatives+=" bc:bc:/usr/bin/bc-gh"
