@@ -58,12 +58,14 @@ pre_configure() {
 }
 
 post_install() {
-  # don't touch --configure, it reflects how curl was built
-  vsed \
-    -i \
-    -e "/[  ]*--static-libs)/,/[  ]*;;/ s,-L$XBPS_CROSS_BASE,-L," \
-    "$DESTDIR/usr/bin/curl-config"
-  vlicense COPYING
+  # fix linker search paths when necessary
+  if [[ -n "$XBPS_CROSS_BASE" ]]; then
+    # leave $XBPS_CROSS_BASE in --configure to reflect how it was built
+    vsed \
+      -i \
+      -e "/[   ]*--static-libs)/,/[  ]*;;/ s,-L$XBPS_CROSS_BASE,-L," \
+      "$DESTDIR/usr/bin/curl-config"
+  fi
 }
 
 libcurl_package() {
