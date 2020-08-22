@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="protobuf24"
 version=3.13.0
-revision=1
+revision=2
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
 hostmakedepends+=" automake"
@@ -15,8 +15,10 @@ checksum="9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a"
 wrksrc="protobuf-$version"
 build_style="gnu-configure"
 # switch to versioned package
-replaces="protobuf<=3.11.4_1"
-conflicts="protobuf18>=0"
+conflicts+=" protobuf18>=0"
+conflicts+=" protobuf23>=0"
+replaces+=" protobuf<=3.11.4_1"
+replaces+=" $conflicts"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # needs host protoc
@@ -70,11 +72,15 @@ libprotoc24_package() {
 }
 
 libprotoc24-devel_package() {
+  unset conflicts
+  unset replaces
   depends="libprotoc24-${version}_$revision"
   short_desc="Protocol buffers compiler library - development files"
   # switch to versioned package
-  replaces="libprotoc-devel<=3.11.4_1"
-  conflicts="libprotoc18-devel>=0"
+  conflicts+=" libprotoc18-devel>=0"
+  conflicts+=" libprotoc23-devel>=0"
+  replaces+=" libprotoc-devel<=3.11.4_1"
+  replaces+=" $conflicts"
   pkg_install() {
     vmove usr/lib/libprotoc.a
     vmove usr/lib/libprotoc.so
@@ -83,14 +89,18 @@ libprotoc24-devel_package() {
 }
 
 protobuf24-devel_package() {
+  unset conflicts
   unset depends
+  unset replaces
   depends+=" libprotobuf24-${version}_$revision"
   depends+=" libprotobuf24-lite-${version}_$revision"
   depends+=" zlib-devel"
   short_desc="Protocol buffers C++ library - development files"
   # switch to versioned package
-  replaces="protobuf-devel<=3.11.4_1"
-  conflicts="protobuf18-devel>=0"
+  conflicts+=" protobuf18-devel>=0"
+  conflicts+=" protobuf23-devel>=0"
+  replaces+=" protobuf-devel<=3.11.4_1"
+  replaces+=" $conflicts"
   pkg_install() {
     vmove usr/include
     vmove usr/lib/libprotobuf.a
