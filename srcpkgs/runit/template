@@ -13,8 +13,8 @@ build_wrksrc="$pkgname-$version/src"
 build_options="static"
 
 if [[ -n "$build_option_static" ]]; then
-  CFLAGS+=" -static"
-  LDFLAGS+=" -static"
+  CFLAGS="-static"
+  LDFLAGS="-static"
 fi
 
 pre_build() {

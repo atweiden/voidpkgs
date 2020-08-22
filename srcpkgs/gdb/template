@@ -44,8 +44,8 @@ vopt_conflict gdbserver static
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # make python3.x detection work in cross builds
-  CFLAGS+=" -I$XBPS_CROSS_BASE/$py3_inc"
-  CXXFLAGS+=" -I$XBPS_CROSS_BASE/$py3_inc"
+  CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
+  CXXFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
 fi
 
 post_extract() {
