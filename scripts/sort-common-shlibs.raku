@@ -37,3 +37,5 @@ sub sort-shlibs(Str:D @shlib --> List:D)
 
 my Str:D @shlib = $COMMON-SHLIBS.IO.lines;
 @shlib.&sort-shlibs().join("\n").say;
+
+# vim: set filetype=raku foldmethod=marker foldlevel=0:
