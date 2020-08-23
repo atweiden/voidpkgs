@@ -49,6 +49,10 @@ build_options_default+=" ldns"
 build_options_default+=" ssl"
 desc_option_fido2="Enable support for FIDO2 USB tokens"
 
+if [[ -n "$build_option_ldns" ]] && [[ -z "$build_option_ssl" ]]; then
+  broken="option 'ldns' requires option 'ssl'"
+fi
+
 if [[ -n "$build_option_fido2" ]]; then
   subpackages="openssh-sk-helper"
 fi
