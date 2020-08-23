@@ -55,6 +55,7 @@ constant %PKG = Map.new(
     'bcc' => qw<bcc-devel
                 bcc-tools
                 python3-bcc>,
+    'bearssl' => ['bearssl-devel'],
     'bind' => qw<bind-devel
                  bind-libs
                  bind-utils>,

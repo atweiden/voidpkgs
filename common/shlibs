@@ -17,6 +17,7 @@ libbcc.so.0 bcc-0.10.0_1
 libbcc_bpf.so.0 bcc-0.10.0_1
 libbcc.so.0 bcc-0.7.0_1
 libbpf.so.0 bcc-0.7.0_1
+libbearssl.so.0 bearssl-0.3_1
 libbind9.so.1600 bind-libs-9.16.2_1
 libisccc.so.1600 bind-libs-9.16.2_1
 libisccfg.so.1600 bind-libs-9.16.2_1
