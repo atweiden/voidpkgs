@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rclone"
-version=1.52.1
+version=1.52.3
 revision=1
 short_desc="Rsync for cloud storage"
 hostmakedepends="git"
@@ -8,11 +8,11 @@ homepage="https://rclone.org/"
 license="MIT"
 changelog="https://github.com/rclone/rclone/raw/master/docs/content/changelog.md"
 distfiles="https://github.com/rclone/rclone/releases/download/v$version/$pkgname-v$version.tar.gz"
-checksum="a95fbac3768bc5fa563fff8305786f6cfddd3457deb570a3ada4c776f1a87553"
+checksum="f4839e0153eee54615dba376a85be943ad0405300c3eea5d5e02b2c27ed7b0dd"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
-nocross="problems with the dynamic linker: https://api.travis-ci.org/v3/job/613099406/log.txt"
+go_ldflags="-extldflags=-fuse-ld=bfd"
 
 export GOFLAGS="-trimpath"
 
