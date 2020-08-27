@@ -1,19 +1,26 @@
 maintainer="nox"
 pkgname="python-six"
-version=1.14.0
+version=1.15.0
 revision=1
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
 archs="noarch"
 depends="python"
+checkdepends+=" python-pytest"
+checkdepends+=" python3-pytest"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/benjaminp/six"
 license="MIT"
 changelog="https://github.com/benjaminp/six/raw/master/CHANGES"
 distfiles="$PYPI_SITE/s/six/${pkgname#*-}-$version.tar.gz"
-checksum="236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a"
+checksum="30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
+
+do_check() {
+  python -m pytest
+  python3 -m pytest
+}
 
 post_install() {
   vlicense LICENSE
