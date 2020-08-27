@@ -24,6 +24,7 @@ configure_args+=" --with-curl"
 configure_args+=" --with-expat"
 configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
+python_version=3
 register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
 subpackages+=" git-cvs"
