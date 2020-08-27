@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="whois"
 version=5.5.6
-revision=1
+revision=2
 short_desc="Improved whois client"
 makedepends="libidn2-devel"
 hostmakedepends+=" gettext"
@@ -19,6 +19,7 @@ alternatives+=" whois:whois.1:/usr/share/man/man1/gwhois.1"
 do_build() {
   make \
     CC="$CC" \
+    CONFIG_FILE="/etc/whois.conf" \
     HAVE_ICONV=1 \
     prefix="/usr"
 }
