@@ -18,7 +18,9 @@ conf_files+=" /etc/i2pd/tunnels.conf"
 build_style="gnu-makefile"
 make_build_args+=" USE_UPNP=yes"
 case "$XBPS_TARGET_MACHINE" in
-  aarch64*|armv*|mips*|ppc*)
+  x86_64*|i686*)
+    ;;
+  *)
     make_build_args+=" USE_AESNI=no"
     make_build_args+=" USE_AVX=no"
     ;;
