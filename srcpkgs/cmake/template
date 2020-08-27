@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.18.1
+version=3.18.2
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -14,7 +14,7 @@ checkdepends+=" pkg-config"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="c0e3338bd37e67155b9d1e9526fec326b5c541f74857771b7ffed0c46ad62508"
+checksum="5d4e40fc775d3d828c72e5c45906b4d9b59003c9433ff1b36a1cb552bbd51d7e"
 build_style="configure"
 configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
 configure_args+=" --docdir=/share/doc/cmake"
