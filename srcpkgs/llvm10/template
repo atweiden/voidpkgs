@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm10"
 version=10.0.0
-revision=4
+revision=5
 short_desc="Low Level Virtual Machine"
 depends="libllvm10"
 makedepends+=" binutils-devel"
