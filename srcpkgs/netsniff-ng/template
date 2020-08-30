@@ -23,6 +23,8 @@ build_style="configure"
 configure_args+=" --disable-geoip"
 configure_args+=" --prefix=/usr"
 
+CFLAGS="-fcommon"
+
 post_extract() {
   vsed \
     -i \
@@ -36,6 +38,14 @@ pre_configure() {
   export NACL_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
 }
 
+do_build() {
+  make \
+    "$makejobs" \
+    CC="$CC" \
+    CFLAGS="$CFLAGS" \
+    LD="$CC" \
+    LDFLAGS="$LDFLAGS"
+}
 
 pre_install() {
   vmkdir usr/bin
