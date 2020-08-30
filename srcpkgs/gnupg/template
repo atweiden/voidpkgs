@@ -18,6 +18,8 @@ configure_args+=" --enable-noexecstack"
 configure_args+=" --enable-threads=posix"
 configure_args+=" gnupg_cv_regex_broken=no"
 
+CFLAGS="-fcommon"
+
 post_extract() {
   case "$XBPS_TARGET_MACHINE" in
     i686-musl)
