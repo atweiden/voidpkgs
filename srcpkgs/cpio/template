@@ -13,6 +13,8 @@ checksum="eab5bdc5ae1df285c59f2a4f140a98fc33678a0bf61bdba67d9436ae26b46f6d"
 build_style="gnu-configure"
 configure_args="--with-rmt=/usr/bin/rmt"
 
+CFLAGS="-fcommon"
+
 pre_configure() {
   autoreconf -if
 }
