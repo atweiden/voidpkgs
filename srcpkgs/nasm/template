@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="nasm"
-version=2.15.04
-revision=1
+version=2.15.03
+revision=2
 short_desc="80x86 assembler designed for portability and modularity"
 homepage="https://www.nasm.us"
 license="BSD-2-Clause"
 changelog="https://www.nasm.us/doc/nasmdocc.html"
 distfiles="https://www.nasm.us/pub/nasm/releasebuilds/$version/$pkgname-$version.tar.xz"
-checksum="b0891d23aa083546e7845dfaa0a9109a03f1f57ad0740e7acd07f80df57876d8"
+checksum="c0c39a305f08ccf0c5c6edba4294dd2851b3925b6d9642dd1efd62f72829822f"
 build_style="gnu-configure"
 make_build_args="all"
+reverts="2.15.04_1"
 
 post_install() {
   vlicense LICENSE
