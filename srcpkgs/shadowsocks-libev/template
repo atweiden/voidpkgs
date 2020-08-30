@@ -20,6 +20,8 @@ configure_args="--with-pcre=$XBPS_CROSS_BASE/usr"
 system_accounts="shadowsocks"
 make_dirs="/etc/$pkgname 0750 shadowsocks shadowsocks"
 
+CFLAGS="-fcommon"
+
 post_install() {
   vsv "$pkgname-server"
   vsv "$pkgname-client"
