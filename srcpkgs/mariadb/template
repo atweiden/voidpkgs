@@ -58,7 +58,7 @@ lib32disabled="yes"
 provides="mysql-${version}_$revision"
 replaces="mysql>=0"
 
-CFLAGS="-w"
+CFLAGS="-w -fcommon"
 
 pre_configure() {
   # we need some host binaries before starting cross compilation
