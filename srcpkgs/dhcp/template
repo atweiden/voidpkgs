@@ -3,6 +3,9 @@ pkgname="dhcp"
 version=4.4.2
 revision=1
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+fi
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
@@ -17,9 +20,7 @@ build_style="gnu-configure"
 make_dirs="/var/lib/dhcp 0755 root root"
 disable_parallel_build="yes"
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
+CFLAGS="-fcommon"
 
 post_patch() {
   if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
