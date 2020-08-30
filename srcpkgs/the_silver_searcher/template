@@ -16,6 +16,8 @@ checksum="d9621a878542f3733b5c6e71c849b9d1a830ed77cb1a1f6c2ea441d4b0643170"
 build_style="gnu-configure"
 make_check_target="test"
 
+CFLAGS="-fcommon"
+
 post_install() {
   vlicense NOTICE
   rm "$DESTDIR/usr/share/the_silver_searcher/completions/ag.bashcomp.sh"
