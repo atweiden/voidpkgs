@@ -21,6 +21,8 @@ alternatives+=" ntpd:ntpd.8:/usr/share/man/man8/openntpd.8"
 alternatives+=" ntpd:ntpd:/etc/sv/openntpd"
 alternatives+=" ntpd:ntpd:/usr/bin/openntpd"
 
+CFLAGS="-fcommon"
+
 pre_configure() {
   autoreconf -fi
 }
