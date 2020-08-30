@@ -20,4 +20,6 @@ build_style="cmake"
 configure_args="-DENABLE_GTK=OFF"
 lib32disabled="yes"
 
+CFLAGS="-fcommon"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
