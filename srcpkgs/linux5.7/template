@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.7"
-version=5.7.18
+version=5.7.19
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -27,7 +27,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="a4ddf2bd1ef3293cce172efaefd2ef097e254487a22a9cc0443d33d52f8ba45c"
+checksum="419c6248b9ae4dfead4599787aecbfd202e88bc4124523adfa6dd2d642b99fe7"
 wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
