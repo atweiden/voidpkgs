@@ -16,6 +16,8 @@ system_accounts="tss"
 tss_homedir="/var/lib/tpm"
 make_dirs="/var/lib/tpm 0700 tss tss"
 
+CFLAGS="-fcommon"
+
 post_install() {
   vlicense LICENSE
   vsv tcsd
