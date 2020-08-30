@@ -18,6 +18,7 @@ checksum="56672e253c128abaa6fb19e77f6f59ba6a93762a9ba435505a009ef6d58e8d0e"
 build_style="gnu-configure"
 make_install_args="MANDIR=/share/man/man1"
 
+CFLAGS="-fcommon"
 
 post_install() {
   vlicense LICENSE
