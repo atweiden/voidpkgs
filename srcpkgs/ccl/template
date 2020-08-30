@@ -22,8 +22,8 @@ case $XBPS_MACHINE in
   x86_64*)
     _arch=64
     ;;
-  i686*)
-    broken="Build hangs forever"
+  i686-musl)
+    broken="SIGSEGV accessing context->regs: address not mapped to object"
     ;;
   *)
     _arch=''
@@ -32,6 +32,10 @@ esac
 
 post_extract() {
   mv "ccl-$version"/* .
+  vsed \
+    -i \
+    -e "/^COPT =/s/$/ -fcommon/" \
+    lisp-kernel/*/Makefile
 }
 
 do_build() {
