@@ -11,4 +11,6 @@ distfiles="http://www.ex-parrot.com/pdw/iftop/download/$pkgname-$version.tar.gz"
 checksum="f733eeea371a7577f8fe353d86dd88d16f5b2a2e702bd96f5ffb2c197d9b4f97"
 build_style="gnu-configure"
 
+CFLAGS="-fcommon"
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
