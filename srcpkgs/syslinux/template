@@ -19,7 +19,7 @@ nopie="yes"
 
 pre_build() {
   # do not try to build the Windows or DOS installers and DIAG files
-  sed \
+  vsed \
     -i \
     -e 's|diag libinstaller dos win32 win64 dosutil txt|libinstaller txt|g' \
     -e 's|win32/syslinux.exe win64/syslinux64.exe||g' \
@@ -29,10 +29,14 @@ pre_build() {
     -e 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' \
     Makefile
   # fix FHS manpage path
-  sed \
+  vsed \
     -i \
     -e 's|/usr/man|/usr/share/man|g' \
     mk/syslinux.mk
+  vsed \
+    -i \
+    -e '/GCCOPT += $(call gcc_ok,-fPIC)/i GCCOPT += $(call gcc_ok,-fcommon)' \
+    mk/lib.mk
 }
 
 do_build() {
