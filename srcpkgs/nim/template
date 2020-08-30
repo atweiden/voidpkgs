@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="nim"
 version=1.2.6
-revision=1
+revision=2
 _cversion=0.20.0
 _nimbleversion=0.11.4
 short_desc="Nim programming language"
-depends="gcc"
+depends+=" gcc"
+depends+=" libressl-devel"
 makedepends="readline-devel"
 hostmakedepends="ed"
 homepage="https://nim-lang.org/"
