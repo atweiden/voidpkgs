@@ -25,6 +25,8 @@ alternatives+=" man:man:/usr/bin/mandoc"
 alternatives+=" man:whatis.1:/usr/share/man/man1/mandoc-whatis.1"
 alternatives+=" man:whatis:/usr/bin/mandoc"
 
+CFLAGS="-fcommon"
+
 post_extract() {
   # use less(1)
   sed \
