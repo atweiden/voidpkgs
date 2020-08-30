@@ -5,6 +5,9 @@ revision=1
 short_desc="Proxies incoming HTTP and TLS connections based on the hostname"
 makedepends+=" libev-devel"
 makedepends+=" pcre-devel"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-legacy-compat"
+fi
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
@@ -17,6 +20,8 @@ distfiles="https://github.com/dlundquist/sniproxy/archive/$version.tar.gz>$pkgna
 checksum="d73c77a9fa8199ae7ac551c0332d3e0a3ff234623f53d65369a8fa560d9880e2"
 conf_files="/etc/sniproxy.conf"
 build_style="gnu-configure"
+
+CFLAGS="-fcommon"
 
 pre_configure() {
   autoreconf -fi
