@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-setuptools"
-version=49.2.1
+version=50.0.0
 revision=1
 short_desc="Easily build and distribute Python3 packages"
 archs="noarch"
@@ -9,7 +9,7 @@ hostmakedepends="python3-devel"
 homepage="https://github.com/pypa/setuptools"
 license="MIT"
 distfiles="$PYPI_SITE/s/setuptools/setuptools-$version.zip"
-checksum="88094d17c8d273390659a72e9d93374cd7bfd188c12bf2747b306e2bed48df18"
+checksum="def90e944d33e5c9a9f1ba69bf627b6e06d97463b2bae6b1ec7fc71d3fb29f55"
 wrksrc="setuptools-$version"
 build_style="python3-module"
 alternatives="setuptools:easy_install:/usr/bin/easy_install3"
