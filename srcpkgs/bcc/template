@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bcc"
-version=0.15.0
+version=0.16.0
 revision=1
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
@@ -17,7 +17,7 @@ hostmakedepends+=" python3"
 homepage="https://github.com/iovisor/bcc"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bcc/releases/download/v$version/$pkgname-src-with-submodule.tar.gz"
-checksum="4848fdfbc90071f19be9e15d28e549a55bb81619efddee20b978b7dfe0ea00cc"
+checksum="7a4551cae82964e5359ebd0df645824a82539ad0f6a86b27fc399680aed767f7"
 wrksrc="$pkgname"
 build_style="cmake"
 configure_args="-DREVISION=$version"
