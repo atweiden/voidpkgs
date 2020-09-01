@@ -1,15 +1,18 @@
 maintainer="nox"
 pkgname="qrencode"
-version=4.0.2
+version=4.1.0
 revision=1
 short_desc="Library for encoding data in a QR Code symbol"
 makedepends="libpng-devel"
 hostmakedepends="pkg-config"
-homepage="http://fukuchi.org/works/qrencode/index.html.en"
+homepage="https://fukuchi.org/works/qrencode/index.html.en"
 license="LGPL-2.1-or-later"
-distfiles="http://fukuchi.org/works/qrencode/$pkgname-$version.tar.bz2"
-checksum="c9cb278d3b28dcc36b8d09e8cad51c0eca754eb004cb0247d4703cb4472b58b4"
+distfiles="https://fukuchi.org/works/qrencode/$pkgname-$version.tar.bz2"
+checksum="ac7eff020d94be016d5b93bc6567f10a4a4692dcced901a384300f589a6cad0a"
 build_style="gnu-configure"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" --with-tests"
+fi
 
 qrencode-devel_package() {
   depends="libqrencode-${version}_$revision"
