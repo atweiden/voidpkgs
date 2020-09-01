@@ -1,12 +1,10 @@
 maintainer="nox"
 pkgname="66"
-version=0.5.0.0
-revision=3
+version=0.5.0.1
+revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
-depends="s6-portable-utils"
 makedepends+=" execline-devel"
 makedepends+=" oblibs-devel"
-makedepends+=" procps-ng-devel"
 makedepends+=" s6-devel"
 makedepends+=" s6-rc-devel"
 makedepends+=" skalibs-devel"
@@ -16,7 +14,7 @@ homepage="http://web.obarun.org/software/"
 license="ISC"
 changelog="https://framagit.org/Obarun/66/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="dd505d8d4355c33f4cdf79ad69b1fdc6aa9996cf9532116eea2e13ba7dac455a"
+checksum="d4fc4bf08c41db2c3513ea3b806dcc41f11b2ff85064a5e801fa6054c05d2e69"
 conf_files+=" /etc/66/init"
 conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
@@ -24,12 +22,9 @@ build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-s6-log-timestamp=iso"
+configure_args+=" --with-s6-log-user=_s6log"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
-make_dirs+=" /etc/66/conf 0755 root root"
-make_dirs+=" /etc/66/service 0755 root root"
-make_dirs+=" /usr/share/66/service 0755 root root"
-make_dirs+=" /var/lib/66 0755 root root"
-make_dirs+=" /var/log/66 0755 root root"
+system_accounts="_s6log"
 
 post_install() {
   vlicense COPYING
