@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="s6-networking"
 version=2.3.1.2
-revision=2
+revision=3
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
-makedepends+=" libressl-devel"
 makedepends+=" s6-devel"
 makedepends+=" s6-dns-devel"
 makedepends+=" skalibs-devel"
+makedepends+=" $(vopt_if bearssl bearssl-devel)"
+makedepends+=" $(vopt_if libressl libressl-devel)"
 homepage="https://skarnet.org/software/s6-networking/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-networking/upgrade.html"
@@ -15,10 +16,17 @@ distfiles="https://skarnet.org/software/s6-networking/$pkgname-$version.tar.gz"
 checksum="d953dbfdf9020bb27e873328df1b644f8a7b6a3972a4288b1f20edeaf85b4980"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
-configure_args+=" --enable-ssl=libressl"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+configure_args+=" $(vopt_if bearssl --enable-ssl=bearssl)"
+configure_args+=" $(vopt_if libressl --enable-ssl=libressl)"
+build_options+=" bearssl"
+build_options+=" libressl"
+build_options_default="libressl"
+desc_option_bearssl="Use BearSSL as SSL library"
+desc_option_libressl="Use LibreSSL as SSL library"
+vopt_conflict bearssl libressl
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -43,7 +51,12 @@ s6-networking-doc_package() {
 }
 
 s6-networking-devel_package() {
+  unset depends
   short_desc+=" - development files"
+	depends+=" $sourcepkg>=${version}_$revision"
+	depends+=" skalibs-devel"
+	depends+=" $(vopt_if libressl libressl-devel)"
+	depends+=" $(vopt_if bearssl bearssl-devel)"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
