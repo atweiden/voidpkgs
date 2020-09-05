@@ -29,6 +29,9 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64le*)
     _goarch="ppc64le"
     ;;
+  mips*)
+    _goarch="mips"
+    ;;
   *)
     broken="Unsupported architecture $XBPS_TARGET_MACHINE"
     ;;
