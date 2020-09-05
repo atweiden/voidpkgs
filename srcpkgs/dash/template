@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dash"
-version=0.5.11.1
+version=0.5.11.2
 revision=1
 hostmakedepends="bison"
 short_desc="POSIX-compliant Unix shell, much smaller than GNU bash"
 homepage="http://gondor.apana.org.au/~herbert/dash/"
 license="BSD-3-Clause"
 distfiles="http://gondor.apana.org.au/~herbert/dash/files/$pkgname-$version.tar.gz"
-checksum="73c881f146e329ac54962766760fd62cb8bdff376cd6c2f5772eecc1570e1611"
+checksum="00fb7d68b7599cc41ab151051c06c01e9500540183d8aa72116cb9c742bd6d5f"
 build_style="gnu-configure"
 register_shell+=" /bin/dash"
 register_shell+=" /bin/sh"
