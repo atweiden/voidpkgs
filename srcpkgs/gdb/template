@@ -49,7 +49,9 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 CFLAGS+=" -fcommon"
+CFLAGS+=" -Wno-error"
 CXXFLAGS+=" -fcommon"
+CXXFLAGS+=" -Wno-error"
 
 post_extract() {
   vsed \
@@ -61,7 +63,9 @@ post_extract() {
 
 do_configure() {
   cd "$wrksrc/build"
-  ../configure "$configure_args/with-sysroot/with-build-sysroot"
+  ../configure \
+    "${configure_args/with-sysroot/with-build-sysroot}" \
+    CFLAGS_FOR_BUILD="$CFLAGS_FOR_BUILD -fcommon"
   export gl_cv_func_gettimeofday_clobber="no"
   export gl_cv_func_strerror_0_works="yes"
   export gl_cv_func_working_strerror="yes"
@@ -86,7 +90,7 @@ do_install() {
   for f in bfd \
            configure \
            standards; do
-    rm -f "$DESTDIR/usr/share/info/$f".info*
+    rm -f "$DESTDIR/usr/share/info"/$f.info*
   done
 }
 
