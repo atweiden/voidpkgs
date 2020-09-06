@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nodejs-lts"
-version=12.16.3
-revision=2
+version=12.18.3
+revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
 # see: https://github.com/nodejs/node/pull/21079
@@ -27,7 +27,7 @@ hostmakedepends+=" $(vopt_if ssl libressl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/node-v$version.tar.gz"
-checksum="4694056576b6c48a70ad401cf061181eafbc3cbf5070907cdba4e6de1be567a5"
+checksum="6ea85f80e01b007cc9b566b8836513bc5102667d833bad4c1092be60fa60c2d4"
 wrksrc="node-v$version"
 python_version=3
 build_options+=" cares"
