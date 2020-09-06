@@ -48,6 +48,9 @@ if [[ -n "$CROSS_BUILD" ]]; then
   CXXFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
 fi
 
+CFLAGS+=" -fcommon"
+CXXFLAGS+=" -fcommon"
+
 post_extract() {
   vsed \
     -i \
