@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnupg"
 version=1.4.23
-revision=2
+revision=3
 short_desc="The GNU Privacy Guard"
 makedepends+=" bzip2-devel"
 makedepends+=" libcurl-devel"
@@ -29,6 +29,10 @@ post_extract() {
         Makefile*
       ;;
   esac
+}
+
+post_install() {
+  rm "$DESTDIR/usr/bin/gpgsplit"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
