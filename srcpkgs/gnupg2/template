@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnupg2"
-version=2.2.22
+version=2.2.23
 revision=1
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
@@ -17,7 +17,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="7c1370565e1910b9d8c4e0fb57b9de34aa062ec7bb91abad5803d791f38d855b"
+checksum="10b55e49d78b3e49f1edb58d7541ecbdad92ddaeeb885b6f486ed23d1cd1da5c"
 wrksrc="gnupg-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-gpg-is-gpg2"
