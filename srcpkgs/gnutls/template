@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnutls"
-version=3.6.14
+version=3.6.15
 revision=1
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
@@ -24,7 +24,7 @@ hostmakedepends+=" which"
 homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="5630751adec7025b8ef955af4d141d00d252a985769f51b4059e5affa3d39d63"
+checksum="0ea8c3283de8d8335d7ae338ef27c53a916f15f382753b174c18b45ffd481558"
 build_style="gnu-configure"
 configure_args+=" --disable-guile"
 configure_args+=" --disable-rpath"
