@@ -1,13 +1,20 @@
 maintainer="nox"
 pkgname="tor"
 version=0.4.3.6
-revision=1
+revision=2
 short_desc="Anonymizing overlay network"
 depends+=" ca-certificates"
 depends+=" torsocks"
+makedepends+=" libcap-devel"
 makedepends+=" libevent-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" libscrypt-devel"
 makedepends+=" libseccomp-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
+checkdepends+=" coccinelle"
+checkdepends+=" python3"
+hostmakedepends="pkg-config"
 homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 changelog="https://gitweb.torproject.org/tor.git/plain/ReleaseNotes"
@@ -15,21 +22,33 @@ distfiles="https://dist.torproject.org/$pkgname-$version.tar.gz"
 checksum="6a2d0637d4e514be2ec574723a05065245cce51da78a21cec1dc831be5ccac62"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
+configure_args="--enable-zstd"
+case "$XBPS_TARGET_MACHINE" in
+  aarch64*)
+    configure_args+=" --disable-seccomp"
+    ;;
+esac
 make_dirs="/var/lib/tor 0700 tor tor"
 system_accounts="tor"
 tor_homedir="/var/lib/tor"
 
-case "$XBPS_TARGET_MACHINE" in
-  aarch64*)
-    configure_args="--disable-seccomp"
-    ;;
-esac
+pre_configure() {
+  # ensure convenient config
+  printf '%s\n' \
+    "## On startup, setuid to this user and setgid to their primary group." \
+    "## Can not be changed while tor is running." \
+    "User tor" >> src/config/torrc.sample.in
+  vsed \
+    -i \
+    -e 's:#Log notice syslog:Log notice syslog:' \
+    -e "s:#DataDirectory :DataDirectory :" \
+    src/config/torrc.sample.in
+}
 
 post_install() {
+  mv "$DESTDIR/etc/tor/torrc.sample" "$DESTDIR/etc/tor/torrc"
   vlicense LICENSE
-  # use our own default config file
-  vinstall "$FILESDIR/torrc" 640 etc/tor
-  rm -f "$DESTDIR/etc/tor/torrc.sample"
+  vdoc doc/torrc_format.txt
   vsv tor
 }
 
