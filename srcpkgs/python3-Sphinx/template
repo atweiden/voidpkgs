@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
 version=3.2.1
-revision=1
+revision=2
 short_desc="Python 3 documentation generator"
-archs="noarch"
 depends+=" python3-Babel"
 depends+=" python3-Jinja2"
 depends+=" python3-Pygments"
