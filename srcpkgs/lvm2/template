@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lvm2"
 version=2.02.187
-revision=1
+revision=2
 short_desc="Logical Volume Manager 2 utilities"
 depends="thin-provisioning-tools"
 makedepends+=" eudev-libudev-devel"
@@ -84,7 +84,9 @@ device-mapper-devel_package() {
     vmove usr/include/libdevmapper-event.h
     vmove usr/include/lvm2cmd.h
     vmove usr/lib/liblvm2cmd.so
-    vmove "usr/lib/libdevmapper*.so"
+    vmove usr/lib/libdevmapper.so
+    vmove usr/lib/libdevmapper-event.so
+    vmove usr/lib/libdevmapper-event-lvm2.so
     case $XBPS_TARGET_MACHINE in
       *-musl)
         vmove "usr/lib/*.a"
@@ -100,6 +102,7 @@ device-mapper_package() {
     vmove "usr/lib/libdevmapper*.so.*"
     vmove "usr/lib/liblvm2cmd.so.*"
     vmove "usr/share/man/man8/dm*"
+    vmove "usr/lib/libdevmapper-event-lvm2?*.so"
     vmove usr/lib/device-mapper
     for f in 10-dm \
              13-dm-disk \
