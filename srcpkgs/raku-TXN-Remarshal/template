@@ -4,7 +4,6 @@ version=0.1.0
 revision=1
 _gitrev="f4b1e9bc870c4e278bcf3919a5e7ef3561e40bf0"
 short_desc="Double-entry accounting ledger file format converter"
-archs="noarch"
 depends+=" raku-File-Path-Resolve"
 depends+=" raku-File-Presence"
 depends+=" raku-TXN-Parser"

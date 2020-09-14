@@ -4,7 +4,6 @@ version=0.1.1
 revision=1
 _gitrev="99ba92036de046f20703e9aaf9e3147487f20dbb"
 short_desc="TOML file parser and writer"
-archs="noarch"
 depends="raku-Crane"
 makedepends="raku-Crane"
 tags="raku"

@@ -4,7 +4,6 @@ version=0.2.0
 revision=1
 _gitrev="7566a9bed70e3137d30a6425ff6fdd85a453ee2a"
 short_desc="Check permissions of potentially nonexistent files"
-archs="noarch"
 tags="raku"
 homepage="https://github.com/atweiden/file-presence"
 license="Unlicense"

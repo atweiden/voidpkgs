@@ -4,7 +4,6 @@ version=0.1.0
 revision=1
 _gitrev="77270457082ff654f91ab13ad52e359ea6c68752"
 short_desc="Navigate Raku containers and perform tasks"
-archs="noarch"
 tags="raku"
 homepage="https://github.com/atweiden/crane"
 license="Unlicense"

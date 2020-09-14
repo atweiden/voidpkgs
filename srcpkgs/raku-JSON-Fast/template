@@ -4,7 +4,6 @@ version=0.9.10
 revision=1
 _gitrev="65fac7d3722862752e463862340adccb5d98892f"
 short_desc="A naive, fast json parser and serializer"
-archs="noarch"
 tags="raku"
 homepage="https://github.com/timo/json_fast"
 license="Artistic-2.0"

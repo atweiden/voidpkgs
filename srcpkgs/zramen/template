@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="zramen"
 version=0.2.1
-revision=1
+revision=2
 short_desc="Manage zram swap space"
-archs="noarch"
 depends+=" virtual?awk"
 depends+=" bash"
 depends+=" bc"

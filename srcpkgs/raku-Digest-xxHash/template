@@ -4,7 +4,6 @@ version=1.0.1
 revision=1
 _gitrev="f172db31cec09292583d9c06a03a873b392e7e27"
 short_desc="Raku bindings for xxHash"
-archs="noarch"
 depends="xxHash-devel"
 makedepends="xxHash-devel"
 tags="raku"

@@ -4,7 +4,6 @@ version=0.1.0
 revision=1
 _gitrev="07a2e9d302548fcc4418988014255786350655d1"
 short_desc="Double-entry accounting system"
-archs="noarch"
 depends+=" mktxn"
 depends+=" raku-Config-TOML"
 depends+=" raku-File-Path-Resolve"

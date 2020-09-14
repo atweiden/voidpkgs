@@ -3,7 +3,6 @@ pkgname="tmuxer"
 version=2.3.0
 revision=1
 short_desc="Tmux layout generator and command executor"
-archs="noarch"
 depends+=" bash"
 depends+=" coreutils"
 depends+=" openssh"

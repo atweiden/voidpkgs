@@ -4,7 +4,6 @@ version=0.0.1
 revision=1
 _gitrev="f81ab6323f1fb1051aa750e414c75797e6b1bb00"
 short_desc="Command-line debugger frontend for Rakudo"
-archs="noarch"
 depends="raku-Terminal-ANSIColor"
 makedepends="raku-Terminal-ANSIColor"
 tags="raku"

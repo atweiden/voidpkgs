@@ -4,7 +4,6 @@ version=1.0.1
 revision=1
 _gitrev="0375008027c8caa216bd869476ce59ae09b2a702"
 short_desc="Simple tracing and debugging support for Raku grammars"
-archs="noarch"
 depends="raku-Terminal-ANSIColor"
 makedepends="raku-Terminal-ANSIColor"
 tags="raku"

@@ -3,7 +3,6 @@ pkgname="font-tamsyn-console"
 version=1.11
 revision=1
 short_desc="A monospaced bitmap font for the console"
-archs="noarch"
 homepage="http://www.fial.com/~scott/tamsyn-font"
 license="Custom"
 #distfiles="http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-$version.tar.gz"

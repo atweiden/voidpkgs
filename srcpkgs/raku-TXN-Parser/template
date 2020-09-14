@@ -4,7 +4,6 @@ version=0.1.0
 revision=1
 _gitrev="753a6db8caec9b68de966d2f887b11485abd3f97"
 short_desc="Double-entry accounting ledger parser"
-archs="noarch"
 depends="raku-Digest-xxHash"
 makedepends="raku-Digest-xxHash"
 checkdepends="peru"

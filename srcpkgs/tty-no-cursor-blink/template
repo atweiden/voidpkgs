@@ -3,7 +3,6 @@ pkgname="tty-no-cursor-blink"
 version=0.0.3
 revision=1
 short_desc="Disable blinking cursor in Linux tty"
-archs="noarch"
 homepage="https://github.com/atweiden/tty-no-cursor-blink"
 license="Unlicense"
 

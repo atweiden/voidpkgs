@@ -4,7 +4,6 @@ version=0.1.0
 revision=1
 _gitrev="8136e10137cc432b5491231061762a15401fc3b3"
 short_desc="Double-entry accounting ledger packager"
-archs="noarch"
 depends+=" raku-Config-TOML"
 depends+=" raku-File-Path-Resolve"
 depends+=" raku-File-Presence"

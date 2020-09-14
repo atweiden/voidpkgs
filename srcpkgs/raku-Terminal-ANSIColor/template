@@ -4,7 +4,6 @@ version=0.5
 revision=1
 _gitrev="eeb2dadd2cc2b7df34588be7869768213fd9fff4"
 short_desc="Colorize terminal output"
-archs="noarch"
 tags="raku"
 homepage="https://github.com/tadzik/Terminal-ANSIColor"
 license="MIT"
