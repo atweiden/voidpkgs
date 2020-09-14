@@ -1,18 +1,16 @@
 maintainer="nox"
 pkgname="python3-more-itertools"
-version=8.0.2
+version=8.5.0
 revision=1
 short_desc="More Python3 routines for operating on itertables"
-archs="noarch"
 depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/erikrose/more-itertools"
 license="MIT"
 distfiles="$PYPI_SITE/m/more-itertools/more-itertools-$version.tar.gz"
-checksum="b84b238cce0d9adad5ed87e745778d20a3f8487d0f0cb8b8a586816c7496458d"
+checksum="6f83822ae94818eae2612063a5101a7311e68ae8002005b5e05f03fd74a86a20"
 wrksrc="more-itertools-$version"
 build_style="python3-module"
-pycompile_module="more_itertools"
 
 do_check() {
   python3 setup.py test
