@@ -467,14 +467,17 @@ do_install() {
   case "$arch" in
     i386|x86_64)
       _args+=" arm*"
+      _args+=" m*"
       _args+=" p*"
       ;;
     arm|arm64)
       _args+=" x86*"
+      _args+=" m*"
       _args+=" p*"
       ;;
     powerpc)
       _args+=" arm*"
+      _args+=" m*"
       _args+=" x86*"
       _args+=" parisc"
       ;;
@@ -492,7 +495,6 @@ do_install() {
               frv \
               h8300 \
               ia64 \
-              m* \
               s* \
               um \
               v850 \
