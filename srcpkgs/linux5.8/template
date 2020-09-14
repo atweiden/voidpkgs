@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.8"
-version=5.8.8
+version=5.8.9
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -27,7 +27,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="33f61bb3e99a4b8bcc0fdfc7e7d72071795bccba465184665a9ae7bd7f00a976"
+checksum="99d8bc1b82f17d7d79f9af4a94af4c0e3772159e9e6e278761bde8569f93e15f"
 wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
@@ -478,8 +478,10 @@ do_install() {
       _args+=" x86*"
       _args+=" parisc"
       ;;
-    mips) _args+=" mips*"
-    mips) _args+=" p*"
+    mips)
+      _args+=" arm*"
+      _args+=" p*"
+      _args+=" x86*"
       ;;
   esac
   for arch in $_args \
