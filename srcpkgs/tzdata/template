@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="tzdata"
 version=2020a
-revision=1
+revision=2
 short_desc="Time zone and daylight-saving time data"
-archs="noarch"
 hostmakedepends="tzutils"
 homepage="http://www.iana.org/time-zones"
 license="Public Domain"
