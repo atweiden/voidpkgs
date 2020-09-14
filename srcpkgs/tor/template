@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tor"
 version=0.4.3.6
-revision=2
+revision=3
 short_desc="Anonymizing overlay network"
 depends+=" ca-certificates"
 depends+=" torsocks"
@@ -23,11 +23,6 @@ checksum="6a2d0637d4e514be2ec574723a05065245cce51da78a21cec1dc831be5ccac62"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
 configure_args="--enable-zstd"
-case "$XBPS_TARGET_MACHINE" in
-  aarch64*)
-    configure_args+=" --disable-seccomp"
-    ;;
-esac
 make_dirs="/var/lib/tor 0700 tor tor"
 system_accounts="tor"
 tor_homedir="/var/lib/tor"
