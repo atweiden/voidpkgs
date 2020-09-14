@@ -1,41 +1,35 @@
 maintainer="nox"
 pkgname="elfutils"
-version=0.180
-revision=4
+version=0.181
+revision=1
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" zlib-devel"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    makedepends+=" argp-standalone"
-    makedepends+=" musl-fts-devel"
-    makedepends+=" musl-obstack-devel"
-    ;;
-esac
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" argp-standalone"
+  makedepends+=" musl-fts-devel"
+  makedepends+=" musl-obstack-devel"
+fi
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://sourceware.org/elfutils/"
 license="GPL-3.0-or-later"
 distfiles="https://sourceware.org/elfutils/ftp/$version/$pkgname-$version.tar.bz2"
-checksum="b827b6e35c59d188ba97d7cf148fa8dc6f5c68eb6c5981888dfdbb758c0b569d"
+checksum="29a6ad7421ec2acfee489bb4a699908281ead2cb63a20a027ce8804a165f0eb3"
 build_style="gnu-configure"
 configure_args+=" --disable-debuginfod"
+configure_args+=" --disable-libdebuginfod"
 configure_args+=" --program-prefix=eu-"
 
-CFLAGS="-Wno-error -Wno-error=null-dereference"
-if [[ -n "$CROSS_BUILD" ]]; then
-  # kernel headers in our cross-* packages are too old (need >= 4.1)
-  CFLAGS+=" -DBPF_PSEUDO_MAP_FD=1"
-fi
+CFLAGS="-Wno-error"
 
 post_extract() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      cp "$FILESDIR/error.h" lib
-      cp "$FILESDIR/error.h" src
-  esac
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    cp "$FILESDIR/error.h" lib
+    cp "$FILESDIR/error.h" src
+  fi
 }
 
 pre_configure() {
