@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pytz"
-version=2019.3
-revision=2
+version=2020.1
+revision=1
 short_desc="Python2 timezone library"
-archs="noarch"
 depends+=" python"
 depends+=" tzdata"
 hostmakedepends+=" python-setuptools"
@@ -11,15 +10,15 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://pythonhosted.org/pytz/"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytz/${pkgname#*-}-$version.tar.gz"
-checksum="b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be"
+checksum="c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module="pytz"
 
 post_install() {
   vlicense LICENSE.txt LICENSE
   # use system tz database
-  for py_sitelib in "$py2_sitelib" "$py3_sitelib"; do
+  for py_sitelib in "$py2_sitelib" \
+                    "$py3_sitelib"; do
     rm -rf "$DESTDIR/$py_sitelib/pytz/zoneinfo"
     ln -sf /usr/share/zoneinfo "$DESTDIR/$py_sitelib/pytz/zoneinfo"
   done
@@ -27,10 +26,8 @@ post_install() {
 
 python3-pytz_package() {
   unset depends
-  archs="noarch"
   depends+=" python3"
   depends+=" tzdata"
-  pycompile_module="pytz"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
