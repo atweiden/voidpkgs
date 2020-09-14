@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="bash-completion"
 version=2.11
-revision=1
+revision=2
 short_desc="Programmable completion for the GNU Bash shell"
-archs="noarch"
 depends="bash"
 homepage="https://github.com/scop/bash-completion"
 license="GPL-2.0-or-later"
