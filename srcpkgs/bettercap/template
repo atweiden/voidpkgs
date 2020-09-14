@@ -1,13 +1,12 @@
 maintainer="nox"
 pkgname="bettercap"
 version=2.27.1
-revision=1
+revision=2
 short_desc="Network attack and monitoring framework"
 makedepends+=" libnetfilter_queue-devel"
 makedepends+=" libpcap-devel"
 makedepends+=" libusb-devel"
-hostmakedepends+=" git"
-hostmakedepends+=" pkg-config"
+hostmakedepends="pkg-config"
 homepage="https://github.com/bettercap/bettercap"
 license="GPL-3.0-only"
 distfiles="https://github.com/bettercap/bettercap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
@@ -17,10 +16,8 @@ go_import_path="github.com/bettercap/bettercap"
 
 export GOFLAGS="-trimpath"
 
-case "$XBPS_TARGET_MACHINE" in
-  x86_64-musl)
-    broken="fails to build"
-    ;;
-esac
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  CPPFLAGS="-Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t"
+fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
