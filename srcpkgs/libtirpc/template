@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libtirpc"
 version=1.2.6
-revision=1
+revision=2
 short_desc="Transport Independent RPC library (SunRPC replacement)"
 makedepends+=" libgssglue-devel"
 makedepends+=" mit-krb5-devel"
