@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dovecot"
 version=2.3.11.3
-revision=1
+revision=2
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
 depends="ca-certificates"
@@ -51,10 +51,13 @@ configure_args+=" --with-ssl=openssl"
 configure_args+=" --with-ssldir=/etc/dovecot/ssl"
 configure_args+=" --with-zlib"
 if [[ -n "$CROSS_BUILD" ]]; then
+  _tsize="$XBPS_TARGET_WORDSIZE"
+  # FIXME: remove for time64 rebuild
+  #[[ "$XBPS_TARGET_LIBC" == "musl" ]] && _tsize=64
   configure_args+=" i_cv_c99_vsnprintf=yes"
   configure_args+=" i_cv_epoll_works=yes"
   configure_args+=" i_cv_fd_passing=yes"
-  configure_args+=" i_cv_gmtime_max_time_t=32"
+  configure_args+=" i_cv_gmtime_max_time_t=$_tsize"
   configure_args+=" i_cv_gssapi_spnego=yes"
   configure_args+=" i_cv_inotify_works=yes"
   configure_args+=" i_cv_mmap_plays_with_write=yes"
