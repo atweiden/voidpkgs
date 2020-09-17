@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-importlib_metadata"
 version=1.7.0
-revision=1
+revision=2
 short_desc="Read metadata from Python packages"
-archs="noarch"
 depends+=" python-backports.configparser"
 depends+=" python-pathlib2"
 depends+=" python-zipp"
