@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="ruby-mustache"
 version=1.1.1
-revision=2
+revision=3
 short_desc="Framework-agnostic way to render logic-free views"
-archs="noarch"
 homepage="https://github.com/mustache/mustache"
 license="MIT"
 checksum="90891fdd50b53919ca334c8c1031eada1215e78d226d5795e523d6123a2717d0"
