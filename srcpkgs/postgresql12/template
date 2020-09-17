@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql12"
 version=12.4
-revision=1
+revision=2
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 short_desc="Sophisticated open-source Object-Relational DBMS"
@@ -139,7 +139,6 @@ _substitute() {
 
 postgresql12-doc_package() {
   short_desc="PostgreSQL documentation"
-  archs=noarch
   pkg_install() {
     vmove "$_prefix/share/doc"
   }
