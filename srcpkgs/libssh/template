@@ -1,25 +1,30 @@
 maintainer="nox"
 pkgname="libssh"
-version=0.9.4
-revision=2
+version=0.9.5
+revision=1
 short_desc="Multiplatform C library implementing the SSH v2 protocol"
 makedepends+=" cmocka-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
+checkdepends="openssh"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="https://www.libssh.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://www.libssh.org/files/0.8/libssh-$version.tar.xz"
-checksum="10cde12a5bdc86387f70de460006520fae01ad5e493782b38b6ddc2c8f187fe7"
+checksum="df65d6054554e8ff5458628808ce8d68b928175f4fefa1c833582b9568491e64"
 build_style="cmake"
 configure_args="-DUNIT_TESTING=ON"
-
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
     configure_args="-DHAVE_GLOB=0"
     ;;
 esac
+if [[ "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -DUNIT_TESTING=ON"
+else
+  configure_args+=" -DUNIT_TESTING=OFF"
+fi
 
 libssh-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
