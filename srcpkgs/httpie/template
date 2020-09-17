@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="httpie"
-version=2.1.0
+version=2.2.0
 revision=1
 short_desc="Human-friendly command line HTTP client"
-archs="noarch"
 depends+=" python3-Pygments"
 depends+=" python3-requests"
 depends+=" python3-setuptools"
@@ -12,11 +11,12 @@ homepage="https://httpie.org/"
 license="BSD-3-Clause"
 changelog="https://github.com/jakubroztocil/httpie/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/jakubroztocil/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="aea482da09341a3d205761d828c7125884c9d0eb77a53cd4d2e6042e4670182b"
+checksum="413894ad9d5d45a2a7839079dcdc0f23b0ea3586502d5014339b957de73d413e"
 build_style="python3-module"
 
 post_install() {
-  vinstall extras/httpie-completion.bash 644 usr/share/bash-completion/completions http
+  vcompletion extras/httpie-completion.bash bash http
+  vcompletion extras/httpie-completion.fish fish http
   vlicense LICENSE
 }
 
