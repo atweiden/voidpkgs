@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-cryptography_vectors"
 version=3.1
-revision=1
+revision=2
 short_desc="Test vectors for python-cryptography"
-archs="noarch"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pyca/cryptography"
