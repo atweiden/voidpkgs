@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mit-krb5"
-version=1.17.1
-revision=2
+version=1.18.2
+revision=1
 short_desc="MIT Kerberos 5 implementation"
 makedepends+=" e2fsprogs-devel"
 makedepends+=" libldap-devel"
@@ -16,7 +16,12 @@ checksum="3706d7ec2eaa773e0e32d3a87bf742ebaecae7d064e190443a3acddfd8afb181"
 wrksrc="${pkgname#mit-}-$version"
 build_style="gnu-configure"
 
-post_extract() {
+post_patch() {
+  vsed \
+    -i \
+    -e "/LDFLAGS=/d" \
+    src/build-tools/krb5-config.in
+
   # fix db plugin
   sed \
     -i \
@@ -41,13 +46,6 @@ do_configure() {
     ac_cv_printf_positional="yes" \
     acx_pthread_ok="yes" \
     krb5_cv_attr_constructor_destructor="yes,yes"
-}
-
-pre_build() {
-  sed \
-    -i \
-    -e "/LDFLAGS=/d" \
-    src/build-tools/krb5-config.in
 }
 
 do_build() {
