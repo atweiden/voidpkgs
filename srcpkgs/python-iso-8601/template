@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-iso-8601"
 version=0.3.0
-revision=2
+revision=3
 short_desc="Python2 library that provides cryptographic recipes and primitives"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -13,7 +12,6 @@ distfiles="$PYPI_SITE/i/iso-8601/iso-8601-$version.tar.gz"
 checksum="1b9f74df591812732b69a1cfba5196e176138bf5b0b49a920af5804924cc27e0"
 wrksrc="iso-8601-$version"
 build_style="python-module"
-pycompile_module="iso8601"
 
 post_install() {
   vlicense PKG-INFO
@@ -21,7 +19,6 @@ post_install() {
 
 python3-iso-8601_package() {
   depends="python3"
-  pycompile_module="iso8601"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
