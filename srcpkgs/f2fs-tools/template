@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="f2fs-tools"
-version=1.13.0
+version=1.14.0
 revision=1
 short_desc="Tools for the Linux Flash-Friendly File System (F2FS)"
 makedepends+=" libblkid-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git"
 license="GPL-2.0-only"
 distfiles="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$pkgname-$version.tar.gz"
-checksum="b39d3ae9224267aab0070b5f17d91d0c5143f6d960166a27f6b11c8c87072c7d"
+checksum="619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" ac_cv_file__git=yes"
