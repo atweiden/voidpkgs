@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lm_sensors"
-version=3.5.0
-revision=2
+version=3.6.0
+revision=1
 short_desc="Utilities to read temperature/voltage/fan sensors"
 depends="perl"
 hostmakedepends+=" flex"
@@ -9,7 +9,7 @@ hostmakedepends+=" perl"
 homepage="https://github.com/lm-sensors/lm-sensors"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://github.com/lm-sensors/lm-sensors/archive/V${version//./-}.tar.gz>$pkgname-$version.tar.gz"
-checksum="f671c1d63a4cd8581b3a4a775fd7864a740b15ad046fe92038bcff5c5134d7e0"
+checksum="0591f9fa0339f0d15e75326d0365871c2d4e2ed8aa1ff759b3a55d3734b7d197"
 conf_files="/etc/sensors3.conf"
 wrksrc="${pkgname/_/-}-${version//./-}"
 build_style="gnu-makefile"
@@ -20,11 +20,10 @@ make_install_args+=" PREFIX=/usr"
 make_install_args+=" SBINDIR=/usr/bin"
 
 pre_build() {
-  sed \
+  vsed \
     -i \
-    -e "/^MODULE_DIR :=/i LDFLAGS := $LDFLAGS" \
-    -e 's;$(CC) $(EXLDFLAGS);$(CC) $(LDFLAGS) $(EXLDFLAGS);' \
-    prog/*/Module.mk
+    -e 's,CC :=,CC ?=,' \
+    Makefile
 }
 
 post_install() {
