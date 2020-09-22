@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-typing"
 version=3.6.6
-revision=1
+revision=2
 short_desc="Backport of the typing module from Python 3.5+"
-archs="noarch"
 depends="python"
 hostmakedepends="python-setuptools"
 homepage="https://docs.python.org/3/library/typing.html"
@@ -12,7 +11,6 @@ distfiles="$PYPI_SITE/t/typing/${pkgname#*-}-$version.tar.gz"
 checksum="4027c5f6127a6267a435201981ba156de91ad0d1d98e9ddc2aa173453453492d"
 wrksrc="${pkgname#*-}-$version"
 build_style="python2-module"
-pycompile_module="typing.py"
 
 post_install() {
   vlicense LICENSE
