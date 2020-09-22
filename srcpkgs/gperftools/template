@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gperftools"
-version=2.7
-revision=3
+version=2.8
+revision=1
 short_desc="Multi-threaded malloc() and performance analysis tools"
 makedepends="libunwind-devel"
 checkdepends="perl"
@@ -10,7 +10,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/gperftools/gperftools"
 license="BSD-3-Clause"
 distfiles="https://github.com/gperftools/gperftools/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="1ee8c8699a0eff6b6a203e59b43330536b22bbcbe6448f54c7091e5efb0763c9"
+checksum="240deacdd628b6459671b83eb0c4db8e97baadf659f25b92e9a078d536bd513e"
 build_style="gnu-configure"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
