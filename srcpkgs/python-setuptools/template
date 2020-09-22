@@ -3,9 +3,8 @@ pkgname="python-setuptools"
 # https://github.com/pypa/setuptools/issues/1458
 # python2 support for setuptools ended at 44.0.0
 version=44.0.0
-revision=1
+revision=2
 short_desc="Easily build and distribute Python2 packages"
-archs="noarch"
 depends="python"
 hostmakedepends="python-devel"
 homepage="https://github.com/pypa/setuptools"
