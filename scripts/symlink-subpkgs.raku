@@ -640,7 +640,6 @@ constant %PKG = Map.new(
     'python-rfc6555' => ['python3-rfc6555'],
     'python-scandir' => ['python3-scandir'],
     'python-six' => ['python3-six'],
-    'python-snowballstemmer' => ['python3-snowballstemmer'],
     'python-soupsieve' => ['python3-soupsieve'],
     'python-urllib3' => ['python3-urllib3'],
     'python-virtualenv' => ['python3-virtualenv'],
