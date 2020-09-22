@@ -1,14 +1,13 @@
 maintainer="nox"
 pkgname="easyrsa"
-version=3.0.7
+version=3.0.8
 revision=1
 short_desc="Simple shell based CA utility"
-archs="noarch"
 depends="libressl"
 homepage="https://github.com/OpenVPN/easy-rsa"
 license="GPL-2.0-only"
 distfiles="https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version.tgz"
-checksum="157d2e8c115c3ad070c1b2641a4c9191e06a32a8e50971847a718251eeb510a8"
+checksum="cae114c212a5be4d89f2253d36c70ab94f68d295f24e8b6711c2cab0fabf7e18"
 conf_files+=" /etc/easyrsa/openssl-easyrsa.cnf"
 conf_files+=" /etc/easyrsa/vars"
 conf_files+=" /etc/easyrsa/x509-types/*"
