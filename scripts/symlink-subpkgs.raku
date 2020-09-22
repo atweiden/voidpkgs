@@ -633,7 +633,6 @@ constant %PKG = Map.new(
     'python-pyasn1' => ['python3-pyasn1'],
     'python-pycparser' => ['python3-pycparser'],
     'python-pyelftools' => ['python3-pyelftools'],
-    'python-pynacl' => ['python3-pynacl'],
     'python-pytz' => ['python3-pytz'],
     'python-requests' => ['python3-requests'],
     'python-rfc6555' => ['python3-rfc6555'],
