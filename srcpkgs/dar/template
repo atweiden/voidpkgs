@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dar"
-version=2.6.10
+version=2.6.12
 revision=1
 short_desc="Shell command that backs up directory trees and files"
 makedepends+=" acl-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://dar.linux.free.fr/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/dar/dar-$version.tar.gz"
-checksum="16a0b755c648c4ce6598e258ccf375f55d4f2f943448341ed41085ac7a27d2e7"
+checksum="d3ef3ad2fc9b5199333fc462e68b49498eb6e2c3e5472e6f9b7aa42b6a548f4b"
 conf_files="/etc/darrc"
 build_style="gnu-configure"
 configure_args+=" --disable-build-html"
