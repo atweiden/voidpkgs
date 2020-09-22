@@ -625,7 +625,6 @@ constant %PKG = Map.new(
     'python-msgpack' => ['python3-msgpack'],
     'python-nose' => ['python3-nose'],
     'python-packaging' => ['python3-packaging'],
-    'python-paramiko' => ['python3-paramiko'],
     'python-parsing' => ['python3-parsing'],
     'python-pathlib2' => ['python3-pathlib2'],
     'python-ply' => ['python3-ply'],
