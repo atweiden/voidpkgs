@@ -653,6 +653,7 @@ constant %PKG = Map.new(
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'raft' => ['raft-devel'],
+    're2' => ['re2-devel'],
     'rhash' => ['rhash-devel'],
     'ruby' => qw<ruby-devel
                  ruby-devel-doc

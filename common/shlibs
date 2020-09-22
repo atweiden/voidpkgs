@@ -605,6 +605,7 @@ libpython2.7.so.1.0 python-2.7_1
 libpython3.8.so.1.0 python3-3.8.0_1
 libpython3.so python3-3.8.0_1
 libraft.so.0 raft-0.9.16_1
+libre2.so.7 re2-2020.06.01_1
 librhash.so.0 rhash-1.3.4_1
 libruby.so.2.7 ruby-2.7.1_1
 libserf-1.so.1 serf-1.3.6_1
