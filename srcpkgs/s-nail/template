@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="s-nail"
-version=14.8.16
-revision=8
+version=14.9.19
+revision=1
 short_desc="Mail processing system with a command syntax reminiscent of ed"
 makedepends+=" libidn2-devel"
 makedepends+=" libressl-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends="perl"
 homepage="https://git.sdaoden.eu/cgit/s-nail.git"
-license="BSD"
+license="BSD-4-Clause, BSD-3-Clause, BSD-2-Clause, ISC"
 distfiles="https://www.sdaoden.eu/downloads/s-nail-$version.tar.xz"
-checksum="9b6123499eea070d6f6c242661aed1522826d9fa78abc26d55e5dc2339b959df"
+checksum="84f249a233a4592cf0c0bda9644c5b2d12e63a4807c0e292c13ef5068d3ca2bd"
 conf_files="/etc/s-nail.rc"
 provides="mail-${version}_$revision"
 alternatives+=" mail:mail.1:/usr/share/man/man1/s-nail.1"
@@ -17,22 +19,15 @@ alternatives+=" mail:mail:/usr/bin/s-nail"
 
 do_build() {
   make \
-    BINDIR="/usr/bin" \
-    CC="$CC" \
-    MAILSPOOL="/var/spool/mail" \
-    MANDIR="/usr/share/man" \
-    NAIL="mail" \
-    PREFIX="/usr" \
-    SENDMAIL="/usr/bin/sendmail" \
-    SID= \
-    SYSCONFDIR="/etc" \
-    WANT_AUTOCC=0 \
-    WANT_FILTER_HTML_TAGSOUP=1 \
-    WANT_IDNA=1 \
-    XPAGER="less" \
+    OPT_AUTOCC="no" \
+    OPT_CROSS_BUILD="no" \
+    VAL_MAIL="/var/spool/mail" \
+    VAL_MTA="/usr/bin/sendmail" \
+    VAL_PAGER="less" \
+    VAL_PREFIX="/usr" \
+    VAL_SYSCONFDIR="/etc" \
     config
   make \
-    CC="$CC" \
     "$makejobs" \
     build
 }
@@ -41,9 +36,6 @@ do_install() {
   make \
     DESTDIR="$DESTDIR" \
     packager-install
-  mv "$DESTDIR/etc"/{mail,$pkgname}.rc
-  mv "$DESTDIR/usr/bin"/{mail,$pkgname}
-  mv "$DESTDIR/usr/share/man/man1"/{mail,$pkgname}.1
   vlicense COPYING
 }
 
