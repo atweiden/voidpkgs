@@ -1,19 +1,18 @@
 # keep in sync with docbook-xsl-ns
 maintainer="nox"
 pkgname="docbook-xsl"
-version=1.79.1
-revision=7
+version=1.79.2
+revision=2
 short_desc="Docbook XSL modular stylesheet"
-archs="noarch"
 depends+=" docbook-xml>=4.2"
 depends+=" xmlcatmgr"
-homepage="http://docbook.sourceforge.net/"
+homepage="https://docbook.org/"
 license="MIT"
-distfiles="$SOURCEFORGE_SITE/docbook/$pkgname-$version.tar.bz2"
-checksum="725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968"
+distfiles="https://github.com/docbook/xslt10-stylesheets/releases/download/release/$version/$pkgname-nons-$version.tar.bz2"
+checksum="ee8b9eca0b7a8f89075832a2da7534bce8c5478fc8fc2676f512d5d87d832102"
+# at v1.79.2, docbook-xsl was renamed to docbook-xsl-nons
 wrksrc="$pkgname-nons-$version"
 xml_entries="nextCatalog /usr/share/xsl/docbook/catalog.xml --"
-reverts="1.79.2_1"
 
 do_install() {
   local xslmods
