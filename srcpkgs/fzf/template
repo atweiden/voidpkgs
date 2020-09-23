@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="fzf"
 version=0.22.0
-revision=1
+revision=2
 short_desc="Command-line fuzzy finder"
 hostmakedepends="git"
 homepage="https://github.com/junegunn/fzf"
@@ -33,7 +33,7 @@ post_install() {
   vbin bin/fzf-tmux
 
   # completion
-  vinstall shell/completion.bash 644 usr/share/bash-completion/completions fzf
+  vinstall shell/completion.bash 644 usr/share/doc/fzf
   vinstall shell/completion.zsh 644 usr/share/zsh/site-functions _fzf
 
   # key binding
