@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-html5lib"
 version=1.0.1
-revision=2
+revision=3
 short_desc="Python2 HTML parser based on the WHATWG HTML5 specification"
-archs="noarch"
 depends+=" python-six"
 depends+=" python-webencodings"
 hostmakedepends+=" python-setuptools"
@@ -29,7 +28,6 @@ post_install() {
 
 python3-html5lib_package() {
   unset depends
-  archs="noarch"
   pycompile_module="html5lib"
   depends+=" python3-six"
   depends+=" python3-webencodings"
