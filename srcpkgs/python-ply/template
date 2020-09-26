@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-ply"
 version=3.11
-revision=2
+revision=3
 short_desc="Lex and Yacc for Python2"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -23,7 +22,6 @@ post_install() {
 }
 
 python3-ply_package() {
-  archs="noarch"
   depends="python3"
   pycompile_module="ply"
   short_desc="${short_desc/Python2/Python3}"
