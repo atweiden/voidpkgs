@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-Pygments"
 version=2.5.2
-revision=1
+revision=2
 short_desc="Python2 syntax highlighter"
-archs="noarch"
 depends="python-setuptools"
 checkdepends+=" python-nose"
 checkdepends+=" python3-nose"
@@ -27,7 +26,6 @@ post_install() {
 }
 
 python3-Pygments_package() {
-  archs="noarch"
   depends="python3-setuptools"
   short_desc="${short_desc/Python2/Python3}"
   alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
