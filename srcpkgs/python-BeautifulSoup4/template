@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-BeautifulSoup4"
 version=4.8.2
-revision=1
+revision=2
 short_desc="Python2 HTML/XML parser"
-archs="noarch"
 depends+=" python"
 depends+=" python-soupsieve"
 hostmakedepends+=" python-setuptools"
@@ -21,7 +20,6 @@ post_install() {
 
 python3-BeautifulSoup4_package() {
   unset depends
-  archs="noarch"
   depends+=" python3"
   depends+=" python3-soupsieve"
   short_desc="${short_desc/Python2/Python3}"
