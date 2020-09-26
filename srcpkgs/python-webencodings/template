@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-webencodings"
 version=0.5.1
-revision=3
+revision=4
 short_desc="Python2 implementation of the WHATWG Encoding standard"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -16,7 +15,6 @@ build_style="python-module"
 pycompile_module="webencodings"
 
 python3-webencodings_package() {
-  archs="noarch"
   depends="python3"
   pycompile_module="webencodings"
   short_desc="${short_desc/Python2/Python3}"
