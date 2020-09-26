@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-six"
 version=1.15.0
-revision=1
+revision=2
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
-archs="noarch"
 depends="python"
 checkdepends+=" python-pytest"
 checkdepends+=" python3-pytest"
@@ -27,7 +26,6 @@ post_install() {
 }
 
 python3-six_package() {
-  archs="noarch"
   depends="python3"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
