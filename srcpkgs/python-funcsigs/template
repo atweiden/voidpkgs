@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-funcsigs"
 version=1.0.2
-revision=1
+revision=2
 short_desc="Backport of the signature tools from Python 3.3's inspect module"
-archs="noarch"
 depends="python"
 hostmakedepends="python-setuptools"
 homepage="https://github.com/testing-cabal/funcsigs"
