@@ -1,18 +1,19 @@
 maintainer="nox"
 pkgname="libsndfile"
-version=1.0.28
-revision=3
+version=1.0.30
+revision=1
 short_desc="C library for reading and writing files containing sampled sound"
 makedepends+=" alsa-lib-devel"
 makedepends+=" libflac-devel"
 makedepends+=" libvorbis-devel"
+makedepends+=" opus-devel"
 makedepends+=" sqlite-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python"
 homepage="http://www.mega-nerd.com/libsndfile"
 license="LGPL-2.1-or-later"
-distfiles="http://www.mega-nerd.com/libsndfile/files/$pkgname-$version.tar.gz"
-checksum="1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9"
+distfiles="https://github.com/erikd/libsndfile/releases/download/v$version/$pkgname-$version.tar.bz2"
+checksum="ec898634766595438142c76cf3bdd46b77305d4a295dd16b29d024122d7a4b3f"
 build_style="gnu-configure"
 
 libsndfile-progs_package() {
