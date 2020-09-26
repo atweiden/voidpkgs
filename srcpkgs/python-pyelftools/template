@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pyelftools"
 version=0.25
-revision=2
+revision=3
 short_desc="Python2 library for parsing ELF and DWARF"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -21,7 +20,6 @@ post_install() {
 }
 
 python3-pyelftools_package() {
-  archs="noarch"
   pycompile_module="elftools"
   depends="python3"
   short_desc="${short_desc/Python2/Python3}"
