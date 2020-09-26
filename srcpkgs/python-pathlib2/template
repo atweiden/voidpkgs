@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pathlib2"
 version=2.3.4
-revision=3
+revision=4
 short_desc="Object-oriented filesystem paths (Python2)"
-archs="noarch"
 depends+=" python-scandir"
 depends+=" python-six"
 hostmakedepends+=" python-setuptools"
@@ -18,7 +17,6 @@ pycompile_module="pathlib2"
 
 python3-pathlib2_package() {
   unset depends
-  archs="noarch"
   depends+=" python3-scandir"
   depends+=" python3-six"
   pycompile_module="pathlib2"
