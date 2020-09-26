@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-backports"
 version=1.0
-revision=3
+revision=4
 short_desc="Namespace for backported Python features"
-archs="noarch"
 depends="python"
 hostmakedepends="python"
 homepage="https://bitbucket.org/brandon/backports"
