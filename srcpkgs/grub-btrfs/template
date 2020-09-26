@@ -1,12 +1,14 @@
-# Template file for 'grub-btrfs'
-pkgname=grub-btrfs
+maintainer="nox"
+pkgname="grub-btrfs"
 version=4.6
 revision=1
-build_style=gnu-makefile
-depends="grub bash"
 short_desc="Include btrfs snapshots at Grub menu"
-maintainer="Anjandev Momi <anjan@momi.ca>"
-license="GPL-3.0-or-later"
+depends+=" bash"
+depends+=" grub"
 homepage="https://github.com/Antynea/grub-btrfs"
-distfiles="https://github.com/Antynea/grub-btrfs/archive/v${version}.tar.gz"
-checksum=6c32be223344a77807e70dfd47846f1986da618b0050c494725222b287240f71
+license="GPL-3.0-or-later"
+distfiles="https://github.com/Antynea/grub-btrfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6c32be223344a77807e70dfd47846f1986da618b0050c494725222b287240f71"
+build_style="gnu-makefile"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
