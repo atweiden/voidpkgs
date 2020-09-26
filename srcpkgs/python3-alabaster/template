@@ -1,0 +1,19 @@
+maintainer="nox"
+pkgname="python3-alabaster"
+version=0.7.12
+revision=3
+short_desc="Configurable sidebar-enabled Sphinx theme (Python3)"
+depends="python3"
+hostmakedepends="python3-setuptools"
+homepage="https://alabaster.readthedocs.io/"
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/a/alabaster/alabaster-$version.tar.gz"
+checksum="a661d72d58e6ea8a57f7a86e37d86716863ee5e92788398526d58b26a4e4dc02"
+wrksrc="alabaster-$version"
+build_style="python3-module"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk

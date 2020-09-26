@@ -598,7 +598,6 @@ constant %PKG = Map.new(
     'python-MarkupSafe' => ['python3-MarkupSafe'],
     'python-Pygments' => ['python3-Pygments'],
     'python-Unidecode' => ['python3-Unidecode'],
-    'python-alabaster' => ['python3-alabaster'],
     'python-atomicwrites' => ['python3-atomicwrites'],
     'python-attrs' => ['python3-attrs'],
     'python-bcrypt' => ['python3-bcrypt'],
