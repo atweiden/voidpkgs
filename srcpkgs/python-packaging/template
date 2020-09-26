@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-packaging"
 version=19.1
-revision=3
+revision=4
 short_desc="Core utilities for Python packages (Python2)"
-archs="noarch"
 depends+=" python-attrs"
 depends+=" python-parsing"
 depends+=" python-six"
@@ -23,7 +22,6 @@ post_install() {
 
 python3-packaging_package() {
   unset depends
-  archs="noarch"
   pycompile_module="packaging"
   depends+=" python3-attrs"
   depends+=" python3-parsing"
