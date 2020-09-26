@@ -611,7 +611,6 @@ constant %PKG = Map.new(
     'python-cssselect' => ['python3-cssselect'],
     'python-docopt' => ['python3-docopt'],
     'python-docutils' => ['python3-docutils'],
-    'python-flaky' => ['python3-flaky'],
     'python-greenlet' => qw<python-greenlet-devel
                             python3-greenlet
                             python3-greenlet-devel>,
