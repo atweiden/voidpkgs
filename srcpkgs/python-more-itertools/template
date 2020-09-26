@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-more-itertools"
 version=5.0.0
-revision=2
+revision=3
 short_desc="More Python2 routines for operating on itertables"
-archs="noarch"
 depends="python-six"
 checkdepends="python-six"
 hostmakedepends="python-setuptools"
