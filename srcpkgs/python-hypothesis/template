@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-hypothesis"
 version=4.38.2
-revision=2
+revision=3
 short_desc="Python2 library for property based testing"
-archs="noarch"
 depends+=" python-attrs"
 depends+=" python-coverage"
 depends+=" python-enum34"
@@ -47,7 +46,6 @@ do_check() {
 
 python3-hypothesis_package() {
   unset depends
-  archs="noarch"
   pycompile_module="hypothesis"
   depends+=" python3-attrs"
   depends+=" python3-coverage"
