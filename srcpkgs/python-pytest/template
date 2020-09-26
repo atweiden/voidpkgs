@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pytest"
 version=4.6.9
-revision=2
+revision=3
 short_desc="Simple powerful testing with Python 2"
-archs="noarch"
 depends+=" python-atomicwrites"
 depends+=" python-attrs>=17.4.0"
 depends+=" python-funcsigs"
