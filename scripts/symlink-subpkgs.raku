@@ -617,7 +617,6 @@ constant %PKG = Map.new(
     'python-hypothesis' => ['python3-hypothesis'],
     'python-idna' => ['python3-idna'],
     'python-iso-8601' => ['python3-iso-8601'],
-    'python-llfuse' => ['python3-llfuse'],
     'python-lxml' => ['python3-lxml'],
     'python-msgpack' => ['python3-msgpack'],
     'python-nose' => ['python3-nose'],
