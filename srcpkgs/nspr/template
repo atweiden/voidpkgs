@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="nspr"
-version=4.28
+version=4.29
 revision=1
 short_desc="NetScape Portable Runtime"
 makedepends="zlib-devel"
 homepage="http://www.mozilla.org/projects/nspr/"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/nspr/releases/v$version/src/$pkgname-$version.tar.gz"
-checksum="63defc8e19a80b6f98fcc7d5a89e84ea703c0b50aa6bc13bf7ad071adf433b56"
+checksum="22286bdb8059d74632cc7c2865c139e63953ecfb33bf4362ab58827e86e92582"
 build_wrksrc="nspr"
 build_style="gnu-configure"
 
