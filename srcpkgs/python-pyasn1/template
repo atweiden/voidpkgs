@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pyasn1"
 version=0.4.8
-revision=1
+revision=2
 short_desc="ASN.1 library for Python2"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +19,6 @@ post_install() {
 }
 
 python3-pyasn1_package() {
-  archs="noarch"
   depends="python3"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
