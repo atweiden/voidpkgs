@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-rfc6555"
 version=0.0.0
-revision=2
+revision=3
 short_desc="Python2 implementation of the Happy Eyeballs Algorithm"
-archs="noarch"
 depends="python-selectors2"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -16,7 +15,6 @@ build_style="python-module"
 pycompile_module="rfc6555"
 
 python3-rfc6555_package() {
-  archs="noarch"
   pycompile_module="rfc6555"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
