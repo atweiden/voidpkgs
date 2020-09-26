@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-enum34"
 version=1.1.6
-revision=1
+revision=2
 short_desc="Backport of Python 3.4 enum module"
-archs="noarch"
 depends="python"
 hostmakedepends="python-setuptools"
 homepage="https://bitbucket.org/stoneleaf/enum34"
