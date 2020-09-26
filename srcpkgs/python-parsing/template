@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-parsing"
 version=2.4.6
-revision=1
+revision=2
 short_desc="Python parsing module (Python2)"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +19,6 @@ post_install() {
 }
 
 python3-parsing_package() {
-  archs="noarch"
   depends="python3"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
