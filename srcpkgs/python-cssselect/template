@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-cssselect"
 version=1.1.0
-revision=2
+revision=3
 short_desc="CSS selectors for Python2"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +19,6 @@ post_install() {
 }
 
 python3-cssselect_package() {
-  archs="noarch"
   depends="python3"
   pycompile_module="cssselect"
   short_desc="${short_desc/Python2/Python3}"
