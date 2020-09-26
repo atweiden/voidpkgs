@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-atomicwrites"
 version=1.3.0
-revision=2
+revision=3
 short_desc="Simple Python2 API for atomic file writes"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -20,7 +19,6 @@ post_install() {
 }
 
 python3-atomicwrites_package() {
-  archs="noarch"
   pycompile_module="atomicwrites"
   depends="python3"
   short_desc="${short_desc/Python2/Python3}"
