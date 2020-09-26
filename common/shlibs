@@ -581,6 +581,7 @@ translucent-2.4.so.2 openldap-2.4.45_7
 unique-2.4.so.2 openldap-2.4.45_7
 valsort-2.4.so.2 openldap-2.4.45_7
 libosp.so.5 opensp-1.5.2_1
+libopus.so.0 opus-1.0.2_1
 liborc-0.4.so.0 orc-0.4.11_1
 liborc-test-0.4.so.0 orc-0.4.11_1
 libp11-kit.so.0 p11-kit-0.7_1
