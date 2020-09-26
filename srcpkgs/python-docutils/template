@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-docutils"
 version=0.16
-revision=1
+revision=2
 short_desc="Python2 documentation utilities"
-archs="noarch"
 # docutils/writers/odf_odt/pygmentsformatter.py
 depends+=" python"
 depends+=" python-Pygments"
@@ -54,7 +53,6 @@ python3-docutils_package() {
   alternatives+=" docutils:rst2xetex:/usr/bin/rst2xetex.py3"
   alternatives+=" docutils:rst2xml:/usr/bin/rst2xml.py3"
   alternatives+=" docutils:rstpep2html:/usr/bin/rstpep2html.py3"
-  archs="noarch"
   depends+=" python3"
   depends+=" python3-Pygments"
   short_desc="${short_desc/Python2/Python3}"
