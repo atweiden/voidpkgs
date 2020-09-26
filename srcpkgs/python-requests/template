@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-requests"
 version=2.23.0
-revision=1
+revision=2
 short_desc="Python2 HTTP library for human beings"
-archs="noarch"
 depends+=" ca-certificates"
 depends+=" python-chardet"
 depends+=" python-idna"
@@ -27,7 +26,6 @@ pre_build() {
 
 python3-requests_package() {
   unset depends
-  archs="noarch"
   depends+=" ca-certificates"
   depends+=" python3-chardet"
   depends+=" python3-idna"
