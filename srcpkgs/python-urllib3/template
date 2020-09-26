@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-urllib3"
 version=1.25.8
-revision=1
+revision=2
 short_desc="HTTP library with thread-safe connection pooling (Python2)"
-archs="noarch"
 depends="python-six"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -24,7 +23,6 @@ post_install() {
 }
 
 python3-urllib3_package() {
-  archs="noarch"
   depends="python3-six"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
