@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sslh"
-version=1.20
+version=1.21c
 revision=1
 short_desc="Applicative Protocol Multiplexer"
 makedepends+=" libcap-devel"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://www.rutschle.net/tech/sslh/README.html"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/yrutschle/sslh/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8f1b3471009c217fb0c5034ec4942a2c32b4187be03cd2f14f6268edbd0ed1f2"
+checksum="2e457e59592f8e523cade8d9302b0fdc87f8ea0322beb674dd7f067547a93ea9"
 
 do_build() {
   sed \
