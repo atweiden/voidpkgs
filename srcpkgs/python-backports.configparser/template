@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-backports.configparser"
 version=3.5.0
-revision=1
+revision=2
 short_desc="Backport of Python 3.x configparser module"
-archs="noarch"
 depends="python-backports"
 hostmakedepends="python-setuptools"
 homepage="https://bitbucket.org/ambv/configparser"
