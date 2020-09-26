@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-contextlib2"
 version=0.5.5
-revision=1
+revision=2
 short_desc="Backports and enhancements for the contextlib module"
-archs="noarch"
 depends="python"
 hostmakedepends="python-setuptools"
 homepage="https://contextlib2.readthedocs.io/"
