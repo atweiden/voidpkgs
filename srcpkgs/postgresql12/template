@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql12"
 version=12.4
-revision=2
+revision=3
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 short_desc="Sophisticated open-source Object-Relational DBMS"
@@ -144,7 +144,7 @@ postgresql12-doc_package() {
   }
 }
 
-postgresql-libs_package() {
+postgresql12-libs_package() {
   short_desc="PostgreSQL shared libraries"
   conflicts="postgresql9.6-libs>=0"
   pkg_install() {
@@ -158,7 +158,7 @@ postgresql-libs_package() {
   }
 }
 
-postgresql-libs-devel_package() {
+postgresql12-libs-devel_package() {
   depends="postgresql-libs>=${version}_$revision"
   short_desc="PostgreSQL shared libraries (development files)"
   conflicts="postgresql9.6-libs-devel>=0"
