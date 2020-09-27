@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="python-wcwidth"
 version=0.2.5
-revision=1
+revision=2
 short_desc="Measures no. of terminal column cells of wide-character codes (Python2)"
-depends="python"
+depends="python-backports.functools_lru_cache"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/jquast/wcwidth"
