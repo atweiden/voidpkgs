@@ -616,9 +616,7 @@ constant %PKG = Map.new(
     'python-cryptography_vectors' => ['python3-cryptography_vectors'],
     'python-cssselect' => ['python3-cssselect'],
     'python-docutils' => ['python3-docutils'],
-    'python-greenlet' => qw<python-greenlet-devel
-                            python3-greenlet
-                            python3-greenlet-devel>,
+    'python3-greenlet' => ['python3-greenlet-devel'],
     'python-html5lib' => ['python3-html5lib'],
     'python-hypothesis' => ['python3-hypothesis'],
     'python-idna' => ['python3-idna'],
