@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua51"
 version=5.1.5
-revision=10
+revision=11
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.1.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
@@ -69,19 +69,11 @@ do_install() {
 }
 
 lua51-devel_package() {
-  unset alternatives
+  unset depends
   depends+=" $makedepends"
   depends+=" lua51>=${version}_$revision"
   short_desc+=" - development files"
-  alternatives+=" lua-devel:lua:/usr/include/lua5.1"
-  alternatives+=" lua-devel:/usr/include/lua.h:/usr/include/lua5.1/lua.h"
-  alternatives+=" lua-devel:/usr/include/luaconf.h:/usr/include/lua5.1/luaconf.h"
-  alternatives+=" lua-devel:/usr/include/lua.hpp:/usr/include/lua5.1/lua.hpp"
-  alternatives+=" lua-devel:/usr/include/lualib.h:/usr/include/lua5.1/lualib.h"
-  alternatives+=" lua-devel:/usr/include/lauxlib.h:/usr/include/lua5.1/lauxlib.h"
-  alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.1.pc"
-  alternatives+=" lua-devel:liblua.a:/usr/lib/liblua5.1.a"
-  alternatives+=" lua-devel:liblua.so:/usr/lib/liblua5.1.so"
+  alternatives="lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.1.pc"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
