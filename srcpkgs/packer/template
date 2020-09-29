@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="packer"
-version=1.6.0
+version=1.6.3
 revision=1
 short_desc="Create identical multiplatform machine images from a single source"
 homepage="http://www.packer.io"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2a135643a837ad58df16e4acc3ac01ad32b61643722a6a027929bbd6baba9435"
+checksum="6e92920cef2a30b231cb08cffc5410ff1b7e0921da0c6dea70cdb10684ed73ae"
 build_style="go"
 go_import_path="github.com/hashicorp/packer"
 replaces="packer-bin>=0"
@@ -14,8 +14,8 @@ replaces="packer-bin>=0"
 export GOFLAGS="-trimpath"
 
 case "$XBPS_TARGET_MACHINE" in
-  i686*|arm*)
-    broken="https://build.voidlinux.org/builders/i686_builder/builds/9375/steps/shell_3/logs/stdio"
+  arm*)
+    go_ldflags="-linkmode=external"
     ;;
 esac
 
