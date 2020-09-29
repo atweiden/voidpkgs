@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="procs"
-version=0.10.4
+version=0.10.5
 revision=1
 short_desc="Modern replacement for ps written in Rust"
 homepage="https://github.com/dalance/procs"
 license="MIT"
 distfiles="https://github.com/dalance/procs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="14a9d250af655be7b23454b857291dc0b021be5b274b6ea754205e664afa1573"
+checksum="e363f71d690256dbc48d2a1b6e7c17d17d08dc611561646647443f6500787f25"
 build_style="cargo"
 
 post_install() {
