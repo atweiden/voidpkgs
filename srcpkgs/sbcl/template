@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sbcl"
 version=2.0.9
-revision=1
+revision=2
 short_desc="Steel Bank Common Lisp"
 archs+=" aarch64"
 archs+=" armv7l"
@@ -60,7 +60,6 @@ do_install() {
 }
 
 sbcl-source_package() {
-  archs="noarch"
   depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - source files"
   pkg_install() {
