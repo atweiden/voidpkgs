@@ -49,9 +49,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 CFLAGS+=" -fcommon"
-CFLAGS+=" -Wno-error"
 CXXFLAGS+=" -fcommon"
-CXXFLAGS+=" -Wno-error"
 
 post_extract() {
   vsed \
@@ -62,7 +60,7 @@ post_extract() {
 }
 
 do_configure() {
-  cd "$wrksrc/build"
+  cd build
   ../configure \
     "${configure_args/with-sysroot/with-build-sysroot}" \
     CFLAGS_FOR_BUILD="$CFLAGS_FOR_BUILD -fcommon"
@@ -72,21 +70,20 @@ do_configure() {
 }
 
 do_build() {
-  cd "$wrksrc/build"
+  cd build
   make \
     "$makejobs" \
     all
 }
 
 do_install() {
-  cd $wrksrc/build
+  cd build
   make \
     DESTDIR="$DESTDIR" \
     "$makejobs" \
     install
   # resolve conflicts with binutils
-  rm -rf "$DESTDIR/usr/include" "$DESTDIR/usr/lib"
-  [[ -d "$DESTDIR/usr/lib64" ]] && rm -rf "$DESTDIR/usr/lib64"
+  rm -rf "$DESTDIR/usr"/{include,lib,lib64}
   for f in bfd \
            configure \
            standards; do
