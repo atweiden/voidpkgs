@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zsh"
 version=5.8
-revision=1
+revision=2
 short_desc="Z SHell"
 makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
@@ -14,6 +14,7 @@ license="MIT, GPL-3.0-or-later"
 changelog="https://github.com/zsh-users/zsh/raw/master/ChangeLog"
 distfiles="$SOURCEFORGE_SITE/zsh/$pkgname-$version.tar.xz"
 checksum="dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27"
+conf_files="/etc/zsh/*"
 build_style="gnu-configure"
 configure_args+=" --enable-cap"
 configure_args+=" --enable-etcdir=/etc/zsh"
@@ -25,7 +26,7 @@ configure_args+=" --enable-pcre"
 configure_args+=" --enable-scriptdir=/usr/share/zsh/scripts"
 configure_args+=" --enable-zlogin=/etc/zsh/zlogin"
 configure_args+=" --enable-zlogout=/etc/zsh/zlogout"
-configure_args+=" --enable-zprofile=/etc/profile"
+configure_args+=" --enable-zprofile=/etc/zsh/zprofile"
 configure_args+=" --enable-zshenv=/etc/zsh/zshenv"
 configure_args+=" --enable-zshrc=/etc/zsh/zshrc"
 configure_args+=" --with-tcsetpgrp"
@@ -40,12 +41,13 @@ register_shell+=" /bin/zsh"
 register_shell+=" /usr/bin/zsh"
 lib32disabled="yes"
 
-pre_configure() {
+post_patch() {
   # set correct keymap path
   sed \
     -i \
     -e 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' \
     Completion/Unix/Command/_loadkeys
+
   # remove unneeded and conflicting completion scripts
   for _fpath in AIX \
                 BSD \
@@ -62,12 +64,20 @@ pre_configure() {
       -e "s,\s*Completion/$_fpath/\*/\*,,g" \
       Src/Zle/complete.mdd
   done
+
   rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
   rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
+
+  vsed \
+    -i \
+    -e 's,/etc/z,/etc/zsh/z,g' \
+    Doc/zsh.texi \
+    Doc/{zsh,zshall,zshoptions,zshmodules}.1
 }
 
 post_install() {
   vlicense LICENCE
+  vinstall "$FILESDIR/zprofile" 644 etc/zsh
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
