@@ -41,8 +41,8 @@ case "$XBPS_TARGET_MACHINE" in
     broken="https://build.voidlinux.org/builders/x86_64-musl_builder/builds/31173/steps/shell_3/logs/stdio"
     ;;
   *-musl)
-    makedepends+=" ccl"
-    _bootstrap_lisp="ccl --batch --quiet --no-init"
+    makedepends+=" ecl"
+    _bootstrap_lisp="ecl"
     ;;
 esac
 
