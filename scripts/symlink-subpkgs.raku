@@ -613,7 +613,6 @@ constant %PKG = Map.new(
     'python-cram' => ['python3-cram'],
     'python-cryptography' => ['python3-cryptography'],
     'python-cryptography_vectors' => ['python3-cryptography_vectors'],
-    'python-cssselect' => ['python3-cssselect'],
     'python-docutils' => ['python3-docutils'],
     'python3-greenlet' => ['python3-greenlet-devel'],
     'python-html5lib' => ['python3-html5lib'],
