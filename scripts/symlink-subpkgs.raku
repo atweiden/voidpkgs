@@ -625,7 +625,6 @@ constant %PKG = Map.new(
     'python-pathlib2' => ['python3-pathlib2'],
     'python-ply' => ['python3-ply'],
     'python-pretend' => ['python3-pretend'],
-    'python-py' => ['python3-py'],
     'python-pyasn1' => ['python3-pyasn1'],
     'python-pycparser' => ['python3-pycparser'],
     'python-pytz' => ['python3-pytz'],

@@ -1,0 +1,32 @@
+maintainer="nox"
+pkgname="python3-py"
+version=1.9.0
+revision=2
+short_desc="Python3 development support library"
+depends="python3"
+checkdepends="python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/pytest-dev/py"
+license="MIT"
+changelog="https://github.com/pytest-dev/py/raw/master/CHANGELOG"
+distfiles="$PYPI_SITE/p/py/py-$version.tar.gz"
+checksum="9ca6883ce56b4e8da7e79ac18787889fa5206c79dcc67fb065376cd2fe03f342"
+wrksrc="py-$version"
+build_style="python3-module"
+
+post_extract() {
+  vsed \
+    -i \
+    -e 's/"setuptools-scm"//' \
+    setup.py
+}
+
+do_check() {
+  python3 -m pytest
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
