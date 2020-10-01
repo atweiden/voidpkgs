@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-DBD-SQLite"
-version=1.64
-revision=2
+version=1.66
+revision=1
 short_desc="DBD::SQLite - Self-contained RDBMS in a DBI driver"
 depends+=" perl"
 depends+=" perl-DBI"
@@ -11,7 +11,7 @@ hostmakedepends="$depends"
 homepage="https://metacpan.org/release/DBD-SQLite"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
-checksum="f4ae8f7b50842305566aadd90f7bfd12a9e32b6c603a9b1c1529e73eb82aff01"
+checksum="89e75dff9f66c273e0e459d51f151f88960eb7d82e2821e6902f18688ba592fe"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 configure_args="SQLITE_LOCATION=$XBPS_CROSS_BASE/usr"
