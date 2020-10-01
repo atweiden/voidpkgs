@@ -1,0 +1,21 @@
+maintainer="nox"
+pkgname="python3-pyelftools"
+version=0.25
+revision=4
+short_desc="Python3 library for parsing ELF and DWARF"
+depends="python3"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/eliben/pyelftools"
+license="Public Domain"
+distfiles="$PYPI_SITE/p/pyelftools/pyelftools-$version.tar.gz"
+checksum="89c6da6f56280c37a5ff33468591ba9a124e17d71fe42de971818cbff46c1b24"
+wrksrc="pyelftools-$version"
+build_style="python3-module"
+alternatives="pyelftools:readelf:/usr/bin/readelf.py3"
+
+post_install() {
+  mv "$DESTDIR/usr/bin/readelf.py" "$DESTDIR/usr/bin/readelf.py3"
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
