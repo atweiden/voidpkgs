@@ -1,0 +1,37 @@
+maintainer="nox"
+pkgname="python3-html5lib"
+version=1.0.1
+revision=4
+short_desc="Python3 HTML parser based on the WHATWG HTML5 specification"
+depends+=" python3-six"
+depends+=" python3-webencodings"
+checkdepends+=" $depends"
+checkdepends+=" python3-lxml"
+checkdepends+=" python3-mock"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/html5lib/html5lib-python"
+license="MIT"
+distfiles="$PYPI_SITE/h/html5lib/html5lib-$version.tar.gz"
+checksum="66cb0dcfdbbc4f9c3ba1a63fdb511ffdbd4f513b2b6d81b80cd26ce6b3fb3736"
+wrksrc="html5lib-$version"
+build_style="python3-module"
+
+pre_build() {
+  sed \
+    -i \
+    -e '/setuptools>=/d' \
+    setup.py
+}
+
+do_check() {
+  export PYTHONPATH="$PWD/build/lib"
+  # requires more python modules
+  :
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
