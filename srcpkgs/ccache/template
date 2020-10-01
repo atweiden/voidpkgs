@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ccache"
-version=3.7.11
+version=3.7.12
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="zlib-devel"
@@ -9,7 +9,7 @@ homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
 distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="8d450208099a4d202bd7df87caaec81baee20ce9dd62da91e9ea7b95a9072f68"
+checksum="a02f4e8360dc6618bc494ca35b0ae21cea080f804a4898eab1ad3fcd108eb400"
 build_style="gnu-configure"
 make_check_args="CC=gcc"
 wrksrc="$pkgname-${version%a}"
