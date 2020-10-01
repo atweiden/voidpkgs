@@ -1,0 +1,23 @@
+maintainer="nox"
+pkgname="python3-BeautifulSoup4"
+version=4.8.2
+revision=2
+short_desc="Python3 HTML/XML parser"
+depends+=" python3"
+depends+=" python3-soupsieve"
+hostmakedepends="python3-setuptools"
+homepage="https://www.crummy.com/software/BeautifulSoup"
+license="MIT"
+distfiles="$PYPI_SITE/b/beautifulsoup4/beautifulsoup4-$version.tar.gz"
+checksum="05fd825eb01c290877657a56df4c6e4c311b3965bda790c613a3d6fb01a5462a"
+wrksrc="beautifulsoup4-$version"
+build_style="python3-module"
+
+do_check() {
+  :
+}
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk

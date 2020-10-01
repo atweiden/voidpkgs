@@ -599,7 +599,6 @@ constant %PKG = Map.new(
                        pulseaudio-devel>,
     'python' => ['python-devel'],
     'python-Babel' => ['python3-Babel'],
-    'python-BeautifulSoup4' => ['python3-BeautifulSoup4'],
     'python-Cython' => ['python3-Cython'],
     'python-Jinja2' => ['python3-Jinja2'],
     'python-M2Crypto' => ['python3-M2Crypto'],
