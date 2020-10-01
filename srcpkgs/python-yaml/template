@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-yaml"
-version=5.3
+version=5.3.1
 revision=1
 short_desc="YAML parser and emitter for Python2"
 makedepends+=" libyaml-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="http://pyyaml.org/wiki/PyYAML"
 license="MIT"
 distfiles="$PYPI_SITE/P/PyYAML/PyYAML-$version.tar.gz"
-checksum="e9f45bd5b92c7974e59bcd2dcc8631a6b6cc380a904725fce7bc08872e691615"
+checksum="b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"
 wrksrc="PyYAML-$version"
 build_style="python-module"
 
