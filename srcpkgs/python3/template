@@ -1,7 +1,7 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
 maintainer="nox"
 pkgname="python3"
-version=3.8.5
+version=3.8.6
 revision=1
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
@@ -18,7 +18,7 @@ hostmakedepends="pkgconf"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
-checksum="e3003ed57db17e617acb382b0cade29a248c6026b1bd8aad1f976e9af66a83b0"
+checksum="a9e0b79d27aa056eb9cce8d63a427b5f9bab1465dee3f942dcfdb25a82f4ab8a"
 wrksrc="Python-$version"
 alternatives+=" python:2to3:/usr/bin/2to3-${version%.*}"
 alternatives+=" python:idle:/usr/bin/idle${version%.*}"
