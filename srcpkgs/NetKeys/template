@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="NetKeys"
-version=0.5.2
+version=0.5.3
 revision=1
 short_desc="Key retrieval daemon for NetAuth"
 hostmakedepends="git"
@@ -8,7 +8,7 @@ tags="netauth"
 homepage="https://netauth.org"
 license="MIT"
 distfiles="https://github.com/NetAuth/NetKeys/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3895be4f703cd9f375977afcc7a3a43ca443b7c04979bd2af4192cf06fe732ae"
+checksum="c7cdcc54a41501c3a40f114aa873668bb78c6ff2bd73c7a1c8c2295a968fc453"
 wrksrc="netkeys-$version"
 build_style="go"
 go_import_path="github.com/netauth/netkeys"
