@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="git-lfs"
-version=2.11.0
-revision=2
+version=2.12.0
+revision=1
 short_desc="Git extension for versioning large files"
 hostmakedepends+=" git"
 hostmakedepends+=" ruby-ronn"
 homepage="https://git-lfs.github.com/"
 license="MIT"
 distfiles="https://github.com/git-lfs/git-lfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8183c4cbef8cf9c2e86b0c0a9822451e2df272f89ceb357c498bfdf0ff1b36c7"
+checksum="9971d91cd2b0dd34ccda41a3db97504bfdb4fbc23cc2ee4b6e3b9afea5643941"
 build_style="go"
 go_import_path="github.com/git-lfs/git-lfs"
 
