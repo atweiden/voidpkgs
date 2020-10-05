@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nmap"
-version=7.80
-revision=4
+version=7.90
+revision=1
 short_desc="Utility for network discovery and security auditing"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
@@ -13,31 +13,21 @@ hostmakedepends="python"
 homepage="https://nmap.org"
 license="custom:nmap"
 distfiles="https://nmap.org/dist/$pkgname-$version.tar.bz2"
-checksum="fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa"
+checksum="5557c3458275e8c43e1d0cfa5dad4e71dd39e091e2029a293891ad54098a40e8"
 build_style="gnu-configure"
 configure_args+=" --with-libssh2"
 configure_args+=" --with-ndiff"
 configure_args+=" --with-openssl"
 configure_args+=" --without-zenmap"
 configure_args+=" $(vopt_with lua liblua)"
+python_version=3
 build_options="lua"
 build_options_default="lua"
 alternatives+=" nc:nc.1:/usr/share/man/man1/ncat.1"
 alternatives+=" nc:nc:/usr/bin/ncat"
 
-pre_check() {
-  # disable zenmap tests
-  # https://github.com/nmap/nmap/issues/662
-  # https://github.com/nmap/nmap/issues/666
-  # https://github.com/nmap/nmap/issues/85
-  vsed \
-    -i \
-    -e 's|check-zenmap ||g' \
-    Makefile
-}
-
 post_install() {
-  vlicense COPYING
+  vlicense LICENSE
 
   # do not use bundled certificates, use only system ones
   rm -f "$DESTDIR/usr/share/ncat/ca-bundle.crt"
