@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.8"
-version=5.8.13
+version=5.8.14
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -27,7 +27,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="f25936177edd183dd0645dce1d81873bcfc0bab1ff1586df75d95cd12723320d"
+checksum="ee767991808d234ad9acd17f0ba94ba7979d30c528876bee6fba337ea540f0af"
 wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
