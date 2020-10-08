@@ -1,11 +1,8 @@
 maintainer="nox"
 pkgname="sysdig"
-version=0.27.0
-revision=3
+version=0.27.1
+revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
-archs+=" i686"
-archs+=" ppc64le"
-archs+=" x86_64"
 depends="dkms"
 makedepends+=" LuaJIT-devel"
 makedepends+=" c-ares-devel"
@@ -26,7 +23,7 @@ homepage="http://www.sysdig.org/"
 license="Apache-2.0, MIT, GPL-2.0-only"
 changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a67f97b2620e3d9c5d48d07932604c938a5a6d3b625d7a23bfb2eb9802024b52"
+checksum="b9d05854493d245a7a7e75f77fc654508f720aab5e5e8a3a932bd8eb54e49bda"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
 configure_args+=" -DCREATE_TEST_TARGETS=OFF"
@@ -36,6 +33,11 @@ configure_args+=" -DSYSDIG_VERSION=$version"
 configure_args+=" -DUSE_BUNDLED_B64=ON"
 configure_args+=" -DUSE_BUNDLED_DEPS=OFF"
 configure_args+=" -DUSE_BUNDLED_JQ=ON"
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    configure_args+=" -DMUSL_OPTIMIZED_BUILD=On"
+  ;;
+esac
 nocross="yes"
 disable_parallel_build="yes"
 dkms_modules="sysdig $version"
@@ -48,14 +50,6 @@ post_extract() {
     -i \
     -e 's,"${DIR_ETC}/bash_completion.d",share/bash-completion/completions,g' \
     scripts/CMakeLists.txt
-  sed \
-    -i \
-    -e '1i#include <sys/select.h>' \
-    userspace/libsinsp/mesos_collector.h
-  sed \
-    -i \
-    -e '1i#include <sys/sysmacros.h>' \
-    userspace/libscap/scap_fds.c
   sed \
     -i \
     -e '1iset(CMAKE_EXE_LINKER_FLAGS "-ltbb -lcurl")' \
