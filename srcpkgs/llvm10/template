@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm10"
 version=10.0.0
-revision=5
+revision=6
 short_desc="Low Level Virtual Machine"
 depends="libllvm10"
 makedepends+=" binutils-devel"
@@ -246,7 +246,6 @@ do_install() {
 
 clang-analyzer_package() {
   unset depends
-  archs="noarch"
   pycompile_dirs="usr/share/scan-view"
   depends+=" clang-${version}_$revision"
   depends+=" python3"
