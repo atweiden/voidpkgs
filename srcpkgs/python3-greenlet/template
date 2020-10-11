@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-greenlet"
-version=0.4.15
-revision=4
+version=0.4.17
+revision=1
 short_desc="Lightweight in-process concurrent programming (Python3)"
 makedepends="python3-devel"
 hostmakedepends="python3-setuptools"
@@ -9,7 +9,7 @@ homepage="https://github.com/python-greenlet/greenlet"
 license="MIT"
 changelog="https://github.com/python-greenlet/greenlet/raw/master/NEWS"
 distfiles="$PYPI_SITE/g/greenlet/${pkgname#*-}-$version.tar.gz"
-checksum="9416443e219356e3c31f1f918a91badf2e37acf297e2fa13d24d1cc2380f8fbc"
+checksum="41d8835c69a78de718e466dd0e6bfd4b46125f21a67c3ff6d76d8d8059868d6b"
 wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
