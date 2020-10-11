@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="meson"
 version=0.55.3
-revision=2
+revision=3
 short_desc="Super fast build system"
 depends+=" ninja"
 depends+=" python3-setuptools"
