@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="boost"
 version=1.72.0
-revision=3
+revision=4
 short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
@@ -231,7 +231,6 @@ boost-python3-1.72_package() {
 }
 
 boost-build_package() {
-  archs="noarch"
   conf_files="/etc/site-config.jam"
   short_desc+=" - Boost.Build framework"
   pkg_install() {
