@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="httpie"
 version=2.2.0
-revision=1
+revision=2
 short_desc="Human-friendly command line HTTP client"
 depends+=" python3-Pygments"
 depends+=" python3-requests"
