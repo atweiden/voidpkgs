@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-pytz"
 version=2020.1
-revision=1
+revision=2
 short_desc="Python2 timezone library"
 depends+=" python"
 depends+=" tzdata"
