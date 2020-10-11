@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pluggy"
 version=0.13.1
-revision=4
+revision=5
 short_desc="Minimalist production ready plugin system (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
