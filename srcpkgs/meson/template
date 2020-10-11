@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="meson"
 version=0.55.3
-revision=1
+revision=2
 short_desc="Super fast build system"
-archs="noarch"
 depends+=" ninja"
 depends+=" python3-setuptools"
 hostmakedepends+=" python3-devel"
@@ -23,6 +22,17 @@ do_check() {
 post_install() {
   vmkdir usr/share/vim/vimfiles
   cp -rt "$DESTDIR/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
+
+  for dir in ftdetect \
+             ftplugin \
+             indent \
+             syntax; do
+    nvim_runtime_dir="usr/share/nvim/runtime/$dir"
+    vmkdir "$nvim_runtime_dir"
+    ln -sf "/usr/share/vim/vimfiles/$dir/meson.vim" \
+      "$DESTDIR/$nvim_runtime_dir"
+  done
+
   vinstall data/syntax-highlighting/emacs/meson.el 644 usr/share/emacs/site-lisp
   vinstall data/shell-completions/zsh/_meson 644 usr/share/zsh/site-functions
 }
