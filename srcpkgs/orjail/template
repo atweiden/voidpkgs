@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="orjail"
 version=1.1
-revision=1
+revision=2
 short_desc="Force a program to exclusively use the Tor network"
-archs="noarch"
 depends+=" bash"
 depends+=" bc-gh"
 depends+=" coreutils"
