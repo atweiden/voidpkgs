@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-BeautifulSoup4"
 version=4.8.2
-revision=2
+revision=3
 short_desc="Python3 HTML/XML parser"
 depends+=" python3"
 depends+=" python3-soupsieve"
