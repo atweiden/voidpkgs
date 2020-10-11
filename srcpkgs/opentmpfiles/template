@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="opentmpfiles"
 version=0.2
-revision=1
-short_desc="A standalone utility for handling systemd-style tmpfiles.d settings"
-archs="noarch"
+revision=2
+short_desc="Standalone utility for handling systemd-style tmpfiles.d settings"
 homepage="https://github.com/OpenRC/opentmpfiles"
 license="BSD-2-Clause"
 distfiles="https://github.com/OpenRC/opentmpfiles/archive/$version.tar.gz>$pkgname-$version.tar.gz"
@@ -12,7 +11,7 @@ build_style="gnu-makefile"
 make_install_args="bindir=/usr/bin"
 
 pre_install() {
-  sed \
+  vsed \
     -i \
     -e 's|^bindir.*||g' \
     Makefile
