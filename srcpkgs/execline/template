@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="execline"
-version=2.6.1.0
+version=2.6.1.1
 revision=1
 short_desc="Non-interactive scripting language"
 makedepends="skalibs-devel"
@@ -8,7 +8,7 @@ homepage="https://skarnet.org/software/execline/"
 license="ISC"
 changelog="https://skarnet.org/software/execline/upgrade.html"
 distfiles="https://skarnet.org/software/execline/$pkgname-$version.tar.gz"
-checksum="a24c76f097ff44fe50b63b89bcde5d6ba9a481aecddbe88ee01b0e5a7b314556"
+checksum="394308f0349f962086a9695ca2bb5ef32cd38e5be6b7cec0b3d0cf35a2b2ba56"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
@@ -27,6 +27,7 @@ case "$XBPS_TARGET_MACHINE" in
   *-musl)
     makedepends+=" nsss-devel"
     configure_args+=" --enable-nsss"
+    configure_args+=" --with-include=$XBPS_CROSS_BASE/usr/include/nsss"
     ;;
 esac
 
@@ -37,7 +38,6 @@ post_install() {
 }
 
 execline-doc_package() {
-  archs="noarch"
   short_desc+=" - documentation"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
