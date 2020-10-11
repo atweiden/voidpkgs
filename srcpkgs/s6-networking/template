@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="s6-networking"
-version=2.3.1.2
-revision=3
+version=2.3.2.0
+revision=1
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
 makedepends+=" s6-devel"
@@ -13,7 +13,7 @@ homepage="https://skarnet.org/software/s6-networking/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-networking/upgrade.html"
 distfiles="https://skarnet.org/software/s6-networking/$pkgname-$version.tar.gz"
-checksum="d953dbfdf9020bb27e873328df1b644f8a7b6a3972a4288b1f20edeaf85b4980"
+checksum="bbe36a8460d90f3bff56c934811876186f7224ced5bdc15c2c96d49b4e917d12"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
@@ -32,6 +32,7 @@ case "$XBPS_TARGET_MACHINE" in
   *-musl)
     makedepends+=" nsss-devel"
     configure_args+=" --enable-nsss"
+    configure_args+=" --with-include=$XBPS_CROSS_BASE/usr/include/nsss"
     ;;
 esac
 
@@ -42,7 +43,6 @@ post_install() {
 }
 
 s6-networking-doc_package() {
-  archs="noarch"
   short_desc+=" - documentation"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
@@ -53,10 +53,10 @@ s6-networking-doc_package() {
 s6-networking-devel_package() {
   unset depends
   short_desc+=" - development files"
-	depends+=" $sourcepkg>=${version}_$revision"
-	depends+=" skalibs-devel"
-	depends+=" $(vopt_if libressl libressl-devel)"
-	depends+=" $(vopt_if bearssl bearssl-devel)"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" skalibs-devel"
+  depends+=" $(vopt_if libressl libressl-devel)"
+  depends+=" $(vopt_if bearssl bearssl-devel)"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
