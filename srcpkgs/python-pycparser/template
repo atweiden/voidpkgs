@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-pycparser"
 version=2.19
-revision=3
+revision=4
 short_desc="Complete C99 parser in pure Python (Python2)"
 depends="python-ply"
 hostmakedepends+=" python-setuptools"
