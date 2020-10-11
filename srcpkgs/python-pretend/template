@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python-pretend"
 version=1.0.9
-revision=2
+revision=3
 short_desc="Make stubbing with Python2 easier"
-archs="noarch"
 depends="python"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
@@ -13,7 +12,6 @@ distfiles="$PYPI_SITE/p/pretend/pretend-$version.tar.gz"
 checksum="c90eb810cde8ebb06dafcb8796f9a95228ce796531bc806e794c2f4649aa1b10"
 wrksrc="pretend-$version"
 build_style="python-module"
-pycompile_module="pretend"
 
 post_install() {
   vdoc README.rst
@@ -22,7 +20,6 @@ post_install() {
 
 python3-pretend_package() {
   depends="python3"
-  pycompile_module="pretend"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
