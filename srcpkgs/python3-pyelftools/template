@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyelftools"
 version=0.25
-revision=5
+revision=6
 short_desc="Python3 library for parsing ELF and DWARF"
 depends="python3"
 hostmakedepends="python3-setuptools"
