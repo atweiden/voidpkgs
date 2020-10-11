@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="peru"
 version=1.2.0
-revision=2
+revision=3
 short_desc="Tool for fetching code"
-archs="noarch"
 depends+=" curl"
 depends+=" git"
 depends+=" mercurial"
