@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-coverage"
 version=5.0.3
-revision=1
+revision=2
 short_desc="Code coverage testing for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
