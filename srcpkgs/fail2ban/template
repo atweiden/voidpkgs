@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="fail2ban"
 version=0.11.1
-revision=1
+revision=2
 short_desc="Authentication failure monitor system"
-archs="noarch"
 depends="python3"
 hostmakedepends="pkg-config python3"
 homepage="http://www.fail2ban.org/"
