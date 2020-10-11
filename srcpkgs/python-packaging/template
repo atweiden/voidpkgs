@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-packaging"
 version=19.1
-revision=4
+revision=5
 short_desc="Core utilities for Python packages (Python2)"
 depends+=" python-attrs"
 depends+=" python-parsing"
