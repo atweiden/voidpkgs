@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libressl"
 version=3.1.4
-revision=1
+revision=2
 _lssl_asm_ver=1.1.0
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 homepage="http://www.libressl.org/"
