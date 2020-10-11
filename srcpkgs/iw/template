@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iw"
-version=5.8
+version=5.9
 revision=1
 short_desc="Utility for nl80211 based CLI configuration of wireless devices"
 makedepends="libnl3-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 license="ISC"
 homepage="http://wireless.kernel.org/en/users/Documentation/iw"
 distfiles="http://www.kernel.org/pub/software/network/iw/$pkgname-$version.tar.xz"
-checksum="b59c4bacb0b6675cc09f2f30ebdceb91174cb65443d0a062fba2c09fad772db4"
+checksum="293a07109aeb7e36267cf59e3ce52857e9ffae3a6666eb8ac77894b1839fe1f2"
 
 do_build() {
   make \
