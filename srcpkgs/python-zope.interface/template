@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-zope.interface"
 version=5.1.0
-revision=1
+revision=2
 short_desc="Zope interfaces for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
