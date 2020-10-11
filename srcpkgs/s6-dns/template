@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="s6-dns"
-version=2.3.2.0
+version=2.3.3.0
 revision=1
 short_desc="Suite of DNS client programs and libraries for Unix systems"
 makedepends+=" execline-devel"
@@ -8,7 +8,7 @@ makedepends+=" skalibs-devel"
 homepage="https://skarnet.org/software/s6-dns/"
 license="ISC"
 distfiles="https://skarnet.org/software/s6-dns/$pkgname-$version.tar.gz"
-checksum="27b6129eaaea31ab907eea8a52369fe864ba7984c8f3e33dc098beb47b581e26"
+checksum="2ac75918ff5eb4d6dabe33f7e55fa70cf3e6a9062ff87de5a35029ea22238716"
 build_style="configure"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --prefix=/usr"
@@ -22,7 +22,6 @@ post_install() {
 }
 
 s6-dns-doc_package() {
-  archs="noarch"
   short_desc+=" - documentation"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
