@@ -170,7 +170,7 @@ libjansson.so.4 jansson-2.4_1
 libjemalloc.so.2 jemalloc-4.0.0_1
 libjq.so.1 jq-devel-1.4_1
 libjson-c.so.5 json-c-0.14.0_1
-libjsoncpp.so.19 jsoncpp-1.8.3_1
+libjsoncpp.so.24 jsoncpp-1.9.4_1
 liblapack.so.3 lapack-3.5.0_1
 libgnarl-9.so libada-9.1.0_1
 libgnat-9.so libada-9.1.0_1
