@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="opencl2-headers"
 version=2020.06.16
-revision=1
+revision=2
 short_desc="OpenCL 2.2 (Open Computing Language) header files"
-archs="noarch"
 homepage="https://github.com/KhronosGroup/OpenCL-Headers"
 license="Apache-2.0"
 distfiles="https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
