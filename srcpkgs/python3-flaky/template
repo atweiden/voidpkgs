@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-flaky"
 version=3.6.1
-revision=3
+revision=4
 short_desc="Plugin for nose/py.test that automatically reruns flaky tests (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
