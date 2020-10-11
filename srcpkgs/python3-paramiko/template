@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-paramiko"
 version=2.7.1
-revision=2
+revision=3
 short_desc="Python3 SSH2 protocol library"
 depends+=" python3-bcrypt"
 depends+=" python3-cryptography"
