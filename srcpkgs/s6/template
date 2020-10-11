@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="s6"
 version=2.9.2.0
-revision=1
+revision=2
 short_desc="Small suite of programs for UNIX, designed to allow process supervision"
 makedepends+=" execline-devel"
 makedepends+=" skalibs-devel"
@@ -21,6 +21,7 @@ case "$XBPS_TARGET_MACHINE" in
   *-musl)
     makedepends+=" nsss-devel"
     configure_args+=" --enable-nsss"
+    configure_args+=" --with-include=$XBPS_CROSS_BASE/usr/include/nsss"
     ;;
 esac
 
@@ -31,7 +32,6 @@ post_install() {
 }
 
 s6-doc_package() {
-  archs="noarch"
   short_desc="Documentation for s6"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
