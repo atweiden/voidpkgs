@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-pathlib2"
 version=2.3.4
-revision=4
+revision=5
 short_desc="Object-oriented filesystem paths (Python2)"
 depends+=" python-scandir"
 depends+=" python-six"
