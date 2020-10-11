@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-cryptography"
 version=3.1
-revision=1
+revision=2
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 depends+=" python-cffi"
 depends+=" python-enum34"
