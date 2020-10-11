@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="offlineimap"
 version=7.3.3
-revision=1
+revision=2
 short_desc="Powerful IMAP/Maildir synchronization and reader support"
-archs="noarch"
 depends+=" python-rfc6555"
 depends+=" python-six"
 hostmakedepends+=" asciidoc"
