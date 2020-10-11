@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-jsmath"
 version=1.0.1
-revision=1
+revision=2
 short_desc="Sphinx extension which renders Math in HTML by Javascript"
-archs="noarch"
 depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
