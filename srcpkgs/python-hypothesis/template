@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-hypothesis"
 version=4.38.2
-revision=3
+revision=4
 short_desc="Python2 library for property based testing"
 depends+=" python-attrs"
 depends+=" python-coverage"
