@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-ply"
 version=3.11
-revision=3
+revision=4
 short_desc="Lex and Yacc for Python2"
 depends="python"
 hostmakedepends+=" python-setuptools"
