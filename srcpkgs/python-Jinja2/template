@@ -1,44 +1,41 @@
 maintainer="nox"
 pkgname="python-Jinja2"
-version=2.10.1
-revision=2
+version=2.11.2
+revision=1
 short_desc="Full featured template engine (Python2)"
-archs="noarch"
 depends="python-MarkupSafe"
 checkdepends+=" python-MarkupSafe"
 checkdepends+=" python-pytest"
 checkdepends+=" python3-MarkupSafe"
 checkdepends+=" python3-pytest"
+checkdepends+=" tox"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="http://jinja.pocoo.org/"
 license="BSD-3-Clause"
+changelog="https://github.com/pallets/jinja/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/J/Jinja2/${pkgname#*-}-$version.tar.gz"
-checksum="065c4f02ebe7f7cf559e49ee5a95fb800a9e4528727aec6f24402a5374c65013"
+checksum="89aab215427ef59c34ad58735269eb58b1a5808103067f7bb9d5836c651b3bb0"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
-pycompile_module="jinja2"
 
 do_check() {
-  python2 -m pytest tests/
-  python3 -m pytest tests/
+  tox -e py,py27,docs
 }
 
 post_install() {
-  vlicense LICENSE
+  vlicense LICENSE.rst
   # these files are valid only on Python 3.6+
   rm -f "$DESTDIR/$py2_sitelib/jinja2/asyncsupport.py"
   rm -f "$DESTDIR/$py2_sitelib/jinja2/asyncfilters.py"
 }
 
 python3-Jinja2_package() {
-  archs="noarch"
   depends="python3-MarkupSafe"
-  pycompile_module="jinja2"
   short_desc="${short_desc/Python2/Python3}"
   pkg_install() {
     vmove "usr/lib/python3*"
-    vlicense LICENSE
+    vlicense LICENSE.rst
   }
 }
 
