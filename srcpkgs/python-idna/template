@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-idna"
 version=2.9
-revision=2
+revision=3
 short_desc="Internationalized Domain Names in Applications (IDNA) for Python2"
 depends="python"
 hostmakedepends+=" python-setuptools"
