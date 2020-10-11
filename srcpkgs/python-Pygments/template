@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-Pygments"
 version=2.5.2
-revision=2
+revision=3
 short_desc="Python2 syntax highlighter"
 depends="python-setuptools"
 checkdepends+=" python-nose"
