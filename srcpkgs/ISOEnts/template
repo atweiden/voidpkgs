@@ -1,24 +1,20 @@
 maintainer="nox"
 pkgname="ISOEnts"
 version=1986
-revision=4
+revision=5
 short_desc="Character entity sets from ISO 8879:1986 (SGML)"
-archs="noarch"
 depends="xmlcatmgr"
-hostmakedepends+=" bsdtar"
-hostmakedepends+=" unzip"
 homepage="http://www.oasis-open.org"
-license="Public domain"
+license="Public Domain"
 distfiles="http://www.oasis-open.org/cover/$pkgname.zip"
 checksum="dce4359a3996ed2fd33ad5eaa11a9bcfc24b5b06992e24295132b06db19a99b2"
 create_wrksrc="yes"
 sgml_entries="CATALOG /usr/share/sgml/iso8879/catalog --"
 
 do_install() {
-  local dir="$DESTDIR/usr/share/sgml/iso8879"
-  install -d "$dir"
-  bsdtar xf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname.zip" -C "$dir"
-  install -m 644 "$FILESDIR/catalog" "$dir"
+  vmkdir usr/share/sgml/iso8879
+  vcopy "*" usr/share/sgml/iso8879
+  vinstall "$FILESDIR/catalog" 644 usr/share/sgml/iso8879
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
