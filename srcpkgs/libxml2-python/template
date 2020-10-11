@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxml2-python"
 version=2.9.10
-revision=2
+revision=3
 short_desc="Library providing XML and HTML support - Python2 bindings"
 depends+=" python"
 depends+=" python3"
@@ -18,11 +18,13 @@ wrksrc="${pkgname%-python}-$version"
 build_style="python-module"
 build_wrksrc="python"
 
-pre_build() {
-  sed \
-    -i \
-    -e "s:/usr/include:$XBPS_CROSS_BASE/usr/include:" \
-    setup.py
+post_patch() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s:/usr/include:$XBPS_CROSS_BASE/usr/include:" \
+      setup.py
+  fi
 }
 
 post_install() {
