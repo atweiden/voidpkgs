@@ -1,19 +1,25 @@
 maintainer="nox"
 pkgname="python3-llfuse"
-version=1.3.6
-revision=2
+version=1.3.7
+revision=1
 short_desc="Python3 bindings for the low level FUSE API"
 depends="python3"
 makedepends+=" attr-devel"
 makedepends+=" fuse-devel"
 makedepends+=" python3-devel"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-Cython"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/python-llfuse/python-llfuse"
 license="LGPL-2.0-or-later"
-distfiles="$PYPI_SITE/l/llfuse/llfuse-$version.tar.bz2"
-checksum="31a267f7ec542b0cd62e0f1268e1880fdabf3f418ec9447def99acfa6eff2ec9"
+distfiles="$PYPI_SITE/l/llfuse/llfuse-$version.tar.gz"
+checksum="95b750303735fdba836a46b3066e102ae74b9707c1e43581bb17329769340054"
 wrksrc="llfuse-$version"
 build_style="python3-module"
+
+pre_build() {
+  rm src/llfuse.c
+  python3 setup.py build_cython
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
