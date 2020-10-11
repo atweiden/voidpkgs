@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-six"
 version=1.15.0
-revision=2
+revision=3
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
 depends="python"
 checkdepends+=" python-pytest"
