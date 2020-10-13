@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dos2unix"
-version=7.4.1
+version=7.4.2
 revision=1
 short_desc="Text file format converter"
 hostmakedepends="gettext"
 homepage="http://waterlan.home.xs4all.nl/dos2unix.html"
 license="BSD-2-Clause"
 distfiles="http://waterlan.home.xs4all.nl/dos2unix/$pkgname-$version.tar.gz"
-checksum="1cd58a60b03ed28fa39046102a185c5e88c4f7665e1e0417c25de7f8b9f78623"
+checksum="6035c58df6ea2832e868b599dfa0d60ad41ca3ecc8aa27822c4b7a9789d3ae01"
 build_style="gnu-makefile"
 
 post_install() {
