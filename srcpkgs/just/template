@@ -1,17 +1,21 @@
 maintainer="nox"
 pkgname="just"
-version=0.5.8
+version=0.8.0
 revision=1
 short_desc="Just a command runner"
 homepage="https://github.com/casey/just"
 license="CC0-1.0"
 changelog="https://github.com/casey/just/raw/master/CHANGELOG.md"
 distfiles="https://github.com/casey/just/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f0d3363f7e7604aeb355fe631421bccddb458756b5d951b25c071aa38d3e72a7"
+checksum="624cf1681cf7df8e50b70f37b29e4194cf4ad7327a335fcdf94dd83b19e45a2b"
 build_style="cargo"
 
 post_install() {
   vlicense LICENSE
+  vman man/just.1
+  vcompletion completions/just.bash bash
+  vcompletion completions/just.fish fish
+  vcompletion completions/just.zsh zsh
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
