@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="chrony"
-version=3.5.1
+version=4.0
 revision=1
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
 makedepends+=" libcap-devel"
@@ -11,7 +11,7 @@ hostmakedepends="pkg-config"
 homepage="https://chrony.tuxfamily.org/"
 license="GPL-2.0-only"
 distfiles="https://download.tuxfamily.org/chrony/$pkgname-$version.tar.gz"
-checksum="1ba82f70db85d414cd7420c39858e3ceca4b9eb8b028cbe869512c3a14a2dca7"
+checksum="be27ea14c55e7a4434b2fa51d53018c7051c42fa6a3198c9aa6a1658bae0c625"
 conf_files="/etc/chrony.conf"
 # when updating, confirm upstream config still refers to make_dirs
 make_dirs+=" /var/lib/chrony 0755 chrony chrony"
