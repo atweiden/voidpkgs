@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="radvd"
-version=2.18
+version=2.19
 revision=1
 short_desc="IPv6 Router Advertisement Daemon"
 hostmakedepends="flex"
 homepage="http://www.litech.org/radvd/"
 license="custom"
 distfiles="http://www.litech.org/radvd/dist/$pkgname-$version.tar.xz"
-checksum="e1bffefe6537e4b205d33afda35fec6014e5f860cc364850068a6ed9c6a65cdc"
+checksum="564e04597f71a9057d02290da0dd21b592d277ceb0e7277550991d788213e240"
 conf_files="/etc/radvd.conf"
 build_style="gnu-configure"
 
