@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="python3-iniconfig"
-version=1.0.1
-revision=2
+version=1.1.1
+revision=1
 short_desc="Brain-dead simple config-ini parsing"
 depends="python3"
 checkdepends+=" python3-py"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/RonnyPfannschmidt/iniconfig"
 license="MIT"
 distfiles="$PYPI_SITE/i/iniconfig/iniconfig-$version.tar.gz"
-checksum="e5f92f89355a67de0595932a6c6c02ab4afddc6fcdc0bfc5becd0d60884d3f69"
+checksum="bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"
 wrksrc="iniconfig-$version"
 build_style="python3-module"
 
