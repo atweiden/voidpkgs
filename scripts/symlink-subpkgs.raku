@@ -517,7 +517,6 @@ constant %PKG = Map.new(
     'nilfs-utils' => qw<libnilfs
                         nilfs-utils-devel>,
     'nodejs' => ['nodejs-devel'],
-    'nodejs-lts' => ['nodejs-lts-devel'],
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
     'nsss' => qw<nsss-devel
