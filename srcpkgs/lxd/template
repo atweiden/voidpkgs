@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lxd"
-version=4.6
+version=4.7
 revision=1
 short_desc="Next generation system container manager"
 depends+=" acl"
@@ -20,7 +20,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://linuxcontainers.org/lxd"
 license="Apache-2.0"
 distfiles="https://linuxcontainers.org/downloads/lxd/$pkgname-$version.tar.gz"
-checksum="3702f5eafba6dba2ab21c2119bc74e8b55514d697c1fac80343adeea94d72e04"
+checksum="011745a66e971d95ada088dc42a9154028393de86871ea3ef4ff91a2976525ed"
 build_style="go"
 go_import_path="github.com/lxc/lxd"
 go_build_tags="libsqlite3"
@@ -30,8 +30,6 @@ go_package+=" $go_import_path/lxd"
 go_package+=" $go_import_path/lxd-p2c"
 system_groups="lxd"
 
-_libdir="/usr/lib/sqlite-replication"
-LDFLAGS="-L$XBPS_CROSS_BASE$_libdir -Wl,-R$_libdir"
 # whitelist libcap LDFLAGS (see: https://github.com/lxc/lxd/issues/6727)
 export CGO_LDFLAGS_ALLOW='-Wl,-wrap,pthread_create'
 export GOFLAGS="-trimpath"
