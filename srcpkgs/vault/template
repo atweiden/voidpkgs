@@ -1,33 +1,21 @@
 maintainer="nox"
 pkgname="vault"
-version=1.2.3
+version=1.5.4
 revision=1
 _gitrev="e16495da552c996068e05574cddf69875199f949"
-short_desc="Tool for securely accessing secrets"
-hostmakedepends+=" git"
-hostmakedepends+=" nodejs-lts"
-hostmakedepends+=" python"
-hostmakedepends+=" yarn"
+short_desc="Manage Secrets and Protect Sensitive Data"
+hostmakedepends="git"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b9f909b613d53ae591a5b91a4862c750aaf59e87592b1a74b4c4651c0b5790e3"
-conf_files="/etc/vault.hcl"
+checksum="99e3145a9b6f5ee6429b997f3e1f35f648d07c617ff6aef7041f91fcf34e1582"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
-go_build_tags+=" release"
-go_build_tags+=" ui"
+go_build_tags="release"
 go_ldflags="-X $go_import_path/sdk/version.GitCommit=$_gitrev"
 system_accounts="_vault"
-make_dirs="/var/lib/vault 0700 _vault _vault"
-
-case "$XBPS_TARGET_MACHINE" in
-  ppc*)
-    broken="fails in yarn when building v8"
-    ;;
-esac
-
-broken="https://build.voidlinux.org/builders/i686_builder/builds/25404/steps/shell_3/logs/stdio"
+make_dirs+=" /var/lib/vault 0700 _vault _vault"
+make_dirs+=" /etc/vault 0700 root root"
 
 export GOFLAGS="-trimpath"
 
@@ -53,7 +41,6 @@ pre_build() {
 }
 
 post_install() {
-  vinstall "$FILESDIR/vault.hcl" 644 etc/
   vlicense LICENSE
   vsv vault
 }
