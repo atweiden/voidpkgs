@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="ca-certificates"
 version=20200601
-revision=1
+revision=2
 short_desc="Common CA certificates for SSL/TLS"
-archs="noarch"
 depends+=" libressl>=2.2.4_2"
 depends+=" run-parts"
 hostmakedepends="libressl"
