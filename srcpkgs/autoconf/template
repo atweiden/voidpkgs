@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="autoconf"
 version=2.69
-revision=8
+revision=9
 short_desc="Generates automatic source code configuration scripts"
-archs="noarch"
 depends+=" virtual?awk"
 depends+=" m4"
 depends+=" perl"
