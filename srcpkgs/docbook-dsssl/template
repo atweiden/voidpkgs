@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="docbook-dsssl"
 version=1.79
-revision=3
+revision=4
 short_desc="DSSSL stylesheets for the DocBook DTD"
-archs="noarch"
 depends="xmlcatmgr docbook-xml"
 makedepends="xmlcatmgr docbook-xml"
 homepage="http://www.docbook.org/"
