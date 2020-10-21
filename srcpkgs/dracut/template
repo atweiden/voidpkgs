@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=050
-revision=8
+revision=9
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -74,7 +74,6 @@ dracut-network_package() {
   depends+=" dhclient"
   depends+=" dracut-${version}_$revision"
   short_desc+=" - network modules"
-  archs="noarch"
   pkg_install() {
     for f in 40network \
              90livenet \
