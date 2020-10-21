@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gettext"
 version=0.20.2
-revision=1
+revision=2
 short_desc="Internationalized Message Handling Library and tools"
 homepage="https://www.gnu.org/software/gettext/"
 license="GPL-3.0-or-later"
@@ -51,7 +51,6 @@ post_install() {
 }
 
 gettext-devel-examples_package() {
-  archs="noarch"
   short_desc+=" - examples for development"
   pkg_install() {
     vmove usr/share/doc/gettext
