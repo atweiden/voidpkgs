@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="spdx-licenses-list"
 version=3.10
-revision=1
+revision=2
 short_desc="SPDX License List"
-archs="noarch"
 homepage="https://spdx.org"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
@@ -19,7 +18,6 @@ do_install() {
 }
 
 spdx-licenses-text_package() {
-  archs="noarch"
   short_desc="SPDX licenses in plain text"
   pkg_install() {
     vmkdir usr/share/spdx
@@ -28,7 +26,6 @@ spdx-licenses-text_package() {
 }
 
 spdx-licenses-json_package() {
-  archs="noarch"
   short_desc="SPDX licenses in JSON"
   pkg_install() {
     vmkdir usr/share/spdx
@@ -37,7 +34,6 @@ spdx-licenses-json_package() {
 }
 
 spdx-licenses-html_package() {
-  archs="noarch"
   short_desc="SPDX licenses in HTML"
   pkg_install() {
     vmkdir usr/share/spdx
