@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="ddclient"
 version=3.9.0
-revision=3
+revision=4
 short_desc="Perl client used to update dynamic DNS"
-archs="noarch"
 depends+=" perl-Data-Validate-IP"
 depends+=" perl-IO-Socket-SSL"
 hostmakedepends="unzip"
