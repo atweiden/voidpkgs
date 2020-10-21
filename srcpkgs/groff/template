@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="groff"
 version=1.22.4
-revision=1
+revision=2
 short_desc="The GNU troff text-formatting system"
 makedepends="zlib-devel"
 hostmakedepends+=" bison"
@@ -51,7 +51,6 @@ libgroff_package() {
 
 groff-doc_package() {
   short_desc+=" - documentation"
-  archs="noarch"
   pkg_install() {
     vmove usr/share/doc
   }
