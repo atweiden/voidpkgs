@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="asciidoc"
 version=9.0.2
-revision=1
+revision=2
 short_desc="Text based document generation"
-archs="noarch"
 depends+=" docbook-xsl"
 depends+=" libxslt"
 depends+=" python3"
