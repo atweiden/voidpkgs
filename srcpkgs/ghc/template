@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ghc"
 # keep this synchronized with http://www.stackage.org/lts
-version=8.8.3
+version=8.8.4
 revision=1
 # recent safe to use tarball
 # ghc's bundled tarball is from 2017, buggy on some archs
@@ -24,7 +24,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="http://www.haskell.org/ghc/"
 license="BSD-3-Clause"
 distfiles="http://www.haskell.org/ghc/dist/${version%[!0-9]}/$pkgname-${version%[!0-9]}-src.tar.xz"
-checksum="e0dcc0aaf3e234c5978f29e6df62947e97720ab404ec0158343df211c5480f89"
+checksum="f0505e38b2235ff9f1090b51f44d6c8efd371068e5a6bb42a2a6d8b67b5ffc2d"
 wrksrc="ghc-${version%[!0-9]}"
 patch_args="-Np1"
 build_style="gnu-configure"
