@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="colordiff"
 version=1.0.19
-revision=1
+revision=2
 short_desc="Colorizes output of diff"
-archs="noarch"
 depends="perl"
 homepage="http://www.colordiff.org/"
 license="GPL-2.0-or-later"
