@@ -2,9 +2,8 @@
 maintainer="nox"
 pkgname="automake"
 version=1.16.2
-revision=1
+revision=2
 short_desc="GNU Standards-compliant Makefile generator"
-archs="noarch"
 depends+=" autoconf"
 depends+=" perl"
 #checkdepends+=" cscope"
