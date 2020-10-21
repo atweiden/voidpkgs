@@ -15,6 +15,7 @@ homepage="https://hackage.haskell.org/package/cabal-install"
 license="BSD-3-Clause"
 distfiles="https://hackage.haskell.org/packages/archive/cabal-install/$version/$pkgname-$version.tar.gz"
 checksum="a0555e895aaf17ca08453fde8b19af96725da8398e027aa43a49c1658a600cb0"
+nocross="yes"
 nopie_files="/usr/bin/cabal"
 
 do_build() {
