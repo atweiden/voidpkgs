@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="docbook-xml"
 version=4.5
-revision=4
+revision=5
 short_desc="XML DTD designed for computer documentation"
-archs="noarch"
 depends="xmlcatmgr"
 makedepends="xmlcatmgr"
 hostmakedepends="bsdtar"
