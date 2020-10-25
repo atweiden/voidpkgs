@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="yarn-bin"
-version=1.22.4
+version=1.22.10
 revision=1
 short_desc="Fast, reliable, and secure dependency management - precompiled binaries"
 depends="virtual?nodejs-runtime"
 homepage="https://yarnpkg.com/"
 license="BSD-2-Clause"
 distfiles="https://github.com/yarnpkg/yarn/releases/download/v$version/yarn-v$version.tar.gz"
-checksum="bc5316aa110b2f564a71a3d6e235be55b98714660870c5b6b2d2d3f12587fb58"
+checksum="7e433d4a77e2c79e6a7ae4866782608a8e8bcad3ec6783580577c59538381a6e"
 conflicts="yarn>=0"
 
 do_extract() {
