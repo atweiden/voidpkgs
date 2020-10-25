@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pass"
 version=1.7.3
-revision=4
+revision=5
 short_desc="Stores, retrieves, generates, and synchronizes passwords securely"
 depends+=" bash "
 depends+=" gnupg2"
