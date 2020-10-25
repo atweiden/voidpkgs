@@ -9,7 +9,10 @@ makedepends+=" libzstd-devel"
 makedepends+=" lzo-devel"
 checkdepends+=" acl-progs"
 checkdepends+=" e2fsprogs"
-checkdepends+=" util-linux"
+checkdepends+=" eudev"
+checkdepends+=" tar"
+checkdepends+=" which"
+checkdepends+=" xz"
 hostmakedepends+=" asciidoc"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" xmlto"
@@ -33,6 +36,8 @@ pre_build() {
 pre_check() {
   # requires losetup which is part of util-linux, but even with it installed it fails
   rm -rf -- tests/mkfs-tests/017-small-backing-size-thin-provision-device
+  # requires fallocate from util-linux
+  rm -rf -- tests/fsck-tests/025-file-extents
 }
 
 post_install() {
