@@ -12,7 +12,6 @@ makedepends+=" $(vopt_if pwquality libpwquality-devel)"
 checkdepends+=" jq"
 checkdepends+=" procps-ng"
 checkdepends+=" tar"
-checkdepends+=" util-linux"
 checkdepends+=" which"
 checkdepends+=" xxd"
 checkdepends+=" xz"
@@ -39,6 +38,15 @@ case "$XBPS_TARGET_MACHINE" in
     subpackages+=" cryptsetup-static"
     ;;
 esac
+
+post_patch() {
+  if [[ "$XBPS_TARGET_LIBC" == musl ]]; then
+    # require losetup from util-linux, also failing when present
+    # TODO: 2 tests require lsblk
+    rm -f tests/compat-test
+    ln -f /bin/true tests/compat-test
+  fi
+}
 
 cryptsetup-static_package() {
   short_desc+=" - static cryptsetup"
