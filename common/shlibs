@@ -247,7 +247,6 @@ libcrypto.so.44 libcrypto44-2.8.2_1
 libcrypto.so.45 libcrypto45-3.0.2_1
 libcrypto.so.46 libcrypto46-3.1.1_1
 libcryptsetup.so.12 libcryptsetup-2.0.0_1
-libcurl-gnutls.so.4 libcurl-7.19_1
 libcurl.so.4 libcurl-7.19_1
 libdaemon.so.0 libdaemon-0.14_1
 libdar.so.6000 libdar-2.6.6_1

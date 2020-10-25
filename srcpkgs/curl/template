@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
-version=7.72.0
-revision=2
+version=7.73.0
+revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -12,6 +12,7 @@ makedepends+=" $(vopt_if ldap libldap-devel)"
 makedepends+=" $(vopt_if rtmp librtmp-devel)"
 makedepends+=" $(vopt_if ssh libssh2-devel)"
 makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if zstd libzstd-devel)"
 # openssh isn't in checkdepends, because test 581 locks up
 checkdepends+=" groff"
 checkdepends+=" nghttp2"
@@ -25,7 +26,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="ad91970864102a59765e20ce16216efc9d6ad381471f7accceceab7d905703ef"
+checksum="cf34fe0b07b800f1c01a499a6e8b2af548f6d0e044dca4a29d88a4bee146d131"
 patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
@@ -40,14 +41,17 @@ configure_args+=" $(vopt_with gssapi)"
 configure_args+=" $(vopt_with rtmp)"
 configure_args+=" $(vopt_with ssh libssh2)"
 configure_args+=" $(vopt_with ssl)"
+configure_args+=" $(vopt_with zstd)"
 build_options+=" gnutls"
 build_options+=" gssapi"
 build_options+=" ldap"
 build_options+=" rtmp"
 build_options+=" ssh"
 build_options+=" ssl"
+build_options+=" zstd"
 build_options_default+=" ssh"
 build_options_default+=" ssl"
+build_options_default+=" zstd"
 
 vopt_conflict "ssl" "gnutls"
 
@@ -70,10 +74,8 @@ post_install() {
 
 libcurl_package() {
   short_desc="Multiprotocol file transfer library"
-  shlib_provides="libcurl-gnutls.so.4"
   pkg_install() {
     vmove "usr/lib/*.so.*"
-    ln -sf libcurl.so.4.6.0 "$PKGDESTDIR/usr/lib/libcurl-gnutls.so.4"
   }
 }
 libcurl-devel_package() {
