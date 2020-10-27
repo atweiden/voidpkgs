@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="bootiso"
 version=4.2.0
-revision=1
+revision=2
 short_desc="Create a USB bootable device from an ISO image easily and securely"
 depends+=" bash"
+depends+=" bc"
 depends+=" binutils"
 depends+=" coreutils"
 depends+=" curl"
