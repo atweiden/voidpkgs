@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="usbutils"
-version=012
+version=013
 revision=1
 short_desc="Linux USB utilities"
 depends="hwids"
@@ -14,7 +14,7 @@ homepage="http://linux-usb.sourceforge.net/"
 license="GPL-2.0-only"
 changelog="https://github.com/gregkh/usbutils/raw/master/NEWS"
 distfiles="$KERNEL_SITE/utils/usb/usbutils/$pkgname-$version.tar.xz"
-checksum="88634625f91840bc1993d2731cc081ee8d3b13d56069a95bdd6ac6ef0e063e46"
+checksum="9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/hwdata"
 configure_args+=" --disable-zlib"
