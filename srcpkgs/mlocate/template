@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mlocate"
 version=0.26
-revision=4
+revision=5
 short_desc="Implementation of locate/updatedb that reuses the database"
 homepage="https://pagure.io/mlocate"
 license="GPL-2.0-or-later"
