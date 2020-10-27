@@ -1,0 +1,26 @@
+maintainer="nox"
+pkgname="python3-Pygments"
+version=2.7.2
+revision=1
+short_desc="Generic syntax highlighter written in Python"
+depends="python3"
+checkdepends="python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://pygments.org"
+license="BSD-2-Clause"
+distfiles="$PYPI_SITE/P/Pygments/Pygments-$version.tar.gz"
+checksum="381985fcc551eb9d37c52088a32914e00517e57f4a21609f48141ba08e193fa0"
+wrksrc="Pygments-$version"
+build_style="python3-module"
+alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
+
+do_check() {
+  python3 -m pytest
+}
+
+post_install() {
+  vlicense LICENSE
+  mv "$DESTDIR/usr/bin"/pygmentize{,3}
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk

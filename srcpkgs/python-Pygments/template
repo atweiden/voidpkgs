@@ -1,39 +1,26 @@
 maintainer="nox"
 pkgname="python-Pygments"
 version=2.5.2
-revision=3
+revision=4
 short_desc="Python2 syntax highlighter"
-depends="python-setuptools"
-checkdepends+=" python-nose"
-checkdepends+=" python3-nose"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+depends="python"
+checkdepends="python-pytest"
+hostmakedepends="python-setuptools"
 homepage="http://pygments.org/"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/P/Pygments/${pkgname#*-}-$version.tar.gz"
 checksum="98c8aa5a9f778fcd1026a17361ddaf7330d1b7c62ae97c3bb0ae73e0b9b6b0fe"
 wrksrc="${pkgname#*-}-$version"
-build_style="python-module"
+build_style="python2-module"
 alternatives="pygments:pygmentize:/usr/bin/pygmentize2"
 
 do_check() {
-  python2 tests/run.py
-  python3 tests/run.py
+  python2 -m pytest
 }
 
 post_install() {
   vlicense LICENSE
-}
-
-python3-Pygments_package() {
-  depends="python3-setuptools"
-  short_desc="${short_desc/Python2/Python3}"
-  alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
-  pkg_install() {
-    vmove usr/bin/pygmentize3
-    vmove "usr/lib/python3*"
-    vlicense LICENSE
-  }
+  mv "$DESTDIR/usr/bin"/pygmentize{,2}
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
