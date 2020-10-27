@@ -1,20 +1,20 @@
 maintainer="nox"
 pkgname="doxygen"
 version=1.8.20
-revision=1
+revision=2
 short_desc="Source code documentation generator tool"
 # XXX: testing requires gui deps
 #checkdepends+=" libxml2"
 #checkdepends+=" texlive-BibTeX"
-hostmakedepends+=" chroot-git"
 hostmakedepends+=" flex"
 hostmakedepends+=" perl"
-hostmakedepends+=" python"
+hostmakedepends+=" python3"
 homepage="http://www.doxygen.org/"
 license="GPL-2.0-only"
 distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
 checksum="e0db6979286fd7ccd3a99af9f97397f2bae50532e4ecb312aa18862f8401ddec"
 build_style="cmake"
+configure_args="-DCMAKE_BUILD_TYPE=None"
 
 post_install() {
   vman doc/doxygen.1
