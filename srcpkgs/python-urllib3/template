@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-urllib3"
-version=1.25.8
-revision=3
+version=1.25.11
+revision=1
 short_desc="HTTP library with thread-safe connection pooling (Python2)"
 depends="python-six"
 hostmakedepends+=" python-setuptools"
@@ -9,7 +9,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://urllib3.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/u/urllib3/${pkgname#*-}-$version.tar.gz"
-checksum="87716c2d2a7121198ebcb7ce7cccf6ce5e9ba539041cfbaeecfb641dc0bf6acc"
+checksum="8d7eaa5a82a1cac232164990f04874c594c9453ec55eef02eab885aa02fc17a2"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
