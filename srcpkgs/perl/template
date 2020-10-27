@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl"
 version=5.30.3
-revision=1
+revision=2
 _perl_cross_version=1.3.1
 short_desc="Practical Extraction and Report Language"
 depends="less"
@@ -15,7 +15,7 @@ checkdepends+=" perl-Test-Pod"
 checkdepends+=" procps-ng"
 hostmakedepends="less"
 homepage="https://www.perl.org"
-license="Artistic-1.0-perl, GPL-1.0-or-later"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles+=" https://www.cpan.org/src/5.0/perl-$version.tar.gz"
 distfiles+=" https://github.com/arsv/perl-cross/releases/download/$_perl_cross_version/perl-cross-$_perl_cross_version.tar.gz"
 checksum+=" 32e04c8bb7b1aecb2742a7f7ac0eabac100f38247352a73ad7fa104e39e7406f"
@@ -175,7 +175,7 @@ do_configure() {
     _args+=" --target=$XBPS_CROSS_TRIPLET"
   fi
 
-  LDFLAGS+=" -pthread"
+  LDFLAGS+=" -Wl,-z,stack-size=2097152 -pthread"
   export HOSTLDFLAGS+=" -pthread"
 
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
