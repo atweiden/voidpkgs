@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-requests"
-version=2.23.0
-revision=3
+version=2.24.0
+revision=1
 short_desc="Python2 HTTP library for human beings"
 depends+=" ca-certificates"
 depends+=" python-chardet"
@@ -13,7 +13,7 @@ homepage="https://python-requests.org/"
 license="Apache-2.0"
 changelog="https://github.com/psf/requests/raw/master/HISTORY.md"
 distfiles="$PYPI_SITE/r/requests/${pkgname#*-}-$version.tar.gz"
-checksum="b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"
+checksum="b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
