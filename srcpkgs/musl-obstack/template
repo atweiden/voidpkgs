@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="musl-obstack"
-version=1.2.1
+version=1.2.2
 revision=1
 short_desc="Implementation of obstack for musl libc"
 archs="*-musl"
@@ -9,7 +9,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/void-linux/musl-obstack"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/void-linux/musl-obstack/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="84c82ceba3f289424335d712043af5e94c8dc404fe30ce373a81ef8131997faa"
+checksum="6eac88961c58a53f31cccd719b97d1b33c65436c51664e760a9582e2659c1314"
 build_style="gnu-configure"
 
 CFLAGS="-fPIC"
