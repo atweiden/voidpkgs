@@ -13,7 +13,24 @@ license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/bash/$pkgname-$_bash_distver.tar.gz"
 checksum="b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d"
 _url="$GNU_SITE/bash/bash-$_bash_distver-patches"
-for _p in $(seq -w 001 $_bash_patchlevel); do
+for _p in 001 \
+          002 \
+          003 \
+          004 \
+          005 \
+          006 \
+          007 \
+          008 \
+          009 \
+          010 \
+          011 \
+          012 \
+          013 \
+          014 \
+          015 \
+          016 \
+          017 \
+          018; do
   distfiles+=" $_url/$_patchprefix-$_p"
   skip_extraction+=" $_patchprefix-$_p"
 done
