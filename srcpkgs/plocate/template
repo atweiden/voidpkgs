@@ -12,4 +12,9 @@ distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
 checksum="afb62d4ff85bdef51f5daa143e15889718d272cef9e9e43d1149ca36584fa6cd"
 build_style="meson"
 
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  LIBS="-latomic"
+fi
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
