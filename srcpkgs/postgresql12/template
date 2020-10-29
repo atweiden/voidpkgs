@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql12"
 version=12.4
-revision=4
+revision=5
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 short_desc="Sophisticated open-source Object-Relational DBMS"
