@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="exiftool"
 version=12.08
-revision=1
+revision=2
 short_desc="Reader and rewriter of EXIF information that supports raw files"
 archs="noarch"
 depends="perl"
