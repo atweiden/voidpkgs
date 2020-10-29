@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Differences"
 version=0.67
-revision=1
+revision=2
 short_desc="Test::Differences - Test strings / data and show differences if not ok"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Text-Diff"
 checkdepends+=" $depends"

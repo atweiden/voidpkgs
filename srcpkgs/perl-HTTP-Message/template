@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-HTTP-Message"
 version=6.24
-revision=1
+revision=2
 short_desc="HTTP::Message - HTTP style message (base class)"
-archs="noarch"
 depends+=" perl-Encode-Locale"
 depends+=" perl-HTML-Parser"
 depends+=" perl-HTTP-Date"

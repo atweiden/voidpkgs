@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Sort-Naturally"
 version=1.03
-revision=3
+revision=4
 short_desc="Sort::Naturally - sort lexically, but sort numeral parts numerically"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

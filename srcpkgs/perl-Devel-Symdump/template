@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Devel-Symdump"
 version=2.18
-revision=1
+revision=2
 short_desc="Devel::Symdump - Dump symbol names or the symbol table"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

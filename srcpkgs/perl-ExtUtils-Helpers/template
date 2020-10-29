@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-ExtUtils-Helpers"
 version=0.026
-revision=2
+revision=3
 short_desc="ExtUtils::Helpers - Various portability utilities for module builders"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

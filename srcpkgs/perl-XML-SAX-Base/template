@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-XML-SAX-Base"
 version=1.09
-revision=2
+revision=3
 short_desc="Perl Base class SAX Drivers and Filters"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

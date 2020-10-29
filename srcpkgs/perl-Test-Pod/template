@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Pod"
 version=1.52
-revision=1
+revision=2
 short_desc="Test::Pod - checks for POD errors in files"
-archs="noarch"
 depends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Pod"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-XML-NamespaceSupport"
 version=1.12
-revision=2
+revision=3
 short_desc="Perl module to the SAX2 NamespaceSupport class"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-CPAN-Meta-Check"
 version=0.014
-revision=2
+revision=3
 short_desc="CPAN::Meta::Check - Verify requirements in a CPAN::Meta object"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends+=" perl-Test-Differences"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Sub-Uplevel"
 version=0.2800
-revision=2
+revision=3
 short_desc="Sub::Uplevel - apparently run a function in a higher stack frame"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

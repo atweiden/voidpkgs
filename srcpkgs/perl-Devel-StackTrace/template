@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Devel-StackTrace"
 version=2.04
-revision=1
+revision=2
 short_desc="Devel::StackTrace - An object representing a stack trace"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

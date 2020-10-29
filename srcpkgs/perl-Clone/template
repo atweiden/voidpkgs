@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Clone"
 version=0.43
-revision=2
+revision=3
 short_desc="Clone - recursively copy Perl datatypes"
 depends="perl"
 makedepends="perl"

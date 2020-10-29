@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Try-Tiny"
 version=0.30
-revision=1
+revision=2
 short_desc='Try::Tiny - Minimal try/catch with proper preservation of $@'
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends+=" perl-Capture-Tiny"

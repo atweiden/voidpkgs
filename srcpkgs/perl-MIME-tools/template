@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-MIME-tools"
 version=5.509
-revision=2
+revision=3
 short_desc="MIME-tools - Parses streams to create MIME entities"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Convert-BinHex"
 depends+=" perl-IO-stringy"

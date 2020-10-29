@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Class-Data-Inheritable"
 version=0.08
-revision=2
+revision=3
 short_desc="Class::Data::Inheritable - Inheritable, overridable class data"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends+=" perl-Test-Pod"

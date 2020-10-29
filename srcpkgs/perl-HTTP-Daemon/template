@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-HTTP-Daemon"
 version=6.12
-revision=1
+revision=2
 short_desc="HTTP::Daemon - a simple HTTP server class"
-archs="noarch"
 depends+=" perl-HTTP-Message"
 depends+=" perl-LWP-MediaTypes"
 makedepends+=" perl-HTTP-Message"

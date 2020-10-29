@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-IO-CaptureOutput"
 version=1.1105
-revision=1
+revision=2
 short_desc="Capture STOUT/ERR from perl code"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

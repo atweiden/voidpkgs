@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Devel-CheckLib"
 version=1.14
-revision=1
+revision=2
 short_desc="Module to check for other perl modules"
-archs="noarch"
 depends="perl"
 makedepends="perl-IO-CaptureOutput"
 hostmakedepends="perl-IO-CaptureOutput"

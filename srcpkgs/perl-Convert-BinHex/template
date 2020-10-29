@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Convert-BinHex"
 version=1.125
-revision=2
+revision=3
 short_desc="Perl module to extract data from Macintosh BinHex files"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends+=" perl-File-Slurp"

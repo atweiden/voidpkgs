@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-TimeDate"
 version=2.33
-revision=1
+revision=2
 short_desc="TimeDate - Date formating subroutines"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

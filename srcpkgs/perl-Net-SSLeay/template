@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Net-SSLeay"
 version=1.88
-revision=4
+revision=5
 short_desc="Net::SSLeay - Perl extension for using OpenSSL"
 depends="perl"
 makedepends+=" libressl-devel"

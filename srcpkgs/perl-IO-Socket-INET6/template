@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-IO-Socket-INET6"
 version=2.72
-revision=2
+revision=3
 short_desc="IO::Socket::INET6 - Object interface for AF_INET/AF_INET6 domain sockets"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Socket6"
 makedepends+=" perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-IPC-Run"
 version=20200505.0
-revision=1
+revision=2
 short_desc="IPC::Run - system() and background procs w/ piping, redirs, ptys"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

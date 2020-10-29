@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Most"
 version=0.37
-revision=1
+revision=2
 short_desc="Test::Most - Most commonly needed test functions and features"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Devel-StackTrace"
 depends+=" perl-Exception-Class"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Module-Build-Tiny"
 version=0.039
-revision=2
+revision=3
 short_desc="Module::Build::Tiny - A tiny replacement for Module::Build"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-ExtUtils-Config"
 depends+=" perl-ExtUtils-Helpers"

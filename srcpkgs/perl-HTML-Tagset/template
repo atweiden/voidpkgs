@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-HTML-Tagset"
 version=3.20
-revision=7
+revision=8
 short_desc="HTML::Tagset - data tables useful in parsing HTML"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

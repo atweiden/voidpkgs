@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Term-ShellUI"
 version=0.92
-revision=3
+revision=4
 short_desc="Term::ShellUI - A fully-featured shell-like command line environment"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

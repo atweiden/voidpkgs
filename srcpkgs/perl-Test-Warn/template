@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Warn"
 version=0.36
-revision=1
+revision=2
 short_desc="Test::Warn - Perl extension to test methods for warnings"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Sub-Uplevel"
 makedepends+=" perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-File-Next"
 version=1.18
-revision=1
+revision=2
 short_desc="File-finding iterator"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends+=" perl-Test-Pod"

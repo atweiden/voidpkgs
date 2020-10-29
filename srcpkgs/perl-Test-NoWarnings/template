@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-NoWarnings"
 version=1.04
-revision=2
+revision=3
 short_desc="Test::NoWarnings - Make sure you did not emit warnings while testing."
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

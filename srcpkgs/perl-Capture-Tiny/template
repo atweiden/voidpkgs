@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Capture-Tiny"
 version=0.48
-revision=1
+revision=2
 short_desc="Capture STDOUT and STDERR from Perl, XS or external programs"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-XML-SAX"
 version=1.02
-revision=1
+revision=2
 short_desc="Perl interface to the SAX2 XML Parser"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-XML-NamespaceSupport"
 depends+=" perl-XML-SAX-Base"

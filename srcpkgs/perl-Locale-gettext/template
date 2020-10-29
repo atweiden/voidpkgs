@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Locale-gettext"
 version=1.07
-revision=9
+revision=10
 short_desc="Permits access from Perl to the gettext() family of functions"
 depends="perl"
 makedepends="perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Data-Validate-IP"
 version=0.27
-revision=1
+revision=2
 short_desc="IPv4 and IPv6 validation methods"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-NetAddr-IP"
 makedepends="perl"

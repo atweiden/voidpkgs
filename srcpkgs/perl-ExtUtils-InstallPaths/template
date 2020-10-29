@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-ExtUtils-InstallPaths"
 version=0.012
-revision=1
+revision=2
 short_desc="ExtUtils::InstallPaths - Build.PL install path logic made easy"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-ExtUtils-Config"
 makedepends+=" perl"

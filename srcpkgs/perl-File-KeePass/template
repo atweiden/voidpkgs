@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-File-KeePass"
 version=2.03
-revision=3
+revision=4
 short_desc="File::KeePass - Interface to KeePass V1 and V2 database files"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Crypt-Rijndael"
 makedepends+=" perl"

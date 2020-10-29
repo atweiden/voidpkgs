@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-HTTP-Date"
 version=6.05
-revision=1
+revision=2
 short_desc="HTTP::Date - date conversion routines"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

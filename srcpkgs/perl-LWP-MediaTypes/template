@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-LWP-MediaTypes"
 version=6.04
-revision=1
+revision=2
 short_desc="LWP::MediaTypes - guess media type for a file or a URL"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends="perl-Test-Fatal"

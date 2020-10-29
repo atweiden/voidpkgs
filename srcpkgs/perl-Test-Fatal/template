@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Fatal"
 version=0.016
-revision=1
+revision=2
 short_desc="Incredibly simple helpers for testing code with exceptions"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Try-Tiny"
 makedepends+=" perl"

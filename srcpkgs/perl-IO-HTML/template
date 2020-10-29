@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-IO-HTML"
 version=1.001
-revision=3
+revision=4
 short_desc="Open an HTML file with automatic charset detection"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

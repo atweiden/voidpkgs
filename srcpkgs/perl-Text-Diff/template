@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Text-Diff"
 version=1.45
-revision=1
+revision=2
 short_desc="Text::Diff - Perform diffs on files and record sets"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Algorithm-Diff"
 makedepends+=" perl"

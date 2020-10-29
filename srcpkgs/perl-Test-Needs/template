@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Needs"
 version=0.002006
-revision=1
+revision=2
 short_desc="Test::Needs - Skip tests when modules not available"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

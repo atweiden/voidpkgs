@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Deep"
 version=1.130
-revision=1
+revision=2
 short_desc="Test::Deep - Extremely flexible deep comparison"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

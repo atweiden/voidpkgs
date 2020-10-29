@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-URI"
 version=1.76
-revision=1
+revision=2
 short_desc="Perl Uniform Resource Identifiers class (URI, RFC 2396)"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 checkdepends="perl-Test-Needs"

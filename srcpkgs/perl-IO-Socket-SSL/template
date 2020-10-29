@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-IO-Socket-SSL"
 version=2.068
-revision=1
+revision=2
 short_desc="IO::Socket::SSL - SSL sockets with IO::Socket interface"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Net-SSLeay"
 depends+=" perl-URI"

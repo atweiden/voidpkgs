@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-ExtUtils-Config"
 version=0.008
-revision=2
+revision=3
 short_desc="ExtUtils::Config - A wrapper for perl's configuration"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Test-Requires"
 version=0.11
-revision=1
+revision=2
 short_desc="Test::Requires - Checks to see if the module can be loaded"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"

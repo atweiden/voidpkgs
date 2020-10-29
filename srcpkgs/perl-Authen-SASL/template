@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="perl-Authen-SASL"
 version=2.16
-revision=3
+revision=4
 short_desc="Authen::SASL - SASL authentication framework"
-archs="noarch"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
