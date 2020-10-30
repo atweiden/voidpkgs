@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="dnssec-anchors"
 version=20181012
-revision=1
+revision=2
 short_desc="DNSSEC trust anchors for the root zone"
-archs="noarch"
 homepage="http://data.iana.org/root-anchors/"
 license="Public Domain"
 # can be refreshed by a local DNSSEC aware name server
