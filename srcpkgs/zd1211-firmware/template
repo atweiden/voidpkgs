@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="zd1211-firmware"
 version=1.5
-revision=2
+revision=3
 short_desc="Firmware for the Zydas 1211 wifi cards"
-archs="noarch"
 homepage="http://zd1211.wiki.sourceforge.net/"
 license="GPL-2.0-only"
 distfiles="$SOURCEFORGE_SITE/zd1211/$pkgname-$version.tar.bz2"
