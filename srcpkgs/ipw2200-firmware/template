@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="ipw2200-firmware"
 version=3.1
-revision=5
+revision=6
 short_desc="Firmware for the Intel PRO/Wireless 2200BG wifi cards"
-archs="noarch"
 homepage="http://ipw2200.sourceforge.net/"
-license="Custom"
+license="custom:IPW2200-EULA"
 distfiles="http://firmware.openbsd.org/firmware-dist/${pkgname/firmware/fw}-$version.tgz"
 checksum="c6818c11c18cc030d55ff83f64b2bad8feef485e7742f84f94a61d811a6258bd"
 wrksrc="${pkgname/firmware/fw}-$version"
@@ -17,7 +16,7 @@ do_install() {
 
 post_install() {
   vmkdir "usr/share/licenses/$pkgname"
-  install -m 644 LICENSE* "$DESTDIR/usr/share/licenses/$pkgname"
+  vlicense LICENSE.ipw2200-fw
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
