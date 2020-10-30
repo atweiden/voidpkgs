@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="libqb"
-version=1.0.5
+version=2.0.0
 revision=1
 short_desc="High performance logging, tracing, ipc, poll"
+hostmakedepends="pkg-config"
 homepage="https://clusterlabs.github.io/libqb/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/ClusterLabs/libqb/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="89fe0c743e5be15f2fa25849f107df41cb144928259752d5c797c13644eba6b1"
+checksum="8a744547433f26e43aac1b510584aa12ce575700a62d4e7e21a4ed2567b53232"
 build_style="gnu-configure"
 
 libqb-devel_package() {
-  depends="libqb-${version}_$revision"
+  depends="libqb>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
