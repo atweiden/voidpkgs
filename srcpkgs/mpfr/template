@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="mpfr"
-version=4.0.2
+version=4.1.0
 revision=1
 short_desc="Library for multiple-precision floating-point computations"
 makedepends="gmp-devel"
 homepage="http://www.mpfr.org"
 license="LGPL-3.0-or-later"
 distfiles="http://www.mpfr.org/$pkgname-$version/$pkgname-$version.tar.xz"
-checksum="1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a"
+checksum="0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f"
 build_style="gnu-configure"
 configure_args="--enable-thread-safe"
 bootstrap="yes"
