@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua54"
 version=5.4.1
-revision=1
+revision=2
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.4.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
@@ -14,7 +14,6 @@ alternatives+=" lua:lua:/usr/bin/lua5.4"
 alternatives+=" lua:luac:/usr/bin/luac5.4"
 alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.4.1"
 alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.4.1"
-alternatives+=" lua:lua:/usr/share/doc/lua5.4"
 
 do_build() {
   sed \
@@ -64,11 +63,13 @@ do_install() {
 }
 
 lua54-devel_package() {
+  unset alternatives
   unset depends
   depends+=" $makedepends"
   depends+=" lua54>=${version}_$revision"
   short_desc+=" - development files"
-  alternatives="lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.4.pc"
+  alternatives+=" lua-devel:lua:/usr/share/doc/lua5.4"
+  alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.4.pc"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
