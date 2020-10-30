@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lua53"
 version=5.3.5
-revision=5
+revision=6
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.3.x)"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
@@ -14,7 +14,6 @@ alternatives+=" lua:lua:/usr/bin/lua5.3"
 alternatives+=" lua:luac:/usr/bin/luac5.3"
 alternatives+=" lua:lua.1:/usr/share/man/man1/lua5.3.1"
 alternatives+=" lua:luac.1:/usr/share/man/man1/luac5.3.1"
-alternatives+=" lua:lua:/usr/share/doc/lua5.3"
 
 pre_build() {
   # 5.3.5 has 5.3.4 in the Makefile
@@ -71,11 +70,13 @@ do_install() {
 }
 
 lua53-devel_package() {
+  unset alternatives
   unset depends
   depends+=" $makedepends"
   depends+=" lua53>=${version}_$revision"
   short_desc+=" - development files"
-  alternatives="lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.3.pc"
+  alternatives+=" lua-devel:lua:/usr/share/doc/lua5.3"
+  alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.3.pc"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
