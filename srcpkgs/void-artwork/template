@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="void-artwork"
 version=20170517
-revision=2
+revision=3
 short_desc="Void Linux artwork"
-archs="noarch"
 homepage="http://www.voidlinux.org"
-license="Public domain"
+license="custom:Public Domain"
 
 do_install() {
   vinstall "$FILESDIR/splash.png" 644 usr/share/void-artwork
