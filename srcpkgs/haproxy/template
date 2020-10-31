@@ -1,17 +1,18 @@
 maintainer="nox"
 pkgname="haproxy"
-version=2.1.7
-revision=3
+version=2.2.4
+revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" libressl-devel"
 makedepends+=" lua53-devel"
 makedepends+=" pcre-devel"
 checkdepends="varnish"
+hostmakedepends="lua53-devel"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="392e6cf18e75fe7e166102e8c4512942890a0b5ae738f6064faab4687f60a339"
+checksum="87a4d9d4ff8dc3094cb61bbed4a8eed2c40b5ac47b9604daebaf036d7b541be2"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
@@ -19,6 +20,8 @@ make_install_args+=" SBINDIR=$DESTDIR/usr/bin"
 system_accounts="haproxy"
 haproxy_homedir="/var/lib/haproxy"
 make_dirs="$haproxy_homedir 0750 haproxy haproxy"
+
+CFLAGS="-Wno-address-of-packed-member"
 
 do_build() {
   local atomic
@@ -35,6 +38,7 @@ do_build() {
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     EXTRA= \
+    EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o" \
     LDFLAGS="$LDFLAGS" \
     TARGET=$target \
     USE_GETADDRINFO=1 \
