@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="plocate"
 version=1.0.6
-revision=1
+revision=2
 short_desc="Much faster locate based on posting lists"
 depends="mlocate"
 makedepends="libzstd-devel"
@@ -11,10 +11,21 @@ license="GPL-2.0-or-later"
 distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
 checksum="48338c46afca22fd6f57faf69b7816cb70516d9279eb1e5d9895a14c87dbd617"
 build_style="meson"
+system_accounts="_plocate"
+alternatives+=" locate:locate:/usr/bin/plocate"
+alternatives+=" locate:locate.1:/usr/share/man/man1/plocate.1"
+alternatives+=" locate:updatedb:/usr/bin/pupdatedb"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
   LIBS="-latomic"
 fi
+
+post_install() {
+  # replace daily cronjob with our own version
+  rm "$DESTDIR/etc/cron.daily/plocate"
+  vinstall "$FILESDIR/plocate.cron-daily" 744 etc/cron.daily plocate-build
+  vbin "$FILESDIR/pupdatedb"
+ }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
