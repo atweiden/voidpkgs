@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="plocate"
-version=1.0.5
+version=1.0.6
 revision=1
 short_desc="Much faster locate based on posting lists"
 depends="mlocate"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://plocate.sesse.net/"
 license="GPL-2.0-or-later"
 distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
-checksum="afb62d4ff85bdef51f5daa143e15889718d272cef9e9e43d1149ca36584fa6cd"
+checksum="48338c46afca22fd6f57faf69b7816cb70516d9279eb1e5d9895a14c87dbd617"
 build_style="meson"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
