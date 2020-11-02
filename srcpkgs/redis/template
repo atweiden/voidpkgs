@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="redis"
-version=6.0.8
+version=6.0.9
 revision=1
 short_desc="Advanced key-value store"
 makedepends+=" jemalloc-devel"
@@ -11,7 +11,7 @@ homepage="https://redis.io"
 license="BSD-3-Clause"
 changelog="https://github.com/antirez/redis/raw/5.0/00-RELEASENOTES"
 distfiles="http://download.redis.io/releases/$pkgname-$version.tar.gz"
-checksum="04fa1fddc39bd1aecb6739dd5dd73858a3515b427acd1e2947a66dadce868d68"
+checksum="dc2bdcf81c620e9f09cfd12e85d3bc631c897b2db7a55218fd8a65eaa37f86dd"
 conf_files="/etc/redis/redis.conf"
 system_accounts="redis"
 redis_homedir="/var/lib/redis"
