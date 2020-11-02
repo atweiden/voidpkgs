@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="btrfs-progs"
-version=5.7
+version=5.9
 revision=1
 short_desc="Btrfs filesystem utilities"
 makedepends+=" acl-devel"
@@ -20,7 +20,7 @@ homepage="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license="GPL-2.0-only, LGPL-3.0-or-later"
 changelog="https://github.com/kdave/btrfs-progs/raw/master/CHANGES"
 distfiles="$KERNEL_SITE/kernel/people/kdave/btrfs-progs/$pkgname-v$version.tar.xz"
-checksum="5c2f048b8c814852614b0b262ab2d468ea02774ef01124ebc0ab708df262de5c"
+checksum="b89358a665ad753ecbdff11d2be77d230d2b197bb3c7e0eb739fb979c087a791"
 wrksrc="$pkgname-v$version"
 build_style="gnu-configure"
 configure_args+=" --disable-backtrace"
