@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="m4"
 version=1.4.18
-revision=2
+revision=3
 short_desc="GNU version of UNIX m4 macro language processor"
 homepage="https://www.gnu.org/software/m4/"
 license="GPL-3.0-or-later"
@@ -13,6 +13,14 @@ configure_args+=" --enable-changeword"
 configure_args+=" --enable-threads"
 bootstrap="yes"
 replaces="chroot-m4>=0"
+
+post_patch() {
+  # bootstrap was failing when texinfo was installed in host system
+  vsed \
+    -i \
+    -e '1i @documentencoding ISO-8859-1' \
+    doc/m4.texi
+}
 
 pre_check() {
   case "$XBPS_TARGET_MACHINE" in
