@@ -3,23 +3,30 @@ pkgname="binutils"
 version=2.34
 revision=1
 short_desc="GNU binary utilities"
-homepage="http://www.gnu.org/software/binutils/"
-license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
-checksum="f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952"
-bootstrap="yes"
-
+makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
   depends="binutils-doc"
   checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
-else
-  XBPS_TRIPLET="x86_64-unknown-linux-gnu"
 fi
+homepage="http://www.gnu.org/software/binutils/"
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
+checksum="f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952"
+bootstrap="yes"
 
-makedepends="zlib-devel"
+_get_triplet() {
+  if [[ -z "$XBPS_TRIPLET" ]]; then
+    echo $(
+      source "$XBPS_COMMONDIR/build-profiles/$XBPS_MACHINE.sh"
+      echo "$XBPS_TRIPLET"
+    )
+  else
+    echo "$XBPS_TRIPLET"
+  fi
+}
 
 do_configure() {
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
@@ -51,7 +58,7 @@ do_configure() {
 
   ./configure \
     $CONFIGFLAG \
-    --build="$XBPS_TRIPLET" \
+    --build="$(_get_triplet)" \
     --disable-nls \
     --disable-shared \
     --disable-werror \
@@ -94,6 +101,8 @@ do_check() {
 }
 
 do_install() {
+  local _triplet
+
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
     mkdir -p "$DESTDIR/usr/lib"
     cd "$DESTDIR/usr"
@@ -132,8 +141,9 @@ do_install() {
   done
 
   # create triplet symlinks
+  _triplet=$(_get_triplet)
   for f in "$DESTDIR/usr/bin"/*; do
-    ln -s "${f##*/}" "$DESTDIR/usr/bin/${XBPS_CROSS_TRIPLET:-$XBPS_TRIPLET}-${f##*/}"
+    ln -s "${f##*/}" "$DESTDIR/usr/bin/${XBPS_CROSS_TRIPLET:-$_triplet}-${f##*/}"
   done
 }
 
