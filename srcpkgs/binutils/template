@@ -16,7 +16,6 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
 else
-  unset XBPS_CHECK_PKGS
   XBPS_TRIPLET="x86_64-unknown-linux-gnu"
 fi
 
@@ -87,6 +86,7 @@ do_build() {
   make CFLAGS="$CFLAGS -fPIC" -C opcodes-pic
 }
 
+# if you enable this later, keep it off for `[[ -z "$CHROOT_READY" ]]`
 do_check() {
   # seems like upstream forgot to include their new test-driver executable
   # in their tarball...
