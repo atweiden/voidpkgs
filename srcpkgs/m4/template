@@ -14,6 +14,13 @@ configure_args+=" --enable-threads"
 bootstrap="yes"
 replaces="chroot-m4>=0"
 
+if [[ -z "$CHROOT_READY" ]]; then
+  # disable makeinfo unconditionally
+  # texinfo defaults to utf-8 now and the file is in iso-8859-1
+  # don't sed the file, otherwise it'll try to rebuild
+  export MAKEINFO=":"
+fi
+
 pre_check() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl* )
