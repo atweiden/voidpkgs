@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="iana-etc"
-version=202001016
+version=20201019
 revision=1
 short_desc="Unix /etc/services and /etc/protocols files"
 homepage="https://www.iana.org/protocols"
 license="Public Domain"
+reverts="202001016_1"
 bootstrap="yes"
 
 do_install() {
