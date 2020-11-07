@@ -25,10 +25,15 @@ post_extract() {
 pre_check() {
   # LFS reccomends disabling this due to to the possibility of looping forever on some machines
   # see: http://www.linuxfromscratch.org/lfs/view/development/chapter06/findutils.html
-  sed \
+  vsed \
     -i \
     -e 's/test-lock..EXEEXT.//' \
-    tests/Makefile.in
+    gnulib-tests/Makefile
+  # help-version is broken because we do not build locate
+  vsed \
+    -i \
+    -e "/tests\/misc\/help-version.sh/d" \
+    Makefile
 }
 
 post_configure() {
