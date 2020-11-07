@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-hypothesis"
 version=4.38.2
-revision=4
+revision=5
 short_desc="Python2 library for property based testing"
 depends+=" python-attrs"
 depends+=" python-coverage"
@@ -9,13 +9,7 @@ depends+=" python-enum34"
 checkdepends+=" python-coverage"
 checkdepends+=" python-enum34"
 checkdepends+=" python-pytest"
-checkdepends+=" python3-coverage"
-checkdepends+=" python3-flaky"
-checkdepends+=" python3-numpy"
-checkdepends+=" python3-pytest"
-checkdepends+=" python3-pytz"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+hostmakedepends="python-setuptools"
 homepage="https://hypothesis.works/"
 license="MPL-2.0"
 changelog="https://github.com/HypothesisWorks/hypothesis/raw/master/hypothesis-python/docs/changes.rst"
@@ -23,36 +17,10 @@ distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-pyth
 checksum="c53b652ed15350b0116bc1dd28516a71988437da772e25903309aa526f9c719e"
 wrksrc="hypothesis-hypothesis-python-$version"
 build_wrksrc="hypothesis-python"
-build_style="python-module"
-pycompile_module="hypothesis"
+build_style="python2-module"
 
 do_check() {
-  # in python3 mock is actually unittest.mock
-  vsed \
-    -e 's/from mock/from unittest.mock/' \
-    -i tests/cover/test_regressions.py
-  vsed \
-    -e 's/from mock/from unittest.mock/' \
-    -i tests/cover/test_reflection.py
-
-  # add variables to be used by python to find the local hypothesis build
-  PY3PATH="$PWD/build-$py3_ver/lib"
-  PY2PATH="$PWD/build-2.7/lib"
-
-  PYTHONPATH="$PY3PATH" python3 -m pytest tests/cover
-  PYTHONPATH="$PY3PATH" python3 -m pytest tests/py3
-  PYTHONPATH="$PY2PATH" python2 -m pytest tests/py2
+  PYTHONPATH="$PWD/build-2.7/lib" python2 -m pytest tests/py2
 }
 
-python3-hypothesis_package() {
-  unset depends
-  pycompile_module="hypothesis"
-  depends+=" python3-attrs"
-  depends+=" python3-coverage"
-  short_desc="${short_desc/Python2/Python3}"
-  pkg_install() {
-    vmove "usr/lib/python3*"
-  }
-}
-
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk

@@ -1,0 +1,26 @@
+maintainer="nox"
+pkgname="python3-hypothesis"
+version=5.41.1
+revision=1
+short_desc="Python3 library for property based testing"
+depends+=" python3-attrs"
+depends+=" python3-sortedcontainers"
+checkdepends+=" $depends"
+checkdepends+=" python3-coverage"
+checkdepends+=" python3-pexpect"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://hypothesis.works/"
+license="MPL-2.0"
+changelog="https://github.com/HypothesisWorks/hypothesis/raw/master/hypothesis-python/docs/changes.rst"
+distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
+checksum="bd0c89f6b889e2957f05872fa1c9bec7361fd992528024bef811a780d812f2e3"
+wrksrc="hypothesis-hypothesis-python-$version"
+build_wrksrc="hypothesis-python"
+build_style="python3-module"
+
+do_check() {
+  PYTHONPATH="$PWD/build/lib" python3 -m pytest tests/cover
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
