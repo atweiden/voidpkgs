@@ -124,7 +124,7 @@ do_check() {
   local exeext_tests
 
   # chgrp tests fail inside a chroot
-  sed \
+  vsed \
     -i \
     -e '/tests\/chgrp/d' \
     Makefile
@@ -139,9 +139,9 @@ do_check() {
   exeext_tests+=" fchdir"
 
   for test in $exeext_tests; do
-    sed \
+    vsed \
       -i \
-      -e "/test-$test\$(EXEEXT)/d" \
+      -e "s/test-$test\$(EXEEXT) //" \
       gnulib-tests/Makefile
   done
 
