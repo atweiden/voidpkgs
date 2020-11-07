@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-paramiko"
-version=2.7.1
-revision=3
+version=2.7.2
+revision=1
 short_desc="Python3 SSH2 protocol library"
 depends+=" python3-bcrypt"
 depends+=" python3-cryptography"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="http://www.paramiko.org/"
 license="LGPL-2.1-or-later"
 distfiles="$PYPI_SITE/p/paramiko/paramiko-$version.tar.gz"
-checksum="920492895db8013f6cc0179293147f830b8c7b21fdfc839b6bad760c27459d9f"
+checksum="7f36f4ba2c0d81d219f4595e35f70d56cc94f9ac40a6acdf51d6ca210ce65035"
 wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
