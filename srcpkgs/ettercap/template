@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="ettercap"
-version=0.8.2
-revision=14
+version=0.8.3.1
+revision=1
 short_desc="Network sniffer/interceptor/logger for ethernet LANs"
+makedepends+=" geoip-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libnet-devel"
@@ -14,7 +15,7 @@ hostmakedepends="flex"
 homepage="http://ettercap.github.com/ettercap/"
 license="GPL-2.0-only"
 distfiles="https://github.com/Ettercap/ettercap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f38514f35bea58bfe6ef1902bfd4761de0379942a9aa3e175fc9348f4eef2c81"
+checksum="d0c3ef88dfc284b61d3d5b64d946c1160fd04276b448519c1ae4438a9cdffaf3"
 conf_files="/etc/ettercap/etter.conf"
 build_style="cmake"
 configure_args="-DENABLE_GTK=OFF"
