@@ -11,6 +11,13 @@ wrksrc="${pkgname%-doc}-$version"
 build_style="gnu-configure"
 make_build_args="rdf"
 
+pre_configure() {
+  vsed \
+    -i \
+    -e "s;SourceSansPro;SourceSans3;g" \
+    doc/psfonts.ph
+}
+
 do_install() {
   make \
     INSTALLROOT="$DESTDIR" \
