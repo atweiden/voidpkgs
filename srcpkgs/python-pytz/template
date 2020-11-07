@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-pytz"
-version=2020.1
-revision=2
+version=2020.4
+revision=1
 short_desc="Python2 timezone library"
 depends+=" python"
 depends+=" tzdata"
@@ -10,7 +10,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://pythonhosted.org/pytz/"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytz/${pkgname#*-}-$version.tar.gz"
-checksum="c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"
+checksum="3e6b7dd2d1e0a59084bcee14a17af60c5c562cdc16d828e8eba2e683d3a7e268"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
