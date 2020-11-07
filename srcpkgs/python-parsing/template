@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-parsing"
-version=2.4.6
-revision=3
+version=2.4.7
+revision=1
 short_desc="Python parsing module (Python2)"
 depends="python"
 hostmakedepends+=" python-setuptools"
@@ -10,7 +10,7 @@ homepage="https://github.com/pyparsing/pyparsing"
 license="MIT"
 changelog="https://github.com/pyparsing/pyparsing/raw/master/CHANGES"
 distfiles="https://github.com/pyparsing/pyparsing/archive/${pkgname#*-}_$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1cfe911bf73d6a03d38c1c7808096ef848d03f4c5df6e4aee69fc7348c89e4f0"
+checksum="6deecf4b95a49a5a9c89b4a4b1fcb73c1cba0e3265ec7b858adffcced229ba05"
 wrksrc="${pkgname#*-}-${pkgname#*-}_$version"
 build_style="python-module"
 
