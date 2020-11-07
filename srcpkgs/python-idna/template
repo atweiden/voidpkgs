@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-idna"
-version=2.9
-revision=3
+version=2.10
+revision=1
 short_desc="Internationalized Domain Names in Applications (IDNA) for Python2"
 depends="python"
 hostmakedepends+=" python-setuptools"
@@ -10,7 +10,7 @@ homepage="https://github.com/kjd/idna"
 license="BSD-3-Clause"
 changelog="https://github.com/kjd/idna/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/i/idna/${pkgname#*-}-$version.tar.gz"
-checksum="7588d1c14ae4c77d74036e8c22ff447b26d0fde8f007354fd48a7814db15b7cb"
+checksum="b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
