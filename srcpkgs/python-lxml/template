@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-lxml"
-version=4.4.3
-revision=2
+version=4.6.1
+revision=1
 short_desc="Python2 binding for the libxml2 and libxslt libraries"
 makedepends+=" libxslt-devel"
 makedepends+=" python-devel"
@@ -17,7 +17,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://lxml.de/"
 license="BSD-3-Clause, custom:ElementTree"
 distfiles="https://github.com/lxml/lxml/archive/lxml-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="28943bcd2d1b498399bc434a67abd3c0dfb9088a81f0fad259269ae366cac7f6"
+checksum="76b6f2cde3d4c78869262e402db29466b72ece5b5d8d1c8a5bcf8ee0d8e673bd"
 wrksrc="lxml-lxml-$version"
 build_style="python-module"
 
