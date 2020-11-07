@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-cryptography"
-version=3.1.1
+version=3.2.1
 revision=1
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 depends+=" python-cffi"
@@ -39,7 +39,7 @@ homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cryptography/${pkgname#*-}-$version.tar.gz"
-checksum="9d9fc6a16357965d282dd4ab6531013935425d0dc4950df2e0cf2a1b1ac1017d"
+checksum="d3d5e10be0cf2a12214ddee45c6bd203dab435e3d83b4560c03066eda600bfe3"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
