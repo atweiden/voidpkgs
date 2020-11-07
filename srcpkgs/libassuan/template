@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="libassuan"
-version=2.5.3
-revision=2
+version=2.5.4
+revision=1
 short_desc="IPC library used by some GnuPG related software"
 makedepends="libgpg-error-devel"
 homepage="http://www.gnupg.org/related_software/libassuan"
 homepage="https://www.gnupg.org/related_software/libassuan"
 license="GPL-3.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libassuan/$pkgname-$version.tar.bz2"
-checksum="91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702"
+checksum="c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0"
 build_style="gnu-configure"
 configure_args="--with-libgpg-error-prefix=$XBPS_CROSS_BASE/usr"
 
