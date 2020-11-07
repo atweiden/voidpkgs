@@ -19,9 +19,9 @@ esac
 
 pre_check() {
   # help-version test is known to fail
-  sed \
+  vsed \
     -i \
-    -e '1721,1727d;1447d' \
+    -e '/help-version\s/d' \
     tests/Makefile
 }
 
