@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="tzdata"
-version=2020a
-revision=2
+version=2020d
+revision=1
 short_desc="Time zone and daylight-saving time data"
 hostmakedepends="tzutils"
 homepage="http://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="http://www.iana.org/time-zones/repository/releases/$pkgname$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="547161eca24d344e0b5f96aff6a76b454da295dc14ed4ca50c2355043fb899a2"
+checksum="8d813957de363387696f05af8a8889afa282ab5016a764c701a20758d39cbaf3"
 wrksrc="$pkgname"
 create_wrksrc="yes"
 
@@ -22,13 +22,11 @@ do_install() {
   timezones+=" europe"
   timezones+=" factory"
   timezones+=" northamerica"
-  timezones+=" pacificnew"
   timezones+=" southamerica"
-  timezones+=" systemv"
-  zic -y ./yearistype -d "$DESTDIR/usr/share/zoneinfo" $timezones
-  zic -y ./yearistype -d "$DESTDIR/usr/share/zoneinfo/posix" $timezones
-  zic -y ./yearistype -d "$DESTDIR/usr/share/zoneinfo/right" -L leapseconds $timezones
-  zic -y ./yearistype -d "$DESTDIR/usr/share/zoneinfo" -p America/New_York
+  zic -b fat -d "$DESTDIR/usr/share/zoneinfo" $timezones
+  zic -b fat -d "$DESTDIR/usr/share/zoneinfo/posix" $timezones
+  zic -b fat -d "$DESTDIR/usr/share/zoneinfo/right" -L leapseconds $timezones
+  zic -b fat -d "$DESTDIR/usr/share/zoneinfo" -p America/New_York
   install -m 444 -t "$DESTDIR/usr/share/zoneinfo" iso3166.tab zone1970.tab zone.tab
 }
 
