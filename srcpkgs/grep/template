@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="grep"
-version=3.5
+version=3.6
 revision=1
 short_desc="GNU grep utility"
 makedepends="pcre-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnu.org/software/grep/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/grep/$pkgname-$version.tar.xz"
-checksum="b82ac77707c2ab945520c8404c9fa9f890f7791a62cf2103cf6238acad87a44a"
+checksum="667e15e8afe189e93f9f21a7cd3a7b3f776202f417330b248c2ad4f997d9373e"
 build_style="gnu-configure"
 
 pre_check() {
