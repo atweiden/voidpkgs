@@ -21,7 +21,6 @@ configure_args+=" --enable-devel"
 configure_args+=" --enable-libipq"
 configure_args+=" --enable-shared"
 alternatives+=" iptables:iptables:/usr/bin/xtables-legacy-multi"
-alternatives+=" iptables:iptables-apply:/usr/bin/xtables-legacy-multi"
 alternatives+=" iptables:iptables-restore:/usr/bin/xtables-legacy-multi"
 alternatives+=" iptables:iptables-save:/usr/bin/xtables-legacy-multi"
 alternatives+=" iptables:ip6tables:/usr/bin/xtables-legacy-multi"
@@ -49,8 +48,8 @@ post_install() {
            security; do
     vinstall "$FILESDIR/empty-$f.rules" 644 var/lib/iptables "empty-$f.rules"
   done
-  for i in ip{6,}tables{-save,-restore,}; do
-    rm -f "usr/bin/$i"
+  for f in ip{6,}tables{-save,-restore,}; do
+    rm -f "$DESTDIR/usr/bin/$f"
   done
 }
 
@@ -71,7 +70,6 @@ iptables-nft_package() {
   depends="$sourcepkg>=${version}_$revision"
   short_desc="Iptables-compatible wrapper commands for nftables"
   alternatives+=" iptables:iptables:/usr/bin/xtables-nft-multi"
-  alternatives+=" iptables:iptables-apply:/usr/bin/xtables-nft-multi"
   alternatives+=" iptables:iptables-restore:/usr/bin/xtables-nft-multi"
   alternatives+=" iptables:iptables-save:/usr/bin/xtables-nft-multi"
   alternatives+=" iptables:ip6tables:/usr/bin/xtables-nft-multi"
