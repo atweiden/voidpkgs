@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="fish-shell"
 version=3.1.2
-revision=1
+revision=2
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
 makedepends+=" gettext-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
+hostmakedepends="gettext"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
