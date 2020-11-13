@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iptables"
-version=1.8.5
+version=1.8.6
 revision=1
 short_desc="Linux IPv[46] packet filtering ruleset"
 makedepends+=" libfl-devel"
@@ -14,18 +14,19 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.netfilter.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.netfilter.org/projects/iptables/files/$pkgname-$version.tar.bz2"
-checksum="d457d74512e63aa3f50336e0597d4023c0e3c6845594d38532efb6ebcb294309"
+checksum="a0f4fe0c3eb8faa5bd9c8376d132f340b9558e750c91deb2d5028aa3d0047767"
 build_style="gnu-configure"
 configure_args+=" --enable-bpf-compiler"
 configure_args+=" --enable-devel"
 configure_args+=" --enable-libipq"
 configure_args+=" --enable-shared"
-alternatives+=" iptables:ip6tables-restore:/usr/bin/xtables-legacy-multi"
-alternatives+=" iptables:ip6tables-save:/usr/bin/xtables-legacy-multi"
-alternatives+=" iptables:ip6tables:/usr/bin/xtables-legacy-multi"
+alternatives+=" iptables:iptables:/usr/bin/xtables-legacy-multi"
+alternatives+=" iptables:iptables-apply:/usr/bin/xtables-legacy-multi"
 alternatives+=" iptables:iptables-restore:/usr/bin/xtables-legacy-multi"
 alternatives+=" iptables:iptables-save:/usr/bin/xtables-legacy-multi"
-alternatives+=" iptables:iptables:/usr/bin/xtables-legacy-multi"
+alternatives+=" iptables:ip6tables:/usr/bin/xtables-legacy-multi"
+alternatives+=" iptables:ip6tables-restore:/usr/bin/xtables-legacy-multi"
+alternatives+=" iptables:ip6tables-save:/usr/bin/xtables-legacy-multi"
 
 pre_build() {
   rm include/linux/types.h
@@ -69,12 +70,13 @@ iptables-nft_package() {
   build_style="meta"
   depends="$sourcepkg>=${version}_$revision"
   short_desc="Iptables-compatible wrapper commands for nftables"
-  alternatives+=" iptables:ip6tables-restore:/usr/bin/xtables-nft-multi"
-  alternatives+=" iptables:ip6tables-save:/usr/bin/xtables-nft-multi"
-  alternatives+=" iptables:ip6tables:/usr/bin/xtables-nft-multi"
+  alternatives+=" iptables:iptables:/usr/bin/xtables-nft-multi"
+  alternatives+=" iptables:iptables-apply:/usr/bin/xtables-nft-multi"
   alternatives+=" iptables:iptables-restore:/usr/bin/xtables-nft-multi"
   alternatives+=" iptables:iptables-save:/usr/bin/xtables-nft-multi"
-  alternatives+=" iptables:iptables:/usr/bin/xtables-nft-multi"
+  alternatives+=" iptables:ip6tables:/usr/bin/xtables-nft-multi"
+  alternatives+=" iptables:ip6tables-restore:/usr/bin/xtables-nft-multi"
+  alternatives+=" iptables:ip6tables-save:/usr/bin/xtables-nft-multi"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
