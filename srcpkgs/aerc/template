@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="aerc"
-version=0.4.0
+version=0.5.1
 revision=1
 short_desc="Pretty good email client"
 hostmakedepends+=" git"
@@ -8,7 +8,7 @@ hostmakedepends+=" scdoc"
 homepage="https://aerc-mail.org/"
 license="MIT"
 distfiles="https://git.sr.ht/~sircmpwn/aerc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d369462cc0f76c33d804e586463e4d35d81fba9396ec08c3d3d0579e26091e17"
+checksum="8feb7f87aa210ab7d8b271c34ad39af13f553447994341b3c25e7a659ce37d46"
 build_style="go"
 
 export GOFLAGS="-trimpath"
