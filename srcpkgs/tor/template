@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tor"
-version=0.4.4.5
+version=0.4.4.6
 revision=1
 short_desc="Anonymizing overlay network"
 depends+=" ca-certificates"
@@ -19,7 +19,7 @@ homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 changelog="https://gitweb.torproject.org/tor.git/plain/ReleaseNotes"
 distfiles="https://dist.torproject.org/$pkgname-$version.tar.gz"
-checksum="a45ca00afe765e3baa839767c9dd6ac9a46dd01720a3a8ff4d86558c12359926"
+checksum="5f154c155803adf5c89e87cab53017b6908c5ebe50c65839e8cf4fbd2abe1fdc"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
 configure_args="--enable-zstd"
