@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libunwind"
-version=1.4.0
-revision=2
+version=1.5.0
+revision=1
 short_desc="Library to determine the call-chain of a program"
 makedepends="liblzma-devel"
 hostmakedepends+=" automake"
@@ -9,7 +9,7 @@ hostmakedepends+=" libtool"
 homepage="https://www.nongnu.org/libunwind/"
 license="MIT"
 distfiles="$NONGNU_SITE/libunwind/$pkgname-${version/rc/-rc}.tar.gz"
-checksum="df59c931bd4d7ebfd83ee481c943edf015138089b8e50abed8d9c57ba9338435"
+checksum="90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017"
 build_style="gnu-configure"
 
 CFLAGS="-fcommon"
