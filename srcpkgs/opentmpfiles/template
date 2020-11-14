@@ -1,24 +1,17 @@
 maintainer="nox"
 pkgname="opentmpfiles"
-version=0.2
-revision=2
+version=0.3.1
+revision=1
 short_desc="Standalone utility for handling systemd-style tmpfiles.d settings"
 homepage="https://github.com/OpenRC/opentmpfiles"
 license="BSD-2-Clause"
 distfiles="https://github.com/OpenRC/opentmpfiles/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4fa6a78600b1d67d34c441919e5e62ad181af358d9353ce380f515d623177ecb"
-build_style="gnu-makefile"
-make_install_args="bindir=/usr/bin"
-
-pre_install() {
-  vsed \
-    -i \
-    -e 's|^bindir.*||g' \
-    Makefile
-}
+checksum="47d651ccda53a204463285044a9d34b1bd54d927509dac43994a9d6341be084a"
+build_style="meson"
+configure_args="-Drootbindir=/usr/bin"
 
 post_install() {
-  vlicense license
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
