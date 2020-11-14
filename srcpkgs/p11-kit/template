@@ -1,18 +1,21 @@
 maintainer="nox"
 pkgname="p11-kit"
-version=0.23.20
+version=0.23.21
 revision=1
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
+makedepends+=" gettext-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
 hostmakedepends+=" automake"
-hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" gettext-devel"
+fi
 homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="14d86024c3dfd6b967d9bc0b4ec7b2973014fe7423481f4d230a1a63b8aa6104"
+checksum="f1baa493f05ca0d867f06bcb54cbb5cdb28c756db07207b6e18de18a87b10627"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="gnu-configure"
 configure_args="--with-module-path=/usr/lib/pkcs11"
@@ -23,7 +26,8 @@ pre_configure() {
 
 post_install() {
   vlicense COPYING
-  mv "$DESTDIR/etc/pkcs11/pkcs11.conf.example" "$DESTDIR/etc/pkcs11/pkcs11.conf"
+  mv "$DESTDIR/etc/pkcs11/pkcs11.conf.example" \
+    "$DESTDIR/etc/pkcs11/pkcs11.conf"
 }
 
 p11-kit-devel_package() {
