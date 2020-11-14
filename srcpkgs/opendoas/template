@@ -1,17 +1,18 @@
 maintainer="nox"
 pkgname="opendoas"
-version=6.6.1
+version=6.8
 revision=1
 short_desc="Portable OpenBSD doas to execute commands as another user"
 makedepends="$(vopt_if 'pam' 'pam-devel')"
 hostmakedepends="bison"
 homepage="https://github.com/Duncaen/OpenDoas"
-license="ISC, BSD"
+license="ISC, BSD-3-clause"
 distfiles="https://github.com/Duncaen/OpenDoas/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="baf5a2c73116781519cf03b5b9147eee8db69e8b052eaa81caf093107226b4fe"
+checksum="c53edc59a576cfe8ec8737230e7d0398842a5a8c925e25065463ab632a7eaba9"
 conf_files="$(vopt_if 'pam' '/etc/pam.d/doas')"
 wrksrc="OpenDoas-$version"
 build_style="configure"
+configure_args+=" --prefix=/usr"
 configure_args+=" $(vopt_with 'pam')"
 configure_args+=" $(vopt_with 'timestamp')"
 build_options+=" pam"
@@ -26,7 +27,7 @@ pre_configure() {
     -i \
     -e '/chown ${BINOWN}:${BINGRP}/d' \
     -e '/chmod ${BINMODE}/d' \
-    bsd.prog.mk
+    GNUmakefile
 }
 
 post_install() {
