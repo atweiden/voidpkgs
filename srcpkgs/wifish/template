@@ -1,25 +1,23 @@
 maintainer="nox"
 pkgname="wifish"
 version=1.1.4
-revision=1
+revision=2
 short_desc="Simple wifi tool"
-archs="noarch"
 depends+=" dialog"
 depends+=" gawk"
 depends+=" wpa_supplicant"
 homepage="http://github.com/bougyman/wifish"
-license="wtfpl"
+license="WTFPL"
 distfiles="https://github.com/bougyman/wifish/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d90b42a92fa23521adf9ab0a9186c0f4517e71b5a26b3ae0c1f24fd45e1c0c36"
 
 do_install() {
   vbin wifish
-  vmkdir "var/lib/$pkgname"
-  vcopy awk/* "var/lib/$pkgname"
+  vmkdir var/lib/wifish
+  vcopy awk/* var/lib/wifish
 }
 
 post_install() {
-  vlicense COPYING
   vlicense LICENSE
   vdoc FAQ.md
   vdoc README.md
