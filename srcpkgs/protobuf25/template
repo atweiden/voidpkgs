@@ -1,6 +1,6 @@
 maintainer="nox"
-pkgname="protobuf24"
-version=3.13.0.1
+pkgname="protobuf25"
+version=3.14.0
 revision=1
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
@@ -11,12 +11,13 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7d663c8dc81d282dc92e884b38e9c179671e31ccacce311154420e65f7d142c6"
+checksum="d0f5f605d0d656007ce6c8b5a82df3037e1d8fe8b121ed42e536f569dec16113"
 wrksrc="protobuf-$version"
 build_style="gnu-configure"
 # switch to versioned package
 conflicts+=" protobuf18>=0"
 conflicts+=" protobuf23>=0"
+conflicts+=" protobuf24>=0"
 replaces+=" protobuf<=3.11.4_1"
 replaces+=" $conflicts"
 
@@ -47,7 +48,7 @@ post_install() {
   vlicense LICENSE
 }
 
-libprotobuf24_package() {
+libprotobuf25_package() {
   short_desc="Protocol buffers C++ library"
   pkg_install() {
     vmove "usr/lib/libprotobuf.so.*"
@@ -55,7 +56,7 @@ libprotobuf24_package() {
   }
 }
 
-libprotobuf24-lite_package() {
+libprotobuf25-lite_package() {
   short_desc="Protocol buffers C++ library (lite version)"
   pkg_install() {
     vmove "usr/lib/libprotobuf-lite.so.*"
@@ -63,22 +64,23 @@ libprotobuf24-lite_package() {
   }
 }
 
-libprotoc24_package() {
+libprotoc25_package() {
   short_desc="Protocol buffers compiler library"
   pkg_install() {
-    vmove "usr/lib/libprotoc*.so.*"
+    vmove "usr/lib/libprotoc.so.*"
     vlicense LICENSE
   }
 }
 
-libprotoc24-devel_package() {
+libprotoc25-devel_package() {
   unset conflicts
   unset replaces
-  depends="libprotoc24-${version}_$revision"
+  depends="libprotoc25-${version}_$revision"
   short_desc="Protocol buffers compiler library - development files"
   # switch to versioned package
   conflicts+=" libprotoc18-devel>=0"
   conflicts+=" libprotoc23-devel>=0"
+  conflicts+=" libprotoc24-devel>=0"
   replaces+=" libprotoc-devel<=3.11.4_1"
   replaces+=" $conflicts"
   pkg_install() {
@@ -88,17 +90,18 @@ libprotoc24-devel_package() {
   }
 }
 
-protobuf24-devel_package() {
+protobuf25-devel_package() {
   unset conflicts
   unset depends
   unset replaces
-  depends+=" libprotobuf24-${version}_$revision"
-  depends+=" libprotobuf24-lite-${version}_$revision"
+  depends+=" libprotobuf25-${version}_$revision"
+  depends+=" libprotobuf25-lite-${version}_$revision"
   depends+=" zlib-devel"
   short_desc="Protocol buffers C++ library - development files"
   # switch to versioned package
   conflicts+=" protobuf18-devel>=0"
   conflicts+=" protobuf23-devel>=0"
+  conflicts+=" protobuf24-devel>=0"
   replaces+=" protobuf-devel<=3.11.4_1"
   replaces+=" $conflicts"
   pkg_install() {
@@ -114,25 +117,25 @@ protobuf24-devel_package() {
 protobuf_package() {
   build_style="meta"
   short_desc="Protocol buffers compiler (meta package)"
-  depends="protobuf24"
+  depends="protobuf25"
 }
 
 protobuf-devel_package() {
   build_style="meta"
   short_desc="Protocol buffers C++ library - development files (meta package)"
-  depends="protobuf24-devel"
+  depends="protobuf25-devel"
 }
 
 protobuf-lite_package() {
   build_style="meta"
   short_desc="Protocol buffers C++ library - lite version (meta package)"
-  depends="libprotobuf24-lite"
+  depends="libprotobuf25-lite"
 }
 
 libprotoc-devel_package() {
   build_style="meta"
   short_desc="Protocol buffers compiler library - development files (meta package)"
-  depends="libprotoc24-devel"
+  depends="libprotoc25-devel"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
