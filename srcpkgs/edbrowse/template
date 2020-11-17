@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="edbrowse"
-version=3.7.6
+version=3.7.7
 revision=1
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" duktape-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://edbrowse.org/"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/CMB/edbrowse/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a47a7ba363a72d310b08edee9847fbcfe0b7d1bf53c7b5cf4da10aae237b0abb"
+checksum="bc015decc022d90f482a7f1028e9a56aa84f17406879f9aa1060e1dc175ed00f"
 build_style="cmake"
 
 CFLAGS="-fcommon"
