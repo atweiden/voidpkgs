@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="elfutils"
 version=0.182
-revision=1
+revision=2
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" libarchive-devel"
@@ -69,9 +69,11 @@ libelf_package() {
 
 elfutils-devel_package() {
   unset depends
+  depends+=" bzip2-devel"
   depends+=" libdebuginfod>=${version}_$revision"
   depends+=" libelf>=${version}_$revision"
-  depends+=" $makedepends"
+  depends+=" liblzma-devel"
+  depends+=" zlib-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
