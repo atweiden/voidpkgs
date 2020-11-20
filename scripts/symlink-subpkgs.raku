@@ -440,12 +440,13 @@ constant %PKG = Map.new(
     'linux5.8' => qw<linux5.8-dbg
                      linux5.8-headers>,
     'llhttp' => ['llhttp-devel'],
-    'llvm10' => qw<clang
+    'llvm10' => ['libllvm10'],
+    'llvm11' => qw<clang
                    clang-analyzer
                    clang-tools-extra
                    libclang
                    libclang-cpp
-                   libllvm10
+                   libllvm11
                    lld
                    lld-devel
                    lldb
