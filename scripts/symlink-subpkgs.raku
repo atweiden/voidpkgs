@@ -155,7 +155,9 @@ constant %PKG = Map.new(
     'efitools' => ['efitools-efi'],
     'efivar' => qw<libefivar
                    libefivar-devel>,
-    'elfutils' => qw<elfutils-devel
+    'elfutils' => qw<debuginfod
+                     elfutils-devel
+                     libdebuginfod
                      libelf>,
     'erlang' => ['erlang-doc'],
     'eudev' => qw<eudev-libudev

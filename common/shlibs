@@ -254,6 +254,7 @@ libdar.so.6000 libdar-2.6.6_1
 libdar64.so.6000 libdar-2.6.6_1
 libdb-5.3.so libdb-5.3.21_1
 libdb_cxx-5.3.so libdb-cxx-5.3.21_1
+libdebuginfod.so.1 libdebuginfod-0.182_1
 libdnet.so.1 libdnet-1.12_1
 libedit.so.0 libedit-20130712.3.1_1
 libefiboot.so.1 libefivar-31_1
