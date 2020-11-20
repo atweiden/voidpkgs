@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dhcpcd"
 version=9.3.2
-revision=1
+revision=2
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
 hostmakedepends+=" ntp"
@@ -17,9 +17,12 @@ configure_args+=" --privsepuser=_dhcpcd"
 configure_args+=" --rundir=/run/dhcpcd"
 configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --sysconfdir=/etc"
+configure_args+=" $(vopt_if privsep --privsepuser=_dhcpcd)"
 make_check_target="test"
 system_accounts="_dhcpcd"
 _dhcpcd_homedir="/var/db/dhcpcd"
+build_options="privsep"
+desc_option_privsep="Enable privilege separation mode for the daemon"
 lib32disabled="yes"
 
 post_install() {
