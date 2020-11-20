@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="man-pages-posix"
-_distver="2013"
+_distver="2017"
 _revver="a"
 version=$_distver$_revver
 revision=5
 short_desc="Manual pages about POSIX systems"
 homepage="https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/"
-license="POSIX-COPYRIGHT"
+license="custom:POSIX-COPYRIGHT"
 distfiles="$KERNEL_SITE/docs/man-pages/man-pages-posix/$pkgname-$_distver-$_revver.tar.xz"
-checksum="19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808"
-wrksrc="$pkgname-$_distver-$_revver"
+checksum="ce67bb25b5048b20dad772e405a83f4bc70faf051afa289361c81f9660318bc3"
+wrksrc="$pkgname-$_distver"
 
 do_install() {
   make all prefix="$DESTDIR/usr"
