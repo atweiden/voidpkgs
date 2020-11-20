@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="elfutils"
 version=0.182
-revision=2
+revision=3
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
 makedepends+=" libarchive-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" libmicrohttpd-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" automake"
@@ -73,6 +74,7 @@ elfutils-devel_package() {
   depends+=" libdebuginfod>=${version}_$revision"
   depends+=" libelf>=${version}_$revision"
   depends+=" liblzma-devel"
+  depends+=" libzstd-devel"
   depends+=" zlib-devel"
   short_desc+=" - development files"
   pkg_install() {
