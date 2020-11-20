@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gdb"
 version=10.1
-revision=1
+revision=2
 short_desc="GNU Debugger"
 makedepends+=" expat-devel"
 makedepends+=" guile-devel"
@@ -11,6 +11,7 @@ makedepends+=" mpfr-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if debuginfod elfutils-devel)"
 makedepends+=" $(vopt_if python 'python3-devel gettext-libs')"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
@@ -30,13 +31,16 @@ configure_args+=" --with-system-zlib"
 configure_args+=" $(vopt_enable gdbserver)"
 configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
 configure_args+=" $(vopt_if python --with-python=/usr/bin/python3)"
+configure_args+=" $(vopt_with debuginfod)"
 python_version=3
 pycompile_dirs="/usr/share/gdb/python"
+build_options+=" debuginfod"
 build_options+=" gdbserver"
 build_options+=" python"
 build_options+=" static"
 desc_option_gdbserver="Enable support for building GDB server"
 # enable gdbserver if !static
+build_options_default+=" debuginfod"
 build_options_default+=" gdbserver"
 build_options_default+=" python"
 # both options cannot be enabled at the same time
