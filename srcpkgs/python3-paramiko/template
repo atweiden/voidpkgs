@@ -15,4 +15,4 @@ checksum="7f36f4ba2c0d81d219f4595e35f70d56cc94f9ac40a6acdf51d6ca210ce65035"
 wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

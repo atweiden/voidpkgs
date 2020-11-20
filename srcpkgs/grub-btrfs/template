@@ -11,4 +11,4 @@ distfiles="https://github.com/Antynea/grub-btrfs/archive/v$version.tar.gz>$pkgna
 checksum="6c32be223344a77807e70dfd47846f1986da618b0050c494725222b287240f71"
 build_style="gnu-makefile"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

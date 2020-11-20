@@ -14,4 +14,4 @@ go_ldflags+=" -X $go_import_path/repo.BuildInfo=void-nox"
 
 export GOFLAGS="-trimpath"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

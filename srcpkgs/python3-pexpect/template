@@ -28,4 +28,4 @@ post_install() {
   vlicense LICENSE
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

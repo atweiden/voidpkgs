@@ -12,4 +12,4 @@ checksum="8cd5455bb00c677f787da424eaf8c4a58a922d0e97126d3085db5b279a98b698"
 wrksrc="flaky-$version"
 build_style="python3-module"
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

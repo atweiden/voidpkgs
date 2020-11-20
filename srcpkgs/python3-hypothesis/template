@@ -23,4 +23,4 @@ do_check() {
   PYTHONPATH="$PWD/build/lib" python3 -m pytest tests/cover
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:pjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
