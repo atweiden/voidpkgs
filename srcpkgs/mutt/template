@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mutt"
-version=2.0.1
+version=2.0.2
 revision=1
 short_desc="Mutt Mail Client"
 depends+=" cyrus-sasl-modules"
@@ -20,7 +20,7 @@ homepage="http://www.mutt.org"
 license="GPL-2.0-or-later"
 changelog="http://mutt.org/relnotes/${version%.*}"
 distfiles="http://ftp.mutt.org/pub/mutt/$pkgname-$version.tar.gz"
-checksum="0cf5fdea5616f655b101de3b5ed45412bc2cc721d517466ca6c645a829b021db"
+checksum="471218babe97968a45704f1e1e17523c4620ad1f92bae4143a4c9749ab1411c8"
 conf_files="/etc/mutt/Muttrc"
 build_style="gnu-configure"
 configure_args+=" --enable-gpgme"
