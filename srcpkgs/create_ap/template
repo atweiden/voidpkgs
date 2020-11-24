@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="create_ap"
 version=0.4.6
-revision=2
+revision=3
 short_desc="Script to create a NATed or Bridged WiFi Access Point"
-archs="noarch"
 depends+=" bash"
 depends+=" dnsmasq"
 depends+=" hostapd"
