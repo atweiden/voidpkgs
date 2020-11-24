@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="kpcli"
 version=3.3
-revision=1
+revision=2
 short_desc="KeePass Command Line Interface"
-archs="noarch"
 depends+=" perl"
 depends+=" perl-Clone"
 depends+=" perl-Crypt-Rijndael"
