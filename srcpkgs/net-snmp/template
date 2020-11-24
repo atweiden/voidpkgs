@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="net-snmp"
-version=5.8
-revision=5
+version=5.9
+revision=1
 short_desc="Simple Network Management Protocol (SNMP) suite"
 makedepends+=" bzip2-devel"
 makedepends+=" libnl-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" unzip"
 homepage="http://www.net-snmp.org/"
 license="Net-SNMP"
 distfiles="$SOURCEFORGE_SITE/net-snmp/$pkgname-$version.tar.gz"
-checksum="b2fc3500840ebe532734c4786b0da4ef0a5f67e51ef4c86b3345d697e4976adf"
+checksum="04303a66f85d6d8b16d3cc53bde50428877c82ab524e17591dfceaeb94df6071"
 
 LDFLAGS="-lpthread"
 
@@ -66,6 +66,7 @@ net-snmp-devel_package() {
     vmove usr/include
     vmove usr/share/man/man3
     vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
   }
 }
 
