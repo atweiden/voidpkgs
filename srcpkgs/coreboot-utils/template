@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coreboot-utils"
 version=4.12
-revision=1
+revision=2
 short_desc="Coreboot firmware utilities"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -45,7 +45,6 @@ do_install() {
 }
 
 coreboot-utils-me_cleaner_package() {
-  archs="noarch"
   python_version=3
   depends="python3"
   short_desc="Tool for partial deblobbing Intel ME/TXE firmware images"
