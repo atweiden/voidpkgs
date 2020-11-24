@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rclone"
 version=1.53.3
-revision=1
+revision=2
 short_desc="Rsync for cloud storage"
 homepage="https://rclone.org/"
 license="MIT"
@@ -14,6 +14,16 @@ go_import_path="github.com/rclone/rclone"
 go_ldflags="-extldflags=-fuse-ld=bfd"
 
 export GOFLAGS="-trimpath"
+
+pre_build() {
+  if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    # XXX: when cross building, the binary has a textrel, which segfaults
+    # when launched on musl
+    # FIXME: linkers for the musl toolchains should reject textrels
+    # entirely
+    export CGO_ENABLED=0
+  fi
+}
 
 post_install() {
   vlicense COPYING
