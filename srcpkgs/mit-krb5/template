@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mit-krb5"
-version=1.18.2
+version=1.18.3
 revision=1
 short_desc="MIT Kerberos 5 implementation"
 makedepends+=" e2fsprogs-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
 distfiles="http://web.mit.edu/kerberos/dist/krb5/${version%.*}/${pkgname#mit-}-$version.tar.gz"
-checksum="3706d7ec2eaa773e0e32d3a87bf742ebaecae7d064e190443a3acddfd8afb181"
+checksum="e61783c292b5efd9afb45c555a80dd267ac67eebabca42185362bee6c4fbd719"
 wrksrc="${pkgname#mit-}-$version"
 build_style="gnu-configure"
 
