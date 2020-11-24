@@ -11,12 +11,9 @@ checksum="03b70f028299561b7034b8966d7dd77ef16ed139c43440925fe8782561974748"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --without-capabilities"
-
-case "$XBPS_TARGET_MACHINE" in
-  ppc|ppc-musl)
-    configure_args+=" ac_cv_sys_symbol_underscore=no"
-    ;;
-esac
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" ac_cv_sys_symbol_underscore=no"
+fi
 
 post_configure() {
   case "$XBPS_TARGET_MACHINE" in
