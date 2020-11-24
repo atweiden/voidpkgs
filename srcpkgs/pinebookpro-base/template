@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pinebookpro-base"
-version=0.2
+version=0.3
 revision=1
 short_desc="Void Linux Pinebook Pro platform package"
 archs="aarch64*"
@@ -11,9 +11,11 @@ depends+=" pinebookpro-uboot"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
+mutable_files="/var/lib/alsa/asound.state"
 
 do_install() {
-  vinstall "$FILESDIR/10-usb-kbd.hwdb" 644 usr/lib/udev/hwdb.d
+  vinstall "$FILESDIR/60-pinebookpro.rules" 644 usr/lib/udev/rules.d
+  vinstall "$FILESDIR/10-pinebookpro.hwdb" 644 usr/lib/udev/hwdb.d
   vinstall "$FILESDIR/asound.state" 644 var/lib/alsa
 }
 
