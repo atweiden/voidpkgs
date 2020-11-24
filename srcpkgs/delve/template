@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="delve"
-version=1.4.1
+version=1.5.0
 revision=1
 short_desc="Debugger for the Go programming language"
 homepage="https://github.com/go-delve/delve"
 license="MIT"
 distfiles="https://github.com/go-delve/delve/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6d9da41a18905c9819e33f475bf911facba1297674d2312ab5d7e2488fac685a"
+checksum="f8bbaecdfc9d1ff6148900d3dea44b6dd06a7f0197be4e9a75c289b7f62682ab"
 build_style="go"
 go_import_path="github.com/go-delve/delve/cmd/dlv"
 
