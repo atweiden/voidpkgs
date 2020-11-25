@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gpgme"
-version=1.14.0
+version=1.15.0
 revision=1
 short_desc="GnuPG Made Easy"
 depends="gnupg2"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/software/gpgme/index.html"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gpgme/$pkgname-$version.tar.bz2"
-checksum="cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307"
+checksum="0b472bc12c7d455906c8a539ec56da0a6480ef1c3a87aa5b74d7125df68d0e5b"
 build_style="gnu-configure"
 configure_args+=" --enable-fd-passing"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
