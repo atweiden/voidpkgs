@@ -1,21 +1,31 @@
 maintainer="nox"
 pkgname="earlyoom"
 version=1.6.2
-revision=1
+revision=2
 short_desc="Userspace Early OOM Daemon for Linux"
 checkdepends="go"
-hostmakedepends="pandoc"
+hostmakedepends="$(vopt_if man pandoc)"
 homepage="https://github.com/rfjakob/earlyoom"
 license="MIT"
 distfiles="https://github.com/rfjakob/earlyoom/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="227234cf9e77831c21c748bd361e1a7c415e158b96034eacd59e70586779bb6c"
 build_style="gnu-makefile"
 make_check_target="test"
+build_options="man"
+desc_option_man="Use pandoc for manpages"
+case "$XBPS_MACHINE" in
+  x86_64*|i686|ppc64le)
+    build_options_default="man"
+    ;;
+esac
+
 CFLAGS="-DVERSION='\"$version\"'"
 
 do_install() {
   vbin earlyoom
-  vman earlyoom.1
+  if [[ -n "$build_option_man" ]]; then
+    vman earlyoom.1
+  fi
   vsv earlyoom
   vlicense LICENSE
 }
