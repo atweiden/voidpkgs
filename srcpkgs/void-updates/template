@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="void-updates"
 version=20190330
-revision=1
+revision=2
 short_desc="Void Linux package updates"
-archs="noarch"
 depends+=" curl"
 depends+=" git"
 homepage="https://github.com/void-linux/void-updates"
