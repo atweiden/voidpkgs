@@ -1,14 +1,13 @@
 maintainer="nox"
 pkgname="xmltoman"
 version=0.4
-revision=1
+revision=2
 short_desc="Convert XML to man pages in groff format or html"
-archs="noarch"
 depends="perl-XML-Parser"
 hostmakedepends+=" perl"
 hostmakedepends+=" perl-XML-Parser"
 homepage="https://sourceforge.net/projects/xmltoman"
-license="GPL-3"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/Distrotech/xmltoman/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="2ab86b74fe364a866d84c14b20cbd42a09fa85c629deeff52376bbf890854feb"
 build_style="gnu-makefile"
