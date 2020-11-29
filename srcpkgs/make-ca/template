@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="make-ca"
 version=1.7
-revision=1
+revision=2
 short_desc="PKI setup script for LFS (and others)"
-archs="noarch"
 depends="p11-kit"
 hostmakedepends="help2man"
 homepage="https://github.com/djlucas/make-ca/"
