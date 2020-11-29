@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="mobile-broadband-provider-info"
 version=20190618
-revision=1
+revision=2
 short_desc="Database of mobile broadband service providers"
-archs="noarch"
 checkdepends="libxml2"
 hostmakedepends+=" automake"
 hostmakedepends+=" libxslt"
