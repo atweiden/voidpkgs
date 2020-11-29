@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="mime-types"
 version=9
-revision=4
+revision=5
 short_desc="Provides a shared /etc/mime.types file"
-archs="noarch"
 homepage="http://www.gentoo.org"
 license="GPL-2.0-or-later"
 distfiles="http://mirrors.kernel.org/gentoo/distfiles/$pkgname-$version.tar.bz2"
