@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="runit-nftables"
 version=20200123
-revision=1
+revision=2
 short_desc="Restore nftables rules on boot"
-archs="noarch"
 depends+=" nftables"
 depends+=" runit-void"
 homepage="https://www.voidlinux.org"
