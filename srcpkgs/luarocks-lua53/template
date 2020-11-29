@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="luarocks-lua53"
 version=3.3.1
-revision=3
+revision=4
 _desc="Package management for Lua modules"
 short_desc="$_desc (5.3.x)"
-archs="noarch"
 depends+=" curl"
 depends+=" lua53"
 depends+=" unzip"
@@ -82,7 +81,6 @@ post_install() {
 luarocks-lua54_package() {
   unset alternatives
   unset depends
-  archs="noarch"
   short_desc="$_desc (5.4.x)"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" lua54"
@@ -99,7 +97,6 @@ luarocks-lua54_package() {
 luarocks-lua52_package() {
   unset alternatives
   unset depends
-  archs="noarch"
   short_desc="$_desc (5.2.x)"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" lua52"
@@ -116,7 +113,6 @@ luarocks-lua52_package() {
 luarocks-lua51_package() {
   unset alternatives
   unset depends
-  archs="noarch"
   short_desc="$_desc (5.1.x)"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" lua51"
