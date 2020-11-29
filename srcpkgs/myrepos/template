@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="myrepos"
 version=1.20180726
-revision=1
+revision=2
 short_desc="Multiple Repository management tool"
-archs="noarch"
 depends+=" git"
 depends+=" mercurial"
 depends+=" perl"
