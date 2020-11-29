@@ -1,15 +1,14 @@
 maintainer="nox"
 pkgname="runit-swap"
 version=2.0.0
-revision=1
+revision=2
 short_desc="Script to manage swapspaces"
-archs="noarch"
 depends+=" runit"
 depends+=" bash"
 depends+=" util-linux>=2.26"
 hostmakedepends="git"
 homepage="https://github.com/thypon/runit-swap"
-license="GPL-3"
+license="GPL-3.0-only"
 distfiles="https://github.com/thypon/runit-swap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="a66730777fb084564e7fae67f2017d775b757b6b6c0c319802f71bed2184e958"
 conf_files="/etc/runit/swap.conf"
