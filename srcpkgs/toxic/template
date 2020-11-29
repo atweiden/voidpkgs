@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="toxic"
-version=0.8.4
+version=0.9.1
 revision=1
 short_desc="Ncurses-based Tox instant messenger client"
 makedepends+=" libconfig-devel"
@@ -15,7 +15,7 @@ homepage="https://github.com/JFreegman/toxic"
 license="GPL-3.0-or-later"
 changelog="https://github.com/JFreegman/toxic/raw/master/CHANGELOG.md"
 distfiles="https://github.com/JFreegman/toxic/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="dfb92f4bc36531258ae999112cb75b468878209e39ac01c7b2a439f2fac787a3"
+checksum="51aefbb1af0cd4e1ccb5512e77dc15fff306ee3fea4311e47ede21324f05f089"
 build_style="gnu-makefile"
 make_build_args+=" DISABLE_AV=1"
 make_build_args+=" DISABLE_DESKTOP_NOTIFY=1"
