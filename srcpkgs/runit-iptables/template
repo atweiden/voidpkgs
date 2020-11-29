@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="runit-iptables"
 version=20180616
-revision=1
+revision=2
 short_desc="Restore iptables rules on boot"
-archs="noarch"
 depends+=" iptables"
 depends+=" runit-void"
 homepage="http://www.voidlinux.org/"
