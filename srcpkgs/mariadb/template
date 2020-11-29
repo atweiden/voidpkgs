@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.1.47
-revision=1
+revision=2
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" libatomic-devel"
@@ -201,7 +201,6 @@ mariadb-client_package() {
 
 mytop_package() {
   unset depends
-  archs="noarch"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" perl-DBD-mysql"
   depends+=" perl-Term-ReadKey"
