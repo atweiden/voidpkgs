@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="getmail"
 version=5.14
-revision=1
+revision=2
 short_desc="POP3/IMAP mail retriever with reliable Maildir and command delivery"
-archs="noarch"
 depends="python"
 hostmakedepends="python-devel"
 homepage="http://pyropus.ca/software/getmail"
@@ -11,6 +10,5 @@ license="GPL-2.0-only"
 distfiles="http://pyropus.ca/software/getmail/old-versions/$pkgname-$version.tar.gz"
 checksum="f3a99fe74564237d12ca8d4582e113c067c9205b5ab640f72b4e8447606a99c1"
 build_style="python2-module"
-pycompile_module="getmailcore"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
