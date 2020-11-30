@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="schilytools"
-version=2020.10.09
+version=2020.11.25
 revision=1
 short_desc="Schily's portable tools"
 depends+=" sccs"
@@ -11,10 +11,11 @@ depends+=" star"
 makedepends+=" acl-devel"
 makedepends+=" attr-devel"
 makedepends+=" e2fsprogs-devel"
+makedepends+=" m4"
 homepage="https://sourceforge.net/projects/schilytools/"
 license="CDDL-1.0"
 distfiles="$SOURCEFORGE_SITE/schilytools/${pkgname%tools}-${version//./-}.tar.bz2"
-checksum="94f4634226bbc9c4184d962f97253db494919480884e07087d56eea4a3a22561"
+checksum="32aee7498f4c6dabef04107fe9b6d597688be90f4b4fae057b10776567ae4eeb"
 wrksrc="${pkgname%tools}-${version//./-}"
 build_style="meta"
 # configure + re-builds with itself
