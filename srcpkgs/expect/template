@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="expect"
 version=5.45.4
-revision=2
+revision=3
 makedepends="tcl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
