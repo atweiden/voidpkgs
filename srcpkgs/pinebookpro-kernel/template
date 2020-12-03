@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="pinebookpro-kernel"
-version=5.7.0
+version=5.9.12
 revision=1
 _gitrev="a8f4db8a726e5e4552e61333dcd9ea1ff35f39f9"
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
-short_desc="Linux kernel for Pinebook Pro (${version%.*} series)"
+short_desc="Linux kernel for Pinebook Pro"
 archs="aarch64*"
 hostmakedepends+=" bc"
 hostmakedepends+=" cpio"
@@ -16,14 +16,15 @@ hostmakedepends+=" kmod"
 hostmakedepends+=" libmpc-devel"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" perl"
+hostmakedepends+=" python3"
 hostmakedepends+=" tar"
 hostmakedepends+=" uboot-mkimage"
 hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
-distfiles="https://gitlab.manjaro.org/tsys/linux-pinebook-pro/-/archive/$_gitrev/linux-pinebook-pro-$_gitrev.tar.gz"
-checksum="c76b54d62bdf58e40497846fe7cf236d9a923eeb7972c97d41a917329843268b"
-wrksrc="linux-pinebook-pro-$_gitrev"
+distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
+checksum="d97f56192e3474c9c8a44ca39957d51800a26497c9a13c9c5e8cc0f1f5b0d9bd"
+wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
 # -dbg package is generated below manually
@@ -59,11 +60,9 @@ do_configure() {
     _args="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
   fi
 
-  make \
-    "$makejobs" \
-    ARCH="$arch" \
-    $_args \
-    pinebook_pro_defconfig
+  cp -f "$FILESDIR/dotconfig" .config
+  make "$makejobs" ARCH="$arch" $_args oldconfig
+
   # always use our revision to CONFIG_LOCALVERSION to match our pkg version
   sed \
     -i \
