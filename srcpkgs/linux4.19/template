@@ -48,6 +48,11 @@ mutable_files+=" /usr/lib/modules/$_kernver/modules.softdep"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols.bin"
 
+# reproducible build
+export KBUILD_BUILD_TIMESTAMP="${SOURCE_DATE_EPOCH:-0}"
+export KBUILD_BUILD_USER="voidlinux"
+export KBUILD_BUILD_HOST="voidlinux"
+
 do_configure() {
   # 4.19 misses Documentation/DocBook
   # ship the directory from 4.12
