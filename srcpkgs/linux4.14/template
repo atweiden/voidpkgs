@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.14"
-version=4.14.206
+version=4.14.210
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -21,7 +21,7 @@ hostmakedepends+=" uboot-mkimage"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="1c233efaa5063983293a02d4692acc9ced9c03e18857364855d4f612347086ac"
+checksum="f91851d0b43c39732f9ee3afa1850145aee21e3bc71b3bf4b9a0b8a74dc4fd18"
 wrksrc="linux-$version"
 patch_args="-Np1"
 # unverified
@@ -50,6 +50,11 @@ case "$XBPS_TARGET_MACHINE" in
     broken="No ppc64le support"
     ;;
 esac
+
+# reproducible build
+export KBUILD_BUILD_TIMESTAMP="${SOURCE_DATE_EPOCH:-0}"
+export KBUILD_BUILD_USER="voidlinux"
+export KBUILD_BUILD_HOST="voidlinux"
 
 do_configure() {
   # 4.14rc1 misses Documentation/DocBook
