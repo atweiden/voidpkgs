@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rsync"
 version=3.2.3
-revision=1
+revision=2
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
@@ -11,16 +11,20 @@ makedepends+=" popt-devel"
 makedepends+=" xxHash-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="perl"
-homepage="http://samba.anu.edu.au/rsync/"
+homepage="https://rsync.samba.org/"
 license="GPL-3.0-only"
 changelog="https://download.samba.org/pub/rsync/NEWS"
-distfiles="http://www.samba.org/ftp/rsync/src/$pkgname-$version.tar.gz"
+distfiles="https://www.samba.org/ftp/rsync/src/$pkgname-$version.tar.gz"
 checksum="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
 conf_files="/etc/rsyncd.conf"
 build_style="gnu-configure"
 if [[ -n "$CROSS_BUILD" ]]; then
   configure_args=" --disable-simd"
 fi
+
+# force enable IPv6 on musl - upstream bug
+# https://bugzilla.samba.org/show_bug.cgi?id=10715
+CFLAGS="-DINET6"
 
 pre_check() {
   # chgrp tests fail inside chroot
