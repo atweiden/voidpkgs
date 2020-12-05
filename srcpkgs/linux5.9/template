@@ -1,7 +1,7 @@
 maintainer="nox"
-pkgname="linux5.8"
-version=5.8.18
-revision=1
+pkgname="linux5.9"
+version=5.9.12
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -21,13 +21,14 @@ hostmakedepends+=" libmpc-devel"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" pahole"
 hostmakedepends+=" perl"
+hostmakedepends+=" python3"
 hostmakedepends+=" tar"
 hostmakedepends+=" uboot-mkimage"
 hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="4ab4a3f694b7b4cfbe78871eab34c8039ad33692144c45c669827a594da85534"
+checksum="d97f56192e3474c9c8a44ca39957d51800a26497c9a13c9c5e8cc0f1f5b0d9bd"
 wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
@@ -50,15 +51,26 @@ mutable_files+=" /usr/lib/modules/$_kernver/modules.softdep"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols.bin"
 
+# reproducible build
+export KBUILD_BUILD_TIMESTAMP="${SOURCE_DATE_EPOCH:-0}"
+export KBUILD_BUILD_USER="voidlinux"
+export KBUILD_BUILD_HOST="voidlinux"
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  _cross="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
+fi
+if [[ -n "$_patchver" ]]; then
+  _version="EXTRAVERSION=$_patchver"
+fi
+
 do_configure() {
-  # 5.8 misses Documentation/DocBook
+  # 5.9 misses Documentation/DocBook
   # we ship the directory from 4.12 here
   cp -a "$FILESDIR/DocBook" -t Documentation
 
   # if there's a file called <arch>-dotconfig, use it to configure
   # the kernel; otherwise use arch defaults and all stuff as modules
   # (allmodconfig)
-  local _args
   local arch
   local subarch
 
@@ -91,9 +103,15 @@ do_configure() {
       ;;
   esac
 
-  if [[ -n "$CROSS_BUILD" ]]; then
-    _args="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
-  fi
+  case "$XBPS_TARGET_MACHINE" in
+    aarch64*)
+      # XXX: fix segfault in pahole 1.18; should be fixed in new releases
+      vsed \
+        -i \
+        -e 's;${PAHOLE} -J;& --btf_encode_force;' \
+        scripts/link-vmlinux.sh
+      ;;
+  esac
 
   if [[ -f "$FILESDIR/${subarch:-$arch}-dotconfig-custom" ]]; then
     msg_normal "Detected a custom .config file for your arch, using it.\n"
@@ -102,6 +120,7 @@ do_configure() {
       "$makejobs" \
       ARCH="$arch" \
       $_args \
+      $_cross \
       oldconfig
   elif [[ -f "$FILESDIR/${subarch:-$arch}-dotconfig" ]]; then
     msg_normal "Detected a .config file for your arch, using it.\n"
@@ -110,6 +129,7 @@ do_configure() {
       "$makejobs" \
       ARCH="$arch" \
       $_args \
+      $_cross \
       oldconfig
   elif [[ -f "$FILESDIR/${XBPS_TARGET_MACHINE%%-musl}-dotconfig" ]]; then
     msg_normal "Detected a .config file for your cpu family, using it.\n"
@@ -118,6 +138,7 @@ do_configure() {
       "$makejobs" \
       ARCH="$arch" \
       $_args \
+      $_cross \
       oldconfig
   else
     msg_normal "Defaulting to 'allmodconfig'.\n"
@@ -125,6 +146,7 @@ do_configure() {
       "$makejobs" \
       ARCH="$arch" \
       $_args \
+      $_cross \
       allmodconfig
   fi
   # always use our revision to CONFIG_LOCALVERSION to match our pkg version
@@ -136,7 +158,6 @@ do_configure() {
 
 do_build() {
   local _args
-  local _cross
   local arch
 
   case "$XBPS_TARGET_MACHINE" in
@@ -174,12 +195,6 @@ do_build() {
       arch="mips"
       ;;
   esac
-  if [[ -n "$CROSS_BUILD" ]]; then
-    _cross="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
-  fi
-  if [[ -n "$_patchver" ]]; then
-    _version="EXTRAVERSION=$_patchver"
-  fi
   export LDFLAGS=
   make \
     ARCH="$arch" \
@@ -235,6 +250,7 @@ do_install() {
     "$makejobs" \
     ARCH="${subarch:-$arch}" \
     INSTALL_MOD_PATH="$DESTDIR" \
+    $_cross \
     modules_install
 
   hdrdest="$DESTDIR/usr/src/kernel-headers-$_kernver"
@@ -252,6 +268,7 @@ do_install() {
         "$makejobs" \
         ARCH="${subarch:-$arch}" \
         INSTALL_DTBS_PATH="$DESTDIR/boot/dtbs/dtbs-$_kernver" \
+        $_cross \
         dtbs_install
       ;;
     arm64)
@@ -260,6 +277,7 @@ do_install() {
         "$makejobs" \
         ARCH="${subarch:-$arch}" \
         INSTALL_DTBS_PATH="$DESTDIR/boot/dtbs/dtbs-$_kernver" \
+        $_cross \
         dtbs_install
       ;;
     powerpc)
@@ -274,6 +292,7 @@ do_install() {
         "$makejobs" \
         ARCH="${subarch:-$arch}" \
         INSTALL_DTBS_PATH="$DESTDIR/boot/dtbs/dtbs-$_kernver" \
+        $_cross \
         dtbs_install
       ;;
   esac
@@ -344,6 +363,7 @@ do_install() {
     make \
       "$makejobs" \
       ARCH="${subarch:-$arch}" \
+      $_cross \
       _mrproper_scripts
     # remove host specific objects as well
     find scripts -name "*.o" -delete
@@ -517,7 +537,7 @@ do_install() {
   depmod -b "$DESTDIR/usr" -F System.map "$_kernver"
 }
 
-linux5.8-headers_package() {
+linux5.9-headers_package() {
   preserve="yes"
   nostrip="yes"
   noshlibprovides="yes"
@@ -528,7 +548,7 @@ linux5.8-headers_package() {
   }
 }
 
-linux5.8-dbg_package() {
+linux5.9-dbg_package() {
   preserve="yes"
   nostrip="yes"
   noverifyrdeps="yes"
