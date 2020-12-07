@@ -80,7 +80,7 @@ do_configure() {
 
   # building with altivec generates broken grub core
   case "$XBPS_TARGET_MACHINE" in
-    ppc64*)
+    ppc*)
       CFLAGS="$CFLAGS -mno-altivec"
       ;;
   esac
