@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mlocate"
 version=0.26
-revision=5
+revision=6
 short_desc="Implementation of locate/updatedb that reuses the database"
 homepage="https://pagure.io/mlocate"
 license="GPL-2.0-or-later"
@@ -18,6 +18,7 @@ alternatives+=" locate:locate.1:/usr/share/man/man1/mlocate.1"
 alternatives+=" locate:locate:/usr/bin/mlocate"
 alternatives+=" locate:locatedb.5:/usr/share/man/man5/mmlocate.db.5"
 alternatives+=" locate:updatedb.1:/usr/share/man/man1/mupdatedb.1"
+alternatives+=" locate:updatedb.conf.5:/usr/share/man/man5/mupdatedb.db.5"
 alternatives+=" locate:updatedb:/usr/bin/mupdatedb"
 
 post_install() {
@@ -26,10 +27,6 @@ post_install() {
   mv \
     "$DESTDIR/usr/share/man/man8/mupdatedb.8" \
     "$DESTDIR/usr/share/man/man1/mupdatedb.1"
-  # remove 'm' prefix
-  mv \
-    "$DESTDIR/usr/share/man/man5/mupdatedb.conf.5" \
-    "$DESTDIR/usr/share/man/man5/updatedb.conf.5"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
