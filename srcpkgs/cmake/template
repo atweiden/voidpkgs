@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.19.0
+version=3.19.1
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
+makedepends+=" jsoncpp-devel"
 makedepends+=" libarchive-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libuv-devel"
@@ -14,20 +15,13 @@ checkdepends+=" pkg-config"
 hostmakedepends+=" cmake-bootstrap"
 hostmakedepends+=" gcc-fortran"
 homepage="https://www.cmake.org"
-license="LGPL-2.1-or-later, BSD-3-Clause"
+license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="fdda688155aa7e72b7c63ef6f559fca4b6c07382ea6dca0beb5f45aececaf493"
+checksum="1d266ea3a76ef650cdcf16c782a317cb4a7aa461617ee941e389cb48738a3aba"
 build_style="cmake"
 configure_args+=" -DCMAKE_BUILD_TYPE=None"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
-configure_args+=" -DCMAKE_USE_SYSTEM_BZIP2=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_CURL=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_EXPAT=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_LIBARCHIVE=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_LIBLZMA=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_LIBRHASH=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_LIBUV=1"
-configure_args+=" -DCMAKE_USE_SYSTEM_ZLIB=1"
+configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=ON"
 configure_args+=" -DKWSYS_LFS_WORKS=1"
 make_check_target="test"
 
@@ -43,8 +37,12 @@ pre_check() {
 post_install() {
   vlicense Copyright.txt
   vlicense Utilities/KWIML/Copyright.txt KWIML-Copyright.txt
-  vlicense Utilities/cmzlib/Copyright.txt cmzlib-Copyright.txt
-  rm -rf "$DESTDIR/usr/share/doc/cmake"
+  sed \
+    -n \
+    -e '/Copyright/,/authorization[.]/p' \
+    Source/CursesDialog/form/fld_arg.c > \
+    fld.LICENSE
+  vlicense fld.LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
