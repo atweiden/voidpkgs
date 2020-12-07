@@ -1,16 +1,13 @@
 maintainer="nox"
 pkgname="jsoncpp"
 version=1.9.4
-revision=1
-short_desc="A JSON implementation in C++"
+revision=2
+short_desc="JSON implementation in C++"
 homepage="https://github.com/open-source-parsers/jsoncpp"
 license="Public Domain, MIT"
 distfiles="https://github.com/open-source-parsers/jsoncpp/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="e34a628a8142643b976c7233ef381457efad79468c67cb1ae0b83a33d7493999"
-build_style="cmake"
-configure_args+=" -DBUILD_SHARED_LIBS=1"
-configure_args+=" -DBUILD_STATIC_LIBS=1"
-configure_args+=" -DJSONCPP_WITH_TESTS=0"
+build_style="meson"
 
 CXXFLAGS="-D_GLIBCXX_USE_C99_STDIO=1"
 
@@ -24,7 +21,6 @@ jsoncpp-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove usr/lib/pkgconfig
-    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
 }
