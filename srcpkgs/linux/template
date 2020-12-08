@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="linux"
 version=5.9
-revision=1
-short_desc="The Linux kernel meta package"
+revision=2
+short_desc="Linux kernel meta package"
 homepage="http://www.voidlinux.org/"
 license="Public Domain"
 build_style="meta"
@@ -17,16 +17,16 @@ case "$XBPS_TARGET_MACHINE" in
     depends+=" dracut"
     _depends_headers="linux$version-headers"
     ;;
-  arm*|aarch64*)
-    depends="linux$version"
-    _depends_headers="linux$version-headers"
-    ;;
-  ppc*)
+  ppc*|armv7l*|aarch64*)
     depends+=" dracut"
     depends+=" linux$version"
     depends+=" linux-firmware-amd"
     depends+=" linux-firmware-network"
     depends+=" linux-firmware-nvidia"
+    _depends_headers="linux$version-headers"
+    ;;
+  arm*)
+    depends="linux$version"
     _depends_headers="linux$version-headers"
     ;;
   *)
