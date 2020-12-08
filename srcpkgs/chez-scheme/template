@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="chez-scheme"
-version=9.5.2
+version=9.5.4
 revision=1
 short_desc="Compiler and run-time system for R6RS Scheme"
 archs+=" armv6l"
@@ -8,6 +8,7 @@ archs+=" armv7l"
 archs+=" i686*"
 archs+=" x86_64*"
 makedepends+=" git"
+makedepends+=" liblz4-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" zlib-devel"
@@ -15,9 +16,9 @@ hostmakedepends="$makedepends"
 homepage="http://scheme.com/"
 license="Apache-2.0"
 distfiles+=" https://github.com/cisco/ChezScheme/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/nanopass/nanopass-framework-scheme/archive/1f7e80bcff16766ef419183169bbc343db07db0c.tar.gz"
-checksum+=" 3a370fdf2ffd67d6a0ccbb993dfab1cbaf4a0a97983c869cfaab40528c33c48b"
-checksum+=" 5fe450f78bc1f096f58a907ca8b3829fff1cc520e5d5e8c503ac5c601b6779e0"
+distfiles+=" https://github.com/nanopass/nanopass-framework-scheme/archive/v1.9.1.tar.gz"
+checksum+=" 258a4b5284bb13ac6e8b56acf89a7ab9e8726a90cc57ea1cd71c5da442323840"
+checksum+=" 92afa571484e58bb0f4baa3e13f7239a116bfb3b5d4585e3c4c7b28fdbdc93c4"
 wrksrc="ChezScheme-$version"
 build_style="gnu-configure"
 configure_args="--disable-x11"
@@ -61,38 +62,33 @@ post_extract() {
     -e '/xlocale\.h/d' \
     c/expeditor.c
 
-  # hack out submodules
+  # create a dummy git repo and hack out submodules — its presence stops
+  # 'configure' from downloading its own versions of nanopass etc
   mkdir .git
   sed \
     -i \
     -e '/git submodule/s/^/: #/' \
     configure
 
-  mv ../nanopass-*/* nanopass
-
-  sed \
-    -i \
-    -e '/:/s,../zlib/libz.a,,g' \
-    -e '/ld/s,../zlib/libz.a,,g' \
-    -e '/^mdclib =/s/=/= $(LDFLAGS)/g' \
-    -e '/^mdclib =/s/$/ -lz/g' \
-    -e '/^C =/s/$/ $(CFLAGS)/g' \
-    -e '/^C =/s/gcc/$(CC)/g' \
-    -e 's/^\tld/\t$(LD)/g' \
-    c/Mf-*
-  ln -s /usr/include/zlib.h zlib
-  ln -s /usr/include/zconf.h zlib
-  touch zlib/configure.log
+  rmdir nanopass
+  mv ../nanopass-framework-scheme-1.9.1 nanopass
 }
 
 do_configure() {
+  # configure such that scheme uses the zlib and lz4 system shared libs
+  # ZLIB and LZ4 are used when building the scheme kernel and use the
+  # full path
+  # LDFLAGS is extended in 'do_build' so that the rest of the scheme
+  # system links them
   ./configure \
     --installman="/usr/share/man" \
     --installprefix="/usr" \
     --installschemename="chez-scheme" \
     --machine="$_host" \
     --nogzip-man-pages \
-    --temproot="$DESTDIR"
+    --temproot="$DESTDIR" \
+    ZLIB="-L/usr/lib/libz.so" \
+    LZ4="-L/usr/lib/liblz4.so"
 }
 
 post_install() {
@@ -105,17 +101,24 @@ post_install() {
 if [[ -n "$CROSS_BUILD" ]]; then
 
 do_build() {
+  # build host/bootstrap scheme compiler
   make \
     "$makejobs" \
     CC="$BUILD_CC" \
     CFLAGS="$BUILD_CFLAGS" \
-    LD="ld" \
-    LDFLAGS="$BUILD_LDFLAGS"
+    LD="$BUILD_LD" \
+    LDFLAGS="-lz -llz4 $BUILD_LDFLAGS"
 
   ./workarea "$_target"
 
-  cd "$_target"
+  # use Mf-config created from 'do_configure'
+  # this is required — the build fails to include the scheme kernel
+  # when this is missing
+  cd "$_target/c"
+  ln -sf "../../$_host/c/Mf-config" .
+  cd ..
 
+  # cross compile to target
   make \
     "$makejobs" \
     -C s \
@@ -130,7 +133,7 @@ do_build() {
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     LD="$LD" \
-    LDFLAGS="$LDFLAGS"
+    LDFLAGS="-lz -llz4 $LDFLAGS"
 }
 
 do_install() {
@@ -149,7 +152,7 @@ do_build() {
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     LD="$LD" \
-    LDFLAGS="$LDFLAGS"
+    LDFLAGS="-lz -llz4 $LDFLAGS"
 }
 
 do_install() {
