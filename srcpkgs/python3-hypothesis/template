@@ -1,23 +1,43 @@
 maintainer="nox"
 pkgname="python3-hypothesis"
-version=5.41.4
+version=5.41.5
 revision=1
 short_desc="Python3 library for property based testing"
 depends+=" python3-attrs"
 depends+=" python3-sortedcontainers"
-checkdepends="tox"
+checkdepends+=" $depends"
+checkdepends+=" black"
+checkdepends+=" python3-dateutil"
+checkdepends+=" python3-numpy"
+checkdepends+=" python3-pexpect"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytz"
+checkdepends+=" python3-typing_extensions"
 hostmakedepends="python3-setuptools"
 homepage="https://hypothesis.works/"
 license="MPL-2.0"
 changelog="https://hypothesis.readthedocs.io/en/latest/changes.html"
 distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
-checksum="865027f77db5be518a8398e88bf937eb602d6f1a49643faa6c8dbb8804570bbb"
+checksum="9e0623aa1d5f86da51d844a68acb18a8513e5060b05fea71ad96da3eb1e2a265"
 wrksrc="hypothesis-hypothesis-python-$version"
 build_wrksrc="hypothesis-python"
 build_style="python3-module"
 
 do_check() {
-  tox -e "py${py3_ver/./}-full"
+  # manually run the tests that tox considers part of the "full" suite,
+  # less any related to packages not provided by void
+  #
+  # the tests in ghostwriter/test_ghostwriter_cli require a "hypothesis"
+  # entrypoint script, which does not exist until install time
+  #
+  # the test_subTest_no_self function tries to run a separate interpreter,
+  # which will not see the local PYTHONPATH here
+  PYTHONPATH="src" \
+    python3 \
+      -m pytest \
+      -k 'not test_settings_alone and not test_subTest_no_self' \
+      --ignore="tests/ghostwriter/test_ghostwriter_cli.py" \
+      tests/{cover,datetime,typing_extensions,ghostwriter}
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
