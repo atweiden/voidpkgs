@@ -1,40 +1,49 @@
-# Template file for 'python3-typed-ast'
-pkgname=python3-typed-ast
+maintainer="nox"
+pkgname="python3-typed-ast"
 version=1.4.1
 revision=2
-wrksrc="typed_ast-${version}"
-build_style=python3-module
-hostmakedepends="python3-setuptools"
-makedepends="python3-devel"
 short_desc="Ast module with type comment support"
-maintainer="whoami <whoami@systemli.org>"
-license="Apache-2.0"
+makedepends="python3-devel"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/python/typed_ast"
-distfiles="https://github.com/python/typed_ast/archive/${version}.tar.gz"
-checksum=498a6cd88f78e4b2058092ff38c9941d61f4eba2c12b371240ba663f063adf7d
+license="Apache-2.0"
+distfiles="https://github.com/python/typed_ast/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="498a6cd88f78e4b2058092ff38c9941d61f4eba2c12b371240ba663f063adf7d"
+wrksrc="typed_ast-$version"
+build_style="python3-module"
 
 do_patch() {
-	# python3-typed-ast uses the same header name with Python
-	# Thus, we'll run to problem on cross-compile.
-	# Fix it by specify include file relative to the file.
-	# And -Iast/Include
-	local _ifile _rfile
-	local _ast27_re=""
-	local _ast3_re=""
-	cd ast27/Include
-	for _ifile in *.h; do
-		_rfile=${_ifile/./[.]}
-		_ast27_re+="s%^[[:space:]]*#[[:space:]]*include[[:space:]]*\"$_rfile\".*$%#include \"../Include/$_ifile\"%;"
-	done
-	cd ..
-	find . -type f -exec sed -i -e "$_ast27_re" {} +
-	cd ..
-	cd ast3/Include
-	for _ifile in *.h; do
-		_rfile=${_ifile/./[.]}
-		_ast3_re+="s%^[[:space:]]*#[[:space:]]*include[[:space:]]*\"$_rfile\".*$%#include \"../Include/$_ifile\"%;"
-	done
-	cd ..
-	find . -type f -exec sed -i -e "$_ast3_re" {} +
-	cd ..
+  # python3-typed-ast uses the same header name as python, thus we'll
+  # run into problems on cross-compile
+  #
+  # fix it by specifying the include file relative to the file, and
+  # -Iast/Include
+  local _ifile
+  local _rfile
+  local _ast27_re
+  local _ast3_re
+
+  _ast27_re=""
+  cd ast27/Include
+  for _ifile in *.h; do
+    _rfile="${_ifile/./[.]}"
+    _ast27_re+="s%^[[:space:]]*#[[:space:]]*include[[:space:]]*\"$_rfile\".*$%#include \"../Include/$_ifile\"%;"
+  done
+  cd ..
+  find . -type f -exec \
+    sed -i -e "$_ast27_re" {} +
+  cd ..
+
+  _ast3_re=""
+  cd ast3/Include
+  for _ifile in *.h; do
+    _rfile="${_ifile/./[.]}"
+    _ast3_re+="s%^[[:space:]]*#[[:space:]]*include[[:space:]]*\"$_rfile\".*$%#include \"../Include/$_ifile\"%;"
+  done
+  cd ..
+  find . -type f -exec \
+    sed -i -e "$_ast3_re" {} +
+  cd ..
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
