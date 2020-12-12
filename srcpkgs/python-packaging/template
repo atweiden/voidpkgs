@@ -1,36 +1,21 @@
 maintainer="nox"
 pkgname="python-packaging"
 version=20.4
-revision=1
+revision=2
 short_desc="Core utilities for Python packages (Python2)"
-depends+=" python-attrs"
 depends+=" python-parsing"
 depends+=" python-six"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+hostmakedepends="python-setuptools"
 homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
-distfiles="$PYPI_SITE/p/packaging/${pkgname#*-}-$version.tar.gz"
+changelog="https://github.com/pypa/packaging/raw/master/CHANGELOG.rst"
+distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
 checksum="4357f74f47b9c12db93624a82154e9b120fa8293699949152b22065d556079f8"
-wrksrc="${pkgname#*-}-$version"
-build_style="python-module"
-pycompile_module="packaging"
+wrksrc="packaging-$version"
+build_style="python2-module"
 
 post_install() {
   vlicense LICENSE
-}
-
-python3-packaging_package() {
-  unset depends
-  pycompile_module="packaging"
-  depends+=" python3-attrs"
-  depends+=" python3-parsing"
-  depends+=" python3-six"
-  short_desc="${short_desc/Python2/Python3}"
-  pkg_install() {
-    vmove "usr/lib/python3*"
-    vlicense LICENSE
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

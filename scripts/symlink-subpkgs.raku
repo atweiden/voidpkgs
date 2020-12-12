@@ -621,7 +621,6 @@ constant %PKG = Map.new(
     'python-iso-8601' => ['python3-iso-8601'],
     'python-lxml' => ['python3-lxml'],
     'python-nose' => ['python3-nose'],
-    'python-packaging' => ['python3-packaging'],
     'python-parsing' => ['python3-parsing'],
     'python-pathlib2' => ['python3-pathlib2'],
     'python-pip' => ['python3-pip'],

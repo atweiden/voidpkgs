@@ -1,0 +1,24 @@
+maintainer="nox"
+pkgname="python3-packaging"
+version=20.7
+revision=1
+short_desc="Core utilities for Python packages (Python3)"
+depends="python3-parsing"
+checkdepends="python3-pytest"
+hostmakedepends="python3-flit_core"
+homepage="https://github.com/pypa/packaging"
+license="Apache-2.0, BSD-2-Clause"
+distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
+checksum="05af3bb85d320377db281cf254ab050e1a7ebcbf5410685a9a407e18a1f81236"
+wrksrc="packaging-$version"
+build_style="python3-pep517"
+
+do_check() {
+  : provides no tests
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
