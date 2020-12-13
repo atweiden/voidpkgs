@@ -428,6 +428,7 @@ constant %PKG = Map.new(
                     libxslt-python>,
     'libyaml' => ['libyaml-devel'],
     'linux-firmware' => qw<linux-firmware-amd
+                           linux-firmware-broadcom
                            linux-firmware-intel
                            linux-firmware-network
                            linux-firmware-nvidia>,
