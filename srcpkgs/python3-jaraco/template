@@ -1,16 +1,17 @@
-# Template file for 'python3-jaraco'
-pkgname=python3-jaraco
+maintainer="nox"
+pkgname="python3-jaraco"
 version=1.0
 revision=2
-create_wrksrc=yes
 short_desc="Namespace package declaration for jaraco (Python3)"
-maintainer="bra1nwave <bra1nwave@protonmail.com>"
-license="Public Domain"
 homepage="https://www.voidlinux.org/"
+license="Public Domain"
+create_wrksrc="yes"
 
 do_install() {
-	vmkdir ${py3_sitelib}/jaraco
-	cat > ${DESTDIR}/${py3_sitelib}/jaraco/__init__.py <<-EOF
-		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
-	EOF
+  vmkdir "$py3_sitelib/jaraco"
+  cat > "$DESTDIR/$py3_sitelib/jaraco/__init__.py" <<-EOF
+    __path__ = __import__('pkgutil').extend_path(__path__, __name__)
+  EOF
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
