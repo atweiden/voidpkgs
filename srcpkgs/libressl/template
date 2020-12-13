@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="libressl"
-version=3.1.4
-revision=2
+version=3.1.5
+revision=1
 _lssl_asm_ver=1.1.0
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 homepage="http://www.libressl.org/"
 license="OpenSSL, ISC"
 changelog="https://github.com/libressl-portable/portable/raw/master/ChangeLog"
 distfiles="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/$pkgname-$version.tar.gz"
-checksum="414c149c9963983f805a081db5bd3aec146b5f82d529bb63875ac941b25dcbb6"
+checksum="2c13ddcec5081c0e7ba7f93d8370a91911173090f1922007e1d90de274500494"
 conf_files+=" /etc/ssl/openssl.cnf"
 conf_files+=" /etc/ssl/x509v3.cnf"
 build_style="gnu-configure"
