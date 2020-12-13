@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libressl"
 version=3.1.5
-revision=1
+revision=2
 _lssl_asm_ver=1.1.0
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 homepage="http://www.libressl.org/"
@@ -99,7 +99,9 @@ libtls20_package() {
 }
 
 libressl-devel_package() {
+  unset depends
   short_desc+=" - development files"
+  depends+=" libressl-${version}_$revision"
   depends+=" libcrypto46-${version}_$revision"
   depends+=" libssl48-${version}_$revision"
   depends+=" libtls20-${version}_$revision"
