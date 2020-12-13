@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-cryptography"
-version=3.2.1
+version=3.3.1
 revision=1
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 depends+=" python-cffi"
@@ -14,13 +14,11 @@ makedepends+=" python3-devel"
 checkdepends+=" $depends"
 checkdepends+=" python-cryptography_vectors"
 checkdepends+=" python-hypothesis"
-checkdepends+=" python-iso-8601"
 checkdepends+=" python-pretend"
 checkdepends+=" python-pytest"
 checkdepends+=" python-pytz"
 checkdepends+=" python3-cryptography_vectors"
 checkdepends+=" python3-hypothesis"
-checkdepends+=" python3-iso-8601"
 checkdepends+=" python3-pretend"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-pytz"
@@ -39,9 +37,22 @@ homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cryptography/${pkgname#*-}-$version.tar.gz"
-checksum="d3d5e10be0cf2a12214ddee45c6bd203dab435e3d83b4560c03066eda600bfe3"
+checksum="7e177e4bea2de937a584b13645cab32f25e3d96fc0bc4a4cf99c27dc77682be6"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
+
+do_check() {
+  local ignores
+
+  # tests use python*-iso-8601, which fails to parse valid ISO8601 strings
+  ignores="--ignore=tests/test_fernet.py"
+
+  PYTHONPATH="$(cd build-2.7/lib* && pwd)" \
+    python2.7 -m pytest "$ignores" tests
+
+  PYTHONPATH="$(cd "build-$py3_ver"/lib* && pwd)" \
+    "python$py3_ver" -m pytest "$ignores" tests
+}
 
 post_install() {
   vlicense LICENSE
