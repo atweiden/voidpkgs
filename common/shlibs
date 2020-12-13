@@ -159,6 +159,7 @@ libicuio.so.67 icu-libs-67.1_1
 libicutest.so.67 icu-libs-67.1_1
 libicutu.so.67 icu-libs-67.1_1
 libicuuc.so.67 icu-libs-67.1_1
+libinih.so.0 inih-52_1
 libipq.so.0 iptables-1.4.7_1
 libiptc.so.0 iptables-1.4.7_1
 libxtables.so.12 iptables-1.6.1_1

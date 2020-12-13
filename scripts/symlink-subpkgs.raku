@@ -259,6 +259,7 @@ constant %PKG = Map.new(
     'icdiff' => ['python3-icdiff'],
     'icu' => qw<icu-devel
                 icu-libs>,
+    'inih' => ['inih-devel'],
     'inetutils' => qw<inetutils-dnsdomainname
                       inetutils-ftp
                       inetutils-hostname
