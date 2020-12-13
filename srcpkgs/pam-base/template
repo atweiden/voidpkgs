@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="pam-base"
-version=0.3
-revision=6
+version=0.4
+revision=1
 short_desc="PAM base configuration files"
 homepage="http://www.voidlinux.org"
-license="custom:Public Domain"
+license="Public Domain"
 conf_files+=" /etc/pam.d/other"
 conf_files+=" /etc/pam.d/system-auth"
 conf_files+=" /etc/pam.d/system-local-login"
