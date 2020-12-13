@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-virtualenv"
-version=20.2.1
+version=20.2.2
 revision=1
 short_desc="Virtual Python environment builder"
 depends+=" python3-appdirs"
@@ -10,19 +10,25 @@ depends+=" python3-setuptools"
 depends+=" python3-six"
 checkdepends+=" $depends"
 checkdepends+=" python3-devel"
-checkdepends+=" tox"
+checkdepends+=" python3-flaky"
+checkdepends+=" python3-pytest-mock"
 hostmakedepends="python3-setuptools_scm"
 homepage="https://virtualenv.pypa.io/"
 license="MIT"
 changelog="https://virtualenv.pypa.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/v/virtualenv/virtualenv-$version.tar.gz"
-checksum="e0aac7525e880a429764cefd3aaaff54afb5d9f25c82627563603f5d7de5a6e5"
+checksum="b7a8ec323ee02fb2312f098b6b4c9de99559b462775bc8fe3627a73706603c1b"
 alternatives="virtualenv:virtualenv:/usr/bin/virtualenv3"
 wrksrc="virtualenv-$version"
 build_style="python3-module"
 
 do_check() {
-  tox -e "py${py3_ver/./}"
+  # test_periodic_update* depends on pytest-freezegun, not packaged in void
+  vsed \
+    -i \
+    -e '/addopts/d' \
+    setup.cfg
+  PYTHONPATH="src" python3 -m pytest -k 'not test_periodic_update'
 }
 
 post_install() {
