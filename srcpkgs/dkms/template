@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dkms"
-version=2.8.3
-revision=3
+version=2.8.4
+revision=1
 short_desc="Dynamic Kernel Modules System"
 depends+=" bash"
 depends+=" coreutils"
@@ -18,7 +18,7 @@ fi
 homepage="https://github.com/dell/dkms"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/dell/dkms/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0fcbb2691aa8231927b000edf3594d2798211c3944fd4a2a8b1864aa1c06eaaf"
+checksum="540912bf0d845ac333f6971a3ccb80911c770a042af1b30ffbb9b420ac979af3"
 conf_files="/etc/dkms/framework.conf"
 
 case "$XBPS_TARGET_MACHINE" in
@@ -35,7 +35,7 @@ do_install() {
   vbin dkms
   vman dkms.8
   vinstall dkms_dbversion 644 var/lib/dkms
-  vinstall dkms.bash-completion 644 usr/share/bash-completion/completions dkms
+  vcompletion dkms.bash-completion bash dkms
   vinstall dkms_framework.conf 644 etc/dkms framework.conf
   # kernel hooks
   vinstall "$FILESDIR/kernel.d/dkms.postinst" 754 etc/kernel.d/post-install 10-dkms
