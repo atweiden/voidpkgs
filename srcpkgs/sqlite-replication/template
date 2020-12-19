@@ -31,6 +31,18 @@ CFLAGS+=" -DSQLITE_SECURE_DELETE"
 # explicitly enable fdatasync
 CFLAGS+=" -DHAVE_FDATASYNC"
 
+# explicitly set byte order to avoid bad autodetection macros
+case "$XBPS_TARGET_ENDIAN" in
+  le)
+    CFLAGS+=" -DSHA3_BYTEORDER=1234"
+    CFLAGS+=" -DSQLITE_BYTEORDER=1234"
+    ;;
+  be)
+    CFLAGS+=" -DSHA3_BYTEORDER=4321"
+    CFLAGS+=" -DSQLITE_BYTEORDER=4321"
+    ;;
+esac
+
 pre_configure() {
   sed \
     -i \
