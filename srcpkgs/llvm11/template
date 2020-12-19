@@ -154,6 +154,10 @@ post_patch() {
         "$wrksrc/projects/compiler-rt/cmake/config-ix.cmake"
       ;;
   esac
+
+  # update config.guess for better platform detection
+  cp "$XBPS_COMMONDIR/environment/configure/automake/config.guess" \
+    "$wrksrc/cmake"
 }
 
 pre_configure() {
