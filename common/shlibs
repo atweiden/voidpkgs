@@ -166,7 +166,7 @@ libxtables.so.12 iptables-1.6.1_1
 libip4tc.so.2 iptables-1.8.3_1
 libip6tc.so.2 iptables-1.8.3_1
 libisl.so.19 isl15-0.19_1
-libjanet.so.1.12 janet-1.12.1_1
+libjanet.so.1.13 janet-1.13.1_1
 libjansson.so.4 jansson-2.4_1
 libjemalloc.so.2 jemalloc-4.0.0_1
 libjq.so.1 jq-devel-1.4_1
