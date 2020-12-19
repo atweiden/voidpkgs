@@ -33,14 +33,6 @@ checksum="eaf0cedb31d2195546e882624b7f1f0abbb3a6bb6234b4408dfeb2eaeaff3a50"
 build_style="gnu-makefile"
 make_install_args="prefix=/usr"
 
-case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*)
-    ;;
-  *)
-    broken="requires syslinux which is not available on $XBPS_TARGET_MACHINE"
-    ;;
-esac
-
 post_install() {
   vdoc changelog.md
   vdoc readme.md
