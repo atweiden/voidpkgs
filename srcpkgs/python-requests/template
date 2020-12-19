@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-requests"
-version=2.25.0
+version=2.25.1
 revision=1
 short_desc="Python2 HTTP library for human beings"
 depends+=" ca-certificates"
@@ -13,11 +13,11 @@ homepage="https://python-requests.org/"
 license="Apache-2.0"
 changelog="https://github.com/psf/requests/raw/master/HISTORY.md"
 distfiles="$PYPI_SITE/r/requests/${pkgname#*-}-$version.tar.gz"
-checksum="7f1a0b932f4a60a1a65caa4263921bb7d9ee911957e0ae4a23a6dd08185ad5f8"
+checksum="27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
-pre_build() {
+post_patch() {
   vsed \
     -i \
     -e '/certifi/d' \
