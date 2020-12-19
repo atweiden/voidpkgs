@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-py"
-version=1.9.0
-revision=4
+version=1.10.0
+revision=1
 short_desc="Python3 development support library"
 depends="python3"
 checkdepends="python3-pytest"
@@ -10,7 +10,7 @@ homepage="https://github.com/pytest-dev/py"
 license="MIT"
 changelog="https://github.com/pytest-dev/py/raw/master/CHANGELOG"
 distfiles="$PYPI_SITE/p/py/py-$version.tar.gz"
-checksum="9ca6883ce56b4e8da7e79ac18787889fa5206c79dcc67fb065376cd2fe03f342"
+checksum="21b81bda15b66ef5e1a777a21c4dcd9c20ad3efd0b3f817e7a809035269e1bd3"
 wrksrc="py-$version"
 build_style="python3-module"
 
