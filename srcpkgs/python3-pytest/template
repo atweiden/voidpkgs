@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pytest"
-version=6.1.2
+version=6.2.1
 revision=1
 short_desc="Simple powerful testing with Python 3"
 depends+=" python3-atomicwrites"
@@ -27,7 +27,7 @@ homepage="https://docs.pytest.org/en/latest/"
 license="MIT"
 changelog="https://docs.pytest.org/en/latest/changelog.html"
 distfiles="$PYPI_SITE/p/pytest/pytest-$version.tar.gz"
-checksum="c0a7e94a8cdbc5422a51ccdad8e6f1024795939cc89159a0ae7f0b316ad3823e"
+checksum="66e419b1899bc27346cb2c993e12c5e5e8daba9073c1fbce33b9807abc95c306"
 wrksrc="pytest-$version"
 build_style="python3-module"
 pycompile_module="_pytest pytest.py"
