@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zig"
-version=0.7.0
+version=0.7.1
 revision=1
 short_desc="Programming language designed for robustness, optimality, and clarity"
 archs+=" aarch64*"
@@ -11,7 +11,7 @@ makedepends+=" llvm11"
 homepage="https://ziglang.org/"
 license="MIT"
 distfiles="https://ziglang.org/download/$version/$pkgname-$version.tar.xz"
-checksum="0efd2cf6c3b05723db80e9cf193bc55150bba84ca41f855a90f53fc756445f83"
+checksum="2db3b944ab368d955b48743d9f7c963b8f96de1a441ba5a35e197237cc6dae44"
 build_style="cmake"
 nopie="yes"
 nocross="yes"
