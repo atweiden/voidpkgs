@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="pulseaudio"
-version=13.0
-revision=2
+version=14.0
+revision=1
 short_desc="Featureful, general-purpose sound server"
 makedepends+=" alsa-lib-devel"
+makedepends+=" check-devel"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" fftw-devel"
 makedepends+=" libcap-devel"
@@ -15,59 +16,56 @@ makedepends+=" libsoxr-devel"
 makedepends+=" orc-devel"
 makedepends+=" speex-devel"
 makedepends+=" tdb-devel"
-hostmakedepends+=" automake"
+hostmakedepends+=" cmake"
 hostmakedepends+=" gettext"
 hostmakedepends+=" libtool"
+hostmakedepends+=" m4"
 hostmakedepends+=" orc-devel"
 hostmakedepends+=" perl-XML-Parser"
 hostmakedepends+=" pkg-config"
 homepage="https://www.freedesktop.org/wiki/Software/PulseAudio"
 license="LGPL-2.1-or-later"
 distfiles="$FREEDESKTOP_SITE/pulseaudio/releases/$pkgname-$version.tar.xz"
-checksum="961b23ca1acfd28f2bc87414c27bb40e12436efcf2158d29721b1e89f3f28057"
+checksum="a834775d9382b055504e5ee7625dc50768daac29329531deb6597bf05e06c261"
 conf_files="/etc/pulse/*"
-build_style="gnu-configure"
-configure_args+=" --disable-asyncns"
-configure_args+=" --disable-avahi"
-configure_args+=" --disable-bluez4"
-configure_args+=" --disable-bluez5"
-configure_args+=" --disable-bluez5-native-headset"
-configure_args+=" --disable-bluez5-ofono-headset"
-configure_args+=" --disable-dbus"
-configure_args+=" --disable-esound"
-configure_args+=" --disable-gconf"
-configure_args+=" --disable-glib2"
-configure_args+=" --disable-gtk3"
-configure_args+=" --disable-hal-compat"
-configure_args+=" --disable-jack"
-configure_args+=" --disable-lirc"
-configure_args+=" --disable-oss-output"
-configure_args+=" --disable-oss-wrapper"
-configure_args+=" --disable-systemd-daemon"
-configure_args+=" --disable-systemd-journal"
-configure_args+=" --disable-systemd-login"
-configure_args+=" --disable-tcpwrap"
-configure_args+=" --disable-webrtc-aec"
-configure_args+=" --disable-x11"
-configure_args+=" --enable-adrian-aec"
-configure_args+=" --enable-alsa"
-configure_args+=" --enable-orc"
-configure_args+=" --with-bash-completion-dir=/usr/share/bash-completion/completions"
-configure_args+=" --with-database=tdb"
-configure_args+=" --with-udev-rules-dir=/usr/lib/udev/rules.d"
-# unverified
-python_version=2
+build_style="meson"
+configure_args+=" -Dadrian-aec=enabled"
+configure_args+=" -Dasyncns=disabled"
+configure_args+=" -Davahi=disabled"
+configure_args+=" -Dbashcompletiondir=/usr/share/bash-completion/completions"
+configure_args+=" -Dbluez5=disabled"
+configure_args+=" -Dbluez5-native-headset=disabled"
+configure_args+=" -Dbluez5-ofono-headset=disabled"
+configure_args+=" -Ddatabase=tdb"
+configure_args+=" -Ddbus=disabled"
+configure_args+=" -Dglib=disabled"
+configure_args+=" -Dgtk=disabled"
+configure_args+=" -Dhal-compat=false"
+configure_args+=" -Djack=disabled"
+configure_args+=" -Dlirc=disabled"
+configure_args+=" -Dorc=enabled"
+configure_args+=" -Doss-outputdisabled"
+configure_args+=" -Dsystemd=disabled"
+configure_args+=" -Dudevrulesdir=/usr/lib/udev/rules.d"
+configure_args+=" -Dwebrtc-aec=disabled"
+configure_args+=" -Dx11=disabled"
+python_version=3
 system_groups="pulse-access"
 system_accounts="pulse"
 pulse_groups="audio"
 pulse_homedir="/var/empty"
 
-case "$XBPS_TARGET_MACHINE" in
-  # disable neon optimizations for the arm* architectures
-  arm*)
-    configure_args+=" --disable-neon-opt"
-    ;;
-esac
+pre_configure() {
+  case "$XBPS_TARGET_MACHINE" in
+    # disable neon optimizations for the arm* architectures
+    arm*)
+      vsed \
+        -i \
+        -e '/  neon/d' \
+        src/pulsecore/meson.build
+      ;;
+  esac
+}
 
 post_install() {
   rm -f "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"

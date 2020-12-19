@@ -393,8 +393,8 @@ libprotoc.so.25 libprotoc25-3.14.0_1
 libpsl.so.5 libpsl-0.20.2_1
 libpulse-simple.so.0 libpulseaudio-1.0_1
 libpulse.so.0 libpulseaudio-1.0_1
-libpulsecommon-13.0.so libpulseaudio-13.0_1
-libpulsecore-13.0.so libpulseaudio-13.0_1
+libpulsecommon-14.0.so libpulseaudio-14.0_1
+libpulsecore-14.0.so libpulseaudio-14.0_1
 libpwquality.so.1 libpwquality-1.1.1_1
 libqb.so.100 libqb-2.0.0_1
 libqrencode.so.4 libqrencode-4.0.0_1
