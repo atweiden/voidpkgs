@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libcap"
-version=2.45
+version=2.46
 revision=1
 short_desc="POSIX.1e capabilities suite"
 makedepends="attr-devel"
@@ -13,7 +13,7 @@ fi
 homepage="http://sites.google.com/site/fullycapable/"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/libs/security/linux-privs/libcap2/$pkgname-$version.tar.xz"
-checksum="d66639f765c0e10557666b00f519caf0bd07a95f867dddaee131cd284fac3286"
+checksum="4ed3d11413fa6c9667e49f819808fbb581cd8864b839f87d7c2a02c70f21d8b4"
 build_style="gnu-makefile"
 if [[ -n "$CROSS_BUILD" ]]; then
   make_build_args="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
@@ -27,7 +27,7 @@ make_use_env="yes"
 bootstrap="yes"
 
 libcap-devel_package() {
-  depends="libcap>=${version}_$revision"
+  depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
