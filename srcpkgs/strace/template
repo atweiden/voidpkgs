@@ -1,15 +1,17 @@
 maintainer="nox"
 pkgname="strace"
-version=5.9
+version=5.10
 revision=1
 short_desc="System Call Tracer"
 makedepends="libunwind-devel"
 homepage="https://strace.io/"
 license="LGPL-2.1-or-later"
+changelog="https://github.com/strace/strace/raw/master/NEWS"
 distfiles="https://github.com/strace/strace/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="39473eb8465546c3e940fb663cb381eba5613160c7302794699d194a4d5d66d9"
+checksum="fe3982ea4cd9aeb3b4ba35f6279f0b577a37175d3282be24b9a5537b56b8f01c"
 build_style="gnu-configure"
-configure_args="--with-libunwind"
+configure_args+=" --enable-silent-rules"
+configure_args+=" --with-libunwind"
 
 case "$XBPS_TARGET_MACHINE" in
   aarch64*|ppc64*)
@@ -20,5 +22,15 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" --enable-mpers=no"
   ;;
 esac
+
+do_check() {
+  if [[ "$XBPS_CHECK_PKGS" == "full" ]]; then
+    # XXX: some tests may fail inside of containers or if they are
+    # missing sufficient capabilities
+    make check
+  else
+    make check TESTS="bpf.gen epoll_pwait.gen getcpu.gen open.gen read-write.gen readlink.gen seccomp-filter.gen mmap ioctl caps readv"
+  fi
+ }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
