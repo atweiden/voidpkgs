@@ -18,7 +18,7 @@ build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/kbd"
 configure_args+=" --localedir=/usr/share/kbd/locale"
 
-pre_configure() {
+post_patch() {
   # rename keymap files with the same names
   #
   # this is needed because when only name of keymap is specified,
@@ -42,19 +42,6 @@ pre_configure() {
 
   # legacy alias
   cp azerty/fr-latin9.map azerty/fr-latin0.map
-  cd "$wrksrc"
-
-  sed \
-    -i \
-    -e '/^PKG_CHECK_MODULES.*/d' \
-    configure.ac
-  sed \
-    -i \
-    -e 's,tests ,,g' \
-    Makefile.am
-
-  cp "$FILESDIR/error.h" .
-  autoreconf -fi
 }
 
 post_install() {
