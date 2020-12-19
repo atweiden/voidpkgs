@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-setuptools_scm"
-version=4.1.2
+version=5.0.1
 revision=1
 short_desc="Manage Python package versions with SCM tags"
 depends+=" python3-setuptools"
@@ -9,7 +9,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/pypa/setuptools_scm"
 license="MIT"
 distfiles="$PYPI_SITE/s/setuptools_scm/setuptools_scm-$version.tar.gz"
-checksum="a8994582e716ec690f33fec70cca0f85bd23ec974e3f783233e4879090a7faa8"
+checksum="c85b6b46d0edd40d2301038cdea96bb6adc14d62ef943e75afb08b3e7bcf142a"
 wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 
