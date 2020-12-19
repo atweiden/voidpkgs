@@ -1,20 +1,26 @@
-# Template file for 'xdelta3'
-pkgname=xdelta3
+maintainer="nox"
+pkgname="xdelta3"
 version=3.1.0
 revision=1
-build_style=gnu-configure
-makedepends="liblzma-devel"
 short_desc="Delta/differential compression tools, VCDIFF/RFC 3284 delta compression"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends="liblzma-devel"
 homepage="http://xdelta.org"
+license="GPL-2.0-or-later"
 distfiles="https://github.com/jmacd/xdelta-devel/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum=114543336ab6cee3764e3c03202701ef79d7e5e8e4863fe64811e4d9e61884dc
+checksum="114543336ab6cee3764e3c03202701ef79d7e5e8e4863fe64811e4d9e61884dc"
+build_style="gnu-configure"
 
-case "${XBPS_TARGET_MACHINE}" in
-	aarch64) LDFLAGS="-Wl,-znotext";;
+case "$XBPS_TARGET_MACHINE" in
+  aarch64)
+    LDFLAGS="-Wl,-znotext"
+    ;;
 esac
 
 post_extract() {
-	sed -i 's|xdelta3regtest||' Makefile.in
+  sed \
+    -i \
+    -e 's|xdelta3regtest||' \
+    Makefile.in
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
