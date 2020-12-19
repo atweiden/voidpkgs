@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sqlite"
 version=3.33.0
-revision=1
+revision=2
 _amalgamationver="$(printf "%d%02d%02d00\n" ${version//./ })"
 short_desc="SQL Database Engine in a C Library"
 makedepends+=" libedit-devel"
@@ -31,6 +31,18 @@ CFLAGS+=" -DSQLITE_ENABLE_FTS4"
 CFLAGS+=" -DSQLITE_ENABLE_JSON1"
 CFLAGS+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY"
 CFLAGS+=" -DSQLITE_SECURE_DELETE"
+
+# explicitly set byte order to avoid bad autodetection macros
+case "$XBPS_TARGET_ENDIAN" in
+  le)
+    CFLAGS+=" -DSHA3_BYTEORDER=1234"
+    CFLAGS+=" -DSQLITE_BYTEORDER=1234"
+    ;;
+  be)
+    CFLAGS+=" -DSHA3_BYTEORDER=4321"
+    CFLAGS+=" -DSQLITE_BYTEORDER=4321"
+    ;;
+esac
 
 pre_configure() {
   vsed \
