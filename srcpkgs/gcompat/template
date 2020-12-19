@@ -85,6 +85,10 @@ case "$XBPS_TARGET_MACHINE" in
     _glibc="ld64.so.2"
     _musl="ld-musl-powerpc64.so.1"
     ;;
+  ppcle-musl)
+    _glibc="ld.so.1"
+    _musl="ld-musl-powerpcle.so.1"
+    ;;
   ppc-musl)
     _glibc="ld.so.1"
     _musl="ld-musl-powerpc.so.1"
