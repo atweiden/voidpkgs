@@ -20,6 +20,9 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64*)
     export LIBUCONTEXT_ARCH="ppc64"
     ;;
+  ppc*)
+    export LIBUCONTEXT_ARCH="ppc"
+    ;;
   mips*)
     export LIBUCONTEXT_ARCH="mips"
     ;;
