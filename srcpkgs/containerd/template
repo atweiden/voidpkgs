@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="containerd"
 version=1.3.9
-revision=1
+revision=2
 short_desc="Open and reliable container runtime"
 depends="runc"
 makedepends+=" libbtrfs-devel"
@@ -16,6 +16,8 @@ build_style="go"
 go_import_path="github.com/containerd/containerd"
 go_package+=" $go_import_path/cmd/containerd"
 go_package+=" $go_import_path/cmd/containerd-shim"
+go_package+=" $go_import_path/cmd/containerd-shim-runc-v1"
+go_package+=" $go_import_path/cmd/containerd-shim-runc-v2"
 go_package+=" $go_import_path/cmd/ctr"
 go_ldflags="-X $go_import_path/version.Version=$version -X $go_import_path/version.Revision=UNSET"
 go_build_tags+=" seccomp"
