@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dhcpcd"
 version=9.3.4
-revision=1
+revision=2
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
 hostmakedepends+=" ntp"
@@ -18,6 +18,7 @@ configure_args+=" --rundir=/run/dhcpcd"
 configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --sysconfdir=/etc"
 configure_args+=" $(vopt_if privsep --privsepuser=_dhcpcd)"
+configure_args+=" $(vopt_enable privsep)"
 make_check_target="test"
 system_accounts="_dhcpcd"
 _dhcpcd_homedir="/var/db/dhcpcd"
