@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.34
-revision=1
+revision=2
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
   depends="binutils-doc"
+  makedepends+=" elfutils-devel"
   checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
@@ -29,47 +30,46 @@ _get_triplet() {
 }
 
 do_configure() {
+  local CONFIGFLAG
+  CONFIGFLAG="--build=$(_get_triplet)
+    --prefix=/usr
+    --enable-threads
+    --enable-plugins
+    --enable-secureplt
+    --with-mmap
+    --disable-shared
+    --enable-gold
+    --disable-werror
+    --enable-deterministic-archives
+    --enable-ld=default
+    --disable-nls"
+  if [[ -n "$CHROOT_READY" ]]; then
+    CONFIGFLAG+=" --with-debuginfod"
+  else
+    CONFIGFLAG+=" --without-debuginfod"
+  fi
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
-    unset CONFIGFLAG
     CONFIGFLAG+=" --enable-64-bit-bfd"
     CONFIGFLAG+=" --enable-multilib"
   fi
-
   if [[ -n "$CROSS_BUILD" ]]; then
-    # do not use configure_args or build_style=gnu-configure
-    # avoid passing --with-sysroot to $XBPS_CROSS_BASE
-    unset CONFIGFLAG
+    # do not use configure_args nor build_style=gnu-configure,
+    # avoiding --with-sysroot to $XBPS_CROSS_BASE.
     CONFIGFLAG+=" --host=$XBPS_CROSS_TRIPLET"
     CONFIGFLAG+=" --with-build-sysroot=$XBPS_CROSS_BASE"
   fi
-
   if [[ "$XBPS_TARGET_MACHINE" == "mips-musl" ]] \
-    || [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
+  || [[ "$XBPS_TARGET_MACHINE" == "mipsel-musl" ]]; then
     CONFIGFLAG+=" --with-float=soft"
     CONFIGFLAG+=" --without-fp"
   fi
-
   if [[ "${XBPS_TARGET_MACHINE%-musl}" == "x86_64" ]]; then
     CONFIGFLAG+=" --enable-targets=x86_64-pep"
   elif [[ "${XBPS_TARGET_MACHINE%-musl}" == "i686" ]]; then
     CONFIGFLAG+=" --enable-64-bit-bfd"
     CONFIGFLAG+=" --enable-targets=x86_64-linux-gnu,x86_64-pep"
   fi
-
-  ./configure \
-    $CONFIGFLAG \
-    --build="$(_get_triplet)" \
-    --disable-nls \
-    --disable-shared \
-    --disable-werror \
-    --enable-deterministic-archives \
-    --enable-gold \
-    --enable-ld=default \
-    --enable-plugins \
-    --enable-secureplt \
-    --enable-threads \
-    --prefix=/usr \
-    --with-mmap
+  ./configure $CONFIGFLAG
 }
 
 do_build() {
@@ -149,7 +149,6 @@ binutils-devel_package() {
 }
 
 binutils-doc_package() {
-  archs="noarch"
   short_desc+=" - info files"
   pkg_install() {
     vmove usr/share/info
