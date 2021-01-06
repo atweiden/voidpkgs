@@ -1,34 +1,31 @@
 maintainer="nox"
 pkgname="tdb"
-version=1.3.16
+version=1.4.3
 revision=1
-short_desc="Trivial Database"
-hostmakedepends+=" docbook-xsl"
-hostmakedepends+=" libxslt"
+short_desc="Trivial Database, similar to GDBM but allows simultaneous commits"
+makedepends+=" gettext-devel"
+makedepends+=" libxslt"
+makedepends+=" python3-devel"
+hostmakedepends+=" docbook2x"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python"
 homepage="https://tdb.samba.org/"
 license="GPL-3.0-or-later"
-distfiles="http://samba.org/ftp/tdb/$pkgname-$version.tar.gz"
-checksum="6a3fc2616567f23993984ada3cea97d953a27669ffd1bfbbe961f26e0cf96cc5"
-build_style="gnu-configure"
+distfiles="http://samba.org/ftp/tdb/tdb-$version.tar.gz"
+checksum="c8058393dfa15f47e11ebd2f1d132693f0b3b3b8bf22d0201bfb305026f88a1b"
+build_style="waf3"
+build_helper="qemu"
+configure_script="buildtools/bin/waf"
+configure_args+=" --builtin-libraries=replace"
+configure_args+=" --bundled-libraries=NONE"
+configure_args+=" --disable-rpath"
+configure_args+=" --disable-rpath-install"
+configure_args+=" --libdir=/usr/lib"
+configure_args+=" --localstatedir=/var"
+configure_args+=" --prefix=/usr"
+configure_args+=" --sysconfdir=/etc"
+configure_args+=" --without-gettext"
 
-do_configure() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    cp "$FILESDIR/cross-32bit.answers" .
-    sed \
-      -i \
-      -e "s,@@XBPS_TARGET_MACHINE@@,$XBPS_TARGET_MACHINE,g" \
-      cross-32bit.answers
-    _args+=" --cross-answers=cross-32bit.answers"
-    _args+=" --cross-compile"
-    _args+=" --hostcc=cc"
-  fi
-  ./configure \
-    $_args \
-    --disable-python \
-    --prefix="/usr"
-}
+export PYTHON_CONFIG="$XBPS_CROSS_BASE/usr/bin/python3-config"
 
 tdb-devel_package() {
   depends="libtdb-${version}_$revision"
@@ -40,8 +37,16 @@ tdb-devel_package() {
   }
 }
 
+tdb-python3_package() {
+  short_desc+=" - Python3 bindings"
+  depends="python3"
+  pkg_install() {
+    vmove "$py3_lib"
+  }
+}
+
 libtdb_package() {
-  short_desc+=" - shared library"
+  short_desc+=" - shared libraries"
   pkg_install() {
     vmove "usr/lib/*.so.*"
   }
