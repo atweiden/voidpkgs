@@ -1,15 +1,14 @@
 maintainer="nox"
 pkgname="ddclient"
-version=3.9.0
-revision=4
+version=3.9.1
+revision=1
 short_desc="Perl client used to update dynamic DNS"
 depends+=" perl-Data-Validate-IP"
 depends+=" perl-IO-Socket-SSL"
-hostmakedepends="unzip"
-homepage="$SOURCEFORGE_SITE/p/ddclient/wiki/Home/"
+homepage="https://github.com/ddclient/ddclient"
 license="GPL-2.0-or-later"
-distfiles="$SOURCEFORGE_SITE/ddclient/$pkgname-$version.zip"
-checksum="b4bc907eaadb1f30ccef8a11d92a30080ee21338cde89bf76b7d3d20a4499830"
+distfiles="https://github.com/ddclient/ddclient/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="e4969e15cc491fc52bdcd649d4c2b0e4b1bf0c9f9dba23471c634871acc52470"
 conf_files="/etc/ddclient/ddclient.conf"
 make_dirs="/var/cache/ddclient 0750 root root"
 
