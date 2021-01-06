@@ -4,7 +4,7 @@ version=8.8.4
 revision=1
 short_desc="Glorious Haskell Compiler - precompiled binaries"
 archs+=" i686"
-archs+=" ppc64le"
+archs+=" ppc64le*"
 archs+=" x86_64*"
 depends+=" gcc"
 depends+=" gmp-devel"
@@ -34,6 +34,10 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64le)
     distfiles="https://alpha.de.repo.voidlinux.org/distfiles/ghc-$version-powerpc64le-void-linux.tar.xz"
     checksum="4a13d36a3e3d605db02b89269ed727c3ba23c9d03b84b72c1716a910a28f8074"
+    ;;
+  ppc64le-musl)
+    distfiles="https://alpha.de.repo.voidlinux.org/distfiles/ghc-$version-powerpc64le-void-linux-musl.tar.xz"
+    checksum="b35ba0cb20a05555ac6c2c92f9f090c665e55b3d295d58a801eb88bd4f6baab3"
     ;;
 esac
 wrksrc="${pkgname%-*}-${version%[!0-9]}"
