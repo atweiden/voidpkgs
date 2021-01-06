@@ -5,7 +5,6 @@ revision=5
 short_desc="XML DTD designed for computer documentation"
 depends="xmlcatmgr"
 makedepends="xmlcatmgr"
-hostmakedepends="bsdtar"
 homepage="http://www.oasis-open.org/docbook/"
 license="MIT"
 distfiles+=" http://www.oasis-open.org/docbook/xml/$version/$pkgname-$version.zip"

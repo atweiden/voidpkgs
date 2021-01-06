@@ -5,7 +5,6 @@ revision=5
 short_desc="SGML DTD designed for computer documentation"
 depends+=" ISOEnts"
 depends+=" xmlcatmgr"
-hostmakedepends="bsdtar"
 homepage="http://www.docbook.org"
 license="Copyright only"
 distfiles+=" http://www.docbook.org/sgml/$version/$pkgname-$version.zip"
