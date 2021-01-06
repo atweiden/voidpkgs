@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="s6-networking"
 version=2.3.2.0
-revision=1
+revision=2
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
 makedepends+=" s6-devel"
@@ -23,7 +23,7 @@ configure_args+=" $(vopt_if bearssl --enable-ssl=bearssl)"
 configure_args+=" $(vopt_if libressl --enable-ssl=libressl)"
 build_options+=" bearssl"
 build_options+=" libressl"
-build_options_default="libressl"
+build_options_default="bearssl"
 desc_option_bearssl="Use BearSSL as SSL library"
 desc_option_libressl="Use LibreSSL as SSL library"
 vopt_conflict bearssl libressl
