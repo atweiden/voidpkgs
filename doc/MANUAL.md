@@ -68,6 +68,7 @@ packages for XBPS, the `Void Linux` native packaging system.
     * [update-desktopdb](#triggers_update_desktopdb)
     * [x11-fonts](#triggers_x11_fonts)
     * [xml-catalog](#triggers_xml_catalog)
+  * [Void specific documentation](#documentation)
   * [Notes](#notes)
   * [Contributing via git](#contributing)
 * [Help](#help)
@@ -928,7 +929,7 @@ can be used to pass arguments during compilation. If your package does not make 
 extensions consider using the `gem` build style instead.
 
 - `gem` For packages that are installed using gems from [RubyGems](https://rubygems.org/).
-The gem command can be overridden by `gem_cmd`. 
+The gem command can be overridden by `gem_cmd`.
 `distfiles` is set by the build style if the template does not do so. If your gem
 provides extensions which must be compiled consider using the `gemspec` build style instead.
 
@@ -1651,6 +1652,9 @@ generally those packages are the same but have been split as to avoid
 cyclic dependencies. Make sure that the package you're removing is not
 the source of those patches/files.
 - Remove package template.
+- Add `pkgname<=version_revision` to `replaces` variable of `removed-packages`
+template.  All removed subpkgs should be added too.
+This will uninstall package from systems where it is installed.
 - Remove the package from the repository index
 or contact a team member that can do so.
 
@@ -2024,6 +2028,14 @@ During removal it uses `xmlcatmgr` to remove all catalogs passed to it by the
 To include this trigger use the `sgml_entries` variable or/and the `xml_entries` variable,
 as the trigger won't do anything unless either of them are defined.
 
+<a id="documentation"></a>
+### Void specific documentation
+
+When you want document details of package's configuration and usage specific to Void Linux,
+not covered by upstream documentation, put notes into
+`srcpkgs/<pkgname>/files/README.voidlinux` and install with
+`vdoc "${FILESDIR}/README.voidlinux"`.
+
 <a id="notes"></a>
 ### Notes
 
@@ -2046,15 +2058,15 @@ otherwise the `debug` packages won't have debugging symbols.
 <a id="contributing"></a>
 ### Contributing via git
 
-Fork the voidlinux `void-packages` git repository on github and clone it:
+To get started, [fork](https://help.github.com/articles/fork-a-repo) the void-linux `void-packages` git repository on GitHub and clone it:
 
     $ git clone git@github.com:<user>/void-packages.git
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to format your
 commits and other tips for contributing.
 
-Once you've made changes to your `forked` repository you can submit
-a github pull request; see https://help.github.com/articles/fork-a-repo for more information.
+Once you've made changes to your `forked` repository, submit
+a github pull request.
 
 To keep your forked repository always up to date, setup the `upstream` remote
 to pull in new changes:
