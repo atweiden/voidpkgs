@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="borg"
-version=1.1.14
+version=1.1.15
 revision=1
 short_desc="Deduplicating backup program with compression and encryption"
 depends+=" python3-llfuse"
@@ -17,7 +17,7 @@ homepage="https://borgbackup.github.io/"
 license="BSD-3-Clause"
 changelog="https://borgbackup.readthedocs.io/en/stable/changes.html#changelog"
 distfiles="$PYPI_SITE/b/borgbackup/borgbackup-$version.tar.gz"
-checksum="7dbb0747cc948673f695cd6de284af215f810fed2eb2a615ef26ddc7c691edba"
+checksum="49cb9eed98b8e32ae3b97beaedf94cdff46f796445043f1923fd0fce7ed3c2bc"
 wrksrc="borgbackup-$version"
 build_style="python3-module"
 
