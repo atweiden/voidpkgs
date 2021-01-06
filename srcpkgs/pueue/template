@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="pueue"
-version=0.7.1
+version=0.9.0
 revision=1
 short_desc="Command-line tool for managing long-running tasks"
 homepage="https://github.com/Nukesor/pueue"
 license="MIT"
 distfiles="https://github.com/Nukesor/pueue/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bb114aa443624a4ceb5bbfe498b5be6e4dd8cde32e749602afdfdc24846bc82e"
+checksum="15fc17ffc931ba077bf7951f403009bd8391eec9e735b0c7297a5dfba997ebed"
 build_style="cargo"
 
 post_install() {
