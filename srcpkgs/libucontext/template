@@ -33,14 +33,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 do_build() {
-  case "$XBPS_TARGET_MACHINE" in
-    i686*)
-      vsed \
-        -i \
-        -e "s;__i686.get_pc_thunk.bx;i686_get_pc_thunk_bx;g" \
-        arch/x86/startcontext.S
-      ;;
-  esac
   make \
     ARCH="$LIBUCONTEXT_ARCH"
 }
