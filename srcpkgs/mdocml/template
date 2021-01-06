@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="mdocml"
 version=1.14.5
-revision=5
-short_desc="The mandoc UNIX manpage compiler toolset"
+revision=6
+short_desc="UNIX manpage compiler toolset (mandoc)"
 depends="less"
 makedepends+=" less"
 makedepends+=" zlib-devel"
@@ -27,17 +27,17 @@ alternatives+=" man:whatis:/usr/bin/mandoc"
 
 CFLAGS="-fcommon"
 
-post_extract() {
+post_patch() {
   # use less(1)
-  sed \
+  vsed \
     -i \
     -e 's,"more -s","less -s",g' \
     main.c
-  sed \
+  vsed \
     -i \
     -e 's,.Xr more,.Xr less,g' \
     *.1
-  sed \
+  vsed \
     -i \
     -e 's/^CC=.*/CC=cc/' \
     configure
@@ -46,18 +46,18 @@ post_extract() {
 }
 
 pre_configure() {
-  cat >configure.local <<EOF
-BINM_SOELIM="mandoc-soelim"
-CC="$CC"
-CFLAGS="$CFLAGS"
-HAVE_REWB_BSD=0
-LDFLAGS="$LDFLAGS"
-MANDIR="/usr/share/man"
-MANM_ROFF="mandoc_roff"
-OSNAME="Void Linux"
-PREFIX="/usr"
-SBINDIR="/usr/bin"
-EOF
+  cat >configure.local <<-EOF
+    PREFIX=/usr
+    SBINDIR=/usr/bin
+    MANDIR=/usr/share/man
+    OSNAME="Void Linux"
+    BINM_SOELIM=mandoc-soelim
+    MANM_ROFF="mandoc_roff"
+    LDFLAGS="$LDFLAGS"
+    CFLAGS="$CFLAGS"
+    CC="$CC"
+    HAVE_REWB_BSD=0
+  EOF
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       echo 'UTF8_LOCALE="C.UTF-8"' >>configure.local
