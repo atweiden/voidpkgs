@@ -102,13 +102,6 @@ do_check() {
 
 do_install() {
   local _triplet
-
-  if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
-    mkdir -p "$DESTDIR/usr/lib"
-    cd "$DESTDIR/usr"
-    ln -s lib lib64
-    cd "$wrksrc"
-  fi
   make DESTDIR="$DESTDIR" tooldir="/usr" install
 
   # remove ld (hardlink) and make a symlink to ld.bfd
@@ -129,8 +122,6 @@ do_install() {
   rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
   echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" >"$DESTDIR/usr/lib/libbfd.so"
   echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" >"$DESTDIR/usr/lib/libopcodes.so"
-
-  rm -f "$DESTDIR/usr/lib64"
 
   # remove useless manpages
   for f in dlltool \
