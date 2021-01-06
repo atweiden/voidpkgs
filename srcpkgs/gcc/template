@@ -328,7 +328,6 @@ do_configure() {
     export CXX_FOR_TARGET="$CXX"
     export GOC_FOR_TARGET="$_triplet-gccgo"
     export GFORTRAN_FOR_TARGET="$_triplet-gfortran"
-    _args+=" --enable-sjlj-exceptions=no"
     _args+=" --host=$XBPS_CROSS_TRIPLET"
     _args+=" --with-build-sysroot=$XBPS_CROSS_BASE"
     _langs+=",objc,obj-c++,fortran"
@@ -338,7 +337,6 @@ do_configure() {
   else
     _langs="c,c++,objc,obj-c++,fortran,lto"
     _args+=" --build=$_triplet"
-    _args+=" --enable-fast-character"
   fi
 
   if [[ "$_have_gccgo" == "yes" ]]; then
@@ -369,9 +367,9 @@ do_configure() {
   export LDFLAGS="${LDFLAGS//-no-pie/}"
 
   _args+=" --disable-libstdcxx-pch"
-  _args+=" --disable-libunwind-exceptions"
   _args+=" --disable-multilib"
   _args+=" --disable-nls"
+  _args+=" --disable-sjlj-exceptions"
   _args+=" --disable-target-libiberty"
   _args+=" --disable-werror"
   _args+=" --enable-__cxa_atexit"
@@ -390,12 +388,6 @@ do_configure() {
   _args+=" --prefix=/usr"
   _args+=" --with-isl"
   _args+=" --with-linker-hash-style=$_hash"
-
-  # --enable-serial-configure is broken when cross-compiling for some
-  # targets because it introduces make rule dependency cycles
-  if ! [[ -n "$CROSS_BUILD" ]]; then
-    _args+=" --enable-serial-configure"
-  fi
 
   mkdir -p build
   cd build
