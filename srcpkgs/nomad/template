@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nomad"
-version=1.0.0
+version=1.0.1
 revision=1
 _gitrev="a480eed0815c54612856d9115a34bb1d1a773e8c"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
@@ -8,7 +8,7 @@ hostmakedepends="git"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="970d7a35fe61e7a6ee3be06c0a2829e7dcc0f5e72fcb2539f457d2f4ab138cec"
+checksum="1dca9ebb1636fc8ef005d9c6eed8cf10fbfc3d7c9ff7307606454142d858f419"
 patch_args="-Np1"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
