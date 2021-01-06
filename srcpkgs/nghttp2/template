@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nghttp2"
-version=1.41.0
-revision=2
+version=1.42.0
+revision=1
 short_desc="HTTP/2 C Library"
 makedepends+=" c-ares-devel"
 makedepends+=" jansson-devel"
@@ -14,7 +14,7 @@ hostmakedepends="pkg-config"
 license="MIT"
 homepage="https://nghttp2.org"
 distfiles="https://github.com/tatsuhiro-t/nghttp2/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="abc25b8dc601f5b3fefe084ce50fcbdc63e3385621bee0cbfa7b57f9ec3e67c2"
+checksum="c5a7f09020f31247d0d1609078a75efadeccb7e5b86fc2e4389189b1b431fe63"
 build_style="gnu-configure"
 python_version=3
 
