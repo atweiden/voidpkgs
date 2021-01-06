@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nwipe"
-version=0.28
+version=0.30
 revision=1
 short_desc="Utility to securely erase disks"
 makedepends+=" libparted-devel"
@@ -11,13 +11,13 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/martijnvanbrummelen/nwipe"
 license="GPL-2.0-only"
 distfiles="https://github.com/martijnvanbrummelen/nwipe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4f1ccf952cd3cdb00c8ccbfe4c47f94eaecf20a98248aaf83a0c1b2198e2ce13"
+checksum="85faaa9c65557a6be187f0176c5b778e8cd080e1cd9b8a7168a8a9b8e410d46d"
 build_style="gnu-configure"
 
 CFLAGS="-D_FILE_OFFSET_BITS=64"
 
 pre_configure() {
-  sh init.sh
+  autoreconf -fi
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
