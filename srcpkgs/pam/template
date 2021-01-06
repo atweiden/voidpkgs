@@ -1,20 +1,20 @@
 maintainer="nox"
 pkgname="pam"
-version=1.3.0
-revision=2
+version=1.5.1
+revision=1
 short_desc="Flexible mechanism for authenticating users"
-depends="pam-base"
+# version of pam-base that doesn't include removed modules
+depends="pam-base>=0.4_1"
 makedepends+=" db-devel"
 makedepends+=" libfl-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" flex"
+checkdepends="$depends"
 hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="http://www.kernel.org/pub/linux/libs/pam/"
+homepage="https://github.com/linux-pam/linux-pam"
 license="BSD-3-Clause"
-distfiles="http://linux-pam.org/library/Linux-PAM-$version.tar.bz2"
-checksum="241aed1ef522f66ed672719ecf2205ec513fd0075ed80cda8e086a5b1a01d1bb"
+changelog="https://github.com/linux-pam/linux-pam/raw/master/NEWS"
+distfiles="https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz"
+checksum="201d40730b1135b1b3cdea09f2c28ac634d73181ccd0172ceddee3649c5792fc"
 conf_files+=" /etc/environment"
 conf_files+=" /etc/security/access.conf"
 conf_files+=" /etc/security/group.conf"
@@ -25,7 +25,6 @@ conf_files+=" /etc/security/time.conf"
 wrksrc="Linux-PAM-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-audit"
-configure_args+=" --disable-cracklib"
 configure_args+=" --disable-nis"
 configure_args+=" --disable-regenerate-docu"
 configure_args+=" --disable-selinux"
@@ -37,25 +36,15 @@ make_dirs+=" /etc/security/limits.d 0755 root root"
 make_dirs+=" /etc/security/namespace.d 0755 root root"
 lib32disabled="yes"
 
-pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      configure_args+=" ac_cv_search_crypt=no"
-      ;;
-  esac
-  autoreconf -fi
-}
+if [[ "$XBPS_CHECK_PKGS" == "musl" ]]; then
+  configure_args+=" ac_cv_search_crypt=no"
+fi
 
 post_install() {
   # fix unix_chkpwd perms
   chmod 4755 "$DESTDIR/usr/bin/unix_chkpwd"
-  # fix a syntax error in namespace.init, -p flag is unknown at least
-  # to dash and bash
-  sed \
-    -i \
-    -e "s|^#!/bin/sh -p$|#!/bin/sh|" \
-    "$DESTDIR/etc/security/namespace.init"
-  chmod 755 "$DESTDIR/etc/security/namespace.init"
+  rm -r "$DESTDIR/usr/lib/systemd"
+  vlicense COPYING LICENSE
 }
 
 pam-devel_package() {
