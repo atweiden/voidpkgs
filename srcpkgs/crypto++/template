@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="crypto++"
-version=820
-revision=2
+version=8.3.0
+revision=1
 short_desc="Free C++ class library of cryptographic schemes"
-hostmakedepends="unzip"
 homepage="http://www.cryptopp.com/"
 license="BSL-1.0"
-distfiles="http://www.cryptopp.com/${pkgname/++/pp}$version.zip"
-checksum="03f0e2242e11b9d19b28d0ec5a3fa8ed5cc7b27640e6bed365744f593e858058"
+distfiles="https://github.com/weidai11/cryptopp/archive/CRYPTOPP_${version//./_}.tar.gz>$pkgname-$version.tar.gz"
+checksum="63304c6f943f435a4e385273e15abb69cff3b85a44663150bf5a6069b84abd43"
+wrksrc="${pkgname//+/p}-CRYPTOPP_${version//./_}"
 build_style="gnu-makefile"
 make_build_args="PREFIX=/usr"
 if [[ -n "$XBPS_CROSS" ]]; then
@@ -18,15 +18,14 @@ make_build_target+=" libcryptopp.pc"
 make_build_target+=" static"
 make_install_target="install-lib"
 create_wrksrc="yes"
+reverts="820_2"
 
 CXXFLAGS+=" -DNDEBUG"
 CXXFLAGS+=" -fPIC"
 
-post_extract() {
-  sed \
-    -i \
-    -e 's/^CXXFLAGS/#CXXFLAGS/' \
-    GNUmakefile
+do_check() {
+  # the gnu-makefile build style does not use $makejobs
+  make "$makejobs" $make_build_args check
 }
 
 post_install() {
