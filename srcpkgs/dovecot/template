@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dovecot"
-version=2.3.11.3
-revision=3
+version=2.3.13
+revision=1
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
 depends="ca-certificates"
@@ -23,10 +23,10 @@ makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-homepage="https://dovecot.org"
+homepage="https://dovecot.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://dovecot.org/releases/2.3/$pkgname-$version.tar.gz"
-checksum="d3d9ea9010277f57eb5b9f4166a5d2ba539b172bd6d5a2b2529a6db524baafdc"
+checksum="a3f875b80ec11a452480690108660030978c94fa8e796ad6d943a874b496f1c4"
 conf_files+=" /etc/dovecot/*.conf"
 conf_files+=" /etc/dovecot/conf.d/*.conf"
 conf_files+=" /etc/ssl/dovecot-openssl.cnf"
