@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-system"
-version=0.113
-revision=2
+version=0.114
+revision=1
 short_desc="Void Linux base system meta package"
 depends+=" base-files>=0.77"
 depends+=" ncurses"
@@ -51,6 +51,7 @@ depends+=" kmod"
 depends+=" acpid"
 depends+=" eudev"
 depends+=" runit-void"
+depends+=" removed-packages"
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
     depends+=" musl"
