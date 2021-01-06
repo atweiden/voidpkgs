@@ -13,8 +13,6 @@ makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
-# some tests require terminfo-entries
-checkdepends="ncurses"
 hostmakedepends+=" automake"
 hostmakedepends+=" bison"
 hostmakedepends+=" gettext"
