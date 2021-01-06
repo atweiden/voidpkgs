@@ -396,6 +396,7 @@ libpulse.so.0 libpulseaudio-1.0_1
 libpulsecommon-14.0.so libpulseaudio-14.0_1
 libpulsecore-14.0.so libpulseaudio-14.0_1
 libpwquality.so.1 libpwquality-1.1.1_1
+libpytalloc-util.so.2 libpytalloc-util-2.3.1_2
 libqb.so.100 libqb-2.0.0_1
 libqrencode.so.4 libqrencode-4.0.0_1
 libquadmath.so.0 libquadmath-4.4.0_1

@@ -1,39 +1,62 @@
 maintainer="nox"
 pkgname="talloc"
 version=2.3.1
-revision=1
+revision=2
 short_desc="Hierarchical pool based memory allocator with destructors"
-hostmakedepends+=" docbook-xsl"
-hostmakedepends+=" libxslt"
+makedepends+=" gettext-devel"
+makedepends+=" libtirpc-devel"
+makedepends+=" libxslt"
+makedepends+=" python3-devel"
+hostmakedepends+=" docbook2x"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python3"
-hostmakedepends+=" which"
 homepage="https://talloc.samba.org/"
 license="GPL-3.0-or-later"
-distfiles="http://samba.org/ftp/talloc/$pkgname-$version.tar.gz"
+distfiles="http://samba.org/ftp/$pkgname/$pkgname-$version.tar.gz"
 checksum="ef4822d2fdafd2be8e0cabc3ec3c806ae29b8268e932c5e9a4cd5585f37f9f77"
-build_style="configure"
+build_style="waf3"
+build_helper="qemu"
+configure_script="buildtools/bin/waf"
+configure_args+=" --builtin-libraries=replace"
+configure_args+=" --bundled-libraries=NONE"
+configure_args+=" --disable-rpath"
+configure_args+=" --disable-rpath-install"
+configure_args+=" --localstatedir=/var"
+configure_args+=" --sysconfdir=/etc"
+configure_args+=" --without-gettext"
 
-do_configure() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    cp "$FILESDIR/cross-32bit.answers" .
-    _args+=" --cross-answers=cross-32bit.answers"
-    _args+=" --cross-compile"
-    _args+=" --hostcc=$CC"
-  fi
-  ./configure \
-    $_args \
-    --disable-python \
-    --prefix="/usr"
+export PYTHON_CONFIG="$XBPS_CROSS_BASE/usr/bin/python3-config"
+
+post_patch() {
+  # avoid python shlib extension noise in libpytallic-util.so
+  vsed \
+    -i \
+    -e "/env.pyext_PATTERN/s/dct\['SO'\]/'.so'/" \
+    third_party/waf/waflib/Tools/python.py
+}
+
+talloc-python3_package() {
+  short_desc+=" - Python3 bindings"
+  pkg_install() {
+    vmove "$py3_lib"
+  }
+}
+
+libpytalloc-util_package() {
+  short_desc+=" - Python3 utility library"
+  pkg_install() {
+    vmove "usr/lib/libpytalloc-util.so.*"
+  }
 }
 
 talloc-devel_package() {
-  depends="$sourcepkg-${version}_$revision"
+  unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" libpytalloc-util>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
     vmove usr/lib/pkgconfig
-    vmove usr/lib/libtalloc.so
+    vmove "usr/lib/*.so"
     vmove usr/share/man/man3
   }
 }
