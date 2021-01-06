@@ -9,13 +9,8 @@ license="LGPL-2.1-or-later"
 distfiles="$NONGNU_SITE/acl/$pkgname-$version.tar.gz"
 checksum="06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7"
 build_style="gnu-configure"
-configure_args+=" --libdir=/usr/lib"
-configure_args+=" --libexecdir=/usr/lib"
-if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
-  unset configure_args
-  configure_args+=" --libdir=/usr/lib32"
-  configure_args+=" --libexecdir=/usr/lib32"
-fi
+configure_args+=" --libdir=/usr/lib$XBPS_TARGET_WORDSIZE"
+configure_args+=" --libexecdir=/usr/lib$XBPS_TARGET_WORDSIZE"
 bootstrap="yes"
 
 if [[ -z "$CHROOT_READY" ]]; then
