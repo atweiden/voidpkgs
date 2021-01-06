@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="ghc"
 # keep this synchronized with http://www.stackage.org/lts
 version=8.8.4
-revision=1
+revision=2
 # recent safe to use tarball
 # ghc's bundled tarball is from 2017, buggy on some archs
 _ffi_rev="4d6d2866ae43e55325e8ee96561221804602cd7a"
@@ -162,7 +162,6 @@ post_install() {
 }
 
 ghc-doc_package() {
-  archs="noarch"
   short_desc+=" - documentation"
   pkg_install() {
     vmove usr/share/doc
