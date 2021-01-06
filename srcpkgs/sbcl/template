@@ -6,6 +6,7 @@ short_desc="Steel Bank Common Lisp"
 archs+=" aarch64"
 archs+=" armv7l"
 archs+=" i686"
+archs+=" ppc64le*"
 archs+=" x86_64*"
 makedepends="zlib-devel"
 hostmakedepends="iana-etc"
@@ -37,7 +38,7 @@ case "$XBPS_TARGET_MACHINE" in
     distfiles+=" $SOURCEFORGE_SITE/sbcl/$pkgname-1.3.9-arm64-linux-binary.tar.bz2"
     checksum+=" 494829f8e3ea7eb1c308b343cc390daf94a6215030a5f2b9ee0cded67511e918"
     ;;
-  *-musl)
+  ppc*|*-musl)
     makedepends+=" ecl"
     _bootstrap_lisp="ecl"
     ;;
