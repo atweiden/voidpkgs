@@ -22,19 +22,19 @@ configure_args+=" --disable-static"
 subpackages+=" libguile"
 subpackages+=" guile-devel"
 
+if [[ "$XBPS_ENDIAN" != "$XBPS_TARGET_ENDIAN" ]]; then
+  broken="opposite-endian host generates broken files"
+fi
+
 # on aarch64* builders, this may require building the host's guile first
 if [[ -n "$CROSS_BUILD" ]]; then
   # need host guile to cross compile
   hostmakedepends+=" guile"
 fi
 
-pre_configure() {
-  # magically fixes https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=941218
-  case "$XBPS_TARGET_MACHINE" in
-    ppc*)
-      export CFLAGS+=" -Os"
-      ;;
-  esac
+post_extract() {
+  # broken files causing crash
+  rm -rf prebuilt/32-bit-big-endian
 }
 
 libguile_package() {
