@@ -4,10 +4,6 @@ version=6.2
 revision=4
 short_desc="System V Release 4.0 curses emulation library"
 depends="ncurses-base-${version}_$revision"
-if [[ -n "$CROSS_BUILD" ]]; then
-  # needs host tic(1)
-  hostmakedepends="ncurses"
-fi
 homepage="http://www.gnu.org/software/ncurses/"
 license="MIT"
 distfiles="$GNU_SITE/ncurses/$pkgname-$version.tar.gz"
