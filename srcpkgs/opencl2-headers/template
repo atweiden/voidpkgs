@@ -1,19 +1,19 @@
 maintainer="nox"
 pkgname="opencl2-headers"
-version=2020.06.16
-revision=2
+version=2020.12.18
+revision=1
 short_desc="OpenCL 2.2 (Open Computing Language) header files"
 homepage="https://github.com/KhronosGroup/OpenCL-Headers"
 license="Apache-2.0"
 distfiles="https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2f5a60e5ac4b127650618c58a7e3b35a84dbf23c1a0ac72eb5e7baf221600e06"
+checksum="5dad6d436c0d7646ef62a39ef6cd1f3eba0a98fc9157808dfc1d808f3705ebc2"
 wrksrc="OpenCL-Headers-$version"
 provides="opencl-headers-${version}_$revision"
 replaces="opencl-headers>=0"
 
 do_install() {
   vmkdir usr/include/CL
-  install -m 644 CL/*.h "$DESTDIR/usr/include/CL"
+  install -Dm 0644 -t "$DESTDIR/usr/include/CL" CL/*.h
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
