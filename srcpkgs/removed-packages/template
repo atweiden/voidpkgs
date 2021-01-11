@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=3
+revision=4
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -70,7 +70,6 @@ replaces+=" simple-obfs<=0.0.5_2"
 replaces+=" skypetab-ng<=20150201_3"
 replaces+=" soulseekqt<=20160117_2"
 replaces+=" spacefm-ng<=1.0.6_3"
-replaces+=" timidity<=2.15.0_1"
 replaces+=" ttyload-git<=20141117_4"
 replaces+=" tweeny<=2_2"
 replaces+=" urlmatch-git<=20141116_2"
@@ -81,5 +80,9 @@ replaces+=" vte-python<=0.28.2_16"
 replaces+=" wireguard-go<=0.0.20181222_2"
 replaces+=" wireshark-gtk<=3.0.7_1"
 replaces+=" yt-play<=20140117_2"
+
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  replaces+=" timidity<=2.15.0_1"
+fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
