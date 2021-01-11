@@ -1,8 +1,10 @@
 maintainer="nox"
 pkgname="rustup"
-version=1.22.1
-revision=2
+version=1.23.1
+revision=1
 short_desc="Rust toolchain installer"
+# rustup doesn't recognize this target
+archs="~armv6l-musl"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
@@ -10,16 +12,10 @@ hostmakedepends="pkg-config"
 homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-lang/rustup/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ad46cc624f318a9493aa62fc9612a450564fe20ba93c689e0ad856bff3c64c5b"
+checksum="0203231bfe405ee1c7d5e7e1c013b9b8a2dc87fbd8474e77f500331d8c26365f"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features no-self-update"
-
-case "$XBPS_TARGET_MACHINE" in
-  armv6l-musl)
-    broken="rustup supposedly doesn't know about armv6l-musl (see: upstream)"
-    ;;
-esac
 
 do_install() {
   vbin "target/$RUST_TARGET/release/rustup-init"
