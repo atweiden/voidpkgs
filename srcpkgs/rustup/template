@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="rustup"
 version=1.23.1
-revision=1
+revision=2
 short_desc="Rust toolchain installer"
 # rustup doesn't recognize this target
-archs="~armv6l-musl"
+archs="~armv*-musl"
 makedepends+=" libcurl-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
