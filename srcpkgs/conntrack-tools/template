@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="conntrack-tools"
 version=1.4.6
-revision=1
+revision=2
 short_desc="Tools to interact with the netfilter connection tracking system"
 makedepends+=" libmnl-devel"
 makedepends+=" libnetfilter_conntrack-devel"
@@ -9,6 +9,7 @@ makedepends+=" libnetfilter_cthelper-devel"
 makedepends+=" libnetfilter_cttimeout-devel"
 makedepends+=" libnetfilter_queue-devel"
 makedepends+=" libnfnetlink-devel"
+makedepends+=" libtirpc-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
 homepage="http://conntrack-tools.netfilter.org/"
@@ -16,13 +17,5 @@ license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/conntrack-tools/files/$pkgname-$version.tar.bz2"
 checksum="590859cc848245dbfd9c6487761dd303b3a1771e007f4f42213063ca56205d5f"
 build_style="gnu-configure"
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    makedepends+=" libtirpc-devel"
-    CFLAGS="-D_GNU_SOURCE -I$XBPS_CROSS_BASE/usr/include/tirpc"
-    LDFLAGS="-ltirpc"
-    ;;
-esac
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
