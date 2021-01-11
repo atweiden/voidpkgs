@@ -453,7 +453,8 @@ libtls.so.20 libtls20-3.1.1_1
 libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
 libtorrent.so.21 libtorrent-0.13.8_1
-libucontext.so.0 libucontext-0.1.1_1
+libucontext.so.1 libucontext-1.0_1
+libucontext_posix.so.1 libucontext-1.0_1
 libunbound.so.8 libunbound-1.10.0_2
 libunistring.so.2 libunistring-0.9.4_1
 libunwind-ptrace.so.0 libunwind-1.1_1
