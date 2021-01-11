@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.35.1
-revision=1
+revision=2
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
