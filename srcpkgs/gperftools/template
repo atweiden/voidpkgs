@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gperftools"
 version=2.8
-revision=1
+revision=2
 short_desc="Multi-threaded malloc() and performance analysis tools"
 makedepends="libunwind-devel"
 checkdepends="perl"
