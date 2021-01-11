@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux-firmware"
 version=20201218
-revision=1
+revision=2
 short_desc="Binary firmware blobs for the Linux kernel"
 depends+=" $pkgname-amd>=${version}_$revision"
 depends+=" $pkgname-network>=${version}_$revision"
@@ -19,13 +19,17 @@ subpackages+=" linux-firmware-nvidia"
 subpackages+=" linux-firmware-network"
 
 do_install() {
-  vmkdir usr/lib/firmware
-  vmkdir "usr/share/licenses/$pkgname"
-  vcopy "*" usr/lib/firmware
-  rm -f "$DESTDIR/usr/lib/firmware"/{README*,configure,GPL*}
-  mv \
-    "$DESTDIR/usr/lib/firmware"/{LICEN*,WHENCE} \
-    "$DESTDIR/usr/share/licenses/$pkgname"
+  make \
+    DESTDIR="$DESTDIR" \
+    FIRMWAREDIR="/usr/lib/firmware" \
+    install
+
+  for _l in LICEN* \
+            WHENCE; do
+    vlicense "$_l"
+  done
+
+  # XXX: should some firmwares, like carl9170, be pruned?
 }
 
 linux-firmware-amd_package() {
