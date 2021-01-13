@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=7
+revision=8
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -74,6 +74,9 @@ replaces+=" vte-devel<=0.28.2_16"
 replaces+=" vte-python<=0.28.2_16"
 replaces+=" wireguard-go<=0.0.20181222_2"
 replaces+=" wireshark-gtk<=3.0.7_1"
+replaces+=" libxnoise<=0.2.21_4"
+replaces+=" xnoise<=0.2.21_4"
+replaces+=" xnoise-devel<=0.2.21_4"
 replaces+=" yt-play<=20140117_2"
 replaces+=" nvidia340<=340.108_4"
 replaces+=" nvidia340-dkms<=340.108_4"
