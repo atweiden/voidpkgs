@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=5
+revision=6
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -27,6 +27,9 @@ replaces+=" gksu<=2.0.2_4"
 replaces+=" go1.4-bootstrap<=20171003_2"
 replaces+=" goffice0.8<=0.8.17_6"
 replaces+=" grv<=0.3.1_3"
+replaces+=" gtkhtml<=4.10.0_1"
+replaces+=" gtkhtml-devel<=4.10.0_1"
+replaces+=" libgtkhtml<=4.10.0_1"
 replaces+=" httperf<=0.9.0_9"
 replaces+=" isl16<=0.16_2"
 replaces+=" keepassx<=0.4.4_2"
