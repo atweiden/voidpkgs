@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tox"
-version=3.20.1
-revision=2
+version=3.21.0
+revision=1
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-filelock"
 depends+=" python3-packaging"
@@ -11,14 +11,27 @@ depends+=" python3-toml"
 depends+=" python3-virtualenv"
 checkdepends+=" $depends"
 checkdepends+=" python3-flaky"
+checkdepends+=" python3-freezegun"
 checkdepends+=" python3-pathlib2"
+checkdepends+=" python3-pytest-mock"
 hostmakedepends="python3-setuptools_scm"
 homepage="https://tox.readthedocs.io/en/latest/"
 license="MIT"
 changelog="https://tox.readthedocs.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/t/tox/tox-$version.tar.gz"
-checksum="4321052bfe28f9d85082341ca8e233e3ea901fdd14dab8a5d3fbd810269fbaf6"
+checksum="8cccede64802e78aa6c69f81051b25f0706639d1cbbb34d9366ce00c70ee054f"
 build_style="python3-module"
+
+do_check() {
+  # skipped tests fail to find module or rely on missing entrypoint script
+  PYTHONPATH="src" python3 -m pytest \
+    -k "not test_parallel \
+        and not test_tox_console_script \
+        and not test_tox_quickstart_script \
+        and not test_provision_cli_args_ignore \
+        and not test_provision_interrupt_child \
+        and not test_provision_non_canonical_dep"
+ }
 
 post_install() {
   vlicense LICENSE
