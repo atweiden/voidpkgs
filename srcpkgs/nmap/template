@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nmap"
 version=7.80
-revision=2
+revision=5
 short_desc="Utility for network discovery and security auditing"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
