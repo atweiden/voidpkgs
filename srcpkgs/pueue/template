@@ -9,6 +9,14 @@ distfiles="https://github.com/Nukesor/pueue/archive/v$version.tar.gz>$pkgname-$v
 checksum="dbd333079df9249609f6a01d7c96175ec9d74f9d621688b95ec755134b7fa1f5"
 build_style="cargo"
 
+case "$XBPS_TARGET_MACHINE" in
+  x86_64*|i686*|arm*|aarch64*)
+    ;;
+  *)
+    broken="ftbfs in ring"
+    ;;
+esac
+
 post_install() {
   vlicense LICENSE
 }
