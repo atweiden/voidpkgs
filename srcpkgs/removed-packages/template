@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=9
+revision=10
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -15,6 +15,7 @@ replaces+=" caja-gksu<=1.20.2_2"
 replaces+=" california<=0.4.0_4"
 replaces+=" ctpp2-devel<=2.8.3_7"
 replaces+=" ctpp2<=2.8.3_7"
+replaces+=" djmount<=0.71_8"
 replaces+=" dleyna-core<=0.6.0_2"
 replaces+=" dleyna-renderer<=0.6.0_2"
 replaces+=" dleyna-server<=0.6.0_2"
