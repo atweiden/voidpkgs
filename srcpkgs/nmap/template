@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nmap"
-version=7.91
-revision=1
+version=7.80
+revision=2
 short_desc="Utility for network discovery and security auditing"
 makedepends+=" libpcap-devel"
 makedepends+=" libressl-devel"
@@ -13,7 +13,7 @@ hostmakedepends="python"
 homepage="https://nmap.org"
 license="custom:nmap"
 distfiles="https://nmap.org/dist/$pkgname-$version.tar.bz2"
-checksum="18cc4b5070511c51eb243cdd2b0b30ff9b2c4dc4544c6312f75ce3a67a593300"
+checksum="fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa"
 build_style="gnu-configure"
 configure_args+=" --with-libssh2"
 configure_args+=" --with-ndiff"
@@ -25,9 +25,11 @@ build_options="lua"
 build_options_default="lua"
 alternatives+=" nc:nc.1:/usr/share/man/man1/ncat.1"
 alternatives+=" nc:nc:/usr/bin/ncat"
+reverts+=" 7.90_1"
+reverts+=" 7.91_1"
 
 post_install() {
-  vlicense LICENSE
+  vlicense COPYING
   # do not use bundled certificates, use only system ones
   rm -f "$DESTDIR/usr/share/ncat/ca-bundle.crt"
   # do not install uninstall scripts
