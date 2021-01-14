@@ -1,21 +1,25 @@
-# Template file for 'python3-freezegun'
-pkgname=python3-freezegun
+maintainer="nox"
+pkgname="python3-freezegun"
 version=0.3.15
 revision=2
-wrksrc="freezegun-${version}"
-build_style=python3-module
-hostmakedepends="python3-setuptools"
-depends="python3-six python3-dateutil"
-checkdepends="${depends} python3-nose python3-pytest"
 short_desc="Let your Python tests travel through time"
-maintainer="Aluísio Augusto Silva Gonçalves <aluisio@aasg.name>"
-license="Apache-2.0"
+depends+=" python3-dateutil"
+depends+=" python3-six"
+checkdepends+=" $depends"
+checkdepends+=" python3-nose"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/spulec/freezegun"
-distfiles="${PYPI_SITE}/f/freezegun/freezegun-${version}.tar.gz"
-checksum=e2062f2c7f95cc276a834c22f1a17179467176b624cc6f936e8bc3be5535ad1b
+license="Apache-2.0"
+distfiles="$PYPI_SITE/f/freezegun/freezegun-$version.tar.gz"
+checksum="e2062f2c7f95cc276a834c22f1a17179467176b624cc6f936e8bc3be5535ad1b"
+wrksrc="freezegun-$version"
+build_style="python3-module"
 
 do_check() {
-	# Timezone needs to be fixed due to
-	# https://github.com/spulec/freezegun/issues/322.
-	TZ="UTC" PYTHONPATH="${PWD}/build/lib" python3 -m pytest
+  # timezone needs to be fixed due to
+  # https://github.com/spulec/freezegun/issues/322
+  TZ="UTC" PYTHONPATH="$PWD/build/lib" python3 -m pytest
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
