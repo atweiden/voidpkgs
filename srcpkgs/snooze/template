@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="snooze"
-version=0.4
+version=0.5
 revision=1
 short_desc="Run a command at a particular time"
 homepage="https://github.com/leahneukirchen/snooze"
 license="Public Domain"
 distfiles="https://github.com/leahneukirchen/snooze/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1d1dc49edb3a96ddc6411b19e40e665dae47489fcc73465dd254e31816ca8eb0"
+checksum="d63fde85d9333188bed5996baabd833eaa00842ce117443ffbf8719c094be414"
 build_style="gnu-makefile"
 
 post_install() {
