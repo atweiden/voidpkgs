@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dovecot"
 version=2.3.13
-revision=1
+revision=2
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
 depends="ca-certificates"
@@ -27,9 +27,6 @@ homepage="https://dovecot.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://dovecot.org/releases/2.3/$pkgname-$version.tar.gz"
 checksum="a3f875b80ec11a452480690108660030978c94fa8e796ad6d943a874b496f1c4"
-conf_files+=" /etc/dovecot/*.conf"
-conf_files+=" /etc/dovecot/conf.d/*.conf"
-conf_files+=" /etc/ssl/dovecot-openssl.cnf"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --with-bzlib"
@@ -73,18 +70,14 @@ system_accounts+=" _dovenull"
 keep_libtool_archives="yes"
 
 post_install() {
-  local econfdir
-  local econfdird
-  econfdir="usr/share/doc/dovecot/example-config"
-  econfdird="$econfdir/conf.d"
-  # install example conf files and ssl.conf
-  vmkdir etc/dovecot/conf.d
-  install -m 644 "$DESTDIR/$econfdird"/*.conf "$DESTDIR/etc/dovecot/conf.d"
-  install -m 644 "$DESTDIR/$econfdird"/*.conf.ext "$DESTDIR/etc/dovecot/conf.d"
-  install -m 644 "$DESTDIR/$econfdir/dovecot.conf" "$DESTDIR/etc/dovecot"
-  vinstall doc/dovecot-openssl.cnf 644 etc/ssl
-  vbin doc/mkcert.sh dovecot-mkcert.sh
+  vsconf doc/dovecot-openssl.cnf
+  vsconf doc/mkcert.sh
+  mv "$DESTDIR/usr/share/doc/dovecot/example-config"/* \
+    "$DESTDIR/usr/share/examples/dovecot"
+  mv "$DESTDIR/usr/share/examples/dovecot"/*.ext \
+    "$DESTDIR/usr/share/examples/dovecot/conf.d"
   rm "$DESTDIR/etc/dovecot/README"
+
   vsv dovecot
 }
 
@@ -101,14 +94,12 @@ dovecot-devel_package() {
 dovecot-plugin-ldap_package() {
   depends="dovecot>=$version"
   short_desc+=" - LDAP plugin"
-  conf_files="/etc/dovecot/conf.d/auth-ldap.conf.ext"
   pkg_install() {
     vmove "usr/lib/dovecot/libdovecot-ldap.*"
     vmove usr/lib/dovecot/modules/dict/libdict_ldap.so
     vmove usr/lib/dovecot/modules/auth/libauthdb_ldap.so
-    vmove usr/share/doc/dovecot/example-config/conf.d/auth-ldap.conf.ext
-    vmove usr/share/doc/dovecot/example-config/dovecot-ldap.conf.ext
-    vmove etc/dovecot/conf.d/auth-ldap.conf.ext
+    vmove usr/share/examples/dovecot/conf.d/auth-ldap.conf.ext
+    vmove usr/share/examples/dovecot/conf.d/dovecot-ldap.conf.ext
   }
 }
 
