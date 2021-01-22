@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grub"
 version=2.04
-revision=3
+revision=4
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
@@ -16,6 +16,7 @@ makedepends+=" liblzma-devel"
 makedepends+=" libusb-compat-devel"
 makedepends+=" ncurses-devel"
 hostmakedepends+=" flex"
+hostmakedepends+=" help2man"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 license="GPL-3.0-or-later"
@@ -45,9 +46,11 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" ac_cv_sizeof_off_t=8"
     CFLAGS="-D_FILE_OFFSET_BITS=64"
     _NATIVE_PLATFORM="pc"
+    # XXX: `_SUPPLEMENTARY_BUILDS-=x86_64-efi` relative to upstream policy
     _SUPPLEMENTARY_BUILDS+=" i386-coreboot"
     _SUPPLEMENTARY_BUILDS+=" i386-efi"
     _SUPPLEMENTARY_BUILDS+=" i386-xen"
+    # XXX: `subpackages-=grub-x86_64-efi` relative to upstream policy
     subpackages+=" grub-i386-coreboot"
     subpackages+=" grub-i386-efi"
     subpackages+=" grub-xen"
@@ -76,14 +79,17 @@ do_configure() {
   unset LD
   unset RANLIB
 
-  CFLAGS+=" -fno-stack-protector"
+  local freestanding_cflags
+
+  freestanding_cflags="-fno-stack-protector"
 
   # building with altivec generates broken grub core
   case "$XBPS_TARGET_MACHINE" in
     ppc*)
-      CFLAGS="$CFLAGS -mno-altivec"
+      freestanding_cflags+=" -mno-altivec"
       ;;
   esac
+  CFLAGS+=" $freestanding_cflags"
 
   configure_args+=" --disable-grub-mkfont"
   configure_args+=" --disable-werror"
@@ -101,16 +107,13 @@ do_configure() {
     configure
 
   # build tools
-  _configure_args="$configure_args"
-  if [[ -n "$_NATIVE_PLATFORM" ]]; then
-    _configure_args+=" --with-platform=$_NATIVE_PLATFORM"
-  fi
   msg_normal "Configuring grub tools...\n"
   mkdir "$wrksrc/build"
   cd "$wrksrc/build"
   ../configure \
     $_configure_args \
-    --host="$XBPS_TARGET_MACHINE"
+    --host="$XBPS_TARGET_MACHINE" \
+    ${_NATIVE_PLATFORM:+--with-platform=$_NATIVE_PLATFORM}
 
   for _SUPP_BUILD in $_SUPPLEMENTARY_BUILDS; do
     _TARGET="${_SUPP_BUILD%%-*}"
@@ -118,6 +121,11 @@ do_configure() {
     msg_normal "Configuring $_TARGET $_PLATFORM grub...\n"
     mkdir "$wrksrc/${_PLATFORM}_${_TARGET}_build"
     cd "$wrksrc/${_PLATFORM}_${_TARGET}_build"
+    if [[ "$_TARGET" == "x86_64" ]] &&
+      [[ "${XBPS_TARGET_MACHINE%-musl}" == "i686" ]]; then
+      _TARGET="x86_64-linux-musl"
+    fi
+    CFLAGS="$freestanding_cflags" \
     ../configure \
       $configure_args \
       --disable-efiemu \
@@ -134,16 +142,14 @@ do_build() {
 
   msg_normal "Building grub tools...\n"
   cd "$wrksrc/build"
-  make "$makejobs" &> make.log \
-    || tail -n 100 make.log
+  make "$makejobs"
 
   for _SUPP_BUILD in $_SUPPLEMENTARY_BUILDS; do
     _TARGET="${_SUPP_BUILD%%-*}"
     _PLATFORM="${_SUPP_BUILD##*-}"
     msg_normal "Building $_TARGET $_PLATFORM grub...\n"
     cd "$wrksrc/${_PLATFORM}_${_TARGET}_build"
-    make "$makejobs" &> make.log \
-      || tail -n 100 make.log
+    make "$makejobs"
   done
 }
 
@@ -209,7 +215,6 @@ grub-utils_package() {
 
 grub-x86_64-efi_package() {
   unset depends
-  archs="noarch"
   depends+=" dosfstools"
   depends+=" efibootmgr"
   depends+=" grub>=$version"
@@ -221,7 +226,6 @@ grub-x86_64-efi_package() {
 
 grub-i386-efi_package() {
   unset depends
-  archs="noarch"
   depends+=" dosfstools"
   depends+=" efibootmgr"
   depends+=" grub>=$version"
@@ -232,7 +236,6 @@ grub-i386-efi_package() {
 }
 
 grub-i386-coreboot_package() {
-  archs="noarch"
   depends="grub>=$version"
   short_desc+=" - i386 coreboot support"
   pkg_install() {
@@ -257,7 +260,6 @@ grub-xen_package() {
 
 grub-arm64-efi_package() {
   unset depends
-  archs="noarch"
   depends+=" dosfstools"
   depends+=" efibootmgr"
   depends+=" grub>=$version"
@@ -269,7 +271,6 @@ grub-arm64-efi_package() {
 
 grub-powerpc-ieee1275_package() {
   unset depends
-  archs="noarch"
   depends+=" grub>=$version"
   depends+=" powerpc-utils"
   short_desc+=" - powerpc Open Firmware support"
