@@ -634,7 +634,7 @@ libtoxcore.so.2 toxcore-0.2.0_1
 libtspi.so.1 trousers-0.3.13_1
 libudns.so.0 udns-0.4_1
 libunibilium.so.4 unibilium-2.0.0_1
-libusbguard.so.0 usbguard-0.7.5_1
+libusbguard.so.1 usbguard-1.0.0_1
 libusbredirhost.so.1 usbredir-0.7_1
 libusbredirparser.so.1 usbredir-0.7_1
 libiw.so.29 wireless_tools-29_1
