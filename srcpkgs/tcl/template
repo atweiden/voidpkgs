@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="tcl"
-version=8.6.10
-revision=3
+version=8.6.11
+revision=1
 short_desc="TCL scripting language"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 homepage="http://www.tcl.tk"
 license="TCL"
 distfiles="$SOURCEFORGE_SITE/tcl/$pkgname$version-src.tar.gz"
-checksum="5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed"
+checksum="8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258"
 wrksrc="$pkgname$version"
 build_wrksrc="unix"
 build_style="gnu-configure"
@@ -46,6 +46,7 @@ tcl-devel_package() {
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove usr/share/man/man3
+    vmove "usr/lib/*.a"
   }
 }
 
