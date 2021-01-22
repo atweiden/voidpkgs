@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-virtualenv"
-version=20.3.0
+version=20.4.0
 revision=1
 short_desc="Virtual Python environment builder"
 depends+=" python3-appdirs"
@@ -18,7 +18,7 @@ homepage="https://virtualenv.pypa.io/"
 license="MIT"
 changelog="https://virtualenv.pypa.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/v/virtualenv/virtualenv-$version.tar.gz"
-checksum="7992b8de87e544a4ab55afc2240bf8388c4e3b5765d03784dad384bfdf9097ee"
+checksum="219ee956e38b08e32d5639289aaa5bd190cfbe7dafcb8fa65407fca08e808f9c"
 alternatives="virtualenv:virtualenv:/usr/bin/virtualenv3"
 wrksrc="virtualenv-$version"
 build_style="python3-module"
