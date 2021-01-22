@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="xinetd"
 version=2.3.15
-revision=7
+revision=8
 short_desc="A secure replacement for inetd"
+makedepends="libtirpc-devel"
 homepage="http://www.xinetd.org/"
 license="xinetd"
 distfiles="http://ponce.cc/slackware/sources/repo/$pkgname-$version.tar.gz"
@@ -12,15 +13,12 @@ conf_files+=" /etc/xinetd.d/servers"
 conf_files+=" /etc/xinetd.d/services"
 build_style="gnu-configure"
 configure_args="--without-libwrap"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  configure_args+=" xinetd_cv_type_rlim_t=yes"
+fi
 
-pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      export CFLAGS+=" -DNO_RPC"
-      configure_args+=" xinetd_cv_type_rlim_t=yes"
-      ;;
-  esac
-}
+CFLAGS=" -I$XBPS_CROSS_BASE/usr/include/tirpc"
+LDFLAGS=" -ltirpc"
 
 do_install() {
   make \
