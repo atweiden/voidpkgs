@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=10
+revision=11
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -62,6 +62,7 @@ replaces+=" python-pyside<=1.2.2_7"
 replaces+=" python-pytest-relaxed<=1.1.2_2"
 replaces+=" qimageblitz<=0.0.6_4"
 replaces+=" r2-bindings<=1.0.1_2"
+replaces+=" reminiscence<=0.4.6_1"
 replaces+=" seriespl<=2.3.5_2"
 replaces+=" simple-obfs<=0.0.5_2"
 replaces+=" skypetab-ng<=20150201_3"
