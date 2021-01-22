@@ -12,13 +12,14 @@ build_wrksrc="nspr"
 build_style="gnu-configure"
 
 do_configure() {
-  CFLAGS+=" -D_PR_HAVE_GETADDRINFO"
-  CFLAGS+=" -D_PR_HAVE_GETHOSTBYNAME2"
-  CFLAGS+=" -D_PR_HAVE_INET_NTOP"
-  CFLAGS+=" -D_PR_HAVE_OFF64_T"
-  CFLAGS+=" -D_PR_INET6"
-  CFLAGS+=" -D_PR_INET6_PROBE"
-  CFLAGS+=" -D_PR_POLL_AVAILABLE"
+  CFLAGS="$CFLAGS \
+   -D_PR_HAVE_GETADDRINFO \
+   -D_PR_HAVE_GETHOSTBYNAME2 \
+   -D_PR_HAVE_INET_NTOP \
+   -D_PR_HAVE_OFF64_T \
+   -D_PR_INET6 \
+   -D_PR_INET6_PROBE \
+   -D_PR_POLL_AVAILABLE"
 
   if [[ -n "$CROSS_BUILD" ]]; then
     _args+=" --target=$XBPS_CROSS_TRIPLET"
