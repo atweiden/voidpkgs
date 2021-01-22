@@ -114,8 +114,6 @@ libnss_db.so.2 glibc-2.29_1
 libnss_dns.so.2 glibc-2.29_1
 libnss_files.so.2 glibc-2.29_1
 libnss_hesiod.so.2 glibc-2.29_1
-libnss_nis.so.2 glibc-2.29_1
-libnss_nisplus.so.2 glibc-2.29_1
 libpcprofile.so glibc-2.29_1
 libpthread.so.0 glibc-2.29_1
 libresolv.so.2 glibc-2.29_1

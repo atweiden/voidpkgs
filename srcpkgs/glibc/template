@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="glibc"
-version=2.30
-revision=2
+version=2.32
+revision=1
 short_desc="GNU C library"
 # there's no point in building this for musl
 archs="~*-musl"
@@ -15,7 +15,7 @@ fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="$GNU_SITE/glibc/$pkgname-$version.tar.xz"
-checksum="e2c4114e569afbe7edbc29131a43be833850ab9a459d81beb2588016d2bbb8af"
+checksum="1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836"
 conf_files+=" /etc/gai.conf"
 conf_files+=" /etc/ld.so.conf"
 conf_files+=" /etc/rpc"
@@ -114,8 +114,6 @@ do_configure() {
     --enable-bind-now \
     --enable-kernel="3.2.0" \
     --enable-multi-arch \
-    --enable-obsolete-nsl \
-    --enable-obsolete-rpc \
     --enable-stack-guard-randomization \
     --enable-stack-protector="strong" \
     --libdir="$_libdir" \
