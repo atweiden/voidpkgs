@@ -11,8 +11,7 @@ system_accounts="_darkhttpd"
 make_dirs+=" /srv/www/darkhttpd 0755 _darkhttpd _darkhttpd"
 make_dirs+=" /var/log/darkhttpd 0755 _darkhttpd _darkhttpd"
 
-CFLAGS+=" $CFLAGS"
-CFLAGS+=" $LDFLAGS"
+CFLAGS="$CFLAGS $LDFLAGS"
 
 do_build() {
   $CC $CFLAGS $LDFLAGS $LIBS darkhttpd.c -o darkhttpd
