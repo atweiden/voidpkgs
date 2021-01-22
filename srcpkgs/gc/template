@@ -15,11 +15,11 @@ configure_args+=" --enable-static"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
-    CFLAGS+=" -DHAVE_DL_ITERATE_PHDR"
-    CFLAGS+=" -DNO_GETCONTEXT"
-    CFLAGS+=" -DSEARCH_FOR_DATA_START"
-    CFLAGS+=" -DUSE_MMAP"
-    CFLAGS+=" -D_GNU_SOURCE"
+    CFLAGS="-DHAVE_DL_ITERATE_PHDR \
+     -DNO_GETCONTEXT \
+     -DSEARCH_FOR_DATA_START \
+     -DUSE_MMAP \
+     -D_GNU_SOURCE"
     ;;
 esac
 
