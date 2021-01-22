@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.35.1
-revision=2
+revision=3
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
@@ -94,6 +94,7 @@ do_configure() {
     --enable-deterministic-archives \
     --enable-64-bit-bfd \
     --enable-ld="default" \
+    --enable-install-libiberty \
     --with-system-zlib \
     --with-mmap \
     --with-pic \
@@ -130,10 +131,6 @@ do_install() {
   # remove ld (hardlink) and make a symlink to ld.bfd
   rm -f "$DESTDIR/usr/bin/ld"
   ln -sfr "$DESTDIR/usr/bin/ld.bfd" "$DESTDIR/usr/bin/ld"
-
-  # add some useful headers
-  vinstall include/libiberty.h 644 usr/include
-  vinstall include/demangle.h 644 usr/include
 
   # remove these symlinks, they are not ABI stable
   # programs should compile static to the .a file
