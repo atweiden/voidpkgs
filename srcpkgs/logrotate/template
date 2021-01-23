@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="logrotate"
-version=3.17.0
+version=3.18.0
 revision=1
 short_desc="Log file rotation and periodic maintenance"
 makedepends+=" acl-devel"
@@ -8,7 +8,7 @@ makedepends+=" popt-devel"
 license="GPL-2.0-or-later"
 homepage="https://github.com/logrotate/logrotate"
 distfiles="https://github.com/logrotate/logrotate/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="58cc2178ff57faa3c0490181cce041345aeca6cff18dba1c5cd1398bf1c19294"
+checksum="841f81bf09d0014e4a2e11af166bb33fcd8429cc0c2d4a7d3d9ceb3858cfccc5"
 conf_files="/etc/logrotate.conf"
 build_style="gnu-configure"
 make_dirs="/etc/logrotate.d 0755 root root"
