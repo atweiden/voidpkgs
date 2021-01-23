@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnupg2"
-version=2.2.26
+version=2.2.27
 revision=1
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
@@ -17,19 +17,25 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="517569e6c9fad22175df16be5900f94c991c41e53612db63c14493e814cfff6d"
+checksum="34e60009014ea16402069136e0a5f63d9b65f90096244975db5cea74b3d02399"
 wrksrc="gnupg-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-gpg-is-gpg2"
-configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE"
-configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE"
-configure_args+=" --with-libgcrypt-prefix=$XBPS_CROSS_BASE"
-configure_args+=" --with-npth-prefix=$XBPS_CROSS_BASE"
+configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-libgcrypt-prefix=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-npth-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" $(vopt_enable ldap)"
 build_options="ldap"
 build_options_default="ldap"
 
-pre_configure() {
+post_patch() {
+  # on at least aarch64, configure sets this even though it doesn't exist
+  vsed \
+    -i \
+    -e 's/HAVE_DECL_SYS_SIGLIST/0/' \
+    common/signal.c
+
   vsed \
     -i \
     -e '/examples\/systemd-user/d' \
