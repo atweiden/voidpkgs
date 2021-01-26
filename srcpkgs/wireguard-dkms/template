@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="wireguard-dkms"
-version=1.0.20201221
+version=1.0.20210124
 revision=1
 short_desc="Fast, modern, secure VPN tunnel (DKMS module for Linux <= 5.5)"
 depends+=" dkms"
@@ -9,7 +9,7 @@ depends+=" wireguard-tools"
 homepage="https://www.wireguard.com/"
 license="GPL-2.0-only"
 distfiles="https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-$version.tar.xz"
-checksum="6e5289a8b602eaaf1383aebefcbc41b8ad2721269055858b150363076c1c2132"
+checksum="dac6e68cd4c3db441499850dfa8a70706384a3295f37fda1b839a50b79faef54"
 wrksrc="wireguard-linux-compat-$version"
 build_wrksrc="src"
 
