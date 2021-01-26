@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Net-SSLeay"
-version=1.88
-revision=5
+version=1.90
+revision=1
 short_desc="Net::SSLeay - Perl extension for using OpenSSL"
 depends="perl"
 makedepends+=" libressl-devel"
@@ -16,7 +16,7 @@ hostmakedepends+=" perl"
 homepage="https://metacpan.org/release/Net-SSLeay"
 license="Artistic-2.0"
 distfiles="$CPAN_SITE/Net/${pkgname#*-}-$version.tar.gz"
-checksum="2000da483c8471a0b61e06959e92a6fca7b9e40586d5c828de977d3d2081cfdd"
+checksum="f8696cfaca98234679efeedc288a9398fcf77176f1f515dbc589ada7c650dc93"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
