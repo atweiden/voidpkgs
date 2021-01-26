@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pinebookpro-kernel"
-version=5.10.2
+version=5.10.9
 revision=1
 _gitrev="a8f4db8a726e5e4552e61333dcd9ea1ff35f39f9"
 _kernver="${version}_$revision"
@@ -23,7 +23,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="3b84e13abae26af17ebccc4d7212f5843a991127a73a320848d5c6942ef781a2"
+checksum="7f733e0dd8bbb6929aae2191cf6b9dc0b0ec1dad77ab3f5d3aad1b7fe96c4751"
 wrksrc="linux-$version"
 patch_args="-Np1"
 python_version=3
