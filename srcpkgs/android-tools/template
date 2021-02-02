@@ -1,57 +1,39 @@
 maintainer="nox"
 pkgname="android-tools"
-version=29.0.6
-revision=3
+version=30.0.5
+revision=1
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
 archs+=" i686*"
 archs+=" ppc64le*"
 archs+=" x86_64*"
+makedepends+=" brotli-devel"
 makedepends+=" gtest-devel"
+makedepends+=" liblz4-devel"
 makedepends+=" libressl-devel"
 makedepends+=" libusb-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" pcre2-devel"
+makedepends+=" protobuf-devel"
 makedepends+=" zlib-devel"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 hostmakedepends+=" go"
 hostmakedepends+=" perl"
+hostmakedepends+=" protobuf"
 homepage="http://developer.android.com/tools/help/adb.html"
 license="Apache-2.0, ISC, GPL-2.0-only, MIT"
 distfiles="https://github.com/nmeum/android-tools/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="7fb1c127c36b0752657593838b6823743bf8e5730f9f8b0f7ba2c185424cf376"
+checksum="1b870a3f28d75e4907c95dbe8e71b4014f56be636d089a75257ef3922ad39d62"
 build_style="cmake"
 
-pre_configure() {
-  # don't check for CROSS_COMPILING, since i686 container/chroot inside
-  # x86_64 host will failed to build this
-  if [[ "$XBPS_TARGET_MACHINE" == "i686" ]] \
-    && [[ "$(uname -m)" == "x86_64" ]]; then
-      boring_ssl_cmake_args="-DCMAKE_TOOLCHAIN_FILE=cross_boring_ssl.cmake"
-      cat > cross_boring_ssl.cmake <<-_EOF
-      SET(CMAKE_SYSTEM_NAME Linux)
-      SET(CMAKE_SYSTEM_VERSION 1)
-      SET(CMAKE_C_COMPILER   $CC)
-      SET(CMAKE_CXX_COMPILER $CXX)
-      SET(CMAKE_SYSTEM_PROCESSOR x86)
-      _EOF
-      configure_args+=" $boring_ssl_cmake_args"
-  fi
-
-  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-    sed \
-      -i \
-      -e "/target_link_libraries/s;$; atomic;" \
-      vendor/CMakeLists.adb.txt
-  fi
-}
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  configure_args="-DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
+fi
 
 post_install() {
   vlicense vendor/boringssl/LICENSE boringssl.LICENSE
   vlicense vendor/boringssl/third_party/fiat/LICENSE fiat.LICENSE
-  vlicense vendor/boringssl/third_party/googletest/LICENSE gtest.LICENSE
   vsv adb
 }
 
