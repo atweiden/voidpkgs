@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-urllib3"
-version=1.26.2
+version=1.26.3
 revision=1
 short_desc="HTTP library with thread-safe connection pooling (Python2)"
 depends="python-six"
@@ -9,16 +9,17 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://urllib3.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/u/urllib3/${pkgname#*-}-$version.tar.gz"
-checksum="19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08"
+checksum="de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 post_install() {
-  # replace bundled copy of six
-  for pyver in $py2_ver $py3_ver; do
-    rm -f "$DESTDIR/usr/lib/python$pyver/site-packages/urllib3/packages/six.py"
-    ln -sf ../../six.py "$DESTDIR/usr/lib/python$pyver/site-packages/urllib3/packages/six.py"
+  for sitelib in "$py2_sitelib" \
+                 "$py3_sitelib"; do
+    rm "$DESTDIR/$sitelib/urllib3/packages/six.py"
+    ln -sf ../../six.py "$DESTDIR/$sitelib/urllib3/packages/six.py"
   done
+
   vlicense LICENSE.txt
 }
 
