@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="perl-Authen-SASL"
 version=2.16
-revision=4
+revision=5
 short_desc="Authen::SASL - SASL authentication framework"
 depends="perl"
-makedepends="perl"
+makedepends+=" perl"
+makedepends+=" perl-Digest-HMAC"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Authen-SASL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
