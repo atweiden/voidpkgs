@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="busybox"
 version=1.31.1
-revision=3
+revision=4
 short_desc="Swiss Army Knife of Embedded Linux"
 checkdepends="zip"
 hostmakedepends="perl"
@@ -47,7 +47,6 @@ do_configure() {
         sed \
           -i \
           -e /CONFIG_FEATURE_VI_REGEX_SEARCH/s/y/n/ \
-          -e /CONFIG_FEATURE_MOUNT_NFS/s/y/n/ \
           "$t/.config"
         ;;
     esac
