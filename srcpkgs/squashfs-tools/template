@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="squashfs-tools"
 version=4.4
-revision=1
+revision=2
 short_desc="Tool to create and append to squashfs filesystems"
 makedepends+=" liblz4-devel"
 makedepends+=" liblzma-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" lzo-devel"
 makedepends+=" zlib-devel"
 homepage="http://squashfs.sf.net/"
@@ -23,7 +24,8 @@ do_build() {
     LZ4_SUPPORT=1 \
     LZMA_XZ_SUPPORT=1 \
     LZO_SUPPORT=1 \
-    XZ_SUPPORT=1
+    XZ_SUPPORT=1 \
+    ZSTD_SUPPORT=1
 }
 
 do_install() {
