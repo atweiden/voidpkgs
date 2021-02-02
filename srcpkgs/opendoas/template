@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="opendoas"
-version=6.8
-revision=2
+version=6.8.1
+revision=1
 short_desc="Portable OpenBSD doas to execute commands as another user"
 makedepends="$(vopt_if 'pam' 'pam-devel')"
 hostmakedepends="bison"
 homepage="https://github.com/Duncaen/OpenDoas"
 license="ISC, BSD-3-Clause"
 distfiles="https://github.com/Duncaen/OpenDoas/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c53edc59a576cfe8ec8737230e7d0398842a5a8c925e25065463ab632a7eaba9"
+checksum="c9070ae745d0f1bbe68ef0783a3958cd011b409959f65fd100e6b42b8ad6b162"
 conf_files="$(vopt_if 'pam' '/etc/pam.d/doas')"
 wrksrc="OpenDoas-$version"
 build_style="configure"
