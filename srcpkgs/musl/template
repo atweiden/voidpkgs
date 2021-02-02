@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="musl"
 version=1.1.24
-revision=5
+revision=6
 short_desc="Musl C library"
 archs="*-musl"
-makedepends="kernel-libc-headers"
 homepage="http://www.musl-libc.org/"
 license="MIT"
 distfiles="http://www.musl-libc.org/releases/$pkgname-$version.tar.gz"
@@ -15,7 +14,6 @@ configure_args+=" --prefix=/usr"
 nostrip_files="libc.so"
 shlib_provides="libc.so"
 bootstrap="yes"
-conflicts="glibc>=0"
 reverts="1.2.0_1"
 
 post_build() {
@@ -27,7 +25,7 @@ post_build() {
 do_install() {
   # move everything to /usr
   vmkdir usr/lib
-  ln -sfr "$DESTDIR/usr/lib" "$DESTDIR/lib"
+  ln -s usr/lib "$DESTDIR/lib"
   make DESTDIR="$DESTDIR" install
   rm "$DESTDIR/lib"
   # provide ldd
@@ -41,9 +39,6 @@ do_install() {
   vman "$FILESDIR/getconf.1"
   # fake ldconfig
   ln -s true "$DESTDIR/usr/bin/ldconfig"
-  # create xbps.d(5) arch override file
-  vmkdir usr/share/xbps.d
-  echo "architecture=$XBPS_TARGET_MACHINE" > "$DESTDIR/usr/share/xbps.d/musl-arch.conf"
 }
 
 post_install() {
