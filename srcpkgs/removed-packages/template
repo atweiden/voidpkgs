@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=19
+revision=20
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
 build_style="meta"
 replaces+=" Platinum9-theme<=0.0.0.20170720_3"
+replaces+=" albert<=0.16.1_4"
 replaces+=" apg<=2.2.3_5"
 replaces+=" arm-mem-git<=20131108_2"
 replaces+=" arptables<=0.0.4_3"
