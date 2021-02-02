@@ -28,6 +28,9 @@ libisccfg.so.1601 bind-libs-9.16.7_1
 libblas.so.3 blas-3.5.0_1
 libboost_python27.so.1.72.0 boost-python1.72-1.72.0_1
 libboost_python39.so.1.72.0 boost-python3-1.72-1.72.0_4
+libbrotlicommon.so.1 brotli-1.0.2_1
+libbrotlidec.so.1 brotli-1.0.2_1
+libbrotlienc.so.1 brotli-1.0.2_1
 libbz2.so.1 bzip2-1.0.5_1
 libcares.so.2 c-ares-1.10.0_1
 libcblas.so.3 cblas-3.6.0_1
