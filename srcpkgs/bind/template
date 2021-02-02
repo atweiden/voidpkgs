@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bind"
 version=9.16.7
-revision=2
+revision=3
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
 makedepends+=" libatomic-devel"
