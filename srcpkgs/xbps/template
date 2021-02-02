@@ -40,7 +40,7 @@ post_install() {
   local repo
   local suffix
 
-  repo="repository=https://alpha.de.repo.voidlinux.org/current"
+  repo="https://alpha.de.repo.voidlinux.org/current"
 
   case "$XBPS_TARGET_MACHINE" in
     aarch64*)
@@ -51,7 +51,7 @@ post_install() {
       ;;
   esac
 
-  echo "$repo/$suffix" > \
+  echo "repository=$repo/$suffix" > \
     "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
   echo "architecture=$XBPS_TARGET_MACHINE" > \
     "$DESTDIR/usr/share/xbps.d/xbps-arch.conf"
