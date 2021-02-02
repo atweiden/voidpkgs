@@ -1,32 +1,21 @@
 maintainer="nox"
 pkgname="python-pip"
-version=20.3.3
+version=20.3.4
 revision=1
 short_desc="PyPA recommended tool for installing PyPI packages (Python2)"
 depends="python-setuptools"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+hostmakedepends="python-setuptools"
 homepage="https://pip.pypa.io/"
 license="MIT"
 changelog="https://github.com/pypa/pip/raw/master/NEWS.rst"
 distfiles="$PYPI_SITE/p/pip/pip-$version.tar.gz"
-checksum="79c1ac8a9dccbec8752761cb5a2df833224263ca661477a2a9ed03ddf4e0e3ba"
+checksum="6773934e5f5fc3eaa8c5a44949b5b924fc122daa0a8aa9f80c835b4ca2a543fc"
 wrksrc="pip-$version"
-build_style="python-module"
+build_style="python2-module"
 
 post_install() {
   vlicense LICENSE.txt
-}
-
-python3-pip_package() {
-  depends="python3-setuptools"
-  short_desc="${short_desc/Python2/Python3}"
-  pkg_install() {
-    vmove usr/bin/pip3
-    mv "$PKGDESTDIR/usr/bin"/pip{3,}
-    vmove "$py3_lib"
-    vlicense LICENSE.txt
-  }
+  mv "$DESTDIR/usr/bin"/pip{,2}
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
