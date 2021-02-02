@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="execline"
-version=2.6.1.1
+version=2.7.0.1
 revision=1
 short_desc="Non-interactive scripting language"
 makedepends="skalibs-devel"
@@ -8,7 +8,7 @@ homepage="https://skarnet.org/software/execline/"
 license="ISC"
 changelog="https://skarnet.org/software/execline/upgrade.html"
 distfiles="https://skarnet.org/software/execline/$pkgname-$version.tar.gz"
-checksum="394308f0349f962086a9695ca2bb5ef32cd38e5be6b7cec0b3d0cf35a2b2ba56"
+checksum="cdf61164f97f764a06aba36986d549159df56f2d1a4b3bbf5467ee91ad8fdcdd"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
