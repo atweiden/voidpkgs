@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xbps"
 version=0.59.1
-revision=2
+revision=3
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
@@ -37,22 +37,26 @@ do_configure() {
 }
 
 post_install() {
+  local _repo
+  local _suffix
+
+  _repo="repository=https://alpha.de.repo.voidlinux.org"
+
   case "$XBPS_TARGET_MACHINE" in
     aarch64*)
       # XXX different repo location
-      echo "repository=https://alpha.de.repo.voidlinux.org/current/aarch64" > \
-        "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
+      _suffix="/aarch64"
       ;;
     *-musl)
-      # XXX different repo location
-      echo "repository=https://alpha.de.repo.voidlinux.org/current/musl" > \
-        "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
-      ;;
-    *)
-      echo "repository=https://alpha.de.repo.voidlinux.org/current" > \
-        "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
+      _suffix="/musl"
       ;;
   esac
+
+  echo "$_repo/current$_suffix" > \
+    "$DESTDIR/usr/share/xbps.d/00-repository-main.conf"
+  echo "architecture=$XBPS_TARGET_MACHINE" > \
+    "$DESTDIR/usr/share/xbps.d/xbps-arch.conf"
+
   vlicense LICENSE
   vlicense LICENSE.3RDPARTY
 }
