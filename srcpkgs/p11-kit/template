@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="p11-kit"
-version=0.23.21
+version=0.23.22
 revision=1
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" gettext-devel"
@@ -15,7 +15,7 @@ fi
 homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="f1baa493f05ca0d867f06bcb54cbb5cdb28c756db07207b6e18de18a87b10627"
+checksum="8a8f40153dd5a3f8e7c03e641f8db400133fb2a6a9ab2aee1b6d0cb0495ec6b6"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="gnu-configure"
 configure_args="--with-module-path=/usr/lib/pkcs11"
