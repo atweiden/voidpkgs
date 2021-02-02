@@ -93,36 +93,36 @@ libintl.so.8 gettext-libs-0.19.2_1
 libtextstyle.so.0 gettext-libs-0.20.1_1
 libgettextlib-0.21.so gettext-libs-0.21_1
 libgettextsrc-0.21.so gettext-libs-0.21_1
-ld-linux-aarch64.so.1 glibc-2.29_1 aarch64
-ld-linux-armhf.so.3 glibc-2.29_1
-ld-linux-x86-64.so.2 glibc-2.29_1 x86_64
-ld-linux.so.2 glibc-2.29_1 i686
-ld-linux.so.3 glibc-2.29_1 armv5tel
-ld.so.1 glibc-2.29_1 mips
-ld.so.1 glibc-2.29_1 ppc
-ld64.so.2 glibc-2.29_1 ppc64
-libBrokenLocale.so.1 glibc-2.29_1
-libSegFault.so glibc-2.29_1
-libanl.so.1 glibc-2.29_1
-libc.so.6 glibc-2.29_1
-libcidn.so.1 glibc-2.29_1
-libcrypt.so.1 glibc-2.29_1
-libdl.so.2 glibc-2.29_1
-libm.so.6 glibc-2.29_1
-libmemusage.so glibc-2.29_1
-libmvec.so.1 glibc-2.29_1
-libnsl.so.1 glibc-2.29_1
-libnss_compat.so.2 glibc-2.29_1
-libnss_db.so.2 glibc-2.29_1
-libnss_dns.so.2 glibc-2.29_1
-libnss_files.so.2 glibc-2.29_1
-libnss_hesiod.so.2 glibc-2.29_1
-libpcprofile.so glibc-2.29_1
-libpthread.so.0 glibc-2.29_1
-libresolv.so.2 glibc-2.29_1
-librt.so.1 glibc-2.29_1
-libthread_db.so.1 glibc-2.29_1
-libutil.so.1 glibc-2.29_1
+ld-linux-aarch64.so.1 glibc-2.32_1 aarch64
+ld-linux-armhf.so.3 glibc-2.32_1
+ld-linux-x86-64.so.2 glibc-2.32_1 x86_64
+ld-linux.so.2 glibc-2.32_1 i686
+ld-linux.so.3 glibc-2.32_1 armv5tel
+ld.so.1 glibc-2.32_1 mips
+ld.so.1 glibc-2.32_1 ppc
+ld64.so.2 glibc-2.32_1 ppc64
+libBrokenLocale.so.1 glibc-2.32_1
+libSegFault.so glibc-2.32_1
+libanl.so.1 glibc-2.32_1
+libc.so.6 glibc-2.32_1
+libcidn.so.1 glibc-2.32_1
+libcrypt.so.1 glibc-2.32_1
+libdl.so.2 glibc-2.32_1
+libm.so.6 glibc-2.32_1
+libmemusage.so glibc-2.32_1
+libmvec.so.1 glibc-2.32_1
+libnsl.so.1 glibc-2.32_1
+libnss_compat.so.2 glibc-2.32_1
+libnss_db.so.2 glibc-2.32_1
+libnss_dns.so.2 glibc-2.32_1
+libnss_files.so.2 glibc-2.32_1
+libnss_hesiod.so.2 glibc-2.32_1
+libpcprofile.so glibc-2.32_1
+libpthread.so.0 glibc-2.32_1
+libresolv.so.2 glibc-2.32_1
+librt.so.1 glibc-2.32_1
+libthread_db.so.1 glibc-2.32_1
+libutil.so.1 glibc-2.32_1
 libgmp.so.10 gmp-5.0.1_1
 libgmpxx.so.4 gmpxx-6.0.0_2
 libgnutlsxx.so.28 gnutls-3.2.13_1
