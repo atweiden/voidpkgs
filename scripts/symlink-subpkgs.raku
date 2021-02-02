@@ -679,8 +679,6 @@ constant %PKG = Map.new(
                   speex-devel>,
     'speexdsp' => ['speexdsp-devel'],
     'sqlite' => ['sqlite-devel'],
-    'sqlite-replication' => qw<sqlite-replication-bin
-                               sqlite-replication-devel>,
     'subversion' => qw<libsvn
                        subversion-devel
                        subversion-perl
