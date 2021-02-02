@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=14
+revision=15
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -193,5 +193,17 @@ replaces+=" nvidia340-libs<=340.108_4"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   replaces+=" timidity<=2.15.0_1"
 fi
+
+case "$XBPS_TARGET_MACHINE" in
+  ppc64*)
+    ;;
+  ppc*)
+    replaces+=" PopCorn<=0.4_5"
+    replaces+=" libgo<=10.2.1pre1_1"
+    replaces+=" libgo-devel<=10.2.1pre1_1"
+    replaces+=" gcc-go<=10.2.1pre1_1"
+    replaces+=" gcc-go-tools<=10.2.1pre1_1"
+    ;;
+esac
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
