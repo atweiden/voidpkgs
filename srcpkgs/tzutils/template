@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="tzutils"
-version=2020d
+version=2021a
 revision=1
 short_desc="Time zone and daylight-saving time utilities"
 homepage="https://www.iana.org/time-zones"
 license="Public Domain, BSD-3-Clause"
 distfiles="https://github.com/eggert/tz/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6b9ec90e79593913f687e3af5d880eaa036bb0aafea9707682b0cbd00fadbb09"
+checksum="bd7ecd99cbb0a2f15bb7e38be2cbc04dced89922fce4ac0ffcd1ca844ba9362f"
 wrksrc="tz-$version"
 
 do_build() {
