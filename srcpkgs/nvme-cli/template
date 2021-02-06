@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nvme-cli"
 version=1.13
-revision=1
+revision=2
 short_desc="NVMe management command line interface"
 makedepends="libuuid-devel"
 homepage="http://nvmexpress.org"
