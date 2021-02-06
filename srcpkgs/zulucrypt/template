@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zulucrypt"
-version=5.7.1
+version=6.0.0
 revision=1
 short_desc="Frontend to cryptsetup and Veracrypt for harddrive and file encryption"
 makedepends+=" cryptsetup-devel"
@@ -15,12 +15,12 @@ homepage="https://mhogomchungu.github.io/zuluCrypt"
 license="GPL-2.0-or-later"
 changelog="https://github.com/mhogomchungu/zuluCrypt/raw/master/changelog"
 distfiles="https://github.com/mhogomchungu/zuluCrypt/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="39bd7f5bd31514636f617f670e451e3313be1ba1094f7f55532a086b6aaf0096"
+checksum="f1bc599446e6dc82c6af16672fcbd4a88679d3b3dba2cfa3921ac514cb211add"
 wrksrc="zuluCrypt-$version"
 build_style="cmake"
 # set this to false once lxqt_wallet is available in void-packages
 configure_args+=" -DINTERNAL_LXQT_WALLET=true"
-configure_args+=" -DINTERNAL_ZULUPLAY=false"
+configure_args+=" -DINTERNAL_ZULUPLAY=true"
 configure_args+=" -DNOGNOME=true"
 configure_args+=" -DNOGUI=true"
 configure_args+=" -DNOKDE=true"
