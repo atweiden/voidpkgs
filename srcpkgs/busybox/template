@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="busybox"
 version=1.31.1
-revision=4
+revision=5
 short_desc="Swiss Army Knife of Embedded Linux"
 checkdepends="zip"
 hostmakedepends="perl"
@@ -61,7 +61,7 @@ do_configure() {
 
   _patch_config busybox udhcpc ntpd
   _patch_config busybox-static udhcpc ntpd static
-  _patch_config busybox-huge udhcpc ntpd httpd mdev sysklogd
+  _patch_config busybox-huge udhcpc ntpd httpd mdev sysklogd huge
 
   for t in busybox-core \
            busybox \
