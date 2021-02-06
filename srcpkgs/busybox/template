@@ -106,7 +106,7 @@ do_check() {
     # required by the testsuite
     cp src/scripts/echo.c "$t/scripts"
     # run the testsuite
-    (cd "${t}"
+    (cd "$t/testsuite"
      SKIP_KNOWN_BUGS="yes" ./runtest -v)
   done
 }
