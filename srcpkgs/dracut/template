@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
-version=050
-revision=10
+version=051
+revision=1
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -17,14 +17,11 @@ case "$XBPS_TARGET_MACHINE" in
     makedepends+=" musl-fts-devel"
     ;;
 esac
-hostmakedepends+=" asciidoc"
-# XXX: docbook-xml was added to sort builders out, can be removed
-hostmakedepends+=" docbook-xml"
-hostmakedepends+=" pkg-config"
+hostmakedepends="pkg-config"
 homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
 license="GPL-2.0-or-later, LGPL-2.0-or-later"
-distfiles="https://github.com/dracutdevs/dracut/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f9dbf18597e5929221365964293212c8c9ffb7d84529c5a338c834ecab06e333"
+distfiles="$KERNEL_SITE/utils/boot/dracut/$pkgname-$version.tar.xz"
+checksum="95bc2586b771e3f4ab5c8637201732a137bb682395d25ab496374241091906e3"
 conf_files="/etc/dracut.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
