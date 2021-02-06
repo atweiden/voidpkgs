@@ -1004,8 +1004,7 @@ readonly PKGS=('3mux'
                'zsh-completions'
                'zsh-syntax-highlighting'
                'zstd'
-               'zulucrypt'
-               'zuluplay')
+               'zulucrypt')
 
 # end constants }}}
 # ==============================================================================

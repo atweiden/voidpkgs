@@ -745,8 +745,7 @@ constant %PKG = Map.new(
                 znc-tcl>,
     'zstd' => qw<libzstd
                  libzstd-devel>,
-    'zulucrypt' => ['zulucrypt-devel'],
-    'zuluplay' => ['zuluplay-devel']
+    'zulucrypt' => ['zulucrypt-devel']
 );
 
 sub mksymlinks(%pkg --> Nil)
