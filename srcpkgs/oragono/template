@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="oragono"
-version=2.5.0
+version=2.5.1
 revision=1
 short_desc="Modern IRC server (daemon/ircd) written in Go"
 hostmakedepends="git"
 homepage="https://oragono.io/"
 license="MIT"
 distfiles="https://github.com/oragono/oragono/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b954b20a19a3cfbc0c76febc6277217b275b355e0989edbd6d1a80a1accb6ded"
+checksum="1d38f36d73b4f2ffff158dfc47de833111b4c5f25703276a426c0f01618874ac"
 conf_files="/etc/oragono.conf"
 build_style="go"
 go_import_path="github.com/oragono/oragono"
