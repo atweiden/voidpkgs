@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="rust-analyzer"
-version=2021.01.18
+version=2021.02.01
 revision=1
 _ver=${version//./-}
 short_desc="Rust compiler front-end for IDEs"
 homepage="https://rust-analyzer.github.io/"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-analyzer/rust-analyzer/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="009ab946848719bb05bcaddab1cf5a75a45c5a92ae6dc31763adb42c3229f7db"
+checksum="8e977cff0d64bed30c5f1f7945889e3fa76e6e55bfed882d1b4a5d2ffd9efc2c"
 wrksrc="$pkgname-$_ver"
 build_style="cargo"
 make_install_args="--path=crates/$pkgname"
@@ -23,3 +23,5 @@ post_install() {
   vlicense LICENSE-MIT
   vdoc README.md
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
