@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.1.47
-revision=2
+revision=3
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" libatomic-devel"
@@ -137,7 +137,9 @@ libmariadbclient_package() {
 }
 
 libmariadbclient-devel_package() {
-  depends="libmariadbclient>=${version}_$revision"
+  unset depends
+  depends+=" libatomic-devel"
+  depends+=" libmariadbclient>=${version}_$revision"
   provides="libmysqlclient-devel-${version}_$revision"
   replaces="libmysqlclient-devel>=0"
   short_desc+=" - client development files"
@@ -208,6 +210,30 @@ mytop_package() {
   pkg_install() {
     vmove usr/bin/mytop
   }
+}
+
+libmysqlclient_package() {
+  build_style="meta"
+  depends="libmariadbclient"
+  short_desc="MySQL - (transitional dummy package)"
+}
+
+libmysqlclient-devel_package() {
+  build_style="meta"
+  depends="libmariadbclient-devel"
+  short_desc="MySQL - (transitional dummy package)"
+}
+
+mysql-client_package() {
+  build_style="meta"
+  depends="mariadb"
+  short_desc="MySQL - (transitional dummy package)"
+}
+
+mysql_package() {
+  build_style="meta"
+  depends="mariadb"
+  short_desc="MySQL - (transitional dummy package)"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

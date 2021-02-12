@@ -486,7 +486,11 @@ constant %PKG = Map.new(
     'man-pages' => ['man-pages-devel'],
     'mariadb' => qw<libmariadbclient
                     libmariadbclient-devel
+                    libmysqlclient
+                    libmysqlclient-devel
                     mariadb-client
+                    mysql
+                    mysql-client
                     mytop>,
     'mbedtls' => qw<mbedtls-devel
                     mbedtls-utils>,
