@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
-version=10.1.47
-revision=3
+version=10.1.48
+revision=1
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" libatomic-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://mariadb.org/"
 license="GPL-2.0-only"
 distfiles="http://archive.mariadb.org/mariadb-$version/source/$pkgname-$version.tar.gz"
-checksum="a4267487dbddf1dc1faed6e2a322c50a3e80d5d271cb487e8bdad6840e003227"
+checksum="e639a6113740fe10c3f3a609feb08a71344e0ed6f6a8364bc4f4f751746f6ee3"
 conf_files="/etc/mysql/my.cnf"
 build_style="cmake"
 configure_args+=" -DDEFAULT_CHARSET=utf8"
