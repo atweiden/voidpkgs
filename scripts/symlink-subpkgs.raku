@@ -525,6 +525,7 @@ constant %PKG = Map.new(
     'nodejs' => ['nodejs-devel'],
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
+    'nss' => ['nss-devel'],
     'nsss' => qw<nsss-devel
                  nsss-doc>,
     'ntfs-3g' => ['ntfs-3g-devel'],
