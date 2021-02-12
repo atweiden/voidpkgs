@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="edbrowse"
 version=3.7.7
-revision=1
+revision=2
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" duktape-devel"
 makedepends+=" libcurl-devel"
@@ -11,7 +11,7 @@ makedepends+=" readline-devel"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://edbrowse.org/"
-license="GPL-3.0-or-later"
+license="GPL-3.0-or-later, MIT"
 distfiles="https://github.com/CMB/edbrowse/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="bc015decc022d90f482a7f1028e9a56aa84f17406879f9aa1060e1dc175ed00f"
 build_style="cmake"
