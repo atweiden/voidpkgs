@@ -52,6 +52,9 @@ configure_args+=" -DWITH_PARTITION_STORAGE_ENGINE=1"
 configure_args+=" -DWITH_READLINE=ON"
 configure_args+=" -DWITH_SSL=system"
 configure_args+=" -DWITH_ZLIB=system"
+if [[ -n "$CROSS_BUILD" ]]; then
+  configure_args+=" -DWITH_UNIT_TESTS=OFF"
+fi
 system_accounts="mysql"
 mysql_homedir="/var/lib/mysql"
 lib32disabled="yes"
