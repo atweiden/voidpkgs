@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="opensmtpd-extras"
 version=6.6.0
-revision=1
+revision=2
 short_desc="Free implementation of the server-side SMTP protocol - extras"
 depends="opensmtpd"
 makedepends+=" libevent-devel"
-makedepends+=" libmysqlclient-devel"
+makedepends+=" libmariadbclient-devel"
 makedepends+=" libressl-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
