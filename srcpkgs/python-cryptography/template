@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-cryptography"
-version=3.3.1
+version=3.3.2
 revision=1
 short_desc="Python2 library that provides cryptographic recipes and primitives"
 depends+=" python-cffi"
@@ -10,7 +10,6 @@ depends+=" python-ipaddress"
 depends+=" python-six"
 makedepends+=" libressl-devel"
 makedepends+=" python-devel"
-makedepends+=" python3-devel"
 checkdepends+=" $depends"
 checkdepends+=" python-cryptography_vectors"
 checkdepends+=" python-hypothesis"
@@ -18,12 +17,6 @@ checkdepends+=" python-iso8601"
 checkdepends+=" python-pretend"
 checkdepends+=" python-pytest"
 checkdepends+=" python-pytz"
-checkdepends+=" python3-cryptography_vectors"
-checkdepends+=" python3-hypothesis"
-checkdepends+=" python3-iso8601"
-checkdepends+=" python3-pretend"
-checkdepends+=" python3-pytest"
-checkdepends+=" python3-pytz"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" python-cffi"
 hostmakedepends+=" python-enum34"
@@ -31,41 +24,21 @@ hostmakedepends+=" python-idna"
 hostmakedepends+=" python-ipaddress"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python-six"
-hostmakedepends+=" python3-cffi"
-hostmakedepends+=" python3-idna"
-hostmakedepends+=" python3-setuptools"
-hostmakedepends+=" python3-six"
 homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
-distfiles="$PYPI_SITE/c/cryptography/${pkgname#*-}-$version.tar.gz"
-checksum="7e177e4bea2de937a584b13645cab32f25e3d96fc0bc4a4cf99c27dc77682be6"
-wrksrc="${pkgname#*-}-$version"
-build_style="python-module"
+distfiles="$PYPI_SITE/c/cryptography/cryptography-$version.tar.gz"
+checksum="5a60d3780149e13b7a6ff7ad6526b38846354d11a15e21068e57073e29e19bed"
+wrksrc="cryptography-$version"
+build_style="python2-module"
 
 do_check() {
-  PYTHONPATH="$(cd build-2.7/lib* && pwd)" \
-    python2.7 -m pytest tests
-  PYTHONPATH="$(cd build-$py3_ver/lib* && pwd)" \
-    "python$py3_ver" -m pytest tests
+  PYTHONPATH="$(cd build/lib* && pwd)" python2.7 -m pytest tests
 }
 
 post_install() {
   vlicense LICENSE
   vlicense LICENSE.BSD
-}
-
-python3-cryptography_package() {
-  unset depends
-  depends+=" python3-cffi"
-  depends+=" python3-idna"
-  depends+=" python3-six"
-  short_desc="${short_desc/Python2/Python3}"
-  pkg_install() {
-    vmove "usr/lib/python3*"
-    vlicense LICENSE
-    vlicense LICENSE.BSD
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
