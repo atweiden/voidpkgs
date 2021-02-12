@@ -1,17 +1,18 @@
 maintainer="nox"
 pkgname="rclone"
 version=1.54.0
-revision=1
+revision=2
 short_desc="Rsync for cloud storage"
 homepage="https://rclone.org/"
 license="MIT"
 changelog="https://github.com/rclone/rclone/raw/master/docs/content/changelog.md"
-distfiles="https://github.com/rclone/rclone/releases/download/v$version/$pkgname-v$version.tar.gz"
+distfiles="https://downloads.rclone.org/v$version/$pkgname-v$version.tar.gz"
 checksum="95f952dc059b842bd40338458b77657f7b5a1680c4ca837a3adcf83b63c8fda1"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
-go_ldflags="-extldflags=-fuse-ld=bfd"
+go_ldflags+=" -extldflags=-fuse-ld=bfd"
+go_ldflags+=" -X github.com/rclone/rclone/fs.Version=v$version"
 
 export GOFLAGS="-trimpath"
 
@@ -23,6 +24,10 @@ pre_build() {
     # entirely
     export CGO_ENABLED=0
   fi
+}
+
+do_check() {
+  RCLONE_CONFIG="/notfound" go test ./...
 }
 
 post_install() {
