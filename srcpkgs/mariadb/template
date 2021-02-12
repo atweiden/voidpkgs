@@ -120,9 +120,12 @@ post_install() {
   # remove unneeded stuff
   rm -rf "$DESTDIR/usr"/{sql-bench,mysql-test,data}
   rm -f "$DESTDIR/usr/share/man/man1/mysql-test-run.pl.1"
+  rm -f "$DESTDIR/usr/bin/mytop"
+
   # configuration file
   install -Dm 644 "$DESTDIR/usr/share/mysql/my-medium.cnf" \
     "$DESTDIR/etc/mysql/my.cnf"
+
   vsv mysqld
 }
 
@@ -198,17 +201,6 @@ mariadb-client_package() {
         vmove "usr/share/man/man8/$f.8"
       fi
     done
-  }
-}
-
-mytop_package() {
-  unset depends
-  depends+=" $sourcepkg>=${version}_$revision"
-  depends+=" perl-DBD-mysql"
-  depends+=" perl-Term-ReadKey"
-  short_desc="Top-like query monitor for MariaDB"
-  pkg_install() {
-    vmove usr/bin/mytop
   }
 }
 

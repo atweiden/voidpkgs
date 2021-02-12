@@ -1,0 +1,20 @@
+maintainer="nox"
+pkgname="mytop"
+version=10.1.48
+revision=1
+short_desc="Top-like query monitor for MariaDB"
+depends+=" mariadb"
+depends+=" perl-DBD-mysql"
+depends+=" perl-Term-ReadKey"
+homepage="https://mariadb.org/"
+license="GPL-2.0-or-later"
+distfiles="https://github.com/MariaDB/server/raw/mariadb-$version/scripts/mytop.sh"
+checksum="e639a6113740fe10c3f3a609feb08a71344e0ed6f6a8364bc4f4f751746f6ee3"
+create_wrksrc="yes"
+skip_extraction="mytop.sh"
+
+do_install() {
+  vbin "$XBPS_SRCDISTDIR/$pkgname-$version/mytop.sh" mytop
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk

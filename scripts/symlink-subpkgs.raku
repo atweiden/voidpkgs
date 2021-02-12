@@ -490,8 +490,7 @@ constant %PKG = Map.new(
                     libmysqlclient-devel
                     mariadb-client
                     mysql
-                    mysql-client
-                    mytop>,
+                    mysql-client>,
     'mbedtls' => qw<mbedtls-devel
                     mbedtls-utils>,
     'mdocml' => ['void-man-cgi'],
