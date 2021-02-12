@@ -2,8 +2,9 @@
 maintainer="nox"
 pkgname="util-linux"
 version=2.36.1
-revision=1
+revision=2
 short_desc="Miscellaneous linux utilities"
+# FIXME: don't be so strict on the dependency
 depends="util-linux-libs-${version}_$revision"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libcap-ng-devel"
