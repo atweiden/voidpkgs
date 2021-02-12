@@ -1,27 +1,27 @@
 maintainer="nox"
 pkgname="duktape"
-version=2.4.0
+version=2.6.0
 revision=1
 short_desc="Embeddable JavaScript engine"
-homepage="http://duktape.org"
+homepage="https://duktape.org"
 license="MIT"
 distfiles="https://github.com/svaarala/duktape/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="86a89307d1633b5cedb2c6e56dc86e92679fc34b05be551722d8cc69ab0771fc"
+checksum="96f4a05a6c84590e53b18c59bb776aaba80a205afbbd92b82be609ba7fe75fa7"
 build_style="gnu-makefile"
 make_build_args="-f Makefile.sharedlibrary"
 make_install_args+=" -f Makefile.sharedlibrary"
 make_install_args+=" INSTALL_PREFIX=\${DESTDIR}/usr"
 
-pre_build() {
-  sed \
+post_patch() {
+  vsed \
     -i \
     -e 's|^CC.*||g' \
     Makefile.sharedlibrary
 }
 
 pre_install() {
-  vmkdir /usr/lib
-  vmkdir /usr/include
+  vmkdir usr/lib
+  vmkdir usr/include
 }
 
 post_install() {
@@ -29,8 +29,7 @@ post_install() {
   # two libraries were installed, one with debugging symbols, one without
   # sensible on a distro without debug splitting, but not on void
   # replace libduktape
-  cd "$DESTDIR/usr/lib"
-  rm libduktaped.*
+  rm "$DESTDIR/usr/lib"/libduktaped.*
 }
 
 duktape-devel_package() {
