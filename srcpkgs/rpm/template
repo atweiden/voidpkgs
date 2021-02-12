@@ -1,86 +1,116 @@
-# Template file for 'rpm'
-pkgname=rpm
+maintainer="nox"
+pkgname="rpm"
 version=4.16.1.2
 revision=1
-build_style=gnu-configure
-configure_args="--with-lua --with-cap --with-acl --with-external-db
- --enable-python PYTHON=python3 --sharedstatedir=/var/lib"
-hostmakedepends="automake gettext-devel libtool nss-devel pkg-config
- python3-setuptools"
-makedepends="libgcrypt-devel binutils-devel db-devel elfutils-devel file-devel libarchive-devel
- libcap-devel lua52-devel nss-devel popt-devel python3-devel libgomp-devel"
 short_desc="Red Hat Package Management Utils"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends+=" binutils-devel"
+makedepends+=" db-devel"
+makedepends+=" elfutils-devel"
+makedepends+=" file-devel"
+makedepends+=" libarchive-devel"
+makedepends+=" libcap-devel"
+makedepends+=" libgcrypt-devel"
+makedepends+=" libgomp-devel"
+makedepends+=" lua52-devel"
+makedepends+=" nss-devel"
+makedepends+=" popt-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" nss-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-setuptools"
 homepage="https://rpm.org"
-changelog="https://rpm.org/wiki/Releases/${version}.html"
-distfiles="http://ftp.rpm.org/releases/rpm-4.16.x/rpm-${version}.tar.bz2"
-checksum=8357329ceefc92c41687988b22198b26f74a12a9a68ac00728f934a5c4b4cacc
+license="GPL-2.0-or-later"
+changelog="https://rpm.org/wiki/Releases/$version.html"
+distfiles="http://ftp.rpm.org/releases/rpm-4.16.x/rpm-$version.tar.bz2"
+checksum="8357329ceefc92c41687988b22198b26f74a12a9a68ac00728f934a5c4b4cacc"
+build_style="gnu-configure"
+configure_args+=" --enable-python"
+configure_args+=" --sharedstatedir=/var/lib"
+configure_args+=" --with-acl"
+configure_args+=" --with-cap"
+configure_args+=" --with-external-db"
+configure_args+=" --with-lua"
+configure_args+=" PYTHON=python3"
 python_version=3
-conflicts="rpmextract>=0" # Both provide rpm2cpio
+# both provide rpm2cpio
+conflicts="rpmextract>=0"
 
-CFLAGS="-I${XBPS_CROSS_BASE}/${py3_inc}"
-CFLAGS+=" -I${XBPS_CROSS_BASE}/usr/include/nss"
-CFLAGS+=" -I${XBPS_CROSS_BASE}/usr/include/nspr"
+CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
+CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/nss"
+CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/nspr"
 
 case "$XBPS_TARGET_MACHINE" in
-	# Musl requires gettext to be included and it's cflag added otherwise
-	# it fails with _nl_msg_cat_cntr undefined reference error
-	*-musl)
-	makedepends+=" gettext-devel"
-	LDFLAGS+=" -lintl"
-	;;
+  # musl requires gettext to be included and its cflag added, otherwise
+  # it fails with _nl_msg_cat_cntr undefined reference error
+  *-musl)
+    makedepends+=" gettext-devel"
+    LDFLAGS+=" -lintl"
+    ;;
 esac
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 librpm-devel_package() {
-	depends="librpm-${version}_${revision} librpmbuild-${version}_${revision}
-	 librpmsign-${version}_${revision} librpmio-${version}_${revision} db-devel
-	 popt-devel liblzma-devel zlib-devel bzip2-devel nss-devel lua52-devel"
-	short_desc+=" - development files"
-	depends="${makedepends}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  unset depends
+  depends+=" bzip2-devel"
+  depends+=" db-devel"
+  depends+=" liblzma-devel"
+  depends+=" librpm-${version}_$revision"
+  depends+=" librpmbuild-${version}_$revision"
+  depends+=" librpmio-${version}_$revision"
+  depends+=" librpmsign-${version}_$revision"
+  depends+=" lua52-devel"
+  depends+=" nss-devel"
+  depends+=" popt-devel"
+  depends+=" zlib-devel"
+  depends+=" $makedepends"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
 
 rpm-python3_package() {
-	depends="rpm"
-	short_desc+=" - python bindings"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  depends="rpm"
+  short_desc+=" - python bindings"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
 
 librpm_package() {
-	short_desc+=" - rpm library"
-	pkg_install() {
-		vmove "usr/lib/librpm.so.*"
-	}
+  short_desc+=" - rpm library"
+  pkg_install() {
+    vmove "usr/lib/librpm.so.*"
+  }
 }
 
 librpmbuild_package() {
-	short_desc+=" - rpmbuild library"
-	pkg_install() {
-		vmove "usr/lib/librpmbuild.so.*"
-	}
+  short_desc+=" - rpmbuild library"
+  pkg_install() {
+    vmove "usr/lib/librpmbuild.so.*"
+  }
 }
 
 librpmsign_package() {
-	short_desc+=" - rpmsign library"
-	pkg_install() {
-		vmove "usr/lib/librpmsign.so.*"
-	}
+  short_desc+=" - rpmsign library"
+  pkg_install() {
+    vmove "usr/lib/librpmsign.so.*"
+  }
 }
 
 librpmio_package() {
-	short_desc+=" - rpmio library"
-	pkg_install() {
-		vmove "usr/lib/librpmio.so.*"
-	}
+  short_desc+=" - rpmio library"
+  pkg_install() {
+    vmove "usr/lib/librpmio.so.*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
