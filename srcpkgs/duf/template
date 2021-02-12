@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="duf"
-version=0.5.0
+version=0.6.0
 revision=1
 short_desc="Disk Usage/Free Utility"
 homepage="https://github.com/muesli/duf/"
 license="MIT"
 distfiles="https://github.com/muesli/duf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d8879fbf091cd6f6a3b95102fdeb7d21b7fc8200df1a9864b89d8e87057fc9c6"
+checksum="238ace11966ab3b1f99e5488a9f161ebc97aba7600a8f09884110d0572309491"
 build_style="go"
 go_import_path="github.com/muesli/duf"
 
