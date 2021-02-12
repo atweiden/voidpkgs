@@ -398,6 +398,10 @@ libqb.so.100 libqb-2.0.0_1
 libqrencode.so.4 libqrencode-4.0.0_1
 libquadmath.so.0 libquadmath-4.4.0_1
 libreadline.so.8 libreadline8-8.0_1
+librpm.so.9 librpm-4.15.0_1
+librpmbuild.so.9 librpmbuild-4.15.0_1
+librpmio.so.9 librpmio-4.15.0_1
+librpmsign.so.9 librpmsign-4.15.0_1
 librsync.so.2 librsync-1.0.0_1
 libasan.so.6 libsanitizer-10.2.0_1
 liblsan.so.0 libsanitizer-6.3.0_1

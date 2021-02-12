@@ -644,6 +644,12 @@ constant %PKG = Map.new(
     'raft' => ['raft-devel'],
     're2' => ['re2-devel'],
     'rhash' => ['rhash-devel'],
+    'rpm' => qw<librpm
+                librpm-devel
+                librpmbuild
+                librpmio
+                librpmsign
+                rpm-python3>,
     'ruby' => qw<ruby-devel
                  ruby-devel-doc
                  ruby-ri>,
