@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://mariadb.org/"
 license="GPL-2.0-only"
 distfiles="http://archive.mariadb.org/mariadb-$version/source/$pkgname-$version.tar.gz"
-checksum="e639a6113740fe10c3f3a609feb08a71344e0ed6f6a8364bc4f4f751746f6ee3"
+checksum="069d58b1e2c06bb1e6c31249eda34138f41fb8ae3dec7ecaeba8035812c87cf9"
 conf_files="/etc/mysql/my.cnf"
 build_style="cmake"
 configure_args+=" -DDEFAULT_CHARSET=utf8"
@@ -104,16 +104,9 @@ pre_build() {
     export PATH="$PATH:$wrksrc/extra:$wrksrc/scripts:$wrksrc/sql"
   fi
   export LD_LIBRARY_PATH="$wrksrc/build/storage/tokudb/ft-index/portability"
-  case "$XBPS_TARGET_MACHINE" in
-    aarch64*)
-      # work around gcc bug
-      # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81228
-      sed \
-        -i \
-        -e "s; -O3;;g" \
-        build/storage/mroonga/vendor/groonga/lib/CMakeFiles/libgroonga.dir/flags.make
-      ;;
-  esac
+  # it seems that there is no dependency listed in cmake on them, but
+  # they are still needed
+  ninja -C build sql/sql_yacc.cc sql/lex_hash.h
 }
 
 post_install() {
