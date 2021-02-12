@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="postfix"
 version=3.5.9
-revision=1
+revision=2
 short_desc="High-performance mail transport agent"
 makedepends+=" icu-devel"
 makedepends+=" libldap-devel"
-makedepends+=" libmysqlclient-devel"
+makedepends+=" libmariadbclient-devel"
 makedepends+=" pcre-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
