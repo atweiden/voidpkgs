@@ -10,6 +10,8 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
 fi
 if [[ -z "$CHROOT_READY" ]]; then
   hostmakedepends="cmake-bootstrap"
+  export CMAKE_GENERATOR="Unix Makefiles"
+  make_cmd="make"
 else
   hostmakedepends+=" asciidoc"
   hostmakedepends+=" perl"
