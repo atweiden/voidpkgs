@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="psmisc"
-version=23.3
+version=23.4
 revision=1
 short_desc="Small set of utilities that use the linux proc filesystem"
 makedepends="ncurses-devel"
 homepage="https://gitlab.com/psmisc/psmisc"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/psmisc/$pkgname-$version.tar.xz"
-checksum="41750e1a5abf7ed2647b094f58127c73dbce6876f77ba4e0a7e0995ae5c7279a"
+checksum="7f0cceeace2050c525f3ebb35f3ba01d618b8d690620580bdb8cd8269a0c1679"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
