@@ -13,8 +13,11 @@ license="MIT"
 distfiles="https://ziglang.org/download/$version/$pkgname-$version.tar.xz"
 checksum="2db3b944ab368d955b48743d9f7c963b8f96de1a441ba5a35e197237cc6dae44"
 build_style="cmake"
+make_cmd="make"
 nopie="yes"
 nocross="yes"
+
+export CMAKE_GENERATOR="Unix Makefiles"
 
 post_install() {
   vlicense LICENSE
