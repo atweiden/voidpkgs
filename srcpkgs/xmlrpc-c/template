@@ -1,45 +1,30 @@
 maintainer="nox"
 pkgname="xmlrpc-c"
-version=1.39.13
-revision=2
+version=1.51.06
+revision=1
 short_desc="XML-RPC for C and C++"
 makedepends+=" libcurl-devel"
 makedepends+=" libxml2-devel"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python"
+hostmakedepends+=" python3"
 homepage="http://xmlrpc-c.sourceforge.net/"
 license="BSD-3-Clause"
 distfiles="$SOURCEFORGE_SITE/xmlrpc-c/$pkgname-$version.tgz"
-checksum="491e44cae3763d285fc2a75fe6574882964f16451adbb7e6f3293916e120fca9"
+checksum="06dcd87d9c88374559369ffbe83b3139cf41418c1a2d03f20e08808085f89fd0"
 build_style="gnu-configure"
 configure_args+=" --disable-cgi-server"
 configure_args+=" --disable-libwww-client"
 configure_args+=" --disable-wininet-client"
 configure_args+=" --enable-cplusplus"
 configure_args+=" --enable-libxml2-backend"
-disable_parallel_build="yes"
 
 pre_configure() {
-  sed \
-    -i \
-    -e 's,XMLRPC_ABYSS_EXPORTED,XMLRPC_DLLEXPORT,g' \
-    include/xmlrpc-c/abyss.h
-  sed \
-    -i \
-    -e "s;AR=.*;AR=$AR;" \
-    -e "s;RANLIB=.*;RANLIB=$RANLIB;" \
-    configure
+  export AR
+  export RANLIB
 }
 
-post_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      # enable linux-gnu configuration for shlibs
-      sed \
-        -i \
-        -e "s;linux-gnu;linux-musl;g" \
-        "$wrksrc/config.mk"
-  esac
+do_check() {
+  : # tests don't work with --disable-cgi-server
 }
 
 post_install() {
