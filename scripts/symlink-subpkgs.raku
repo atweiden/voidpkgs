@@ -501,9 +501,6 @@ constant %PKG = Map.new(
     'musl' => ['musl-devel'],
     'musl-fts' => ['musl-fts-devel'],
     'musl-obstack' => ['musl-obstack-devel'],
-    'mysql' => qw<libmysqlclient
-                  libmysqlclient-devel
-                  mysql-client>,
     'ncurses' => qw<ncurses-base
                     ncurses-devel
                     ncurses-libs
