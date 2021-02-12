@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="s6-networking"
 version=2.4.0.0
-revision=1
+revision=2
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
 makedepends+=" s6-devel"
@@ -43,8 +43,10 @@ post_install() {
 }
 
 s6-networking-doc_package() {
+  unset depends
   short_desc+=" - documentation"
-  depends="$sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" s6-networking-man-pages"
   pkg_install() {
     vmove usr/share/doc
   }
