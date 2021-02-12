@@ -63,6 +63,8 @@ configure_args+=" BUILDCXX=$CXX_host"
 configure_args+=" BUILDCXXFLAGS=-O2"
 configure_args+=" squid_cv_gnu_atomics=yes"
 configure_args+=" squid_opt_enable_large_files=yes"
+# squid-conf-tests requires a squid user in the system
+make_check="no"
 system_accounts="squid"
 make_dirs+=" /var/cache/squid 750 squid squid"
 make_dirs+=" /var/log/squid 750 squid squid"
@@ -71,10 +73,6 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
   LDFLAGS+=" -latomic"
 fi
-
-do_check() {
-  : # squid-conf-tests requires a squid user in the system
-}
 
 post_install() {
   chmod u+s \
