@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="musl-legacy-compat"
 version=0.4
-revision=1
+revision=2
 short_desc="Legacy compatibility headers for the musl libc"
 archs="*-musl"
 homepage="http://www.voidlinux.eu/"
