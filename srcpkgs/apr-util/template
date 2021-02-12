@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="apr-util"
 version=1.6.1
-revision=9
+revision=10
 short_desc="Apache Portable Runtime Utility Library"
 makedepends+=" apr-devel"
 makedepends+=" db-devel"
 makedepends+=" expat-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" libldap-devel"
-makedepends+=" libmysqlclient-devel"
+makedepends+=" libmariadbclient-devel"
 makedepends+=" libressl-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
