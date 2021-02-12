@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="cyrus-sasl"
 version=2.1.27
-revision=4
+revision=5
 short_desc="Cyrus SASL - auth daemon and administration tools"
 depends="libsasl>=$version"
 makedepends+=" db-devel"
 makedepends+=" libldap-devel"
-makedepends+=" libmysqlclient-devel"
+makedepends+=" libmariadbclient-devel"
 makedepends+=" libressl-devel"
 makedepends+=" libsasl-devel"
 makedepends+=" mit-krb5-devel"
