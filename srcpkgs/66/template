@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="66"
-version=0.6.0.1
+version=0.6.1.1
 revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
 makedepends+=" execline-devel"
@@ -14,7 +14,7 @@ homepage="http://web.obarun.org/software/"
 license="ISC"
 changelog="https://framagit.org/Obarun/66/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="6267e6b51fa6a5c56ef10f385f89bbbf87dca51ff397be32a7dac161cbc25a9b"
+checksum="4f80d94851a8c26e9666ea0f274890fc3abb6185ca1fe9fd8e2ad71e27a2ade9"
 conf_files+=" /etc/66/init"
 conf_files+=" /etc/66/init.conf"
 wrksrc="$pkgname-v$version"
