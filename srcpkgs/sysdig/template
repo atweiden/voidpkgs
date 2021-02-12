@@ -38,9 +38,12 @@ case "$XBPS_TARGET_MACHINE" in
     configure_args+=" -DMUSL_OPTIMIZED_BUILD=On"
   ;;
 esac
+make_cmd="make"
 nocross="yes"
 disable_parallel_build="yes"
 dkms_modules="sysdig $version"
+
+export CMAKE_GENERATOR="Unix Makefiles"
 
 # avoid excessive warnings spam to the log
 CXXFLAGS="-Wno-deprecated-declarations"
