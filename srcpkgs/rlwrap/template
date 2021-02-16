@@ -1,14 +1,19 @@
 maintainer="nox"
 pkgname="rlwrap"
-version=0.44
+version=0.45
 revision=1
 short_desc="Adds readline-style editing and history to programs"
 depends="perl"
 makedepends="readline-devel"
+hostmakedepends="automake"
 homepage="https://github.com/hanslub42/rlwrap"
 license="GPL-2.0-or-later"
-distfiles="https://github.com/hanslub42/rlwrap/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="cd7ff50cde66e443cbea0049b4abf1cca64a74948371fa4f1b5d9a5bbce1e13c"
+distfiles="https://github.com/hanslub42/rlwrap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="780faa7330f306430aaf895984c936f451a8d35555145eff5451dc57b0c3ba8c"
 build_style="gnu-configure"
+
+pre_configure() {
+  autoreconf -fi
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
