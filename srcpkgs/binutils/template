@@ -5,12 +5,15 @@ revision=4
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
+  unset subpackages
   depends="binutils-doc"
   makedepends+=" elfutils-devel"
   checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
+  subpackages+=" binutils-devel"
+  subpackages+=" binutils-doc"
 fi
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
@@ -157,9 +160,10 @@ do_install() {
 }
 
 binutils-devel_package() {
-  depends="zlib-devel"
   if [[ -n "$CHROOT_READY" ]]; then
+    unset depends
     depends+=" libiberty-devel"
+    depends+=" zlib-devel"
   fi
   short_desc+=" - development files"
   pkg_install() {
