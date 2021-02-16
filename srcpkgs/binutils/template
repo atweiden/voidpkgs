@@ -4,8 +4,16 @@ version=2.35.1
 revision=4
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
+homepage="http://www.gnu.org/software/binutils/"
+license="GPL-3.0-or-later"
+distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
+checksum="3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607"
+patch_args="-Np1"
+subpackages="binutils-doc"
+bootstrap="yes"
+
 if [[ -n "$CHROOT_READY" ]]; then
-  unset subpackages
+  unset hostmakedepends
   depends="binutils-doc"
   makedepends+=" elfutils-devel"
   checkdepends="bc"
@@ -13,14 +21,7 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
   subpackages+=" binutils-devel"
-  subpackages+=" binutils-doc"
 fi
-homepage="http://www.gnu.org/software/binutils/"
-license="GPL-3.0-or-later"
-distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
-checksum="3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607"
-patch_args="-Np1"
-bootstrap="yes"
 
 _get_triplet() {
   if [[ -z "$XBPS_TRIPLET" ]]; then
