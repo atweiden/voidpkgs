@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=24
+revision=25
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -166,6 +166,8 @@ replaces+=" mozjs52<=52.9.0_7"
 replaces+=" mozjs60<=60.8.0_5"
 replaces+=" mozjs68<=68.11.0_1"
 replaces+=" orage<=4.12.1_7"
+replaces+=" oce<=0.18.3_1"
+replaces+=" oce-devel<=0.18.3_1"
 replaces+=" phonon-backend-gstreamer<=4.9.0_2"
 replaces+=" phonon-backend-vlc<=0.9.1_3"
 replaces+=" polkit-qt<=0.112.0_5"
