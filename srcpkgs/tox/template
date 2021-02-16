@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tox"
-version=3.21.2
+version=3.22.0
 revision=1
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-filelock"
@@ -13,13 +13,14 @@ checkdepends+=" $depends"
 checkdepends+=" python3-flaky"
 checkdepends+=" python3-freezegun"
 checkdepends+=" python3-pathlib2"
+checkdepends+=" python3-pip"
 checkdepends+=" python3-pytest-mock"
 hostmakedepends="python3-setuptools_scm"
 homepage="https://tox.readthedocs.io/en/latest/"
 license="MIT"
 changelog="https://tox.readthedocs.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/t/tox/tox-$version.tar.gz"
-checksum="f501808381c01c6d7827c2f17328be59c0a715046e94605ddca15fb91e65827d"
+checksum="ed1e650cf6368bcbc4a071eeeba363c480920e0ed8a9ad1793c7caaa5ad33d49"
 build_style="python3-module"
 
 do_check() {
