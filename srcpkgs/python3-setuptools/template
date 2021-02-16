@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-setuptools"
-version=52.0.0
+version=53.0.0
 revision=1
 short_desc="Easily build and distribute Python3 packages"
 depends="python3"
@@ -14,7 +14,7 @@ homepage="https://github.com/pypa/setuptools"
 license="MIT"
 changelog="https://github.com/pypa/setuptools/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/s/setuptools/setuptools-$version.tar.gz"
-checksum="fb3a1ee622509550dbf1d419f241296169d7f09cb1eb5b1736f2f10965932b96"
+checksum="1b18ef17d74ba97ac9c0e4b4265f123f07a8ae85d9cd093949fa056d3eeeead5"
 wrksrc="setuptools-$version"
 build_style="python3-module"
 provides="python3-distribute-${version}_1"
