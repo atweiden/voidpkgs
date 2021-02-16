@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.35.1
-revision=3
+revision=4
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 if [[ -n "$CHROOT_READY" ]]; then
@@ -37,6 +37,7 @@ do_configure() {
     conf+=" --with-debuginfod"
   else
     conf+=" --without-debuginfod"
+    conf+=" --disable-install-libbfd"
   fi
   if [[ -n "$CROSS_BUILD" ]]; then
     # we don't want --with-sysroot=$XBPS_CROSS_BASE like gnu-configure
@@ -94,7 +95,6 @@ do_configure() {
     --enable-deterministic-archives \
     --enable-64-bit-bfd \
     --enable-ld="default" \
-    --enable-install-libiberty \
     --with-system-zlib \
     --with-mmap \
     --with-pic \
@@ -132,13 +132,15 @@ do_install() {
   rm -f "$DESTDIR/usr/bin/ld"
   ln -sfr "$DESTDIR/usr/bin/ld.bfd" "$DESTDIR/usr/bin/ld"
 
-  # remove these symlinks, they are not ABI stable
-  # programs should compile static to the .a file
-  rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
-  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" > \
-    "$DESTDIR/usr/lib/libbfd.so"
-  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > \
-    "$DESTDIR/usr/lib/libopcodes.so"
+  if [[ -n "$CHROOT_READY" ]]; then
+    # remove these symlinks, they are not ABI stable
+    # programs should compile static to the .a file
+    rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
+    echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" > \
+      "$DESTDIR/usr/lib/libbfd.so"
+    echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > \
+      "$DESTDIR/usr/lib/libopcodes.so"
+  fi
 
   # remove useless manpages
   for f in dlltool \
@@ -156,6 +158,9 @@ do_install() {
 
 binutils-devel_package() {
   depends="zlib-devel"
+  if [[ -n "$CHROOT_READY" ]]; then
+    depends+=" libiberty-devel"
+  fi
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
