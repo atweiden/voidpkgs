@@ -1,19 +1,20 @@
-# Template file for 'execline-man-pages'
-pkgname=execline-man-pages
+maintainer="nox"
+pkgname="execline-man-pages"
 version=2.7.0.1.2
 revision=1
-build_style=gnu-makefile
-hostmakedepends="mdocml"
 short_desc="Mdoc versions of the documentation for the execline suite"
-maintainer="mobinmob <mobinmob@disroot.org>"
-license="ISC"
+hostmakedepends="mdocml"
 homepage="https://github.com/flexibeast/execline-man-pages"
-distfiles="https://github.com/flexibeast/execline-man-pages/archive/v${version}.tar.gz"
-checksum=e81ae14e87d72c56308b14b1d854a6e56476bc17c48d83d89701e05b67579b8c
+license="ISC"
+distfiles="https://github.com/flexibeast/execline-man-pages/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="e81ae14e87d72c56308b14b1d854a6e56476bc17c48d83d89701e05b67579b8c"
+build_style="gnu-makefile"
 
 do_install() {
-	vmkdir usr/share/man/man1
-	vmkdir usr/share/man/man7
-	make MANPATH="${DESTDIR}/usr/share/man"
-	vlicense LICENSE
+  vmkdir usr/share/man/man1
+  vmkdir usr/share/man/man7
+  make MANPATH="$DESTDIR/usr/share/man"
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
