@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nginx"
 version=1.18.0
-revision=2
+revision=3
 short_desc="High performance web and reverse proxy server"
 makedepends+=" libressl-devel"
 makedepends+=" pcre-devel"
@@ -27,11 +27,13 @@ make_dirs+=" /var/log/nginx 0750 root root"
 make_dirs+=" /var/tmp 1777 root root"
 make_dirs+=" /var/tmp/nginx 0750 nginx root"
 build_options+=" geoip"
+build_options+=" slice"
 build_options+=" stream"
+desc_option_slice="Enable support for slice filters"
 desc_option_stream="Enable support for stream proxies"
 build_options_default+=" geoip"
+build_options_default+=" slice"
 build_options_default+=" stream"
-reverts="1.17.7_1"
 
 do_configure() {
   local cfgdir
@@ -85,7 +87,8 @@ do_configure() {
     --with-http_stub_status_module \
     --with-http_sub_module \
     $(vopt_if geoip --with-http_geoip_module) \
-    $(vopt_if stream "$stream_modules")
+    $(vopt_if stream "$stream_modules") \
+    $(vopt_if slice --with-http_slice_module)
 }
 
 pre_build() {
