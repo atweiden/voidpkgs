@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="darkhttpd"
-version=1.12
-revision=3
+version=1.13
+revision=1
 short_desc="Small and secure static webserver"
 homepage="https://unix4lyfe.org/darkhttpd/"
 license="ISC"
-distfiles="https://unix4lyfe.org/darkhttpd/$pkgname-$version.tar.bz2"
-checksum="a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505"
+distfiles="https://github.com/emikulic/darkhttpd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="1d88c395ac79ca9365aa5af71afe4ad136a4ed45099ca398168d4a2014dc0fc2"
 system_accounts="_darkhttpd"
 make_dirs+=" /srv/www/darkhttpd 0755 _darkhttpd _darkhttpd"
 make_dirs+=" /var/log/darkhttpd 0755 _darkhttpd _darkhttpd"
