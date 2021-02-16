@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iptables"
-version=1.8.6
+version=1.8.7
 revision=1
 short_desc="Linux IPv[46] packet filtering ruleset"
 makedepends+=" libfl-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.netfilter.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.netfilter.org/projects/iptables/files/$pkgname-$version.tar.bz2"
-checksum="a0f4fe0c3eb8faa5bd9c8376d132f340b9558e750c91deb2d5028aa3d0047767"
+checksum="c109c96bb04998cd44156622d36f8e04b140701ec60531a10668cfdff5e8d8f0"
 build_style="gnu-configure"
 configure_args+=" --enable-bpf-compiler"
 configure_args+=" --enable-devel"
