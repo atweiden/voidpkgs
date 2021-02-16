@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="execline"
 version=2.7.0.1
-revision=1
+revision=2
 short_desc="Non-interactive scripting language"
 makedepends="skalibs-devel"
 homepage="https://skarnet.org/software/execline/"
@@ -38,8 +38,10 @@ post_install() {
 }
 
 execline-doc_package() {
+  unset depends
   short_desc+=" - documentation"
-  depends="$sourcepkg>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" execline-man-pages"
   pkg_install() {
     vmove usr/share/doc
   }
