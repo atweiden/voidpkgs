@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=25
+revision=26
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -205,6 +205,9 @@ replaces+=" qt-plugin-sqlite<=4.8.7_29"
 replaces+=" qt-qmake<=4.8.7_29"
 replaces+=" r2-bindings<=1.0.1_2"
 replaces+=" reminiscence<=0.4.6_1"
+replaces+=" rkt<=1.30.0_3"
+replaces+=" rkt-stage1-fly<=1.30.0_3"
+replaces+=" rkt-stage1-coreos<=1.30.0_3"
 replaces+=" scantailor<=0.9.12.1_2"
 replaces+=" seriespl<=2.3.5_2"
 replaces+=" simple-obfs<=0.0.5_2"
