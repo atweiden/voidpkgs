@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=26
+revision=27
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -164,8 +164,6 @@ replaces+=" mattermost-desktop<=4.6.0_1"
 replaces+=" mdds0<=0.12.1_3"
 replaces+=" mirrorbits<=0.5.1_1"
 replaces+=" mongroup<=0.4.1_2"
-replaces+=" mozjs52<=52.9.0_7"
-replaces+=" mozjs60<=60.8.0_5"
 replaces+=" mozjs68<=68.11.0_1"
 replaces+=" orage<=4.12.1_7"
 replaces+=" oce<=0.18.3_1"
