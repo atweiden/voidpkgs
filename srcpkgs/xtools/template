@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="xtools"
-version=0.62
+version=0.63
 revision=1
 short_desc="Opinionated helpers for working with XBPS"
 depends+=" bash"
@@ -13,7 +13,7 @@ depends+=" xbps"
 homepage="http://git.vuxu.org/xtools"
 license="Public Domain"
 distfiles="http://git.vuxu.org/xtools/snapshot/$pkgname-$version.tar.gz"
-checksum="befbe27f4b8091f04ab79024b76c0bad15f86a5f5e6f3624648d633b854696df"
+checksum="6bc49a536488f3e911317a31f916df9f6778d34685db6aa2d7bd75be07f12995"
 build_style="gnu-makefile"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
