@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.35.0
-revision=1
+revision=2
 _abseilver="0f3bb466b868b523cf1dc9b2aaaed65c77b28862"
 short_desc="High performance, open source, general RPC framework"
 makedepends+=" c-ares-devel"
