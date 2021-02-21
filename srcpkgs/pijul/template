@@ -2,6 +2,7 @@ maintainer="nox"
 pkgname="pijul"
 version=0.12.2
 revision=3
+_sequoia_ver=0.9.0
 short_desc="Distributed version control system based on patches"
 makedepends+=" libressl-devel"
 makedepends+=" libsodium-devel"
@@ -10,8 +11,10 @@ hostmakedepends+=" clang"
 hostmakedepends+=" pkg-config"
 homepage="https://pijul.org/"
 license="GPL-2.0-only"
-distfiles="https://crates.io/api/v1/crates/pijul/$version/download>$pkgname-$version.tar.gz"
-checksum="f92a3f4063e780ca45c161ceb0f42baf34dfeddf3359ebf6c2e0442d9abb5889"
+distfiles+=" https://crates.io/api/v1/crates/pijul/$version/download>$pkgname-$version.tar.gz"
+distfiles+=" https://gitlab.com/sequoia-pgp/sequoia/-/archive/v$_sequoia_ver/sequoia-v$_sequoia_ver.tar.gz"
+checksum+=" f92a3f4063e780ca45c161ceb0f42baf34dfeddf3359ebf6c2e0442d9abb5889"
+checksum+=" 71823c88b9666611f3cfa6b1d923bd66fda92fa6a53368b195bd2f962fdf7f4b"
 build_style="cargo"
 
 if [[ -n "$CROSS_BUILD" ]]; then
