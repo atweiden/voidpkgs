@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="termshark"
 version=2.2.0
-revision=1
+revision=2
 short_desc="Terminal UI for tshark, inspired by Wireshark"
 depends="wireshark"
 hostmakedepends="git"
@@ -10,8 +10,8 @@ license="MIT"
 distfiles="https://github.com/gcla/termshark/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="deefdb0b65e5d5b97c305cf280770724542f8dd122502f616e394c62c91db0c4"
 build_style="go"
-go_import_path="github.com/gcla/termshark"
-go_package="$go_import_path/v2/cmd/termshark"
+go_import_path="github.com/gcla/termshark/v2"
+go_package="$go_import_path/cmd/termshark"
 
 export GOFLAGS="-trimpath"
 
