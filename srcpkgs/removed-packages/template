@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=27
+revision=28
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -210,6 +210,7 @@ replaces+=" rkt-stage1-coreos<=1.30.0_3"
 replaces+=" scantailor<=0.9.12.1_2"
 replaces+=" seriespl<=2.3.5_2"
 replaces+=" simple-obfs<=0.0.5_2"
+replaces+=" sitecopy<=0.16.6_11"
 replaces+=" skypetab-ng<=20150201_3"
 replaces+=" soulseekqt<=20160117_2"
 replaces+=" spacefm-ng<=1.0.6_3"
