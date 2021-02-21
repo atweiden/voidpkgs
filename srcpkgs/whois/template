@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="whois"
-version=5.5.7
+version=5.5.8
 revision=1
 short_desc="Improved whois client"
 makedepends="libidn2-devel"
@@ -11,7 +11,7 @@ homepage="https://www.linux.it/~md/software"
 license="GPL-2.0-or-later"
 changelog="https://github.com/rfc1036/whois/raw/next/debian/changelog"
 distfiles="$DEBIAN_SITE/main/w/$pkgname/${pkgname}_$version.tar.xz"
-checksum="3efa700dbf38d127c31b21af3176cd6e5a69f96a056be60ac1dcd13df7717393"
+checksum="cd9e7bad3b6968182bfcc311e22be3aec9a974397377d748845147884ce07547"
 wrksrc="whois"
 alternatives+=" whois:whois:/usr/bin/gwhois"
 alternatives+=" whois:whois.1:/usr/share/man/man1/gwhois.1"
