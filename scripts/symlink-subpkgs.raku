@@ -245,6 +245,7 @@ constant %PKG = Map.new(
                  grub-utils
                  grub-x86_64-efi
                  grub-xen>,
+    'grub-btrfs' => ['grub-btrfs-runit'],
     'gsasl' => qw<gsasl-devel
                   libgsasl>,
     'gtest' => ['gtest-devel'],

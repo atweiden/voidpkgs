@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="grub-btrfs"
-version=4.8
+version=4.8.1
 revision=1
 short_desc="Include btrfs snapshots at Grub menu"
 depends+=" bash"
@@ -8,11 +8,22 @@ depends+=" grub"
 homepage="https://github.com/Antynea/grub-btrfs"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/Antynea/grub-btrfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="78ba3c0e5c998317785d07409c6aaebb269fad1fe97794c95a0842f012676794"
+checksum="a0092e705adc91fbb73804327abe68002fa705ea7a4948bb21467134c7f69830"
 build_style="gnu-makefile"
 
 post_install() {
   rm -rf -- "$DESTDIR/usr/lib/systemd"
+}
+
+grub-btrfs-runit_package() {
+  unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" wendy"
+  short_desc+=" - runit service"
+
+  pkg_install() {
+    vsv grub-btrfs
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
