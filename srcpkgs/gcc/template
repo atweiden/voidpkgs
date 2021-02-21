@@ -14,7 +14,7 @@ pkgname="gcc"
 # to get regression fixes not yet incorporate into a stable release
 # it should be possible to switch back to stable with 10.3 or 11
 version=${_patchver}pre1
-revision=2
+revision=3
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
