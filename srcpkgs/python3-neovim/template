@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="python3-neovim"
-version=0.4.1
-revision=2
+version=0.4.2
+revision=1
 short_desc="Python3 client for Neovim"
 depends+=" neovim"
 depends+=" python3-greenlet"
 depends+=" python3-msgpack"
 hostmakedepends="python3-setuptools"
-homepage="https://github.com/neovim/python-client"
+homepage="https://github.com/neovim/pynvim"
 license="Apache-2.0"
-distfiles="https://github.com/neovim/python-client/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="132ea5c226399aed45a959f1d8efe8cdd89a769a672534722760a9a67b06dfa0"
+distfiles="https://github.com/neovim/pynvim/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="513b56741b1140e394536e6c29bae112a35b7c3602b71ba34acf2319570e26e7"
 wrksrc="pynvim-$version"
 build_style="python3-module"
 
