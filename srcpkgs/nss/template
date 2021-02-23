@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nss"
-version=3.61
+version=3.62
 revision=1
 _nsprver=4.29
 short_desc="Mozilla Network Security Services"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="312e2d804b34ccf0fec70b57cf8cd6ac853f8ced60df53e30ebb0a7bcd0e1370"
+checksum="86d6df7cece25b8d4efa53e4c19af903c484eb79871163f37b5232bb406a5478"
 
 export BUILD_OPT=1
 export FREEBL_NO_DEPEND=1
@@ -230,3 +230,5 @@ nss-devel_package() {
     vmove "usr/lib/*.a"
   }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
