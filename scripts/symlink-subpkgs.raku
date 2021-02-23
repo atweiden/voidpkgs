@@ -118,7 +118,6 @@ constant %PKG = Map.new(
     'confuse' => ['confuse-devel'],
     'coreboot-utils' => ['coreboot-utils-me_cleaner'],
     'cracklib' => qw<cracklib-devel
-                     cracklib-python
                      libcracklib>,
     'crypto++' => ['crypto++-devel'],
     'cryptsetup' => qw<cryptsetup-devel

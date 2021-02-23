@@ -1,13 +1,11 @@
 maintainer="nox"
 pkgname="cracklib"
 version=2.9.7
-revision=1
+revision=2
 short_desc="Password Checking Library"
-makedepends="python-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
-hostmakedepends+=" python"
 homepage="https://github.com/cracklib/cracklib"
 license="LGPL-2.1-or-later"
 distfiles+=" https://github.com/cracklib/cracklib/releases/download/v$version/$pkgname-$version.tar.gz"
@@ -35,16 +33,6 @@ cracklib-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
-  }
-}
-
-cracklib-python_package() {
-  depends="python"
-  short_desc+=" - Python bindings"
-  lib32disabled="yes"
-  pycompile_module="cracklib.py"
-  pkg_install() {
-    vmove "usr/lib/python*"
   }
 }
 
