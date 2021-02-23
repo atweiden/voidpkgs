@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="protobuf26"
-version=3.15.0
+version=3.15.1
 revision=1
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
@@ -11,7 +11,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6aff9834fd7c540875e1836967c8d14c6897e3785a2efac629f69860fb7834ff"
+checksum="f18a40816260a9a3190a94efb0fc26270b244a2436681602f0a944739095d632"
 wrksrc="protobuf-$version"
 build_style="gnu-configure"
 # switch to versioned package
