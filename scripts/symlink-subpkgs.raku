@@ -702,6 +702,7 @@ constant %PKG = Map.new(
     'tidy5' => qw<libtidy5
                   libtidy5-devel>,
     'toxcore' => ['toxcore-devel'],
+    'tree-sitter' => ['tree-sitter-devel'],
     'trousers' => ['trousers-devel'],
     'u-boot-tools' => ['uboot-mkimage'],
     'udns' => ['udns-devel'],
