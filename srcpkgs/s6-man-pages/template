@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="s6-man-pages"
-version=2.10.0.1.2
+version=2.10.0.2.1
 revision=1
 short_desc="Ports of the HTML documentation for the s6 supervision suite to mdoc(7)"
 hostmakedepends="mdocml"
 homepage="https://github.com/flexibeast/s6-man-pages"
 license="ISC"
 distfiles="https://github.com/flexibeast/s6-man-pages/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d7d8d16662d8fc9ccdb73ab24576c1f88718103d1a46d2c063bde9d234b79c7f"
+checksum="4b831ed89f6a53550626f28d09ea594042321ac6a81d42175b0c52de041ba3cf"
 build_style="gnu-makefile"
 
 do_install() {
