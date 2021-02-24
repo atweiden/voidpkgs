@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Term-ReadLine-Gnu"
-version=1.36
-revision=3
+version=1.40
+revision=1
 short_desc="Perl extension for the GNU readline/history library"
 makedepends+=" ncurses-devel"
 makedepends+=" perl"
@@ -10,7 +10,7 @@ hostmakedepends="$makedepends"
 homepage="https://metacpan.org/release/Term-ReadLine-Gnu"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Term/${pkgname#*-}-$version.tar.gz"
-checksum="9a08f7a4013c9b865541c10dbba1210779eb9128b961250b746d26702bab6925"
+checksum="d3a6169aeb1f04f9f05853a4f1c3b26dd265f6f00b790024959cb8f395842774"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
