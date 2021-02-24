@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="netsniff-ng"
-version=0.6.6
-revision=2
+version=0.6.8
+revision=1
 short_desc="Free Linux networking toolkit"
 makedepends+=" libcli-devel"
 makedepends+=" libnet-devel"
@@ -18,7 +18,7 @@ hostmakedepends+=" which"
 homepage="http://netsniff-ng.org/"
 license="GPL-3.0-or-later"
 distfiles="http://pub.netsniff-ng.org/netsniff-ng/$pkgname-$version.tar.gz"
-checksum="0a7092937209585b361400493d81ea1123a529494203824c0cd8e95562072c5e"
+checksum="ca22e98208003eb7f75b2d177378848f7178dab83f5c320a0fffb409bdfbb160"
 build_style="configure"
 configure_args+=" --disable-geoip"
 configure_args+=" --prefix=/usr"
