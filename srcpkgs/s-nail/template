@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="s-nail"
-version=14.9.21
+version=14.9.22
 revision=1
 short_desc="Mail processing system with a command syntax reminiscent of ed"
 makedepends+=" libidn2-devel"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://git.sdaoden.eu/cgit/s-nail.git"
 license="BSD-4-Clause, BSD-3-Clause, BSD-2-Clause, ISC"
 distfiles="https://www.sdaoden.eu/downloads/s-nail-$version.tar.xz"
-checksum="bf21d72531f85b8882c5a583ce96c901104ce0102a287c7ad680ef068c2ceafd"
+checksum="e5dfb7d5bcc5d2d1126f2e826569ee0f149aac3f2a8a6b7c23985ffc3a1def0b"
 conf_files="/etc/s-nail.rc"
 provides="mail-${version}_$revision"
 alternatives+=" mail:mail.1:/usr/share/man/man1/s-nail.1"
