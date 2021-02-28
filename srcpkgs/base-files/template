@@ -21,6 +21,7 @@ conf_files+=" /etc/skel/.bash_logout"
 conf_files+=" /etc/skel/.bash_profile"
 conf_files+=" /etc/skel/.bashrc"
 conf_files+=" /etc/skel/.inputrc"
+conf_files+=" /etc/sysctl.d/10-void.conf"
 conf_files+=" /etc/subgid"
 conf_files+=" /etc/subuid"
 # new system groups
@@ -86,6 +87,7 @@ do_install() {
   vinstall "$FILESDIR/blacklist.conf" 644 usr/lib/modprobe.d
   # sysctl(8) files
   vinstall "$FILESDIR/sysctl.conf" 644 usr/lib/sysctl.d 10-void.conf
+  vinstall "$FILESDIR/sysctl-user.conf" 644 etc/sysctl.d 10-void.conf
 
   # install common licenses, from debian
   vmkdir usr/share/licenses
