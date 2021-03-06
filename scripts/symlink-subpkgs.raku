@@ -573,14 +573,6 @@ constant %PKG = Map.new(
                        postgresql-pltcl
                        postgresql9.6-libs
                        postgresql9.6-libs-devel>,
-    'postgresql12' => qw<postgresql12-client
-                         postgresql12-contrib
-                         postgresql12-doc
-                         postgresql12-libs
-                         postgresql12-libs-devel
-                         postgresql12-plperl
-                         postgresql12-plpython
-                         postgresql12-pltcl>,
     'postgresql13' => qw<postgresql-libs
                          postgresql-libs-devel
                          postgresql13-client
