@@ -389,10 +389,10 @@ libprotobuf.so.26 libprotobuf26-3.15.0_1
 libprotobuf-lite.so.26 libprotobuf26-lite-3.15.0_1
 libprotoc.so.26 libprotoc26-3.15.0_1
 libpsl.so.5 libpsl-0.20.2_1
-libpulse-simple.so.0 libpulseaudio-1.0_1
-libpulse.so.0 libpulseaudio-1.0_1
-libpulsecommon-14.2.so libpulseaudio-14.2_1
-libpulsecore-14.2.so libpulseaudio-14.2_1
+libpulse-simple.so.0 libpulseaudio-14.2_2
+libpulse.so.0 libpulseaudio-14.2_2
+libpulsecommon-14.2.so libpulseaudio-14.2_2
+libpulsecore-14.2.so libpulseaudio-14.2_2
 libpwquality.so.1 libpwquality-1.1.1_1
 libpytalloc-util.so.2 libpytalloc-util-2.3.1_2
 libqb.so.100 libqb-2.0.0_1
