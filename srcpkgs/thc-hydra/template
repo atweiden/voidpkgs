@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="thc-hydra"
 version=9.1
-revision=1
+revision=2
 short_desc="Tool to guess/crack valid login/password pairs"
 makedepends+=" libidn-devel"
 makedepends+=" libmariadbclient-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libssh-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" zlib-devel"
