@@ -646,10 +646,10 @@ libusbguard.so.1 usbguard-1.0.0_1
 libusbredirhost.so.1 usbredir-0.7_1
 libusbredirparser.so.1 usbredir-0.7_1
 libiw.so.29 wireless_tools-29_1
-libwvbase.so.4.6 wvstreams-4.6.1_1
-libwvstreams.so.4.6 wvstreams-4.6.1_1
-libwvutils.so.4.6 wvstreams-4.6.1_1
-libuniconf.so.4.6 wvstreams-4.6.1_2
+libuniconf.so.4.6 wvstreams-4.6.1_20
+libwvbase.so.4.6 wvstreams-4.6.1_20
+libwvstreams.so.4.6 wvstreams-4.6.1_20
+libwvutils.so.4.6 wvstreams-4.6.1_20
 libhandle.so.1 xfsprogs-3.2.1_1
 libxmlrpc++.so.8 xmlrpc-c-1.51.06_2
 libxmlrpc.so.3 xmlrpc-c-1.51.06_2
