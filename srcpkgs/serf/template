@@ -7,15 +7,27 @@ makedepends+=" apr-util-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" libressl-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" apr-util-devel"
-hostmakedepends+=" libressl-devel"
+hostmakedepends="libressl-devel"
 homepage="http://serf.apache.org"
 license="Apache-2.0"
 distfiles="https://archive.apache.org/dist/serf/$pkgname-$version.tar.bz2"
 checksum="549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc"
 build_style="scons"
 make_build_args="PREFIX=/usr"
-nocross="yes"
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  make_build_args+=" APR=$XBPS_WRAPPERDIR/apr-1-config"
+  make_build_args+=" APU=$XBPS_WRAPPERDIR/apu-1-config"
+fi
+
+pre_build() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s;'/usr';'$XBPS_CROSS_BASE/usr';" \
+      SConstruct
+  fi
+}
 
 do_install() {
   scons PREFIX="$DESTDIR/usr" install
