@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="postgresql"
 version=9.6.20
-revision=1
+revision=2
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" libxslt-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
 makedepends+=" perl"
 makedepends+=" python-devel"
