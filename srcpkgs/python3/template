@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="python3"
 version=3.9.2
-revision=1
+revision=2
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
 checkdepends+=" ca-certificates"
@@ -13,7 +13,7 @@ makedepends+=" expat-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" libffi-devel"
 makedepends+=" liblzma-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
