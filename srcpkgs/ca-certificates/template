@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="ca-certificates"
 version=20210119
-revision=1
+revision=2
 short_desc="Common CA certificates for SSL/TLS"
-depends+=" libressl>=2.2.4_2"
+depends+=" openssl<=2.0_1"
 depends+=" run-parts"
-hostmakedepends="libressl"
+hostmakedepends="openssl"
 homepage="https://tracker.debian.org/pkg/ca-certificates"
 license="GPL-2.0-or-later, MPL-2.0"
 distfiles="$DEBIAN_SITE/main/c/ca-certificates/${pkgname}_$version.tar.xz"
@@ -38,10 +38,6 @@ do_install() {
     "$DESTDIR/usr/share/man/man8/update-ca-certificates.8"
   cd "$DESTDIR/usr/share/ca-certificates"
   find . -name "*.crt" | sort | cut -b3- > "$DESTDIR/etc/ca-certificates.conf"
-  vsed \
-    -i \
-    -e 's,openssl rehash,openssl certhash,g' \
-    "$DESTDIR/usr/sbin/update-ca-certificates"
   mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
   ln -s /etc/ssl/certs/ca-certificates.crt "$DESTDIR/etc/ssl/certs.pem"
 }
