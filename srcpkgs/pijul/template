@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="pijul"
 version=0.12.2
-revision=3
+revision=4
 _sequoia_ver=0.9.0
 short_desc="Distributed version control system based on patches"
-makedepends+=" libressl-devel"
 makedepends+=" libsodium-devel"
 makedepends+=" nettle-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" clang"
 hostmakedepends+=" pkg-config"
 homepage="https://pijul.org/"
