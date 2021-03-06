@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="websocat"
 version=1.6.0
-revision=1
+revision=2
 short_desc="Netcat, curl and socat for WebSockets"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="https://github.com/vi/websocat"
 license="MIT"
 distfiles="https://github.com/vi/websocat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="3f7e5e99d766b387292af56c8e4b39ce9a7f0da54ff558a6080ddc1024a33896"
 build_style="cargo"
+configure_args="--features=ssl"
 
 post_install() {
   vlicense LICENSE
