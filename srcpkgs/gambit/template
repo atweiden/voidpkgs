@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="gambit"
 version=4.9.3
-revision=5
+revision=6
 short_desc="Complete, portable, efficient and reliable implementation of Scheme"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="https://github.com/gambit/gambit"
 license="LGPL-2.1-only, Apache-2.0"
 distfiles="https://github.com/gambit/gambit/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
