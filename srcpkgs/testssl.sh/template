@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="testssl.sh"
 version=3.0
-revision=1
+revision=2
 short_desc="Command line tool which checks a server for the support of TLS/SSL"
-archs="noarch"
 depends="libressl"
 homepage="https://testssl.sh"
 license="GPL-2.0-only"
