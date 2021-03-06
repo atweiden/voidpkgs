@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="trousers"
 version=0.3.14
-revision=10
+revision=11
 short_desc="Trusted Computing Software Stack for the TPM"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="http://trousers.sourceforge.net/"
 license="BSD-3-Clause"
 #distfiles="$SOURCEFORGE_SITE/trousers/$pkgname-$version.tar.gz"
