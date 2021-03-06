@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="i2pd"
 version=2.33.0
-revision=1
+revision=2
 short_desc="Full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
-makedepends+=" libressl-devel"
 makedepends+=" miniupnpc-devel"
+makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
 homepage="https://i2pd.website/"
 license="BSD-3-Clause"
