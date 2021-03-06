@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="rsync"
 version=3.2.3
-revision=2
+revision=3
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libzstd-devel"
+makedepends+=" openssl-devel"
 makedepends+=" popt-devel"
 makedepends+=" xxHash-devel"
 makedepends+=" zlib-devel"
