@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="aircrack-ng"
 version=1.6
-revision=2
+revision=3
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libnl3-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" automake"
