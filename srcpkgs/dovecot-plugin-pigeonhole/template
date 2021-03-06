@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="dovecot-plugin-pigeonhole"
 version=0.5.13
-revision=1
+revision=2
 short_desc="Sieve implementation for Dovecot"
 makedepends+=" dovecot-devel"
 makedepends+=" libldap-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends="libldap-devel"
 homepage="https://pigeonhole.dovecot.org"
 license="LGPL-2.1-or-later"
