@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="nginx"
 version=1.18.0
-revision=3
+revision=4
 short_desc="High performance web and reverse proxy server"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" $(vopt_if geoip geoip-devel)"
 hostmakedepends="$makedepends"
