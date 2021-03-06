@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="so"
 version=0.4.2
-revision=1
+revision=2
 short_desc="Terminal interface for Stack Overflow"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/samtay/so"
 license="MIT"
