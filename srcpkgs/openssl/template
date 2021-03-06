@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssl"
 version=1.1.1j
-revision=1
+revision=2
 short_desc="Toolkit for Secure Sockets Layer and Transport Layer Security"
 homepage="https://www.openssl.org"
 license="OpenSSL-License"
@@ -53,7 +53,7 @@ make_build_args='MAKEDEPPROG="$(CC)'
 make_check_target="test"
 make_install_args="MANSUFFIX=ssl"
 bootstrap="yes"
-replaces="openssl>=0"
+replaces="libressl>=0"
 
 build_options="asm"
 
