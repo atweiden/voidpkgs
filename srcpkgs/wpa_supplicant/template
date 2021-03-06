@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="wpa_supplicant"
 version=2.9
-revision=4
+revision=5
 short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
 makedepends+=" libnl3-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" $(vopt_if readline readline-devel)"
 hostmakedepends="pkg-config"
 homepage="http://w1.fi/wpa_supplicant/"
