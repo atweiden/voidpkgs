@@ -541,6 +541,10 @@ constant %PKG = Map.new(
                      openldap-tools>,
     'opensp' => ['opensp-devel'],
     'openssh' => ['openssh-sk-helper'],
+    'openssl' => qw<libcrypto1.1
+                    libssl1.1
+                    openssl-c_rehash
+                    openssl-devel>,
     'opus' => ['opus-devel'],
     'orc' => ['orc-devel'],
     'p11-kit' => ['p11-kit-devel'],

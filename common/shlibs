@@ -246,6 +246,7 @@ libconfig++.so.11 libconfig++-1.7.1_1
 libconfig.so.11 libconfig-1.7.1_1
 libcppunit-1.14.so.0 libcppunit-1.14.0_1
 libcrack.so.2 libcracklib-2.8.22_2
+libcrypto.so.1.1 libcrypto1.1-1.1.1f_1
 libcrypto.so.46 libcrypto46-3.1.1_1
 libcryptsetup.so.12 libcryptsetup-2.0.0_1
 libcurl.so.4 libcurl-7.19_1
@@ -421,6 +422,7 @@ libsoxr.so.0 libsoxr-0.1.2_1
 libspeex.so.1 libspeex-1.1_1
 libssh.so.4 libssh-0.5.4_1
 libssh2.so.1 libssh2-1.4.1_1
+libssl.so.1.1 libssl1.1-1.1.1f_1
 libssl.so.48 libssl48-3.1.1_1
 libssp.so.0 libssp-4.4.0_1
 libstdc++.so.6 libstdc++-4.4.0_1
