@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="net-snmp"
 version=5.9
-revision=1
+revision=2
 short_desc="Simple Network Management Protocol (SNMP) suite"
 makedepends+=" bzip2-devel"
 makedepends+=" libnl-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libsensors-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pciutils-devel"
 makedepends+=" pcre-devel"
 hostmakedepends+=" pkg-config"
@@ -59,7 +59,7 @@ libnet-snmp_package() {
 
 net-snmp-devel_package() {
   depends+=" libnet-snmp>=${version}_$revision"
-  depends+=" libressl-devel"
+  depends+=" openssl-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/bin/net-snmp-config
