@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="dma"
 version=0.13
-revision=2
+revision=3
 short_desc="Small Mail Transport Agent (MTA), designed for home and office use"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" musl-legacy-compat"
 fi
