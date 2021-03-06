@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="libevent"
 version=2.1.12
-revision=1
+revision=2
 short_desc="Abstract asynchronous event notification library"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="http://libevent.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/libevent/libevent/releases/download/release-$version-stable/$pkgname-$version-stable.tar.gz"
