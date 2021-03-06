@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="ldns"
 version=1.7.1
-revision=3
+revision=4
 short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends="perl"
 homepage="http://www.nlnetlabs.nl/projects/ldns/"
 license="BSD-3-Clause"
@@ -45,7 +45,7 @@ libldns_package() {
 libldns-devel_package() {
   unset depends
   depends+=" libldns>=${version}_$revision"
-  depends+=" libressl-devel"
+  depends+=" openssl-devel"
   short_desc="Modern DNS/DNSSEC library - development files"
   pkg_install() {
     vmove usr/bin/ldns-config
