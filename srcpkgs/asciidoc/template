@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="asciidoc"
-version=9.0.5
+version=9.1.0
 revision=1
 short_desc="Text based document generation"
 depends+=" docbook-xsl"
@@ -13,11 +13,11 @@ hostmakedepends+=" python3"
 homepage="https://asciidoc.org/"
 license="GPL-2.0-or-later"
 changelog="https://asciidoc.org/CHANGELOG.html"
-distfiles="https://github.com/asciidoc/asciidoc-py3/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b73248717403fe49ef239b2bdb95f2b603e0af15ddd8f5e420f27707010bf95f"
+distfiles="https://github.com/asciidoc/asciidoc-py/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5056c20157349f8dc74f005b6e88ccbf1078c4e26068876f13ca3d1d7d045fe7"
 conf_files+=" /etc/asciidoc/filters/*/*.conf"
 conf_files+=" /etc/asciidoc/*.conf"
-wrksrc="$pkgname-py3-$version"
+wrksrc="$pkgname-py-$version"
 build_style="gnu-configure"
 
 pre_configure() {
