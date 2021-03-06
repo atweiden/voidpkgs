@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="encfs"
 version=1.9.5
-revision=4
+revision=5
 short_desc="Encrypted filesystem in user-space"
 # for encfssh
 depends="perl"
 makedepends+=" fuse-devel"
 makedepends+=" gettext-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" gettext"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
