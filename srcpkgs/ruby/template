@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="ruby"
 version=2.7.2
-revision=2
+revision=3
 _ruby_abiver=2.7.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
 makedepends+=" libffi-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libyaml-devel"
+makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
 checkdepends="tzdata"
