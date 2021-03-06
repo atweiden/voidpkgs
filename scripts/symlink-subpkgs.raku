@@ -407,6 +407,8 @@ constant %PKG = Map.new(
                      libtasn1-tools>,
     'libtermkey' => ['libtermkey-devel'],
     'libtirpc' => ['libtirpc-devel'],
+    'libtls' => qw<libressl-netcat
+                   libtls-devel>,
     'libtomcrypt' => ['libtomcrypt-devel'],
     'libtommath' => ['libtommath-devel'],
     'libtool' => qw<libltdl
