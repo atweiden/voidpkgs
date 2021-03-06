@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wget"
 version=1.21.1
-revision=1
+revision=2
 short_desc="GNU wget download utility"
 depends="ca-certificates"
 makedepends+=" libidn2-devel"
@@ -10,7 +10,7 @@ makedepends+=" libuuid-devel"
 makedepends+=" pcre2-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if gnutls gnutls-devel)"
-makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if ssl openssl-devel)"
 checkdepends+=" perl-HTTP-Daemon"
 checkdepends+=" perl-IO-Socket-SSL"
 hostmakedepends+=" perl"
