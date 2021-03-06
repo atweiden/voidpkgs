@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="openldap"
 version=2.4.57
-revision=1
+revision=2
 short_desc="OpenLDAP (Lightweight Directory Access Protocol)"
 depends="openldap-tools>=${version}_$revision"
 makedepends+=" db-devel"
 makedepends+=" libltdl-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libsasl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" groff"
 hostmakedepends+=" libtool"
