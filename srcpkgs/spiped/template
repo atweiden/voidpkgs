@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="spiped"
 version=1.6.1
-revision=1
+revision=2
 short_desc="Spiped secure pipe daemon"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="http://www.tarsnap.com/spiped.html"
 license="BSD-2-Clause"
 distfiles="http://www.tarsnap.com/spiped/$pkgname-$version.tgz"
