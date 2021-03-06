@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="fdm"
 version=2.0
-revision=4
+revision=5
 short_desc="Program to fetch and deliver mail"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" tdb-devel"
 makedepends+=" zlib-devel"
