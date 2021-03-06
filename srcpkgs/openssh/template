@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=8.4p1
-revision=4
+revision=5
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -9,7 +9,7 @@ makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if fido2 libfido2-devel)"
 makedepends+=" $(vopt_if gssapi mit-krb5-devel)"
 makedepends+=" $(vopt_if ldns libldns-devel)"
-makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if ssl openssl-devel)"
 hostmakedepends="automake"
 homepage="https://www.openssh.com"
 license="BSD-2-Clause, ISC"
