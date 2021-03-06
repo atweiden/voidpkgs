@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="ntp"
 version=4.2.8p15
-revision=4
+revision=5
 short_desc="Network Time Protocol daemon and utilities"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
 makedepends+=" libevent-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pps-tools-devel"
 hostmakedepends+=" bison"
 hostmakedepends+=" perl"
