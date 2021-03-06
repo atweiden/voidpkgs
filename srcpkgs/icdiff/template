@@ -1,42 +1,29 @@
 maintainer="nox"
 pkgname="icdiff"
-version=1.9.5
-revision=3
-short_desc="Improved colored diff (Python2)"
-depends+=" python"
-depends+=" python-setuptools"
-hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools"
+version=2.0.0
+revision=1
+short_desc="Side-by-side highlighted command line diffs"
+depends+=" python3"
+depends+=" python3-setuptools"
+hostmakedepends="python3-setuptools"
 homepage="http://www.jefftk.com/icdiff"
 license="Python-2.0"
 changelog="https://github.com/jeffkaufman/icdiff/raw/master/ChangeLog"
 distfiles="https://github.com/jeffkaufman/icdiff/archive/release-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f2e3df30e93df92224538ef3c62a73891af92de4caf94e8117582835e1040fc7"
+checksum="bce07ff4995aafe9de274ca0a322e56275dc264948b125457d2cc73dd7e9eee2"
 wrksrc="$pkgname-release-$version"
-build_style="python-module"
-pycompile_module="icdiff.py"
-alternatives+=" icdiff:icdiff:/usr/bin/icdiff2"
-alternatives+=" icdiff:git-icdiff:/usr/bin/git-icdiff2"
+build_style="python3-module"
+replaces="python3-icdiff>=0"
+provides="python3-icdiff-${version}_$revision"
 
 post_install() {
   vlicense LICENSE
 }
 
 python3-icdiff_package() {
-  unset alternatives
-  unset depends
-  depends+=" python3"
-  depends+=" python3-setuptools"
-  pycompile_module="icdiff.py"
-  alternatives+=" icdiff:icdiff:/usr/bin/icdiff3"
-  alternatives+=" icdiff:git-icdiff:/usr/bin/git-icdiff3"
-  short_desc="${short_desc/2/3}"
-  pkg_install() {
-    vmove usr/bin/icdiff3
-    vmove usr/bin/git-icdiff3
-    vmove "usr/lib/python3*"
-    vlicense LICENSE
-  }
+  build_style="meta"
+  short_desc+=" - transitional dummy pkg"
+  depends="icdiff"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
