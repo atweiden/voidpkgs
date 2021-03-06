@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="ettercap"
 version=0.8.3.1
-revision=1
+revision=2
 short_desc="Network sniffer/interceptor/logger for ethernet LANs"
 makedepends+=" geoip-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libnet-devel"
 makedepends+=" libpcap-devel"
-makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 hostmakedepends="flex"
 homepage="http://ettercap.github.com/ettercap/"
