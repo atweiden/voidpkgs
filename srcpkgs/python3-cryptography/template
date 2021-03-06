@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="python3-cryptography"
 version=3.4.6
-revision=1
+revision=2
 short_desc="Python3 library that provides cryptographic recipes and primitives"
 depends="python3-cffi"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" python3-devel"
 checkdepends+=" $depends"
 checkdepends+=" python3-cryptography_vectors"
