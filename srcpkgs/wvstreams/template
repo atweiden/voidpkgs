@@ -23,6 +23,8 @@ configure_args+=" --without-qt"
 configure_args+=" --without-tcl"
 replaces="uniconf>=0"
 
+CXXFLAGS="-Wno-narrowing"
+
 wvstreams-devel_package() {
   depends+=" $makedepends"
   depends+=" $sourcepkg>=${version}_$revision"
