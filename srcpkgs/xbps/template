@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="xbps"
 version=0.59.1
-revision=3
+revision=4
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
 makedepends+=" libarchive-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
 checkdepends="kyua"
 hostmakedepends="pkgconf"
