@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="openntpd"
 version=6.2p3
-revision=7
+revision=8
 short_desc="Free, easy to use implementation of the Network Time Protocol"
 depends="ca-certificates"
-makedepends="libressl-devel"
+makedepends="libtls-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="http://openntpd.org/"
