@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="gerbil"
 version=0.16
-revision=2
+revision=3
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" gambit"
