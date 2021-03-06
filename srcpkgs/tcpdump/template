@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="tcpdump"
 version=4.99.0
-revision=1
+revision=2
 short_desc="A tool for network monitoring and data acquisition"
 makedepends+=" libpcap-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 checkdepends="perl"
 homepage="https://www.tcpdump.org"
 license="BSD-3-Clause"
