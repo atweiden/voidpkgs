@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="s-nail"
 version=14.9.22
-revision=1
+revision=2
 short_desc="Mail processing system with a command syntax reminiscent of ed"
 makedepends+=" libidn2-devel"
-makedepends+=" libressl-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" openssl-devel"
 hostmakedepends="perl"
 homepage="https://git.sdaoden.eu/cgit/s-nail.git"
 license="BSD-4-Clause, BSD-3-Clause, BSD-2-Clause, ISC"
