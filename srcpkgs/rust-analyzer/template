@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rust-analyzer"
 version=2021.03.01
-revision=1
+revision=2
 _ver=${version//./-}
 short_desc="Rust compiler front-end for IDEs"
 homepage="https://rust-analyzer.github.io/"
