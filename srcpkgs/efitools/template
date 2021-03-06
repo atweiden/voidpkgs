@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="efitools"
 version=1.9.2
-revision=4
+revision=5
 short_desc="Tools to manipulate EFI secure boot platforms"
 archs+=" aarch64*"
 archs+=" arm*"
 archs+=" i686*"
 archs+=" x86_64*"
 makedepends+=" gnu-efi-libs"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends="perl-File-Slurp"
 homepage="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git"
 license="GPL-2.0-only"
