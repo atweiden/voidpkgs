@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="inadyn"
 version=2.8.1
-revision=1
+revision=2
 short_desc="Small DynDNS client with SSL/TLS support"
 makedepends+=" confuse-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
