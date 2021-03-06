@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="cryptsetup"
 version=2.3.4
-revision=1
+revision=2
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
 makedepends+=" json-c-devel"
 makedepends+=" libargon2-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" popt-devel"
 makedepends+=" $(vopt_if pwquality libpwquality-devel)"
 checkdepends+=" jq"
