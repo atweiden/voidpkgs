@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="easyrsa"
 version=3.0.8
-revision=1
+revision=2
 short_desc="Simple shell based CA utility"
-depends="libressl"
+depends="openssl"
 homepage="https://github.com/OpenVPN/easy-rsa"
 license="GPL-2.0-only"
 distfiles="https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version.tgz"
