@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="znc"
 version=1.8.2
-revision=3
+revision=4
 short_desc="Advanced IRC Bouncer"
 makedepends+=" icu-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libsasl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" perl"
 makedepends+=" python3-devel"
 makedepends+=" tcl-devel"
