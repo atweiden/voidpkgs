@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="haproxy"
 version=2.3.5
-revision=1
+revision=2
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
-makedepends+=" libressl-devel"
 makedepends+=" lua53-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 checkdepends="varnish"
 hostmakedepends="lua53-devel"
