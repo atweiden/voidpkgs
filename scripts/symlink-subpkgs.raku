@@ -387,7 +387,6 @@ constant %PKG = Map.new(
                          readline-devel>,
     'libressl' => qw<libcrypto46
                      libressl-devel
-                     libressl-netcat
                      libssl48
                      libtls20>,
     'librsync' => ['librsync-devel'],
