@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.75.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -11,7 +11,7 @@ makedepends+=" $(vopt_if gssapi mit-krb5-devel)"
 makedepends+=" $(vopt_if ldap libldap-devel)"
 makedepends+=" $(vopt_if rtmp librtmp-devel)"
 makedepends+=" $(vopt_if ssh libssh2-devel)"
-makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if ssl openssl-devel)"
 makedepends+=" $(vopt_if zstd libzstd-devel)"
 # openssh isn't in checkdepends, because test 581 locks up
 checkdepends+=" groff"
