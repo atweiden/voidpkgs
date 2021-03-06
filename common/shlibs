@@ -454,7 +454,7 @@ libtommath.so.1 libtommath-1.0_1
 libtorrent.so.21 libtorrent-0.13.8_1
 libucontext.so.1 libucontext-1.0_1
 libucontext_posix.so.1 libucontext-1.0_1
-libunbound.so.8 libunbound-1.10.0_2
+libunbound.so.8 libunbound-1.13.1_2
 libunistring.so.2 libunistring-0.9.4_1
 libunwind-ptrace.so.0 libunwind-1.1_1
 libunwind-x86.so.8 libunwind-1.1_1
