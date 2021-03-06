@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.36.0
-revision=1
+revision=2
 _abseilver="6f9d96a1f41439ac172ee2ef7ccd8edf0e5d068c"
 short_desc="High performance, open source, general RPC framework"
-makedepends+=" c-ares-devel"
+_devel_depends+=" c-ares-devel"
+_devel_depends+=" libressl-devel"
+_devel_depends+=" re2-devel"
+_devel_depends+=" zlib-devel"
+makedepends+=" $_devel_depends"
 makedepends+=" gperftools-devel"
 makedepends+=" libprotoc-devel"
-makedepends+=" libressl-devel"
 makedepends+=" protobuf-devel"
-makedepends+=" re2-devel"
-makedepends+=" zlib-devel"
 hostmakedepends+=" protobuf"
 hostmakedepends+=" which"
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -73,9 +74,7 @@ grpc-devel_package() {
   unset depends
   short_desc+=" - development files"
   depends+=" $sourcepkg>=${version}_$revision"
-  depends+=" c-ares-devel"
-  depends+=" re2-devel"
-  depends+=" zlib-devel"
+  depends+=" $_devel_depends"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
