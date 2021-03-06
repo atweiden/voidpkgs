@@ -178,7 +178,7 @@ libgnarl-10.so libada-10.2.0_1
 libgnat-10.so libada-10.2.0_1
 libaio.so.1 libaio-0.3.109_1
 libapparmor.so.1 libapparmor-2.12.0_1
-libarchive.so.13 libarchive-3.3.3_5
+libarchive.so.13 libarchive-3.5.1_2
 libargon2.so.1 libargon2-20171227_1
 libaria2.so.0 libaria2-1.33.1_3
 libassuan.so.0 libassuan-2.0.1_1

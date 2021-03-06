@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libarchive"
 version=3.5.1
-revision=1
+revision=2
 short_desc="Library to read/write several different streaming archive formats"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -10,7 +10,7 @@ makedepends+=" $(vopt_if acl acl-devel)"
 makedepends+=" $(vopt_if expat expat-devel)"
 makedepends+=" $(vopt_if lz4 liblz4-devel)"
 makedepends+=" $(vopt_if lzo lzo-devel)"
-makedepends+=" $(vopt_if ssl libressl-devel)"
+makedepends+=" $(vopt_if ssl openssl-devel)"
 makedepends+=" $(vopt_if zstd libzstd-devel)"
 hostmakedepends="pkgconf"
 homepage="http://www.libarchive.org/"
