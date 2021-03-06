@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="vde2"
 version=2.3.2
-revision=21
+revision=23
 short_desc="Virtual Distributed Ethernet"
 makedepends+=" libpcap-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="http://sourceforge.net/projects/vde/"
