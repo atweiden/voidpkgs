@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="stunnel"
 version=5.46
-revision=4
+revision=5
 short_desc="SSL encryption wrapper"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 checkdepends+=" nmap"
 checkdepends+=" procps-ng"
 hostmakedepends="perl"
@@ -45,7 +45,7 @@ post_install() {
 # by default.
 #
 # As of 5.38 the signature expected for the CRYPTO_set_mem_functions
-# seems to be out of line with what libressl provides.
+# seems to be out of line with what openssl provides.
 #
 # LibreSSL wants:
 #
