@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="coWPAtty"
 version=4.8
-revision=3
+revision=4
 short_desc="WPA-PSK dictionary attack"
 makedepends+=" libpcap-devel"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 homepage="https://github.com/joswr1ght/cowpatty"
 license="GPL-2.0-only"
 distfiles="https://github.com/joswr1ght/cowpatty/archive/$version.tar.gz>$pkgname-$version.tar.gz"
