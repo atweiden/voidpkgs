@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="libtorrent"
 version=0.13.8
-revision=3
+revision=4
 short_desc="BitTorrent library written in C++"
-makedepends+=" libressl-devel"
+makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
 # XXX: if built with XBPS_CHECK_PKGS, final binary will be dyn linked
 # against libcppunit
