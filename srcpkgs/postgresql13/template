@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="postgresql13"
 version=13.2
-revision=1
+revision=2
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 short_desc="Sophisticated open-source Object-Relational DBMS"
 makedepends+=" libfl-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" libxslt-devel"
+makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
 makedepends+=" perl"
 makedepends+=" python3-devel"
