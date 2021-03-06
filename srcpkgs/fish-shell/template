@@ -1,17 +1,19 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.1.2
-revision=2
+version=3.2.0
+revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
 makedepends+=" gettext-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
+checkdepends+=" procps-ng"
+checkdepends+=" python3-pexpect"
 hostmakedepends="gettext"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
-distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.gz"
-checksum="d5b927203b5ca95da16f514969e2a91a537b2f75bec9b21a584c4cd1c7aa74ed"
+distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.xz"
+checksum="4f0293ed9f6a6b77e47d41efabe62f3319e86efc8bf83cc58733044fbc6f9211"
 wrksrc="fish-$version"
 build_style="cmake"
 register_shell+=" /bin/fish"
@@ -23,7 +25,7 @@ fi
 
 post_install() {
   # starting with fish-3.0.0 this is a skeleton file with only comments
-  rm -f "$DESTDIR/usr/etc/fish/config.fish"
+  rm "$DESTDIR/usr/etc/fish/config.fish"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
