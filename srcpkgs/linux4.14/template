@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.14"
-version=4.14.221
+version=4.14.222
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -18,11 +18,15 @@ hostmakedepends+=" libmpc-devel"
 hostmakedepends+=" libressl-devel"
 hostmakedepends+=" perl"
 hostmakedepends+=" uboot-mkimage"
+hostmakedepends+=" xz"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
-distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
-checksum="ce2254075ff4846f13380c1cf4bec1e351e5996a7dd109c200e222e49fd2c7e9"
-wrksrc="linux-$version"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${version%.*}.tar.xz"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz"
+checksum+=" f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7"
+checksum+=" f6be478dbffdd153850aec45f198f236dbfeaf2f62138925793f9726dc442a28"
+skip_extraction="patch-$version.xz"
+wrksrc="linux-${version%.*}"
 patch_args="-Np1"
 # unverified
 python_version=2
@@ -55,6 +59,10 @@ esac
 export KBUILD_BUILD_TIMESTAMP="${SOURCE_DATE_EPOCH:-0}"
 export KBUILD_BUILD_USER="voidlinux"
 export KBUILD_BUILD_HOST="voidlinux"
+
+pre_patch() {
+  xzcat "$XBPS_SRCDISTDIR/$pkgname-$version/patch-$version.xz" | patch -Np1
+}
 
 do_configure() {
   # 4.14rc1 misses Documentation/DocBook
