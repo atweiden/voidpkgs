@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pinebookpro-kernel"
 version=5.10.9
-revision=1
+revision=2
 _gitrev="a8f4db8a726e5e4552e61333dcd9ea1ff35f39f9"
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
