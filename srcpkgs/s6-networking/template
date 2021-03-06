@@ -8,7 +8,7 @@ makedepends+=" s6-devel"
 makedepends+=" s6-dns-devel"
 makedepends+=" skalibs-devel"
 makedepends+=" $(vopt_if bearssl bearssl-devel)"
-makedepends+=" $(vopt_if libressl libressl-devel)"
+makedepends+=" $(vopt_if libtls libtls-devel)"
 homepage="https://skarnet.org/software/s6-networking/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-networking/upgrade.html"
@@ -20,13 +20,13 @@ configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
 configure_args+=" $(vopt_if bearssl --enable-ssl=bearssl)"
-configure_args+=" $(vopt_if libressl --enable-ssl=libressl)"
+configure_args+=" $(vopt_if libtls --enable-ssl=libtls)"
 build_options+=" bearssl"
-build_options+=" libressl"
+build_options+=" libtls"
 build_options_default="bearssl"
 desc_option_bearssl="Use BearSSL as SSL library"
-desc_option_libressl="Use LibreSSL as SSL library"
-vopt_conflict bearssl libressl
+desc_option_libtls="Use LibreSSL as SSL library"
+vopt_conflict bearssl libtls
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -57,7 +57,7 @@ s6-networking-devel_package() {
   short_desc+=" - development files"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" skalibs-devel"
-  depends+=" $(vopt_if libressl libressl-devel)"
+  depends+=" $(vopt_if libtls libtls-devel)"
   depends+=" $(vopt_if bearssl bearssl-devel)"
   pkg_install() {
     vmove usr/include
