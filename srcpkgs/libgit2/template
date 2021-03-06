@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="libgit2"
 version=1.0.1
-revision=2
+revision=3
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
-makedepends+=" libressl-devel"
 makedepends+=" libssh2-devel"
+makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" git"
 hostmakedepends+=" pkg-config"
