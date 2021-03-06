@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="opmsg"
 version=1.78s
-revision=3
+revision=4
 short_desc="Replacement for gpg which can encrypt/sign/verify your mails"
-makedepends="libressl-devel"
+makedepends="openssl-devel"
 homepage="https://github.com/stealth/opmsg"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/stealth/opmsg/archive/rel-$version.tar.gz>$pkgname-$version.tar.gz"
@@ -17,7 +17,6 @@ do_configure() {
   vsed \
     -e "s|^INC=.*|INC += -I$XBPS_CROSS_BASE/usr/include|" \
     -e "10iLIBS+=-L$XBPS_CROSS_BASE/usr/lib" \
-    -e 's|^DEFS=$|DEFS += -DHAVE_LIBRESSL|' \
     -e "s|^LDFLAGS=$|LDFLAGS+=-L$XBPS_CROSS_BASE/usr/lib|" \
     -e "s|^CXX=c++$|CXX=$CXX|" \
     -e 's|^LD=c++$|LD=$(CXX)|' \
