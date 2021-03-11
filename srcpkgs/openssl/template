@@ -34,6 +34,9 @@ case $XBPS_TARGET_MACHINE in
   ppc64*)
     configure_args+=" linux-ppc64"
     ;;
+  ppcle*)
+    configure_args+=" linux-ppcle"
+    ;;
   ppc*)
     configure_args+=" linux-ppc"
     ;;
