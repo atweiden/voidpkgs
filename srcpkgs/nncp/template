@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="nncp"
-version=6.1.0
+version=6.2.0
 revision=1
 short_desc="Node to Node copy, utilities for secure store-and-forward"
 homepage="http://www.nncpgo.org/"
 license="GPL-3.0-only"
 distfiles="http://www.nncpgo.org/download/nncp-$version.tar.xz"
-checksum="083a533f7d0212069ae07f9fd6cd22e3c5be09e830f2c9c497d97cf614e5413f"
+checksum="272ceded69fff3b3787672973199481ac610b753bb82c22eecec45fc05da40fe"
 build_style="go"
 go_import_path="cypherpunks.ru/nncp"
 
