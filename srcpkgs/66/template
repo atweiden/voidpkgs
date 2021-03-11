@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="66"
-version=0.6.1.1
-revision=3
+version=0.6.1.2
+revision=1
 short_desc="Small tools built around s6 and s6-rc programs"
 makedepends+=" execline-devel"
 makedepends+=" oblibs-devel"
@@ -14,10 +14,9 @@ homepage="http://web.obarun.org/software/"
 license="ISC"
 changelog="https://framagit.org/Obarun/66/raw/master/NEWS.md"
 distfiles="https://framagit.org/Obarun/66/-/archive/v$version/$pkgname-v$version.tar.bz2"
-checksum="4f80d94851a8c26e9666ea0f274890fc3abb6185ca1fe9fd8e2ad71e27a2ade9"
+checksum="99de5ede29670ffb55808dc0c3f28a49bf005d594ba3016b13271d4de025f589"
 conf_files="/etc/66/init.conf"
 wrksrc="$pkgname-v$version"
-patch_args=" -Np1"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
@@ -26,6 +25,7 @@ configure_args+=" --with-s6-log-user=_s6log"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
 configure_args+=" --with-system-dir=/etc/66/lib"
 system_accounts="_s6log"
+make_dirs="/var/log/66 0750 _s6log _s6log"
 
 pre_configure() {
   # clean the default $PATH for service scripts
