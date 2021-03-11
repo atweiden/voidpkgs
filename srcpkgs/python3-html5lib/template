@@ -1,34 +1,19 @@
 maintainer="nox"
 pkgname="python3-html5lib"
-version=1.0.1
-revision=5
+version=1.1
+revision=1
 short_desc="Python3 HTML parser based on the WHATWG HTML5 specification"
 depends+=" python3-six"
 depends+=" python3-webencodings"
-checkdepends+=" $depends"
-checkdepends+=" python3-lxml"
-checkdepends+=" python3-mock"
-checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/html5lib/html5lib-python"
 license="MIT"
 distfiles="$PYPI_SITE/h/html5lib/html5lib-$version.tar.gz"
-checksum="66cb0dcfdbbc4f9c3ba1a63fdb511ffdbd4f513b2b6d81b80cd26ce6b3fb3736"
+checksum="b2e5b40261e20f354d198eae92afc10d750afb487ed5e50f9c4eaf07c184146f"
 wrksrc="html5lib-$version"
 build_style="python3-module"
-
-pre_build() {
-  sed \
-    -i \
-    -e '/setuptools>=/d' \
-    setup.py
-}
-
-do_check() {
-  export PYTHONPATH="$PWD/build/lib"
-  # requires more python modules
-  :
-}
+# tests fail, should be fixed upstream in a new release
+make_check="no"
 
 post_install() {
   vlicense LICENSE
