@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="help2man"
-version=1.47.16
+version=1.48.2
 revision=1
 short_desc="GNU conversion tool to create man files"
 depends="perl-Locale-gettext"
@@ -8,7 +8,7 @@ hostmakedepends="perl-Locale-gettext"
 homepage="https://www.gnu.org/software/help2man"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/help2man/$pkgname-$version.tar.xz"
-checksum="3ef8580c5b86e32ca092ce8de43df204f5e6f714b0cd32bc6237e6cd0f34a8f4"
+checksum="20cb36111df91d61741a20680912ab0e4c59da479c3fb05837c6f0a8cb7cb467"
 build_style="gnu-configure"
 lib32disabled="yes"
 
