@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xbps"
 version=0.59.1
-revision=4
+revision=5
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
@@ -58,6 +58,8 @@ post_install() {
 
   vlicense LICENSE
   vlicense LICENSE.3RDPARTY
+
+  echo "" > "$DESTDIR/usr/share/xbps.d/void-virtualpkgs.conf"
 }
 
 libxbps_package() {
