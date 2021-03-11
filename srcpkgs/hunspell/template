@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hunspell"
 version=1.7.0
-revision=1
+revision=3
 short_desc="Spell checker and morphological analyzer"
 makedepends="ncurses-devel"
 hostmakedepends+=" automake"
@@ -27,8 +27,8 @@ libhunspell1.7_package() {
 }
 
 hunspell-devel_package() {
+  unset depends
   depends+=" lib${sourcepkg}1.7>=${version}_$revision"
-  depends+=" libstdc++-devel"
   depends+=" ncurses-devel"
   short_desc+=" - development files"
   pkg_install() {
