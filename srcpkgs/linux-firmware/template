@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux-firmware"
 version=20210208
-revision=1
+revision=2
 short_desc="Binary firmware blobs for the Linux kernel"
 depends+=" $pkgname-amd>=${version}_$revision"
 depends+=" $pkgname-network>=${version}_$revision"
@@ -94,6 +94,7 @@ linux-firmware-network_package() {
     vmove usr/lib/firmware/ueagle-atm
     vmove usr/lib/firmware/ti-connectivity
     vmove usr/lib/firmware/dpaa2
+    vmove usr/lib/firmware/qca
   }
 }
 
