@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="icu"
 version=67.1
-revision=1
+revision=2
 short_desc="Robust and fully-featured Unicode libraries"
 hostmakedepends="pkg-config"
 homepage="https://home.unicode.org/"
@@ -111,8 +111,7 @@ post_install() {
 }
 
 icu-devel_package() {
-  depends+=" icu-libs>=${version}_$revision"
-  depends+=" libstdc++-devel"
+  depends="icu-libs>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
