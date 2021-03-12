@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="spdx-licenses-list"
-version=3.11
+version=3.12
 revision=1
 short_desc="SPDX License List"
 homepage="https://spdx.org"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2b9dc4afe6da2d93af5099271e6dcb303e158e0c1f03bffd2daaf755f8ffec3d"
+checksum="f80e9b6886b50b589040789938b260ab61eafe733d5d72f145a726ad82c569b8"
 wrksrc="license-list-data-$version"
 
 do_install() {
