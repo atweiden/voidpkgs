@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux4.14"
-version=4.14.224
+version=4.14.225
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -24,7 +24,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz"
 checksum+=" f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7"
-checksum+=" a644325b768cd6dcdacdc753131a3d059b9839712e8e559eb88a37ac47d04f23"
+checksum+=" b9afed9ae1f63b67fa01d17b3146f23a2ab5ef8ce458f3aec4d0b174553d0c52"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 patch_args="-Np1"
