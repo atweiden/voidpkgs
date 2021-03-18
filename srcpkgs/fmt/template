@@ -1,27 +1,30 @@
-# Template file for 'fmt'
-pkgname=fmt
+maintainer="nox"
+pkgname="fmt"
 version=7.1.3
 revision=1
-build_style=cmake
-configure_args="-DBUILD_SHARED_LIBS=ON -DFMT_DOC=OFF -DFMT_TEST=OFF"
 short_desc="Modern formatting library"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-2-Clause"
 homepage="https://github.com/fmtlib/fmt"
-distfiles="https://github.com/fmtlib/fmt/archive/${version}.tar.gz"
-checksum=5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
+license="BSD-2-Clause"
+distfiles="https://github.com/fmtlib/fmt/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc"
+build_style="cmake"
+configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DFMT_DOC=OFF"
+configure_args+=" -DFMT_TEST=OFF"
 
 post_install() {
-	vlicense LICENSE.rst LICENSE
+  vlicense LICENSE.rst LICENSE
 }
 
 fmt-devel_package() {
-	depends="fmt-${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/cmake
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-	}
+  depends="fmt-${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/cmake
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
