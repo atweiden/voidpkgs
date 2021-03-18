@@ -1,17 +1,14 @@
 maintainer="nox"
 pkgname="ppp"
-version=2.4.7
-revision=14
+version=2.4.9
+revision=1
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" openssl-devel"
-if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  makedepends+=" musl-legacy-compat"
-fi
 homepage="https://ppp.samba.org/"
 license="BSD-3-Clause, LGPL-2.0-or-later, GPL-2.0-or-later, Public Domain"
 distfiles="https://ftp.samba.org/pub/ppp/$pkgname-$version.tar.gz"
-checksum="02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30"
+checksum="f938b35eccde533ea800b15a7445b2f1137da7f88e32a16898d02dee8adc058d"
 conf_files+=" /etc/ppp/chap-secrets"
 conf_files+=" /etc/ppp/ip-down"
 conf_files+=" /etc/ppp/ip-up"
@@ -22,55 +19,16 @@ conf_files+=" /etc/ppp/pap-secrets"
 make_dirs+=" /etc/ppp/ipv6-down.d 0755 root root"
 make_dirs+=" /etc/ppp/peers 0755 root root"
 
-CFLAGS="-D_GNU_SOURCE"
-
-pre_configure() {
-  # custom CFLAGS
-  find -name "Makefile.linux" \
-    -exec sed \
-            -i \
-            -e "s;CFLAGS\\s*=\(.*\);CFLAGS = $CFLAGS \1;" \
-            "{}" \;
-  # custom LDFLAGS for chat, pppoe-discovery and pppdump
-  sed \
-    -i \
-    -e "s;-o chat ;$LDFLAGS -o chat ;" \
-    chat/Makefile.linux
-  sed \
-    -i \
-    -e "s;-o pppoe-discovery ;$LDFLAGS -o pppoe-discovery ;" \
-    pppd/plugins/rp-pppoe/Makefile.linux
-  sed \
-    -i \
-    -e "s;-o pppdump ;$LDFLAGS -o pppdump ;" \
-    pppdump/Makefile.linux
-  # enable active filter
-  sed \
-    -i \
-    -e "s:^#FILTER=y:FILTER=y:" \
-    pppd/Makefile.linux
-  # enable ipv6 support
-  sed \
-    -i \
-    -e "s:^#HAVE_INET6=y:HAVE_INET6=y:" \
-    pppd/Makefile.linux
-  # enable Microsoft Proprietary Callback Control Protocol
-  sed \
-    -i \
-    -e "s:^#CBCP=y:CBCP=y:" \
-    pppd/Makefile.linux
-}
-
 do_configure() {
-  ./configure $configure_args
+  ./configure --cc="$CC" --cflags="$CFLAGS"
 }
 
 do_build() {
-  make COPTS="$CFLAGS $LDFLAGS" "$makejobs"
+  make LDFLAGS="$LDFLAGS" CBCP="y" "$makejobs"
 }
 
 do_install() {
-  make DESTDIR="$DESTDIR/usr" install
+  make DESTDIR="$DESTDIR/usr" BINDIR="$DESTDIR/usr/bin" install
 
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
@@ -79,11 +37,6 @@ do_install() {
   esac
 
   chmod 755 "$DESTDIR/usr/lib/pppd/$version"/*.so
-
-  vmkdir usr/bin
-  mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
-  vbin pppd/pppd
-  vbin chat/chat
 
   vinstall "$FILESDIR/options" 644 etc/ppp
   vinstall "$FILESDIR/ip-up" 755 etc/ppp
