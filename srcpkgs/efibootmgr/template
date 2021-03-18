@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="efibootmgr"
 version=17
-revision=5
+revision=6
 short_desc="Tool to modify UEFI Firmware Boot Manager Variables"
 makedepends+=" libefivar-devel"
 makedepends+=" popt-devel"
