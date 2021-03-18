@@ -669,6 +669,7 @@ constant %PKG = Map.new(
     'skalibs' => qw<skalibs-devel
                     skalibs-doc>,
     'snappy' => ['snappy-devel'],
+    'spdlog' => ['libspdlog'],
     'spdx-licenses-list' => qw<spdx-licenses-html
                                spdx-licenses-json
                                spdx-licenses-text>,
