@@ -1,36 +1,22 @@
 maintainer="nox"
 pkgname="pinebookpro-uboot"
-version=0.0.20200212
-revision=4
-_gitrev_uboot="365495a329c8e92ca4c134562d091df71b75845e"
-_gitrev_atf="22d12c4148c373932a7a81e5d1c59a767e143ac2"
+version=2020.10
+revision=1
 short_desc="U-Boot for Pinebook Pro"
 archs="aarch64*"
 depends="u-boot-tools"
+makedepends="atf-rk3399-bl31"
 hostmakedepends+=" bc"
 hostmakedepends+=" dtc"
 hostmakedepends+=" flex"
-hostmakedepends+=" git"
 hostmakedepends+=" python3"
-# TODO: ascertain whether this dependency is needed for native builds
-#hostmakedepends+=" cross-arm-none-eabi"
-homepage="https://git.eno.space/pbp-uboot"
+homepage="https://www.denx.de/wiki/U-Boot/"
 license="GPL-2.0-only, BSD-3-Clause"
+distfiles="https://ftp.denx.de/pub/u-boot/u-boot-${version}.tar.bz2"
+checksum="0d481bbdc05c0ee74908ec2f56a6daa53166cc6a78a0e4fac2ac5d025770a622"
+wrksrc="u-boot-$version"
 reverts+=" 20200212_1"
 reverts+=" 20200212_2"
-
-do_fetch() {
-  mkdir -p "$wrksrc"
-  cd "$wrksrc"
-  git clone https://git.eno.space/pbp-uboot.git
-  cd pbp-uboot
-  git reset --hard "$_gitrev_uboot"
-
-  cd "$wrksrc"
-  git clone https://github.com/ARM-software/arm-trusted-firmware.git
-  cd arm-trusted-firmware
-  git reset --hard "$_gitrev_atf"
-}
 
 do_configure() {
   unset CFLAGS
@@ -38,12 +24,7 @@ do_configure() {
   unset CXXFLAGS
   unset LDFLAGS
 
-  cd pbp-uboot
-  patch -Np1 -i "$FILESDIR/fcommon-Makefile.patch"
-  make \
-    "$makejobs" \
-    pinebook_pro-rk3399_defconfig
-  echo 'CONFIG_IDENT_STRING=" Voidlinux"' >> .config
+  make "$makejobs" pinebook-pro-rk3399_defconfig
 }
 
 do_build() {
@@ -56,23 +37,23 @@ do_build() {
     export CROSS_COMPILE="$XBPS_CROSS_TRIPLET-"
   fi
 
-  cd arm-trusted-firmware
   make \
     "$makejobs" \
-    PLAT="rk3399"
-
-  cd ../pbp-uboot
-  make \
-    "$makejobs" \
-    EXTRAVERSION="-$revision" \
-    BL31="../arm-trusted-firmware/build/rk3399/release/bl31/bl31.elf"
+    BL31="$XBPS_CROSS_BASE/usr/lib/trusted-firmware-a/rk3399/bl31.elf" \
+    EXTRAVERSION="-$revision"
 }
 
 do_install() {
-  cd pbp-uboot
-  vmkdir boot
-  vinstall idbloader.img 0644 boot
-  vinstall u-boot.itb 0644 boot
+  vinstall idbloader.img 0644 usr/lib/pinebookpro-uboot
+  vinstall u-boot.itb 0644 usr/lib/pinebookpro-uboot
+  # FWIW this file is not at all specific to the PBP and will overwrite
+  # any custom u-boot boot.scr files that a user installs into /boot.
+  #
+  # I would like to remove it, but it could cause breakage for existing
+  # setups.
+  #
+  # It would also require some changes to void-mklive to configure
+  # u-boot suitably.
   vinstall "$FILESDIR/kernel.d/uboot" 750 etc/kernel.d/post-install 60-uboot
 
   vlicense Licenses/Exceptions
