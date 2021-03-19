@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="kbd"
-version=2.3.0
-revision=2
+version=2.4.0
+revision=1
 short_desc="Linux keyboard utilities"
-depends="kbd-data"
 makedepends="pam-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" flex"
@@ -13,10 +12,11 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.kbd-project.org/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/kbd/$pkgname-$version.tar.xz"
-checksum="685056143cb8effd0a1d44b5c391eb50d80dcfd014b1a4d6e2650a28d61cb82a"
+checksum="55f0740458cfd3a84e775e50d7e8b92dc01846db1edad8e2411ccc293ece9b9f"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/kbd"
 configure_args+=" --localedir=/usr/share/kbd/locale"
+replaces="kbd-data>=0"
 
 post_patch() {
   # rename keymap files with the same names
@@ -51,17 +51,6 @@ post_install() {
            sun; do
     rm -rf "$DESTDIR/usr/share/kbd/keymaps/$f"
   done
-}
-
-kbd-data_package() {
-  short_desc+=" - keymaps, console fonts and unicode maps"
-  replaces="kbd<2.0.1_1"
-  pkg_install() {
-    vmove usr/share/kbd/consolefonts
-    vmove usr/share/kbd/consoletrans
-    vmove usr/share/kbd/keymaps
-    vmove usr/share/kbd/unimaps
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
