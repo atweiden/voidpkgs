@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nodejs"
-version=14.15.4
+version=14.16.0
 revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
@@ -14,6 +14,7 @@ makedepends+=" $(vopt_if icu icu-devel)"
 makedepends+=" $(vopt_if libuv libuv-devel)"
 makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
 makedepends+=" $(vopt_if ssl openssl-devel)"
+checkdepends="procps-ng"
 hostmakedepends+=" libatomic-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
@@ -29,7 +30,7 @@ hostmakedepends+=" $(vopt_if ssl openssl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="8610d81b2d4afc3a79afbe6209d510125131c45cae22cac63bb767dcfec1cbf0"
+checksum="f6b904b06951de4c52089dd4456155d853e835b0dc4640f75458c6eb49f9e8ce"
 wrksrc="${pkgname%js}-v$version"
 python_version=3
 build_options+=" cares"
@@ -157,6 +158,15 @@ do_build() {
       LDFLAGS+="-ldl" \
       V=1
   fi
+}
+
+do_check() {
+  make \
+    LD="$CXX" \
+    LDFLAGS+=-ldl \
+    "$makejobs" \
+    V=1 \
+    test-only
 }
 
 do_install() {
