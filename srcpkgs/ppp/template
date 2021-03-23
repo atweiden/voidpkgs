@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ppp"
 version=2.4.9
-revision=1
+revision=2
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" openssl-devel"
@@ -20,7 +20,10 @@ make_dirs+=" /etc/ppp/ipv6-down.d 0755 root root"
 make_dirs+=" /etc/ppp/peers 0755 root root"
 
 do_configure() {
-  ./configure --cc="$CC" --cflags="$CFLAGS"
+  ./configure \
+    --cc="$CC" \
+    --cflags="$CFLAGS" \
+    --prefix="/usr"
 }
 
 do_build() {
