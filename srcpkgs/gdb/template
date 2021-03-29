@@ -12,7 +12,10 @@ makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if debuginfod elfutils-devel)"
-makedepends+=" $(vopt_if python 'python3-devel gettext-libs')"
+makedepends+=" $(vopt_if python python3-devel)"
+if [[ -n "$build_option_python" ]] && [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" gettext-libs"
+fi
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" texinfo"
