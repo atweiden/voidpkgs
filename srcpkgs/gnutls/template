@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnutls"
 version=3.6.15
-revision=1
+revision=2
 short_desc="GNU Transport Layer Security library"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libgpg-error-devel"
@@ -16,11 +16,13 @@ makedepends+=" trousers-devel"
 makedepends+=" unbound-devel"
 makedepends+=" zlib-devel"
 checkdepends="iproute2"
-hostmakedepends+=" automake"
-hostmakedepends+=" gettext-devel"
+hostmakedepends+=" gettext"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" which"
+# for autoreconf
+#hostmakedepends+=" automake"
+#hostmakedepends+=" gettext-devel-tools"
 homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
@@ -33,10 +35,6 @@ configure_args+=" --disable-valgrind-tests"
 configure_args+=" --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
 configure_args+=" --with-trousers-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-zlib"
-
-pre_configure() {
-  autoreconf -vfi
-}
 
 pre_check() {
   # same as $PASS in tests/cert-tests/certtool
