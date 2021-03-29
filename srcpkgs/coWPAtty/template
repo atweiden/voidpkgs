@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="coWPAtty"
 version=4.8
-revision=4
+revision=5
 short_desc="WPA-PSK dictionary attack"
 makedepends+=" libpcap-devel"
 makedepends+=" openssl-devel"
 homepage="https://github.com/joswr1ght/cowpatty"
-license="GPL-2.0-only"
+license="BSD-3-Clause"
 distfiles="https://github.com/joswr1ght/cowpatty/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="8aae67f4823edb76dff036808137888d2479477ec1e52aa86d6cecd26d58aa23"
 wrksrc="${pkgname,,}-$version"
@@ -20,6 +20,10 @@ pre_build() {
     -e '/clang/d' \
     -e 's|-g3 -ggdb||g' \
     -i Makefile
+}
+
+post_install() {
+  vlicense COPYING
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
