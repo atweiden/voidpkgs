@@ -217,6 +217,7 @@ constant %PKG = Map.new(
     'getdns' => ['getdns-devel'],
     'gettext' => qw<gettext-devel
                     gettext-devel-examples
+                    gettext-devel-tools
                     gettext-libs>,
     'git' => qw<git-all
                 git-cvs

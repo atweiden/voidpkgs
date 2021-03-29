@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gettext"
 version=0.21
-revision=2
+revision=3
 short_desc="Internationalized Message Handling Library and tools"
 # gettext will try to use xz bzip2 gzip to compress
 # /usr/share/gettext/archive.dir.tar.<ext>
@@ -14,6 +14,7 @@ license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/cgit/gettext.git/plain/NEWS"
 distfiles="$GNU_SITE/gettext/$pkgname-$version.tar.gz"
 checksum="c77d0da3102aec9c07f43671e60611ebff89a996ef159497ce8e59d075786b12"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-acl"
 configure_args+=" --disable-csharp"
@@ -33,12 +34,21 @@ configure_args+=" --without-emacs"
 configure_args+=" --without-examples"
 configure_args+=" --without-git"
 configure_args+=" gl_cv_func_gettimeofday_clobber=no"
-case "$XBPS_TARGET_MACHINE" in
+subpackages+=" gettext-devel-examples"
+subpackages+=" gettext-devel"
+subpackages+=" gettext-devel-tools"
+
+unset _intl_lib
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   # force libintl
-  *-musl)
-    configure_args+=" --with-included-gettext"
-    ;;
-esac
+  configure_args+=" --with-included-gettext"
+  subpackages+=" gettext-libs"
+  _intl_lib=intl
+else
+  # on glibc, old gettext-libs conflicts with gettext
+  replaces="gettext-libs>=0"
+  conflicts="gettext-libs>=0"
+fi
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" automake"
@@ -49,8 +59,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 post_install() {
-  # fix conflict with musl
-  if [[ -e "$DESTDIR/usr/include/libintl.h" ]]; then
+  # don't overwrite musl's header
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
     vmkdir usr/include/gettext
     mv "$DESTDIR/usr/include/libintl.h" "$DESTDIR/usr/include/gettext/libintl.h"
   fi
@@ -65,25 +75,46 @@ gettext-devel-examples_package() {
 
 gettext-devel_package() {
   unset depends
-  depends+=" gettext-libs>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" gettext-devel-tools>=${version}_$revision"
   depends+=" tar"
   depends+=" xz"
+  if [[ -n "$_intl_lib" ]]; then
+    depends+=" gettext-libs>=${version}_$revision"
+  fi
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
-    vmove usr/share/aclocal
+    # libgettext{lib,src}-$version.so need to be in the main package
+    for _lib in "$_intl_lib" \
+                gettextlib \
+                gettextpo \
+                gettextsrc \
+                textstyle; do
+      vmove "usr/lib/lib$_lib.so"
+    done
     vmove usr/share/gettext
     vmove usr/share/man/man3
+  }
+}
+
+gettext-devel-tools_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development tools"
+  pkg_install() {
+    vmove usr/share/aclocal
     vmove usr/bin/autopoint
     vmove usr/bin/gettextize
+    vmove usr/share/man/man1/autopoint.1
+    vmove usr/share/man/man1/gettextize.1
   }
 }
 
 gettext-libs_package() {
   short_desc+=" - shared libraries"
   pkg_install() {
-    vmove "usr/lib/*.so*"
+    vmove "usr/lib/libintl.so.*"
   }
 }
 
