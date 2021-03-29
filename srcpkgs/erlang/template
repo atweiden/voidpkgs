@@ -23,7 +23,7 @@ make_install_target+=" install"
 make_install_target+=" install-docs"
 
 case "$XBPS_TARGET_MACHINE" in
-  *-musl)
+  ppc64*|*-musl)
     configure_args+=" --disable-hipe"
     ;;
 esac
