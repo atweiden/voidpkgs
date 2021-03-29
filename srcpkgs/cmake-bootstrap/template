@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="cmake-bootstrap"
-version=3.19.6
+version=3.19.7
 revision=1
 short_desc="CMake (for bootstrapping only, not for normal usage)"
 makedepends="libarchive-devel"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/cmake-$version.tar.gz"
-checksum="ec87ab67c45f47c4285f204280c5cde48e1c920cfcfed1555b27fb3b1a1d20ba"
+checksum="58a15f0d56a0afccc3cc5371234fce73fcc6c8f9dbd775d898e510b83175588e"
 wrksrc="cmake-$version"
 bootstrap="yes"
 build_style="configure"
