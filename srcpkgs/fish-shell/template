@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="fish-shell"
 version=3.2.1
-revision=1
+revision=2
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
-makedepends+=" gettext-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
 checkdepends+=" procps-ng"
@@ -18,6 +17,8 @@ wrksrc="fish-$version"
 build_style="cmake"
 register_shell+=" /bin/fish"
 register_shell+=" /usr/bin/fish"
+# tests don't work as root
+make_check="extended"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
