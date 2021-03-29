@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.20.1
+version=1.20.2
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
@@ -12,9 +12,11 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="faadd54211fe33ec569795d29ce7662ec6b342b8778822a7658386de541101b4"
+checksum="f2431c82e2d0ee1a7dba3abd26b9e80d8d3cfa620e8b37e7d95991ad6c785834"
 wrksrc="numpy-$version"
 build_style="python3-module"
+# tests do not function propery in a build directory
+make_check="no"
 build_options="openblas"
 alternatives="numpy:f2py:/usr/bin/f2py3"
 
@@ -78,10 +80,6 @@ pre_build() {
     runtime_library_dirs = $XBPS_CROSS_BASE/usr/lib
     EOF
   done
-}
-
-do_check() {
-  echo "Skipping check: tests do not function properly in builddir"
 }
 
 post_install() {
