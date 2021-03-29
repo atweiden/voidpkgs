@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="cgit"
 version=1.2.3
-revision=1
+revision=2
 _git_version=2.25.1
 short_desc="Hyperfast web frontend for git repositories written in C"
-makedepends+=" openssl-devel"
-makedepends+=" zlib-devel"
+makedepends="zlib-devel"
 checkdepends="perl"
 hostmakedepends="asciidoc"
 homepage="https://git.zx2c4.com/cgit/"
@@ -16,6 +15,7 @@ checksum+=" 5a5f12d2f66bd3629c8bc103ec8ec2301b292e97155d30a9a61884ea414a6da4"
 checksum+=" 222796cc6e3bf2f9fd765f8f097daa3c3999bb7865ac88a8c974d98182e29f26"
 make_build_args+=" CGIT_DATA_PATH=/usr/share/webapps/cgit"
 make_build_args+=" CGIT_SCRIPT_PATH=/usr/libexec/cgit"
+make_build_args+=" NO_OPENSSL=yes"
 make_build_args+=" NO_REGEX=NeedsStartEnd"
 make_build_args+=" prefix=/usr"
 
