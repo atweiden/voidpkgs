@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="xfsprogs"
-version=5.10.0
+version=5.11.0
 revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
@@ -11,10 +11,17 @@ hostmakedepends+=" libuuid-devel"
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="e04017e46d43e4d54b9a560fd7cea922520f8f6ef882404969d20cd4e5c790e9"
+checksum="0e9c390fcdbb8a79e1b8f5e6e25fd529fc9f9c2ef8f2d5e647b3556b82d1b353"
 build_style="gnu-configure"
 configure_args+=" --enable-lib64=no"
 configure_args+=" --enable-editline=yes"
+
+post_extract() {
+  sed \
+    -i \
+    -e '1i#include <signal.h>' \
+    include/linux.h
+}
 
 do_install() {
   make \
