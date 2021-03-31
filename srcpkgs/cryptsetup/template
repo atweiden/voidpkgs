@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cryptsetup"
-version=2.3.4
-revision=2
+version=2.3.5
+revision=1
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
 makedepends+=" json-c-devel"
@@ -20,12 +20,13 @@ homepage="https://gitlab.com/cryptsetup/cryptsetup"
 license="GPL-2.0-or-later"
 changelog="https://gitlab.com/cryptsetup/cryptsetup/raw/master/docs/v$version-ReleaseNotes"
 distfiles="$KERNEL_SITE/utils/cryptsetup/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="9d16eebb96b53b514778e813019b8dd15fea9fec5aafde9fae5febf59df83773"
+checksum="ced9946f444d132536daf92fc8aca4277638a3c2d96e20540b2bae4d36fd70c1"
 build_style="gnu-configure"
 configure_args+=" --enable-cryptsetup-reencrypt"
 configure_args+=" --enable-libargon2"
 configure_args+=" --with-crypto_backend=openssl"
 configure_args+=" $(vopt_enable pwquality)"
+make_check="extended"
 make_check_args="-C tests"
 build_options="pwquality"
 desc_option_pwquality="Enable support for checking password quality via libpwquality"
