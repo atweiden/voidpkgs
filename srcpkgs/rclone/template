@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="rclone"
-version=1.54.1
+version=1.55.0
 revision=1
 short_desc="Rsync for cloud storage"
 homepage="https://rclone.org/"
 license="MIT"
 changelog="https://github.com/rclone/rclone/raw/master/docs/content/changelog.md"
 distfiles="https://downloads.rclone.org/v$version/$pkgname-v$version.tar.gz"
-checksum="378a4fd9f3fc47d51413ba48e31a275c972a9e31f3483d46c196ab26f8f1d7e7"
+checksum="75accdaedad3b82edc185dc8824a19a59c30dc6392de7074b6cd98d1dc2c9040"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
