@@ -137,6 +137,7 @@ constant %PKG = Map.new(
                libdb-cxx>,
     'dhcp' => ['dhclient'],
     'dmraid' => ['dmraid-devel'],
+    'docker-cli' => ['docker'],
     'dovecot' => qw<dovecot-devel
                     dovecot-plugin-ldap
                     dovecot-plugin-lucene

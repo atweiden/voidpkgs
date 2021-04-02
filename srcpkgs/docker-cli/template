@@ -1,0 +1,39 @@
+maintainer="nox"
+pkgname="docker-cli"
+version=20.10.5
+revision=1
+short_desc="Command-line interface for the Docker daemon"
+depends="git"
+hostmakedepends="pkg-config"
+homepage="http://www.docker.io"
+license="Apache-2.0"
+distfiles="https://github.com/docker/cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="4ba845f8c7e2e0a2ca1ec6589847159ca8d0d37b609f0e6f78def7a893b9b342"
+wrksrc="cli-$version"
+build_style="go"
+go_package="github.com/docker/cli/cmd/docker"
+go_import_path="github.com/docker/cli"
+_cli_ver_path="github.com/docker/cli/cli/version"
+go_ldflags+=" -X \"$_cli_ver_path.Version=$version\""
+go_ldflags+=" -X \"$_cli_ver_path.GitCommit=tag v$version\""
+system_groups="docker"
+
+pre_build() {
+  go_ldflags+=" -X \"$_cli_ver_path.BuildTime=$(date +%Y-%m-%dT%H:%M:%SZ)\""
+}
+
+post_install() {
+  vcompletion contrib/completion/fish/docker.fish fish
+  vcompletion contrib/completion/zsh/_docker zsh
+  vcompletion contrib/completion/bash/docker bash
+}
+
+docker_package() {
+  unset depends
+  build_style="meta"
+  short_desc="Docker container runtime"
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" moby"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
