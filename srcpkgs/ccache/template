@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ccache"
-version=4.2
+version=4.2.1
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends+=" libzstd-devel"
@@ -20,7 +20,7 @@ homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
 distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="2f14b11888c39778c93814fc6843fc25ad60ff6ba4eeee3dff29a1bad67ba94f"
+checksum="9d6ba1cdefdc690401f404b747d81a9a1802b17af4235815866b7620d980477e"
 build_style="cmake"
 configure_args="-DENABLE_TESTING=OFF"
 if [[ -n "$CHROOT_READY" ]] && [[ -n "$XBPS_CHECK_PKGS" ]]; then
