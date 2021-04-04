@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-hypothesis"
-version=6.8.3
+version=6.8.4
 revision=1
 short_desc="Python3 library for property based testing"
 depends+=" python3-attrs"
@@ -18,7 +18,7 @@ homepage="https://hypothesis.works/"
 license="MPL-2.0"
 changelog="https://hypothesis.readthedocs.io/en/latest/changes.html"
 distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
-checksum="2fcdfa36306b944164326e9e7e3d29926c9521b3618e2b8bfa099f4cf1a3d9e1"
+checksum="8ce759ea4c1792ce0456353a2f2ef0061323545ce4cf010ae8a65966304523bf"
 wrksrc="hypothesis-hypothesis-python-$version"
 build_wrksrc="hypothesis-python"
 build_style="python3-module"
