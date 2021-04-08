@@ -26,7 +26,7 @@ build_options+=" libtls"
 build_options_default="bearssl"
 desc_option_bearssl="Use BearSSL as SSL library"
 desc_option_libtls="Use LibreSSL as SSL library"
-vopt_conflict bearssl libtls
+vopt_conflict "bearssl" "libtls"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)

@@ -27,7 +27,7 @@ configure_args+=" $(vopt_if gnutls --with-ssl=gnutls)"
 build_options+=" gnutls"
 build_options+=" ssl"
 build_options_default="ssl"
-vopt_conflict gnutls ssl
+vopt_conflict "gnutls" "ssl"
 
 post_install() {
   echo "ca_certificate=/etc/ssl/certs/ca-certificates.crt" >> \

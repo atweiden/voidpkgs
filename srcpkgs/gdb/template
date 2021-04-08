@@ -47,7 +47,7 @@ build_options_default+=" debuginfod"
 build_options_default+=" gdbserver"
 build_options_default+=" python"
 # both options cannot be enabled at the same time
-vopt_conflict gdbserver static
+vopt_conflict "gdbserver" "static"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # make python3.x detection work in cross builds
