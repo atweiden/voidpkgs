@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="docker-cli"
 version=20.10.5
-revision=1
+revision=2
 short_desc="Command-line interface for the Docker daemon"
 depends="git"
 hostmakedepends="pkg-config"
@@ -23,9 +23,9 @@ pre_build() {
 }
 
 post_install() {
-  vcompletion contrib/completion/fish/docker.fish fish
-  vcompletion contrib/completion/zsh/_docker zsh
-  vcompletion contrib/completion/bash/docker bash
+  vcompletion contrib/completion/fish/docker.fish fish docker
+  vcompletion contrib/completion/zsh/_docker zsh docker
+  vcompletion contrib/completion/bash/docker bash docker
 }
 
 docker_package() {
