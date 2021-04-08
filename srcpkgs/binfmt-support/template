@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="binfmt-support"
 version=2.2.1
-revision=1
+revision=2
 short_desc="Register interpreters for various binary formats"
 makedepends="libpipeline-devel"
 hostmakedepends="pkg-config"
 homepage="http://packages.debian.org/en/sid/binfmt-support"
-license="GPL-3"
+license="GPL-2.0-or-later"
 distfiles="$DEBIAN_SITE/main/b/binfmt-support/${pkgname}_$version.orig.tar.gz"
 checksum="9c9da3306501a834663ccd14023fc8d29bd08a34df74585e11f97735ea1fb31d"
 build_style="gnu-configure"
