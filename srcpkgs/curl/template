@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.76.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -52,8 +52,10 @@ build_options+=" zstd"
 build_options_default+=" ssh"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
-
 vopt_conflict "ssl" "gnutls"
+
+# force usage of gmtime_r, fix in https://github.com/curl/curl/pull/6859
+CFLAGS="-DHAVE_GMTIME_R -DTIME_WITH_SYS_TIME"
 
 pre_configure() {
   export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
