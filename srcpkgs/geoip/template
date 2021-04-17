@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="geoip"
 version=1.6.12
-revision=2
+revision=3
 short_desc="Non-DNS IP-to-country resolver C library and utilities"
 makedepends="zlib-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="http://www.maxmind.com/app/c"
-license="GPL-2"
+license="LGPL-2.1-or-later"
 distfiles="https://github.com/maxmind/geoip-api-c/releases/download/v$version/GeoIP-$version.tar.gz"
 checksum="1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80"
 wrksrc="GeoIP-$version"
