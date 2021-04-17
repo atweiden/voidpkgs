@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cyrus-sasl"
 version=2.1.27
-revision=6
+revision=7
 short_desc="Cyrus SASL - auth daemon and administration tools"
 depends="libsasl>=$version"
 makedepends+=" db-devel"
@@ -64,7 +64,6 @@ post_install() {
 }
 
 cyrus-sasl-modules-ldap_package() {
-  depends="cyrus-sasl>=${version}_$revision"
   short_desc="Cyrus SASL - pluggable authentication modules (LDAP)"
   pkg_install() {
     vmove "usr/lib/sasl2/libldapdb.*"
@@ -72,7 +71,6 @@ cyrus-sasl-modules-ldap_package() {
 }
 
 cyrus-sasl-modules-sql_package() {
-  depends="cyrus-sasl>=${version}_$revision"
   short_desc="Cyrus SASL - pluggable authentication modules (SQL)"
   pkg_install() {
     vmove "usr/lib/sasl2/libsql.*"
@@ -80,7 +78,6 @@ cyrus-sasl-modules-sql_package() {
 }
 
 cyrus-sasl-modules-gssapi_package() {
-  depends="cyrus-sasl>=${version}_$revision"
   short_desc="Cyrus SASL - pluggable authentication modules (GSSAPI)"
   pkg_install() {
     vmove "usr/lib/sasl2/libgssapi*"
@@ -88,7 +85,6 @@ cyrus-sasl-modules-gssapi_package() {
 }
 
 cyrus-sasl-modules_package() {
-  depends="cyrus-sasl>=${version}_$revision"
   short_desc="Cyrus SASL - pluggable authentication modules"
   pkg_install() {
     vmove usr/lib/sasl2
