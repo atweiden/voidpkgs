@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="opensmtpd"
 version=6.8.0p2
-revision=2
+revision=3
 short_desc="Free implementation of the server-side SMTP protocol"
 depends="ca-certificates"
 makedepends+=" db-devel"
