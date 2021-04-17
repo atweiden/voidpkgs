@@ -1,27 +1,30 @@
 maintainer="nox"
 pkgname="mariadb"
-version=10.1.48
+version=10.5.9
 revision=1
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
+makedepends+=" boost-devel"
+makedepends+=" gnutls-devel"
+makedepends+=" libaio-devel"
 makedepends+=" libatomic-devel"
 makedepends+=" ncurses-devel"
-makedepends+=" openssl-devel"
-makedepends+=" pcre-devel"
-makedepends+=" readline-devel"
+makedepends+=" pam-devel"
+makedepends+=" pcre2-devel"
 makedepends+=" zlib-devel"
+checkdepends="perl"
 hostmakedepends+=" bison"
-hostmakedepends+=" libatomic-devel"
-hostmakedepends+=" ncurses-devel"
-hostmakedepends+=" openssl-devel"
+hostmakedepends+=" flex"
+hostmakedepends+=" git"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-homepage="https://mariadb.org/"
+homepage="https://mariadb.com/"
 license="GPL-2.0-only"
 distfiles="http://archive.mariadb.org/mariadb-$version/source/$pkgname-$version.tar.gz"
-checksum="069d58b1e2c06bb1e6c31249eda34138f41fb8ae3dec7ecaeba8035812c87cf9"
+checksum="40ab19aeb8de141fdc188cf2251213c9e7351bee4d0cd29db704fae68d1068cf"
 conf_files="/etc/mysql/my.cnf"
 build_style="cmake"
+configure_args+=" -DBUILD_CONFIG=mysql_release"
 configure_args+=" -DDEFAULT_CHARSET=utf8"
 configure_args+=" -DDEFAULT_COLLATION=utf8_general_ci"
 configure_args+=" -DENABLED_LOCAL_INFILE=ON"
@@ -37,67 +40,46 @@ configure_args+=" -DINSTALL_SHAREDIR=share/mysql"
 configure_args+=" -DINSTALL_SUPPORTFILESDIR=share/mysql"
 configure_args+=" -DMYSQL_DATADIR=/var/lib/mysql"
 configure_args+=" -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock"
+configure_args+=" -DPLUGIN_BLACKHOLE=YES"
+configure_args+=" -DPLUGIN_PARTITION=YES"
 configure_args+=" -DPLUGIN_TOKUDB=NO"
 configure_args+=" -DSTACK_DIRECTION=1"
-configure_args+=" -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1"
-configure_args+=" -DWITHOUT_FEDERATED_STORAGE_ENGINE=1"
-configure_args+=" -DWITHOUT_PBXT_STORAGE_ENGINE=1"
-configure_args+=" -DWITH_ARCHIVE_STORAGE_ENGINE=1"
-configure_args+=" -DWITH_BLACKHOLE_STORAGE_ENGINE=1"
 configure_args+=" -DWITH_EMBEDDED_SERVER=ON"
 configure_args+=" -DWITH_EXTRA_CHARSETS=complex"
-configure_args+=" -DWITH_INNOBASE_STORAGE_ENGINE=1"
+configure_args+=" -DWITH_LIBARCHIVE=system"
 configure_args+=" -DWITH_LIBWRAP=OFF"
-configure_args+=" -DWITH_PARTITION_STORAGE_ENGINE=1"
+configure_args+=" -DWITH_PCRE=system"
 configure_args+=" -DWITH_READLINE=ON"
-configure_args+=" -DWITH_SSL=bundled"
+configure_args+=" -DWITH_SSL=system"
+configure_args+=" -DWITH_SYSTEMD=no"
 configure_args+=" -DWITH_ZLIB=system"
 system_accounts="mysql"
 mysql_homedir="/var/lib/mysql"
+make_dirs="/var/lib/mysql 0700 mysql mysql"
 lib32disabled="yes"
 provides="mysql-${version}_$revision"
 replaces="mysql>=0"
 
-CFLAGS="-w -fcommon -DDBUG_OFF=1"
-CXXFLAGS="-DDBUG_OFF=1"
-
 pre_configure() {
-  # we need some host binaries before starting cross compilation
-  if [[ -n "$CROSS_BUILD" ]]; then
-    mkdir -p build.native
-    # XXX still broken: jemalloc configure execs host bins
-    AR= \
-    AS= \
-    CC= \
-    CFLAGS= \
-    CPP= \
-    CXX= \
-    CXXFLAGS= \
-    LD= \
-    LDFLAGS= \
-    RANLIB= \
-      cmake -S . -B build.native
-    make -C build.native comp_err comp_sql gen_lex_hash gen_lex_token
-  fi
+  case "$XBPS_TARGET_MACHINE" in
+    *-musl)
+      patch -p0 -i "$FILESDIR/musl-have-stacktrace.patch"
+      patch -p0 -i "$FILESDIR/musl-ppc-remove-glibc-dep.patch"
+      ;;
+  esac
 }
 
-pre_build() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    # cmake complains if those binaries ain't in build
-    cp build.native/extra/comp_err "$wrksrc/extra"
-    cp build.native/extra/comp_err "$wrksrc/build/extra"
-    cp build.native/scripts/comp_sql "$wrksrc/scripts"
-    cp build.native/scripts/comp_sql "$wrksrc/build/scripts"
-    cp build.native/sql/gen_lex_hash "$wrksrc/sql"
-    cp build.native/sql/gen_lex_hash "$wrksrc/build/sql"
-    cp build.native/sql/gen_lex_token "$wrksrc/sql"
-    cp build.native/sql/gen_lex_token "$wrksrc/build/sql"
-    export PATH="$PATH:$wrksrc/extra:$wrksrc/scripts:$wrksrc/sql"
+do_check() {
+  cd build
+  if [[ "$XBPS_CHECK_PKGS" == "full" ]]; then
+    if ! [[ -n "$CROSS_BUILD" ]]; then
+      mem="--mem"
+    fi
+    # NOTE: removed cross compilation support here
+    perl mysql-test/mtr --parallel="$XBPS_MAKEJOBS" "$mem" --force --max-test-fail=40
+  else
+    CTEST_OUTPUT_ON_FAILURE=TRUE ctest -E "(conc336|bulk1|performance|basic-t|fetch|charset|logs|cursor|errors|view|ps|ps_bugs|sp|result|connection|misc|ps_new|thread|features-10_2|async|test-connect)"
   fi
-  export LD_LIBRARY_PATH="$wrksrc/build/storage/tokudb/ft-index/portability"
-  # it seems that there is no dependency listed in cmake on them, but
-  # they are still needed
-  ninja -C build sql/sql_yacc.cc sql/lex_hash.h
 }
 
 post_install() {
@@ -106,9 +88,10 @@ post_install() {
   rm -f "$DESTDIR/usr/share/man/man1/mysql-test-run.pl.1"
   rm -f "$DESTDIR/usr/bin/mytop"
 
-  # configuration file
-  install -Dm 644 "$DESTDIR/usr/share/mysql/my-medium.cnf" \
-    "$DESTDIR/etc/mysql/my.cnf"
+  vmkdir usr/lib/security
+  vmkdir etc/security
+  mv "$DESTDIR/usr/share/pam_user_map.so" "$DESTDIR/usr/lib/security/"
+  mv "$DESTDIR/usr/share/user_map.conf" etc/security/
 
   vsv mysqld
 }
@@ -118,8 +101,7 @@ libmariadbclient_package() {
   provides="libmysqlclient-${version}_$revision"
   replaces="libmysqlclient>=0"
   pkg_install() {
-    vmove "usr/lib/libmysqld.so.*"
-    vmove "usr/lib/libmysqlclient*.so.*"
+    vmove "usr/lib/libmariadb*.so.*"
   }
 }
 
