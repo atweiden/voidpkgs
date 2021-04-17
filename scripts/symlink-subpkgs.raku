@@ -635,6 +635,7 @@ constant %PKG = Map.new(
     'python3-greenlet' => ['python3-greenlet-devel'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
+    'quickjs' => ['quickjs-devel'],
     'raft' => ['raft-devel'],
     're2' => ['re2-devel'],
     'rhash' => ['rhash-devel'],
