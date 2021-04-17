@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.11"
-version=5.11.11
+version=5.11.12
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -30,7 +30,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" 04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4"
-checksum+=" e5e0f6b2e0137e6a8afcfea7aca1c3f1ac1b5c72debcc79f3cb4ddd84df3f199"
+checksum+=" ec443b0e6c9c10d94dc25b1662245d6421f75e223e7ea6de51e4f2c465b08164"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 patch_args="-Np1"
@@ -61,9 +61,6 @@ export KBUILD_BUILD_HOST="voidlinux"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   _cross="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
-fi
-if [[ -n "$_patchver" ]]; then
-  _version="EXTRAVERSION=$_patchver"
 fi
 
 pre_patch() {
@@ -124,23 +121,6 @@ do_configure() {
       $_args \
       $_cross \
       oldconfig
-  elif [[ -f "$FILESDIR/${XBPS_TARGET_MACHINE%%-musl}-dotconfig" ]]; then
-    msg_normal "Detected a .config file for your cpu family, using it.\n"
-    cp -f "$FILESDIR/${XBPS_TARGET_MACHINE%%-musl}-dotconfig" .config
-    make \
-      "$makejobs" \
-      ARCH="$arch" \
-      $_args \
-      $_cross \
-      oldconfig
-  else
-    msg_normal "Defaulting to 'allmodconfig'.\n"
-    make \
-      "$makejobs" \
-      ARCH="$arch" \
-      $_args \
-      $_cross \
-      allmodconfig
   fi
   # always use our revision to CONFIG_LOCALVERSION to match our pkg version
   sed \
@@ -191,13 +171,11 @@ do_build() {
   export LDFLAGS=
   make \
     ARCH="$arch" \
-    $_version \
     $_cross \
     "$makejobs" \
     prepare
   make \
     ARCH="$arch" \
-    $_version \
     $_cross \
     "$makejobs" \
     $_args
@@ -232,7 +210,7 @@ do_install() {
       ;;
   esac
 
-  # run depmod after compressing modules
+  # run depmod after compressing modules - makes depmod.sh a noop
   sed \
     -i \
     -e '2iexit 0' \
