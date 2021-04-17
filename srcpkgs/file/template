@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="file"
-version=5.39
+version=5.40
 revision=1
 short_desc="File type identification utility"
 makedepends="zlib-devel"
 homepage="http://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1"
+checksum="167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57"
 build_style="gnu-configure"
 configure_args="--enable-static"
 if [[ -z "$CHROOT_READY" ]]; then
