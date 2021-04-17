@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="exiftool"
-version=12.23
+version=12.24
 revision=1
 short_desc="Reader and rewriter of EXIF information that supports raw files"
 homepage="https://exiftool.org/"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://exiftool.org/history.html"
 distfiles="https://exiftool.org/Image-ExifTool-$version.tar.gz"
-checksum="825188ea0721b6db9c35a2fa4cd680342a129f6fa5bae41bb17da2d4299771d1"
+checksum="4bbc925eda0072426ffb3b0a6dcedeff173da798fde1efff846a7579854a2f98"
 wrksrc="Image-ExifTool-$version"
 build_style="perl-module"
 
