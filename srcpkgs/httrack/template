@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="httrack"
 version=3.49.2
-revision=7
-short_desc="A free and easy-to-use offline browser utility"
+revision=8
+short_desc="Free and easy-to-use offline browser utility"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
 homepage="http://www.httrack.com"
-license="GPL-3"
+license="GPL-3.0-or-later"
 distfiles="http://mirror.httrack.com/$pkgname-$version.tar.gz"
 checksum="3477a0e5568e241c63c9899accbfcdb6aadef2812fcce0173688567b4c7d4025"
 build_style="gnu-configure"
