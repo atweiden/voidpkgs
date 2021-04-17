@@ -97,6 +97,7 @@ do_configure() {
       ;;
     ppc*)
       arch="powerpc"
+      subarch="ppc"
       ;;
     mips*)
       arch="mips"
