@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="python3-typed-ast"
-version=1.4.1
-revision=2
+version=1.4.2
+revision=1
 short_desc="Ast module with type comment support"
 makedepends="python3-devel"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/python/typed_ast"
 license="Apache-2.0"
 distfiles="https://github.com/python/typed_ast/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="498a6cd88f78e4b2058092ff38c9941d61f4eba2c12b371240ba663f063adf7d"
+checksum="be4b75ea880768489e30818267cf920027ed99014001ac428aedd0b31bbfc899"
 wrksrc="typed_ast-$version"
 build_style="python3-module"
 
