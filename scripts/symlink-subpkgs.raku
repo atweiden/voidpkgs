@@ -150,7 +150,6 @@ constant %PKG = Map.new(
     'dracut' => <dracut-network
                  dracut-uefi>,
     'dtc' => ['dtc-devel'],
-    'duktape' => ['duktape-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
                       e2fsprogs-libs>,
     'efitools' => ['efitools-efi'],
