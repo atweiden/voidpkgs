@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="dvd+rw-tools"
 version=7.1
-revision=4
-short_desc="A set of tools for DVD+RW/-RW drives"
+revision=5
+short_desc="Tools for DVD+RW/-RW drives"
 hostmakedepends="m4"
 homepage="http://fy.chalmers.se/~appro/linux/DVD+RW/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/$pkgname-$version.tar.gz"
 checksum="f8d60f822e914128bcbc5f64fbe3ed131cbff9045dca7e12c5b77b26edde72ca"
 build_style="gnu-makefile"
