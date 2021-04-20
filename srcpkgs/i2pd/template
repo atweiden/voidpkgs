@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="i2pd"
 version=2.37.0
-revision=1
+revision=2
 short_desc="Full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
@@ -18,7 +18,7 @@ conf_files+=" /etc/i2pd/tunnels.conf"
 build_style="gnu-makefile"
 make_build_args+=" USE_UPNP=yes"
 case "$XBPS_TARGET_MACHINE" in
-  x86_64*|i686*)
+  x86_64*)
     ;;
   *)
     make_build_args+=" USE_AESNI=no"
