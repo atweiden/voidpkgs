@@ -1,17 +1,21 @@
 maintainer="nox"
 pkgname="inetutils"
-version=1.9.4
-revision=12
+version=2.0
+revision=1
 short_desc="GNU network utilities"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
+checkdepends+=" iana-etc"
+checkdepends+=" net-tools"
 homepage="http://www.gnu.org/software/inetutils"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/inetutils/$pkgname-$version.tar.xz"
-checksum="849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37"
+checksum="e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722"
 build_style="gnu-configure"
 configure_args+=" --with-pam"
 configure_args+=" --without-wrap"
+# tests can't run in CI
+make_check="extended"
 subpackages+=" inetutils-dnsdomainname"
 subpackages+=" inetutils-ftp"
 subpackages+=" inetutils-hostname"
