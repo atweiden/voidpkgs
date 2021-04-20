@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="cmake-bootstrap"
-version=3.19.7
-revision=2
+version=3.20.1
+revision=1
 short_desc="CMake (for bootstrapping only, not for normal usage)"
 makedepends="libarchive-devel"
 homepage="https://www.cmake.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 distfiles="https://www.cmake.org/files/v${version%.*}/cmake-$version.tar.gz"
-checksum="58a15f0d56a0afccc3cc5371234fce73fcc6c8f9dbd775d898e510b83175588e"
+checksum="3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0"
 wrksrc="cmake-$version"
 bootstrap="yes"
 build_style="configure"
@@ -24,7 +24,6 @@ configure_args+=" --prefix=/usr"
 configure_args+=" --system-libs"
 configure_args+=" ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
 make_build_args="-C Bootstrap.cmk DOCDIR=/usr/share/doc"
-reverts="3.20.0_1"
 conflicts="cmake>=0"
 
 CFLAGS="-DCMAKE_USE_SYSTEM_ZLIB -DCMAKE_USE_SYSTEM_LIBARCHIVE"
@@ -48,7 +47,6 @@ post_patch() {
   rm -rf Utilities/cmexpat
   rm -rf Utilities/cmlibarchive
   rm -rf Utilities/cmliblzma
-  rm -rf Utilities/cmlibrhash
   rm -rf Utilities/cmnghttp2
   rm -rf Utilities/cmzlib
   rm -rf Utilities/cmzstd
