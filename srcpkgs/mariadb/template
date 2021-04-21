@@ -60,7 +60,7 @@ lib32disabled="yes"
 provides="mysql-${version}_$revision"
 replaces="mysql>=0"
 
-pre_configure() {
+post_patch() {
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       patch -p0 -i "$FILESDIR/musl-have-stacktrace.patch"
