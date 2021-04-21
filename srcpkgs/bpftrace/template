@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bpftrace"
-version=0.12.0
+version=0.12.1
 revision=1
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
@@ -16,7 +16,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/iovisor/bpftrace"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bpftrace/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8752c9eac8d9ab16d2227bb68f1d723ec83310895ab6f503ab6cfcf8b193acc0"
+checksum="523c0353c9e508f23d50d3e2b65b09997d10750c3828f369e979759610b71caa"
 build_style="cmake"
 # needs root to run
 configure_args="-DBUILD_TESTING=OFF"
