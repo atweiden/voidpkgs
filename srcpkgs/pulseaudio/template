@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pulseaudio"
 version=14.2
-revision=2
+revision=3
 short_desc="Featureful, general-purpose sound server"
 makedepends+=" alsa-lib-devel"
 makedepends+=" check-devel"
@@ -72,8 +72,9 @@ pre_configure() {
 }
 
 post_install() {
-  rm -f "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"
+  rm "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"
   vsv pulseaudio
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 libpulseaudio_package() {
