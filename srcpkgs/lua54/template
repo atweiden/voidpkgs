@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lua54"
-version=5.4.2
+version=5.4.3
 revision=1
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.4.x)"
 makedepends+=" ncurses-devel"
@@ -8,7 +8,7 @@ makedepends+=" readline-devel"
 homepage="https://www.lua.org"
 license="MIT"
 distfiles="https://www.lua.org/ftp/lua-$version.tar.gz"
-checksum="11570d97e9d7303c0a59567ed1ac7c648340cd0db10d5fd594c09223ef2f524f"
+checksum="f8612276169e3bfcbcfb8f226195bfc6e466fe13042f1076cbde92b7ec96bbfb"
 wrksrc="lua-$version"
 alternatives+=" lua:lua:/usr/bin/lua5.4"
 alternatives+=" lua:luac:/usr/bin/luac5.4"
