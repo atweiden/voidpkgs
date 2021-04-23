@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="mtools"
-version=4.0.26
+version=4.0.27
 revision=1
 short_desc="Collection of utilities to access MS-DOS disks"
 makedepends="acl-devel"
 homepage="http://www.gnu.org/software/mtools"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/mtools/$pkgname-$version.tar.bz2"
-checksum="539f1c8b476a16e198d8bcb10a5799e22e69de49d854f7dbd85b64c2a45dea1a"
+checksum="9c88c8d9244e54768e40b92c005e61ec4e084ea7c070df9184caf1a6408838b3"
 conf_files="/etc/mtools.conf"
 build_style="gnu-configure"
 
