@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="openvpn"
-version=2.5.1
+version=2.5.2
 revision=1
 short_desc="Easy-to-use, robust, and highly configurable VPN"
 makedepends+=" cmocka-devel"
@@ -13,7 +13,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.openvpn.net"
 license="GPL-2.0-only"
 distfiles="http://build.openvpn.net/downloads/releases/$pkgname-$version.tar.xz"
-checksum="40930489c837c05f6153f38e1ebaec244431ef1a034e4846ff732d71d59ff194"
+checksum="b12743836901f365efaf82ab2493967e1b21c21eb43ce9a8da1002a17c9c1dc8"
 build_style="gnu-configure"
 configure_args+=" --disable-systemd"
 configure_args+=" $(vopt_if mbedtls --with-crypto-library=mbedtls)"
