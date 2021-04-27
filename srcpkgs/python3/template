@@ -67,7 +67,6 @@ do_configure() {
     --with-dbmliborder=gdbm:ndbm \
     --with-system-expat \
     --with-system-ffi \
-    --with-threads \
     --without-ensurepip
 }
 
