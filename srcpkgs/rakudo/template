@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rakudo"
-version=2021.03
+version=2021.04
 revision=1
 short_desc="Mature, production-ready implementation of the Raku language"
 depends="nqp-${version}_$revision"
@@ -17,7 +17,7 @@ homepage="https://rakudo.org"
 license="Artistic-2.0"
 changelog="https://github.com/rakudo/rakudo/raw/master/docs/ChangeLog"
 distfiles="https://rakudo.org/dl/rakudo/$pkgname-$version.tar.gz"
-checksum="98eb57fa0f4953aa6617111f36a2706799d8082b42e22c37cf104a918d914ec2"
+checksum="6a5105d619d5e9fe8c3699dc331fc0efd32f6786de55b3cf0f438cd59e44e38e"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
