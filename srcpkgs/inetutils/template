@@ -14,8 +14,8 @@ checksum="e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722"
 build_style="gnu-configure"
 configure_args+=" --with-pam"
 configure_args+=" --without-wrap"
-# tests can't run in CI
-make_check="extended"
+# hostname test can't run in CI
+make_check="ci-skip"
 subpackages+=" inetutils-dnsdomainname"
 subpackages+=" inetutils-ftp"
 subpackages+=" inetutils-hostname"
