@@ -51,7 +51,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 make_build_target="world"
 # initdb fails on github actions, works locally with xbps-uunshare
-make_check="extended"
+make_check="ci-skip"
 # create 'postgres' user for the server
 system_accounts="postgres"
 postgres_homedir="/var/lib/postgresql"
