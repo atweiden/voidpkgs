@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-Cython"
-version=0.29.22
-revision=3
+version=0.29.23
+revision=1
 short_desc="C-Extensions for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
@@ -12,9 +12,11 @@ homepage="https://cython.org/"
 license="Apache-2.0"
 changelog="https://github.com/cython/cython/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/C/Cython/${pkgname#*-}-$version.tar.gz"
-checksum="df6b83c7a6d1d967ea89a2903e4a931377634a297459652e4551734c48195406"
+checksum="6a0d31452f0245daacb14c979c77e093eb1a546c760816b5eed0047686baad8e"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
+# tests are flaky
+make_check="no"
 alternatives+=" cython:cygdb:/usr/bin/cygdb2"
 alternatives+=" cython:cython:/usr/bin/cython2"
 alternatives+=" cython:cythonize:/usr/bin/cythonize2"
