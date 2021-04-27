@@ -18,7 +18,7 @@ configure_args+=" --disable-thorough-tests"
 configure_args+=" --disable-xmms-plugin"
 configure_args+=" --with-ogg=$XBPS_CROSS_BASE/usr"
 # the tests fail when run as root and as such break in the CI containers
-make_check="extended"
+make_check="ci-skip"
 
 # TODO: make into options
 case "$XBPS_TARGET_MACHINE" in
