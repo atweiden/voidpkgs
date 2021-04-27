@@ -15,10 +15,10 @@ distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/$
 checksum="5944da1a8893d11b0828a4fd9136ee174549daffb3d0adfdd8917856fe6b4009"
 wrksrc="fish-$version"
 build_style="cmake"
+# tests don't work as root
+make_check="ci-skip"
 register_shell+=" /bin/fish"
 register_shell+=" /usr/bin/fish"
-# tests don't work as root
-make_check="extended"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
