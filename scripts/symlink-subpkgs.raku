@@ -597,7 +597,8 @@ constant %PKG = Map.new(
                        protobuf-lite
                        protobuf26-devel>
     'pulseaudio' => qw<libpulseaudio
-                       pulseaudio-devel>,
+                       pulseaudio-devel
+                       pulseaudio-utils>,
     'python' => ['python-devel'],
     'python-Babel' => ['python3-Babel'],
     'python-Cython' => ['python3-Cython'],

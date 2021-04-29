@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="pulseaudio"
 version=14.2
-revision=3
+revision=4
 short_desc="Featureful, general-purpose sound server"
+depends="pulseaudio-utils>=${version}_$revision"
 makedepends+=" alsa-lib-devel"
 makedepends+=" check-devel"
 makedepends+=" eudev-libudev-devel"
@@ -98,6 +99,27 @@ pulseaudio-devel_package() {
     vmove usr/lib/libpulse.so
     vmove usr/lib/libpulse-simple.so
     vmove usr/share/vala
+  }
+}
+
+pulseaudio-utils_package() {
+  short_desc+=" - utilities"
+  pkg_install() {
+    for b in pacat \
+             pacmd \
+             pactl \
+             padsp \
+             pamon \
+             paplay \
+             parec \
+             parecord \
+             pasuspender; do
+      vmove "usr/bin/$b"
+      vmove "usr/share/man/man1/$b.1"
+    done
+    vmove usr/bin/pa-info
+    vmove usr/share/bash-completion
+    vmove usr/share/zsh
   }
 }
 
