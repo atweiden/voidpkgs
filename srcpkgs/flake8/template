@@ -1,30 +1,36 @@
-# Template file for 'flake8'
-pkgname=flake8
+maintainer="nox"
+pkgname="flake8"
 version=3.8.4
 revision=1
-build_style=python3-module
-hostmakedepends="python3-setuptools"
-depends="python3-setuptools python3-pycodestyle>=2.6.0<2.7.0
- python3-pyflakes>=2.2.0<2.3.0 python3-mccabe>=0.6.0<0.7.0
- python3-entrypoints>=0.3<0.4"
-checkdepends="python3-mock python3-pycodestyle python3-pytest python3-pyflakes"
 short_desc="Modular source code checker: pycodestyle, pyflakes, mccabe"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
-license="MIT"
+depends+=" python3-entrypoints>=0.3<0.4"
+depends+=" python3-mccabe>=0.6.0<0.7.0"
+depends+=" python3-pycodestyle>=2.6.0<2.7.0"
+depends+=" python3-pyflakes>=2.2.0<2.3.0"
+depends+=" python3-setuptools"
+checkdepends+=" python3-mock"
+checkdepends+=" python3-pycodestyle"
+checkdepends+=" python3-pyflakes"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://gitlab.com/pycqa/flake8"
-distfiles="${PYPI_SITE}/f/flake8/flake8-${version}.tar.gz"
-checksum=aadae8761ec651813c24be05c6f7b4680857ef6afaae4651a4eccaef97ce6c3b
+license="MIT"
+distfiles="$PYPI_SITE/f/flake8/flake8-$version.tar.gz"
+checksum="aadae8761ec651813c24be05c6f7b4680857ef6afaae4651a4eccaef97ce6c3b"
+build_style="python3-module"
 
 do_check() {
-	PYTHONPATH="${wrksrc}/src" python3 -m pytest
+  PYTHONPATH="$wrksrc/src" python3 -m pytest
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 python3-flake8_package() {
-	build_style=meta
-	short_desc+=" (transitional dummy package)"
-	depends="flake8>=${version}_${revision}"
+  build_style=meta
+  short_desc+=" (transitional dummy package)"
+  depends="flake8>=${version}_$revision"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
