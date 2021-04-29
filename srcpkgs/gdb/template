@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gdb"
 version=10.1
-revision=3
+revision=4
 short_desc="GNU Debugger"
 makedepends+=" expat-devel"
 makedepends+=" guile-devel"
@@ -32,31 +32,30 @@ configure_args+=" --with-system-gdbinit=/etc/gdb/gdbinit"
 configure_args+=" --with-system-readline"
 configure_args+=" --with-system-zlib"
 configure_args+=" $(vopt_enable gdbserver)"
-configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
+configure_args+=" $(vopt_if multiarch --enable-targets=all)"
 configure_args+=" $(vopt_if python --with-python=/usr/bin/python3)"
+configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
 configure_args+=" $(vopt_with debuginfod)"
 python_version=3
 pycompile_dirs="/usr/share/gdb/python"
 build_options+=" debuginfod"
 build_options+=" gdbserver"
+build_options+=" multiarch"
 build_options+=" python"
 build_options+=" static"
 desc_option_gdbserver="Enable support for building GDB server"
-# enable gdbserver if !static
+desc_option_multiarch="Enable support for all architectures"
 build_options_default+=" debuginfod"
 build_options_default+=" gdbserver"
 build_options_default+=" python"
-# both options cannot be enabled at the same time
 vopt_conflict "gdbserver" "static"
+vopt_conflict "debuginfod" "static"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # make python3.x detection work in cross builds
   CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
   CXXFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
 fi
-
-CFLAGS+=" -fcommon"
-CXXFLAGS+=" -fcommon"
 
 post_extract() {
   vsed \
