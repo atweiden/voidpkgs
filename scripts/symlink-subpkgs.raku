@@ -171,6 +171,7 @@ constant %PKG = Map.new(
                  libfftw>,
     'file' => qw<file-devel
                  libmagic>,
+    'flake8' => ['python3-flake8'],
     'flac' => qw<libflac
                  libflac-devel>,
     'flex' => ['libfl-devel'],
