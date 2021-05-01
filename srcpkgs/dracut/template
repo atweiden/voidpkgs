@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
-version=051
-revision=2
+version=053
+revision=1
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -12,20 +12,20 @@ depends+=" kmod>=3.7"
 depends+=" kpartx"
 depends+=" util-linux"
 makedepends="libkmod-devel"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    makedepends+=" musl-fts-devel"
-    ;;
-esac
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-fts-devel"
+fi
 hostmakedepends="pkg-config"
 homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
 license="GPL-2.0-or-later, LGPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/boot/dracut/$pkgname-$version.tar.xz"
-checksum="95bc2586b771e3f4ab5c8637201732a137bb682395d25ab496374241091906e3"
+checksum="d5a1b47cdb07919d8225d5b5f538e6ae604988f3df0afbde99a8dc775277b726"
 conf_files="/etc/dracut.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --sysconfdir=/etc"
+# checks require distfiles come from a git repository
+make_check="no"
 make_dirs+=" /etc/dracut.conf.d 0755 root root"
 make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
 subpackages="dracut-network"
@@ -37,19 +37,6 @@ case "$XBPS_TARGET_MACHINE" in
     subpackages+=" dracut-uefi"
   ;;
 esac
-
-do_build() {
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      make "$makejobs" LDLIBS="-lfts"
-      ;;
-  esac
-}
-
-do_check() {
-  # requires the distfile to be a git repository
-  :
-}
 
 post_install() {
   # kernel hooks
