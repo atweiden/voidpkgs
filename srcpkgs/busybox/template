@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="busybox"
 version=1.32.1
-revision=2
+revision=3
 short_desc="Swiss Army Knife of Embedded Linux"
 checkdepends+=" tar"
 checkdepends+=" which"
@@ -47,14 +47,14 @@ do_configure() {
     cp -f "$FILESDIR/dotconfig" "$t/.config"
     case "$XBPS_TARGET_MACHINE" in
       *-musl)
-        sed \
+        vsed \
           -i \
           -e /CONFIG_FEATURE_VI_REGEX_SEARCH/s/y/n/ \
           "$t/.config"
         ;;
     esac
     if [[ -n "$CROSS_BUILD" ]]; then
-      sed \
+      vsed \
         -i \
         -e \
         "s,\(CONFIG_CROSS_COMPILER_PREFIX\).*,\1=\"$XBPS_CROSS_TRIPLET-\",g" \
@@ -109,13 +109,12 @@ do_check() {
            busybox \
            busybox-static \
            busybox-huge; do
-    # copy the testsuite over
-    cp -r src/testsuite "$t"
-    # required by the testsuite
-    cp src/scripts/echo.c "$t/scripts"
-    # run the testsuite
-    (cd "$t/testsuite"
-     SKIP_KNOWN_BUGS="yes" ./runtest -v)
+    make \
+      -C "$t" \
+      "$makejobs" \
+      SKIP_KNOWN_BUGS="yes" \
+      SKIP_INTERNET_TESTS="yes" \
+      check
   done
 }
 
