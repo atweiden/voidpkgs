@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="ansible-base"
 version=2.10.8
-revision=1
+revision=2
 short_desc="Simple deployment, configuration management and execution framework"
 depends+=" python3-Jinja2"
 depends+=" python3-cryptography"
+depends+=" python3-packaging"
 depends+=" python3-paramiko"
 depends+=" python3-setuptools"
 depends+=" python3-yaml"
