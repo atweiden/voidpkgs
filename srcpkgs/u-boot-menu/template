@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="u-boot-menu"
 version=0.2
-revision=2
+revision=3
 short_desc="Create an u-boot menu with currently available kernels"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
