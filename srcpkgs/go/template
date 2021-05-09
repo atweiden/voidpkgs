@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="go"
-version=1.16.3
+version=1.16.4
 revision=1
 short_desc="Go Programming Language"
 hostmakedepends="go1.12-bootstrap"
@@ -8,7 +8,7 @@ homepage="http://golang.org/"
 license="BSD-3-Clause"
 changelog="https://golang.org/doc/devel/release.html"
 distfiles="https://golang.org/dl/$pkgname$version.src.tar.gz"
-checksum="b298d29de9236ca47a023e382313bcc2d2eed31dfa706b60a04103ce83a71a25"
+checksum="ae4f6b6e2a1677d31817984655a762074b5356da50fb58722b99104870d43503"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
