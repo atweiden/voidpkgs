@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="skalibs"
-version=2.10.0.2
+version=2.10.0.3
 revision=1
 short_desc="General purpose libraries for building software from skarnet.org"
 homepage="https://skarnet.org/software/skalibs/"
 license="ISC"
 changelog="https://skarnet.org/software/skalibs/upgrade.html"
 distfiles="https://skarnet.org/software/skalibs/$pkgname-$version.tar.gz"
-checksum="8bba3d7650bab83d4ea2ad21d6bfb5479a8652e362a478fcb783b3c7cf891e0f"
+checksum="b780b0ae650dda0c3ec5f8975174998af2d24c2a2e2be669b1bab46e73b1464d"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --datadir=/usr/share/$pkgname"
