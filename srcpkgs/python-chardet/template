@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-chardet"
 version=4.0.0
-revision=1
+revision=2
 short_desc="Universal encoding detector for Python 2 and 3 (Python2)"
 depends="python-setuptools"
 checkdepends+=" python-pytest"
@@ -9,7 +9,7 @@ checkdepends+=" python3-pytest"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/chardet/chardet"
-license="LGPL-2.1"
+license="LGPL-2.1-only"
 distfiles="$PYPI_SITE/c/chardet/${pkgname#*-}-$version.tar.gz"
 checksum="0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
 wrksrc="${pkgname#*-}-$version"
