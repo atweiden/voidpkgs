@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="s6"
-version=2.10.0.2
+version=2.10.0.3
 revision=1
 short_desc="Small suite of programs for UNIX, designed to allow process supervision"
 makedepends+=" execline-devel"
@@ -9,13 +9,15 @@ homepage="http://skarnet.org/software/s6/"
 license="ISC"
 changelog="https://skarnet.org/software/s6/upgrade.html"
 distfiles="http://skarnet.org/software/s6/$pkgname-$version.tar.gz"
-checksum="b23afce87080b848b89499e85ebd93c20269e6db23f6ef65e58386c9cecd6c21"
+checksum="1d21373151704150df0e8ed199f097f6ee5d2befb9a68aca4f20f3862e5d8757"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --exec-prefix=/usr"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+configure_args+=" $(vopt_if static --enable-static-libc)"
+build_options="static"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
