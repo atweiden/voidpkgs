@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.20.2
+version=1.20.3
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
@@ -12,7 +12,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f2431c82e2d0ee1a7dba3abd26b9e80d8d3cfa620e8b37e7d95991ad6c785834"
+checksum="6fd345c309cf0e51269dd061c80f6db8bcb68b217e6e3792d11e3473535d7304"
 wrksrc="numpy-$version"
 build_style="python3-module"
 # tests do not function propery in a build directory
