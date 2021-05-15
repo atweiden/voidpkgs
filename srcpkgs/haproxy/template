@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="haproxy"
-version=2.3.10
+version=2.4.0
 revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
@@ -12,7 +12,7 @@ hostmakedepends="lua53-devel"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="9946e0cfc83f29072b3431e37246221cf9d4a9d28a158c075714d345266f4f35"
+checksum="0a6962adaf5a1291db87e3eb4ddf906a72fed535dbd2255b164b7d8394a53640"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
@@ -38,7 +38,6 @@ do_build() {
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     EXTRA= \
-    EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o" \
     LDFLAGS="$LDFLAGS" \
     TARGET=$target \
     USE_GETADDRINFO=1 \
@@ -47,6 +46,7 @@ do_build() {
     USE_OPENSSL=1 \
     USE_PCRE=1 \
     USE_PCRE_JIT=1 \
+    USE_PROMEX=1 \
     USE_ZLIB=1 \
     "$makejobs"
 }
