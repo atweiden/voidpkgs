@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="oath-toolkit"
-version=2.6.6
+version=2.6.7
 revision=1
 short_desc="OATH one-time password toolkit"
 makedepends="pam-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.nongnu.org/oath-toolkit/"
 license="GPL-3.0-or-later"
 distfiles="http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$version.tar.gz"
-checksum="fd68b315c71ba1db47bcc6e67f598568db4131afc33abd23ed682170e3cb946c"
+checksum="36eddfce8f2f36347fb257dbf878ba0303a2eaafe24eaa071d5cd302261046a9"
 build_style="gnu-configure"
 
 oath-toolkit-devel_package() {
