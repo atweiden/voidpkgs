@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nginx"
 version=1.18.0
-revision=4
+revision=5
 short_desc="High performance web and reverse proxy server"
 makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
@@ -94,8 +94,11 @@ do_configure() {
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     case "$XBPS_TARGET_MACHINE" in
-      arm*|aarch64*)
+      arm*)
         cp "$FILESDIR/ngx_auto_config.h.armv6l" objs/ngx_auto_config.h
+        ;;
+      aarch64*)
+        cp "$FILESDIR/ngx_auto_config.h.aarch64" objs/ngx_auto_config.h
         ;;
     esac
   fi
