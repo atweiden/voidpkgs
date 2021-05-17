@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="sift"
 version=0.9.0
-revision=12
-short_desc="A fast and powerful open source alternative to grep"
+revision=13
+short_desc="Fast and powerful alternative to grep"
 hostmakedepends="git"
 homepage="https://github.com/svent/sift"
-license="GPL-3"
+license="GPL-3.0-only"
 distfiles="https://github.com/svent/sift/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="bbbd5c472c36b78896cd7ae673749d3943621a6d5523d47973ed2fc6800ae4c8"
 build_style="go"
