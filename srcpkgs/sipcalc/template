@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="sipcalc"
 version=1.1.6
-revision=1
+revision=2
 short_desc="Console based ip subnet calculator"
 homepage="http://www.routemeister.net/projects/sipcalc/"
-license="BSD"
+license="BSD-3-Clause"
 distfiles="http://www.routemeister.net/projects/sipcalc/files/$pkgname-$version.tar.gz"
 checksum="cfd476c667f7a119e49eb5fe8adcfb9d2339bc2e0d4d01a1d64b7c229be56357"
 build_style="gnu-configure"
