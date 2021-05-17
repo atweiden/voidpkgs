@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pcre2"
-version=10.35
+version=10.36
 revision=1
 short_desc="Perl Compatible Regular Expressions (2nd version)"
 makedepends+=" bzip2-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" libtool"
 homepage="http://www.pcre.org/"
 license="BSD-3-Clause"
 distfiles="https://ftp.pcre.org/pub/pcre/$pkgname-$version.tar.gz"
-checksum="8fdcef8c8f4cd735169dd0225fd010487970c1bcadd49e9b90e26c7250a33dc9"
+checksum="b95ddb9414f91a967a887d69617059fb672b914f56fa3d613812c1ee8e8a1a37"
 build_style="gnu-configure"
 configure_args+=" --enable-jit"
 configure_args+=" --enable-newline-is-anycrlf"
