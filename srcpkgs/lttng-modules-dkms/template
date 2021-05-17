@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="lttng-modules-dkms"
-version=2.12.4
+version=2.12.6
 revision=1
 short_desc="LTTng modules provide Linux kernel tracing capability"
 depends="dkms"
 homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only, MIT"
 distfiles="https://lttng.org/files/lttng-modules/${pkgname%-*}-$version.tar.bz2"
-checksum="fe66400fa1b85bff1b9ae24419c74e3bb7d358d643eade0594d81b48bd190688"
+checksum="95ac2a2cf92d85d23ffbdaca6a1ec0d7c167211d1e0fb850ab90004a3f475eaa"
 wrksrc="${pkgname%-*}-$version"
 dkms_modules="${pkgname%-*} $version"
 
