@@ -1,25 +1,34 @@
 maintainer="nox"
 pkgname="hashcat"
-version=6.1.1
+version=6.2.1
 revision=1
 short_desc="Advanced CPU-based password recovery utility"
+makedepends+=" minizip-devel"
 makedepends+=" opencl2-headers"
 makedepends+=" xxHash-devel"
+makedepends+=" zlib-devel"
 checkdepends="perl"
 homepage="https://hashcat.net/hashcat/"
 license="MIT"
 changelog="https://github.com/hashcat/hashcat/raw/master/docs/changes.txt"
 distfiles="https://hashcat.net/files/hashcat-$version.tar.gz"
-checksum="39c140bbb3c0bdb1564bfa9b9a1cff49115a42f4c9c19e9b066b617aea309f80"
+checksum="4994e9ee8ef050881d5c7986b2b95a3abf2114f79e4dbaa28a537f8e2ad5c93b"
 build_style="gnu-makefile"
 make_build_args+=" DEPS_OPENCL_PATH=$XBPS_CROSS_BASE/usr/include"
 make_build_args+=" DEPS_XXHASH_PATH=$XBPS_CROSS_BASE/usr/include"
+make_build_args+=" DEPS_ZLIB_PATH=$XBPS_CROSS_BASE/usr/include"
+make_build_args+=" ENABLE_UNRAR=$(vopt_if unrar 1 0)"
 make_build_args+=" PREFIX=/usr"
 make_build_args+=" SHARED_FOLDER=/usr/lib/hashcat"
 make_build_args+=" USE_SYSTEM_OPENCL=1"
 make_build_args+=" USE_SYSTEM_XXHASH=1"
+make_build_args+=" USE_SYSTEM_ZLIB=1"
 make_use_env="yes"
 make_install_args="$make_build_args"
+build_options="unrar"
+desc_option_unrar="Enable support for unrar"
+# unrar option disabled by default because of license issues
+build_options_default=""
 
 if [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
   broken="Not supported on big endian"
@@ -28,7 +37,7 @@ fi
 post_extract() {
   vsed \
     -i \
-    -e '/^CC/d' \
+    -e '/^\(CC\|CXX\)/d' \
     src/Makefile
 }
 
