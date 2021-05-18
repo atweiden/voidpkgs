@@ -376,7 +376,6 @@ constant %PKG = Map.new(
     'libnl3' => qw<libnl3-devel
                    libnl3-progs>,
     'libogg' => ['libogg-devel'],
-    'libomp' => ['libomp-devel'],
     'libpcap' => ['libpcap-devel'],
     'libpipeline' => ['libpipeline-devel'],
     'libpng' => qw<libpng-devel
@@ -442,16 +441,25 @@ constant %PKG = Map.new(
     'linux5.11' => qw<linux5.11-dbg
                       linux5.11-headers>,
     'llhttp' => ['llhttp-devel'],
-    'llvm11' => qw<clang
+    'llvm11' => ['libllvm11'],
+    'llvm12' => qw<clang
                    clang-analyzer
                    clang-tools-extra
                    libclang
                    libclang-cpp
-                   libllvm11
+                   libcxx
+                   libcxx-devel
+                   libcxxabi
+                   libcxxabi-devel
+                   libllvm12
+                   libomp
+                   libomp-devel
                    lld
                    lld-devel
                    lldb
-                   lldb-devel>,
+                   lldb-devel
+                   llvm-unwind
+                   llvm-unwind-devel>,
     'lm_sensors' => qw<libsensors
                        libsensors-devel>,
     'lowdown' => ['lowdown-devel'],
