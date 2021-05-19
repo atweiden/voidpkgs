@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="procps-ng"
 version=3.3.17
-revision=1
+revision=2
 short_desc="Utilities for monitoring your system and its processes"
 makedepends="ncurses-devel"
 checkdepends="dejagnu"
@@ -45,6 +45,10 @@ pre_configure() {
 
 post_install() {
   vconf "$FILESDIR/sysctl.conf"
+
+  # clashes with extrace, will be renamed in procps-ng 3.3.18.
+  rm -f "$DESTDIR/usr/bin/pwait"
+  rm -f "$DESTDIR/usr/share/man/man1/pwait.1"
 }
 
 procps-ng-devel_package() {
