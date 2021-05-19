@@ -1,20 +1,22 @@
 maintainer="nox"
 pkgname="gnutls"
 version=3.6.15
-revision=2
+revision=3
 short_desc="GNU Transport Layer Security library"
+# dependencies listed in pkg-config files
+_develdepends+=" libidn2-devel"
+_develdepends+=" libtasn1-devel"
+_develdepends+=" libunistring-devel"
+_develdepends+=" nettle-devel"
+_develdepends+=" p11-kit-devel"
+_develdepends+=" trousers-devel"
+_develdepends+=" unbound-devel"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libgpg-error-devel"
-makedepends+=" libidn2-devel"
-makedepends+=" libtasn1-devel"
-makedepends+=" libunistring-devel"
 makedepends+=" lzo-devel"
-makedepends+=" nettle-devel"
-makedepends+=" p11-kit-devel"
 makedepends+=" readline-devel"
-makedepends+=" trousers-devel"
-makedepends+=" unbound-devel"
 makedepends+=" zlib-devel"
+makedepends+=" $_develdepends"
 checkdepends="iproute2"
 hostmakedepends+=" gettext"
 hostmakedepends+=" libtool"
@@ -42,7 +44,7 @@ pre_check() {
 }
 
 gnutls-devel_package() {
-  depends+=" $makedepends"
+  depends+=" $_develdepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
