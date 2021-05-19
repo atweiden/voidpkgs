@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.20.1
+version=3.20.2
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -17,7 +17,7 @@ hostmakedepends+=" gcc-fortran"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0"
+checksum="aecf6ecb975179eb3bb6a4a50cae192d41e92b9372b02300f9e8f1d5f559544e"
 build_style="cmake"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
 configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=ON"
