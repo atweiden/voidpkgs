@@ -15,6 +15,9 @@ makedepends+=" zlib-devel"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
+if [[ "${XBPS_TARGET_LIBC}" == "musl" ]]; then
+  makedepends+=" libexecinfo-devel"
+fi
 hostmakedepends+=" flex"
 hostmakedepends+=" python3"
 homepage="https://github.com/iovisor/bcc"
