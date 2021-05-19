@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm12"
 version=12.0.0
-revision=1
+revision=2
 short_desc="Low Level Virtual Machine"
 depends="libllvm12>=${version}_$revision"
 makedepends+=" binutils-devel"
@@ -70,6 +70,7 @@ python_version=3
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   configure_args+=" -DLIBCXX_HAS_MUSL_LIBC=YES"
   makedepends+=" libexecinfo-devel"
+  depends+=" libexecinfo-devel"
 fi
 
 # "operand out of range" assembler failures
@@ -293,23 +294,22 @@ post_patch() {
       ;;
   esac
 
-  # some sanitizer currently only on x86_64 stuff needs backtrace
   case "$XBPS_TARGET_MACHINE" in
+    # some sanitizer currently only on x86_64 stuff needs backtrace
     x86_64-musl)
       vsed \
         -i \
         -e 's,# Set common link flags.,list(APPEND SANITIZER_COMMON_LINK_LIBS execinfo),' \
         "$wrksrc/projects/compiler-rt/CMakeLists.txt"
       ;;
+    # sanitizer code is broken on arm*-musl since it duplicates some libc bits
+    arm*-musl)
+      vsed \
+        -i \
+        -e 's/set(COMPILER_RT_HAS_SANITIZER_COMMON TRUE)/set(COMPILER_RT_HAS_SANITIZER_COMMON FALSE)/' \
+        "$wrksrc/projects/compiler-rt/cmake/config-ix.cmake"
+      ;;
   esac
-
-  # sanitizer code is broken on arm*-musl since it duplicates some libc bits
-  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-    vsed \
-      -i \
-      -e 's/set(COMPILER_RT_HAS_SANITIZER_COMMON TRUE)/set(COMPILER_RT_HAS_SANITIZER_COMMON FALSE)/' \
-      "$wrksrc/projects/compiler-rt/cmake/config-ix.cmake"
-  fi
 }
 
 pre_configure() {
