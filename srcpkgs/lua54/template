@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="lua54"
 version=5.4.3
-revision=1
+revision=2
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.4.x)"
-makedepends+=" ncurses-devel"
-makedepends+=" readline-devel"
+makedepends="readline-devel"
 homepage="https://www.lua.org"
 license="MIT"
 distfiles="https://www.lua.org/ftp/lua-$version.tar.gz"
@@ -64,9 +63,7 @@ do_install() {
 
 lua54-devel_package() {
   unset alternatives
-  unset depends
-  depends+=" $makedepends"
-  depends+=" lua54>=${version}_$revision"
+  depends="lua54>=${version}_$revision"
   short_desc+=" - development files"
   alternatives+=" lua-devel:lua:/usr/share/doc/lua5.4"
   alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.4.pc"
