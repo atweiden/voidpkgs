@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="lua52"
 version=5.2.4
-revision=11
+revision=12
 short_desc="Powerful, fast, lightweight, embeddable scripting language (5.2.x)"
-makedepends+=" ncurses-devel"
-makedepends+=" readline-devel"
+makedepends="readline-devel"
 homepage="https://www.lua.org"
 license="MIT"
 distfiles="https://www.lua.org/ftp/lua-$version.tar.gz"
@@ -63,9 +62,7 @@ do_install() {
 
 lua52-devel_package() {
   unset alternatives
-  unset depends
-  depends+=" $makedepends"
-  depends+=" lua52>=${version}_$revision"
+  depends="lua52>=${version}_$revision"
   short_desc+=" - development files"
   alternatives+=" lua-devel:lua:/usr/share/doc/lua5.2"
   alternatives+=" lua-devel:lua.pc:/usr/lib/pkgconfig/lua5.2.pc"
