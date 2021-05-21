@@ -445,7 +445,6 @@ libtermkey.so.1 libtermkey-0.17_1
 libtidy.so.5 libtidy5-5.1.25_1
 libtirpc.so.3 libtirpc-1.0.2_1
 libtls.so.20 libtls-3.2.4_1
-libtomcrypt.so.1 libtomcrypt-1.18.0_1
 libtommath.so.1 libtommath-1.0_1
 libtorrent.so.21 libtorrent-0.13.8_4
 libucontext.so.1 libucontext-1.0_1
