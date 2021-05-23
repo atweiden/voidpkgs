@@ -29,6 +29,7 @@ constant %PKG = Map.new(
     'acl' => qw<acl-devel
                 acl-progs>,
     'alsa-lib' => ['alsa-lib-devel'],
+    'ansible-core' => ['ansible-base'],
     'apache' => qw<apache-devel
                    apache-htpasswd>,
     'apparmor' => qw<apparmor-vim
