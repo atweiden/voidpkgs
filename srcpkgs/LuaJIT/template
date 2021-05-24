@@ -11,6 +11,7 @@ license="MIT"
 distfiles="http://luajit.org/download/$pkgname-$_dist_version.tar.gz"
 checksum="1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3"
 wrksrc="$pkgname-$_dist_version"
+build_options="lua52compat"
 # cross-compilation may require `cross-i686-linux-musl`, see: upstream
 nocross="yes"
 
@@ -40,9 +41,15 @@ post_patch() {
 do_build() {
   local _cflags
   local _ldflags
+  local _xcflags
 
   _cflags="$CFLAGS"
   _ldflags="$LDFLAGS"
+
+  if [[ -n "$build_option_lua52compat" ]]; then
+    _xcflags="XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT"
+  fi
+
 
   unset CFLAGS
   unset LDFLAGS
@@ -54,7 +61,8 @@ do_build() {
     HOST_LUA="lua5.2" \
     PREFIX="/usr" \
     TARGET_CFLAGS="$_cflags" \
-    TARGET_LDFLAGS="$_ldflags"
+    TARGET_LDFLAGS="$_ldflags" \
+    $_xcflags
 }
 
 do_install() {
