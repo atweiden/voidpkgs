@@ -531,7 +531,7 @@ libverto.so.0 mit-krb5-libs-1.8_1
 libmpfr.so.6 mpfr-4.0.0_1
 libmsgpack.so.4 msgpack-1.1.0_1
 libmsgpackc.so.2 msgpack-1.1.0_1
-libc.so musl-1.1.21_1
+libc.so musl-1.1.24_7
 libfts.so.0 musl-fts-1.2_2
 libobstack.so.1 musl-obstack-1.2.1_1
 libformw.so.6 ncurses-libs-5.8_1 ignore
