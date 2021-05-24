@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="opensmtpd"
 version=6.8.0p2
-revision=3
+revision=4
 short_desc="Free implementation of the server-side SMTP protocol"
 depends="ca-certificates"
 makedepends+=" db-devel"
@@ -77,6 +77,7 @@ post_install() {
   done
   vlicense LICENSE
   vinstall /dev/null 644 etc/smtpd aliases
+  vinstall "$FILESDIR/smtpd.pam" 644 etc/pam.d smtpd
   vsv opensmtpd
 }
 
