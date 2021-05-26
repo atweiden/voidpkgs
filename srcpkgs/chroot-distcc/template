@@ -3,7 +3,9 @@ pkgname="chroot-distcc"
 version=3.3.3
 revision=1
 short_desc="Distributed compilation for faster C/C++ builds - for xbps-src use"
-makedepends="binutils-devel"
+if [[ -n "$CHROOT_READY" ]]; then
+  makedepends="binutils-devel"
+fi
 homepage="https://distcc.github.io"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/distcc/distcc/releases/download/v$version/${pkgname#chroot-}-$version.tar.gz"
