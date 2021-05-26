@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="alpine"
 version=2.24
-revision=2
+revision=3
 _gitrev="3165f59b344fb4d56d161541f294754d56bcb372"
 short_desc="Apache-licensed PINE mail user agent (with Chappa patches)"
 makedepends+=" gettext-devel"
@@ -16,10 +16,10 @@ checksum="aa8f55b32732f8ea49e23cb11d9151e9ecb0dd1e057f25131988df69fbebc855"
 wrksrc="$pkgname-${_gitrev:0:7}"
 build_style="gnu-configure"
 configure_args+=" --disable-shared"
+configure_args+=" --with-passfile=.pine-passfile"
 configure_args+=" --with-ssl-dir=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-system-fixed-pinerc=/etc/alpine.d/pine.conf.fixed"
 configure_args+=" --with-system-pinerc=/etc/alpine.d/pine.conf"
-configure_args+=" --without-passfile"
 configure_args+=" --without-tcl"
 
 post_extract() {
