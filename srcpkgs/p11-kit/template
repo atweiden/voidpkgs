@@ -1,33 +1,39 @@
 maintainer="nox"
 pkgname="p11-kit"
 version=0.23.22
-revision=1
+revision=2
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
-makedepends+=" gettext-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
+hostmakedepends+=" gettext"
+hostmakedepends+=" libtasn1-tools"
+hostmakedepends+=" libxslt"
 hostmakedepends+=" pkg-config"
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" gettext-devel"
-fi
 homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.xz"
 checksum="8a8f40153dd5a3f8e7c03e641f8db400133fb2a6a9ab2aee1b6d0cb0495ec6b6"
 conf_files="/etc/pkcs11/pkcs11.conf"
-build_style="gnu-configure"
-configure_args="--with-module-path=/usr/lib/pkcs11"
-
-pre_configure() {
-  NOCONFIGURE=1 autoreconf -fi
-}
+patch_args="-Np1"
+build_style="meson"
+configure_args+=" -Dbash_completion=disabled"
+configure_args+=" -Dgtk_doc=false"
+configure_args+=" -Dlibffi=enabled"
+configure_args+=" -Dman=true"
+configure_args+=" -Dnls=true"
+configure_args+=" -Dsystemd=disabled"
+configure_args+=" -Dtrust_module=enabled"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -Dtest=true"
+else
+  configure_args+=" -Dtest=false"
+fi
 
 post_install() {
   vlicense COPYING
-  mv "$DESTDIR/etc/pkcs11/pkcs11.conf.example" \
-    "$DESTDIR/etc/pkcs11/pkcs11.conf"
+  mv "$DESTDIR/etc/pkcs11/pkcs11.conf.example" "$DESTDIR/etc/pkcs11/pkcs11.conf"
+  vcompletion bash-completion/p11-kit bash p11-kit
+  vcompletion bash-completion/trust bash trust
 }
 
 p11-kit-devel_package() {
