@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="p11-kit"
 version=0.23.22
-revision=2
+revision=3
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
@@ -23,6 +23,7 @@ configure_args+=" -Dman=true"
 configure_args+=" -Dnls=true"
 configure_args+=" -Dsystemd=disabled"
 configure_args+=" -Dtrust_module=enabled"
+configure_args+=" -Dtrust_paths=/etc/ssl/certs/ca-certificates.crt"
 if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args+=" -Dtest=true"
 else
