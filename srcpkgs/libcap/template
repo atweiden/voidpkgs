@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libcap"
 version=2.50
-revision=1
+revision=2
 short_desc="POSIX.1e capabilities suite"
 makedepends="attr-devel"
 if [[ -n "$CHROOT_READY" ]]; then
