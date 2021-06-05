@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="android-tools"
 version=31.0.0p1
-revision=2
+revision=3
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
@@ -31,6 +31,8 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
 fi
 
 post_install() {
+  # zsh's built in works, while this one doesn't
+  rm -f "$DESTDIR/usr/share/zsh/site-functions/_adb"
   vlicense vendor/boringssl/LICENSE boringssl.LICENSE
   vlicense vendor/boringssl/third_party/fiat/LICENSE fiat.LICENSE
   vsv adb
