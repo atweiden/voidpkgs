@@ -8,14 +8,8 @@ makedepends+=" zlib-devel"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
-if [[ -z "$CHROOT_READY" ]]; then
-  hostmakedepends="cmake-bootstrap"
-  export CMAKE_GENERATOR="Unix Makefiles"
-  make_cmd="make"
-else
-  hostmakedepends+=" asciidoc"
-  hostmakedepends+=" perl"
-fi
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" perl"
 homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
@@ -23,10 +17,9 @@ distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname
 checksum="9d6ba1cdefdc690401f404b747d81a9a1802b17af4235815866b7620d980477e"
 build_style="cmake"
 configure_args="-DENABLE_TESTING=OFF"
-if [[ -n "$CHROOT_READY" ]] && [[ -n "$XBPS_CHECK_PKGS" ]]; then
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args+=" -DENABLE_TESTING=ON"
 fi
-bootstrap="yes"
 
 post_install() {
   vmkdir usr/lib/ccache/bin
