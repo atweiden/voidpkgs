@@ -15,10 +15,6 @@ checksum="e2c1c5dee4a1c36bcb790e0fabd5492d874b8ebd4617622c4f6a731701060dda"
 wrksrc="soupsieve-$version"
 build_style="python3-module"
 
-do_check() {
-  PYTHONPATH="$PWD/build/lib" python3 -m pytest
-}
-
 post_install() {
   vlicense LICENSE.md
   # remove tests outside of the namespace
