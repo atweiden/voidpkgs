@@ -14,6 +14,11 @@ configure_args+=" --enable-acl"
 configure_args+=" gl_cv_func_working_acl_get_file=yes"
 bootstrap="yes"
 
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  export ac_cv_lib_error_at_line="no"
+  export ac_cv_header_sys_cdefs_h="no"
+fi
+
 post_extract() {
   # dont regenerate the man page with help2man...
   sed \
