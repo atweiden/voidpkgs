@@ -31,10 +31,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
   export PYO3_CROSS_INCLUDE_DIR="$XBPS_CROSS_BASE/usr/include"
 fi
 
-do_check() {
-  PYTHONPATH="$(cd build/lib* && pwd)" python3 -m pytest
-}
-
 post_install() {
   vlicense LICENSE
   vlicense LICENSE.BSD
