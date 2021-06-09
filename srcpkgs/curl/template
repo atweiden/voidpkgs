@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.77.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -14,12 +14,12 @@ makedepends+=" $(vopt_if ssh libssh2-devel)"
 makedepends+=" $(vopt_if ssl openssl-devel)"
 makedepends+=" $(vopt_if zstd libzstd-devel)"
 # openssh isn't in checkdepends, because test 581 locks up
-checkdepends+=" groff"
 checkdepends+=" nghttp2"
-checkdepends+=" perl"
 checkdepends+=" python3"
 checkdepends+=" stunnel"
-hostmakedepends+=" groff"
+# Use mdocml instead of groff to generate builtin manual to avoid cyclic
+# dependencies.
+hostmakedepends+=" mdocml"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="https://curl.haxx.se"
@@ -33,6 +33,7 @@ configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
 configure_args+=" --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
 configure_args+=" --without-libidn2"
+configure_args+=" ac_cv_path_NROFF=/usr/bin/mandoc"
 configure_args+=" ac_cv_sizeof_off_t=8"
 configure_args+=" $(vopt_enable ldap ldaps)"
 configure_args+=" $(vopt_enable ldap)"
