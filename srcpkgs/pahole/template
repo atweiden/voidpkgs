@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="pahole"
-version=1.17
-revision=3
-_bpfver=0.0.7
+version=1.18
+revision=1
+_bpfver=0.1.1
 short_desc="Various DWARF utils"
 makedepends+=" elfutils-devel"
 makedepends+=" zlib-devel"
@@ -15,8 +15,8 @@ homepage="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license="GPL-2.0-only"
 distfiles+=" https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/libbpf/libbpf/archive/v$_bpfver.tar.gz"
-checksum+=" 51e35041ce43ed08922037a1ee9e415aff1590e0d8d7cbe3e2b003f388db0a8a"
-checksum+=" a616ba2ea72d00b4022689b17f4a78365379e3040d0f1a66d28eba52c528e480"
+checksum+=" bb436a4b5e856c8963b1ea52260da064dc985f6e3832b29adec094422365a5a7"
+checksum+=" 3fd271cf65b39bf38432b29d9dd2f694600c97dab0928baee419a65b5db4e598"
 build_style="cmake"
 configure_args="-D__LIB=lib"
 
