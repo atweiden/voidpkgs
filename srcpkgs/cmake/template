@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.20.2
-revision=2
+version=3.20.3
+revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
 makedepends+=" jsoncpp-devel"
@@ -10,13 +10,14 @@ makedepends+=" libcurl-devel"
 makedepends+=" libuv-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" rhash-devel"
+checkdepends+=" git"
 checkdepends+=" pax"
 checkdepends+=" pkg-config"
 hostmakedepends="gcc-fortran"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="aecf6ecb975179eb3bb6a4a50cae192d41e92b9372b02300f9e8f1d5f559544e"
+checksum="4d008ac3461e271fcfac26a05936f77fc7ab64402156fb371d41284851a651b8"
 build_style="configure"
 configure_args+=" --docdir=/share/doc/cmake"
 configure_args+=" --mandir=/share/man"
