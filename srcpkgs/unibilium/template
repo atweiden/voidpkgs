@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="unibilium"
 version=2.0.0
-revision=1
-short_desc="A simple, self-contained terminfo library"
+revision=2
+short_desc="Simple, self-contained terminfo library"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
 homepage="https://github.com/mauke/unibilium"
-license="LGPL-3"
+license="LGPL-3.0-or-later"
 distfiles="https://github.com/mauke/unibilium/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="78997d38d4c8177c60d3d0c1aa8c53fd0806eb21825b7b335b1768d7116bc1c1"
 build_style="gnu-makefile"
@@ -14,11 +14,11 @@ build_style="gnu-makefile"
 do_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     cp /usr/bin/libtool .
-    sed \
+    vsed \
       -i \
       -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" \
       libtool
-    sed \
+    vsed \
       -i \
       -e 's,libtool,./libtool,g' \
       Makefile
