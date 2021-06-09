@@ -14,6 +14,11 @@ configure_args+=" --enable-threads"
 bootstrap="yes"
 replaces="chroot-m4>=0"
 
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  export ac_cv_lib_error_at_line="no"
+  export ac_cv_header_sys_cdefs_h="no"
+fi
+
 if [[ -z "$CHROOT_READY" ]]; then
   # disable makeinfo unconditionally
   # texinfo defaults to utf-8 now and the file is in iso-8859-1
