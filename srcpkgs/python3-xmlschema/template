@@ -6,6 +6,7 @@ short_desc="XML Schema validator and decoder for Python"
 depends="python3-elementpath"
 checkdepends+=" python3-Sphinx"
 checkdepends+=" python3-lxml"
+checkdepends+=" python3-pytest"
 hostmakedepends+=" python3-elementpath"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/sissaschool/xmlschema"
@@ -14,10 +15,6 @@ distfiles="$PYPI_SITE/x/xmlschema/xmlschema-$version.tar.gz"
 checksum="31ddf77a44e4b121de212beeb2cc039e2e8b7a7a4f1678c9b29be1f5341aec52"
 wrksrc="xmlschema-$version"
 build_style="python3-module"
-
-do_check() {
-  PYTHONPATH="$(pwd)/build/lib" python3 -m unittest
-}
 
 post_install() {
   vlicense LICENSE
