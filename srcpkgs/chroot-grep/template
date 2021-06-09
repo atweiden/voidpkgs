@@ -16,6 +16,11 @@ bootstrap="yes"
 provides="grep-${version}_$revision"
 conflicts="grep>=0"
 
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  export ac_cv_lib_error_at_line="no"
+  export ac_cv_header_sys_cdefs_h="no"
+fi
+
 post_install() {
   rm -rf "$DESTDIR/usr/share/info"
   rm -rf "$DESTDIR/usr/share/man"
