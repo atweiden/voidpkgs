@@ -9,14 +9,6 @@ license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
 checksum="9f61417a44d5b954a5012b6f34e526a3336dcf5dd720e2bb7ada92ad8b3d6680"
 wrksrc="git-$version"
-build_style="gnu-configure"
-configure_args+=" --without-curl"
-configure_args+=" --without-expat"
-configure_args+=" --without-openssl"
-configure_args+=" --without-python"
-configure_args+=" --without-tcltk"
-configure_args+=" ac_cv_lib_curl_curl_global_init=no"
-configure_args+=" ac_cv_lib_expat_XML_ParserCreate=no"
 make_check_target="test"
 bootstrap="yes"
 
@@ -27,18 +19,41 @@ else
   configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
 fi
 
-post_configure() {
+do_configure() {
   cat <<-EOF >config.mak
+prefix = /usr
+CC = $CC
+AR = $AR
+TAR = $(command -v bsdtar || command -v tar)
+CFLAGS = $CFLAGS
+LDFLAGS = $LDFLAGS
 CC_LD_DYNPATH=-L
 NO_INSTALL_HARDLINKS=Yes
 NO_GETTEXT=Yes
+NO_OPENSSL = Yes
+USE_LIBPCRE :=
+USE_LIBPCRE2 :=
+NO_CURL = Yes
+NO_EXPAT = Yes
+NO_PERL = Yes
+NO_PYTHON = Yes
+NO_TCLTK = Yes
 EOF
+
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    cat <<-EOF >>config.mak
+ICONV_OMITS_BOM = Yes
+NO_REGEX = Yes
+EOF
+  fi
+}
+
+do_build() {
+  make "$makejobs" git
 }
 
 do_install() {
-  # remove unneeded stuff
-  make DESTDIR="$wrksrc/build-tmp" install
-  vbin "$wrksrc/build-tmp/usr/bin/git" chroot-git
+  vbin git chroot-git
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
