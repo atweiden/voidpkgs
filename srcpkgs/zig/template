@@ -1,9 +1,6 @@
 maintainer="nox"
-version=0.8.0pre1
+version=0.8.0
 revision=1
-# temporarily package master branch snapshot since latest release (0.7.1)
-# requires llvm11
-_upstream_version="0.8.0-dev.2275+8467373bb"
 short_desc="Programming language designed for robustness, optimality, and clarity"
 archs+=" aarch64*"
 archs+=" x86_64*"
@@ -12,12 +9,9 @@ makedepends+=" lld-devel"
 makedepends+=" llvm12"
 homepage="https://ziglang.org/"
 license="MIT"
-distfiles="https://ziglang.org/builds/$pkgname-$_upstream_version.tar.xz"
-checksum="2ac91466d8a02e82eff6d89181a36b3377c3b0ec9b8a739e1fd2fdf3c173785f"
-wrksrc="$pkgname-$_upstream_version"
+distfiles="https://ziglang.org/download/$version/$pkgname-$version.tar.xz"
+checksum="03a828d00c06b2e3bb8b7ff706997fd76bf32503b08d759756155b6e8c981e77"
 build_style="cmake"
-# upstream's version handling for master builds relies on the git repo
-configure_args="-DZIG_VERSION=$_upstream_version"
 make_cmd="make"
 nopie="yes"
 nocross="yes"
