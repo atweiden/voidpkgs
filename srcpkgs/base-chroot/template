@@ -28,7 +28,6 @@ depends+=" gzip"
 depends+=" coreutils"
 depends+=" file"
 depends+=" bsdtar"
-depends+=" ccache"
 depends+=" xbps"
 depends+=" mpfr"
 depends+=" ncurses"
@@ -39,6 +38,9 @@ depends+=" chroot-gawk"
 depends+=" chroot-distcc"
 depends+=" chroot-util-linux"
 depends+=" chroot-git"
+if [[ -n "$CHROOT_READY" ]]; then
+  depends+=" ccache"
+fi
 build_style="meta"
 bootstrap="yes"
 
