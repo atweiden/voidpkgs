@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="nomad"
-version=1.1.0
+version=1.1.1
 revision=1
-_gitrev="a480eed0815c54612856d9115a34bb1d1a773e8c"
+_gitrev="a6fab0f1df962b9224adcf05c886c6ae59d52192"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
 hostmakedepends="git"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="cb9bb49a266b1720e78e6899e48e9dbfadd927d6a356e378980e4e398cfb4c78"
+checksum="441d2f50a29568451cb16301a2208c9b744a480ded8c624e789983ee42ed3ea9"
 patch_args="-Np1"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
@@ -25,8 +25,6 @@ export GOFLAGS="-trimpath"
 
 post_install() {
   vlicense LICENSE
-  vsconf dist/server.hcl
-  vsconf dist/client.hcl
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
