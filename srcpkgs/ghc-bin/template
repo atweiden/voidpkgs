@@ -3,7 +3,7 @@ pkgname="ghc-bin"
 version=8.8.4
 revision=1
 short_desc="Glorious Haskell Compiler - precompiled binaries"
-archs+=" i686*"
+archs+=" i686"
 archs+=" ppc64le*"
 archs+=" x86_64*"
 depends+=" gcc"
@@ -30,10 +30,6 @@ case "$XBPS_TARGET_MACHINE" in
     distfiles="https://downloads.haskell.org/~ghc/${version%[!0-9]}/${pkgname%-*}-$version-i386-deb9-linux.tar.xz"
     checksum="43dd954910c9027694312cef0aabc7774d102d0422b7172802cfb72f7d5da3a0"
     ;;
-  i686-musl)
-    distfiles="https://distfiles.voidlinux.de/ghc-$version-i386-unknown-linux-musl.tar.xz"
-    checksum="8d84fbab62b3712bdcfb92f7d258a0d15d8295397d84b48716a3c625f09be782"
-    ;;
   ppc64le)
     distfiles="https://alpha.de.repo.voidlinux.org/distfiles/ghc-$version-powerpc64le-void-linux.tar.xz"
     checksum="4a13d36a3e3d605db02b89269ed727c3ba23c9d03b84b72c1716a910a28f8074"
@@ -41,6 +37,9 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64le-musl)
     distfiles="https://alpha.de.repo.voidlinux.org/distfiles/ghc-$version-powerpc64le-void-linux-musl.tar.xz"
     checksum="b35ba0cb20a05555ac6c2c92f9f090c665e55b3d295d58a801eb88bd4f6baab3"
+    ;;
+  *)
+    broken="No distfiles available for this target"
     ;;
 esac
 wrksrc="${pkgname%-*}-${version%[!0-9]}"
