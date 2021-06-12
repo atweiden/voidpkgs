@@ -36,7 +36,9 @@ post_patch() {
   vsed \
     -i \
     -e 's,.Xr more,.Xr less,g' \
-    *.1
+    apropos.1 \
+    man.1 \
+    mandoc.1
   vsed \
     -i \
     -e 's/^CC=.*/CC=cc/' \
