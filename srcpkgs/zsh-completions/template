@@ -1,23 +1,21 @@
 maintainer="nox"
 pkgname="zsh-completions"
 version=0.32.0
-revision=1
+revision=2
 short_desc="Additional completions for Zsh"
-archs="noarch"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-completions"
 license="BSD-3-Clause, Apache-2.0, MIT"
 distfiles="https://github.com/zsh-users/zsh-completions/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d2d20836fb60d2e5de11b08f1a8373484dc01260d224e64c6de9eec44137fa63"
 
+post_patch() {
+  rm -f src/_composer
+}
+
 do_install() {
   vmkdir usr/share/zsh/site-functions/
   vcopy src/_* usr/share/zsh/site-functions/
-}
-
-post_install() {
-  echo "See each file in /usr/share/zsh/site-functions for license details" > \
-    LICENSE
   vlicense LICENSE
 }
 
