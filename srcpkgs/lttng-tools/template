@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lttng-tools"
-version=2.12.3
+version=2.12.4
 revision=1
 short_desc="Set of tools to control LTTng tracing"
 makedepends+=" libuuid-devel"
@@ -12,7 +12,7 @@ hostmakedepends="pkg-config"
 homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only"
 distfiles="https://lttng.org/files/lttng-tools/$pkgname-$version.tar.bz2"
-checksum="2890da230edd523fcf497e9eb28133b7606d64fa01bcbffadbfcba42104db153"
+checksum="d729f8c2373a41194f171aeb0da0a9bb35ac181f31afa7e260786d19a500dea1"
 build_style="gnu-configure"
 # tests timeout
 make_check="no"
