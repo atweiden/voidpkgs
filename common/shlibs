@@ -18,8 +18,8 @@ libbcc_bpf.so.0 bcc-0.10.0_1
 libbcc.so.0 bcc-0.7.0_1
 libbpf.so.0 bcc-0.7.0_1
 libbearssl.so.0 bearssl-0.3_1
-libbenchmark.so.0 benchmark-1.5.3_1
-libbenchmark_main.so.0 benchmark-1.5.3_1
+libbenchmark.so.1 benchmark-1.5.5_1
+libbenchmark_main.so.1 benchmark-1.5.5_1
 libbind9-9.16.15.so bind-libs-9.16.15_1
 libdns-9.16.15.so bind-libs-9.16.15_1
 libirs-9.16.15.so bind-libs-9.16.15_1
