@@ -38,6 +38,7 @@ depends+=" chroot-gawk"
 depends+=" chroot-distcc"
 depends+=" chroot-util-linux"
 depends+=" chroot-git"
+depends+=" tzdata"
 if [[ -n "$CHROOT_READY" ]]; then
   depends+=" ccache"
 fi
