@@ -8,8 +8,8 @@ homepage="http://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="http://www.iana.org/time-zones/repository/releases/$pkgname$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="39e7d2ba08c68cbaefc8de3227aab0dec2521be8042cf56855f7dc3a9fb14e08"
-wrksrc="$pkgname"
 create_wrksrc="yes"
+bootstrap="yes"
 
 do_install() {
   local timezones
