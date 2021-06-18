@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lttng-ust"
-version=2.12.0
+version=2.12.2
 revision=1
 short_desc="Low-overhead tracing capabilities for userspace"
 depends="libnuma"
@@ -10,10 +10,9 @@ homepage="https://lttng.org"
 license="LGPL-2.1-only"
 changelog="https://github.com/lttng/lttng-ust/raw/master/ChangeLog"
 distfiles="https://lttng.org/files/lttng-ust/$pkgname-$version.tar.bz2"
-checksum="1983edb525f3f27e3494088d8d5389b4c71af66bbfe63c6f1df2ad95aa44a528"
+checksum="bcd0f064b6ca88c72d84e760eac3472ae5c828411c634435922bee9fce359fc7"
 build_style="gnu-configure"
-# unverified
-python_version=2
+python_version=3
 
 lttng-ust-devel_package() {
   unset depends
