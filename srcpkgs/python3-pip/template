@@ -11,7 +11,6 @@ changelog="https://github.com/pypa/pip/raw/master/NEWS.rst"
 distfiles="$PYPI_SITE/p/pip/pip-$version.tar.gz"
 checksum="eb5df6b9ab0af50fe1098a52fd439b04730b6e066887ff7497357b9ebd19f79b"
 wrksrc="pip-$version"
-patch_args="-Np0"
 build_style="python3-module"
 # tests have unpackaged dependencies
 make_check="no"

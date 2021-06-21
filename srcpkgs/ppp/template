@@ -16,7 +16,6 @@ conf_files+=" /etc/ppp/ipv6-down"
 conf_files+=" /etc/ppp/ipv6-up"
 conf_files+=" /etc/ppp/options"
 conf_files+=" /etc/ppp/pap-secrets"
-patch_args="-Np0"
 make_dirs+=" /etc/ppp/ipv6-down.d 0755 root root"
 make_dirs+=" /etc/ppp/peers 0755 root root"
 

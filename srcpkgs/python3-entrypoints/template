@@ -10,7 +10,6 @@ license="MIT"
 distfiles="https://github.com/takluyver/entrypoints/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="f26eddc371e37d8e9f6663b77524d6731567f005bd1e4ac950c0e33c48fbc065"
 wrksrc="entrypoints-$version"
-patch_args="-Np0"
 build_style="python3-module"
 
 pre_build() {
