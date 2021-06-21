@@ -11,7 +11,6 @@ license="BSD-3-Clause"
 changelog="https://www.tcpdump.org/tcpdump-changes.txt"
 distfiles="https://www.tcpdump.org/release/$pkgname-$version.tar.gz"
 checksum="79b36985fb2703146618d87c4acde3e068b91c553fb93f021a337f175fd10ebe"
-patch_args="-Np0"
 build_style="gnu-configure"
 
 post_install() {

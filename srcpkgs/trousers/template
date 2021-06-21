@@ -11,7 +11,6 @@ distfiles="https://sources.voidlinux.org/trousers-$version/$pkgname-$version.tar
 checksum="ce50713a261d14b735ec9ccd97609f0ad5ce69540af560e8c3ce9eb5f2d28f47"
 conf_files="/etc/tcsd.conf"
 create_wrksrc="yes"
-patch_args="-Np0"
 build_style="gnu-configure"
 system_accounts="tss"
 tss_homedir="/var/lib/tpm"
