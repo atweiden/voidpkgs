@@ -1,5 +1,5 @@
---- configure-master	2020-04-30 18:55:31.884880427 +0200
-+++ configure	2020-04-30 19:58:12.271990731 +0200
+--- a/configure-master	2020-04-30 18:55:31.884880427 +0200
++++ b/configure	2020-04-30 19:58:12.271990731 +0200
 @@ -6798,12 +6798,6 @@
  $as_echo_n "checking whether the compiler accepts -g... " >&6; }
  	hitch_save_CFLAGS=$CFLAGS
