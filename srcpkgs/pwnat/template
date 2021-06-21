@@ -10,6 +10,7 @@ license="GPL-3.0-or-later"
 distfiles="https://github.com/samyk/pwnat/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="365da981ba1a39d7e3c8427fbcd9e7fcd3dd16cd30ae7e3b0aca50511fd8e1b1"
 wrksrc="$pkgname-$_gitrev"
+patch_args="-Np0"
 build_style="gnu-makefile"
 
 do_configure() {

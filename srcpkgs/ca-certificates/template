@@ -12,6 +12,7 @@ distfiles="$DEBIAN_SITE/main/c/ca-certificates/${pkgname}_$version.tar.xz"
 checksum="daa3afae563711c30a0586ddae4336e8e3974c2b627faaca404c4e0141b64665"
 conf_files="/etc/ca-certificates.conf"
 wrksrc="work"
+patch_args="-Np0"
 bootstrap="yes"
 
 post_extract() {

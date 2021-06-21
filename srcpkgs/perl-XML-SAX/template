@@ -15,6 +15,7 @@ license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
 checksum="4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a"
 wrksrc="${pkgname#*-}-$version"
+patch_args="-Np0"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

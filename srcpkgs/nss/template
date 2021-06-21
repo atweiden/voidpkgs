@@ -13,6 +13,7 @@ homepage="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
 checksum="89a79e3a756cf0ac9ba645f4d4c0fc58d4133134401fb0b6c8a74c420bb4cdc9"
+patch_args="-Np0"
 
 export BUILD_OPT=1
 export FREEBL_NO_DEPEND=1

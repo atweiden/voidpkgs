@@ -12,6 +12,7 @@ homepage="https://edge.launchpad.net/intltool"
 license="GPL-2.0-or-later"
 distfiles="http://launchpad.net/intltool/trunk/$version/+download/$pkgname-$version.tar.gz"
 checksum="67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

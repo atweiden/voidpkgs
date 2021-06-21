@@ -13,6 +13,7 @@ license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/squashfs/${pkgname%-*}$version.tar.gz"
 checksum="a981b3f3f2054b5a2e658851a3c06a2460ad04a9a8a645e0afe063a63fdbb07e"
 wrksrc="${pkgname%-*}$version"
+patch_args="-Np0"
 build_wrksrc="squashfs-tools"
 build_style="gnu-makefile"
 

@@ -12,6 +12,7 @@ distfiles="https://github.com/docbook/xslt10-stylesheets/releases/download/relea
 checksum="316524ea444e53208a2fb90eeb676af755da96e1417835ba5f5eb719c81fa371"
 # at v1.79.2, docbook-xsl-ns was renamed to just docbook-xsl
 wrksrc="docbook-xsl-$version"
+patch_args="-Np0"
 xml_entries="nextCatalog /usr/share/xsl-ns/docbook/catalog.xml --"
 
 do_install() {

@@ -11,6 +11,7 @@ homepage="https://github.com/gperftools/gperftools"
 license="BSD-3-Clause"
 distfiles="https://github.com/gperftools/gperftools/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
 checksum="240deacdd628b6459671b83eb0c4db8e97baadf659f25b92e9a078d536bd513e"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then

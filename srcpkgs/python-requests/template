@@ -15,6 +15,7 @@ changelog="https://github.com/psf/requests/raw/master/HISTORY.md"
 distfiles="$PYPI_SITE/r/requests/${pkgname#*-}-$version.tar.gz"
 checksum="27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
 wrksrc="${pkgname#*-}-$version"
+patch_args="-Np0"
 build_style="python-module"
 
 post_patch() {

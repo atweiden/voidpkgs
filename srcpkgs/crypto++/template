@@ -8,6 +8,7 @@ license="BSL-1.0"
 distfiles="https://github.com/weidai11/cryptopp/archive/CRYPTOPP_${version//./_}.tar.gz>$pkgname-$version.tar.gz"
 checksum="63304c6f943f435a4e385273e15abb69cff3b85a44663150bf5a6069b84abd43"
 wrksrc="${pkgname//+/p}-CRYPTOPP_${version//./_}"
+patch_args="-Np0"
 build_style="gnu-makefile"
 make_build_args="PREFIX=/usr"
 if [[ -n "$XBPS_CROSS" ]]; then

@@ -13,6 +13,7 @@ homepage="https://www.libssh.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://www.libssh.org/files/0.8/libssh-$version.tar.xz"
 checksum="df65d6054554e8ff5458628808ce8d68b928175f4fefa1c833582b9568491e64"
+patch_args="-Np0"
 build_style="cmake"
 configure_args="-DUNIT_TESTING=ON"
 case "$XBPS_TARGET_MACHINE" in

@@ -7,6 +7,7 @@ homepage="http://www.infradead.org/~tgr/libnl/"
 license="LGPL-2.1-only"
 distfiles="http://www.infradead.org/~tgr/libnl/files/$pkgname-$version.tar.gz"
 checksum="4f80c21fe5bbcdde6e72b59b4f98306063a41421f909887c34e58d93e746d063"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 libnl-devel_package() {

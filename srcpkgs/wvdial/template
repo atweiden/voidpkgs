@@ -12,6 +12,7 @@ distfiles="$DEBIAN_SITE/main/w/wvdial/${pkgname}_$version.orig.tar.gz"
 checksum="5753d2005115aa4e365a1638f4eb6c076d4e2deafa46c3de38964918e7f62709"
 conf_files+=" /etc/ppp/peers/wvdial"
 conf_files+=" /etc/ppp/peers/wvdial-pipe"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

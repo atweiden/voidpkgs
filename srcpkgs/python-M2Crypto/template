@@ -16,6 +16,7 @@ license="MIT"
 distfiles="$PYPI_SITE/M/M2Crypto/${pkgname#*-}-$version.tar.gz"
 checksum="4c6ad45ffb88670c590233683074f2440d96aaccb05b831371869fc387cbd127"
 wrksrc="${pkgname#*-}-$version"
+patch_args="-Np0"
 build_style="python-module"
 pycompile_module="M2Crypto"
 

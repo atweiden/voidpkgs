@@ -8,6 +8,7 @@ homepage="http://www.mozilla.org/projects/nspr/"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/nspr/releases/v$version/src/$pkgname-$version.tar.gz"
 checksum="5729da87d5fbf1584b72840751e0c6f329b5d541850cacd1b61652c95015abc8"
+patch_args="-Np0"
 build_wrksrc="nspr"
 build_style="gnu-configure"
 

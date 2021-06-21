@@ -12,6 +12,7 @@ license="GPL-2"
 distfiles="https://github.com/dkogan/ltrace/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="4aecf69e4a33331aed1e50ce4907e73a98cbccc4835febc3473863474304d547"
 wrksrc="$pkgname-$_gitrev"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 CFLAGS="-Wno-error -D_GNU_SOURCE"

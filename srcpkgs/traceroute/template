@@ -7,6 +7,7 @@ homepage="http://traceroute.sourceforge.net"
 license="GPL-2"
 distfiles="$SOURCEFORGE_SITE/traceroute/$pkgname-$version.tar.gz"
 checksum="3669d22a34d3f38ed50caba18cd525ba55c5c00d5465f2d20d7472e5d81603b6"
+patch_args="-Np0"
 alternatives+=" traceroute:traceroute.8:/usr/share/man/man8/linux-traceroute.8"
 alternatives+=" traceroute:traceroute:/usr/bin/linux-traceroute"
 

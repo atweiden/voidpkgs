@@ -16,6 +16,7 @@ changelog="http://www.sbcl.org/news.html"
 distfiles="$SOURCEFORGE_SITE/sbcl/$pkgname-$version-source.tar.bz2"
 checksum="965807ecd65a9590d68a0ed408b544e7e49a1f6e337ebd2b25e34788bcc8a8c5"
 conf_files="/etc/sbclrc"
+patch_args="-Np0"
 nocross="yes"
 nopie="yes"
 

@@ -15,6 +15,7 @@ license="MIT"
 distfiles="http://xmlsoft.org/sources/${pkgname%-python}-$version.tar.gz"
 checksum="aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f"
 wrksrc="${pkgname%-python}-$version"
+patch_args="-Np0"
 build_style="python-module"
 build_wrksrc="python"
 

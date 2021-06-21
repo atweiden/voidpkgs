@@ -11,6 +11,7 @@ license="Apache-2.0"
 distfiles="https://github.com/oneapi-src/oneTBB/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
 checksum="2103cc6238c935664f87680618f6684d57501d4a2fa8ea8f6c97ad6ff7dc722a"
 wrksrc="oneTBB-$_ver"
+patch_args="-Np0"
 build_style="gnu-makefile"
 
 case "$XBPS_TARGET_MACHINE" in

@@ -12,6 +12,7 @@ homepage="http://serf.apache.org"
 license="Apache-2.0"
 distfiles="https://archive.apache.org/dist/serf/$pkgname-$version.tar.bz2"
 checksum="549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc"
+patch_args="-Np0"
 build_style="scons"
 make_build_args="PREFIX=/usr"
 

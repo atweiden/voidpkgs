@@ -12,6 +12,7 @@ homepage="https://github.com/martijnvanbrummelen/nwipe"
 license="GPL-2.0-only"
 distfiles="https://github.com/martijnvanbrummelen/nwipe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="85faaa9c65557a6be187f0176c5b778e8cd080e1cd9b8a7168a8a9b8e410d46d"
+patch_args="-Np0"
 build_style="gnu-configure"
 
 CFLAGS="-D_FILE_OFFSET_BITS=64"

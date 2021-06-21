@@ -11,6 +11,7 @@ homepage="http://nfc-tools.org/"
 distfiles="https://github.com/nfc-tools/libnfc/archive/$pkgname-$version.tar.gz"
 checksum="30de35b4f1af3f57dab40d91ffb2275664a35859ff2b014ba7b226aa3f5465f5"
 wrksrc="$pkgname-$pkgname-$version"
+patch_args="-Np0"
 build_style="cmake"
 
 CFLAGS="-D_GNU_SOURCE"

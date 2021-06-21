@@ -12,6 +12,7 @@ license="Apache-2.0"
 changelog="https://github.com/mesonbuild/meson/raw/master/docs/markdown/Release-notes-for-${version%.?}.0.md"
 distfiles="https://github.com/mesonbuild/meson/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="3cb8bdb91383f7f8da642f916e4c44066a29262caa499341e2880f010edb87f4"
+patch_args="-Np0"
 build_style="python3-module"
 reverts="0.58.1_1"
 

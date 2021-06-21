@@ -16,6 +16,7 @@ changelog="https://github.com/mhogomchungu/zuluCrypt/raw/master/changelog"
 distfiles="https://github.com/mhogomchungu/zuluCrypt/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="f1bc599446e6dc82c6af16672fcbd4a88679d3b3dba2cfa3921ac514cb211add"
 wrksrc="zuluCrypt-$version"
+patch_args="-Np0"
 build_style="cmake"
 # set this to false once lxqt_wallet is available in void-packages
 configure_args+=" -DINTERNAL_LXQT_WALLET=true"

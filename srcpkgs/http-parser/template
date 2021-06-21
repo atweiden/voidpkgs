@@ -10,6 +10,7 @@ license="MIT"
 distfiles="https://github.com/nodejs/http-parser/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="765a21444322ea2476ca1e3cfeb74d280eeb37f4713cf52d2bf398dabf6e4128"
 wrksrc="$pkgname-$_gitrev"
+patch_args="-Np0"
 build_style="gnu-makefile"
 make_build_target="library"
 

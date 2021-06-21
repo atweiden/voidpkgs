@@ -13,6 +13,7 @@ license="Apache-2.0"
 distfiles="$PYPI_SITE/c/coverage/${pkgname#*-}-$version.tar.gz"
 checksum="77afca04240c40450c331fa796b3eab6f1e15c5ecf8bf2b8bee9706cd5452fef"
 wrksrc="${pkgname#*-}-$version"
+patch_args="-Np0"
 build_style="python-module"
 alternatives="coverage:coverage:/usr/bin/coverage2"
 

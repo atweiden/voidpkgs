@@ -12,6 +12,7 @@ license="GPL-2.0-only"
 distfiles="https://coreboot.org/releases/${pkgname%-*}-$version.tar.xz"
 checksum="4779da645a25ddebc78f1bd2bd0b740fb1e6479572648d4650042a2b9502856a"
 wrksrc="${pkgname%-*}-$version"
+patch_args="-Np0"
 build_style="gnu-makefile"
 build_wrksrc="util"
 

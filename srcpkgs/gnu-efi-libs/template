@@ -9,6 +9,7 @@ license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/${pkgname%-libs}-$version.tar.bz2"
 checksum="0196f2e1fd3c334b66e610a608a0e59233474c7a01bec7bc53989639aa327669"
 wrksrc="${pkgname%-libs}-$version"
+patch_args="-Np0"
 nostrip="yes"
 # not an actual revert, xbps considers 3.0w higher than 3.0.8
 reverts="3.0w_1"
