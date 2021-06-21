@@ -9,7 +9,6 @@ license="GPL-2.0-only"
 distfiles="https://github.com/linux-nvme/nvme-cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="03f4875f3e68d326b0280e16df2f027ca6b086cfa148c34e8569df61319b4b85"
 conf_files="/etc/nvme/*.conf"
-patch_args="-Np0"
 build_style="gnu-makefile"
 # yeah, it must be 0 to enable
 make_build_args="LIBUUID=0"

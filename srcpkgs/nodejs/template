@@ -32,7 +32,6 @@ license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
 checksum="f6b904b06951de4c52089dd4456155d853e835b0dc4640f75458c6eb49f9e8ce"
 wrksrc="${pkgname%js}-v$version"
-patch_args="-Np0"
 python_version=3
 build_options+=" cares"
 build_options+=" http_parser"
