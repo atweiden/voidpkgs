@@ -15,7 +15,6 @@ distfiles="$KERNEL_SITE/kernel/people/tytso/e2fsprogs/v$version/$pkgname-$versio
 checksum="23aa093295c94e71ef1be490c4004871c5b01d216a8cb4d111fa6c0aac354168"
 conf_files+=" /etc/e2scrub.conf"
 conf_files+=" /etc/mke2fs.conf"
-patch_args="-Np0"
 build_style="gnu-configure"
 configure_args+=" --disable-fsck"
 configure_args+=" --disable-libblkid"
