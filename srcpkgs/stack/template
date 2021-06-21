@@ -19,7 +19,6 @@ distfiles+=" https://www.stackage.org/$_stackage/cabal.config>cabal.config-$_sta
 checksum+=" f29d63b91ff2bddd130b29ddee90a1f450706271a13d5d80b653b50379ffa076"
 checksum+=" b9ac16e957c91b698bc8c06166b5fa61e8443ef97f87ab591a21d6fda4327b58"
 skip_extraction="cabal.config-$_stackage"
-patch_args="-Np0"
 nocross="yes"
 nopie_files="/usr/bin/stack"
 
