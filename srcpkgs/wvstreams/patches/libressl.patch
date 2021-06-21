@@ -1,5 +1,5 @@
---- crypto/wvx509.cc.orig	2019-05-16 20:25:58.171570222 +0200
-+++ crypto/wvx509.cc	2019-05-16 20:26:15.784410788 +0200
+--- a/crypto/wvx509.cc.orig	2019-05-16 20:25:58.171570222 +0200
++++ b/crypto/wvx509.cc	2019-05-16 20:26:15.784410788 +0200
 @@ -974,7 +974,7 @@
      sk_ACCESS_DESCRIPTION_push(ainfo, acc);
      acc->method = OBJ_txt2obj(type.cstr(), 0);
