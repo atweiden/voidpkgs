@@ -9,7 +9,6 @@ homepage="http://apr.apache.org/"
 license="Apache-2.0"
 distfiles="http://www.apache.org/dist/apr/$pkgname-$version.tar.bz2"
 checksum="e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
-patch_args="-Np0"
 build_style="gnu-configure"
 configure_args="--with-installbuilddir=/usr/share/apr-1/build"
 # can't run test programs when cross compiling
