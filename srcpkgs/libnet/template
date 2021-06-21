@@ -7,7 +7,6 @@ homepage="https://github.com/sam-github/libnet"
 license="GPL-3.0-only"
 distfiles="https://github.com/sam-github/libnet/releases/download/v$version/$pkgname-$version.tar.gz"
 checksum="caa4868157d9e5f32e9c7eac9461efeff30cb28357f7f6bf07e73933fb4edaa7"
-patch_args="-Np0"
 build_style="gnu-configure"
 
 libnet-devel_package() {

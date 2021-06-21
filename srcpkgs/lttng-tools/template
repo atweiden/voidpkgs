@@ -13,7 +13,6 @@ homepage="https://lttng.org"
 license="LGPL-2.1-only, GPL-2.0-only"
 distfiles="https://lttng.org/files/lttng-tools/$pkgname-$version.tar.bz2"
 checksum="d729f8c2373a41194f171aeb0da0a9bb35ac181f31afa7e260786d19a500dea1"
-patch_args="-Np0"
 build_style="gnu-configure"
 # tests timeout
 make_check="no"

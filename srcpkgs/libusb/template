@@ -9,7 +9,6 @@ homepage="https://libusb.info"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/libusb/libusb/releases/download/v$version/$pkgname-$version.tar.bz2"
 checksum="7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a"
-patch_args="-Np0"
 build_style="gnu-configure"
 disable_parallel_build="yes"
 

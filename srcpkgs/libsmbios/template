@@ -19,7 +19,6 @@ homepage="https://github.com/dell/libsmbios"
 license="GPL-2.0-or-later, OLS-2.1"
 distfiles="https://github.com/dell/libsmbios/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="36c36a0f6b59190d6b4fef11696886e4511091929a5eb7ae7cf5fea0c32d3f58"
-patch_args="-Np0"
 build_style="gnu-configure"
 configure_args="--disable-static"
 # explicitly list the subpackages to make sure they are installed in

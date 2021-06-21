@@ -1,5 +1,5 @@
---- test/test-list.h.orig	2018-04-16 19:13:01.184197428 +0200
-+++ test/test-list.h	2018-04-16 19:15:11.042501710 +0200
+--- a/test/test-list.h.orig	2018-04-16 19:13:01.184197428 +0200
++++ b/test/test-list.h	2018-04-16 19:15:11.042501710 +0200
 @@ -254,8 +254,8 @@ TEST_DECLARE   (spawn_detached)
  TEST_DECLARE   (spawn_and_kill_with_std)
  TEST_DECLARE   (spawn_and_ping)
