@@ -13,7 +13,6 @@ distfiles+=" https://github.com/Clozure/ccl/releases/download/v$version/linuxx86
 checksum+=" 774a06b4fb6dc4b51dfb26da8e1cc809c605e7706c12180805d1be6f2885bd52"
 checksum+=" 7fbdb04fb1b19f0307c517aa5ee329cb4a21ecc0a43afd1b77531e4594638796"
 create_wrksrc="yes"
-patch_args="-Np0"
 python_version=3
 nopie=1
 nostrip=1
