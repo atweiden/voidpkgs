@@ -8,7 +8,6 @@ homepage="http://www.draisberghof.de/usb_modeswitch/"
 license="GPL-2"
 distfiles="http://www.draisberghof.de/usb_modeswitch/$pkgname-$version.tar.bz2"
 checksum="3f039b60791c21c7cb15c7986cac89650f076dc274798fa242231b910785eaf9"
-patch_args="-Np0"
 build_style="gnu-makefile"
 make_install_args="RULESDIR=/usr/lib/udev/rules.d"
 

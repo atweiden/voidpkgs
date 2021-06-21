@@ -14,7 +14,6 @@ homepage="http://www.netfilter.org/projects/ulogd/"
 license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/ulogd/files/$pkgname-$version.tar.bz2"
 checksum="990a05494d9c16029ba0a83f3b7294fc05c756546b8d60d1c1572dc25249a92b"
-patch_args="-Np0"
 build_style="gnu-configure"
 system_accounts="_ulogd"
 
