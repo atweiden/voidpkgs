@@ -25,8 +25,9 @@ distfiles="$GNU_SITE/grub/$pkgname-$version.tar.xz"
 checksum="e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d"
 conf_files+=" /etc/default/grub"
 conf_files+=" /etc/grub.d/*"
+patch_args="-Np1"
 nopie="yes"
-subpackages+=" grub-utils"
+subpackages="grub-utils"
 
 # _SUPPLEMENTARY_BUILDS is a list of <TARGET>-<PLATFORM> versions of
 # grub to build
