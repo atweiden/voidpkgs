@@ -1,5 +1,5 @@
---- src/rpcb_svc_com.c
-+++ src/rpcb_svc_com.c
+--- a/src/rpcb_svc_com.c
++++ b/src/rpcb_svc_com.c
 @@ -42,8 +42,6 @@
  #include <sys/types.h>
  #include <sys/stat.h>
