@@ -13,7 +13,6 @@ changelog="https://github.com/libressl-portable/portable/raw/master/ChangeLog"
 distfiles="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$version.tar.gz"
 checksum="798a65fd61d385e09d559810cdfa46512f8def5919264cfef241a7b086ce7cfe"
 wrksrc="libressl-$version"
-patch_args="-Np1"
 build_style="gnu-configure"
 configure_args="$(vopt_enable asm)"
 case "$XBPS_TARGET_MACHINE" in

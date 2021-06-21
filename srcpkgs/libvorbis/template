@@ -9,7 +9,6 @@ homepage="https://www.xiph.org/vorbis/"
 license="BSD-3-Clause"
 distfiles="https://downloads.xiph.org/releases/vorbis/$pkgname-$version.tar.gz"
 checksum="0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab"
-patch_args="-Np1"
 build_style="gnu-configure"
 
 post_install() {

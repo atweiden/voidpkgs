@@ -8,7 +8,6 @@ homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
 checksum="3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607"
-patch_args="-Np1"
 subpackages="binutils-doc"
 bootstrap="yes"
 

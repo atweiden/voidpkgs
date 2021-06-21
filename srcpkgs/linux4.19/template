@@ -26,7 +26,6 @@ license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz"
 checksum="5510a556d9bc45b20c96b9630803d02e7991c852c7161b1988b4f3da6af12d0b"
 wrksrc="linux-$version"
-patch_args="-Np1"
 python_version=3
 # -dbg package is generated below manually
 nodebug="yes"

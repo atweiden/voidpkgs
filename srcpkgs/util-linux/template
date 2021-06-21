@@ -23,7 +23,6 @@ license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/$pkgname-$version.tar.xz"
 checksum="f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f"
 conf_files="/etc/pam.d/*"
-patch_args="-Np1"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
 _uuidd_homedir="/var/empty"
