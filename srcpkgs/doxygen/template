@@ -13,7 +13,6 @@ homepage="http://www.doxygen.org/"
 license="GPL-2.0-only"
 distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
 checksum="67aeae1be4e1565519898f46f1f7092f1973cce8a767e93101ee0111717091d1"
-patch_args="-Np0"
 build_style="cmake"
 configure_args="-DCMAKE_BUILD_TYPE=None"
 
