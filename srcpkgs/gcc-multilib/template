@@ -1,10 +1,10 @@
 _triplet="x86_64-unknown-linux-gnu"
-_majorver=10.2
 
 maintainer="nox"
 pkgname="gcc-multilib"
-version=$_majorver.1pre1
+version=10.2.1pre1
 revision=1
+_majorver="${version%.*}"
 short_desc="GNU Compiler Collection (multilib files)"
 archs="x86_64"
 homepage="http://gcc.gnu.org"

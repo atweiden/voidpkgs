@@ -1,16 +1,15 @@
 maintainer="nox"
 pkgname="libedit"
-_datever=20210522
-_distver=3.1
-version=$_datever.$_distver
+version=20210522.3.1
 revision=1
+_distver="${version%%.*}-${version#*.}"
 short_desc="Port of the NetBSD Command Line Editor Library"
 makedepends="ncurses-devel"
 homepage="http://www.thrysoee.dk/editline/"
 license="BSD-3-Clause"
-distfiles="http://www.thrysoee.dk/editline/$pkgname-$_datever-$_distver.tar.gz"
+distfiles="http://www.thrysoee.dk/editline/$pkgname-$_distver.tar.gz"
 checksum="0220bc2047e927c0c1984ef5f7b4eb2a9469a5b7bf12ba573ca3b23ca02bbb6f"
-wrksrc="$pkgname-$_datever-$_distver"
+wrksrc="$pkgname-$_distver"
 build_style="gnu-configure"
 
 post_install() {

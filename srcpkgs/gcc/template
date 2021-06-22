@@ -1,20 +1,17 @@
-# revbump libtool when updating gcc, since it hardcodes some internal
-# compiler paths which use the version number
-_majorver=10
-_minorver=$_majorver.2
-_patchver=$_minorver.1
-_gmp_version=6.2.0
-_mpfr_version=4.1.0
-_mpc_version=1.1.0
-_isl_version=0.21
-
 maintainer="nox"
 pkgname="gcc"
 # we are using a 10-stable git snapshot alpine is using in order
 # to get regression fixes not yet incorporate into a stable release
 # it should be possible to switch back to stable with 10.3 or 11
-version=${_patchver}pre1
+version=10.2.1pre1
 revision=3
+_patchver="${version%pre*}"
+_minorver="${_patchver%.*}"
+_majorver="${_minorver%.*}"
+_gmp_version=6.2.0
+_mpfr_version=4.1.0
+_mpc_version=1.1.0
+_isl_version=0.21
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
@@ -884,5 +881,10 @@ libstdc++_package() {
     vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
   }
 }
+
+# REMARKS:
+#
+# revbump libtool when updating gcc, since it hardcodes some internal
+# compiler paths which use the version number
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

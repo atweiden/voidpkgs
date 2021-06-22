@@ -1,13 +1,12 @@
 maintainer="nox"
 pkgname="man-pages-posix"
-_distver="2017"
-_revver="a"
-version=$_distver$_revver
+version=2017a
 revision=5
+_distver="${version%?}"
 short_desc="Manual pages about POSIX systems"
 homepage="https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/"
 license="custom:POSIX-COPYRIGHT"
-distfiles="$KERNEL_SITE/docs/man-pages/man-pages-posix/$pkgname-$_distver-$_revver.tar.xz"
+distfiles="$KERNEL_SITE/docs/man-pages/man-pages-posix/$pkgname-$_distver-${version#$_distver}.tar.xz"
 checksum="ce67bb25b5048b20dad772e405a83f4bc70faf051afa289361c81f9660318bc3"
 wrksrc="$pkgname-$_distver"
 

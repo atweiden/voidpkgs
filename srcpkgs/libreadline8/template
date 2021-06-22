@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="libreadline8"
-_dist_ver=8.1
-_patch_ver=000
-version="$_dist_ver.$_patch_ver"
+version=8.1.000
 revision=1
+_dist_ver="${version%.*}"
+_patch_ver="${version##*.}"
 short_desc="GNU Readline Library"
 makedepends="ncurses-devel"
 homepage="https://tiswww.cwru.edu/php/chet/readline/rltop.html"
