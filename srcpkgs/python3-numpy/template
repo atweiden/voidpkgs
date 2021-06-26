@@ -12,7 +12,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ce1cbea0254dee2f7eb4e5e8ea863280b502a8146e7ab8b2bb5ef5b6a5560a27"
+checksum="c776579045e1d4852aadb6fce9a257c199c08c5ef975287842032c0b2b90c85b"
 wrksrc="numpy-$version"
 build_style="python3-module"
 # tests do not function propery in a build directory
