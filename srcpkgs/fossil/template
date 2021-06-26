@@ -16,6 +16,7 @@ checksum="1844918eacdfa625e1d7efbec688875a6f89eb6c639edc12f158c46ba585494a"
 build_style="configure"
 configure_args+=" --disable-internal-sqlite"
 configure_args+=" --prefix=/usr"
+broken="checksum changed after 4 hours https://github.com/void-linux/void-packages/pull/31609"
 
 post_extract() {
   # failing on cross
