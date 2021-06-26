@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libconfig"
-version=1.7.2
-revision=2
+version=1.7.3
+revision=1
 short_desc="C Configuration File Library"
 hostmakedepends+=" automake"
 hostmakedepends+=" byacc"
@@ -9,9 +9,9 @@ hostmakedepends+=" flex"
 hostmakedepends+=" libtool"
 hostmakedepends+=" texinfo"
 homepage="http://hyperrealm.com/libconfig/libconfig.html"
-license="LGPL-2.1"
+license="LGPL-2.1-or-later"
 distfiles="https://github.com/hyperrealm/libconfig/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f67ac44099916ae260a6c9e290a90809e7d782d96cdd462cac656ebc5b685726"
+checksum="68757e37c567fd026330c8a8449aa5f9cac08a642f213f2687186b903bd7e94e"
 build_style="gnu-configure"
 
 pre_configure() {
