@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.12"
-version=5.12.12
+version=5.12.13
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -30,7 +30,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" 7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366"
-checksum+=" 742e13b424c618689734c3c41a14c5cda5a09d8546ed5b1433153d4619524dfe"
+checksum+=" 84a39f8cbcca15af34bf431d6eb14d241bb4d1f0455da96ee0cbe1a22d44a39d"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 python_version=3
@@ -286,6 +286,7 @@ do_install() {
     install -Dm 644 "$file" "$hdrdest/$file"
   done
   for file in $(find "arch/${subarch:-$arch}" \
+                     scripts \
                      -name "module.lds" \
                   -o -name "Kbuild.platforms" \
                   -o -name "Platform"); do
