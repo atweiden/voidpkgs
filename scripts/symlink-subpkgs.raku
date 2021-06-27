@@ -32,8 +32,7 @@ constant %PKG = Map.new(
     'ansible-core' => ['ansible-base'],
     'apache' => qw<apache-devel
                    apache-htpasswd>,
-    'apparmor' => qw<apparmor-vim
-                     libapparmor
+    'apparmor' => qw<libapparmor
                      libapparmor-devel>,
     'apr' => ['apr-devel'],
     'apr-util' => qw<apr-util-db

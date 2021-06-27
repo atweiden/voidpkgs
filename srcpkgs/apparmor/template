@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apparmor"
 version=3.0.1
-revision=4
+revision=5
 short_desc="Mandatory access control to restrict programs"
 depends+=" libapparmor-${version}_$revision"
 depends+=" python3-notify2"
@@ -30,6 +30,7 @@ wrksrc="$pkgname-v$version"
 build_wrksrc="libraries/libapparmor"
 build_style="gnu-configure"
 make_dirs="/etc/apparmor.d/disable 0755 root root"
+replaces="apparmor-vim>=0"
 
 if [[ -z "$CROSS_BUILD" ]]; then
   configure_args+=" --with-perl"
@@ -83,15 +84,6 @@ post_install() {
 
   # we installed a custom conflicting profile
   rm "$DESTDIR/etc/apparmor.d"/{,local/}php-fpm
-}
-
-apparmor-vim_package() {
-  short_desc+=" - Vim syntax"
-  depends="vim"
-  pkg_install() {
-    vmove usr/share/vim/vimfiles/syntax/apparmor.vim
-    vmove usr/share/man/man5/apparmor.vim.5
-  }
 }
 
 libapparmor_package() {
