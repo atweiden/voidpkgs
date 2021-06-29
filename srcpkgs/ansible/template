@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible"
-version=4.0.0
+version=4.1.0
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends="ansible-core"
@@ -8,7 +8,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="$PYPI_SITE/a/ansible/ansible-$version.tar.gz"
-checksum="6f67ca5c634e4721d1f8e206dc71d60d1a114d147945355bfc902bd37eb07080"
+checksum="f561cca7fbc4daa14d98e18cd0cb74bd8b173f1501b8fa11543f6ef002de3167"
 build_style="python3-module"
 make_check="no"
 
