@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.2.2
+version=3.3.0
 revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
@@ -11,8 +11,9 @@ checkdepends+=" python3-pexpect"
 hostmakedepends="gettext"
 homepage="https://fishshell.com/"
 license="GPL-2.0-only"
+changelog="https://github.com/fish-shell/fish-shell/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.xz"
-checksum="5944da1a8893d11b0828a4fd9136ee174549daffb3d0adfdd8917856fe6b4009"
+checksum="a4215e4cab2a5b101b0b8843720bda3c7eb98e8a14dca0950b8ef17e94282faa"
 wrksrc="fish-$version"
 build_style="cmake"
 # tests don't work as root
