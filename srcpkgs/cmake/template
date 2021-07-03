@@ -28,6 +28,7 @@ replaces="cmake-bootstrap>=0"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   unset configure_args
+  hostmakedepends+=" cmake"
   build_style="cmake"
   configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
   configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=ON"
