@@ -1,28 +1,32 @@
 maintainer="nox"
 pkgname="file"
 version=5.40
-revision=2
+revision=3
 short_desc="File type identification utility"
-makedepends="zlib-devel"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if libseccomp libseccomp-devel)"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # XXX cross compilation needs exactly the same version for the host
+  hostmakedepends="file"
+fi
 homepage="http://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
 checksum="167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57"
 build_style="gnu-configure"
-configure_args="--enable-static"
+configure_args+=" --enable-static"
+configure_args+=" $(vopt_enable libseccomp)"
 if [[ -z "$CHROOT_READY" ]]; then
-  # libseccomp's default=auto and libseccomp is not a bootstrap pkg
+  # libseccomp's default=auto and libseccomp is not bootstrap
   #
   # if we're bootstrapping from host with libseccomp installed, bootstrap
   # will fail to install shlib required by file
-  configure_args+=" --disable-libseccomp"
+  if [[ -n "$build_option_libseccomp" ]]; then
+    msg_error "libseccomp can't be enabled when bootstrapping\n"
+  fi
 fi
+build_options="libseccomp"
 bootstrap="yes"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  # XXX cross compilation needs exactly the same version for the host
-  hostmakedepends="file"
-fi
 
 post_install() {
   vlicense COPYING
