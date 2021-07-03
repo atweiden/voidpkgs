@@ -1,3 +1,4 @@
+# FIXME: cmake is being rebuilt on do_install
 maintainer="nox"
 pkgname="cmake"
 version=3.20.3
@@ -18,22 +19,39 @@ homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
 checksum="4d008ac3461e271fcfac26a05936f77fc7ab64402156fb371d41284851a651b8"
-build_style="configure"
-configure_args+=" --docdir=/share/doc/cmake"
-configure_args+=" --mandir=/share/man"
-configure_args+=" --prefix=/usr"
-configure_args+=" --system-libs ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}"
+build_style="cmake"
+configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
+configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=ON"
+configure_args+=" -DKWSYS_LFS_WORKS=1"
 make_check_target="test"
 replaces="cmake-bootstrap>=0"
+
+# XXX: cmake is broken if cmake was built with -GNinja
+# https://bugs.gentoo.org/596460
+export CMAKE_GENERATOR="Unix Makefiles"
+make_cmd="make"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   unset configure_args
   hostmakedepends+=" cmake"
-  build_style="cmake"
-  configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
-  configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=ON"
-  configure_args+=" -DKWSYS_LFS_WORKS=1"
 fi
+
+pre_configure() {
+  local f
+  ! [[ "$CROSS_BUILD" ]] \
+    || return 0
+  mkdir -p build
+  cd build
+  ../bootstrap --no-system-libs ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}
+  # make sure build directory is clean
+  for f in *; do
+    if [[ "$f" != "Bootstrap.cmk" ]]; then
+      return 1
+    fi
+  done
+  cd "$wrksrc"
+  PATH="$wrksrc/build/Bootstrap.cmk:$PATH"
+}
 
 post_install() {
   vlicense Copyright.txt
