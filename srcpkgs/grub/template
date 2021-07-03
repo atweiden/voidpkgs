@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grub"
-version=2.04
-revision=6
+version=2.06
+revision=1
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
@@ -22,7 +22,7 @@ hostmakedepends+=" python3"
 license="GPL-3.0-or-later"
 homepage="https://www.gnu.org/software/grub/"
 distfiles="$GNU_SITE/grub/$pkgname-$version.tar.xz"
-checksum="e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d"
+checksum="b79ea44af91b93d17cd3fe80bdae6ed43770678a9a5ae192ccea803ebb657ee1"
 conf_files+=" /etc/default/grub"
 conf_files+=" /etc/grub.d/*"
 nopie="yes"
@@ -65,13 +65,6 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_extract() {
-  sed \
-    -i \
-    -e 's,freetype/ftsynth.h,freetype2/ftsynth.h,' \
-    util/grub-mkfont.c
-}
-
 do_configure() {
   unset AS
   unset CC
@@ -99,12 +92,6 @@ do_configure() {
   configure_args+=" --enable-nls"
   configure_args+=" --sbindir=/usr/bin"
   configure_args+=" --with-gnu-ld"
-
-  # fix unifont.bdf location so grub-mkfont can create *.pf2 files
-  sed \
-    -i \
-    -e 's|/usr/share/fonts/unifont|/usr/share/fonts/misc|' \
-    configure
 
   # build tools
   msg_normal "Configuring grub tools...\n"
