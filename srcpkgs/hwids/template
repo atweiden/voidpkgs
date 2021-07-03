@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="hwids"
-version=20201207
+version=20210613
 revision=1
 short_desc="Hardware Identification Databases"
 homepage="https://github.com/gentoo/hwids"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/gentoo/hwids/archive/$pkgname-$version.tar.gz"
-checksum="43a8af154769c33871582caea31546a8b91cefb6f0acdf53d08660237ae57e37"
+checksum="e28f1787290e9ea17426aa4090bbf6aca9bbc9e6cd14da232778bfaef4938bc1"
 wrksrc="hwids-hwids-$version"
 
 do_install() {
