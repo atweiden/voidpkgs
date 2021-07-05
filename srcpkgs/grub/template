@@ -74,6 +74,13 @@ do_configure() {
 
   local freestanding_cflags
 
+  # workaround for https://savannah.gnu.org/bugs/?60458
+  # some more info: https://www.linuxquestions.org/questions/showthread.php?p=6257712
+  # grub 2.06 reboots immediately when compiled with -O2,
+  # only affects legacy BIOS
+  export CFLAGS="${CFLAGS/-O2/-Os}"
+  export CXXFLAGS="${CXXFLAGS/-O2/-Os}"
+
   freestanding_cflags="-fno-stack-protector"
 
   # building with altivec generates broken grub core
