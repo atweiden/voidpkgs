@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="isl15"
 version=0.19
-revision=1
+revision=2
 short_desc="Integer Set Library"
 makedepends="gmp-devel"
 homepage="http://freecode.com/projects/isl"
-license="LGPL-2.1"
+license="MIT"
 distfiles="http://isl.gforge.inria.fr/${pkgname%15}-$version.tar.bz2"
 checksum="d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8"
 wrksrc="${pkgname%15}-$version"
@@ -15,6 +15,7 @@ bootstrap="yes"
 post_install() {
   # remove gdb python files
   rm -f "$DESTDIR/usr/lib"/*.py
+  vlicense LICENSE
 }
 
 isl15-devel_package() {
