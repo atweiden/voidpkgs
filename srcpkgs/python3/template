@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="python3"
 version=3.9.6
-revision=1
+revision=2
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
 checkdepends+=" ca-certificates"
@@ -63,10 +63,11 @@ do_configure() {
     --enable-loadable-sqlite-extensions \
     --enable-shared \
     --with-computed-gotos \
-    --with-dbmliborder=gdbm:ndbm \
+    --with-dbmliborder="gdbm:ndbm" \
     --with-system-expat \
     --with-system-ffi \
-    --without-ensurepip
+    --without-ensurepip \
+    ac_cv_working_tzset="yes"
 }
 
 do_build() {
