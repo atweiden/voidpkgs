@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libsasl"
 version=2.1.27
-revision=1
+revision=2
 short_desc="Cyrus SASL - runtime shared libraries"
 makedepends="db-devel"
 hostmakedepends+=" automake"
