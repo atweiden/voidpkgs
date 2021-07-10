@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nss"
 version=3.67
-revision=1
+revision=2
 _nsprver=4.30
 short_desc="Mozilla Network Security Services"
 depends="nspr>=$_nsprver"
@@ -142,27 +142,27 @@ do_install() {
   NSS_VPATCH="$(grep "#define.*NSS_VPATCH" nss/lib/nss/nss.h | awk '{print $3}')"
 
   sed \
-    -e "s,%libdir%,/usr/lib,g" \
     -e "s,%prefix%,/usr,g" \
-    -e "s,%exec_prefix%,/usr/bin,g" \
-    -e "s,%includedir%,/usr/include/nss,g" \
+    -e 's,%exec_prefix%,${prefix},g' \
+    -e 's,%includedir%,${prefix}/include/nss,g' \
+    -e 's,%libdir%,${prefix}/lib,g' \
     -e "s,%NSPR_VERSION%,$_nsprver,g" \
     -e "s,%NSS_VERSION%,$version,g" \
-    "$FILESDIR/nss.pc.in" > \
+    nss/pkg/pkg-config/nss.pc.in > \
     "$DESTDIR/usr/lib/pkgconfig/nss.pc"
 
   ln -sf nss.pc "$DESTDIR/usr/lib/pkgconfig/mozilla-nss.pc"
   chmod 644 "$DESTDIR/usr/lib/pkgconfig"/*.pc
 
   sed \
-    -e "s,@libdir@,/usr/lib,g" \
-    -e "s,@prefix@,/usr/bin,g" \
-    -e "s,@exec_prefix@,/usr/bin,g" \
-    -e "s,@includedir@,/usr/include/nss,g" \
+    -e "s,@prefix@,/usr,g" \
+    -e 's,@exec_prefix@,${prefix},g' \
+    -e 's,@includedir@,${prefix}/include/nss,g' \
+    -e 's,@libdir@,${prefix}/lib,g' \
     -e "s,@MOD_MAJOR_VERSION@,$NSS_VMAJOR,g" \
     -e "s,@MOD_MINOR_VERSION@,$NSS_VMINOR,g" \
     -e "s,@MOD_PATCH_VERSION@,$NSS_VPATCH,g" \
-    "$FILESDIR/nss-config.in" > \
+    nss/pkg/pkg-config/nss-config.in > \
     "$DESTDIR/usr/bin/nss-config"
   chmod 755 "$DESTDIR/usr/bin/nss-config"
 
