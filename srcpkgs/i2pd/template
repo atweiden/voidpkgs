@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="i2pd"
-version=2.37.0
-revision=2
+version=2.38.0
+revision=1
 short_desc="Full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
@@ -12,7 +12,7 @@ homepage="https://i2pd.website/"
 license="BSD-3-Clause"
 changelog="https://github.com/PurpleI2P/i2pd/raw/openssl/ChangeLog"
 distfiles="https://github.com/PurpleI2P/i2pd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="072e79e55d4feac9dc3c988000a21ba613eb0c5bc151105cbccebdf84176dced"
+checksum="8452f5323795a1846d554096c08fffe5ac35897867b93a5079605df8f80a3089"
 conf_files+=" /etc/i2pd/i2pd.conf"
 conf_files+=" /etc/i2pd/tunnels.conf"
 build_style="gnu-makefile"
@@ -21,8 +21,7 @@ case "$XBPS_TARGET_MACHINE" in
   x86_64*)
     ;;
   *)
-    make_build_args+=" USE_AESNI=no"
-    make_build_args+=" USE_AVX=no"
+    make_build_args="USE_AESNI=no"
     ;;
 esac
 system_accounts="_i2pd"
