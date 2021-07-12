@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gettext"
 version=0.21
-revision=3
+revision=4
 short_desc="Internationalized Message Handling Library and tools"
 # gettext will try to use xz bzip2 gzip to compress
 # /usr/share/gettext/archive.dir.tar.<ext>
@@ -76,8 +76,6 @@ gettext-devel_package() {
   unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" gettext-devel-tools>=${version}_$revision"
-  depends+=" tar"
-  depends+=" xz"
   if [[ -n "$_intl_lib" ]]; then
     depends+=" gettext-libs>=${version}_$revision"
   fi
@@ -93,13 +91,15 @@ gettext-devel_package() {
                 textstyle; do
       vmove "usr/lib/lib$_lib.so"
     done
-    vmove usr/share/gettext
     vmove usr/share/man/man3
   }
 }
 
 gettext-devel-tools_package() {
-  depends="$sourcepkg>=${version}_$revision"
+  unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" tar"
+  depends+=" xz"
   short_desc+=" - development tools"
   pkg_install() {
     vmove usr/share/aclocal
@@ -107,6 +107,7 @@ gettext-devel-tools_package() {
     vmove usr/bin/gettextize
     vmove usr/share/man/man1/autopoint.1
     vmove usr/share/man/man1/gettextize.1
+    vmove usr/share/gettext
   }
 }
 
