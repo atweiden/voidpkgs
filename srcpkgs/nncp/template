@@ -6,7 +6,7 @@ short_desc="Node to Node copy, utilities for secure store-and-forward"
 homepage="http://www.nncpgo.org/"
 license="GPL-3.0-only"
 distfiles="http://www.nncpgo.org/download/nncp-$version.tar.xz"
-checksum="b741c9e3ec3db342893fe081888c40e4b94e4298e5c1a8e0ba4d179cc239ccca"
+checksum="cb34487a6d7ef50704d4b8f95a16ef16cc841d3d7f5423b1ebb7979d1062eb4e"
 build_style="go"
 go_import_path="cypherpunks.ru/nncp"
 
