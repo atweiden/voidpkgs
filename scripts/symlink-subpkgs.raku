@@ -254,6 +254,7 @@ constant %PKG = Map.new(
     'gtest' => ['gtest-devel'],
     'guile' => qw<guile-devel
                   libguile>,
+    'gummiboot' => ['gummiboot-efistub'],
     'h2o' => ['h2o-devel'],
     'haveged' => qw<libhaveged
                     libhaveged-devel>,

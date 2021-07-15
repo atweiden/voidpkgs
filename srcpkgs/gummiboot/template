@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="gummiboot"
 version=48.1
-revision=7
+revision=8
 short_desc="Simple UEFI Boot Manager"
 archs+=" aarch64*"
 archs+=" i686*"
 archs+=" x86_64*"
+depends="$pkgname-efistub>=${version}_$revision"
 makedepends+=" gnu-efi-libs"
 makedepends+=" libblkid-devel"
 makedepends+=" liblzma-devel"
@@ -38,6 +39,14 @@ post_install() {
     etc/kernel.d/post-remove 50-gummiboot
   vinstall "$FILESDIR/kernel.d/gummiboot.confd" 644 \
     etc/default gummiboot
+}
+
+gummiboot-efistub_package() {
+  short_desc="Linux UEFI stub from the gummiboot project"
+
+  pkg_install() {
+    vmove "usr/lib/gummiboot/*.efi.stub"
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
