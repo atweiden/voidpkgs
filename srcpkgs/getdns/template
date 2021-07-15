@@ -1,21 +1,21 @@
 maintainer="nox"
 pkgname="getdns"
-version=1.5.1
-revision=7
+version=1.7.0
+revision=1
 short_desc="Modern asynchronous DNS API"
+makedepends+=" check-devel"
 makedepends+=" libev-devel"
 makedepends+=" libidn-devel"
+makedepends+=" libidn2-devel"
 makedepends+=" libuv-devel"
 makedepends+=" unbound-devel"
 homepage="https://getdnsapi.net"
 license="BSD-3-Clause"
 distfiles="https://getdnsapi.net/dist/getdns-$version.tar.gz"
-checksum="5686e61100599c309ce03535f9899a5a3d94a82cc08d10718e2cd73ad3dc28af"
-build_style="gnu-configure"
-configure_args+=" --with-libev"
-configure_args+=" --with-libevent"
-configure_args+=" --with-libuv"
-configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
+checksum="ea8713ce5e077ac76b1418ceb6afd25e6d4e39e9600f6f5e81d3a3a13a60f652"
+build_style="cmake"
+# github actions fail due to no ipv6
+make_check="ci-skip"
 
 post_install() {
   vlicense LICENSE
