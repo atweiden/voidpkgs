@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="opam"
 version=2.0.8
-revision=2
+revision=3
 short_desc="OCaml package manager"
 depends+=" bubblewrap"
 depends+=" curl"
