@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="usbguard"
 version=1.0.0
-revision=3
+revision=4
 makedepends+=" bash-completion"
 makedepends+=" libatomic-devel"
 makedepends+=" libcap-ng-devel"
@@ -27,7 +27,8 @@ configure_args+=" --with-crypto-library=sodium"
 configure_args+=" --with-gnu-ld"
 configure_args+=" --without-dbus"
 configure_args+=" --without-polkit"
-make_dirs="/var/log/usbguard 0755 root root"
+make_dirs+=" /etc/usbguard/IPCAccessControl.d 0755 root root"
+make_dirs+=" /var/log/usbguard 0755 root root"
 
 post_install() {
   vsv usbguard
