@@ -1,8 +1,8 @@
 # this pkg must be synchronized with "srcpkgs/python-tkinter"
 maintainer="nox"
 pkgname="python"
-version=2.7.18
-revision=3
+version=2.7.18.4
+revision=1
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
 makedepends+=" bzip2-devel"
@@ -16,9 +16,9 @@ makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.python.org"
 license="Python-2.0"
-distfiles="https://www.python.org/ftp/python/$version/${pkgname^}-$version.tar.xz"
-checksum="b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43"
-wrksrc="${pkgname^}-$version"
+distfiles="https://github.com/ActiveState/cpython/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="003a4fbd03fa0dbb3cf88d894c40311ef30dd17b2aa85291c3136393148b1362"
+wrksrc="cpython-$version"
 alternatives+=" python:idle:/usr/bin/idle2.7"
 alternatives+=" python:2to3:/usr/bin/2to3-2.7"
 alternatives+=" python:pydoc:/usr/bin/pydoc2.7"
@@ -107,15 +107,15 @@ post_install() {
   vsed \
     -i \
     -e "s,$XBPS_WRAPPERDIR,/usr/bin,g" \
-    "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata.py" \
-    "$DESTDIR/usr/lib/python${version%.*}/config/Makefile"
+    "$DESTDIR/usr/lib/python${version%.*.*}/_sysconfigdata.py" \
+    "$DESTDIR/usr/lib/python${version%.*.*}/config/Makefile"
   if [[ -n "$CROSS_BUILD" ]]; then
     # remove references to cross toolchain
     vsed \
       -i \
       -e "s/$XBPS_CROSS_TRIPLET-//g" \
-      "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata.py" \
-      "$DESTDIR/usr/lib/python${version%.*}/config/Makefile"
+      "$DESTDIR/usr/lib/python${version%.*.*}/_sysconfigdata.py" \
+      "$DESTDIR/usr/lib/python${version%.*.*}/config/Makefile"
   fi
 }
 
