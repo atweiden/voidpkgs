@@ -294,6 +294,7 @@ clang-analyzer_package() {
   unset depends
   pycompile_dirs="usr/share/scan-view"
   depends+=" clang-${version}_$revision"
+  depends+=" perl"
   depends+=" python3"
   short_desc+=" - source code analysis framework"
   homepage="https://clang-analyzer.llvm.org/"
