@@ -1,17 +1,16 @@
 maintainer="nox"
 pkgname="ocaml-findlib"
-version=1.8.1
-revision=4
+version=1.9.1
+revision=1
 short_desc="OCaml package manager"
-makedepends+=" m4"
 makedepends+=" ncurses-devel"
 makedepends+=" ocaml"
 makedepends+=" ocamlbuild"
 homepage="http://projects.camlcity.org/projects/findlib.html"
 license="MIT"
 distfiles="http://download.camlcity.org/download/${pkgname#ocaml-}-$version.tar.gz"
-checksum="8e85cfa57e8745715432df3116697c8f41cb24b5ec16d1d5acd25e0196d34303"
-wrksrc="${pkgname#ocaml-}-$version"
+checksum="2b42b8bd54488d64c4bf3cb7054b4b37bd30c1dc12bd431ea1e4d7ad8a980fe2"
+wrksrc="findlib-$version"
 build_style="configure"
 configure_args+=" -config /etc/findlib.conf"
 configure_args+=" -mandir /usr/share/man"
@@ -29,7 +28,6 @@ do_install() {
 
 post_install() {
   vlicense LICENSE
-  rm "$DESTDIR/usr/lib/ocaml/ocamlbuild/META"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
