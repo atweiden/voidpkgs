@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bat"
-version=0.18.1
+version=0.18.2
 revision=1
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
 makedepends+=" libcurl-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" llvm"
 homepage="https://github.com/sharkdp/bat"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ab5246c3bec8745c14ca9a0473971f00fbce2fdc1ce7842e0a96676ee5eac2af"
+checksum="b176787e27da1f920b655bcd71b66c1569d241e2272bb9a4f6a64e6501c0cf2a"
 build_style="cargo"
 
 pre_build() {
@@ -37,6 +37,8 @@ post_install() {
   vcompletion "$fish_completion" fish
   zsh_completion="$(find "$wrksrc/target" -name bat.zsh -print -quit)"
   vcompletion "$zsh_completion" zsh
+  bash_completion="$(find "$wrksrc/target" -name bat.bash -print -quit)"
+  vcompletion "$bash_completion" bash
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
