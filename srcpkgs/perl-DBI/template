@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-DBI"
 version=1.643
-revision=2
+revision=3
 short_desc="Database independent interface for Perl"
 depends="perl"
 makedepends="perl"
