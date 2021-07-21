@@ -1,10 +1,13 @@
 maintainer="nox"
 pkgname="perl-HTML-Parser"
 version=3.75
-revision=2
+revision=3
 short_desc="HTML::Parser - HTML parser class"
 depends="perl-HTML-Tagset"
 makedepends="perl-HTML-Tagset"
+checkdepends+=" perl-HTTP-Headers-Fast"
+checkdepends+=" perl-HTTP-Message"
+checkdepends+=" perl-URI"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/HTML-Parser"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
