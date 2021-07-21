@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="rhash"
-version=1.4.1
-revision=2
+version=1.4.2
+revision=1
 short_desc="Utility for computing hash sums and creating magnet links"
 makedepends="openssl-devel"
 homepage="https://github.com/rhash/RHash"
 license="0BSD"
 distfiles="https://github.com/rhash/RHash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="430c812733e69b78f07ce30a05db69563450e41e217ae618507a4ce2e144a297"
+checksum="600d00f5f91ef04194d50903d3c79412099328c42f28ff43a0bdb777b00bec62"
 conf_files="/etc/rhashrc"
 wrksrc="RHash-$version"
 build_style="configure"
