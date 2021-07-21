@@ -1,33 +1,52 @@
 maintainer="nox"
 pkgname="mercurial"
-version=5.6.1
+version=5.8.1
 revision=1
 short_desc="Fast, lightweight source control management system"
 depends+=" ca-certificates"
 depends+=" python3"
 makedepends="python3-devel"
+# cvs tests fail
+checkdepends+=" gnupg2"
 checkdepends+=" iana-etc"
+checkdepends+=" python3-Pygments"
+checkdepends+=" python3-docutils"
+checkdepends+=" subversion-python"
 checkdepends+=" tar"
 checkdepends+=" unzip"
 checkdepends+=" which"
 checkdepends+=" xz"
+hostmakedepends+=" gettext"
 hostmakedepends+=" python3"
 hostmakedepends+=" python3-devel"
 hostmakedepends+=" python3-setuptools"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/$pkgname-$version.tar.gz"
-checksum="e55c254f4904c45226a106780e57f4279aee03368f6ff6a981d5d2a38243ffad"
+checksum="81baa3fe2087bdda2dd119d7ea948f6badebaeb7b528a7d18b277e2ceb22b19b"
 build_style="python3-module"
 
+pre_check() {
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    # fix hardcoded strerror() value from glibc
+    vsed \
+      -i \
+      -e 's/Address already in use/Address in use/' \
+      tests/common-pattern.py
+  fi
+}
+
 do_check() {
+  if [[ "$XBPS_CHECK_PKGS" == "full" ]]; then
+    _additional_test='--allow-slow-tests'
+  else
+    _additional_test='test-s*'
+  fi
+
   cd tests
-  rm test-doctest.py
   rm test-hghave.t
-  rm test-https.t
   rm test-merge-tools.t
-  rm test-persistent-nodemap.t
-  python3 run-tests.py "$makejobs"
+  python3 run-tests.py "$makejobs" "$_additional_test"
 }
 
 post_install() {
