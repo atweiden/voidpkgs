@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Crypt-Rijndael"
-version=1.14
-revision=2
+version=1.16
+revision=1
 short_desc="Crypt::Rijndael - Crypt::CBC compliant Rijndael module"
 depends="perl"
 makedepends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Crypt-Rijndael"
 license="LGPL-2.0-or-later"
 distfiles="$CPAN_SITE/Crypt/${pkgname#*-}-$version.tar.gz"
-checksum="6451c3dffe8703523be2bb08d1adca97e77df2a8a4dd46944d18a99330b7850e"
+checksum="6540085e3804b82a6f0752c1122cf78cadd221990136dd6fd4c097d056c84d40"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
