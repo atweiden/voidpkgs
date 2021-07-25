@@ -231,7 +231,8 @@ constant %PKG = Map.new(
     'gmp' => qw<gmp-devel
                 gmpxx
                 gmpxx-devel>,
-    'gnupg2' => ['gnupg2-scdaemon'],
+    'gnupg' => qw<gnupg2
+                  gnupg2-scdaemon>,
     'gnutls' => qw<gnutls-devel
                    gnutls-tools>,
     'gperftools' => ['gperftools-devel'],

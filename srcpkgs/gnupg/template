@@ -1,7 +1,7 @@
 maintainer="nox"
-pkgname="gnupg2"
+pkgname="gnupg"
 version=2.2.28
-revision=1
+revision=2
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -14,14 +14,13 @@ makedepends+=" libldap-devel"
 makedepends+=" libusb-compat-devel"
 makedepends+=" npth-devel"
 makedepends+=" sqlite-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" gettext"
+hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
 checksum="6ff891fc7583a9c3fb9f097ee0d1de0a12469d4b53997e7ba5064950637dfaec"
-wrksrc="gnupg-$version"
 build_style="gnu-configure"
-configure_args+=" --enable-gpg-is-gpg2"
 configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libgcrypt-prefix=$XBPS_CROSS_BASE/usr"
@@ -30,25 +29,25 @@ configure_args+=" $(vopt_enable ldap)"
 build_options="ldap"
 build_options_default="ldap"
 
-post_patch() {
-  # on at least aarch64, configure sets this even though it doesn't exist
-  vsed \
-    -i \
-    -e 's/HAVE_DECL_SYS_SIGLIST/0/' \
-    common/signal.c
-
-  vsed \
-    -i \
-    -e '/examples\/systemd-user/d' \
-    doc/Makefile.in
+post_install() {
+  vmkdir usr/share/examples
+  rm -r "$DESTDIR/usr/share/doc/gnupg/examples/systemd-user"
+  mv "$DESTDIR/usr/share/doc/gnupg/examples" \
+    "$DESTDIR/usr/share/examples/gnupg"
 }
 
-post_install() {
-  # remove conflicts with gpg1
-  mv "$DESTDIR/usr/share/man/man7/gnupg.7" "$DESTDIR/usr/share/man/man7/gnupg2.7"
-  vmkdir usr/share/examples
-  mv "$DESTDIR/usr/share/doc/gnupg/examples" "$DESTDIR/usr/share/examples/gnupg2"
-  mv "$DESTDIR/usr/share/doc/gnupg" "$DESTDIR/usr/share/doc/gnupg2"
+gnupg2_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - compat package"
+  pkg_install() {
+    vmkdir usr/bin
+    ln -s gpg "$PKGDESTDIR/usr/bin/gpg2"
+    ln -s gpgv "$PKGDESTDIR/usr/bin/gpgv2"
+    vmkdir usr/share/examples
+    ln -s gnupg "$PKGDESTDIR/usr/share/examples/gnupg2"
+    vmkdir usr/share/doc
+    ln -s gnupg "$PKGDESTDIR/usr/share/doc/gnupg2"
+  }
 }
 
 gnupg2-scdaemon_package() {
