@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest"
 version=6.2.4
-revision=1
+revision=2
 short_desc="Simple powerful testing with Python 3"
 depends+=" python3-atomicwrites"
 depends+=" python3-attrs"
@@ -21,6 +21,7 @@ checkdepends+=" python3-nose"
 checkdepends+=" python3-parsing"
 checkdepends+=" python3-requests"
 checkdepends+=" python3-xmlschema"
+hostmakedepends+=" python3-Sphinx"
 hostmakedepends+=" python3-setuptools_scm"
 hostmakedepends+=" python3-toml"
 homepage="https://docs.pytest.org/en/latest/"
@@ -45,6 +46,11 @@ do_check() {
     python3 \
       -m pytest \
       -k 'not test_color_yes and not test_code_highlight'
+}
+
+post_build() {
+  PYTHONPATH="$(pwd)/build/lib/" make -C doc/en man
+  vman doc/en/_build/man/pytest.1
 }
 
 post_install() {
