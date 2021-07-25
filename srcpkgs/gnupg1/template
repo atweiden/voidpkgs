@@ -1,24 +1,31 @@
 maintainer="nox"
-pkgname="gnupg"
+pkgname="gnupg1"
 version=1.4.23
-revision=3
-short_desc="The GNU Privacy Guard"
+revision=1
+short_desc="GNU Privacy Guard v1"
 makedepends+=" bzip2-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libldap-devel"
 makedepends+=" libusb-compat-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
-license="GPL-3.0-or-later"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel-tools"
 homepage="https://www.gnupg.org/"
-distfiles="https://www.gnupg.org/ftp/gcrypt/gnupg/$pkgname-$version.tar.bz2"
+license="GPL-3.0-or-later"
+distfiles="https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-$version.tar.bz2"
 checksum="c9462f17e651b6507848c08c430c791287cd75491f8b5a8b50c6ed46b12678ba"
+wrksrc="gnupg-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-noexecstack"
 configure_args+=" --enable-threads=posix"
 configure_args+=" gnupg_cv_regex_broken=no"
 
 CFLAGS="-fcommon"
+
+pre_configure() {
+  autoreconf -fi
+}
 
 post_extract() {
   case "$XBPS_TARGET_MACHINE" in
@@ -33,6 +40,12 @@ post_extract() {
 
 post_install() {
   rm "$DESTDIR/usr/bin/gpgsplit"
+  mv "$DESTDIR/usr/bin/gpg" "$DESTDIR/usr/bin/gpg1"
+  mv "$DESTDIR/usr/bin/gpgv" "$DESTDIR/usr/bin/gpgv1"
+  mv "$DESTDIR/usr/share/man/man1/gpg.1" \
+    "$DESTDIR/usr/share/man/man1/gpg1.1"
+  mv "$DESTDIR/usr/share/man/man1/gpgv.1" \
+    "$DESTDIR/usr/share/man/man1/gpgv1.1"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
