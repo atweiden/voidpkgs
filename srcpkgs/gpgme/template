@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="gpgme"
 version=1.15.1
-revision=1
+revision=2
 short_desc="GnuPG Made Easy"
-depends="gnupg2"
+depends="gnupg>=2"
 makedepends="libassuan-devel"
-hostmakedepends+=" gnupg2"
+hostmakedepends+=" gnupg"
 hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/software/gpgme/index.html"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
@@ -24,16 +24,6 @@ elif [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
 fi
 
 CXXFLAGS+=" -D_GLIBCXX_USE_C99_STDIO=1"
-
-post_extract() {
-  vsed \
-    -i \
-    -e 's|GPG = gpg|GPG = gpg2|g' \
-    lang/python/tests/Makefile.* \
-    lang/qt/tests/Makefile.* \
-    tests/gpg/Makefile.* \
-    tests/json/Makefile.*
-}
 
 libgpgme_package() {
   short_desc+=" - library"
