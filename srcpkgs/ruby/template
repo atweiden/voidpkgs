@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="ruby"
-version=2.7.4
+version=3.0.2
 revision=1
-_ruby_abiver=2.7.0
+_ruby_abiver=3.0.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
 makedepends+=" libffi-devel"
@@ -18,8 +18,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 homepage="http://www.ruby-lang.org/en/"
 license="Ruby, BSD-2-Clause"
-distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.bz2"
-checksum="bffa8aec9da392eda98f1c561071bb6e71d217d541c617fc6e3282d79f4e7d48"
+distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.xz"
+checksum="570e7773100f625599575f363831166d91d49a1ab97d3ab6495af44774155c40"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-shared"
