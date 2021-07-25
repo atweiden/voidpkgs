@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="screen"
 version=4.8.0
-revision=2
+revision=3
 short_desc="GNU screen manager with VT100/ANSI terminal emulation"
 makedepends+=" libutempter-devel"
 makedepends+=" ncurses-devel"
@@ -20,11 +20,14 @@ configure_args+=" --enable-use-locale"
 configure_args+=" --with-pty-group=5"
 configure_args+=" --with-socket-dir=/run/screens"
 configure_args+=" --with-sys-screenrc=/etc/screenrc"
+build_options="multiuser"
 
 post_install() {
   vinstall etc/etcscreenrc 0644 etc screenrc
   vinstall "$FILESDIR/screen" 0644 etc/pam.d
-  chmod 4755 "$DESTDIR/usr/bin/screen-$version"
+  if [[ -n "$build_option_multiuser" ]]; then
+    chmod 4755 "$DESTDIR/usr/bin/screen-$version"
+  fi
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
