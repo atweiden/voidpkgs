@@ -1,28 +1,47 @@
 # keep this package sync with util-linux-libs
 maintainer="nox"
 pkgname="util-linux"
-version=2.36.2
+version=2.37.1
 revision=1
 short_desc="Miscellaneous linux utilities"
-# FIXME: don't be so strict on the dependency
-depends="util-linux-libs-${version}_$revision"
+depends+=" libblkid>=${version}_1<=${version}_9999"
+depends+=" libfdisk>=${version}_1<=${version}_9999"
+depends+=" libmount>=${version}_1<=${version}_9999"
+depends+=" libsmartcols>=${version}_1<=${version}_9999"
+depends+=" libuuid>=${version}_1<=${version}_9999"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" bison"
+checkdepends+=" bc"
+checkdepends+=" iproute2"
+checkdepends+=" procps-ng"
+checkdepends+=" socat"
+checkdepends+=" tar"
+checkdepends+=" xz"
 hostmakedepends+=" gettext"
-hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" xz"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/$pkgname-$version.tar.xz"
-checksum="f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f"
+checksum="8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76"
 conf_files="/etc/pam.d/*"
+build_style="gnu-configure"
+configure_args+=" --disable-makeinstall-chown"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-chfn-chsh"
+configure_args+=" --enable-fs-paths-extra=/usr/sbin:/usr/bin"
+configure_args+=" --enable-fsck"
+configure_args+=" --enable-libblkid"
+configure_args+=" --enable-libuuid"
+configure_args+=" --enable-newgrp"
+configure_args+=" --enable-vipw"
+configure_args+=" --enable-write"
+configure_args+=" --exec-prefix=\${prefix}"
+configure_args+=" --with-systemdsystemunitdir=no"
+configure_args+=" --with-udev"
+configure_args+=" --without-python"
 # create uuidd system account for uuidd
 system_accounts="_uuidd"
 _uuidd_homedir="/var/empty"
@@ -35,38 +54,13 @@ alternatives+=" logger:logger.1:/usr/share/man/man1/$pkgname-logger.1"
 # XXX musl needs this for switch_root(8)
 CFLAGS="-D_DIRENT_HAVE_D_TYPE"
 
-pre_configure() {
-  NOCONFIGURE=1 ./autogen.sh
-}
-
-do_configure() {
-  ./configure \
-    $configure_args \
-    --bindir="/usr/bin" \
-    --disable-makeinstall-chown \
-    --disable-rpath \
-    --enable-chfn-chsh \
-    --enable-fs-paths-extra="/usr/sbin:/usr/bin" \
-    --enable-fsck \
-    --enable-libblkid \
-    --enable-libuuid \
-    --enable-newgrp \
-    --enable-vipw \
-    --enable-write \
-    --exec-prefix="/usr" \
-    --libdir="/usr/lib" \
-    --sbindir="/usr/bin" \
-    --with-systemdsystemunitdir="no" \
-    --with-udev \
-    --without-python
-}
-
-do_build() {
-  make "$makejobs"
-}
-
-do_check() {
-  make -k check
+post_extract() {
+  # hung inside xbps-src
+  rm -f tests/ts/lsns/ioctl_ns
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    # known broken
+    rm -f tests/ts/col/multibyte
+  fi
 }
 
 do_install() {
@@ -74,8 +68,10 @@ do_install() {
     DESTDIR="$DESTDIR" \
     usrsbin_execdir="/usr/bin" \
     install
+
   # correct perms for newgrp, chfn, chsh, wall and write
   chmod u+s "$DESTDIR/usr/bin"/{newgrp,chsh,chfn}
+
   mv "$DESTDIR/usr/bin"/{logger,"$pkgname-logger"}
   mv "$DESTDIR/usr/share/man/man1"/{logger,"$pkgname-logger"}.1
   # pam login utils
@@ -84,10 +80,14 @@ do_install() {
   vinstall "$FILESDIR/su.pam" 644 etc/pam.d su-l
   vinstall "$FILESDIR/common.pam" 644 etc/pam.d chfn
   vinstall "$FILESDIR/common.pam" 644 etc/pam.d chsh
+
   vsv uuidd
+
   rm -rf "$DESTDIR/usr/include"
   rm -rf "$DESTDIR/usr/lib"
   rm -rf "$DESTDIR/usr/share/man/man3"
+  # provided by util-linux-common
+  rm -rf "$DESTDIR/usr/share/locale"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
