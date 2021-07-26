@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="python3-msgpack"
-version=1.0.0
-revision=4
+version=1.0.2
+revision=1
 short_desc="Python module for Msgpack serializer (Python3)"
 makedepends="python3-devel"
 checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://msgpack.org/"
 license="Apache-2.0"
+changelog="https://github.com/msgpack/msgpack-python/raw/main/ChangeLog.rst"
 distfiles="$PYPI_SITE/m/msgpack/msgpack-$version.tar.gz"
-checksum="9534d5cc480d4aff720233411a1f765be90885750b07df772380b34c10ecb5c0"
+checksum="fae04496f5bc150eefad4e9571d1a76c55d021325dcd484ce45065ebbdd00984"
 wrksrc="msgpack-$version"
 build_style="python3-module"
 
