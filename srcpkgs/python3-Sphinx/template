@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
-version=4.0.2
+version=4.1.1
 revision=1
 short_desc="Python 3 documentation generator"
 depends+=" python3-Babel"
@@ -29,7 +29,7 @@ hostmakedepends="python3-setuptools"
 homepage="http://sphinx-doc.org"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="b5c2ae4120bf00c799ba9b3699bc895816d272d120080fbc967292f29b52b48c"
+checksum="23c846a1841af998cb736218539bb86d16f5eb95f5760b1966abcd2d584e62b8"
 wrksrc="Sphinx-$version"
 build_style="python3-module"
 conflicts="python-Sphinx>=0"
