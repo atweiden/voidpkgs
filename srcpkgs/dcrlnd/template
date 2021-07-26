@@ -19,7 +19,9 @@ go_ldflags+=" -X $go_import_path/build.Commit=v$version"
 go_ldflags+=" -X $go_import_path/build.PreRelease="
 
 export CGO_ENABLED=0
-export GOFLAGS="-trimpath"
+
+# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+export GOFLAGS="-trimpath -buildmode=pie"
 
 do_build() {
   go install \

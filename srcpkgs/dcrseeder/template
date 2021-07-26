@@ -14,7 +14,8 @@ wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
 
-export GOFLAGS="-trimpath"
+# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+export GOFLAGS="-trimpath -buildmode=pie"
 
 post_install() {
   vlicense LICENSE

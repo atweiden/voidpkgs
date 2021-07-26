@@ -15,7 +15,8 @@ go_import_path="decred.org/dcrwallet"
 go_ldflags+=" -X github.com/decred/dcrwallet/version.PreRelease="
 go_ldflags+=" -X github.com/decred/dcrwallet/version.BuildMetadata=release"
 
-export GOFLAGS="-trimpath"
+# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+export GOFLAGS="-trimpath -buildmode=pie"
 
 pre_install() {
   # prepend dcr to unqualified binaries

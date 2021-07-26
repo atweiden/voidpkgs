@@ -21,7 +21,9 @@ go_ldflags+=" -X github.com/decred/dcrd/internal/version.PreRelease="
 go_ldflags+=" -X github.com/decred/dcrd/internal/version.BuildMetadata=release"
 
 export CGO_ENABLED=0
-export GOFLAGS="-trimpath"
+
+# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+export GOFLAGS="-trimpath -buildmode=pie"
 
 pre_install() {
   # prepend dcr to unqualified binaries
