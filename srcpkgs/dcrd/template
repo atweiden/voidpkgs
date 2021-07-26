@@ -14,7 +14,6 @@ build_style="go"
 go_import_path="github.com/decred/dcrd"
 go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/addblock"
-go_package+=" $go_import_path/cmd/dcrctl"
 go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
 go_package+=" $go_import_path/cmd/promptsecret"
@@ -38,7 +37,7 @@ post_install() {
   vlicense LICENSE
   vdoc CHANGES
   vdoc README.md
-  vdoc cmd/dcrctl/sample-dcrctl.conf
+  vdoc cmd/sampleconfig/sampleconfig.go sample-dcrd.conf.go
   vcopy docs "usr/share/doc/$pkgname"
 }
 
