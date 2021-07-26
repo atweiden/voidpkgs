@@ -1,79 +1,49 @@
 # keep this package sync with util-linux
 maintainer="nox"
-pkgname="util-linux-libs"
-version=2.36.2
+pkgname="util-linux-common"
+version=2.37.1
 revision=1
-short_desc="Miscellaneous linux utilities - meta libraries"
-depends+=" libblkid-${version}_$revision"
-depends+=" libfdisk-${version}_$revision"
-depends+=" libmount-${version}_$revision"
-depends+=" libsmartcols-${version}_$revision"
-depends+=" libuuid-${version}_$revision"
+short_desc="Miscellaneous linux utilities - common files"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" bison"
+checkdepends+=" bc"
+checkdepends+=" iproute2"
+checkdepends+=" procps-ng"
+checkdepends+=" socat"
+checkdepends+=" tar"
+checkdepends+=" xz"
 hostmakedepends+=" gettext"
-hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" xz"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/util-linux-$version.tar.xz"
-checksum="f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f"
+checksum="8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76"
 wrksrc="util-linux-$version"
-build_style="meta"
+build_style="gnu-configure"
+configure_args+=" --disable-makeinstall-chown"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-chfn-chsh"
+configure_args+=" --enable-fs-paths-extra=/usr/sbin:/usr/bin"
+configure_args+=" --enable-fsck"
+configure_args+=" --enable-libblkid"
+configure_args+=" --enable-libuuid"
+configure_args+=" --enable-newgrp"
+configure_args+=" --enable-vipw"
+configure_args+=" --enable-write"
+configure_args+=" --exec-prefix=\${prefix}"
+configure_args+=" --with-systemdsystemunitdir=no"
+configure_args+=" --without-python"
+configure_args+=" --without-udev"
 
-pre_configure() {
-  local _cfgdir
-  _cfgdir="$XBPS_COMMONDIR/environment/configure"
-  NOCONFIGURE=1 ./autogen.sh
-  for f in ./**/*config*.sub; do
-    if [[ -f "$f" ]]; then
-      cp -f "$_cfgdir/automake/config.sub" "$f"
-    fi
-  done
-  for f in ./**/*config*.guess; do
-    if [[ -f "$f" ]]; then
-      cp -f "$_cfgdir/automake/config.guess" "$f"
-    fi
-  done
-  # we want to keep basepkg as meta but we also needs below helper
-  unset build_style
-  . "$_cfgdir/gnu-configure-args.sh"
-}
-
-do_configure() {
-  ./configure
-    $configure_args \
-    --bindir="/usr/bin" \
-    --disable-makeinstall-chown \
-    --disable-rpath \
-    --enable-chfn-chsh \
-    --enable-fs-paths-extra="/usr/sbin:/usr/bin" \
-    --enable-fsck \
-    --enable-libblkid \
-    --enable-libuuid \
-    --enable-newgrp \
-    --enable-vipw \
-    --enable-write \
-    --exec-prefix="/usr" \
-    --libdir="/usr/lib" \
-    --sbindir="/usr/bin" \
-    --with-systemdsystemunitdir="no" \
-    --without-python \
-    --without-udev
-}
-
-do_build() {
-  make "$makejobs"
-}
-
-do_check() {
-  make -k check
+post_extract() {
+  # hung inside xbps-src
+  rm -f tests/ts/lsns/ioctl_ns
+  if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    # known broken
+    rm -f tests/ts/col/multibyte
+  fi
 }
 
 do_install() {
@@ -87,12 +57,25 @@ do_install() {
   rm -rf "$DESTDIR/usr/share/man/man5"
   rm -rf "$DESTDIR/usr/share/man/man8"
   rm -rf "$DESTDIR/usr/share/bash-completion"
-  rm -rf "$DESTDIR/usr/share/locale"
   rm -rf "$DESTDIR/usr/share/doc/"
+  # some libraries have i18n text
+  # rm -rf "$DESTDIR/usr/share/locale"
+}
+
+util-linux-libs_package() {
+  unset depends
+  short_desc+=" - meta libraries"
+  build_style="meta"
+  depends+=" libblkid-${version}_$revision"
+  depends+=" libfdisk-${version}_$revision"
+  depends+=" libmount-${version}_$revision"
+  depends+=" libsmartcols-${version}_$revision"
+  depends+=" libuuid-${version}_$revision"
 }
 
 libfdisk_package() {
   short_desc="Library for fdisk(8)"
+  depends="$sourcepkg>=${version}_1<=${version}_9999"
   pkg_install() {
     vmove "usr/lib/libfdisk.so.*"
   }
@@ -100,8 +83,8 @@ libfdisk_package() {
 
 libfdisk-devel_package() {
   unset depends
-  depends+=" libblkid-devel-${version}_$revision"
-  depends+=" libfdisk-${version}_$revision"
+  depends+=" libblkid-devel>=${version}_1<=${version}_9999"
+  depends+=" libfdisk>=${version}_1<=${version}_9999"
   short_desc="Library for fdisk(8) - development files"
   pkg_install() {
     vmove usr/lib/libfdisk.a
@@ -113,6 +96,7 @@ libfdisk-devel_package() {
 
 libmount_package() {
   short_desc="Library for mount(8)"
+  depends="$sourcepkg>=${version}_1<=${version}_9999"
   pkg_install() {
     vmove "usr/lib/libmount.so.*"
   }
@@ -120,8 +104,8 @@ libmount_package() {
 
 libmount-devel_package() {
   unset depends
-  depends+=" libblkid-devel-${version}_$revision"
-  depends+=" libmount-${version}_$revision"
+  depends+=" libblkid-devel>=${version}_1<=${version}_9999"
+  depends+=" libmount>=${version}_1<=${version}_9999"
   short_desc="Library for mount(8) - development files"
   pkg_install() {
     vmove usr/lib/libmount.a
@@ -133,6 +117,7 @@ libmount-devel_package() {
 
 libblkid_package() {
   short_desc="Library to handle device identification"
+  depends="$sourcepkg>=${version}_1<=${version}_9999"
   pkg_install() {
     vmove "usr/lib/libblkid.so.*"
   }
@@ -140,8 +125,8 @@ libblkid_package() {
 
 libblkid-devel_package() {
   unset depends
-  depends+=" libblkid-${version}_$revision"
-  depends+=" libuuid-devel-${version}_$revision"
+  depends+=" libblkid>=${version}_1<=${version}_9999"
+  depends+=" libuuid-devel>=${version}_1<=${version}_9999"
   depends+=" zlib-devel"
   short_desc="Library to handle device identification - development files"
   pkg_install() {
@@ -155,13 +140,14 @@ libblkid-devel_package() {
 
 libuuid_package() {
   short_desc="UUID library"
+  depends="$sourcepkg>=${version}_1<=${version}_9999"
   pkg_install() {
     vmove "usr/lib/libuuid.so.*"
   }
 }
 
 libuuid-devel_package() {
-  depends="libuuid-${version}_$revision"
+  depends="libuuid>=${version}_${revision}<=${version}_9999"
   short_desc="UUID library development files"
   pkg_install() {
     vmove usr/lib/libuuid.a
@@ -173,7 +159,7 @@ libuuid-devel_package() {
 }
 
 libsmartcols-devel_package() {
-  depends="libsmartcols>=${version}_$revision"
+  depends="libsmartcols>=${version}_${revision}<=${version}_9999"
   short_desc="Table or Tree library from util-linux - development files"
   pkg_install() {
     vmove usr/lib/libsmartcols.a
@@ -185,6 +171,7 @@ libsmartcols-devel_package() {
 
 libsmartcols_package() {
   short_desc="Table or Tree library from util-linux"
+  depends="$sourcepkg>=${version}_1<=${version}_9999"
   pkg_install() {
     vmove "usr/lib/libsmartcols.so.*"
   }

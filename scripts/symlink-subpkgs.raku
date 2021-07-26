@@ -722,16 +722,16 @@ constant %PKG = Map.new(
                      unixodbc-devel>,
     'usbguard' => ['usbguard-devel'],
     'usbredir' => ['usbredir-devel'],
-    'util-linux-libs' => qw<libblkid
-                            libblkid-devel
-                            libfdisk
-                            libfdisk-devel
-                            libmount
-                            libmount-devel
-                            libsmartcols
-                            libsmartcols-devel
-                            libuuid
-                            libuuid-devel>,
+    'util-linux-common' => qw<libblkid
+                              libblkid-devel
+                              libfdisk
+                              libfdisk-devel
+                              libmount
+                              libmount-devel
+                              libsmartcols
+                              libsmartcols-devel
+                              libuuid
+                              libuuid-devel>,
     'valgrind' => ['valgrind-devel'],
     'varnish' => qw<libvarnishapi
                     libvarnishapi-devel>,
