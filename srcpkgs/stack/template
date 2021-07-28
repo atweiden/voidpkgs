@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="stack"
 version=2.7.1
-revision=1
+revision=2
 _stackage="lts-17.5"
 short_desc="Cross-platform program for developing Haskell projects"
 depends+=" git"
@@ -25,7 +25,9 @@ nopie_files="/usr/bin/stack"
 do_build() {
   cp "$XBPS_SRCDISTDIR/$pkgname-$version/cabal.config-$_stackage" cabal.config
   HOME="$PWD" cabal update
-  HOME="$PWD" cabal new-build "$makejobs" --flag disable-git-info
+  # https://github.com/haskell/cabal/issues/7313
+  HOME="$PWD" cabal new-build "$makejobs" --flag disable-git-info \
+    --constraint 'lukko -ofd-locking'
 }
 
 do_install() {
