@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="cabal-install"
-version=3.2.0.0
+version=3.4.0.0
 revision=1
 short_desc="Command-line interface for Cabal and Hackage"
 depends="ghc"
 makedepends+=" gmp-devel"
 makedepends+=" libffi-devel"
+makedepends+=" python3"
 makedepends+=" zlib-devel"
 hostmakedepends+=" curl"
 hostmakedepends+=" ghc"
@@ -13,18 +14,20 @@ hostmakedepends+=" tar"
 hostmakedepends+=" which"
 homepage="https://hackage.haskell.org/package/cabal-install"
 license="BSD-3-Clause"
-distfiles="https://hackage.haskell.org/packages/archive/cabal-install/$version/$pkgname-$version.tar.gz"
-checksum="a0555e895aaf17ca08453fde8b19af96725da8398e027aa43a49c1658a600cb0"
+distfiles="https://github.com/haskell/cabal/archive/$pkgname-$version.tar.gz"
+checksum="e4fbd5eb1d77400746a993679181f159aa415a37b931b26d67f5602f63ce971c"
+wrksrc="cabal-$pkgname-$version"
 nocross="yes"
 nopie_files="/usr/bin/cabal"
 
 do_build() {
-  PREFIX="$PWD/build" sh bootstrap.sh --jobs "$XBPS_MAKEJOBS" --user
+  PREFIX="$PWD" bootstrap/bootstrap.py -d bootstrap/linux-8.10.1.json
 }
 
 do_install() {
-  vbin build/bin/cabal
-  vman build/share/man/man1/cabal.1
+  vbin _build/bin/cabal
+  PREFIX="$PWD" _build/bin/cabal man --raw > cabal.1
+  vman cabal.1
   vlicense LICENSE
 }
 
