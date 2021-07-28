@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ldns"
 version=1.7.1
-revision=4
+revision=5
 short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
@@ -18,15 +18,8 @@ configure_args+=" --with-examples"
 configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-trust-anchor=/etc/dns/root.key"
 
-post_extract() {
-  sed \
-    -i \
-    -e 's/defined(@\$also)/@$also/' \
-    doc/doxyparse.pl
-}
-
 post_install() {
-  sed \
+  vsed \
     -i \
     -e "s|\(-specs=.*hardened-ld\)||g" -e "s|\(-specs=.*hardened-cc1\)||g" \
     "$DESTDIR/usr/bin/ldns-config"
@@ -49,6 +42,7 @@ libldns-devel_package() {
   pkg_install() {
     vmove usr/bin/ldns-config
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
     vmove usr/share/man/man1/ldns-config.1
