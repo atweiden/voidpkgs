@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="borg"
 version=1.1.17
-revision=1
+revision=2
 short_desc="Deduplicating backup program with compression and encryption"
 depends+=" python3-llfuse"
+depends+=" python3-packaging"
 depends+=" python3-setuptools"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
