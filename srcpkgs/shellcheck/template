@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="shellcheck"
 version=0.7.2
-revision=1
+revision=2
 short_desc="Static analysis tool for shell scripts"
 hostmakedepends="pandoc"
 homepage="https://www.shellcheck.net/"
@@ -9,7 +9,7 @@ license="GPL-3.0-or-later"
 distfiles="https://github.com/koalaman/shellcheck/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5911f6133951d0ba6d643025bc50f2afb6c6f66d7225dc3d42e8845bfdf74c3c"
 build_style="haskell-stack"
-stackage="lts-16.13"
+stackage="lts-17.5"
 nocross="yes"
 nopie_files="/usr/bin/shellcheck"
 
