@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
 version=2.11.4
-revision=1
+revision=2
 _sidenote_version=0.20.0
 _monad_gen_version=0.3.0.1
 short_desc="Universal converter between markup formats"
@@ -22,7 +22,7 @@ checksum+=" 34ee7f46d6472c04884b1dcb030d701a32b885d9b0d4307d2c0da327a359cb7a"
 checksum+=" be8485023fce236b5b915f2f6074f7b0470a2040f84cdd137c5227f1b4c98465"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-16.0"
+stackage="lts-17.5"
 make_build_args+=" --flag=hslua:pkg-config"
 make_build_args+=" --flag=hslua:system-lua"
 make_build_args+=" --flag=pandoc:embed_data_files"
