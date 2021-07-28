@@ -1,27 +1,16 @@
 maintainer="nox"
 pkgname="libidn"
-version=1.36
+version=1.38
 revision=1
 short_desc="Internationalized string handling library"
-hostmakedepends+=" autoconf-archive"
-hostmakedepends+=" automake"
-hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
-hostmakedepends+=" perl"
-hostmakedepends+=" pkg-config"
 homepage="https://www.gnu.org/software/libidn/"
 license="GPL-3.0-or-later, LGPL-2.1-or-later"
 distfiles="$GNU_SITE/libidn/$pkgname-$version.tar.gz"
-checksum="14b67108344d81ba844631640df77c9071d9fb0659b080326ff5424e86b14038"
+checksum="de00b840f757cd3bb14dd9a20d5936473235ddcba06d4bc2da804654b8bbf0f6"
 build_style="gnu-configure"
 configure_args+=" --disable-csharp"
 configure_args+=" --disable-java"
 configure_args+=" --disable-static"
-configure_args+=" --enable-threads=posix"
-
-pre_configure() {
-  autoreconf -fi
-}
 
 libidn-devel_package() {
   depends="libidn>=${version}_$revision"
