@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cryfs"
 version=0.10.2
-revision=2
+revision=3
 short_desc="Cryptographic filesystem for the cloud"
 depends="fuse"
 makedepends+=" boost-devel"
@@ -20,7 +20,6 @@ checksum="004c7fdf537062e197aaa0bcdafd2682904a279802441bb6063cb72c1fba52d2"
 create_wrksrc="yes"
 build_style="cmake"
 configure_args+=" -DBoost_USE_STATIC_LIBS=OFF"
-configure_args+=" -DCMAKE_BUILD_TYPE=None"
 configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-lfmt"
 configure_args+=" -DCRYFS_UPDATE_CHECKS=off"
 if [[ -n "$XBPS_CHECK_PKGS" ]]; then
