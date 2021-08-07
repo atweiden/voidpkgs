@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.10"
-version=5.10.25
+version=5.10.56
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -28,9 +28,8 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="930ae76b9a3b64b98802849aca332d17a706f20595de21e1ae729b55ee461add"
+checksum="4d6a0d5f9c50fa44890e0b61e1fb63f6efe6be448ceddfe1ad7c0cbd2890ec6b"
 wrksrc="linux-$version"
-patch_args="-Np1"
 python_version=3
 # -dbg package is generated below manually
 nodebug="yes"
@@ -52,7 +51,7 @@ mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols.bin"
 
 # reproducible build
-export KBUILD_BUILD_TIMESTAMP="${SOURCE_DATE_EPOCH:-0}"
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C date -ud @${SOURCE_DATE_EPOCH:-0})"
 export KBUILD_BUILD_USER="voidlinux"
 export KBUILD_BUILD_HOST="voidlinux"
 
@@ -305,6 +304,7 @@ do_install() {
     install -Dm 644 "$file" "$hdrdest/$file"
   done
   for file in $(find "arch/${subarch:-$arch}" \
+                     scripts \
                      -name "module.lds" \
                   -o -name "Kbuild.platforms" \
                   -o -name "Platform"); do
@@ -547,6 +547,7 @@ linux5.10-dbg_package() {
   short_desc+=" - debugging symbols"
   pkg_install() {
     vmove usr/lib/debug
+    vmove "boot/System.map-$_kernver"
   }
 }
 
