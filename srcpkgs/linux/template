@@ -1,41 +1,17 @@
 maintainer="nox"
 pkgname="linux"
-version=5.12
+version=5.13
 revision=1
 short_desc="Linux kernel meta package"
+depends+=" linux$version"
+depends+=" linux-base"
 homepage="http://www.voidlinux.org/"
 license="Public Domain"
 build_style="meta"
 
-case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*)
-    depends+=" linux$version"
-    depends+=" linux-firmware-amd"
-    depends+=" linux-firmware-intel"
-    depends+=" linux-firmware-nvidia"
-    depends+=" linux-firmware-network"
-    depends+=" dracut"
-    _depends_headers="linux$version-headers"
-    ;;
-  ppc*|armv7l*|aarch64*)
-    depends+=" dracut"
-    depends+=" linux$version"
-    depends+=" linux-firmware-amd"
-    depends+=" linux-firmware-network"
-    depends+=" linux-firmware-nvidia"
-    _depends_headers="linux$version-headers"
-    ;;
-  arm*)
-    depends="linux$version"
-    _depends_headers="linux$version-headers"
-    ;;
-  *)
-    ;;
-esac
-
 linux-headers_package() {
   short_desc="Linux kernel headers meta package"
-  depends="$_depends_headers"
+  depends="linux$version-headers"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
