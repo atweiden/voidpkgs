@@ -1,7 +1,6 @@
-# FIXME: cmake is being rebuilt on do_install
 maintainer="nox"
 pkgname="cmake"
-version=3.20.5
+version=3.21.1
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -19,7 +18,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="12c8040ef5c6f1bc5b8868cede16bb7926c18980f59779e299ab52cbc6f15bb0"
+checksum="fac3915171d4dff25913975d712f76e69aef44bf738ba7b976793a458b4cfed4"
 build_style="cmake"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
 configure_args+=" -DCMAKE_MAN_DIR=/share/man"
@@ -30,11 +29,6 @@ configure_args+=" -DKWSYS_LFS_WORKS=1"
 configure_args+=" -DSPHINX_MAN=1"
 make_check_target="test"
 replaces="cmake-bootstrap>=0"
-
-# XXX: cmake is broken if cmake was built with -GNinja
-# https://bugs.gentoo.org/596460
-export CMAKE_GENERATOR="Unix Makefiles"
-make_cmd="make"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   unset configure_args
@@ -47,7 +41,10 @@ pre_configure() {
     || return 0
   mkdir -p build
   cd build
-  ../bootstrap --no-system-libs ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}
+  ../bootstrap \
+    --generator="Ninja" \
+    --no-system-libs \
+    ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}
   # make sure build directory is clean
   for f in *; do
     if [[ "$f" != "Bootstrap.cmk" ]]; then
