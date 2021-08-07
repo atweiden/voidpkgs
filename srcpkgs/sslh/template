@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sslh"
 version=1.21c
-revision=1
+revision=2
 short_desc="Applicative Protocol Multiplexer"
 makedepends+=" libcap-devel"
 makedepends+=" libconfig-devel"
