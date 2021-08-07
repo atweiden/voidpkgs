@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="icdiff"
-version=2.0.3
+version=2.0.4
 revision=1
 short_desc="Side-by-side highlighted command line diffs"
 depends+=" python3"
@@ -11,7 +11,7 @@ homepage="http://www.jefftk.com/icdiff"
 license="Python-2.0"
 changelog="https://github.com/jeffkaufman/icdiff/raw/master/ChangeLog"
 distfiles="https://github.com/jeffkaufman/icdiff/archive/release-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="23e9502895999a929e1d3559403205846742f7cf8a22c5d7f3c4db910ba12321"
+checksum="ec21632b64159990a1bcedc8b25f96b476e7a6d9e18b75422420c0ae9b694eac"
 wrksrc="$pkgname-release-$version"
 build_style="python3-module"
 replaces="python3-icdiff>=0"
