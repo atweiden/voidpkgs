@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bpftrace"
 version=0.13.0
-revision=2
+revision=3
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -20,6 +20,8 @@ checksum="a5203e5c73277c87d624f32e8ee394d4c5e2c2810bde8314c1b015c9d810a6bb"
 build_style="cmake"
 # needs root to run
 configure_args="-DBUILD_TESTING=OFF"
+# needs to read own symbol table
+nostrip="yes"
 
 post_install() {
   # clashes with bcc-tools
