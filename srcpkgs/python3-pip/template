@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pip"
-version=21.2.2
+version=21.2.3
 revision=1
 short_desc="PyPA recommended tool for installing PyPI packages (Python3)"
 depends="python3-setuptools"
@@ -9,7 +9,7 @@ homepage="https://pip.pypa.io/"
 license="MIT"
 changelog="https://github.com/pypa/pip/raw/master/NEWS.rst"
 distfiles="$PYPI_SITE/p/pip/pip-$version.tar.gz"
-checksum="38e9250dfb0d7fa842492bede9259d4b3289a936ce454f7c58f059f28a94c01d"
+checksum="91e66f2a2702e7d2dcc092ed8c5ebe923e69b9997ea28ba25823943bcd3bf820"
 wrksrc="pip-$version"
 build_style="python3-module"
 # tests have unpackaged dependencies
