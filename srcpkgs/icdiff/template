@@ -1,20 +1,25 @@
 maintainer="nox"
 pkgname="icdiff"
-version=2.0.0
+version=2.0.3
 revision=1
 short_desc="Side-by-side highlighted command line diffs"
 depends+=" python3"
 depends+=" python3-setuptools"
+checkdepends="flake8"
 hostmakedepends="python3-setuptools"
 homepage="http://www.jefftk.com/icdiff"
 license="Python-2.0"
 changelog="https://github.com/jeffkaufman/icdiff/raw/master/ChangeLog"
 distfiles="https://github.com/jeffkaufman/icdiff/archive/release-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bce07ff4995aafe9de274ca0a322e56275dc264948b125457d2cc73dd7e9eee2"
+checksum="23e9502895999a929e1d3559403205846742f7cf8a22c5d7f3c4db910ba12321"
 wrksrc="$pkgname-release-$version"
 build_style="python3-module"
 replaces="python3-icdiff>=0"
 provides="python3-icdiff-${version}_$revision"
+
+do_check() {
+  ./test.sh python3
+}
 
 post_install() {
   vlicense LICENSE
