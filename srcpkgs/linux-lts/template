@@ -1,31 +1,17 @@
 maintainer="nox"
 pkgname="linux-lts"
-version=4.14
-revision=2
+version=5.10
+revision=1
 short_desc="Linux LTS (Long Term Support) kernel meta package"
+depends+=" linux$version"
+depends+=" linux-base"
 homepage="http://www.voidlinux.org/"
 license="Public domain"
 build_style="meta"
 
-case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*)
-    depends+=" dracut"
-    depends+=" linux$version"
-    depends+=" linux-firmware-amd"
-    depends+=" linux-firmware-intel"
-    depends+=" linux-firmware-network"
-    depends+=" linux-firmware-nvidia"
-    _depends_headers="linux$version-headers"
-    ;;
-  arm*|aarch64*)
-    depends="linux$version"
-    _depends_headers="linux$version-headers"
-    ;;
-esac
-
 linux-lts-headers_package() {
   short_desc="Linux longterm support kernel headers meta package"
-  depends="$_depends_headers"
+  depends="linux$version-headers"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
