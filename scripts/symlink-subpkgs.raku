@@ -621,7 +621,6 @@ constant %PKG = Map.new(
     'python-coverage' => ['python3-coverage'],
     'python-cram' => ['python3-cram'],
     'python-dateutil' => ['python3-dateutil'],
-    'python-docutils' => ['python3-docutils'],
     'python-idna' => ['python3-idna'],
     'python-iso8601' => ['python3-iso8601'],
     'python-lxml' => ['python3-lxml'],
