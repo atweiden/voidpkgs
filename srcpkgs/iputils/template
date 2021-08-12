@@ -1,17 +1,19 @@
 maintainer="nox"
 pkgname="iputils"
-version=20210202
+version=20210722
 revision=1
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends="libcap-devel"
 hostmakedepends+=" docbook-xsl-ns"
 hostmakedepends+=" docbook2x"
+hostmakedepends+=" iproute2"
+hostmakedepends+=" libcap-progs"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/iputils/iputils"
 license="BSD-3-Clause, GPL-2.0-or-later"
 distfiles="https://github.com/iputils/iputils/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3f557ecfd2ace873801231d2c1f42de73ced9fbc1ef3a438d847688b5fb0e8ab"
+checksum="6d1a44b0682d3d4b64586dbaebe61dd61ae16d6e2f4dc0c43336d0e47a9db323"
 build_style="meson"
 configure_args+=" -DBUILD_NINFOD=false"
 configure_args+=" -DBUILD_TFTPD=false"
