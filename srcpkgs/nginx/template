@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nginx"
 version=1.18.0
-revision=5
+revision=6
 short_desc="High performance web and reverse proxy server"
 makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
@@ -62,6 +62,7 @@ do_configure() {
   ./configure \
     --prefix="$cfgdir" \
     --conf-path="$cfgdir/nginx.conf" \
+    --with-compat \
     --sbin-path="/usr/bin/nginx" \
     --pid-path="/run/nginx.pid" \
     --lock-path="/var/lock/nginx.lock" \
