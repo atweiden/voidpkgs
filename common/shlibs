@@ -94,6 +94,7 @@ libgettextpo.so.0 gettext-0.21_3
 libgettextsrc-0.21.so gettext-0.21_3
 libtextstyle.so.0 gettext-0.21_3
 libintl.so.8 gettext-libs-0.19.2_1
+libgf2x.so.3 gf2x-1.3.0_1
 ld-linux-aarch64.so.1 glibc-2.32_1 aarch64
 ld-linux-armhf.so.3 glibc-2.32_1
 ld-linux-x86-64.so.2 glibc-2.32_1 x86_64

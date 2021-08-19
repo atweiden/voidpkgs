@@ -221,6 +221,7 @@ constant %PKG = Map.new(
                     gettext-devel-examples
                     gettext-devel-tools
                     gettext-libs>,
+    'gf2x' => ['gf2x-devel'],
     'git' => qw<git-all
                 git-cvs
                 git-netrc
