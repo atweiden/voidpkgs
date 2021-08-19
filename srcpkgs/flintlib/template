@@ -1,26 +1,34 @@
-# Template file for 'flintlib'
-pkgname=flintlib
+maintainer="nox"
+pkgname="flintlib"
 version=2.8.0
 revision=1
-wrksrc="flint-${version}"
-build_style=configure
-configure_args="--prefix=/usr --with-gmp=/usr --with-mpfr=/usr --with-ntl=/usr"
-makedepends="mpfr-devel ntl-devel"
 short_desc="Fast Library for Number Theory"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="LGPL-2.1-or-later"
+makedepends+=" mpfr-devel"
+makedepends+=" ntl-devel"
 homepage="https://flintlib.org"
-distfiles="https://flintlib.org/flint-${version}.tar.gz"
-checksum=584235cdc39d779d9920eaef16fe084f3c26ffeeea003a3fff64a20a0f33449e
+license="LGPL-2.1-or-later"
+distfiles="https://flintlib.org/flint-$version.tar.gz"
+checksum="584235cdc39d779d9920eaef16fe084f3c26ffeeea003a3fff64a20a0f33449e"
+wrksrc="flint-$version"
+build_style="configure"
+configure_args+=" --prefix=/usr"
+configure_args+=" --with-gmp=/usr"
+configure_args+=" --with-mpfr=/usr"
+configure_args+=" --with-ntl=/usr"
 
-CFLAGS="-D_GNU_SOURCE" # needed for cpu_set_t
+# needed for cpu_set_t
+CFLAGS="-D_GNU_SOURCE"
 
 flintlib-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision} mpfr-devel"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" mpfr-devel"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
