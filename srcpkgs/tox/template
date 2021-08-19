@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tox"
-version=3.24.0
+version=3.24.1
 revision=1
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-filelock"
@@ -20,7 +20,7 @@ homepage="https://tox.readthedocs.io/en/latest/"
 license="MIT"
 changelog="https://tox.readthedocs.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/t/tox/tox-$version.tar.gz"
-checksum="67636634df6569e450c4bc18fdfd8b84d7903b3902d5c65416eb6735f3d4afb8"
+checksum="9850daeb96d21b4abf049bc5f197426123039e383ebfed201764e9355fc5a880"
 build_style="python3-module"
 
 do_check() {
