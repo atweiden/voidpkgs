@@ -12,6 +12,7 @@ distfiles="https://github.com/decred/dcrlnd/archive/v$version.tar.gz>$pkgname-$v
 checksum="342ea45d9a018f7c3c6311d8bf3f3dad961d17da5b0daa4aa855ef1501ff92f9"
 build_style="go"
 go_import_path="github.com/decred/dcrlnd"
+go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/dcrlnd"
 go_package+=" $go_import_path/cmd/dcrlncli"
 go_ldflags+=" -s -w -buildid="
