@@ -24,11 +24,12 @@ distfiles="https://linuxcontainers.org/downloads/lxd/$pkgname-$version.tar.gz"
 checksum="5178a918d59c9412a0af4af4c1abfce469e1a76497913bc316bf602895a2b265"
 build_style="go"
 go_import_path="github.com/lxc/lxd"
-go_build_tags="libsqlite3"
 go_package+=" $go_import_path/fuidshift"
 go_package+=" $go_import_path/lxc"
 go_package+=" $go_import_path/lxd"
 go_package+=" $go_import_path/lxd-p2c"
+go_ldflags="-s -w -buildid="
+go_build_tags="libsqlite3"
 system_groups="lxd"
 
 # whitelist libcap LDFLAGS (see: https://github.com/lxc/lxd/issues/6727)

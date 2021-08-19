@@ -13,6 +13,7 @@ wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/wvanlint/twf"
 go_package="$go_import_path/cmd/twf"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

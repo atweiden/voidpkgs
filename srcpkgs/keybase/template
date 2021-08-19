@@ -17,6 +17,7 @@ go_package+=" $go_import_path/go/kbfs/kbfsfuse"
 go_package+=" $go_import_path/go/kbfs/kbfsgit/git-remote-keybase"
 go_package+=" $go_import_path/go/kbfs/kbfstool"
 go_package+=" $go_import_path/go/kbfs/redirector"
+go_ldflags="-s -w -buildid="
 go_build_tags="production"
 
 export GOFLAGS="-trimpath"

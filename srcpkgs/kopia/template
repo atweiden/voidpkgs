@@ -9,6 +9,7 @@ distfiles="https://github.com/kopia/kopia/archive/v$version.tar.gz>$pkgname-$ver
 checksum="8e2663546fb426faacb4dd9425cdbba4fa2e8ca5df0aac0545d216c8e57d40ef"
 build_style="go"
 go_import_path="github.com/kopia/kopia"
+go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/repo.BuildVersion=$version"
 go_ldflags+=" -X $go_import_path/repo.BuildInfo=void-nox"
 

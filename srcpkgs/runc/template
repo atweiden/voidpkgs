@@ -12,6 +12,7 @@ distfiles="https://github.com/opencontainers/runc/releases/download/v$version/$p
 checksum="7401a8be2556490074418c4b04c6e0584854ff15e899da9ebeb6d22abd877323"
 build_style="go"
 go_import_path="github.com/opencontainers/runc"
+go_ldflags="-s -w -buildid="
 go_build_tags+=" seccomp"
 go_build_tags+=" apparmor"
 

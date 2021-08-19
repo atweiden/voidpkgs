@@ -10,6 +10,7 @@ license="MIT"
 distfiles="https://git.sr.ht/~sircmpwn/aerc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="87b922440e53b99f260d2332996537decb452c838c774e9340b633296f9f68ee"
 build_style="go"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

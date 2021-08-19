@@ -22,6 +22,7 @@ go_package+=" $go_import_path/politeiawww/cmd/pictl"
 go_package+=" $go_import_path/politeiawww/cmd/politeiaverify"
 go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
+go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease=pre"
 go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata=dev"
 

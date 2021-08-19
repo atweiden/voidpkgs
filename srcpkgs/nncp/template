@@ -9,6 +9,7 @@ distfiles="http://www.nncpgo.org/download/nncp-$version.tar.xz"
 checksum="00852e8070415154197a5555ddae636e6e3940ecdd53d39ea69e5ff1531ba4c6"
 build_style="go"
 go_import_path="cypherpunks.ru/nncp"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

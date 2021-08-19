@@ -9,6 +9,7 @@ distfiles="https://github.com/hekmekk/git-team/archive/v$version.tar.gz>$pkgname
 checksum="c52d800ea3b5f45896d4f21ab4944d1f45dd8d90cdf1a634a445d22b93a31f49"
 build_style="go"
 go_import_path="github.com/hekmekk/git-team"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

@@ -10,6 +10,7 @@ distfiles="https://github.com/hashicorp/consul-template/archive/v$version.tar.gz
 checksum="f8d214733961ef3333493ce912180c5c0311c87e4b1a116308f31283b6c77419"
 build_style="go"
 go_import_path="github.com/hashicorp/consul-template"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

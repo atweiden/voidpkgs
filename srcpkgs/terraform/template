@@ -9,6 +9,7 @@ distfiles="https://github.com/hashicorp/terraform/archive/v$version.tar.gz>$pkgn
 checksum="71a9d9e4a5d3ccfc6c41710a48870259ac977a2080f4d734a4b8fb8dc18728b6"
 build_style="go"
 go_import_path="github.com/hashicorp/terraform"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

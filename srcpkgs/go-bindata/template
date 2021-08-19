@@ -12,6 +12,7 @@ wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/jteeuwen/go-bindata"
 go_package="github.com/jteeuwen/go-bindata/go-bindata"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

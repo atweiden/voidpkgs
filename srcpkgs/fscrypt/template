@@ -13,6 +13,7 @@ conf_files="/etc/pam.d/fscrypt"
 build_style="go"
 go_import_path="github.com/google/fscrypt"
 go_package="$go_import_path/cmd/fscrypt"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

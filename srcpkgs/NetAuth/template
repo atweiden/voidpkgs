@@ -14,6 +14,7 @@ build_style="go"
 go_import_path="github.com/netauth/netauth"
 go_package+=" $go_import_path/cmd/netauth"
 go_package+=" $go_import_path/cmd/netauthd"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

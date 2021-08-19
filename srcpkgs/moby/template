@@ -20,6 +20,7 @@ checksum+=" 9ce0fa64b00d9ef86971bdeb01cb24b02e6751c0d159ccb057521a41762750f4"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/docker/docker"
+go_ldflags="-s -w -buildid="
 system_groups="docker"
 
 _moby_builddir="moby-$version"

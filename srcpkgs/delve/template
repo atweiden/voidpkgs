@@ -9,6 +9,7 @@ distfiles="https://github.com/go-delve/delve/archive/v$version.tar.gz>$pkgname-$
 checksum="e73f7fc063632268d3bdf53486aeafd98cceb8f86f4af56903dedfebaefe690d"
 build_style="go"
 go_import_path="github.com/go-delve/delve/cmd/dlv"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

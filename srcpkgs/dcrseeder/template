@@ -13,6 +13,7 @@ checksum="30a6763ccc699ed877caf5d56aa44a6d562bf2f72792d2a2133adfab91a62905"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
+go_ldflags="-s -w -buildid="
 
 # XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"

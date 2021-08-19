@@ -12,6 +12,7 @@ checksum="1a82b2d415b77a63bd1cf7b2f79db454aea11811f268166dc004b75f38b9a791"
 wrksrc="netkeys-$version"
 build_style="go"
 go_import_path="github.com/netauth/netkeys"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

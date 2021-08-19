@@ -11,6 +11,8 @@ distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-
 checksum="441d2f50a29568451cb16301a2208c9b744a480ded8c624e789983ee42ed3ea9"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
+go_ldflags_=" -s -w -buildid="
+go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
 go_build_tags+=" release"
 go_build_tags+=" ui"
 case "$XBPS_TARGET_MACHINE" in
@@ -18,7 +20,6 @@ case "$XBPS_TARGET_MACHINE" in
     go_build_tags+=" nonvidia"
     ;;
 esac
-go_ldflags="-X $go_import_path/version.GitCommit=$_gitrev"
 
 export GOFLAGS="-trimpath"
 

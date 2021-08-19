@@ -15,6 +15,7 @@ go_package+=" $go_import_path/cmd/zr-fetch"
 go_package+=" $go_import_path/cmd/zr-reindex"
 go_package+=" $go_import_path/cmd/zr-stackexchange"
 go_package+=" $go_import_path/cmd/zr-stdin"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

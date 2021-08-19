@@ -12,6 +12,7 @@ create_wrksrc="yes"
 build_style="go"
 go_import_path="gitlab.com/yawning/obfs4.git"
 go_package="$go_import_path/obfs4proxy"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 

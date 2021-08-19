@@ -10,6 +10,7 @@ distfiles="https://github.com/cpuguy83/go-md2man/archive/v$version.tar.gz>$pkgna
 checksum="889309ecf43e40d3a76d666b0259dcd71b340ea0fad003784ff3fe0b6c21990e"
 build_style="go"
 go_import_path="github.com/cpuguy83/go-md2man/v2"
+go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
 
