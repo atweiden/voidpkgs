@@ -12,7 +12,8 @@ distfiles="https://github.com/decred/dcrlnd/archive/v$version.tar.gz>$pkgname-$v
 checksum="342ea45d9a018f7c3c6311d8bf3f3dad961d17da5b0daa4aa855ef1501ff92f9"
 build_style="go"
 go_import_path="github.com/decred/dcrlnd"
-go_mod_mode=""
+go_package+=" $go_import_path/cmd/dcrlnd"
+go_package+=" $go_import_path/cmd/dcrlncli"
 go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/build.BuildMetadata=release"
 go_ldflags+=" -X $go_import_path/build.Commit=v$version"
@@ -22,23 +23,6 @@ export CGO_ENABLED=0
 
 # XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"
-
-do_build() {
-  go install \
-    -p "$XBPS_MAKEJOBS" \
-    -mod="$go_mod_mode" \
-    -x \
-    -tags "$go_build_tags_dcrlnd" \
-    -ldflags "$go_ldflags" \
-    "$go_import_path/cmd/dcrlnd"
-  go install \
-    -p "$XBPS_MAKEJOBS" \
-    -mod="$go_mod_mode" \
-    -x \
-    -tags "$go_build_tags_dcrlncli" \
-    -ldflags "$go_ldflags" \
-    "$go_import_path/cmd/dcrlncli"
-}
 
 post_install() {
   vlicense LICENSE
