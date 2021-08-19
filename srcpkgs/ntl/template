@@ -1,35 +1,45 @@
-# Template file for 'ntl'
-pkgname=ntl
+maintainer="nox"
+pkgname="ntl"
 version=11.5.1
 revision=1
-build_wrksrc="src"
-build_style=configure
-hostmakedepends="perl libtool"
-makedepends="gmp-devel gf2x-devel"
 short_desc="Library for doing Number Theory"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="LGPL-2.1-or-later"
+makedepends+=" gf2x-devel"
+makedepends+=" gmp-devel"
+hostmakedepends+=" libtool"
+hostmakedepends+=" perl"
 homepage="https://libntl.org"
-distfiles="https://libntl.org/ntl-${version}.tar.gz"
-checksum=210d06c31306cbc6eaf6814453c56c776d9d8e8df36d74eb306f6a523d1c6a8a
-nocross=yes # runs binaries built for target
-
+license="LGPL-2.1-or-later"
+distfiles="https://libntl.org/$pkgname-$version.tar.gz"
+checksum="210d06c31306cbc6eaf6814453c56c776d9d8e8df36d74eb306f6a523d1c6a8a"
+build_wrksrc="src"
+build_style="configure"
 build_options="native_build"
+# runs binaries built for target
+nocross="yes"
 
 do_configure() {
-	# see http://www.shoup.net/ntl/doc/tour-unix.html
-	./configure CXX="$CXX" CXXFLAGS="$CXXFLAGS" LIBTOOL="libtool" \
-		PREFIX="/usr" SHARED="on" NTL_GF2X_LIB="on" \
-		NATIVE="$(vopt_if native_build 'on' 'off')"
+  # see http://www.shoup.net/ntl/doc/tour-unix.html
+  ./configure \
+    CXX="$CXX" \
+    CXXFLAGS="$CXXFLAGS" \
+    LIBTOOL="libtool" \
+    NATIVE="$(vopt_if native_build on off)" \
+    NTL_GF2X_LIB="on" \
+    PREFIX="/usr" \
+    SHARED="on"
 }
 
 ntl-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision} ${makedepends}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share
-	}
+  unset depends
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
