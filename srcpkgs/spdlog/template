@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="spdlog"
-version=1.9.1
+version=1.9.2
 revision=1
 short_desc="Fast C++ logging library"
 depends+=" fmt-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/gabime/spdlog"
 license="MIT"
 distfiles="https://github.com/gabime/spdlog/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9a452cfa24408baccc9b2bc2d421d68172a7630c99e9504a14754be840d31a62"
+checksum="6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38"
 build_style="cmake"
 configure_args+=" -DSPDLOG_BUILD_EXAMPLE=OFF"
 configure_args+=" -DSPDLOG_BUILD_SHARED=ON"
