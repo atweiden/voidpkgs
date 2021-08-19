@@ -1,0 +1,38 @@
+maintainer="nox"
+pkgname="cspp"
+version=0.4.0
+revision=1
+short_desc="DiceMix Light and CoinShuffle++ client for Decred"
+hostmakedepends="git"
+tags="decred"
+homepage="https://github.com/decred/cspp"
+license="ISC"
+distfiles="https://github.com/decred/cspp/archive/v$version.tar.gz"
+checksum="cc91e9e2ee681fbd17d0680b7fb62a0a37acbd13a98a25b76a9ee846a6320b63"
+build_style="go"
+go_import_path="decred.org/cspp"
+_gh_import_path="github.com/decred/cspp"
+go_package+=" $go_import_path"
+go_package+=" $_gh_import_path/cmd/csppserver"
+go_package+=" $_gh_import_path/cmd/report2csv"
+go_ldflags="-s -w -buildid="
+
+# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+export GOFLAGS="-trimpath -buildmode=pie"
+
+pre_install() {
+  # prepend cspp to unqualified binaries
+  for _bin in $(find "$GOPATH/bin"  \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        -type f ! -name "cspp*" -printf '%f\n'); do
+    mv "$GOPATH/bin/$_bin" "$GOPATH/bin/cspp$_bin"
+  done
+}
+
+post_install() {
+  vlicense LICENSE
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
