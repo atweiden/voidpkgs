@@ -72,6 +72,7 @@ libf2fs.so.5 f2fs-tools-1.11.0_1
 libf2fs_format.so.4 f2fs-tools-1.11.0_1
 libfaketime.so.1 faketime-0.9.7_1
 libfaketimeMT.so.1 faketime-0.9.7_1
+libflint.so.16 flintlib-2.8.0_1
 libfmt.so.7 fmt-7.0.3_1
 libfuse.so.2 fuse-2.8.1_1
 libulockmgr.so.1 fuse-2.9.7_1

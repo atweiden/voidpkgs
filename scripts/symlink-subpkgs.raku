@@ -176,6 +176,7 @@ constant %PKG = Map.new(
     'flac' => qw<libflac
                  libflac-devel>,
     'flex' => ['libfl-devel'],
+    'flintlib' => ['flintlib-devel'],
     'fmt' => ['fmt-devel'],
     'fuse' => ['fuse-devel'],
     'fuse3' => ['fuse3-devel'],
