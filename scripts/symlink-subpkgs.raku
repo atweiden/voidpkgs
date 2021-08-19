@@ -537,6 +537,7 @@ constant %PKG = Map.new(
     'nsss' => qw<nsss-devel
                  nsss-doc>,
     'ntfs-3g' => ['ntfs-3g-devel'],
+    'ntl' => ['ntl-devel'],
     'ntp' => ['ntp-perl'],
     'numactl' => qw<libnuma
                     libnuma-devel>,
