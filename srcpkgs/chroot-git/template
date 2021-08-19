@@ -14,8 +14,6 @@ bootstrap="yes"
 if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" gnupg"
   hostmakedepends+=" perl"
-else
-  configure_args+=" --with-zlib=$XBPS_MASTERDIR/usr"
 fi
 
 do_configure() {
@@ -46,6 +44,9 @@ EOF
 ICONV_OMITS_BOM = Yes
 NO_REGEX = Yes
 EOF
+  fi
+  if [[ -z "$CHROOT_READY" ]]; then
+    echo "ZLIB_PATH = $XBPS_MASTERDIR/usr" >>config.mak
   fi
 }
 
