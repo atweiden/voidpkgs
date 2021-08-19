@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="alsa-lib"
-version=1.2.4
-revision=2
+version=1.2.5.1
+revision=1
 short_desc="Advanced Linux Sound Architecture (ALSA) library"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="http://www.alsa-project.org"
 license="LGPL-2.1-or-later"
 distfiles="https://www.alsa-project.org/files/pub/lib/alsa-lib-$version.tar.bz2"
-checksum="f7554be1a56cdff468b58fc1c29b95b64864c590038dd309c7a978c7116908f7"
+checksum="628421d950cecaf234de3f899d520c0a6923313c964ad751ffac081df331438e"
 build_style="gnu-configure"
 
 alsa-lib-devel_package() {
