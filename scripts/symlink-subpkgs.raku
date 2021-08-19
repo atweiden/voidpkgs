@@ -578,6 +578,8 @@ constant %PKG = Map.new(
                      pinentry-tty>,
     'pkcs11-helper' => qw<pkcs11-helper-devel
                           pkcs11-helper-doc>,
+    'pkgconf' => qw<pkgconf-devel
+                    libpkgconf>,
     'popt' => ['popt-devel'],
     'postgresql' => qw<postgresql-client
                        postgresql-contrib
