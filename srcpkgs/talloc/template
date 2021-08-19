@@ -14,7 +14,6 @@ license="GPL-3.0-or-later"
 distfiles="http://samba.org/ftp/$pkgname/$pkgname-$version.tar.gz"
 checksum="27a03ef99e384d779124df755deb229cd1761f945eca6d200e8cfd9bf5297bd7"
 build_style="waf3"
-build_helper="qemu"
 configure_script="buildtools/bin/waf"
 configure_args+=" --builtin-libraries=replace"
 configure_args+=" --bundled-libraries=NONE"
@@ -23,6 +22,8 @@ configure_args+=" --disable-rpath-install"
 configure_args+=" --localstatedir=/var"
 configure_args+=" --sysconfdir=/etc"
 configure_args+=" --without-gettext"
+# cross compilation requires `qemu`, see: upstream
+nocross="yes"
 
 export PYTHON_CONFIG="$XBPS_CROSS_BASE/usr/bin/python3-config"
 
