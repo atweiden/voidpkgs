@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lnd"
-version=0.10.0beta
+version=0.13.1beta
 revision=1
 short_desc="Lightning Network Daemon"
 hostmakedepends="git"
@@ -10,27 +10,17 @@ homepage="https://github.com/lightningnetwork/lnd"
 license="MIT"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/$pkgname-source-v${version%beta}-beta.tar.gz"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/vendor.tar.gz"
-checksum+=" 10413206fa89a002c6a645446d6d0273610604ff79eac6ba45c659d9818939f1"
-checksum+=" 16cb73595437f7485e51c8ef8d9dc0c1f6f3cbb5778be2bae05280799cdf5487"
+checksum+=" d6e57846814b27dc43424737613916f66c6f2e698a75c844091453c8b23a24cb"
+checksum+=" 5bca3ae6959c1d5464e2d0ac6a0639d3bd0418556aee095a20e42a5d8c629207"
 wrksrc="$pkgname-v${version%beta}-beta"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/lightningnetwork/lnd"
+go_package+=" $go_import_path/cmd/lnd"
+go_package+=" $go_import_path/cmd/lncli"
 go_mod_mode="vendor"
 go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/build.Commit=v${version%beta}-beta"
-go_build_tags_lnd+=" autopilotrpc"
-go_build_tags_lnd+=" chainrpc"
-go_build_tags_lnd+=" invoicesrpc"
-go_build_tags_lnd+=" routerrpc"
-go_build_tags_lnd+=" signrpc"
-go_build_tags_lnd+=" walletrpc"
-go_build_tags_lnd+=" watchtowerrpc"
-go_build_tags_lncli+=" autopilotrpc"
-go_build_tags_lncli+=" invoicesrpc"
-go_build_tags_lncli+=" routerrpc"
-go_build_tags_lncli+=" walletrpc"
-go_build_tags_lncli+=" watchtowerrpc"
 
 export CGO_ENABLED=0
 export GOFLAGS="-trimpath"
@@ -38,23 +28,6 @@ export GOFLAGS="-trimpath"
 do_configure() {
   # upstream ships required dependencies
   ln -s "$wrksrc/vendor" "$GOPATH"
-}
-
-do_build() {
-  go install \
-    -p "$XBPS_MAKEJOBS" \
-    -mod="$go_mod_mode" \
-    -x \
-    -tags "$go_build_tags_lnd" \
-    -ldflags "$go_ldflags" \
-    "$go_import_path/cmd/lnd"
-  go install \
-    -p "$XBPS_MAKEJOBS" \
-    -mod="$go_mod_mode" \
-    -x \
-    -tags "$go_build_tags_lncli" \
-    -ldflags "$go_ldflags" \
-    "$go_import_path/cmd/lncli"
 }
 
 post_install() {
