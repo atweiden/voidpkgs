@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="haproxy"
-version=2.4.2
-revision=2
+version=2.4.3
+revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" lua53-devel"
@@ -12,7 +12,7 @@ hostmakedepends="lua53-devel"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="ef7a20a36812f119d0113a28e0b26b909f8177a224c840082295fae265ba1f81"
+checksum="ce479380be5464faa881dcd829618931b60130ffeb01c88bc2bf95e230046405"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
@@ -36,7 +36,7 @@ do_build() {
   make \
     ADDLIB="$atomic" \
     CC="$CC" \
-    CFLAGS="$CFLAGS" \
+    DEBUG_CFLAGS="$CFLAGS" \
     EXTRA= \
     LDFLAGS="$LDFLAGS" \
     TARGET=$target \
