@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="plocate"
-version=1.1.8
+version=1.1.9
 revision=1
 short_desc="Much faster locate based on posting lists"
 makedepends="libzstd-devel"
@@ -12,8 +12,9 @@ homepage="https://plocate.sesse.net/"
 license="GPL-2.0-or-later"
 changelog="https://git.sesse.net/?p=plocate;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
-checksum="13002f065c28a93623a03d44c911a44f1659e8b1841aad80fd8a566a1200f43c"
+checksum="0df2bee9921ca74dd2587222d1d9a3b61d561252c9316d3667d2bd0b697798c8"
 build_style="meson"
+configure_args+=" -Dinstall_systemd=false"
 configure_args+=" -Dlocategroup=_plocate"
 configure_args+=" -Dupdatedb_progname=pupdatedb"
 system_accounts="_plocate"
