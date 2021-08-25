@@ -1,0 +1,20 @@
+maintainer="nox"
+pkgname="python3-idna"
+version=3.2
+revision=1
+short_desc="Internationalized Domain Names in Applications (IDNA) for Python3"
+depends="python3"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/kjd/idna"
+license="BSD-3-Clause"
+changelog="https://github.com/kjd/idna/raw/master/HISTORY.rst"
+distfiles="$PYPI_SITE/i/idna/idna-$version.tar.gz"
+checksum="467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"
+wrksrc="idna-$version"
+build_style="python3-module"
+
+post_install() {
+  vlicense LICENSE.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
