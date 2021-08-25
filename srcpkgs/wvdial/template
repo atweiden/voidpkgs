@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="wvdial"
 version=1.61
-revision=7
+revision=8
 short_desc="Point-to-Point Protocol dialer"
 depends="ppp"
 makedepends="wvstreams-devel"
 hostmakedepends="pkg-config"
 homepage="https://code.google.com/p/wvstreams/"
-license="LGPL-2"
+license="LGPL-2.0-only"
 distfiles="$DEBIAN_SITE/main/w/wvdial/${pkgname}_$version.orig.tar.gz"
 checksum="5753d2005115aa4e365a1638f4eb6c076d4e2deafa46c3de38964918e7f62709"
 conf_files+=" /etc/ppp/peers/wvdial"
