@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python-requests"
-version=2.25.1
+version=2.26.0
 revision=1
 short_desc="Python2 HTTP library for human beings"
 depends+=" ca-certificates"
@@ -13,9 +13,11 @@ homepage="https://python-requests.org/"
 license="Apache-2.0"
 changelog="https://github.com/psf/requests/raw/master/HISTORY.md"
 distfiles="$PYPI_SITE/r/requests/${pkgname#*-}-$version.tar.gz"
-checksum="27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
+checksum="b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7"
 wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
+# tests are broken for python2 requests
+make_check="no"
 
 post_patch() {
   vsed \
@@ -27,7 +29,7 @@ post_patch() {
 python3-requests_package() {
   unset depends
   depends+=" ca-certificates"
-  depends+=" python3-chardet"
+  depends+=" python3-charset-normalizer"
   depends+=" python3-idna"
   depends+=" python3-urllib3"
   short_desc="${short_desc/Python2/Python3}"
