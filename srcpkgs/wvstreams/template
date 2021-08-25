@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="wvstreams"
 version=4.6.1
-revision=20
+revision=21
 short_desc="Library for doing network in C++"
 homepage="https://code.google.com/p/wvstreams"
-license="LGPL-2"
+license="LGPL-2.0-only"
 distfiles="$DEBIAN_SITE/main/w/wvstreams/${pkgname}_$version.orig.tar.gz"
 makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
