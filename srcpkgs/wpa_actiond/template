@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="wpa_actiond"
 version=1.4
-revision=1
-short_desc="Daemon that connects to wpa_supplicant and handles connect and disconnect events"
+revision=2
+short_desc="Daemon that connects to wpa_supplicant and handles connection events"
 depends="wpa_supplicant"
 homepage="http://projects.archlinux.org/wpa_actiond.git/"
-license="GPL-2"
+license="GPL-2.0-only"
 distfiles="https://sources.archlinux.org/other/wpa_actiond/$pkgname-$version.tar.xz"
 checksum="e0e65e7c52a32796a0ff855ab18aa0b237d6b9afc87d4008c0380735abcb1a54"
 build_style="gnu-makefile"
