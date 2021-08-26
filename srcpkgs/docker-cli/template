@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="docker-cli"
-version=20.10.5
+version=20.10.6
 revision=2
 short_desc="Command-line interface for the Docker daemon"
 depends="git"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.docker.io"
 license="Apache-2.0"
 distfiles="https://github.com/docker/cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4ba845f8c7e2e0a2ca1ec6589847159ca8d0d37b609f0e6f78def7a893b9b342"
+checksum="eda53b96ab83a59502df2e5e00ab7ee867243259407ef454be55e695303c1113"
 wrksrc="cli-$version"
 build_style="go"
 go_package="github.com/docker/cli/cmd/docker"
@@ -35,6 +35,7 @@ docker_package() {
   short_desc="Docker container runtime"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" moby"
+  depends+=" tini"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
