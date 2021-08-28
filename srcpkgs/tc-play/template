@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="tc-play"
 version=3.3
-revision=1
+revision=2
 short_desc="Free and simple TrueCrypt implementation based on dm-crypt"
 makedepends+=" device-mapper-devel"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libuuid-devel"
 homepage="https://github.com/bwalex/tc-play"
-license="BSD-2-clause"
+license="BSD-2-Clause"
 distfiles="https://github.com/bwalex/tc-play/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ad53cd814a23b4f61a1b2b6dc2539624ffb550504c400c45cbd8cd1da4c7d90a"
 build_style="gnu-makefile"
@@ -20,7 +20,7 @@ make_install_args+=" SBINDIR=/usr/bin"
 make_install_target="install_program"
 
 pre_build() {
-  sed \
+  vsed \
     -i \
     -e "s; -o tcplay; $LDFLAGS&;" \
     Makefile.classic
