@@ -1,7 +1,7 @@
 # keep this package sync with util-linux
 maintainer="nox"
 pkgname="util-linux-common"
-version=2.37.1
+version=2.37.2
 revision=1
 short_desc="Miscellaneous linux utilities - common files"
 makedepends+=" libcap-ng-devel"
@@ -17,9 +17,9 @@ checkdepends+=" xz"
 hostmakedepends+=" gettext"
 hostmakedepends+=" pkg-config"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
-license="GPL-2.0-or-later"
+license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/util-linux-$version.tar.xz"
-checksum="8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76"
+checksum="6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9"
 wrksrc="util-linux-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-makeinstall-chown"
@@ -66,16 +66,16 @@ util-linux-libs_package() {
   unset depends
   short_desc+=" - meta libraries"
   build_style="meta"
-  depends+=" libblkid-${version}_$revision"
-  depends+=" libfdisk-${version}_$revision"
-  depends+=" libmount-${version}_$revision"
-  depends+=" libsmartcols-${version}_$revision"
-  depends+=" libuuid-${version}_$revision"
+  depends+=" libblkid>=${version}_$revision"
+  depends+=" libfdisk>=${version}_$revision"
+  depends+=" libmount>=${version}_$revision"
+  depends+=" libsmartcols>=${version}_$revision"
+  depends+=" libuuid>=${version}_$revision"
 }
 
 libfdisk_package() {
   short_desc="Library for fdisk(8)"
-  depends="$sourcepkg>=${version}_1<=${version}_9999"
+  depends="$sourcepkg>=${version}_1"
   pkg_install() {
     vmove "usr/lib/libfdisk.so.*"
   }
@@ -96,7 +96,7 @@ libfdisk-devel_package() {
 
 libmount_package() {
   short_desc="Library for mount(8)"
-  depends="$sourcepkg>=${version}_1<=${version}_9999"
+  depends="$sourcepkg>=${version}_1"
   pkg_install() {
     vmove "usr/lib/libmount.so.*"
   }
@@ -117,7 +117,7 @@ libmount-devel_package() {
 
 libblkid_package() {
   short_desc="Library to handle device identification"
-  depends="$sourcepkg>=${version}_1<=${version}_9999"
+  depends="$sourcepkg>=${version}_1"
   pkg_install() {
     vmove "usr/lib/libblkid.so.*"
   }
@@ -140,8 +140,14 @@ libblkid-devel_package() {
 
 libuuid_package() {
   short_desc="UUID library"
-  depends="$sourcepkg>=${version}_1<=${version}_9999"
+  depends="$sourcepkg>=${version}_1"
+  license="BSD-3-Clause"
   pkg_install() {
+    {
+      grep Copyright libuuid/src/*.c
+      cat Documentation/licenses/COPYING.BSD-3-Clause
+    } > uuid.license
+    vlicense uuid.license
     vmove "usr/lib/libuuid.so.*"
   }
 }
@@ -149,6 +155,7 @@ libuuid_package() {
 libuuid-devel_package() {
   depends="libuuid>=${version}_${revision}<=${version}_9999"
   short_desc="UUID library development files"
+  license="BSD-3-Clause"
   pkg_install() {
     vmove usr/lib/libuuid.a
     vmove usr/lib/libuuid.so
@@ -171,7 +178,7 @@ libsmartcols-devel_package() {
 
 libsmartcols_package() {
   short_desc="Table or Tree library from util-linux"
-  depends="$sourcepkg>=${version}_1<=${version}_9999"
+  depends="$sourcepkg>=${version}_1"
   pkg_install() {
     vmove "usr/lib/libsmartcols.so.*"
   }
