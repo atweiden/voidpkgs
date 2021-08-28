@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libmpack"
 version=1.0.5
-revision=1
+revision=2
 short_desc="Simple implementation of msgpack in C"
 makedepends="libtool"
 license="MIT"
@@ -12,6 +12,10 @@ build_style="gnu-makefile"
 make_build_args="LIBTOOL=$XBPS_CROSS_BASE/usr/bin/libtool"
 make_check_target="test"
 make_install_args="LIBTOOL=$XBPS_CROSS_BASE/usr/bin/libtool"
+
+post_install() {
+  vlicense LICENSE-MIT
+}
 
 libmpack-devel_package() {
   depends="libmpack-${version}_$revision"
