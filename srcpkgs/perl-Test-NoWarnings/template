@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="perl-Test-NoWarnings"
 version=1.04
-revision=3
+revision=4
 short_desc="Test::NoWarnings - Make sure you did not emit warnings while testing."
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-NoWarnings"
-license="LGPL-2.1"
+license="LGPL-2.1-only"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="638a57658cb119af1fe5b15e73d47c2544dcfef84af0c6b1b2e97f08202b686c"
 wrksrc="${pkgname#*-}-$version"
