@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="age"
-version=1.0.0.beta2
+version=1.0.0.rc.3
 revision=1
 short_desc="Simple, modern and secure encryption tool"
 homepage="https://age-encryption.org/"
 license="BSD-3-Clause"
-distfiles="https://github.com/FiloSottile/age/archive/v${version/.b/-b}.tar.gz>$pkgname-${version/.b/-b}.tar.gz"
-checksum="ca0fcfe45415c03c637c2332231f1793bf4dbd6a03e663a71ef2b7554647d763"
+distfiles="https://github.com/FiloSottile/age/archive/v${version/.rc/-rc}.tar.gz>$pkgname-${version/.b/-b}.tar.gz"
+checksum="e352d8b4e08e0b493adf7ab3ea15b349fe07ab833d20395012aa516ea0c36708"
 wrksrc="$pkgname-${version/.b/-b}"
 build_style="go"
 go_import_path="filippo.io/age"
