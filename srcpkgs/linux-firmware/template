@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux-firmware"
 version=20210511
-revision=1
+revision=2
 short_desc="Binary firmware blobs for the Linux kernel"
 depends+=" $pkgname-amd>=${version}_$revision"
 depends+=" $pkgname-network>=${version}_$revision"
@@ -17,6 +17,7 @@ subpackages+=" linux-firmware-broadcom"
 subpackages+=" linux-firmware-intel"
 subpackages+=" linux-firmware-nvidia"
 subpackages+=" linux-firmware-network"
+subpackages+=" linux-firmware-qualcomm"
 
 do_install() {
   make \
@@ -78,6 +79,11 @@ linux-firmware-nvidia_package() {
 linux-firmware-network_package() {
   short_desc+=" - network"
   depends="linux-firmware-broadcom>=${version}_$revision"
+  case "$XBPS_TARGET_MACHINE" in
+    armv7*|aarch64*)
+      depends+=" linux-firmware-qualcomm>=${version}_$revision"
+      ;;
+  esac
   nostrip="yes"
   pkg_install() {
     vmove usr/lib/firmware/3com
@@ -98,6 +104,14 @@ linux-firmware-network_package() {
     vmove usr/lib/firmware/ti-connectivity
     vmove usr/lib/firmware/dpaa2
     vmove usr/lib/firmware/qca
+  }
+}
+
+linux-firmware-qualcomm_package() {
+  short_desc+=" - Qualcomm SoC blobs"
+  nostrip="yes"
+  pkg_install() {
+    vmove usr/lib/firmware/qcom
   }
 }
 
