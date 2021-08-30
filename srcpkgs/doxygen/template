@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="doxygen"
-version=1.9.1
+version=1.9.2
 revision=1
 short_desc="Source code documentation generator tool"
 # XXX: testing requires gui deps
@@ -11,8 +11,9 @@ hostmakedepends+=" perl"
 hostmakedepends+=" python3"
 homepage="http://www.doxygen.org/"
 license="GPL-2.0-only"
+changelog="https://www.doxygen.nl/manual/changelog.html"
 distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
-checksum="67aeae1be4e1565519898f46f1f7092f1973cce8a767e93101ee0111717091d1"
+checksum="060f254bcef48673cc7ccf542736b7455b67c110b30fdaa33512a5b09bbecee5"
 build_style="cmake"
 configure_args="-DCMAKE_BUILD_TYPE=None"
 
