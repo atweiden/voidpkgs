@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="vault"
 version=1.8.1
-revision=1
+revision=2
 _gitrev="4b0264f28defc05454c31277cfa6ff63695a458d"
 short_desc="Manage Secrets and Protect Sensitive Data"
+depends="libcap-progs"
 hostmakedepends="git"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
