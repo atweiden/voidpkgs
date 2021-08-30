@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-MailTools"
 version=2.21
-revision=2
+revision=3
 short_desc="MailTools - Various e-mail related modules"
 depends+=" perl"
 depends+=" perl-TimeDate"
@@ -9,7 +9,7 @@ makedepends+=" perl"
 makedepends+=" perl-TimeDate"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/MailTools"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Mail/${pkgname#*-}-$version.tar.gz"
 checksum="4ad9bd6826b6f03a2727332466b1b7d29890c8d99a32b4b3b0a8d926ee1a44cb"
 wrksrc="${pkgname#*-}-$version"
