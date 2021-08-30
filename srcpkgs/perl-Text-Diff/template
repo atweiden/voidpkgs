@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Text-Diff"
 version=1.45
-revision=2
+revision=3
 short_desc="Text::Diff - Perform diffs on files and record sets"
 depends+=" perl"
 depends+=" perl-Algorithm-Diff"
@@ -10,7 +10,7 @@ makedepends+=" perl-Algorithm-Diff"
 hostmakedepends+=" perl"
 hostmakedepends+=" perl-Algorithm-Diff"
 homepage="https://metacpan.org/release/Text-Diff"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-2.0-or-later"
 distfiles="$CPAN_SITE/Text/${pkgname#*-}-$version.tar.gz"
 checksum="e8baa07b1b3f53e00af3636898bbf73aec9a0ff38f94536ede1dbe96ef086f04"
 wrksrc="${pkgname#*-}-$version"
