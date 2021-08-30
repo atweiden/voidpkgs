@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Net-SMTP-SSL"
 version=1.04
-revision=2
+revision=3
 short_desc="Net::SMTP::SSL - SSL support for Net::SMTP"
 depends+=" perl"
 depends+=" perl-IO-Socket-SSL"
@@ -9,7 +9,7 @@ makedepends+=" perl"
 makedepends+=" perl-IO-Socket-SSL"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Net-SMTP-SSL"
-license="Artistic, GPL-1"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Net/${pkgname#*-}-$version.tar.gz"
 checksum="7b29c45add19d3d5084b751f7ba89a8e40479a446ce21cfd9cc741e558332a00"
 wrksrc="${pkgname#*-}-$version"
