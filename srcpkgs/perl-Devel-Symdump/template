@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="perl-Devel-Symdump"
 version=2.18
-revision=2
+revision=3
 short_desc="Devel::Symdump - Dump symbol names or the symbol table"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Devel-Symdump"
-license="GPL-1, Artistic"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Devel/${pkgname#*-}-$version.tar.gz"
 checksum="826f81a107f5592a2516766ed43beb47e10cc83edc9ea48090b02a36040776c0"
 wrksrc="${pkgname#*-}-$version"
