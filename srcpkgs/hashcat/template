@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="hashcat"
-version=6.2.3
+version=6.2.4
 revision=1
 short_desc="Advanced CPU-based password recovery utility"
 makedepends+=" minizip-devel"
@@ -12,7 +12,7 @@ homepage="https://hashcat.net/hashcat/"
 license="MIT"
 changelog="https://github.com/hashcat/hashcat/raw/master/docs/changes.txt"
 distfiles="https://hashcat.net/files/hashcat-$version.tar.gz"
-checksum="c0be1c6693ee1f35c7bef1f79bf9e30a954f717ef42d00e37787aaeff3271e51"
+checksum="9020396ff933693e310b479b641e86f1783d9819d60d1d907752ad8d24a60c31"
 build_style="gnu-makefile"
 make_build_args+=" DEPS_OPENCL_PATH=$XBPS_CROSS_BASE/usr/include"
 make_build_args+=" DEPS_XXHASH_PATH=$XBPS_CROSS_BASE/usr/include"
