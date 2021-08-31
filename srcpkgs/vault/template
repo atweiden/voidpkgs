@@ -18,6 +18,7 @@ go_build_tags="release"
 system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
 make_dirs+=" /etc/vault 0700 root root"
+broken="FTBFS w/ Go 1.17 - hashicorp/vault#12456"
 
 export GOFLAGS="-trimpath"
 
