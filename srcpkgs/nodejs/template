@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nodejs"
-version=14.17.2
-revision=2
+version=14.17.6
+revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
 # see: https://github.com/nodejs/node/pull/21079
@@ -30,7 +30,7 @@ hostmakedepends+=" $(vopt_if ssl openssl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="62a17229c56bedb698443c314211c8f95df09bb6523fb4ad2b4b229e8be6263a"
+checksum=@c5d6fc4c970ab1db16d279e4e53cf71f4abf4a1be9598dd0ecd6a2e0d433506a
 wrksrc="${pkgname%js}-v$version"
 python_version=3
 build_options+=" cares"
@@ -75,6 +75,14 @@ esac
 
 CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 CXXFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+
+post_patch() {
+  # xxx drop after c-ares 1.17.3 has been released
+  vsed \
+    -i \
+    -e 's:<ares_nameser.h>:<arpa/nameser.h>:g' \
+    src/cares_wrap.h
+}
 
 do_configure() {
   local _args
