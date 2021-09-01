@@ -1,20 +1,23 @@
-# Template file for 'python3-flit_core'
-pkgname=python3-flit_core
+maintainer="nox"
+pkgname="python3-flit_core"
 version=3.3.0
 revision=1
-wrksrc="flit-${version}"
-build_wrksrc="flit_core"
-build_style=python3-pep517
-depends="python3-toml"
-checkdepends="python3-pytest python3-testpath $depends"
 short_desc="Simplified packaging of Python modules - PEP 517 build backend"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="BSD-3-Clause"
+depends="python3-toml"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-testpath"
+checkdepends+=" python3-toml"
 homepage="https://flit.readthedocs.io"
+license="BSD-3-Clause"
 changelog="https://flit.readthedocs.io/en/latest/history.html"
-distfiles="${PYPI_SITE}/f/flit/flit-${version}.tar.gz"
-checksum=65fbe22aaa7f880b776b20814bd80b0afbf91d1f95b17235b608aa256325ce57
+distfiles="$PYPI_SITE/f/flit/flit-$version.tar.gz"
+checksum="65fbe22aaa7f880b776b20814bd80b0afbf91d1f95b17235b608aa256325ce57"
+wrksrc="flit-$version"
+build_wrksrc="flit_core"
+build_style="python3-pep517"
 
 post_install() {
-	vlicense ../LICENSE
+  vlicense ../LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
