@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="python3-setuptools-rust"
 version=0.12.1
-revision=1
+revision=2
 short_desc="Setuptools plugin for Rust support"
 depends+=" python3-semanticversion"
 depends+=" python3-setuptools"
 depends+=" python3-toml"
-hostmakedepends+=" python3-setuptools_scm"
-hostmakedepends+=" python3-toml"
+depends+=" python3-typing_extensions"
+hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/PyO3/setuptools-rust"
 license="MIT"
 changelog="https://github.com/PyO3/setuptools-rust/raw/master/CHANGELOG.md"
@@ -15,10 +15,8 @@ distfiles="$PYPI_SITE/s/setuptools-rust/setuptools-rust-$version.tar.gz"
 checksum="647009e924f0ae439c7f3e0141a184a69ad247ecb9044c511dabde232d3d570e"
 wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
-
-do_check() {
-  echo "Tests have unpackaged dependencies; skipping"
-}
+# tests have unpackaged dependencies
+make_check="no"
 
 post_install() {
   vlicense LICENSE
