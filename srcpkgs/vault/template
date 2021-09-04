@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="vault"
-version=1.8.1
-revision=2
-_gitrev="4b0264f28defc05454c31277cfa6ff63695a458d"
+version=1.8.2
+revision=1
+_gitrev="aca76f63357041a43b49f3e8c11d67358496959f"
 short_desc="Manage Secrets and Protect Sensitive Data"
 depends="libcap-progs"
 hostmakedepends="git"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="dbf389458fddeb5f8c567d00b6d17ce054f5b7667c226dbb598aa2c0f9048004"
+checksum="ead7e85a64d31a8e69ca9932f1c53cdc46ed813d9532a8a7a7f0d187ea4f01f3"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
 go_ldflags+=" -s -w -buildid="
@@ -18,7 +18,6 @@ go_build_tags="release"
 system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
 make_dirs+=" /etc/vault 0700 root root"
-broken="FTBFS w/ Go 1.17 - hashicorp/vault#12456"
 
 export GOFLAGS="-trimpath"
 
