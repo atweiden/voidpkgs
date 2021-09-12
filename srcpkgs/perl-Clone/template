@@ -1,15 +1,17 @@
 maintainer="nox"
 pkgname="perl-Clone"
-version=0.43
-revision=4
+version=0.45
+revision=1
 short_desc="Clone - recursively copy Perl datatypes"
 depends="perl"
 makedepends="perl"
+checkdepends+=" perl-Test-Most"
+checkdepends+=" perl-b-cow"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/Clone"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Clone/${pkgname#*-}-$version.tar.gz"
-checksum="99025344686535c1ded464fe126df900b645b858e6d8873635ba81b4882eeeda"
+checksum="cbb6ee348afa95432e4878893b46752549e70dc68fe6d9e430d1d2e99079a9e6"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
