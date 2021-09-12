@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="ntfs-3g"
 version=2017.3.23
-revision=2
+revision=3
 short_desc="Stable Read/Write NTFS Driver in userspace"
 makedepends+=" fuse-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" $(vopt_if crypto 'gnutls-devel libgcrypt-devel')"
 hostmakedepends="pkg-config"
 homepage="http://www.tuxera.com/community/ntfs-3g-download/"
-license="GPL-2"
+license="GPL-2.0-or-later, LGPL-2.0-only"
 distfiles="http://www.tuxera.com/opensource/${pkgname}_ntfsprogs-$version.tgz"
 checksum="3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5"
 wrksrc="${pkgname}_ntfsprogs-$version"
