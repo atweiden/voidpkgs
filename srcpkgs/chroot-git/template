@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="chroot-git"
 version=2.33.0
-revision=1
+revision=2
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
@@ -37,6 +37,8 @@ NO_PYTHON = Yes
 NO_TCLTK = Yes
 DEFAULT_TEST_TARGET = prove
 GIT_PROVE_OPTS = $makejobs
+# firstword (uname -m)
+HOST_CPU = ${XBPS_TARGET_MACHINE%-musl}
 EOF
 
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
