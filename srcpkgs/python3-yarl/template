@@ -1,24 +1,31 @@
-# Template file for 'python3-yarl'
-pkgname=python3-yarl
+maintainer="nox"
+pkgname="python3-yarl"
 version=1.6.3
 revision=1
-wrksrc="yarl-${version}"
-build_style=python3-module
-pycompile_module="yarl"
-hostmakedepends="python3-setuptools"
-makedepends="python3-devel"
-depends="python3-idna python3-multidict"
-checkdepends="python3-idna python3-multidict python3-pytest"
 short_desc="Yet another URL library"
-maintainer="Michael Aldridge <maldridge@voidlinux.org>"
-license="Apache-2.0"
+depends+=" python3-idna"
+depends+=" python3-multidict"
+makedepends="python3-devel"
+checkdepends+=" python3-idna"
+checkdepends+=" python3-multidict"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://yarl.readthedocs.io/"
-distfiles="${PYPI_SITE}/y/yarl/yarl-${version}.tar.gz"
-checksum=8a9066529240171b68893d60dca86a763eae2139dd42f42106b03cf4b426bf10
+license="Apache-2.0"
+distfiles="$PYPI_SITE/y/yarl/yarl-$version.tar.gz"
+checksum="8a9066529240171b68893d60dca86a763eae2139dd42f42106b03cf4b426bf10"
+wrksrc="yarl-$version"
+build_style="python3-module"
+pycompile_module="yarl"
 
 do_check() {
-	vsed -e '/addopts/d' -i setup.cfg
+  vsed \
+    -i \
+    -e '/addopts/d' \
+    setup.cfg
 
-	cp -f build/lib.linux-*/yarl/*.so yarl
-	python3 -m pytest
+  cp -f build/lib.linux-*/yarl/*.so yarl
+  python3 -m pytest
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
