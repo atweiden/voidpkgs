@@ -1,22 +1,43 @@
 maintainer="nox"
 pkgname="black"
-version=20.8b1
+version=21.8b0
 revision=1
 short_desc="Uncompromising Python code formatter"
-depends+=" python3-appdirs"
 depends+=" python3-click"
 depends+=" python3-mypy_extensions"
 depends+=" python3-pathspec"
+depends+=" python3-platformdirs"
 depends+=" python3-regex"
-depends+=" python3-toml"
-depends+=" python3-typed-ast"
+depends+=" python3-tomli"
 depends+=" python3-typing_extensions"
-hostmakedepends="python3-setuptools_scm"
+checkdepends+=" $depends"
+checkdepends+=" python3-aiohttp"
+checkdepends+=" python3-aiohttp-cors"
+checkdepends+=" python3-ipython"
+checkdepends+=" python3-parameterized"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-tokenize-rt"
+checkdepends+=" python3-typed-ast"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-setuptools_scm"
 homepage="https://github.com/psf/black"
 license="MIT"
+changelog="https://github.com/psf/black/raw/main/CHANGES.md"
 distfiles="$PYPI_SITE/b/black/black-$version.tar.gz"
-checksum="1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"
+checksum="570608d28aa3af1792b98c4a337dbac6367877b47b12b88ab42095cfc1a627c2"
 build_style="python3-module"
+# disable tests that require `black` in the search path for commands
+make_check_args+=" --deselect tests/test_primer.py::PrimerCLITests::test_async_main"
+make_check_args+=" --deselect tests/test_primer.py::PrimerLibTests::test_gen_check_output"
+make_check_args+=" --deselect tests/test_primer.py::PrimerLibTests::test_process_queue"
+
+pre_build() {
+  # https://gitweb.gentoo.org/repo/gentoo.git/tree/dev-python/black/black-21.8_beta0.ebuild#n45
+  vsed \
+    -i \
+    -e '/setuptools_scm/s:~=:>=:' \
+    setup.cfg
+}
 
 post_install() {
   vlicense LICENSE
