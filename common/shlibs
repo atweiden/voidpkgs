@@ -560,7 +560,7 @@ libnssutil3.so nss-3.12.4_1
 libsmime3.so nss-3.12.4_1
 libsoftokn3.so nss-3.12.4_1
 libssl3.so nss-3.12.4_1
-libntfs-3g.so.88 ntfs-3g-2017.3.23_1
+libntfs-3g.so.89 ntfs-3g-2021.8.22_1
 libntl.so.44 ntl-11.5.1_1
 liboblibs.so.0.1 oblibs-0.1.1.1_1
 libonig.so.5 oniguruma-6.8.1_1

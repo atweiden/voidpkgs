@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="ntfs-3g"
-version=2017.3.23
-revision=3
+version=2021.8.22
+revision=1
 short_desc="Stable Read/Write NTFS Driver in userspace"
 makedepends+=" fuse-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" $(vopt_if crypto 'gnutls-devel libgcrypt-devel')"
 hostmakedepends="pkg-config"
-homepage="http://www.tuxera.com/community/ntfs-3g-download/"
-license="GPL-2.0-or-later, LGPL-2.0-only"
-distfiles="http://www.tuxera.com/opensource/${pkgname}_ntfsprogs-$version.tgz"
-checksum="3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5"
+homepage="https://github.com/tuxera/ntfs-3g"
+license="GPL-2.0-or-later, LGPL-2.0-or-later"
+changelog="https://github.com/tuxera/ntfs-3g/wiki/NTFS-3G-Release-History.md"
+distfiles="https://tuxera.com/opensource/ntfs-3g_ntfsprogs-$version.tgz>$pkgname-$version.tgz"
+checksum="55b883aa05d94b2ec746ef3966cb41e66bed6db99f22ddd41d1b8b94bb202efb"
 wrksrc="${pkgname}_ntfsprogs-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
@@ -34,6 +35,10 @@ build_options_default+=" extras"
 post_install() {
   mv "$DESTDIR/sbin"/* "$DESTDIR/usr/bin"
   ln -sf ntfs-3g "$DESTDIR/usr/bin/mount.ntfs"
+  if [[ -z "$build_option_quarantined" ]]; then
+    # remove documentation for a non-existent executable file
+    rm "$DESTDIR/usr/share/man/man8/ntfsfallocate.8"
+  fi
 }
 
 ntfs-3g-devel_package() {
