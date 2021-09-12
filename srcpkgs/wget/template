@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wget"
-version=1.21.1
-revision=2
+version=1.21.2
+revision=1
 short_desc="GNU wget download utility"
 depends="ca-certificates"
 makedepends+=" libidn2-devel"
@@ -15,11 +15,11 @@ checkdepends+=" perl-HTTP-Daemon"
 checkdepends+=" perl-IO-Socket-SSL"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
-homepage="http://www.gnu.org/software/wget/wget.html"
+homepage="https://www.gnu.org/software/wget/wget.html"
 license="GPL-3.0-or-later"
-#changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
+changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
 distfiles="$GNU_SITE/wget/$pkgname-$version.tar.gz"
-checksum="59ba0bdade9ad135eda581ae4e59a7a9f25e3a4bde6a5419632b31906120e26e"
+checksum="e6d4c76be82c676dd7e8c61a29b2ac8510ae108a810b5d1d18fc9a1d2c9a2497"
 conf_files="/etc/wgetrc"
 build_style="gnu-configure"
 configure_args+=" $(vopt_if ssl --with-ssl=openssl)"
