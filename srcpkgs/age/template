@@ -1,13 +1,12 @@
 maintainer="nox"
 pkgname="age"
-version=1.0.0.rc.3
+version=1.0.0
 revision=1
 short_desc="Simple, modern and secure encryption tool"
 homepage="https://age-encryption.org/"
 license="BSD-3-Clause"
-distfiles="https://github.com/FiloSottile/age/archive/v${version/.rc/-rc}.tar.gz>$pkgname-${version/.b/-b}.tar.gz"
-checksum="e352d8b4e08e0b493adf7ab3ea15b349fe07ab833d20395012aa516ea0c36708"
-wrksrc="$pkgname-${version/.b/-b}"
+distfiles="https://github.com/FiloSottile/age/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8d27684f62f9dc74014035e31619e2e07f8b56257b1075560456cbf05ddbcfce"
 build_style="go"
 go_import_path="filippo.io/age"
 go_package="$go_import_path/cmd/..."
@@ -17,6 +16,8 @@ export GOFLAGS="-trimpath"
 
 post_install() {
   vlicense LICENSE
+  vman doc/age.1
+  vman doc/age-keygen.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
