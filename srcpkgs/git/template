@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
 version=2.33.0
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -56,6 +56,8 @@ perllibdir=/usr/share/perl5/vendor_perl
 PYTHON_PATH=/usr/bin/python3
 DEFAULT_TEST_TARGET = prove
 GIT_PROVE_OPTS = $makejobs
+# firstword (uname -m)
+HOST_CPU = ${XBPS_TARGET_MACHINE%-musl}
 EOF
 
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
