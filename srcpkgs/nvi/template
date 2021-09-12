@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="nvi"
 version=1.81.6
-revision=16
-short_desc="The Berkeley Vi Editor"
+revision=17
+short_desc="Berkeley Vi Editor"
 makedepends+=" db-devel"
 makedepends+=" ncurses-devel"
-homepage="http://garage.linux.student.kuleuven.be/~skimo/nvi"
-license="BSD"
+homepage="https://repo.or.cz/nvi.git"
+license="BSD-3-Clause"
 #distfiles="http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/$pkgname-$version.tar.bz2"
 distfiles="http://pkgs.fedoraproject.org/repo/pkgs/nvi/$pkgname-$version.tar.bz2/88d1e23115ee9f2961186b62e55f5704/$pkgname-$version.tar.bz2"
 checksum="3441b8e3247b2b6dd19b5fd38355fe6593b2a92e960ecb3dd00d676f63d06b59"
@@ -38,6 +38,7 @@ pre_build() {
 }
 
 post_install() {
+  vlicense ../LICENSE
   # remove cat pages
   rm -rf "$DESTDIR/usr/share/man/cat1"
   # remove lib
