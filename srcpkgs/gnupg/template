@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnupg"
-version=2.2.30
-revision=1
+version=2.2.29
+revision=2
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="cc636d6e22a673993d94814c09be469df2ce27a0c66b1cab39bbab1786cf2184"
+checksum="39d07cdb4524818f9ebce49294931974af504519e6a7476c52e9d38fc0bd0cc9"
 build_style="gnu-configure"
 configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
@@ -28,6 +28,7 @@ configure_args+=" --with-npth-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" $(vopt_enable ldap)"
 build_options="ldap"
 build_options_default="ldap"
+reverts="2.2.30_1"
 
 post_install() {
   vmkdir usr/share/examples
