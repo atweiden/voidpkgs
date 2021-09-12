@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libgcrypt"
-version=1.9.3
+version=1.9.4
 revision=1
 short_desc="GNU cryptographic library"
 makedepends="libgpg-error-devel"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/libgcrypt/$pkgname-$version.tar.bz2"
-checksum="97ebe4f94e2f7e35b752194ce15a0f3c66324e0ff6af26659bbfb5ff2ec328fd"
+checksum="ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --without-capabilities"
