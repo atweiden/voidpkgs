@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ecl"
-version=16.1.3
-revision=2
+version=21.2.1
+revision=1
 short_desc="Common-Lisp interpreter as described in the X3J13 Ansi specification"
 depends+=" gc-devel"
 depends+=" gmp-devel"
@@ -12,7 +12,7 @@ hostmakedepends="pkg-config"
 homepage="https://common-lisp.net/project/ecl/"
 license="LGPL-2.1-or-later"
 distfiles="https://common-lisp.net/project/ecl/static/files/release/$pkgname-$version.tgz"
-checksum="76a585c616e8fa83a6b7209325a309da5bc0ca68e0658f396f49955638111254"
+checksum="b15a75dcf84b8f62e68720ccab1393f9611c078fcd3afdd639a1086cad010900"
 build_style="gnu-configure"
 configure_args+=" --enable-boehm=system"
 configure_args+=" --enable-gmp=system"
@@ -22,7 +22,7 @@ configure_args+=" --with-dffi=system"
 if [[ -n "$CROSS_BUILD" ]]; then
   # depend on system ecl
   hostmakedepends+=" ecl"
-  configure_args+=" --with-cross-config=$XBPS_SRCPKGDIR/ecl/files/$XBPS_TARGET_MACHINE.conf"
+  configure_args+=" --with-cross-config=$XBPS_SRCPKGDIR/ecl/files/cross_config"
 fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
