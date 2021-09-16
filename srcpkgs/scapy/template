@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="scapy"
-version=2.4.3
-revision=3
+version=2.4.5
+revision=1
 short_desc="Powerful interactive packet manipulation program written in Python"
 depends+=" python3"
 depends+=" tcpdump"
@@ -9,8 +9,11 @@ hostmakedepends="python3-setuptools"
 homepage="https://scapy.net/"
 license="GPL-2.0-only"
 distfiles="$PYPI_SITE/s/scapy/$pkgname-$version.tar.gz"
-checksum="e2f8d11f6a941c14a789ae8b236b27bd634681f1b29b5e893861e284d234f6b0"
+checksum="bc707e3604784496b6665a9e5b2a69c36cc9fb032af4864b29051531b24c8593"
 build_style="python3-module"
-pycompile_module="scapy"
+
+post_install() {
+  vdoc "$FILESDIR/README.voidlinux"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
