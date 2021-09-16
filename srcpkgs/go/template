@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="go"
-version=1.17
+version=1.17.1
 revision=1
 short_desc="Go Programming Language"
 hostmakedepends="go1.12-bootstrap"
-homepage="http://golang.org/"
+homepage="https://golang.org/"
 license="BSD-3-Clause"
 changelog="https://golang.org/doc/devel/release.html"
 distfiles="https://golang.org/dl/$pkgname$version.src.tar.gz"
-checksum="3a70e5055509f347c0fb831ca07a2bf3b531068f349b14a3c652e9b5b67beb5d"
+checksum="49dc08339770acd5613312db8c141eaf61779995577b89d93b541ef83067e5b1"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
@@ -64,7 +64,7 @@ do_build() {
 
   cd "src"
 
-  bash make.bash --no-clean -v
+  bash make.bash -v
 }
 
 do_install() {
