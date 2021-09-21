@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="gzip"
-version=1.10
+version=1.11
 revision=1
 short_desc="GNU compression utility (replacement for compress)"
 homepage="https://www.gnu.org/software/gzip/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gzip/$pkgname-$version.tar.xz"
-checksum="8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0"
+checksum="9b9a95d68fdcb936849a4d6fada8bf8686cddf58b9b26c9c4289ed0c92a77907"
 build_style="gnu-configure"
 bootstrap="yes"
 
