@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="janet"
-version=1.17.0
+version=1.17.2
 revision=1
 short_desc="Dynamic Lisp dialect and bytecode VM"
 homepage="https://janet-lang.org/"
 license="MIT"
 distfiles="https://github.com/janet-lang/janet/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="45126be7274e0a298dcbe356b5310bd9328c94eb3a562316813fa9774ca34bcc"
+checksum="3a1d885e16d0940f999b9449efedaa4f70f44f680e9815e1c9a774ed99a8d921"
 build_style="meson"
 # breaks jpm
 configure_args="-Db_lto=false"
