@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libtls"
 version=3.3.4
-revision=1
+revision=2
 _lssl_asm_ver="1.2.0"
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 depends="ca-certificates"
@@ -53,11 +53,6 @@ pre_configure() {
 do_install() {
   make \
     -C tls \
-    install \
-    DESTDIR="$DESTDIR"
-
-  make \
-    -C apps/nc \
     install \
     DESTDIR="$DESTDIR"
 
