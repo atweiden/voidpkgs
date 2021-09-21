@@ -1,18 +1,23 @@
 maintainer="nox"
 pkgname="httpie"
-version=2.2.0
-revision=2
+version=2.5.0
+revision=1
 short_desc="Human-friendly command line HTTP client"
 depends+=" python3-Pygments"
+depends+=" python3-defusedxml"
+depends+=" python3-pysocks"
 depends+=" python3-requests"
+depends+=" python3-requests-toolbelt"
 depends+=" python3-setuptools"
 hostmakedepends="python3-setuptools"
-homepage="https://httpie.org/"
+homepage="https://httpie.io/"
 license="BSD-3-Clause"
-changelog="https://github.com/jakubroztocil/httpie/raw/master/CHANGELOG.rst"
-distfiles="https://github.com/jakubroztocil/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="413894ad9d5d45a2a7839079dcdc0f23b0ea3586502d5014339b957de73d413e"
+changelog="https://github.com/httpie/httpie/raw/$version/CHANGELOG.md"
+distfiles="https://github.com/httpie/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="66af56e0efc1ca6237323f1186ba34bca1be24e67a4319fd5df7228ab986faea"
 build_style="python3-module"
+# needs pytest_httpbin which is not packaged
+make_check="no"
 
 post_install() {
   vcompletion extras/httpie-completion.bash bash http
