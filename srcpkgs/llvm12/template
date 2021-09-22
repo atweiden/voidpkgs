@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm12"
-version=12.0.0
-revision=3
+version=12.0.1
+revision=1
 short_desc="Low Level Virtual Machine"
 depends="libllvm12>=${version}_$revision"
 makedepends+=" binutils-devel"
@@ -23,7 +23,7 @@ hostmakedepends+=" zlib-devel"
 homepage="https://www.llvm.org"
 license="Apache-2.0"
 distfiles="https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz>$pkgname-$version.tar.gz"
-checksum="9ed1688943a4402d7c904cc4515798cdb20080066efa010fe7e1f2551b423628"
+checksum="129cb25cd13677aad951ce5c2deb0fe4afc1e9d98950f53b51bdcfb5a73afa0e"
 wrksrc="llvm-project-$version.src"
 build_wrksrc="llvm"
 build_style="cmake"
