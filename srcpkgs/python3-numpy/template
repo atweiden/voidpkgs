@@ -73,12 +73,12 @@ pre_build() {
   : > site.cfg
   for _blaslib in $(vopt_if openblas 'openblas' 'lapack blas'); do
     cat >> site.cfg <<-EOF
-    [$_blaslib]
-    libraries = $_blaslib
-    include_dirs = $XBPS_CROSS_BASE/usr/include
-    library_dirs = $XBPS_CROSS_BASE/usr/lib
-    runtime_library_dirs = $XBPS_CROSS_BASE/usr/lib
-    EOF
+[$_blaslib]
+libraries = $_blaslib
+include_dirs = $XBPS_CROSS_BASE/usr/include
+library_dirs = $XBPS_CROSS_BASE/usr/lib
+runtime_library_dirs = $XBPS_CROSS_BASE/usr/lib
+EOF
   done
 }
 

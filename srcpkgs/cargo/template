@@ -95,9 +95,9 @@ post_patch() {
   cp crossbeam-utils/no_atomic.rs crossbeam-utils/crossbeam-utils
 
   cat >> Cargo.toml <<- EOF
-    [patch.crates-io]
-    crossbeam-utils = { path = './crossbeam-utils/crossbeam-utils' }
-  EOF
+  [patch.crates-io]
+  crossbeam-utils = { path = './crossbeam-utils/crossbeam-utils' }
+EOF
 }
 
 do_build() {

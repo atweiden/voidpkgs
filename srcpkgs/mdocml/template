@@ -49,17 +49,17 @@ post_patch() {
 
 pre_configure() {
   cat >configure.local <<-EOF
-    PREFIX=/usr
-    SBINDIR=/usr/bin
-    MANDIR=/usr/share/man
-    OSNAME="Void Linux"
-    BINM_SOELIM=mandoc-soelim
-    MANM_ROFF="mandoc_roff"
-    LDFLAGS="$LDFLAGS"
-    CFLAGS="$CFLAGS"
-    CC="$CC"
-    HAVE_REWB_BSD=0
-  EOF
+  PREFIX=/usr
+  SBINDIR=/usr/bin
+  MANDIR=/usr/share/man
+  OSNAME="Void Linux"
+  BINM_SOELIM=mandoc-soelim
+  MANM_ROFF="mandoc_roff"
+  LDFLAGS="$LDFLAGS"
+  CFLAGS="$CFLAGS"
+  CC="$CC"
+  HAVE_REWB_BSD=0
+EOF
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       echo 'UTF8_LOCALE="C.UTF-8"' >>configure.local

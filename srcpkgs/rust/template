@@ -240,61 +240,61 @@ do_configure() {
   fi
 
   cat > config.toml <<- EOF
-    [build]
-    build = "$RUST_BUILD"
-    host = [ "$RUST_TARGET" ]
-    target = [ "$RUST_TARGET" ]
-    cargo = "$_cargo_root/bin/cargo"
-    rustc = "$_rust_root/bin/rustc"
-    submodules = false
-    python = "python3"
-    locked-deps = true
-    vendor = true
-    full-bootstrap = false
-    local-rebuild = $_local_rebuild
-    extended = false
-    docs = $_use_docs
-    tools = []
-    [install]
-    prefix = "/usr"
-    [rust]
-    codegen-units = 1
-    codegen-units-std = 1
-    debug-assertions = false
-    debuginfo-level = $_use_debug
-    debuginfo-level-rustc = $_use_debug_rustc
-    debuginfo-level-tests = 0
-    backtrace = true
-    incremental = false
-    parallel-compiler = false
-    channel = "stable"
-    rpath = $_use_rpath
-    verbose-tests = true
-    dist-src = false
-    jemalloc = false
-    llvm-libunwind = "no"
-    codegen-tests = false
-    [dist]
-    src-tarball = false
-    [target.$RUST_BUILD]
-    llvm-config = "/usr/bin/llvm-config"
-    crt-static = false
-    cc = "${CC_host:-$CC}"
-    cxx = "${CXX_host:-$CXX}"
-    ar = "${AR_host:-$AR}"
-    linker = "${CC_host:-$CC}"
-  EOF
+  [build]
+  build = "$RUST_BUILD"
+  host = [ "$RUST_TARGET" ]
+  target = [ "$RUST_TARGET" ]
+  cargo = "$_cargo_root/bin/cargo"
+  rustc = "$_rust_root/bin/rustc"
+  submodules = false
+  python = "python3"
+  locked-deps = true
+  vendor = true
+  full-bootstrap = false
+  local-rebuild = $_local_rebuild
+  extended = false
+  docs = $_use_docs
+  tools = []
+  [install]
+  prefix = "/usr"
+  [rust]
+  codegen-units = 1
+  codegen-units-std = 1
+  debug-assertions = false
+  debuginfo-level = $_use_debug
+  debuginfo-level-rustc = $_use_debug_rustc
+  debuginfo-level-tests = 0
+  backtrace = true
+  incremental = false
+  parallel-compiler = false
+  channel = "stable"
+  rpath = $_use_rpath
+  verbose-tests = true
+  dist-src = false
+  jemalloc = false
+  llvm-libunwind = "no"
+  codegen-tests = false
+  [dist]
+  src-tarball = false
+  [target.$RUST_BUILD]
+  llvm-config = "/usr/bin/llvm-config"
+  crt-static = false
+  cc = "${CC_host:-$CC}"
+  cxx = "${CXX_host:-$CXX}"
+  ar = "${AR_host:-$AR}"
+  linker = "${CC_host:-$CC}"
+EOF
 
   if [[ -n "$CROSS_BUILD" ]]; then
     cat >> config.toml <<- EOF
-      [target.$RUST_TARGET]
-      llvm-config = "/usr/bin/llvm-config"
-      crt-static = false
-      cc = "$CC"
-      cxx = "$CXX"
-      ar = "$AR"
-      linker = "$CC"
-    EOF
+  [target.$RUST_TARGET]
+  llvm-config = "/usr/bin/llvm-config"
+  crt-static = false
+  cc = "$CC"
+  cxx = "$CXX"
+  ar = "$AR"
+  linker = "$CC"
+EOF
   fi
 }
 
