@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lowdown"
-version=0.8.6
+version=0.9.0
 revision=1
 short_desc="Simple markdown translator"
 hostmakedepends="which"
@@ -8,7 +8,7 @@ homepage="https://kristaps.bsd.lv/lowdown/"
 license="ISC"
 changelog="https://kristaps.bsd.lv/lowdown/archive.html"
 distfiles="https://kristaps.bsd.lv/lowdown/snapshots/$pkgname-$version.tar.gz"
-checksum="9c6ef352bc4c43628d3be1d2416c2cd0ea6ac9e8ff837ae5bccfd6faaa47c92a"
+checksum="a35b5dd7345395479e02585ac51275192994bc1b3178aadee9a8bef340455c43"
 build_style="configure"
 configure_args+=" MANDIR=/usr/share/man"
 configure_args+=" PREFIX=/usr"
