@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="moreutils"
 version=0.66
-revision=1
+revision=2
 short_desc="Unix tools that nobody thought to write, when Unix was young"
 depends+=" perl"
 depends+=" perl-IPC-Run"
@@ -13,7 +13,7 @@ homepage="https://joeyh.name/code/moreutils/"
 distfiles="https://git.joeyh.name/index.cgi/moreutils.git/snapshot/$pkgname-$version.tar.gz"
 checksum="dc079e018aaff22446cf36eccb298627bb0222ec6dc23a173860c9e1f16e214d"
 build_style="gnu-makefile"
-make_build_args="DOCBOOK2XMAN=docbook2man"
+make_build_args="DOCBOOKXSL=/usr/share/xsl/docbook/"
 
 post_install() {
   # rename parallel to not conflict with gnu-parallel
