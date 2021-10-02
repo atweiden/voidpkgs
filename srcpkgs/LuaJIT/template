@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="LuaJIT"
 version=2.1.0beta3
-revision=1
+revision=2
 _so_version=2.1.0
 _dist_version="$_so_version-beta3"
 short_desc="Just-In-Time Compiler for Lua"
