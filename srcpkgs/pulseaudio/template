@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pulseaudio"
 version=15.0
-revision=1
+revision=2
 short_desc="Featureful, general-purpose sound server"
 depends="pulseaudio-utils>=${version}_$revision"
 makedepends+=" alsa-lib-devel"
@@ -42,6 +42,7 @@ configure_args+=" -Ddatabase=tdb"
 configure_args+=" -Ddbus=disabled"
 configure_args+=" -Delogind=disabled"
 configure_args+=" -Dglib=disabled"
+configure_args+=" -Dgsettings=disabled"
 configure_args+=" -Dgtk=disabled"
 configure_args+=" -Dhal-compat=false"
 configure_args+=" -Djack=disabled"
