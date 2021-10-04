@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="guile"
 version=2.2.7
-revision=1
-short_desc="A portable, embeddable Scheme implementation written in C"
+revision=2
+short_desc="Portable, embeddable Scheme implementation written in C"
 makedepends+=" gc-devel"
 makedepends+=" gmp-devel"
 makedepends+=" libatomic_ops-devel"
@@ -47,10 +47,12 @@ libguile_package() {
 }
 
 guile-devel_package() {
+  unset depends
   short_desc+=" - development files"
   depends+=" gc-devel"
   depends+=" gmp-devel"
   depends+=" guile>=${version}_$revision"
+  depends+=" libatomic_ops-devel"
   pkg_install() {
     vmove usr/bin/guile-config
     vmove usr/include
