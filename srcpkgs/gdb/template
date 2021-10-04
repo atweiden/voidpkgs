@@ -1,29 +1,31 @@
 maintainer="nox"
 pkgname="gdb"
-version=10.2
+version=11.1
 revision=1
 short_desc="GNU Debugger"
+depends="gdb-common>=${version}_${revision}"
 makedepends+=" expat-devel"
-makedepends+=" guile-devel"
-makedepends+=" liblzma-devel"
-makedepends+=" libunwind-devel"
-makedepends+=" mpfr-devel"
+makedepends+=" gmp-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if debuginfod elfutils-devel)"
-makedepends+=" $(vopt_if python python3-devel)"
+makedepends+=" $(vopt_if guile guile-devel)"
+makedepends+=" $(vopt_if python 'gettext-devel python3-devel')"
 if [[ -n "$build_option_python" ]] && [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" gettext-libs"
 fi
+checkdepends="dejagnu"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" texinfo"
+hostmakedepends+=" $(vopt_if guile guile)"
 hostmakedepends+=" $(vopt_if python python3-devel)"
-homepage="https://www.gnu.org/software/gdb/"
+homepage="https://www.gnu.org/software/gdb"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/gdb/$pkgname-$version.tar.xz"
-checksum="aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29"
+checksum="cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94"
+patch_args="-Np1"
 build_style="gnu-configure"
 configure_args+=" --disable-nls"
 configure_args+=" --disable-werror"
@@ -35,10 +37,20 @@ configure_args+=" $(vopt_if multiarch --enable-targets=all)"
 configure_args+=" $(vopt_if python --with-python=/usr/bin/python3)"
 configure_args+=" $(vopt_if static 'CFLAGS=-static CXXFLAGS=-static LDFLAGS=-static')"
 configure_args+=" $(vopt_with debuginfod)"
+configure_args+=" $(vopt_with guile)"
+# tests take too long, not all of them pass
+make_check="extended"
 python_version=3
 pycompile_dirs="/usr/share/gdb/python"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb.go"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb/experimental.go"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb/iterator.go"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb/printing.go"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb/support.go"
+ignore_elf_files+=" /usr/share/gdb/guile/gdb/types.go"
 build_options+=" debuginfod"
 build_options+=" gdbserver"
+build_options+=" guile"
 build_options+=" multiarch"
 build_options+=" python"
 build_options+=" static"
@@ -52,48 +64,19 @@ vopt_conflict "debuginfod" "static"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   # make python3.x detection work in cross builds
-  CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
-  CXXFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
+  CPPFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
 fi
 
-post_extract() {
-  vsed \
-    -i \
-    -e 's,sgidefs.h,asm/sgidefs.h,' \
-    gdb/mips-linux-nat.c
-  mkdir -p build
-}
-
-do_configure() {
-  cd build
-  ../configure \
-    "${configure_args/with-sysroot/with-build-sysroot}" \
-    CFLAGS_FOR_BUILD="$CFLAGS_FOR_BUILD -fcommon"
-  export gl_cv_func_gettimeofday_clobber="no"
-  export gl_cv_func_strerror_0_works="yes"
-  export gl_cv_func_working_strerror="yes"
-}
-
-do_build() {
-  cd build
-  make \
-    "$makejobs" \
-    all
-}
-
-do_install() {
-  cd build
-  make \
-    DESTDIR="$DESTDIR" \
-    "$makejobs" \
-    install
+post_install() {
   # resolve conflicts with binutils
-  rm -rf "$DESTDIR/usr"/{include,lib,lib64}
-  for f in bfd \
-           configure \
-           standards; do
-    rm -f "$DESTDIR/usr/share/info"/$f.info*
-  done
+  rm -r "$DESTDIR/usr"/{include,lib,share/info/bfd.info*}
+}
+
+gdb-common_package() {
+  short_desc+=" - common files"
+  pkg_install() {
+    vmove usr/share
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
