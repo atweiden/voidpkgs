@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fftw"
-version=3.3.9
+version=3.3.10
 revision=1
 short_desc="Library for computing the discrete Fourier transform (DFT)"
 makedepends="libgomp-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" libtool"
 homepage="http://www.fftw.org/"
 license="GPL-2.0-or-later"
 distfiles="http://www.fftw.org/fftw-$version.tar.gz"
-checksum="bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d"
+checksum="56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467"
 
 pre_configure() {
   vsed \
