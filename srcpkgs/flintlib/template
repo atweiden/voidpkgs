@@ -1,20 +1,26 @@
 maintainer="nox"
 pkgname="flintlib"
-version=2.8.0
+version=2.8.1
 revision=1
 short_desc="Fast Library for Number Theory"
 makedepends+=" mpfr-devel"
-makedepends+=" ntl-devel"
+makedepends+=" $(vopt_if ntl ntl-devel)"
 homepage="https://flintlib.org"
 license="LGPL-2.1-or-later"
 distfiles="https://flintlib.org/flint-$version.tar.gz"
-checksum="584235cdc39d779d9920eaef16fe084f3c26ffeeea003a3fff64a20a0f33449e"
+checksum="edfdda7a7cb847db4e55e050349259cbc9778589686007fb45602d36ecfb427e"
 wrksrc="flint-$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-gmp=/usr"
 configure_args+=" --with-mpfr=/usr"
-configure_args+=" --with-ntl=/usr"
+configure_args+=" $(vopt_if ntl --with-ntl=/usr)"
+build_options="ntl"
+desc_option_ntl="enable NTL support"
+
+if [[ -z "$CROSS_BUILD" ]]; then
+  build_options_default+=" ntl"
+fi
 
 # needed for cpu_set_t
 CFLAGS="-D_GNU_SOURCE"
