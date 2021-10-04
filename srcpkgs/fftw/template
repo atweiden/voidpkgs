@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="fftw"
-version=3.3.8
-revision=2
+version=3.3.9
+revision=1
 short_desc="Library for computing the discrete Fourier transform (DFT)"
 makedepends="libgomp-devel"
 hostmakedepends+=" automake"
@@ -9,24 +9,13 @@ hostmakedepends+=" libtool"
 homepage="http://www.fftw.org/"
 license="GPL-2.0-or-later"
 distfiles="http://www.fftw.org/fftw-$version.tar.gz"
-checksum="6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303"
+checksum="bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d"
 
 pre_configure() {
-  sed \
+  vsed \
     -i \
     -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' \
     configure.ac
-  if [[ -n "$CROSS_BUILD" ]]; then
-    # remove test which does not work when cross compiling
-    case "$XBPS_TARGET_MACHINE" in
-      armv[78]*|aarch64*)
-        sed \
-          -i \
-          -e "/dnl Check for not-always-available (not quite) cycle counters/,+26d" \
-          configure.ac
-        ;;
-    esac
-  fi
   autoreconf -fi
 }
 
@@ -52,7 +41,7 @@ do_configure() {
     $CARGS \
     $_sse2
 
-  # long double precission
+  # long double precision
   mkdir "$wrksrc/build-long-double"
   cd "$wrksrc/build-long-double"
   ../configure \
@@ -60,7 +49,7 @@ do_configure() {
     $CARGS \
     --enable-long-double
 
-  # single precission
+  # single precision
   mkdir "$wrksrc/build-single"
   cd "$wrksrc/build-single"
   ../configure \
@@ -76,6 +65,15 @@ do_build() {
            single; do
     cd "$wrksrc/build-$f"
     make "$makejobs"
+  done
+}
+
+do_check() {
+  for f in double \
+           long-double \
+           single; do
+    cd "$wrksrc/build-$f"
+    make DESTDIR="$DESTDIR" check
   done
 }
 
