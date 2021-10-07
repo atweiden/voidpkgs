@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="grub-btrfs"
-version=4.9
+version=4.10.1
 revision=1
 short_desc="Include btrfs snapshots at Grub menu"
 depends+=" bash"
@@ -8,7 +8,7 @@ depends+=" grub"
 homepage="https://github.com/Antynea/grub-btrfs"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/Antynea/grub-btrfs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="62461133c697643e98a608239773f500edee3e4055c5729fef6639d1cd610243"
+checksum="3ef53f16a7bc0fdd5a5ac2216a41bf1b2f4fd2283717c5c240415d5d24d3734b"
 build_style="gnu-makefile"
 
 post_install() {
