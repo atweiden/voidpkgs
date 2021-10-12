@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-iso8601"
 version=0.1.16
-revision=1
+revision=2
 short_desc="ISO8601 formatted dated parser for Python2"
 depends="python"
 checkdepends+=" python-pytest"
