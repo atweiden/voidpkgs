@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-tomli"
 version=1.2.1
-revision=1
+revision=2
 short_desc="Little TOML parser for Python"
 depends="python3"
 hostmakedepends="python3-flit_core"
