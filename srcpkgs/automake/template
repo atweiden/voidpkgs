@@ -1,8 +1,8 @@
 # NOTE: also update common/environment/configure/automake when updating!
 maintainer="nox"
 pkgname="automake"
-version=1.16.2
-revision=2
+version=1.16.4
+revision=1
 short_desc="GNU Standards-compliant Makefile generator"
 depends+=" autoconf"
 depends+=" perl"
@@ -28,7 +28,7 @@ hostmakedepends+=" perl"
 homepage="https://www.gnu.org/software/automake"
 license="GPL-2.0-or-later"
 distfiles="$GNU_SITE/automake/$pkgname-$version.tar.xz"
-checksum="ccc459de3d710e066ab9e12d2f119bd164a08c9341ca24ba22c9adaa179eedd0"
+checksum="80facc09885a57e6d49d06972c0ae1089c5fa8f4d4c7cfe5baea58e5085f136d"
 build_style="gnu-configure"
 make_check_args="$makejobs"
 
