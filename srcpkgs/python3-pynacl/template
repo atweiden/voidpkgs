@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pynacl"
 version=1.4.0
-revision=1
+revision=2
 short_desc="Python3 binding to the Networking and Cryptography (NaCl) library"
 depends+=" python3-cffi"
 depends+=" python3-six"
