@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-setuptools_scm"
 version=6.3.2
-revision=1
+revision=2
 short_desc="Manage Python package versions with SCM tags"
 depends+=" python3-packaging"
 depends+=" python3-setuptools"
