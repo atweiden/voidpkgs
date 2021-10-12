@@ -1,7 +1,7 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
 maintainer="nox"
 pkgname="python3"
-version=3.9.7
+version=3.10.0
 revision=1
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
@@ -20,8 +20,18 @@ hostmakedepends="pkgconf"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
-checksum="f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57"
+checksum="5a99f8e7a6a11a7b98b4e75e0d1303d3832cada5534068f69c7b6222a7b1b002"
 wrksrc="Python-$version"
+build_style="gnu-configure"
+configure_args+=" --enable-ipv6"
+configure_args+=" --enable-loadable-sqlite-extensions"
+configure_args+=" --enable-shared"
+configure_args+=" --with-computed-gotos"
+configure_args+=" --with-dbmliborder=gdbm:ndbm"
+configure_args+=" --with-system-expat"
+configure_args+=" --with-system-ffi"
+configure_args+=" --without-ensurepip"
+configure_args+=" ac_cv_working_tzset=yes"
 alternatives+=" python:2to3:/usr/bin/2to3-${version%.*}"
 alternatives+=" python:idle:/usr/bin/idle${version%.*}"
 alternatives+=" python:pydoc:/usr/bin/pydoc${version%.*}"
@@ -29,14 +39,26 @@ alternatives+=" python:python.1:/usr/share/man/man1/python${version%.*}.1"
 alternatives+=" python:python:/usr/bin/python${version%.*}"
 pycompile_dirs="usr/lib/python${version%.*}"
 
-pre_configure() {
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" python3"
+fi
+
+post_extract() {
   # ensure that internal copies of expat and libffi are not used
   rm -r Modules/expat
   rm -r Modules/_ctypes/{darwin,libffi}*
 }
 
+post_patch() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    patch -Np0 -i "$FILESDIR/cross.patch"
+  fi
+}
+
 do_configure() {
-  local _args
+  # if these are set, distutils will default to cc and attempt to pass
+  # `-R<path>` to the compiler for every compiled extension that sets
+  # an rpath rather than the '-Wl,-R<path>' argument that gcc requires
   unset AR
   unset AS
   unset CC
@@ -45,34 +67,7 @@ do_configure() {
   unset GCC
   unset LD
   unset RANLIB
-  if [[ -n "$CROSS_BUILD" ]]; then
-    mkdir -p host-build
-    cd host-build
-    env -i PATH="$PATH" CFLAGS="-Os" ../configure
-    env -i PATH="$PATH" make "$makejobs" python
-    mkdir -p ../hostpython
-    mv python ../hostpython
-    cd ..
-    patch -Np0 -i "$FILESDIR/cross.patch"
-    _args="--build=${XBPS_MACHINE%%-musl}"
-  fi
-  ./configure \
-    $_args \
-    $configure_args \
-    --enable-ipv6 \
-    --enable-loadable-sqlite-extensions \
-    --enable-shared \
-    --with-computed-gotos \
-    --with-dbmliborder="gdbm:ndbm" \
-    --with-system-expat \
-    --with-system-ffi \
-    --without-ensurepip \
-    ac_cv_working_tzset="yes"
-}
-
-do_build() {
-  export PATH="$PATH:$wrksrc/hostpython"
-  make "$makejobs"
+  ./configure $configure_args
 }
 
 do_check() {
@@ -100,7 +95,6 @@ do_check() {
 }
 
 do_install() {
-  export PATH="$PATH:$wrksrc/hostpython"
   make DESTDIR="$DESTDIR" install maninstall
   vlicense LICENSE
 
