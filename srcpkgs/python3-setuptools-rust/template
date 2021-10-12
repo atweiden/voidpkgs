@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-setuptools-rust"
 version=0.12.1
-revision=2
+revision=3
 short_desc="Setuptools plugin for Rust support"
 depends+=" python3-semanticversion"
 depends+=" python3-setuptools"
