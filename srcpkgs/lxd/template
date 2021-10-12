@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="lxd"
-version=4.15
+version=4.19
 revision=1
 short_desc="Next generation system container manager"
 depends+=" acl"
 depends+=" acl-progs"
+depends+=" attr-progs"
 depends+=" dnsmasq"
 depends+=" iptables"
 depends+=" lxc"
@@ -21,7 +22,7 @@ homepage="https://linuxcontainers.org/lxd"
 license="Apache-2.0"
 changelog="https://github.com/lxc/lxd/releases"
 distfiles="https://linuxcontainers.org/downloads/lxd/$pkgname-$version.tar.gz"
-checksum="5178a918d59c9412a0af4af4c1abfce469e1a76497913bc316bf602895a2b265"
+checksum="6e4cf6cb1549e1b56802d64ad24d812914e0c0102bfcf146bb18a8dcd1fbab57"
 build_style="go"
 go_import_path="github.com/lxc/lxd"
 go_package+=" $go_import_path/fuidshift"
@@ -32,14 +33,9 @@ go_ldflags="-s -w -buildid="
 go_build_tags="libsqlite3"
 system_groups="lxd"
 
-# whitelist libcap LDFLAGS (see: https://github.com/lxc/lxd/issues/6727)
-export CGO_LDFLAGS_ALLOW='-Wl,-wrap,pthread_create'
+# whitelist dqlite LDFLAGS
+export CGO_LDFLAGS_ALLOW='-Wl,-z,now'
 export GOFLAGS="-trimpath"
-
-do_configure() {
-  # the lxd tarball packages up the required dependencies
-  ln -s "$wrksrc/_dist" "$GOPATH"
-}
 
 post_install() {
   vinstall scripts/bash/lxd-client 644 /usr/share/bash-completion/completions lxd
