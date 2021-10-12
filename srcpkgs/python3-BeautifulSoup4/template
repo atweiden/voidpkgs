@@ -1,22 +1,22 @@
 maintainer="nox"
 pkgname="python3-BeautifulSoup4"
-version=4.9.3
+version=4.10.0
 revision=1
 short_desc="Python3 HTML/XML parser"
 depends+=" python3"
 depends+=" python3-soupsieve"
+checkdepends+=" python3"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-soupsieve"
 hostmakedepends="python3-setuptools"
 homepage="https://www.crummy.com/software/BeautifulSoup"
 license="MIT"
 changelog="https://bazaar.launchpad.net/%7Eleonardr/beautifulsoup/bs4/view/head:/CHANGELOG"
 distfiles="$PYPI_SITE/b/beautifulsoup4/beautifulsoup4-$version.tar.gz"
-checksum="84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25"
+checksum="c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
 wrksrc="beautifulsoup4-$version"
 build_style="python3-module"
 
-do_check() {
-  :
-}
 post_install() {
   vlicense LICENSE
 }
