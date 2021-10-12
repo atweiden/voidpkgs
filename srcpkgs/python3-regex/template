@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-regex"
 version=2021.8.28
-revision=1
+revision=2
 short_desc="Alternative regular expression module (Python3)"
 makedepends="python3-devel"
 hostmakedepends+=" python3-devel"
