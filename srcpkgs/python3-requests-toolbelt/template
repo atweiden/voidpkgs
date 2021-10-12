@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-requests-toolbelt"
 version=0.9.1
-revision=4
+revision=5
 short_desc="Utilities for advanced use of python-requests (Python3)"
 depends="python3-requests"
 hostmakedepends="python3-setuptools"
