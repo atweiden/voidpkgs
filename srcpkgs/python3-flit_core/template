@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-flit_core"
 version=3.3.0
-revision=1
+revision=2
 short_desc="Simplified packaging of Python modules - PEP 517 build backend"
 depends="python3-toml"
 checkdepends+=" python3-pytest"
