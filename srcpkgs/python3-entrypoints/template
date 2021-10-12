@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-entrypoints"
 version=0.3
-revision=4
+revision=5
 short_desc="Discover and load entry points from installed packages (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
