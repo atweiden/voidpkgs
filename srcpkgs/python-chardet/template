@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-chardet"
 version=4.0.0
-revision=2
+revision=3
 short_desc="Universal encoding detector for Python 2 and 3 (Python2)"
 depends="python-setuptools"
 checkdepends+=" python-pytest"
