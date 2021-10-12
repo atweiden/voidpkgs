@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="flake8"
 version=3.8.4
-revision=1
+revision=2
 short_desc="Modular source code checker: pycodestyle, pyflakes, mccabe"
 depends+=" python3-entrypoints>=0.3<0.4"
 depends+=" python3-mccabe>=0.6.0<0.7.0"
