@@ -1,23 +1,22 @@
 maintainer="nox"
 pkgname="python-dateutil"
-version=2.8.1
-revision=2
+version=2.8.2
+revision=1
 short_desc="Extensions to the standard Python2 datetime module"
 depends+=" python-six"
 depends+=" tzdata"
 hostmakedepends+=" python-setuptools"
-hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/dateutil/dateutil"
 license="Apache-2.0, BSD-3-Clause"
 distfiles="$PYPI_SITE/p/$pkgname/$pkgname-$version.tar.gz"
-checksum="73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"
+checksum="0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"
 build_style="python-module"
 
-pre_build() {
-  # don't install zoneinfo tarball
-  sed \
+post_patch() {
+  vsed \
     -i \
-    -e '/package_data=/d' \
+    -e "s/%PKGVERSION%/'$version'/" \
     setup.py
 }
 
