@@ -1,0 +1,20 @@
+maintainer="nox"
+pkgname="python3-MarkupSafe"
+version=2.0.1
+revision=1
+short_desc="Implements a XML/HTML/XHTML Markup safe string for Python3"
+makedepends="python3-devel"
+checkdepends="python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://palletsprojects.com/p/markupsafe/"
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/M/MarkupSafe/MarkupSafe-$version.tar.gz"
+checksum="594c67807fb16238b30c44bdf74f36c02cdf22d1c8cda91ef8a0ed8dabf5620a"
+wrksrc="MarkupSafe-$version"
+build_style="python3-module"
+
+post_install() {
+  vlicense LICENSE.rst
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
