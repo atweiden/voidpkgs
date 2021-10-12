@@ -633,7 +633,6 @@ constant %PKG = Map.new(
     'python-ply' => ['python3-ply'],
     'python-pretend' => ['python3-pretend'],
     'python-pyasn1' => ['python3-pyasn1'],
-    'python-pycodestyle' => ['python3-pycodestyle'],
     'python-pycparser' => ['python3-pycparser'],
     'python-pytz' => ['python3-pytz'],
     'python-requests' => ['python3-requests'],
@@ -645,6 +644,7 @@ constant %PKG = Map.new(
     'python-zope.interface' => ['python3-zope.interface'],
     'python3' => ['python3-devel'],
     'python3-greenlet' => ['python3-greenlet-devel'],
+    'python3-pycodestyle' => ['python-pycodestyle'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
     'quickjs' => ['quickjs-devel'],
