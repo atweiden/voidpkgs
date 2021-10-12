@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-aiohttp-cors"
 version=0.7.0
-revision=3
+revision=4
 short_desc="Cross Origin Resource Sharing (CORS) support for aiohttp"
 depends="python3-aiohttp"
 hostmakedepends="python3-setuptools"
