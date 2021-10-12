@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-mccabe"
 version=0.6.1
-revision=5
+revision=6
 short_desc="McCabe complexity checker for Python3"
 depends="python3"
 hostmakedepends="python3-setuptools"
