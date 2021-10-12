@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="talloc"
 version=2.3.2
-revision=1
+revision=2
 short_desc="Hierarchical pool based memory allocator with destructors"
 makedepends+=" gettext-devel"
 makedepends+=" libtirpc-devel"
