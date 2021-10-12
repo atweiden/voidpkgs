@@ -1,0 +1,22 @@
+maintainer="nox"
+pkgname="python3-Jinja2"
+version=3.0.2
+revision=1
+short_desc="Full featured template engine (Python3)"
+depends="python3-MarkupSafe"
+checkdepends+=" python3-MarkupSafe"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="http://jinja.pocoo.org/"
+license="BSD-3-Clause"
+changelog="https://github.com/pallets/jinja/raw/master/CHANGES.rst"
+distfiles="$PYPI_SITE/J/Jinja2/Jinja2-$version.tar.gz"
+checksum="827a0e32839ab1600d4eb1c4c33ec5a8edfbc5cb42dafa13b81f182f97784b45"
+wrksrc="Jinja2-$version"
+build_style="python3-module"
+
+post_install() {
+  vlicense LICENSE.rst
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

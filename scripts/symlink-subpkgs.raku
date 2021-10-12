@@ -616,7 +616,6 @@ constant %PKG = Map.new(
     'python' => ['python-devel'],
     'python-Babel' => ['python3-Babel'],
     'python-Cython' => ['python3-Cython'],
-    'python-Jinja2' => ['python3-Jinja2'],
     'python-M2Crypto' => ['python3-M2Crypto'],
     'python-atomicwrites' => ['python3-atomicwrites'],
     'python-attrs' => ['python3-attrs'],
