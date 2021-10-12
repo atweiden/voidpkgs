@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-atomicwrites"
 version=1.4.0
-revision=1
+revision=2
 short_desc="Simple Python2 API for atomic file writes"
 depends="python"
 hostmakedepends+=" python-setuptools"
