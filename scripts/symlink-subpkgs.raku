@@ -601,15 +601,11 @@ constant %PKG = Map.new(
     'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
-    'protobuf28' => qw<libprotobuf28
-                       libprotobuf28-lite
-                       libprotoc-devel
-                       libprotoc28
-                       libprotoc28-devel
-                       protobuf
-                       protobuf-devel
-                       protobuf-lite
-                       protobuf28-devel>
+    'protobuf' => qw<libprotobuf
+                     libprotobuf-lite
+                     libprotoc
+                     libprotoc-devel
+                     protobuf-devel>,
     'pulseaudio' => qw<libpulseaudio
                        pulseaudio-devel
                        pulseaudio-utils>,
