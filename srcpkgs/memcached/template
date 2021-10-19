@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="memcached"
-version=1.6.9
+version=1.6.10
 revision=1
 short_desc="Distributed memory object caching system"
 makedepends+=" libevent-devel"
@@ -11,7 +11,7 @@ homepage="http://www.memcached.org"
 license="BSD-3-Clause"
 changelog="https://github.com/memcached/memcached/wiki/ReleaseNotes${version//./}"
 distfiles="http://memcached.org/files/$pkgname-$version.tar.gz"
-checksum="d5a62ce377314dbffdb37c4467e7763e3abae376a16171e613cbe69956f092d1"
+checksum="ef46ac33c55d3a0f1c5ae8eb654677d84669913997db5d0c422c5eaffd694a92"
 build_style="gnu-configure"
 configure_args="--enable-seccomp"
 
