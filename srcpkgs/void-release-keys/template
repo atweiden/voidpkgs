@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="void-release-keys"
 version=1
-revision=3
+revision=4
 short_desc="Void Linux Release Keys"
 homepage="http://www.voidlinux.org"
 license="Public Domain"
