@@ -61,6 +61,7 @@ constant %PKG = Map.new(
                  bind-utils>,
     'binutils' => qw<binutils-devel
                      binutils-doc >,
+    'bitcoin' => ['bitcoin-devel'],
     'boost' => qw<boost-build
                   boost-devel
                   boost-jam
