@@ -51,6 +51,17 @@ post_patch() {
 }
 
 do_check() {
+  # when xbps-src is run from interactive shell, this tests receives
+  # SIGTTIN, and suspends xbps-src
+  sed \
+    -i \
+    -e '/read -t 2 a < \/dev\/tty/,/echo $a/ d' \
+    tests/read2.sub
+  sed \
+    -i \
+    -e '/timeout 1: ok/,+1 d' \
+    -e '/read2.sub: line 36: read:/s/ 36:/ 27:/' \
+    tests/read.right
   make tests
 }
 
