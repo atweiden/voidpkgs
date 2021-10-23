@@ -675,7 +675,8 @@ constant %PKG = Map.new(
                         sdd
                         sfind
                         smake
-                        star>,
+                        star
+                        ved>,
     'serf' => ['serf-devel'],
     'shadowsocks-libev' => ['shadowsocks-libev-devel'],
     'skalibs' => qw<skalibs-devel

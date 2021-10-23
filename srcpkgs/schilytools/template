@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="schilytools"
 version=2021.09.18
-revision=1
+revision=2
 short_desc="Schily's portable tools"
 depends+=" sccs"
 depends+=" sdd"
 depends+=" sfind"
 depends+=" smake"
 depends+=" star"
+depends+=" ved"
 makedepends+=" acl-devel"
 makedepends+=" attr-devel"
 makedepends+=" e2fsprogs-devel"
@@ -23,6 +24,13 @@ nocross="yes"
 
 do_build() {
   make \
+    "$makejobs" \
+    CC="$CC" \
+    COPTX="$CFLAGS" \
+    INS_BASE="/usr" \
+    LDOPTX="$LDFLAGS"
+  make \
+    -C ved \
     "$makejobs" \
     CC="$CC" \
     COPTX="$CFLAGS" \
@@ -111,6 +119,14 @@ star_package() {
     rm -f "$PKGDESTDIR/usr/share/man/man1"/*[!1]
     rm -f "$PKGDESTDIR/usr/share/man/man5"/*[!5]
     rm -rf "$PKGDESTDIR/usr/share/doc/"
+    vlicense CDDL.Schily.txt
+  }
+}
+
+ved_package() {
+  short_desc+=" - ved"
+  pkg_install() {
+    make install -C ved DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
     vlicense CDDL.Schily.txt
   }
 }
