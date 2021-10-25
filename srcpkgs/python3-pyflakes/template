@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="python3-pyflakes"
-version=2.3.1
-revision=2
+version=2.4.0
+revision=1
 short_desc="Passive checker of Python programs (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/PyCQA/pyflakes"
 license="MIT"
 distfiles="$PYPI_SITE/p/pyflakes/pyflakes-$version.tar.gz"
-checksum="f5bc8ecabc05bb9d291eb5203d6810b49040f6ff446a756326104746cc00c1db"
+checksum="05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"
 wrksrc="pyflakes-$version"
 build_style="python3-module"
 conflicts="python-pyflakes>=0"
