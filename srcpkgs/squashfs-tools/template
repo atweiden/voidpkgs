@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="squashfs-tools"
 version=4.5
-revision=1
+revision=2
 short_desc="Tool to create and append to squashfs filesystems"
 makedepends+=" liblz4-devel"
 makedepends+=" liblzma-devel"
@@ -24,8 +24,8 @@ make_build_args+=" ZSTD_SUPPORT=1"
 do_install() {
   vbin mksquashfs
   vbin unsquashfs
-  ln -sf mkshquashfs "$DESTDIR/usr/bin/sqfstar"
-  ln -sf unshquashfs "$DESTDIR/usr/bin/sqfscat"
+  ln -sf mksquashfs "$DESTDIR/usr/bin/sqfstar"
+  ln -sf unsquashfs "$DESTDIR/usr/bin/sqfscat"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
