@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dovecot-plugin-pigeonhole"
-version=0.5.16
+version=0.5.17
 revision=1
 short_desc="Sieve implementation for Dovecot"
 makedepends+=" dovecot-devel"
@@ -10,7 +10,7 @@ hostmakedepends="libldap-devel"
 homepage="https://pigeonhole.dovecot.org"
 license="LGPL-2.1-or-later"
 distfiles="https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-$version.tar.gz"
-checksum="5ca36780e23b99e6206440f1b3fe3c6598eda5b699b99cebb15d418ba3c6e938"
+checksum="031e823966c53121e289b3ecdcfa4bc35ed9d22ecbf5d93a8eb140384e78d648"
 wrksrc="dovecot-2.3-pigeonhole-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
