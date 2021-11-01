@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dhcp"
 version=4.4.2P1
-revision=2
+revision=3
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
