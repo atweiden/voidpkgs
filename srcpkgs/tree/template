@@ -5,7 +5,7 @@ revision=2
 short_desc="Resursive directory listing program"
 homepage="http://mama.indstate.edu/users/ice/tree"
 license="GPL-2.0-or-later"
-distfiles="http://mama.indstate.edu/users/ice/tree/src/$pkgname-$version.tgz"
+distfiles="http://deb.debian.org/debian/pool/main/t/tree/tree_$version.orig.tar.gz>$pkgname-$version.tar.gz"
 checksum="715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2"
 build_style="gnu-makefile"
 
