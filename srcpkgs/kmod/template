@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="kmod"
 version=29
-revision=1
+revision=2
 short_desc="Linux kernel module handling"
 makedepends+=" liblzma-devel"
+makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
@@ -13,6 +14,7 @@ checksum="0b80eea7aa184ac6fd20cafa2a1fdf290ffecc70869a797079e2cc5c6225a52a"
 build_style="gnu-configure"
 configure_args+=" --with-xz"
 configure_args+=" --with-zlib"
+configure_args+=" --with-zstd"
 # needs access to /lib/modules/$(uname -r)/build
 make_check="no"
 make_dirs+=" /etc/depmod.d 0755 root root"
