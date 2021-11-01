@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-regex"
-version=2021.10.8
+version=2021.10.23
 revision=1
 short_desc="Alternative regular expression module (Python3)"
 makedepends="python3-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://pypi.org/project/regex/"
 license="CNRI-Python, Apache-2.0"
 distfiles="$PYPI_SITE/r/regex/regex-$version.tar.gz"
-checksum="26895d7c9bbda5c52b3635ce5991caa90fbb1ddfac9c9ff1c7ce505e2282fb2a"
+checksum="f3f9a91d3cc5e5b0ddf1043c0ae5fa4852f18a1c0050318baf5fc7930ecc1f9c"
 wrksrc="regex-$version"
 build_style="python3-module"
 
