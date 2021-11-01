@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="file"
-version=5.40
-revision=3
+version=5.41
+revision=1
 short_desc="File type identification utility"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if libseccomp libseccomp-devel)"
@@ -9,10 +9,10 @@ if [[ -n "$CROSS_BUILD" ]]; then
   # XXX cross compilation needs exactly the same version for the host
   hostmakedepends="file"
 fi
-homepage="http://www.darwinsys.com/file/"
+homepage="https://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57"
+checksum="13e532c7b364f7d57e23dfeea3147103150cb90593a57af86c10e4f6e411603f"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" $(vopt_enable libseccomp)"
