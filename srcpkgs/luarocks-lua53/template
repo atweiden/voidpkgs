@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="luarocks-lua53"
-version=3.5.0
+version=3.7.0
 revision=1
 _desc="Package management for Lua modules"
 short_desc="$_desc (5.3.x)"
@@ -11,7 +11,7 @@ hostmakedepends="lua53-devel"
 homepage="https://luarocks.org/"
 license="MIT"
 distfiles="https://luarocks.org/releases/$pkgname-$version.tar.gz"
-checksum="701d0cc0c7e97cc2cf2c2f4068fce45e52a8854f5dc6c9e49e2014202eec9a4f"
+checksum="9255d97fee95cec5b54fc6ac718b11bf5029e45bed7873e053314919cd448551"
 conf_files="/etc/luarocks/config-5.3.lua"
 wrksrc="luarocks-$version"
 build_style="configure"
