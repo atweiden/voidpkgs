@@ -479,6 +479,10 @@ constant %PKG = Map.new(
                        lua51-lpeg
                        lua52-lpeg
                        lua53-lpeg>,
+    'lua54-zlib' => qw<lua-zlib
+                       lua51-zlib
+                       lua52-zlib
+                       lua53-zlib>,
     'luarocks-lua53' => qw<luarocks
                            luarocks-lua51
                            luarocks-lua52
