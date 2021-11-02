@@ -1,20 +1,27 @@
-# Template file for 'apk-tools'
-pkgname=apk-tools
+maintainer="nox"
+pkgname="apk-tools"
 version=2.12.7
 revision=1
-build_style=gnu-makefile
-# Link libapk statically
-make_build_args="LUAAPK=no LDFLAGS_apk.static= static"
-hostmakedepends="pkg-config lua53 lua53-zlib"
-makedepends="openssl-devel zlib-devel"
 short_desc="Alpine Package Keeper (Alpine package manager)"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-only"
+makedepends+=" openssl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" lua53"
+hostmakedepends+=" lua53-zlib"
+hostmakedepends+=" pkg-config"
 homepage="http://git.alpinelinux.org/cgit/apk-tools"
-distfiles="http://git.alpinelinux.org/cgit/${pkgname}/snapshot/${pkgname}-${version}.tar.bz2"
-checksum=269831b60d0008d3f4420293971ebbe951b04ee72f8359f2cc3ee89e649b1705
+license="GPL-2.0-only"
+distfiles="http://git.alpinelinux.org/cgit/$pkgname/snapshot/$pkgname-$version.tar.bz2"
+checksum="269831b60d0008d3f4420293971ebbe951b04ee72f8359f2cc3ee89e649b1705"
+build_style="gnu-makefile"
+# link libapk statically
+make_build_args+=" LDFLAGS_apk.static="
+make_build_args+=" LUAAPK=no"
+make_build_args+=" static"
+
 CFLAGS="-Wno-error"
 
 do_install() {
-	vbin src/apk.static apk
+  vbin src/apk.static apk
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
