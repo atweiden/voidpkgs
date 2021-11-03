@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.39.1
-revision=2
+revision=3
 _abseilver="997aaf3a28308eba1b9156aa35ab7bca9688e9f6"
 short_desc="High performance, open source, general RPC framework"
 _devel_depends+=" c-ares-devel"
@@ -58,19 +58,19 @@ post_build() {
   sed \
     -i \
     -e 's/-labsl_[^[:space:]]\+[[:space:]]*//g' \
-    build/libs/opt/pkgconfig/*.pc
-
-  # add custom absl include root to grpcpp cflags
-  sed \
-    -i \
-    -e 's,^Cflags:.*,& -I${includedir}/grpc_absl,' \
-    build/libs/opt/pkgconfig/grpc++*.pc
+    build/lib/pkgconfig/*.pc
 }
 
 post_install() {
   # remove unnecessary absl static libs and cmake modules
   rm "$DESTDIR/usr/lib"/libabsl*.a
   rm -rf "$DESTDIR/usr/lib/cmake/absl"
+
+  # add custom absl include root to grpcpp cflags
+  vsed \
+    -i \
+    -e 's,^Cflags:.*,& -I${includedir}/grpc_absl,' \
+    "$DESTDIR/usr/lib/pkgconfig"/grpc++*.pc
 }
 
 grpc-devel_package() {
