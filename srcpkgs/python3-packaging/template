@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-packaging"
-version=21.0
-revision=2
+version=21.2
+revision=1
 short_desc="Core utilities for Python packages (Python3)"
 depends="python3-parsing"
 checkdepends="python3-pytest"
@@ -9,7 +9,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
 distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
-checksum="7dc96269f53a4ccec5c0670940a4281106dd0bb343f47b7471f779df49c2fbe7"
+checksum="096d689d78ca690e4cd8a89568ba06d07ca097e3306a4381635073ca91479966"
 wrksrc="packaging-$version"
 build_style="python3-module"
 
