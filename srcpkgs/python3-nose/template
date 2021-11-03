@@ -1,0 +1,25 @@
+maintainer="nox"
+pkgname="python3-nose"
+version=1.3.7
+revision=8
+short_desc="Nicer testing for Python3"
+depends="python3-setuptools"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/nose-devs/nose"
+license="LGPL-2.1-or-later"
+changelog="https://github.com/nose-devs/nose/raw/master/CHANGELOG"
+distfiles="$PYPI_SITE/n/nose/nose-$version.tar.gz"
+checksum="f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
+conflicts="python-nose>=0"
+wrksrc="nose-$version"
+build_style="python3-module"
+# tests don't work and this package is no longer maintained, just
+# skip them
+make_check="no"
+
+post_patch() {
+  # convert py2 syntax to py3 since setuptools no longer does it
+  "2to3-$py3_ver" -w bin nose unit_tests functional_tests
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
