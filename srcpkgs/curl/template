@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.79.1
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -81,6 +81,7 @@ libcurl_package() {
     vmove "usr/lib/*.so.*"
   }
 }
+
 libcurl-devel_package() {
   unset depends
   depends+=" $makedepends"
@@ -95,6 +96,13 @@ libcurl-devel_package() {
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
     vmove usr/lib/pkgconfig
+  }
+}
+
+chroot-curl_package() {
+  short_desc+=" - for build infra use"
+  pkg_install() {
+    vbin "$DESTDIR/usr/bin/curl" chroot-curl
   }
 }
 
