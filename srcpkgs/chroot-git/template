@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="chroot-git"
 version=2.33.1
-revision=1
+revision=2
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
@@ -12,6 +12,7 @@ wrksrc="git-$version"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
+  makedepends+=" libcurl-devel"
   hostmakedepends+=" gnupg"
   hostmakedepends+=" perl"
 fi
@@ -30,7 +31,6 @@ NO_GETTEXT=Yes
 NO_OPENSSL = Yes
 USE_LIBPCRE :=
 USE_LIBPCRE2 :=
-NO_CURL = Yes
 NO_EXPAT = Yes
 NO_PERL = Yes
 NO_PYTHON = Yes
@@ -50,12 +50,18 @@ NO_REGEX = Yes
 EOF
   fi
   if [[ -z "$CHROOT_READY" ]]; then
-    echo "ZLIB_PATH = $XBPS_MASTERDIR/usr" >>config.mak
+    cat <<-EOF >>config.mak
+ZLIB_PATH = $XBPS_MASTERDIR/usr
+NO_CURL = Yes
+EOF
   fi
 }
 
 do_build() {
   make "$makejobs" git
+  if [[ -n "$CHROOT_READY" ]]; then
+    make "$makejobs" git-http-fetch git-remote-http
+  fi
 }
 
 do_check() {
@@ -68,6 +74,11 @@ do_install() {
   ln -s ../../bin/chroot-git "$DESTDIR/usr/libexec/chroot-git/git"
   ln -s git "$DESTDIR/usr/libexec/chroot-git/git-upload-pack"
   ln -s git "$DESTDIR/usr/libexec/chroot-git/git-receive-pack"
+  if [[ -n "$CHROOT_READY" ]]; then
+    vinstall git-http-fetch 755 usr/libexec/chroot-git
+    vinstall git-remote-http 755 usr/libexec/chroot-git
+    ln -s git-remote-http "$DESTDIR/usr/libexec/chroot-git/git-remote-https"
+  fi
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
