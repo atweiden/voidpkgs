@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="quickjs"
 version=2021.03.27
-revision=2
+revision=3
 short_desc="Small and embeddable Javascript engine"
 homepage="https://bellard.org/quickjs/"
 license="MIT"
@@ -27,6 +27,11 @@ fi
 pre_configure() {
   vsed \
     -i \
+    -e 's|%s/lib/quickjs|%s/lib|' \
+    qjsc.c
+
+  vsed \
+    -i \
     -e '/HOST_CC/s/CFLAGS_OPT/BUILD_CFLAGS/' \
     Makefile
 
@@ -46,6 +51,7 @@ quickjs-devel_package() {
   short_desc+=" - development files"
   depends="$sourcepkg>=${version}_$revision"
   pkg_install() {
+    vmove usr/bin/qjsc
     vmove usr/include
     vmove "usr/lib/*.a"
   }
