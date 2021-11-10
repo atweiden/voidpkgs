@@ -1,0 +1,23 @@
+maintainer="nox"
+pkgname="python3-iso8601"
+version=1.0.0
+revision=1
+short_desc="ISO8601 formatted dated parser for Python3"
+depends="python3"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytz"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/micktwomey/pyiso8601"
+license="MIT"
+distfiles="$PYPI_SITE/i/iso8601/iso8601-$version.tar.gz"
+checksum="79ec9749f8bf35ffae77f835e80e96d2f95affa0f79d3d7b25c0fa7e06207a8b"
+wrksrc="iso8601-$version"
+build_style="python3-module"
+replaces="python3-iso-8601>=0"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
