@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="procs"
 version=0.11.10
-revision=1
+revision=2
 short_desc="Modern replacement for ps written in Rust"
 homepage="https://github.com/dalance/procs"
 license="MIT"
@@ -14,15 +14,15 @@ nocross="yes"
 
 post_build() {
   PROCS="target/$RUST_TARGET/release/procs"
-  "$PROCS" --completion bash > procs.bash
-  "$PROCS" --completion fish > procs.fish
-  "$PROCS" --completion zsh > procs.zsh
+  "$PROCS" --completion bash
+  "$PROCS" --completion fish
+  "$PROCS" --completion zsh
 }
 
 post_install() {
   vcompletion procs.bash bash
   vcompletion procs.fish fish
-  vcompletion procs.zsh zsh
+  vcompletion _procs zsh
 
   vlicense LICENSE
 }
