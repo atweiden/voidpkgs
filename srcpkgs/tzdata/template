@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="tzdata"
-version=2021c
+version=2021e
 revision=1
 short_desc="Time zone and daylight-saving time data"
 hostmakedepends="tzutils"
 homepage="http://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="http://www.iana.org/time-zones/repository/releases/$pkgname$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b4f1d1c8cb11c3500276dac862d8c7e6f88c69b1e8ee4c5e9d1daad17fbe3542"
+checksum="07ec42b737d0d3c6be9c337f8abb5f00554a0f9cc4fcf01a703d69403b6bb2b1"
 create_wrksrc="yes"
 bootstrap="yes"
 
