@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="di"
-version=4.47.2
+version=4.50
 revision=1
 short_desc="A disk information utility"
-homepage="https://gentoo.com/di"
+homepage="https://diskinfo-di.sourceforge.io/"
 license="Zlib"
-distfiles="https://gentoo.com/di/$pkgname-$version.tar.gz"
-checksum="2205b86f68e054dbe61806f288d94207eddadef7f71a0a27c553db0fc5bd27bd"
+distfiles="$SOURCEFORGE_SITE/diskinfo-di/$pkgname-$version.tar.gz"
+checksum="82f08b6c2549fd6ab2e9cb596135a70883ffd4136d176466ae0ec9ba67a3492a"
 build_style="gnu-makefile"
 make_install_args="INSTALL_DIR=\${DESTDIR}/usr"
 
