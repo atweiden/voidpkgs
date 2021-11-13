@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ISOEnts"
 version=1986
-revision=5
+revision=6
 short_desc="Character entity sets from ISO 8879:1986 (SGML)"
 depends="xmlcatmgr"
 homepage="http://www.oasis-open.org"
@@ -12,8 +12,9 @@ create_wrksrc="yes"
 sgml_entries="CATALOG /usr/share/sgml/iso8879/catalog --"
 
 do_install() {
-  vmkdir usr/share/sgml/iso8879
-  vcopy "*" usr/share/sgml/iso8879
+  for f in *; do
+    vinstall "$f" 644 usr/share/sgml/iso8879
+  done
   vinstall "$FILESDIR/catalog" 644 usr/share/sgml/iso8879
 }
 
