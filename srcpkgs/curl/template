@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
-version=7.79.1
-revision=2
+version=7.80.0
+revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -14,9 +14,10 @@ makedepends+=" $(vopt_if ssh libssh2-devel)"
 makedepends+=" $(vopt_if ssl openssl-devel)"
 makedepends+=" $(vopt_if zstd libzstd-devel)"
 # openssh isn't in checkdepends, because test 581 locks up
-checkdepends+=" nghttp2"
-checkdepends+=" python3"
-checkdepends+=" stunnel"
+#checkdepends+=" impacket"
+#checkdepends+=" nghttp2"
+#checkdepends+=" python3"
+#checkdepends+=" stunnel"
 # Use mdocml instead of groff to generate builtin manual to avoid cyclic
 # dependencies.
 hostmakedepends+=" mdocml"
@@ -26,7 +27,7 @@ homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
 distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="de62c4ab9a9316393962e8b94777a570bb9f71feb580fb4475e412f2f9387851"
+checksum="dd0d150e49cd950aff35e16b628edf04927f0289df42883750cf952bb858189c"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
@@ -53,6 +54,8 @@ build_options_default+=" ssh"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
 vopt_conflict "ssl" "gnutls"
+# impacket in checkdepends requires gui dependencies
+make_check="no"
 
 pre_configure() {
   export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
