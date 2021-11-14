@@ -621,7 +621,6 @@ constant %PKG = Map.new(
     'python-M2Crypto' => ['python3-M2Crypto'],
     'python-atomicwrites' => ['python3-atomicwrites'],
     'python-attrs' => ['python3-attrs'],
-    'python-bcrypt' => ['python3-bcrypt'],
     'python-cffi' => ['python3-cffi'],
     'python-chardet' => ['python3-chardet'],
     'python-coverage' => ['python3-coverage'],
