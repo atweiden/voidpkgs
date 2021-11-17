@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="chroot-git"
-version=2.33.1
-revision=2
+version=2.34.0
+revision=1
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
-checksum="e054a6e6c2b088bd1bff5f61ed9ba5aa91c9a3cd509539a4b41c5ddf02201f2f"
+checksum="fd6cb9b26665794c61f9ca917dcf00e7c19b0c02be575ad6ba9354fa6962411f"
 wrksrc="git-$version"
 bootstrap="yes"
 
@@ -26,7 +26,6 @@ TAR = $(command -v bsdtar || command -v tar)
 CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 CC_LD_DYNPATH=-L
-SKIP_DASHED_BUILT_INS = Yes
 NO_GETTEXT=Yes
 NO_OPENSSL = Yes
 USE_LIBPCRE :=
@@ -35,8 +34,6 @@ NO_EXPAT = Yes
 NO_PERL = Yes
 NO_PYTHON = Yes
 NO_TCLTK = Yes
-DEFAULT_TEST_TARGET = prove
-GIT_PROVE_OPTS = $makejobs
 # firstword (uname -m)
 HOST_CPU = ${XBPS_TARGET_MACHINE%-musl}
 SKIP_DASHED_BUILT_INS = Yes
