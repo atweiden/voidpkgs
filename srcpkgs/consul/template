@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="consul"
-version=1.10.1
+version=1.10.4
 revision=1
-_gitrev="db839f18ba4796df77601bfe9873756ed340525d"
+_gitrev="7bbad6fe560ab27f51dd6c5cd16f28418082424c"
 short_desc="Distributed solution to connect and configure applications"
 hostmakedepends="git"
 homepage="https://www.consul.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/consul/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c840ba7b52df3ec6105a7febe900e52dde504a33bd1fa4e2e1985a88b6072d41"
+checksum="6e3da1fb589586af4d68b2e924ccdb9f4aad644826aae452c31744c658eb66e4"
 build_style="go"
 go_import_path="github.com/hashicorp/consul"
 go_ldflags+=" -s -w -buildid="
