@@ -1,25 +1,20 @@
 maintainer="nox"
 pkgname="nomad"
-version=1.1.1
+version=1.2.0
 revision=1
-_gitrev="a6fab0f1df962b9224adcf05c886c6ae59d52192"
+_gitrev="bee0c3e04eb4ce34b8ac22ff27fcb421a9dccec5"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
 hostmakedepends="git"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="441d2f50a29568451cb16301a2208c9b744a480ded8c624e789983ee42ed3ea9"
+checksum="fb76938823ccf23f7afca39d177fa7385c69128e729f98cdeb6cd53a75c908df"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
 go_ldflags_=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
 go_build_tags+=" release"
 go_build_tags+=" ui"
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    go_build_tags+=" nonvidia"
-    ;;
-esac
 
 export GOFLAGS="-trimpath"
 
