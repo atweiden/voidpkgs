@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="valgrind"
-version=3.16.1
+version=3.18.1
 revision=1
 short_desc="Tool for finding memory management bugs in programs"
 depends="perl"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://valgrind.org/"
 license="GPL-2.0-or-later"
 distfiles="https://sourceware.org/pub/valgrind/$pkgname-$version.tar.bz2"
-checksum="c91f3a2f7b02db0f3bc99479861656154d241d2fdb265614ba918cc6720a33ca"
+checksum="00859aa13a772eddf7822225f4b46ee0d39afbe071d32778da4d99984081f7f5"
 build_style="gnu-configure"
 configure_args+=" --enable-lto=yes"
 configure_args+=" --enable-tls"
@@ -42,10 +42,6 @@ esac
 
 CFLAGS="-fno-stack-protector"
 CXXFLAGS="-fno-stack-protector"
-
-pre_configure() {
-  autoreconf -fi
-}
 
 valgrind-devel_package() {
   depends="valgrind>=${version}_$revision"
