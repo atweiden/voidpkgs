@@ -46,6 +46,11 @@ pre_build() {
 post_install() {
   rm "$DESTDIR/usr/bin"/{test,bench}_bitcoin
 
+  vsconf share/examples/bitcoin.conf
+
+  vmkdir "usr/share/$pkgname"
+  vcopy share/rpcauth "usr/share/$pkgname"
+
   for b in bitcoin-cli \
            bitcoin-tx \
            bitcoind; do
@@ -62,8 +67,15 @@ bitcoin-devel_package() {
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove "usr/lib/*.so"
-    # provides information on libbitcoinconsensus
-    vdoc doc/shared-libraries.md
+  }
+}
+
+bitcoin-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vdoc README.md
+    vdoc SECURITY.md
+    vcopy doc "usr/share/doc/$pkgname"
   }
 }
 
