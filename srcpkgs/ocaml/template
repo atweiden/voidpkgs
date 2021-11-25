@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ocaml"
 version=4.13.1
-revision=1
+revision=2
 short_desc="Main implementation of the Caml language"
 makedepends="ncurses-devel"
 homepage="http://ocaml.org/"
@@ -9,7 +9,8 @@ license="QPL-1.0, LGPL-2.1-only"
 distfiles="https://github.com/ocaml/ocaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="194c7988cc1fd1c64f53f32f2f7551e5309e44d914d6efc7e2e4d002296aeac4"
 build_style="gnu-configure"
-configure_args="--with-pic"
+configure_args+=" --libdir=/usr/lib/ocaml"
+configure_args+=" --with-pic"
 make_build_target="world.opt"
 nocross="yes"
 
