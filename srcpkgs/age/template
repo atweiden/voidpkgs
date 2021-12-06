@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="age"
 version=1.0.0
-revision=1
+revision=2
 short_desc="Simple, modern and secure encryption tool"
 homepage="https://age-encryption.org/"
 license="BSD-3-Clause"
@@ -10,7 +10,8 @@ checksum="8d27684f62f9dc74014035e31619e2e07f8b56257b1075560456cbf05ddbcfce"
 build_style="go"
 go_import_path="filippo.io/age"
 go_package="$go_import_path/cmd/..."
-go_ldflags="-s -w -buildid="
+go_ldflags+=" -X main.Version=$version"
+go_ldflags+=" -s -w -buildid="
 
 export GOFLAGS="-trimpath"
 
