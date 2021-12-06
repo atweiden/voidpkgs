@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="isync"
-version=1.4.3
+version=1.4.4
 revision=1
 short_desc="IMAP and MailDir mailbox synchronizer"
 depends="ca-certificates"
@@ -14,7 +14,7 @@ homepage="http://isync.sourceforge.net/"
 license="GPL-2.0-or-later"
 changelog="https://sourceforge.net/p/isync/isync/ci/master/tree/NEWS?format=raw"
 distfiles="$SOURCEFORGE_SITE/isync/$pkgname-$version.tar.gz"
-checksum="b4c720745bda3447fbd5b9f71783b23f699a55295917ae7586ee5c22e91b9708"
+checksum="7c3273894f22e98330a330051e9d942fd9ffbc02b91952c2f1896a5c37e700ff"
 build_style="gnu-configure"
 
 post_install() {
