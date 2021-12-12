@@ -1,22 +1,31 @@
-# Template file for 'libwebp'
-pkgname=libwebp
+maintainer="nox"
+pkgname="libwebp"
 version=1.2.1
 revision=1
-build_style=gnu-configure
-configure_args="--enable-libwebpmux --enable-libwebpdemux --enable-libwebpdecoder"
-hostmakedepends="pkg-config"
-makedepends="giflib-devel libpng-devel tiff-devel"
 short_desc="WebP image format"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-3-Clause"
+makedepends+=" giflib-devel"
+makedepends+=" libpng-devel"
+makedepends+=" tiff-devel"
+hostmakedepends="pkg-config"
 homepage="https://developers.google.com/speed/webp/"
-distfiles="http://downloads.webmproject.org/releases/webp/${pkgname}-${version}.tar.gz"
-checksum=808b98d2f5b84e9b27fdef6c5372dac769c3bda4502febbfa5031bd3c4d7d018
+license="BSD-3-Clause"
+distfiles="http://downloads.webmproject.org/releases/webp/$pkgname-$version.tar.gz"
+checksum="808b98d2f5b84e9b27fdef6c5372dac769c3bda4502febbfa5031bd3c4d7d018"
+build_style="gnu-configure"
+# avoid libfreeglut gui dependency
+configure_args+=" --disable-gl"
+# inherit remaining configure_args from upstream
+configure_args+=" --enable-libwebpdecoder"
+configure_args+=" --enable-libwebpdemux"
+configure_args+=" --enable-libwebpmux"
 
 case "$XBPS_TARGET_MACHINE" in
-	armv6*) configure_args+=" --disable-neon";;
-	armv7*) CFLAGS="-mfpu=neon";;
-	*) makedepends+=" libfreeglut-devel";;
+	armv6*)
+    configure_args+=" --disable-neon"
+    ;;
+	armv7*)
+    CFLAGS="-mfpu=neon"
+    ;;
 esac
 
 post_install() {
@@ -32,7 +41,9 @@ libwebp-tools_package() {
 }
 
 libwebp-devel_package() {
-	depends="${makedepends/libfreeglut-devel/} ${sourcepkg}>=${version}_${revision}"
+  unset depends
+	depends+=" $makedepends"
+	depends+=" $sourcepkg>=${version}_$revision"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include
