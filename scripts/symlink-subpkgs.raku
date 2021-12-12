@@ -355,6 +355,7 @@ constant %PKG = Map.new(
     'libcppunit' => qw<libcppunit-devel
                        libcppunit-examples>,
     'libdaemon' => ['libdaemon-devel'],
+    'libde265' => ['libde265-devel'],
     'libdnet' => ['libdnet-devel'],
     'libedit' => ['libedit-devel'],
     'libev' => ['libev-devel'],
