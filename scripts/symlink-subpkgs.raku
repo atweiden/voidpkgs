@@ -517,6 +517,7 @@ constant %PKG = Map.new(
     'mit-krb5' => qw<mit-krb5-client
                      mit-krb5-devel
                      mit-krb5-libs>,
+    'monero' => ['monero-devel'],
     'mpfr' => ['mpfr-devel'],
     'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],
