@@ -1,20 +1,22 @@
-# Template file for 'yasm'
-pkgname=yasm
+maintainer="nox"
+pkgname="yasm"
 version=1.3.0
 revision=2
-build_style=gnu-configure
-hostmakedepends="xmlto python"
 short_desc="Complete rewrite of the NASM assembler"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-3-Clause, Artistic-1.0, GPL-2.0-or-later, LGPL-2.1-or-later"
+hostmakedepends+=" python"
+hostmakedepends+=" xmlto"
 homepage="http://www.tortall.net/projects/yasm/"
+license="BSD-3-Clause, Artistic-1.0, GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="http://www.tortall.net/projects/yasm/releases/yasm-$version.tar.gz"
-checksum=3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f
+checksum="3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f"
+build_style="gnu-configure"
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/lib
-	rm -rf ${DESTDIR}/usr/include
-	vlicense COPYING
-	vlicense BSD.txt
-	vlicense Artistic.txt
+  rm -rf "$DESTDIR/usr/lib"
+  rm -rf "$DESTDIR/usr/include"
+  vlicense COPYING
+  vlicense BSD.txt
+  vlicense Artistic.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
