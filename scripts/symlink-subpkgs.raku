@@ -184,6 +184,7 @@ constant %PKG = Map.new(
     'fmt' => ['fmt-devel'],
     'fontconfig' => qw<fontconfig-devel
                        fontconfig-doc>,
+    'freetype' => ['freetype-devel'],
     'fuse' => ['fuse-devel'],
     'fuse3' => ['fuse3-devel'],
     'gc' => ['gc-devel'],
