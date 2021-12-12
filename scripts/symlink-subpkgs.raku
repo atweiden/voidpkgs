@@ -762,6 +762,7 @@ constant %PKG = Map.new(
     'wimlib' => ['wimlib-devel'],
     'wireless_tools' => ['wireless_tools-devel'],
     'wvstreams' => ['wvstreams-devel'],
+    'x265' => ['x265-devel'],
     'xbps' => qw<libxbps
                  libxbps-devel
                  xbps-tests>,
