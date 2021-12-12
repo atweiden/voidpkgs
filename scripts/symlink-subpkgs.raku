@@ -228,6 +228,8 @@ constant %PKG = Map.new(
                     gettext-devel-tools
                     gettext-libs>,
     'gf2x' => ['gf2x-devel'],
+    'giflib' => qw<giflib-devel
+                   giflib-tools>,
     'git' => qw<git-all
                 git-cvs
                 git-netrc
