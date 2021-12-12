@@ -432,6 +432,8 @@ constant %PKG = Map.new(
     'libuv' => ['libuv-devel'],
     'libvorbis' => ['libvorbis-devel'],
     'libvterm' => ['libvterm-devel'],
+    'libwebp' => qw<libwebp-devel
+                    libwebp-tools>,
     'libxml2' => ['libxml2-devel'],
     'libxml2-python' => ['libxml2-python3'],
     'libxslt' => qw<libxslt-devel

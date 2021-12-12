@@ -490,6 +490,10 @@ libvorbisenc.so.2 libvorbis-1.2.1rc1_1
 libvorbisfile.so.3 libvorbis-1.2.1rc1_1
 libvterm.so.0 libvterm-0.0.20151005_1
 libvtv.so.0 libvtv-6.3.0_1
+libwebpdemux.so.2 libwebp-0.5.0_1
+libwebp.so.7 libwebp-0.6.0_1
+libwebpdecoder.so.3 libwebp-0.6.0_1
+libwebpmux.so.3 libwebp-0.6.0_1
 libwslay.so.0 libwslay-1.1.0_1
 libxbps.so.5 libxbps-0.59.1_4
 libxml2.so.2 libxml2-2.7.0_1
