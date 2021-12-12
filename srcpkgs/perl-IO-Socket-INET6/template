@@ -1,19 +1,18 @@
 maintainer="nox"
 pkgname="perl-IO-Socket-INET6"
-version=2.72
-revision=3
+version=2.73
+revision=1
 short_desc="IO::Socket::INET6 - Object interface for AF_INET/AF_INET6 domain sockets"
 depends+=" perl"
 depends+=" perl-Socket6"
-makedepends+=" perl"
-makedepends+=" perl-Socket6"
+makedepends="$depends"
 checkdepends+=" perl-Test-Pod"
 checkdepends+=" perl-Test-Pod-Coverage"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Socket-INET6"
 license="Artistic, GPL-1"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="85e020fa179284125fc1d08e60a9022af3ec1271077fe14b133c1785cdbf1ebb"
+checksum="b6da746853253d5b4ac43191b4f69a4719595ee13a7ca676a8054cf36e6d16bb"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
