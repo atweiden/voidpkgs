@@ -1,39 +1,47 @@
-# Template file for 'tiff'
-pkgname=tiff
+maintainer="nox"
+pkgname="tiff"
 version=4.3.0
 revision=1
-build_style=gnu-configure
-configure_args="--enable-cxx --without-x"
-hostmakedepends="automake libtool"
-makedepends="jbigkit-devel libjpeg-turbo-devel
- liblzma-devel libzstd-devel zlib-devel"
 short_desc="Library and tools for reading and writing TIFF data files"
-maintainer="skmpz <dem.procopiou@gmail.com>"
-license="libtiff"
+makedepends+=" jbigkit-devel"
+makedepends+=" libjpeg-turbo-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" libzstd-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
 homepage="http://libtiff.maptools.org/"
-distfiles="http://download.osgeo.org/libtiff/tiff-${version}.tar.gz"
-checksum=0e46e5acb087ce7d1ac53cf4f56a09b221537fc86dfc5daaad1c2e89e1b37ac8
+license="libtiff"
+distfiles="http://download.osgeo.org/libtiff/$pkgname-$version.tar.gz"
+checksum="0e46e5acb087ce7d1ac53cf4f56a09b221537fc86dfc5daaad1c2e89e1b37ac8"
+build_style="gnu-configure"
+configure_args+=" --enable-cxx"
+configure_args+=" --without-x"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	for f in ${DESTDIR}/usr/share/man/man3/*.3tiff; do
-		mv ${f} ${f%tiff}
-	done
-	vlicense COPYRIGHT
+  for f in "$DESTDIR/usr/share/man/man3"/*.3tiff; do
+    mv "$f" "${f%tiff}"
+  done
+  vlicense COPYRIGHT
 }
 
 tiff-devel_package() {
-	depends="${makedepends} tiff>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share/man/man3
-		vmove usr/share/doc
-	}
+  unset depends
+  depends+=" $makedepends"
+  depends+=" tiff>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/man/man3
+    vmove usr/share/doc
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
