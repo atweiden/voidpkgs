@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xxHash"
 version=0.8.1
-revision=1
+revision=2
 short_desc="Fast non-cryptographic hashing algorithm"
 license="BSD-2-Clause, GPL-2.0-or-later"
 homepage="https://cyan4973.github.io/xxHash/"
@@ -28,6 +28,7 @@ xxHash-devel_package() {
   depends="libxxHash>=${version}_$revision"
   pkg_install() {
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
