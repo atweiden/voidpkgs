@@ -324,6 +324,8 @@ constant %PKG = Map.new(
     'ldns' => qw<libldns
                  libldns-devel>,
     'libaio' => ['libaio-devel'],
+    'libaom' => qw<libaom-devel
+                   libaom-tools>,
     'libarchive' => qw<bsdtar
                        libarchive-devel>,
     'libassuan' => ['libassuan-devel'],
