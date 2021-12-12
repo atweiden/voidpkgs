@@ -307,6 +307,7 @@ libgssglue.so.1 libgssglue-0.3_1
 libguilereadline-v-18.so.18 libguile-2.0.14_6
 libguile-2.2.so.1 libguile-2.2.7_1
 libhavege.so.2 libhaveged-1.9.11_1
+libheif.so.1 libheif-1.4.0_1
 libhistory.so.8 libhistory8-8.0_1
 libhunspell-1.7.so.0 libhunspell1.7-1.7.0_1
 libidn.so.12 libidn-1.35_1

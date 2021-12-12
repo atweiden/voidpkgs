@@ -369,6 +369,8 @@ constant %PKG = Map.new(
     'libgit2' => ['libgit2-devel'],
     'libgpg-error' => ['libgpg-error-devel'],
     'libgssglue' => ['libgssglue-devel'],
+    'libheif' => qw<libheif-devel
+                    libheif-tools>,
     'libidn' => ['libidn-devel'],
     'libidn2' => ['libidn2-devel'],
     'libiscsi' => qw<libiscsi-devel
