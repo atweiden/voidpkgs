@@ -302,6 +302,8 @@ constant %PKG = Map.new(
     'isl15' => ['isl15-devel'],
     'janet' => ['janet-devel'],
     'jansson' => ['jansson-devel'],
+    'jbigkit' => qw<jbigkit-devel
+                    jbigkit-libs>,
     'jemalloc' => ['jemalloc-devel'],
     'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],

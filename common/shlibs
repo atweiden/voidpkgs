@@ -177,6 +177,8 @@ libip6tc.so.2 iptables-1.8.3_1
 libisl.so.19 isl15-0.19_1
 libjanet.so.1.19 janet-1.19.0_1
 libjansson.so.4 jansson-2.4_1
+libjbig.so.0 jbigkit-libs-2.1_2
+libjbig85.so.0 jbigkit-libs-2.1_2
 libjemalloc.so.2 jemalloc-4.0.0_1
 libjq.so.1 jq-devel-1.4_1
 libjson-c.so.5 json-c-0.14.0_1
