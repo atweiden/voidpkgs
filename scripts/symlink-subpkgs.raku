@@ -221,6 +221,8 @@ constant %PKG = Map.new(
                 libvtv
                 libvtv-devel>,
     'gcc-multilib' => ['gcc-objc-multilib'],
+    'gd' => qw<gd-devel
+               gd-progs>,
     'gdb' => ['gdb-common'],
     'gdbm' => ['gdbm-devel'],
     'geoip' => qw<geoip-devel

@@ -88,6 +88,7 @@ liblto_plugin.so.0 gcc-4.7.3_1
 libcc1.so.0 gcc-6.2.1_1
 libcc1plugin.so.0 gcc-6.2.1_1
 libcp1plugin.so.0 gcc-8.2.0_3
+libgd.so.3 gd-2.1.0_1
 libgdbm_compat.so.4 gdbm-1.10_1_1
 libgdbm.so.6 gdbm-1.16_1
 libgetdns.so.10 getdns-1.5.1_7
