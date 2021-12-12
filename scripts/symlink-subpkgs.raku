@@ -182,6 +182,8 @@ constant %PKG = Map.new(
     'flex' => ['libfl-devel'],
     'flintlib' => ['flintlib-devel'],
     'fmt' => ['fmt-devel'],
+    'fontconfig' => qw<fontconfig-devel
+                       fontconfig-doc>,
     'fuse' => ['fuse-devel'],
     'fuse3' => ['fuse3-devel'],
     'gc' => ['gc-devel'],

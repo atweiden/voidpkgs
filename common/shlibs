@@ -76,6 +76,7 @@ libfaketime.so.1 faketime-0.9.7_1
 libfaketimeMT.so.1 faketime-0.9.7_1
 libflint.so.16 flintlib-2.8.0_1
 libfmt.so.8 fmt-8.0.1_1
+libfontconfig.so.1 fontconfig-2.6.0_1
 libfuse.so.2 fuse-2.8.1_1
 libulockmgr.so.1 fuse-2.9.7_1
 libfuse3.so.3 fuse3-3.1.0_1
