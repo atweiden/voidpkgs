@@ -1,48 +1,60 @@
-# Template file for 'fontconfig'
-pkgname=fontconfig
+maintainer="nox"
+pkgname="fontconfig"
 version=2.13.1
 revision=3
-build_style=gnu-configure
-configure_args="--enable-static --enable-docs --with-cache-dir=/var/cache/${pkgname}"
-hostmakedepends="gperf pkg-config"
-makedepends="expat-devel freetype-devel libuuid-devel"
-conf_files="/etc/fonts/fonts.conf"
 short_desc="Library for configuring and customizing font access"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="MIT"
+makedepends+=" expat-devel"
+makedepends+=" freetype-devel"
+makedepends+=" libuuid-devel"
+hostmakedepends+=" gperf"
+hostmakedepends+=" pkg-config"
 homepage="http://www.fontconfig.org"
-distfiles="${FREEDESKTOP_SITE}/${pkgname}/release/${pkgname}-${version}.tar.bz2"
-checksum=f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741
+license="MIT"
+distfiles="$FREEDESKTOP_SITE/fontconfig/release/$pkgname-$version.tar.bz2"
+checksum="f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741"
+conf_files="/etc/fonts/fonts.conf"
+build_style="gnu-configure"
+configure_args+=" --enable-docs"
+configure_args+=" --enable-static"
+configure_args+=" --with-cache-dir=/var/cache/$pkgname"
 
 pre_build() {
-	# trick to regenerate hash functions :-)
-	rm -f src/fcobjshash.h
+  # trick to regenerate hash functions :-)
+  rm -f src/fcobjshash.h
 }
 
 post_install() {
-	if [ "$CROSS_BUILD" ]; then
-		sed -i 's,\(Cflags: -I${includedir}\).*,\1,g' ${DESTDIR}/usr/lib/pkgconfig/fontconfig.pc
-	fi
-	vlicense COPYING
+  if [[ -n "$CROSS_BUILD" ]]; then
+    sed \
+      -i \
+      -e 's,\(Cflags: -I${includedir}\).*,\1,g' \
+      "$DESTDIR/usr/lib/pkgconfig/fontconfig.pc"
+  fi
+  vlicense COPYING
 }
 
 fontconfig-devel_package() {
-	short_desc+=" - development files"
-	depends="fontconfig-${version}_${revision} expat-devel freetype-devel
-	 libuuid-devel"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove usr/share/man/man3
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/share/gettext
-	}
+  unset depends
+  short_desc+=" - development files"
+  depends+=" expat-devel"
+  depends+=" fontconfig-${version}_$revision"
+  depends+=" freetype-devel"
+  depends+=" libuuid-devel"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove usr/share/man/man3
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/share/gettext
+  }
 }
 
 fontconfig-doc_package() {
-	short_desc+=" - documentation"
-	pkg_install() {
-		vmove usr/share/doc
-	}
+  short_desc+=" - documentation"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
