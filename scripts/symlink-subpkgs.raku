@@ -370,6 +370,8 @@ constant %PKG = Map.new(
     'libidn2' => ['libidn2-devel'],
     'libiscsi' => qw<libiscsi-devel
                      libiscsi-tools>,
+    'libjpeg-turbo' => qw<libjpeg-turbo-devel
+                          libjpeg-turbo-tools>,
     'libksba' => ['libksba-devel'],
     'libluv' => ['libluv-devel'],
     'libmaxminddb' => ['libmaxminddb-devel'],
