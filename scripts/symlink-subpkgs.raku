@@ -133,6 +133,7 @@ constant %PKG = Map.new(
                        cyrus-sasl-modules-gssapi
                        cyrus-sasl-modules-ldap
                        cyrus-sasl-modules-sql>,
+    'czmq' => ['czmq-devel'],
     'dar' => qw<libdar
                 libdar-devel>,
     'db' => qw<db-devel
