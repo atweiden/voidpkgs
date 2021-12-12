@@ -1,35 +1,22 @@
 maintainer="nox"
 pkgname="usbutils"
-version=013
+version=014
 revision=1
 short_desc="Linux USB utilities"
 depends="hwids"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libusb-devel"
-hostmakedepends+=" autogen"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="http://linux-usb.sourceforge.net/"
+homepage="https://linux-usb.sourceforge.net/"
 license="GPL-2.0-only"
 changelog="https://github.com/gregkh/usbutils/raw/master/NEWS"
 distfiles="$KERNEL_SITE/utils/usb/usbutils/$pkgname-$version.tar.xz"
-checksum="9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338"
+checksum="3a079cfad60560227b67192482d7813bf96326fcbb66c04254839715f276fc69"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/hwdata"
 configure_args+=" --disable-zlib"
-
-pre_configure() {
-  local autogen_args
-  autogen_args="--prefix=/usr"
-
-  if [[ -n "$CROSS_BUILD" ]]; then
-    autogen_args+=" --build=$XBPS_CROSS_TRIPLET"
-    autogen_args+=" --host=$XBPS_CROSS_TRIPLET"
-  fi
-
-  ./autogen.sh $autogen_args
-}
 
 post_install() {
   # remove lsusb.py - avoid useless python scripts
