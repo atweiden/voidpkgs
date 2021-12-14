@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-URI"
-version=5.09
+version=5.10
 revision=1
 short_desc="Perl Uniform Resource Identifiers class (URI, RFC 2396)"
 depends="perl"
@@ -11,7 +11,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/URI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/URI/${pkgname#*-}-$version.tar.gz"
-checksum="03e63ada499d2645c435a57551f041f3943970492baa3b3338246dab6f1fae0a"
+checksum="16325d5e308c7b7ab623d1bf944e1354c5f2245afcfadb8eed1e2cae9a0bd0b5"
 wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
