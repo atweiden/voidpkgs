@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="catgirl"
-version=1.9a
-revision=2
+version=2.0
+revision=1
 short_desc="TLS-only terminal IRC client"
 makedepends+=" libtls-devel"
 makedepends+=" ncurses-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://git.causal.agency/catgirl/"
 license="GPL-3.0-or-later"
 distfiles="https://git.causal.agency/catgirl/snapshot/$pkgname-$version.tar.gz"
-checksum="3049b99abad67cda7e9811c58c648e1afbdfbc127e1e8fcafa63d4c73243915d"
+checksum="ae4ea7bdfc9a17127fec937dd8be6d0eb6939e07df55beaefd4edd6cd8caf632"
 build_style="gnu-configure"
 make_build_target="all"
 
