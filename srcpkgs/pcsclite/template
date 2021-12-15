@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pcsclite"
-version=1.9.4
+version=1.9.5
 revision=1
 short_desc="Middleware to access a smart card using SCard API (PC/SC)"
 depends="python3"
@@ -13,7 +13,7 @@ hostmakedepends+=" python3"
 homepage="https://pcsclite.apdu.fr"
 license="BSD-2-Clause, GPL-3.0-or-later"
 distfiles="https://pcsclite.apdu.fr/files/${pkgname/cl/c-l}-$version.tar.bz2"
-checksum="719e1f976504597adfd9b1bf39f0a1819b52fdab7bc5271286b5b7a6a43a3fe4"
+checksum="cbd7ca9cd6323e0e8d0d99c89a1429b9392809c16d607d9180e37d9474321b0f"
 wrksrc="${pkgname/cl/c-l}-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-libsystemd"
