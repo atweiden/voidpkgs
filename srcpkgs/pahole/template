@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pahole"
-version=1.22
+version=1.23
 revision=1
 short_desc="Various DWARF utils"
 makedepends+=" elfutils-devel"
@@ -13,7 +13,7 @@ esac
 homepage="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license="GPL-2.0-only"
 distfiles="https://fedorapeople.org/~acme/dwarves/dwarves-$version.tar.xz"
-checksum="8bcba48be39da2868142440dc2ee7f1d7b99ffec8095e3a1afb280dc1a7c63df"
+checksum="f085c25f068627d10e54bd030464f8952f5b2211d4ba26047fe209377470862a"
 wrksrc="dwarves-$version"
 build_style="cmake"
 configure_args="-D__LIB=lib"
