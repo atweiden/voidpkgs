@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql13"
 version=13.5
-revision=1
+revision=2
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 short_desc="Sophisticated open-source Object-Relational DBMS"
@@ -143,7 +143,7 @@ postgresql13-doc_package() {
   }
 }
 
-postgresql-libs_package() {
+postgresql13-libs_package() {
   unset conflicts
   short_desc="PostgreSQL shared libraries"
   conflicts+=" postgresql9.6-libs>=0"
@@ -159,7 +159,7 @@ postgresql-libs_package() {
   }
 }
 
-postgresql-libs-devel_package() {
+postgresql13-libs-devel_package() {
   unset conflicts
   depends="postgresql-libs>=${version}_$revision"
   short_desc="PostgreSQL shared libraries (development files)"
