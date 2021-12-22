@@ -1,52 +1,87 @@
-# Template file for 'openblas'
-pkgname=openblas
+maintainer="nox"
+pkgname="openblas"
 version=0.3.19
 revision=1
-wrksrc="OpenBLAS-${version}"
-build_style=gnu-makefile
-make_build_args="HOSTCC=gcc USE_OPENMP=1"
-make_install_args="OPENBLAS_INCLUDE_DIR=\$(PREFIX)/include/openblas"
-hostmakedepends="perl gcc-fortran"
-makedepends="libgomp-devel"
 short_desc="Optimized BLAS (Basic Linear Algebra Subprograms) based on GotoBLAS2"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="BSD-3-Clause"
+makedepends="libgomp-devel"
+hostmakedepends+=" gcc-fortran"
+hostmakedepends+=" perl"
 homepage="https://www.openblas.net/"
-changelog="https://raw.githubusercontent.com/xianyi/OpenBLAS/v${version}/Changelog.txt"
-distfiles="https://github.com/xianyi/OpenBLAS/archive/v${version}.tar.gz"
-checksum=947f51bfe50c2a0749304fbe373e00e7637600b0a47b78a51382aeb30ca08562
+license="BSD-3-Clause"
+changelog="https://github.com/xianyi/OpenBLAS/raw/v$version/Changelog.txt"
+distfiles="https://github.com/xianyi/OpenBLAS/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="947f51bfe50c2a0749304fbe373e00e7637600b0a47b78a51382aeb30ca08562"
+wrksrc="OpenBLAS-$version"
+build_style="gnu-makefile"
+make_build_args+=" HOSTCC=gcc"
+make_build_args+=" USE_OPENMP=1"
+make_install_args="OPENBLAS_INCLUDE_DIR=\$(PREFIX)/include/openblas"
 
 case "$XBPS_TARGET_MACHINE" in
-	ppc64*) ;;
-	ppc*) broken="crashes during build";;
+  ppc64*)
+    ;;
+  ppc*)
+    broken="crashes during build"
+    ;;
 esac
 
-case "${XBPS_TARGET_MACHINE}" in
-	armv5*) make_build_args+=" TARGET=ARMV5" ;;
-	armv6*) make_build_args+=" TARGET=ARMV6" ;;
-	armv7*) make_build_args+=" TARGET=ARMV7" ;;
-	aarch64*) make_build_args+=" TARGET=ARMV8 DYNAMIC_ARCH=1" ;;
-	i686*) make_build_args+=" BINARY=32 TARGET=GENERIC DYNAMIC_ARCH=1" ;;
-	x86_64*) make_build_args+=" BINARY=64 TARGET=GENERIC DYNAMIC_ARCH=1" ;;
-	ppc64le*) make_build_args+=" TARGET=POWER8 DYNAMIC_ARCH=1" ;;
-	ppc64*) make_build_args+=" TARGET=PPC970MP" ;; # dynamic arch broken for <power6
-	ppc*) make_build_args+=" TARGET=PPCG4" ;;
-	mips*) broken="Not supported" ;;
-	*) broken="Add your CPU" ;;
+case "$XBPS_TARGET_MACHINE" in
+  armv5*)
+    make_build_args+=" TARGET=ARMV5"
+    ;;
+  armv6*)
+    make_build_args+=" TARGET=ARMV6"
+    ;;
+  armv7*)
+    make_build_args+=" TARGET=ARMV7"
+    ;;
+  aarch64*)
+    make_build_args+=" TARGET=ARMV8"
+    make_build_args+=" DYNAMIC_ARCH=1"
+    ;;
+  i686*)
+    make_build_args+=" BINARY=32"
+    make_build_args+=" TARGET=GENERIC"
+    make_build_args+=" DYNAMIC_ARCH=1"
+    ;;
+  x86_64*)
+    make_build_args+=" BINARY=64"
+    make_build_args+=" TARGET=GENERIC"
+    make_build_args+=" DYNAMIC_ARCH=1"
+    ;;
+  ppc64le*)
+    make_build_args+=" TARGET=POWER8"
+    make_build_args+=" DYNAMIC_ARCH=1"
+    ;;
+  ppc64*)
+    # dynamic arch broken for <power6
+    make_build_args+=" TARGET=PPC970MP"
+    ;;
+  ppc*)
+    make_build_args+=" TARGET=PPCG4"
+    ;;
+  mips*)
+    broken="Not supported"
+    ;;
+  *)
+    broken="Add your CPU"
+    ;;
 esac
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 openblas-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include/openblas
-		vmove usr/lib/cmake
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove usr/lib/libopenblas.so
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include/openblas
+    vmove usr/lib/cmake
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove usr/lib/libopenblas.so
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
