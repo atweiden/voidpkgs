@@ -391,7 +391,7 @@ libpcre.so.1 libpcre-8.30_1
 libpcre2-16.so.0 libpcre2-10.22_1
 libpcre2-32.so.0 libpcre2-10.22_1
 libpcre2-8.so.0 libpcre2-10.22_1
-libpcre2-posix.so.2 libpcre2-10.30_1
+libpcre2-posix.so.3 libpcre2-10.39_1
 libpcrecpp.so.0 libpcrecpp-7.8_1
 libpcsclite.so.1 libpcsclite-1.8.11_1
 libpcscspy.so.0 libpcsclite-1.8.11_1
