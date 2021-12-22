@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.5.10
-revision=1
+revision=2
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="mariadb-client"
 makedepends+=" boost-devel"
@@ -59,6 +59,9 @@ make_dirs+=" /usr/lib/mysql/plugin/auth_pam_tool_dir 0700 mysql root"
 lib32disabled="yes"
 provides="mysql-${version}_$revision"
 replaces="mysql>=0"
+
+CFLAGS="-UNDEBUG"
+CXXFLAGS="-UNDEBUG"
 
 post_patch() {
   case "$XBPS_TARGET_MACHINE" in
