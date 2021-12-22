@@ -575,6 +575,7 @@ constant %PKG = Map.new(
     'oblibs' => ['oblibs-devel'],
     'oniguruma' => qw<oniguruma-devel
                       oniguruma-doc>,
+    'openblas' => ['openblas-devel'],
     'openldap' => qw<libldap
                      libldap-devel
                      openldap-tools>,
