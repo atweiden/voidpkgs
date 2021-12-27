@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dnscrypt-proxy"
 version=2.1.1
-revision=1
+revision=2
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/DNSCrypt/dnscrypt-proxy"
 license="ISC"
@@ -22,6 +22,9 @@ post_install() {
   vconf dnscrypt-proxy/example-dnscrypt-proxy.toml dnscrypt-proxy.toml
   vlicense LICENSE
   vsv dnscrypt-proxy
+  for example in dnscrypt-proxy/example*txt; do
+    vdoc "$example"
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
