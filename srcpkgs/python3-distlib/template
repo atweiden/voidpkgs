@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-distlib"
-version=0.3.2
-revision=2
+version=0.3.4
+revision=1
 short_desc="Low-level components of distutils2/packaging, with higher-level APIs"
 depends="python3"
 hostmakedepends="python3-setuptools"
@@ -9,7 +9,7 @@ homepage="https://bitbucket.org/pypa/distlib"
 license="Python-2.0"
 changelog="https://bitbucket.org/pypa/distlib/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/d/distlib/distlib-$version.zip"
-checksum="106fef6dc37dd8c0e2c0a60d3fca3e77460a48907f335fa28420463a6f799736"
+checksum="e4b58818180336dc9c529bfb9a0b58728ffc09ad92027a3f30b7cd91e3458579"
 wrksrc="distlib-$version"
 build_style="python3-module"
 
