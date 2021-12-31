@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-flit_core"
-version=3.5.1
+version=3.6.0
 revision=1
 short_desc="Simplified packaging of Python modules - PEP 517 build backend"
 depends="python3-tomli"
@@ -11,7 +11,7 @@ homepage="https://flit.readthedocs.io"
 license="BSD-3-Clause"
 changelog="https://flit.readthedocs.io/en/latest/history.html"
 distfiles="$PYPI_SITE/f/flit/flit-$version.tar.gz"
-checksum="2e3b7377714483ecc54b236330d7bf3467b9f5b909b22333b50b6b4324162510"
+checksum="b1464e006df4df4c8eeb37671c0e0ce66e1d04e4a36d91b702f180a25fde3c11"
 wrksrc="flit-$version"
 build_wrksrc="flit_core"
 build_style="python3-pep517"
