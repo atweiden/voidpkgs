@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="strace"
-version=5.14
+version=5.15
 revision=1
 short_desc="System Call Tracer"
 makedepends="$(vopt_if libunwind libunwind-devel)"
@@ -8,7 +8,7 @@ homepage="https://strace.io/"
 license="LGPL-2.1-or-later"
 changelog="https://github.com/strace/strace/raw/master/NEWS"
 distfiles="https://github.com/strace/strace/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="901bee6db5e17debad4530dd9ffb4dc9a96c4a656edbe1c3141b7cb307b11e73"
+checksum="ebcac22f297335294dc654425cbc3ce013343bece6da2699e3aec86aee8d72dc"
 build_style="gnu-configure"
 configure_args+=" --enable-silent-rules"
 configure_args+=" $(vopt_with libunwind)"
