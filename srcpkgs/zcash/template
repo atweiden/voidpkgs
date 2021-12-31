@@ -1,0 +1,121 @@
+maintainer="nox"
+pkgname="zcash"
+version=4.6.0
+revision=1
+# see: zcash/zcash/depends/packages/bdb.mk
+_db_version=6.2.23
+# see: zcash/zcash/depends/packages/native_rust.mk
+_rust_version=1.57.0
+short_desc="Implementation of the Zerocash protocol"
+# for zcash-fetch-params
+depends="curl"
+makedepends+=" boost-devel"
+makedepends+=" gtest-devel"
+makedepends+=" libatomic-devel"
+makedepends+=" libevent-devel"
+makedepends+=" libsodium-devel"
+makedepends+=" utfcpp"
+makedepends+=" zlib-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" cmake"
+hostmakedepends+=" git"
+hostmakedepends+=" libtool"
+hostmakedepends+=" m4"
+hostmakedepends+=" pkg-config"
+# crate dependencies require newer version of rust
+hostmakedepends+=" rustup"
+hostmakedepends+=" which"
+homepage="https://z.cash/"
+license="MIT"
+distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
+checksum+=" cff39a413672fec5d6a719efb14ab5191d0221e055a848cec5916ea106c6c20c"
+checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
+build_style="gnu-configure"
+build_helper="rust"
+configure_args+=" --disable-bench"
+configure_args+=" --disable-ccache"
+configure_args+=" --disable-man"
+configure_args+=" --disable-static"
+configure_args+=" --disable-tests"
+configure_args+=" --disable-zmq"
+configure_args+=" --enable-glibc-back-compat"
+configure_args+=" --enable-hardening"
+configure_args+=" --enable-online-rust"
+configure_args+=" --enable-reduce-exports"
+configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
+configure_args+=" --with-libs"
+
+CPPFLAGS="-I$XBPS_BUILDDIR/db-root/include -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
+LDFLAGS="-L$XBPS_BUILDDIR/db-root/lib"
+
+# enable upstream build scripts to access rustc
+export PATH="$CARGO_HOME/bin:$PATH"
+
+post_fetch() {
+  rustup-init -y
+  rustup toolchain install "$_rust_version" --profile minimal
+  rustup default "$_rust_version"
+}
+
+post_extract() {
+  cd "$XBPS_BUILDDIR/db-$_db_version/build_unix"
+  ../dist/configure \
+    --disable-replication \
+    --disable-shared \
+    --enable-cxx \
+    --enable-option-checking \
+    --prefix='/' \
+    --with-pic
+  make libdb_cxx-6.2.a libdb-6.2.a
+  make DESTDIR="$XBPS_BUILDDIR/db-root" install
+}
+
+pre_configure() {
+  NOCONFIGURE=1 ./autogen.sh
+  case "$XBPS_TARGET_MACHINE" in
+    aarch64*)
+      CFLAGS="${CFLAGS/armv8-a/armv8-a+crc+crypto}"
+      CXXFLAGS="${CXXFLAGS/armv8-a/armv8-a+crc+crypto}"
+      ;;
+  esac
+}
+
+post_install() {
+  vbin zcutil/fetch-params.sh zcash-fetch-params
+
+  vsconf contrib/debian/examples/zcash.conf
+
+  vmkdir "usr/share/$pkgname"
+  vcopy share/rpcuser "usr/share/$pkgname"
+
+  for b in zcash-cli \
+           zcash-tx \
+           zcashd; do
+    vcompletion "contrib/$b.bash-completion" bash "$b"
+  done
+
+  vlicense COPYING
+}
+
+zcash-devel_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+  }
+}
+
+zcash-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vdoc README.md
+    vdoc SECURITY.md
+    vcopy doc "usr/share/doc/$pkgname"
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
