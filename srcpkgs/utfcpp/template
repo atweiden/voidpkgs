@@ -1,0 +1,32 @@
+maintainer="nox"
+pkgname="utfcpp"
+version=3.2.1
+revision=1
+_ftest_gitrev="9c7e60cc1b7c76f59e2ffbbc3dad15bafc5cdac5"
+short_desc="UTF-8 with C++ in a portable way"
+homepage="https://github.com/nemtrif/utfcpp"
+license="BSL-1.0"
+distfiles+=" https://github.com/nemtrif/utfcpp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/nemtrif/ftest/archive/$_ftest_gitrev.tar.gz"
+checksum+=" 8d6aa7d77ad0abb35bb6139cb9a33597ac4c5b33da6a004ae42429b8598c9605"
+checksum+=" 2a28f2c715eabf10be7c1ff53ff6be85828bbc7dd484909e5678acf5e4831b12"
+skip_extraction="$_ftest_gitrev.tar.gz"
+build_style="cmake"
+configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DUTF8_SAMPLES=OFF"
+
+post_extract() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$_ftest_gitrev.tar.gz" \
+    --strip-components=1 -C "$wrksrc/extern/ftest"
+}
+
+do_check() {
+  cd build
+  CTEST_OUTPUT_ON_FAILURE=1 ctest
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
