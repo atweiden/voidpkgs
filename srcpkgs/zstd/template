@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zstd"
 version=1.5.1
-revision=1
+revision=2
 short_desc="Fast real-time compression algorithm - CLI tool"
 makedepends+=" liblz4-devel"
 makedepends+=" liblzma-devel"
@@ -15,12 +15,8 @@ checksum="e28b2f2ed5710ea0d3a1ecac3f6a947a016b972b9dd30242369010e5f53d7002"
 bootstrap="yes"
 
 do_build() {
-  make \
-    "$makejobs" \
-    lib-mt
-  make \
-    "$makejobs" \
-    -C contrib/pzstd
+  make "$makejobs" PREFIX="/usr" lib-mt
+  make "$makejobs" PREFIX="/usr" -C contrib/pzstd
 }
 
 do_check() {
