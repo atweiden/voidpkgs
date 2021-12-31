@@ -1,23 +1,22 @@
 maintainer="nox"
 pkgname="python3-Pygments"
-version=2.10.0
-revision=2
+version=2.11.0
+revision=1
 short_desc="Generic syntax highlighter written in Python"
 depends="python3"
-checkdepends="python3-pytest"
+checkdepends+=" python3-lxml"
+checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://pygments.org"
 license="BSD-2-Clause"
 changelog="https://github.com/pygments/pygments/raw/master/CHANGES"
 distfiles="$PYPI_SITE/P/Pygments/Pygments-$version.tar.gz"
-checksum="f398865f7eb6874156579fdf36bc840a03cab64d1cde9e93d68f46a425ec52c6"
+checksum="51130f778a028f2d19c143fce00ced6f8b10f726e17599d7e91b290f6cbcda0c"
 wrksrc="Pygments-$version"
 build_style="python3-module"
+# ignored tests rely on unpackaged wcag_contrast_ratio module
+make_check_args="--ignore=tests/contrast/test_contrasts.py"
 alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
-
-do_check() {
-  python3 -m pytest
-}
 
 post_install() {
   vlicense LICENSE
