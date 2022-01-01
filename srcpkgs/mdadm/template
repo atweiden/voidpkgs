@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="mdadm"
-version=4.1
-revision=4
+version=4.2
+revision=1
 short_desc="Tool for managing/monitoring Linux md device arrays"
 makedepends="eudev-libudev-devel"
 hostmakedepends="pkg-config"
 homepage="https://git.kernel.org/cgit/utils/mdadm/mdadm.git/log/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/raid/mdadm/$pkgname-$version.tar.xz"
-checksum="ab7688842908d3583a704d491956f31324c3a5fc9f6a04653cb75d19f1934f4a"
+checksum="461c215670864bb74a4d1a3620684aa2b2f8296dffa06743f26dda5557acf01d"
 
 pre_configure() {
   sed \
