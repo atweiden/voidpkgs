@@ -417,6 +417,7 @@ constant %PKG = Map.new(
     'libsasl' => ['libsasl-devel'],
     'libseccomp' => ['libseccomp-devel'],
     'libsigc++' => ['libsigc++-devel'],
+    'libsigsegv' => ['libsigsegv-devel'],
     'libsmbios' => qw<libsmbios-devel
                       libsmbios-utils
                       python3-libsmbios>,
