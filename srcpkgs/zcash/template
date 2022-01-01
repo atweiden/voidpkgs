@@ -17,6 +17,7 @@ depends="curl"
 makedepends+=" boost-devel"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
+makedepends+=" utfcpp"
 checkdepends+=" curl"
 checkdepends+=" gtest-devel"
 # most checks require sysctl and ps
@@ -38,11 +39,14 @@ hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
 distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
 checksum+=" cff39a413672fec5d6a719efb14ab5191d0221e055a848cec5916ea106c6c20c"
+checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
 checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
+skip_extraction+=" db-$_db_version.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
 build_style="gnu-configure"
@@ -63,25 +67,12 @@ if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args="${configure_args/disable-tests/enable-tests}"
   configure_args="${configure_args/--enable-reduce-exports/}"
 fi
-build_options="wallet"
-build_options_default="wallet"
-desc_option_wallet="Enable wallet"
 
 # directory in which to build custom libraries
 _depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
 
-_cppflags_nowallet+=" -I$_depends_builddir/libevent-root/include"
-_cppflags_nowallet+=" -I$_depends_builddir/libsodium-root/include"
-
-_cppflags_wallet+=" $_cppflags_nowallet"
-_cppflags_wallet+=" -I$_depends_builddir/db-root/include"
-_cppflags_wallet+=" -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
-
-_ldflags_nowallet+=" -L$_depends_builddir/libevent-root/lib"
-_ldflags_nowallet+=" -L$_depends_builddir/libsodium-root/lib"
-
-_ldflags_wallet+=" $_ldflags_nowallet"
-_ldflags_wallet+=" -L$_depends_builddir/db-root/lib"
+CPPFLAGS="-I$_depends_builddir/db-root/include -I$_depends_builddir/libevent-root/include -I$_depends_builddir/libsodium-root/include -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
+LDFLAGS="-L$_depends_builddir/db-root/lib -L$_depends_builddir/libevent-root/lib -L$_depends_builddir/libsodium-root/lib"
 
 _do_extract_db() {
   bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/db-$_db_version.tar.gz" \
@@ -164,50 +155,6 @@ _do_build_libsodium() {
   make DESTDIR="$_depends_builddir/libsodium-root" install
 }
 
-if [[ $(vopt_if wallet true) ]]; then
-  makedepends+=" utfcpp"
-  distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
-  checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
-  skip_extraction+=" db-$_db_version.tar.gz"
-
-  CPPFLAGS="$_cppflags_wallet"
-  LDFLAGS="$_ldflags_wallet"
-
-  post_extract() {
-    _do_extract_db
-    _do_build_db
-
-    _do_extract_libevent
-    _do_build_libevent
-
-    _do_extract_libsodium
-    _do_build_libsodium
-  }
-
-  post_patch() {
-    # move db binaries per zcash/zcash/depends/packages/bdb.mk
-    # presumably for qa testing
-    mkdir -p zcutil/bin
-    mv -f "$_depends_builddir/db-root/bin"/db_* zcutil/bin
-  }
-else
-  # ftbfs as of v4.6.0
-  broken="AppInit2 error: 'string' was not declared in this scope"
-
-  configure_args+=" --disable-wallet"
-
-  CPPFLAGS="$_cppflags_nowallet"
-  LDFLAGS="$_ldflags_nowallet"
-
-  post_extract() {
-    _do_extract_libevent
-    _do_build_libevent
-
-    _do_extract_libsodium
-    _do_build_libsodium
-  }
-fi
-
 # enable upstream build scripts to access rustc
 export PATH="$CARGO_HOME/bin:$PATH"
 
@@ -218,6 +165,24 @@ post_fetch() {
   rustup-init -y
   rustup toolchain install "$_rust_version" --profile minimal
   rustup default "$_rust_version"
+}
+
+post_extract() {
+  _do_extract_db
+  _do_build_db
+
+  _do_extract_libevent
+  _do_build_libevent
+
+  _do_extract_libsodium
+  _do_build_libsodium
+}
+
+post_patch() {
+  # move db binaries per zcash/zcash/depends/packages/bdb.mk
+  # presumably for qa testing
+  mkdir -p zcutil/bin
+  mv -f "$_depends_builddir/db-root/bin"/db_* zcutil/bin
 }
 
 pre_configure() {
