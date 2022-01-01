@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="apache"
-version=2.4.51
+version=2.4.52
 revision=1
 short_desc="High performance Unix-based HTTP server"
 depends="apache-htpasswd"
@@ -23,7 +23,7 @@ homepage="http://httpd.apache.org/"
 license="Apache-2.0"
 changelog="http://www.apache.org/dist/httpd/CHANGES_2.4"
 distfiles="https://dlcdn.apache.org/httpd/httpd-$version.tar.bz2"
-checksum="20e01d81fecf077690a4439e3969a9b22a09a8d43c525356e863407741b838f4"
+checksum="0127f7dc497e9983e9c51474bed75e45607f2f870a7675a86dc90af6d572f5c9"
 conf_files+=" /etc/apache/extra/*.conf"
 conf_files+=" /etc/apache/httpd.conf"
 conf_files+=" /etc/apache/magic"
