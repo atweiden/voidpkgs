@@ -1,0 +1,46 @@
+diff --git i/qa/zcash/full_test_suite.py w/qa/zcash/full_test_suite.py
+index 173e07f09..b8bd623cf 100755
+--- i/qa/zcash/full_test_suite.py
++++ w/qa/zcash/full_test_suite.py
+@@ -133,9 +133,7 @@ def ensure_no_dot_so_in_depends():
+     return exit_code == 0
+ 
+ def util_test():
+-    python = []
+-    if os.path.isfile('/usr/local/bin/python3'):
+-        python = ['/usr/local/bin/python3']
++    python = ['python3']
+ 
+     return subprocess.call(
+         python + [repofile('src/test/bitcoin-util-test.py')],
+@@ -144,18 +142,12 @@ def util_test():
+     ) == 0
+ 
+ def rust_test():
+-    arch_dir = get_arch_dir()
+-    if arch_dir is None:
+-        return False
+-
+-    rust_env = os.environ.copy()
+-    rust_env['RUSTC'] = os.path.join(arch_dir, 'native', 'bin', 'rustc')
+     return subprocess.call([
+-        os.path.join(arch_dir, 'native', 'bin', 'cargo'),
++        'cargo',
+         'test',
+         '--manifest-path',
+-        os.path.join(REPOROOT, 'Cargo.toml'),
+-    ], env=rust_env) == 0
++        os.path.join(REPOROOT, 'Cargo.toml')
++    ]) == 0
+ 
+ #
+ # Tests
+@@ -182,7 +174,7 @@ STAGE_COMMANDS = {
+     'util-test': util_test,
+     'secp256k1': ['make', '-C', repofile('src/secp256k1'), 'check'],
+     'univalue': ['make', '-C', repofile('src/univalue'), 'check'],
+-    'rpc': [repofile('qa/pull-tester/rpc-tests.py')],
++    'rpc': [repofile('qa/pull-tester/rpc-tests.py'), '--nozmq'],
+ }
+ 
+ 

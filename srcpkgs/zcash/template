@@ -2,20 +2,29 @@ maintainer="nox"
 pkgname="zcash"
 version=4.6.0
 revision=1
-# see: zcash/zcash/depends/packages/bdb.mk
+# see:
+# zcash/zcash/depends/packages/bdb.mk
+# zcash/zcash/depends/packages/libevent.mk
+# zcash/zcash/depends/packages/libsodium.mk
+# zcash/zcash/depends/packages/native_rust.mk
 _db_version=6.2.23
-# see: zcash/zcash/depends/packages/native_rust.mk
+_libevent_version=2.1.12
+_libsodium_version=1.0.18
 _rust_version=1.57.0
 short_desc="Implementation of the Zerocash protocol"
 # for zcash-fetch-params
 depends="curl"
 makedepends+=" boost-devel"
-makedepends+=" gtest-devel"
-makedepends+=" libatomic-devel"
-makedepends+=" libevent-devel"
-makedepends+=" libsodium-devel"
-makedepends+=" utfcpp"
-makedepends+=" zlib-devel"
+makedepends+=" libgcc"
+makedepends+=" libstdc++"
+checkdepends+=" curl"
+checkdepends+=" gtest-devel"
+# most checks require sysctl and ps
+checkdepends+=" procps-ng"
+checkdepends+=" python3"
+checkdepends+=" python3-pyblake2"
+checkdepends+=" python3-requests"
+checkdepends+=" python3-simplejson"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" cmake"
@@ -29,9 +38,13 @@ hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
 distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
+distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
+distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
 checksum+=" cff39a413672fec5d6a719efb14ab5191d0221e055a848cec5916ea106c6c20c"
-checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
+checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
+checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
+skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
+skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
 build_style="gnu-configure"
 build_helper="rust"
 configure_args+=" --disable-bench"
@@ -46,30 +59,165 @@ configure_args+=" --enable-online-rust"
 configure_args+=" --enable-reduce-exports"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libs"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args="${configure_args/disable-tests/enable-tests}"
+  configure_args="${configure_args/--enable-reduce-exports/}"
+fi
+build_options="wallet"
+build_options_default="wallet"
+desc_option_wallet="Enable wallet"
 
-CPPFLAGS="-I$XBPS_BUILDDIR/db-root/include -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
-LDFLAGS="-L$XBPS_BUILDDIR/db-root/lib"
+# directory in which to build custom libraries
+_depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
+
+_cppflags_nowallet+=" -I$_depends_builddir/libevent-root/include"
+_cppflags_nowallet+=" -I$_depends_builddir/libsodium-root/include"
+
+_cppflags_wallet+=" $_cppflags_nowallet"
+_cppflags_wallet+=" -I$_depends_builddir/db-root/include"
+_cppflags_wallet+=" -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
+
+_ldflags_nowallet+=" -L$_depends_builddir/libevent-root/lib"
+_ldflags_nowallet+=" -L$_depends_builddir/libsodium-root/lib"
+
+_ldflags_wallet+=" $_ldflags_nowallet"
+_ldflags_wallet+=" -L$_depends_builddir/db-root/lib"
+
+_do_extract_db() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/db-$_db_version.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_extract_libevent() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libevent-$_libevent_version-stable.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_extract_libsodium() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libsodium-$_libsodium_version.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_build_db() {
+  local _configure_args_db
+
+  cd "$_depends_builddir/db-$_db_version"
+
+  patch -Np1 -i "$FILESDIR/db/clang-12-stpcpy-issue.diff"
+  patch -Np1 -i "$FILESDIR/db/winioctl-and-atomic_init_db.patch"
+
+  cd "$_depends_builddir/db-$_db_version/build_unix"
+
+  _configure_args_db+=" --disable-replication"
+  _configure_args_db+=" --disable-shared"
+  _configure_args_db+=" --enable-cxx"
+  _configure_args_db+=" --enable-option-checking"
+  _configure_args_db+=" --prefix=/"
+  _configure_args_db+=" --with-pic"
+  if [[ "${XBPS_TARGET_MACHINE%-musl}" == "aarch64" ]]; then
+    _configure_args_db+=" --disable-atomicsupport"
+  fi
+
+  ../dist/configure $_configure_args_db
+  CXXFLAGS="$CXXFLAGS -std=c++17" \
+  LDFLAGS="$LDFLAGS -static-libstdc++ -lc++abi" \
+    make libdb_cxx-6.2.a libdb-6.2.a
+  make DESTDIR="$_depends_builddir/db-root" install
+}
+
+_do_build_libevent() {
+  local _configure_args_libevent
+
+  cd "$_depends_builddir/libevent-$_libevent_version-stable"
+
+  _configure_args_libevent+=" --disable-debug-mode"
+  _configure_args_libevent+=" --disable-dependency-tracking"
+  _configure_args_libevent+=" --disable-libevent-regress"
+  _configure_args_libevent+=" --disable-openssl"
+  _configure_args_libevent+=" --disable-shared"
+  _configure_args_libevent+=" --enable-option-checking"
+  _configure_args_libevent+=" --prefix=/"
+  _configure_args_libevent+=" --with-pic"
+
+  ./autogen.sh
+  ./configure $_configure_args_libevent
+  make
+  make DESTDIR="$_depends_builddir/libevent-root" install
+}
+
+_do_build_libsodium() {
+  local _configure_args_libsodium
+
+  cd "$_depends_builddir/libsodium-$_libsodium_version"
+
+  patch -Np1 -i "$FILESDIR/libsodium/1.0.15-pubkey-validation.diff"
+  patch -Np1 -i "$FILESDIR/libsodium/1.0.15-signature-validation.diff"
+
+  _configure_args_libsodium+=" lt_cv_prog_compiler_static_works=yes"
+  _configure_args_libsodium+=" --disable-shared"
+  _configure_args_libsodium+=" --enable-static"
+  _configure_args_libsodium+=" --prefix=/"
+
+  DO_NOT_UPDATE_CONFIG_SCRIPTS=1 ./autogen.sh
+  ./configure $_configure_args_libsodium
+  make
+  make DESTDIR="$_depends_builddir/libsodium-root" install
+}
+
+if [[ $(vopt_if wallet true) ]]; then
+  makedepends+=" utfcpp"
+  distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
+  checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
+  skip_extraction+=" db-$_db_version.tar.gz"
+
+  CPPFLAGS="$_cppflags_wallet"
+  LDFLAGS="$_ldflags_wallet"
+
+  post_extract() {
+    _do_extract_db
+    _do_build_db
+
+    _do_extract_libevent
+    _do_build_libevent
+
+    _do_extract_libsodium
+    _do_build_libsodium
+  }
+
+  post_patch() {
+    # move db binaries per zcash/zcash/depends/packages/bdb.mk
+    # presumably for qa testing
+    mkdir -p zcutil/bin
+    mv -f "$_depends_builddir/db-root/bin"/db_* zcutil/bin
+  }
+else
+  # ftbfs as of v4.6.0
+  broken="AppInit2 error: 'string' was not declared in this scope"
+
+  configure_args+=" --disable-wallet"
+
+  CPPFLAGS="$_cppflags_nowallet"
+  LDFLAGS="$_ldflags_nowallet"
+
+  post_extract() {
+    _do_extract_libevent
+    _do_build_libevent
+
+    _do_extract_libsodium
+    _do_build_libsodium
+  }
+fi
 
 # enable upstream build scripts to access rustc
 export PATH="$CARGO_HOME/bin:$PATH"
+
+# enable finding custom built libraries through pkg-config
+export PKG_CONFIG_PATH="$_depends_builddir/libevent-root/lib/pkgconfig:$_depends_builddir/libsodium-root/lib/pkgconfig"
 
 post_fetch() {
   rustup-init -y
   rustup toolchain install "$_rust_version" --profile minimal
   rustup default "$_rust_version"
-}
-
-post_extract() {
-  cd "$XBPS_BUILDDIR/db-$_db_version/build_unix"
-  ../dist/configure \
-    --disable-replication \
-    --disable-shared \
-    --enable-cxx \
-    --enable-option-checking \
-    --prefix='/' \
-    --with-pic
-  make libdb_cxx-6.2.a libdb-6.2.a
-  make DESTDIR="$XBPS_BUILDDIR/db-root" install
 }
 
 pre_configure() {
@@ -80,6 +228,11 @@ pre_configure() {
       CXXFLAGS="${CXXFLAGS/armv8-a/armv8-a+crc+crypto}"
       ;;
   esac
+}
+
+do_check() {
+  ./zcutil/fetch-params.sh
+  ./qa/zcash/full_test_suite.py
 }
 
 post_install() {
