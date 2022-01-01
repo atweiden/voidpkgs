@@ -1,23 +1,22 @@
 maintainer="nox"
 pkgname="delve"
-version=1.7.1
+version=1.8.0
 revision=1
 short_desc="Debugger for the Go programming language"
+# https://github.com/go-delve/delve/blob/master/pkg/proc/native/support_sentinel.go
+archs+=" aarch64*"
+archs+=" i686*"
+archs+=" x86_64*"
 homepage="https://github.com/go-delve/delve"
 license="MIT"
+changelog="https://github.com/go-delve/delve/raw/master/CHANGELOG.md"
 distfiles="https://github.com/go-delve/delve/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0734b86d48291749ba2537fa6c03e4c3451628f630055c877789e0346db8d67d"
+checksum="086106a4776fa155bf20c37d27b9caed55255be6359c7f0bda1893d3adbb614e"
 build_style="go"
 go_import_path="github.com/go-delve/delve/cmd/dlv"
 go_ldflags="-s -w -buildid="
 
 export GOFLAGS="-trimpath"
-
-case "$XBPS_TARGET_MACHINE" in
-  i686*|arm*|ppc*)
-    broken="yes"
-    ;;
-esac
 
 post_install() {
   vlicense LICENSE
