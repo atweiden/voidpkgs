@@ -173,6 +173,7 @@ constant %PKG = Map.new(
                   xmlwf>,
     'expect' => ['expect-devel'],
     'fcgi' => ['fcgi-devel'],
+    'ffcall' => ['ffcall-devel'],
     'fftw' => qw<fftw-devel
                  libfftw>,
     'file' => qw<file-devel

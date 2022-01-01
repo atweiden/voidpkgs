@@ -75,6 +75,10 @@ libf2fs_format.so.4 f2fs-tools-1.11.0_1
 libfaketime.so.1 faketime-0.9.7_1
 libfaketimeMT.so.1 faketime-0.9.7_1
 libfcgi.so.0 fcgi-2.4.0_2
+libavcall.so.1 ffcall-2.1_1
+libcallback.so.1 ffcall-2.1_1
+libffcall.so.0 ffcall-2.1_1
+libtrampoline.so.1 ffcall-2.1_1
 libflint.so.16 flintlib-2.8.0_1
 libfmt.so.8 fmt-8.0.1_1
 libfontconfig.so.1 fontconfig-2.6.0_1
