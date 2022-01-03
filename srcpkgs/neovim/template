@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="neovim"
-version=0.6.0
+version=0.6.1
 revision=1
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 depends="libvterm>=0.1.0"
@@ -20,7 +20,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://neovim.io"
 license="Apache-2.0, custom:Vim"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2cfd600cfa5bb57564cc22ffbbbcb2c91531053fc3de992df33656614384fa4c"
+checksum="dd882c21a52e5999f656cae3f336b5fc702d52addd4d9b5cd3dc39cfff35e864"
 build_style="cmake"
 configure_args="-DCMAKE_BUILD_TYPE=Release"
 alternatives+=" vi:vi.1:/usr/share/man/man1/nvim.1"
