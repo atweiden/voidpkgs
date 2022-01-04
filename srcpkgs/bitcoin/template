@@ -1,33 +1,195 @@
 maintainer="nox"
 pkgname="bitcoin"
-version=0.21.0
+version=22.0
 revision=1
-short_desc="Bitcoin is a peer-to-peer network based digital currency"
+# see:
+# bitcoin/bitcoin/depends/packages/bdb.mk
+# bitcoin/bitcoin/depends/packages/libevent.mk
+# bitcoin/bitcoin/depends/packages/sqlite.mk
+_db_version=4.8.30
+_libevent_version=2.1.12
+_sqlite_version=3.32.1
+_sqlite_amalgamationver="$(printf "%d%02d%02d00\n" ${_sqlite_version//./ })"
+short_desc="Decentralized, peer to peer payment network"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
-makedepends+=" libevent-devel"
-makedepends+=" $(vopt_if wallet 'db-devel sqlite-devel')"
+makedepends+=" libgcc"
+makedepends+=" libstdc++"
+checkdepends+=" gtest-devel"
+checkdepends+=" procps-ng"
+checkdepends+=" python3"
+hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
+hostmakedepends+=" m4"
+hostmakedepends+=" make"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" yasm"
+hostmakedepends+=" which"
 homepage="https://bitcoin.org/"
 license="MIT"
-distfiles="https://bitcoin.org/bin/bitcoin-core-$version/$pkgname-$version.tar.gz"
-checksum="1a91202c62ee49fb64d57a52b8d6d01cd392fffcbef257b573800f9289655f37"
-# both provide libbitcoinconsensus.so.0
-conflicts="litecoin>=0"
+distfiles+=" https://bitcoin.org/bin/bitcoin-core-$version/$pkgname-$version.tar.gz"
+distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.NC.tar.gz"
+distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
+distfiles+=" https://sqlite.org/2020/sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
+checksum+=" d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b"
+checksum+=" 12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef"
+checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
+checksum+=" 486748abfb16abd8af664e3a5f03b228e5f124682b0c942e157644bf6fff7d10"
+skip_extraction+=" db-$_db_version.NC.tar.gz"
+skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
+skip_extraction+=" sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
 build_style="gnu-configure"
+configure_args+=" --disable-bench"
 configure_args+=" --disable-ccache"
+configure_args+=" --disable-fuzz-binary"
+configure_args+=" --disable-gui-tests"
 configure_args+=" --disable-static"
+configure_args+=" --disable-tests"
+configure_args+=" --disable-zmq"
+configure_args+=" --enable-glibc-back-compat"
 configure_args+=" --enable-hardening"
+configure_args+=" --enable-reduce-exports"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --without-gui"
 configure_args+=" --without-miniupnpc"
-configure_args+=" $(vopt_if wallet --with-incompatible-bdb --disable-wallet)"
-build_options="wallet"
-build_options_default="wallet"
-desc_option_wallet="Enable wallet (requires incompatible Berkeley DB)"
+configure_args+=" --without-natpnp"
+configure_args+=" --without-qrencode"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args="${configure_args/disable-tests/enable-tests}"
+  configure_args="${configure_args/--enable-reduce-exports/}"
+fi
+# both provide libbitcoinconsensus.so.0
+conflicts="litecoin>=0"
+
+# directory in which to build custom libraries
+_depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
+
+CPPFLAGS="-I$_depends_builddir/db-root/include -I$_depends_builddir/libevent-root/include -I$_depends_builddir/sqlite-root/include"
+LDFLAGS="-L$_depends_builddir/db-root/lib -L$_depends_builddir/libevent-root/lib -L$_depends_builddir/sqlite-root/lib"
+
+_do_extract_db() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/db-$_db_version.NC.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_extract_libevent() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libevent-$_libevent_version-stable.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_extract_sqlite() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/sqlite-autoconf-$_sqlite_amalgamationver.tar.gz" \
+    -C "$_depends_builddir"
+}
+
+_do_build_db() {
+  local _configure_args_db
+
+  cd "$_depends_builddir/db-$_db_version.NC"
+
+  # from bitcoin/bitcoin/depends/patches/bdb/clang_cxx_11.patch
+  patch -Np1 -i "$FILESDIR/db/clang_cxx_11.patch"
+
+  cd "$_depends_builddir/db-$_db_version.NC/build_unix"
+
+  _configure_args_db+=" --disable-replication"
+  _configure_args_db+=" --disable-shared"
+  _configure_args_db+=" --enable-cxx"
+  _configure_args_db+=" --enable-option-checking"
+  _configure_args_db+=" --prefix=/"
+  _configure_args_db+=" --with-pic"
+
+  ../dist/configure $_configure_args_db
+  CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration" \
+  CXXFLAGS="$CXXFLAGS -std=c++17" \
+    make libdb_cxx-4.8.a libdb-4.8.a
+  make DESTDIR="$_depends_builddir/db-root" install_lib install_include
+}
+
+_do_build_libevent() {
+  local _configure_args_libevent
+
+  cd "$_depends_builddir/libevent-$_libevent_version-stable"
+
+  _configure_args_libevent+=" --disable-debug-mode"
+  _configure_args_libevent+=" --disable-dependency-tracking"
+  _configure_args_libevent+=" --disable-libevent-regress"
+  _configure_args_libevent+=" --disable-openssl"
+  _configure_args_libevent+=" --disable-samples"
+  _configure_args_libevent+=" --disable-shared"
+  _configure_args_libevent+=" --enable-option-checking"
+  _configure_args_libevent+=" --prefix=/"
+  _configure_args_libevent+=" --with-pic"
+
+  ./autogen.sh
+  ./configure $_configure_args_libevent
+  make
+  make DESTDIR="$_depends_builddir/libevent-root" install
+}
+
+_do_build_sqlite() {
+  local _cflags_sqlite
+  local _configure_args_sqlite
+
+  cd "$_depends_builddir/sqlite-autoconf-$_sqlite_amalgamationver"
+
+  _configure_args_sqlite+=" --disable-dynamic-extensions"
+  _configure_args_sqlite+=" --disable-readline"
+  _configure_args_sqlite+=" --disable-shared"
+  _configure_args_sqlite+=" --enable-option-checking"
+  _configure_args_sqlite+=" --prefix=/"
+  _configure_args_sqlite+=" --with-pic"
+
+  _cflags_sqlite+=" -DSQLITE_ENABLE_BATCH_ATOMIC_WRITE=1"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_COLUMN_METADATA"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_DBSTAT_VTAB"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_DESERIALIZE"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_PARENTHESIS"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_TOKENIZER=1"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS4"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_JSON1"
+  _cflags_sqlite+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY"
+  _cflags_sqlite+=" -DSQLITE_SECURE_DELETE"
+
+  # explicitly enable fdatasync
+  _cflags_sqlite+=" -DHAVE_FDATASYNC"
+
+  # explicitly set byte order to avoid bad autodetection macros
+  case "$XBPS_TARGET_ENDIAN" in
+    le)
+      _cflags_sqlite+=" -DSHA3_BYTEORDER=1234"
+      _cflags_sqlite+=" -DSQLITE_BYTEORDER=1234"
+      ;;
+    be)
+      _cflags_sqlite+=" -DSHA3_BYTEORDER=4321"
+      _cflags_sqlite+=" -DSQLITE_BYTEORDER=4321"
+      ;;
+  esac
+
+  vsed \
+    -i \
+    -e 's/ -ltinfo//g' \
+    configure
+
+  ./configure $_configure_args_sqlite
+  make libsqlite3.la
+  make DESTDIR="$_depends_builddir/sqlite-root" install-libLTLIBRARIES install-includeHEADERS install-pkgconfigDATA
+}
+
+# enable finding custom built libraries through pkg-config
+export PKG_CONFIG_PATH="$_depends_builddir/libevent-root/lib/pkgconfig:$_depends_builddir/sqlite-root/lib/pkgconfig"
+
+post_extract() {
+  _do_extract_db
+  _do_build_db
+
+  _do_extract_libevent
+  _do_build_libevent
+
+  _do_extract_sqlite
+  _do_build_sqlite
+}
 
 pre_configure() {
   autoreconf -fi
@@ -43,9 +205,17 @@ pre_build() {
   export BITCOIN_GENBUILD_NO_GIT=1
 }
 
-post_install() {
-  rm "$DESTDIR/usr/bin"/{test,bench}_bitcoin
+do_check() {
+  if [[ "$XBPS_CHECK_PKGS" == "full" ]]; then
+    # run all possible tests
+    ./test/functional/test_runner.py --extended
+  else
+    # run regression test suite
+    ./test/functional/test_runner.py
+  fi
+}
 
+post_install() {
   vsconf share/examples/bitcoin.conf
 
   vmkdir "usr/share/$pkgname"

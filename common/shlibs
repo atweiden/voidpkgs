@@ -27,6 +27,7 @@ libisc-9.16.22.so bind-libs-9.16.22_1
 libisccc-9.16.22.so bind-libs-9.16.22_1
 libisccfg-9.16.22.so bind-libs-9.16.22_1
 libns-9.16.22.so bind-libs-9.16.22_1
+libbitcoinconsensus.so.0 bitcoin-22.0_1
 libblas.so.3 blas-3.5.0_1
 libboost_python27.so.1.72.0 boost-python1.72-1.72.0_1
 libboost_python310.so.1.72.0 boost-python3-1.72-1.72.0_6
