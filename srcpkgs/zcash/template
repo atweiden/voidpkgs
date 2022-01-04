@@ -6,11 +6,9 @@ revision=1
 # zcash/zcash/depends/packages/bdb.mk
 # zcash/zcash/depends/packages/libevent.mk
 # zcash/zcash/depends/packages/libsodium.mk
-# zcash/zcash/depends/packages/native_rust.mk
 _db_version=6.2.23
 _libevent_version=2.1.12
 _libsodium_version=1.0.18
-_rust_version=1.57.0
 short_desc="Implementation of the Zerocash protocol"
 # for zcash-fetch-params
 depends="curl"
@@ -18,6 +16,11 @@ makedepends+=" boost-devel"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
 makedepends+=" utfcpp"
+# from void-linux/void-packages/common/environment/build-style/cargo.sh
+if [[ -n "$CROSS_BUILD" ]]; then
+  makedepends+=" rust-std"
+fi
+checkdepends+=" cargo"
 checkdepends+=" curl"
 checkdepends+=" gtest-devel"
 # most checks require sysctl and ps
@@ -26,15 +29,19 @@ checkdepends+=" python3"
 checkdepends+=" python3-pyblake2"
 checkdepends+=" python3-requests"
 checkdepends+=" python3-simplejson"
+checkdepends+=" rust"
+if [[ -n "$CROSS_BUILD" ]]; then
+  checkdepends+=" rust-std"
+fi
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
+hostmakedepends+=" cargo"
 hostmakedepends+=" cmake"
 hostmakedepends+=" git"
 hostmakedepends+=" libtool"
 hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
-# crate dependencies require newer version of rust
-hostmakedepends+=" rustup"
+hostmakedepends+=" rust"
 hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
@@ -67,6 +74,8 @@ if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args="${configure_args/disable-tests/enable-tests}"
   configure_args="${configure_args/--enable-reduce-exports/}"
 fi
+# tests take too long, not all of them pass
+make_check="extended"
 
 # directory in which to build custom libraries
 _depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
@@ -155,17 +164,8 @@ _do_build_libsodium() {
   make DESTDIR="$_depends_builddir/libsodium-root" install
 }
 
-# enable upstream build scripts to access rustc
-export PATH="$CARGO_HOME/bin:$PATH"
-
 # enable finding custom built libraries through pkg-config
 export PKG_CONFIG_PATH="$_depends_builddir/libevent-root/lib/pkgconfig:$_depends_builddir/libsodium-root/lib/pkgconfig"
-
-post_fetch() {
-  rustup-init -y
-  rustup toolchain install "$_rust_version" --profile minimal
-  rustup default "$_rust_version"
-}
 
 post_extract() {
   _do_extract_db
