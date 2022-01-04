@@ -11,6 +11,8 @@ build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-libgdbm-compat"
 
+CFLAGS="-fcommon"
+
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" automake"
   hostmakedepends+=" gettext-devel"
