@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="tealdeer"
-version=1.4.1
-revision=2
+version=1.5.0
+revision=1
 short_desc="Very fast implementation of tldr in Rust"
-depends="openssl"
-makedepends="openssl-devel"
-hostmakedepends="pkg-config"
+archs+=" aarch64*"
+archs+=" armv[67]*"
+archs+=" i686*"
+archs+=" x86_64*"
 homepage="https://github.com/dbrgn/tealdeer"
 license="MIT, Apache-2.0"
 changelog="https://github.com/dbrgn/tealdeer/raw/v$version/CHANGELOG.md"
 distfiles="https://github.com/dbrgn/tealdeer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="eaf42fe17be751985cbf46c170ef623fcbd36028c88c2e70823492a9335a4a8e"
+checksum="00902a50373ab75fedec4578c6c2c02523fad435486918ad9a86ed01f804358a"
 build_style="cargo"
 alternatives="tldr:/usr/bin/tldr:/usr/bin/tealdeer"
 
