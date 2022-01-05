@@ -11,6 +11,8 @@ build_style="cargo"
 # tests require generating fixtures from remote repositories
 make_check="no"
 make_install_args="--path=cli"
+# fails with current rust
+nocross="yes"
 
 post_build() {
   # build libtree-sitter, since do_build builds the tree-sitter cli
