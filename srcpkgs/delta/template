@@ -8,9 +8,11 @@ homepage="https://github.com/dandavison/delta"
 license="MIT"
 distfiles="https://github.com/dandavison/delta/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="cf68f43d4d26c10551c0137a7e718719958e52267d83f29a8f7794af12095b9e"
+build_style="cargo"
 # TODO: re-enable checks when rust gets updated
 make_check="no"
-build_style="cargo"
+# fails with current rust
+nocross="yes"
 
 post_install() {
   vlicense LICENSE
