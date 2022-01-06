@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sysdig"
-version=0.27.1
-revision=12
+version=0.28.0
+revision=1
 short_desc="Open source system-level exploration and troubleshooting tool"
 depends="dkms"
 makedepends+=" LuaJIT-devel"
@@ -23,12 +23,12 @@ homepage="http://www.sysdig.org/"
 license="Apache-2.0, MIT, GPL-2.0-only"
 changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/sysdig/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b9d05854493d245a7a7e75f77fc654508f720aab5e5e8a3a932bd8eb54e49bda"
+checksum="817e595d501acf3fe11dc659a154aadbba848dd87ae801f5bf34a42e84979f37"
 build_style="cmake"
 configure_args+=" -DBUILD_DRIVER=OFF"
 configure_args+=" -DCREATE_TEST_TARGETS=OFF"
 configure_args+=" -DLUA_INCLUDE_DIR=$XBPS_CROSS_BASE/usr/include/luajit-2.1"
-configure_args+=" -DLUA_LIBRARY=libluajit-5.1.so"
+configure_args+=" -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so"
 configure_args+=" -DSYSDIG_VERSION=$version"
 configure_args+=" -DUSE_BUNDLED_B64=ON"
 configure_args+=" -DUSE_BUNDLED_DEPS=OFF"
@@ -41,22 +41,20 @@ esac
 make_cmd="make"
 nocross="yes"
 disable_parallel_build="yes"
-dkms_modules="sysdig $version"
+dkms_modules="scap 2160111cd088aea9ae2235d3385ecb0b1ab6623c"
 
 export CMAKE_GENERATOR="Unix Makefiles"
 
 # avoid excessive warnings spam to the log
 CXXFLAGS="-Wno-deprecated-declarations"
 
+CXXFLAGS+=" -I/usr/include/grpc_absl"
+
 post_extract() {
   sed \
     -i \
     -e 's,"${DIR_ETC}/bash_completion.d",share/bash-completion/completions,g' \
     scripts/CMakeLists.txt
-  sed \
-    -i \
-    -e '1iset(CMAKE_EXE_LINKER_FLAGS "-ltbb -lcurl")' \
-    CMakeLists.txt
 }
 
 post_install() {
