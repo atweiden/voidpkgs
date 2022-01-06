@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-argcomplete"
 version=1.12.3
-revision=2
+revision=3
 short_desc="Bash tab completion for argparse"
+depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/kislyuk/argcomplete"
 license="Apache-2.0"
