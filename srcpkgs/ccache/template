@@ -8,8 +8,7 @@ makedepends+=" zlib-devel"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
-hostmakedepends+=" asciidoc"
-hostmakedepends+=" perl"
+hostmakedepends="perl"
 homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
@@ -59,6 +58,8 @@ post_install() {
       ln -sfr "$DESTDIR/usr/bin/ccache" "$DESTDIR/usr/lib/ccache/bin/$x-$f"
     done
   done
+  # pregenerated manpage to avoid bringing ruby into the build
+  vman "$FILESDIR/ccache.1"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
