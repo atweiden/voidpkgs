@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="ccache"
 version=4.5.1
-revision=1
+revision=2
 short_desc="Fast C/C++ Compiler Cache"
 makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
-hostmakedepends+=" asciidoc"
 hostmakedepends+=" perl"
+hostmakedepends+=" ruby-asciidoctor"
 homepage="https://ccache.samba.org"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
