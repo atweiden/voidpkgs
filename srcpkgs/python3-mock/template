@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-mock"
 version=4.0.3
-revision=2
+revision=3
 short_desc="Python3 mock library"
+depends="python3"
 checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="http://mock.readthedocs.org/en/latest/"
