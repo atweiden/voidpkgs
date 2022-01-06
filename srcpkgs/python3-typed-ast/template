@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-typed-ast"
 version=1.4.2
-revision=2
+revision=3
 short_desc="Ast module with type comment support"
+depends="python3"
 makedepends="python3-devel"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/python/typed_ast"
