@@ -1,21 +1,18 @@
 maintainer="nox"
 pkgname="politeia"
-version=1.3.1pre
-revision=15
-_gitrev="84a52cfc0975cb1ca2df676d15e7ad0637a8ce42"
+version=1.3.1
+revision=1
 short_desc="Decred proposal system"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/politeia"
 license="ISC"
-distfiles="https://github.com/decred/politeia/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="f336e4eaaf4ce20c361093cfef46140cb4bebf0cae4e8df6291be00fef463e86"
-wrksrc="$pkgname-$_gitrev"
+distfiles="https://github.com/decred/politeia/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="b628976201f4b48958927fbf62beb3919b51f7a653eadeca646309319182d7a0"
 build_style="go"
 go_import_path="github.com/decred/politeia"
 go_package+=" $go_import_path/politeiad"
 go_package+=" $go_import_path/politeiad/cmd/politeia"
-go_package+=" $go_import_path/politeiad/cmd/politeiaimport"
 go_package+=" $go_import_path/politeiawww"
 go_package+=" $go_import_path/politeiawww/cmd/cmswww"
 go_package+=" $go_import_path/politeiawww/cmd/pictl"
@@ -23,8 +20,8 @@ go_package+=" $go_import_path/politeiawww/cmd/politeiaverify"
 go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
 go_ldflags+=" -s -w -buildid="
-go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease=pre"
-go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata=dev"
+go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease="
+go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata="
 
 # XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"
