@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-sortedcontainers"
 version=2.4.0
-revision=2
+revision=3
 short_desc="Sorted List, Sorted Dict, Sorted Set"
+depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="http://www.grantjenks.com/docs/sortedcontainers/"
 license="Apache-2.0"
