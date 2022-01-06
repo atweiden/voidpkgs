@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dcrlnd"
-version=0.3.3
+version=0.3.4rc1
 revision=1
 short_desc="Decred Lightning Network Daemon"
 hostmakedepends="git"
@@ -8,16 +8,17 @@ tags+=" decred"
 tags+=" lightningnetwork"
 homepage="https://github.com/decred/dcrlnd"
 license="MIT"
-distfiles="https://github.com/decred/dcrlnd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="342ea45d9a018f7c3c6311d8bf3f3dad961d17da5b0daa4aa855ef1501ff92f9"
+distfiles="https://github.com/decred/dcrlnd/archive/v${version%r*}-rc1.tar.gz>$pkgname-$version.tar.gz"
+checksum="540f2c32d2ee76676df03a1c03a75bd057e7f528aa478c0e44d7a77793b22966"
+wrksrc="$pkgname-${version%r*}-rc1"
 build_style="go"
 go_import_path="github.com/decred/dcrlnd"
 go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/dcrlnd"
 go_package+=" $go_import_path/cmd/dcrlncli"
 go_ldflags+=" -s -w -buildid="
-go_ldflags+=" -X $go_import_path/build.BuildMetadata=release"
-go_ldflags+=" -X $go_import_path/build.Commit=v$version"
+go_ldflags+=" -X $go_import_path/build.BuildMetadata="
+go_ldflags+=" -X $go_import_path/build.Commit=v${version%r*}-rc1"
 go_ldflags+=" -X $go_import_path/build.PreRelease="
 
 export CGO_ENABLED=0
