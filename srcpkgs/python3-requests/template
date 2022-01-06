@@ -1,0 +1,32 @@
+maintainer="nox"
+pkgname="python3-requests"
+version=2.27.1
+revision=1
+short_desc="Python3 HTTP library for human beings"
+depends+=" ca-certificates"
+depends+=" python3-charset-normalizer"
+depends+=" python3-urllib3"
+depends+=" python3-idna"
+checkdepends+=" $depends"
+checkdepends+=" python3-pysocks"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-httpbin"
+checkdepends+=" python3-pytest-mock"
+checkdepends+=" python3-trustme"
+hostmakedepends="python3-setuptools"
+homepage="https://python-requests.org/"
+license="Apache-2.0"
+changelog="https://github.com/psf/requests/raw/master/HISTORY.md"
+distfiles="$PYPI_SITE/r/requests/requests-$version.tar.gz"
+checksum="68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"
+wrksrc="requests-$version"
+build_style="python3-module"
+
+post_patch() {
+  vsed \
+    -i \
+    -e '/certifi/d' \
+    setup.py
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
