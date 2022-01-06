@@ -1,25 +1,20 @@
 maintainer="nox"
 pkgname="dcrwallet"
-version=1.6.3
+version=1.7.0rc1
 revision=1
 short_desc="Decred wallet daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
-distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="fb83e9b444155e33e07e9c459bb08906de2310d713daaa3805a1112a5d9d4833"
-wrksrc="$pkgname-release-v$version"
+distfiles="https://github.com/decred/dcrwallet/archive/release-v${version%r*}-rc1.tar.gz>$pkgname-$version.tar.gz"
+checksum="c4f386fa2097802a39b820ccd0f1607da193da1aa2e840b33a279113da26e68c"
+wrksrc="$pkgname-release-v${version%r*}-rc1"
 build_style="go"
-go_import_path="decred.org/dcrwallet"
-_gh_import_path="github.com/decred/dcrwallet"
-go_package+=" $go_import_path"
-go_package+=" $_gh_import_path/cmd/movefunds"
-go_package+=" $_gh_import_path/cmd/repaircfilters"
-go_package+=" $_gh_import_path/cmd/sweepaccount"
+go_import_path="decred.org/dcrwallet/v2"
 go_ldflags+=" -s -w -buildid="
-go_ldflags+=" -X github.com/decred/dcrwallet/version.PreRelease="
-go_ldflags+=" -X github.com/decred/dcrwallet/version.BuildMetadata=release"
+go_ldflags+=" -X $go_import_path/version.PreRelease="
+go_ldflags+=" -X $go_import_path/version.BuildMetadata="
 
 # XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"
