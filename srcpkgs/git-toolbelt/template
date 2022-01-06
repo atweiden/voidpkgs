@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="git-toolbelt"
-version=1.5.1
+version=1.7.1
 revision=1
 short_desc="Helper tools to make everyday life with Git much easier"
 depends+=" fzf"
@@ -9,7 +9,7 @@ depends+=" moreutils"
 homepage="https://github.com/nvie/git-toolbelt"
 license="BSD-3-Clause"
 distfiles="https://github.com/nvie/git-toolbelt/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0fe8551fe5f9c05aaa566aba6f94667240cb0f6221a3c8d0d8cccff31244b1a8"
+checksum="388dc5f4536cff9412c8baa8f7e89254add421a039992aed50f09f568b2daf57"
 conflicts="git-extras"
 
 do_install() {
