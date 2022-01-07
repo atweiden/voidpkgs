@@ -655,7 +655,6 @@ constant %PKG = Map.new(
     'python-atomicwrites' => ['python3-atomicwrites'],
     'python-attrs' => ['python3-attrs'],
     'python-cffi' => ['python3-cffi'],
-    'python-chardet' => ['python3-chardet'],
     'python-coverage' => ['python3-coverage'],
     'python-cram' => ['python3-cram'],
     'python-dateutil' => ['python3-dateutil'],
