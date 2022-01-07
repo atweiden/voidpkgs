@@ -671,6 +671,7 @@ constant %PKG = Map.new(
     'python-pytz' => ['python3-pytz'],
     'python-rfc6555' => ['python3-rfc6555'],
     'python-scandir' => ['python3-scandir'],
+    'python-service_identity' => ['python3-service_identity'],
     'python-six' => ['python3-six'],
     'python-urllib3' => ['python3-urllib3'],
     'python-wcwidth' => ['python3-wcwidth'],
