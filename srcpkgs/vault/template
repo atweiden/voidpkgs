@@ -17,7 +17,7 @@ go_ldflags+=" -X $go_import_path/sdk/version.GitCommit=$_gitrev"
 go_build_tags="release"
 system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
-make_dirs+=" /etc/vault 0700 root root"
+make_dirs+=" /etc/vault 0750 root _vault"
 
 export GOFLAGS="-trimpath"
 
