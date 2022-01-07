@@ -672,7 +672,6 @@ constant %PKG = Map.new(
     'python-scandir' => ['python3-scandir'],
     'python-service_identity' => ['python3-service_identity'],
     'python-six' => ['python3-six'],
-    'python-urllib3' => ['python3-urllib3'],
     'python-wcwidth' => ['python3-wcwidth'],
     'python-zope.interface' => ['python3-zope.interface'],
     'python3' => ['python3-devel'],

@@ -1,0 +1,33 @@
+maintainer="nox"
+pkgname="python3-urllib3"
+version=1.26.7
+revision=1
+short_desc="HTTP library with thread-safe connection pooling"
+depends="python3-six"
+checkdepends+=" python3-dateutil"
+checkdepends+=" python3-mock"
+checkdepends+=" python3-pysocks"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-tornado"
+checkdepends+=" python3-trustme"
+hostmakedepends="python3-setuptools"
+homepage="https://urllib3.readthedocs.io/"
+license="MIT"
+distfiles="$PYPI_SITE/u/urllib3/urllib3-$version.tar.gz"
+checksum="4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"
+wrksrc="urllib3-$version"
+build_style="python3-module"
+
+pre_check() {
+  # FIXME
+  rm test/test_retry{,_deprecated}.py
+}
+
+post_install() {
+  rm "$DESTDIR/$py3_sitelib/urllib3/packages/six.py"
+  ln -sf ../../six.py "$DESTDIR/$py3_sitelib/urllib3/packages/six.py"
+
+  vlicense LICENSE.txt
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
