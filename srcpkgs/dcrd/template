@@ -39,7 +39,8 @@ post_install() {
   vlicense LICENSE
   vdoc CHANGES
   vdoc README.md
-  vdoc sampleconfig/sampleconfig.go sample-dcrd.conf.go
+  vdoc "$FILESDIR/sample-dcrctl.conf"
+  vdoc "$FILESDIR/sample-dcrd.conf"
   vcopy docs "usr/share/doc/$pkgname"
 }
 
