@@ -33,7 +33,7 @@ post_install() {
   vdoc politeiad/sample-politeiad.conf
   vdoc politeiawww/cmd/cmswww/sample-cmswww.conf
   vdoc politeiawww/cmd/pictl/sample-pictl.conf
-  vdoc politeiawww/cmd/politeiavoter/sampleconfig/sampleconfig.go sample-politeiavoter.conf.go
+  vdoc "$FILESDIR/sample-politeiavoter.conf"
   vdoc politeiawww/sample-politeiawww.conf
 }
 
