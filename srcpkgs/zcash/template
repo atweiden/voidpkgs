@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zcash"
-version=4.6.0
+version=4.6.0.1
 revision=1
 # see:
 # zcash/zcash/depends/packages/bdb.mk
@@ -45,17 +45,18 @@ hostmakedepends+=" rust"
 hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
-distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/zcash/zcash/archive/v${version/\.1/-1}.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
-checksum+=" cff39a413672fec5d6a719efb14ab5191d0221e055a848cec5916ea106c6c20c"
+checksum+=" 135cbbf396e83af67652f06ded0adec60e31652732b0bf07fd2294de71e01014"
 checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
 checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
 skip_extraction+=" db-$_db_version.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
+wrksrc="$pkgname-${version/\.1/-1}"
 build_style="gnu-configure"
 build_helper="rust"
 configure_args+=" --disable-bench"
@@ -78,23 +79,23 @@ fi
 make_check="extended"
 
 # directory in which to build custom libraries
-_depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
+_depends_builddir="$XBPS_BUILDDIR/$pkgname-${version/\.1/-1}/depends"
 
 CPPFLAGS="-I$_depends_builddir/db-root/include -I$_depends_builddir/libevent-root/include -I$_depends_builddir/libsodium-root/include -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
 LDFLAGS="-L$_depends_builddir/db-root/lib -L$_depends_builddir/libevent-root/lib -L$_depends_builddir/libsodium-root/lib"
 
 _do_extract_db() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/db-$_db_version.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/db-$_db_version.tar.gz" \
     -C "$_depends_builddir"
 }
 
 _do_extract_libevent() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libevent-$_libevent_version-stable.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/libevent-$_libevent_version-stable.tar.gz" \
     -C "$_depends_builddir"
 }
 
 _do_extract_libsodium() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libsodium-$_libsodium_version.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/libsodium-$_libsodium_version.tar.gz" \
     -C "$_depends_builddir"
 }
 
