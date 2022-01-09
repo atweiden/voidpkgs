@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="python3-tornado"
 version=6.1
-revision=2
+revision=3
 short_desc="Python3 web framework and asynchronous networking library"
-depends="ca-certificates"
+depends+=" ca-certificates"
+depends+=" python3"
 makedepends="python3-devel"
 hostmakedepends="python3-setuptools"
 homepage="http://www.tornadoweb.org/"
