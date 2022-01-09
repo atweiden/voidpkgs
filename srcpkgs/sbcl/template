@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sbcl"
 version=2.2.0
-revision=1
+revision=2
 short_desc="Steel Bank Common Lisp"
 archs+=" aarch64"
 archs+=" armv7l"
@@ -9,7 +9,8 @@ archs+=" i686"
 archs+=" ppc64le*"
 archs+=" x86_64*"
 makedepends="zlib-devel"
-hostmakedepends="iana-etc"
+hostmakedepends+=" iana-etc"
+hostmakedepends+=" texinfo"
 homepage="http://www.sbcl.org/"
 license="custom:BSD+public_domain"
 changelog="http://www.sbcl.org/news.html"
@@ -55,6 +56,7 @@ do_build() {
     --prefix="/usr" \
     --with-sb-core-compression \
     --without-sb-test
+  make -C ./doc/manual info
 }
 
 do_install() {
