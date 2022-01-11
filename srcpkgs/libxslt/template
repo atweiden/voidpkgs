@@ -5,14 +5,10 @@ revision=5
 short_desc="XSLT parser library from the GNOME project"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libxml2-devel"
-makedepends+=" libxml2-python"
-makedepends+=" python-devel"
 hostmakedepends+=" docbook-xml"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libtool"
-hostmakedepends+=" libxml2-python"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python-devel"
 homepage="http://xmlsoft.org/XSLT/"
 license="MIT"
 distfiles+=" http://xmlsoft.org/sources/libxslt-$version.tar.gz"
@@ -36,13 +32,6 @@ post_configure() {
     | xargs sed \
               -i \
               -e '/Usage/,/--version/d'
-  if [[ -n "$CROSS_BUILD" ]]; then
-    sed \
-      -i \
-      -e "s|/usr/include/python2.7|$XBPS_CROSS_BASE/&|g" \
-      -e "s|/usr/lib/python2.7/site-packages|$XBPS_CROSS_BASE/&|g" \
-      python/Makefile
-  fi
 }
 
 post_build() {
@@ -84,15 +73,6 @@ libxslt-devel_package() {
     vmove usr/share/aclocal
     vmove "usr/share/doc/$sourcepkg-$version"
     vmove usr/share/man/man3
-  }
-}
-
-libxslt-python_package() {
-  lib32disabled="yes"
-  short_desc+=" - Python extension"
-  pkg_install() {
-    vmove "usr/lib/python*"
-    vmove "usr/share/doc/$sourcepkg-python-$version"
   }
 }
 
