@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=57
+revision=58
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -12,6 +12,8 @@ replaces+=" go1.4-bootstrap<=20171003_2"
 replaces+=" httperf<=0.9.0_9"
 replaces+=" isl16<=0.16_2"
 replaces+=" libglib-static<=2.58.3_5"
+replaces+=" libxml2-python<=2.9.10_4"
+replaces+=" libxslt-python<=1.1.34_5"
 replaces+=" llvm3.9<=3.9.1_5"
 replaces+=" python-M2Crypto<=0.35.2_7"
 replaces+=" python-chardet<=4.0.0_3"
