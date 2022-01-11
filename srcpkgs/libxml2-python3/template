@@ -1,0 +1,31 @@
+maintainer="nox"
+pkgname="libxml2-python3"
+version=2.9.10
+revision=5
+short_desc="Library providing XML and HTML support - Python3 bindings"
+depends="python3"
+makedepends+=" libxml2-devel"
+makedepends+=" python3-devel"
+hostmakedepends="python3-devel"
+homepage="http://www.xmlsoft.org/"
+license="MIT"
+distfiles="http://xmlsoft.org/sources/libxml2-$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f"
+wrksrc="libxml2-$version"
+build_wrksrc="python"
+build_style="python3-module"
+
+post_patch() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s:/usr/include:$XBPS_CROSS_BASE/usr/include:" \
+      setup.py
+  fi
+}
+
+post_install() {
+  vlicense ../COPYING
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

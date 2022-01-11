@@ -58,6 +58,6 @@ libxml2-devel_package() {
 
 # REMARKS:
 #
-# Please keep this in sync with "srcpkgs/libxml2-python".
+# Please keep this in sync with "srcpkgs/libxml2-python3".
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
