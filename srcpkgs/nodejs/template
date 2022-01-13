@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nodejs"
-version=16.9.1
+version=16.13.2
 revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
@@ -27,7 +27,7 @@ hostmakedepends+=" $(vopt_if ssl openssl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="2cfab037d84550556999af6328e9b657842d9b183e6be2a4995c87d2c49e9d03"
+checksum="cd5a07cae25985704a5b1878355b2793d62d70fc97b8a181ad2bf86201121b08"
 wrksrc="${pkgname%js}-v$version"
 python_version=3
 build_options+=" cares"
