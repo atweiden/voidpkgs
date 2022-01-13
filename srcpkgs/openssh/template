@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=8.8p1
-revision=1
+revision=2
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -89,7 +89,7 @@ post_install() {
   vsed \
     -i \
     -e 's|^#\(UsePAM\) no|\1 yes|g' \
-    -e 's|^#\(ChallengeResponseAuthentication\) yes|\1 no|g' \
+    -e 's|^#\(KbdInteractiveAuthentication\) yes|\1 no|g' \
     -e 's|^#\(PrintMotd\) yes|\1 no|g' \
     "$DESTDIR/etc/ssh/sshd_config"
 
