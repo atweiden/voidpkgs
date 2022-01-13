@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gerbil"
-version=0.16
-revision=3
+version=0.17
+revision=1
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
 makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
@@ -11,7 +11,8 @@ hostmakedepends+=" rsync"
 homepage="https://cons.io/"
 license="LGPL-2.1-or-later, Apache-2.0"
 distfiles="https://github.com/vyzo/gerbil/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1157d4ef60dab6a0f7c4986d5c938391973045093c470a03ffe02266c4d3e119"
+checksum="1e81265aba7e9022432649eb26b2e5c85a2bb631a315e4fa840b14cf336b2483"
+build_style="gnu-configure"
 nocross="yes"
 
 do_build() {
@@ -25,7 +26,8 @@ do_install() {
   cp -a bin "$DESTDIR/usr"
   cp -a lib "$DESTDIR/usr/lib/gerbil"
   vinstall "$FILESDIR/gerbil.sh" 0644 etc/profile.d
-  vinstall etc/gerbil.el 0644 usr/share/emacs/site-lisp
+  vinstall etc/gerbil-mode.el 0644 usr/share/emacs/site-lisp
+  find "$DESTDIR" -name .keep -delete
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
