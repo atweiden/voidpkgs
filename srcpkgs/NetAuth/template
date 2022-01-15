@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="NetAuth"
-version=0.5.0
+version=0.6.0
 revision=1
 short_desc="Network authentication and identity system"
 hostmakedepends="git"
@@ -8,7 +8,7 @@ tags="netauth"
 homepage="https://netauth.org"
 license="MIT"
 distfiles="https://github.com/NetAuth/NetAuth/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="38f231d336a1088458daccd0a15b7dfdbb5dbe2f1f82217ad968e6000a5b1386"
+checksum="6964f313ffa558f225734926ef220a7fb573747ed841a629e006d159003871da"
 wrksrc="netauth-$version"
 build_style="go"
 go_import_path="github.com/netauth/netauth"
