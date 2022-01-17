@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="kopia"
-version=0.9.8
+version=0.10.1
 revision=1
 short_desc="Fast and secure backup tool"
 homepage="https://kopia.io/"
 license="Apache-2.0"
 distfiles="https://github.com/kopia/kopia/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="855a785778442322c4ef5de7ba666879906dac7e3d6d04746f97bb4694f6c82b"
+checksum="d7c3115862e8ff56d948eef45eff89bac7867c9ae68e39d4142158d72a039d91"
 build_style="go"
 go_import_path="github.com/kopia/kopia"
 go_ldflags+=" -s -w -buildid="
