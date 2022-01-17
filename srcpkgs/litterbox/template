@@ -1,14 +1,16 @@
-# Template file for 'litterbox'
-pkgname=litterbox
+maintainer="nox"
+pkgname="litterbox"
 version=1.8
 revision=2
-build_style=gnu-configure
-make_build_target="all"
-hostmakedepends="pkg-config"
-makedepends="sqlite-devel libtls-devel"
 short_desc="IRC logger"
-maintainer="Allen Sobot <chilledfrogs@disroot.org>"
-license="GPL-3.0-or-later"
+makedepends+=" libtls-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends="pkg-config"
 homepage="https://git.causal.agency/litterbox/"
+license="GPL-3.0-or-later"
 distfiles="https://git.causal.agency/litterbox/snapshot/litterbox-$version.tar.gz"
-checksum=54bebc3750f390813a3720eb0301ac4d852b30cb7b7605b178ed59aa51688552
+checksum="54bebc3750f390813a3720eb0301ac4d852b30cb7b7605b178ed59aa51688552"
+build_style="gnu-configure"
+make_build_target="all"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
