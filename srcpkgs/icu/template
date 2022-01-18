@@ -97,7 +97,7 @@ post_install() {
   rm -f $DESTDIR/usr/share/icu/$version/$_icu_dat${XBPS_TARGET_ENDIAN%e}.dat
 
   # for little endian just use the file that's there
-  if [ "$XBPS_TARGET_ENDIAN" != "be" ]; then
+  if [[ "$XBPS_TARGET_ENDIAN" != "be" ]]; then
     return
   fi
 
@@ -138,7 +138,6 @@ icu-libs_package() {
     vmkdir "usr/share/icu/$version"
     install -Dm 644 "$wrksrc/$_icu_data/$_icu_dat${XBPS_TARGET_ENDIAN%e}.dat" \
       "$PKGDESTDIR/usr/share/icu/$version"
-  }
   }
 }
 
