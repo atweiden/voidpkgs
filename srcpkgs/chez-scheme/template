@@ -63,7 +63,7 @@ post_extract() {
     -e '/xlocale\.h/d' \
     c/expeditor.c
 
-  # create a dummy git repo and hack out submodules — its presence stops
+  # create a dummy git repo and hack out submodules - its presence stops
   # 'configure' from downloading its own versions of nanopass etc
   mkdir .git
   sed \
@@ -113,7 +113,7 @@ do_build() {
   ./workarea "$_target"
 
   # use Mf-config created from 'do_configure'
-  # this is required — the build fails to include the scheme kernel
+  # this is required - the build fails to include the scheme kernel
   # when this is missing
   cd "$_target/c"
   ln -sf "../../$_host/c/Mf-config" .

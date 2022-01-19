@@ -17,7 +17,7 @@ go_package+=" $_gh_import_path/cmd/csppserver"
 go_package+=" $_gh_import_path/cmd/report2csv"
 go_ldflags="-s -w -buildid="
 
-# XXX: -buildmode=pie is unverified on *-musl, and non–x86_64 or aarch64
+# XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"
 
 pre_install() {
