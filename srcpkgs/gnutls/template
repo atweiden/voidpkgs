@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnutls"
-version=3.6.16
+version=3.7.3
 revision=1
 short_desc="GNU Transport Layer Security library"
 # dependencies listed in pkg-config files
@@ -15,7 +15,6 @@ makedepends+=" libgcrypt-devel"
 makedepends+=" libgpg-error-devel"
 makedepends+=" lzo-devel"
 makedepends+=" readline-devel"
-makedepends+=" zlib-devel"
 makedepends+=" $_develdepends"
 checkdepends="iproute2"
 hostmakedepends+=" gettext"
@@ -28,7 +27,7 @@ hostmakedepends+=" which"
 homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="1b79b381ac283d8b054368b335c408fedcb9b7144e0c07f531e3537d4328f3b3"
+checksum="fc59c43bc31ab20a6977ff083029277a31935b8355ce387b634fa433f8f6c49a"
 build_style="gnu-configure"
 configure_args+=" --disable-guile"
 configure_args+=" --disable-rpath"
@@ -36,10 +35,9 @@ configure_args+=" --disable-static"
 configure_args+=" --disable-valgrind-tests"
 configure_args+=" --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
 configure_args+=" --with-trousers-lib=$XBPS_CROSS_BASE/usr/lib"
-configure_args+=" --with-zlib"
 
 pre_check() {
-  # same as $PASS in tests/cert-tests/certtool
+  # same as $PASS in tests/cert-tests/certtool.sh
   export GNUTLS_PIN=1234
 }
 
