@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="cspp"
-version=0.4.0
+version=2.0.0
 revision=1
 short_desc="DiceMix Light and CoinShuffle++ client for Decred"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/cspp"
 license="ISC"
-distfiles="https://github.com/decred/cspp/archive/v$version.tar.gz"
-checksum="cc91e9e2ee681fbd17d0680b7fb62a0a37acbd13a98a25b76a9ee846a6320b63"
+distfiles="https://github.com/decred/cspp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="a50956b3cee0e9cb08197f5275a63bf740359cba2009d4601cb580f79b68e795"
 build_style="go"
 go_import_path="decred.org/cspp"
 _gh_import_path="github.com/decred/cspp"
