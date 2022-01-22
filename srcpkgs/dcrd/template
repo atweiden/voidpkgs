@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="dcrd"
-version=1.7.0rc1
+version=1.7.0
 revision=1
 short_desc="Decred daemon written in Go"
 hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
-distfiles="https://github.com/decred/dcrd/archive/release-v${version%r*}-rc1.tar.gz>$pkgname-$version.tar.gz"
-checksum="e4e08c24394aaa73bf61efb3158b66949f21a6b75e66d0000ae9cfdecdd42102"
-wrksrc="$pkgname-release-v${version%r*}-rc1"
+distfiles="https://github.com/decred/dcrd/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="e56c4f0313af233a8307f51dee4b67704ac6119e4b95138de8c91de30ea8dba4"
+wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
 go_package+=" $go_import_path"
@@ -18,7 +18,7 @@ go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
 go_package+=" $go_import_path/cmd/promptsecret"
 go_ldflags+=" -s -w -buildid="
-go_ldflags+=" -X $go_import_path/internal/version.Version=${version%r*}-rc1"
+go_ldflags+=" -X $go_import_path/internal/version.Version=$version"
 
 export CGO_ENABLED=0
 
