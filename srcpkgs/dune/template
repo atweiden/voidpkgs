@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dune"
-version=2.9.1
+version=2.9.2
 revision=1
 short_desc="Composable build system for OCaml"
 depends="ocaml"
@@ -8,7 +8,7 @@ makedepends="ocaml"
 homepage="https://dune.build/"
 license="MIT"
 distfiles="https://github.com/ocaml/dune/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="493f8c95697620b1e84278dcf9b4466f63f0858b227417e87ec75d102af620c4"
+checksum="b2301cdec07a56135f3c1531ba7afc61a85511119577ee8f7814dc0a3d49063d"
 build_style="gnu-makefile"
 make_build_target="release"
 nocross="ocaml"
