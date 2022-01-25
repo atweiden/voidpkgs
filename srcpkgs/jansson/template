@@ -1,20 +1,13 @@
 maintainer="nox"
 pkgname="jansson"
-version=2.13.1
+version=2.14
 revision=1
 short_desc="Library for encoding, decoding and manipulating JSON data"
-hostmakedepends+=" autoconf"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
 homepage="https://www.digip.org/jansson/"
 changelog="https://github.com/akheron/jansson/raw/master/CHANGES"
-distfiles="https://github.com/akheron/jansson/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f22901582138e3203959c9257cf83eba9929ac41d7be4a42557213a22ebcc7a0"
+distfiles="https://github.com/akheron/jansson/releases/download/v$version/$pkgname-$version.tar.gz"
+checksum="5798d010e41cf8d76b66236cfb2f2543c8d082181d16bc3085ab49538d4b9929"
 build_style="gnu-configure"
-
-pre_configure() {
-  autoreconf -vfi
-}
 
 post_install() {
   vlicense LICENSE
