@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="python3-Unidecode"
-version=1.1.1
-revision=5
+version=1.3.2
+revision=1
 short_desc="Python3 ASCII transliterations of Unicode text"
 depends="python3-setuptools"
 hostmakedepends="python3-setuptools"
 homepage="https://pypi.org/project/Unidecode/"
 license="GPL-2.0-or-later"
 distfiles="$PYPI_SITE/U/Unidecode/Unidecode-$version.tar.gz"
-checksum="2b6aab710c2a1647e928e36d69c21e76b453cd455f4e2621000e54b2a9b8cce8"
+checksum="669898c1528912bcf07f9819dc60df18d057f7528271e31f8ec28cc88ef27504"
 wrksrc="Unidecode-$version"
 build_style="python3-module"
 conflicts="python-Unidecode>=0"
