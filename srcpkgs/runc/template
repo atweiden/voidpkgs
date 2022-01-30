@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="runc"
-version=1.0.2
+version=1.1.0
 revision=1
 short_desc="CLI tool for spawning and running OCI containers"
 makedepends="libseccomp-devel"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/opencontainers/runc"
 license="Apache-2.0"
 distfiles="https://github.com/opencontainers/runc/releases/download/v$version/$pkgname.tar.xz>$pkgname-$version.tar.gz"
-checksum="740acb49e33eaf4958b5109c85363c1d3900f242d4cab47fbdbefa6f8f3c6909"
+checksum="152e8975793aa45a6717e367bd1652f8147728d25adad339d2f70c4fd2ddc623"
 build_style="go"
 go_import_path="github.com/opencontainers/runc"
 go_ldflags="-s -w -buildid="
