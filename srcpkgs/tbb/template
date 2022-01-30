@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tbb"
 version=2020.U3
-revision=1
+revision=2
 # version rewrite: 2017_U7 (upstream) => 2017.7 (xbps)
 _ver=${version/./_}
 short_desc="Intel Threading Building Blocks"
@@ -12,6 +12,7 @@ distfiles="https://github.com/oneapi-src/oneTBB/archive/$_ver.tar.gz>$pkgname-$v
 checksum="2103cc6238c935664f87680618f6684d57501d4a2fa8ea8f6c97ad6ff7dc722a"
 wrksrc="oneTBB-$_ver"
 build_style="gnu-makefile"
+reverts="2021.5.0_1"
 
 case "$XBPS_TARGET_MACHINE" in
   x86_64*)
@@ -60,6 +61,7 @@ do_install() {
   vcopy "build/linux_*/*.so*" usr/lib
   vmkdir usr/include/tbb
   vcopy "include/tbb/*" usr/include/tbb
+
   cmake \
     -DINSTALL_DIR="$DESTDIR/usr/lib/cmake/TBB" \
     -DSYSTEM_NAME="Linux" \
