@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.15"
-version=5.15.16
+version=5.15.17
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -30,7 +30,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8"
-checksum+=" 0817171996521675b3c1130568503f08d8b1672c955cc842200a21bf5914cd95"
+checksum+=" 3fa49979ba93d0de87d8168dc80786c7a6bfab718accb7c22e5a034e1bfb7e30"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 python_version=3
