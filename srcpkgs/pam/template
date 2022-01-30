@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pam"
 version=1.5.2
-revision=1
+revision=2
 short_desc="Flexible mechanism for authenticating users"
 # version of pam-base that doesn't include removed modules
 depends="pam-base>=0.4_1"
@@ -56,6 +56,7 @@ pam-devel_package() {
     vmove usr/share/man/man3
     vmove usr/share/doc
     vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
   }
 }
 
