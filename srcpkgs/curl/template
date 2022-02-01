@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.81.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -23,6 +23,9 @@ makedepends+=" $(vopt_if zstd libzstd-devel)"
 hostmakedepends+=" mdocml"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" curl"
+fi
 homepage="https://curl.haxx.se"
 license="MIT"
 changelog="https://curl.haxx.se/changes.html#${version//./_}"
@@ -75,6 +78,16 @@ post_install() {
       -i \
       -e "/[   ]*--static-libs)/,/[  ]*;;/ s,-L$XBPS_CROSS_BASE,-L," \
       "$DESTDIR/usr/bin/curl-config"
+  fi
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # copy hostmakedepends' version
+    vcompletion /usr/share/zsh/site-functions/_curl zsh
+    vcompletion /usr/share/fish/vendor_completions.d/curl.fish fish
+  else
+    make -C scripts
+    vcompletion scripts/_curl zsh
+    vcompletion scripts/curl.fish fish
   fi
 }
 
