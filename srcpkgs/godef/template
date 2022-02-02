@@ -10,6 +10,8 @@ checksum="48a1680e9a7db28f19c4b5716402c615bbab454c769c28d9e373df75bde48b9c"
 build_style="go"
 go_import_path="github.com/rogpeppe/godef"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense LICENSE
 }

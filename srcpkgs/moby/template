@@ -23,6 +23,8 @@ go_import_path="github.com/docker/docker"
 go_ldflags="-s -w -buildid="
 system_groups="docker"
 
+export GOFLAGS="-trimpath"
+
 _moby_builddir="moby-$version"
 _libnetwork_builddir="libnetwork-$_libnetwork_commit"
 

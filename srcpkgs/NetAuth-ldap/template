@@ -15,6 +15,8 @@ go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X github.com/netauth/ldap/internal/buildinfo.Version=$version"
 system_accounts="_netauth_ldap"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vsv netauth-ldap
   vlicense LICENSE

@@ -12,6 +12,8 @@ build_wrksrc="gopls"
 build_style="go"
 go_import_path="golang.org/x/tools/gopls"
 
+export GOFLAGS="-trimpath"
+
 post_install() {
   vlicense ../LICENSE
   vlicense ../PATENTS
