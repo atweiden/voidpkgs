@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libwebp"
-version=1.2.1
+version=1.2.2
 revision=1
 short_desc="WebP image format"
 makedepends+=" giflib-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://developers.google.com/speed/webp/"
 license="BSD-3-Clause"
 distfiles="http://downloads.webmproject.org/releases/webp/$pkgname-$version.tar.gz"
-checksum="808b98d2f5b84e9b27fdef6c5372dac769c3bda4502febbfa5031bd3c4d7d018"
+checksum="7656532f837af5f4cec3ff6bafe552c044dc39bf453587bd5b77450802f4aee6"
 build_style="gnu-configure"
 # avoid libfreeglut gui dependency
 configure_args+=" --disable-gl"
@@ -20,35 +20,37 @@ configure_args+=" --enable-libwebpdemux"
 configure_args+=" --enable-libwebpmux"
 
 case "$XBPS_TARGET_MACHINE" in
-	armv6*)
+  armv6*)
     configure_args+=" --disable-neon"
     ;;
-	armv7*)
+  armv7*)
     CFLAGS="-mfpu=neon"
     ;;
 esac
 
 post_install() {
-	vlicense COPYING LICENSE
+  vlicense COPYING LICENSE
 }
 
 libwebp-tools_package() {
-	short_desc+=" - tools"
-	pkg_install() {
-		vmove usr/bin
-		vmove usr/share/man
-	}
+  short_desc+=" - tools"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/share/man
+  }
 }
 
 libwebp-devel_package() {
   unset depends
-	depends+=" $makedepends"
-	depends+=" $sourcepkg>=${version}_$revision"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove "usr/lib/*.a"
-	}
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove "usr/lib/*.a"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
