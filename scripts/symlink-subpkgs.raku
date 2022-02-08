@@ -462,6 +462,7 @@ constant %PKG = Map.new(
                            linux-firmware-nvidia
                            linux-firmware-qualcomm>,
     'linux-lts' => ['linux-lts-headers'],
+    'linux-mainline' => ['linux-mainline-headers'],
     'linux' => ['linux-headers'],
     'linux5.10' => qw<linux5.10-dbg
                       linux5.10-headers>,
