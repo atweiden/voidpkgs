@@ -467,6 +467,8 @@ constant %PKG = Map.new(
                       linux5.10-headers>,
     'linux5.15' => qw<linux5.15-dbg
                       linux5.15-headers>,
+    'linux5.16' => qw<linux5.16-dbg
+                      linux5.16-headers>,
     'llhttp' => ['llhttp-devel'],
     'llvm12' => qw<clang
                    clang-analyzer
