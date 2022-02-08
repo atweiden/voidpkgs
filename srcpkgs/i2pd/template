@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="i2pd"
-version=2.38.0
+version=2.40.0
 revision=1
 short_desc="Full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
@@ -12,7 +12,7 @@ homepage="https://i2pd.website/"
 license="BSD-3-Clause"
 changelog="https://github.com/PurpleI2P/i2pd/raw/openssl/ChangeLog"
 distfiles="https://github.com/PurpleI2P/i2pd/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8452f5323795a1846d554096c08fffe5ac35897867b93a5079605df8f80a3089"
+checksum="4443f484ad40753e892170a26c8ee8126e8338bf416d04eab0c55c1c94a4e193"
 conf_files+=" /etc/i2pd/i2pd.conf"
 conf_files+=" /etc/i2pd/tunnels.conf"
 build_style="gnu-makefile"
@@ -27,7 +27,6 @@ esac
 system_accounts="_i2pd"
 _i2pd_homedir="/var/lib/i2pd"
 make_dirs="/var/lib/i2pd 0700 _i2pd _i2pd"
-disable_parallel_build="yes"
 
 pre_install() {
   # log errors to syslog
