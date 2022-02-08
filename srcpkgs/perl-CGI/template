@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-CGI"
-version=4.53
-revision=2
+version=4.54
+revision=1
 short_desc="Handle Common Gateway Interface requests and responses"
 depends="perl-HTML-Parser"
 makedepends="perl"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/CGI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/CGI/${pkgname/perl-/}-$version.tar.gz"
-checksum="c67e732f3c96bcb505405fd944f131fe5c57b46e5d02885c00714c452bf14e60"
+checksum="9608a044ae2e87cefae8e69b113e3828552ddaba0d596a02f9954c6ac17fa294"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
