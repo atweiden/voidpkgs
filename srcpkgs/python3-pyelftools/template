@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pyelftools"
-version=0.27
+version=0.28
 revision=1
 short_desc="Python3 library for parsing ELF and DWARF"
 depends="python3"
@@ -8,7 +8,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/eliben/pyelftools"
 license="Public Domain"
 distfiles="$PYPI_SITE/p/pyelftools/pyelftools-$version.tar.gz"
-checksum="cde854e662774c5457d688ca41615f6594187ba7067af101232df889a6b7a66b"
+checksum="53e5609cac016471d40bd88dc410cd90755942c25e58a61021cfdf7abdfeacff"
 wrksrc="pyelftools-$version"
 build_style="python3-module"
 alternatives="pyelftools:readelf.py:/usr/bin/readelf.py3"
