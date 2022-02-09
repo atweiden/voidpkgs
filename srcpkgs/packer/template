@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="packer"
-version=1.7.8
+version=1.7.10
 revision=1
 short_desc="Create identical multiplatform machine images from a single source"
 homepage="http://www.packer.io"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7f4f3eab48f7e5b153772c079379589d208fd911a155431cf0d7d0f309418af2"
+checksum="80ed60c492f6765265223f715f26529c8eeb5ce4cee9c4bd7372fd83a9e10493"
 build_style="go"
 go_import_path="github.com/hashicorp/packer"
 go_ldflags="-s -w -buildid="
