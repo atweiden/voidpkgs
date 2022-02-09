@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nss"
-version=3.74
+version=3.75
 revision=1
 _nsprver=4.32
 short_desc="Mozilla Network Security Services"
@@ -12,7 +12,7 @@ hostmakedepends="perl"
 homepage="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="88928811f9f40f87d42e2eaccdf6e454562e51486067f2ddbe90aa47ea6cd056"
+checksum="fd571507827284644f4dd522a032acda2286835f6683ed22a1c2d3878cc58582"
 
 export BUILD_OPT=1
 export FREEBL_NO_DEPEND=1
