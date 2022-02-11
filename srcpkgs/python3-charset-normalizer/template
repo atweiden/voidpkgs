@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-charset-normalizer"
-version=2.0.10
+version=2.0.11
 revision=1
 short_desc="Encoding and language detection"
 depends="python3"
@@ -8,8 +8,9 @@ checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://charset-normalizer.readthedocs.io/"
 license="MIT"
+changelog="https://github.com/Ousret/charset_normalizer/raw/master/CHANGELOG.md"
 distfiles="https://github.com/Ousret/charset_normalizer/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f6ff5af81be8e733099e5dd79bf344f3181d1b4de25a570c0398e816b173f9f1"
+checksum="d7188036dd61de0e626717d0b5fe6365beac7ea03c77b354e874a1098ed2b18a"
 wrksrc="charset_normalizer-$version"
 build_style="python3-module"
 
