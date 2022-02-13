@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xfsprogs"
 version=5.13.0
-revision=1
+revision=2
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
 makedepends+=" libblkid-devel"
@@ -15,6 +15,7 @@ checksum="4e142d4babe086adf9016d8c606c805829da08e46389a4433f40346204f90cdb"
 build_style="gnu-configure"
 configure_args+=" --enable-lib64=no"
 configure_args+=" --enable-editline=yes"
+configure_args+=" --libdir=/usr/lib"
 
 post_extract() {
   sed \
