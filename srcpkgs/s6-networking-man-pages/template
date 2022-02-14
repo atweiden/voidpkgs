@@ -10,7 +10,7 @@ distfiles="https://github.com/flexibeast/s6-networking-man-pages/archive/v$versi
 checksum="0def3cc5511f20efd47f967c498e5bd6635b1c9eded738e2fece2f956cb9bc5e"
 build_style="gnu-makefile"
 
-do_install() {
+post_install() {
   make install DESTDIR="$DESTDIR"
   vlicense LICENSE
 }
