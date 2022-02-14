@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="ocamlbuild"
-version=0.14.0
-revision=7
+version=0.14.1
+revision=1
 short_desc="OCaml build tool"
 hostmakedepends="ocaml"
 homepage="https://github.com/ocaml/ocamlbuild"
 license="LGPL-2.0-only"
 distfiles="https://github.com/ocaml/ocamlbuild/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="87b29ce96958096c0a1a8eeafeb6268077b2d11e1bf2b3de0f5ebc9cf8d42e78"
+checksum="4e1279ff0ef80c862eaa5207a77020d741e89ef94f0e4a92a37c4188dbf08256"
 build_style="gnu-makefile"
 make_build_args="PREFIX=/usr"
 make_install_args="PREFIX=/usr"
