@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-HTTP-Daemon"
-version=6.12
-revision=2
+version=6.13
+revision=1
 short_desc="HTTP::Daemon - a simple HTTP server class"
 depends+=" perl-HTTP-Message"
 depends+=" perl-LWP-MediaTypes"
@@ -13,7 +13,7 @@ hostmakedepends+=" perl-Module-Build-Tiny"
 homepage="https://metacpan.org/release/HTTP-Daemon"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/HTTP/HTTP-Daemon-$version.tar.gz"
-checksum="df47bed10c38670c780fd0116867d5fd4693604acde31ba63380dce04c4e1fa6"
+checksum="d184d1f3e51e690d60e4b00195aa69f679169c858f2aab419997c70892014516"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
