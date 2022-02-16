@@ -415,6 +415,7 @@ constant %PKG = Map.new(
                          readline-devel>,
     'librsync' => ['librsync-devel'],
     'libsasl' => ['libsasl-devel'],
+    'libscrypt' => ['libscrypt-devel'],
     'libseccomp' => ['libseccomp-devel'],
     'libsigc++' => ['libsigc++-devel'],
     'libsigsegv' => ['libsigsegv-devel'],
