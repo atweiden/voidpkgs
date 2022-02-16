@@ -1,23 +1,25 @@
-# Template file for 'libscrypt'
-pkgname=libscrypt
+maintainer="nox"
+pkgname="libscrypt"
 version=1.22
 revision=1
-build_style=gnu-makefile
 short_desc="Library that implements scrypt() functionality"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="2-clause-BSD"
 homepage="https://github.com/technion/libscrypt"
-distfiles="https://github.com/technion/${pkgname}/archive/v${version}.tar.gz"
-checksum=a2d30ea16e6d288772791de68be56153965fe4fd4bcd787777618b8048708936
+license="2-clause-BSD"
+distfiles="https://github.com/technion/libscrypt/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="a2d30ea16e6d288772791de68be56153965fe4fd4bcd787777618b8048708936"
+build_style="gnu-makefile"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
 libscrypt-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/*.so
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
