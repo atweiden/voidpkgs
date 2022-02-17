@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tree"
-version=2.0.1
+version=2.0.2
 revision=1
 short_desc="Recursive directory listing program"
 homepage="http://mama.indstate.edu/users/ice/tree"
@@ -8,7 +8,7 @@ license="GPL-2.0-or-later"
 changelog="http://mama.indstate.edu/users/ice/tree/changes.html"
 #distfiles="http://mama.indstate.edu/users/ice/tree/src/tree-$version.tgz"
 distfiles="http://deb.debian.org/debian/pool/main/t/tree/tree_$version.orig.tar.gz"
-checksum="e3339c5a194cf6b4080f15ec59faa3679f02d5a793b2147912fbfcfb4cdf2239"
+checksum="7d693a1d88d3c4e70a73e03b8dbbdc12c2945d482647494f2f5bd83a479eeeaf"
 build_style="gnu-makefile"
 
 do_install() {
