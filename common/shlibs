@@ -187,7 +187,7 @@ libjansson.so.4 jansson-2.4_1
 libjbig.so.0 jbigkit-libs-2.1_2
 libjbig85.so.0 jbigkit-libs-2.1_2
 libjemalloc.so.2 jemalloc-4.0.0_1
-libjq.so.1 jq-devel-1.4_1
+libjq.so.1 jq-1.6_2
 libjson-c.so.5 json-c-0.14.0_1
 libjsoncpp.so.24 jsoncpp-1.9.4_1
 liblapack.so.3 lapack-3.5.0_1
