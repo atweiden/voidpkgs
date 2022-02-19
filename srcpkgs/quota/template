@@ -1,23 +1,32 @@
-# Template file for 'quota'
-pkgname=quota
+maintainer="nox"
+pkgname="quota"
 version=4.06
 revision=2
-build_style=gnu-configure
-make_build_args="V=1"
-conf_files="/etc/quotagrpadmins /etc/quotatab /etc/warnquota.conf"
-hostmakedepends="pkg-config automake gettext-devel"
-makedepends="dbus-devel e2fsprogs-devel libldap-devel libnl3-devel libtirpc-devel"
 short_desc="Linux disk quota tool"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+makedepends+=" e2fsprogs-devel"
+makedepends+=" libldap-devel"
+makedepends+=" libtirpc-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" gettext-devel"
+hostmakedepends+=" pkg-config"
 homepage="https://sourceforge.net/projects/linuxquota/"
-distfiles="${SOURCEFORGE_SITE}/linuxquota/quota-tools/${pkgname}-${version}.tar.gz"
-checksum=2f3e03039f378d4f0d97acdb49daf581dcaad64d2e1ddf129495fd579fbd268d
+license="GPL-2.0-or-later"
+distfiles="$SOURCEFORGE_SITE/linuxquota/quota-tools/$pkgname-$version.tar.gz"
+checksum="2f3e03039f378d4f0d97acdb49daf581dcaad64d2e1ddf129495fd579fbd268d"
+conf_files+=" /etc/quotagrpadmins"
+conf_files+=" /etc/quotatab"
+conf_files+=" /etc/warnquota.conf"
+build_style="gnu-configure"
+configure_args="--disable-netlink"
+make_build_args="V=1"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/include/rpcsvc ${DESTDIR}/usr/share/doc/quota
+  rm -rf "$DESTDIR/usr/include/rpcsvc"
+  rm -rf "$DESTDIR/usr/share/doc/quota"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
