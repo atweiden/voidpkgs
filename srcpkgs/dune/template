@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dune"
-version=2.9.2
+version=3.0.2
 revision=1
 short_desc="Composable build system for OCaml"
 depends="ocaml"
@@ -8,14 +8,43 @@ makedepends="ocaml"
 homepage="https://dune.build/"
 license="MIT"
 distfiles="https://github.com/ocaml/dune/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b2301cdec07a56135f3c1531ba7afc61a85511119577ee8f7814dc0a3d49063d"
-build_style="gnu-makefile"
-make_build_target="release"
+checksum="e8bdf26f0d93a313ba9ebdb4c7a30689eb8c34786421a52a6f43d82f0218e642"
 nocross="ocaml"
 
-post_install() {
-  vmkdir usr/share
-  mv "$DESTDIR/usr/man" "$DESTDIR/usr/share"
+_dune_release_pkgs+=" dune"
+_dune_release_pkgs+=" dune-action-plugin"
+_dune_release_pkgs+=" dune-build-info"
+_dune_release_pkgs+=" dune-configurator"
+_dune_release_pkgs+=" dune-glob"
+_dune_release_pkgs+=" dune-private-libs"
+_dune_release_pkgs+=" dune-site"
+_dune_release_pkgs+=" dyn"
+_dune_release_pkgs+=" stdune"
+_dune_release_pkgs+=" ordering"
+_dune_release_pkgs+=" xdg"
+_dune_release_pkgs+=" fiber"
+
+do_configure() {
+  ./configure \
+    --libdir="/usr/lib/ocaml" \
+    --mandir="/usr/share/man"
+}
+
+do_build() {
+  make dune.exe
+  ./dune.exe build \
+    -p "$(echo $_dune_release_pkgs |tr ' ' ,)" \
+    --profile dune-bootstrap
+}
+
+do_install() {
+  for pkg in $_dune_release_pkgs; do
+    ./dune.exe install "$pkg" \
+      --destdir="$DESTDIR" \
+      --libdir="/usr/lib/ocaml" \
+      --prefix="/usr"
+  done
+
   rm -r "$DESTDIR/usr/doc"
   vlicense LICENSE.md
 }
