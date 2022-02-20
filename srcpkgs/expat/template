@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="expat"
-version=2.4.5
+version=2.4.6
 revision=1
 short_desc="XML parser library written in C"
 homepage="https://libexpat.github.io/"
 license="MIT"
 distfiles="https://github.com/libexpat/libexpat/releases/download/R_${version//./_}/expat-$version.tar.xz"
-checksum="f2af8fc7cdc63a87920da38cd6d12cb113c3c3a3f437495b1b6541e0cff32579"
+checksum="de55794b7a9bc214852fdc075beaaecd854efe1361597e6268ee87946951289b"
 build_style="gnu-configure"
 
 post_install() {
