@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="protobuf"
-version=3.18.1
+version=3.19.4
 revision=1
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
@@ -11,7 +11,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9111bf0b542b631165fadbd80aa60e7fb25b25311c532139ed2089d76ddf6dd7"
+checksum="3bd7828aa5af4b13b99c191e8b1e884ebfa9ad371b0ce264605d347f135d2568"
 wrksrc="protobuf-$version"
 build_style="gnu-configure"
 # checks rely on googletest
@@ -38,14 +38,6 @@ fi
 
 pre_configure() {
   autoreconf -fi
-}
-
-do_configure() {
-  # configure doesn't set proper linker flags when discovering pthread
-  PTHREAD_LIBS="-pthread" \
-  PTHREAD_CFLAGS="-pthread" \
-    ./configure \
-      $configure_args
 }
 
 post_install() {
