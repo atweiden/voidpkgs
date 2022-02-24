@@ -597,6 +597,8 @@ constant %PKG = Map.new(
     'pam' => qw<pam-devel
                 pam-libs
                 pam-userdb>,
+    'pandoc' => qw<pandoc-crossref
+                   pandoc-sidenote>,
     'parted' => qw<libparted
                    libparted-devel>,
     'pciutils' => ['pciutils-devel'],
