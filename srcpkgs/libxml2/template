@@ -1,34 +1,24 @@
 maintainer="nox"
 pkgname="libxml2"
-version=2.9.10
-revision=6
+version=2.9.13
+revision=1
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" gettext-devel"
-hostmakedepends+=" libtool"
+hostmakedepends+=" gettext"
 hostmakedepends+=" pkg-config"
 homepage="http://www.xmlsoft.org/"
 license="MIT"
-distfiles="http://xmlsoft.org/sources/$pkgname-$version.tar.gz"
-checksum="aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f"
+distfiles="https://download.gnome.org/sources/libxml2/${version%.*}/$pkgname-$version.tar.xz"
+checksum="276130602d12fe484ecc03447ee5e759d0465558fbc9d6bd144e3745306ebf0e"
 build_style="gnu-configure"
 configure_args+=" --with-history"
 configure_args+=" --with-icu"
 configure_args+=" --with-threads"
 configure_args+=" --without-python"
-
-pre_configure() {
-  autoreconf -fi
-  sed \
-    -i \
-    -e '/PROGRAMS =/s,$(noinst_PROGRAMS),,' \
-    Makefile.in
-}
 
 post_install() {
   vlicense COPYING
@@ -48,7 +38,7 @@ libxml2-devel_package() {
     vmove usr/lib/cmake
     vmove usr/share/aclocal
     vmove usr/share/gtk-doc
-    vmove "usr/share/doc/$sourcepkg-$version"
+    vmove usr/share/doc
     vmove "usr/share/man/man1/xml2-config*"
     vmove usr/share/man/man3
     vmove "usr/lib/*.a"
