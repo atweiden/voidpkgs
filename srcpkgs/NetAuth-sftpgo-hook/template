@@ -15,7 +15,7 @@ go_import_path="github.com/netauth/sftpgo-hook"
 
 do_install() {
   vlicense LICENSE
-  vinstall sftpgo-hook usr/libexec/sftpgo/netauth-hook
+  vinstall "$GOPATH/bin/sftpgo-hook" 0750 usr/libexec/sftpgo netauth-hook
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
