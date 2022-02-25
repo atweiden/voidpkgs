@@ -1,16 +1,20 @@
-# Template file for 'sftpgo'
-pkgname=sftpgo
+maintainer="nox"
+pkgname="sftpgo"
 version=2.2.2
 revision=1
-build_style=go
-go_import_path=github.com/drakkan/sftpgo/v2
 short_desc="Fully featured and highly configurable SFTP server"
-maintainer="Michael Aldridge <maldridge@voidlinux.org>"
-license="AGPL-3.0-only"
 homepage="https://github.com/drakkan/sftpgo"
-distfiles="https://github.com/drakkan/sftpgo/archive/refs/tags/v$version.tar.gz"
-checksum=d5c68223017071efce597712612ce7ce4334a70f773a8c0b7afa7a69427c79c8
+license="AGPL-3.0-only"
+distfiles="https://github.com/drakkan/sftpgo/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="d5c68223017071efce597712612ce7ce4334a70f773a8c0b7afa7a69427c79c8"
+build_style="go"
+go_import_path="github.com/drakkan/sftpgo/v2"
+go_ldflags="-s -w -buildid="
+
+export GOFLAGS="-trimpath"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
