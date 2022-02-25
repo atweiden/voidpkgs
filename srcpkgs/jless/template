@@ -1,15 +1,16 @@
-# Template file for 'jless'
-pkgname=jless
+maintainer="nox"
+pkgname="jless"
 version=0.7.2
 revision=1
-build_style=cargo
 short_desc="Pager for JSON data"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="MIT"
 homepage="https://github.com/PaulJuliusMartinez/jless"
-distfiles="https://github.com/PaulJuliusMartinez/jless/archive/refs/tags/v${version}.tar.gz"
-checksum=5d776cb6488743ccdaeeffb4bfc54d84862028170cee852a8bb5c156526ed263
+license="MIT"
+distfiles="https://github.com/PaulJuliusMartinez/jless/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5d776cb6488743ccdaeeffb4bfc54d84862028170cee852a8bb5c156526ed263"
+build_style="cargo"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
