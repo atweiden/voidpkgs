@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nftables"
-version=1.0.1
+version=1.0.2
 revision=1
 short_desc="Netfilter nftables userspace tools"
 makedepends+=" gmp-devel"
@@ -9,18 +9,24 @@ makedepends+=" libmnl-devel"
 makedepends+=" libnftnl-devel"
 makedepends+=" readline-devel"
 hostmakedepends+=" asciidoc"
+hostmakedepends+=" automake"
 hostmakedepends+=" docbook2x"
 hostmakedepends+=" flex"
+hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="http://netfilter.org/projects/nftables/"
 license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/nftables/files/$pkgname-$version.tar.bz2"
-checksum="3ceeba625818e81a0be293e9dd486c3ef799ebd92165270f1e57e9a201efa423"
+checksum="0b28a36ffcf4567b841de7bd3f37918b1fed27859eb48bdec51e1f7a83954c02"
 build_style="gnu-configure"
 configure_args+=" --with-cli=readline"
 configure_args+=" --with-json"
 configure_args+=" --with-python-bin=/bin/python3"
+
+post_extract() {
+  autoreconf -fi
+}
 
 post_install() {
   vsv nftables
@@ -40,7 +46,6 @@ libnftables-devel_package() {
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove "usr/lib/*.so"
-    vmove "usr/lib/*.a"
     vmove usr/share/man/man3
   }
 }
