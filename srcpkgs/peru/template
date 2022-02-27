@@ -8,20 +8,14 @@ depends+=" git"
 depends+=" python3"
 depends+=" python3-docopt"
 depends+=" python3-yaml"
-checkdepends+=" $depends"
-checkdepends+=" flake8"
-checkdepends+=" python3-pip"
-checkdepends+=" python3-wheel"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/buildinspace/peru"
 license="MIT"
 distfiles="https://github.com/buildinspace/peru/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ba21eb65c62c1b823ece2a42375fe80d65fbc6130606e2d6850b7746530018f6"
 build_style="python3-module"
-
-do_check() {
-  python3 test.py
-}
+# checks require distfiles come from a git repository
+make_check="no"
 
 post_install() {
   vlicense LICENSE
