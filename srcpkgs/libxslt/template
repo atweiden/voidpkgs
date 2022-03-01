@@ -1,22 +1,26 @@
 maintainer="nox"
 pkgname="libxslt"
 version=1.1.35
-revision=1
+revision=2
 short_desc="XSLT parser library from the GNOME project"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libxml2-devel"
+makedepends+=" python3-devel"
 hostmakedepends+=" docbook-xml"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="http://xmlsoft.org/XSLT/"
+hostmakedepends+=" python3"
+homepage="https://gitlab.gnome.org/GNOME/libxslt"
 license="MIT"
-distfiles="https://download.gnome.org/sources/libxslt/${version%.*}/$pkgname-$version.tar.xz"
+distfiles="$GNOME_SITE/libxslt/${version%.*}/libxslt-$version.tar.xz"
 checksum="8247f33e9a872c6ac859aa45018bc4c4d00b97e2feac9eebc10c93ce1f34dd79"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --disable-dependency-tracking"
 python_version=3
+
+CFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" libxslt"
@@ -72,6 +76,18 @@ libxslt-devel_package() {
     vmove usr/share/aclocal
     vmove usr/share/doc
     vmove usr/share/man/man3
+    vmove usr/share/gtk-doc
+    vmove usr/lib/cmake
+  }
+}
+
+libxslt-python3_package() {
+  unset depends
+  depends+=" $sourcepkg>=$version"
+  depends+=" python3"
+  short_desc+=" - Python 3 bindings"
+  pkg_install() {
+    vmove "$py3_lib"
   }
 }
 
