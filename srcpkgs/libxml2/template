@@ -1,26 +1,31 @@
 maintainer="nox"
 pkgname="libxml2"
 version=2.9.13
-revision=1
+revision=2
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" ncurses-devel"
+makedepends+=" python3-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" gettext"
 hostmakedepends+=" pkg-config"
-homepage="http://www.xmlsoft.org/"
+hostmakedepends+=" python3"
+homepage="https://gitlab.gnome.org/GNOME/libxml2"
 license="MIT"
-distfiles="https://download.gnome.org/sources/libxml2/${version%.*}/$pkgname-$version.tar.xz"
+distfiles="$GNOME_SITE/libxml2/${version%.*}/libxml2-$version.tar.xz"
 checksum="276130602d12fe484ecc03447ee5e759d0465558fbc9d6bd144e3745306ebf0e"
 build_style="gnu-configure"
 configure_args+=" --with-history"
 configure_args+=" --with-icu"
 configure_args+=" --with-threads"
-configure_args+=" --without-python"
+python_version=3
+
+CFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
 
 post_install() {
+  rm -f "$DESTDIR/$py3_lib"/*.a
   vlicense COPYING
 }
 
@@ -42,12 +47,19 @@ libxml2-devel_package() {
     vmove "usr/share/man/man1/xml2-config*"
     vmove usr/share/man/man3
     vmove "usr/lib/*.a"
+    vmove "usr/lib/*.la"
     vmove "usr/lib/*.so"
   }
 }
 
-# REMARKS:
-#
-# Please keep this in sync with "srcpkgs/libxml2-python3".
+libxml2-python3_package() {
+  unset depends
+  depends+=" $sourcepkg>=$version"
+  depends+=" python3"
+  short_desc+=" - Python bindings"
+  pkg_install() {
+    vmove "$py3_lib"
+  }
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

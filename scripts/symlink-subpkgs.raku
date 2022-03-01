@@ -452,9 +452,10 @@ constant %PKG = Map.new(
     'libvterm' => ['libvterm-devel'],
     'libwebp' => qw<libwebp-devel
                     libwebp-tools>,
-    'libxml2' => ['libxml2-devel'],
-    'libxml2-python' => ['libxml2-python3'],
-    'libxslt' => ['libxslt-devel'],
+    'libxml2' => qw<libxml2-devel
+                    libxml2-python3>,
+    'libxslt' => qw<libxslt-devel
+                    libxslt-python3>,
     'libyaml' => ['libyaml-devel'],
     'linux-firmware' => qw<linux-firmware-amd
                            linux-firmware-broadcom
