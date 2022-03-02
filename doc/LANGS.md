@@ -8,6 +8,7 @@ Programming Languages
 - Erlang
 - Go
 - Haskell
+- Janet
 - JavaScript
 - Lisp
 - Lua
