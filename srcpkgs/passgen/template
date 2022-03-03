@@ -1,30 +1,27 @@
 maintainer="nox"
 pkgname="passgen"
-version=1.3.2
+version=1.0.0
 revision=1
-_gitrev="cfcf49ec5a0f9222822037222e0baa223912ac12"
+_gitrev="33696fe23cd14df76637b497fa66ea25c8f3111c"
 # the revision passgen uses as a submodule for the specific version
-_utf8proc_gitrev="b5211c88af605c4572f72c1ed103e834aa0e7618"
+_utf8proc_gitrev="462093b3924c7491defc67fda4bc7a27baf9b088"
 short_desc="Regex-based password generator"
 makedepends="jansson-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" ruby"
 homepage="https://github.com/xfbs/passgen"
 license="MIT"
-distfiles+=" https://github.com/xfbs/passgen/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://gitlab.com/xfbs/passgen/-/archive/master/passgen-$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/JuliaStrings/utf8proc/archive/$_utf8proc_gitrev.tar.gz"
-checksum+=" c60ec991ba44ee2569d401efdc87f52502181b148172764d4f875865e218e7fe"
-checksum+=" 45bf1e49a33cd76e3bfe6c13e177f2d29157ebe7ba0021a93edd5ad5bea92968"
+checksum+=" 18db2c4b0e5f0bde7a19cf345af83ce0c3ef5caa74833ee77af176400c5dc846"
+checksum+=" 095fd8f48e95a6e894e8a0ac419662f3e0c7a4d43b4cce05550d4e902754ee54"
 skip_extraction+=" $_utf8proc_gitrev.tar.gz"
-wrksrc="$pkgname-$_gitrev"
+wrksrc="$pkgname-master-$_gitrev"
 build_style="cmake"
-configure_args+=" -DBUILD_BENCH=OFF"
+configure_args+=" -DBUILD_BENCH=NO"
 configure_args+=" -DBUILD_GIT_INFO=OFF"
-# error (../include/passgen/passgen.h): unexpected token '{'
-# error (../include/passgen/passgen2.h): unexpected token '{'
-# error (../include/passgen/pronounceable.h): unexpected token 'passgen_pronounceable_lookup(size_t'
-# error (../include/passgen/token_old.h): unexpected token '(1'
-broken="yes"
+configure_args+=" -DLIBPASSGEN_STATIC=OFF"
+shlib_provides="libpassgen.so"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -40,17 +37,6 @@ post_extract() {
 
 post_install() {
   vlicense LICENSE
-}
-
-passgen-devel_package() {
-  short_desc+=" - development files"
-  depends="$sourcepkg>=${version}_$revision"
-  pkg_install() {
-    vmove usr/include
-    vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
-    vmove usr/lib/pkgconfig
-  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
