@@ -113,4 +113,4 @@ librpmio_package() {
   }
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

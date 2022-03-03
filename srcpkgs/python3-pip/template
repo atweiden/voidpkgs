@@ -20,4 +20,4 @@ post_install() {
   ln -s pip3 "$DESTDIR/usr/bin/pip"
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

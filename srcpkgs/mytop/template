@@ -17,4 +17,4 @@ do_install() {
   vbin "$XBPS_SRCDISTDIR/$pkgname-$version/mytop.sh" mytop
 }
 
-# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:A usedjk
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
