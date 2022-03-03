@@ -1,0 +1,24 @@
+maintainer="nox"
+pkgname="python3-openssl"
+version=22.0.0
+revision=1
+depends="python3-cryptography"
+checkdepends+=" python3-cryptography"
+checkdepends+=" python3-flaky"
+checkdepends+=" python3-pretend"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
+short_desc="Python3 interface to the OpenSSL library"
+homepage="https://pyopenssl.org/"
+license="Apache-2.0"
+changelog="https://github.com/pyca/pyopenssl/raw/master/CHANGELOG.rst"
+distfiles="$PYPI_SITE/p/pyOpenSSL/pyOpenSSL-$version.tar.gz"
+checksum="660b1b1425aac4a1bea1d94168a85d99f0b3144c869dd4390d27629d0087f1bf"
+wrksrc="pyOpenSSL-$version"
+build_style="python3-module"
+if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
+  # https://github.com/pyca/pyopenssl/issues/974
+  make_check_args="-k not(test_verify_with_time)"
+fi
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
