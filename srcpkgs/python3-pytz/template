@@ -1,0 +1,24 @@
+maintainer="nox"
+pkgname="python3-pytz"
+version=2021.3
+revision=2
+short_desc="Python3 timezone library"
+depends+=" python3"
+depends+=" tzdata"
+checkdepends="python3-pytest"
+hostmakedepends="python3-setuptools"
+homepage="https://pythonhosted.org/pytz/"
+license="MIT"
+distfiles="$PYPI_SITE/p/pytz/pytz-$version.tar.gz"
+checksum="acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
+wrksrc="pytz-$version"
+build_style="python3-module"
+
+post_install() {
+  # use system tz database
+  rm -rf "$DESTDIR/$py3_sitelib/pytz/zoneinfo"
+  ln -sf /usr/share/zoneinfo "$DESTDIR/$py3_sitelib/pytz/zoneinfo"
+  vlicense LICENSE.txt LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
