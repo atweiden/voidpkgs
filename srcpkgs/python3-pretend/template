@@ -1,0 +1,20 @@
+maintainer="nox"
+pkgname="python3-pretend"
+version=1.0.9
+revision=5
+short_desc="Make stubbing with Python3 easier"
+depends="python3"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/alex/pretend"
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/p/pretend/pretend-$version.tar.gz"
+checksum="c90eb810cde8ebb06dafcb8796f9a95228ce796531bc806e794c2f4649aa1b10"
+wrksrc="pretend-$version"
+build_style="python3-module"
+
+post_install() {
+  vdoc README.rst
+  vlicense LICENSE.rst
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
