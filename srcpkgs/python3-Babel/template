@@ -1,0 +1,27 @@
+maintainer="nox"
+pkgname="python3-Babel"
+version=2.9.1
+revision=1
+short_desc="Tools for internationalizing Python applications (Python3)"
+depends+=" python3-pytz"
+depends+=" python3-setuptools"
+checkdepends+=" python3-freezegun"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytz"
+hostmakedepends="python3-setuptools"
+homepage="http://babel.pocoo.org/"
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/B/Babel/Babel-$version.tar.gz"
+checksum="bc0c176f9f6a994582230df350aa6e05ba2ebe4b3ac317eab29d9be5d2768da0"
+wrksrc="${pkgname#*-}-$version"
+build_style="python3-module"
+# test_extract_error_code fails: https://github.com/python-babel/babel/issues/802#issuecomment-1029132391
+make_check="no"
+
+post_install() {
+  vlicense LICENSE
+  # for compatibility
+  ln -s pybabel "$DESTDIR/usr/bin/pybabel3"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
