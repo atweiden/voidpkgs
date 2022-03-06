@@ -1,19 +1,21 @@
-# Template file for 'smartmontools'
-pkgname=smartmontools
+maintainer="nox"
+pkgname="smartmontools"
 version=7.3
 revision=1
-build_style=gnu-configure
-configure_args="--sysconfdir=/etc/smartd --with-libcap-ng=yes"
-makedepends="libcap-ng-devel"
-conf_files="/etc/smartd/*"
 short_desc="S.M.A.R.T Monitoring Tools"
-maintainer="Frank Steinborn <steinex@nognu.de>"
-license="GPL-2.0-or-later"
+makedepends="libcap-ng-devel"
 homepage="http://smartmontools.sourceforge.net"
-changelog="https://raw.githubusercontent.com/smartmontools/smartmontools/master/smartmontools/NEWS"
-distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=a544f8808d0c58cfb0e7424ca1841cb858a974922b035d505d4e4c248be3a22b
+license="GPL-2.0-or-later"
+changelog="https://github.com/smartmontools/smartmontools/raw/master/smartmontools/NEWS"
+distfiles="$SOURCEFORGE_SITE/smartmontools/$pkgname-$version.tar.gz"
+checksum="a544f8808d0c58cfb0e7424ca1841cb858a974922b035d505d4e4c248be3a22b"
+conf_files="/etc/smartd/*"
+build_style="gnu-configure"
+configure_args+=" --sysconfdir=/etc/smartd"
+configure_args+=" --with-libcap-ng=yes"
 
 post_install() {
-	vsv smartd
+  vsv smartd
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
