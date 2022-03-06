@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="earlyoom"
-version=1.6.2
-revision=2
+version=1.7
+revision=1
 short_desc="Userspace Early OOM Daemon for Linux"
 checkdepends="go"
 hostmakedepends="$(vopt_if man pandoc)"
 homepage="https://github.com/rfjakob/earlyoom"
 license="MIT"
 distfiles="https://github.com/rfjakob/earlyoom/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="227234cf9e77831c21c748bd361e1a7c415e158b96034eacd59e70586779bb6c"
+checksum="ebda1279a813d9b0f7860ce5029ccf5ea9f8868be070f2eaf40f90f2e64b6414"
 build_style="gnu-makefile"
 make_check_target="test"
 build_options="man"
