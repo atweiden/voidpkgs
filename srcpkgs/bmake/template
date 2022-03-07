@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="bmake"
-version=20220214
+version=20220303
 revision=1
 short_desc="Portable version of the NetBSD make build tool"
 homepage="https://www.crufty.net/help/sjg/bmake.html"
 license="BSD-3-Clause"
 distfiles="https://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz"
-checksum="e5b0af84ed3bdfde202973deb4d449cbd00cc523bac56fb13427f21d16b17edc"
+checksum="793754b93fec97a0cf6cade0b0ad597bb7ea5057fd24311d4a562432df3e91cb"
 create_wrksrc="yes"
 python_version=3
 
