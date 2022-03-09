@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fossil"
-version=2.17
+version=2.18
 revision=1
 short_desc="Simple, high-reliability, distributed software configuration management"
 makedepends+=" openssl-devel"
@@ -12,10 +12,11 @@ homepage="https://www.fossil-scm.org"
 license="BSD-2-Clause"
 changelog="https://www.fossil-scm.org/home/doc/trunk/www/changes.wiki"
 distfiles="https://fossil-scm.org/home/tarball/version-$version/$pkgname-$version.tar.gz"
-checksum="21d6ee5187775113f74e55ab5ebcb1764f7226a8e59be1b2c7896cbe9dce6914"
+checksum="e89cb9c726348bb14e7736e031d2b08574408c5d4db98e7d3fc814dadc6f3546"
 build_style="configure"
 configure_args+=" --disable-internal-sqlite"
 configure_args+=" --prefix=/usr"
+configure_args+=" --with-sqlite=$XBPS_CROSS_BASE/usr/include"
 
 post_extract() {
   # failing on cross
