@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
 version=2.14.0.3
-revision=2
+revision=3
 _sidenote_version=0.20.0.0
 _monad_gen_version=0.3.0.1
 _crossref_version=0.3.12.2
@@ -24,7 +24,7 @@ checksum+=" 91f8e96d8470722d677d31d4bbf16c2ac6902567d818ed7a2715bad2617a4cdb"
 checksum+=" be8485023fce236b5b915f2f6074f7b0470a2040f84cdd137c5227f1b4c98465"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-18.5"
+stackage="lts-18.14"
 make_build_args+=" --flag=hslua:pkg-config"
 make_build_args+=" --flag=hslua:system-lua"
 make_build_args+=" --flag=pandoc:embed_data_files"
