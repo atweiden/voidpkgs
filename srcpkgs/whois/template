@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="whois"
-version=5.5.11
+version=5.5.12
 revision=1
 short_desc="Improved whois client"
 makedepends="libidn2-devel"
@@ -11,24 +11,19 @@ homepage="https://www.linux.it/~md/software"
 license="GPL-2.0-or-later"
 changelog="https://github.com/rfc1036/whois/raw/next/debian/changelog"
 distfiles="$DEBIAN_SITE/main/w/$pkgname/${pkgname}_$version.tar.xz"
-checksum="966281eb8301c14a1acc17e46c70061f73179d80e370aef43065c22f0947fb87"
+checksum="f1c5bab781b7f2357dab1039e8875d41ff7b5d03a78c27443fa26351952a0822"
 wrksrc="whois"
+build_style="gnu-makefile"
+make_build_args+=" CONFIG_FILE=/etc/whois.conf"
+make_build_args+=" HAVE_ICONV=1"
+make_build_args+=" prefix=/usr"
+make_install_args+=" BASEDIR=\${DESTDIR}"
+make_install_args+=" prefix=/usr"
+make_install_target="install-whois"
 alternatives+=" whois:whois:/usr/bin/gwhois"
 alternatives+=" whois:whois.1:/usr/share/man/man1/gwhois.1"
 
-do_build() {
-  make \
-    CC="$CC" \
-    CONFIG_FILE="/etc/whois.conf" \
-    HAVE_ICONV=1 \
-    prefix="/usr"
-}
-
-do_install() {
-  make \
-    BASEDIR="$DESTDIR" \
-    prefix="/usr" \
-    install-whois
+post_install() {
   mv "$DESTDIR/usr/bin"/{whois,gwhois}
   mv "$DESTDIR/usr/share/man/man1"/{whois,gwhois}.1
 }
