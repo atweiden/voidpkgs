@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="void-artwork"
-version=20170517
-revision=3
+version=20220303
+revision=1
 short_desc="Void Linux artwork"
 homepage="http://www.voidlinux.org"
+# no vlicense check
 license="custom:Public Domain"
 
 do_install() {
@@ -11,6 +12,20 @@ do_install() {
   vinstall "$FILESDIR/splashwhite.png" 644 usr/share/void-artwork
   vinstall "$FILESDIR/void-logo.png" 644 usr/share/void-artwork
   vinstall "$FILESDIR/void-transparent.png" 644 usr/share/void-artwork
+  vinstall "$FILESDIR/void-logo.svg" 644 usr/share/void-artwork
+  for size in 16 \
+              22 \
+              32 \
+              48 \
+              64 \
+              128 \
+              256 \
+              512; do
+    vinstall "$FILESDIR/icons/void-logo-$size.png" 644 "usr/share/icons/hicolor/${size}x$size/apps" void-logo.png
+    vinstall "$FILESDIR/icons/void-logo-notext-$size.png" 644 "usr/share/icons/hicolor/${size}x$size/apps" void-logo-notext.png
+  done
+  vinstall "$FILESDIR/icons/void-logo.svg" 644 usr/share/icons/hicolor/scalable/apps
+  vinstall "$FILESDIR/icons/void-logo-notext.svg" 644 usr/share/icons/hicolor/scalable/apps
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
