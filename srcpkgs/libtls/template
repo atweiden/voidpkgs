@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libtls"
-version=3.4.2
+version=3.4.3
 revision=1
 _lssl_asm_ver="1.2.0"
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
@@ -11,7 +11,7 @@ homepage="http://www.libressl.org/"
 license="OpenSSL, ISC"
 changelog="https://github.com/libressl-portable/portable/raw/master/ChangeLog"
 distfiles="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$version.tar.gz"
-checksum="cb82ca7d547336917352fbd23db2fc483c6c44d35157b32780214ec74197b3ce"
+checksum="ff88bffe354818b3ccf545e3cafe454c5031c7a77217074f533271d63c37f08d"
 wrksrc="libressl-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-libtls-only"
