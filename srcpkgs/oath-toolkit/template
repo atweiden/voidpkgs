@@ -19,8 +19,8 @@ oath-toolkit-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove usr/lib/pkgconfig
-    vmove usr/lib/*.a
-    vmove usr/lib/*.so
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
     vmove usr/share/man/man3
     vmove usr/share/gtk-doc
   }
