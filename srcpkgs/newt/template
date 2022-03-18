@@ -1,30 +1,34 @@
-# Template file for 'newt'
-pkgname=newt
+maintainer="nox"
+pkgname="newt"
 version=0.52.21
 revision=5
-build_style=gnu-configure
-hostmakedepends="python3-devel"
-makedepends="slang-devel popt-devel python3-devel"
 short_desc="Library for color text mode, widget based user interfaces"
-maintainer="Enno Boland <gottox@voidlinux.org>"
-license="LGPL-2.0-only"
+makedepends+=" popt-devel"
+makedepends+=" python3-devel"
+makedepends+=" slang-devel"
+hostmakedepends="python3-devel"
 homepage="https://pagure.io/newt/"
-distfiles="https://pagure.io/releases/newt/newt-${version}.tar.gz"
-checksum=265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31
+license="LGPL-2.0-only"
+distfiles="https://pagure.io/releases/newt/$pkgname-$version.tar.gz"
+checksum="265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31"
+build_style="gnu-configure"
 
 newt-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
 newt-python3_package() {
-	short_desc+=" - Python3 bindings"
-	pkg_install() {
-		vmove usr/lib/python3*
-	}
+  short_desc+=" - Python3 bindings"
+  pkg_install() {
+    vmove "usr/lib/python3*"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
