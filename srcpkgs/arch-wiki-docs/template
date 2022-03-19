@@ -1,0 +1,31 @@
+maintainer="nox"
+pkgname="arch-wiki-docs"
+# build date of generated docs
+version=2022.03.19
+revision=1
+_gitrev="216a2170262f5b1ee4af3ac9b565fd3be2752df9"
+short_desc="Arch Wiki without HTML"
+hostmakedepends+=" python3"
+hostmakedepends+=" python3-cssselect"
+hostmakedepends+=" python3-lxml"
+hostmakedepends+=" python3-requests"
+hostmakedepends+=" python3-simplemediawiki"
+homepage="https://github.com/lahwaacz/arch-wiki-docs"
+license="GFDL-1.3-or-later,GPL-3.0-only"
+distfiles="https://github.com/lahwaacz/arch-wiki-docs/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="664e444bb29b004a295930a4d5c8cd039478701ca3866b428f99ea33bd86a911"
+wrksrc="$pkgname-$_gitrev"
+
+do_build() {
+  LANG="en_US.UTF-8" python3 arch-wiki-docs.py \
+    --output-directory "build_wiki" \
+    --clean \
+    --safe-filenames
+}
+
+do_install() {
+  vmkdir usr/share/doc/arch-wiki-docs/html
+  vcopy "build_wiki/*" usr/share/doc/arch-wiki-docs/html
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
