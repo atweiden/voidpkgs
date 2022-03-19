@@ -1,0 +1,19 @@
+maintainer="nox"
+pkgname="python3-simplemediawiki"
+version=1.2.0b2
+revision=1
+short_desc="Simple, fast, extensible mediawiki encoder/decoder for Python3"
+depends="python3-simplejson"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/iliana/python-simplemediawiki"
+license="LGPL-2.1-only"
+distfiles="https://github.com/iliana/python-simplemediawiki/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="417d17d65c7f6b94519a4f6b7fc2ec7cee2b5ee7a0515e19b3e4bf30c55904a8"
+wrksrc="python-simplemediawiki-$version"
+build_style="python3-module"
+
+post_install() {
+  vlicense COPYING
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
