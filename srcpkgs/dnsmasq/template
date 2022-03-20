@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dnsmasq"
 version=2.86
-revision=1
+revision=2
 short_desc="Lightweight, easy to configure DNS forwarder and DHCP server"
 makedepends+=" libcap-devel"
 makedepends+=" libidn2-devel"
