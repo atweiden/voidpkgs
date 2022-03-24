@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rakudo"
-version=2022.02
+version=2022.03
 revision=1
 short_desc="Mature, production-ready implementation of the Raku language"
 depends="nqp-${version}_$revision"
@@ -17,7 +17,7 @@ homepage="https://rakudo.org"
 license="Artistic-2.0"
 changelog="https://github.com/rakudo/rakudo/raw/master/docs/ChangeLog"
 distfiles="https://rakudo.org/dl/rakudo/$pkgname-$version.tar.gz"
-checksum="6a6e9dbcc6d9a1610a34c6ec67e2d3f694d7b33e9e0a0f224543089fa7f71332"
+checksum="03e215b001a879747618d6fc18eb7f89c0b812f5e543a43ed66c13439ea8a227"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
@@ -44,7 +44,7 @@ make_dirs+=" /usr/lib/raku/vendor/sources 0755 root root"
 provides="raku-${version}_$revision"
 
 post_install() {
-  vbin tools/install-dist.p6 raku-install-dist
+  vbin tools/install-dist.raku raku-install-dist
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
