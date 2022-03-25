@@ -1,26 +1,33 @@
-# Template file for 'grml-rescueboot'
-pkgname=grml-rescueboot
+maintainer="nox"
+pkgname="grml-rescueboot"
 version=0.5.2
 revision=1
-archs="i686 x86_64"
-build_style="gnu-makefile"
-conf_files="/etc/default/grml-rescueboot"
-make_dirs="/boot/grml 0755 root root"
-depends="grub"
 short_desc="Grub rules to find and boot Grml ISO images"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2.0-or-later"
+archs+=" i686"
+archs+=" x86_64"
+depends="grub"
 homepage="http://wiki.grml.org/doku.php?id=rescueboot"
-distfiles="https://github.com/grml/${pkgname}/archive/v${version}.tar.gz"
-checksum=14d37a44c7ef9b0d73cf4e3d3e2698e4a3683e719e02203ff69472b282582f9d
+license="GPL-2.0-or-later"
+distfiles="https://github.com/grml/grml-rescueboot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="14d37a44c7ef9b0d73cf4e3d3e2698e4a3683e719e02203ff69472b282582f9d"
+conf_files="/etc/default/grml-rescueboot"
+build_style="gnu-makefile"
+make_dirs="/boot/grml 0755 root root"
 
 do_build() {
-	:
+  :
 }
+
 post_extract() {
-	sed -i 's/sbin/bin/g' Makefile
+  sed \
+    -i \
+    -e 's/sbin/bin/g' \
+    Makefile
 }
+
 post_install() {
-	vman man/update-grml-rescueboot.8
-	vdoc debian/README
+  vman man/update-grml-rescueboot.8
+  vdoc debian/README
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
