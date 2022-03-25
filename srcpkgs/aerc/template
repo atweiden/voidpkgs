@@ -1,38 +1,26 @@
 maintainer="nox"
 pkgname="aerc"
-version=0.7.1
+version=0.9.0
 revision=1
 short_desc="Pretty good email client"
-hostmakedepends+=" git"
-hostmakedepends+=" scdoc"
+hostmakedepends="scdoc"
 homepage="https://aerc-mail.org/"
 license="MIT"
 distfiles="https://git.sr.ht/~rjarry/aerc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e149236623c103c8526b1f872b4e630e67f15be98ac604c0ea0186054dbef0cc"
+checksum="b5901feb37a55edd1f713e76c1012ac3fc0757202ddacd7d388cc7ce60638023"
 build_style="go"
-go_ldflags="-s -w -buildid="
+go_import_path="git.sr.ht/~rjarry/aerc"
+go_build_tags="notmuch"
+go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -X main.Version=$version"
 
 export GOFLAGS="-trimpath"
 
-do_configure() {
-  :
-}
-
-do_build() {
-  make \
-    "$makejobs" \
-    PREFIX="/usr"
-}
-
-do_install() {
+post_install() {
   make \
     DESTDIR="$DESTDIR" \
     PREFIX="/usr" \
-    STRIP="true" \
     install
-}
-
-post_install() {
   vlicense LICENSE
 }
 
