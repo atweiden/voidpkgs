@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="nwipe"
-version=0.32
+version=0.33
 revision=1
 short_desc="Utility to securely erase disks"
+depends="smartmontools"
 makedepends+=" libparted-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" ncurses-devel"
@@ -12,7 +13,7 @@ homepage="https://github.com/martijnvanbrummelen/nwipe"
 license="GPL-2.0-only"
 changelog="https://github.com/martijnvanbrummelen/nwipe/raw/master/CHANGELOG.md"
 distfiles="https://github.com/martijnvanbrummelen/nwipe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="40b7a3833d60a28834ccc190174c97a28141fdd43d93652ae93bb4928f567a5c"
+checksum="e771a6d36a6800a5cf0ad460591bfd7fe4c04a908afe3da5fd169c921195e489"
 build_style="gnu-configure"
 
 CFLAGS="-D_FILE_OFFSET_BITS=64"
