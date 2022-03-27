@@ -1,35 +1,49 @@
-# Template file for 'nsjail'
-pkgname=nsjail
+maintainer="nox"
+pkgname="nsjail"
 version=3.0
 revision=7
-build_style=gnu-makefile
-hostmakedepends="bison flex pkg-config protobuf which"
-makedepends="libnl3-devel protobuf-devel"
 short_desc="Light-weight process isolation tool"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="Apache-2.0"
-homepage="http://nsjail.com"
-distfiles="https://github.com/google/nsjail/archive/${version}.tar.gz
- https://github.com/google/kafel/archive/8e69b8efae415cde3debffbb1e379d9e7a16835a.tar.gz"
-checksum="cfa66d3ed136b2e221752287b95e544915e8a6760aa866f023b604d14a374919
- 4a6c9a1a70ed99bbed767adc106081b017a3090307ea88cc7e329b82daa1373b"
-
-archs="aarch64* armv5tel* armv6l* armv7l* x86_64*"
-
-if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
-	makedepends+=" musl-legacy-compat"
+archs+=" aarch64*"
+archs+=" armv5tel*"
+archs+=" armv6l*"
+archs+=" armv7l*"
+archs+=" x86_64*"
+makedepends+=" libnl3-devel"
+makedepends+=" protobuf-devel"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-legacy-compat"
 fi
+hostmakedepends+=" bison"
+hostmakedepends+=" flex"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" protobuf"
+hostmakedepends+=" which"
+homepage="http://nsjail.com"
+license="Apache-2.0"
+distfiles+=" https://github.com/google/nsjail/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/google/kafel/archive/8e69b8efae415cde3debffbb1e379d9e7a16835a.tar.gz"
+checksum+=" cfa66d3ed136b2e221752287b95e544915e8a6760aa866f023b604d14a374919"
+checksum+=" 4a6c9a1a70ed99bbed767adc106081b017a3090307ea88cc7e329b82daa1373b"
+build_style="gnu-makefile"
 
 post_extract() {
-	rmdir kafel
-	mv ../kafel-* kafel
+  rmdir kafel
+  mv ../kafel-* kafel
 }
 
 post_patch() {
-	sed -i -e 's/-Werror\b//g' -e 's/\b\(\(C\(XX\)\?\|LD\)FLAGS\s*+=\)/override \1/g' Makefile kafel/build/Makefile.mk kafel/src/Makefile
+  sed \
+    -i \
+    -e 's/-Werror\b//g' \
+    -e 's/\b\(\(C\(XX\)\?\|LD\)FLAGS\s*+=\)/override \1/g' \
+    Makefile \
+    kafel/build/Makefile.mk \
+    kafel/src/Makefile
 }
 
 do_install() {
-	vbin ${pkgname}
-	vman nsjail.1
+  vbin "$pkgname"
+  vman nsjail.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
