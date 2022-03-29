@@ -1,0 +1,31 @@
+maintainer="nox"
+pkgname="jitterentropy-rngd"
+version=1.2.7
+revision=1
+short_desc="Jitter RNG Daemon"
+makedepends="jitterentropy-devel"
+homepage="https://www.chronox.de/jent.html"
+license="BSD-3-Clause"
+distfiles="https://www.chronox.de/jent/$pkgname-$version.tar.xz"
+checksum="d81aeee0ffc2bf9d05aceeaa9dfccbe09abc07325f981e70479151e6ecd73e12"
+build_style="gnu-makefile"
+make_use_env="yes"
+
+CFLAGS="-O0"
+
+pre_configure() {
+  # fix sbin and disable systemd service installation
+  sed \
+    -i \
+    -e 's/sbin/bin/g' \
+    -e '/jitterentropy\.service\ /d' \
+    Makefile
+}
+
+post_install() {
+  vlicense COPYING
+  vlicense COPYING.bsd
+  vlicense COPYING.gplv2
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
