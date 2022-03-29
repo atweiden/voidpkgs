@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.3.1
+version=3.4.1
 revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 depends="groff"
@@ -13,7 +13,7 @@ homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/fish-shell/fish-shell/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.xz"
-checksum="b5b4ee1a5269762cbbe993a4bd6507e675e4100ce9bbe84214a5eeb2b19fae89"
+checksum="b6f23b3843b04db6b0a90fea1f6f0d0e40cc027b4a732098200863f2864a94ea"
 wrksrc="fish-$version"
 build_style="cmake"
 # tests don't work as root
