@@ -3,7 +3,6 @@ pkgname="jitterentropy-rngd"
 version=1.2.7
 revision=1
 short_desc="Jitter RNG Daemon"
-makedepends="jitterentropy-devel"
 homepage="https://www.chronox.de/jent.html"
 license="BSD-3-Clause"
 distfiles="https://www.chronox.de/jent/$pkgname-$version.tar.xz"
