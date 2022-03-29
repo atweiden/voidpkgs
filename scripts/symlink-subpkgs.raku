@@ -309,6 +309,7 @@ constant %PKG = Map.new(
     'jbigkit' => qw<jbigkit-devel
                     jbigkit-libs>,
     'jemalloc' => ['jemalloc-devel'],
+    'jitterentropy' => ['jitterentropy-devel'],
     'jq' => ['jq-devel'],
     'json-c' => ['json-c-devel'],
     'jsoncpp' => ['jsoncpp-devel'],
