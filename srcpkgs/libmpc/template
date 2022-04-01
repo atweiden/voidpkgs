@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="libmpc"
-version=1.1.0
-revision=2
+version=1.2.1
+revision=1
 short_desc="C library for the arithmetic of complex numbers"
 makedepends+=" gmp-devel"
 makedepends+=" mpfr-devel"
 homepage="http://www.multiprecision.org"
 license="LGPL-3.0-or-later"
 distfiles="$GNU_SITE/mpc/mpc-$version.tar.gz"
-checksum="6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
+checksum="17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459"
 wrksrc="${pkgname#lib}-$version"
 build_style="gnu-configure"
 configure_args="EGREP=egrep"
