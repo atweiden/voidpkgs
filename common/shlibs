@@ -362,7 +362,7 @@ libnetfilter_cttimeout.so.1 libnetfilter_cttimeout-1.0.0_1
 libnetfilter_log.so.1 libnetfilter_log-1.0.1_1
 libnetfilter_log_libipulog.so.1 libnetfilter_log-1.0.1_1
 libnetfilter_queue.so.1 libnetfilter_queue-1.0.2_1
-libnfc.so.0 libnfc-1.7.1_1
+libnfc.so.6 libnfc-1.8.0_1
 libnfnetlink.so.0 libnfnetlink-1.0.1_1
 libnfs.so.13 libnfs-4.0.0_1
 libnfsidmap.so.1 libnfsidmap-2.4.3_2
