@@ -49,6 +49,7 @@ libsmbios-devel_package() {
 }
 
 python3-libsmbios_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" python3"
   short_desc+=" - python bindings"

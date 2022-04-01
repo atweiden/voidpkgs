@@ -26,6 +26,7 @@ replaces="uniconf>=0"
 CXXFLAGS="-Wno-narrowing"
 
 wvstreams-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"

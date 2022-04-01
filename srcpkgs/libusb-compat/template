@@ -12,6 +12,7 @@ checksum="404ef4b6b324be79ac1bfb3d839eac860fbc929e6acb1ef88793a6ea328bc55a"
 build_style="gnu-configure"
 
 libusb-compat-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libusb-devel"
   short_desc+=" - development files"

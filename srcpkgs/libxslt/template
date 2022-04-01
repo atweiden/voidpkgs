@@ -11,6 +11,9 @@ hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" libxslt"
+fi
 homepage="https://gitlab.gnome.org/GNOME/libxslt"
 license="MIT"
 distfiles="$GNOME_SITE/libxslt/${version%.*}/libxslt-$version.tar.xz"
@@ -21,10 +24,6 @@ configure_args+=" --disable-dependency-tracking"
 python_version=3
 
 CFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" libxslt"
-fi
 
 post_configure() {
   # remove missing seperators and errors
@@ -64,6 +63,7 @@ post_install() {
 }
 
 libxslt-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libxml2-devel"
   short_desc+=" - development files"

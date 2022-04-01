@@ -123,6 +123,7 @@ ruby-devel-doc_package() {
 }
 
 ruby-devel_package() {
+  unset depends
   depends+=" gmp-devel"
   depends+=" ruby-${version}_$revision"
   if [[ -n "$_need_libucontext" ]]; then

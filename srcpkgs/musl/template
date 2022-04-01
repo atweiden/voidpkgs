@@ -46,6 +46,7 @@ post_install() {
 }
 
 musl-devel_package() {
+  unset depends
   depends+=" $sourcepkg-${version}_$revision"
   depends+=" kernel-libc-headers"
   short_desc+=" - development files"

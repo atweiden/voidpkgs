@@ -26,6 +26,7 @@ post_install() {
 }
 
 db-devel_package() {
+  unset depends
   depends+=" libdb-cxx>=${version}_$revision"
   depends+=" libdb>=${version}_$revision"
   short_desc+=" - development files"

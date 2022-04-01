@@ -84,6 +84,7 @@ mit-krb5-client_package() {
 }
 
 mit-krb5-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" mit-krb5-libs>=${version}_$revision"
   short_desc+=" - development files"

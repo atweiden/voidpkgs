@@ -21,6 +21,7 @@ pre_configure() {
 }
 
 libnetfilter_log-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libnfnetlink-devel"
   short_desc+=" - development files"

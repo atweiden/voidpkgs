@@ -42,6 +42,7 @@ libmagic_package() {
 }
 
 file-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" libmagic>=${version}_$revision"
   short_desc="File type identification library - development files"

@@ -42,6 +42,7 @@ pre_check() {
 }
 
 gnutls-devel_package() {
+  unset depends
   depends+=" $_develdepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"

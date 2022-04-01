@@ -23,6 +23,7 @@ libgsasl_package() {
 }
 
 gsasl-devel_package() {
+  unset depends
   depends+=" libgcrypt-devel"
   depends+=" libgpg-error-devel"
   depends+=" libgsasl>=${version}_$revision"

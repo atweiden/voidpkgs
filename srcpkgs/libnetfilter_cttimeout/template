@@ -12,6 +12,7 @@ checksum="aeab12754f557cba3ce2950a2029963d817490df7edb49880008b34d7ff8feba"
 build_style="gnu-configure"
 
 libnetfilter_cttimeout-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"

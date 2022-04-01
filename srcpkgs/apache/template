@@ -207,6 +207,7 @@ apache-htpasswd_package() {
 }
 
 apache-devel_package() {
+  unset depends
   depends+=" apr-devel"
   depends+=" apr-util-devel"
   depends+=" perl"

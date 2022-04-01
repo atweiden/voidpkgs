@@ -32,6 +32,7 @@ libnilfs_package() {
 }
 
 nilfs-utils-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" libnilfs>=${version}_$revision"
   short_desc="A log-structured file system for Linux - userspace development files"

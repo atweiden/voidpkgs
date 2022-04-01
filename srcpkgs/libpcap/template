@@ -31,6 +31,7 @@ post_install() {
 }
 
 libpcap-devel_package() {
+  unset depends
   depends+=" libnl3-devel"
   depends+=" libpcap>=${version}_$revision"
   short_desc+=" - development files"

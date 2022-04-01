@@ -26,6 +26,7 @@ libspeex_package() {
 }
 
 speex-devel_package() {
+  unset depends
   depends+=" libspeex-${version}_$revision"
   depends+=" speexdsp-devel"
   short_desc+=" - development files"

@@ -14,6 +14,7 @@ build_style="gnu-configure"
 configure_args="--enable-shared"
 
 nettle-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" gmp-devel"
   short_desc+=" - development files"

@@ -24,6 +24,7 @@ gmpxx_package() {
 }
 
 gmpxx-devel_package() {
+  unset depends
   depends+=" gmp-devel-${version}_$revision"
   depends+=" gmpxx-${version}_$revision"
   short_desc+=" - C++ development files"

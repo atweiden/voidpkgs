@@ -41,6 +41,7 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 clucene-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libstdc++-devel"
   short_desc+=" - development files"

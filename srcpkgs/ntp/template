@@ -52,6 +52,7 @@ post_install() {
 }
 
 ntp-perl_package() {
+  unset depends
   depends+=" ntp>=$version"
   depends+=" perl"
   short_desc+=" - Perl scripts"

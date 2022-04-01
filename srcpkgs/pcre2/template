@@ -33,6 +33,7 @@ libpcre2_package() {
 }
 
 pcre2-devel_package() {
+  unset depends
   depends+=" bzip2-devel"
   depends+=" libpcre2>=${version}_$revision"
   depends+=" zlib-devel"

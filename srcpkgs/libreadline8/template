@@ -39,6 +39,7 @@ libhistory8_package() {
 }
 
 readline-devel_package() {
+  unset depends
   depends+=" $sourcepkg-${version}_$revision"
   depends+=" libhistory8-${version}_$revision"
   depends+=" ncurses-devel"

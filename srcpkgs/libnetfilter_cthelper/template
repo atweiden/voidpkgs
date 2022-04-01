@@ -12,6 +12,7 @@ checksum="07618e71c4d9a6b6b3dc1986540486ee310a9838ba754926c7d14a17d8fccf3d"
 build_style="gnu-configure"
 
 libnetfilter_cthelper-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"

@@ -18,6 +18,7 @@ post_install() {
 }
 
 lutok-devel_package() {
+  unset depends
   depends+=" lua53-devel"
   depends+=" lutok>=${version}_$revision"
   short_desc+=" - development files"

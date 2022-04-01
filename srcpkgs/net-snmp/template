@@ -58,6 +58,7 @@ libnet-snmp_package() {
 }
 
 net-snmp-devel_package() {
+  unset depends
   depends+=" libnet-snmp>=${version}_$revision"
   depends+=" openssl-devel"
   short_desc+=" - development files"

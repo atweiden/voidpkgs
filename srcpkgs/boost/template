@@ -211,6 +211,7 @@ boost-jam_package() {
 }
 
 boost-python1.72_package() {
+  unset depends
   depends+=" boost"
   depends+=" python"
   replaces="boost-python>=0"
@@ -221,6 +222,7 @@ boost-python1.72_package() {
 }
 
 boost-python3-1.72_package() {
+  unset depends
   depends+=" boost"
   depends+=" python3"
   replaces="boost-python3>=0"
@@ -240,6 +242,7 @@ boost-build_package() {
 }
 
 boost-devel_package() {
+  unset depends
   noverifyrdeps="yes"
   depends+=" boost"
   depends+=" ${subpackages/boost-devel}"

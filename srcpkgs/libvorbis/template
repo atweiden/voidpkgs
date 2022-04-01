@@ -16,6 +16,7 @@ post_install() {
 }
 
 libvorbis-devel_package() {
+  unset depends
   depends+=" libogg-devel"
   depends+=" libvorbis>=${version}_$revision"
   short_desc+=" - development files"

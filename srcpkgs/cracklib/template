@@ -27,6 +27,7 @@ post_install() {
 }
 
 cracklib-devel_package() {
+  unset depends
   depends+=" libcracklib-${version}_$revision"
   depends+=" zlib-devel"
   short_desc+=" - development files"

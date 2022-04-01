@@ -35,6 +35,7 @@ do_install() {
 }
 
 xfsprogs-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libuuid-devel"
   short_desc+=" - development files"

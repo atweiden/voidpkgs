@@ -13,6 +13,7 @@ configure_args="--enable-thread-safe"
 bootstrap="yes"
 
 mpfr-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" mpfr>=${version}_$revision"
   short_desc+=" - development files"

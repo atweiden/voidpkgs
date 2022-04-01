@@ -79,6 +79,7 @@ post_install() {
 }
 
 apr-util-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=$version"
   depends+=" apr-devel"
   depends+=" db-devel"

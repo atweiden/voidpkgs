@@ -22,6 +22,7 @@ post_install() {
 }
 
 lapack-devel_package() {
+  unset depends
   depends+=" $sourcepkg-${version}_$revision"
   depends+=" blas-devel-${version}_$revision"
   short_desc+=" - development files"
@@ -60,6 +61,7 @@ cblas_package() {
 }
 
 cblas-devel_package() {
+  unset depends
   short_desc="C interface to BLAS - development files"
   depends+=" blas-devel-${version}_$revision"
   depends+=" cblas-${version}_$revision"
@@ -80,6 +82,7 @@ lapacke_package() {
 }
 
 lapacke-devel_package() {
+  unset depends
   short_desc="C interface to LAPACK - development files"
   depends+=" lapack-devel-${version}_$revision"
   depends+=" lapacke-${version}_$revision"

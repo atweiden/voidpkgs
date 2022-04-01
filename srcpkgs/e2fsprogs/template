@@ -46,6 +46,7 @@ post_install() {
 }
 
 e2fsprogs-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" e2fsprogs-libs>=${version}_$revision"
   short_desc+=" - development files"

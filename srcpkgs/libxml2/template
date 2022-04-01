@@ -30,6 +30,7 @@ post_install() {
 }
 
 libxml2-devel_package() {
+  unset depends
   depends+=" icu-devel"
   depends+=" liblzma-devel"
   depends+=" libxml2>=${version}_$revision"

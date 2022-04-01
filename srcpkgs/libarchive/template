@@ -71,6 +71,7 @@ bsdtar_package() {
 }
 
 libarchive-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"

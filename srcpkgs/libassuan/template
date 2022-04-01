@@ -13,6 +13,7 @@ build_style="gnu-configure"
 configure_args="--with-libgpg-error-prefix=$XBPS_CROSS_BASE/usr"
 
 libassuan-devel_package() {
+  unset depends
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libgpg-error-devel"
   short_desc+=" - development files"

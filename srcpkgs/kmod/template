@@ -38,6 +38,7 @@ libkmod_package() {
 }
 
 libkmod-devel_package() {
+  unset depends
   depends+=" $makedepends"
   depends+=" libkmod>=${version}_$revision"
   short_desc+=" - development files"
