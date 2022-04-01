@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="clucene"
 version=2.3.3.4
-revision=8
+revision=9
 short_desc="Text search engine written in C++"
 makedepends+=" boost-devel"
 makedepends+=" zlib-devel"
@@ -48,9 +48,7 @@ do_check() {
 }
 
 clucene-devel_package() {
-  unset depends
-  depends+=" $sourcepkg>=${version}_$revision"
-  depends+=" libstdc++-devel"
+  depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
