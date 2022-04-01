@@ -670,8 +670,6 @@ libtspi.so.1 trousers-0.3.14_11
 libudns.so.0 udns-0.4_1
 libunibilium.so.4 unibilium-2.0.0_1
 libusbguard.so.1 usbguard-1.0.0_1
-libusbredirhost.so.1 usbredir-0.7_1
-libusbredirparser.so.1 usbredir-0.7_1
 libiw.so.29 wireless_tools-29_1
 libuniconf.so.4.6 wvstreams-4.6.1_20
 libwvbase.so.4.6 wvstreams-4.6.1_20

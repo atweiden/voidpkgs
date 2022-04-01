@@ -760,7 +760,6 @@ constant %PKG = Map.new(
     'unixodbc' => qw<libodbc
                      unixodbc-devel>,
     'usbguard' => ['usbguard-devel'],
-    'usbredir' => ['usbredir-devel'],
     'util-linux-common' => qw<libblkid
                               libblkid-devel
                               libfdisk
