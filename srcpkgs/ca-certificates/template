@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ca-certificates"
-version=20211016+3.74
+version=20211016+3.77
 revision=1
 _nss_version=${version#*+}
 short_desc="Common CA certificates for SSL/TLS from Mozilla"
@@ -12,7 +12,7 @@ license="GPL-2.0-or-later, MPL-2.0"
 distfiles+=" $DEBIAN_SITE/main/c/$pkgname/${pkgname}_${version%+*}.tar.xz"
 distfiles+=" $MOZILLA_SITE/security/nss/releases/NSS_${_nss_version//\./_}_RTM/src/nss-$_nss_version.tar.gz"
 checksum+=" 2ae9b6dc5f40c25d6d7fe55e07b54f12a8967d1955d3b7b2f42ee46266eeef88"
-checksum+=" 88928811f9f40f87d42e2eaccdf6e454562e51486067f2ddbe90aa47ea6cd056"
+checksum+=" 825edf5a2fd35b788a23ff80face591f82919ae3ad2b8f77d424a450d618dedd"
 conf_files="/etc/ca-certificates.conf"
 create_wrksrc="yes"
 build_wrksrc="work"
