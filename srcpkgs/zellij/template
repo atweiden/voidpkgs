@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zellij"
 version=0.27.0
-revision=1
+revision=2
 short_desc="Terminal workspace with batteries included"
 # dependency crate wasmer-vm only supports x86_64, arm64, x86
 # https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#compiler-support-by-chipset
@@ -10,6 +10,7 @@ archs+=" i686*"
 archs+=" x86_64*"
 checkdepends+=" openssl-devel"
 checkdepends+=" pkg-config"
+hostmakedepends="mandown"
 homepage="https://zellij.dev"
 license="MIT"
 changelog="https://github.com/zellij-org/zellij/raw/main/CHANGELOG.md"
@@ -24,6 +25,8 @@ post_build() {
   "$ZELLIJ" setup --generate-completion bash > zellij.bash
   "$ZELLIJ" setup --generate-completion zsh > zellij.zsh
   "$ZELLIJ" setup --generate-completion fish > zellij.fish
+
+  mandown docs/MANPAGE.md > zellij.1
 }
 
 post_install() {
@@ -33,6 +36,7 @@ post_install() {
 
   vlicense LICENSE.md
   vdoc README.md
+  vman zellij.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
