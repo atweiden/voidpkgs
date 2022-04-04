@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nss"
-version=3.76
+version=3.77
 revision=1
 _nsprver=4.32
 short_desc="Mozilla Network Security Services"
@@ -8,11 +8,12 @@ depends="nspr>=$_nsprver"
 makedepends+=" nspr-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
-hostmakedepends="perl"
+hostmakedepends+=" perl"
+hostmakedepends+=" which"
 homepage="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="1b8e0310add364d2ade40620cde0f1c37f4f00a6999b2d3e7ea8dacda4aa1630"
+checksum="825edf5a2fd35b788a23ff80face591f82919ae3ad2b8f77d424a450d618dedd"
 
 export BUILD_OPT=1
 export FREEBL_NO_DEPEND=1
