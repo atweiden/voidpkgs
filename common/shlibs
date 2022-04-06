@@ -140,9 +140,9 @@ libthread_db.so.1 glibc-2.32_1
 libutil.so.1 glibc-2.32_1
 libgmp.so.10 gmp-5.0.1_1
 libgmpxx.so.4 gmpxx-6.0.0_2
-libgnutlsxx.so.28 gnutls-3.2.13_1
 libgnutls.so.30 gnutls-3.4.13_1
 libgnutls-dane.so.0 gnutls-3.6.12_1
+libgnutlsxx.so.30 gnutls-3.7.4_1
 libprofiler.so.0 gperftools-2.1.90_1
 libtcmalloc_and_profiler.so.4 gperftools-2.1.90_1
 libtcmalloc_debug.so.4 gperftools-2.1.90_1
