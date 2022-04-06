@@ -1,25 +1,31 @@
 maintainer="nox"
 pkgname="u-boot-tools"
-version=2022.01
+version=2022.04
 revision=1
 short_desc="Das U-Boot tools"
-makedepends="openssl-devel"
+makedepends+=" gnutls-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" ncurses-libtinfo-devel"
+makedepends+=" openssl-devel"
 hostmakedepends+=" bison"
 hostmakedepends+=" flex"
+hostmakedepends+=" which"
 homepage="https://www.denx.de/wiki/U-Boot/"
 license="GPL-2.0-or-later"
 distfiles="ftp://ftp.denx.de/pub/u-boot/u-boot-$version.tar.bz2"
-checksum="81b4543227db228c03f8a1bf5ddbc813b0bb8f6555ce46064ef721a6fc680413"
+checksum="68e065413926778e276ec3abd28bb32fa82abaa4a6898d570c1f48fbdb08bcd0"
 wrksrc="u-boot-$version"
 build_style="gnu-makefile"
 make_build_args+=" HOSTSTRIP=:"
+make_build_args+=" NO_SDL=1"
 make_build_args+=" STRIP=:"
 if [[ -n "$CROSS_BUILD" ]]; then
   make_build_args+=" CROSS_BUILD_TOOLS=y"
   make_build_args+=" CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
 fi
-make_build_target+=" tools"
 make_build_target+=" envtools"
+make_build_target+=" tools-all"
+make_build_target+=" tools-only"
 
 post_extract() {
   vsed \
@@ -48,7 +54,8 @@ do_check() {
 
 do_install() {
   ln -sf fw_printenv tools/env/fw_setenv
-  for x in dumpimage \
+  for x in bmp_logo \
+           dumpimage \
            env/fw_printenv \
            env/fw_setenv \
            fdtgrep \
@@ -58,13 +65,17 @@ do_install() {
            gen_ethaddr_crc \
            ifwitool \
            img2srec \
+           kwboot \
+           mkeficapsule \
            mkenvimage \
            mkimage \
            proftool \
            spl_size_limit; do
     vbin "tools/$x"
+    if [[ -r "doc/$x.1" ]]; then
+      vman "doc/$x.1"
+    fi
   done
-  vman doc/mkimage.1
 }
 
 uboot-mkimage_package() {
