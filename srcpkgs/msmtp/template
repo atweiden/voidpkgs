@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="msmtp"
-version=1.8.18
+version=1.8.20
 revision=1
 short_desc="Mini SMTP client"
 makedepends+=" gnutls-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://marlam.de/msmtp/"
 license="GPL-3.0-or-later"
 distfiles="https://marlam.de/msmtp/releases/$pkgname-$version.tar.xz"
-checksum="14fc62af37ebdcc5ed19a245a05eb8376efe7016118f00c9c594bc999d5560a5"
+checksum="d93ae2aafc0f48af7dc9d0b394df1bb800588b8b4e8d096d8b3cf225344eb111"
 build_style="gnu-configure"
 build_options+=" idn"
 build_options+=" msmtpd"
