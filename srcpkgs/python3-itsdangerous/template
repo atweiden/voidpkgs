@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-itsdangerous"
-version=2.0.1
-revision=2
+version=2.1.2
+revision=1
 short_desc="Various helpers to pass trusted data to untrusted enviroments and back"
 depends="python3"
 makedepends="python3-devel"
@@ -9,7 +9,7 @@ hostmakedepends="python3-setuptools"
 homepage="http://github.com/mitsuhiko/itsdangerous"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/i/itsdangerous/itsdangerous-$version.tar.gz"
-checksum="9e724d68fc22902a1435351f84c3fb8623f303fffcc566a4cb952df8c572cff0"
+checksum="5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"
 wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
