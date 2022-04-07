@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="findutils"
-version=4.8.0
+version=4.9.0
 revision=1
 short_desc="GNU Find Utilities"
 homepage="http://www.gnu.org/software/findutils"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/cgit/findutils.git/plain/NEWS"
 distfiles="$GNU_SITE/findutils/$pkgname-$version.tar.xz"
-checksum="57127b7e97d91282c6ace556378d5455a9509898297e46e10443016ea1387164"
+checksum="a2bfb8c09d436770edc59f50fa483e785b161a3b7b9d547573cb08065fd462fe"
 build_style="gnu-configure"
 configure_args="--program-prefix=g"
 bootstrap="yes"
