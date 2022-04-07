@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="vault"
-version=1.9.4
+version=1.10.0
 revision=1
 _gitrev="fcbe948b2542a13ee8036ad07dd8ebf8554f56cb"
 short_desc="Manage Secrets and Protect Sensitive Data"
@@ -9,7 +9,7 @@ hostmakedepends="git"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7ebae46e12ff353c3a9e861c4991410679a3c890d36c7c6fb17b43e9ea6f6115"
+checksum="4b3303af72b9383369d6219dc88beaef3b343b262625e5d7c6a309ae9286d8c2"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
 go_ldflags+=" -s -w -buildid="
