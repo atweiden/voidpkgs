@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible-core"
-version=2.12.3
+version=2.12.4
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends+=" python3-Jinja2"
@@ -14,7 +14,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="$PYPI_SITE/a/ansible-core/ansible-core-$version.tar.gz"
-checksum="8a135a9f74c97cab67759293744ad34350f719523e8bd9bb9008df4cf953af20"
+checksum="827af75985a6f04b980bd371027bf038cb187640628557298acb9983a8f2c2da"
 build_style="python3-module"
 # tests are currently broken for ansible on python 3.10
 # see https://github.com/ansible/ansible/issues/74658
