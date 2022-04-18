@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="git"
-version=2.35.1
+version=2.35.2
 revision=1
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
@@ -27,7 +27,7 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/git/git/raw/master/Documentation/RelNotes/$version.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/$pkgname-$version.tar.xz"
-checksum="d768528e6443f65a203036266f1ca50f9d127ba89751e32ead37117ed9191080"
+checksum="c73d0c4fa5dcebdb2ccc293900952351cc5fb89224bb133c116305f45ae600f3"
 build_style="gnu-configure"
 configure_args+=" --with-curl"
 configure_args+=" --with-expat"
