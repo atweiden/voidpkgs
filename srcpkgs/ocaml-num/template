@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ocaml-num"
 version=1.4
-revision=3
+revision=4
 short_desc="OCaml legacy Num library for arbitrary-precision integers"
 makedepends+=" ocaml"
 makedepends+=" ocaml-findlib"
