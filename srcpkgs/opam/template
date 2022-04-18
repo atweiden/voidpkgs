@@ -23,6 +23,8 @@ build_style="gnu-configure"
 configure_args="--docdir=/usr/share/doc/$pkgname"
 make_build_args+=" lib-ext"
 make_build_args+=" all"
+# uses bwrap
+make_check="ci-skip"
 make_check_target="tests"
 disable_parallel_build="yes"
 nocross="yes"
