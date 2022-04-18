@@ -1,26 +1,20 @@
 maintainer="nox"
 pkgname="memtest86+"
 version=5.01
-revision=5
-short_desc="Advanced Memory Diagnostic Tool"
-archs+=" i686"
-archs+=" x86_64"
-if [[ "$XBPS_MACHINE" == "x86_64" ]]; then
-  makedepends="gcc-multilib"
-fi
+revision=6
+short_desc="Advanced Memory Diagnostic Tool - upstream binary"
+archs+=" i686*"
+archs+=" x86_64*"
 homepage="http://www.memtest.org"
 license="GPL-2.0-or-later"
-distfiles="http://www.memtest.org/download/$version/$pkgname-$version.tar.gz"
-checksum="142127b7953fbd829b1057fb64a78d3340c2b771484230a7347e94530a0d9039"
+distfiles="https://www.memtest.org/download/$version/$pkgname-$version.bin.gz"
+checksum="78f6625b093de69537d99ed68e35b2a9e5d666504cb2533affab1967bd888fc8"
+create_wrksrc="yes"
 nostrip="yes"
 noverifyrdeps="yes"
 
-do_build() {
-  make
-}
-
 do_install() {
-  vinstall memtest.bin 755 boot memtest86+
+  vinstall memtest86+-5.01.bin 755 boot memtest86+
   vinstall "$FILESDIR/20_memtest86+" 755 etc/grub.d
 }
 
