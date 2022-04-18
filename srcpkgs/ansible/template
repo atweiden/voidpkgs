@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible"
-version=5.5.0
+version=5.6.0
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends="ansible-core"
@@ -8,7 +8,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="$PYPI_SITE/a/ansible/ansible-$version.tar.gz"
-checksum="b8a76d737889c9bfd0e6b0f2276dcf8d836da667067a355776f3504d7a66d518"
+checksum="acd30731434154da376ceeeb416ee1541cdfb8ea3c648023a55a34cb3ecaf9f3"
 build_style="python3-module"
 # tests are currently broken for ansible on python 3.10
 # see https://github.com/ansible/ansible/issues/74658
