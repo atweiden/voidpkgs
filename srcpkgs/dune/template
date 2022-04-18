@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dune"
 version=3.0.3
-revision=1
+revision=2
 short_desc="Composable build system for OCaml"
 depends="ocaml"
 makedepends="ocaml"
