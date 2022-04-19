@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="python3-typing_extensions"
-version=3.10.0.2
+version=4.2.0
 revision=1
 short_desc="Backported and Experimental Type Hints for Python 3.5+"
 depends="python3"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-flit_core"
 homepage="https://github.com/python/typing"
 license="Python-2.0"
 distfiles="$PYPI_SITE/t/typing_extensions/typing_extensions-$version.tar.gz"
-checksum="49f75d16ff11f1cd258e1b988ccff82a3ca5570217d7ad8c5f48205dd99a677e"
+checksum="f1c24655a0da0d1b67f07e17a5e6b2a105894e6824b92096378bb3668ef02376"
 wrksrc="${pkgname#python3-}-$version"
-build_style="python3-module"
+build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
