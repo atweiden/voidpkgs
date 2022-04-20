@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="shadow"
 version=4.8.1
-revision=1
+revision=2
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
@@ -24,6 +24,7 @@ configure_args+=" --enable-subordinate-ids"
 configure_args+=" --sbindir=/usr/bin"
 configure_args+=" --with-acl"
 configure_args+=" --with-attr"
+configure_args+=" --with-group-name-max-length=32"
 configure_args+=" --with-libpam"
 configure_args+=" --without-selinux"
 configure_args+=" --without-su"
