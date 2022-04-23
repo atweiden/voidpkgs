@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="python3-soupsieve"
 version=1.9.5
-revision=7
+revision=8
 short_desc="CSS4 selector implementation for Python3 Beautiful Soup"
-depends="python3-BeautifulSoup4"
+depends="python3"
 checkdepends+=" python3-BeautifulSoup4"
 checkdepends+=" python3-html5lib"
 checkdepends+=" python3-lxml"
