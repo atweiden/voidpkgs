@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rsync"
-version=3.2.3
-revision=3
+version=3.2.4
+revision=1
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
@@ -15,7 +15,7 @@ homepage="https://rsync.samba.org/"
 license="GPL-3.0-only"
 changelog="https://download.samba.org/pub/rsync/NEWS"
 distfiles="https://www.samba.org/ftp/rsync/src/$pkgname-$version.tar.gz"
-checksum="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
+checksum="6f761838d08052b0b6579cf7f6737d93e47f01f4da04c5d24d3447b7f2a5fad1"
 conf_files="/etc/rsyncd.conf"
 build_style="gnu-configure"
 if [[ -n "$CROSS_BUILD" ]]; then
