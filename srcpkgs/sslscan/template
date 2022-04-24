@@ -1,15 +1,16 @@
-# Template file for 'sslscan'
-pkgname=sslscan
+maintainer="nox"
+pkgname="sslscan"
 version=2.0.13
 revision=1
-build_style=gnu-makefile
-makedepends="openssl-devel"
 short_desc="Fast SSL/TLS scanner"
-maintainer="Daniel Eyßer <daniel.eysser@gmail.com>"
-license="GPL-3.0-or-later"
+makedepends="openssl-devel"
 homepage="https://github.com/rbsec/sslscan"
+license="GPL-3.0-or-later"
 changelog="https://github.com/rbsec/sslscan/raw/master/Changelog"
-distfiles="https://github.com/rbsec/sslscan/archive/refs/tags/${version}.tar.gz"
-checksum=34549613e16ba5dbfca3d988672041b7b0ece6f408515d6ba8819e2d804b5833
-# No test suite
-make_check=no
+distfiles="https://github.com/rbsec/sslscan/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="34549613e16ba5dbfca3d988672041b7b0ece6f408515d6ba8819e2d804b5833"
+build_style="gnu-makefile"
+# no test suite
+make_check="no"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
