@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="neovim"
-version=0.6.1
-revision=2
+version=0.7.0
+revision=1
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 depends="libvterm>=0.1.0"
 makedepends+=" LuaJIT-devel"
@@ -20,9 +20,10 @@ hostmakedepends+=" pkg-config"
 homepage="https://neovim.io"
 license="Apache-2.0, custom:Vim"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="dd882c21a52e5999f656cae3f336b5fc702d52addd4d9b5cd3dc39cfff35e864"
+checksum="792a9c55d5d5f4a5148d475847267df309d65fb20f05523f21c1319ea8a6c7df"
 build_style="cmake"
-configure_args="-DCMAKE_BUILD_TYPE=Release"
+configure_args+=" -DCMAKE_BUILD_TYPE=Release"
+configure_args+=" -DCOMPILE_LUA=OFF"
 # cross-compilation requires `qemu-user-static`, see: upstream
 nocross="yes"
 
@@ -34,7 +35,7 @@ pre_configure() {
 }
 
 post_install() {
-  vlicense LICENSE
+  vlicense LICENSE.txt
   # remove nvim.desktop
   rm -rf "$DESTDIR/usr/share/applications"
 }
