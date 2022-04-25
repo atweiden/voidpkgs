@@ -1,29 +1,30 @@
 maintainer="nox"
 pkgname="nvme-cli"
-version=1.13
-revision=2
+version=2.0
+revision=1
 short_desc="NVMe management command line interface"
-makedepends="libuuid-devel"
+makedepends+=" json-c-devel"
+makedepends+=" libhugetlbfs-devel"
+makedepends+=" libnvme-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
 homepage="http://nvmexpress.org"
 license="GPL-2.0-only"
 distfiles="https://github.com/linux-nvme/nvme-cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="03f4875f3e68d326b0280e16df2f027ca6b086cfa148c34e8569df61319b4b85"
+checksum="471869b3bf643bb357dc9613ad14d24ff342fcd97e2db5a753c81c335ad8859c"
 conf_files="/etc/nvme/*.conf"
-build_style="gnu-makefile"
-# yeah, it must be 0 to enable
-make_build_args="LIBUUID=0"
-make_install_args="SBINDIR=/usr/bin UDEVDIR=/usr/lib/udev"
-make_install_target="install-spec"
+build_style="meson"
+configure_args+=" -Ddocs=man"
+configure_args+=" -Dudevrulesdir=lib/udev/rules.d"
 
 post_install() {
-  # these files are touch'd by install, remove so they aren't registered
-  # by the package (which would cause trouble during removal)
-  rm -f "$DESTDIR/etc/nvme/hostnqn"
-  rm -f "$DESTDIR/etc/nvme/hostid"
-  rm -rf "$DESTDIR/etc/udev/rules.d"
-  rm -f "$DESTDIR/usr/sbin/nvme"
-  # no need for systemd files
+  # remove files that are systemd-only
   rm -rf "$DESTDIR/usr/lib/systemd"
+  # calls systemctl
+  rm -rf "$DESTDIR/usr/lib/udev/rules.d/70-nvmf-autoconnect.rules"
+  # needs 70-nvmf-autoconnect.rules
+  rm -rf "$DESTDIR/usr/lib/dracut/dracut.conf.d/70-nvmf-autoconnect.conf"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
