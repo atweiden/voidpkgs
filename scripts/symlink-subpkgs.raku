@@ -403,6 +403,9 @@ constant %PKG = Map.new(
     'libnl' => ['libnl-devel'],
     'libnl3' => qw<libnl3-devel
                    libnl3-progs>,
+    'libnvme' => qw<libnvme-devel
+                    libnvme-doc
+                    python3-libnvme>,
     'libogg' => ['libogg-devel'],
     'libpcap' => ['libpcap-devel'],
     'libpipeline' => ['libpipeline-devel'],
