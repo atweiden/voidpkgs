@@ -376,6 +376,8 @@ constant %PKG = Map.new(
     'libgssglue' => ['libgssglue-devel'],
     'libheif' => qw<libheif-devel
                     libheif-tools>,
+    'libhugetlbfs' => qw<libhugetlbfs-devel
+                         libhugetlbfs-tools>,
     'libidn' => ['libidn-devel'],
     'libidn2' => ['libidn2-devel'],
     'libiscsi' => qw<libiscsi-devel
