@@ -406,9 +406,9 @@ libpcscspy.so.0 libpcsclite-1.8.11_1
 libpipeline.so.1 libpipeline-1.2.0_1
 libpkgconf.so.3 libpkgconf-1.8.0_1
 libpng16.so.16 libpng-1.6.2_1
-libprotobuf.so.30 libprotobuf-3.19.4_1
-libprotobuf-lite.so.30 libprotobuf-lite-3.19.4_1
-libprotoc.so.30 libprotoc-3.19.4_1
+libprotobuf.so.31 libprotobuf-3.20.1_1
+libprotobuf-lite.so.31 libprotobuf-lite-3.20.1_1
+libprotoc.so.31 libprotoc-3.20.1_1
 libpsl.so.5 libpsl-0.20.2_1
 libpulse-simple.so.0 libpulseaudio-15.0_1
 libpulse.so.0 libpulseaudio-15.0_1
