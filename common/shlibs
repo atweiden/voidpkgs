@@ -472,7 +472,7 @@ libtdb.so.1 libtdb-1.2.2_1
 libtermkey.so.1 libtermkey-0.17_1
 libtidy.so.58 libtidy5-5.8.0_1
 libtirpc.so.3 libtirpc-1.0.2_1
-libtls.so.22 libtls-3.4.1_1
+libtls.so.25 libtls-3.5.2_1
 libtommath.so.1 libtommath-1.0_1
 libtorrent.so.21 libtorrent-0.13.8_4
 libucontext.so.1 libucontext-1.0_1
