@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="btrfs-progs"
 version=5.14.1
-revision=1
+revision=2
 short_desc="Btrfs filesystem utilities"
 makedepends+=" acl-devel"
 makedepends+=" libblkid-devel"
@@ -72,6 +72,7 @@ libbtrfsutil-devel_package() {
   short_desc+=" - libbtrfsutil development files"
   pkg_install() {
     vmove usr/include/btrfsutil.h
+    vmove usr/lib/pkgconfig/libbtrfsutil.pc
     vmove usr/lib/libbtrfsutil.a
     vmove usr/lib/libbtrfsutil.so
   }
