@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="pandoc"
 # keep in sync with http://www.stackage.org/lts
-version=2.14.0.3
-revision=3
-_sidenote_version=0.20.0.0
+version=2.17.1.1
+revision=1
+_sidenote_version=0.22.1.0
 _monad_gen_version=0.3.0.1
 _crossref_version=0.3.12.2
 _roman_numerals_version=0.5.1.5
@@ -19,30 +19,24 @@ license="GPL-2.0-or-later, BSD-3-Clause"
 distfiles+=" https://hackage.haskell.org/package/$pkgname-$version/$pkgname-$version.tar.gz"
 distfiles+=" https://hackage.haskell.org/package/$pkgname-sidenote-$_sidenote_version/$pkgname-sidenote-$_sidenote_version.tar.gz"
 distfiles+=" https://hackage.haskell.org/package/monad-gen-$_monad_gen_version/monad-gen-$_monad_gen_version.tar.gz"
-checksum+=" 82e3f55bff3059bf30cf532e93d9876c9e3599aa4eafae9c907fe75a4430eddd"
-checksum+=" 91f8e96d8470722d677d31d4bbf16c2ac6902567d818ed7a2715bad2617a4cdb"
+distfiles+=" https://hackage.haskell.org/package/$pkgname-crossref-$_crossref_version/$pkgname-crossref-$_crossref_version.tar.gz"
+distfiles+=" https://hackage.haskell.org/package/roman-numerals-$_roman_numerals_version/roman-numerals-$_roman_numerals_version.tar.gz"
+checksum+=" 649ec528d1413130c5ce304b826ff473b3696269eea8834d908589e775bd1ad1"
+checksum+=" c39dd7343b9cb4dc5b1c91c9e47c3d357874e9e1a30b8d377bbea0b1d50323b2"
 checksum+=" be8485023fce236b5b915f2f6074f7b0470a2040f84cdd137c5227f1b4c98465"
+checksum+=" 94540325c9c98ae4d5199c634bf402ffa41e3c5b020d7207daef90fd9e224fb4"
+checksum+=" b9c7195b69b1662a286d2c28a55fafdcb693c522ba5eb54a11b1d0a4e92eaa81"
 create_wrksrc="yes"
 build_style="haskell-stack"
-stackage="lts-18.14"
-make_build_args+=" --flag=hslua:pkg-config"
-make_build_args+=" --flag=hslua:system-lua"
+stackage="lts-19.0"
+make_build_args+=" --flag=lua:pkg-config"
 make_build_args+=" --flag=pandoc:embed_data_files"
-subpackages="pandoc-sidenote"
-nocross="yes"
 nopie_files+=" /usr/bin/pandoc"
+nopie_files+=" /usr/bin/pandoc-crossref"
 nopie_files+=" /usr/bin/pandoc-sidenote"
-
-# pandoc-crossref is currently broken on musl
-# see: lierdakil/pandoc-crossref#342 and commercialhaskell/stack#5683
-if [[ "$XBPS_TARGET_LIBC" != "musl" ]]; then
-  distfiles+=" https://hackage.haskell.org/package/$pkgname-crossref-$_crossref_version/$pkgname-crossref-$_crossref_version.tar.gz"
-  distfiles+=" https://hackage.haskell.org/package/roman-numerals-$_roman_numerals_version/roman-numerals-$_roman_numerals_version.tar.gz"
-  checksum+=" 94540325c9c98ae4d5199c634bf402ffa41e3c5b020d7207daef90fd9e224fb4"
-  checksum+=" b9c7195b69b1662a286d2c28a55fafdcb693c522ba5eb54a11b1d0a4e92eaa81"
-  nopie_files+=" /usr/bin/pandoc-crossref"
-  subpackages+=" pandoc-crossref"
-fi
+subpackages+=" pandoc-sidenote"
+subpackages+=" pandoc-crossref"
+nocross="yes"
 
 post_extract() {
   sed \
@@ -50,6 +44,8 @@ post_extract() {
     -e 's/tasty .*,/tasty,/' \
     -e 's/zip-archive .*,/zip-archive,/' \
     pandoc-*/pandoc.cabal
+  # see https://github.com/lierdakil/pandoc-crossref/issues/342#issuecomment-1073256586
+  cp "$FILESDIR/pandoc-crossref.cabal" "pandoc-crossref-$_crossref_version"
 }
 
 post_install() {
