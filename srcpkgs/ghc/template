@@ -68,6 +68,14 @@ elif [[ "${XBPS_MACHINE%-*}" != "${XBPS_TARGET_MACHINE%-*}" ]]; then
   configure_args+=" --target=$XBPS_CROSS_TRIPLET"
 fi
 
+case "$XBPS_TARGET_MACHINE" in
+  aarch64*)
+    # GHC uses LLVM to generate code on aarch64
+    depends+=" llvm"
+    hostmakedepends+=" llvm"
+    ;;
+esac
+
 if [[ -n "$build_option_bindist" ]]; then
   # required to make the binary distribution tarball
   hostmakedepends+=" libltdl-devel"
