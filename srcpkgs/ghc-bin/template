@@ -61,6 +61,7 @@ esac
 wrksrc="${pkgname%-*}-${version%[!0-9]}"
 nostrip="yes"
 noshlibprovides="yes"
+nocross="yes"
 conflicts+=" ghc>=0"
 conflicts+=" ghc-doc>=0"
 
