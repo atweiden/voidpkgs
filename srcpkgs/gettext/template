@@ -8,7 +8,9 @@ short_desc="Internationalized Message Handling Library and tools"
 # either:
 # - have xz in hostmakedepends; or
 # - let gettext-devel depends on bzip2
-hostmakedepends="xz"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" xz"
 homepage="https://www.gnu.org/software/gettext/"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/cgit/gettext.git/plain/NEWS"
@@ -49,13 +51,9 @@ else
   conflicts="gettext-libs>=0"
 fi
 
-if [[ -n "$CROSS_BUILD" ]]; then
-  hostmakedepends+=" automake"
-  hostmakedepends+=" libtool"
-  pre_configure() {
-    autoreconf -fi
-  }
-fi
+pre_configure() {
+  autoreconf -fi
+}
 
 post_install() {
   # don't overwrite musl's header
