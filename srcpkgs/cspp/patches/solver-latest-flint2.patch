@@ -1,6 +1,6 @@
-From 988c88c7e02a62627ca7e3dae12572f48f8befe7 Mon Sep 17 00:00:00 2001
+From ca3fdb93bf7a5570f8296fc7bac81ce53572a715 Mon Sep 17 00:00:00 2001
 From: Josh Rickmar <jrick@companyzero.com>
-Date: Thu, 22 Jul 2021 14:32:57 +0000
+Date: Fri, 3 Dec 2021 15:38:26 +0000
 Subject: [PATCH] Update solver package for latest flint2
 
 ---
