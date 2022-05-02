@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="zcash"
-version=4.6.0.1
+version=4.7.0
 revision=1
 # see:
 # zcash/zcash/depends/packages/bdb.mk
 # zcash/zcash/depends/packages/libevent.mk
 # zcash/zcash/depends/packages/libsodium.mk
+# zcash/zcash/depends/packages/native_rust.mk
 _db_version=6.2.23
 _libevent_version=2.1.12
 _libsodium_version=1.0.18
+_rust_version=1.59.0
 short_desc="Implementation of the Zerocash protocol"
 # for zcash-fetch-params
 depends="curl"
@@ -16,11 +18,6 @@ makedepends+=" boost-devel"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
 makedepends+=" utfcpp"
-# from void-linux/void-packages/common/environment/build-style/cargo.sh
-if [[ -n "$CROSS_BUILD" ]]; then
-  makedepends+=" rust-std"
-fi
-checkdepends+=" cargo"
 checkdepends+=" curl"
 checkdepends+=" gtest-devel"
 # most checks require sysctl and ps
@@ -29,34 +26,28 @@ checkdepends+=" python3"
 checkdepends+=" python3-pyblake2"
 checkdepends+=" python3-requests"
 checkdepends+=" python3-simplejson"
-checkdepends+=" rust"
-if [[ -n "$CROSS_BUILD" ]]; then
-  checkdepends+=" rust-std"
-fi
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
-hostmakedepends+=" cargo"
 hostmakedepends+=" cmake"
 hostmakedepends+=" git"
 hostmakedepends+=" libtool"
 hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" rust"
+hostmakedepends+=" rustup"
 hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
-distfiles+=" https://github.com/zcash/zcash/archive/v${version/\.1/-1}.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
-checksum+=" 135cbbf396e83af67652f06ded0adec60e31652732b0bf07fd2294de71e01014"
+checksum+=" e5fa7c1749cd62d5cf36ccb1e1c6e4c41e9e7f3bae6ebf46e7b37c6968cc25d6"
 checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
 checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
 skip_extraction+=" db-$_db_version.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
-wrksrc="$pkgname-${version/\.1/-1}"
 build_style="gnu-configure"
 build_helper="rust"
 configure_args+=" --disable-bench"
@@ -79,23 +70,23 @@ fi
 make_check="extended"
 
 # directory in which to build custom libraries
-_depends_builddir="$XBPS_BUILDDIR/$pkgname-${version/\.1/-1}/depends"
+_depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
 
 CPPFLAGS="-I$_depends_builddir/db-root/include -I$_depends_builddir/libevent-root/include -I$_depends_builddir/libsodium-root/include -I$XBPS_CROSS_BASE/usr/include/utf8cpp"
 LDFLAGS="-L$_depends_builddir/db-root/lib -L$_depends_builddir/libevent-root/lib -L$_depends_builddir/libsodium-root/lib"
 
 _do_extract_db() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/db-$_db_version.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/db-$_db_version.tar.gz" \
     -C "$_depends_builddir"
 }
 
 _do_extract_libevent() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/libevent-$_libevent_version-stable.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libevent-$_libevent_version-stable.tar.gz" \
     -C "$_depends_builddir"
 }
 
 _do_extract_libsodium() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-${version/\.1/-1}/libsodium-$_libsodium_version.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/libsodium-$_libsodium_version.tar.gz" \
     -C "$_depends_builddir"
 }
 
@@ -165,8 +156,17 @@ _do_build_libsodium() {
   make DESTDIR="$_depends_builddir/libsodium-root" install
 }
 
+# enable upstream build scripts to access rustc
+export PATH="$CARGO_HOME/bin:$PATH"
+
 # enable finding custom built libraries through pkg-config
 export PKG_CONFIG_PATH="$_depends_builddir/libevent-root/lib/pkgconfig:$_depends_builddir/libsodium-root/lib/pkgconfig"
+
+post_fetch() {
+  rustup-init -y
+  rustup toolchain install "$_rust_version" --profile minimal
+  rustup default "$_rust_version"
+}
 
 post_extract() {
   _do_extract_db
