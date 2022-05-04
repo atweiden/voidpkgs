@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="goreleaser"
-version=1.2.5
+version=1.8.3
 revision=1
 short_desc="Deliver Go binaries as fast and easily as possible"
 homepage="https://goreleaser.com/"
 license="MIT"
 distfiles="https://github.com/goreleaser/goreleaser/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f6ad356f4b53a3e4742bb429c636b974f04aab8d5d12f5fc6919526c83665d1a"
+checksum="3ac091dacf81357a83b5c8bf17bbcb325371111b88bc59fa79c8354be2273145"
 build_style="go"
 go_import_path="github.com/goreleaser/goreleaser"
 go_ldflags="-s -w -buildid="
