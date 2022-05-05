@@ -4,7 +4,6 @@ version=0.0.1pre
 revision=2
 _gitrev="3e51bb48900b09994c3a61ea3444f1c38d865fd2"
 short_desc="Simple offline address generator for Decred"
-hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcraddrgen"
 license="ISC"
