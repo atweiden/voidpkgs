@@ -4,7 +4,6 @@ _pkgname="obfs4-obfs4proxy"
 version=0.0.13
 revision=1
 short_desc="Pluggable transport proxy for Tor, implementing obfs4"
-hostmakedepends="git"
 homepage="https://gitlab.com/yawning/obfs4"
 license="BSD-2-Clause"
 distfiles="https://gitlab.com/yawning/obfs4/-/archive/obfs4proxy-$version/$_pkgname-$version.tar.gz"
