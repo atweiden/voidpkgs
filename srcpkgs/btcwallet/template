@@ -3,7 +3,6 @@ pkgname="btcwallet"
 version=0.13.0
 revision=1
 short_desc="Secure Bitcoin wallet daemon written in Go"
-hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
