@@ -3,7 +3,6 @@ pkgname="NetAuth-nsscache"
 version=0.6.5
 revision=1
 short_desc="NetAuth nsscache implementation"
-hostmakedepends="git"
 tags="netauth"
 homepage="https://netauth.org"
 license="MIT"
