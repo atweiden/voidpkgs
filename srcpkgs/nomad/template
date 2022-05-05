@@ -4,7 +4,6 @@ version=1.2.6
 revision=1
 _gitrev="95514d569610f15ce49b4a7a1a6bfd3e7b3e7b4f"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
-hostmakedepends="git"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
