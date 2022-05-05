@@ -4,7 +4,6 @@ version=0.0.0
 revision=1
 _gitrev="8eddca958c1c6ceab8e3f780b2b639d968d1aeeb"
 short_desc="Standalone tree view file explorer"
-hostmakedepends="git"
 homepage="https://github.com/wvanlint/twf"
 license="Custom"
 distfiles="https://github.com/wvanlint/twf/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
