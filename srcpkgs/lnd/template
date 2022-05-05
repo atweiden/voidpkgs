@@ -3,7 +3,6 @@ pkgname="lnd"
 version=0.14.1beta
 revision=1
 short_desc="Lightning Network Daemon"
-hostmakedepends="git"
 tags+=" btcsuite"
 tags+=" lightningnetwork"
 homepage="https://github.com/lightningnetwork/lnd"
