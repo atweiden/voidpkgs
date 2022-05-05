@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lnd"
-version=0.14.1beta
+version=0.14.3beta
 revision=1
 short_desc="Lightning Network Daemon"
 tags+=" btcsuite"
@@ -9,8 +9,8 @@ homepage="https://github.com/lightningnetwork/lnd"
 license="MIT"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/$pkgname-source-v${version%beta}-beta.tar.gz"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/vendor.tar.gz"
-checksum+=" c4cb0ae4ec3fdb311a3d907374be8c0fa92ec9b3862ab4cdf76103912a51d5e6"
-checksum+=" 3582af767576b12e978b849173776e6b40a7066fab83e3b7c51540c441949a84"
+checksum+=" 71f04c7f9e2a29de7b4cbcb1e429db8849e0b5928e971b50887ef6c506d0c005"
+checksum+=" 7270c3f7e5b2fd0cd21767c98ea652529d489687a6e3660810608e07e20cce4a"
 wrksrc="$pkgname-v${version%beta}-beta"
 create_wrksrc="yes"
 build_style="go"
@@ -21,8 +21,6 @@ go_package+=" $go_import_path/cmd/lncli"
 go_mod_mode="vendor"
 go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/build.Commit=v${version%beta}-beta"
-
-broken="cannot use cli.StringFlag{...} (type cli.StringFlag) as type cli.Flag in slice literal"
 
 export CGO_ENABLED=0
 export GOFLAGS="-trimpath"
