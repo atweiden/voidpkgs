@@ -4,7 +4,6 @@ version=0.3.5
 revision=1
 short_desc="PAM plugin for NetAuth"
 makedepends="pam-devel"
-hostmakedepends="git"
 tags="netauth"
 homepage="https://netauth.org"
 license="MIT"
