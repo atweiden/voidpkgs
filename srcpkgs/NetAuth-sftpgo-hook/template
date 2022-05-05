@@ -4,7 +4,6 @@ version=0.1.0
 revision=2
 short_desc="External authorization hook for SFTPGo using NetAuth"
 depends="sftpgo"
-hostmakedepends="git"
 homepage="https://github.com/netauth/sftpgo-hook"
 license="MIT"
 distfiles="https://github.com/netauth/sftpgo-hook/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
