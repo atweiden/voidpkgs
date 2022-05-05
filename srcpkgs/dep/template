@@ -5,7 +5,6 @@ revision=1
 short_desc="Go dependency management tool"
 depends+=" git"
 depends+=" go"
-hostmakedepends="git"
 homepage="https://github.com/golang/dep"
 license="BSD-3-Clause"
 distfiles="https://github.com/golang/dep/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
@@ -17,10 +16,6 @@ go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X main.version=v$version"
 
 export GOFLAGS="-trimpath"
-
-pre_build() {
-  git config --global http.https://gopkg.in.followRedirects true
-}
 
 post_install() {
   vlicense LICENSE
