@@ -3,7 +3,6 @@ pkgname="dcrlnd"
 version=0.3.4
 revision=1
 short_desc="Decred Lightning Network Daemon"
-hostmakedepends="git"
 tags+=" decred"
 tags+=" lightningnetwork"
 homepage="https://github.com/decred/dcrlnd"
