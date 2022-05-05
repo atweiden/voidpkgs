@@ -3,7 +3,6 @@ pkgname="NetKeys"
 version=0.5.5
 revision=1
 short_desc="Key retrieval daemon for NetAuth"
-hostmakedepends="git"
 tags="netauth"
 homepage="https://netauth.org"
 license="MIT"
