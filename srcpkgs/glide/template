@@ -5,7 +5,6 @@ revision=1
 short_desc="Vendor package management for golang"
 depends+=" git"
 depends+=" go"
-hostmakedepends="git"
 homepage="https://glide.sh"
 license="MIT"
 changelog="https://github.com/Masterminds/glide/raw/master/CHANGELOG.md"
