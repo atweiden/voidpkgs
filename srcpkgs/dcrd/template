@@ -3,7 +3,6 @@ pkgname="dcrd"
 version=1.7.0
 revision=1
 short_desc="Decred daemon written in Go"
-hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
