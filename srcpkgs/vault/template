@@ -5,7 +5,6 @@ revision=1
 _gitrev="fcbe948b2542a13ee8036ad07dd8ebf8554f56cb"
 short_desc="Manage Secrets and Protect Sensitive Data"
 depends="libcap-progs"
-hostmakedepends="git"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
