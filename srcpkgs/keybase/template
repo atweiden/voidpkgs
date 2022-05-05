@@ -4,7 +4,6 @@ version=5.8.1
 revision=1
 short_desc="Client for keybase.io"
 depends="gnupg2"
-hostmakedepends="git"
 homepage="https://keybase.io/"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/client/releases/download/v$version/$pkgname-v$version.tar.xz"
