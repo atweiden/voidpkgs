@@ -1,24 +1,25 @@
 maintainer="nox"
 pkgname="flintlib"
-version=2.8.4
+version=2.8.5
 revision=1
 short_desc="Fast Library for Number Theory"
 makedepends+=" mpfr-devel"
 makedepends+=" $(vopt_if ntl ntl-devel)"
+makedepends+=" $(vopt_if openblas openblas-devel)"
 homepage="https://flintlib.org"
 license="LGPL-2.1-or-later"
 changelog="https://github.com/wbhart/flint2/raw/trunk/NEWS"
 distfiles="https://flintlib.org/flint-$version.tar.gz"
-checksum="61df92ea8c8e9dc692d46c71d7f50aaa09a33d4ba08d02a1784730a445e5e4be"
+checksum="5911fedff911100f15781f35e3a4fa934fe60e4aea02a8c10cc8918101c1eed8"
 wrksrc="flint-$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
-configure_args+=" --with-gmp=/usr"
-configure_args+=" --with-mpfr=/usr"
-configure_args+=" $(vopt_if ntl --with-ntl=/usr)"
-build_options="ntl"
+configure_args+=" $(vopt_with ntl)"
+configure_args+=" $(vopt_if openblas --with-blas=$XBPS_CROSS_BASE/usr/include/openblas)"
+build_options+=" ntl"
+build_options+=" openblas"
 desc_option_ntl="enable NTL support"
-
+build_options_default="openblas"
 if [[ -z "$CROSS_BUILD" ]]; then
   build_options_default+=" ntl"
 fi
