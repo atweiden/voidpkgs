@@ -3,7 +3,6 @@ pkgname="btcd"
 version=0.22.0beta
 revision=1
 short_desc="Alternative full node Bitcoin implementation written in Go"
-hostmakedepends="git"
 tags="btcsuite"
 homepage="https://github.com/btcsuite/btcd"
 license="ISC"
