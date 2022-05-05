@@ -4,7 +4,6 @@ version=0.0.1pre
 revision=3
 _gitrev="b8e0658295f00c8d2f37e156dd0d7f6c7dbb201c"
 short_desc="Decred DNS seeder"
-hostmakedepends="git"
 tags="decred"
 homepage="https://github.com/decred/dcrseeder"
 license="ISC"
