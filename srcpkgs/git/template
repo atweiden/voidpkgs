@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
-version=2.36.0
-revision=1
+version=2.35.3
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -27,7 +27,7 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/git/git/raw/master/Documentation/RelNotes/$version.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/$pkgname-$version.tar.xz"
-checksum="af5ebfc1658464f5d0d45a2bfd884c935fb607a10cc021d95bc80778861cc1d3"
+checksum="15e9db4f9bf2ed9fff30cb62a00c5c7c0901015f5ab048cdb4e8b04ddee00fa2"
 build_style="gnu-configure"
 configure_args+=" --with-curl"
 configure_args+=" --with-expat"
@@ -36,6 +36,7 @@ configure_args+=" --without-tcltk"
 python_version=3
 register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
+reverts="2.36.0_1"
 subpackages+=" git-cvs"
 subpackages+=" git-svn"
 subpackages+=" git-all"
