@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="execline-man-pages"
-version=2.8.1.0.4
+version=2.8.3.0.2
 revision=1
 short_desc="Mdoc versions of the documentation for the execline suite"
 hostmakedepends="mdocml"
 homepage="https://github.com/flexibeast/execline-man-pages"
 license="ISC"
 distfiles="https://github.com/flexibeast/execline-man-pages/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b535b83dc840b5285a19b9ee0ac3cd739912b069b3c4f3547d8b2ef6c6bcb98b"
+checksum="7862c8918faa3e82ff0a65b5c108498a2b0b3b07b3ebfb8a7e6491890e0e84b4"
 build_style="gnu-makefile"
 
 post_install() {
