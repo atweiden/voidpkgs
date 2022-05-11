@@ -19,10 +19,15 @@ configure_args+=" $(vopt_if openblas --with-blas=$XBPS_CROSS_BASE/usr/include/op
 build_options+=" ntl"
 build_options+=" openblas"
 desc_option_ntl="enable NTL support"
-build_options_default="openblas"
+build_options_default=""
 if [[ -z "$CROSS_BUILD" ]]; then
   build_options_default+=" ntl"
 fi
+case "$XBPS_TARGET_MACHINE" in
+  x86_64*|i686*|aarch64*|arm*|ppc64*)
+    build_options_default+=" openblas"
+    ;;
+esac
 
 # needed for cpu_set_t
 CFLAGS="-D_GNU_SOURCE"
