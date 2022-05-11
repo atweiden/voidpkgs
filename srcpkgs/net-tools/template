@@ -1,28 +1,26 @@
 maintainer="nox"
 pkgname="net-tools"
-version=1.60.20181103git
+version=2.10
 revision=1
-_gitrev="0eebece8c964e3cfa8a018f42b2e7e751a7009a0"
 short_desc="Basic networking tools"
 homepage="https://github.com/ecki/net-tools"
 license="GPL-2.0-or-later"
-distfiles="https://github.com/ecki/net-tools/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-wrksrc="$pkgname-$_gitrev"
-checksum="795cb4dd2618ed7ff9a48b9cb63b33780b47dfd7464c8e52ba734e6796cbab17"
+distfiles="https://github.com/ecki/net-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8e186f65f0ff304989b3dc8b0067c3a07d36ae777da60667bdd6ccb2730908d2"
+build_style="gnu-makefile"
+make_use_env="yes"
 alternatives+=" hostname:/usr/share/man/man1/hostname.1:/usr/share/man/man8/$pkgname-hostname.1"
 alternatives+=" hostname:hostname:/usr/bin/$pkgname-hostname"
 alternatives+=" ifconfig:/usr/share/man/man1/ifconfig.1:/usr/share/man/man8/$pkgname-ifconfig.8"
 alternatives+=" ifconfig:ifconfig:/usr/bin/$pkgname-ifconfig"
 
-pre_build() {
+post_patch() {
+  # hacky and flaky, but upstream does not support $PREFIX
   vsed \
     -i \
-    -e "s#/sbin#/bin#" \
+    -e "s|/sbin|/bin|" \
+    -e "s|/bin|/usr/bin|" \
     Makefile
-  vsed \
-    -i \
-    -e "s#/usr##" \
-    man/Makefile
   case "$XBPS_TARGET_MACHINE" in
     *-musl)
       # HZ is defined in <asm/param.h>
@@ -34,7 +32,6 @@ pre_build() {
         -i \
         -e "/#include <sys\/param.h>/a #include <asm\/param.h>" \
         "$wrksrc/netstat.c"
-
       # need <termios.h> for tty constants and structure
       vsed \
         -i \
@@ -43,13 +40,12 @@ pre_build() {
   esac
 }
 
-do_build() {
+do_configure() {
   replace_interpreter bash configure.sh
-  yes "" | make
+  yes "" | make config
 }
 
-do_install() {
-  make DESTDIR="$DESTDIR/usr" update
+post_install() {
   # rename ifconfig for alternatives
   mv "$DESTDIR/usr/bin"/{ifconfig,"$pkgname-ifconfig"}
   mv "$DESTDIR/usr/share/man/man8"/{ifconfig,"$pkgname-ifconfig"}.8
