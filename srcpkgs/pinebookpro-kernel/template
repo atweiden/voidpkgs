@@ -1,8 +1,7 @@
 maintainer="nox"
 pkgname="pinebookpro-kernel"
-version=5.10.46
+version=5.15.38
 revision=1
-_gitrev="a8f4db8a726e5e4552e61333dcd9ea1ff35f39f9"
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel for Pinebook Pro"
@@ -15,6 +14,7 @@ hostmakedepends+=" gmp-devel"
 hostmakedepends+=" kmod"
 hostmakedepends+=" libmpc-devel"
 hostmakedepends+=" openssl-devel"
+hostmakedepends+=" pahole"
 hostmakedepends+=" perl"
 hostmakedepends+=" python3"
 hostmakedepends+=" tar"
@@ -22,9 +22,12 @@ hostmakedepends+=" uboot-mkimage"
 hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
-distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="569122a39c6b325befb9ac1c07da0c53e6363b3baacd82081d131b06c1dc1415"
-wrksrc="linux-$version"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
+checksum+=" 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8"
+checksum+=" b62b570af247d884dd0232f509e4e33c5edf57240b1712733e61c37a1d4b4424"
+skip_extraction="patch-$version.xz"
+wrksrc="linux-${version%.*}"
 python_version=3
 # -dbg package is generated below manually
 nodebug="yes"
@@ -37,6 +40,7 @@ triggers="kernel-hooks"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.alias"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.alias.bin"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.builtin.bin"
+mutable_files+=" /usr/lib/modules/$_kernver/modules.builtin.alias.bin"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.dep"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.dep.bin"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.devname"
@@ -44,23 +48,30 @@ mutable_files+=" /usr/lib/modules/$_kernver/modules.softdep"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols"
 mutable_files+=" /usr/lib/modules/$_kernver/modules.symbols.bin"
 
-do_configure() {
-  # 5.4 misses Documentation/DocBook
-  # we ship the directory from 4.12 here
-  cp -a "$FILESDIR/DocBook" -t Documentation
+# reproducible build
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C date -ud @${SOURCE_DATE_EPOCH:-0})"
+export KBUILD_BUILD_USER="voidlinux"
+export KBUILD_BUILD_HOST="voidlinux"
 
-  local _args
+if [[ -n "$CROSS_BUILD" ]]; then
+  _cross="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
+fi
+
+pre_patch() {
+  xzcat "$XBPS_SRCDISTDIR/$pkgname-$version/patch-$version.xz" | patch -Np1
+}
+
+do_configure() {
   local arch
-  local subarch
 
   arch="arm64"
 
-  if [[ -n "$CROSS_BUILD" ]]; then
-    _args="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
-  fi
-
   cp -f "$FILESDIR/dotconfig" .config
-  make "$makejobs" ARCH="$arch" $_args oldconfig
+  make \
+    "$makejobs" \
+    ARCH="$arch" \
+    $_cross \
+    oldconfig
 
   # always use our revision to CONFIG_LOCALVERSION to match our pkg version
   sed \
@@ -70,37 +81,28 @@ do_configure() {
 }
 
 do_build() {
-  local _args
-  local _cross
   local arch
+  local _args
 
   _args="Image modules dtbs"
   arch="arm64"
 
-  if [[ -n "$CROSS_BUILD" ]]; then
-    _cross="CROSS_COMPILE=$XBPS_CROSS_TRIPLET-"
-  fi
-  if [[ -n "$_patchver" ]]; then
-    _version="EXTRAVERSION=$_patchver"
-  fi
   export LDFLAGS=
   make \
     ARCH="$arch" \
-    $_version \
     $_cross \
     "$makejobs" \
     prepare
   make \
     ARCH="$arch" \
-    $_version \
     $_cross \
     "$makejobs" \
     $_args
 }
 
 do_install() {
-  local _args
   local arch
+  local _args
   local hdrdest
   local subarch
 
@@ -117,6 +119,7 @@ do_install() {
     "$makejobs" \
     ARCH="${subarch:-$arch}" \
     INSTALL_MOD_PATH="$DESTDIR" \
+    $_cross \
     modules_install
 
   hdrdest="$DESTDIR/usr/src/kernel-headers-$_kernver"
@@ -129,6 +132,7 @@ do_install() {
     "$makejobs" \
     ARCH="${subarch:-$arch}" \
     INSTALL_DTBS_PATH="$DESTDIR/boot/dtbs/dtbs-$_kernver" \
+    $_cross \
     dtbs_install
 
   # switch to /usr
@@ -148,7 +152,7 @@ do_install() {
     mkdir -p "$hdrdest/$(dirname "$file")"
     install -Dm 644 "$file" "$hdrdest/$file"
   done
-  for file in $(find "arch/${subarch:-$arch}" \
+  for file in $(find "arch/${subarch:-$arch}" scripts \
                      -name "module.lds" \
                   -o -name "Kbuild.platforms" \
                   -o -name "Platform"); do
@@ -176,6 +180,7 @@ do_install() {
            sound \
            trace \
            uapi \
+           vdso \
            video \
            xen; do
     if [[ -d "include/$i" ]]; then
@@ -196,6 +201,7 @@ do_install() {
     make \
       "$makejobs" \
       ARCH="${subarch:-$arch}" \
+      $_cross \
       _mrproper_scripts
     # remove host specific objects as well
     find scripts -name "*.o" -delete
@@ -248,10 +254,6 @@ do_install() {
       "$hdrdest/drivers/media/i2c/$i"
   done
 
-  # add docbook makefile
-  install -Dm 644 Documentation/DocBook/Makefile \
-    "$hdrdest/Documentation/DocBook/Makefile"
-
   # add md headers
   mkdir -p "$hdrdest/drivers/md"
   cp drivers/md/*.h \
@@ -267,15 +269,7 @@ do_install() {
   cp net/mac80211/*.h \
     "$hdrdest/net/mac80211"
 
-  # add dvb headers for external modules
-  mkdir -p "$hdrdest/include/config/dvb/"
-  cp include/config/dvb/*.h \
-    "$hdrdest/include/config/dvb/"
-
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-  mkdir -p "$hdrdest/drivers/media/dvb-frontends"
-  cp drivers/media/dvb-frontends/lgdt330x.h \
-    "$hdrdest/drivers/media/dvb-frontends/"
   cp drivers/media/i2c/msp3400-driver.h \
     "$hdrdest/drivers/media/i2c/"
 
@@ -349,6 +343,7 @@ pinebookpro-kernel-dbg_package() {
   short_desc+=" - debugging symbols"
   pkg_install() {
     vmove usr/lib/debug
+    vmove "boot/System.map-$_kernver"
   }
 }
 
