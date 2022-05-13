@@ -1,7 +1,7 @@
 # keep this package sync with util-linux
 maintainer="nox"
 pkgname="util-linux-common"
-version=2.37.2
+version=2.38
 revision=1
 short_desc="Miscellaneous linux utilities - common files"
 makedepends+=" libcap-ng-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/util-linux-$version.tar.xz"
-checksum="6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9"
+checksum="6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64"
 wrksrc="util-linux-$version"
 build_style="gnu-configure"
 configure_args+=" --disable-makeinstall-chown"
