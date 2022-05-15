@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zsh-completions"
 version=0.33.0
-revision=1
+revision=2
 short_desc="Additional completions for Zsh"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-completions"
@@ -15,7 +15,9 @@ post_patch() {
 
 do_install() {
   vmkdir usr/share/zsh/site-functions/
-  vcopy src/_* usr/share/zsh/site-functions/
+  # cheat package includes better one
+  rm src/_cheat
+  vcopy "src/_*" usr/share/zsh/site-functions/
   vlicense LICENSE
 }
 
