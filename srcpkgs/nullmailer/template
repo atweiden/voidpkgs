@@ -1,9 +1,11 @@
 maintainer="nox"
 pkgname="nullmailer"
 version=2.2
-revision=1
+revision=2
 short_desc="Simple relay-only mail transport agent"
 makedepends="gnutls-devel"
+checkdepends+=" daemontools"
+checkdepends+=" ucspi-tcp"
 homepage="https://untroubled.org/nullmailer/"
 license="GPL-2.0-or-later"
 distfiles="https://untroubled.org/nullmailer/archive/$pkgname-$version.tar.gz"
@@ -15,6 +17,16 @@ system_accounts="_nullmail"
 make_dirs+=" /var/spool/nullmailer/failed 0700 _nullmail root"
 make_dirs+=" /var/spool/nullmailer/queue 0700 _nullmail root"
 make_dirs+=" /var/spool/nullmailer/tmp 0700 _nullmail root"
+provides="smtp-server-0_1"
+replaces="smtp-server>=0"
+
+pre_check() {
+  # hangs, possibly missing test data
+  vsed \
+    -i \
+    -e '/Testing auth permanent failure with smtp/,/error/d' \
+    test/tests/smtp-auth
+}
 
 post_install() {
   for f in mailq \
