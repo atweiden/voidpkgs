@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bash-completion"
 version=2.11
-revision=3
+revision=4
 short_desc="Programmable completion for the GNU Bash shell"
 depends="bash"
 checkdepends+=" python3-pexpect"
@@ -55,6 +55,11 @@ pre_check() {
     PYTEST_ADDOPTS+=" --deselect=t/$t"
   done
   export PYTEST_ADDOPTS
+}
+
+post_install() {
+  # for slackware's that we don't have, conflicts with pacman's
+  rm "$DESTDIR/usr/share/bash-completion/completions/makepkg"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
