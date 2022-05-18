@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pytest-httpbin"
-version=1.0.1
+version=1.0.2
 revision=1
 short_desc="Easily test your HTTP library against a local copy of httpbin.org"
 depends+=" python3-httpbin"
@@ -9,10 +9,20 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/kevin1024/pytest-httpbin"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytest-httpbin/pytest-httpbin-$version.tar.gz"
-checksum="9f73320f97d33cc20bc8a08cb945372948de51402559e87e74e92c56b48da0d7"
+checksum="52c9d3f75f8f43f1488b5a0be321eeca3cc5f0fae0c85445ece66bd53c95fe0e"
 wrksrc="pytest-httpbin-$version"
 build_style="python3-module"
 # cycle: needs python3-requests which has this package in checkdepends
 make_check="no"
+
+post_install() {
+  # extract license from README
+  sed \
+    -n \
+    -e '/^## License/,$ p' \
+    README.md > \
+    LICENSE
+  vlicense LICENSE
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
