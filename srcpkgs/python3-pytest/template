@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="python3-pytest"
-version=6.2.5
-revision=3
+version=7.1.2
+revision=1
 short_desc="Simple powerful testing with Python 3"
-depends+=" python3-attrs"
-depends+=" python3-iniconfig"
+_common_deps+=" python3-attrs"
+_common_deps+=" python3-iniconfig"
+_common_deps+=" python3-pluggy"
+_common_deps+=" python3-py"
+depends+=" $_common_deps"
 depends+=" python3-packaging"
-depends+=" python3-pluggy"
-depends+=" python3-py"
-depends+=" python3-setuptools"
-depends+=" python3-toml"
+depends+=" python3-tomli"
 checkdepends+=" $depends"
 checkdepends+=" python3-argcomplete"
 checkdepends+=" python3-hypothesis"
@@ -18,13 +18,15 @@ checkdepends+=" python3-nose"
 checkdepends+=" python3-parsing"
 checkdepends+=" python3-requests"
 checkdepends+=" python3-xmlschema"
+hostmakedepends+=" $_common_deps"
 hostmakedepends+=" python3-Sphinx"
 hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="https://docs.pytest.org/en/latest/"
 license="MIT"
 changelog="https://docs.pytest.org/en/latest/changelog.html"
 distfiles="$PYPI_SITE/p/pytest/pytest-$version.tar.gz"
-checksum="131b36680866a76e6781d13f101efb86cf674ebb9762eb70d3082b6f29889e89"
+checksum="a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"
 wrksrc="pytest-$version"
 build_style="python3-module"
 alternatives+=" pytest:pytest:/usr/bin/pytest3"
@@ -36,16 +38,16 @@ post_patch() {
   rm testing/test_entry_points.py
 }
 
+post_build() {
+  PYTHONPATH="$(pwd)/build/lib/" make -C doc/en man
+  vman doc/en/_build/man/pytest.1
+}
+
 do_check() {
   PYTHONPATH="$(pwd)/build/lib" \
     python3 \
       -m pytest \
       -k 'not test_color_yes and not test_code_highlight'
-}
-
-post_build() {
-  PYTHONPATH="$(pwd)/build/lib/" make -C doc/en man
-  vman doc/en/_build/man/pytest.1
 }
 
 post_install() {
