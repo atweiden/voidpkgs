@@ -1,15 +1,29 @@
 maintainer="nox"
 pkgname="python3-pytest-asyncio"
-version=0.14.0
-revision=2
+version=0.18.3
+revision=1
 short_desc="Pytest support for asyncio"
 depends="python3-pytest"
-hostmakedepends="python3-setuptools"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/pytest-dev/pytest-asyncio"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/p/pytest-asyncio/pytest-asyncio-$version.tar.gz"
-checksum="9882c0c6b24429449f5f969a5158b528f39bde47dc32e85b9f0403965017e700"
+checksum="7659bdb0a9eb9c6e3ef992eef11a2b3e69697800ad02fb06374a210d85b29f91"
 wrksrc="pytest-asyncio-$version"
 build_style="python3-module"
+
+do_check() {
+  local skiptests
+
+  skiptests+=" test_auto_mode_cmdline or"
+  skiptests+=" test_strict_mode_ignores_trio_fixtures or"
+  skiptests+=" test_unused_port_fixture or"
+  skiptests+=" test_unused_port_factory_fixture"
+
+  PYTHONPATH="$(cd build/lib* && pwd)" \
+    python3 -m pytest -k "not ($skiptests)"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
