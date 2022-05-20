@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="python3-filelock"
-version=3.4.2
-revision=2
+version=3.7.0
+revision=1
 short_desc="Platform independent file lock"
 depends="python3"
 hostmakedepends="python3-setuptools"
-homepage="https://filelock.readthedocs.io/en/latest/"
+homepage="https://py-filelock.readthedocs.io/en/latest/"
 license="Unlicense"
+changelog="https://github.com/tox-dev/py-filelock/raw/main/docs/changelog.rst"
 distfiles="$PYPI_SITE/f/filelock/filelock-$version.tar.gz"
-checksum="38b4f4c989f9d06d44524df1b24bd19e167d851f19b50bf3e3559952dddc5b80"
+checksum="b795f1b42a61bbf8ec7113c341dad679d772567b936fbd1bf43c9a238e673e20"
 wrksrc="filelock-$version"
 build_style="python3-module"
 
