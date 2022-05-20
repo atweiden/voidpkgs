@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ncurses"
 version=6.3
-revision=1
+revision=2
 short_desc="System V Release 4.0 curses emulation library"
 depends="ncurses-base-${version}_$revision"
 homepage="http://www.gnu.org/software/ncurses/"
