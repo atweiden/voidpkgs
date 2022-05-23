@@ -1,26 +1,33 @@
 maintainer="nox"
 pkgname="httpie"
-version=2.6.0
+version=3.2.1
 revision=1
 short_desc="Modern, user-friendly command-line HTTP client for the API era"
 depends+=" python3-Pygments"
 depends+=" python3-charset-normalizer"
 depends+=" python3-defusedxml"
+depends+=" python3-multidict"
 depends+=" python3-pysocks"
 depends+=" python3-requests"
 depends+=" python3-requests-toolbelt"
+depends+=" python3-rich"
 depends+=" python3-setuptools"
 hostmakedepends="python3-setuptools"
 homepage="https://httpie.io/"
 license="BSD-3-Clause"
 changelog="https://github.com/httpie/httpie/raw/master/CHANGELOG.md"
 distfiles="https://github.com/httpie/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3bcd9a8cb2b11299da12d3af36c095c6d4b665e41c395898a07f1ae4d99fc14a"
+checksum="803e1624e005c2f7002802a77ebc687b05375aca76af42639f844405328633eb"
 build_style="python3-module"
-# needs pytest_httpbin which is not packaged
+# requires pytest-lazy-fixture (not packaged), many tests fail
 make_check="no"
 
 post_install() {
+  for page in http \
+              httpie \
+              https; do
+    vman "extras/man/$page.1"
+  done
   vcompletion extras/httpie-completion.bash bash http
   vcompletion extras/httpie-completion.fish fish http
   vlicense LICENSE
