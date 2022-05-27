@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="opencl2-headers"
-version=2022.01.04
+version=2022.05.18
 revision=1
 short_desc="OpenCL 2.2 (Open Computing Language) header files"
 homepage="https://github.com/KhronosGroup/OpenCL-Headers"
 license="Apache-2.0"
 distfiles="https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6e716e2b13fc8d363b40a165ca75021b102f9328e2b38f8054d7db5884de29c9"
+checksum="88a1177853b279eaf574e2aafad26a84be1a6f615ab1b00c20d5af2ace95c42e"
 wrksrc="OpenCL-Headers-$version"
 provides="opencl-headers-${version}_$revision"
 replaces="opencl-headers>=0"
