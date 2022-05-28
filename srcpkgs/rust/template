@@ -264,6 +264,6 @@ rust-std_package() {
 # https://github.com/rust-lang/core-team/issues/4
 #
 # always make sure custom distfiles used for bootstrap are uploaded to
-# https://alpha.de.repo.voidlinux.org/distfiles/
+# https://repo-default.voidlinux.org/distfiles/
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

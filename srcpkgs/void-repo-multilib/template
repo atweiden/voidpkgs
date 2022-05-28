@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="void-repo-multilib"
 version=6
-revision=3
+revision=4
 short_desc="Void Linux drop-in file for the multilib repository"
 archs="x86_64"
 homepage="http://www.voidlinux.org"
@@ -12,7 +12,7 @@ do_install() {
   vmkdir usr/share/xbps.d
   for f in multilib \
            multilib-nonfree; do
-    echo "repository=https://alpha.de.repo.voidlinux.org/current/${f/-/\/}" > \
+    echo "repository=https://repo-default.voidlinux.org/current/${f/-/\/}" > \
       "$DESTDIR/usr/share/xbps.d/10-repository-$f.conf"
   done
 }
