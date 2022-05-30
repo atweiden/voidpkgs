@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="android-tools"
 version=31.0.3p1
-revision=3
+revision=4
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
 archs+=" i686*"
 archs+=" ppc64le*"
 archs+=" x86_64*"
+depends="python3"
 makedepends+=" brotli-devel"
 makedepends+=" gtest-devel"
 makedepends+=" liblz4-devel"
