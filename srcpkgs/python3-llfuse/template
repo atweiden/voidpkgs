@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-llfuse"
-version=1.4.1
-revision=2
+version=1.4.2
+revision=1
 short_desc="Python3 bindings for the low level FUSE API"
 depends="python3"
 makedepends+=" attr-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/python-llfuse/python-llfuse"
 license="LGPL-2.0-or-later"
 distfiles="$PYPI_SITE/l/llfuse/llfuse-$version.tar.gz"
-checksum="c29c79d96a5aeab51608cae12594a1bf83576d86232f97341c7f779d413a4ec9"
+checksum="ea4d19297be0ddbc5db68b421aa649c737a351f9c809919385a118c217c33083"
 wrksrc="llfuse-$version"
 build_style="python3-module"
 
