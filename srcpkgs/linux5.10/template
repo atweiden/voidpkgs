@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.10"
-version=5.10.117
+version=5.10.120
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -28,7 +28,7 @@ hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="703ef7112cdf889950dd864ba482d04bd87d83d3df3a98ab8d4ba8a7ab1ddcc7"
+checksum="5b7a756004158ece2f5e41795ba523ec201743a736e34ce41cbe09177f7d0e8b"
 wrksrc="linux-$version"
 python_version=3
 # -dbg package is generated below manually
