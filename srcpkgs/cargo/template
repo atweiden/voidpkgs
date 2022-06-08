@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cargo"
-version=0.58.0
+version=1.61.0
 revision=1
 short_desc="Rust package manager"
 depends="rust"
@@ -19,11 +19,11 @@ hostmakedepends+=" rust"
 hostmakedepends+=" zlib-devel"
 homepage="https://crates.io/"
 license="MIT, Apache-2.0"
-distfiles+=" https://github.com/rust-lang/cargo/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/crossbeam-rs/crossbeam/archive/refs/tags/crossbeam-utils-0.8.5.tar.gz"
-checksum+=" e1d6f55414a29906d24b13c687996b5220e08ccce9c682e4c02851138fc7093f"
-checksum+=" 57db07eb38b0aaf7951c79b4639819cb84bc4269507091afea7267e10a54e079"
-wrksrc="cargo-$version"
+distfiles+=" https://github.com/rust-lang/cargo/archive/rust-$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/crossbeam-rs/crossbeam/archive/crossbeam-utils-0.8.8.tar.gz"
+checksum+=" 6261b51441f50abe08a2992a349b22a2385846bfc9cb288ae9a3a609b904099e"
+checksum+=" 52c451910203cd9002cc4b85cff95f45c6ba245392801e80d7898ca5c3c3ab29"
+wrksrc="cargo-rust-$version"
 build_helper="rust"
 build_options+=" bindist"
 build_options+=" static"
@@ -34,7 +34,7 @@ if [[ -n "$build_option_static" ]] || [[ -n "$build_option_bindist" ]]; then
   _build_static="yes"
 fi
 
-post_extract() {
+pre_patch() {
   mv ../crossbeam-* crossbeam-utils
 }
 
