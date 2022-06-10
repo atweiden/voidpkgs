@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="apk-tools"
-version=2.12.109
+version=2.12.10
 revision=1
 short_desc="Alpine Package Keeper (Alpine package manager)"
 makedepends+=" openssl-devel"
