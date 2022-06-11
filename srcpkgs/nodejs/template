@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nodejs"
-version=16.14.0
+version=16.15.1
 revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
@@ -27,7 +27,7 @@ hostmakedepends+=" $(vopt_if ssl openssl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="29dfce13650f063ff009d18349636333fa4305468b6a8965d442c2e88b1dd60f"
+checksum="308aee7149c4092a53c87c28ef49e23a8d1606119e79ae68333062e2a1f94208"
 wrksrc="${pkgname%js}-v$version"
 python_version=3
 build_options+=" cares"
@@ -63,20 +63,12 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64*)
     ;;
   ppc*)
-    broken="node 12.x does not support 32-bit ppc"
+    broken="node 16.x does not support 32-bit ppc"
     ;;
 esac
 
 CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 CXXFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
-
-post_patch() {
-  # xxx drop after c-ares 1.17.3 has been released
-  vsed \
-    -i \
-    -e 's:<ares_nameser.h>:<arpa/nameser.h>:g' \
-    src/cares_wrap.h
-}
 
 do_configure() {
   local _args
