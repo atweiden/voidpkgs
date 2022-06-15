@@ -1,20 +1,20 @@
 maintainer="nox"
 pkgname="rust-analyzer"
-version=2021.08.30
+version=2022.06.13
 revision=1
 _ver=${version//./-}
 short_desc="Rust compiler front-end for IDEs"
 homepage="https://rust-analyzer.github.io/"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/rust-analyzer/rust-analyzer/archive/$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="a5c791cd660b46e8fc20c1b268cb25c33658fcd593d81b278c34c97efccddbde"
+checksum="7cc67e054330a63d3c8ca7c2cd8d0a8067f5ab0a45f5297df64bec1ce91ab072"
 wrksrc="$pkgname-$_ver"
 build_style="cargo"
 # tests require rust source code
 make_check="no"
 make_install_args="--path=crates/$pkgname"
 
-export RUST_ANALYZER_REV="$_ver"
+export CFG_RELEASE="$_ver"
 
 post_install() {
   vlicense LICENSE-APACHE
