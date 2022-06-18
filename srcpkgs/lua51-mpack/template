@@ -5,19 +5,17 @@ revision=1
 short_desc="Simple implementation of MessagePack for Lua 5.1"
 makedepends+=" libmpack-devel"
 makedepends+=" lua51-devel"
-hostmakedepends="libtool"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/libmpack/libmpack-lua"
 license="MIT"
 distfiles="https://github.com/libmpack/libmpack-lua/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="2ebe9c8972c378040c9b8505f5fb40a0c64d990cd68be6a62989362b18294d0a"
 wrksrc="libmpack-lua-$version"
-
-do_build() {
-  make \
-    "$makejobs" \
-    USE_SYSTEM_LUA=1 \
-    USE_SYSTEM_MPACK=1
-}
+build_style="gnu-makefile"
+make_use_env="yes"
+make_build_args+=" USE_SYSTEM_LUA=1"
+make_build_args+=" USE_SYSTEM_MPACK=1"
 
 do_install() {
   vinstall mpack.so 755 usr/lib/lua/5.1
