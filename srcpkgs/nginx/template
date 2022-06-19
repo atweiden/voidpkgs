@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="nginx"
-version=1.20.2
-revision=3
+version=1.22.0
+revision=1
 _tests_gitrev="18ac4d9e5a2a"
 short_desc="High performance web and reverse proxy server"
 makedepends+=" openssl-devel"
-makedepends+=" pcre-devel"
+makedepends+=" pcre2-devel"
 makedepends+=" $(vopt_if geoip geoip-devel)"
 checkdepends+=" perl"
 checkdepends+=" perl-FCGI"
@@ -17,7 +17,7 @@ homepage="https://nginx.org"
 license="BSD-2-Clause"
 distfiles+=" https://nginx.org/download/$pkgname-$version.tar.gz"
 distfiles+=" https://hg.nginx.org/nginx-tests/archive/$_tests_gitrev.tar.gz"
-checksum+=" 958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42"
+checksum+=" b33d569a6f11a01433a57ce17e83935e953ad4dc77cdd4d40f896c88ac26eb53"
 checksum+=" e34ef2f38512e1c04ee201c3b68f7ba7ec8f1537dc6a500278bc2219ab435228"
 # tests fail when nginx run as root and there is no nginx user
 make_check="ci-skip"
