@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="kpartx"
-version=0.8.9
+version=0.9.0
 revision=1
 short_desc="Create device maps from partition tables"
 makedepends="device-mapper-devel"
 homepage="http://christophe.varoqui.free.fr/"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/opensvc/multipath-tools/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="27a426facea0474e6dc48e026a94f7c86890d3f27b439b07ec26b0b9887b0cc4"
+checksum="d6d1d819a53d076a91828ede42d9786451a471c4b71ca3fd25d04ad5413e3f95"
 wrksrc="multipath-tools-$version"
 build_wrksrc="kpartx"
 build_style="gnu-makefile"
@@ -16,16 +16,5 @@ make_install_args+=" libudevdir=/usr/lib/udev"
 
 CFLAGS="-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DLIBDM_API_COOKIE -I../libmultipath"
 LDFLAGS="-ldevmapper"
-
-post_extract() {
-  sed \
-    -i \
-    -e 's/__kernel_uint32_t/uint32_t/g' \
-    kpartx/solaris.c
-  sed \
-    -i \
-    -e 's,<sysmacros.h>,<sys/sysmacros.h>,g' \
-    kpartx/lopart.c
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
