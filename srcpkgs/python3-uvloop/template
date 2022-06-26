@@ -1,33 +1,40 @@
-# Template file for 'python3-uvloop'
-pkgname=python3-uvloop
+maintainer="nox"
+pkgname="python3-uvloop"
 version=0.16.0
 revision=2
-wrksrc="${pkgname#*-}-${version}"
-build_style=python3-module
-hostmakedepends="python3 python3-setuptools python3-Cython"
-makedepends="libuv-devel python3-devel"
-depends="python3"
-checkdepends="flake8 python3-pytest python3-openssl python3-psutil"
 short_desc="Fast replacement for Python asyncio event loop"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="Apache-2.0, MIT"
+depends="python3"
+makedepends+=" libuv-devel"
+makedepends+=" python3-devel"
+checkdepends+=" flake8"
+checkdepends+=" python3-openssl"
+checkdepends+=" python3-psutil"
+checkdepends+=" python3-pytest"
+hostmakedepends+=" python3"
+hostmakedepends+=" python3-Cython"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/MagicStack/uvloop"
-distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=b003d3110baf076d3e70c85fb96a434ea67ad2f4c4ccb11cfce7e00ce8565378
+license="Apache-2.0, MIT"
+distfiles="https://github.com/MagicStack/uvloop/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="b003d3110baf076d3e70c85fb96a434ea67ad2f4c4ccb11cfce7e00ce8565378"
+wrksrc="${pkgname#*-}-$version"
+build_style="python3-module"
 
 do_check() {
-	# For some reason, setting PYTHONPATH is not sufficient
-	cp build/lib*/uvloop/*.so uvloop
-	python3 -m pytest tests -k 'not Test_UV_TCPSSL'
+  # for some reason, setting PYTHONPATH is not sufficient
+  cp build/lib*/uvloop/*.so uvloop
+  python3 -m pytest tests -k 'not Test_UV_TCPSSL'
 }
 
 post_patch() {
-	cat <<-EOF >> setup.cfg
-	[build_ext]
-	use-system-libuv=1
-	EOF
+  cat <<-EOF >> setup.cfg
+[build_ext]
+use-system-libuv=1
+EOF
 }
 
 post_install() {
-	vlicense LICENSE-MIT
+  vlicense LICENSE-MIT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
