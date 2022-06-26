@@ -365,7 +365,7 @@ libnetfilter_log_libipulog.so.1 libnetfilter_log-1.0.1_1
 libnetfilter_queue.so.1 libnetfilter_queue-1.0.2_1
 libnfc.so.6 libnfc-1.8.0_1
 libnfnetlink.so.0 libnfnetlink-1.0.1_1
-libnfs.so.13 libnfs-4.0.0_1
+libnfs.so.14 libnfs-5.0.1_1
 libnfsidmap.so.1 libnfsidmap-2.4.3_2
 libnftables.so.1 libnftables-0.9.1_1
 libnftnl.so.11 libnftnl-1.1.2_1
