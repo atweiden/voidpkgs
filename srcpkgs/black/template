@@ -1,43 +1,52 @@
 maintainer="nox"
 pkgname="black"
-version=21.9b0
-revision=2
+version=22.3.0
+revision=1
 short_desc="Uncompromising Python code formatter"
 depends+=" python3-click"
 depends+=" python3-mypy_extensions"
 depends+=" python3-pathspec"
 depends+=" python3-platformdirs"
-depends+=" python3-regex"
 depends+=" python3-tomli"
-depends+=" python3-typing_extensions"
 checkdepends+=" $depends"
 checkdepends+=" python3-aiohttp"
-checkdepends+=" python3-aiohttp-cors"
+checkdepends+=" python3-colorama"
 # XXX: python3-ipython requires gui deps
 #checkdepends+=" python3-ipython"
-checkdepends+=" python3-parameterized"
-checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-xdist"
 checkdepends+=" python3-tokenize-rt"
-checkdepends+=" python3-typed-ast"
+checkdepends+=" python3-uvloop"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-setuptools_scm"
 homepage="https://github.com/psf/black"
 license="MIT"
 changelog="https://github.com/psf/black/raw/main/CHANGES.md"
 distfiles="$PYPI_SITE/b/black/black-$version.tar.gz"
-checksum="7de4cfc7eb6b710de325712d40125689101d21d25283eed7e9998722cf10eb91"
+checksum="35020b8886c022ced9282b51b5a875b6d1ab0c387b31a065b84db7c33085ca79"
 build_style="python3-module"
-# disable tests that require `black` in the search path for commands
-make_check_args+=" --deselect tests/test_primer.py::PrimerCLITests::test_async_main"
-make_check_args+=" --deselect tests/test_primer.py::PrimerLibTests::test_gen_check_output"
-make_check_args+=" --deselect tests/test_primer.py::PrimerLibTests::test_process_queue"
 
-pre_build() {
-  # https://gitweb.gentoo.org/repo/gentoo.git/tree/dev-python/black/black-21.8_beta0.ebuild#n45
-  vsed \
-    -i \
-    -e '/setuptools_scm/s:~=:>=:' \
-    setup.cfg
+do_check() {
+  local pyver
+
+  PYTHONPATH="$(cd build/lib* && pwd)" \
+    python3 \
+      -m pytest \
+      --run-optional jupyter \
+      -m jupyter \
+      --deselect="tests/test_ipynb.py::test_set_input"
+
+  pyver=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+
+  mv "$XBPS_MASTERDIR/usr/lib/python$pyver/site-packages/IPython" \
+    "$XBPS_MASTERDIR/tmp/IPython.bak"
+
+  PYTHONPATH="$(cd build/lib* && pwd)" \
+    python3 \
+      -m pytest \
+      --run-optional no_jupyter
+
+  mv "$XBPS_MASTERDIR/tmp/IPython.bak" \
+    "$XBPS_MASTERDIR/usr/lib/python$pyver/site-packages/IPython"
 }
 
 post_install() {
