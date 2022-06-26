@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nss"
-version=3.79
+version=3.80
 revision=1
 _nsprver=4.34
 short_desc="Mozilla Network Security Services"
@@ -13,7 +13,7 @@ hostmakedepends+=" which"
 homepage="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license="MPL-2.0"
 distfiles="$MOZILLA_SITE/security/nss/releases/NSS_${version//\./_}_RTM/src/nss-$version.tar.gz"
-checksum="ebdf2d6a96613b6fe70ad579e9f983e0e94e0110171cfb2999db633d3394a514"
+checksum="c0bf1fd2c7e29a6b02b309622baafc443eec90c8934bb155da4bb98988784b6a"
 
 export BUILD_OPT=1
 export FREEBL_NO_DEPEND=1
@@ -74,10 +74,12 @@ do_build() {
   make -C nss \
     "$makejobs" \
     ${CROSS_BUILD:+CROSS_COMPILE=1} \
+    CCC="$CXX" \
+    NATIVE_CC="$CC_FOR_BUILD" \
+    NATIVE_FLAGS="$CFLAGS_FOR_BUILD" \
+    NATIVE_LDFLAGS="$LDFLAGS_FOR_BUILD" \
     OS_TEST="$_ARCH" \
-    NATIVE_CC="$BUILD_CC" \
-    NATIVE_FLAGS="$BUILD_CFLAGS" \
-    CCC="$CXX" $_use64 \
+    $_use64 \
     all
 }
 
