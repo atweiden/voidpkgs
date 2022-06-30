@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="privoxy"
-version=3.0.32
+version=3.0.33
 revision=1
 short_desc="Non-caching web proxy with advanced filtering capabilities"
 makedepends+=" pcre-devel"
@@ -9,7 +9,7 @@ hostmakedepends="autoconf"
 homepage="http://www.privoxy.org/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/ijbswa/$pkgname-$version-stable-src.tar.gz"
-checksum="c61de4008c62445ec18f1f270407cbf2372eaba93beaccdc9e3238bb2defeed7"
+checksum="04b104e70dac61561b9dd110684b250fafc8c13dbe437a60fae18ddd9a881fae"
 conf_files+=" /etc/privoxy/config"
 conf_files+=" /etc/privoxy/default.action"
 conf_files+=" /etc/privoxy/default.filter"
@@ -28,7 +28,7 @@ privoxy_homedir="/etc/privoxy"
 
 pre_configure() {
   autoheader && autoconf
-  sed \
+  vsed \
     -i \
     -e 's|^confdir .*|confdir /etc/privoxy|' \
     -e 's|^logdir .*|logdir /var/log/privoxy|' \
