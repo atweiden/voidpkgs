@@ -1,7 +1,7 @@
 # this pkg must be synchronized with "srcpkgs/python-tkinter"
 maintainer="nox"
 pkgname="python"
-version=2.7.18.4
+version=2.7.18.5
 revision=1
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
@@ -17,7 +17,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles="https://github.com/ActiveState/cpython/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="003a4fbd03fa0dbb3cf88d894c40311ef30dd17b2aa85291c3136393148b1362"
+checksum="a046ddfd75f439ec2e65af840caa267d1edb4d914d7777d2fbd2f88041c6f3a2"
 wrksrc="cpython-$version"
 alternatives+=" python:idle:/usr/bin/idle2.7"
 alternatives+=" python:2to3:/usr/bin/2to3-2.7"
