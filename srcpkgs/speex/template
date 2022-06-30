@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="speex"
-version=1.2.0
-revision=2
+version=1.2.1
+revision=1
 short_desc="Free codec for free speech"
 makedepends+=" fftw-devel"
 makedepends+=" libogg-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.speex.org"
 license="BSD-3-Clause"
 distfiles="http://downloads.xiph.org/releases/speex/$pkgname-$version.tar.gz"
-checksum="eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094"
+checksum="4b44d4f2b38a370a2d98a78329fefc56a0cf93d1c1be70029217baae6628feea"
 build_style="gnu-configure"
 
 post_install() {
