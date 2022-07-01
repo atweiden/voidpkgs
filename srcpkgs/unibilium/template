@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="unibilium"
-version=2.0.0
-revision=2
+version=2.1.1
+revision=1
 short_desc="Simple, self-contained terminfo library"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
-homepage="https://github.com/mauke/unibilium"
+homepage="https://github.com/neovim/unibilium"
 license="LGPL-3.0-or-later"
-distfiles="https://github.com/mauke/unibilium/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="78997d38d4c8177c60d3d0c1aa8c53fd0806eb21825b7b335b1768d7116bc1c1"
+changelog="https://github.com/neovim/unibilium/raw/master/Changes"
+distfiles="https://github.com/neovim/unibilium/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6f0ee21c8605340cfbb458cbd195b4d074e6d16dd0c0e12f2627ca773f3cabf1"
 build_style="gnu-makefile"
 
 do_build() {
