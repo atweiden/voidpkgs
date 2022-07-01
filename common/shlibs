@@ -433,6 +433,7 @@ libsasl2.so.3 libsasl-2.1.26_1
 libscrypt.so.0 libscrypt-1.21_1
 libseccomp.so.2 libseccomp-2.0.0_1
 libsensors.so.5 libsensors-3.5.0_1
+libsepol.so.1 libsepol-3.0_1
 libsigc-2.0.so.0 libsigc++-1.1_1
 libsigsegv.so.2 libsigsegv-2.10_2
 libsmartcols.so.1 libsmartcols-2.25_1
