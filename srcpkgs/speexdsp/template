@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="speexdsp"
-version=1.2.0
+version=1.2.1
 revision=1
-short_desc="A free codec for free speech - DSP"
+short_desc="Free codec for free speech - DSP"
 hostmakedepends="pkg-config"
 homepage="http://www.speex.org"
 license="BSD-3-Clause"
 distfiles="http://downloads.xiph.org/releases/speex/$pkgname-$version.tar.gz"
-checksum="682042fc6f9bee6294ec453f470dadc26c6ff29b9c9e9ad2ffc1f4312fd64771"
+checksum="8c777343e4a6399569c72abc38a95b24db56882c83dbdb6c6424a5f4aeb54d3d"
 build_style="gnu-configure"
 
 case "$XBPS_TARGET_MACHINE" in
