@@ -195,7 +195,7 @@ liblapack.so.3 lapack-3.5.0_1
 libgnarl-10.so libada-10.2.0_1
 libgnat-10.so libada-10.2.0_1
 libaio.so.1 libaio-0.3.109_1
-libaom.so.2 libaom-2.0.0_1
+libaom.so.3 libaom-3.4.0_1
 libapparmor.so.1 libapparmor-2.12.0_1
 libarchive.so.13 libarchive-3.5.1_2
 libargon2.so.1 libargon2-20171227_1
