@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nss"
 version=3.80
-revision=1
+revision=2
 _nsprver=4.34
 short_desc="Mozilla Network Security Services"
 depends="nspr>=$_nsprver"
@@ -131,6 +131,7 @@ do_install() {
            libnss3.so \
            libnssckbi.so \
            libnssdbm3.so \
+           libnsssysinit.so \
            libnssutil3.so \
            libsmime3.so \
            libsoftokn3.so \
