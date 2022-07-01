@@ -1,29 +1,37 @@
-# Template file for 'hut'
-pkgname=hut
+maintainer="nox"
+pkgname="hut"
 version=0.1.0
 revision=1
-wrksrc="${pkgname}-v${version}"
-build_style=go
-build_helper=qemu
-go_import_path="git.sr.ht/~emersion/hut"
-hostmakedepends="scdoc"
 short_desc="CLI tool for sr.ht"
-maintainer="Dakota Walsh <kota@nilsu.org>"
-license="AGPL-3.0-only"
+hostmakedepends="scdoc"
 homepage="https://git.sr.ht/~emersion/hut"
+license="AGPL-3.0-only"
 changelog="https://git.sr.ht/~emersion/hut/log"
-distfiles="https://git.sr.ht/~emersion/hut/archive/v${version}.tar.gz"
-checksum=5af8f1111f9ec1da9a818978eb1f013dfd50ad4311c79d95b0e62ad428ac1c59
+distfiles="https://git.sr.ht/~emersion/hut/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5af8f1111f9ec1da9a818978eb1f013dfd50ad4311c79d95b0e62ad428ac1c59"
+wrksrc="$pkgname-v$version"
+build_style="go"
+go_import_path="git.sr.ht/~emersion/hut"
+go_ldflags="-s -w -buildid="
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
+
+export GOFLAGS="-trimpath"
 
 post_install() {
-	hut=$(find $GOPATH/bin -name hut)
-	for sh in bash fish zsh; do
-		vtargetrun $hut completion $sh > hut.$sh
-		vcompletion hut.$sh $sh
-	done
+  # build shell completions without cross-platform support (see: upstream)
+  hut="$(find "$GOPATH/bin" -name hut)"
+  for sh in bash \
+            fish \
+            zsh; do
+    "$hut" completion "$sh" > "hut.$sh"
+    vcompletion "hut.$sh" "$sh"
+  done
 
-	vlicense LICENSE
+  vlicense LICENSE
 
-	scdoc < doc/hut.1.scd > doc/hut.1
-	vman doc/hut.1
+  scdoc < doc/hut.1.scd > doc/hut.1
+  vman doc/hut.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
