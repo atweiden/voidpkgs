@@ -27,10 +27,6 @@ make_dirs+=" /var/log/varnish 0750 _varnish _varnish"
 build_options="pcrejit"
 lib32disabled="yes"
 
-if [[ "${XBPS_TARGET_MACHINE%-musl}" == "i686" ]]; then
-  broken="vcltest failure on i686 in c00059.vtc"
-fi
-
 if [[ "$(vopt_if pcrejit yes)" == "yes" ]]; then
   # don't permit cross builds if pcrejit is set
   nocross="Cannot run test program when cross compiling (PCRE_JIT)"
