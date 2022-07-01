@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="rebar3"
-version=3.14.4
-revision=2
+version=3.19.0
+revision=1
 short_desc="Erlang build tool to compile, test, and release applications"
 depends="erlang>=22"
 hostmakedepends="erlang"
 homepage="https://www.rebar3.org/"
 license="Apache-2.0"
 distfiles="https://github.com/erlang/rebar3/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8d78ed53209682899d777ee9443b26b39c9bf96c8b081fe94b3dd6693077cb9a"
+checksum="ff9ef42c737480477ebdf0dd9d95ece534a14c96f05edafbf32e9af973280bc3"
 
 do_build() {
   ./bootstrap
