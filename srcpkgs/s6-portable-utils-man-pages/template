@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="s6-portable-utils-man-pages"
-version=2.2.4.0.2
+version=2.2.5.0.1
 revision=1
 short_desc="Documentation for s6-portable-utils in mdoc(7) format"
 hostmakedepends="mdocml"
 homepage="https://github.com/flexibeast/s6-portable-utils-man-pages"
 license="ISC"
 distfiles="https://github.com/flexibeast/s6-portable-utils-man-pages/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="af0f6b39d5b4184db08d413840b810a543ae7f9fbd19e48ea14022d5b6ac42c7"
+checksum="e960dbd459285846f89900643742846848431c0d82d4645f3c4b697227abdfe4"
 build_style="gnu-makefile"
 
 post_install() {
