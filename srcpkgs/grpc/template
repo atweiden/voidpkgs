@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.39.1
-revision=5
+revision=6
 _abseilver="997aaf3a28308eba1b9156aa35ab7bca9688e9f6"
 short_desc="High performance, open source, general RPC framework"
 _devel_depends+=" c-ares-devel"
@@ -47,30 +47,34 @@ post_extract() {
 post_patch() {
   # re2 doesn't install CMake config modules;
   # key variables are set in configure_args
+  # also install all plugin on cross-compiling
   vsed \
     -i \
     -e '/include(cmake\/re2\.cmake)/d' \
+    -e 's/gRPC_INSTALL AND NOT CMAKE_CROSSCOMPILING/gRPC_INSTALL/' \
     CMakeLists.txt
 }
 
-post_build() {
-  # clean up unneeded absl linker arguments from pkgconfig files
-  sed \
-    -i \
-    -e 's/-labsl_[^[:space:]]\+[[:space:]]*//g' \
-    build/lib/pkgconfig/*.pc
-}
-
 post_install() {
-  # remove unnecessary absl static libs and cmake modules
+  # remove unnecessary absl static libs, pkg-config and cmake modules
   rm "$DESTDIR/usr/lib"/libabsl*.a
+  rm -rf "$DESTDIR/usr/lib/pkgconfig"/absl_*
   rm -rf "$DESTDIR/usr/lib/cmake/absl"
 
-  # add custom absl include root to grpcpp cflags
-  vsed \
+  # clean up unneeded absl linker arguments from cmake files
+  sed \
     -i \
-    -e 's,^Cflags:.*,& -I${includedir}/grpc_absl,' \
-    "$DESTDIR/usr/lib/pkgconfig"/grpc++*.pc
+    -e 's/absl::[a-zA-Z_-]*;//g' \
+    -e 's/ "absl::[a-zA-Z_-]*"/ /g' \
+    "$DESTDIR/usr/lib/cmake/grpc/gRPCTargets.cmake"
+}
+
+libgrpc_package() {
+  short_desc+=" - libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+    vmove usr/share
+  }
 }
 
 grpc-devel_package() {

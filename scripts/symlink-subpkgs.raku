@@ -257,7 +257,8 @@ constant %PKG = Map.new(
                   gpgmepp-devel>,
     'groff' => qw<groff-doc
                   libgroff>,
-    'grpc' => ['grpc-devel'],
+    'grpc' => qw<grpc-devel
+                 libgrpc>,
     'grub' => qw<grub-arm64-efi
                  grub-i386-coreboot
                  grub-i386-efi
