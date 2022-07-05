@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="postgresql14"
-version=14.1
+version=14.4
 revision=1
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
@@ -23,7 +23,7 @@ homepage="https://www.postgresql.org"
 license="PostgreSQL"
 changelog="https://www.postgresql.org/docs/current/release-${version//./-}.html"
 distfiles="https://ftp.postgresql.org/pub/source/v$version/postgresql-$version.tar.bz2"
-checksum="4d3c101ea7ae38982f06bdc73758b53727fb6402ecd9382006fa5ecc7c2ca41f"
+checksum="c23b6237c5231c791511bdc79098617d6852e9e3bdf360efd8b5d15a1a3d8f6a"
 conf_files+=" /$_sysconfdir/default/postgresql"
 conf_files+=" /$_sysconfdir/pam.d/postgresql"
 conf_files+=" /$_sysconfdir/postgresql/postgresql.conf"
@@ -49,6 +49,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" --without-tcl"
 fi
 make_build_target="world"
+# postgres server can't be run as root
+make_check="ci-skip"
 # create 'postgres' user for the server
 system_accounts="postgres"
 postgres_homedir="/var/lib/postgresql"
@@ -280,6 +282,7 @@ postgresql14-contrib_package() {
   short_desc="PostgreSQL contributed programs and extensions"
   pkg_install() {
     make -C contrib install DESTDIR="$PKGDESTDIR"
+    mv "$PKGDESTDIR/usr/include" "$PKGDESTDIR/$_prefix"
   }
 }
 
