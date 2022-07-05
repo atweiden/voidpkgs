@@ -636,9 +636,7 @@ constant %PKG = Map.new(
                        postgresql-doc
                        postgresql-plperl
                        postgresql-plpython
-                       postgresql-pltcl
-                       postgresql9.6-libs
-                       postgresql9.6-libs-devel>,
+                       postgresql-pltcl>,
     'postgresql13' => qw<postgresql13-client
                          postgresql13-contrib
                          postgresql13-doc
@@ -649,12 +647,12 @@ constant %PKG = Map.new(
                          postgresql13-pltcl>,
     'postgresql14' => qw<postgresql-libs
                          postgresql-libs-devel
-                         postgresql13-client
-                         postgresql13-contrib
-                         postgresql13-doc
-                         postgresql13-plperl
-                         postgresql13-plpython
-                         postgresql13-pltcl>,
+                         postgresql14-client
+                         postgresql14-contrib
+                         postgresql14-doc
+                         postgresql14-plperl
+                         postgresql14-plpython
+                         postgresql14-pltcl>,
     'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],
