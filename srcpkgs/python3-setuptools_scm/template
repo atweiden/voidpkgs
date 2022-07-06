@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-setuptools_scm"
-version=7.0.2
+version=7.0.4
 revision=1
 short_desc="Manage Python package versions with SCM tags"
 depends+=" python3-packaging"
@@ -12,7 +12,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/pypa/setuptools_scm"
 license="MIT"
 distfiles="$PYPI_SITE/s/setuptools_scm/setuptools_scm-$version.tar.gz"
-checksum="53afbaa882f43e5ec8e14f2d93b9c268dc62eb3f6cc8b2790f8cb97903e53c02"
+checksum="c27bc1f48593cfc9527251f1f0fc41ce282ea57bbc7fd5a1ea3acb99325fab4c"
 wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 # tests seem to fail unless package is installed
