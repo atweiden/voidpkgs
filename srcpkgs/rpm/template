@@ -1,53 +1,49 @@
 maintainer="nox"
 pkgname="rpm"
-version=4.16.1.2
+version=4.17.1
 revision=1
 short_desc="Red Hat Package Management Utils"
 makedepends+=" binutils-devel"
-makedepends+=" db-devel"
 makedepends+=" elfutils-devel"
 makedepends+=" file-devel"
 makedepends+=" libarchive-devel"
 makedepends+=" libcap-devel"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libgomp-devel"
-makedepends+=" lua52-devel"
-makedepends+=" nss-devel"
+makedepends+=" lua53-devel"
 makedepends+=" popt-devel"
 makedepends+=" python3-devel"
+makedepends+=" sqlite-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
-hostmakedepends+=" nss-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3-setuptools"
 homepage="https://rpm.org"
 license="GPL-2.0-or-later"
 changelog="https://rpm.org/wiki/Releases/$version.html"
-distfiles="http://ftp.rpm.org/releases/rpm-4.16.x/rpm-$version.tar.bz2"
-checksum="8357329ceefc92c41687988b22198b26f74a12a9a68ac00728f934a5c4b4cacc"
+distfiles="https://ftp.osuosl.org/pub/rpm/releases/$pkgname-${version%.*}.x/$pkgname-$version.tar.bz2"
+checksum="0c11b793466e7258851ff82bd65c8ffd8c2dbbc70acc869a5d34150549926e5d"
 build_style="gnu-configure"
+configure_args+=" PYTHON=python3"
 configure_args+=" --enable-python"
 configure_args+=" --sharedstatedir=/var/lib"
 configure_args+=" --with-acl"
 configure_args+=" --with-cap"
-configure_args+=" --with-external-db"
-configure_args+=" --with-lua"
-configure_args+=" PYTHON=python3"
 python_version=3
 # both provide rpm2cpio
 conflicts="rpmextract>=0"
 
 CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
-CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/nss"
-CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/nspr"
 
 case "$XBPS_TARGET_MACHINE" in
-  # musl requires gettext to be included and its cflag added, otherwise
-  # it fails with _nl_msg_cat_cntr undefined reference error
+  # rpm uses _nl_msg_cat_cntr, so it needs the glibc gettext impl
+  # it uses <error.h> header, provided by legacy-compat
   *-musl)
     makedepends+=" gettext-devel"
-    LDFLAGS+=" -lintl"
+    makedepends+=" musl-legacy-compat"
+    CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/gettext"
+    LDFLAGS="-lintl"
     ;;
 esac
 
@@ -58,17 +54,16 @@ pre_configure() {
 librpm-devel_package() {
   unset depends
   depends+=" bzip2-devel"
-  depends+=" db-devel"
+  depends+=" libgcrypt-devel"
   depends+=" liblzma-devel"
-  depends+=" librpm-${version}_$revision"
-  depends+=" librpmbuild-${version}_$revision"
-  depends+=" librpmio-${version}_$revision"
-  depends+=" librpmsign-${version}_$revision"
-  depends+=" lua52-devel"
-  depends+=" nss-devel"
+  depends+=" librpm>=${version}_$revision"
+  depends+=" librpmbuild>=${version}_$revision"
+  depends+=" librpmio>=${version}_$revision"
+  depends+=" librpmsign>=${version}_$revision"
+  depends+=" lua53-devel"
   depends+=" popt-devel"
+  depends+=" sqlite-devel"
   depends+=" zlib-devel"
-  depends+=" $makedepends"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
