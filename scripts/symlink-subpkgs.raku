@@ -796,6 +796,7 @@ constant %PKG = Map.new(
                  xbps-tests>,
     'xfsprogs' => ['xfsprogs-devel'],
     'xmlrpc-c' => ['xmlrpc-c-devel'],
+    'xtools' => ['xtools-minimal'],
     'xz' => qw<liblzma
                liblzma-devel>,
     'zeromq' => ['zeromq-devel'],
