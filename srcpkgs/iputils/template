@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="iputils"
 version=20211215
-revision=1
+revision=2
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends="libcap-devel"
 hostmakedepends+=" docbook-xsl-ns"
 hostmakedepends+=" docbook2x"
+hostmakedepends+=" gettext"
 hostmakedepends+=" iproute2"
 hostmakedepends+=" libcap-progs"
 hostmakedepends+=" pkg-config"
