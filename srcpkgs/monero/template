@@ -38,10 +38,6 @@ make_dirs+=" /var/lib/monero 0750 monero monero"
 make_dirs+=" /var/log/monero 0755 monero monero"
 system_accounts="monero"
 
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" -DTHREADS_PTHREAD_ARG=OFF"
-fi
-
 case "$XBPS_TARGET_MACHINE" in
   armv7*)
     configure_args+=" -DARCH=armv7"
