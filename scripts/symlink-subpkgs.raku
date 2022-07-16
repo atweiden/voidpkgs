@@ -280,6 +280,8 @@ constant %PKG = Map.new(
     'httrack' => ['httrack-devel'],
     'hunspell' => qw<hunspell-devel
                      libhunspell1.7>,
+    'hwloc' => qw<libhwloc
+                  libhwloc-devel>,
     'icdiff' => ['python3-icdiff'],
     'icu' => qw<icu-devel
                 icu-libs>,
