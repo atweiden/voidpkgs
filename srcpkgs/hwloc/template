@@ -1,42 +1,49 @@
-# Template file for 'hwloc'
-pkgname=hwloc
+maintainer="nox"
+pkgname="hwloc"
 version=2.7.1
 revision=1
-build_style=gnu-configure
-hostmakedepends="pkg-config"
-makedepends="cairo-devel ncurses-devel libxml2-devel eudev-libudev-devel"
 short_desc="Portable abstraction of hierarchical hardware architectures"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="BSD-3-Clause"
+makedepends+=" eudev-libudev-devel"
+makedepends+=" libxml2-devel"
+makedepends+=" ncurses-devel"
+hostmakedepends="pkg-config"
 homepage="https://www.open-mpi.org/projects/hwloc/"
-distfiles="https://www.open-mpi.org/software/hwloc/v${version%.*}/downloads/${pkgname}-${version}.tar.bz2"
-checksum=0d4e1d36c3a72c5d61901bfd477337f5a4c7e0a975da57165237d00e35ef528d
+license="BSD-3-Clause"
+distfiles="https://www.open-mpi.org/software/hwloc/v${version%.*}/downloads/$pkgname-$version.tar.bz2"
+checksum="0d4e1d36c3a72c5d61901bfd477337f5a4c7e0a975da57165237d00e35ef528d"
+build_style="gnu-configure"
+configure_args+=" --disable-cairo"
+configure_args+=" --disable-gl"
 
 case "$XBPS_TARGET_MACHINE" in
-	i686*|x86_64*|ppc64*) makedepends+=" libnuma-devel";;
+  i686*|x86_64*|ppc64*)
+    makedepends+=" libnuma-devel"
+    ;;
 esac
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/doc
+  rm -rf "$DESTDIR/usr/share/doc"
 }
 
 libhwloc_package() {
-	short_desc+=" - libraries"
-	pkg_install() {
-		vmove usr/lib/*.so.*
-		vmove usr/share/hwloc/hwloc.dtd
-		vlicense COPYING
-	}
+  short_desc+=" - libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+    vmove usr/share/hwloc/hwloc.dtd
+    vlicense COPYING
+  }
 }
 
 libhwloc-devel_package() {
-	short_desc+=" - development files"
-	depends="libhwloc>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/share/man/man3
-		vmove usr/lib/*.so
-		vmove usr/lib/pkgconfig
-		vmove usr/share/hwloc/hwloc-valgrind.supp
-	}
+  short_desc+=" - development files"
+  depends="libhwloc>=${version}_$revision"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/share/man/man3
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+    vmove usr/share/hwloc/hwloc-valgrind.supp
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
