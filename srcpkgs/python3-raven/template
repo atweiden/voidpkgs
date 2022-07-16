@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-raven"
 version=6.10.0
-revision=5
+revision=6
 short_desc="Python3 client for Sentry"
 depends+=" ca-certificates"
 depends+=" python3-setuptools"
@@ -17,7 +17,7 @@ conflicts="python-raven>=0"
 post_install() {
   # use system ca-certificates
   rm -f "$DESTDIR/$py3_sitelib/raven/data/cacert.pem"
-  ln -sf /etc/ssl/cert.pem "$DESTDIR/$py3_sitelib/raven/data/cacert.pem"
+  ln -sf /etc/ssl/certs.pem "$DESTDIR/$py3_sitelib/raven/data/cacert.pem"
   vlicense LICENSE
 }
 
