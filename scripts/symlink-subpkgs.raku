@@ -413,6 +413,7 @@ constant %PKG = Map.new(
                     python3-libnvme>,
     'libogg' => ['libogg-devel'],
     'libpcap' => ['libpcap-devel'],
+    'libpciaccess' => ['libpciaccess-devel'],
     'libpipeline' => ['libpipeline-devel'],
     'libpng' => qw<libpng-devel
                    libpng-progs>,

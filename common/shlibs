@@ -395,6 +395,7 @@ libomptarget.so libomp-8.0.0_1
 libparted-fs-resize.so.0 libparted-3.1_1
 libparted.so.2 libparted-3.1_1
 libpcap.so.1 libpcap-1.1.1_1
+libpciaccess.so.0 libpciaccess-0.10.5_1
 libpcreposix.so.0 libpcre-7.8_1
 libpcre.so.1 libpcre-8.30_1
 libpcre2-16.so.0 libpcre2-10.22_1
