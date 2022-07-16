@@ -801,6 +801,7 @@ constant %PKG = Map.new(
     'xtools' => ['xtools-minimal'],
     'xz' => qw<liblzma
                liblzma-devel>,
+    'yascreen' => ['yascreen-devel'],
     'zeromq' => ['zeromq-devel'],
     'zlib' => ['zlib-devel'],
     'znc' => qw<znc-devel
