@@ -1,30 +1,37 @@
-# Template file for 'libzip'
-pkgname=libzip
+maintainer="nox"
+pkgname="libzip"
 version=1.9.2
 revision=1
-build_style=cmake
-hostmakedepends="perl groff pkg-config"
-makedepends="bzip2-devel openssl-devel zlib-devel liblzma-devel libzstd-devel"
 short_desc="C library for reading, creating, and modifying zip archives"
-maintainer="Subhaditya Nath <sn03.general@gmail.com>"
-license="BSD-3-Clause"
+makedepends+=" bzip2-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" libzstd-devel"
+makedepends+=" openssl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" groff"
+hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 homepage="https://libzip.org/"
-changelog="https://raw.githubusercontent.com/nih-at/libzip/master/NEWS.md"
-distfiles="https://libzip.org/download/libzip-${version}.tar.gz"
-checksum=fd6a7f745de3d69cf5603edc9cb33d2890f0198e415255d0987a0cf10d824c6f
+license="BSD-3-Clause"
+changelog="https://github.com/nih-at/libzip/raw/master/NEWS.md"
+distfiles="https://libzip.org/download/libzip-$version.tar.gz"
+checksum="fd6a7f745de3d69cf5603edc9cb33d2890f0198e415255d0987a0cf10d824c6f"
+build_style="cmake"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
 
 libzip-devel_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/share/man/man3
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
-		vmove usr/lib/cmake
-	}
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/share/man/man3
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.so"
+    vmove usr/lib/cmake
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
