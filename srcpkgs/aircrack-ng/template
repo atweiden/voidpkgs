@@ -1,13 +1,20 @@
 maintainer="nox"
 pkgname="aircrack-ng"
-version=1.6
-revision=4
+version=1.7
+revision=1
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libcap-devel"
+makedepends+=" libhwloc-devel"
 makedepends+=" libnl3-devel"
+makedepends+=" libpciaccess-devel"
+makedepends+=" libxml2-devel"
 makedepends+=" openssl-devel"
+makedepends+=" pcre-devel"
+makedepends+=" python3-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
+checkdepends+=" cmocka-devel"
+checkdepends+=" expect"
 hostmakedepends+=" automake"
 hostmakedepends+=" ethtool"
 hostmakedepends+=" libtool"
@@ -17,22 +24,23 @@ homepage="https://www.aircrack-ng.org/"
 license="GPL-2.0-or-later, BSD-3-Clause, OpenSSL"
 changelog="https://www.aircrack-ng.org/doku.php?id=changelog"
 distfiles="https://download.aircrack-ng.org/$pkgname-$version.tar.gz"
-checksum="4f0bfd486efc6ea7229f7fbc54340ff8b2094a0d73e9f617e0a39f878999a247"
+checksum="05a704e3c8f7792a17315080a21214a4448fd2452c1b0dd5226a3a55f90b58c3"
 build_style="gnu-configure"
-
-CFLAGS="-fcommon"
+configure_args+=" --with-experimental"
+configure_args+=" --with-ext-scripts"
+configure_args+=" --without-opt"
 
 pre_configure() {
-  ACLOCAL="/usr/bin/aclocal" \
-  AUTOCONF="/usr/bin/autoconf" \
-  AUTOHEADER="/usr/bin/autoheader" \
-  AUTOMAKE="/usr/bin/automake" \
-  LIBTOOLIZE="/usr/bin/libtoolize" \
-  NOCONFIGURE=1 \
-    ./autogen.sh
+  autoreconf -vif
 }
 
 post_install() {
+  vdoc AUTHORS
+  vdoc ChangeLog
+  vdoc README
+  vdoc README.md
+  vdoc SECURITY.md
+  vlicense LICENSE
   vlicense LICENSE.OpenSSL
 }
 
