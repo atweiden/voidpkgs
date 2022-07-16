@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnupg"
 version=2.3.7
-revision=1
+revision=2
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -58,6 +58,8 @@ gnupg2-scdaemon_package() {
   pkg_install() {
     vmove usr/libexec/scdaemon
     vmove usr/share/man/man1/scdaemon.1
+    vinstall "$FILESDIR/60-scdaemon.rules" 644 /usr/lib/udev/rules.d
+    vdoc "$FILESDIR/gnupg2-scdaemon-README.voidlinux" README.voidlinux
   }
 }
 
