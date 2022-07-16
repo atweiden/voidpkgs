@@ -524,6 +524,7 @@ libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1
 libxxhash.so.0 libxxHash-0.6.5_2
 libyaml-0.so.2 libyaml-0.1.4_1
+libzip.so.5 libzip-1.7.3_2
 libzstd.so.1 libzstd-1.0.0_1
 liblldb.so.12 lldb-12.0.0_1
 libllhttp.so.1 llhttp-1.0.1_1

@@ -466,6 +466,7 @@ constant %PKG = Map.new(
     'libxslt' => qw<libxslt-devel
                     libxslt-python3>,
     'libyaml' => ['libyaml-devel'],
+    'libzip' => ['libzip-devel'],
     'linux-firmware' => qw<linux-firmware-amd
                            linux-firmware-broadcom
                            linux-firmware-intel
