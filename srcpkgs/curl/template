@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.84.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -42,7 +42,7 @@ configure_args+=" $(vopt_enable ldap ldaps)"
 configure_args+=" $(vopt_enable ldap)"
 configure_args+=" $(vopt_with gnutls)"
 configure_args+=" $(vopt_with gssapi)"
-configure_args+=" $(vopt_with rtmp)"
+configure_args+=" $(vopt_with rtmp librtmp)"
 configure_args+=" $(vopt_with ssh libssh2)"
 configure_args+=" $(vopt_with ssl)"
 configure_args+=" $(vopt_with zstd)"
@@ -95,6 +95,7 @@ libcurl_package() {
   short_desc="Multiprotocol file transfer library"
   pkg_install() {
     vmove "usr/lib/*.so.*"
+    vlicense COPYING
   }
 }
 
