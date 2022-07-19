@@ -702,6 +702,8 @@ constant %PKG = Map.new(
                 librpmio
                 librpmsign
                 rpm-python3>,
+    'rtmpdump' => qw<librtmp
+                     librtmp-devel>,
     'ruby' => qw<ruby-devel
                  ruby-devel-doc
                  ruby-ri>,
