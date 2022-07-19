@@ -17,6 +17,12 @@ make_build_args+=" LDDLLFLAGS+=-Wl,-soname,lib$pkgname.so.${version%%.*}"
 
 CFLAGS="-fPIC"
 
+do_check() {
+  cd "$wrksrc/build"
+  ./testx509
+  ./testcrypto all
+}
+
 do_install() {
   vbin build/brssl
   vinstall "build/lib$pkgname.a" 0644 usr/lib
