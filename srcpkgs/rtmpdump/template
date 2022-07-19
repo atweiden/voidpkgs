@@ -1,46 +1,64 @@
-# Template file for 'rtmpdump'
-pkgname=rtmpdump
+maintainer="nox"
+pkgname="rtmpdump"
 version=2.4.20161210
 revision=10
 _patchlevel=${version##*.}
-create_wrksrc=yes
-makedepends="zlib-devel $(vopt_if gnutls 'gnutls-devel' 'openssl-devel')"
 short_desc="Toolkit for RTMP streams"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-or-later, LGPL-2.1-or-later"
+makedepends+=" zlib-devel"
+makedepends+=" $(vopt_if gnutls 'gnutls-devel' 'openssl-devel')"
 homepage="http://rtmpdump.mplayerhq.hu/"
-distfiles="https://repo-default.voidlinux.org/distfiles/${pkgname}-${version%.*}_p${_patchlevel}.tar.gz"
-checksum=d6da3b683f1045f02d94a81b0c583318dba021f69bdab970c5d5d73e8c38860f
-
-CFLAGS="-Wno-unused-const-variable -Wno-unused-but-set-variable"
-case "$XBPS_TARGET_MACHINE" in
-	*-musl) CFLAGS+=" -D__LINUX_NETFILTER_H"
-esac
-
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+distfiles="https://repo-default.voidlinux.org/distfiles/$pkgname-${version%.*}_p$_patchlevel.tar.gz"
+checksum="d6da3b683f1045f02d94a81b0c583318dba021f69bdab970c5d5d73e8c38860f"
+create_wrksrc="yes"
 build_options="gnutls"
 build_options_default="gnutls"
 
+CFLAGS="-Wno-unused-const-variable -Wno-unused-but-set-variable"
+
+case "$XBPS_TARGET_MACHINE" in
+  *-musl)
+    CFLAGS+=" -D__LINUX_NETFILTER_H"
+    ;;
+esac
+
 do_build() {
-	make CC="$CC" OPT="$CFLAGS" LDFLAGS="$LDFLAGS" "$(vopt_if gnutls 'CRYPTO=GNUTLS' 'CRYPTO=OPENSSL')" ${makejobs}
+  make \
+    CC="$CC" \
+    $(vopt_if gnutls 'CRYPTO=GNUTLS' 'CRYPTO=OPENSSL') \
+    LDFLAGS="$LDFLAGS" \
+    OPT="$CFLAGS" \
+    "$makejobs"
 }
+
 do_install() {
-	vmkdir usr/lib
-	make prefix=/usr sbindir=/usr/bin mandir=/usr/share/man DESTDIR=$DESTDIR install
+  vmkdir usr/lib
+  make \
+    DESTDIR="$DESTDIR" \
+    mandir="/usr/share/man" \
+    prefix="/usr" \
+    sbindir="/usr/bin" \
+    install
 }
 
 librtmp_package() {
-	short_desc+=" - shared library"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
+  short_desc+=" - shared library"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
 }
+
 librtmp-devel_package() {
-	depends="${makedepends} librtmp>=${version}_${revision}"
-	short_desc+=" - development files"
-	pkg_install() {
-		vmove usr/include
-		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-	}
+  unset depends
+  depends+=" $makedepends"
+  depends+=" librtmp>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove usr/include
+    vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
