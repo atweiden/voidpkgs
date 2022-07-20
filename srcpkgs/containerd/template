@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="containerd"
-version=1.5.7
+version=1.6.6
 revision=1
 short_desc="Open and reliable container runtime"
 depends="runc"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/containerd/containerd"
 license="Apache-2.0"
 distfiles="https://github.com/containerd/containerd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7d8f7014a74b063da9cdf7fe8673db8dc338747efdbb9b6a6a919d5137b1987e"
+checksum="27afb673c20d53aa5c31aec07b38eb7e4dc911e7e1f0c76fac9513bbf070bd24"
 build_style="go"
 go_import_path="github.com/containerd/containerd"
 go_package+=" $go_import_path/cmd/containerd"
