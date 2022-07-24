@@ -1,16 +1,17 @@
-# Template file for 'perl-Test-SharedFork'
-pkgname=perl-Test-SharedFork
+maintainer="nox"
+pkgname="perl-Test-SharedFork"
 version=0.35
 revision=3
-wrksrc="${pkgname/perl-/}-${version}"
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-depends="$makedepends"
-checkdepends="perl-Test-Requires"
 short_desc="Utility module for Test::Builder that wraps fork(2)"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+depends="perl"
+makedepends="perl"
+checkdepends="perl-Test-Requires"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-SharedFork"
-distfiles="${CPAN_SITE}/Test/${pkgname/perl-/}-${version}.tar.gz"
-checksum=2932e865610e80758f764c586757ef8e11db1284d958e25e4b7a85098414c59f
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/Test/${pkgname/perl-/}-$version.tar.gz"
+checksum="2932e865610e80758f764c586757ef8e11db1284d958e25e4b7a85098414c59f"
+wrksrc="${pkgname/perl-/}-$version"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
