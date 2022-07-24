@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="fossil"
-version=2.18
+version=2.19
 revision=1
 short_desc="Simple, high-reliability, distributed software configuration management"
 makedepends+=" openssl-devel"
-makedepends+=" readline-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="tcl"
@@ -12,9 +11,10 @@ homepage="https://www.fossil-scm.org"
 license="BSD-2-Clause"
 changelog="https://www.fossil-scm.org/home/doc/trunk/www/changes.wiki"
 distfiles="https://fossil-scm.org/home/tarball/version-$version/$pkgname-$version.tar.gz"
-checksum="e89cb9c726348bb14e7736e031d2b08574408c5d4db98e7d3fc814dadc6f3546"
+checksum="459f7fedbe25449a855727d7c33bad3bc0bf3dae973f2c6dbe9a7b826106a23e"
 build_style="configure"
 configure_args+=" --disable-internal-sqlite"
+configure_args+=" --json"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-sqlite=$XBPS_CROSS_BASE/usr/include"
 
