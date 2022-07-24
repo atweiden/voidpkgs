@@ -1,13 +1,22 @@
 maintainer="nox"
 pkgname="h2o"
 version=2.2.6
-revision=3
+revision=4
 short_desc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 depends="perl"
 makedepends+=" libuv-devel"
+makedepends+=" libyaml-devel"
 makedepends+=" openssl-devel"
 makedepends+=" wslay-devel"
 makedepends+=" zlib-devel"
+checkdepends+=" curl"
+checkdepends+=" netcat"
+checkdepends+=" perl-Path-Tiny"
+checkdepends+=" perl-Scope-Guard"
+checkdepends+=" perl-Test-Exception"
+checkdepends+=" perl-Test-TCP"
+checkdepends+=" perl-URI"
+checkdepends+=" wget"
 hostmakedepends+=" bison"
 hostmakedepends+=" libtool"
 hostmakedepends+=" make"
@@ -21,11 +30,25 @@ conf_files="/etc/h2o.conf"
 build_style="cmake"
 configure_args+=" -DWITH_BUNDLED_SSL=off"
 configure_args+=" -DWITH_MRUBY=$(vopt_if mruby on off)"
+make_check_target="check"
 system_accounts="h2o"
 make_dirs+=" /srv/www/h2o 0755 h2o h2o"
 make_dirs+=" /var/log/h2o 0755 h2o h2o"
 build_options+=" mruby"
 desc_option_mruby="Enable mruby support"
+
+pre_check() {
+  export PERL5LIB="$wrksrc"
+  for t in 40proxy-protocol \
+           50access-log \
+           50http2_debug_state \
+           50internal-redirect \
+           50servername \
+           50status \
+           80invalid-h2-chars-in-headers; do
+    rm -f "t/$t.t"
+  done
+}
 
 post_build() {
   cd "${cmake_builddir:=build}"
