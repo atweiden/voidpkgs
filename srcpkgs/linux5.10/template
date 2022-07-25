@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux5.10"
-version=5.10.130
-revision=2
+version=5.10.132
+revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -27,9 +27,12 @@ hostmakedepends+=" uboot-mkimage"
 hostmakedepends+=" xz"
 homepage="https://www.kernel.org"
 license="GPL-2.0-only"
-distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
-checksum="e144a6d851a8e2977743d45fdb9cdb1b7f4aabde09533e73c969cded4daa962c"
-wrksrc="linux-$version"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
+distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
+checksum+=" dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43"
+checksum+=" efaba407c164cc58018cea43ff6ab736562900905816802c8514a9fb99f3f74d"
+skip_extraction="patch-$version.xz"
+wrksrc="linux-${version%.*}"
 python_version=3
 # -dbg package is generated below manually
 nodebug="yes"
@@ -61,6 +64,11 @@ fi
 if [[ -n "$_patchver" ]]; then
   _version="EXTRAVERSION=$_patchver"
 fi
+
+pre_patch() {
+  xzcat "$XBPS_SRCDISTDIR/$pkgname-$version/patch-$version.xz" \
+    | patch -Np1
+}
 
 do_configure() {
   # 5.10 misses Documentation/DocBook
