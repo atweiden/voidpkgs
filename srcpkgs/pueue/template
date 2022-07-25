@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="pueue"
-version=2.0.4
+version=2.1.0
 revision=1
 short_desc="Command-line tool for managing long-running tasks"
 homepage="https://github.com/Nukesor/pueue"
 license="MIT"
 changelog="https://github.com/Nukesor/pueue/raw/main/CHANGELOG.md"
 distfiles="https://github.com/Nukesor/pueue/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="45b8499b062cf83ce9a2fa79c9d6f2611ae676e72ba4815cea2b56e294f790d1"
+checksum="cd5c6500e65960f6a102db5d0f0544f49eec8f74b2cc0df16ded8e2525a545f6"
 build_style="cargo"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
