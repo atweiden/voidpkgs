@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="benchmark"
-version=1.6.2
+version=1.7.0
 revision=1
 short_desc="Microbenchmark support library"
 homepage="https://github.com/google/benchmark/"
 license="Apache-2.0"
 distfiles="https://github.com/google/benchmark/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a9f77e6188c1cd4ebedfa7538bf5176d6acc72ead6f456919e5f464ef2f06158"
+checksum="3aff99169fa8bdee356eaa1f691e835a6e57b1efeadb8a0f9f228531158246ac"
 build_style="cmake"
 configure_args+=" -DBENCHMARK_DOWNLOAD_DEPENDENCIES=OFF"
 configure_args+=" -DBENCHMARK_ENABLE_GTEST_TESTS=OFF"
