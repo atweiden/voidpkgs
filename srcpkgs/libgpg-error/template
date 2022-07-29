@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="libgpg-error"
-version=1.42
+version=1.45
 revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23"
+checksum="570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26"
 build_style="gnu-configure"
 
 post_install() {
