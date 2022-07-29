@@ -763,6 +763,7 @@ constant %PKG = Map.new(
     'toxcore' => ['toxcore-devel'],
     'tree-sitter' => ['tree-sitter-devel'],
     'trousers' => ['trousers-devel'],
+    'tzutils' => ['tzdata'],
     'u-boot-tools' => ['uboot-mkimage'],
     'udns' => ['udns-devel'],
     'unbound' => qw<libunbound

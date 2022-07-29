@@ -1,23 +1,35 @@
 maintainer="nox"
 pkgname="tzutils"
 version=2022a
-revision=1
+revision=2
 short_desc="Time zone and daylight-saving time utilities"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends="tzutils"
+fi
 homepage="https://www.iana.org/time-zones"
-license="Public Domain, BSD-3-Clause"
-distfiles="https://github.com/eggert/tz/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e9d82a851a15bb5db2cbaae2c3fc633743ad9edc069e3738c5e8908978064ed8"
-wrksrc="tz-$version"
+license="Public Domain"
+distfiles="https://www.iana.org/time-zones/repository/releases/tzdb-$version.tar.lz"
+checksum="46123b769c55190138cf64e80db605b86f710dc6ca2a15df431966e7fd6e8490"
+wrksrc="tzdb-$version"
 bootstrap="yes"
 
+if [[ "$XBPS_TARGET_WORDSIZE" == 32 ]]; then
+  # enforce 64-bit time_t for Y2038
+  CFLAGS="-Dtime_tz=int64_t"
+  license+=", BSD-3-Clause"
+fi
+
 do_build() {
-  echo "$version" > version
+  touch version
   make \
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     KSHELL="/bin/sh" \
-    LDFLAGS="$LDFLAGS" \
-    TZDIR="/usr/share/zoneinfo"
+    LDFLAGS="$LDFLAGS"
+  sed \
+    -n '/Copyright/,/SUCH DAMAGE/p' \
+    strftime.c \
+    > strftime.license
 }
 
 do_check() {
@@ -25,13 +37,31 @@ do_check() {
 }
 
 do_install() {
-  vbin zic
-  vbin zdump
-  vbin tzselect
-  vman zic.8
-  vman zdump.8
-  vman tzselect.8
-  vlicense LICENSE
+  local zic
+  if [[ -n "$CROSS_BUILD" ]]; then
+    zic="zic=/usr/bin/zic"
+  fi
+  make \
+    install \
+    DESTDIR="$DESTDIR" \
+    ZICDIR="/usr/bin" \
+    $zic \
+    ZFLAGS="-b fat"
+  rm -rf "$DESTDIR"/{etc,usr/lib,usr/share/man/man3}
+  # backward compatible links
+  ln -s ../zoneinfo-posix "$DESTDIR/usr/share/zoneinfo/posix"
+  ln -s ../zoneinfo-leaps "$DESTDIR/usr/share/zoneinfo/right"
+  if [[ "$XBPS_TARGET_WORDSIZE" == 32 ]]; then
+    vlicense strftime.license
+  fi
+}
+
+tzdata_package() {
+  short_desc="Time zone and daylight-saving time data"
+  pkg_install() {
+    vmove usr/share/man/man5
+    vmove "usr/share/zoneinfo*"
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
