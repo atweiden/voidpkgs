@@ -3,14 +3,11 @@ pkgname="wireless_tools"
 version=29
 revision=10
 short_desc="Set of tools allowing to manipulate the Wireless Extensions"
-hostmakedepends="wget"
-homepage="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
+homepage="https://hewlettpackard.github.io/wireless-tools/Tools.html"
 license="GPL-2.0-only"
-distfiles="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/$pkgname.$version.tar.gz"
+distfiles="https://hewlettpackard.github.io/wireless-tools/wireless_tools.$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6fb80935fe208538131ce2c4178221bab1078a1656306bce8909c19887e2e5a1"
 wrksrc="$pkgname.$version"
-
-fetch_cmd="wget --no-check-certificate"
 
 do_build() {
   sed \
