@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="dcrseeder"
 version=0.0.1pre
-revision=3
-_gitrev="b8e0658295f00c8d2f37e156dd0d7f6c7dbb201c"
+revision=4
+_gitrev="200a2176299d2438343a656146c1bc2af412885d"
 short_desc="Decred DNS seeder"
 tags="decred"
 homepage="https://github.com/decred/dcrseeder"
 license="ISC"
 distfiles="https://github.com/decred/dcrseeder/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="30a6763ccc699ed877caf5d56aa44a6d562bf2f72792d2a2133adfab91a62905"
+checksum="742e9e53fed819ee28f7b73f129fc6bb546d823a125b9a3869e71cd7d4ed51e2"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
