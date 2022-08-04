@@ -1,19 +1,21 @@
 maintainer="nox"
 pkgname="dcrwallet"
-version=1.7.0
+version=1.7.4
 revision=1
 short_desc="Decred wallet daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="25b6a60673250c9e89af21b5e7f0006bf76d1f28deb4bcf60f7dc23a222aae2a"
+checksum="8be4bbb81a458b9b9b87466ee1f21dbff9a98867c238314664b676b0d810f6dd"
 wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="decred.org/dcrwallet/v2"
 go_ldflags+=" -s -w -buildid="
 go_ldflags+=" -X $go_import_path/version.PreRelease="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
+# objdump: .gnu.version_r invalid entry, private headers incomplete
+nopie_files="/usr/bin/dcrpromptsecret"
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"
