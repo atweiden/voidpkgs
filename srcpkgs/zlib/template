@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zlib"
 version=1.2.12
-revision=2
+revision=3
 short_desc="Compression/decompression Library"
 homepage="http://www.zlib.net"
 license="Zlib"
