@@ -5,7 +5,6 @@ revision=1
 short_desc="Lightweight Raku-like environment for virtual machines"
 depends="MoarVM-${version}_$revision"
 makedepends+=" MoarVM"
-makedepends+=" libatomic_ops-devel"
 makedepends+=" libffi-devel"
 makedepends+=" libtommath-devel"
 makedepends+=" libuv-devel"
@@ -21,6 +20,5 @@ configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
 make_check_target="test"
-nocross="yes"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
