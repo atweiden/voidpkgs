@@ -30,6 +30,7 @@ configure_args+=" --toolchain=gnu"
 build_options="clang"
 desc_option_clang="Use clang instead of gcc to compile MoarVM"
 shlib_provides="libmoar.so"
+nocross="yes"
 
 if [[ -n "$(vopt_if clang clang)" ]]; then
   configure_args+=" --compiler=clang"
