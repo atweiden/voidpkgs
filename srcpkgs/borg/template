@@ -1,30 +1,37 @@
 maintainer="nox"
 pkgname="borg"
-version=1.1.17
-revision=3
+version=1.2.1
+revision=1
 short_desc="Deduplicating backup program with compression and encryption"
+depends+=" python3-argon2"
 depends+=" python3-llfuse"
+depends+=" python3-msgpack"
 depends+=" python3-packaging"
-depends+=" python3-setuptools"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
-makedepends+=" openssl-devel"
 makedepends+=" libzstd-devel"
+makedepends+=" openssl-devel"
 makedepends+=" python3-devel"
-hostmakedepends+=" openssl-devel"
-hostmakedepends+=" python3-devel"
+# llfuse is purposefully not included in checkdepends since the tests
+# using it don't work in chroot
+checkdepends+=" ${depends/python3-llfuse/}"
+checkdepends+=" python3-pytest"
+hostmakedepends+=" python3-dateutil"
+hostmakedepends+=" python3-pkgconfig"
 hostmakedepends+=" python3-setuptools"
 homepage="https://borgbackup.github.io/"
 license="BSD-3-Clause"
 changelog="https://borgbackup.readthedocs.io/en/stable/changes.html#changelog"
 distfiles="$PYPI_SITE/b/borgbackup/borgbackup-$version.tar.gz"
-checksum="7ab924fc017b24929bedceba0dcce16d56f9868bf9b5050d2aae2eb080671674"
+checksum="9f9ce2d1923cb33a147ee6d08177d860974567721b1142fca67914a02e64c633"
 wrksrc="borgbackup-$version"
 build_style="python3-module"
+make_check_args="-k not((benchmark)or(test_readonly_check)or(test_readonly_diff)or(test_readonly_export_tar)or(test_readonly_extract)or(test_readonly_info)or(test_readonly_list))"
+make_check_target="build/lib.*/borg/testsuite"
 
-export BORG_OPENSSL_PREFIX="$XBPS_CROSS_BASE/usr"
 export BORG_LIBLZ4_PREFIX="$XBPS_CROSS_BASE/usr"
 export BORG_LIBZSTD_PREFIX="$XBPS_CROSS_BASE/usr"
+export BORG_OPENSSL_PREFIX="$XBPS_CROSS_BASE/usr"
 
 pre_build() {
   vsed \
@@ -44,9 +51,9 @@ post_install() {
   done
 
   cd scripts/shell_completions
-  vinstall "bash/$pkgname" 644 usr/share/bash-completion/completions "$pkgname"
-  vinstall "fish/$pkgname.fish" 644 usr/share/fish/vendor_completions.d
-  vinstall "zsh/_$pkgname" 644 usr/share/zsh/site-functions "_$pkgname"
+  vcompletion "bash/$pkgname" bash
+  vcompletion "fish/$pkgname.fish" fish
+  vcompletion "zsh/_$pkgname" zsh
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
