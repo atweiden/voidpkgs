@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mcelog"
-version=184
+version=185
 revision=1
 short_desc="Decode kernel machine check log on x86 machines"
 archs+=" i686*"
@@ -9,7 +9,7 @@ hostmakedepends="python3"
 homepage="http://www.mcelog.org/"
 license="GPL-2.0-only"
 distfiles="https://github.com/andikleen/mcelog/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="067d52006f0aa42045acc6d9c04d590362448bacd8ef415d42729e6f35825028"
+checksum="594adaf9395e630de9c963350729b2c4f6354022aeac309c5aebdf57c4ff138b"
 conf_files="/etc/mcelog/mcelog.conf"
 
 do_build() {
