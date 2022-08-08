@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-virtualenv"
-version=20.15.1
+version=20.16.3
 revision=1
 short_desc="Virtual Python environment builder"
 depends+=" python3-distlib"
@@ -18,18 +18,19 @@ homepage="https://virtualenv.pypa.io/"
 license="MIT"
 changelog="https://virtualenv.pypa.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/v/virtualenv/virtualenv-$version.tar.gz"
-checksum="288171134a2ff3bfb1a2f54f119e77cd1b81c29fc1265a2356f3e8d14c7d58c4"
+checksum="d86ea0bb50e06252d79e6c241507cb904fcd66090c3271381372d6221a3970f9"
 alternatives="virtualenv:virtualenv:/usr/bin/virtualenv3"
 wrksrc="virtualenv-$version"
 build_style="python3-module"
 
 do_check() {
-  # excluded tests depend on pytest-freezegun, not packaged in void
+  # excluded tests depend on pytest-freezegun, not packaged in void,
+  # or python2
   vsed \
     -i \
     -e '/addopts/d' \
     setup.cfg
-  PYTHONPATH="src" python3 -m pytest -k 'not (test_periodic_update or test_get_wheel_download_cached)'
+  PYTHONPATH="src" python3 -m pytest -k 'not (test_periodic_update or test_get_wheel_download_cached or test_py_pyc_missing)'
 }
 
 post_install() {
