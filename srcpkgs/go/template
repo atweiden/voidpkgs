@@ -1,14 +1,17 @@
 maintainer="nox"
 pkgname="go"
-version=1.18.3
+version=1.19
 revision=1
 short_desc="Go Programming Language"
+checkdepends+=" clang"
+checkdepends+=" gcc-fortran"
+checkdepends+=" iana-etc"
 hostmakedepends="go1.12-bootstrap"
 homepage="https://go.dev/"
 license="BSD-3-Clause"
 changelog="https://go.dev/doc/devel/release.html"
 distfiles="https://go.dev/dl/go$version.src.tar.gz"
-checksum="0012386ddcbb5f3350e407c679923811dbd283fcdc421724931614a842ecbc2d"
+checksum="9419cc70dc5a2523f29a77053cafff658ed21ef3561d9b6b020280ebceab28b9"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
@@ -44,6 +47,20 @@ if [[ -n "$CROSS_BUILD" ]]; then
   fi
 fi
 
+# workaround for go-1.19 compilation error on i686:
+#
+#     runtime/cgo(.text): unknown symbol __stack_chk_fail_local in pcrel
+if [[ "$XBPS_MACHINE" == "i686" ]]; then
+  export CGO_CFLAGS="-fno-stack-protector"
+fi
+
+post_extract() {
+  if [[ "$(df . --output=fstype | tail -1)" == "zfs" ]]; then
+    # https://github.com/golang/go/issues/39905
+    rm -v go/src/cmd/link/internal/ld/fallocate_test.go
+  fi
+}
+
 do_build() {
   unset CC
   unset CFLAGS
@@ -53,7 +70,7 @@ do_build() {
 
   # FIXME: work around leaking go build-style vars when built as a
   # dependency
-  unset CGO_CFLAGS
+  #unset CGO_CFLAGS
   unset CGO_CXXFLAGS
   unset CGO_ENABLED
 
@@ -65,6 +82,15 @@ do_build() {
   cd "src"
 
   bash make.bash -v
+}
+
+do_check() {
+  if [[ "$XBPS_LIBC" == "musl" ]]; then
+    # https://github.com/golang/go/issues/39857
+    ./bin/go tool dist test -v -run "!^cgo_test$"
+  else
+    ./bin/go tool dist test -v
+  fi
 }
 
 do_install() {
