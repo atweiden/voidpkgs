@@ -10,10 +10,13 @@ checksum="e21eac22ef1b12dc2d7b3e5b58dcff183af9c1547be3e55a7e6c71394f053e1e"
 build_style="go"
 go_import_path="github.com/octeep/wireproxy"
 go_package="$go_import_path/cmd/wireproxy"
+go_ldflags="-buildid="
 system_accounts="_wireproxy"
 _wireproxy_homedir="/var/lib/wireproxy"
 make_dirs+=" /etc/wireproxy 0750 root _wireproxy"
 make_dirs+=" /var/lib/wireproxy 0700 _wireproxy _wireproxy"
+
+export GOFLAGS="-trimpath"
 
 post_install() {
   vsv wireproxy

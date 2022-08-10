@@ -10,6 +10,9 @@ checksum="d8c356bd2722558e9bfe1e55aefc0c44f6aecb52e998f4e7608e544a90cd6d89"
 build_style="go"
 go_import_path="github.com/void-linux/xmandump"
 go_package="$go_import_path/cmd/xmandump"
+go_ldflags="-buildid="
+
+export GOFLAGS="-trimpath"
 
 post_install() {
   vlicense LICENSE.txt LICENSE
