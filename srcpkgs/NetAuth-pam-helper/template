@@ -10,7 +10,7 @@ checksum="1f4fd5e914e6a423ba51911c89b105736b595a2328946e298a31e9dc144d1998"
 wrksrc="pam-helper-$version"
 build_style="go"
 go_import_path="github.com/netauth/pam-helper"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

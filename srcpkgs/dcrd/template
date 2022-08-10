@@ -16,7 +16,7 @@ go_package+=" $go_import_path/cmd/addblock"
 go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
 go_package+=" $go_import_path/cmd/promptsecret"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/internal/version.Version=$version"
 
 export CGO_ENABLED=0

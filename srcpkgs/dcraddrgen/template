@@ -12,7 +12,7 @@ checksum="ba90f8122f157e3d97dd9adcc7fb3e7cbdd50c4e7ffed1f5da8f8d6df984ae99"
 wrksrc="$pkgname-$_gitrev"
 build_style="go"
 go_import_path="github.com/decred/dcraddrgen"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"

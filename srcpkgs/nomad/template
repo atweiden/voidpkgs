@@ -10,7 +10,7 @@ distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-
 checksum="55915cd6ff0433b4b6d41d1e023a96cf283c95cb4d55960329a0f77eef939485"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
 go_build_tags+=" release"
 go_build_tags+=" ui"

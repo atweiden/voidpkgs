@@ -11,7 +11,7 @@ distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-
 checksum="fb6147b6a865841a3780c417f42089bc9bb958cf522a5e669dd9722b02c0a593"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/sdk/version.GitCommit=$_gitrev"
 go_build_tags="release"
 system_accounts="_vault"

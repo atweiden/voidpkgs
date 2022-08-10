@@ -10,7 +10,7 @@ distfiles="https://github.com/golangci/golangci-lint/archive/v$version.tar.gz>$p
 checksum="2f4b6592161565fdd0ee5fea7719dbd6ef593f7ad0e1975fd82e4fb745d487a8"
 build_style="go"
 go_import_path="github.com/golangci/golangci-lint/cmd/golangci-lint"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X main.version=$version"
 go_ldflags+=" -X main.date=$SOURCE_DATE_EPOCH"
 go_ldflags+=" -X main.commit=v$version"

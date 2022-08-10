@@ -14,7 +14,7 @@ make_dirs="/var/log/dnscrypt-proxy 0750 dnscrypt_proxy dnscrypt_proxy"
 build_style="go"
 go_import_path="github.com/dnscrypt/dnscrypt-proxy"
 go_package="$go_import_path/dnscrypt-proxy"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

@@ -12,7 +12,7 @@ distfiles="https://github.com/genuinetools/img/archive/v$version.tar.gz>$pkgname
 checksum="c6d805ab899db639fa08f0e33fe6673593be8336d288bb1cb4cb81a3229a916f"
 build_style="go"
 go_import_path="github.com/genuinetools/img"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 go_build_tags+=" noembed"
 go_build_tags+=" seccomp"
 

@@ -12,7 +12,7 @@ checksum="2a4e49458a2cb129055f1db3b835e111a89583f47d4d917110205113863492b9"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="git.sr.ht/~emersion/hut"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

@@ -9,7 +9,7 @@ distfiles="https://github.com/drakkan/sftpgo/archive/v$version.tar.gz>$pkgname-$
 checksum="d5c68223017071efce597712612ce7ce4334a70f773a8c0b7afa7a69427c79c8"
 build_style="go"
 go_import_path="github.com/drakkan/sftpgo/v2"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 make_dirs="/var/lib/sftpgo root root 0750"
 
 export GOFLAGS="-trimpath"

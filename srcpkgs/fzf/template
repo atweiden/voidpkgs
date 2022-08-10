@@ -11,7 +11,7 @@ distfiles="https://github.com/junegunn/fzf/archive/$version.tar.gz>$pkgname-$ver
 checksum="c7afef61553b3b3e4e02819c5d560fa4acf33ecb39829aeba392c2e05457ca6a"
 build_style="go"
 go_import_path="github.com/junegunn/fzf"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

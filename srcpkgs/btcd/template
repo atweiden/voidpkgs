@@ -21,7 +21,7 @@ go_package+=" $go_import_path/cmd/addblock"
 go_package+=" $go_import_path/cmd/btcctl"
 go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export CGO_ENABLED=0
 export GOFLAGS="-trimpath"

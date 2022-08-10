@@ -11,7 +11,7 @@ checksum="8be4bbb81a458b9b9b87466ee1f21dbff9a98867c238314664b676b0d810f6dd"
 wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="decred.org/dcrwallet/v2"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.PreRelease="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
 # objdump: .gnu.version_r invalid entry, private headers incomplete

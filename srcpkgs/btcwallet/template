@@ -14,7 +14,7 @@ go_import_path="github.com/btcsuite/btcwallet"
 go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/dropwtxmgr"
 go_package+=" $go_import_path/cmd/sweepaccount"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

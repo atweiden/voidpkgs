@@ -9,7 +9,7 @@ distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname
 checksum="3df688cb488e746df529474f08a430adf0c7c839c4ed3de2022a094eadc515fd"
 build_style="go"
 go_import_path="github.com/hashicorp/packer"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 replaces="packer-bin>=0"
 
 export GOFLAGS="-trimpath"

@@ -10,7 +10,7 @@ checksum="1d75f23197ea869207e8895cfaadde2c536f279eb26ddb8256642f5babece7e7"
 wrksrc="ldap-$version"
 build_style="go"
 go_import_path="github.com/netauth/ldap"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/netauth/ldap/internal/buildinfo.Version=$version"
 system_accounts="_netauth_ldap"
 

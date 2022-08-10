@@ -11,7 +11,7 @@ checksum="b02d94770d30d6e03dec072646f5790e0082a89382406538301d1c686a0a6b0a"
 wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="decred.org/dcrctl"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X main.PreRelease="
 go_ldflags+=" -X main.BuildMetadata="
 

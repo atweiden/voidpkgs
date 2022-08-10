@@ -10,7 +10,7 @@ distfiles="https://github.com/hashicorp/consul/archive/v$version.tar.gz>$pkgname
 checksum="74d627b778760d8f0a77f65742c3fd1e07bef18e8ce1710dd7791032072b4029"
 build_style="go"
 go_import_path="github.com/hashicorp/consul"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
 go_ldflags+=" -X $go_import_path/version.GitDescribe=v$version"
 # consul has a vendor directory, but relies on replace statements in

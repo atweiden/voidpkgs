@@ -11,7 +11,7 @@ checksum="d5e558d552009d59e5b433a9b96dac7db378412ccebb9dee95216a7a58eab2aa"
 wrksrc="nsscache-$version"
 build_style="go"
 go_import_path="github.com/netauth/nsscache"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

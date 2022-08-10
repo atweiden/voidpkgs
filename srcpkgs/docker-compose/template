@@ -11,7 +11,7 @@ checksum="7d4ad5354e382809368016210b33c4f6c3bca68da15e36edc671da00fb234666"
 wrksrc="compose-$version"
 build_style="go"
 go_import_path="github.com/docker/compose/v2/cmd"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/docker/compose/v2/internal.Version=v$version"
 
 export GOFLAGS="-trimpath"

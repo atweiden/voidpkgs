@@ -31,7 +31,7 @@ go_package+=" $go_import_path/lxc-to-lxd"
 go_package+=" $go_import_path/lxd"
 go_package+=" $go_import_path/lxd-benchmark"
 go_package+=" $go_import_path/lxd-user"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 go_build_tags="libsqlite3"
 system_groups="lxd"
 

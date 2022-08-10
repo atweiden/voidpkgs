@@ -11,7 +11,7 @@ distfiles="https://github.com/git-lfs/git-lfs/archive/v$version.tar.gz>$pkgname-
 checksum="2b2e70f1233f7efe9a010771510391a07527ec7c0af721ecf8edabac5d60f62b"
 build_style="go"
 go_import_path="github.com/git-lfs/git-lfs"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 
 export GOFLAGS="-trimpath"
 

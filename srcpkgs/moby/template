@@ -20,7 +20,7 @@ checksum+=" 05bf95637bae134d12d02bd7a7854cd0c768e6fccb662c2c64523f05b997b204"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/docker/docker"
-go_ldflags="-s -w -buildid="
+go_ldflags="-buildid="
 system_groups="docker"
 
 export GOFLAGS="-trimpath"

@@ -9,7 +9,7 @@ distfiles="https://github.com/muesli/duf/archive/v$version.tar.gz>$pkgname-$vers
 checksum="ebc3880540b25186ace220c09af859f867251f4ecaef435525a141d98d71a27a"
 build_style="go"
 go_import_path="github.com/muesli/duf"
-go_ldflags+=" -s -w -buildid="
+go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
 
 export GOFLAGS="-trimpath"
