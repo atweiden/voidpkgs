@@ -1,51 +1,35 @@
 maintainer="nox"
 pkgname="lxc"
-version=4.0.12
+version=5.0.1
 revision=1
 _desc="Linux Containers"
 short_desc="$_desc - utilities"
 depends+=" wget"
 depends+=" xz"
-makedepends+=" gnutls-devel"
 makedepends+=" libapparmor-devel"
 makedepends+=" libcap-devel"
 makedepends+=" libseccomp-devel"
-hostmakedepends+=" automake"
+makedepends+=" openssl-devel"
+makedepends+=" pam-devel"
 hostmakedepends+=" docbook2x"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://linuxcontainers.org"
 license="LGPL-2.1-or-later"
 distfiles="https://linuxcontainers.org/downloads/lxc/$pkgname-$version.tar.gz"
-checksum="db242f8366fc63e8c7588bb2017b354173cf3c4b20abc18780debdc48b14d3ef"
+checksum="d8195423bb1e206f8521d24b6cde4789f043960c7cf065990a9cf741dcfd4222"
 conf_files="/etc/lxc/default.conf"
-build_style="gnu-configure"
-configure_args+=" --enable-apparmor"
-configure_args+=" --enable-capabilities"
-configure_args+=" --enable-doc"
-configure_args+=" --enable-seccomp"
-configure_args+=" --with-distro=none"
-configure_args+=" --with-log-path=/var/lxc/log"
-configure_args+=" --with-rootfs-path=/var/lxc/containers"
+build_style="meson"
+configure_args+=" -Ddistrosysconfdir=default"
+configure_args+=" -Ddocbook2x-only=true"
+configure_args+=" -Dinit-script=[]"
+configure_args+=" -Dlog-path=/var/lxc/log"
+configure_args+=" -Dpam-cgroup=true"
+configure_args+=" -Drootfs-mount-path=/var/lxc/containers"
 make_dirs+=" /var/lib/lxc 0755 root root"
 make_dirs+=" /var/lxc/containers 0755 root root"
 make_dirs+=" /var/lxc/log 0755 root root"
 
-pre_configure() {
-  # make sure the build uses the new docbook2x format, even though the
-  # command has the old "docbook2man" name
-  sed \
-    -i \
-    -e 's,xdocbook2man,xforcedocbook2x,g' \
-    configure.ac
-  ./autogen.sh
-}
-
 post_install() {
-  vmkdir usr/share/bash-completion/completions
-  mv \
-    "$DESTDIR/etc/bash_completion.d"/* \
-    "$DESTDIR/usr/share/bash-completion/completions/"
   # install void lxc config/template
   vinstall "$FILESDIR/void.common.conf" 644 usr/share/lxc/config
   vinstall "$FILESDIR/lxc-void" 755 usr/share/lxc/templates
@@ -61,7 +45,7 @@ liblxc_package() {
 
 lxc-devel_package() {
   unset depends
-  depends+=" libcap-devel"
+  depends+=" $makedepends"
   depends+=" liblxc>=${version}_$revision"
   short_desc="$_desc - development files"
   pkg_install() {
