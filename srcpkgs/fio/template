@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fio"
-version=3.30
+version=3.31
 revision=1
 short_desc="Flexible I/O tester"
 depends="python3"
@@ -9,7 +9,7 @@ makedepends+=" zlib-devel"
 homepage="https://github.com/axboe/fio"
 license="GPL-2.0-only"
 distfiles="https://github.com/axboe/fio/archive/$pkgname-$version.tar.gz"
-checksum="305647377527a2827223065582dd8a9269e69866426b341699d55bb4e4d3cc71"
+checksum="077100819a243d0e00f232eb7c53fe1d30f4c54fba4d82847d5747eae1d255ab"
 wrksrc="$pkgname-$pkgname-$version"
 build_style="configure"
 make_build_args="T_TEST_PROGS="
