@@ -1,32 +1,41 @@
-# Template file for 'signify'
-pkgname=signify
-reverts="20141230_3 20141230_2 20141230_1"
+maintainer="nox"
+pkgname="signify"
 version=31
 revision=1
-build_style=gnu-makefile
-make_build_args="BZERO=bundled"
-hostmakedepends="pkg-config"
-makedepends="libbsd-devel libmd-devel"
-checkdepends="tar"
 short_desc="OpenBSD cryptographic signing and verification tool"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="ISC"
+makedepends+=" libbsd-devel"
+makedepends+=" libmd-devel"
+checkdepends="tar"
+hostmakedepends="pkg-config"
 homepage="https://www.tedunangst.com/flak/post/signify"
-changelog="https://raw.githubusercontent.com/aperezdc/signify/master/CHANGELOG.md"
-distfiles="https://github.com/aperezdc/signify/releases/download/v${version}/signify-${version}.tar.xz"
-checksum=1155fd9eeed4a8aa20476b2333d251953ec5d52338d943a770db5b78dd8d2b74
+license="ISC"
+changelog="https://github.com/aperezdc/signify/raw/master/CHANGELOG.md"
+distfiles="https://github.com/aperezdc/signify/releases/download/v$version/$pkgname-$version.tar.xz"
+checksum="1155fd9eeed4a8aa20476b2333d251953ec5d52338d943a770db5b78dd8d2b74"
+build_style="gnu-makefile"
+make_build_args="BZERO=bundled"
+reverts+=" 20141230_3"
+reverts+=" 20141230_2"
+reverts+=" 20141230_1"
 
 pre_build() {
-	# Allow building with musl
-	cp ${FILESDIR}/void.h .
-	for file in blf.h sha2.h ohash.h; do
-		vsed -e '1 i\#include "void.h"' -i $file
-	done
+  # allow building with musl
+  cp "$FILESDIR/void.h" .
+  for file in blf.h \
+              ohash.h \
+              sha2.h; do
+    vsed \
+      -i \
+      -e '1 i\#include "void.h"' \
+      "$file"
+  done
 
-	# Create license file
-	sed -E '3,15 !d;s/^ [*] ?//' signify.c > LICENSE
+  # create license file
+  sed -E '3,15 !d;s/^ [*] ?//' signify.c > LICENSE
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
