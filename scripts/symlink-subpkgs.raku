@@ -349,6 +349,7 @@ constant %PKG = Map.new(
     'libbitcoin-secp256k1' => ['libbitcoin-secp256k1-devel'],
     'libbitcoin-server' => ['libbitcoin-server-devel'],
     'libbitcoin-system' => ['libbitcoin-system-devel'],
+    'libbsd' => ['libbsd-devel'],
     'libcap' => qw<libcap-devel
                    libcap-progs>,
     'libcap-ng' => qw<libcap-ng-devel
