@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="flake8"
-version=4.0.1
+version=5.0.4
 revision=1
 short_desc="Modular source code checker: pycodestyle, pyflakes, mccabe"
 depends+=" python3-mccabe"
@@ -14,16 +14,9 @@ homepage="https://gitlab.com/pycqa/flake8"
 license="MIT"
 changelog="https://github.com/PyCQA/flake8/raw/master/docs/source/release-notes/$version.rst"
 distfiles="$PYPI_SITE/f/flake8/flake8-$version.tar.gz"
-checksum="806e034dda44114815e23c16ef92f95c91e4c71100ff52813adf7132a6ad870d"
+checksum="6fbe320aad8d6b95cec8b8e47bc933004678dc63095be98528b7bdd2a9f510db"
 build_style="python3-module"
-
-do_check() {
-  # from alpine
-  PYTHONPATH="build/lib" python3 -m pytest \
-    --deselect="tests/integration/test_api_legacy.py::test_legacy_api" \
-    --deselect="tests/integration/test_main.py" \
-    --deselect="tests/integration/test_plugins.py"
-}
+make_check_args="--deselect=tests/unit/plugins/pycodestyle_test.py"
 
 post_install() {
   vlicense LICENSE
