@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libwebp"
-version=1.2.2
+version=1.2.4
 revision=1
 short_desc="WebP image format"
 makedepends+=" giflib-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://developers.google.com/speed/webp/"
 license="BSD-3-Clause"
 distfiles="http://downloads.webmproject.org/releases/webp/$pkgname-$version.tar.gz"
-checksum="7656532f837af5f4cec3ff6bafe552c044dc39bf453587bd5b77450802f4aee6"
+checksum="7bf5a8a28cc69bcfa8cb214f2c3095703c6b73ac5fba4d5480c205331d9494df"
 build_style="gnu-configure"
 # avoid libfreeglut gui dependency
 configure_args+=" --disable-gl"
