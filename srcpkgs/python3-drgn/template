@@ -1,21 +1,31 @@
-# Template file for 'python3-drgn'
-pkgname=python3-drgn
+maintainer="nox"
+pkgname="python3-drgn"
 version=0.0.20
 revision=1
-wrksrc="drgn-${version}"
-build_style=python3-module
-hostmakedepends="automake libtool pkg-config python3-setuptools"
-makedepends="elfutils-devel libgomp-devel python3-devel libkdumpfile-devel"
-depends="python3"
 short_desc="Scriptable debugger library"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-3.0-or-later"
+depends="python3"
+makedepends+=" elfutils-devel"
+makedepends+=" libgomp-devel"
+makedepends+=" libkdumpfile-devel"
+makedepends+=" python3-devel"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/osandov/drgn/"
-distfiles="https://github.com/osandov/drgn/archive/refs/tags/v${version}.tar.gz"
-checksum=d67ef65a2a9a27059d7abda38c5628a76060173772d19d439b05409eb96ca6e6
+license="GPL-3.0-or-later"
+distfiles="https://github.com/osandov/drgn/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="d67ef65a2a9a27059d7abda38c5628a76060173772d19d439b05409eb96ca6e6"
+wrksrc="drgn-$version"
+build_style="python3-module"
 
 pre_build() {
-	if [ "$CROSS_BUILD" ]; then
-		export CONFIGURE_FLAGS="--host=$XBPS_CROSS_TRIPLET --with-libtool-sysroot=$XBPS_CROSS_BASE"
-	fi
+  local _flags
+  _flags+=" --host=$XBPS_CROSS_TRIPLET"
+  _flags+=" --with-libtool-sysroot=$XBPS_CROSS_BASE"
+  if [[ -n "$CROSS_BUILD" ]]; then
+    export CONFIGURE_FLAGS="$_flags"
+  fi
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
