@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="libcgroup"
-version=2.0.2
+version=3.0.0
 revision=1
 short_desc="Library that abstracts the control group file system in Linux"
 makedepends="pam-devel"
 hostmakedepends="flex"
 homepage="https://github.com/libcgroup/libcgroup"
 license="LGPL-2.1-only"
-distfiles="https://github.com/libcgroup/libcgroup/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="8ef63b32e0aff619547dbb8a25e1f6bab152d7c4864795cf915571a5994d0cf8"
+distfiles="https://github.com/libcgroup/libcgroup/releases/download/v${version%.*}/$pkgname-$version.tar.gz"
+checksum="8d284d896fca1c981b55850e92acd3ad9648a69227c028dda7ae3402af878edd"
 build_style="gnu-configure"
 configure_args+=" --enable-pam-module-dir=/usr/lib/security"
+configure_args+=" --enable-tests=no"
 configure_args+=" --sbindir=/usr/bin"
 make_dirs="/etc/cgconfig.d 0755 root root"
 
@@ -22,14 +23,6 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_configure() {
-  # disable tests
-  sed \
-    -i \
-    -e "/SUBDIRS =/ s; tests;;" \
-    Makefile
-}
-
 libcgroup-utils_package() {
   unset conf_files
   short_desc+=" - utilities"
@@ -39,8 +32,8 @@ libcgroup-utils_package() {
   pkg_install() {
     vmove usr/bin
     vmove usr/share/man
-    vconf samples/cgrules.conf
-    vconf samples/cgconfig.conf
+    vconf samples/config/cgrules.conf
+    vconf samples/config/cgconfig.conf
     vsv cgred
   }
 }
