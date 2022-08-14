@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ldns"
-version=1.8.2
-revision=1
+version=1.8.1
+revision=2
 short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
@@ -10,13 +10,14 @@ hostmakedepends="perl"
 homepage="http://www.nlnetlabs.nl/projects/ldns/"
 license="BSD-3-Clause"
 distfiles="http://www.nlnetlabs.nl/downloads/ldns/$pkgname-$version.tar.gz"
-checksum="b92b001cdd382de653620a05445e42e17a827eec93d64ee587ad291a533cc1e9"
+checksum="958229abce4d3aaa19a75c0d127666564b17216902186e952ca4aef47c6d7fa3"
 build_style="gnu-configure"
 configure_args+=" --disable-dane-ta-usage"
 configure_args+=" --with-drill"
 configure_args+=" --with-examples"
 configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-trust-anchor=/etc/dns/root.key"
+reverts="1.8.2_1"
 
 post_install() {
   vsed \
