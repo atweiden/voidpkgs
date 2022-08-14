@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="gopls"
-version=0.8.4
+version=0.9.3
 revision=1
 short_desc="Official language server for the Go language"
 homepage="https://github.com/golang/tools"
 license="MIT"
 distfiles="https://github.com/golang/tools/archive/gopls/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="815060abeb22755352414ef62ffb265b2f0f9d38786c164595f85c9c25c8a7cb"
+checksum="33bb6d62f6ae497e2a26ee41ba5e36c45bfd01245fc6d85a162fe9507c4d08d0"
 wrksrc="tools-gopls-v$version"
 build_wrksrc="gopls"
 build_style="go"
