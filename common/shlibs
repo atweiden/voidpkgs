@@ -170,7 +170,6 @@ libxtables.so.12 iptables-1.6.1_1
 libip4tc.so.2 iptables-1.8.3_1
 libip6tc.so.2 iptables-1.8.3_1
 libisl.so.19 isl15-0.19_1
-libjanet.so.1.23 janet-1.23.0_1
 libjansson.so.4 jansson-2.4_1
 libjbig.so.0 jbigkit-libs-2.1_2
 libjbig85.so.0 jbigkit-libs-2.1_2
