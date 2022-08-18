@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lxc"
 version=5.0.1
-revision=1
+revision=2
 _desc="Linux Containers"
 short_desc="$_desc - utilities"
 depends+=" wget"
@@ -20,7 +20,6 @@ checksum="d8195423bb1e206f8521d24b6cde4789f043960c7cf065990a9cf741dcfd4222"
 conf_files="/etc/lxc/default.conf"
 build_style="meson"
 configure_args+=" -Ddistrosysconfdir=default"
-configure_args+=" -Ddocbook2x-only=true"
 configure_args+=" -Dinit-script=[]"
 configure_args+=" -Dlog-path=/var/lxc/log"
 configure_args+=" -Dpam-cgroup=true"
