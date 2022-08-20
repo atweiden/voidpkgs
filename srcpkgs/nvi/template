@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nvi"
 version=1.81.6
-revision=17
+revision=18
 short_desc="Berkeley Vi Editor"
 makedepends+=" db-devel"
 makedepends+=" ncurses-devel"
@@ -19,6 +19,10 @@ alternatives+=" vi:vi:/usr/bin/nvi"
 alternatives+=" vi:view.1:/usr/share/man/man1/nview.1"
 alternatives+=" vi:view:/usr/bin/nview"
 
+post_extract() {
+  chmod +w "$wrksrc/common/options_def.h"
+}
+
 do_configure() {
   export OPTFLAG="$CFLAGS"
   ./configure \
@@ -30,15 +34,9 @@ do_configure() {
     vi_cv_sprintf_count="yes"
 }
 
-pre_build() {
-  sed \
-    -i \
-    -e '/define.*_PATH_MSGCAT/ s/".*"/"\/usr\/share\/vi\/catalog\/"/' \
-    pathnames.h
-}
-
 post_install() {
   vlicense ../LICENSE
+  vlicense ../regex/COPYRIGHT regex.LICENSE
   # remove cat pages
   rm -rf "$DESTDIR/usr/share/man/cat1"
   # remove lib
