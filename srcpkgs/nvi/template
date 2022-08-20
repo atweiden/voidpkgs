@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nvi"
 version=1.81.6
-revision=18
+revision=19
 short_desc="Berkeley Vi Editor"
 makedepends+=" db-devel"
 makedepends+=" ncurses-devel"
