@@ -14,6 +14,10 @@ build_style="gnu-configure"
 configure_args+=" --enable-lib"
 configure_args+=" --enable-util"
 
+pre_configure() {
+  autoreconf -fi
+}
+
 post_install() {
   # remove obsolete rules file provided by udev
   rm -rf "$DESTDIR"/{dev,etc}
