@@ -31,7 +31,6 @@ changelog="https://github.com/jsamr/bootiso/raw/master/changelog.md"
 distfiles="https://github.com/jsamr/bootiso/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="eaf0cedb31d2195546e882624b7f1f0abbb3a6bb6234b4408dfeb2eaeaff3a50"
 build_style="gnu-makefile"
-make_install_args="prefix=/usr"
 
 post_install() {
   vdoc changelog.md
