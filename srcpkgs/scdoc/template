@@ -11,7 +11,6 @@ license="MIT"
 distfiles="https://git.sr.ht/~sircmpwn/scdoc/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0"
 build_style="gnu-makefile"
-make_build_args="PREFIX=/usr"
 
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
