@@ -9,7 +9,6 @@ distfiles="https://github.com/google/re2/archive/${version//./-}.tar.gz>$pkgname
 checksum="fb8e0f4ed7a212e3420507f27933ef5a8c01aec70e5148c6a35313573269fae6"
 wrksrc="$pkgname-${version//./-}"
 build_style="gnu-makefile"
-make_install_args="prefix=/usr"
 
 post_install() {
   vlicense LICENSE
