@@ -9,9 +9,8 @@ distfiles="https://github.com/weidai11/cryptopp/archive/CRYPTOPP_${version//./_}
 checksum="63304c6f943f435a4e385273e15abb69cff3b85a44663150bf5a6069b84abd43"
 wrksrc="${pkgname//+/p}-CRYPTOPP_${version//./_}"
 build_style="gnu-makefile"
-make_build_args="PREFIX=/usr"
 if [[ -n "$XBPS_CROSS" ]]; then
-  make_build_args+=" -f GNUmakefile-cross"
+  make_build_args="-f GNUmakefile-cross"
 fi
 make_build_target+=" dynamic"
 make_build_target+=" libcryptopp.pc"
@@ -22,11 +21,6 @@ reverts="820_2"
 
 CXXFLAGS+=" -DNDEBUG"
 CXXFLAGS+=" -fPIC"
-
-do_check() {
-  # the gnu-makefile build style does not use $makejobs
-  make "$makejobs" $make_build_args check
-}
 
 post_install() {
   vlicense License.txt LICENSE
