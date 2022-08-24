@@ -18,17 +18,15 @@ make_build_args+=" DEPS_OPENCL_PATH=$XBPS_CROSS_BASE/usr/include"
 make_build_args+=" DEPS_XXHASH_PATH=$XBPS_CROSS_BASE/usr/include"
 make_build_args+=" DEPS_ZLIB_PATH=$XBPS_CROSS_BASE/usr/include"
 make_build_args+=" ENABLE_UNRAR=$(vopt_if unrar 1 0)"
-make_build_args+=" PREFIX=/usr"
 make_build_args+=" SHARED_FOLDER=/usr/lib/hashcat"
 make_build_args+=" USE_SYSTEM_OPENCL=1"
 make_build_args+=" USE_SYSTEM_XXHASH=1"
 make_build_args+=" USE_SYSTEM_ZLIB=1"
 make_use_env="yes"
 make_install_args="$make_build_args"
+# unrar option disabled by default because of license issues
 build_options="unrar"
 desc_option_unrar="Enable support for unrar"
-# unrar option disabled by default because of license issues
-build_options_default=""
 
 if [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
   broken="Not supported on big endian"
