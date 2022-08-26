@@ -25,7 +25,8 @@ do_build() {
     CC="$CC" \
     CFLAGS="$CFLAGS" \
     KSHELL="/bin/sh" \
-    LDFLAGS="$LDFLAGS"
+    LDFLAGS="$LDFLAGS" \
+   "$makejobs"
   sed \
     -n '/Copyright/,/SUCH DAMAGE/p' \
     strftime.c \
@@ -33,7 +34,7 @@ do_build() {
 }
 
 do_check() {
-  make check
+  make "$makejobs" check
 }
 
 do_install() {
