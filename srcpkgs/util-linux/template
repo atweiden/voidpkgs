@@ -1,7 +1,7 @@
 # keep this package sync with util-linux-common
 maintainer="nox"
 pkgname="util-linux"
-version=2.38
+version=2.38.1
 revision=1
 short_desc="Miscellaneous linux utilities"
 depends+=" libblkid>=${version}_1<=${version}_9999"
@@ -25,7 +25,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.kernel.org/pub/linux/utils/util-linux/"
 license="GPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/util-linux/v2.36/$pkgname-$version.tar.xz"
-checksum="6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64"
+checksum="60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f"
 conf_files="/etc/pam.d/*"
 build_style="gnu-configure"
 configure_args+=" --disable-makeinstall-chown"
