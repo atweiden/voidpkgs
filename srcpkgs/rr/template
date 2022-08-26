@@ -1,29 +1,37 @@
-# Template file for 'rr'
-pkgname=rr
+maintainer="nox"
+pkgname="rr"
 version=5.6.0
 revision=1
-archs="i686 x86_64"
-build_style=cmake
-configure_args="-DBUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=14"
-hostmakedepends="pkg-config python3"
-makedepends="python3-pexpect zlib-devel capnproto-devel"
+archs+=" i686"
+archs+=" x86_64"
 short_desc="Nondeterministic debugger"
-maintainer="Spencer Hill <spencernh77@gmail.com>"
-license="MIT, BSD-2-Clause"
+makedepends+=" capnproto-devel"
+makedepends+=" python3-pexpect"
+makedepends+=" zlib-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
 homepage="http://rr-project.org/"
-distfiles="https://github.com/mozilla/${pkgname}/archive/${version}.tar.gz"
-checksum=a75262ae622c2c91d3391401d3da4e1dc9379b5afea5c40c9ea93f6905706c87
-nopie=yes
+license="MIT, BSD-2-Clause"
+distfiles="https://github.com/mozilla/rr/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="a75262ae622c2c91d3391401d3da4e1dc9379b5afea5c40c9ea93f6905706c87"
+build_style="cmake"
+configure_args+=" -DBUILD_TESTS=OFF"
+configure_args+=" -DCMAKE_CXX_STANDARD=14"
+nopie="yes"
 
 case "$XBPS_MACHINE" in
-	x86_64*) hostmakedepends+=" gcc-multilib" ;;
+  x86_64*)
+    hostmakedepends+=" gcc-multilib"
+    ;;
 esac
 
 pre_configure() {
-	export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
-	export CXXFLAGS="${CXXFLAGS/-D_FORTIFY_SOURCE=2/}"
+  export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
+  export CXXFLAGS="${CXXFLAGS/-D_FORTIFY_SOURCE=2/}"
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
