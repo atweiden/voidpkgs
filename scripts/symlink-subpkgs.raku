@@ -115,6 +115,7 @@ constant %PKG = Map.new(
                     busybox-static>,
     'bzip2' => ['bzip2-devel'],
     'c-ares' => ['c-ares-devel'],
+    'capnproto' => ['capnproto-devel'],
     'check' => ['check-devel'],
     'chicken' => qw<chicken-devel
                     libchicken>,
