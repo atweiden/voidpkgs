@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coccinelle"
-version=1.1.0
-revision=4
+version=1.1.1
+revision=1
 short_desc="Program matching and transformation engine"
 makedepends+=" ocaml"
 makedepends+=" ocaml-findlib"
@@ -11,11 +11,12 @@ makedepends+=" pcre-devel"
 makedepends+=" python3-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
+hostmakedepends+=" ocaml"
 hostmakedepends+=" python3"
-homepage="http://coccinelle.lip6.fr/"
+homepage="https://coccinelle.gitlabpages.inria.fr/website/"
 license="GPL-2.0-only"
 distfiles="https://github.com/coccinelle/coccinelle/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e40bdd51eda84f9bf3154c592ebb4af73a4dd9656c03e7ca1d3aa0247d98d185"
+checksum="095919e129ac563586d880ebbc5aac829fec224177090aebe34dc34ed5f142bf"
 build_style="gnu-configure"
 configure_args+=" --enable-release"
 configure_args+=" --with-python=/usr/bin/python3"
