@@ -103,6 +103,8 @@ constant %PKG = Map.new(
                   libboost_unit_test_framework1.72
                   libboost_wave1.72
                   libboost_wserialization1.72>,
+    'botan' => qw<botan-devel
+                  botan-doc>,
     'brotli' => ['brotli-devel'],
     'btrfs-progs' => qw<libbtrfs
                         libbtrfs-devel
