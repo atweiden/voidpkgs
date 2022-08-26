@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="so"
-version=0.4.8
+version=0.4.9
 revision=1
 short_desc="Terminal interface for Stack Overflow"
 makedepends="openssl-devel"
@@ -9,7 +9,7 @@ homepage="https://github.com/samtay/so"
 license="MIT"
 changelog="https://github.com/samtay/so/raw/main/CHANGELOG.md"
 distfiles="https://github.com/samtay/so/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="11e37927b248824d8f2475b695168889afe0c14f9183cf2f31a9c0395d00dd98"
+checksum="b6327268acf3e9652acebea49c1dfa5d855cf25db6c7b380f1a0a85737464a4a"
 build_style="cargo"
 
 post_install() {
