@@ -1,20 +1,15 @@
 maintainer="nox"
 pkgname="libselinux"
 version=3.0
-revision=1
+revision=2
+_tag=20191204
 short_desc="SELinux library and simple utilities"
-depends+=" libsepol"
-depends+=" pcre"
 makedepends+=" libsepol-devel"
 makedepends+=" pcre-devel"
-hostmakedepends+=" pkgconf"
-hostmakedepends+=" python"
-hostmakedepends+=" ruby"
-hostmakedepends+=" swig"
-hostmakedepends+=" xz"
+hostmakedepends="pkg-config"
 homepage="https://www.nsa.gov/what-we-do/research/selinux/"
 license="GPL-2.0-only"
-distfiles="https://github.com/SELinuxProject/selinux/releases/download/20191204/$pkgname-$version.tar.gz"
+distfiles="https://github.com/SELinuxProject/selinux/releases/download/$_tag/$pkgname-$version.tar.gz"
 checksum="2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433"
 build_style="gnu-makefile"
 make_install_args+=" SBINDIR=/usr/bin"
