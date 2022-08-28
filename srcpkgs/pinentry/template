@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pinentry"
-version=1.2.0
+version=1.2.1
 revision=1
 short_desc="PIN or passphrase entry dialogs for GnuPG"
 makedepends+=" libassuan-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkgconf"
 homepage="https://www.gnupg.org/related_software/pinentry/"
 license="GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/pinentry/$pkgname-$version.tar.bz2"
-checksum="10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470"
+checksum="457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067"
 build_style="gnu-configure"
 configure_args+=" --disable-libsecret"
 configure_args+=" --disable-pinentry-fltk"
