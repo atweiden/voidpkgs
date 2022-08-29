@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vagrant"
-version=2.2.19
-revision=2
+version=2.3.0
+revision=1
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
 archs+=" x86_64*"
@@ -9,30 +9,34 @@ depends+=" bsdtar"
 depends+=" curl"
 depends+=" openssh"
 depends+=" rsync"
-makedepends+=" ruby-devel"
-makedepends+=" zlib-devel"
-hostmakedepends="ruby"
 homepage="https://www.vagrantup.com/"
 license="MIT"
-distfiles="https://github.com/mitchellh/vagrant/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4f0e6b1d466e26dead682c4d4843e8f64a012eba4be91506ae6c6d34d3d9c8f9"
+changelog="https://github.com/hashicorp/vagrant/raw/main/CHANGELOG.md"
+distfiles="https://github.com/hashicorp/vagrant/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="1931dbf29ec3c6622a649ae145fe706e5b957d7075870ce577358dd22c3d5dca"
+build_style="gemspec"
 nocross="yes"
 
 post_extract() {
-  sed \
+  vsed \
     -i \
     -e 's|, "< 3\.1"||g' \
     "$pkgname.gemspec"
 }
 
-do_build() {
-  gem build "$pkgname.gemspec"
-}
-
 do_install() {
-  GEM_PATH="$DESTDIR/usr/lib/$pkgname" \
+  GEM_PATH="$DESTDIR/usr/lib/vagrant" \
   GEM_HOME="$GEM_PATH" \
     gem install "$pkgname-$version.gem" --no-document -- --disable-clean
+
+  vlicense LICENSE
+
+  vbin "$FILESDIR/vagrant"
+
+  vcompletion contrib/bash/completion.sh bash
+
+  vinstall contrib/vim/vagrantfile.vim 644 /usr/share/vim/vim90/ftplugin
+
   find "$DESTDIR" -type f -name \*.a -delete
   find "$DESTDIR" -type f -name \*.log -delete
   find "$DESTDIR" -type f -name \*.c -delete
@@ -57,14 +61,6 @@ do_install() {
   find "$DESTDIR" -type d -name doc -print0 | xargs -0 rm -rf --
   find "$DESTDIR" -type d -name ports -print0 | xargs -0 rm -rf --
   rm -r "$DESTDIR/usr/lib/$pkgname/cache"
-
-  vmkdir usr/bin
-  vmkdir usr/share/bash-completion/completions
-  vbin "$FILESDIR/$pkgname"
-  ln -sf \
-    "/usr/lib/$pkgname/gems/$pkgname-$version/contrib/bash/completion.sh" \
-    "$DESTDIR/usr/share/bash-completion/completions/$pkgname"
-  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
