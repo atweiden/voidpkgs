@@ -19,8 +19,10 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 create_wrksrc="yes"
-repository="nonfree"
+triggers+=" dkms"
+triggers+=" initramfs-regenerate"
 dkms_modules="wl $version"
+repository="nonfree"
 
 do_install() {
   sed \
