@@ -8,6 +8,7 @@ depends+=" coreutils"
 depends+=" gcc"
 depends+=" kmod"
 depends+=" make"
+depends+=" xbps-triggers>=0.123_1"
 if [[ -n "$CROSS_BUILD" ]]; then
   depends+=" flex"
   depends+=" gmp-devel"
