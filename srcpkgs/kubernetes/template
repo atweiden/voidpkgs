@@ -1,60 +1,70 @@
-# Template file for 'kubernetes'
-pkgname=kubernetes
+maintainer="nox"
+pkgname="kubernetes"
 version=1.23.10
 revision=1
-archs="x86_64* ppc64le*"
-build_style=go
-go_import_path="github.com/kubernetes/kubernetes"
-hostmakedepends="rsync git go-bindata which"
-depends="kubectl conntrack-tools"
 short_desc="Container Cluster Manager for Docker"
-maintainer="Andrea Brancaleoni <abc@pompel.me>"
-license="Apache-2.0"
+archs+=" ppc64le*"
+archs+=" x86_64*"
+depends+=" conntrack-tools"
+depends+=" kubectl"
+hostmakedepends+=" git"
+hostmakedepends+=" go-bindata"
+hostmakedepends+=" rsync"
+hostmakedepends+=" which"
 homepage="http://kubernetes.io"
-distfiles="https://$go_import_path/archive/v$version.tar.gz"
-checksum=0199f4c948f1f686d850eee97a4d49e7ae3614aff4eff7794f499c065d721267
-nocross=yes
+license="Apache-2.0"
+distfiles="https://github.com/kubernetes/kubernetes/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="0199f4c948f1f686d850eee97a4d49e7ae3614aff4eff7794f499c065d721267"
+conf_files="/etc/kubernetes/*"
+build_style="go"
+go_import_path="github.com/kubernetes/kubernetes"
+go_ldflags="-buildid="
 system_accounts="kube"
 make_dirs="/var/lib/kubelet 0755 kube kube"
-conf_files="/etc/kubernetes/*"
+nocross="yes"
+
+export GOFLAGS="-trimpath"
 
 do_build() {
-	make
-	hack/generate-docs.sh
-	find "_output/local/bin/linux/" -type f -executable | grep "kubectl$" | egrep -v "gen|test" | while read line
-	do
-		$line completion bash > completion.bash
-		$line completion zsh > completion.zsh
-		break
-	done
+  make
+  hack/generate-docs.sh
+  find "_output/local/bin/linux/" -type f -executable \
+    | grep "kubectl$" \
+    | egrep -v "gen|test" \
+    | while read line; do \
+        "$line" completion bash > completion.bash; \
+        "$line" completion zsh > completion.zsh; \
+      done
 }
 
 do_install() {
-	find "_output/local/bin/linux/" -type f -executable | grep "kube" | egrep -v "gen|test" | while read line
-	do
-		vbin "${line}"
-	done
+  find "_output/local/bin/linux/" -type f -executable \
+    | grep "kube" \
+    | egrep -v "gen|test" \
+    | while read line; do vbin "$line"; done
 
-	for MAN in docs/man/man1/*.1; do
-		vman ${MAN}
-	done
+  for man in docs/man/man1/*.1; do
+    vman "$man"
+  done
 
-	vmkdir etc/kubernetes
-	vcopy ${FILESDIR}/environ/* etc/kubernetes
+  vmkdir etc/kubernetes
+  vcopy "$FILESDIR/environ"/* etc/kubernetes
 
-	vsv kube-apiserver
-	vsv kube-controller-manager
-	vsv kubelet
-	vsv kube-scheduler
-	vsv kube-proxy
+  vsv kube-apiserver
+  vsv kube-controller-manager
+  vsv kubelet
+  vsv kube-scheduler
+  vsv kube-proxy
 }
 
 kubectl_package() {
-	short_desc="Controls the Kubernetes cluster manager"
-	pkg_install() {
-		vmove usr/bin/kubectl
-		vmove usr/share/man/man1/kubectl*
-		vcompletion completion.bash bash
-		vcompletion completion.zsh zsh
-	}
+  short_desc="Controls the Kubernetes cluster manager"
+  pkg_install() {
+    vmove usr/bin/kubectl
+    vmove "usr/share/man/man1/kubectl*"
+    vcompletion completion.bash bash
+    vcompletion completion.zsh zsh
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
