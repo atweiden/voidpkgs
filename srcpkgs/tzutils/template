@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tzutils"
 version=2022c
-revision=1
+revision=2
 short_desc="Time zone and daylight-saving time utilities"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends="tzutils"
