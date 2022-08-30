@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libpwquality"
 version=1.4.2
-revision=5
+revision=6
 short_desc="Library for password quality checking and generating random passwords"
 depends="cracklib"
 makedepends+=" cracklib-devel"
@@ -10,7 +10,7 @@ makedepends+=" python3-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
-hostmakedepends+=" python3-devel"
+hostmakedepends+=" python3"
 homepage="https://github.com/libpwquality/libpwquality"
 license="GPL-2.0-or-later"
 changelog="https://github.com/libpwquality/libpwquality/raw/master/NEWS"
@@ -18,32 +18,13 @@ distfiles="https://github.com/libpwquality/libpwquality/releases/download/$pkgna
 checksum="5263e09ee62269c092f790ac159112aed3e66826a795e3afec85fdeac4281c8e"
 conf_files="/etc/security/pwquality.conf"
 build_style="gnu-configure"
+build_helper="python3"
 configure_args+=" --disable-static"
 configure_args+=" --enable-pam"
 configure_args+=" --with-securedir=/usr/lib/security"
 
-CFLAGS="-I$XBPS_CROSS_BASE/$py3_inc"
-
 pre_configure() {
-  vsed \
-    -i \
-    -e 's|CFLAGS=.*|LDSHARED="${CC} -pthread -shared" &|g' \
-    python/Makefile.am
   autoreconf -fi
-}
-
-pre_build() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    for f in "$XBPS_CROSS_BASE/$py3_lib"/_sysconfigdata_*; do
-      f="${f##*/}"
-      export _PYTHON_SYSCONFIGDATA_NAME="${f%.py}"
-    done
-    export PYTHONPATH="$XBPS_CROSS_BASE/$py3_lib"
-  fi
-}
-
-pre_install() {
-  pre_build
 }
 
 libpwquality-devel_package() {
