@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
 version=0.1
-revision=63
+revision=72
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -36,6 +36,9 @@ replaces+=" python-pytz<=2021.3_2"
 replaces+=" python-requests<=2.26.0_2"
 replaces+=" python-typing<=3.6.6_2"
 replaces+=" python-urllib3<=1.26.6_2"
+replaces+=" python3-importlib_metadata<=4.8.1_2"
+replaces+=" python3-jaraco<=1.0_4"
+replaces+=" python3-zipp<=3.6.0_1"
 replaces+=" rkt-stage1-coreos<=1.30.0_3"
 replaces+=" rkt-stage1-fly<=1.30.0_3"
 replaces+=" rkt<=1.30.0_3"
