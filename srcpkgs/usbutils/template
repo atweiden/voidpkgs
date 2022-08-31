@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="usbutils"
 version=014
-revision=1
+revision=2
 short_desc="Linux USB utilities"
 depends="hwids"
 makedepends+=" eudev-libudev-devel"
@@ -9,7 +9,7 @@ makedepends+=" libusb-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="https://linux-usb.sourceforge.net/"
+homepage="https://github.com/gregkh/usbutils"
 license="GPL-2.0-only"
 changelog="https://github.com/gregkh/usbutils/raw/master/NEWS"
 distfiles="$KERNEL_SITE/utils/usb/usbutils/$pkgname-$version.tar.xz"
@@ -17,6 +17,7 @@ checksum="3a079cfad60560227b67192482d7813bf96326fcbb66c04254839715f276fc69"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/hwdata"
 configure_args+=" --disable-zlib"
+replaces="usbhid-dump<=1.4_1"
 
 post_install() {
   # remove lsusb.py - avoid useless python scripts
