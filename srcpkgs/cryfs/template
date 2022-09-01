@@ -28,8 +28,6 @@ if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args+=" -DBUILD_TESTING=on"
 fi
 
-CXX_FLAGS="-pthread"
-
 post_patch() {
   rm -rf vendor/cryptopp
   rm -rf vendor/spdlog
