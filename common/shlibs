@@ -91,7 +91,7 @@ libcallback.so.1 ffcall-2.1_1
 libffcall.so.0 ffcall-2.1_1
 libtrampoline.so.1 ffcall-2.1_1
 libflint.so.16 flintlib-2.8.0_1
-libfmt.so.8 fmt-8.0.1_1
+libfmt.so.9 fmt-9.0.0_1
 libfontconfig.so.1 fontconfig-2.6.0_1
 libfreetype.so.6 freetype-2.3.9_1
 libfuse.so.2 fuse-2.8.1_1

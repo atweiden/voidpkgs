@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="fmt"
-version=8.1.1
+version=9.0.0
 revision=1
 short_desc="Modern formatting library"
 homepage="https://github.com/fmtlib/fmt"
 license="BSD-2-Clause"
 changelog="https://github.com/fmtlib/fmt/raw/master/ChangeLog.rst"
 distfiles="https://github.com/fmtlib/fmt/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3d794d3cf67633b34b2771eb9f073bde87e846e0d395d254df7b211ef1ec7346"
+checksum="9a1e0e9e843a356d65c7604e2c8bf9402b50fe294c355de0095ebd42fb9bd2c5"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
 configure_args+=" -DFMT_DOC=OFF"
