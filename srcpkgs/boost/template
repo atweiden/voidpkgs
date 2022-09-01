@@ -155,7 +155,7 @@ __EOF
   ./b2 \
     abi="$_abi" \
     architecture="$_arch" \
-    link="shared,static"
+    link="shared,static" \
     python="$py3_ver" \
     runtime-link="shared" \
     threading="multi" \
