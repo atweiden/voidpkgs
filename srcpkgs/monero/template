@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="monero"
 version=0.17.3.0
-revision=1
+revision=3
 # the revision monero uses as a submodule for the specific version
 _randomx_gitrev="9efc398c196ef1c50d8e6f5e1f2c5ac02f1f6ceb"
 _rapidjson_gitrev="129d19ba7f496df5e33658527a7158c79b99c21c"
