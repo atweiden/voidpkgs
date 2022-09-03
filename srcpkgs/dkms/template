@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dkms"
 version=3.0.6
-revision=1
+revision=2
 short_desc="Dynamic Kernel Module Support"
 depends+=" bash"
 depends+=" coreutils"
@@ -21,6 +21,9 @@ license="GPL-2.0-or-later"
 distfiles="https://github.com/dell/dkms/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="1e1ae273d2a72e3a89b829f3c72f482fb903f12cf766c054d11612e1d70795b4"
 conf_files="/etc/dkms/framework.conf"
+# dkms does not create this directory, but needs it
+# https://github.com/void-linux/void-packages/issues/39066
+make_dirs="/var/lib/dkms 0755 root root"
 
 case "$XBPS_TARGET_MACHINE" in
   # too many competing kernels for arm* to depend on linux-headers
