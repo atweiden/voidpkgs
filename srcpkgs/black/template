@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="black"
-version=22.6.0
+version=22.8.0
 revision=1
 short_desc="Uncompromising Python code formatter"
 depends+=" python3-click"
@@ -16,13 +16,13 @@ checkdepends+=" python3-colorama"
 checkdepends+=" python3-pytest-xdist"
 checkdepends+=" python3-tokenize-rt"
 checkdepends+=" python3-uvloop"
-hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 hostmakedepends+=" python3-setuptools_scm"
 homepage="https://github.com/psf/black"
 license="MIT"
 changelog="https://github.com/psf/black/raw/main/CHANGES.md"
 distfiles="$PYPI_SITE/b/black/black-$version.tar.gz"
-checksum="6c6d39e28aed379aec40da1c65434c77d75e65bb59a1e1c283de545fb4e7c6c9"
+checksum="792f7eb540ba9a17e8656538701d3eb1afcb134e3b45b71f20b25c77a8db7e6e"
 build_style="python3-module"
 
 do_check() {
