@@ -1,16 +1,15 @@
 maintainer="nox"
 pkgname="gc"
-version=8.0.6
-revision=2
+version=8.2.2
+revision=1
 short_desc="Garbage collector for C and C++"
 hostmakedepends="pkg-config"
 homepage="https://www.hboehm.info/gc/"
-license="GPL-2.0-or-later"
+license="MIT"
 distfiles="https://github.com/ivmai/bdwgc/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11"
+checksum="f30107bcb062e0920a790ffffa56d9512348546859364c23a14be264b38836a0"
 build_style="gnu-configure"
 # libatomic_ops is replaced by C11 atomic
-configure_args+=" --enable-mmap"
 configure_args+=" --enable-static"
 configure_args+=" --with-libatomic-ops=none"
 
@@ -29,6 +28,7 @@ post_install() {
   mv "$wrksrc/include"/* "$DESTDIR/usr/include/gc/"
   mv "$DESTDIR/usr/include/gc/extra"/* "$DESTDIR/usr/include/"
   rmdir "$DESTDIR/usr/include/gc/extra"
+  vlicense README.QUICK
 }
 
 gc-devel_package() {
