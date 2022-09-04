@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="file"
-version=5.42
-revision=1
+version=5.41
+revision=2
 short_desc="File type identification utility"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if libseccomp libseccomp-devel)"
@@ -12,7 +12,7 @@ fi
 homepage="https://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="c076fb4d029c74073f15c43361ef572cfb868407d347190ba834af3b1639b0e4"
+checksum="13e532c7b364f7d57e23dfeea3147103150cb90593a57af86c10e4f6e411603f"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" $(vopt_enable libseccomp)"
@@ -26,6 +26,7 @@ if [[ -z "$CHROOT_READY" ]]; then
   fi
 fi
 build_options="libseccomp"
+reverts="5.42_1"
 bootstrap="yes"
 
 post_install() {
