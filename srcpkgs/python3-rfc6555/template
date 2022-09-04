@@ -1,0 +1,19 @@
+maintainer="nox"
+pkgname="python3-rfc6555"
+version=0.1.0
+revision=1
+short_desc="Python implementation of Happy Eyeballs Algorithm described in RFC 6555"
+depends="python3"
+checkdepends="python3-pytest-xdist"
+hostmakedepends="python3-setuptools"
+homepage="https://github.com/sethmlarson/rfc6555"
+license="Apache-2.0"
+changelog="https://github.com/sethmlarson/rfc6555/raw/main/CHANGES.rst"
+distfiles="https://github.com/sethmlarson/rfc6555/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8a15da0f619227c6938be27c64e844668701bca65205002eda789a4fd883b23f"
+wrksrc="rfc6555-$version"
+build_style="python3-module"
+# ci fail
+make_check_args="--deselect tests/test_ipv6.py::test_ipv6_available"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
