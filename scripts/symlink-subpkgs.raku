@@ -693,7 +693,6 @@ constant %PKG = Map.new(
     'python-pyasn1' => ['python3-pyasn1'],
     'python-pyasn1-modules' => ['python3-pyasn1-modules'],
     'python-pycparser' => ['python3-pycparser'],
-    'python-rfc6555' => ['python3-rfc6555'],
     'python-scandir' => ['python3-scandir'],
     'python-service_identity' => ['python3-service_identity'],
     'python-six' => ['python3-six'],
