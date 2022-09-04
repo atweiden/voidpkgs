@@ -1,19 +1,26 @@
 maintainer="nox"
 pkgname="offlineimap"
-version=7.3.3
-revision=2
+version=8.0.0
+revision=1
 short_desc="Powerful IMAP/Maildir synchronization and reader support"
-depends+=" python-rfc6555"
-depends+=" python-six"
+depends+=" python3-distro"
+depends+=" python3-imaplib2"
+depends+=" python3-rfc6555"
+checkdepends+=" $depends"
+checkdepends+=" python3-pytest-xdist"
+hostmakedepends+=" $depends"
 hostmakedepends+=" asciidoc"
-hostmakedepends+=" python-rfc6555"
-hostmakedepends+=" python-six"
+hostmakedepends+=" python3-setuptools"
 homepage="http://offlineimap.org/"
 license="GPL-2.0-or-later"
-changelog="https://github.com/OfflineIMAP/offlineimap/raw/master/Changelog.md"
-distfiles="https://github.com/OfflineIMAP/offlineimap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bf1a777e63d2174eef0fe864ea577d843515b64d4f3a8630ad2d1b34a4afcaa6"
-build_style="python2-module"
+changelog="https://github.com/OfflineIMAP/offlineimap3/raw/master/Changelog.md"
+distfiles="https://github.com/OfflineIMAP/offlineimap3/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="5d40c163ca2fbf89658116e29f8fa75050d0c34c29619019eee1a84c90fcab32"
+wrksrc="offlineimap3-$version"
+build_style="python3-module"
+make_check_args+=" --ignore test/tests/test_00_imaputil.py"
+make_check_args+=" --ignore test/tests/test_01_basic.py"
+make_check_args+=" --ignore test/tests/test_02_MappedIMAP.py"
 
 post_install() {
   make -C docs man
