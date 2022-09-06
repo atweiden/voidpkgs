@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lfe"
 version=2.0.1
-revision=1
+revision=2
 short_desc="Lisp flavoured erlang"
 depends="erlang"
 hostmakedepends="erlang"
