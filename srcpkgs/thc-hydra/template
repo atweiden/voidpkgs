@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="thc-hydra"
 version=9.1
-revision=3
+revision=4
 short_desc="Tool to guess/crack valid login/password pairs"
 makedepends+=" libidn-devel"
 makedepends+=" libmariadbclient-devel"
@@ -16,7 +16,8 @@ license="AGPL-3.0-or-later"
 distfiles="https://github.com/vanhauser-thc/thc-hydra/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ce08a5148c0ae5ff4b0a4af2f7f15c5946bc939a57eae1bbb6dda19f34410273"
 build_style="gnu-configure"
-make_install_args="MANDIR=/share/man/man1"
+make_install_args+=" DATADIR=/share/hydra"
+make_install_args+=" MANDIR=/share/man/man1"
 
 CFLAGS="-fcommon"
 
