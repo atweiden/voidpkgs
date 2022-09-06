@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="elixir"
 version=1.14.0
-revision=1
+revision=2
 short_desc="Functional, concurrent, general-purpose programming language"
 depends="erlang>=23"
 checkdepends="git"
