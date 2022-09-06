@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="erlang"
-version=24.3.4.1
+version=25.0.4
 revision=1
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" ncurses-devel"
@@ -15,7 +15,7 @@ license="Apache-2.0"
 homepage="http://www.erlang.org/"
 changelog="https://github.com/erlang/otp/releases"
 distfiles="https://github.com/erlang/otp/archive/OTP-$version.tar.gz"
-checksum="98363e5489356ed4fb3616e44d430b3daf5bb286be800d1c331fba8ef35ca3a0"
+checksum="05878cb51a64b33c86836b12a21903075c300409b609ad5e941ddb0feb8c2120"
 create_wrksrc="yes"
 build_wrksrc="otp-OTP-$version"
 build_style="gnu-configure"
@@ -29,7 +29,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 pre_configure() {
-  ./otp_build autoconf
   if [[ -n "$CROSS_BUILD" ]]; then
     # build the bootstrap compiler for the host platform
     env - PATH="/usr/bin:/usr/sbin" ./configure --enable-bootstrap-only
