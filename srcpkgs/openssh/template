@@ -57,7 +57,7 @@ if [[ -n "$build_option_fido2" ]]; then
   subpackages="openssh-sk-helper"
 fi
 
-CFLAGS="-Wno-format-truncation -Wno-stringop-truncation"
+CFLAGS="-Wno-format-truncation -Wno-stringop-truncation -Wno-maybe-uninitialized"
 
 case $XBPS_TARGET_MACHINE in
   i686-musl)
