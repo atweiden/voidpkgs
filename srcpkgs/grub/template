@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grub"
 version=2.06
-revision=1
+revision=2
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
@@ -15,7 +15,9 @@ makedepends+=" fuse-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" libusb-compat-devel"
 makedepends+=" ncurses-devel"
+hostmakedepends+=" automake"
 hostmakedepends+=" flex"
+hostmakedepends+=" gettext-devel-tools"
 hostmakedepends+=" help2man"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
@@ -64,6 +66,10 @@ case "$XBPS_TARGET_MACHINE" in
     subpackages+=" grub-powerpc-ieee1275"
     ;;
 esac
+
+pre_configure() {
+  autoreconf -fi
+}
 
 do_configure() {
   unset AS
