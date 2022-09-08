@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="efivar"
 version=37
-revision=1
+revision=2
 short_desc="Tools to manipulate EFI variables"
 hostmakedepends="pkg-config"
 homepage="https://github.com/rhinstaller/efivar"
