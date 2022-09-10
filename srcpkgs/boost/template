@@ -62,7 +62,6 @@ subpackages+=" libboost_math_c99f1.80"
 subpackages+=" libboost_stacktrace_basic1.80"
 subpackages+=" libboost_stacktrace_noop1.80"
 subpackages+=" libboost_iostreams1.80"
-subpackages+=" libboost_math_tr1l1.80"
 subpackages+=" libboost_filesystem1.80"
 subpackages+=" libboost_chrono1.80"
 subpackages+=" libboost_math_tr1f1.80"
@@ -86,7 +85,6 @@ subpackages+=" libboost_unit_test_framework1.80"
 subpackages+=" libboost_serialization1.80"
 subpackages+=" libboost_math_tr11.80"
 subpackages+=" boost-build"
-subpackages+=" libboost_math_c99l1.80"
 subpackages+=" libboost_contract1.80"
 subpackages+=" libboost_nowide1.80"
 subpackages+=" libboost_date_time1.80"
@@ -99,6 +97,19 @@ subpackages+=" libboost_wserialization1.80"
 subpackages+=" libboost_context1.80"
 
 CXXFLAGS="-std=c++14"
+
+# on glibc ppc, boost.math disables long double stuff because of
+# non-ieee754-conforming long double type (IBM double-double)
+#
+# this does not affect musl (where long double is 64-bit)
+case "$XBPS_TARGET_MACHINE" in
+  ppc64le|ppc64|ppc)
+    ;;
+  *)
+    subpackages+=" libboost_math_c99l1.80"
+    subpackages+=" libboost_math_tr1l1.80"
+    ;;
+esac
 
 if [[ -z "$CROSS_BUILD" ]]; then
   subpackages+=" libboost_stacktrace_addr2line1.80"
