@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bat"
-version=0.22.0
+version=0.22.1
 revision=1
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
 makedepends+=" libcurl-devel"
@@ -13,7 +13,7 @@ homepage="https://github.com/sharkdp/bat"
 license="Apache-2.0, MIT"
 changelog="https://github.com/sharkdp/bat/raw/master/CHANGELOG.md"
 distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="bec63bffc315bda7b65d472a19833e14bbaff4d251cedf8bfc77c82a00b77bfc"
+checksum="25e45debf7c86794281d63a51564feefa96fdfdf575381e3adc5c06653ecaeca"
 build_style="cargo"
 
 # skip problematic doctests on i686
