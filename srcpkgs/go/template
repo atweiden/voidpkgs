@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="go"
-version=1.19
+version=1.19.1
 revision=1
 short_desc="Go Programming Language"
 checkdepends+=" clang"
@@ -11,7 +11,7 @@ homepage="https://go.dev/"
 license="BSD-3-Clause"
 changelog="https://go.dev/doc/devel/release.html"
 distfiles="https://go.dev/dl/go$version.src.tar.gz"
-checksum="9419cc70dc5a2523f29a77053cafff658ed21ef3561d9b6b020280ebceab28b9"
+checksum="27871baa490f3401414ad793fba49086f6c855b1c584385ed7771e1204c7e179"
 create_wrksrc="yes"
 build_wrksrc="go"
 nostrip="yes"
