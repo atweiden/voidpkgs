@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="m4"
-version=1.4.18
-revision=2
+version=1.4.19
+revision=1
 short_desc="GNU version of UNIX m4 macro language processor"
 homepage="https://www.gnu.org/software/m4/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/m4/$pkgname-$version.tar.xz"
-checksum="f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07"
+checksum="63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96"
 build_style="gnu-configure"
 configure_args+=" --enable-changeword"
 configure_args+=" --enable-threads"
@@ -27,20 +27,11 @@ fi
 
 pre_check() {
   case "$XBPS_TARGET_MACHINE" in
-    *-musl* )
-      # disable locale tests that fail on musl
+    # disable tests that fail on musl
+    *-musl)
       sed \
         -i \
-        -e '/test-localename$(EXEEXT)/d' \
-        tests/Makefile
-      sed \
-        -i \
-        -e '/test-mbrtowc5.sh/d' \
-        tests/Makefile
-      # fails because test-localename doesn't work on musl
-      sed \
-        -i \
-        -e '/test-localeconv$(EXEEXT)/d' \
+        -e '/test-getcwd.sh/d' \
         tests/Makefile
       ;;
   esac
