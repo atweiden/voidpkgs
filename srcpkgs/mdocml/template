@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="mdocml"
 version=1.14.6
-revision=3
+revision=4
 short_desc="UNIX manpage compiler toolset (mandoc)"
 depends="less"
-makedepends+=" less"
-makedepends+=" zlib-devel"
+makedepends="zlib-devel"
 checkdepends="perl"
+hostmakedepends="less"
 homepage="http://mandoc.bsd.lv"
 license="ISC"
 distfiles="http://mandoc.bsd.lv/snapshots/mandoc-$version.tar.gz"
