@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="xmandump"
-version=0.2.5
+version=0.2.6
 revision=1
 short_desc="Dump all manpages in an XBPS package for use with man.cgi"
 homepage="https://github.com/void-linux/xmandump"
 license="ISC"
 distfiles="https://github.com/void-linux/xmandump/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="262e17f4da48fea1feead4a7a9827f2d44efde4bbe0d149a725674e118eabf69"
+checksum="d799957d02e27375f06e0fbce75fe5e3091c75aec22adb5132b703debae0601b"
 build_style="go"
 go_import_path="github.com/void-linux/xmandump"
 go_package="$go_import_path/cmd/xmandump"
