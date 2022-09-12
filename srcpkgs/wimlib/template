@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="wimlib"
-version=1.13.5
+version=1.13.6
 revision=1
 short_desc="Create, extract, and modify Windows Imaging archives"
 makedepends+=" libxml2-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://wimlib.net/"
 license="GPL-3.0-or-later"
 distfiles="https://wimlib.net/downloads/$pkgname-$version.tar.gz"
-checksum="32fcc9e9b144b7cb1db4c86e104ca78283cdc225e13fe82b273660586aefe323"
+checksum="0a0f9c1c0d3a2a76645535aeb0f62e03fc55914ca65f3a4d5599bb8b0260dbd9"
 build_style="gnu-configure"
 make_check="extended"
 
