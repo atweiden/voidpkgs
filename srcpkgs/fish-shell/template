@@ -26,7 +26,7 @@ fi
 
 post_install() {
   # starting with fish-3.0.0 this is a skeleton file with only comments
-  rm "$DESTDIR/usr/etc/fish/config.fish"
+  rm "$DESTDIR/etc/fish/config.fish"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
