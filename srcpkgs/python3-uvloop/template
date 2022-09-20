@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-uvloop"
-version=0.16.0
-revision=2
+version=0.17.0
+revision=1
 short_desc="Fast replacement for Python asyncio event loop"
 depends="python3"
 makedepends+=" libuv-devel"
@@ -16,14 +16,14 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/MagicStack/uvloop"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/MagicStack/uvloop/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b003d3110baf076d3e70c85fb96a434ea67ad2f4c4ccb11cfce7e00ce8565378"
+checksum="175ac8aeb251da6a6a72f504f451ad7b4e60092d5adee9231b0a67ad2e7ca235"
 wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 do_check() {
   # for some reason, setting PYTHONPATH is not sufficient
   cp build/lib*/uvloop/*.so uvloop
-  python3 -m pytest tests -k 'not Test_UV_TCPSSL'
+  python3 -m pytest tests -k 'not (Test_AIO_TCPSSL or Test_UV_libuv)'
 }
 
 post_patch() {
