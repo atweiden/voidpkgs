@@ -38,6 +38,7 @@ pre_configure() {
       proc.c
   fi
 
+  mkdir -p config
   autoreconf -fi
 }
 
