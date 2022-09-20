@@ -1,0 +1,17 @@
+# Template file for 'rusty-diceware'
+pkgname=rusty-diceware
+version=0.3.9
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=cargo
+short_desc="Commandline diceware, sans dice, written in rustlang"
+maintainer="jcgruenhage <jan.christian@gruenhage.xyz>"
+license="AGPL-3.0-only"
+homepage="https://gitlab.com/yuvallanger/rusty-diceware"
+changelog="https://gitlab.com/yuvallanger/rusty-diceware/-/raw/master/CHANGELOG.md"
+distfiles="https://gitlab.com/yuvallanger/rusty-diceware/-/archive/v${version}/rusty-diceware-v${version}.tar.gz"
+checksum=46303f5e0194ca2e064135a36c3d85bd4cf52152614e700cd3aa564f4af9a0ed
+
+post_install() {
+	vlicense LICENSE
+}
