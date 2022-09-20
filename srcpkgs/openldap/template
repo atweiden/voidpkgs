@@ -8,9 +8,7 @@ makedepends+=" db-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libsasl-devel"
 makedepends+=" openssl-devel"
-hostmakedepends+=" automake"
 hostmakedepends+=" groff"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="http://www.openldap.org"
 license="OLDAP-2.0"
@@ -56,10 +54,6 @@ pre_configure() {
     -i \
     -e 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' \
     servers/slapd/Makefile.in
-  aclocal
-  autoconf
-  autoheader
-  libtoolize -f
 }
 
 post_install() {
