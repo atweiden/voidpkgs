@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="hatchling"
-version=1.8.1
+version=1.9.0
 revision=1
 short_desc="Extensible, standards compliant build backend used by Hatch"
 depends+=" python3-editables"
@@ -14,7 +14,7 @@ homepage="https://hatch.pypa.io/latest/"
 license="MIT"
 changelog="https://github.com/pypa/hatch/raw/master/docs/history.md"
 distfiles="$PYPI_SITE/h/$pkgname/$pkgname-$version.tar.gz"
-checksum="448b04b23faed669b2b565b998ac955af4feea66c5deed3a1212ac9399d2e1cd"
+checksum="b57c7362f437b9426e4b94228a21d2ac5804fbb2abcb01adde2544a35bb303cd"
 build_style="python3-pep517"
 
 post_install() {
