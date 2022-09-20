@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible-core"
-version=2.13.3
+version=2.13.4
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends+=" git"
@@ -30,7 +30,7 @@ homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ansible/ansible/raw/stable-${version%.*}/changelogs/CHANGELOG-v${version%.*}.rst"
 distfiles="$PYPI_SITE/a/ansible-core/ansible-core-$version.tar.gz"
-checksum="eec5042530ff1c0c8d13a36fa047c6dd9157efeefd464a856b4ce38be4cd1988"
+checksum="78f45c2c472af60b9b4b8cbdaba5a3911079087891a9f6c6ed726327b8f21c6a"
 conflicts="ansible<2.10.1_1"
 replaces="ansible-base<2.11.0_1"
 
