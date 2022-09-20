@@ -1,19 +1,30 @@
-# Template file for 'gtk-doc'
-pkgname=gtk-doc
+maintainer="nox"
+pkgname="gtk-doc"
 version=1.33.2
 revision=1
-build_style=meson
+short_desc="Documentation tool for public library API"
+depends+=" docbook-xml"
+depends+=" docbook-xsl"
+depends+=" libxslt"
+depends+=" python3-Pygments"
+depends+=" python3-anytree"
+depends+=" python3-lxml"
+hostmakedepends+=" docbook-xml"
+hostmakedepends+=" docbook-xsl"
+hostmakedepends+=" gettext"
+hostmakedepends+=" itstool"
+hostmakedepends+=" libxslt"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
+hostmakedepends+=" python3-Pygments"
+homepage="http://www.gtk.org/gtk-doc/"
+license="GPL-2.0-or-later, GFDL-1.1-or-later"
+distfiles="$GNOME_SITE/gtk-doc/${version%.*}/$pkgname-$version.tar.xz"
+checksum="cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43"
+build_style="meson"
 # disable tests to avoid cyclic dependency on glib
 configure_args="-Dtests=false"
 pycompile_dirs="usr/share/gtk-doc/python/gtkdoc"
-hostmakedepends="gettext docbook-xml docbook-xsl itstool libxslt pkg-config
- python3 python3-Pygments"
-depends="docbook-xml docbook-xsl libxslt python3-anytree
- python3-Pygments python3-lxml"
-short_desc="Documentation tool for public library API"
-maintainer="Enno Boland <gottox@voidlinux.org>"
-license="GPL-2.0-or-later, GFDL-1.1-or-later"
-homepage="http://www.gtk.org/gtk-doc/"
-distfiles="${GNOME_SITE}/${pkgname}/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43
 python_version=3
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
