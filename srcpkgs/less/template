@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="less"
-version=590
-revision=2
+version=608
+revision=1
 short_desc="Pager program similar to more(1)"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
 homepage="http://www.greenwoodsoftware.com/less"
 license="GPL-3.0-or-later"
 distfiles="http://www.greenwoodsoftware.com/less/$pkgname-$version.tar.gz"
-checksum="6aadf54be8bf57d0e2999a3c5d67b1de63808bb90deb8f77b028eafae3a08e10"
+checksum="a69abe2e0a126777e021d3b73aa3222e1b261f10e64624d41ec079685a6ac209"
 build_style="gnu-configure"
 configure_args="--with-regex=pcre2"
 
