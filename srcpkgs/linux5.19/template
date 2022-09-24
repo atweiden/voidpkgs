@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.19"
-version=5.19.9
+version=5.19.10
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -30,7 +30,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8"
-checksum+=" fc2220e9659ab46c34ac0ca079bcaa06d2a1d751276868b5ebfbf1f605279ef5"
+checksum+=" f3dce055bbe07f2301a738531c9c1a43407a37be403e499dc277960c85ee52e2"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 python_version=3
