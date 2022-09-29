@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=053
-revision=3
+revision=4
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -28,6 +28,8 @@ configure_args+=" --sysconfdir=/etc"
 make_check="no"
 make_dirs+=" /etc/dracut.conf.d 0755 root root"
 make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
+alternatives+=" initramfs:/etc/kernel.d/post-install/20-initramfs:/usr/libexec/dracut/kernel-hook-postinst"
+alternatives+=" initramfs:/etc/kernel.d/post-remove/20-initramfs:/usr/libexec/dracut/kernel-hook-postrm"
 subpackages="dracut-network"
 
 case "$XBPS_TARGET_MACHINE" in
@@ -40,8 +42,8 @@ esac
 
 post_install() {
   # kernel hooks
-  vinstall "$FILESDIR/kernel-hook-postinst" 755 etc/kernel.d/post-install 20-dracut
-  vinstall "$FILESDIR/kernel-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut
+  vinstall "$FILESDIR/kernel-hook-postinst" 755 usr/libexec/dracut
+  vinstall "$FILESDIR/kernel-hook-postrm" 755 usr/libexec/dracut
 
   if [[ -n "$_efi_bundle" ]]; then
     vinstall "$FILESDIR/dracut-uefi-hook.confd" 644 etc/default dracut-uefi-hook
