@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-FCGI"
 version=0.82
-revision=1
+revision=2
 short_desc="Fast CGI module"
 makedepends="fcgi-devel"
 homepage="https://metacpan.org/pod/FCGI"
