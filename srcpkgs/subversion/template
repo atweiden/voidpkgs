@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="subversion"
 version=1.14.2
-revision=1
+revision=2
 short_desc="A modern concurrent version control system"
 depends="ca-certificates"
 makedepends+=" apache-devel"
@@ -79,7 +79,10 @@ EOF
     vsed \
       -i \
       -e "s;archlibexp => '\(.*\)';archlibexp => '$XBPS_CROSS_BASE\1';" \
-      "$PERL5LIB/Config.pm" \
+      "$PERL5LIB/Config.pm"
+    vsed \
+      -i \
+      -e "s;archlibexp='\(.*\)';archlibexp='${XBPS_CROSS_BASE}\1';" \
       "$PERL5LIB/Config_heavy.pl"
   else
     configure_args+=" --with-apxs"
