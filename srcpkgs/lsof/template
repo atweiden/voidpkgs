@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="lsof"
-version=4.95.0
+version=4.96.3
 revision=1
 short_desc="LiSt Open Files"
-hostmakedepends="perl"
+hostmakedepends+=" groff"
+hostmakedepends+=" perl"
 homepage="https://github.com/lsof-org/lsof"
 license="custom:lsof"
 changelog="https://github.com/lsof-org/lsof/raw/master/00DIST"
-distfiles="https://github.com/lsof-org/lsof/releases/download/$version/lsof_$version.linux.tar.bz2"
-checksum="e9faa0fbcc48638c1d1f143e93573ac43b65e76646150f83e24bd8c18786303c"
-wrksrc="${pkgname}_$version.linux"
+distfiles="https://github.com/lsof-org/lsof/archive/$version/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="2753fc01452a3d2ee665e8365afdac0e9683197f3ec06231aa684a48b286d11c"
 build_style="configure"
 configure_script="./Configure"
 configure_args="-n linux"
@@ -23,6 +23,8 @@ post_extract() {
   # TestDB. But we don't want that.
   rm tests/CkTestDB
   ln -s /bin/true tests/CkTestDB
+
+  soelim Lsof.8 | grep -vi '^\.lf ' > lsof.8
 }
 
 pre_configure() {
