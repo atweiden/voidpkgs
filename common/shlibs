@@ -528,7 +528,7 @@ libvdesnmp.so.0 libvde2-2.3.2_23
 libvorbis.so.0 libvorbis-1.2.1rc1_1
 libvorbisenc.so.2 libvorbis-1.2.1rc1_1
 libvorbisfile.so.3 libvorbis-1.2.1rc1_1
-libvterm.so.0 libvterm-0.0.20151005_1
+libvterm.so.0 libvterm-0.3_1
 libvtv.so.0 libvtv-6.3.0_1
 libwebpdemux.so.2 libwebp-0.5.0_1
 libwebp.so.7 libwebp-0.6.0_1
