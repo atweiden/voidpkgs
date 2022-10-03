@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="toxcore"
-version=0.2.13
+version=0.2.18
 revision=1
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
 makedepends+=" libconfig-devel"
@@ -9,14 +9,25 @@ hostmakedepends="pkg-config"
 homepage="https://tox.chat"
 license="GPL-3.0-or-later"
 changelog="https://github.com/TokTok/c-toxcore/raw/master/CHANGELOG.md"
-distfiles="https://github.com/TokTok/c-toxcore/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="67114fa57504c58b695f5dce8ef85124d555f2c3c353d0d2615e6d4845114ab8"
+distfiles="https://github.com/TokTok/c-toxcore/releases/download/v$version/c-toxcore-$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f2940537998863593e28bc6a6b5f56f09675f6cd8a28326b7bc31b4836c08942"
+conf_files="/etc/tox-bootstrapd.conf"
 wrksrc="c-$pkgname-$version"
 build_style="cmake"
-configure_args="-DBUILD_TOXAV=OFF"
+configure_args+=" -DBOOTSTRAP_DAEMON=ON"
+configure_args+=" -DBUILD_TOXAV=OFF"
+configure_args+=" -DDHT_BOOTSTRAP=OFF"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -DAUTOTEST=ON"
+fi
+system_accounts="_tox_bootstrapd"
+_tox_bootstrapd_homedir="/var/lib/tox-bootstrapd"
+_tox_bootstrapd_desc="Account to run Tox's DHT bootstrap daemon"
+make_dirs="/var/lib/tox-bootstrapd 0700 _tox_bootstrapd _tox_bootstrapd"
 
 post_install() {
-  vsconf other/bootstrap_daemon/tox-bootstrapd.conf
+  vconf other/bootstrap_daemon/tox-bootstrapd.conf
+  vsv tox-bootstrapd
 }
 
 toxcore-devel_package() {
