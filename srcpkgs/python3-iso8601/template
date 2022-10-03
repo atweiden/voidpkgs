@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-iso8601"
-version=1.0.2
+version=1.1.0
 revision=1
 short_desc="ISO8601 formatted dated parser for Python3"
 depends="python3"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/micktwomey/pyiso8601"
 license="MIT"
 distfiles="$PYPI_SITE/i/iso8601/iso8601-$version.tar.gz"
-checksum="27f503220e6845d9db954fb212b95b0362d8b7e6c1b2326a87061c3de93594b1"
+checksum="32811e7b81deee2063ea6d2e94f8819a86d1f3811e49d23623a41fa832bef03f"
 wrksrc="iso8601-$version"
 build_style="python3-module"
 replaces="python3-iso-8601>=0"
