@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="chrony"
-version=4.2
+version=4.3
 revision=1
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
 makedepends+=" gnutls-devel"
@@ -13,7 +13,7 @@ homepage="https://chrony.tuxfamily.org/"
 license="GPL-2.0-only"
 changelog="https://chrony.tuxfamily.org/news.html"
 distfiles="https://download.tuxfamily.org/chrony/$pkgname-$version.tar.gz"
-checksum="273f9fd15c328ed6f3a5f6ba6baec35a421a34a73bb725605329b1712048db9a"
+checksum="9d0da889a865f089a5a21610ffb6713e3c9438ce303a63b49c2fb6eaff5b8804"
 conf_files="/etc/chrony.conf"
 # when updating, confirm upstream config still refers to make_dirs
 make_dirs+=" /var/lib/chrony 0755 chrony chrony"
