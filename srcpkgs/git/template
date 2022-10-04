@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="git"
-version=2.37.3
+version=2.38.0
 revision=1
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
@@ -27,7 +27,7 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/git/git/raw/master/Documentation/RelNotes/$version.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/$pkgname-$version.tar.xz"
-checksum="814641d7f61659cfbc17825d0462499ca1403e39ff53d76a8512050e6483e87a"
+checksum="923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a"
 build_style="gnu-configure"
 configure_args+=" --with-curl"
 configure_args+=" --with-expat"
@@ -40,6 +40,7 @@ subpackages+=" git-cvs"
 subpackages+=" git-svn"
 subpackages+=" git-all"
 subpackages+=" git-netrc"
+subpackages+=" git-scalar"
 
 do_configure() {
   cat <<-EOF >config.mak
@@ -58,6 +59,9 @@ DEFAULT_TEST_TARGET = prove
 GIT_PROVE_OPTS = $makejobs
 # firstword (uname -m)
 HOST_CPU = ${XBPS_TARGET_MACHINE%-musl}
+# this flag will skip shipping unneeded symlinks
+# those symlinks were kept for scripts written before 2010
+SKIP_DASHED_BUILT_INS = Yes
 EOF
 
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
@@ -71,8 +75,7 @@ EOF
 }
 
 do_build() {
-  make "$makejobs"
-  make "$makejobs" -C Documentation man
+  make "$makejobs" all man
   make "$makejobs" -C contrib/contacts all git-contacts.1
   make "$makejobs" -C contrib/diff-highlight all
   make "$makejobs" -C contrib/subtree all man
@@ -87,7 +90,7 @@ do_check() {
 }
 
 do_install() {
-  make DESTDIR="$DESTDIR" install install-doc
+  make DESTDIR="$DESTDIR" install install-man
   vinstall contrib/completion/git-completion.bash 644 \
     usr/share/bash-completion/completions git
   vinstall contrib/completion/git-prompt.sh 644 usr/share/git
@@ -98,6 +101,16 @@ do_install() {
   vdoc contrib/git-jump/README git-jump
   make -C contrib/subtree DESTDIR="$DESTDIR" install install-man
   make -C contrib/credential/netrc DESTDIR="$DESTDIR" install
+}
+
+git-scalar_package() {
+  depends="git"
+  short_desc="Tool for managing large Git repositories"
+  pkg_install() {
+    vmove usr/bin/scalar
+    vmove usr/libexec/git-core/scalar
+    vmove usr/share/man/man1/scalar.1
+  }
 }
 
 git-cvs_package() {

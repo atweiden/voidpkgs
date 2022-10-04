@@ -244,6 +244,7 @@ constant %PKG = Map.new(
     'git' => qw<git-all
                 git-cvs
                 git-netrc
+                git-scalar
                 git-svn>,
     'glibc' => qw<glibc-devel
                   glibc-locales
