@@ -818,6 +818,8 @@ constant %PKG = Map.new(
                liblzma-devel>,
     'yascreen' => ['yascreen-devel'],
     'zeromq' => ['zeromq-devel'],
+    'zfs' => qw<zfs-devel
+                zfs-pam>,
     'zlib' => ['zlib-devel'],
     'znc' => qw<znc-devel
                 znc-perl
