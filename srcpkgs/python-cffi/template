@@ -7,8 +7,6 @@ depends="python-pycparser"
 makedepends+=" libffi-devel"
 makedepends+=" python-devel"
 makedepends+=" python3-devel"
-checkdepends+=" python-pycparser"
-checkdepends+=" python-pytest"
 checkdepends+=" python3-pycparser"
 checkdepends+=" python3-pytest"
 hostmakedepends+=" libffi-devel"
@@ -33,8 +31,6 @@ do_check() {
   excludes+=' and not test_wraps_from_stdlib'
   excludes+=' and not test_stdcall_only_on_windows'
 
-  PYTHONPATH="$(cd build-2.7/lib* && pwd)" \
-    python2 -m pytest c/ testing/ -x -k "$excludes"
   PYTHONPATH="$(cd "build-$py3_ver"/lib* && pwd)" \
     python3 -m pytest c/ testing/ -x -k "$excludes"
 }
