@@ -692,7 +692,6 @@ constant %PKG = Map.new(
     'python-cram' => ['python3-cram'],
     'python-dateutil' => ['python3-dateutil'],
     'python-parsing' => ['python3-parsing'],
-    'python-pathlib2' => ['python3-pathlib2'],
     'python-ply' => ['python3-ply'],
     'python-pyasn1' => ['python3-pyasn1'],
     'python-pyasn1-modules' => ['python3-pyasn1-modules'],
