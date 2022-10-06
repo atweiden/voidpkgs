@@ -4,9 +4,6 @@ version=21.2.0
 revision=2
 short_desc="Attributes without boilerplate (Python2)"
 depends="python"
-checkdepends+=" python-hypothesis"
-checkdepends+=" python-pytest"
-checkdepends+=" python-zope.interface"
 checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-six"
@@ -21,7 +18,6 @@ wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {
-  PYTHONPATH="$(cd build-2.7/lib* && pwd)" python2 -m pytest
   PYTHONPATH="$(cd "build-$py3_ver"/lib* && pwd)" python3 -m pytest
 }
 
