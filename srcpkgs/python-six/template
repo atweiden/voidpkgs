@@ -4,8 +4,7 @@ version=1.16.0
 revision=2
 short_desc="Python 2 and 3 compatibility utilities (Python2)"
 depends="python"
-checkdepends+=" python-pytest"
-checkdepends+=" python3-pytest"
+checkdepends="python3-pytest"
 hostmakedepends+=" python-setuptools"
 hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/benjaminp/six"
@@ -17,7 +16,6 @@ wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {
-  python -m pytest
   python3 -m pytest
 }
 
