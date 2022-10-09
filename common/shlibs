@@ -440,7 +440,7 @@ libpcrecpp.so.0 libpcrecpp-7.8_1
 libpcsclite.so.1 libpcsclite-1.8.11_1
 libpcscspy.so.0 libpcsclite-1.8.11_1
 libpipeline.so.1 libpipeline-1.2.0_1
-libpkgconf.so.3 libpkgconf-1.8.0_1
+libpkgconf.so.4 libpkgconf-1.9.3_1
 libpng16.so.16 libpng-1.6.2_1
 libprotobuf.so.32 libprotobuf-21.4_1
 libprotobuf-lite.so.32 libprotobuf-lite-21.4_1
