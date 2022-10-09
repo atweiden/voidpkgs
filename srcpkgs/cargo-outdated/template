@@ -1,24 +1,18 @@
 maintainer="nox"
 pkgname="cargo-outdated"
-version=0.9.9
-revision=3
+version=0.11.1
+revision=1
 short_desc="Cargo subcommand for displaying when dependencies are out of date"
 makedepends+=" libgit2-devel"
 makedepends+=" openssl-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" zlib-devel"
 homepage="https://github.com/kbknapp/cargo-outdated"
 license="MIT"
+changelog="https://github.com/kbknapp/cargo-outdated/raw/master/CHANGELOG.md"
 distfiles="https://github.com/kbknapp/cargo-outdated/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f23bb266d0f31316817e6350b4a02a91cbb6b02baa280092bbd9719ebfee31b4"
+checksum="2d80f0243d70a3563c48644dd3567519c32a733fb5d20f1161fd5d9f8e6e9146"
 build_style="cargo"
-
-# remove with dependency update to cargo 0.44 or newer
-export LIBGIT2_SYS_USE_PKG_CONFIG=1
-
-pre_build() {
-  cargo update --package openssl-sys --precise 0.9.58
-  cargo update --package openssl --precise 0.10.30
-}
 
 post_install() {
   vlicense LICENSE-MIT
