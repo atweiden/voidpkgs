@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lxd"
-version=5.2
+version=5.6
 revision=1
 short_desc="Next generation system container manager"
 depends+=" acl"
@@ -22,7 +22,7 @@ homepage="https://linuxcontainers.org/lxd"
 license="Apache-2.0"
 changelog="https://github.com/lxc/lxd/releases"
 distfiles="https://linuxcontainers.org/downloads/lxd/$pkgname-$version.tar.gz"
-checksum="e22d2b34a1848d33b2080b2b1c82355afb6d36fdfe49e67f44b3749edbc02e4c"
+checksum="6cb2a5f4ea6fc57a339aa8d7f21636c4889579cb418a8843c53cdde5dbb9c3ee"
 build_style="go"
 go_import_path="github.com/lxc/lxd"
 go_package+=" $go_import_path/fuidshift"
