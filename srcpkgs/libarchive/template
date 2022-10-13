@@ -42,6 +42,10 @@ build_options_default+=" lz4"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
 
+pre_configure() {
+  export LIBS="-pthread"
+}
+
 do_check() {
   case "$XBPS_TARGET_LIBC" in
     *musl)
