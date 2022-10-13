@@ -19,6 +19,8 @@ build_style="configure"
 make_dirs="/etc/xbps.d 0755 root root"
 bootstrap="yes"
 
+LDFLAGS="-ldl -pthread"
+
 if [[ -n "$CHROOT_READY" ]]; then
   makedepends+=" atf-devel"
   xbps-tests_package() {
