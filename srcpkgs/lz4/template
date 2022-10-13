@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lz4"
-version=1.9.3
+version=1.9.4
 revision=1
 short_desc="LZ4 compression utilities"
 checkdepends="python3"
@@ -8,7 +8,7 @@ homepage="https://lz4.github.io/lz4"
 license="BSD-2-Clause, GPL-2.0-or-later"
 changelog="https://github.com/lz4/lz4/raw/dev/NEWS"
 distfiles="https://github.com/lz4/lz4/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1"
+checksum="0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b"
 build_style="gnu-makefile"
 make_check_target="test"
 bootstrap="yes"
