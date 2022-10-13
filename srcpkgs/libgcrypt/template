@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libgcrypt"
 version=1.10.1
-revision=1
+revision=2
 short_desc="GNU cryptographic library"
 makedepends="libgpg-error-devel"
 homepage="https://www.gnupg.org"
