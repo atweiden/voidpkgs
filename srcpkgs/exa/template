@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="exa"
 version=0.10.1
-revision=1
+revision=2
 short_desc="Modern replacement for ls"
 makedepends="libgit2-devel"
 hostmakedepends="pkg-config"
@@ -20,12 +20,12 @@ post_extract() {
 }
 
 post_install() {
-  vman accoutrements/man/exa.1
-  vman accoutrements/man/exa_colors.5
   vcompletion completions/completions.bash bash
   vcompletion completions/completions.fish fish
   vcompletion completions/completions.zsh zsh
   vlicense LICENCE
+  vman accoutrements/man/exa.1
+  vman accoutrements/man/exa_colors.5
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
