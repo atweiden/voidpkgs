@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="cargo-outdated"
 version=0.11.1
-revision=1
+revision=2
 short_desc="Cargo subcommand for displaying when dependencies are out of date"
+makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
 makedepends+=" openssl-devel"
 hostmakedepends+=" pkg-config"
