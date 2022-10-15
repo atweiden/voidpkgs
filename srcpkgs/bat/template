@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="bat"
 version=0.22.1
-revision=1
+revision=2
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
 makedepends+=" libcurl-devel"
+makedepends+=" libgit2-devel"
 makedepends+=" libssh2-devel"
 makedepends+=" oniguruma-devel"
 hostmakedepends+=" clang"
 hostmakedepends+=" cmake"
 hostmakedepends+=" llvm"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/sharkdp/bat"
 license="Apache-2.0, MIT"
 changelog="https://github.com/sharkdp/bat/raw/master/CHANGELOG.md"
@@ -19,7 +21,7 @@ build_style="cargo"
 # skip problematic doctests on i686
 case "$XBPS_TARGET_MACHINE" in
   i686)
-    make_check_args="-- --skip src/"
+    make_check_args="--tests"
     ;;
   *)
     ;;
