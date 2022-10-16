@@ -5,12 +5,11 @@ revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
-# restrict archs until proper <arch>-dotconfig is available in FILESDIR
 archs+=" aarch64*"
 archs+=" i686*"
-archs+=" mips*"
-archs+=" ppc*"
 archs+=" x86_64*"
+# ppc: ERROR: modpost: "__devm_regmap_init_mmio_clk" [drivers/gpu/drm/logicvc/logicvc-drm.ko] undefined!
+archs+=" ppc64*"
 hostmakedepends+=" bc"
 hostmakedepends+=" cpio"
 hostmakedepends+=" elfutils-devel"
