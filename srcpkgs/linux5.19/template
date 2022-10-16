@@ -8,7 +8,6 @@ short_desc="Linux kernel and modules (${version%.*} series)"
 # restrict archs until proper <arch>-dotconfig is available in FILESDIR
 archs+=" aarch64*"
 archs+=" i686*"
-archs+=" mips*"
 archs+=" ppc*"
 archs+=" x86_64*"
 hostmakedepends+=" bc"
