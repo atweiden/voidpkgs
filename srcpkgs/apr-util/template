@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apr-util"
 version=1.6.1
-revision=12
+revision=13
 short_desc="Apache Portable Runtime Utility Library"
 makedepends+=" apr-devel"
 makedepends+=" db-devel"
@@ -39,6 +39,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
 else
   configure_args+=" --with-apr=/usr/bin/apr-1-config"
 fi
+# fails to build tests
+make_check="no"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
