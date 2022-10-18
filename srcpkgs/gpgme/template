@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gpgme"
 version=1.18.0
-revision=1
+revision=2
 short_desc="GnuPG Made Easy"
 depends="gnupg>=2"
 makedepends="libassuan-devel"
