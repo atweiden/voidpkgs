@@ -13,11 +13,24 @@ build_style="go"
 go_import_path="github.com/netauth/netauth"
 go_package+=" $go_import_path/cmd/netauth"
 go_package+=" $go_import_path/cmd/netauthd"
+go_package+=" $go_import_path/cmd/nsutil"
 go_ldflags="-buildid="
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
 export GOFLAGS="-trimpath"
 
 post_install() {
+  for sh in bash \
+            zsh; do
+    "$DESTDIR/usr/bin/netauth" system cli "$sh" "netauth.$sh"
+    vcompletion "netauth.$sh" "$sh" netauth
+  done
+  mkdir manpages
+  "$DESTDIR/usr/bin/netauth" system cli man manpages
+  for p in manpages/*; do
+    vman "$p"
+  done
   vlicense LICENSE
   vsv netauthd
 }
