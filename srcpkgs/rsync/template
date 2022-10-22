@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rsync"
-version=3.2.6
+version=3.2.7
 revision=1
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
@@ -16,7 +16,7 @@ homepage="https://rsync.samba.org/"
 license="GPL-3.0-only"
 changelog="https://download.samba.org/pub/rsync/NEWS"
 distfiles="https://www.samba.org/ftp/rsync/src/$pkgname-$version.tar.gz"
-checksum="fb3365bab27837d41feaf42e967c57bd3a47bc8f10765a3671efd6a3835454d3"
+checksum="4e7d9d3f6ed10878c58c5fb724a67dacf4b6aac7340b13e488fb2dc41346f2bb"
 conf_files="/etc/rsyncd.conf"
 build_style="gnu-configure"
 configure_args+=" --with-included-zlib=no"
@@ -37,6 +37,9 @@ pre_check() {
 post_install() {
   vconf "$FILESDIR/rsyncd.conf"
   vsv rsyncd
+  vbin support/nameconvert
+  vbin support/json-rsync-version
+  vbin support/rsyncstats
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
