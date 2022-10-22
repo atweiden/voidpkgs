@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbsd"
 version=0.11.7
-revision=1
+revision=2
 short_desc="Provides useful functions commonly found on BSD system"
 makedepends="libmd-devel"
 homepage="https://libbsd.freedesktop.org/"
@@ -15,7 +15,9 @@ post_install() {
 }
 
 libbsd-devel_package() {
-  depends="$sourcepkg>=${version}_$revision"
+  unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
+  depends+=" libmd-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
