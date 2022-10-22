@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-Path-Tiny"
-version=0.128
+version=0.130
 revision=1
 short_desc="Path::Tiny - File path utility"
 depends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Path-Tiny"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Object/DAGOLDEN/Path-Tiny-$version.tar.gz"
-checksum="263e164d7b2e01f331b482e37119ea9bea366e402b0b08b7d8fc14d3024ee57c"
+checksum="74109aec04ddd83d80ee14a5346e8bc3e3f4673238e1c7358693bff348196c13"
 wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
