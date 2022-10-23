@@ -9,13 +9,11 @@ distfiles+=" http://cr.yp.to/daemontools/$pkgname-$version.tar.gz"
 distfiles+=" http://smarden.org/pape/djb/manpages/$pkgname-$version-man-20020131.tar.gz"
 checksum+=" a55535012b2be7a52dcd9eccabb9a198b13be50d0384143bd3b32b8710df4c1f"
 checksum+=" 1b4d77afe0878a0df587672531a3f7bbe0feb7ad0e9acf50395426e3c434600a"
-wrksrc="admin"
-patch_args="-Np0"
-build_wrksrc=$pkgname-$version
+create_wrksrc="yes"
 build_style="slashpackage"
 
 post_extract() {
-  mv "$XBPS_BUILDDIR/daemontools-man" "$wrksrc"
+  mv "admin/$pkgname-$version"/* .
 }
 
 post_install() {
