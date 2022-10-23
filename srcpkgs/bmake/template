@@ -7,11 +7,10 @@ homepage="https://www.crufty.net/help/sjg/bmake.html"
 license="BSD-3-Clause"
 distfiles="https://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz"
 checksum="c804b77de3feb8e31dee2a4c9fb1e9ec24c5a34764e7a2815c88b4ed01650e90"
-create_wrksrc="yes"
+wrksrc="bmake"
 python_version=3
 
 do_configure() {
-  cd bmake
   vsed \
     -i \
     -e 's/op_test() {/& return 0;/' \
@@ -37,8 +36,8 @@ do_configure() {
 
 do_build() {
   local _args
-  mkdir -p bmake/bmake-build
-  cd bmake/bmake-build
+  mkdir -p bmake-build
+  cd bmake-build
   if [[ -n "$CROSS_BUILD" ]]; then
     _args="--host=$XBPS_CROSS_TRIPLET"
   fi
@@ -49,11 +48,11 @@ do_build() {
 }
 
 do_install() {
-  cd bmake/bmake-build
+  cd bmake-build
   if [[ -n "$CROSS_BUILD" ]]; then
     vsed \
       -i \
-      -e "s,^BMAKE=$,BMAKE=$wrksrc/bmake/bmake-host/bmake," \
+      -e "s,^BMAKE=$,BMAKE=$wrksrc/bmake-host/bmake," \
       ../boot-strap
   fi
   ../boot-strap \
