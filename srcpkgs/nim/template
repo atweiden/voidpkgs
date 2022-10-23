@@ -16,8 +16,8 @@ distfiles+=" https://github.com/nim-lang/nimble/archive/v$_nimbleversion.tar.gz>
 checksum+=" 59836a85c1291b59af699a121b0b765703d6a0e44ed9f3ede363ff2b3e09d527"
 checksum+=" 71c823444c794a12da9027d19d6a717dd7759521ecbbe28190b08372142607ec"
 checksum+=" e6aa8d9ee4b3ed0321dca329b4a38fa546771b9729984482fb50fe73d3777f5d"
-build_wrksrc="Nim-$version"
 create_wrksrc="yes"
+build_wrksrc="Nim-$version"
 
 post_extract() {
   mv "csources_v1-$_c1version" "$build_wrksrc/csources_v1"

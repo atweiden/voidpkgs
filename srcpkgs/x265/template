@@ -13,7 +13,6 @@ wrksrc="multicoreware-x265_git-$_gitrev"
 build_wrksrc="source"
 build_style="cmake"
 configure_args="-DENABLE_PIC=1"
-
 build_options+=" altivec"
 build_options+=" assembly"
 desc_option_altivec="Enable AltiVec support on ppc64 (POWER8 and higher only)"

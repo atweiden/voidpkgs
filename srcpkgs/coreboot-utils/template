@@ -12,8 +12,8 @@ license="GPL-2.0-only"
 distfiles="https://coreboot.org/releases/${pkgname%-*}-$version.tar.xz"
 checksum="95da11d1c6a450385101a68799258a398ce965f4e46cce6fe8d5ebd74e50c125"
 wrksrc="${pkgname%-*}-$version"
-build_style="gnu-makefile"
 build_wrksrc="util"
+build_style="gnu-makefile"
 
 do_build() {
   for util in cbfstool \
