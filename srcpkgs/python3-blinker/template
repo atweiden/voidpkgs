@@ -1,20 +1,22 @@
 maintainer="nox"
 pkgname="python3-blinker"
-version=1.4
-revision=7
+version=1.5
+revision=1
 short_desc="Fast, simple object-to-object and broadcast signaling for Python3"
 depends="python3"
 makedepends="python3-devel"
+checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
-homepage="http://pythonhosted.org/blinker/"
+homepage="https://blinker.readthedocs.io/en/stable/"
 license="MIT"
+changelog="https://github.com/pallets-eco/blinker/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/b/blinker/blinker-$version.tar.gz"
-checksum="471aee25f3992bd325afa3772f1063dbdbbca947a041b8b89466dc00d606f8b6"
+checksum="923e5e2f69c155f2cc42dafbbd70e16e3fde24d2d4aa2ab72fbe386238892462"
 wrksrc="blinker-$version"
 build_style="python3-module"
 
 post_install() {
-  vlicense LICENSE
+  vlicense LICENSE.rst
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
