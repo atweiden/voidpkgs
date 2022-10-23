@@ -4,7 +4,7 @@ version=4.14
 revision=2
 _dbname="wireless-regdb"
 _dbversion=2020.11.20
-_dbsrc="$XBPS_BUILDDIR/$_dbname-$_dbversion/"
+_dbsrc="../$_dbname-$_dbversion/"
 short_desc="Central Regulatory Domain Agent for wireless networks"
 depends="iw"
 makedepends+=" libgcrypt-devel"
@@ -19,10 +19,13 @@ distfiles+=" https://www.kernel.org/pub/software/network/wireless-regdb/$_dbname
 checksum+=" 5a8f35bb8b27474f466b0e75d451ba917433d8aab1889678a64d9c4e72a8b8c2"
 checksum+=" b4164490d82ff7b0086e812ac42ab27baf57be24324d4c0ee1c5dd6ba27f2a52"
 conf_files="/etc/wireless-regdom.conf"
+create_wrksrc="yes"
+build_wrksrc="crda"
 build_options="wardrive"
 desc_option_wardrive="Disable CRDA checks for wardriving competitions"
 
 post_extract() {
+  mv "crda-$version" crda
   if [[ -n "$build_option_wardrive" ]]; then
     # max 2W =~ 33dBm
     sed \
@@ -34,10 +37,7 @@ post_extract() {
 
 do_build() {
   CFLAGS+=" -Wno-unused-const-variable"
-  cd "$_dbsrc"
-  make
-  cp *.pub.pem "$wrksrc/pubkeys"
-  cd "$wrksrc"
+  cp "$_dbsrc"/*.pub.pem pubkeys
   make CC="$CC" all_noverify
 }
 
