@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zellij"
-version=0.31.4
+version=0.32.0
 revision=1
 short_desc="Terminal workspace with batteries included"
 # dependency crate wasmer-vm only supports x86_64, arm64, x86
@@ -15,27 +15,24 @@ homepage="https://zellij.dev"
 license="MIT"
 changelog="https://github.com/zellij-org/zellij/raw/main/CHANGELOG.md"
 distfiles="https://github.com/zellij-org/zellij/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="286b08523457cdadee89bb1839f8d08ac402af00f3e27063520a7ed9ee7afc8a"
+checksum="e81cfc94bc15faeb1cacaddcea20e6f8220e6d288b84dfdf221c17d4868de2c0"
 build_style="cargo"
 # cross requires build_helper=qemu, see: upstream
 nocross="yes"
 
-post_build() {
-  ZELLIJ="target/$RUST_TARGET/release/zellij"
-  "$ZELLIJ" setup --generate-completion bash > zellij.bash
-  "$ZELLIJ" setup --generate-completion zsh > zellij.zsh
-  "$ZELLIJ" setup --generate-completion fish > zellij.fish
+post_install() {
+  vdoc README.md
+  vlicense LICENSE.md
+
+  ZELLIJ="$DESTDIR/usr/bin/zellij"
+  for shell in bash \
+               fish \
+               zsh; do
+    "$ZELLIJ" setup --generate-completion "$shell" > "zellij.$shell"
+    vcompletion "zellij.$shell" "$shell"
+  done
 
   mandown docs/MANPAGE.md > zellij.1
-}
-
-post_install() {
-  vcompletion zellij.bash bash
-  vcompletion zellij.zsh zsh
-  vcompletion zellij.fish fish
-
-  vlicense LICENSE.md
-  vdoc README.md
   vman zellij.1
 }
 
