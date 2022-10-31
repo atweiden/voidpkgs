@@ -18,12 +18,16 @@ build_style="gnu-configure"
 configure_args="--disable-static"
 lib32disabled="yes"
 
+post_extract() {
+  mv "cracklib-$version"/* .
+}
+
 pre_configure() {
   autoreconf -fi
 }
 
 post_install() {
-  vinstall "$wrksrc/cracklib-words-$version" 644 usr/share/cracklib cracklib-words
+  vinstall "cracklib-words-$version" 644 usr/share/cracklib cracklib-words
 }
 
 cracklib-devel_package() {
