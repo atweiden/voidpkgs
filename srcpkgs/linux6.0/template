@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux6.0"
-version=6.0.3
+version=6.0.5
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -28,7 +28,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-$version.xz"
 checksum+=" 5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e"
-checksum+=" c2735c685dda548811190ecb1379f52cbdb866b198914a67030072a7d2191ca3"
+checksum+=" 80661d1323d6b743430f590063f18c76dbbbb211945910aee05e94402cd74c0c"
 skip_extraction="patch-$version.xz"
 wrksrc="linux-${version%.*}"
 python_version=3
