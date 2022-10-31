@@ -597,6 +597,13 @@ constant %PKG = Map.new(
     'nftables' => qw<libnftables
                      libnftables-devel>,
     'nghttp2' => ['nghttp2-devel'],
+    'nginx' => qw<nginx-mod-http-geoip
+                  nginx-mod-http-js
+                  nginx-mod-http-perl
+                  nginx-mod-http-xslt-filter
+                  nginx-mod-stream
+                  nginx-mod-stream-geoip
+                  nginx-mod-stream-js>,
     'nilfs-utils' => qw<libnilfs
                         nilfs-utils-devel>,
     'nodejs' => ['nodejs-devel'],
