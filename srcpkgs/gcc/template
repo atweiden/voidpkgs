@@ -31,7 +31,7 @@ checksum+=" 258e6cd51b3fbdfc185c716d55f82c08aff57df0c6fbd143cf6ed561267a1526"
 checksum+=" 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f"
 checksum+=" 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
 checksum+=" d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859"
-wrksrc="gcc-${version/pre/_pre}"
+create_wrksrc="yes"
 patch_args="-Np0"
 build_options+=" ada"
 build_options+=" gnatboot"
@@ -230,11 +230,12 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 post_extract() {
-  mkdir -p "$wrksrc"/{gmp,mpfr,mpc,isl}
-  cp -ar "$XBPS_BUILDDIR/gmp-$_gmp_version"/* "$wrksrc/gmp/"
-  cp -ar "$XBPS_BUILDDIR/mpfr-$_mpfr_version"/* "$wrksrc/mpfr/"
-  cp -ar "$XBPS_BUILDDIR/mpc-$_mpc_version"/* "$wrksrc/mpc/"
-  cp -ar "$XBPS_BUILDDIR/isl-$_isl_version"/* "$wrksrc/isl/"
+  mv "gcc-${version/pre/_pre}"/* "gcc-${version/pre/_pre}"/.??* .
+  rmdir "gcc-${version/pre/_pre}"
+  mv "gmp-$_gmp_version" gmp
+  mv "mpfr-$_mpfr_version" mpfr
+  mv "mpc-$_mpc_version" mpc
+  mv "isl-$_isl_version" isl
   if [[ -n "$build_option_gnatboot" ]]; then
     local f
     f="$XBPS_SRCDISTDIR/$pkgname-$version/$_gnat_tarball"
