@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tzutils"
-version=2022e
-revision=1
+version=2022f
+revision=2
 short_desc="Time zone and daylight-saving time utilities"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends="tzutils"
@@ -9,7 +9,7 @@ fi
 homepage="https://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="https://www.iana.org/time-zones/repository/releases/tzdb-$version.tar.lz"
-checksum="4e2258a521ae0daff5a5715f9b0620eb4471bcda65397663bbd706b3eee73d62"
+checksum="180343dda8b24e000d8f718ab5871efa2ec0ed7725ba9a4267b8bd36af155bc2"
 wrksrc="tzdb-$version"
 bootstrap="yes"
 
@@ -17,6 +17,12 @@ if [[ "$XBPS_TARGET_WORDSIZE" == 32 ]]; then
   # enforce 64-bit time_t for Y2038
   CFLAGS="-Dtime_tz=int64_t"
   license+=", BSD-3-Clause"
+fi
+
+# https://mm.icann.org/pipermail/tz/2022-October/032154.html
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  CFLAGS+=" -DTM_GMTOFF=tm_gmtoff"
+  CFLAGS+=" -DTM_ZONE=tm_zone"
 fi
 
 do_build() {
@@ -34,7 +40,7 @@ do_build() {
 }
 
 do_check() {
-  make "$makejobs" check
+  make check
 }
 
 do_install() {
