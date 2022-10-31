@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="rusty-diceware"
-version=0.5.3
+version=0.5.8
 revision=1
 short_desc="Commandline diceware, sans dice, written in rustlang"
 homepage="https://gitlab.com/yuvallanger/rusty-diceware"
 license="AGPL-3.0-only"
 changelog="https://gitlab.com/yuvallanger/rusty-diceware/-/raw/master/CHANGELOG.md"
-distfiles="https://gitlab.com/yuvallanger/rusty-diceware/-/archive/v$version/$pkgname-v$version.tar.gz"
-checksum="88f921c304eced0c5b8b4ce535695d45b0b298b0f7fbb9b6da5f1c67e6acea1d"
-wrksrc="$pkgname-v$version"
+distfiles="https://gitlab.com/yuvallanger/rusty-diceware/-/archive/diceware-v$version/$pkgname-diceware-v$version.tar.gz"
+checksum="a3301f585149af8818d10972238656b9586a3fd78a6842150aec6d0ae8e4dbe8"
+wrksrc="$pkgname-diceware-v$version"
 build_style="cargo"
 
 post_install() {
