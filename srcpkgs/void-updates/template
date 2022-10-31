@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="void-updates"
-version=20190330
-revision=2
+version=20221026
+revision=1
 short_desc="Void Linux package updates"
 depends+=" curl"
 depends+=" git"
 homepage="https://github.com/void-linux/void-updates"
 license="ISC"
 distfiles="https://github.com/void-linux/void-updates/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d87d6e3995dd65dabdc1b0bbd96070d78237c443aeff00766096e60263c108df"
+checksum="146c62fa9d3b6f586d6d880512fd9e517c64a6f33c39d8909a37b7660ee6db25"
 build_style="gnu-makefile"
 system_accounts="voidupdates"
 voidupdates_homedir="/var/cache/void-updates"
