@@ -16,9 +16,6 @@ build_style="gnu-configure"
 # use archive data instead of .so data for correct cross-compiling
 configure_args+=" --enable-static"
 configure_args+=" --with-data-packaging=archive"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --with-cross-build=$XBPS_BUILDDIR/$wrksrc/host-icu"
-fi
 
 CFLAGS="-fPIC"
 CXXFLAGS="-fPIC"
@@ -69,6 +66,7 @@ pre_configure() {
      make DESTDIR="$wrksrc/host-icu" install
      mv "$wrksrc/host-icu/sbin"/* "$wrksrc/host-icu/bin"
      make distclean)
+    configure_args+=" --with-cross-build=$wrksrc/host-icu"
   fi
 
   # libicudata must be linked to libc, otherwise it's soft-float on ARM
