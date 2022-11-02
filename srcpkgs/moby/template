@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="moby"
 version=20.10.17
 revision=1
-_libnetwork_commit="f6ccccb1c082a432c2a5814aaedaca56af33d9ea"
+_libnetwork_gitrev="f6ccccb1c082a432c2a5814aaedaca56af33d9ea"
 short_desc="Container engine for the Docker ecosystem"
 depends+=" containerd"
 depends+=" iptables"
@@ -14,7 +14,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.docker.com"
 license="Apache-2.0"
 distfiles+=" https://github.com/moby/moby/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/moby/libnetwork/archive/$_libnetwork_commit.tar.gz>libnetwork-$_libnetwork_commit.tar.gz"
+distfiles+=" https://github.com/moby/libnetwork/archive/$_libnetwork_gitrev.tar.gz>libnetwork-$_libnetwork_gitrev.tar.gz"
 checksum+=" 061cf8579aa3c813c353c80fa480744e2f6cca2e6392f546bd0942a6a10c7a14"
 checksum+=" 05bf95637bae134d12d02bd7a7854cd0c768e6fccb662c2c64523f05b997b204"
 create_wrksrc="yes"
@@ -26,7 +26,7 @@ system_groups="docker"
 export GOFLAGS="-trimpath"
 
 _moby_builddir="moby-$version"
-_libnetwork_builddir="libnetwork-$_libnetwork_commit"
+_libnetwork_builddir="libnetwork-$_libnetwork_gitrev"
 
 do_build() {
   export AUTO_GOPATH=1

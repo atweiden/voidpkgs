@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="protobuf"
 version=21.7
 revision=1
-_googletest_commit="5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081"
+_googletest_gitrev="5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081"
 short_desc="Protocol buffers compiler"
 makedepends="zlib-devel"
 hostmakedepends+=" automake"
@@ -12,7 +12,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles+=" https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/google/googletest/archive/$_googletest_commit.tar.gz>googletest-$_googletest_commit.tar.gz"
+distfiles+=" https://github.com/google/googletest/archive/$_googletest_gitrev.tar.gz>googletest-$_googletest_gitrev.tar.gz"
 checksum+=" 75be42bd736f4df6d702a0e4e4d30de9ee40eac024c4b845d17ae4cc831fe4ae"
 checksum+=" 0e2f36e8e403c125fd0ab02171bdb786d3b6b3875b6ccf3b2eb7969be8faecd0"
 create_wrksrc="yes"
@@ -40,7 +40,7 @@ fi
 
 post_extract() {
   rmdir "$build_wrksrc/third_party/googletest"
-  mv "googletest-$_googletest_commit" "$build_wrksrc/third_party/googletest"
+  mv "googletest-$_googletest_gitrev" "$build_wrksrc/third_party/googletest"
 }
 
 pre_configure() {
