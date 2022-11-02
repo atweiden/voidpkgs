@@ -24,11 +24,13 @@ distfiles+=" https://github.com/google/nsjail/archive/$version.tar.gz>$pkgname-$
 distfiles+=" https://github.com/google/kafel/archive/8e69b8efae415cde3debffbb1e379d9e7a16835a.tar.gz"
 checksum+=" cfa66d3ed136b2e221752287b95e544915e8a6760aa866f023b604d14a374919"
 checksum+=" 4a6c9a1a70ed99bbed767adc106081b017a3090307ea88cc7e329b82daa1373b"
+create_wrksrc="yes"
 build_style="gnu-makefile"
 
 post_extract() {
+  mv "nsjail-$version"/* .
   rmdir kafel
-  mv ../kafel-* kafel
+  mv kafel-* kafel
 }
 
 post_patch() {
