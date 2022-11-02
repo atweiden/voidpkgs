@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnupg"
-version=2.3.7
-revision=3
+version=2.3.8
+revision=1
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
 makedepends+=" bzip2-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="ee163a5fb9ec99ffc1b18e65faef8d086800c5713d15a672ab57d3799da83669"
+checksum="540b7a40e57da261fb10ef521a282e0021532a80fd023e75fb71757e8a4969ed"
 build_style="gnu-configure"
 configure_args+=" --with-ksba-prefix=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
