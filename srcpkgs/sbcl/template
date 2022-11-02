@@ -18,6 +18,8 @@ changelog="http://www.sbcl.org/news.html"
 distfiles="$SOURCEFORGE_SITE/sbcl/$pkgname-$version-source.tar.bz2"
 checksum="7ebebd6d2023fff7077b0372fa1171f880529bdec6104f20983297c2feb7c172"
 conf_files="/etc/sbclrc"
+create_wrksrc="required"
+build_wrksrc="sbcl"
 nocross="yes"
 nopie="yes"
 
@@ -44,6 +46,10 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
+post_extract() {
+  mv "sbcl-$version" sbcl
+}
+
 do_build() {
   printf '"%s.void.%s"\n' "$version" "$revision" > version.lisp-expr
   export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
@@ -66,7 +72,6 @@ sbcl-source_package() {
   depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - source files"
   pkg_install() {
-    cd "$wrksrc"
     ./clean.sh
     vmkdir usr/lib/sbcl
     vcopy src usr/lib/sbcl
