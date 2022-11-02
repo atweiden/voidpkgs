@@ -1,23 +1,31 @@
 maintainer="nox"
 pkgname="fd"
-version=8.4.0
+version=8.5.0
 revision=1
 short_desc="Simple, fast and user-friendly alternative to find"
 homepage="https://github.com/sharkdp/fd"
 license="Apache-2.0, MIT"
 changelog="https://github.com/sharkdp/fd/raw/master/CHANGELOG.md"
 distfiles="https://github.com/sharkdp/fd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d0c2fc7ddbe74e3fd88bf5bb02e0f69078ee6d2aeea3d8df42f508543c9db05d"
+checksum="b719d87da077e35a7588541ba99acbd01e53aa3242b40e26c487d047b959247b"
 build_style="cargo"
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
 post_install() {
+  local fd
+
   vlicense LICENSE-MIT
   vman doc/fd.1
 
   vcompletion contrib/completion/_fd zsh
-  cd "target/$RUST_TARGET/release/build"/fd-find-*/out
-  vcompletion fd.bash bash
-  vcompletion fd.fish fish
+
+  fd="$DESTDIR/usr/bin/fd"
+  for shell in bash \
+               fish; do
+    "$fd" --gen-completions "$shell" > "fd.$shell"
+    vcompletion "fd.$shell" "$shell"
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
