@@ -1,18 +1,19 @@
-# Template file for 'rust-audit-info'
-pkgname=rust-audit-info
+maintainer="nox"
+pkgname="rust-audit-info"
 version=0.5.1
 revision=1
-_commit=8622e6fe844d1d5ae10e894d9c8a05afff97e6da
-wrksrc="cargo-auditable-${_commit}"
-build_wrksrc=rust-audit-info
-build_style=cargo
+_gitrev="8622e6fe844d1d5ae10e894d9c8a05afff97e6da"
 short_desc="CLI tool for extracting cargo-auditable dependency trees"
-maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
-license="MIT, Apache-2.0"
 homepage="https://github.com/rust-secure-code/cargo-auditable"
-distfiles="https://github.com/rust-secure-code/cargo-auditable/archive/${_commit}.tar.gz"
-checksum=f89b19e1df2f0b27c1e9bb474fa754ece117e1f561cc32beb296190eb70908f3
+license="MIT, Apache-2.0"
+distfiles="https://github.com/rust-secure-code/cargo-auditable/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="f89b19e1df2f0b27c1e9bb474fa754ece117e1f561cc32beb296190eb70908f3"
+wrksrc="cargo-auditable-$_gitrev"
+build_wrksrc="rust-audit-info"
+build_style="cargo"
 
 post_install() {
-	vlicense ../LICENSE-MIT
+  vlicense ../LICENSE-MIT
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
