@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mosh"
 version=1.4.0
-revision=1
+revision=2
 short_desc="Mobile shell, remote terminal application that allows roaming"
 depends="perl-IO-Tty"
 makedepends+=" libutempter-devel"
@@ -14,7 +14,7 @@ hostmakedepends+=" protobuf"
 homepage="https://mosh.org/"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/mobile-shell/mosh/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="d93ec9b2b0a012f59c4b8d5902b8a70b45db01e32c7c1ef7e5acd84ecebbb95f"
+checksum="872e4b134e5df29c8933dff12350785054d2fd2839b5ae6b5587b14db1465ddd"
 build_style="gnu-configure"
 
 pre_configure() {
