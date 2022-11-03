@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="openssl"
-version=1.1.1q
+version=1.1.1s
 revision=1
 short_desc="Toolkit for Secure Sockets Layer and Transport Layer Security"
 homepage="https://www.openssl.org"
 license="OpenSSL"
 distfiles="https://www.openssl.org/source/$pkgname-$version.tar.gz"
-checksum="d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca"
+checksum="c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa"
 conf_files="/etc/ssl/openssl.cnf"
 build_style="configure"
 configure_script="./Configure"
