@@ -10,8 +10,10 @@ checksum="8d27684f62f9dc74014035e31619e2e07f8b56257b1075560456cbf05ddbcfce"
 build_style="go"
 go_import_path="filippo.io/age"
 go_package="$go_import_path/cmd/..."
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

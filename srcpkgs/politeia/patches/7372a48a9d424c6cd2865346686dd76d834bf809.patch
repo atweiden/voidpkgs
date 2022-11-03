@@ -1,0 +1,310 @@
+From 7372a48a9d424c6cd2865346686dd76d834bf809 Mon Sep 17 00:00:00 2001
+From: Dave Collins <davec@conformal.com>
+Date: Thu, 27 Oct 2022 13:12:35 -0500
+Subject: [PATCH] pivoter: Consolidate cast vote creation.
+
+This consolidates the logic that creates the signed votes to cast by
+creating them without the signature first and then obtaining the
+signatures from the wallet and setting those signature into the existing
+unsigned votes.
+
+This approach is simpler and less error prone than the current one that
+passes separate arrays of eligible tickets, signatures, and associated
+vote details around.
+---
+ .../cmd/politeiavoter/politeiavoter.go        | 72 +++++++++----------
+ politeiawww/cmd/politeiavoter/trickle.go      | 39 +++-------
+ politeiawww/cmd/politeiavoter/trickle_test.go | 46 ++++++------
+ 3 files changed, 65 insertions(+), 92 deletions(-)
+
+diff --git a/politeiawww/cmd/politeiavoter/politeiavoter.go b/politeiawww/cmd/politeiavoter/politeiavoter.go
+index 431ec8623..b0f1c68f9 100644
+--- a/politeiawww/cmd/politeiavoter/politeiavoter.go
++++ b/politeiawww/cmd/politeiavoter/politeiavoter.go
+@@ -904,18 +904,29 @@ func (p *piv) _vote(token, voteID string) error {
+ 	}
+ 	ctres.TicketAddresses = eligible
+ 
+-	// Sign all tickets
+-	sm := &pb.SignMessagesRequest{
+-		Passphrase: passphrase,
+-		Messages: make([]*pb.SignMessagesRequest_Message, 0,
+-			len(ctres.TicketAddresses)),
+-	}
++	// Create unsigned votes to cast.
++	votesToCast := make([]tkv1.CastVote, 0, len(ctres.TicketAddresses))
+ 	for _, v := range ctres.TicketAddresses {
+ 		h, err := chainhash.NewHash(v.Ticket)
+ 		if err != nil {
+ 			return err
+ 		}
+-		msg := token + h.String() + voteBit
++		votesToCast = append(votesToCast, tkv1.CastVote{
++			Token:   token,
++			Ticket:  h.String(),
++			VoteBit: voteBit,
++			// Signature set from reply below.
++		})
++	}
++
++	// Sign all messages that comprise the votes.
++	sm := &pb.SignMessagesRequest{
++		Passphrase: passphrase,
++		Messages:   make([]*pb.SignMessagesRequest_Message, 0, len(votesToCast)),
++	}
++	for k, v := range ctres.TicketAddresses {
++		cv := &votesToCast[k]
++		msg := cv.Token + cv.Ticket + cv.VoteBit
+ 		sm.Messages = append(sm.Messages, &pb.SignMessagesRequest_Message{
+ 			Address: v.Address,
+ 			Message: msg,
+@@ -926,12 +937,20 @@ func (p *piv) _vote(token, voteID string) error {
+ 		return err
+ 	}
+ 
+-	// Make sure all signatures worked
++	// Assert arrays are same length.
++	if len(votesToCast) != len(smr.Replies) {
++		return fmt.Errorf("assert len(votesToCast)) != len(Replies) -- %v "+
++			"!= %v", len(votesToCast), len(smr.Replies))
++	}
++
++	// Ensure all the signatures worked while simultaneously setting the
++	// signature in the vote.
+ 	for k, v := range smr.Replies {
+-		if v.Error == "" {
+-			continue
++		if v.Error != "" {
++			return fmt.Errorf("signature failed index %v: %v", k, v.Error)
+ 		}
+-		return fmt.Errorf("signature failed index %v: %v", k, v.Error)
++
++		votesToCast[k].Signature = hex.EncodeToString(v.Signature)
+ 	}
+ 
+ 	// Trickle in the votes if specified
+@@ -948,33 +967,14 @@ func (p *piv) _vote(token, voteID string) error {
+ 		}
+ 
+ 		// Trickle votes
+-		return p.alarmTrickler(token, voteBit, ctres, smr)
++		return p.alarmTrickler(token, votesToCast)
+ 	}
+ 
+-	// Vote everything at once.
+-
+-	// Note that ctres, sm and smr use the same index.
+-	cv := tkv1.CastBallot{
+-		Votes: make([]tkv1.CastVote, 0, len(ctres.TicketAddresses)),
+-	}
+-	p.ballotResults = make([]tkv1.CastVoteReply, 0, len(ctres.TicketAddresses))
+-	for k, v := range ctres.TicketAddresses {
+-		h, err := chainhash.NewHash(v.Ticket)
+-		if err != nil {
+-			return err
+-		}
+-		signature := hex.EncodeToString(smr.Replies[k].Signature)
+-		cv.Votes = append(cv.Votes, tkv1.CastVote{
+-			Token:     token,
+-			Ticket:    h.String(),
+-			VoteBit:   voteBit,
+-			Signature: signature,
+-		})
+-	}
+-
+-	// Vote on the supplied proposal
+-	responseBody, err := p.makeRequest(http.MethodPost,
+-		tkv1.APIRoute, tkv1.RouteCastBallot, &cv)
++	// Vote everything at once on the supplied proposal.
++	cv := tkv1.CastBallot{Votes: votesToCast}
++	p.ballotResults = make([]tkv1.CastVoteReply, 0, len(votesToCast))
++	responseBody, err := p.makeRequest(http.MethodPost, tkv1.APIRoute,
++		tkv1.RouteCastBallot, &cv)
+ 	if err != nil {
+ 		return err
+ 	}
+diff --git a/politeiawww/cmd/politeiavoter/trickle.go b/politeiawww/cmd/politeiavoter/trickle.go
+index 1eb6608e8..f91c0f90a 100644
+--- a/politeiawww/cmd/politeiavoter/trickle.go
++++ b/politeiawww/cmd/politeiavoter/trickle.go
+@@ -2,7 +2,6 @@ package main
+ 
+ import (
+ 	"context"
+-	"encoding/hex"
+ 	"errors"
+ 	"fmt"
+ 	"math/big"
+@@ -10,8 +9,6 @@ import (
+ 
+ 	"crypto/rand"
+ 
+-	pb "decred.org/dcrwallet/rpc/walletrpc"
+-	"github.com/decred/dcrd/chaincfg/chainhash"
+ 	tkv1 "github.com/decred/politeia/politeiawww/api/ticketvote/v1"
+ 	"github.com/decred/politeia/util"
+ 	"golang.org/x/sync/errgroup"
+@@ -51,17 +48,10 @@ type voteAlarm struct {
+ 	At   time.Time     `json:"at"`   // When initial vote will be submitted
+ }
+ 
+-func (p *piv) generateVoteAlarm(token, voteBit string, ctres *pb.CommittedTicketsResponse, smr *pb.SignMessagesResponse) ([]*voteAlarm, error) {
+-	// Assert arrays are same length.
+-	if len(ctres.TicketAddresses) != len(smr.Replies) {
+-		return nil, fmt.Errorf("assert len(TicketAddresses) != "+
+-			"len(Replies) -- %v != %v", len(ctres.TicketAddresses),
+-			len(smr.Replies))
+-	}
+-
++func (p *piv) generateVoteAlarm(votesToCast []tkv1.CastVote) ([]*voteAlarm, error) {
+ 	bunches := int(p.cfg.Bunches)
+ 	voteDuration := p.cfg.voteDuration
+-	fmt.Printf("Total number of votes  : %v\n", len(ctres.TicketAddresses))
++	fmt.Printf("Total number of votes  : %v\n", len(votesToCast))
+ 	fmt.Printf("Total number of bunches: %v\n", bunches)
+ 	fmt.Printf("Vote duration          : %v\n", voteDuration)
+ 
+@@ -78,8 +68,8 @@ func (p *piv) generateVoteAlarm(token, voteBit string, ctres *pb.CommittedTicket
+ 			i, tStart[i], tEnd[i], tEnd[i].Sub(tStart[i]))
+ 	}
+ 
+-	va := make([]*voteAlarm, len(ctres.TicketAddresses))
+-	for k := range ctres.TicketAddresses {
++	va := make([]*voteAlarm, len(votesToCast))
++	for k := range votesToCast {
+ 		x := k % bunches
+ 		start := new(big.Int).SetInt64(tStart[x].Unix())
+ 		end := new(big.Int).SetInt64(tEnd[x].Unix())
+@@ -92,20 +82,9 @@ func (p *piv) generateVoteAlarm(token, voteBit string, ctres *pb.CommittedTicket
+ 		t := time.Unix(tStart[x].Unix()+r.Int64(), 0)
+ 		//fmt.Printf("at time  : %v\n", t)
+ 
+-		// Assemble missing vote bits
+-		h, err := chainhash.NewHash(ctres.TicketAddresses[k].Ticket)
+-		if err != nil {
+-			return nil, err
+-		}
+-		signature := hex.EncodeToString(smr.Replies[k].Signature)
+ 		va[k] = &voteAlarm{
+-			Vote: tkv1.CastVote{
+-				Token:     token,
+-				Ticket:    h.String(),
+-				VoteBit:   voteBit,
+-				Signature: signature,
+-			},
+-			At: t,
++			Vote: votesToCast[k],
++			At:   t,
+ 		}
+ 	}
+ 
+@@ -299,9 +278,9 @@ func randomTime(d time.Duration) (time.Time, time.Time, error) {
+ 	return time.Unix(startTime, 0), time.Unix(endTime, 0), nil
+ }
+ 
+-func (p *piv) alarmTrickler(token, voteBit string, ctres *pb.CommittedTicketsResponse, smr *pb.SignMessagesResponse) error {
++func (p *piv) alarmTrickler(token string, votesToCast []tkv1.CastVote) error {
+ 	// Generate work queue
+-	votes, err := p.generateVoteAlarm(token, voteBit, ctres, smr)
++	votes, err := p.generateVoteAlarm(votesToCast)
+ 	if err != nil {
+ 		return err
+ 	}
+@@ -317,7 +296,7 @@ func (p *piv) alarmTrickler(token, voteBit string, ctres *pb.CommittedTicketsRes
+ 
+ 	// Launch voting go routines
+ 	eg, ectx := errgroup.WithContext(p.ctx)
+-	p.ballotResults = make([]tkv1.CastVoteReply, 0, len(ctres.TicketAddresses))
++	p.ballotResults = make([]tkv1.CastVoteReply, 0, len(votesToCast))
+ 	div := len(votes) / int(p.cfg.Bunches)
+ 	mod := len(votes) % int(p.cfg.Bunches)
+ 	for k := range votes {
+diff --git a/politeiawww/cmd/politeiavoter/trickle_test.go b/politeiawww/cmd/politeiavoter/trickle_test.go
+index 424738b5d..baae834b6 100644
+--- a/politeiawww/cmd/politeiavoter/trickle_test.go
++++ b/politeiawww/cmd/politeiavoter/trickle_test.go
+@@ -3,37 +3,34 @@ package main
+ import (
+ 	"context"
+ 	"encoding/binary"
++	"encoding/hex"
+ 	"os"
+ 	"path/filepath"
+ 	"testing"
+ 	"time"
+ 
+-	pb "decred.org/dcrwallet/rpc/walletrpc"
++	"github.com/decred/dcrd/chaincfg/chainhash"
++	tkv1 "github.com/decred/politeia/politeiawww/api/ticketvote/v1"
+ )
+ 
+ const keepFiles = false
+ 
+-func fakeTickets(x uint) (*pb.CommittedTicketsResponse, *pb.SignMessagesResponse) {
+-	ctres := pb.CommittedTicketsResponse{
+-		TicketAddresses: make([]*pb.CommittedTicketsResponse_TicketAddress, x),
+-	}
+-	for k := range ctres.TicketAddresses {
+-		ticket := make([]byte, 32)
+-		binary.LittleEndian.PutUint64(ticket[:], uint64(k))
+-		ctres.TicketAddresses[k] = &pb.CommittedTicketsResponse_TicketAddress{
+-			Ticket: ticket,
+-		}
+-	}
+-	smr := pb.SignMessagesResponse{
+-		Replies: make([]*pb.SignMessagesResponse_SignReply, x),
+-	}
+-	for k := range smr.Replies {
+-		smr.Replies[k] = &pb.SignMessagesResponse_SignReply{
+-			Signature: make([]byte, 64),
+-		}
++func fakeVotesToCast(x uint) []tkv1.CastVote {
++	fakeSignature := hex.EncodeToString(make([]byte, 64))
++	votesToCast := make([]tkv1.CastVote, 0, x)
++	for i := uint(0); i < x; i++ {
++		var ticket [chainhash.HashSize]byte
++		binary.LittleEndian.PutUint64(ticket[:], uint64(i))
++		ticketHash := chainhash.Hash(ticket)
++		votesToCast = append(votesToCast, tkv1.CastVote{
++			Token:     "token",
++			Ticket:    ticketHash.String(),
++			VoteBit:   "voteBit",
++			Signature: fakeSignature,
++		})
+ 	}
+ 
+-	return &ctres, &smr
++	return votesToCast
+ }
+ 
+ func fakePiv(t *testing.T, d time.Duration, x uint) (*piv, func()) {
+@@ -72,8 +69,7 @@ func TestTrickleWorkers(t *testing.T) {
+ 	defer cleanup()
+ 
+ 	nrVotes := uint(20)
+-	ctres, smr := fakeTickets(nrVotes)
+-	err := c.alarmTrickler("token", "voteBit", ctres, smr)
++	err := c.alarmTrickler("token", fakeVotesToCast(nrVotes))
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+@@ -85,8 +81,7 @@ func TestUnrecoverableTrickleWorkers(t *testing.T) {
+ 
+ 	c.cfg.testingMode = testFailUnrecoverable
+ 
+-	ctres, smr := fakeTickets(1)
+-	err := c.alarmTrickler("token", "voteBit", ctres, smr)
++	err := c.alarmTrickler("token", fakeVotesToCast(1))
+ 	if err == nil {
+ 		t.Fatal("expected unrecoverable error")
+ 	}
+@@ -102,8 +97,7 @@ func TestManyTrickleWorkers(t *testing.T) {
+ 	defer cleanup()
+ 
+ 	nrVotes := uint(20000)
+-	ctres, smr := fakeTickets(nrVotes)
+-	err := c.alarmTrickler("token", "voteBit", ctres, smr)
++	err := c.alarmTrickler("token", fakeVotesToCast(nrVotes))
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}

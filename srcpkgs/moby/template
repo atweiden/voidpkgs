@@ -20,7 +20,9 @@ checksum+=" 05bf95637bae134d12d02bd7a7854cd0c768e6fccb662c2c64523f05b997b204"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/docker/docker"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 system_groups="docker"
 
 export GOFLAGS="-trimpath"
@@ -41,7 +43,7 @@ do_build() {
   cd "$wrksrc/$_libnetwork_builddir"
   mkdir -p src/github.com/docker/
   ln -sf "$wrksrc/$_libnetwork_builddir" src/github.com/docker/libnetwork
-  GOPATH="$PWD" go build -v -ldflags="-linkmode=external" -o docker-proxy github.com/docker/libnetwork/cmd/proxy
+  GOPATH="$PWD" go build -v -ldflags="$go_ldflags -linkmode=external" -o docker-proxy github.com/docker/libnetwork/cmd/proxy
 
   msg_normal "Building docker-engine (moby)\n"
   cd "$wrksrc/$_moby_builddir"

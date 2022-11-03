@@ -9,15 +9,16 @@ distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname
 checksum="763b4c759c5113885189f484c648d19b2b2f141d3d654e9cd3125c290b188462"
 build_style="go"
 go_import_path="github.com/hashicorp/packer"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
+case "$XBPS_TARGET_MACHINE" in
+  arm*)
+    go_ldflags+=" -linkmode=external"
+    ;;
+esac
 replaces="packer-bin>=0"
 
 export GOFLAGS="-trimpath"
-
-case "$XBPS_TARGET_MACHINE" in
-  arm*)
-    go_ldflags="-linkmode=external"
-    ;;
-esac
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

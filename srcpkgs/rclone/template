@@ -11,9 +11,10 @@ checksum="1d7e79f1d90d5cd47d64478cc1b3cb0bcf3fa5ff3da30367825ce1fc9f209214"
 wrksrc="$pkgname-v$version"
 build_style="go"
 go_import_path="github.com/rclone/rclone"
-go_build_tags="noselfupdate"
+go_build_tags+=" netgo"
+go_build_tags+=" noselfupdate"
 go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-fuse-ld=bfd"
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 go_ldflags+=" -X github.com/rclone/rclone/fs.Version=v$version"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
@@ -31,6 +32,8 @@ pre_build() {
 }
 
 do_check() {
+  local _tags
+
   rm cmd/serve/docker/docker_test.go
   rm cmd/mount/mount_test.go
   rm cmd/mount2/mount_test.go
@@ -40,7 +43,8 @@ do_check() {
   rm backend/cache/cache_test.go
 
   # equivalent to quicktest target of Makefile
-  RCLONE_CONFIG="/notfound" go test -tags "$go_build_tags" ./...
+  _tags="$(${go_build_tags// /,} | sed 's/^,//')"
+  RCLONE_CONFIG="/notfound" go test -tags "$_tags" ./...
 }
 
 post_install() {

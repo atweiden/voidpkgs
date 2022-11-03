@@ -12,9 +12,11 @@ distfiles="https://github.com/opencontainers/runc/releases/download/v$version/$p
 checksum="9f5972715dffb0b2371e4d678c1206cc8c4ec5eb80f2d48755d150bac49be35b"
 build_style="go"
 go_import_path="github.com/opencontainers/runc"
-go_ldflags="-buildid="
-go_build_tags+=" seccomp"
 go_build_tags+=" apparmor"
+go_build_tags+=" netgo"
+go_build_tags+=" seccomp"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

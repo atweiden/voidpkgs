@@ -9,12 +9,13 @@ distfiles="https://github.com/txn2/kubefwd/archive/$version.tar.gz>$pkgname-$ver
 checksum="fa989cd8e31f7c80b9cf52ab1d0c03e38d4a3cf1922bb3c740b9618190f27ff5"
 build_style="go"
 go_import_path="github.com/txn2/kubefwd/cmd/kubefwd"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=v$version"
+# fix: collect2: fatal error: cannot find 'ld'
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 
 export GOFLAGS="-trimpath"
-# fix: collect2: fatal error: cannot find 'ld'
-export LDFLAGS="-fuse-ld=bfd"
 
 post_install() {
   vlicense NOTICE

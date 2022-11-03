@@ -10,10 +10,12 @@ distfiles="https://github.com/golangci/golangci-lint/archive/v$version.tar.gz>$p
 checksum="cedddf1ff23d506211440ebe9fb4a9a738421304d47833d8b0af6586a5de67f5"
 build_style="go"
 go_import_path="github.com/golangci/golangci-lint/cmd/golangci-lint"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.version=$version"
 go_ldflags+=" -X main.date=$SOURCE_DATE_EPOCH"
 go_ldflags+=" -X main.commit=v$version"
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

@@ -15,7 +15,9 @@ go_package+=" $go_import_path/cmd/zr-fetch"
 go_package+=" $go_import_path/cmd/zr-reindex"
 go_package+=" $go_import_path/cmd/zr-stackexchange"
 go_package+=" $go_import_path/cmd/zr-stdin"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

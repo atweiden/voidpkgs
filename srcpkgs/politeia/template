@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="politeia"
-version=1.3.1
+version=1.4.0
 revision=1
 short_desc="Decred proposal system"
 tags="decred"
 homepage="https://github.com/decred/politeia"
 license="ISC"
 distfiles="https://github.com/decred/politeia/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b628976201f4b48958927fbf62beb3919b51f7a653eadeca646309319182d7a0"
+checksum="c52dcb74dae6c03ec1f238200dae159be9d60d38dc53b8fc22a99c98f851c0cc"
 build_style="go"
 go_import_path="github.com/decred/politeia"
 go_package+=" $go_import_path/politeiad"
@@ -18,9 +18,11 @@ go_package+=" $go_import_path/politeiawww/cmd/pictl"
 go_package+=" $go_import_path/politeiawww/cmd/politeiaverify"
 go_package+=" $go_import_path/politeiawww/cmd/politeiavoter"
 go_package+=" $go_import_path/politeiawww/cmd/politeiawww_dbutil"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
-go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease="
 go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata="
+go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease="
+go_ldflags+=" -extldflags=-static"
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie"

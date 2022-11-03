@@ -11,8 +11,10 @@ checksum="74c86d544fcfb80bb2d3b58187bd017adb0e62863d22114a66c14fc94fdbc421"
 wrksrc="compose-$version"
 build_style="go"
 go_import_path="github.com/docker/compose/v2/cmd"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/docker/compose/v2/internal.Version=v$version"
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

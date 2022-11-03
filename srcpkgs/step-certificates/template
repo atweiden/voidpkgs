@@ -18,8 +18,10 @@ go_package+=" $go_import_path/cmd/step-awskms-init"
 go_package+=" $go_import_path/cmd/step-cloudkms-init"
 go_package+=" $go_import_path/cmd/step-pkcs11-init"
 go_package+=" $go_import_path/cmd/step-yubikey-init"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

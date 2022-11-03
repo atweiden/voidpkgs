@@ -11,20 +11,21 @@ distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-
 checksum="40bd49e7d0f3d7408d8eb2783e4f1e08700c11c65a4cbaa4b1669620f62b421b"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
+go_build_tags+=" netgo"
+go_build_tags+=" release"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/sdk/version.GitCommit=$_gitrev"
-go_build_tags="release"
+go_ldflags+=" -extldflags=-static"
+case "$XBPS_TARGET_MACHINE" in
+  arm*)
+    go_ldflags+=" -linkmode=external"
+    ;;
+esac
 system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
 make_dirs+=" /etc/vault 0750 root _vault"
 
 export GOFLAGS="-trimpath"
-
-case "$XBPS_TARGET_MACHINE" in
-  arm*)
-    go_ldflags="$go_ldflags -linkmode=external"
-    ;;
-esac
 
 pre_build() {
   local depbin

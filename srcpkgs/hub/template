@@ -15,7 +15,9 @@ distfiles="https://github.com/github/hub/archive/v$version.tar.gz>$pkgname-$vers
 checksum="e19e0fdfd1c69c401e1c24dd2d4ecf3fd9044aa4bd3f8d6fd942ed1b2b2ad21a"
 build_style="go"
 go_import_path="github.com/github/hub"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 
@@ -26,17 +28,15 @@ post_install() {
       -e 's|bin/hub|hub|g' \
       Makefile
 
-    (
-      # build md2roff ourselves since it needs to be executed on the
-      # host, also use a subshell so we don't modify the environment of
-      # the main program
-      unset GOARCH
-      unset GOARM
-      unset GOOS
-      export CC="$CC_FOR_BUILD"
-      export CFLAGS="$CFLAGS_FOR_BUILD"
-      go build -o bin/md2roff github.com/github/hub/md2roff-bin
-    )
+    (# build md2roff ourselves since it needs to be executed on the
+     # host, also use a subshell so we don't modify the environment of
+     # the main program
+     unset GOARCH
+     unset GOARM
+     unset GOOS
+     export CC="$CC_FOR_BUILD"
+     export CFLAGS="$CFLAGS_FOR_BUILD"
+     go build -o bin/md2roff github.com/github/hub/md2roff-bin)
   fi
 
   make man-pages

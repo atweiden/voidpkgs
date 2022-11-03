@@ -10,7 +10,9 @@ distfiles="https://github.com/hekmekk/git-team/archive/v$version.tar.gz>$pkgname
 checksum="d16fa6ea10afd3d9fff0b63321d2c347a170acffa4d8e9bf0f8de0e7ef24b85b"
 build_style="go"
 go_import_path="github.com/hekmekk/git-team"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 

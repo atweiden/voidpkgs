@@ -11,8 +11,10 @@ checksum="b66c15f03de1fa964fdd60641aec7f1d5c09b338ee10e9475c645bb0d8fa1e98"
 wrksrc="cli-$version"
 build_style="go"
 go_import_path="github.com/cli/cli/v2/cmd/gh"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/cli/cli/v2/internal/build.Version=v$version"
+go_ldflags+=" -extldflags=-static"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

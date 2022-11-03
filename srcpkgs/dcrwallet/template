@@ -1,19 +1,21 @@
 maintainer="nox"
 pkgname="dcrwallet"
-version=1.7.4
+version=1.7.5
 revision=1
 short_desc="Decred wallet daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8be4bbb81a458b9b9b87466ee1f21dbff9a98867c238314664b676b0d810f6dd"
+checksum="302ec009d75410afac2b00978a171fe14ab6def63251a1052bee5b54775ad5e2"
 wrksrc="$pkgname-release-v$version"
 build_style="go"
 go_import_path="decred.org/dcrwallet/v2"
+go_build_tags="netgo"
 go_ldflags+=" -buildid="
-go_ldflags+=" -X $go_import_path/version.PreRelease="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
+go_ldflags+=" -X $go_import_path/version.PreRelease="
+go_ldflags+=" -extldflags=-static"
 # objdump: .gnu.version_r invalid entry, private headers incomplete
 nopie_files="/usr/bin/dcrpromptsecret"
 

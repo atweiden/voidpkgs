@@ -13,12 +13,12 @@ distfiles="https://github.com/bettercap/bettercap/archive/v$version.tar.gz>$pkgn
 checksum="ea28d4d533776a328a54723a74101d1720016ffe7d434bf1d7ab222adb397ac6"
 build_style="go"
 go_import_path="github.com/bettercap/bettercap"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+# fix: collect2: fatal error: cannot find 'ld'
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 
 export GOFLAGS="-trimpath"
-
-# fix: collect2: fatal error: cannot find 'ld'
-LDFLAGS="-fuse-ld=bfd"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   CPPFLAGS="-Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t"

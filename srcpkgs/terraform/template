@@ -9,7 +9,9 @@ distfiles="https://github.com/hashicorp/terraform/archive/v$version.tar.gz>$pkgn
 checksum="2a093e13eb9c9b27f35af8ef84f51c9f7e76f8caa1672810997b442571aeda9d"
 build_style="go"
 go_import_path="github.com/hashicorp/terraform"
-go_ldflags="-buildid="
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 
