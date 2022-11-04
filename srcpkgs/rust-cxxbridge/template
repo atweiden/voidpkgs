@@ -1,0 +1,22 @@
+maintainer="nox"
+pkgname="rust-cxxbridge"
+version=1.0.79
+revision=1
+short_desc="C++ code generator for integrating cxx crate into a non-Cargo build"
+homepage="https://cxx.rs"
+license="MIT, Apache-2.0"
+distfiles="https://crates.io/api/v1/crates/cxxbridge-cmd/$version/download>$pkgname-$version.tar.gz"
+checksum="b5e4841817d774db9d271592b01029a280a6520b2bf72e8d87b56a710ebfd771"
+create_wrksrc="yes"
+build_style="cargo"
+
+post_extract() {
+  mv cxxbridge-cmd-*/* .
+}
+
+# we only want to install the binary, so don't run cargo install
+do_install() {
+  vbin "target/$RUST_TARGET/release/cxxbridge"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
