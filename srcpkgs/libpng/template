@@ -1,15 +1,14 @@
 maintainer="nox"
 pkgname="libpng"
-version=1.6.37
+version=1.6.38
 revision=1
 short_desc="Library for manipulating PNG images"
 makedepends="zlib-devel"
 homepage="http://www.libpng.org/pub/png/libpng.html"
 license="Libpng"
 distfiles="$SOURCEFORGE_SITE/libpng/$pkgname-$version.tar.xz"
-checksum="505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca"
+checksum="b3683e8b8111ebf6f1ac004ebb6b0c975cd310ec469d98364388e9cedbfa68be"
 build_style="gnu-configure"
-
 case "$XBPS_TARGET_MACHINE" in
   arm*|aarch64*)
     configure_args="--enable-arm-neon=no"
