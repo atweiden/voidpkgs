@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pounce"
 version=3.0
-revision=2
+revision=3
 short_desc="Multi-client, TLS-only IRC bouncer"
 depends="openssl"
 makedepends="libtls-devel"
