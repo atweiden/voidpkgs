@@ -101,6 +101,11 @@ _do_build_db() {
   _configure_args_db+=" --prefix=/"
   _configure_args_db+=" --with-pic"
 
+  # from void-linux/void-packages/common/environment/configure/gnu-configure-args.sh
+  . "$XBPS_COMMONDIR/build-profiles/$XBPS_MACHINE.sh"
+  _configure_args_db+=" --host=$XBPS_TRIPLET"
+  _configure_args_db+=" --build=$XBPS_TRIPLET"
+
   ../dist/configure $_configure_args_db
   CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration" \
   CXXFLAGS="$CXXFLAGS -std=c++17" \
