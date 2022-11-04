@@ -41,8 +41,8 @@ case "$XBPS_TARGET_MACHINE" in
     checksum+=" 96485965f0a2dec274679cafbe4d39bd9e7c728824a6c5504f164ec9d5f57384"
     ;;
   ppc)
-    checksum+=" 6b29ebec4cd705760db634717cf6df68a9a377d52c25def30f5a2e2641a83279"
     checksum+=" 5f4de96bff2937fc0a64a216604c7af765af94460a1f283330eddc610d91271b"
+    checksum+=" 6b29ebec4cd705760db634717cf6df68a9a377d52c25def30f5a2e2641a83279"
     ;;
   *)
     broken="rust bootstrap binaries unavailable for $XBPS_TARGET_MACHINE"
