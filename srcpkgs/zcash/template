@@ -1,16 +1,20 @@
 maintainer="nox"
 pkgname="zcash"
-version=4.7.0
+version=5.3.0
 revision=1
 # see:
 # zcash/zcash/depends/packages/bdb.mk
 # zcash/zcash/depends/packages/libevent.mk
 # zcash/zcash/depends/packages/libsodium.mk
+# zcash/zcash/depends/packages/native_cxxbridge.mk
 # zcash/zcash/depends/packages/native_rust.mk
+# zcash/zcash/depends/packages/rustcxx.mk
 _db_version=6.2.23
 _libevent_version=2.1.12
 _libsodium_version=1.0.18
-_rust_version=1.59.0
+_rust_version=1.64.0
+_rust_cxx_version=1.0.79
+_rust_cxxbridge_version=$_rust_cxx_version
 short_desc="Implementation of the Zerocash protocol"
 # for zcash-fetch-params
 depends="curl"
@@ -18,6 +22,12 @@ makedepends+=" boost-devel"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
 makedepends+=" utfcpp"
+# from void-linux/void-packages/common/environment/build-style/cargo.sh
+if [[ -n "$CROSS_BUILD" ]]; then
+  makedepends+=" rust-std"
+fi
+checkdepends+=" cargo"
+checkdepends+=" cargo-auditable"
 checkdepends+=" curl"
 checkdepends+=" gtest-devel"
 # most checks require sysctl and ps
@@ -26,14 +36,22 @@ checkdepends+=" python3"
 checkdepends+=" python3-pyblake2"
 checkdepends+=" python3-requests"
 checkdepends+=" python3-simplejson"
+checkdepends+=" rust"
+if [[ -n "$CROSS_BUILD" ]]; then
+  checkdepends+=" rust-std"
+fi
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
+hostmakedepends+=" cargo"
+hostmakedepends+=" cargo-auditable"
 hostmakedepends+=" cmake"
+hostmakedepends+=" gettext"
 hostmakedepends+=" git"
 hostmakedepends+=" libtool"
 hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" rustup"
+hostmakedepends+=" rust"
+hostmakedepends+=" rust-cxxbridge"
 hostmakedepends+=" which"
 homepage="https://z.cash/"
 license="MIT"
@@ -41,13 +59,16 @@ distfiles+=" https://github.com/zcash/zcash/archive/v$version.tar.gz>$pkgname-$v
 distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
-checksum+=" e5fa7c1749cd62d5cf36ccb1e1c6e4c41e9e7f3bae6ebf46e7b37c6968cc25d6"
+distfiles+=" https://crates.io/api/v1/crates/cxx/$_rust_cxx_version/download>rust-cxx-$_rust_cxx_version.tar.gz"
+checksum+=" 6e7275b8c1b89a39869c5b68a694d0120c09e62fb895810c84391f052cda4b3f"
 checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
 checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
+checksum+=" 3f83d0ebf42c6eafb8d7c52f7e5f2d3003b89c7aa4fd2b79229209459a849af8"
 skip_extraction+=" db-$_db_version.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
+skip_extraction+=" rust-cxx-$_rust_cxx_version.tar.gz"
 build_style="gnu-configure"
 build_helper="rust"
 configure_args+=" --disable-bench"
@@ -90,6 +111,13 @@ _do_extract_libsodium() {
     -C "$_depends_builddir"
 }
 
+_do_extract_rust_cxx() {
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/rust-cxx-$_rust_cxx_version.tar.gz" \
+    -C "$XBPS_BUILDDIR/$pkgname-$version/src/rust/include/rust" \
+    --strip-components=2 \
+    "cxx-$_rust_cxx_version/include/cxx.h"
+}
+
 _do_build_db() {
   local _configure_args_db
 
@@ -109,6 +137,11 @@ _do_build_db() {
   if [[ "${XBPS_TARGET_MACHINE%-musl}" == "aarch64" ]]; then
     _configure_args_db+=" --disable-atomicsupport"
   fi
+
+  # from void-linux/void-packages/common/environment/configure/gnu-configure-args.sh
+  . "$XBPS_COMMONDIR/build-profiles/$XBPS_MACHINE.sh"
+  _configure_args_db+=" --host=$XBPS_TRIPLET"
+  _configure_args_db+=" --build=$XBPS_TRIPLET"
 
   ../dist/configure $_configure_args_db
   CXXFLAGS="$CXXFLAGS -std=c++17" \
@@ -156,17 +189,8 @@ _do_build_libsodium() {
   make DESTDIR="$_depends_builddir/libsodium-root" install
 }
 
-# enable upstream build scripts to access rustc
-export PATH="$CARGO_HOME/bin:$PATH"
-
 # enable finding custom built libraries through pkg-config
 export PKG_CONFIG_PATH="$_depends_builddir/libevent-root/lib/pkgconfig:$_depends_builddir/libsodium-root/lib/pkgconfig"
-
-post_fetch() {
-  rustup-init -y
-  rustup toolchain install "$_rust_version" --profile minimal
-  rustup default "$_rust_version"
-}
 
 post_extract() {
   _do_extract_db
@@ -177,6 +201,8 @@ post_extract() {
 
   _do_extract_libsodium
   _do_build_libsodium
+
+  _do_extract_rust_cxx
 }
 
 post_patch() {
@@ -187,6 +213,11 @@ post_patch() {
 }
 
 pre_configure() {
+  # TODO: enable -Wthread-safety-analysis pending void compiler support
+  vsed \
+    -i \
+    -e '/thread-safety-analysis/d' \
+    configure.ac
   NOCONFIGURE=1 ./autogen.sh
   case "$XBPS_TARGET_MACHINE" in
     aarch64*)
