@@ -1,8 +1,9 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
 maintainer="nox"
 pkgname="python3"
-version=3.10.8
+version=3.11.0
 revision=1
+_bluez="bluez-5.64"
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
 checkdepends+=" ca-certificates"
@@ -19,8 +20,11 @@ makedepends+=" zlib-devel"
 hostmakedepends="pkgconf"
 homepage="https://www.python.org"
 license="Python-2.0"
-distfiles="https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
-checksum="6a30ecde59c47048013eb5a658c9b5dec277203d2793667f578df7671f7f03f3"
+distfiles+=" https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
+distfiles+=" $KERNEL_SITE/bluetooth/$_bluez.tar.xz"
+checksum+=" a57dc82d77358617ba65b9841cee1e3b441f386c3789ddc0676eca077f2951c3"
+checksum+=" ae437e65b6b3070c198bc5b0109fe9cdeb9eaa387380e2072f9de65fe8a1de34"
+skip_extraction="$_bluez.tar.xz"
 wrksrc="Python-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
@@ -41,12 +45,24 @@ pycompile_dirs="usr/lib/python${version%.*}"
 
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" python3"
+  configure_args+=" --with-build-python=python3.11"
 fi
 
 post_extract() {
   # ensure that internal copies of expat and libffi are not used
   rm -r Modules/expat
   rm -r Modules/_ctypes/{darwin,libffi}*
+
+  # extract bluetooth headers
+  local _srcdistdir="$XBPS_SRCDISTDIR/$sourcepkg-$version"
+  mkdir External
+  bsdtar \
+    -C External \
+    --strip-components=1 \
+    -x \
+    -f "$_srcdistdir/$_bluez.tar.xz" \
+    "$_bluez/lib"/*.h
+  mv External/lib External/bluetooth
 }
 
 post_patch() {
@@ -67,6 +83,11 @@ do_configure() {
   unset GCC
   unset LD
   unset RANLIB
+
+  # make sure configure can find bluetooth headers
+  CFLAGS+=" -I./External"
+  CPPFLAGS+=" -I./External"
+
   ./configure $configure_args
 }
 
@@ -130,6 +151,13 @@ do_install() {
       -e "s,$XBPS_CROSS_BASE,,g" \
       "$DESTDIR/usr/bin/python${version%.*}-config"
   fi
+  sed \
+    -i \
+    -e "s,-fdebug-prefix-map=[^[:space:]]*=[.],," \
+    -e "s,-I./External,," \
+    "$DESTDIR/usr/bin/python${version%.*}-config" \
+    "$DESTDIR/usr/lib/python${version%.*}/_sysconfigdata_*_*.py" \
+    "$DESTDIR/usr/lib/python${version%.*}/config-${version%.*}*/Makefile"
 }
 
 python3-devel_package() {
