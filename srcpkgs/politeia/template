@@ -28,14 +28,53 @@ go_ldflags+=" -extldflags=-static"
 export GOFLAGS="-trimpath -buildmode=pie"
 
 post_install() {
+  local _cmd
+  local _docdir
+
+  _docdir="usr/share/doc/$pkgname"
+
   vlicense LICENSE
   vdoc README.md
-  vcopy docs "usr/share/doc/$pkgname"
-  vdoc politeiad/sample-politeiad.conf
-  vdoc politeiawww/cmd/cmswww/sample-cmswww.conf
-  vdoc politeiawww/cmd/pictl/sample-pictl.conf
-  vdoc "$FILESDIR/sample-politeiavoter.conf"
-  vdoc politeiawww/sample-politeiawww.conf
+  vcopy "docs/*" "$_docdir"
+
+  _cmd="cmswww"
+  vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+  vinstall "politeiawww/cmd/$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+
+  _cmd="politeiad"
+  vinstall "$_cmd/README.md" 644 "$_docdir/$_cmd"
+  vinstall "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+
+  _cmd="politeiawww"
+  vinstall "$_cmd/README.md" 644 "$_docdir/$_cmd"
+  vinstall "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+
+  _cmd="politeiawww_dbutil"
+  vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+}
+
+politeia-tools_package() {
+  short_desc+=" - client tools"
+  pkg_install() {
+    local _cmd
+    local _docdir
+
+    _docdir="usr/share/doc/$sourcepkg"
+
+    _cmd="pictl"
+    vmove "usr/bin/$_cmd"
+    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+    vinstall "politeiawww/cmd/$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+
+    _cmd="politeiaverify"
+    vmove "usr/bin/$_cmd"
+    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+
+    _cmd="politeiavoter"
+    vmove "usr/bin/$_cmd"
+    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+    vinstall "$FILESDIR/sample-$_cmd.conf" 644 "$_docdir"
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
