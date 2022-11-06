@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="httpie"
 version=3.2.1
-revision=1
+revision=2
 short_desc="Modern, user-friendly command-line HTTP client for the API era"
 depends+=" python3-Pygments"
 depends+=" python3-charset-normalizer"
