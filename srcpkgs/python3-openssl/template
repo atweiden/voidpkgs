@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-openssl"
-version=22.0.0
+version=22.1.0
 revision=1
 depends="python3-cryptography"
 checkdepends+=" python3-cryptography"
@@ -13,7 +13,7 @@ homepage="https://pyopenssl.org/"
 license="Apache-2.0"
 changelog="https://github.com/pyca/pyopenssl/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pyOpenSSL/pyOpenSSL-$version.tar.gz"
-checksum="660b1b1425aac4a1bea1d94168a85d99f0b3144c869dd4390d27629d0087f1bf"
+checksum="7a83b7b272dd595222d672f5ce29aa030f1fb837630ef229f62e72e395ce8968"
 wrksrc="pyOpenSSL-$version"
 build_style="python3-module"
 if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]]; then
