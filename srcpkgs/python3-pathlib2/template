@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pathlib2"
 version=2.3.4
-revision=8
+revision=9
 short_desc="Object-oriented filesystem paths (Python3)"
 depends="python3-six"
 checkdepends="python3-six"
