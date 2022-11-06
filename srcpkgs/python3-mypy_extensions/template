@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-mypy_extensions"
 version=0.4.3
-revision=4
+revision=5
 short_desc="Extensions to the typing module use by mypy"
 depends="python3"
 hostmakedepends="python3-setuptools"
