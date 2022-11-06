@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Werkzeug"
 version=2.2.2
-revision=2
+revision=3
 short_desc="Swiss Army knife of Python web development (Python3)"
 depends="python3-MarkupSafe"
 checkdepends+=" python3-MarkupSafe"
