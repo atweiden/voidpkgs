@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pytz"
-version=2022.4
+version=2022.6
 revision=1
 short_desc="Python3 timezone library"
 depends+=" python3"
@@ -10,7 +10,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://pythonhosted.org/pytz/"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytz/pytz-$version.tar.gz"
-checksum="48ce799d83b6f8aab2020e369b627446696619e79645419610b9facd909b3174"
+checksum="e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2"
 wrksrc="pytz-$version"
 build_style="python3-module"
 
