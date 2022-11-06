@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libkdumpfile"
 version=0.5.0
-revision=1
+revision=2
 short_desc="Kernel coredump file access library"
 makedepends+=" lzo-devel"
 makedepends+=" python3-devel"
