@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="botan"
 version=2.19.2
-revision=1
+revision=2
 short_desc="Crypto library written in C++"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -91,8 +91,10 @@ botan-doc_package() {
 }
 
 botan-devel_package() {
+  unset depends
   short_desc+=" - development files"
-  depends="$makedepends $sourcepkg>=${version}_$revision"
+  depends+=" $makedepends"
+  depends+=" $sourcepkg>=${version}_$revision"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
