@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pytest"
-version=7.1.2
+version=7.1.3
 revision=1
 short_desc="Simple powerful testing with Python 3"
 _common_deps+=" python3-attrs"
@@ -26,7 +26,7 @@ homepage="https://docs.pytest.org/en/latest/"
 license="MIT"
 changelog="https://docs.pytest.org/en/latest/changelog.html"
 distfiles="$PYPI_SITE/p/pytest/pytest-$version.tar.gz"
-checksum="a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"
+checksum="4f365fec2dff9c1162f834d9f18af1ba13062db0c708bf7b946f8a5c76180c39"
 wrksrc="pytest-$version"
 build_style="python3-module"
 alternatives+=" pytest:pytest:/usr/bin/pytest3"
@@ -39,7 +39,7 @@ post_patch() {
 }
 
 post_build() {
-  PYTHONPATH="$(pwd)/build/lib/" make -C doc/en man
+  PYTHONPATH="$(pwd)/build/lib:$XBPS_CROSS_BASE/$py3_lib" make -C doc/en man
   vman doc/en/_build/man/pytest.1
 }
 
