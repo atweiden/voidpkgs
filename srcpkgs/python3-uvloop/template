@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-uvloop"
 version=0.17.0
-revision=1
+revision=2
 short_desc="Fast replacement for Python asyncio event loop"
 depends="python3"
 makedepends+=" libuv-devel"
