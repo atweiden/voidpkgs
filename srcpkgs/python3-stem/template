@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-stem"
 version=1.8.0
-revision=4
+revision=5
 short_desc="Python3 controller library for Tor"
 depends="python3-cryptography"
 hostmakedepends="python3-devel"
