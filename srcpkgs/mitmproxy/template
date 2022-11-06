@@ -1,32 +1,56 @@
-# Template file for 'mitmproxy'
-pkgname=mitmproxy
+maintainer="nox"
+pkgname="mitmproxy"
 version=8.1.1
 revision=3
-build_style=python3-module
-hostmakedepends="python3-setuptools"
-depends="python3-Brotli python3-Flask python3-asgiref python3-blinker python3-certifi
- python3-click python3-cryptography python3-h11 python3-h2 python3-hyperframe python3-kaitaistruct
- python3-ldap3 python3-msgpack python3-openssl python3-parsing python3-passlib python3-protobuf
- python3-publicsuffix2 python3-pyperclip python3-ruamel.yaml python3-sortedcontainers
- python3-tornado python3-urwid python3-wsproto python3-zstandard"
-checkdepends="${depends} python3-hypothesis python3-parver
- python3-pytest-asyncio python3-pytest-cov python3-pytest-timeout python3-requests"
 short_desc="Interactive TLS-capable intercepting HTTP proxy"
-maintainer="Evgeny Ermakov <evgeny.v.ermakov@gmail.com>"
-license="MIT"
+depends+=" python3-Brotli"
+depends+=" python3-Flask"
+depends+=" python3-asgiref"
+depends+=" python3-blinker"
+depends+=" python3-certifi"
+depends+=" python3-click"
+depends+=" python3-cryptography"
+depends+=" python3-h11"
+depends+=" python3-h2"
+depends+=" python3-hyperframe"
+depends+=" python3-kaitaistruct"
+depends+=" python3-ldap3"
+depends+=" python3-msgpack"
+depends+=" python3-openssl"
+depends+=" python3-parsing"
+depends+=" python3-passlib"
+depends+=" python3-protobuf"
+depends+=" python3-publicsuffix2"
+depends+=" python3-pyperclip"
+depends+=" python3-ruamel.yaml"
+depends+=" python3-sortedcontainers"
+depends+=" python3-tornado"
+depends+=" python3-urwid"
+depends+=" python3-wsproto"
+depends+=" python3-zstandard"
+checkdepends+=" $depends"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-parver"
+checkdepends+=" python3-pytest-asyncio"
+checkdepends+=" python3-pytest-cov"
+checkdepends+=" python3-pytest-timeout"
+checkdepends+=" python3-requests"
+hostmakedepends="python3-setuptools"
 homepage="https://mitmproxy.org"
-changelog="https://raw.githubusercontent.com/mitmproxy/mitmproxy/main/CHANGELOG.md"
-distfiles="https://github.com/mitmproxy/mitmproxy/archive/v${version}.tar.gz"
-checksum=212e81bec40e1d2a894d73a337f076a3010d981249e513565e9246f29822d06c
-
-_skip="(test_get_version)" # This test fails without a git repository
-
-if [ ${XBPS_TARGET_MACHINE%-musl} = "i686" ]; then
-	_skip+="or(test_refresh)"
+license="MIT"
+changelog="https://github.com/mitmproxy/mitmproxy/raw/main/CHANGELOG.md"
+distfiles="https://github.com/mitmproxy/mitmproxy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="212e81bec40e1d2a894d73a337f076a3010d981249e513565e9246f29822d06c"
+build_style="python3-module"
+# this test fails without a git repository
+_skip="(test_get_version)"
+if [[ ${XBPS_TARGET_MACHINE%-musl} == "i686" ]]; then
+  _skip+="or(test_refresh)"
 fi
-
 make_check_args="-k not($_skip)"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
