@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-typed-ast"
 version=1.5.4
-revision=1
+revision=2
 short_desc="AST module with type comment support"
 depends="python3"
 makedepends="python3-devel"
