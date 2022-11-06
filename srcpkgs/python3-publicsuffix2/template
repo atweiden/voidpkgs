@@ -1,19 +1,22 @@
-# Template file for 'python3-publicsuffix2'
-pkgname=python3-publicsuffix2
+maintainer="nox"
+pkgname="python3-publicsuffix2"
 version=2019.12.21
 revision=2
-wrksrc="python-publicsuffix2-release-2.${version//./-}"
-build_style=python3-module
-hostmakedepends="python3-setuptools python3-requests python3-wheel"
-depends="python3"
 short_desc="Get a public suffix for a domain name using the Public Suffix List"
-maintainer="Evgeny Ermakov <evgeny.v.ermakov@gmail.com>"
-license="MIT, MPL-2.0"
+depends="python3"
+hostmakedepends+=" python3-requests"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/nexB/python-publicsuffix2"
-changelog="https://raw.githubusercontent.com/nexB/python-publicsuffix2/develop/CHANGELOG.rst"
-distfiles="https://github.com/nexB/python-publicsuffix2/archive/release-2.${version//./-}.tar.gz"
-checksum=b4ef022fccd7b4968151af208b0f890e55c00b24892a1a826b2b7a381215bafa
+license="MIT, MPL-2.0"
+changelog="https://github.com/nexB/python-publicsuffix2/raw/develop/CHANGELOG.rst"
+distfiles="https://github.com/nexB/python-publicsuffix2/archive/release-2.${version//./-}.tar.gz>$pkgname-$version.tar.gz"
+checksum="b4ef022fccd7b4968151af208b0f890e55c00b24892a1a826b2b7a381215bafa"
+wrksrc="python-publicsuffix2-release-2.${version//./-}"
+build_style="python3-module"
 
 post_install() {
-	vlicense publicsuffix2.LICENSE
+  vlicense publicsuffix2.LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
