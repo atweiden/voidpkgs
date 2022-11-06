@@ -698,7 +698,6 @@ constant %PKG = Map.new(
     'python-attrs' => ['python3-attrs'],
     'python-cffi' => ['python3-cffi'],
     'python-coverage' => ['python3-coverage'],
-    'python-cram' => ['python3-cram'],
     'python-dateutil' => ['python3-dateutil'],
     'python-ply' => ['python3-ply'],
     'python-pyasn1' => ['python3-pyasn1'],
