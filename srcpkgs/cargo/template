@@ -23,6 +23,7 @@ distfiles+=" https://github.com/rust-lang/cargo/archive/rust-$version.tar.gz>$pk
 distfiles+=" https://github.com/crossbeam-rs/crossbeam/archive/crossbeam-utils-0.8.8.tar.gz"
 checksum+=" 8363ee37e1ff85c7322f0619087b1230f43852dcb26316627a1a703ed20ea4b7"
 checksum+=" 52c451910203cd9002cc4b85cff95f45c6ba245392801e80d7898ca5c3c3ab29"
+create_wrksrc="yes"
 build_helper="rust"
 build_options+=" bindist"
 build_options+=" static"
@@ -33,8 +34,9 @@ if [[ -n "$build_option_static" ]] || [[ -n "$build_option_bindist" ]]; then
   _build_static="yes"
 fi
 
-pre_patch() {
-  mv ../crossbeam-* crossbeam-utils
+post_extract() {
+  mv "cargo-rust-$version"/* .
+  mv crossbeam-crossbeam-utils-* crossbeam-utils
 }
 
 post_patch() {
