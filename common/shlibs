@@ -319,6 +319,7 @@ libfftw3l_threads.so.3 libfftw-3.3_1
 libfido2.so.1 libfido2-1.6.0_2
 libFLAC++.so.6 libflac-1.2.1_1
 libFLAC.so.8 libflac-1.2.1_1
+libftdi1.so.2 libftdi1-1.2_1
 libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
 libGeoIP.so.1 libgeoip-1.4.8_1
