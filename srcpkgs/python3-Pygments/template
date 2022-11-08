@@ -12,7 +12,6 @@ license="BSD-2-Clause"
 changelog="https://github.com/pygments/pygments/raw/master/CHANGES"
 distfiles="$PYPI_SITE/P/Pygments/Pygments-$version.tar.gz"
 checksum="56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"
-wrksrc="Pygments-$version"
 build_style="python3-module"
 # ignored tests rely on unpackaged wcag_contrast_ratio module
 make_check_args="--ignore=tests/contrast/test_contrasts.py"

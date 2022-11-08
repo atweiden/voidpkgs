@@ -7,7 +7,6 @@ homepage="http://zd1211.wiki.sourceforge.net/"
 license="GPL-2.0-only"
 distfiles="$SOURCEFORGE_SITE/zd1211/$pkgname-$version.tar.bz2"
 checksum="f11d3810d7f72833997f634584a586dcced71a353f965abf81062ec431d02b12"
-wrksrc="$pkgname"
 
 do_install() {
   vmkdir usr/lib/firmware/zd1211

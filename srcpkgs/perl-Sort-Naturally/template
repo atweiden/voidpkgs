@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Sort-Naturally"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Sort/${pkgname#*-}-$version.tar.gz"
 checksum="eaab1c5c87575a7826089304ab1f8ffa7f18e6cd8b3937623e998e865ec1e746"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

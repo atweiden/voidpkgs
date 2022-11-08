@@ -11,7 +11,6 @@ homepage="https://github.com/dugsong/libdnet"
 license="BSD-3-Clause"
 distfiles="https://github.com/dugsong/libdnet/archive/$pkgname-$version.tar.gz"
 checksum="b6360659c93fa2e3cde9e0a1fc9c07bc4111f3448c5de856e095eb98315dd424"
-wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 
 pre_configure() {

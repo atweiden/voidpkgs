@@ -14,7 +14,6 @@ license="BSD-3-Clause"
 changelog="https://github.com/pallets/werkzeug/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/W/Werkzeug/Werkzeug-$version.tar.gz"
 checksum="7ea2d48322cc7c0f8b3a215ed73eabd7b5d75d0b50e31ab006286ccff9e00b8f"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 do_check() {

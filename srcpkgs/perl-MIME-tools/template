@@ -16,7 +16,6 @@ homepage="https://metacpan.org/release/MIME-tools"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/MIME/${pkgname#*-}-$version.tar.gz"
 checksum="64579f0c923d81d9a2194586e47c3475519e2646e4b5c102a8920759facf6973"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

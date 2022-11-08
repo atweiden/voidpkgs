@@ -12,7 +12,6 @@ license="MIT"
 changelog="https://github.com/textX/Arpeggio/raw/master/CHANGELOG.md"
 distfiles="https://github.com/textX/Arpeggio/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="70eb3d33948b9d69320c919d2e1820381220e6960ed46f805fbe6f1a09f03a66"
-wrksrc="Arpeggio-$version"
 build_style="python3-module"
 
 post_patch() {

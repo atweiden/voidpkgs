@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/Ousret/charset_normalizer/raw/master/CHANGELOG.md"
 distfiles="https://github.com/Ousret/charset_normalizer/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6a6a202ec93ccde145ebf40e9dda7b1cd246d576533e12b8dfeaf1202e5eb912"
-wrksrc="charset_normalizer-$version"
 build_style="python3-module"
 
 pre_check() {

@@ -11,7 +11,6 @@ homepage="http://www.tornadoweb.org/"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/t/tornado/tornado-$version.tar.gz"
 checksum="33c6e81d7bd55b468d2e793517c909b139960b6c790a60b7991b9b6b76fb9791"
-wrksrc="tornado-$version"
 build_style="python3-module"
 
 pre_build() {

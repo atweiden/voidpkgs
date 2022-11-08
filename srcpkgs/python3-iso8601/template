@@ -12,7 +12,6 @@ homepage="https://github.com/micktwomey/pyiso8601"
 license="MIT"
 distfiles="$PYPI_SITE/i/iso8601/iso8601-$version.tar.gz"
 checksum="32811e7b81deee2063ea6d2e94f8819a86d1f3811e49d23623a41fa832bef03f"
-wrksrc="iso8601-$version"
 build_style="python3-module"
 replaces="python3-iso-8601>=0"
 

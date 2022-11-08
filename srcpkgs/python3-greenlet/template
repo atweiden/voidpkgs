@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/python-greenlet/greenlet/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/g/greenlet/${pkgname#*-}-$version.tar.gz"
 checksum="bcb6c6dd1d6be6d38d6db283747d07fda089ff8c559a835236560a4410340455"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 do_check() {

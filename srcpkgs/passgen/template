@@ -16,7 +16,6 @@ distfiles+=" https://github.com/JuliaStrings/utf8proc/archive/$_utf8proc_gitrev.
 checksum+=" 18db2c4b0e5f0bde7a19cf345af83ce0c3ef5caa74833ee77af176400c5dc846"
 checksum+=" 095fd8f48e95a6e894e8a0ac419662f3e0c7a4d43b4cce05550d4e902754ee54"
 skip_extraction+=" $_utf8proc_gitrev.tar.gz"
-wrksrc="$pkgname-master-$_gitrev"
 build_style="cmake"
 configure_args+=" -DBUILD_BENCH=NO"
 configure_args+=" -DBUILD_GIT_INFO=OFF"

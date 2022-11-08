@@ -12,7 +12,6 @@ homepage="http://www.ntop.org/products/ndpi/"
 license="LGPL-3"
 distfiles="https://github.com/ntop/nDPI/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="25607db12f466ba88a1454ef8b378e0e9eb59adffad6baa4b5610859a102a5dd"
-wrksrc="nDPI-$version"
 build_style="gnu-configure"
 
 pre_configure() {

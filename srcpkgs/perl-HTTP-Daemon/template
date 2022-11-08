@@ -14,7 +14,6 @@ homepage="https://metacpan.org/release/HTTP-Daemon"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/HTTP/HTTP-Daemon-$version.tar.gz"
 checksum="f0767e7f3cbb80b21313c761f07ad8ed253bce9fa2d0ba806b3fb72d309b2e1d"
-wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

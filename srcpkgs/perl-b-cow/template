@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/B-COW"
 license="GPL-1.0-or-later, Artistic-1.0-Perl"
 distfiles="https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/B-COW-$version.tar.gz"
 checksum="fcafb775ed84a45bc2c06c5ffd71342cb3c06fb0bdcd5c1b51b0c12f8b585f51"
-wrksrc="B-COW-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

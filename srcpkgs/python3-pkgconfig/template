@@ -10,7 +10,6 @@ homepage="https://github.com/matze/pkgconfig"
 license="MIT"
 distfiles="$PYPI_SITE/p/pkgconfig/pkgconfig-$version.tar.gz"
 checksum="c34503829fd226822fd93c902b1cf275516908a023a24be0a02ba687f3a00399"
-wrksrc="pkgconfig-$version"
 build_style="python3-module"
 
 post_install() {

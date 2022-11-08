@@ -8,7 +8,6 @@ homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
 checksum="97ddf8ea58a2b9e0fbc2508e245028ca75911bd38d1551616b148c1aa5740ad9"
-wrksrc="git-$version"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then

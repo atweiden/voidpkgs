@@ -15,7 +15,6 @@ homepage="https://urllib3.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/u/urllib3/urllib3-$version.tar.gz"
 checksum="3fa96cf423e6987997fc326ae8df396db2a8b7c667747d47ddd8ecba91f4a74e"
-wrksrc="urllib3-$version"
 build_style="python3-module"
 
 pre_check() {

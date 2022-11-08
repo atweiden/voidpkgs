@@ -11,7 +11,6 @@ homepage="https://github.com/python/typed_ast"
 license="Apache-2.0"
 distfiles="https://github.com/python/typed_ast/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="1b2db37247c74594660aa9ad40014394fd765ed7fba90256f472329c06e742ab"
-wrksrc="typed_ast-$version"
 build_style="python3-module"
 
 do_check() {

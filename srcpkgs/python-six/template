@@ -12,7 +12,6 @@ license="MIT"
 changelog="https://github.com/benjaminp/six/raw/master/CHANGES"
 distfiles="$PYPI_SITE/s/six/${pkgname#*-}-$version.tar.gz"
 checksum="1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
-wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {

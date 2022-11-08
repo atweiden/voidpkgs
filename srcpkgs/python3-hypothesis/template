@@ -19,7 +19,6 @@ license="MPL-2.0"
 changelog="https://hypothesis.readthedocs.io/en/latest/changes.html"
 distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
 checksum="827171a0bad21b0f580718c8b3bac7ad2045dfbd044a57f872e95e47faaf343f"
-wrksrc="hypothesis-hypothesis-python-$version"
 build_wrksrc="hypothesis-python"
 build_style="python3-module"
 

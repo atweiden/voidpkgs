@@ -14,7 +14,6 @@ license="MIT"
 changelog="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/CHANGELOG"
 distfiles="$PYPI_SITE/b/beautifulsoup4/beautifulsoup4-$version.tar.gz"
 checksum="ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"
-wrksrc="beautifulsoup4-$version"
 build_style="python3-module"
 
 post_install() {

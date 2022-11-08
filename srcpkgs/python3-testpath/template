@@ -9,7 +9,6 @@ homepage="https://github.com/jupyter/testpath"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/t/testpath/testpath-$version.tar.gz"
 checksum="60e0a3261c149755f4399a1fff7d37523179a70fdc3abdf78de9fc2604aeec7e"
-wrksrc="testpath-$version"
 build_style="python3-module"
 
 pre_build() {

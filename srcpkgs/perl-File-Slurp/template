@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/File-Slurp"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/File/${pkgname#perl-}-$version.tar.gz"
 checksum="4c3c21992a9d42be3a79dd74a3c83d27d38057269d65509a2f555ea0fb2bc5b0"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

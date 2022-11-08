@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/DBI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBI/${pkgname#*-}-$version.tar.gz"
 checksum="8a2b993db560a2c373c174ee976a51027dd780ec766ae17620c20393d2e836fa"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

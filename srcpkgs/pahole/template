@@ -14,7 +14,6 @@ homepage="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license="GPL-2.0-only"
 distfiles="https://fedorapeople.org/~acme/dwarves/dwarves-$version.tar.xz"
 checksum="f085c25f068627d10e54bd030464f8952f5b2211d4ba26047fe209377470862a"
-wrksrc="dwarves-$version"
 build_style="cmake"
 configure_args="-D__LIB=lib"
 

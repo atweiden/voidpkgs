@@ -9,7 +9,6 @@ homepage="https://www.thrysoee.dk/editline/"
 license="BSD-3-Clause"
 distfiles="https://www.thrysoee.dk/editline/$pkgname-$_distver.tar.gz"
 checksum="b7b135a5112ce4344c9ac3dff57cc057b2b0e1b912619a36cf1d13fce8e88626"
-wrksrc="$pkgname-$_distver"
 build_style="gnu-configure"
 
 post_install() {

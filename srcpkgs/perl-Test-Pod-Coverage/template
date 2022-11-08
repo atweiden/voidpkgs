@@ -11,7 +11,6 @@ homepage="https://metacpan.org/release/Test-Pod-Coverage"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="48c9cca9f7d99eee741176445b431adf09c029e1aa57c4703c9f46f7601d40d4"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

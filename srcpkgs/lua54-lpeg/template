@@ -17,7 +17,6 @@ homepage="http://www.inf.puc-rio.br/~roberto/lpeg/"
 license="MIT"
 distfiles="http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-$version.tar.gz"
 checksum="48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe"
-wrksrc="lpeg-$version"
 
 post_extract() {
   mkdir -p lua51

@@ -15,7 +15,6 @@ homepage="https://metacpan.org/release/IO-Socket-SSL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
 checksum="c30ee2220b1e181a968ebbc81861d0cadf334b001377a44105ae5a8637ddae8c"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

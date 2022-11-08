@@ -14,7 +14,6 @@ homepage="https://metacpan.org/release/Convert-BinHex"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Convert/${pkgname#*-}-$version.tar.gz"
 checksum="513591b4be46bd7eb91e83197721b4a045a9753a3dd2f11de82c9d3013226397"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

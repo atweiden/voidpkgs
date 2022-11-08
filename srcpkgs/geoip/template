@@ -10,7 +10,6 @@ homepage="http://www.maxmind.com/app/c"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/maxmind/geoip-api-c/releases/download/v$version/GeoIP-$version.tar.gz"
 checksum="1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80"
-wrksrc="GeoIP-$version"
 build_style="gnu-configure"
 configure_args="--sysconfdir=/etc/geoip"
 

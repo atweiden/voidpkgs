@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/App-cpanminus"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/App/App-$pkgname-$version.tar.gz"
 checksum="3e8c9d9b44a7348f9acc917163dbfc15bd5ea72501492cea3a35b346440ff862"
-wrksrc="App-$pkgname-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

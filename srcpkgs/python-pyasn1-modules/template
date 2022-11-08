@@ -12,7 +12,6 @@ license="BSD-2-Clause"
 homepage="https://github.com/etingof/pyasn1-modules"
 distfiles="https://github.com/etingof/pyasn1-modules/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c562fcf94e21b19b1b01c103a4dbe24b286356237d2b453afd75882683cf0ad7"
-wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 pycompile_module="pyasn1_modules"
 

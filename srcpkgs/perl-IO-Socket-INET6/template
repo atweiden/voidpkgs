@@ -13,7 +13,6 @@ homepage="https://metacpan.org/release/IO-Socket-INET6"
 license="Artistic, GPL-1"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
 checksum="b6da746853253d5b4ac43191b4f69a4719595ee13a7ca676a8054cf36e6d16bb"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

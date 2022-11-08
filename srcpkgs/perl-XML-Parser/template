@@ -11,7 +11,6 @@ homepage="https://metacpan.org/release/XML-Parser"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
 checksum="d331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 post_extract() {

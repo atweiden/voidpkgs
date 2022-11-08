@@ -11,7 +11,6 @@ license="BSD-3-Clause"
 changelog="https://github.com/pallets/click/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/c/click/click-$version.tar.gz"
 checksum="7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"
-wrksrc="click-$version"
 build_style="python3-module"
 
 post_install() {

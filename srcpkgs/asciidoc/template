@@ -16,7 +16,6 @@ distfiles="https://github.com/asciidoc-py/asciidoc-py/releases/download/$version
 checksum="ea39760ac2739496c14002902571592dc2ae2fa673296ec141a9e491d9c11fca"
 conf_files+=" /etc/asciidoc/filters/*/*.conf"
 conf_files+=" /etc/asciidoc/*.conf"
-wrksrc="$pkgname-py-$version"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

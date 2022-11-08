@@ -12,7 +12,6 @@ homepage="https://metacpan.org/release/DBD-SQLite"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
 checksum="89e75dff9f66c273e0e459d51f151f88960eb7d82e2821e6902f18688ba592fe"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 configure_args="SQLITE_LOCATION=$XBPS_CROSS_BASE/usr"
 

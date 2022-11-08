@@ -14,7 +14,6 @@ license="MIT"
 changelog="https://github.com/pfmoore/editables/raw/main/CHANGELOG.md"
 distfiles="https://github.com/pfmoore/editables/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="42f7240164af1e028ccb7b60e72f54bbd8b639e9409595fbeffac5d3fb610643"
-wrksrc="${pkgname/python3-/}-$version"
 build_style="python3-pep517"
 make_check_pre="env PYTHONPATH=./src"
 

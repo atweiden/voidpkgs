@@ -10,7 +10,6 @@ homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
 distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
 checksum="dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"
-wrksrc="packaging-$version"
 build_style="python3-module"
 
 do_check() {

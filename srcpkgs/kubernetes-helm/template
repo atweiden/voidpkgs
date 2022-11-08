@@ -11,7 +11,6 @@ homepage="https://helm.sh/"
 license="Apache-2.0"
 distfiles="https://github.com/helm/helm/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b8d05893ce2413385417e3b23d40e259625973bfcd452121f7d17c767078fc10"
-wrksrc="helm-$version"
 nopie=true
 conflicts="helm"
 

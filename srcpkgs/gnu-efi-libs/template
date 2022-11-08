@@ -8,7 +8,6 @@ homepage="https://sourceforge.net/projects/gnu-efi/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/${pkgname%-libs}-$version.tar.bz2"
 checksum="b73b643a0d5697d1f396d7431448e886dd805668789578e3e1a28277c9528435"
-wrksrc="${pkgname%-libs}-$version"
 nostrip="yes"
 # not an actual revert, xbps considers 3.0w higher than 3.0.8
 reverts="3.0w_1"

@@ -9,7 +9,6 @@ homepage="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files"
 license="custom: Proprietary"
 distfiles="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="084463c82fbcb679e7fa211e676fd12a8ae464fed7d445e92ccc67101ced5a94"
-wrksrc="Intel-Linux-Processor-Microcode-Data-Files-microcode-$version"
 repository="nonfree"
 
 do_install() {

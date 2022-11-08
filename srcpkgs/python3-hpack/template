@@ -9,7 +9,6 @@ homepage="https://python-hyper.org/hpack/"
 license="MIT"
 distfiles="https://github.com/python-hyper/hpack/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b714329acc1d4facaed34329584f8a6b234abb9141b640ec021f991f5108a300"
-wrksrc="hpack-$version"
 build_style="python3-module"
 
 post_install() {

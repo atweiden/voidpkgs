@@ -10,7 +10,6 @@ hostmakedepends="git"
 homepage="https://github.com/myfreeweb/freepass"
 license="Unlicense"
 _basedir="$pkgname-$_gitrev"
-wrksrc="$_basedir/cli"
 build_style="cargo"
 
 do_fetch() {

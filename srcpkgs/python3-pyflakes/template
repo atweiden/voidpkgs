@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/PyCQA/pyflakes/raw/master/NEWS.rst"
 distfiles="$PYPI_SITE/p/pyflakes/pyflakes-$version.tar.gz"
 checksum="491feb020dca48ccc562a8c0cbe8df07ee13078df59813b83959cbdada312ea3"
-wrksrc="pyflakes-$version"
 build_style="python3-module"
 conflicts="python-pyflakes>=0"
 

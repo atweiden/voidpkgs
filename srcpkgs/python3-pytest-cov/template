@@ -20,7 +20,6 @@ license="MIT"
 changelog="https://github.com/pytest-dev/pytest-cov/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pytest-cov/pytest-cov-$version.tar.gz"
 checksum="e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470"
-wrksrc="pytest-cov-$version"
 build_style="python3-module"
 # requires unpackaged xdist, fields, process_tests
 make_check="no"

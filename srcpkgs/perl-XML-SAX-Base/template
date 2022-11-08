@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/XML-SAX-Base"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
 checksum="66cb355ba4ef47c10ca738bd35999723644386ac853abbeb5132841f5e8a2ad0"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

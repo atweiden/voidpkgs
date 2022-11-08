@@ -12,7 +12,6 @@ license="Python-2.0"
 changelog="https://github.com/pypa/distlib/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/d/distlib/distlib-$version.tar.gz"
 checksum="14bad2d9b04d3a36127ac97f30b12a19268f211063d8f8ee4f47108896e11b46"
-wrksrc="distlib-$version"
 build_style="python3-pep517"
 
 pre_check() {

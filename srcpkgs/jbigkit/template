@@ -11,7 +11,6 @@ homepage="http://www.cl.cam.ac.uk/~mgk25/jbigkit"
 license="GPL-2.0-only"
 distfiles="https://github.com/void-linux/jbigkit-shared/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5cccbfb3bd7daf224a244ce0578dbcf706e4f39962426ceede873262b29b9931"
-wrksrc="$pkgname-shared-$version"
 build_style="gnu-configure"
 
 pre_configure() {

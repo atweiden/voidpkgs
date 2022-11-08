@@ -9,7 +9,6 @@ homepage="https://github.com/eliben/pyelftools"
 license="Public Domain"
 distfiles="$PYPI_SITE/p/pyelftools/pyelftools-$version.tar.gz"
 checksum="ec761596aafa16e282a31de188737e5485552469ac63b60cfcccf22263fd24ff"
-wrksrc="pyelftools-$version"
 build_style="python3-module"
 alternatives="pyelftools:readelf.py:/usr/bin/readelf.py3"
 

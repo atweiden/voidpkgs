@@ -8,7 +8,6 @@ homepage="http://cvsps.sourceforge.net/"
 license="GPL-2.0-only"
 distfiles="$SOURCEFORGE_SITE/cvsps/${pkgname%2}-$version.tar.gz"
 checksum="91d3198b33463861a581686d5fcf99a5c484e7c4d819384c04fda9cafec1075a"
-wrksrc="${pkgname%2}-$version"
 build_style="gnu-makefile"
 
 post_extract() {

@@ -9,7 +9,6 @@ homepage="https://pypi.org/project/enum34/"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/e/enum34/${pkgname#*-}-$version.tar.gz"
 checksum="cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248"
-wrksrc="${pkgname#*-}-$version"
 build_style="python2-module"
 
 pre_build() {

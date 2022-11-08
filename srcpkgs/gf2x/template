@@ -9,7 +9,6 @@ homepage="https://gitlab.inria.fr/gf2x/gf2x"
 license="GPL-3.0-or-later"
 distfiles="https://gitlab.inria.fr/gf2x/gf2x/-/archive/$pkgname-$version/$pkgname-$pkgname-$version.tar.gz>>$pkgname-$version.tar.gz"
 checksum="11bcf98b620c60c2ee3b4460b02b7be741f14cfdc26b542f22c92950926575e0"
-wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 if [[ -z "$build_option_native_build" ]]; then
   # this disables sse3, ssse3, sse41, pclmul

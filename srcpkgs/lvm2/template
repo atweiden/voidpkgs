@@ -16,7 +16,6 @@ distfiles="https://mirrors.kernel.org/sourceware/lvm2/releases/${pkgname^^}.$ver
 checksum="0e0d521a863a5db2440f2e1e7627ba82b70273ae4ab0bbe130851db0d58e5af1"
 conf_files+=" /etc/lvm/*.conf"
 conf_files+=" /etc/lvm/profile/*"
-wrksrc="${pkgname^^}.$version"
 build_style="gnu-configure"
 configure_args+=" --disable-selinux"
 configure_args+=" --enable-applib"

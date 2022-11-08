@@ -13,7 +13,6 @@ license="GPL-2.0-only"
 changelog="https://github.com/fish-shell/fish-shell/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.xz"
 checksum="a6d45b3dc5a45dd31772e7f8dfdfecabc063986e8f67d60bd7ca60cc81db6928"
-wrksrc="fish-$version"
 build_style="cmake"
 # tests don't work as root
 make_check="ci-skip"

@@ -10,7 +10,6 @@ homepage="https://github.com/getsentry/raven-python"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/r/raven/raven-$version.tar.gz"
 checksum="3fa6de6efa2493a7c827472e984ce9b020797d0da16f1db67197bcc23c8fae54"
-wrksrc="raven-$version"
 build_style="python3-module"
 conflicts="python-raven>=0"
 

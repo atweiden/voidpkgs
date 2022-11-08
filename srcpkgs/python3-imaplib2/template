@@ -11,7 +11,6 @@ homepage="https://github.com/jazzband/imaplib2"
 license="MIT"
 distfiles="https://github.com/jazzband/imaplib2/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b55c434ecfb26a057d6bb3c8da0d674c83dd702674bb898c418a075a60560e42"
-wrksrc="imaplib2-$version"
 build_style="python3-pep517"
 
 post_install() {

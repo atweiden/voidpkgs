@@ -9,7 +9,6 @@ homepage="https://github.com/PyCQA/mccabe"
 license="MIT"
 distfiles="$PYPI_SITE/m/mccabe/mccabe-$version.tar.gz"
 checksum="348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"
-wrksrc="mccabe-$version"
 build_style="python3-module"
 replaces="mccabe>=0"
 

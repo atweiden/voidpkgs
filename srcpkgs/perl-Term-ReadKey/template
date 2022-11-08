@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/TermReadKey"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Term/TermReadKey-$version.tar.gz"
 checksum="99708f2d157343b79af6d552384fc4cbdf8ab633b727eb547f733fbc1cfdd14d"
-wrksrc="TermReadKey-$version"
 build_style="perl-module"
 reverts="2.37_1"
 

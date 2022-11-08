@@ -20,7 +20,6 @@ changelog="https://virtualenv.pypa.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/v/virtualenv/virtualenv-$version.tar.gz"
 checksum="d86ea0bb50e06252d79e6c241507cb904fcd66090c3271381372d6221a3970f9"
 alternatives="virtualenv:virtualenv:/usr/bin/virtualenv3"
-wrksrc="virtualenv-$version"
 build_style="python3-module"
 
 do_check() {

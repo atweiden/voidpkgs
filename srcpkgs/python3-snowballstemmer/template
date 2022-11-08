@@ -9,7 +9,6 @@ homepage="https://github.com/shibukawa/snowball_py"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/snowballstemmer/snowballstemmer-$version.tar.gz"
 checksum="919f26a68b2c17a7634da993d91339e288964f93c274f1343e3bbbe2096e1128"
-wrksrc="snowballstemmer-$version"
 build_style="python3-module"
 
 post_install() {

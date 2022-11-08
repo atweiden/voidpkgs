@@ -17,7 +17,6 @@ license="MIT"
 changelog="https://cffi.readthedocs.io/en/latest/whatsnew.html"
 distfiles="$PYPI_SITE/c/cffi/${pkgname#*-}-$version.tar.gz"
 checksum="d400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9"
-wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {

@@ -9,7 +9,6 @@ homepage="https://github.com/Anorov/PySocks"
 license="BSD-3-Clause"
 distfiles="https://github.com/Anorov/PySocks/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b6dbd9daf8ebe75c9f76b54c9747d3d1f1d5ac54d540e44b7eb93936ae38b01a"
-wrksrc="PySocks-$version"
 build_style="python3-module"
 
 post_install() {

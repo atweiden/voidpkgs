@@ -12,7 +12,6 @@ license="Apache-2.0"
 changelog="https://github.com/spulec/freezegun/raw/master/CHANGELOG"
 distfiles="$PYPI_SITE/f/freezegun/freezegun-$version.tar.gz"
 checksum="cd22d1ba06941384410cd967d8a99d5ae2442f57dfafeff2fda5de8dc5c05446"
-wrksrc="freezegun-$version"
 build_style="python3-module"
 
 do_check() {

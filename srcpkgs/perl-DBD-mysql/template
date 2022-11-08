@@ -18,7 +18,6 @@ homepage="https://metacpan.org/release/DBD-mysql"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/DBD/${pkgname#*-}-$version.tar.gz"
 checksum="4f48541ff15a0a7405f76adc10f81627c33996fbf56c95c26c094444c0928d78"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 if [[ -n "$CROSS_BUILD" ]]; then

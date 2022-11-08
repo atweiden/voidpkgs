@@ -10,7 +10,6 @@ license="GPL-2.0-only"
 homepage="https://github.com/imomaliev/tmux-bash-completion"
 distfiles="https://github.com/imomaliev/tmux-bash-completion/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="3ac0a217e749f762d2b93057dca9795fed74f700402184f2ee0b4cf22eb596e5"
-wrksrc="$pkgname-$_gitrev"
 
 do_install() {
   vinstall completions/tmux 644 usr/share/bash-completion/completions

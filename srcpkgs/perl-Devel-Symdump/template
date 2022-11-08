@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Devel-Symdump"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Devel/${pkgname#*-}-$version.tar.gz"
 checksum="826f81a107f5592a2516766ed43beb47e10cc83edc9ea48090b02a36040776c0"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

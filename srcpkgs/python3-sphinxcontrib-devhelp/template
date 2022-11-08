@@ -10,7 +10,6 @@ homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-devhelp/sphinxcontrib-devhelp-$version.tar.gz"
 checksum="ff7f1afa7b9642e7060379360a67e9c41e8f3121f2ce9164266f61b9f4b338e4"
-wrksrc="sphinxcontrib-devhelp-$version"
 build_style="python3-module"
 
 post_install() {

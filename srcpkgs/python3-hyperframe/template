@@ -10,7 +10,6 @@ homepage="https://python-hyper.org/hyperframe/"
 license="MIT"
 distfiles="https://github.com/python-hyper/hyperframe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="a126e1e0fb24135aa7ac53cefe11ad197d0c9a5e74f495c1236022b1e578a7a8"
-wrksrc="hyperframe-$version"
 build_style="python3-module"
 
 post_install() {

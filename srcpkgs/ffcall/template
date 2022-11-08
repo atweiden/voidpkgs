@@ -7,7 +7,6 @@ homepage="https://www.gnu.org/software/libffcall"
 license="GPL-2.0-or-later"
 distfiles="$GNU_SITE/libffcall/libffcall-$version.tar.gz"
 checksum="8ef69921dbdc06bc5bb90513622637a7b83a71f31f5ba377be9d8fd8f57912c2"
-wrksrc="libffcall-$version"
 build_style="gnu-configure"
 
 # won't work with parallel_build so just turn it off (thanks to juanrp

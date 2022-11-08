@@ -15,7 +15,6 @@ homepage="https://ctags.io/"
 license="GPL-2.0-only"
 distfiles="https://github.com/universal-ctags/ctags/archive/p$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d2b2b382f8035d4bdfb73a2f6995e85c744bc8121135e0f77060d2429ec459bd"
-wrksrc="ctags-p$version"
 build_style="gnu-configure"
 
 pre_configure() {

@@ -12,7 +12,6 @@ license="Apache-2.0"
 changelog="https://github.com/aio-libs/multidict/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/m/multidict/multidict-$version.tar.gz"
 checksum="25b4e5f22d3a37ddf3effc0710ba692cfc792c2b9edfb9c05aefe823256e84d5"
-wrksrc="multidict-$version"
 build_style="python3-module"
 
 do_check() {

@@ -19,7 +19,6 @@ homepage="http://www.kmkeen.com/arch-wiki-lite/"
 license="GFDL-1.3-or-later,GPL-3.0-only"
 distfiles="http://www.kmkeen.com/arch-wiki-lite/$pkgname-$_generator_program_version.tar.gz"
 checksum="b381e3f5589d652346621a4be33988efd924fd702b1c204dcab452a92bb00ca4"
-wrksrc="$pkgname"
 
 pre_build() {
   local arch_wiki_docs

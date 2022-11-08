@@ -8,7 +8,6 @@ homepage="http://infozip.sf.net/"
 license="Info-ZIP"
 distfiles="$SOURCEFORGE_SITE/infozip/${pkgname}60.tar.gz"
 checksum="036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37"
-wrksrc="${pkgname}60"
 
 do_build() {
   CFLAGS+=" -DLARGE_FILE_SUPPORT"

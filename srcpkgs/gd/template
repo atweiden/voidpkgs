@@ -14,7 +14,6 @@ homepage="http://www.libgd.org/"
 license="custom:BSD-like"
 distfiles="https://github.com/libgd/libgd/releases/download/$pkgname-$version/libgd-$version.tar.xz"
 checksum="478a047084e0d89b83616e4c2cf3c9438175fb0cc55d8c8967f06e0427f7d7fb"
-wrksrc="libgd-$version"
 build_style="gnu-configure"
 configure_args="--without-xpm"
 

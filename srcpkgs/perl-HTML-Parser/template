@@ -13,7 +13,6 @@ homepage="https://metacpan.org/release/HTML-Parser"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/HTML/HTML-Parser-$version.tar.gz"
 checksum="64d9e2eb2b420f1492da01ec0e6976363245b4be9290f03f10b7d2cb63fa2f61"
-wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

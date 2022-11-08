@@ -11,7 +11,6 @@ license="Apache-2.0"
 changelog="https://github.com/sethmlarson/rfc6555/raw/main/CHANGES.rst"
 distfiles="https://github.com/sethmlarson/rfc6555/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="8a15da0f619227c6938be27c64e844668701bca65205002eda789a4fd883b23f"
-wrksrc="rfc6555-$version"
 build_style="python3-module"
 # ci fail
 make_check_args="--deselect tests/test_ipv6.py::test_ipv6_available"

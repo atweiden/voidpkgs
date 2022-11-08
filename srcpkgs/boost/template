@@ -18,7 +18,6 @@ homepage="https://www.boost.org/"
 license="BSL-1.0"
 distfiles="https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${version//./_}.tar.bz2"
 checksum="1e19565d82e43bc59209a168f5ac899d3ba471d55c7610c677d4ccf2c9c500c0"
-wrksrc="${pkgname}_${version//\./_}"
 python_version=3
 replaces+=" boost-python1.72>=0"
 replaces+=" boost-python3-1.72>=0"

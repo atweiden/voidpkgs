@@ -11,7 +11,6 @@ distfiles+=" https://github.com/btcsuite/btcd/releases/download/v$version/$pkgna
 distfiles+=" https://github.com/btcsuite/btcd/releases/download/v$version/vendor.tar.gz>$pkgname-vendor-$version.tar.gz"
 checksum+=" 96b001d15ca9fe5b8fec383fef923fc3392e05d3e4f4143a1258a826d15f259e"
 checksum+=" 1b54906917721a3880c8e5d3a53e85356e81bb4532be218ced576863ac19ad00"
-wrksrc="$pkgname-v$version"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/btcsuite/btcd"

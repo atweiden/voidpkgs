@@ -11,7 +11,6 @@ homepage="https://www.gnu.org/software/xorriso"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/xorriso/$pkgname-$version.tar.gz"
 checksum="3ec7393d4a9dcbf5f74309c28a415f55227ec62770b95ae993ac8d7a3b152972"
-wrksrc="$pkgname-${version%.pl*}"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

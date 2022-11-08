@@ -7,7 +7,6 @@ homepage="https://spdx.org"
 license="CC-BY-3.0"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="4e51bcc3b242f1f88fc0edf7565294569d25b64df20d34f2944e614c4a095489"
-wrksrc="license-list-data-$version"
 
 do_install() {
   vmkdir usr/share/spdx

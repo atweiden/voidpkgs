@@ -14,7 +14,6 @@ homepage="https://github.com/willmcgugan/rich"
 license="MIT"
 distfiles="$PYPI_SITE/r/rich/rich-$version.tar.gz"
 checksum="ba3a3775974105c221d31141f2c116f4fd65c5ceb0698657a11e9f295ec93fd0"
-wrksrc="rich-$version"
 build_style="python3-module"
 # some checks only work on windows
 make_check="extended"

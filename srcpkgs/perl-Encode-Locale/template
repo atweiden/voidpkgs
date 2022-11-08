@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Encode-Locale"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Encode/Encode-Locale-$version.tar.gz"
 checksum="176fa02771f542a4efb1dbc2a4c928e8f4391bf4078473bd6040d8f11adb0ec1"
-wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

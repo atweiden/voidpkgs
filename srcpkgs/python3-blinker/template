@@ -12,7 +12,6 @@ license="MIT"
 changelog="https://github.com/pallets-eco/blinker/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/b/blinker/blinker-$version.tar.gz"
 checksum="923e5e2f69c155f2cc42dafbbd70e16e3fde24d2d4aa2ab72fbe386238892462"
-wrksrc="blinker-$version"
 build_style="python3-module"
 
 post_install() {

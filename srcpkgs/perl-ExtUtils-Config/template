@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/ExtUtils-Config"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/ExtUtils/${pkgname/perl-/}-$version.tar.gz"
 checksum="ae5104f634650dce8a79b7ed13fb59d67a39c213a6776cfdaa3ee749e62f1a8c"
-wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

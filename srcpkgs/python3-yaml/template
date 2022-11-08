@@ -13,7 +13,6 @@ license="MIT"
 changelog="https://github.com/yaml/pyyaml/raw/master/CHANGES"
 distfiles="$PYPI_SITE/P/PyYAML/PyYAML-$version.tar.gz"
 checksum="68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"
-wrksrc="PyYAML-$version"
 build_style="python3-module"
 
 post_install() {

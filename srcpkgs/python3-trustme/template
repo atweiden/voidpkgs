@@ -14,7 +14,6 @@ license="GPL-3.0-or-later"
 homepage="https://trustme.rtfd.io/"
 distfiles="https://github.com/python-trio/trustme/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="e9f2544bcc39583a62b5d39d9f0ce3da8528ee448911035a679f7ddb1edeab5e"
-wrksrc="trustme-$version"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

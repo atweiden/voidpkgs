@@ -16,7 +16,6 @@ homepage="https://github.com/osandov/drgn/"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/osandov/drgn/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c299de5ee962ad2c0d2e59c9ff239dedd92a4a32b5ca890eb5d5e63da7b01771"
-wrksrc="drgn-$version"
 build_style="python3-module"
 
 pre_build() {

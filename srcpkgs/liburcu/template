@@ -7,7 +7,6 @@ homepage="https://liburcu.org"
 license="LGPL-2.1-or-later"
 distfiles="https://www.lttng.org/files/urcu/userspace-rcu-$version.tar.bz2"
 checksum="4eefc11e4f6c212fc7d84d871e1cc139da0669a46ff3fda557a6fdd4d74ca67b"
-wrksrc="userspace-rcu-$version"
 build_style="gnu-configure"
 configure_args="--disable-static"
 

@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree/CHANGES"
 distfiles="$PYPI_SITE/r/ruamel.yaml/ruamel.yaml-$version.tar.gz"
 checksum="8b7ce697a2f212752a35c1ac414471dc16c424c9573be4926b56ff3f5d23b7af"
-wrksrc="ruamel.yaml-$version"
 build_style="python3-module"
 # no tests included in distfiles
 make_check="no"

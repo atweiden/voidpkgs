@@ -31,7 +31,6 @@ distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8"
 checksum+=" 988a6c50f8b875b6642cf656f5d848e740c394334782de5bf516bd475ea4eca5"
 skip_extraction="patch-$version.xz"
-wrksrc="linux-${version%.*}"
 python_version=3
 # -dbg package is generated below manually
 nodebug="yes"

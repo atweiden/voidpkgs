@@ -11,7 +11,6 @@ homepage="https://pwhois.org/lft/"
 license="VOSTROM"
 distfiles="https://pwhois.org/dl/index.who?file=$pkgname-${version%0}.tar.gz"
 checksum="aad13e671adcfc471ab99417161964882d147893a54664f3f465ec5c8398e6af"
-wrksrc="$pkgname-${version%0}"
 build_style="gnu-configure"
 
 post_install() {

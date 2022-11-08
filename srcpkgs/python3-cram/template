@@ -9,7 +9,6 @@ homepage="https://bitheap.org/cram/"
 license="GPL-2.0-or-later"
 distfiles="$PYPI_SITE/c/cram/cram-$version.tar.gz"
 checksum="7da7445af2ce15b90aad5ec4792f857cef5786d71f14377e9eb994d8b8337f2f"
-wrksrc="cram-$version"
 build_style="python3-module"
 conflicts="python-cram>=0"
 

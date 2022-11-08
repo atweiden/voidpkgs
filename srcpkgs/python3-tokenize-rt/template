@@ -11,7 +11,6 @@ license="MIT"
 # don't use pypi because tests are missing
 distfiles="https://github.com/asottile/tokenize-rt/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="7043d391eae7e6ab3e2e69ab2995b4d9873f56805a55d2ba2db128f468efbace"
-wrksrc="tokenize-rt-$version"
 build_style="python3-module"
 
 post_install() {

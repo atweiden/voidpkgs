@@ -7,7 +7,6 @@ homepage="http://www.oracle.com/technetwork/products/berkeleydb/overview/index.h
 license="BSD-4-Clause"
 distfiles="http://download.oracle.com/berkeley-db/$pkgname-$version.tar.gz"
 checksum="e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628"
-wrksrc="$pkgname-$version"
 build_wrksrc="build_unix"
 build_style="gnu-configure"
 configure_script="../dist/configure"

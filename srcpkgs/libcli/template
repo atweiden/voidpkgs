@@ -8,7 +8,6 @@ homepage="https://github.com/dparrish/libcli"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/dparrish/libcli/archive/v$_distver.tar.gz>$pkgname-$version.tar.gz"
 checksum="c80e268be48c7a52105877995e126034df281096d9785a394b7afcadc9d30e9a"
-wrksrc="$pkgname-$_distver"
 build_style="gnu-makefile"
 
 libcli-devel_package() {

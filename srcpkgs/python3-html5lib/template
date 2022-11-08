@@ -10,7 +10,6 @@ homepage="https://github.com/html5lib/html5lib-python"
 license="MIT"
 distfiles="$PYPI_SITE/h/html5lib/html5lib-$version.tar.gz"
 checksum="b2e5b40261e20f354d198eae92afc10d750afb487ed5e50f9c4eaf07c184146f"
-wrksrc="html5lib-$version"
 build_style="python3-module"
 # tests fail, should be fixed upstream in a new release
 make_check="no"

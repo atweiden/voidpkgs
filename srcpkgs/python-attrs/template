@@ -14,7 +14,6 @@ homepage="https://attrs.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/a/attrs/${pkgname#*-}-$version.tar.gz"
 checksum="ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"
-wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {

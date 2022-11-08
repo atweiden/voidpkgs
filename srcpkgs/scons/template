@@ -10,7 +10,6 @@ homepage="https://www.scons.org/"
 license="MIT"
 distfiles="https://github.com/SCons/scons/releases/download/$version/SCons-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="7703c4e9d2200b4854a31800c1dbd4587e1fa86e75f58795c740bcfa7eca7eaa"
-wrksrc="SCons-$version"
 build_style="python3-module"
 # scons dist tarballs do not have tests, confirmed with scons dev
 make_check="no"

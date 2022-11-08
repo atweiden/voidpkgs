@@ -9,7 +9,6 @@ homepage="https://directory.fsf.org/wiki/Libfcgi"
 license="custom:fastcgi"
 distfiles="$DEBIAN_SITE/main/libf/libfcgi/libfcgi_$version.orig.tar.gz"
 checksum="1fe83501edfc3a7ec96bb1e69db3fd5ea1730135bd73ab152186fd0b437013bc"
-wrksrc="fcgi2-$version"
 build_style="gnu-configure"
 disable_parallel_build="yes"
 

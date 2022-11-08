@@ -13,7 +13,6 @@ homepage="https://github.com/sissaschool/xmlschema"
 license="MIT"
 distfiles="$PYPI_SITE/x/xmlschema/xmlschema-$version.tar.gz"
 checksum="adef8cb1e6572fe095b56ae4243b3618f842b32adba98e1b1bab0bd014f2234e"
-wrksrc="xmlschema-$version"
 build_style="python3-module"
 
 post_install() {

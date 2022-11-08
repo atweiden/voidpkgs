@@ -10,7 +10,6 @@ license="BSD-2-Clause"
 changelog="https://github.com/rbarrois/python-semanticversion/raw/master/ChangeLog"
 distfiles="$PYPI_SITE/s/semantic-version/semantic_version-$version.tar.gz"
 checksum="d2cb2de0558762934679b9a104e82eca7af448c9f4974d1f3eeccff651df8a54"
-wrksrc="semantic_version-$version"
 build_style="python3-module"
 
 post_install() {

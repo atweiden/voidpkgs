@@ -9,7 +9,6 @@ homepage="https://github.com/joswr1ght/cowpatty"
 license="BSD-3-Clause"
 distfiles="https://github.com/joswr1ght/cowpatty/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="8aae67f4823edb76dff036808137888d2479477ec1e52aa86d6cecd26d58aa23"
-wrksrc="${pkgname,,}-$version"
 build_style="gnu-makefile"
 make_use_env=1
 make_install_args="BINDIR=/usr/bin"

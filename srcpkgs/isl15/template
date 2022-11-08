@@ -8,7 +8,6 @@ homepage="https://libisl.sourceforge.io/"
 license="MIT"
 distfiles="$SOURCEFORGE_SITE/libisl/isl-$version.tar.bz2"
 checksum="d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8"
-wrksrc="${pkgname%15}-$version"
 build_style="gnu-configure"
 
 post_install() {

@@ -9,7 +9,6 @@ homepage="https://straightplugin.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/s/${pkgname/python3-/}/${pkgname/python3-/}-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="818a7641068932ed6436d0af0a3bb77bbbde29df0a7142c8bd1a249e7c2f0d38"
-wrksrc="${pkgname/python3-/}-$version"
 build_style="python3-module"
 
 post_install() {

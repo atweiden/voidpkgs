@@ -10,7 +10,6 @@ license="MIT"
 changelog="https://github.com/pypa/pip/raw/master/NEWS.rst"
 distfiles="$PYPI_SITE/p/pip/pip-$version.tar.gz"
 checksum="8182aec21dad6c0a49a2a3d121a87cd524b950e0b6092b181625f07ebdde7530"
-wrksrc="pip-$version"
 build_style="python3-module"
 # tests have unpackaged dependencies
 make_check="no"

@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/IPC-Run"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IPC/${pkgname#*-}-$version.tar.gz"
 checksum="816ebf217fa0df99c583d73c0acc6ced78ac773787c664c75cbf140bb7e4c901"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

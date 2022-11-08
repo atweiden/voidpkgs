@@ -11,7 +11,6 @@ license="BSD-2-Clause"
 changelog="https://mock.readthedocs.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/m/mock/mock-$version.tar.gz"
 checksum="7d3fbbde18228f4ff2f1f119a45cdffa458b4c0dee32eb4d2bb2f82554bac7bc"
-wrksrc="mock-$version"
 build_style="python3-module"
 
 do_check() {

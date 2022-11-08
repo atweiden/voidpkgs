@@ -9,7 +9,6 @@ homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 distfiles="$PYPI_SITE/c/cryptography_vectors/cryptography_vectors-$version.tar.gz"
 checksum="1cdafd42f5348d77e4e7e4791aefd1f62b16bd552a0274afc9346533fe32e925"
-wrksrc="${pkgname#python3-}-${version}"
 build_style="python3-module"
 
 post_install() {

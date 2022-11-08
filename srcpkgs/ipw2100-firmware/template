@@ -7,7 +7,6 @@ homepage="http://ipw2100.sourceforge.net/"
 license="custom:IPW2100-EULA"
 distfiles="http://firmware.openbsd.org/firmware-dist/${pkgname/firmware/fw}-$version.tgz"
 checksum="e1107c455e48d324a616b47a622593bc8413dcce72026f72731c0b03dae3a7a2"
-wrksrc="${pkgname/firmware/fw}-$version"
 create_wrksrc="yes"
 
 do_install() {

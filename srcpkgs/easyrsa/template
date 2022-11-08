@@ -11,7 +11,6 @@ checksum="01b07ecb58dc003e47d4e74f9fc4da35ec6842e96cd003d66ed72a43df983659"
 conf_files+=" /etc/easyrsa/openssl-easyrsa.cnf"
 conf_files+=" /etc/easyrsa/vars"
 conf_files+=" /etc/easyrsa/x509-types/*"
-wrksrc="EasyRSA-$version"
 
 do_install() {
   vinstall easyrsa 755 etc/easyrsa

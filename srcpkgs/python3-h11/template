@@ -10,7 +10,6 @@ homepage="https://github.com/python-hyper/h11"
 license="MIT"
 distfiles="https://github.com/python-hyper/h11/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="147a8a1243e55be496823109067f4ebafb449fd3c9dfd7c12526f133547c0138"
-wrksrc="h11-$version"
 build_style="python3-module"
 
 post_install() {

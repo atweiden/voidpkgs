@@ -9,7 +9,6 @@ homepage="https://github.com/cannatag/ldap3"
 license="LGPL-3.0-or-later"
 distfiles="$PYPI_SITE/l/ldap3/ldap3-$version.tar.gz"
 checksum="37d633e20fa360c302b1263c96fe932d40622d0119f1bddcb829b03462eeeeb7"
-wrksrc="ldap3-$version"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

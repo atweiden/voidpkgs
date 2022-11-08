@@ -12,7 +12,6 @@ homepage="https://pexpect.readthedocs.io/"
 license="ISC"
 distfiles="$PYPI_SITE/p/pexpect/pexpect-$version.tar.gz"
 checksum="fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"
-wrksrc="pexpect-$version"
 build_style="python3-module"
 
 do_check() {

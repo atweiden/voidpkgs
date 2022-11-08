@@ -7,7 +7,6 @@ homepage="https://hewlettpackard.github.io/wireless-tools/Tools.html"
 license="GPL-2.0-only"
 distfiles="https://hewlettpackard.github.io/wireless-tools/wireless_tools.$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6fb80935fe208538131ce2c4178221bab1078a1656306bce8909c19887e2e5a1"
-wrksrc="$pkgname.$version"
 
 do_build() {
   sed \

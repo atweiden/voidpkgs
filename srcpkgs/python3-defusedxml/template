@@ -9,7 +9,6 @@ homepage="https://github.com/tiran/defusedxml"
 license="Python-2.0"
 distfiles="$PYPI_SITE/d/defusedxml/defusedxml-$version.tar.gz"
 checksum="f684034d135af4c6cbb949b8a4d2ed61634515257a67299e5f940fbaa34377f5"
-wrksrc="defusedxml-$version"
 build_style="python3-module"
 
 post_install() {

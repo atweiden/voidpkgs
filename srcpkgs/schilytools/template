@@ -17,7 +17,6 @@ homepage="https://sourceforge.net/projects/schilytools/"
 license="CDDL-1.0"
 distfiles="$SOURCEFORGE_SITE/schilytools/${pkgname%tools}-${version//./-}.tar.bz2"
 checksum="7c93f43d22c6e3de0eafe018ceb26ddd5cc6c543dc301f307d1e6ca313248aa4"
-wrksrc="${pkgname%tools}-${version//./-}"
 build_style="meta"
 # configure + re-builds with itself
 nocross="yes"

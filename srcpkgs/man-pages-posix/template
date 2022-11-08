@@ -8,7 +8,6 @@ homepage="https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/"
 license="custom:POSIX-COPYRIGHT"
 distfiles="$KERNEL_SITE/docs/man-pages/man-pages-posix/$pkgname-$_distver-${version#$_distver}.tar.xz"
 checksum="ce67bb25b5048b20dad772e405a83f4bc70faf051afa289361c81f9660318bc3"
-wrksrc="$pkgname-$_distver"
 
 do_install() {
   make all prefix="$DESTDIR/usr"

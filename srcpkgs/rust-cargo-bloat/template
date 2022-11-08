@@ -7,7 +7,6 @@ homepage="https://crates.io/crates/cargo-bloat"
 license="MIT"
 distfiles="https://static.crates.io/crates/cargo-bloat/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
 checksum="d402cb7adb305f8be650157cfffe735e2dbbda3766b34e9b07ba68566bfcf8c0"
-wrksrc="${pkgname/rust-/}-$version"
 build_style="cargo"
 
 post_install() {

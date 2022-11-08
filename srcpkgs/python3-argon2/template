@@ -14,7 +14,6 @@ license="MIT"
 changelog="https://github.com/hynek/argon2-cffi/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/hynek/argon2-cffi/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b7ad06a32aba8e795830c0248f8e6c464b7f3037442322937552a5e8b6013b7a"
-wrksrc="argon2-cffi-$version"
 build_style="python3-module"
 
 export ARGON2_CFFI_USE_SYSTEM=1

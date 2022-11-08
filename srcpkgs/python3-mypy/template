@@ -13,7 +13,6 @@ homepage="https://github.com/python/mypy"
 license="MIT"
 distfiles="$PYPI_SITE/m/mypy/mypy-$version.tar.gz"
 checksum="f730d56cb924d371c26b8eaddeea3cc07d78ff51c521c6d04899ac6904b75492"
-wrksrc="mypy-$version"
 build_style="python3-module"
 # needs pytest-xdist and many tests fail
 make_check="no"

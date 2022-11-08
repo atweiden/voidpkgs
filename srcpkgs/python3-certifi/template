@@ -9,7 +9,6 @@ homepage="https://certifi.io"
 license="MPL-2.0"
 distfiles="https://github.com/certifi/python-certifi/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="8c1db7f2a3b272e8a90b2e1910763930fa81e2512fbb96cb7a25787d63765c78"
-wrksrc="python-certifi-$version"
 build_style="python3-module"
 
 do_check() {

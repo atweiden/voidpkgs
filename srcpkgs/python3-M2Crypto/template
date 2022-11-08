@@ -16,7 +16,6 @@ homepage="https://gitlab.com/m2crypto/m2crypto/"
 license="MIT"
 distfiles="$PYPI_SITE/M/M2Crypto/M2Crypto-$version.tar.gz"
 checksum="99f2260a30901c949a8dc6d5f82cd5312ffb8abc92e76633baf231bbbcb2decb"
-wrksrc="M2Crypto-$version"
 build_style="python3-module"
 
 post_install() {

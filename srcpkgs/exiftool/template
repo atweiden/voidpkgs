@@ -8,7 +8,6 @@ license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://exiftool.org/history.html"
 distfiles="https://exiftool.org/Image-ExifTool-$version.tar.gz"
 checksum="976d69d9a93ea5ef4649639ab6c190f58bf265f0057ca577c41dfcaf37b1715b"
-wrksrc="Image-ExifTool-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

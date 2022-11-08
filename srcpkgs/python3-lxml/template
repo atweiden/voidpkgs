@@ -15,7 +15,6 @@ license="BSD-3-Clause, custom:ElementTree"
 homepage="https://lxml.de/"
 distfiles="https://github.com/lxml/lxml/archive/lxml-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="8d2b999f5c8a8a70a28a3875e5d1bf27c0555c922bfa0af34dc46e07913f2a47"
-wrksrc="lxml-lxml-$version"
 build_style="python3-module"
 make_build_args="--with-cython"
 

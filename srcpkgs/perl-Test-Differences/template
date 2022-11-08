@@ -12,7 +12,6 @@ homepage="https://metacpan.org/release/Test-Differences"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="c88dbbb48b934b069284874f33abbaaa438aa31204aa3fa73bfc2f4aeac878da"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

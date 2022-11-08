@@ -11,7 +11,6 @@ distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${versio
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/vendor.tar.gz>$pkgname-vendor-$version.tar.gz"
 checksum+=" 764c911f8ffbbff58575943ab33b9aedff889a44ed88a82c85ab79249abd85b1"
 checksum+=" 7348efe388e76f8694916c6d79a970c0d25ac227e06da850aaeb416b18c6c172"
-wrksrc="$pkgname-v${version%beta}-beta"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/lightningnetwork/lnd"

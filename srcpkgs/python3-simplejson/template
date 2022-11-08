@@ -12,7 +12,6 @@ license="MIT, AFL-2.1"
 changelog="https://github.com/simplejson/simplejson/raw/master/CHANGES.txt"
 distfiles="https://github.com/simplejson/simplejson/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="5522f3113924325499f15cd8a3fe47a42dfa127a6b76c1921b51cf3c3f2a6aa6"
-wrksrc="simplejson-$version"
 build_style="python3-module"
 
 post_install() {

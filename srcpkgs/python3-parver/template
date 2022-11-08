@@ -16,7 +16,6 @@ license="MIT"
 changelog="https://github.com/RazerM/parver/raw/master/CHANGELOG.md"
 distfiles="https://github.com/RazerM/parver/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="db9cb60d6fa8fa5fe88af7016c26846a297dec8ce30f4966f29edf1351e4a544"
-wrksrc="parver-$version"
 build_style="python3-module"
 
 post_install() {

@@ -9,7 +9,6 @@ homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-serializinghtml/sphinxcontrib-serializinghtml-$version.tar.gz"
 checksum="aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952"
-wrksrc="sphinxcontrib-serializinghtml-$version"
 build_style="python3-module"
 # cyclic with sphinx
 make_check="no"

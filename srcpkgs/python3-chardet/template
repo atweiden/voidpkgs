@@ -10,7 +10,6 @@ homepage="https://github.com/chardet/chardet"
 license="LGPL-2.1-only"
 distfiles="$PYPI_SITE/c/chardet/chardet-$version.tar.gz"
 checksum="0368df2bfd78b5fc20572bb4e9bb7fb53e2c094f60ae9993339e8671d0afb8aa"
-wrksrc="chardet-$version"
 build_style="python3-module"
 conflicts="python-chardet"
 

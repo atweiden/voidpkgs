@@ -10,7 +10,6 @@ license="GPL-2.0-or-later"
 changelog="https://github.com/avian2/unidecode/raw/master/ChangeLog"
 distfiles="$PYPI_SITE/U/Unidecode/Unidecode-$version.tar.gz"
 checksum="fed09cf0be8cf415b391642c2a5addfc72194407caee4f98719e40ec2a72b830"
-wrksrc="Unidecode-$version"
 build_style="python3-module"
 conflicts="python-Unidecode>=0"
 

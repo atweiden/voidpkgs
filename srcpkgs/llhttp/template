@@ -9,7 +9,6 @@ license="MIT"
 # a dep loop: nodejs<->llhttp
 distfiles="https://github.com/nodejs/llhttp/archive/release/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="3e3de5bd2bef95fa431952e5e6766eab1c64f881c9f8474fe159a00431354469"
-wrksrc="llhttp-release-v$version"
 build_style="gnu-makefile"
 
 post_extract() {

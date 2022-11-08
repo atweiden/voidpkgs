@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Test-NoWarnings"
 license="LGPL-2.1-only"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="638a57658cb119af1fe5b15e73d47c2544dcfef84af0c6b1b2e97f08202b686c"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

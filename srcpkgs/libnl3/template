@@ -13,7 +13,6 @@ distfiles="https://github.com/thom311/libnl/releases/download/${pkgname%3}${vers
 checksum="352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
 conf_files+=" /etc/libnl/classid"
 conf_files+=" /etc/libnl/pktloc"
-wrksrc="${pkgname%3}-$version"
 build_style="gnu-configure"
 configure_args="--disable-static"
 

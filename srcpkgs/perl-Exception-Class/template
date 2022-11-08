@@ -13,7 +13,6 @@ homepage="https://metacpan.org/release/Exception-Class"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Exception/${pkgname#*-}-$version.tar.gz"
 checksum="5482a77ef027ca1f9f39e1f48c558356e954936fc8fbbdee6c811c512701b249"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

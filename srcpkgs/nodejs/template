@@ -28,7 +28,6 @@ homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
 checksum="308aee7149c4092a53c87c28ef49e23a8d1606119e79ae68333062e2a1f94208"
-wrksrc="${pkgname%js}-v$version"
 python_version=3
 build_options+=" cares"
 build_options+=" icu"

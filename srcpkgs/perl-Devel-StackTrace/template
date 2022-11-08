@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Devel-StackTrace"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Devel/${pkgname#*-}-$version.tar.gz"
 checksum="cd3c03ed547d3d42c61fa5814c98296139392e7971c092e09a431f2c9f5d6855"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 do_check() {

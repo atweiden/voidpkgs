@@ -10,7 +10,6 @@ homepage="https://kaitai.io"
 license="MIT"
 distfiles="https://github.com/kaitai-io/kaitai_struct_python_runtime/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="4afbbcc4d596caa02fc86d5c9561f7d91499c1cf7910acc8fe80489b9237dc15"
-wrksrc="kaitai_struct_python_runtime-$version"
 build_style="python3-module"
 
 post_install() {

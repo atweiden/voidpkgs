@@ -14,7 +14,6 @@ homepage="https://github.com/brimworks/lua-zlib"
 license="MIT"
 distfiles="https://github.com/brimworks/lua-zlib/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="26b813ad39c94fc930b168c3418e2e746af3b2e80b92f94f306f6f954cc31e7d"
-wrksrc="lua-zlib-$version"
 build_style="gnu-makefile"
 
 post_extract() {

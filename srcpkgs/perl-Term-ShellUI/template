@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Term-ShellUI"
 license="MIT"
 distfiles="$CPAN_SITE/Term/${pkgname#*-}-$version.tar.gz"
 checksum="3279c01c76227335eeff09032a40f4b02b285151b3576c04cacd15be05942bdb"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

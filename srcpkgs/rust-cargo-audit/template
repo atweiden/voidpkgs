@@ -11,7 +11,6 @@ homepage="https://rustsec.org"
 license="Apache-2.0, MIT"
 distfiles="https://static.crates.io/crates/cargo-audit/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
 checksum="5c04240c97606ef511e5df2e26eb8c7c30031d015613c1f01c59068b50da7df2"
-wrksrc="${pkgname/rust-/}-$version"
 build_style="cargo"
 
 if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]] && [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then

@@ -12,7 +12,6 @@ homepage="https://github.com/eliben/pycparser"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/p/pycparser/${pkgname#*-}-$version.tar.gz"
 checksum="e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
-wrksrc="${pkgname#*-}-$version"
 build_style="python-module"
 
 do_check() {

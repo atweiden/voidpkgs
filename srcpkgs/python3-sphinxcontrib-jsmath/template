@@ -9,7 +9,6 @@ homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-jsmath/sphinxcontrib-jsmath-$version.tar.gz"
 checksum="a9925e4a4587247ed2191a22df5f6970656cb8ca2bd6284309578f2153e0c4b8"
-wrksrc="sphinxcontrib-jsmath-$version"
 build_style="python3-module"
 
 post_install() {

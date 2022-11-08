@@ -10,7 +10,6 @@ homepage="https://github.com/sahlberg/libnfs"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/sahlberg/libnfs/archive/$pkgname-$version.tar.gz"
 checksum="7ef445410b42f36b9bad426608b53ccb9ccca4101e545c383f564c11db672ca8"
-wrksrc="$pkgname-$pkgname-$version"
 build_style="gnu-configure"
 
 pre_configure() {

@@ -58,7 +58,6 @@ case "$XBPS_TARGET_MACHINE" in
     broken="No distfiles available for this target"
     ;;
 esac
-wrksrc="${pkgname%-*}-${version%[!0-9]}"
 nostrip="yes"
 noshlibprovides="yes"
 nocross="yes"

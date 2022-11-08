@@ -10,7 +10,6 @@ homepage="https://github.com/mcmtroffaes/pathlib2"
 license="MIT"
 distfiles="$PYPI_SITE/p/pathlib2/pathlib2-$version.tar.gz"
 checksum="446014523bb9be5c28128c4d2a10ad6bb60769e78bd85658fe44a450674e0ef8"
-wrksrc="pathlib2-$version"
 build_style="python3-module"
 
 post_install() {

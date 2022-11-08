@@ -11,7 +11,6 @@ changelog="https://github.com/nose-devs/nose/raw/master/CHANGELOG"
 distfiles="$PYPI_SITE/n/nose/nose-$version.tar.gz"
 checksum="f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
 conflicts="python-nose>=0"
-wrksrc="nose-$version"
 build_style="python3-module"
 # tests don't work and this package is no longer maintained, just
 # skip them

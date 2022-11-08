@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/pytest-dev/execnet/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/e/execnet/execnet-$version.tar.gz"
 checksum="8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5"
-wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 
 post_install() {

@@ -17,7 +17,6 @@ homepage="https://github.com/MagicStack/uvloop"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/MagicStack/uvloop/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="175ac8aeb251da6a6a72f504f451ad7b4e60092d5adee9231b0a67ad2e7ca235"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 do_check() {

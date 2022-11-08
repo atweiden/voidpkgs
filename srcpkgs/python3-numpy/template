@@ -13,7 +13,6 @@ homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="3ffd7b40ebe8a316324ff0cf83b820a25a034626836e001548d09d5b63ba84a8"
-wrksrc="numpy-$version"
 build_style="python3-module"
 # tests do not function propery in a build directory
 make_check="no"

@@ -11,7 +11,6 @@ homepage="https://passlib.readthedocs.io"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/p/passlib/passlib-$version.tar.gz"
 checksum="defd50f72b65c5402ab2c573830a6978e5f202ad0d984793c8dde2c4152ebe04"
-wrksrc="passlib-$version"
 build_style="python3-module"
 
 post_install() {

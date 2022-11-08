@@ -9,7 +9,6 @@ homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-$version.tar.gz"
 checksum="f5f8bb2d0d629f398bf47d0d69c07bc13b65f75a81ad9e2f71a63d4b7a2f6db2"
-wrksrc="sphinxcontrib-htmlhelp-$version"
 build_style="python3-module"
 # cyclic with sphinx
 make_check="no"

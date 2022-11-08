@@ -11,7 +11,6 @@ homepage="https://metacpan.org/release/Term-ReadLine-Gnu"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Term/${pkgname#*-}-$version.tar.gz"
 checksum="3c5f1281da2666777af0f34de0289564e6faa823aea54f3945c74c98e95a5e73"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 post_extract() {

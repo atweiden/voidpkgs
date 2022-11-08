@@ -9,7 +9,6 @@ homepage="https://metacpan.org/pod/GD"
 license="Artistic-2.0, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/GD/GD-$version.tar.gz"
 checksum="491c9e73238522e2987e66725a20935f4268a3864202ecbaf4659a1691ba322b"
-wrksrc="GD-$version"
 build_style="perl-module"
 
 post_install() {

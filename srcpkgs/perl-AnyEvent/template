@@ -10,7 +10,6 @@ homepage="http://software.schmorp.de/pkg/AnyEvent.html"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/AnyEvent/AnyEvent-$version.tar.gz"
 checksum="50beea689c098fe4aaeb83806c40b9fe7f946d5769acf99f849f099091a4b985"
-wrksrc="${pkgname/perl-/}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

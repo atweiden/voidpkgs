@@ -12,7 +12,6 @@ homepage="http://www.paramiko.org/"
 license="LGPL-2.1-or-later"
 distfiles="$PYPI_SITE/p/paramiko/paramiko-$version.tar.gz"
 checksum="003e6bee7c034c21fbb051bf83dc0a9ee4106204dd3c53054c71452cc4ec3938"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 # needs pytest-relaxed
 make_check="no"

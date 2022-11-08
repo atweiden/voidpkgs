@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/Crypt-Rijndael"
 license="LGPL-2.0-or-later"
 distfiles="$CPAN_SITE/Crypt/${pkgname#*-}-$version.tar.gz"
 checksum="6540085e3804b82a6f0752c1122cf78cadd221990136dd6fd4c097d056c84d40"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

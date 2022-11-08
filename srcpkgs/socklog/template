@@ -7,7 +7,6 @@ homepage="http://smarden.org/socklog/"
 license="custom"
 distfiles="http://smarden.org/socklog/$pkgname-$version.tar.gz"
 checksum="aa869a787ee004da4e5509b5a0031bcc17a4ab4ac650c2ce8d4e488123acb455"
-wrksrc="admin/$pkgname-$version"
 build_options="static"
 
 do_build() {

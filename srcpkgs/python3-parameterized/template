@@ -12,7 +12,6 @@ license="BSD-2-Clause-Views"
 changelog="https://github.com/wolever/parameterized/raw/master/CHANGELOG.txt"
 distfiles="$PYPI_SITE/p/parameterized/parameterized-$version.tar.gz"
 checksum="41bbff37d6186430f77f900d777e5bb6a24928a1c46fb1de692f8b52b8833b5c"
-wrksrc="parameterized-$version"
 build_style="python3-module"
 make_check_target="nosetests"
 

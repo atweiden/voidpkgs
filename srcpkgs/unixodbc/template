@@ -11,7 +11,6 @@ distfiles="http://www.unixodbc.org/unixODBC-$version.tar.gz"
 checksum="52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207"
 conf_files+=" /etc/odbc.ini"
 conf_files+=" /etc/odbcinst.ini"
-wrksrc="unixODBC-$version"
 build_style="gnu-configure"
 
 libodbc_package() {

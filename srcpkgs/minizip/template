@@ -10,7 +10,6 @@ homepage="http://www.winimage.com/zLibDll/minizip.html"
 license="Zlib"
 distfiles="http://www.zlib.net/zlib-$version.tar.gz"
 checksum="91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9"
-wrksrc="zlib-$version"
 build_wrksrc="contrib/$pkgname"
 build_style="gnu-configure"
 

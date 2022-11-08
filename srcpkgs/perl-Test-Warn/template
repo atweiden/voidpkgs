@@ -13,7 +13,6 @@ license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://fastapi.metacpan.org/source/BIGJ/Test-Warn-$version/Changes"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
 checksum="ecbca346d379cef8d3c0e4ac0c8eb3b2613d737ffaaeae52271c38d7bf3c6cda"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

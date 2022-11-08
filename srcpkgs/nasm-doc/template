@@ -7,7 +7,6 @@ homepage="https://www.nasm.us"
 license="BSD-2-Clause"
 distfiles="https://www.nasm.us/pub/nasm/releasebuilds/$version/$pkgname-$version.tar.xz"
 checksum="3caf6729c1073bf96629b57cee31eeb54f4f8129b01902c73428836550b30a3f"
-wrksrc="${pkgname%-doc}-$version"
 build_style="gnu-configure"
 make_build_args="rdf"
 

@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/XML-NamespaceSupport"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/XML/${pkgname#*-}-$version.tar.gz"
 checksum="47e995859f8dd0413aa3f22d350c4a62da652e854267aa0586ae544ae2bae5ef"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

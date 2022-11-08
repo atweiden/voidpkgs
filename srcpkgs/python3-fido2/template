@@ -15,7 +15,6 @@ homepage="https://github.com/Yubico/python-fido2"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/f/${pkgname#python3-}/${pkgname#python3-}-$version.tar.gz"
 checksum="b45e89a6109cfcb7f1bb513776aa2d6408e95c4822f83a253918b944083466ec"
-wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 
 post_extract() {

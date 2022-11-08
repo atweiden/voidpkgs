@@ -14,7 +14,6 @@ license="MIT"
 changelog="https://github.com/python-hyper/h2/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/python-hyper/h2/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="4a17b1ec23152bd94ab6260ea61f6cc02de92bd7c36762f13e34fdecea454b41"
-wrksrc="h2-$version"
 build_style="python3-module"
 
 post_install() {

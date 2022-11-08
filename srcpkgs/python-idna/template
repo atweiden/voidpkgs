@@ -10,7 +10,6 @@ license="BSD-3-Clause"
 changelog="https://github.com/kjd/idna/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/i/idna/${pkgname#*-}-$version.tar.gz"
 checksum="b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"
-wrksrc="${pkgname#*-}-$version"
 build_style="python2-module"
 
 post_install() {

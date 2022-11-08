@@ -22,7 +22,6 @@ license="BSD-3-Clause, Apache-2.0"
 changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cryptography/cryptography-$version.tar.gz"
 checksum="5a60d3780149e13b7a6ff7ad6526b38846354d11a15e21068e57073e29e19bed"
-wrksrc="cryptography-$version"
 build_style="python2-module"
 # test dependency python-iso8601 has been dropped
 make_check="no"

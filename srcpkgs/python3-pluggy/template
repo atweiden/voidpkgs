@@ -10,7 +10,6 @@ homepage="https://github.com/pytest-dev/pluggy"
 license="MIT"
 distfiles="$PYPI_SITE/p/pluggy/pluggy-$version.tar.gz"
 checksum="4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"
-wrksrc="pluggy-$version"
 build_style="python3-module"
 
 do_check() {

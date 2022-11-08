@@ -9,7 +9,6 @@ homepage="http://www.grantjenks.com/docs/sortedcontainers/"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/s/sortedcontainers/sortedcontainers-$version.tar.gz"
 checksum="25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"
-wrksrc="sortedcontainers-$version"
 build_style="python3-module"
 # package defines no tests
 make_check="no"

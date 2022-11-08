@@ -7,7 +7,6 @@ homepage="https://www.crufty.net/help/sjg/bmake.html"
 license="BSD-3-Clause"
 distfiles="https://www.crufty.net/ftp/pub/sjg/bmake-$version.tar.gz"
 checksum="c804b77de3feb8e31dee2a4c9fb1e9ec24c5a34764e7a2815c88b4ed01650e90"
-wrksrc="bmake"
 python_version=3
 
 do_configure() {

@@ -13,7 +13,6 @@ homepage="https://service-identity.readthedocs.org/"
 license="MIT"
 distfiles="$PYPI_SITE/s/service_identity/service_identity-$version.tar.gz"
 checksum="0858a54aabc5b459d1aafa8a518ed2081a285087f349fe3e55197989232e2e2d"
-wrksrc="service_identity-$version"
 build_style="python-module"
 pycompile_module="service_identity"
 

@@ -13,7 +13,6 @@ license="MIT"
 changelog="https://github.com/pytest-dev/pytest-xdist/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pytest-xdist/pytest-xdist-$version.tar.gz"
 checksum="4580deca3ff04ddb2ac53eba39d76cb5dd5edeac050cb6fbc768b0dd712b4edf"
-wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 # tests only work in tox
 make_check="no"

@@ -42,7 +42,6 @@ case "$XBPS_TARGET_MACHINE" in
     broken="cargo bootstrap binaries unavailable for $XBPS_MACHINE"
     ;;
 esac
-wrksrc="cargo-$version-$RUST_TARGET"
 conflicts="cargo>=0"
 lib32disabled="yes"
 nostrip="yes"

@@ -13,7 +13,6 @@ license="BSD-3-Clause"
 changelog="https://github.com/python-babel/babel/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/B/Babel/Babel-$version.tar.gz"
 checksum="7614553711ee97490f732126dc077f8d0ae084ebc6a96e23db1482afabdb2c51"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 post_install() {

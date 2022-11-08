@@ -10,7 +10,6 @@ homepage="https://github.com/dchest/pyblake2"
 license="Custom"
 distfiles="$PYPI_SITE/p/pyblake2/pyblake2-$version.tar.gz"
 checksum="5ccc7eb02edb82fafb8adbb90746af71460fbc29aa0f822526fc976dff83e93f"
-wrksrc="pyblake2-$version"
 build_style="python3-module"
 
 post_install() {

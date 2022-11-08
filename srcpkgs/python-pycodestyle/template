@@ -10,7 +10,6 @@ homepage="https://github.com/PyCQA/pycodestyle"
 license="MIT"
 distfiles="$PYPI_SITE/p/pycodestyle/pycodestyle-$version.tar.gz"
 checksum="c58a7d2815e0e8d7972bf1803331fb0152f867bd89adf8a01dfd55085434192e"
-wrksrc="pycodestyle-$version"
 build_style="python-module"
 alternatives="pycodestyle:pycodestyle:/usr/bin/pycodestyle2"
 

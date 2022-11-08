@@ -11,7 +11,6 @@ homepage="http://cppunit.sourceforge.net"
 license="LGPL-2.1-or-later"
 distfiles="http://dev-www.libreoffice.org/src/${pkgname#lib}-$version.tar.gz"
 checksum="89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7"
-wrksrc="${pkgname#lib}-$version"
 build_style="gnu-configure"
 replaces="cppunit>=0"
 

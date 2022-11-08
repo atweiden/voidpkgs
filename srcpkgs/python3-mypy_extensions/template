@@ -9,7 +9,6 @@ homepage="http://www.mypy-lang.org/"
 license="MIT"
 distfiles="$PYPI_SITE/m/mypy_extensions/mypy_extensions-$version.tar.gz"
 checksum="2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"
-wrksrc="mypy_extensions-$version"
 build_style="python3-module"
 pycompile_module="mypy_extensions.py"
 

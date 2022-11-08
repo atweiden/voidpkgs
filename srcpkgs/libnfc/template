@@ -10,7 +10,6 @@ license="GPL-3"
 homepage="http://nfc-tools.org/"
 distfiles="https://github.com/nfc-tools/libnfc/archive/$pkgname-$version.tar.gz"
 checksum="0ab7d9b41442e7edc2af7c54630396edc73ce51128aa28a5c6e4135dc5595495"
-wrksrc="$pkgname-$pkgname-$version"
 build_style="cmake"
 
 CFLAGS="-D_GNU_SOURCE"

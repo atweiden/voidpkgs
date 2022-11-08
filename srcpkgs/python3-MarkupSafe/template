@@ -11,7 +11,6 @@ homepage="https://palletsprojects.com/p/markupsafe/"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/M/MarkupSafe/MarkupSafe-$version.tar.gz"
 checksum="7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"
-wrksrc="MarkupSafe-$version"
 build_style="python3-module"
 
 post_install() {

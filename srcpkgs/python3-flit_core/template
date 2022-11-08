@@ -12,7 +12,6 @@ license="BSD-3-Clause"
 changelog="https://flit.readthedocs.io/en/latest/history.html"
 distfiles="$PYPI_SITE/f/flit/flit-$version.tar.gz"
 checksum="3c9bd9c140515bfe62dd938c6610d10d6efb9e35cc647fc614fe5fb3a5036682"
-wrksrc="flit-$version"
 build_wrksrc="flit_core"
 build_style="python3-pep517"
 

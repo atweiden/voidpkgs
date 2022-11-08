@@ -8,7 +8,6 @@ license="GPL-2.0-or-later"
 changelog="https://mama.indstate.edu/users/ice/tree/changes.html"
 distfiles="https://gitlab.com/OldManProgrammer/unix-tree/-/archive/$version/unix-tree-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c51b3a758fcbc25c7f88316491db5ac6926d032f45af96687297a95a3b7b15de"
-wrksrc="unix-tree-$version"
 build_style="gnu-makefile"
 
 do_install() {

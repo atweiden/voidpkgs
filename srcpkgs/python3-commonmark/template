@@ -13,7 +13,6 @@ homepage="https://github.com/rtfd/commonmark.py"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/c/commonmark/commonmark-$version.tar.gz"
 checksum="452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"
-wrksrc="commonmark-$version"
 build_style="python3-module"
 
 post_extract() {

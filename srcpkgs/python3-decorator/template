@@ -10,7 +10,6 @@ license="BSD-2-Clause"
 changelog="https://github.com/micheles/decorator/raw/master/CHANGES.md"
 distfiles="$PYPI_SITE/d/decorator/decorator-$version.tar.gz"
 checksum="637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"
-wrksrc="decorator-$version"
 build_style="python3-module"
 
 post_install() {

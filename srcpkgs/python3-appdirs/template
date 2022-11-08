@@ -9,7 +9,6 @@ homepage="https://github.com/ActiveState/appdirs/"
 license="MIT"
 distfiles="$PYPI_SITE/a/appdirs/appdirs-$version.tar.gz"
 checksum="7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"
-wrksrc="appdirs-$version"
 build_style="python3-module"
 
 post_install() {

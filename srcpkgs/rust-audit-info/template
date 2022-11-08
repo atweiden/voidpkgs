@@ -8,7 +8,6 @@ homepage="https://github.com/rust-secure-code/cargo-auditable"
 license="MIT, Apache-2.0"
 distfiles="https://github.com/rust-secure-code/cargo-auditable/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="f89b19e1df2f0b27c1e9bb474fa754ece117e1f561cc32beb296190eb70908f3"
-wrksrc="cargo-auditable-$_gitrev"
 build_wrksrc="rust-audit-info"
 build_style="cargo"
 

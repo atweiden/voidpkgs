@@ -7,7 +7,6 @@ homepage="https://github.com/KhronosGroup/OpenCL-Headers"
 license="Apache-2.0"
 distfiles="https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="0ae857ecb28af95a420c800b21ed2d0f437503e104f841ab8db249df5f4fbe5c"
-wrksrc="OpenCL-Headers-$version"
 provides="opencl-headers-${version}_$revision"
 replaces="opencl-headers>=0"
 

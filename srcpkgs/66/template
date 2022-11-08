@@ -18,7 +18,6 @@ distfiles="https://git.obarun.org/Obarun/66/-/archive/v$version/$pkgname-v$versi
 checksum="f63600e9f8e53211e421707aae7f98d2fa9d1b0d0b4b39162cf180df12b99c28"
 conf_files="/etc/66/init.conf"
 patch_args="-Np1"
-wrksrc="$pkgname-v$version"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"

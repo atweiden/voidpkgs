@@ -7,7 +7,6 @@ homepage="https://github.com/gentoo/hwids"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/gentoo/hwids/archive/$pkgname-$version.tar.gz"
 checksum="e28f1787290e9ea17426aa4090bbf6aca9bbc9e6cd14da232778bfaef4938bc1"
-wrksrc="hwids-hwids-$version"
 
 do_install() {
   vmkdir usr/share/hwdata

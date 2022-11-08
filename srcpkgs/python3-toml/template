@@ -9,7 +9,6 @@ homepage="https://github.com/uiri/toml"
 license="MIT"
 distfiles="$PYPI_SITE/t/toml/toml-$version.tar.gz"
 checksum="b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
-wrksrc="toml-$version"
 build_style="python3-module"
 
 pkg_install() {

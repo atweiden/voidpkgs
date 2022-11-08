@@ -16,7 +16,6 @@ homepage="https://github.com/postmanlabs/httpbin"
 license="ISC"
 distfiles="$PYPI_SITE/h/httpbin/httpbin-$version.tar.gz"
 checksum="cbb37790c91575f4f15757f42ad41d9f729eb227d5edbe89e4ec175486db8dfa"
-wrksrc="httpbin-$version"
 build_style="python3-module"
 
 post_install() {

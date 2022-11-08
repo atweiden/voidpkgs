@@ -10,7 +10,6 @@ homepage="https://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="https://www.iana.org/time-zones/repository/releases/tzdb-$version.tar.lz"
 checksum="180343dda8b24e000d8f718ab5871efa2ec0ed7725ba9a4267b8bd36af155bc2"
-wrksrc="tzdb-$version"
 bootstrap="yes"
 
 if [[ "$XBPS_TARGET_WORDSIZE" == 32 ]]; then

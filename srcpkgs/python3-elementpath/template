@@ -11,7 +11,6 @@ homepage="https://github.com/sissaschool/elementpath"
 license="MIT"
 distfiles="$PYPI_SITE/e/elementpath/elementpath-$version.tar.gz"
 checksum="cca18742dc0f354f79874c41a906e6ce4cc15230b7858d22a861e1ec5946940f"
-wrksrc="elementpath-$version"
 build_style="python3-module"
 # depends on xmlschema and memory_profiling
 make_check_args+=" --ignore tests/execute_w3c_tests.py"

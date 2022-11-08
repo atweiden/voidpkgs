@@ -18,7 +18,6 @@ license="Apache-2.0"
 changelog="https://github.com/pyca/pynacl/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/P/PyNaCl/PyNaCl-$version.tar.gz"
 checksum="8ac7448f09ab85811607bdd21ec2464495ac8b7c66d146bf545b0f08fb9220ba"
-wrksrc="PyNaCl-$version"
 build_style="python3-module"
 
 export SODIUM_INSTALL="system"

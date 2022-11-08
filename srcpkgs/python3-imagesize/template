@@ -10,7 +10,6 @@ homepage="https://github.com/shibukawa/imagesize_py"
 license="MIT"
 distfiles="$PYPI_SITE/i/imagesize/imagesize-$version.tar.gz"
 checksum="b1f6b5a4eab1f73479a50fb79fcf729514a900c341d8503d62a62dbc4127a2b1"
-wrksrc="imagesize-$version"
 build_style="python3-module"
 
 post_install() {

@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/pytest-dev/pytest-mock/raw/main/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pytest-mock/pytest-mock-$version.tar.gz"
 checksum="c899a0dcc8a5f22930acd020b500abd5f956911f326864a3b979e4866e14da82"
-wrksrc="${pkgname#*-}-$version"
 build_style="python3-module"
 
 # pytest-mock requires pytest-mock to be installed so it'll always fail

@@ -14,7 +14,6 @@ homepage="https://yarl.readthedocs.io/"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/y/yarl/yarl-$version.tar.gz"
 checksum="af887845b8c2e060eb5605ff72b6f2dd2aab7a761379373fd89d314f4752abbf"
-wrksrc="yarl-$version"
 build_style="python3-module"
 pycompile_module="yarl"
 

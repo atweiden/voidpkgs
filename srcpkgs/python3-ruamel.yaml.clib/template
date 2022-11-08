@@ -10,7 +10,6 @@ homepage="http://yaml.readthedocs.io/"
 license="MIT"
 distfiles="$PYPI_SITE/r/ruamel.yaml.clib/ruamel.yaml.clib-$version.tar.gz"
 checksum="1f08fd5a2bea9c4180db71678e850b995d2a5f4537be0e94557668cf0f5f9497"
-wrksrc="ruamel.yaml.clib-$version"
 build_style="python3-module"
 make_check="no"
 

@@ -11,7 +11,6 @@ license="MIT"
 changelog="https://github.com/pytest-dev/pytest-forked/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pytest-forked/pytest-forked-$version.tar.gz"
 checksum="8b67587c8f98cbbadfdd804539ed5455b6ed03802203485dd2f53c1422d7440e"
-wrksrc="${pkgname#python3-}-$version"
 build_style="python3-module"
 # tests only work inside tox
 make_check="no"

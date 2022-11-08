@@ -7,7 +7,6 @@ homepage="https://github.com/wolfcw/libfaketime"
 license="GPL-2.0-only"
 distfiles="https://github.com/wolfcw/libfaketime/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="57d0181150361c0a9b5c8eef05b11392f6134ada2c2d998e92e63daed639647c"
-wrksrc="lib$pkgname-$version"
 build_style="gnu-makefile"
 
 CFLAGS='-fPIC -DPREFIX=\"/usr\" -DLIBDIRNAME=\"/lib/faketime\"'

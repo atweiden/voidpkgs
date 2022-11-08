@@ -14,7 +14,6 @@ homepage="https://taplo.tamasfe.dev/"
 license="MIT"
 distfiles="https://github.com/tamasfe/taplo/archive/release-$pkgname-cli-$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6b6d06220dabc3a63e17b87ca4be1b9dfde97dc3c6bd6e8115cc5d2e2dad9bbe"
-wrksrc="$pkgname-release-$pkgname-cli-$version"
 build_wrksrc="crates/taplo-cli"
 build_style="cargo"
 

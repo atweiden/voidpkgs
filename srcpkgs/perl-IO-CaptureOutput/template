@@ -10,7 +10,6 @@ homepage="https://metacpan.org/release/IO-CaptureOutput"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
 checksum="ae99009fca1273800f169ecb82f4ed1cc6c76795f156bee5c0093005d572f487"
-wrksrc="${pkgname#*-}-$version"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

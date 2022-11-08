@@ -10,7 +10,6 @@ homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-qthelp/sphinxcontrib-qthelp-$version.tar.gz"
 checksum="4c33767ee058b70dba89a6fc5c1892c0d57a54be67ddd3e7875a18d14cba5a72"
-wrksrc="sphinxcontrib-qthelp-$version"
 build_style="python3-module"
 
 post_install() {

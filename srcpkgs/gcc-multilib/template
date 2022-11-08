@@ -32,7 +32,6 @@ hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
 distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/pre/_pre}.tar.xz"
 checksum="772cfd5d30eb9cc5a996fec9ba8cdcb45d37df1c9b5770610103b814b732c590"
-wrksrc="gcc-${version/pre/_pre}"
 replaces="libmpx-devel-32bit>=0"
 
 do_configure() {
