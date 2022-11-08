@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="docker-cli"
-version=20.10.18
+version=20.10.21
 revision=1
 short_desc="Command-line interface for the Docker daemon"
 depends="git"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.docker.com"
 license="Apache-2.0"
 distfiles="https://github.com/docker/cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="87ba64f76d3bb98666fa44552c3eb0b1c10e5e9c43010e8dbc180ba22690413a"
+checksum="f0f62ca1c80e8fd5b9e140ca64ef3e75dc7cf7a28040b3d10b260307128946e8"
 wrksrc="cli-$version"
 build_style="go"
 go_package="github.com/docker/cli/cmd/docker"
