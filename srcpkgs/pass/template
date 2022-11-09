@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="pass"
 version=1.7.4
-revision=1
+revision=2
 short_desc="Stores, retrieves, generates, and synchronizes passwords securely"
 depends+=" bash "
-depends+=" gnupg2"
+depends+=" gnupg>=2"
 depends+=" tree"
 checkdepends+=" git"
-checkdepends+=" gnupg2"
+checkdepends+=" gnupg"
 checkdepends+=" tree"
 checkdepends+=" which"
 homepage="https://www.passwordstore.org"
