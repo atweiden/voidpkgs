@@ -3,7 +3,6 @@ pkgname="doxygen"
 version=1.9.5
 revision=1
 short_desc="Source code documentation generator tool"
-# XXX: testing requires gui deps
 #checkdepends+=" libxml2"
 #checkdepends+=" texlive-BibTeX"
 hostmakedepends+=" flex"
@@ -16,6 +15,8 @@ distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
 checksum="55b454b35d998229a96f3d5485d57a0a517ce2b78d025efb79d57b5a2e4b2eec"
 build_style="cmake"
 configure_args="-DCMAKE_BUILD_TYPE=None"
+# texlive-BibTeX in checkdepends requires gui dependencies
+make_check="no"
 
 post_install() {
   vman doc/doxygen.1

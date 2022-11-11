@@ -4,7 +4,6 @@ version=1.8.2
 revision=2
 short_desc="Cross-platform clipboard module (Python3)"
 depends="python3"
-# XXX: testing requires gui deps
 #checkdepends+=" python3-pytest"
 #checkdepends+=" xclip"
 #checkdepends+=" xvfb-run"
@@ -14,8 +13,9 @@ license="BSD-3-Clause"
 distfiles="$PYPI_SITE/p/pyperclip/pyperclip-$version.tar.gz"
 checksum="105254a8b04934f0bc84e9c24eb360a591aaf6535c9def5f29d92af107a9bf57"
 build_style="python3-module"
+# xclip and xvfb-run in checkdepends require gui dependencies
 make_check="no"
-#make_check_pre="xvfb-run"
+make_check_pre="xvfb-run"
 
 post_install() {
   vlicense LICENSE.txt

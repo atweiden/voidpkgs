@@ -18,8 +18,8 @@ makedepends+=" $(vopt_if zstd libzstd-devel)"
 #checkdepends+=" nghttp2"
 #checkdepends+=" python3"
 #checkdepends+=" stunnel"
-# Use mdocml instead of groff to generate builtin manual to avoid cyclic
-# dependencies.
+# use mdocml instead of groff to generate builtin manual to avoid cyclic
+# dependencies
 hostmakedepends+=" mdocml"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
