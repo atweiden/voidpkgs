@@ -31,7 +31,7 @@ license="BSD-3-Clause"
 distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
 checksum="51026de0a9ff9fc13c05d74913ad66047e104f56a129ff73e174eb5c3ee794b5"
 build_style="python3-pep517"
-make_install_target="sphinx-$version-py3-none-any.whl"
+make_install_target="dist/sphinx-$version-py3-none-any.whl"
 conflicts="python-Sphinx>=0"
 
 post_install() {
