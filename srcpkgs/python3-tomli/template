@@ -1,43 +1,20 @@
 maintainer="nox"
 pkgname="python3-tomli"
 version=2.0.1
-revision=2
-_flit_version=3.6.0
+revision=3
 short_desc="Little TOML parser for Python"
 depends="python3"
-hostmakedepends="python3"
+hostmakedepends="python3-flit_core"
 homepage="https://github.com/hukkin/tomli"
 license="MIT"
-distfiles+=" $PYPI_SITE/t/tomli/tomli-$version.tar.gz"
-distfiles+=" $PYPI_SITE/f/flit_core/flit_core-$_flit_version.tar.gz"
-checksum+=" de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
-checksum+=" 5892962ab8b8ea945835b3a288fe9dd69316f1903d5288c3f5cafdcdd04756ad"
-create_wrksrc="yes"
-build_wrksrc="tomli-$version"
+distfiles="$PYPI_SITE/t/tomli/tomli-$version.tar.gz"
+checksum="de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
 build_style="python3-pep517"
 # archive includes no tests
 make_check="no"
 
-pre_build() {
-  # build requires that tomli be able to import flit_core *and* itself
-  export PYTHONPATH="$PWD:$wrksrc/flit_core-$_flit_version"
-}
-
 post_install() {
   vlicense LICENSE
 }
-
-# REMARKS:
-#
-# flit_core>=3.4.0 requires tomli to run, while tomli requires flit_core to
-# build
-#
-# both upstreams are aware of the cycle, but neither cares:
-#
-#     https://github.com/hukkin/tomli/issues/130
-#     https://github.com/takluyver/flit/issues/451
-#
-# as a result, we can't use python3-flit_core to build this package,
-# so we have to just fetch the flit_core tarball to bootstrap tomli
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
