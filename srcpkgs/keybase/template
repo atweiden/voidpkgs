@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="keybase"
 version=5.8.1
-revision=1
+revision=2
 short_desc="Client for keybase.io"
-depends="gnupg2"
+depends="gnupg>=2"
 homepage="https://keybase.io/"
 license="BSD-3-Clause"
 distfiles="https://github.com/keybase/client/releases/download/v$version/$pkgname-v$version.tar.xz"
