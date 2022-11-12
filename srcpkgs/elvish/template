@@ -1,21 +1,25 @@
-# Template file for 'elvish'
-pkgname=elvish
+maintainer="nox"
+pkgname="elvish"
 version=0.18.0
 revision=1
-build_style=go
-go_import_path="src.elv.sh/cmd/elvish"
 short_desc="Novel Unix shell"
-maintainer="Diogo Leal <diogo@diogoleal.com>"
-license="BSD-2-Clause"
 homepage="https://elv.sh/"
-changelog="https://elv.sh/blog/${version}-release-notes.html"
-distfiles="https://github.com/elves/elvish/archive/v${version}.tar.gz"
-checksum=f4635db90af2241bfd37e17ac1a72567b92d18a396598da2099a908b3d88c590
+license="BSD-2-Clause"
+changelog="https://elv.sh/blog/$version-release-notes.html"
+distfiles="https://github.com/elves/elvish/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f4635db90af2241bfd37e17ac1a72567b92d18a396598da2099a908b3d88c590"
+build_style="go"
+go_import_path="src.elv.sh/cmd/elvish"
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+# fix: collect2: fatal error: cannot find 'ld'
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 register_shell="/bin/elvish"
 
-# fix: collect2: fatal error: cannot find 'ld'
-LDFLAGS="-fuse-ld=bfd"
+export GOFLAGS="-trimpath"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
