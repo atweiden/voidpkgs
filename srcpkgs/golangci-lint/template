@@ -15,12 +15,10 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X main.version=$version"
 go_ldflags+=" -X main.date=$SOURCE_DATE_EPOCH"
 go_ldflags+=" -X main.commit=v$version"
-go_ldflags+=" -extldflags=-static"
+# fix: collect2: fatal error: cannot find 'ld'
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 
 export GOFLAGS="-trimpath"
-
-# fix: collect2: fatal error: cannot find 'ld'
-export LDFLAGS="-fuse-ld=bfd"
 
 post_install() {
   vdoc README.md
