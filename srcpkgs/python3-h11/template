@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-h11"
-version=0.12.0
-revision=3
+version=0.14.0
+revision=1
 short_desc="Bring-your-own-I/O implementation of HTTP/1.1 (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
@@ -9,7 +9,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/python-hyper/h11"
 license="MIT"
 distfiles="https://github.com/python-hyper/h11/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="147a8a1243e55be496823109067f4ebafb449fd3c9dfd7c12526f133547c0138"
+checksum="d65a85d094b76846653fa7c3b45abdaf8b4f055c643bb6eec623f1311636a474"
 build_style="python3-module"
 
 post_install() {
