@@ -1,1 +1,1 @@
-pattern='schily-\K[\d-]+'
+pattern='\d\d\d\d-\d\d-\d\d'
