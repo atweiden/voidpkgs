@@ -19,7 +19,7 @@ go_ldflags+=" -extldflags=-static"
 nopie_files="/usr/bin/dcrpromptsecret"
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
-export GOFLAGS="-trimpath -buildmode=pie"
+export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
 
 pre_install() {
   # prepend dcr to unqualified binaries
