@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="pmbootstrap"
-version=1.46.0
-revision=2
-short_desc="PostmarketOS's chroot, build and flash tool"
+version=1.49.0
+revision=1
+short_desc="postmarketOS's chroot, build and flash tool"
 depends+=" git"
 depends+=" openssl"
 depends+=" python3"
 hostmakedepends="python3-setuptools"
 homepage="https://postmarketos.org"
 license="GPL-3.0-or-later"
-distfiles="https://gitlab.com/postmarketOS/pmbootstrap/-/archive/$version/$pkgname-$version.tar.gz"
-checksum="b50667a760bc072ac96b19cd36cfebf2c5b6d07928d6c79a0b822fb3e3c3e90a"
+distfiles="https://git.sr.ht/~postmarketos/pmbootstrap/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="af36bfced3faeddb2d77e24302f570c5e1830f6d95a2da69dd6be9f34241e4ca"
 build_style="python3-module"
 # tests require chroot
 make_check="no"
