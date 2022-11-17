@@ -765,6 +765,9 @@ constant %PKG = Map.new(
                        subversion-devel
                        subversion-perl
                        subversion-python>,
+    'syncthing' => qw<syncthing-discosrv
+                      syncthing-inotify
+                      syncthing-relaysrv>,
     'sysfsutils' => qw<libsysfs
                        libsysfs-devel>,
     'systemtap' => ['systemtap-devel'],
