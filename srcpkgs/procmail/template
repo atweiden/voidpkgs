@@ -1,23 +1,15 @@
 maintainer="nox"
 pkgname="procmail"
-version=3.22
-revision=3
+version=3.24
+revision=1
 short_desc="Autonomous mail processor"
 depends="virtual?smtp-server"
 hostmakedepends="opensmtpd"
 homepage="http://www.procmail.org"
 license="GPL-2.0-or-later, Artistic-1.0-cl8"
-distfiles="https://fossies.org/linux/misc/old/procmail-$version.tar.gz"
-checksum="087c75b34dd33d8b9df5afe9e42801c9395f4bf373a784d9bc97153b0062e117"
+distfiles="https://github.com/BuGlessRB/procmail/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="514ea433339783e95df9321e794771e4887b9823ac55fdb2469702cf69bd3989"
 nocross="./autoconf: line 1396: ./_autotst: No such file or directory"
-
-post_extract() {
-  cd "$wrksrc"
-  sed \
-    -i \
-    -e "s/getline/procmail_getline/g" \
-    src/*
-}
 
 do_build() {
   make \
