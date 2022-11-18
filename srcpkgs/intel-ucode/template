@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="intel-ucode"
-version=20220809
+version=20221108
 revision=1
 short_desc="Microcode update files for Intel CPUs"
 archs+=" i686*"
@@ -8,7 +8,7 @@ archs+=" x86_64*"
 homepage="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files"
 license="custom: Proprietary"
 distfiles="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="084463c82fbcb679e7fa211e676fd12a8ae464fed7d445e92ccc67101ced5a94"
+checksum="8d14a914815f56c27b1f41be0fd699d1afcfdbc05432056427e455100798975e"
 repository="nonfree"
 
 do_install() {
