@@ -22,16 +22,16 @@ hostmakedepends="pkg-config"
 homepage="https://getmonero.org"
 license="BSD-3-Clause"
 distfiles+=" https://github.com/monero-project/monero/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/tevador/RandomX/archive/$_randomx_gitrev.tar.gz"
-distfiles+=" https://github.com/Tencent/rapidjson/archive/$_rapidjson_gitrev.tar.gz"
-distfiles+=" https://github.com/monero-project/supercop/archive/$_supercop_gitrev.tar.gz"
+distfiles+=" https://github.com/tevador/RandomX/archive/$_randomx_gitrev.tar.gz>RandomX-$_randomx_gitrev.tar.gz"
+distfiles+=" https://github.com/Tencent/rapidjson/archive/$_rapidjson_gitrev.tar.gz>rapidjson-$_rapidjson_gitrev.tar.gz"
+distfiles+=" https://github.com/monero-project/supercop/archive/$_supercop_gitrev.tar.gz>supercop-$_supercop_gitrev.tar.gz"
 checksum+=" f7fec9c7456e22b70cb86a34dd9192c948161155fdbdfb8505f8ea95c357a38e"
 checksum+=" 4aeadafe16810320fd492491e39d03fb6028a2db35916aba0fef96c716aba46f"
 checksum+=" 44b007d419ac21b6affec58991e865ee572346ead19b73cf1c3e4e11c7a81273"
 checksum+=" b973b9d8269ec4d97c3c3443f0dad96d09f72b1b30e616e0947557adbdbb03f7"
-skip_extraction+=" $_randomx_gitrev.tar.gz"
-skip_extraction+=" $_rapidjson_gitrev.tar.gz"
-skip_extraction+=" $_supercop_gitrev.tar.gz"
+skip_extraction+=" RandomX-$_randomx_gitrev.tar.gz"
+skip_extraction+=" rapidjson-$_rapidjson_gitrev.tar.gz"
+skip_extraction+=" supercop-$_supercop_gitrev.tar.gz"
 conf_files="/etc/monerod.conf"
 build_style="cmake"
 make_dirs+=" /var/lib/monero 0750 monero monero"
@@ -81,11 +81,11 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 post_extract() {
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$_randomx_gitrev.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/RandomX-$_randomx_gitrev.tar.gz" \
     --strip-components=1 -C "$wrksrc/external/randomx"
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$_rapidjson_gitrev.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/rapidjson-$_rapidjson_gitrev.tar.gz" \
     --strip-components=1 -C "$wrksrc/external/rapidjson"
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$_supercop_gitrev.tar.gz" \
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/supercop-$_supercop_gitrev.tar.gz" \
     --strip-components=1 -C "$wrksrc/external/supercop"
 }
 
