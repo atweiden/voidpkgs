@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libtool"
-version=2.4.6
-revision=6
+version=2.4.7
+revision=1
 short_desc="Generic library support script"
 depends+=" sed"
 depends+=" tar"
@@ -13,8 +13,12 @@ hostmakedepends+=" xz"
 homepage="http://www.gnu.org/software/libtool"
 license="GPL-2.0-or-later"
 distfiles="$GNU_SITE/libtool/$pkgname-$version.tar.xz"
-checksum="7c87a8c2c8c0fc9cd5019e402bed4292462d00a718a7cd5f11218153bf28b26f"
+checksum="4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d"
 build_style="gnu-configure"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  # musl always searches LD_LIBRARY_PATH before RPATH and RUNPATH
+  configure_args="lt_cv_shlibpath_overrides_runpath=yes"
+fi
 
 pre_configure() {
   touch \
@@ -63,11 +67,17 @@ post_install() {
     vsed \
       -i \
       -e "s,^host_alias=.*,host_alias=$_canonical_host," \
-      -e "s,^host=.*,host=$_canonical_host," \
       -e "s,^build_alias=.*,build_alias=$_canonical_host," \
       -e "s,^build=.*,build=$_canonical_host," \
-      -e "s,^build_os=.*,build_os=$_host_os," \
       "$PKGDESTDIR/usr/bin/libtool"
+
+    # the host_os and build_os can be the same (i.e. linux-musl or linux-gnu)
+    if ! grep "build_os=$_host_os" "$PKGDESTDIR/usr/bin/libtool" >/dev/null 2>&1; then
+      vsed \
+        -i \
+        -e "s,^build_os=.*,build_os=$_host_os," \
+        "$PKGDESTDIR/usr/bin/libtool"
+    fi
   fi
 }
 
