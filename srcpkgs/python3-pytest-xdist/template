@@ -1,19 +1,19 @@
 maintainer="nox"
 pkgname="python3-pytest-xdist"
-version=2.5.0
-revision=2
+version=3.0.2
+revision=1
 short_desc="Pytest plugin for distributed testing & loop-on-failures testing modes"
 depends+=" python3-execnet"
 depends+=" python3-pytest"
-depends+=" python3-pytest-forked"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/pytest-dev/pytest-xdist"
 license="MIT"
 changelog="https://github.com/pytest-dev/pytest-xdist/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pytest-xdist/pytest-xdist-$version.tar.gz"
-checksum="4580deca3ff04ddb2ac53eba39d76cb5dd5edeac050cb6fbc768b0dd712b4edf"
-build_style="python3-module"
+checksum="688da9b814370e891ba5de650c9327d1a9d861721a524eb917e620eec3e90291"
+build_style="python3-pep517"
 # tests only work in tox
 make_check="no"
 
