@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="android-tools"
-version=31.0.3p2
+version=33.0.3
 revision=1
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
@@ -24,7 +24,7 @@ hostmakedepends+=" protobuf"
 homepage="http://developer.android.com/tools/help/adb.html"
 license="Apache-2.0, ISC, GPL-2.0-only, MIT"
 distfiles="https://github.com/nmeum/android-tools/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="2e1274d625368f57128477c2cda8474489443cc56e8738cb71919412a2872fca"
+checksum="8ce174dab781d5debd29ed0f96572231f777bee19b8ef3c167e33d3ea7670bc5"
 build_style="cmake"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
