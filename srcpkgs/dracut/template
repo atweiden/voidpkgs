@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
-version=056
-revision=1
+version=053
+revision=5
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -19,18 +19,19 @@ hostmakedepends="pkg-config"
 homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
 license="GPL-2.0-or-later, LGPL-2.0-or-later"
 distfiles="$KERNEL_SITE/utils/boot/dracut/$pkgname-$version.tar.xz"
-checksum="e025bbdce9d1209640fb3f5f674f059c7e1f441537ba421703fe56055502421d"
+checksum="d5a1b47cdb07919d8225d5b5f538e6ae604988f3df0afbde99a8dc775277b726"
 conf_files="/etc/dracut.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
 configure_args+=" --sysconfdir=/etc"
-# tests require root
+# checks require distfiles come from a git repository
 make_check="no"
 make_dirs+=" /etc/dracut.conf.d 0755 root root"
 make_dirs+=" /usr/lib/dracut/dracut.conf.d 0755 root root"
 alternatives+=" initramfs:/etc/kernel.d/post-install/20-initramfs:/usr/libexec/dracut/kernel-hook-postinst"
 alternatives+=" initramfs:/etc/kernel.d/post-remove/20-initramfs:/usr/libexec/dracut/kernel-hook-postrm"
 subpackages="dracut-network"
+reverts="056_1"
 
 case "$XBPS_TARGET_MACHINE" in
   # archs supported by dracut for EFI bundle
