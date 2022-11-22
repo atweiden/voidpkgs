@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cppcheck"
-version=2.9.1
+version=2.9.3
 revision=1
 short_desc="Static analysis of C/C++ code"
 depends="python3"
@@ -13,7 +13,7 @@ homepage="http://cppcheck.sourceforge.net"
 license="GPL-3.0-or-later"
 changelog="https://sourceforge.net/p/cppcheck/news/"
 distfiles="https://github.com/danmar/cppcheck/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c166b86aebe80faa08c80196c9156b73e9ffaf8eccd84f9317c51f62577028df"
+checksum="46319ca73e33e4b2bd91981a76a0d4f184cd3f86b62dc18e8938eabacd3ad2e3"
 build_style="gnu-makefile"
 python_version="3"
 make_build_args+=" DB2MAN=/usr/share/xsl/docbook/manpages/docbook.xsl"
