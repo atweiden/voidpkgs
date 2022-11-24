@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="perl-GD"
-version=2.73
-revision=2
+version=2.76
+revision=1
 short_desc="Interface to Gd Graphics Library"
 makedepends="gd-devel"
 hostmakedepends="perl-ExtUtils-PkgConfig"
 homepage="https://metacpan.org/pod/GD"
 license="Artistic-2.0, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/GD/GD-$version.tar.gz"
-checksum="491c9e73238522e2987e66725a20935f4268a3864202ecbaf4659a1691ba322b"
+checksum="693d9e3d709e9188a682cb9090a77b70aac12a04e84128677577b94e4331775b"
 build_style="perl-module"
 
 post_install() {
