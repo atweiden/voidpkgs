@@ -8,7 +8,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/sarugaku/resolvelib"
 license="ISC"
 changelog="https://github.com/sarugaku/resolvelib/raw/master/CHANGELOG.rst"
-distfiles="https://github.com/sarugaku/resolvelib/archive/refs/tags/$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/sarugaku/resolvelib/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="f400ebd5e60361b3b328241f4aded5a0f7665e46a83c374fea86d874cff0ffd5"
 build_style="python3-module"
 # check depends on unpackaged python modules

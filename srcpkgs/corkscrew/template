@@ -6,7 +6,7 @@ short_desc="Corkscrew is a tool for tunneling SSH through HTTP proxies"
 hostmakedepends="automake"
 homepage="https://github.com/bryanpkc/corkscrew"
 license="GPL-2.0-or-later"
-distfiles="https://github.com/bryanpkc/corkscrew/archive/refs/tags/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles="https://github.com/bryanpkc/corkscrew/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="09d70daaa3145070a1e463dbab6ae1cbc62449b1e09c94e158f6017e7c79c9f6"
 build_style="gnu-configure"
 
