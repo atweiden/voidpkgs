@@ -136,6 +136,8 @@ libgettextsrc-0.21.so gettext-0.21_3
 libtextstyle.so.0 gettext-0.21_3
 libintl.so.8 gettext-libs-0.19.2_1
 libgf2x.so.3 gf2x-1.3.0_1
+libgflags.so.2.2 gflags-2.1.2_1
+libgflags_nothreads.so.2.2 gflags-2.1.2_1
 libgif.so.7 giflib-5.1.0_1
 ld-linux-aarch64.so.1 glibc-2.32_1 aarch64
 ld-linux-armhf.so.3 glibc-2.32_1
