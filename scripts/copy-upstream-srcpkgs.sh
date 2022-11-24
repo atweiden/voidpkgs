@@ -21,6 +21,7 @@ readonly SRCPKGS_VOID="$ROOT_VOID/srcpkgs/"
 readonly PKGS=('3mux'
                '66'
                '66-tools'
+               'EternalTerminal'
                'ISOEnts'
                'LuaJIT'
                'MoarVM'
