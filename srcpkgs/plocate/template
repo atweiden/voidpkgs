@@ -1,18 +1,15 @@
 maintainer="nox"
 pkgname="plocate"
-version=1.1.16
+version=1.1.17
 revision=1
 short_desc="Much faster locate based on posting lists"
 makedepends="libzstd-devel"
-if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  makedepends+=" musl-legacy-compat"
-fi
 hostmakedepends="pkg-config"
 homepage="https://plocate.sesse.net/"
 license="GPL-2.0-or-later"
 changelog="https://git.sesse.net/?p=plocate;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
-checksum="4504df6f9df0e253466eab29c88ad37fc7bdff106f4872f96bc980e80b3a9631"
+checksum="5a622d8839de8f70aff74adca67336749cdc42a826575995b6b33a582bbf270b"
 build_style="meson"
 configure_args+=" -Dinstall_systemd=false"
 configure_args+=" -Dlocategroup=_plocate"
