@@ -785,6 +785,7 @@ constant %PKG = Map.new(
     'tidy5' => qw<libtidy5
                   libtidy5-devel>,
     'tiff' => ['tiff-devel'],
+    'tlp' => ['tlp-rdw'],
     'toxcore' => ['toxcore-devel'],
     'tree-sitter' => ['tree-sitter-devel'],
     'trousers' => ['trousers-devel'],
