@@ -1,5 +1,6 @@
 maintainer="nox"
 pkgname="docker-cli"
+# should be kept in sync with moby
 version=20.10.21
 revision=2
 short_desc="Command-line interface for the Docker daemon"
