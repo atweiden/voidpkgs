@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nethogs"
-version=0.8.6
+version=0.8.7
 revision=1
 short_desc="Small net top tool grouping bandwidth by process"
 makedepends+=" libpcap-devel"
@@ -8,7 +8,7 @@ makedepends+=" ncurses-devel"
 homepage="https://github.com/raboof/nethogs"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/raboof/nethogs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="317c1d5235d4be677e494e931c41d063a783ac0ac51e35e345e621d261c2e5a0"
+checksum="957d6afcc220dfbba44c819162f44818051c5b4fb793c47ba98294393986617d"
 build_style="gnu-makefile"
 
 pre_build() {
