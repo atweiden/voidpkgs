@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible"
-version=6.6.0
+version=7.0.0
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends="ansible-core"
@@ -9,7 +9,7 @@ hostmakedepends+=" python3-wheel"
 homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 distfiles="$PYPI_SITE/a/ansible/ansible-$version.tar.gz"
-checksum="e1b940a8d4f412123ede3c14b25cb99c3c8a4d535fd040aabf8e4fb7b0e4f092"
+checksum="73144e7e602715fab623005d2e71e503dddae86185e061fed861b2449c5618ea"
 build_style="python3-pep517"
 # relevant tests happen in ansible-core
 make_check="no"
