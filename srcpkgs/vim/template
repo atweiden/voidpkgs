@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vim"
-version=9.0.0447
-revision=3
+version=9.0.0948
+revision=1
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
 makedepends+=" acl-devel"
@@ -11,12 +11,14 @@ makedepends+=" lua53-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre-devel"
 makedepends+=" zlib-devel"
+checkdepends+=" libtool"
+checkdepends+=" ncurses-base"
 hostmakedepends+=" gettext"
 hostmakedepends+=" pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
 distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="547d9625c58892d7c5c151723601e4a5cf74ab5e9af18819a23fe9e5f9865795"
+checksum="f0d98cf3005045363066373c6070076f5feaca8de1d34c2d501abc59e90bbc41"
 build_style="gnu-configure"
 configure_args+=" --disable-canberra"
 configure_args+=" --disable-cscope"
@@ -61,6 +63,11 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 make_install_args="VIMRCLOC=/etc"
 python_version=3
+
+do_check() {
+  cd "$wrksrc"
+  TERM="xterm" make test
+}
 
 post_install() {
   vlicense runtime/doc/uganda.txt LICENSE
