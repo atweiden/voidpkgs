@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="ruby-build"
-version=20211227
+version=20221124
 revision=1
 short_desc="Compile and install Ruby"
 depends="bash"
 homepage="https://github.com/rbenv/ruby-build"
 license="MIT"
 distfiles="https://github.com/rbenv/ruby-build/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7a07eae6d6948f79a8ffecd7a493fb887e10326c429fe55cfe1bda65146db824"
+checksum="4fb3817ee0ecc2c46cce526a4b07fe97dfa56975a1767a4d454bc4c3afbc60cf"
 
 do_install() {
   vbin bin/ruby-build
