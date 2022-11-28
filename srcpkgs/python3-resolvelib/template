@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-resolvelib"
-version=0.8.1
-revision=2
+version=0.9.0
+revision=1
 short_desc="Resolve abstract dependencies into concrete ones"
 depends="python3"
 hostmakedepends="python3-setuptools"
@@ -9,7 +9,7 @@ homepage="https://github.com/sarugaku/resolvelib"
 license="ISC"
 changelog="https://github.com/sarugaku/resolvelib/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/sarugaku/resolvelib/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f400ebd5e60361b3b328241f4aded5a0f7665e46a83c374fea86d874cff0ffd5"
+checksum="c491405eaff5278fd6cd3a467de2f6f20b98bbd05254d7283b3b128ee2b305d8"
 build_style="python3-module"
 # check depends on unpackaged python modules
 make_check="no"
