@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zfs"
 version=2.1.6
-revision=1
+revision=2
 short_desc="Z File System -- userland, pyzfs, and kernel modules (using DKMS)"
 depends+=" dkms>=2.2.0.3_9"
 depends+=" perl"
@@ -40,18 +40,9 @@ dkms_modules="zfs $version"
 # because spl was merged into zfs in 0.8.0
 replaces="spl<=0.7.13_1"
 
-post_patch() {
-  # when collecting a "clean" tree for dkms, don't leave patches in place
-  local _f
-  for _f in "$XBPS_SRCPKGDIR/$pkgname/patches"/*.patch; do
-    rm -f "${_f##*/}"
-  done
-}
-
 pre_configure() {
   export CFLAGS+=" -I$XBPS_CROSS_BASE/usr/include/tirpc/"
   autoreconf -fi
-  tar czf ../clean.tar.gz .
 }
 
 post_install() {
@@ -61,13 +52,13 @@ post_install() {
 
   vsv zed
 
-  vmkdir "usr/src/$pkgname-$version"
-  tar xf ../clean.tar.gz -C "$DESTDIR/usr/src/$pkgname-$version"
+  make dist-gzip
+  vmkdir usr/src/
+  tar xf "$pkgname-$version.tar.gz" -C "$DESTDIR/usr/src/"
   scripts/dkms.mkconf -v "$version" -f "$DESTDIR/usr/src/$pkgname-$version/dkms.conf" -n zfs
 
   # remove init and service control pieces not used in void
   rm -rf "$DESTDIR/usr/lib/systemd"
-  rm -rf "$DESTDIR/usr/share/initramfs-tools"
   rm -rf "$DESTDIR/etc/init.d"
   rm -rf "$DESTDIR/etc/default"
   rm -f "$DESTDIR/etc/zfs/zfs-functions"
@@ -100,11 +91,6 @@ zfs-pam_package() {
   pkg_install() {
     vmove usr/lib/security/pam_zfs_key.so
   }
-}
-
-
-do_clean() {
-  rm -f ../clean.tar.gz
 }
 
 # REMARKS:
