@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bitcoin"
-version=23.0
+version=24.0
 revision=1
 # see:
 # bitcoin/bitcoin/depends/packages/bdb.mk
@@ -8,14 +8,16 @@ revision=1
 # bitcoin/bitcoin/depends/packages/sqlite.mk
 _db_version=4.8.30
 _libevent_version=2.1.12
-_sqlite_version=3.32.1
+_sqlite_version=3.38.05
 _sqlite_amalgamationver="$(printf "%d%02d%02d00\n" ${_sqlite_version//./ })"
 short_desc="Decentralized, peer to peer payment network"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
+makedepends+=" libedit-devel"
 makedepends+=" libgcc"
 makedepends+=" libseccomp-devel"
 makedepends+=" libstdc++"
+makedepends+=" zlib-devel"
 checkdepends+=" gtest-devel"
 checkdepends+=" procps-ng"
 checkdepends+=" python3"
@@ -31,11 +33,11 @@ license="MIT"
 distfiles+=" https://bitcoincore.org/bin/$pkgname-core-$version/$pkgname-$version.tar.gz"
 distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.NC.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
-distfiles+=" https://sqlite.org/2020/sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
-checksum+=" 26748bf49d6d6b4014d0fedccac46bf2bcca42e9d34b3acfd9e3467c415acc05"
+distfiles+=" https://sqlite.org/2022/sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
+checksum+=" 9cfa4a9f4acb5093e85b8b528392f0f05067f3f8fafacd4dcfe8a396158fd9f4"
 checksum+=" 12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
-checksum+=" 486748abfb16abd8af664e3a5f03b228e5f124682b0c942e157644bf6fff7d10"
+checksum+=" 5af07de982ba658fd91a03170c945f99c971f6955bc79df3266544373e39869c"
 skip_extraction+=" db-$_db_version.NC.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
@@ -47,11 +49,13 @@ configure_args+=" --disable-gui-tests"
 configure_args+=" --disable-static"
 configure_args+=" --disable-tests"
 configure_args+=" --disable-zmq"
+configure_args+=" --enable-external-signer"
 configure_args+=" --enable-glibc-back-compat"
 configure_args+=" --enable-hardening"
 configure_args+=" --enable-reduce-exports"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-seccomp"
+configure_args+=" --with-sqlite=yes"
 configure_args+=" --without-gui"
 configure_args+=" --without-miniupnpc"
 configure_args+=" --without-natpnp"
@@ -107,7 +111,7 @@ _do_build_db() {
   _configure_args_db+=" --build=$XBPS_TRIPLET"
 
   ../dist/configure $_configure_args_db
-  CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration" \
+  CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=format-security" \
   CXXFLAGS="$CXXFLAGS -std=c++17" \
     make libdb_cxx-4.8.a libdb-4.8.a
   make DESTDIR="$_depends_builddir/db-root" install_lib install_include
@@ -155,7 +159,6 @@ _do_build_sqlite() {
   _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_PARENTHESIS"
   _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_TOKENIZER=1"
   _cflags_sqlite+=" -DSQLITE_ENABLE_FTS4"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_JSON1"
   _cflags_sqlite+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY"
   _cflags_sqlite+=" -DSQLITE_SECURE_DELETE"
 
