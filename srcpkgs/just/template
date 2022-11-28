@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="just"
-version=1.8.0
+version=1.9.0
 revision=1
 short_desc="Just a command runner"
 homepage="https://github.com/casey/just"
 license="CC0-1.0"
 changelog="https://github.com/casey/just/raw/master/CHANGELOG.md"
 distfiles="https://github.com/casey/just/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5c78163d3ee45f838a2a69f0ac2866f901efe2a0d9e68875d1e12260951a60f4"
+checksum="3f2a2cd532dffd978ea28817a909b3ccbe09837380f014eed615ec8557302cec"
 build_style="cargo"
 # test fails when run as root
 make_check="ci-skip"
