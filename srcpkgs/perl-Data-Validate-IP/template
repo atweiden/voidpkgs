@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-Data-Validate-IP"
-version=0.30
+version=0.31
 revision=1
 short_desc="IPv4 and IPv6 validation methods"
 depends+=" perl"
@@ -14,7 +14,7 @@ hostmakedepends+=" perl-NetAddr-IP"
 homepage="https://metacpan.org/release/Data-Validate-IP"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Data/${pkgname#*-}-$version.tar.gz"
-checksum="fe2f7663e18b70d5510529c22f45fdd2bbdb4a5adb26d65c9050c5b9696e8a1c"
+checksum="734aff86b6f9cad40e1c4da81f28faf18e0802c76a566d95e5613d4318182fc1"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
