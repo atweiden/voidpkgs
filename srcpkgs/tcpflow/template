@@ -1,39 +1,24 @@
 maintainer="nox"
 pkgname="tcpflow"
-version=1.5.2
-revision=3
-_be20_gitrev="c81521d768bb78499c069fcd7c47adc8eee0350c"
-_dfxml_gitrev="c31224626cf5f6678d42cbcfbfcd4e6191c9a864"
-_httpparser_gitrev="6b05cce82da5c4d407e5576ab892bc20a17b0394"
+version=1.6.1
+revision=1
 short_desc="Captures data transmitted as part of TCP connections"
 makedepends+=" boost-devel"
+makedepends+=" libcap-ng-devel"
 makedepends+=" libpcap-devel"
 makedepends+=" openssl-devel"
+makedepends+=" sqlite-devel"
+makedepends+=" tre-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="automake"
 homepage="https://github.com/simsong/tcpflow"
-license="GPL-3.0-only"
-distfiles+=" https://github.com/simsong/tcpflow/archive/$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/nodejs/http-parser/archive/$_httpparser_gitrev.tar.gz"
-distfiles+=" https://github.com/simsong/be20_api/archive/$_be20_gitrev.tar.gz"
-distfiles+=" https://github.com/simsong/dfxml/archive/$_dfxml_gitrev.tar.gz"
-checksum+=" c4138dbf2ed9915aed92e8f5cd6d19db2c7d1caeb02191939d0bfa15e52fe600"
-checksum+=" b947bd185511fd28a12a30436bcbe8f765473a667cdb6f8f55888274d44f550f"
-checksum+=" c98cface83e074be790293bb1041df8968ef385a196e0990f5174883d2e1d8f4"
-checksum+=" 358e4d3599c6e26f1dff85066e15e86025fc537466e8f4e35924922886eed86b"
-create_wrksrc="yes"
+license="GPL-3.0-only, MIT"
+distfiles="https://github.com/simsong/tcpflow/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
+checksum="436f93b1141be0abe593710947307d8f91129a5353c3a8c3c29e2ba0355e171e"
 build_style="gnu-configure"
 
-post_extract() {
-  mv tcpflow-*/* .
-  rmdir src/{dfxml,be13_api,http-parser}
-  mv be??_api-$_be20_gitrev src/be13_api
-  mv "dfxml-$_dfxml_gitrev" src/dfxml
-  mv "http-parser-$_httpparser_gitrev" src/http-parser
-}
-
-pre_configure() {
-  autoreconf -fi
+post_install() {
+  vlicense src/http-parser/LICENSE-MIT
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
