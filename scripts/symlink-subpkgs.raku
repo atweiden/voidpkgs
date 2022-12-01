@@ -787,6 +787,7 @@ constant %PKG = Map.new(
     'tiff' => ['tiff-devel'],
     'tlp' => ['tlp-rdw'],
     'toxcore' => ['toxcore-devel'],
+    'tre' => ['tre-devel'],
     'tree-sitter' => ['tree-sitter-devel'],
     'trousers' => ['trousers-devel'],
     'tzutils' => ['tzdata'],
