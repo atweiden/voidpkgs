@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="jitterentropy-rngd"
-version=1.2.7
+version=1.2.8
 revision=1
 short_desc="Jitter RNG Daemon"
 homepage="https://www.chronox.de/jent.html"
 license="BSD-3-Clause, GPL-2.0-only"
 distfiles="https://www.chronox.de/jent/$pkgname-$version.tar.xz"
-checksum="d81aeee0ffc2bf9d05aceeaa9dfccbe09abc07325f981e70479151e6ecd73e12"
+checksum="c4480c67d888fd9c6c9c3bcf06c785578ad81984ec978da3c33d16aa019664fb"
 build_style="gnu-makefile"
 make_use_env="yes"
 
