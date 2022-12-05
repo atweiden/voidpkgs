@@ -5,6 +5,7 @@ revision=1
 short_desc="Compatibility module for OCaml standard library"
 makedepends+=" ocaml"
 makedepends+=" ocaml-findlib"
+hostmakedepends="automake"
 homepage="https://github.com/thierry-martinez/stdcompat"
 license="BSD-2-Clause"
 distfiles="https://github.com/thierry-martinez/stdcompat/releases/download/v$version/stdcompat-$version.tar.gz>$pkgname-$version.tar.gz"
