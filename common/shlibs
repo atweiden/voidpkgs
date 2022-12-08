@@ -564,6 +564,12 @@ libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1
 libxxhash.so.0 libxxHash-0.6.5_2
 libyaml-0.so.2 libyaml-0.1.4_1
+libnvpair.so.3 libzfs-2.1.7_1
+libuutil.so.3 libzfs-2.1.7_1
+libzfs.so.4 libzfs-2.1.7_1
+libzfs_core.so.3 libzfs-2.1.7_1
+libzfsbootenv.so.1 libzfs-2.1.7_1
+libzpool.so.5 libzfs-2.1.7_1
 libzip.so.5 libzip-1.7.3_2
 libzstd.so.1 libzstd-1.0.0_1
 liblldb.so.12 lldb-12.0.0_1
@@ -743,12 +749,6 @@ libxmlrpc_util.so.4 xmlrpc-c-1.51.06_2
 libyascreen.so.0 yascreen-1.86_1
 libzcash_script.so.0 zcash-4.6.0_1
 libzmq.so.5 zeromq-4.1.2_1
-libnvpair.so.3 zfs-2.0.3_2
-libuutil.so.3 zfs-2.0.3_2
-libzfs.so.4 zfs-2.0.3_2
-libzfs_core.so.3 zfs-2.0.3_2
-libzfsbootenv.so.1 zfs-2.0.3_2
-libzpool.so.5 zfs-2.1.0_1
 libz.so.1 zlib-1.2.3_1
 libzuluCrypt-exe.so.1.2.0 zulucrypt-5.2.0_1
 libzuluCrypt.so.1.2.0 zulucrypt-5.2.0_1

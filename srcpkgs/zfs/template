@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="zfs"
-version=2.1.6
-revision=2
+version=2.1.7
+revision=1
 short_desc="Z File System -- userland, pyzfs, and kernel modules (using DKMS)"
 depends+=" dkms>=2.2.0.3_9"
+depends+=" libzfs>=${version}_$revision"
 depends+=" perl"
 depends+=" python3"
 depends+=" xbps-triggers>=0.121_1"
@@ -24,7 +25,7 @@ hostmakedepends+=" python3"
 homepage="https://openzfs.github.io/openzfs-docs/"
 license="CDDL-1.0"
 distfiles="https://github.com/openzfs/zfs/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="15339014f8d2131348eb937bf8893849806b6d2645ea607a18c7f117749dbd7a"
+checksum="6462e63e185de6ff10c64ffa6ed773201a082f9dd13e603d7e8136fcb4aca71b"
 conf_files="/etc/zfs/zed.d/zed.rc"
 build_style="gnu-configure"
 configure_args+=" --with-config=user"
@@ -74,8 +75,15 @@ post_install() {
   rm -rf "$DESTDIR/usr/share/zfs/zfs-tests"
 }
 
+libzfs_package() {
+  short_desc="Z File System - libraries"
+  pkg_install() {
+    vmove "usr/lib/*.so.*"
+  }
+}
+
 zfs-devel_package() {
-  depends="$sourcepkg>=${version}_$revision"
+  depends="libzfs>=${version}_$revision"
   short_desc="Z File System -- development files"
   pkg_install() {
     vmove usr/include
