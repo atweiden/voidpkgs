@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="MoarVM"
-version=2022.07
+version=2022.12
 revision=1
 short_desc="VM with adaptive optimization and JIT compilation, built for Rakudo"
 makedepends+=" libffi-devel"
@@ -16,7 +16,7 @@ homepage="https://moarvm.org"
 license="Artistic-2.0"
 changelog="https://github.com/MoarVM/MoarVM/raw/master/docs/ChangeLog"
 distfiles="https://moarvm.org/releases/$pkgname-$version.tar.gz"
-checksum="337ef04d16f826f99465c653b92006028fe220be68d3dcfd0729612f4f6b5b46"
+checksum="51c3e9c9a7a191c148f213b65ae1f4fcfe5d4b7c16c86300e9ee8e18eaa8becb"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --c11-atomics"
