@@ -8,7 +8,7 @@ depends+=" docbook-xml>=4.2"
 depends+=" xmlcatmgr"
 homepage="https://docbook.org/"
 license="MIT"
-distfiles="https://github.com/docbook/xslt10-stylesheets/releases/download/release/$version/docbook-xsl-ns-$version.tar.bz2"
+distfiles="https://github.com/docbook/xslt10-stylesheets/releases/download/release/$version/docbook-xsl-$version.tar.bz2"
 checksum="316524ea444e53208a2fb90eeb676af755da96e1417835ba5f5eb719c81fa371"
 # at v1.79.2, docbook-xsl-ns was renamed to just docbook-xsl
 xml_entries="nextCatalog /usr/share/xsl-ns/docbook/catalog.xml --"
