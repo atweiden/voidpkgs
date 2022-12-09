@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pycodestyle"
-version=2.9.1
-revision=2
+version=2.10.0
+revision=1
 short_desc="Python style guide checker (formerly called pep8)"
 depends="python3"
 checkdepends="python3-pytest"
@@ -10,7 +10,7 @@ homepage="https://github.com/PyCQA/pycodestyle"
 license="MIT"
 changelog="https://github.com/PyCQA/pycodestyle/raw/main/CHANGES.txt"
 distfiles="$PYPI_SITE/p/pycodestyle/pycodestyle-$version.tar.gz"
-checksum="2c9607871d58c76354b697b42f5d57e1ada7d261c261efac224b664affdc5785"
+checksum="347187bdb476329d98f695c213d7295a846d1152ff4fe9bacb8a9590b8ee7053"
 build_style="python3-module"
 
 post_install() {
