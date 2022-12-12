@@ -1,19 +1,19 @@
 maintainer="nox"
 pkgname="python3-soupsieve"
-version=1.9.5
-revision=9
+version=2.3.2
+revision=1
 short_desc="CSS4 selector implementation for Python3 Beautiful Soup"
 depends="python3"
 checkdepends+=" python3-BeautifulSoup4"
 checkdepends+=" python3-html5lib"
 checkdepends+=" python3-lxml"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends="hatchling"
 homepage="https://facelessuser.github.io/soupsieve/"
 license="MIT"
 distfiles="$PYPI_SITE/s/soupsieve/soupsieve-$version.tar.gz"
-checksum="e2c1c5dee4a1c36bcb790e0fabd5492d874b8ebd4617622c4f6a731701060dda"
-build_style="python3-module"
+checksum="0bcc6d7432153063e3df09c3ac9442af3eba488715bfcad6a4c38ccb2a523124"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE.md
