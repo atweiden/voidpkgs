@@ -13,7 +13,7 @@ build_style="gnu-makefile"
 make_check_target="test-python3"
 
 post_install() {
-	vlicense LICENSE.MIT
+  vlicense LICENSE.MIT
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
