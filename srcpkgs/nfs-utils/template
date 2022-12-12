@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nfs-utils"
 version=2.5.4
-revision=1
+revision=2
 short_desc="Network File System utilities"
 depends="rpcbind"
 makedepends+=" device-mapper-devel"
