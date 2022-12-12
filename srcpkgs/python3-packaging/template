@@ -1,20 +1,18 @@
 maintainer="nox"
 pkgname="python3-packaging"
-version=21.3
-revision=2
+version=22.0
+revision=1
 short_desc="Core utilities for Python packages (Python3)"
 depends="python3-parsing"
 checkdepends="python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-flit_core"
 homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
 distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
-checksum="dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"
-build_style="python3-module"
-
-do_check() {
-  : provides no tests
-}
+checksum="2198ec20bd4c017b8f9717e00f0c8714076fc2fd93816750ab48e2c41de2cfd3"
+build_style="python3-pep517"
+# provides no tests
+make_check="no"
 
 post_install() {
   vlicense LICENSE
