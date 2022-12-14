@@ -496,8 +496,6 @@ constant %PKG = Map.new(
     'linux' => ['linux-headers'],
     'linux5.10' => qw<linux5.10-dbg
                       linux5.10-headers>,
-    'linux5.19' => qw<linux5.19-dbg
-                      linux5.19-headers>,
     'linux6.0' => qw<linux6.0-dbg
                      linux6.0-headers>,
     'llhttp' => ['llhttp-devel'],
