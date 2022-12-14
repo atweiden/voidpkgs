@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pathspec"
-version=0.10.2
+version=0.10.3
 revision=1
 short_desc="Python3 utility library for pattern matching of file paths"
 depends="python3"
@@ -9,7 +9,7 @@ homepage="https://github.com/cpburnz/python-pathspec"
 license="MPL-2.0"
 changelog="https://github.com/cpburnz/python-pathspec/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/p/pathspec/pathspec-$version.tar.gz"
-checksum="8f6bf73e5758fd365ef5d58ce09ac7c27d2833a8d7da51712eac6e27e35141b0"
+checksum="56200de4077d9d0791465aa9095a01d421861e405b5096955051deefd697d6f6"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
