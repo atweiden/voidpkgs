@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="screen"
 version=4.9.0
-revision=1
+revision=2
 short_desc="GNU screen manager with VT100/ANSI terminal emulation"
 makedepends+=" libutempter-devel"
 makedepends+=" ncurses-devel"
