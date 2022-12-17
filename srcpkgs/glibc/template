@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="glibc"
-version=2.32
-revision=2
+version=2.36
+revision=1
+_patchver="72-g0f90d6204d"
 short_desc="GNU C library"
-# there's no point in building this for musl
 archs="~*-musl"
 makedepends="kernel-libc-headers"
 if [[ -n "$CHROOT_READY" ]]; then
@@ -15,8 +15,8 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
-distfiles="$GNU_SITE/glibc/$pkgname-$version.tar.xz"
-checksum="1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836"
+distfiles="https://vasilek.cz/paste/glibc-$version-$_patchver.tar.xz"
+checksum="656200722d5ba968b4888a2d2950719d72c86290fd0479f61897d25b7db2cb57"
 conf_files+=" /etc/gai.conf"
 conf_files+=" /etc/ld.so.conf"
 conf_files+=" /etc/rpc"
@@ -30,31 +30,35 @@ nostrip_files+=" POSIX_V7_LP64_OFF64"
 nostrip_files+=" XBS5_ILP32_OFF32"
 nostrip_files+=" XBS5_ILP32_OFFBIG"
 nostrip_files+=" XBS5_LP64_OFF64"
-nostrip_files+=" ld-$version.so"
-nostrip_files+=" libBrokenLocale-$version.so"
-nostrip_files+=" libanl-$version.so"
-nostrip_files+=" libc-$version.so"
-nostrip_files+=" libcidn-$version.so"
-nostrip_files+=" libcrypt-$version.so"
-nostrip_files+=" libdl-$version.so"
-nostrip_files+=" libm-$version.so"
-nostrip_files+=" libnsl-$version.so"
-nostrip_files+=" libnss_compat-$version.so"
-nostrip_files+=" libnss_db-$version.so"
-nostrip_files+=" libnss_dns-$version.so"
-nostrip_files+=" libnss_files-$version.so"
-nostrip_files+=" libnss_hesiod-$version.so"
-nostrip_files+=" libnss_nis-$version.so"
-nostrip_files+=" libnss_nisplus-$version.so"
-nostrip_files+=" libpthread-$version.so"
-nostrip_files+=" libresolv-$version.so"
-nostrip_files+=" librt-$version.so"
-nostrip_files+=" libthread_db-1.0.so"
-nostrip_files+=" libutil-$version.so"
+nostrip_files+=" ld-linux-aarch64.so.1"
+nostrip_files+=" ld-linux-armhf.so.3"
+nostrip_files+=" ld-linux-x86-64.so.2"
+nostrip_files+=" ld-linux.so.2"
+nostrip_files+=" ld-linux.so.3"
+nostrip_files+=" ld.so.1"
+nostrip_files+=" ld64.so.2"
+nostrip_files+=" libBrokenLocale.so.1"
+nostrip_files+=" libc.so.6"
+nostrip_files+=" libc_malloc_debug.so.0"
+nostrip_files+=" libcrypt.so.1"
+nostrip_files+=" libm.so.6"
+nostrip_files+=" libmemusage.so"
+nostrip_files+=" libmvec.so.1"
+nostrip_files+=" libnsl.so.1"
+nostrip_files+=" libnss_compat.so.2"
+nostrip_files+=" libnss_db.so.2"
+nostrip_files+=" libnss_dns.so.2"
+nostrip_files+=" libnss_files.so.2"
+nostrip_files+=" libnss_hesiod.so.2"
+nostrip_files+=" libresolv.so.2"
+nostrip_files+=" libthread_db.so.1"
 lib32files="/usr/lib/gconv/gconv-modules"
 lib32symlinks="ld-linux.so.2"
-nopie="yes"
 bootstrap="yes"
+nocross="temporarily"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  broken="no point in building this for musl"
+fi
 
 do_configure() {
   local _libdir
@@ -194,20 +198,6 @@ do_install() {
   rm -f "$DESTDIR/usr/bin"/z{dump,ic}
 
   mv "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin"
-
-  # create xbps.d(5) arch override file for 32-bit architectures
-  #
-  # 32-bit userlands may be used with 64-bit kernels and then xbps will
-  # report an incorrect architecture by default
-  case "$XBPS_TARGET_MACHINE" in
-    i686|ppc|ppcle|armv*)
-      vmkdir usr/share/xbps.d
-      echo "architecture=$XBPS_TARGET_MACHINE" > \
-        "$DESTDIR/usr/share/xbps.d/arch-32bit.conf"
-      ;;
-    *)
-      ;;
-  esac
 }
 
 glibc-devel_package() {
