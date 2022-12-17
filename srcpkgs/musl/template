@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="musl"
 version=1.1.24
-revision=11
+revision=12
 short_desc="Musl C library"
 archs="*-musl"
 homepage="http://www.musl-libc.org/"
