@@ -210,8 +210,8 @@ libjq.so.1 jq-1.6_2
 libjson-c.so.5 json-c-0.14.0_1
 libjsoncpp.so.24 jsoncpp-1.9.4_1
 liblapack.so.3 lapack-3.5.0_1
-libgnarl-10.so libada-10.2.0_1
-libgnat-10.so libada-10.2.0_1
+libgnarl-12.so libada-12.2.0_1
+libgnat-12.so libada-12.2.0_1
 libaio.so.1 libaio-0.3.109_1
 libaom.so.3 libaom-3.4.0_1
 libapparmor.so.1 libapparmor-2.12.0_1
@@ -328,7 +328,7 @@ libGeoIP.so.1 libgeoip-1.4.8_1
 libgfortran.so.5 libgfortran-8.2.0_1
 libgfshare.so.2 libgfshare-2.0.0_1
 libgit2.so.1.5 libgit2-1.5.0_1
-libgo.so.16 libgo-10.2.0_1
+libgo.so.21 libgo-12.2.0_1
 libgomp.so.1 libgomp-4.4.0_1
 libgpg-error.so.0 libgpg-error-1.6_1
 libgpgme-pthread.so.11 libgpgme-1.12.0_2
@@ -465,9 +465,9 @@ librpmio.so.9 librpmio-4.15.0_1
 librpmsign.so.9 librpmsign-4.15.0_1
 librsync.so.2 librsync-1.0.0_1
 librtmp.so.1 librtmp-2.4.20161210_9
-libasan.so.6 libsanitizer-10.2.0_1
+libasan.so.8 libsanitizer-12.2.0_1
+libtsan.so.2 libsanitizer-12.2.0_1
 liblsan.so.0 libsanitizer-6.3.0_1
-libtsan.so.0 libsanitizer-6.3.0_1
 libubsan.so.1 libsanitizer-8.2.0_1
 libsasl2.so.3 libsasl-2.1.26_1
 libscrypt.so.0 libscrypt-1.21_1

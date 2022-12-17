@@ -1,36 +1,34 @@
 maintainer="nox"
 pkgname="gcc"
-# we are using a 10-stable git snapshot alpine is using in order
-# to get regression fixes not yet incorporate into a stable release
-# it should be possible to switch back to stable with 10.3 or 11
-version=10.2.1pre1
-revision=3
-_patchver="${version%pre*}"
-_minorver="${_patchver%.*}"
+version=12.2.0
+revision=1
+_minorver="${version%.*}"
 _majorver="${_minorver%.*}"
-_gmp_version=6.2.0
+_gmp_version=6.2.1
 _mpfr_version=4.1.0
-_mpc_version=1.1.0
-_isl_version=0.21
+_mpc_version=1.2.1
+_isl_version=0.24
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
 depends+=" libssp-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
+makedepends+=" libzstd-devel"
+makedepends+=" zlib-devel"
 checkdepends="dejagnu"
 homepage="http://gcc.gnu.org"
 license="GFDL-1.2-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
 # *-musl builders have issues fetching https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
-distfiles+=" https://dev.alpinelinux.org/~nenolod/gcc-${version/pre/_pre}.tar.xz"
+distfiles+=" $GNU_SITE/gcc/gcc-$version/gcc-$version.tar.xz"
 distfiles+=" https://gmplib.org/download/gmp/gmp-$_gmp_version.tar.xz"
 distfiles+=" $GNU_SITE/mpfr/mpfr-$_mpfr_version.tar.xz"
 distfiles+=" $GNU_SITE/mpc/mpc-$_mpc_version.tar.gz"
 distfiles+=" $SOURCEFORGE_SITE/libisl/isl-$_isl_version.tar.bz2"
-checksum+=" 772cfd5d30eb9cc5a996fec9ba8cdcb45d37df1c9b5770610103b814b732c590"
-checksum+=" 258e6cd51b3fbdfc185c716d55f82c08aff57df0c6fbd143cf6ed561267a1526"
+checksum+=" e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff"
+checksum+=" fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2"
 checksum+=" 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f"
-checksum+=" 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
-checksum+=" d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859"
+checksum+=" 17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459"
+checksum+=" fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0"
 create_wrksrc="yes"
 patch_args="-Np0"
 build_options+=" ada"
@@ -42,19 +40,20 @@ if [[ -n "$build_option_gnatboot" ]]; then
   case "$XBPS_TARGET_MACHINE" in
     x86_64)
       _gnat_tarball="gnat-gpl-2017-x86_64-linux-bin.tar.gz"
-      distfiles+=" http://mirrors.cdn.adacore.com/art/591c6d80c7a447af2deed1d7>$_gnat_tarball"
+      distfiles+=" https://community.download.adacore.com/v1/9682e2e1f2f232ce03fe21d77b14c37a0de5649b?filename=$_gnat_tarball>$_gnat_tarball"
       checksum+=" b942bcac20dea39748b39f8b624d9619f60a8dee2e8195dbe3829c835b0956e6"
       build_options_default="gnatboot"
       ;;
     i686)
       _gnat_tarball="gnat-gpl-2014-x86-linux-bin.tar.gz"
-      distfiles+=" http://mirrors.cdn.adacore.com/art/564b3e9dc8e196b040fbe248>$_gnat_tarball"
+      distfiles+=" https://community.download.adacore.com/v1/c5e9e6fdff5cb77ed90cf8c62536653e27c0bed6?filename=$_gnat_tarball>$_gnat_tarball"
       checksum+=" 3b693510f5d22a240abb3034934c1adbd80ccd6e4f61a4f491cc408fdfd9c042"
       build_options_default="gnatboot"
       ;;
   esac
 fi
 nopie="yes"
+nocross="temporarily"
 lib32disabled="yes"
 bootstrap="yes"
 replaces+=" gcc-gcj-jdk-compat<7.2.0"
@@ -79,6 +78,9 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" texinfo"
 else
   _have_gccgo="no"
+  # libzstd fails to link in bootstrap with glibc 2.36 when zlib has
+  # been compiled with glibc 2.32
+  LDFLAGS="-lzstd -pthread"
 fi
 subpackages+=" libgcc"
 subpackages+=" libgomp"
@@ -230,8 +232,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 post_extract() {
-  mv "gcc-${version/pre/_pre}"/* "gcc-${version/pre/_pre}"/.??* .
-  rmdir "gcc-${version/pre/_pre}"
+  mv "gcc-$version"/* "gcc-$version"/.??* .
+  rmdir "gcc-$version"
   mv "gmp-$_gmp_version" gmp
   mv "mpfr-$_mpfr_version" mpfr
   mv "mpc-$_mpc_version" mpc
@@ -266,9 +268,9 @@ pre_configure() {
     gcc/Makefile.in
 
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-    patch -p1 -i "$FILESDIR/libgnarl-musl.patch"
-    patch -p1 -i "$FILESDIR/libssp-musl.patch"
-    patch -p1 -i "$FILESDIR/gccgo-musl.patch"
+    for p in "$FILESDIR"/*-musl.patch; do
+      patch -p1 -i "$p"
+    done
   fi
 }
 
@@ -463,16 +465,16 @@ do_install() {
 
   # make version a symlink of major version to make all versions from
   # the same series work automagically
-  mv "$DESTDIR/usr/lib/gcc/$_triplet/$_patchver" \
+  mv "$DESTDIR/usr/lib/gcc/$_triplet/$version" \
     "$DESTDIR/usr/lib/gcc/$_triplet/$_minorver"
   ln -sfr "$DESTDIR/usr/lib/gcc/$_triplet/$_minorver" \
-    "$DESTDIR/usr/lib/gcc/$_triplet/$_patchver"
+    "$DESTDIR/usr/lib/gcc/$_triplet/$version"
 
   # ditto for c++ headers
-  mv "$DESTDIR/usr/include/c++/$_patchver" \
+  mv "$DESTDIR/usr/include/c++/$version" \
     "$DESTDIR/usr/include/c++/$_minorver"
   ln -sfr "$DESTDIR/usr/include/c++/$_minorver" \
-    "$DESTDIR/usr/include/c++/$_patchver"
+    "$DESTDIR/usr/include/c++/$version"
 
   # cc symlink
   ln -sfr "$DESTDIR/usr/bin/gcc" \
@@ -482,7 +484,7 @@ do_install() {
     "$DESTDIR/usr/lib/cpp"
   # lto plugin symlink
   vmkdir usr/lib/bfd-plugins
-  ln -sfr "$DESTDIR/usr/lib/gcc/$_triplet/$_patchver/liblto_plugin.so" \
+  ln -sfr "$DESTDIR/usr/lib/gcc/$_triplet/$version/liblto_plugin.so" \
     "$DESTDIR/usr/lib/bfd-plugins"
 
   # remove "fixed" header
@@ -493,13 +495,9 @@ do_install() {
   rm -f "$DESTDIR/usr/lib"/libffi*
   rm -f "$DESTDIR/usr/share/man/man3"/ffi*
 
-  # remove all python scripts in libdir
-  rm -f "$DESTDIR/usr/lib"/*.py
-
-  # remove more python stuff
-  if [[ -d "$DESTDIR/usr/share/gcc-$_patchver/python" ]]; then
-    rm -rf "$DESTDIR/usr/share/gcc-$_patchver/python"
-  fi
+  # move libstdc++ gdb helpers to location where gdb can autoload them
+  mkdir -p "$DESTDIR/usr/share/gdb/auto-load/usr/lib"
+  mv "$DESTDIR/usr/lib"/*.py "$DESTDIR/usr/share/gdb/auto-load/usr/lib"
 
   # install c89 and c99 wrappers and its manpages, from NetBSD
   for f in c89 \
@@ -527,14 +525,12 @@ gcc-ada_package() {
     for f in gnatbind \
              gnatchop \
              gnatclean \
-             gnatfind \
              gnatkr \
              gnatlink \
              gnatls \
              gnatmake \
              gnatname \
-             gnatprep \
-             gnatxref; do
+             gnatprep; do
       vmove "usr/bin/$f"
     done
   }
@@ -601,7 +597,7 @@ gcc-fortran_package() {
     if [[ -n "$CROSS_BUILD" ]]; then
       # a number of omp modules are not built when cross compiling gcc,
       # copy them from the cross compiler
-      local src="/usr/lib/gcc/$_triplet/$_patchver/finclude"
+      local src="/usr/lib/gcc/$_triplet/$version/finclude"
       local dst="usr/lib/gcc/$_triplet/$_minorver/finclude"
       for f in omp_lib.f90 \
                omp_lib.h \
@@ -677,7 +673,7 @@ libgfortran_package() {
   short_desc+=" - Fortran library"
   pkg_install() {
     vmove "usr/lib/libgfortran.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -698,7 +694,7 @@ libgo_package() {
   nostrip="yes"
   pkg_install() {
     vmove "usr/lib/libgo.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -714,7 +710,7 @@ libobjc_package() {
   short_desc+=" - Objective-C library"
   pkg_install() {
     vmove "usr/lib/libobjc.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -733,7 +729,7 @@ libquadmath_package() {
   short_desc+=" - quadmath library"
   pkg_install() {
     vmove "usr/lib/libquadmath.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -775,7 +771,7 @@ libgcc_package() {
   noverifyrdeps="yes"
   pkg_install() {
     vmove "usr/lib/libgcc_s.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -806,7 +802,7 @@ libgomp_package() {
   short_desc+=" - OpenMP v4.0 library"
   pkg_install() {
     vmove "usr/lib/libgomp*.so.*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -861,7 +857,7 @@ libssp_package() {
   short_desc+=" - SSP (StackSmashingProtection) library"
   pkg_install() {
     vmove "usr/lib/libssp.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
@@ -878,8 +874,10 @@ libstdc++-devel_package() {
 libstdc++_package() {
   short_desc+=" - standard C++ Library"
   pkg_install() {
+    vmove usr/share/gdb
+    vmove "usr/share/gcc-$version/python"
     vmove "usr/lib/libstdc++.so*"
-    vlicense "$wrksrc/COPYING.RUNTIME" RUNTIME.LIBRARY.EXCEPTION
+    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 
