@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="binutils"
-version=2.35.1
-revision=4
+version=2.39
+revision=1
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
+hostmakedepends="pkgconf"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
-checksum="3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607"
+checksum="645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00"
 subpackages="binutils-doc"
+nocross="temporarily"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
@@ -38,8 +40,10 @@ do_configure() {
 
   if [[ -n "$CHROOT_READY" ]]; then
     conf+=" --with-debuginfod"
+    conf+=" --enable-shared"
   else
     conf+=" --without-debuginfod"
+    conf+=" --disable-shared"
     conf+=" --disable-install-libbfd"
   fi
   if [[ -n "$CROSS_BUILD" ]]; then
@@ -47,6 +51,16 @@ do_configure() {
     conf+=" --host=$XBPS_CROSS_TRIPLET"
     conf+=" --with-build-sysroot=$XBPS_CROSS_BASE"
   fi
+
+  # gprofng currently only supports x86 and aarch64 glibc
+  case "$XBPS_TARGET_MACHINE" in
+    x86_64|i386|aarch64)
+      conf+=" --enable-gprofng"
+      ;;
+    *)
+      conf+=" --disable-gprofng"
+      ;;
+  esac
 
   case "$XBPS_TARGET_MACHINE" in
     ppc*)
@@ -88,13 +102,14 @@ do_configure() {
     --libdir="/usr/lib" \
     --mandir="/usr/share/man" \
     --infodir="/usr/share/info" \
+    --sysconfdir="/etc" \
     --disable-werror \
-    --disable-shared \
     --disable-nls \
     --enable-threads \
     --enable-plugins \
     --enable-relro \
     --enable-gold \
+    --enable-new-dtags \
     --enable-deterministic-archives \
     --enable-64-bit-bfd \
     --enable-ld="default" \
@@ -168,8 +183,8 @@ binutils-devel_package() {
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
+    vmove "usr/lib/libbfd.so"
+    vmove "usr/lib/libopcodes.so"
   }
 }
 
