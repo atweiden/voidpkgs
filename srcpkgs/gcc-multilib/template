@@ -2,7 +2,7 @@ _triplet="x86_64-unknown-linux-gnu"
 
 maintainer="nox"
 pkgname="gcc-multilib"
-version=10.2.1pre1
+version=12.2.0
 revision=1
 _majorver="${version%.*}"
 short_desc="GNU Compiler Collection (multilib files)"
@@ -30,8 +30,8 @@ hostmakedepends+=" perl"
 hostmakedepends+=" tar"
 hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
-distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/pre/_pre}.tar.xz"
-checksum="772cfd5d30eb9cc5a996fec9ba8cdcb45d37df1c9b5770610103b814b732c590"
+distfiles="$GNU_SITE/gcc/$pkgname-$version/$pkgname-$version.tar.xz"
+checksum="e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff"
 replaces="libmpx-devel-32bit>=0"
 
 do_configure() {
@@ -83,7 +83,6 @@ do_build() {
 
 do_install() {
   local _pc_triplet
-  local _version
 
   # install to a tempdir and then only copy relevant files
   cd "$wrksrc"
@@ -95,11 +94,10 @@ do_install() {
   vmkdir "usr/lib/gcc/$_triplet/$_majorver"
 
   _pc_triplet="x86_64-pc-linux-gnu"
-  _version="${version%pre1}"
 
-  cp -a "$wrksrc/$pkgname-build/usr/lib/gcc/$_pc_triplet/$_version/32" \
+  cp -a "$wrksrc/$pkgname-build/usr/lib/gcc/$_pc_triplet/$version/32" \
     "$DESTDIR/usr/lib/gcc/$_triplet/$_majorver/"
-  cp -a "$wrksrc/$pkgname-build/usr/include/c++/$_version/$_pc_triplet/32" \
+  cp -a "$wrksrc/$pkgname-build/usr/include/c++/$version/$_pc_triplet/32" \
     "$DESTDIR/usr/include/c++/$_majorver/$_triplet"
 
   vinstall "$wrksrc/host-$_pc_triplet/gcc/specs" 644 "usr/lib/gcc/$_triplet/$_majorver"
