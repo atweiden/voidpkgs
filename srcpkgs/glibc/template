@@ -55,7 +55,6 @@ nostrip_files+=" libthread_db.so.1"
 lib32files="/usr/lib/gconv/gconv-modules"
 lib32symlinks="ld-linux.so.2"
 bootstrap="yes"
-nocross="temporarily"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   broken="no point in building this for musl"
 fi

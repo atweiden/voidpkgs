@@ -11,7 +11,6 @@ build_wrksrc="libiberty"
 build_style="gnu-configure"
 configure_args+=" --disable-multilib"
 configure_args+=" --enable-install-libiberty"
-nocross="temporarily"
 conflicts="binutils-devel<=2.35.1_3"
 
 CFLAGS="-fPIC"
