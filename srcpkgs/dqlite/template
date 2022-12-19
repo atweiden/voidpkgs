@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dqlite"
-version=1.11.1
+version=1.13.0
 revision=1
 short_desc="Distributed SQLite database using the Raft algorithm"
 makedepends+=" raft-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/canonical/dqlite"
 license="custom:LGPL-3.0-only-linking-exception"
 distfiles="https://github.com/canonical/dqlite/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f900b81b7ba66ba654c734f7fc9f01caf462408f3751f5357019db0c18d438b5"
+checksum="14334a72389322d047576697f112da4cd6e1a5257d652d6162f195f2855fcd12"
 build_style="gnu-configure"
 
 pre_configure() {
