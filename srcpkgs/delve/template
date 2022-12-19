@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="delve"
-version=1.8.0
+version=1.20.0
 revision=1
 short_desc="Debugger for the Go programming language"
-# https://github.com/go-delve/delve/blob/master/pkg/proc/native/support_sentinel.go
+# https://github.com/go-delve/delve/blob/master/pkg/proc/native/support_sentinel_linux.go
 archs+=" aarch64*"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -11,7 +11,7 @@ homepage="https://github.com/go-delve/delve"
 license="MIT"
 changelog="https://github.com/go-delve/delve/raw/master/CHANGELOG.md"
 distfiles="https://github.com/go-delve/delve/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="086106a4776fa155bf20c37d27b9caed55255be6359c7f0bda1893d3adbb614e"
+checksum="39d2e3ae965abf5e71f3d8efbef368b1ee1d7154ea6604ec71d508350d419d03"
 build_style="go"
 go_import_path="github.com/go-delve/delve/cmd/dlv"
 go_build_tags="netgo"
