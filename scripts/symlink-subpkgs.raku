@@ -254,6 +254,7 @@ constant %PKG = Map.new(
     'gmp' => qw<gmp-devel
                 gmpxx
                 gmpxx-devel>,
+    'gnulib' => ['git-merge-changelog'],
     'gnupg' => qw<gnupg2
                   gnupg2-scdaemon>,
     'gnutls' => qw<gnutls-devel
