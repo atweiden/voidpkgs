@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="raft"
-version=0.15.0
+version=0.16.0
 revision=1
 short_desc="C implementation of the Raft consensus protocol"
 makedepends+=" liblz4-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/canonical/raft"
 license="custom:LGPL-3.0-only-linking-exception"
 distfiles="https://github.com/canonical/raft/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="33fd7ecdeb2d822beda5ac8964562f31a05aa817483bb63835ad7bab171f2d02"
+checksum="ab5480c051bfbf482074f62c9c306d08ca68b8f0ad0c2db2ebf0488cfe692336"
 build_style="gnu-configure"
 configure_args="--enable-example=no"
 # test/unit/uv and test/integration/uv fail on ci
