@@ -1,43 +1,48 @@
-# Template file for 'gnulib'
-pkgname=gnulib
+maintainer="nox"
+pkgname="gnulib"
 version=20220829~828413b
 revision=1
-create_wrksrc=yes
-build_style=gnu-configure
-hostmakedepends="automake"
 short_desc="Gnulib - The GNU Portability Library"
-maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
-license="LGPL-2.1-or-later, GPL-2.0-or-later, FSFULLR"
+hostmakedepends="automake"
 homepage="https://www.gnu.org/software/gnulib/"
-distfiles="${DEBIAN_SITE}/main/g/gnulib/gnulib_${version}.orig.tar.gz"
-checksum=8bf9ac42ebc7d6ec1afc9d50bfe823a212b06f0d40e738b0e9e468be60a858fe
+license="LGPL-2.1-or-later, GPL-2.0-or-later, FSFULLR"
+distfiles="$DEBIAN_SITE/main/g/gnulib/gnulib_$version.orig.tar.gz"
+checksum="8bf9ac42ebc7d6ec1afc9d50bfe823a212b06f0d40e738b0e9e468be60a858fe"
+create_wrksrc="yes"
+build_style="gnu-configure"
 
 post_extract() {
-	mv gnulib-* gnulib
-	chmod -R +w gnulib
-	chmod -R a+r gnulib
+  mv gnulib-* gnulib
+  chmod -R +w gnulib
+  chmod -R a+r gnulib
 }
 
 do_configure() {
-	rm -rf build
-	./gnulib/gnulib-tool --create-testdir --with-tests -S \
-		--dir=build git-merge-changelog
-	cd build
-	./configure ${configure_args}
+  rm -rf build
+  ./gnulib/gnulib-tool \
+      --create-testdir \
+      --with-tests \
+      -S \
+      --dir="build" \
+      git-merge-changelog
+  cd build
+  ./configure $configure_args
 }
 
 do_build() {
-	make -C build ${makejobs}
+  make -C build "$makejobs"
 }
 
 do_install() {
-	vmkdir usr/share
-	vcopy gnulib /usr/share
+  vmkdir usr/share
+  vcopy gnulib /usr/share
 }
 
 git-merge-changelog_package() {
-	short_desc="GNU-style ChangeLog merge driver"
-	pkg_install() {
-		make -C build DESTDIR=${PKGDESTDIR} install
-	}
+  short_desc="GNU-style ChangeLog merge driver"
+  pkg_install() {
+    make -C build DESTDIR="$PKGDESTDIR" install
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
