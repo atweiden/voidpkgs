@@ -1,13 +1,16 @@
 maintainer="nox"
 pkgname="libtool"
 version=2.4.7
-revision=2
+revision=3
 short_desc="Generic library support script"
+depends+=" grep"
 depends+=" sed"
 depends+=" tar"
 hostmakedepends+=" automake"
+hostmakedepends+=" gnulib"
 hostmakedepends+=" help2man"
 hostmakedepends+=" perl"
+hostmakedepends+=" tar"
 hostmakedepends+=" texinfo"
 hostmakedepends+=" xz"
 homepage="http://www.gnu.org/software/libtool"
@@ -20,15 +23,21 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   configure_args="lt_cv_shlibpath_overrides_runpath=yes"
 fi
 
-pre_configure() {
-  touch \
-    Makefile.am \
-    Makefile.in \
-    aclocal.m4 \
-    libltdl/Makefile.am \
-    libltdl/Makefile.in \
-    libltdl/aclocal.m4
-  ./bootstrap --force
+post_extract() {
+  chmod -R +rw .
+}
+
+do_configure() {
+  ./bootstrap \
+    --force \
+    --no-git \
+    --skip-po \
+    --gnulib-srcdir="/usr/share/gnulib/" \
+    --copy
+  ./configure \
+    $configure_args \
+    SED="/bin/sed" \
+    GREP="/bin/grep"
 }
 
 post_install() {
