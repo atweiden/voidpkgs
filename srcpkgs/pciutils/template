@@ -1,17 +1,17 @@
 maintainer="nox"
 pkgname="pciutils"
-version=3.7.0
+version=3.9.0
 revision=1
 short_desc="PCI bus related utilities"
 depends="hwids"
 makedepends+=" libkmod-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
-homepage="http://mj.ucw.cz/pciutils.html"
+homepage="https://mj.ucw.cz/sw/pciutils/"
 license="GPL-2.0-or-later"
 changelog="https://github.com/pciutils/pciutils/raw/master/ChangeLog"
-distfiles="https://github.com/pciutils/pciutils/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ea768aa0187ba349391c6c157445ecc2b42e7d671fc1ce8c53ff5ef513f1e2ab"
+distfiles="https://mj.ucw.cz/download/linux/pci/pciutils-$version.tar.gz"
+checksum="8953a785b2e3af414434b8fdcbfb75c90758819631001e60dd3afb89b22b2331"
 
 do_build() {
   make \
