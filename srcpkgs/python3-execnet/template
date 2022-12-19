@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-execnet"
 version=1.9.0
-revision=2
+revision=3
 short_desc="Distributed Python deployment and communication"
+depends="python3"
 checkdepends="python3-pytest"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-setuptools_scm"
