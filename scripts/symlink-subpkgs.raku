@@ -25,6 +25,9 @@ constant $SRCPKGS = sprintf(Q{%s/srcpkgs}, $ROOT);
 constant %PKG = Map.new(
     '66' => qw<66-devel
                66-doc>,
+    '7zip' => qw<7zip-unrar
+                 p7zip
+                 p7zip-unrar>,
     'NetAuth' => ['NetAuth-server'],
     'abseil-cpp' => ['abseil-cpp-devel'],
     'acl' => qw<acl-devel
