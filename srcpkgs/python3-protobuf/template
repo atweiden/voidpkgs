@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-protobuf"
-version=4.21.11
+version=4.21.12
 revision=1
 short_desc="Python3 bindings for Google Protocol Buffers"
 depends+=" python3-setuptools"
@@ -10,7 +10,7 @@ hostmakedepends+=" python3-wheel"
 homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/p/protobuf/protobuf-$version.tar.gz"
-checksum="2c6a4d13732d9b094db31b3841986c38b17ac61a3fe05ee26a779d94c4c3fb43"
+checksum="7cd532c4566d0e6feafecc1059d04c7915aec8e182d1cf7adee8b24ef1e2e6ab"
 build_style="python3-module"
 build_options="cppext"
 build_options_default="cppext"
