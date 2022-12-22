@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux6.0"
-version=6.0.13
+version=6.0.15
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -29,7 +29,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-$version.xz"
 checksum+=" 5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e"
-checksum+=" 061a20ccac50dd8f10e416892a50a2479a15ed67ee0c4dd9160a2829b736841f"
+checksum+=" 8d64d2220d8a199a2d777e9af952a4ee89c58b8e4c6e45852fcfb961681ad1a9"
 skip_extraction="patch-$version.xz"
 python_version=3
 # -dbg package is generated below manually
