@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="nomad"
-version=1.4.2
+version=1.4.3
 revision=1
 _gitrev="2aa7e66bdb526e25f59883952d74dad7ea9a014e"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
+depends="cni-plugins"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2d1bef5a219d5bafe76402aa2ccd4f57cadf8a28a8706783211d9b4966f1fe9a"
+checksum="0710f6bd787ed6fc98003ce63f5b7b44ae6b6672757f5638812af4ca1bca56fc"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
 go_ldflags+=" -buildid="
@@ -16,11 +17,14 @@ go_ldflags+=" -extldflags=-static"
 go_build_tags+=" netgo"
 go_build_tags+=" release"
 go_build_tags+=" ui"
+make_dirs+=" /etc/nomad.d 0755 root root"
+make_dirs+=" /var/lib/nomad 0755 root root"
 
 export GOFLAGS="-trimpath"
 
 post_install() {
   vlicense LICENSE
+  vsv nomad
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
