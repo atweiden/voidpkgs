@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coreboot-utils"
 version=4.17
-revision=1
+revision=2
 short_desc="Coreboot firmware utilities"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -23,7 +23,7 @@ do_build() {
               inteltool \
               nvramtool \
               superiotool; do
-    make "$makejobs" -C "$util"
+    make "$makejobs" -C "$util" WERROR=
   done
 }
 
