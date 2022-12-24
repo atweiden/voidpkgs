@@ -638,7 +638,6 @@ constant %PKG = Map.new(
     'opus' => ['opus-devel'],
     'orc' => ['orc-devel'],
     'p11-kit' => ['p11-kit-devel'],
-    'p7zip' => ['p7zip-unrar'],
     'pahole' => ['pahole-devel'],
     'pam' => qw<pam-devel
                 pam-libs
