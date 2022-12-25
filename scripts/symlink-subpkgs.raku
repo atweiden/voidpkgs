@@ -334,6 +334,7 @@ constant %PKG = Map.new(
                  libkmod-devel>,
     'kubernetes' => ['kubectl'],
     'kyua' => ['kyua-tests'],
+    'lame' => ['lame-devel'],
     'lapack' => qw<blas
                    blas-devel
                    cblas
