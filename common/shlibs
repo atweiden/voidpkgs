@@ -387,6 +387,9 @@ libmnl.so.0 libmnl-1.0.3_1
 libmount.so.1 libmount-2.18_1
 libmpack.so.0 libmpack-1.0.5_1
 libmpc.so.3 libmpc-1.0.1_1
+libmpg123.so.0 libmpg123-1.13.4_2
+libout123.so.0 libmpg123-1.23.0_1
+libsyn123.so.0 libmpg123-1.26.0_1
 libnet.so.9 libnet-1.2_1
 libnetsnmp.so.40 libnet-snmp-5.9_2
 libnetsnmpagent.so.40 libnet-snmp-5.9_2
