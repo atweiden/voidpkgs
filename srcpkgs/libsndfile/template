@@ -1,20 +1,24 @@
 maintainer="nox"
 pkgname="libsndfile"
-version=1.0.31
+version=1.1.0
 revision=1
 short_desc="C library for reading and writing files containing sampled sound"
 makedepends+=" alsa-lib-devel"
+makedepends+=" lame-devel"
 makedepends+=" libflac-devel"
 makedepends+=" libvorbis-devel"
+makedepends+=" mpg123-devel"
 makedepends+=" opus-devel"
 makedepends+=" sqlite-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="https://libsndfile.github.io/libsndfile/"
 license="LGPL-2.1-or-later"
-distfiles="https://github.com/libsndfile/libsndfile/releases/download/$version/$pkgname-$version.tar.bz2"
-checksum="a8cfb1c09ea6e90eff4ca87322d4168cdbe5035cb48717b40bf77e751cc02163"
+changelog="https://github.com/libsndfile/libsndfile/raw/master/CHANGELOG.md"
+distfiles="https://github.com/libsndfile/libsndfile/releases/download/$version/$pkgname-$version.tar.xz"
+checksum="0f98e101c0f7c850a71225fb5feaf33b106227b3d331333ddc9bacee190bcf41"
 build_style="gnu-configure"
+configure_args="--enable-static"
 
 libsndfile-progs_package() {
   short_desc+=" - bundled cmdline apps"
