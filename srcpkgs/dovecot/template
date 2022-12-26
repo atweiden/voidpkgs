@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dovecot"
-version=2.3.19.1
+version=2.3.20
 revision=1
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
@@ -26,7 +26,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://dovecot.org/"
 license="LGPL-2.1-or-later"
 distfiles="https://dovecot.org/releases/2.3/$pkgname-$version.tar.gz"
-checksum="db5abcd87d7309659ea6b45b2cb6ee9c5f97486b2b719a5dd05a759e1f6a5c51"
+checksum="caa832eb968148abdf35ee9d0f534b779fa732c0ce4a913d9ab8c3469b218552"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --with-bzlib"
