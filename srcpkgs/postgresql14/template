@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql14"
 version=14.5
-revision=2
+revision=3
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 _sysconfdir="etc/psql$_major"
@@ -161,7 +161,9 @@ postgresql-libs_package() {
 
 postgresql-libs-devel_package() {
   unset conflicts
-  depends="postgresql-libs>=${version}_$revision"
+  unset depends
+  depends+=" openssl-devel"
+  depends+=" postgresql-libs>=${version}_$revision"
   short_desc="PostgreSQL shared libraries (development files)"
   conflicts+=" postgresql9.6-libs-devel>=0"
   conflicts+=" postgresql12-libs-devel>=0"
