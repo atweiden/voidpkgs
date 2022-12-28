@@ -53,7 +53,7 @@ do_install() {
 7zip-unrar_package() {
   unset alternatives
   license+=", custom:freeware"
-  repository=nonfree
+  repository="nonfree"
   short_desc+=" - RAR support"
   alternatives+=" 7z:7z:/usr/bin/7zip-unrar"
   alternatives+=" 7z:7za:/usr/bin/7zip-unrar"
