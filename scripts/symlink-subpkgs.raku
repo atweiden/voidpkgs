@@ -580,8 +580,8 @@ constant %PKG = Map.new(
                        mkinitcpio-zfs>,
     'monero' => ['monero-devel'],
     'mpg123' => qw<libmpg123
-                   mpg123-devel
-                   mpg123-pulseaudio>,
+                   mpg123-devel>,
+    'mpg123-extras' => ['mpg123-pulseaudio'],
     'mpfr' => ['mpfr-devel'],
     'msgpack' => ['msgpack-devel'],
     'musl' => ['musl-devel'],

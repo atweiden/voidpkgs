@@ -1,0 +1,45 @@
+maintainer="nox"
+pkgname="mpg123-extras"
+# sync with mpg123
+version=1.31.1
+revision=3
+short_desc="Fast console MPEG audio decoder/player - extra plugins"
+depends="mpg123-pulseaudio"
+makedepends+=" alsa-lib-devel"
+makedepends+=" pulseaudio-devel"
+hostmakedepends="pkg-config"
+homepage="https://www.mpg123.org/"
+license="LGPL-2.1-only"
+changelog="https://www.mpg123.org/cgi-bin/scm/mpg123/trunk/NEWS"
+distfiles+=" $SOURCEFORGE_SITE/mpg123/mpg123-$version.tar.bz2"
+distfiles+=" https://www.mpg123.org/download/mpg123-$version.tar.bz2"
+checksum+=" 5dcb0936efd44cb583498b6585845206f002a7b19d5066a2683be361954d955a"
+checksum+=" 5dcb0936efd44cb583498b6585845206f002a7b19d5066a2683be361954d955a"
+build_style="gnu-configure"
+# --with-cpu not necessary, upstream detects features correctly
+configure_args+=" --with-default-audio=alsa"
+configure_args+=" --with-optimization=0"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  configure_args+=" --disable-lfs-alias"
+fi
+
+# restrict extras to the same matching version, ignore revision
+_depends="libmpg123>=${version}_1<=${version}_9999"
+
+post_install() {
+  # prune everything except the plugins that will be installed
+  find "$DESTDIR" '(' -name output_pulse.so ')' -o '(' -not -type d -delete ')'
+
+  # main package cannot be empty
+  vdoc README
+}
+
+mpg123-pulseaudio_package() {
+  depends="$_depends"
+  short_desc="${short_desc%% - *} - Pulseaudio output plugin"
+  pkg_install() {
+    vmove usr/lib/mpg123/output_pulse.so
+  }
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

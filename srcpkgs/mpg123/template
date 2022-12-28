@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="mpg123"
+# sync with mpg123-extras
 version=1.31.1
-revision=2
+revision=3
 short_desc="Fast console MPEG audio decoder/player"
-makedepends+=" alsa-lib-devel"
-makedepends+=" pulseaudio-devel"
+makedepends="alsa-lib-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.mpg123.org/"
 license="LGPL-2.1-only"
@@ -21,14 +21,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   # no lfs required with musl
   configure_args+=" --disable-lfs-alias"
 fi
-
-mpg123-pulseaudio_package() {
-  depends="libmpg123-${version}_$revision"
-  short_desc+=" - Pulseaudio output plugin"
-  pkg_install() {
-    vmove usr/lib/mpg123/output_pulse.so
-  }
-}
 
 libmpg123_package() {
   short_desc+=" - Runtime library"
