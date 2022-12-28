@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="broadcom-wl-dkms"
 version=6.30.223.271
-revision=14
+revision=15
 short_desc="Broadcom proprietary wireless drivers for Linux - DKMS kernel module"
 archs+=" i686*"
 archs+=" x86_64*"
