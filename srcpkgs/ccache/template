@@ -11,14 +11,21 @@ hostmakedepends="perl"
 homepage="https://ccache.dev"
 license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
-distfiles="https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
-checksum="df0c64d15d3efaf0b4f6837dd6b1467e40eeaaa807db25ce79c3a08a46a84e36"
+distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
+distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version-linux-x86_64.tar.xz"
+checksum+=" df0c64d15d3efaf0b4f6837dd6b1467e40eeaaa807db25ce79c3a08a46a84e36"
+checksum+=" 0b700cc10884f7faf615203241d34eba7ebe0723f38f6aeb77569a556ff37313"
 build_style="cmake"
+configure_args+=" -DENABLE_DOCUMENTATION=OFF"
 configure_args+=" -DENABLE_TESTING=OFF"
 configure_args+=" -DREDIS_STORAGE_BACKEND=OFF"
 if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args+=" -DENABLE_TESTING=ON"
 fi
+
+post_extract() {
+  mv "ccache-$version"/* .
+}
 
 post_install() {
   vmkdir usr/lib/ccache/bin
@@ -58,7 +65,7 @@ post_install() {
     done
   done
   # pregenerated manpage to avoid bringing ruby into the build
-  vman "$FILESDIR/ccache.1"
+  vman "ccache-$version-linux-x86_64/ccache.1"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
