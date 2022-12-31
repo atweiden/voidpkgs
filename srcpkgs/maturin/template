@@ -1,64 +1,75 @@
-# Template file for 'maturin'
-pkgname=maturin
+maintainer="nox"
+pkgname="maturin"
 version=0.14.7
 revision=1
-create_wrksrc=yes
-build_style=python3-module
-build_helper="qemu rust"
-hostmakedepends="python3-setuptools-rust python3-tomli python3-wheel cargo"
-makedepends="openssl-devel"
-depends="python3-tomli"
-short_desc="Build and publish crates as python packages"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="Apache-2.0, MIT"
-homepage="https://github.com/PyO3/maturin"
 # bump target-lexicon version if it changes in Cargo.lock
 _tlver="0.12.5"
-distfiles="${homepage}/archive/v${version}.tar.gz
- https://github.com/bytecodealliance/target-lexicon/archive/v${_tlver}.tar.gz>target-lexicon-${_tlver}.tar.gz"
-checksum="cb1c01084f681f60e5825e76deb63f64cd41f360d67927acccad3a08dd3c7fff
- efc488676998ea73d107b0c2632cc71baff91b5ea95abb6064b48a09edc233f9"
-# Tests use unstable features and fail to build
-make_check=no
-
-if [ "$CROSS_BUILD" ]; then
-	makedepends+=" rust-std"
+short_desc="Build and publish crates as python packages"
+depends="python3-tomli"
+makedepends="openssl-devel"
+if [[ -n "$CROSS_BUILD" ]]; then
+  makedepends+=" rust-std"
 fi
+hostmakedepends+=" cargo"
+hostmakedepends+=" python3-setuptools-rust"
+hostmakedepends+=" python3-tomli"
+hostmakedepends+=" python3-wheel"
+homepage="https://github.com/PyO3/maturin"
+license="Apache-2.0, MIT"
+distfiles+=" https://github.com/PyO3/maturin/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://github.com/bytecodealliance/target-lexicon/archive/v$_tlver.tar.gz>target-lexicon-$_tlver.tar.gz"
+checksum+=" cb1c01084f681f60e5825e76deb63f64cd41f360d67927acccad3a08dd3c7fff"
+checksum+=" efc488676998ea73d107b0c2632cc71baff91b5ea95abb6064b48a09edc233f9"
+create_wrksrc="yes"
+build_style="python3-module"
+build_helper="rust"
+# tests use unstable features and fail to build
+make_check="no"
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
 case "$XBPS_TARGET_MACHINE" in
-	ppc64*) ;;
-	ppc*)
-		broken="https://github.com/console-rs/indicatif/blob/main/src/state.rs#L2"
-		;;
+  ppc64*)
+    ;;
+  ppc*)
+    broken="https://github.com/console-rs/indicatif/blob/main/src/state.rs#L2"
+    ;;
 esac
 
 post_extract() {
-	mv "maturin-${version}"/* .
-	mv "target-lexicon-${_tlver}" target-lexicon
-	echo "[patch.crates-io]" >> Cargo.toml
-	echo "target-lexicon = { path = './target-lexicon' }" >> Cargo.toml
+  mv "maturin-$version"/* .
+  mv "target-lexicon-$_tlver" target-lexicon
+  echo "[patch.crates-io]" >> Cargo.toml
+  echo "target-lexicon = { path = './target-lexicon' }" >> Cargo.toml
 }
 
 post_patch() {
-	# Disable the 'rustls' feature, which leads to bad platform compatibility
-	vsed -i -e '/^default =/s/"rustls", //' Cargo.toml
+  # disable the 'rustls' feature, which leads to bad platform compatibility
+  vsed \
+    -i \
+    -e '/^default =/s/"rustls", //' \
+    Cargo.toml
 }
 
 pre_configure() {
-	cargo update --package target-lexicon --precise "${_tlver}"
+  cargo update --package target-lexicon --precise "$_tlver"
 }
 
 post_install() {
-	vlicense license-mit LICENSE-MIT
-	python3 setup.py install --prefix=/usr --root=${DESTDIR}
+  local _matbin
 
-	# Generate and install some completions
-	local _matbin="${DESTDIR}/usr/bin/maturin"
-	vtargetrun "${_matbin}" completions zsh > maturin.zsh
-	vtargetrun "${_matbin}" completions fish > maturin.fish
-	vtargetrun "${_matbin}" completions bash > maturin.bash
+  vlicense license-mit LICENSE-MIT
+  python3 setup.py install --prefix="/usr" --root="$DESTDIR"
 
-	vcompletion maturin.zsh zsh
-	vcompletion maturin.fish fish
-	vcompletion maturin.bash bash
+  # generate and install some completions
+  _matbin="$DESTDIR/usr/bin/maturin"
+  "$_matbin" completions zsh > maturin.zsh
+  "$_matbin" completions fish > maturin.fish
+  "$_matbin" completions bash > maturin.bash
+
+  vcompletion maturin.zsh zsh
+  vcompletion maturin.fish fish
+  vcompletion maturin.bash bash
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
