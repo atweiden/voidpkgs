@@ -1,12 +1,11 @@
 maintainer="nox"
 pkgname="mitmproxy"
-version=8.1.1
-revision=3
+version=9.0.1
+revision=1
 short_desc="Interactive TLS-capable intercepting HTTP proxy"
 depends+=" python3-Brotli"
 depends+=" python3-Flask"
 depends+=" python3-asgiref"
-depends+=" python3-blinker"
 depends+=" python3-certifi"
 depends+=" python3-click"
 depends+=" python3-cryptography"
@@ -15,6 +14,7 @@ depends+=" python3-h2"
 depends+=" python3-hyperframe"
 depends+=" python3-kaitaistruct"
 depends+=" python3-ldap3"
+depends+=" python3-mitmproxy_wireguard"
 depends+=" python3-msgpack"
 depends+=" python3-openssl"
 depends+=" python3-parsing"
@@ -39,11 +39,13 @@ hostmakedepends="python3-setuptools"
 homepage="https://mitmproxy.org"
 license="MIT"
 changelog="https://github.com/mitmproxy/mitmproxy/raw/main/CHANGELOG.md"
-distfiles="https://github.com/mitmproxy/mitmproxy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="212e81bec40e1d2a894d73a337f076a3010d981249e513565e9246f29822d06c"
+distfiles="https://github.com/mitmproxy/mitmproxy/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="2acd2c16e5bc02cd1dab8c58003254a71a2ee0ec0366001f624f85c980a2b43a"
 build_style="python3-module"
 # this test fails without a git repository
 _skip="(test_get_version)"
+# tries to execute a helper binary compiled for glibc
+_skip+="or(test_wireguard)"
 if [[ ${XBPS_TARGET_MACHINE%-musl} == "i686" ]]; then
   _skip+="or(test_refresh)"
 fi
