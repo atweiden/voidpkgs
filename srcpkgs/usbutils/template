@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="usbutils"
-version=014
-revision=2
+version=015
+revision=1
 short_desc="Linux USB utilities"
 depends="hwids"
 makedepends+=" eudev-libudev-devel"
@@ -13,7 +13,7 @@ homepage="https://github.com/gregkh/usbutils"
 license="GPL-2.0-only"
 changelog="https://github.com/gregkh/usbutils/raw/master/NEWS"
 distfiles="$KERNEL_SITE/utils/usb/usbutils/$pkgname-$version.tar.xz"
-checksum="3a079cfad60560227b67192482d7813bf96326fcbb66c04254839715f276fc69"
+checksum="c3b451bb1f4ff9f6356cac5a6956a9ac8e85d81651af56a29e689f94fa6fda6e"
 build_style="gnu-configure"
 configure_args+=" --datadir=/usr/share/hwdata"
 configure_args+=" --disable-zlib"
@@ -22,10 +22,6 @@ replaces="usbhid-dump<=1.4_1"
 post_install() {
   # remove lsusb.py - avoid useless python scripts
   rm -f "$DESTDIR/usr/bin/lsusb.py"
-  # remove usb ids - provided by hwids
-  rm -rf "$DESTDIR/usr/share/hwdata"
-  # remove update-usbids.sh - handled by hwids
-  rm -f "$DESTDIR/usr/sbin/update-usbids.sh"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
