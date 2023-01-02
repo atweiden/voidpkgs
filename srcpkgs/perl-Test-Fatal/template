@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Test-Fatal"
-version=0.016
-revision=2
+version=0.017
+revision=1
 short_desc="Incredibly simple helpers for testing code with exceptions"
 depends+=" perl"
 depends+=" perl-Try-Tiny"
@@ -11,7 +11,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Fatal"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname/perl-/}-$version.tar.gz"
-checksum="7283d430f2ba2030b8cd979ae3039d3f1b2ec3dde1a11ca6ae09f992a66f788f"
+checksum="37dfffdafb84b762efe96b02fb2aa41f37026c73e6b83590db76229697f3c4a6"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
