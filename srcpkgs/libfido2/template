@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libfido2"
 version=1.12.0
-revision=1
+revision=2
 short_desc="Library for FIDO 2.0, including communication with a device over USB"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libcbor-devel"
