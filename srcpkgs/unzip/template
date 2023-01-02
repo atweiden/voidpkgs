@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="unzip"
 version=6.0
-revision=14
+revision=15
 short_desc="List, test and extract compressed files in a ZIP archive"
 makedepends="bzip2-devel"
 homepage="http://infozip.sf.net/"
