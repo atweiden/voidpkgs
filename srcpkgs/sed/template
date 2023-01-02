@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sed"
-version=4.8
+version=4.9
 revision=1
 short_desc="The GNU stream editor"
 makedepends="acl-devel"
@@ -8,7 +8,7 @@ checkdepends="perl"
 homepage="http://www.gnu.org/software/sed"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/sed/$pkgname-$version.tar.xz"
-checksum="f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633"
+checksum="6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181"
 build_style="gnu-configure"
 configure_args+=" --enable-acl"
 configure_args+=" gl_cv_func_working_acl_get_file=yes"
