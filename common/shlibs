@@ -273,7 +273,7 @@ libbtrfsutil.so.1 libbtrfsutil-5.4_1
 libcap.so.2 libcap-2.16_1
 libpsx.so.2 libcap-2.45_1
 libcap-ng.so.0 libcap-ng-0.6.2_1
-libcbor.so.0.9 libcbor-0.9.0_1
+libcbor.so.0.10 libcbor-0.10.1_1
 libcgroup.so.3 libcgroup-3.0.0_1
 libchicken.so.11 libchicken-5.1.0_1
 libclang.so.12 libclang-12.0.0_1
