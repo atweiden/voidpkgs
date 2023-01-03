@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-protocol"
 version=3.6.0
-revision=7
+revision=8
 short_desc="Bitcoin Blockchain Query Protocol"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
