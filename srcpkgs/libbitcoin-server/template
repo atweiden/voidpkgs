@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-server"
 version=3.6.0
-revision=7
+revision=8
 short_desc="Bitcoin Full Node and Query Server"
 archs+=" aarch64*"
 archs+=" ppc64*"
