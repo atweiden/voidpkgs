@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="byacc"
-version=20221106
+version=20221229
 revision=1
 short_desc="Berkeley yacc, a LALR(1) parser generator"
 homepage="https://invisible-island.net/byacc/"
 license="Public Domain"
 distfiles="ftp://ftp.invisible-island.net/byacc/$pkgname-$version.tgz"
-checksum="a899be227bbcac9cf7700f7dbb5a8494688f1f9f0617b510762daeace47b9d12"
+checksum="1316c6f790fafa6688427f1ff91267b61d8b7873b443c620eef69a6eff0503bc"
 build_style="gnu-configure"
 configure_args="--program-transform=s,^,b,"
 alternatives+=" yacc:yacc:/usr/bin/byacc"
