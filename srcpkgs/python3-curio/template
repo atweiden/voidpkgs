@@ -1,24 +1,25 @@
-# Template file for 'python3-curio'
-pkgname=python3-curio
+maintainer="nox"
+pkgname="python3-curio"
 version=1.5
 revision=3
-build_style=python3-module
-hostmakedepends="python3-setuptools"
+short_desc="Coroutine-based library for concurrent programming using async/await"
 depends="python3"
 checkdepends="python3-pytest"
-short_desc="Coroutine-based library for concurrent programming using async/await"
-maintainer="Arjan Mossel <arjanmossel@gmail.com>"
-license="BSD-3-Clause"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/dabeaz/curio"
-distfiles="${PYPI_SITE}/c/curio/curio-${version}.tar.gz"
-checksum=af08212e590bb7da8e4cc39c42012711494dc20d622f162155ba296cc2e3bc10
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/c/curio/curio-$version.tar.gz"
+checksum="af08212e590bb7da8e4cc39c42012711494dc20d622f162155ba296cc2e3bc10"
+build_style="python3-module"
 
 do_check() {
-	# CI container has different privileges than expected in test_errors()
-	# which leads to CI builds timing out on some arches.
-	PYTHONPATH=$(cd build/lib* && pwd) pytest -k 'not test_errors'
+  # ci container has different privileges than expected in test_errors()
+  # which leads to ci builds timing out on some arches
+  PYTHONPATH=$(cd build/lib* && pwd) pytest -k 'not test_errors'
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
