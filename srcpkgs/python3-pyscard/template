@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyscard"
-version=2.0.2
-revision=2
+version=2.0.5
+revision=1
 short_desc="Python library for smartcard"
 depends+=" libpcsclite"
 depends+=" pcsclite"
@@ -13,8 +13,9 @@ hostmakedepends+=" swig"
 license="LGPL-2.1-or-later"
 homepage="https://pyscard.sourceforge.io/index.html"
 distfiles="$PYPI_SITE/p/${pkgname#python3-}/${pkgname#python3-}-$version.tar.gz"
-checksum="05de0579c42b4eb433903aa2fb327d4821ebac262434b6584da18ed72053fd9e"
+checksum="dc13e34837addbd96c07a1a919fbc1677b2b83266f530a1f79c96930db42ccde"
 build_style="python3-module"
+shlib_requires="libpcsclite.so.1"
 #provides="python3-scard-${version}_$revision"
 #replaces="python3-scard>=0"
 
