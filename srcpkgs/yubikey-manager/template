@@ -1,12 +1,15 @@
 maintainer="nox"
 pkgname="yubikey-manager"
-version=4.0.7
+version=5.0.0
 revision=1
 short_desc="Library and CLI tools to configure YubiKey"
 depends+=" libfido2"
 depends+=" python3-click"
+depends+=" python3-cryptography"
 depends+=" python3-fido2"
+depends+=" python3-keyring"
 depends+=" python3-openssl"
+depends+=" python3-pyscard"
 depends+=" python3-setuptools"
 checkdepends+=" $depends"
 checkdepends+=" python3-makefun"
@@ -14,11 +17,12 @@ checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://developers.yubico.com/yubikey-manager/"
 license="BSD-2-Clause"
-distfiles="https://developers.yubico.com/$pkgname/Releases/$pkgname-$version.tar.gz"
-checksum="9972db8a1c7c13eb1a618015a8ad8011c03a045a08fee248e5de4f120f55fc4f"
+distfiles="https://developers.yubico.com/yubikey-manager/Releases/${pkgname/-/_}-$version.tar.gz"
+checksum="c741747200ced1b5803dfdef6718b07a41e109ccb03dd7b72d3a307a3fb33bb5"
 build_style="python3-module"
 
 post_install() {
+  vman man/ykman.1
   vlicense COPYING
 }
 
