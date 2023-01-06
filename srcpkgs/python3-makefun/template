@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="python3-makefun"
-version=1.13.1
-revision=2
+version=1.15.0
+revision=1
 short_desc="Small library to dynamically create python functions"
 depends="python3"
 hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/smarie/python-makefun"
 license="GPL-3.0-or-later"
 distfiles="$PYPI_SITE/m/makefun/makefun-$version.tar.gz"
-checksum="985bb8b670ffbbb95d2a8aa996d318e6e9a3f26fc6f3ef2da93ebdf8f9c616bf"
+checksum="5b110e733d94f7a49d8ac27b1e2d40f2bb0501e98c1d825e0d932d26920dd5df"
 build_style="python3-module"
 make_check="no"
 
