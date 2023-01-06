@@ -181,10 +181,6 @@ libtcmalloc_minimal.so.4 gperftools-2.1.90_1
 libtcmalloc_minimal_debug.so.4 gperftools-2.1.90_1
 libtcmalloc.so.4 gperftools-2.1_1
 libgpgmepp.so.6 gpgmepp-1.7.0_3
-libgtest.so gtest-1.7.0_1
-libgtest_main.so gtest-1.7.0_1
-libgmock.so gtest-1.8.1_1
-libgmock_main.so gtest-1.8.1_1
 libhttp_parser.so.2.9 http-parser-2.9.0_1
 libhtsjava.so.2 httrack-3.49.2_7
 libhttrack.so.2 httrack-3.49.2_7

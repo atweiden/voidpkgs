@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gtest"
-version=1.11.0
+version=1.12.1
 revision=1
 short_desc="Google's framework for writing C++ tests"
 hostmakedepends="unzip"
 homepage="https://github.com/google/googletest"
 license="BSD-3-Clause"
 distfiles="https://github.com/google/googletest/archive/release-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b4870bf121ff7795ba20d20bcdd8627b8e088f2d1dab299a031c1034eddc93d5"
+checksum="81964fe578e9bd7c94dfdb09c8e4d6e6759e19967e397dbea48d1c10e45d0df2"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
 configure_args+=" -DCMAKE_SKIP_RPATH=ON"
@@ -20,6 +20,7 @@ gtest-devel_package() {
   depends="gtest>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
+    vmove "usr/lib/*.so"
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove usr/lib/cmake
