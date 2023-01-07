@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-MIME-tools"
-version=5.509
-revision=3
+version=5.510
+revision=1
 short_desc="MIME-tools - Parses streams to create MIME entities"
 depends+=" perl"
 depends+=" perl-Convert-BinHex"
@@ -11,11 +11,12 @@ makedepends+=" perl"
 makedepends+=" perl-Convert-BinHex"
 makedepends+=" perl-IO-stringy"
 makedepends+=" perl-MailTools"
+checkdepends="perl-Test-Deep"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/MIME-tools"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/MIME/${pkgname#*-}-$version.tar.gz"
-checksum="64579f0c923d81d9a2194586e47c3475519e2646e4b5c102a8920759facf6973"
+distfiles="$CPAN_SITE/MIME/MIME-tools-$version.tar.gz"
+checksum="1bcfb4ece6ab4a6850ea1c8f3aa7405e233f50885dbdcd7bae546d52ec953cfe"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
