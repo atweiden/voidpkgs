@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="usql"
-version=0.13.3
+version=0.13.5
 revision=1
 short_desc="Universal command-line interface for SQL databases"
 homepage="https://github.com/xo/usql"
 license="MIT"
 distfiles="https://github.com/xo/usql/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1a8cc27eab43597d41b09c3ad779ac4599531dffb93e0f4d5a8498166caf58ce"
+checksum="c6feec52395a93b705e00f2fb613d1dd581031bbabb6c39c9125ac000cc733e9"
 build_style="go"
 go_import_path="github.com/xo/usql"
 go_build_tags="netgo"
