@@ -1,15 +1,16 @@
-# Template file for 'perl-Test-Warnings'
-pkgname=perl-Test-Warnings
+maintainer="nox"
+pkgname="perl-Test-Warnings"
 version=0.031
 revision=1
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="perl"
-depends="$makedepends"
-checkdepends="perl-CPAN-Meta-Check"
 short_desc="Test::Warnings - Test for warnings and the lack of them"
-maintainer="Zach Dykstra <dykstra.zachary@gmail.com>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+depends="perl"
+makedepends="perl"
+checkdepends="perl-CPAN-Meta-Check"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Warnings"
-distfiles="${CPAN_SITE}/Test/${pkgname/perl-/}-${version}.tar.gz"
-checksum=1e542909fef305e45563e9878ea1c3b0c7cef1b28bb7ae07eba2e1efabec477b
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
+distfiles="$CPAN_SITE/Test/${pkgname/perl-/}-$version.tar.gz"
+checksum="1e542909fef305e45563e9878ea1c3b0c7cef1b28bb7ae07eba2e1efabec477b"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
