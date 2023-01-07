@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bpftrace"
-version=0.15.0
+version=0.16.0
 revision=1
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
@@ -11,6 +11,8 @@ makedepends+=" cereal"
 makedepends+=" clang"
 makedepends+=" clang-tools-extra"
 makedepends+=" elfutils-devel"
+makedepends+=" libbpf-devel"
+makedepends+=" libxml2-devel"
 makedepends+=" llvm"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
@@ -18,12 +20,19 @@ hostmakedepends+=" ruby-asciidoctor"
 homepage="https://github.com/iovisor/bpftrace"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bpftrace/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="64f67e615998d8150f5ee28614bea9ed303f20f6887bc4cdffa5f9c9477ef52a"
+checksum="89456dee3a20ec6c21ece345d4bf9a16a06af0f63cc5dffa9f5c7eea7916e21d"
 build_style="cmake"
 # needs root to run
 configure_args="-DBUILD_TESTING=OFF"
 # needs to read own symbol table
 nostrip="yes"
+
+post_extract() {
+  vsed \
+    -i \
+    -e 's:<linux/btf.h>:<bpf/linux/btf.h>:g' \
+    src/btf.cpp
+}
 
 post_install() {
   # clashes with bcc-tools
