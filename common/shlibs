@@ -266,6 +266,7 @@ libboost_type_erasure.so.1.81.0 libboost_type_erasure-1.81.0_1
 libboost_unit_test_framework.so.1.81.0 libboost_unit_test_framework-1.81.0_1
 libboost_wave.so.1.81.0 libboost_wave-1.81.0_1
 libboost_wserialization.so.1.81.0 libboost_wserialization-1.81.0_1
+libbpf.so.1 libbpf-1.0.0_1
 libbsd.so.0 libbsd-0.4.2_1
 libbtrfs.so.0 libbtrfs-3.12_1
 libbtrfsutil.so.1 libbtrfsutil-5.4_1
