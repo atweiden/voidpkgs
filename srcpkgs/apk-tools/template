@@ -1,13 +1,15 @@
 maintainer="nox"
 pkgname="apk-tools"
 version=2.12.10
-revision=1
+revision=2
 short_desc="Alpine Package Keeper (Alpine package manager)"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
+checkdepends="lua53-devel"
 hostmakedepends+=" lua53"
 hostmakedepends+=" lua53-zlib"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" scdoc"
 homepage="http://git.alpinelinux.org/cgit/apk-tools"
 license="GPL-2.0-only"
 distfiles="http://git.alpinelinux.org/cgit/$pkgname/snapshot/$pkgname-$version.tar.bz2"
@@ -20,8 +22,15 @@ make_build_args+=" static"
 
 CFLAGS="-Wno-error"
 
+post_build() {
+  make docs
+}
+
 do_install() {
   vbin src/apk.static apk
+  for f in doc/*.[58]; do
+    vman "$f"
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
