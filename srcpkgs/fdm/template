@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="fdm"
-version=2.1
-revision=2
+version=2.2
+revision=1
 short_desc="Program to fetch and deliver mail"
 makedepends+=" openssl-devel"
-makedepends+=" pcre-devel"
+makedepends+=" pcre2-devel"
 makedepends+=" tdb-devel"
 makedepends+=" zlib-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
@@ -15,11 +15,11 @@ hostmakedepends+=" bison"
 homepage="https://github.com/nicm/fdm"
 license="ISC"
 distfiles="https://github.com/nicm/fdm/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="858df2e6ef0836d940e8b8cc4fec333770fa9c97ba0f2485a9e63ed18b2cadff"
+checksum="53aad117829834e21c1b9bf20496a1aa1c0e0fb98fe7735e1e73314266fb6c16"
 build_style="gnu-configure"
 configure_args+=" ac_cv_func_strlcat=no"
 configure_args+=" ac_cv_func_strlcpy=no"
-configure_args+=" --enable-pcre"
+configure_args+=" --enable-pcre2"
 
 post_install() {
   vmkdir "usr/share/doc/$pkgname"
