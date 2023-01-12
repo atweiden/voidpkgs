@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zellij"
 version=0.34.4
-revision=1
+revision=2
 short_desc="Terminal workspace with batteries included"
 # dependency crate wasmer-vm only supports x86_64, arm64, x86
 # https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#compiler-support-by-chipset
@@ -23,6 +23,7 @@ nocross="yes"
 
 post_install() {
   vdoc README.md
+  vinstall assets/zellij.desktop 644 usr/share/applications
   vlicense LICENSE.md
 
   for shell in bash \
