@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iana-etc"
-version=20221122
+version=20230104
 revision=1
 short_desc="Unix /etc/services and /etc/protocols files"
 homepage="https://www.iana.org/protocols"
