@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="StyLua"
-version=0.15.2
+version=0.15.3
 revision=1
 short_desc="Opinionated Lua code formatter"
 homepage="https://github.com/JohnnyMorganz/StyLua"
 license="MPL-2.0"
 changelog="https://github.com/JohnnyMorganz/StyLua/raw/main/CHANGELOG.md"
 distfiles="https://github.com/JohnnyMorganz/StyLua/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9a0ce0131f0fa38652f03281c54de0c6e3251e06897a53d719e78449d66e270b"
+checksum="37feff9a52c2355419cb5dabdc6dac15f6fbef7d91b7cd9f33bd593efe278306"
 build_style="cargo"
 configure_args+=" $(vopt_if lua52 '--features lua52')"
 configure_args+=" $(vopt_if lua53 '--features lua53')"
