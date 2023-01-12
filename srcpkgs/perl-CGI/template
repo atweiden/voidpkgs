@@ -1,18 +1,17 @@
 maintainer="nox"
 pkgname="perl-CGI"
-version=4.54
+version=4.55
 revision=1
 short_desc="Handle Common Gateway Interface requests and responses"
 depends="perl-HTML-Parser"
 makedepends="perl"
 checkdepends+=" perl-HTML-Parser"
-checkdepends+=" perl-Test-Deep"
 checkdepends+=" perl-Test-Warn"
 hostmakedepends="perl"
 homepage="https://metacpan.org/release/CGI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/CGI/${pkgname/perl-/}-$version.tar.gz"
-checksum="9608a044ae2e87cefae8e69b113e3828552ddaba0d596a02f9954c6ac17fa294"
+checksum="67895e94b13fdf46a3893c9a17c2d0d4c3d4cd2550e1f41e26696c10cb8c64b2"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
