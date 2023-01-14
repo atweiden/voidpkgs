@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=7.87.0
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
