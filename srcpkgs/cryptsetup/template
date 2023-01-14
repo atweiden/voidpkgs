@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cryptsetup"
-version=2.5.0
+version=2.6.0
 revision=1
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
@@ -21,13 +21,15 @@ homepage="https://gitlab.com/cryptsetup/cryptsetup"
 license="GPL-2.0-or-later"
 changelog="https://gitlab.com/cryptsetup/cryptsetup/raw/master/docs/v$version-ReleaseNotes"
 distfiles="$KERNEL_SITE/utils/cryptsetup/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="9184a6ebbd9ce7eb211152e7f741a6c82f2d1cc0e24a84ec9c52939eee0f0542"
+checksum="44397ba76e75a9cde5b02177bc63cd7af428a785788e3a7067733e7761842735"
 build_style="gnu-configure"
 configure_args+=" --disable-asciidoc"
 configure_args+=" --enable-cryptsetup-reencrypt"
 configure_args+=" --enable-libargon2"
 configure_args+=" --with-crypto_backend=openssl"
 configure_args+=" $(vopt_enable pwquality)"
+# tests depend on acessing /dev/mapper/control fails on ci
+make_check="ci-skip"
 make_check_args="-C tests"
 build_options="pwquality"
 desc_option_pwquality="Enable support for checking password quality via libpwquality"
@@ -39,15 +41,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   subpackages+=" cryptsetup-static"
   makedepends+=" argp-standalone"
   LDFLAGS+=" -largp"
-fi
-
-if [[ "$XBPS_LIBC" == "musl" ]]; then
-  # test fail on musl, see upstream:
-  # https://gitlab.com/cryptsetup/cryptsetup/-/issues/781
-  make_check="no"
-else
-  # tests which depend on accessing /dev/mapper/control fail on ci
-  make_check="ci-skip"
 fi
 
 post_patch() {
