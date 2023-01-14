@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="python3-idna"
 version=3.4
-revision=1
+revision=2
 short_desc="Internationalized Domain Names in Applications (IDNA) for Python3"
 depends="python3"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-flit_core"
 homepage="https://github.com/kjd/idna"
 license="BSD-3-Clause"
 changelog="https://github.com/kjd/idna/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/i/idna/idna-$version.tar.gz"
 checksum="814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"
-build_style="python3-module"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE.md
