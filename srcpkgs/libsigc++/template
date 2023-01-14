@@ -1,17 +1,28 @@
 maintainer="nox"
 pkgname="libsigc++"
-version=2.10.3
+version=2.12.0
 revision=1
 short_desc="Type-safe callback system for C++ programs"
 hostmakedepends="m4"
 homepage="https://libsigcplusplus.github.io/libsigcplusplus/"
 license="LGPL-2.1-or-later"
 distfiles="$GNOME_SITE/libsigc++/${version%.*}/$pkgname-$version.tar.xz"
-checksum="0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786"
-build_style="gnu-configure"
-configure_args+=" --disable-benchmark"
-configure_args+=" --disable-documentation"
-configure_args+=" --enable-static"
+checksum="1c466d2e64b34f9b118976eb21b138c37ed124d0f61497df2a90ce6c3d9fa3b5"
+build_style="meson"
+configure_args+=" -Dbuild-examples=false"
+configure_args+=" -Dwarnings=max"
+if [[ -z "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -Dbuild-tests=false"
+fi
+meson_builddir="meson_build"
+
+pre_configure() {
+  # build static library as well as shared
+  vsed \
+    -i \
+    -e 's,library(,both_libraries(,' \
+    sigc++/meson.build
+}
 
 libsigc++-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
