@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sudo"
-version=1.9.11p3
+version=1.9.12p1
 revision=1
 short_desc="Allow others to run commands as root"
 makedepends+=" pam-devel"
@@ -10,7 +10,7 @@ homepage="https://www.sudo.ws/"
 license="ISC"
 changelog="https://www.sudo.ws/repos/sudo/raw-file/tip/NEWS"
 distfiles="https://www.sudo.ws/dist/$pkgname-$version.tar.gz"
-checksum="4687e7d2f56721708f59cca2e1352c056cb23de526c22725615a42bb094f1f70"
+checksum="475a18a8eb3da8b2917ceab063a6baf51ea09128c3c47e3e0e33ab7497bab7d8"
 conf_files+=" /etc/pam.d/sudo"
 conf_files+=" /etc/sudoers"
 build_style="gnu-configure"
