@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="libgpg-error"
-version=1.45
+version=1.46
 revision=1
 short_desc="Library for error values used by GnuPG component"
 homepage="https://www.gnupg.org"
 license="LGPL-2.1-or-later, GPL-2.0-or-later"
 distfiles="https://www.gnupg.org/ftp/gcrypt/libgpg-error/$pkgname-$version.tar.bz2"
-checksum="570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26"
+checksum="b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d"
 build_style="gnu-configure"
+configure_args="--enable-install-gpg-error-config"
 
 post_install() {
   rm -r "$DESTDIR/usr/share/common-lisp"
