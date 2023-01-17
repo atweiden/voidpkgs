@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
 version=053
-revision=5
+revision=6
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -46,32 +46,54 @@ post_install() {
   vinstall "$FILESDIR/kernel-hook-postinst" 755 usr/libexec/dracut
   vinstall "$FILESDIR/kernel-hook-postrm" 755 usr/libexec/dracut
 
-  if [[ -n "$_efi_bundle" ]]; then
-    vinstall "$FILESDIR/dracut-uefi-hook.confd" 644 etc/default dracut-uefi-hook
-    vinstall "$FILESDIR/kernel-uefi-hook-postinst" 755 etc/kernel.d/post-install 20-dracut-uefi
-    vinstall "$FILESDIR/kernel-uefi-hook-postrm" 755 etc/kernel.d/post-remove 20-dracut-uefi
-  fi
-
   # we don't need the systemd stuff
-  rm -rf "$DESTDIR/usr/lib/dracut/modules.d"/*systemd*
-  rm -f "$DESTDIR/usr/share/man/man8"/*.service.*
-  rm -rf "$DESTDIR/usr/lib/kernel"
+  rm -r "$DESTDIR/usr/lib/dracut/modules.d/*systemd*"
+
+  # systemd dependent additional dracut modules
+  for f in 06dbus-broker \
+           06dbus-daemon \
+           06rngd \
+           09dbus \
+           35network-manager \
+           35network-wicked \
+           80lvmmerge \
+           99memstrack \
+           99squash; do
+    rm -r "$DESTDIR/usr/lib/dracut/modules.d/$f"
+  done
+
+  # don't need s390x architecture dependent dracut modules
+  for f in 80cms \
+           81cio_ignore \
+           91zipl \
+           95dasd \
+           95dasd_mod \
+           95dasd_rules \
+           95dcssblk \
+           95qeth_rules \
+           95zfcp \
+           95zfcp_rules \
+           95znet; do
+    rm -r "$DESTDIR/usr/lib/dracut/modules.d/$f"
+  done
+
+  rm "$DESTDIR/usr/share/man/man8"/*.service.*
+  rm -r "$DESTDIR/usr/lib/kernel"
 }
 
 dracut-network_package() {
   unset depends
+  depends+=" $sourcepkg-${version}_$revision"
   depends+=" dhclient"
-  depends+=" dracut-${version}_$revision"
   short_desc+=" - network modules"
   pkg_install() {
-    for f in 40network \
+    for f in 35network-legacy \
+             40network \
              90livenet \
              95fcoe \
              95iscsi \
              95nbd \
-             95nfs \
-             95zfcp \
-             95znet; do
+             95nfs; do
       vmove "usr/lib/dracut/modules.d/$f"
     done
   }
