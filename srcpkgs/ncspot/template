@@ -1,18 +1,24 @@
-# Template file for 'ncspot'
-pkgname=ncspot
+maintainer="nox"
+pkgname="ncspot"
 version=0.11.2
 revision=1
-build_style=cargo
-configure_args="--features alsa_backend,cover"
-hostmakedepends="pkg-config python3"
-makedepends="openssl-devel dbus-devel pulseaudio-devel alsa-lib-devel"
 short_desc="Cross-platform ncurses Spotify client"
-maintainer="Omar Zeghouani <omarzeghouanii@gmail.com>"
-license="BSD-2-Clause"
+makedepends+=" alsa-lib-devel"
+makedepends+=" openssl-devel"
+makedepends+=" pulseaudio-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
 homepage="https://github.com/hrkfdn/ncspot"
-distfiles="https://github.com/hrkfdn/ncspot/archive/v${version}.tar.gz"
-checksum=0fd9696e13912b906605e9972bf3b2a8a68688cce17478353713550801c94fab
+license="BSD-2-Clause"
+distfiles="https://github.com/hrkfdn/ncspot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="0fd9696e13912b906605e9972bf3b2a8a68688cce17478353713550801c94fab"
+build_style="cargo"
+# build without dbus and desktop environment support
+_features="alsa_backend,cover,pulseaudio_backend,termion_backend"
+configure_args="--no-default-features --features $_features"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
