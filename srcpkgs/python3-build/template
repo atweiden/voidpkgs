@@ -1,19 +1,18 @@
 maintainer="nox"
 pkgname="python3-build"
-version=0.9.0
+version=0.10.0
 revision=1
 short_desc="Simple, correct PEP 517 build frontend"
 depends+=" python3-packaging"
 depends+=" python3-pyproject-hooks"
 hostmakedepends+=" $depends"
+hostmakedepends+=" python3-flit_core"
 hostmakedepends+=" python3-installer"
-hostmakedepends+=" python3-setuptools"
-hostmakedepends+=" python3-wheel"
 homepage="https://pypa-build.readthedocs.io/"
 license="MIT"
 changelog="https://github.com/pypa/build/raw/main/CHANGELOG.rst"
 distfiles="$PYPI_SITE/b/build/build-$version.tar.gz"
-checksum="1a07724e891cbd898923145eb7752ee7653674c511378eb9c7691aab1612bc3c"
+checksum="d5b71264afdb5951d6704482aac78de887c80691c52b88a9ad195983ca2c9269"
 # this package is used by the python3-pep517 build style; using that
 # style here would create a build cycle
 build_style="python3-module"
