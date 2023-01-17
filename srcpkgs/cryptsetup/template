@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cryptsetup"
 version=2.6.0
-revision=1
+revision=2
 short_desc="Setup virtual encryption devices under Linux dm-crypt"
 makedepends+=" device-mapper-devel"
 makedepends+=" json-c-devel"
@@ -67,7 +67,12 @@ libcryptsetup_package() {
 }
 
 cryptsetup-devel_package() {
-  depends="libcryptsetup>=${version}_$revision"
+  unset depends
+  depends+=" device-mapper-devel"
+  depends+=" json-c-devel"
+  depends+=" libargon2-devel"
+  depends+=" libcryptsetup>=${version}_$revision"
+  depends+=" openssl-devel"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
