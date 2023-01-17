@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="p11-kit"
-version=0.23.22
-revision=3
+version=0.24.1
+revision=1
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
 makedepends+=" libtasn1-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="8a8f40153dd5a3f8e7c03e641f8db400133fb2a6a9ab2aee1b6d0cb0495ec6b6"
+checksum="d8be783efd5cd4ae534cee4132338e3f40f182c3205d23b200094ec85faaaef8"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="meson"
 configure_args+=" -Dbash_completion=disabled"
