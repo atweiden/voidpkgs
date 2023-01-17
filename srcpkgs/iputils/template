@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="iputils"
-version=20211215
-revision=2
+version=20221126
+revision=1
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
 makedepends="libcap-devel"
@@ -13,12 +13,11 @@ hostmakedepends+=" libcap-progs"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/iputils/iputils"
 license="BSD-3-Clause, GPL-2.0-or-later"
+changelog="https://github.com/iputils/iputils/raw/master/CHANGES"
 distfiles="https://github.com/iputils/iputils/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b6f67fc705490673ff4471d006221b4a2f1b1180b929d9fefd771352621ccedf"
+checksum="745ea711fe06d5c57d470d21acce3c3ab866eb6afb69379a16c6d60b89bd4311"
 build_style="meson"
-configure_args+=" -DBUILD_NINFOD=false"
-configure_args+=" -DNO_SETCAP_OR_SUID=true"
-configure_args+=" -DUSE_IDN=false"
+configure_args="-DUSE_IDN=false"
 alternatives+=" ping:ping:/usr/bin/$pkgname-ping"
 alternatives+=" ping:ping.8:/usr/share/man/man8/$pkgname-ping.8"
 alternatives+=" ping6:ping6:/usr/bin/$pkgname-ping"
