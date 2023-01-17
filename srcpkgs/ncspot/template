@@ -13,8 +13,8 @@ license="BSD-2-Clause"
 distfiles="https://github.com/hrkfdn/ncspot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="0fd9696e13912b906605e9972bf3b2a8a68688cce17478353713550801c94fab"
 build_style="cargo"
-# build without dbus and desktop environment support
-_features="alsa_backend,cover,pulseaudio_backend,termion_backend"
+# build without dbus support or need for gui dependencies
+_features="alsa_backend,pulseaudio_backend,termion_backend"
 configure_args="--no-default-features --features $_features"
 
 post_install() {
