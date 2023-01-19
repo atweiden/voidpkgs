@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tcl"
-version=8.6.12
+version=8.6.13
 revision=1
 short_desc="TCL scripting language"
 makedepends+=" sqlite-devel"
@@ -8,7 +8,7 @@ makedepends+=" zlib-devel"
 homepage="http://www.tcl.tk"
 license="TCL"
 distfiles="$SOURCEFORGE_SITE/tcl/$pkgname$version-src.tar.gz"
-checksum="26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6"
+checksum="43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066"
 build_wrksrc="unix"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
@@ -20,13 +20,6 @@ configure_args+=" --without-tzdata"
 configure_args+=" tcl_cv_strstr_unbroken=ok"
 configure_args+=" tcl_cv_strtoul_unbroken=ok"
 shlib_provides="libtcl${version%.*}.so"
-
-post_extract() {
-  vsed \
-    -i \
-    -e 's/-DSQLITE_API=MODULE_SCOPE//g' \
-    pkgs/sqlite*/Makefile.in
-}
 
 do_check() {
   # thread-4.5 and thread-5* are skipped because they test UB
