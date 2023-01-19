@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="python3-stem"
 version=1.8.1
-revision=1
+revision=2
 short_desc="Python3 controller library for Tor"
 depends="python3-cryptography"
-hostmakedepends="python3-devel"
+hostmakedepends="python3-setuptools"
 homepage="https://stem.torproject.org/"
 license="LGPL-3.0-or-later"
 changelog="https://stem.torproject.org/change_log.html"
