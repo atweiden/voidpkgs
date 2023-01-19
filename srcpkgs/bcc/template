@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bcc"
 version=0.26.0
-revision=1
+revision=2
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
 makedepends+=" clang-tools-extra"
@@ -16,7 +16,7 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
 fi
 hostmakedepends+=" flex"
-hostmakedepends+=" python3"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/iovisor/bcc"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bcc/releases/download/v$version/$pkgname-src-with-submodule.tar.gz>$pkgname-$version.tar.gz"
