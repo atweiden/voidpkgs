@@ -4,10 +4,10 @@ version=1.43.0.0
 revision=1
 _distver="${version%.*}-${version##*.}"
 short_desc="Bare libuv bindings for LuaJIT"
-depends+=" LuaJIT"
 depends+=" libuv"
-makedepends+=" LuaJIT-devel"
+depends+=" $(vopt_if luajit LuaJIT lua51)"
 makedepends+=" libuv-devel"
+makedepends+=" $(vopt_if luajit LuaJIT-devel lua51-devel)"
 if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_MACHINE" == "x86_64" ]]; then
   hostmakedepends+=" gcc-multilib"
 fi
@@ -22,6 +22,16 @@ build_style="cmake"
 configure_args+=" -DBUILD_MODULE=OFF"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
 configure_args+=" -DLUA_BUILD_TYPE=System"
+configure_args+=" -DWITH_LUA_ENGINE=$(vopt_if luajit LuaJIT Lua)"
+build_options="luajit"
+case "$XBPS_TARGET_MACHINE" in
+  riscv64*)
+    build_options_default=""
+    ;;
+  *)
+    build_options_default="luajit"
+    ;;
+esac
 
 post_extract() {
   cp \
