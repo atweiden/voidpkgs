@@ -3,25 +3,36 @@ pkgname="neovim"
 version=0.8.2
 revision=2
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
-makedepends+=" LuaJIT-devel"
 makedepends+=" libluv-devel"
 makedepends+=" libtermkey-devel"
 makedepends+=" libuv-devel"
 makedepends+=" libvterm-devel"
 makedepends+=" msgpack-devel"
 makedepends+=" tree-sitter-devel"
-hostmakedepends+=" LuaJIT"
+makedepends+=" $(vopt_if luajit LuaJIT-devel lua51-devel)"
 hostmakedepends+=" gettext"
 hostmakedepends+=" gperf"
+hostmakedepends+=" lua51-BitOp"
 hostmakedepends+=" lua51-lpeg"
 hostmakedepends+=" lua51-mpack"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" $(vopt_if luajit LuaJIT lua51)"
 homepage="https://neovim.io"
 license="Apache-2.0, Vim"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c516c8db73e1b12917a6b2e991b344d0914c057cef8266bce61a2100a28ffcc9"
 build_style="cmake"
-configure_args="-DCOMPILE_LUA=OFF"
+configure_args+=" -DCOMPILE_LUA=OFF"
+configure_args+=" -DPREFER_LUA=$(vopt_if luajit OFF ON)"
+build_options="luajit"
+case "$XBPS_TARGET_MACHINE" in
+  riscv64*)
+    build_options_default=""
+    ;;
+  *)
+    build_options_default="luajit"
+    ;;
+esac
 # cross-compilation requires `qemu-user-static`, see: upstream
 nocross="yes"
 
