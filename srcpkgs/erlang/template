@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="erlang"
-version=25.2
+version=25.2.1
 revision=1
 short_desc="Concurrent functional programming language developed by Ericsson"
 makedepends+=" ncurses-devel"
@@ -15,7 +15,7 @@ license="Apache-2.0"
 homepage="http://www.erlang.org/"
 changelog="https://github.com/erlang/otp/releases"
 distfiles="https://github.com/erlang/otp/archive/OTP-$version.tar.gz"
-checksum="d33a988f39e534aff67799c5b9635612858459c9d8890772546d71ea38de897a"
+checksum="d044e3699cb5261127da4bf37a495534bde85c37709f07735efc91f290f51da7"
 build_style="gnu-configure"
 make_install_target+=" install"
 make_install_target+=" install-docs"
