@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-MarkupSafe"
-version=2.1.1
-revision=2
+version=2.1.2
+revision=1
 short_desc="Implements a XML/HTML/XHTML Markup safe string for Python3"
 depends="python3"
 makedepends="python3-devel"
@@ -10,7 +10,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://palletsprojects.com/p/markupsafe/"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/M/MarkupSafe/MarkupSafe-$version.tar.gz"
-checksum="7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"
+checksum="abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d"
 build_style="python3-module"
 
 post_install() {
