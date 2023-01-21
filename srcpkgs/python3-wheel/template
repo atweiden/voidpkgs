@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-wheel"
-version=0.38.2
+version=0.38.4
 revision=1
 short_desc="Built-package format for Python (Python3)"
 depends="python3-setuptools"
@@ -11,17 +11,12 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/pypa/wheel"
 license="MIT"
 distfiles="$PYPI_SITE/w/wheel/wheel-$version.tar.gz"
-checksum="3d492ef22379a156ec923d2a77051cedfd4df4b667864e9e41ba83f0b70b7149"
+checksum="965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac"
 build_style="python3-module"
 conflicts="python-wheel>=0"
 
 do_check() {
   local _pypath
-
-  vsed \
-    -i \
-    -e '/addopts/d' \
-    setup.cfg
 
   # must export PYTHONPATH so subprocesses see the variable
   _pypath="$PYTHONPATH"
