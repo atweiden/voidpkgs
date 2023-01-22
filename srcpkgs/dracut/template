@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dracut"
-version=053
-revision=7
+version=059
+revision=1
 short_desc="Low-level tool for generating an initramfs/initrd image"
 depends+=" bash"
 depends+=" coreutils"
@@ -15,11 +15,13 @@ makedepends="libkmod-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" musl-fts-devel"
 fi
-hostmakedepends="pkg-config"
-homepage="http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
+hostmakedepends+=" asciidoc"
+hostmakedepends+=" pkg-config"
+homepage="https://github.com/dracutdevs/dracut/wiki"
 license="GPL-2.0-or-later, LGPL-2.0-or-later"
-distfiles="$KERNEL_SITE/utils/boot/dracut/$pkgname-$version.tar.xz"
-checksum="d5a1b47cdb07919d8225d5b5f538e6ae604988f3df0afbde99a8dc775277b726"
+changelog="https://github.com/dracutdevs/dracut/raw/master/NEWS.md"
+distfiles="https://github.com/dracutdevs/dracut/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="eabf0bb685420c1e1d5475b6855ef787104508f0135ff570312845256e0fcecf"
 conf_files="/etc/dracut.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
@@ -40,6 +42,11 @@ case "$XBPS_TARGET_MACHINE" in
     subpackages+=" dracut-uefi"
   ;;
 esac
+
+pre_build() {
+  # upstream tarball is missing version information
+  DRACUT_VERSION="$version" make dracut-version.sh
+}
 
 post_install() {
   # kernel hooks
