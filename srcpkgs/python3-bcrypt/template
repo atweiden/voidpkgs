@@ -1,19 +1,23 @@
 maintainer="nox"
 pkgname="python3-bcrypt"
-version=3.2.0
-revision=4
+version=3.2.2
+revision=1
 short_desc="Modern password hashing for software and servers"
-depends+=" python3-cffi"
-depends+=" python3-six"
+depends="python3-cffi"
 makedepends="python3-devel"
-checkdepends+=" $depends"
+checkdepends+=" python3-cffi"
 checkdepends+=" python3-pytest"
-hostmakedepends+=" python3-cffi"
 hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/pyca/bcrypt"
 license="Apache-2.0"
+changelog="https://github.com/pyca/bcrypt/blob/main/README.rst#changelog"
 distfiles="$PYPI_SITE/b/bcrypt/bcrypt-$version.tar.gz"
-checksum="5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"
-build_style="python3-module"
+checksum="433c410c2177057705da2a9f2cd01dd157493b2a7ac14c8593a16b3dab6b6bfb"
+build_style="python3-pep517"
+
+do_check() {
+  PYTHONPATH="$(cd build/lib* && pwd)" pytest
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
