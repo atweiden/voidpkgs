@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="acpid"
-version=2.0.33
-revision=2
+version=2.0.34
+revision=1
 short_desc="ACPI Daemon (acpid) With Netlink Support"
 license="GPL-2.0-or-later"
 homepage="https://sourceforge.net/projects/acpid2/"
+changelog="https://sourceforge.net/p/acpid2/code/ci/master/tree/Changelog?format=raw"
 distfiles="$SOURCEFORGE_SITE/acpid2/$pkgname-$version.tar.xz"
-checksum="0856f71b3eb34a1b663d0a8e6363dfcbc519e63d847330498898658e2972dbe8"
+checksum="2d095c8cfcbc847caec746d62cdc8d0bff1ec1bc72ef7c674c721e04da6ab333"
 conf_files+=" /etc/acpi/events/anything"
 conf_files+=" /etc/acpi/handler.sh"
 build_style="gnu-configure"
