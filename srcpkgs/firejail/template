@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="firejail"
-version=0.9.70
+version=0.9.72
 revision=1
 short_desc="SUID security sandbox program"
 makedepends="libapparmor-devel"
@@ -9,7 +9,7 @@ homepage="https://firejail.wordpress.com"
 license="GPL-2.0-or-later"
 changelog="https://github.com/netblue30/firejail/raw/master/RELNOTES"
 distfiles="https://github.com/netblue30/firejail/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c70a52b1b5b6b117bf3846da14b1f67705fce44a8fea49544fe9b8a14534c46b"
+checksum="fa641abe2f673cef304cee6ef0a8ddb69db7919e0b69752f89762a341a87fabc"
 conf_files+=" /etc/firejail/*"
 conf_files+=" /etc/apparmor.d/local/firejail-default"
 build_style="gnu-configure"
