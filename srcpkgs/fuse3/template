@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fuse3"
-version=3.11.0
+version=3.13.0
 revision=1
 short_desc="Filesystem in Userspace 3.x"
 makedepends="eudev-libudev-devel"
@@ -9,7 +9,7 @@ homepage="https://github.com/libfuse/libfuse"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 changelog="https://github.com/libfuse/libfuse/raw/master/ChangeLog.rst"
 distfiles="https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.xz"
-checksum="8982c4c521daf3974dda8a5d55d575c988da13a571970f00aea149eb54fdf14c"
+checksum="1e54d3ee1d7d04f41e77617c4f7514f611b94332215dd88394bd82803032752a"
 conf_files="/etc/fuse.conf"
 build_style="meson"
 configure_args+=" --sbindir=bin"
