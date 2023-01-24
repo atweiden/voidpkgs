@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="hunspell"
-version=1.7.1
+version=1.7.2
 revision=1
 short_desc="Spell checker and morphological analyzer"
 makedepends="ncurses-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://hunspell.github.io/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, MPL-1.1"
 distfiles="https://github.com/hunspell/hunspell/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6e3557624c608b3e6525b8bd277706db4f5a857c28fdb3cfa8d0d2b67776da8a"
+checksum="69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e"
 build_style="gnu-configure"
 configure_args="--with-ui"
 
