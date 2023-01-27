@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pax-utils"
-version=1.3.6
+version=1.3.7
 revision=1
 short_desc="PaX aware and related utilities for ELF binaries"
 makedepends="libcap-devel"
@@ -8,7 +8,7 @@ checkdepends="python3-pyelftools"
 homepage="https://cgit.gentoo.org/proj/pax-utils.git/"
 license="GPL-2.0-only"
 distfiles="https://gentoo.osuosl.org/distfiles/$pkgname-$version.tar.xz"
-checksum="a4d5398ac01987d70f81a599492bd6992aae90a5774c51869ed38a37acb5cc8a"
+checksum="108362d29668d25cf7b0cadc63b15a4c1cfc0dbc71adc151b33c5fe7dece939a"
 build_style="meson"
 python_version=3
 
