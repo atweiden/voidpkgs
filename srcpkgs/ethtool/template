@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="ethtool"
-version=5.19
+version=6.1
 revision=1
 short_desc="Utility for controlling network drivers and hardware"
 makedepends="libmnl-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.kernel.org/pub/software/network/ethtool/"
 license="GPL-2.0-only"
+changelog="https://git.kernel.org/pub/scm/network/ethtool/ethtool.git/plain/NEWS"
 distfiles="https://www.kernel.org/pub/software/network/ethtool/$pkgname-$version.tar.xz"
-checksum="3b752a3329827907ac3812f2831dfecf51c8c41c55d2d69cfb9c53ca06449fc6"
+checksum="c41fc881ffa5a40432d2dd829eb44c64a49dee482e716baacf9262c64daa8f90"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
