@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="hwids"
-version=0.364
+version=0.366
 revision=1
 short_desc="Hardware Identification Databases"
 homepage="https://github.com/gentoo/hwids"
 license="GPL-2.0-or-later"
 homepage="https://github.com/vcrhonek/hwdata"
 distfiles="https://github.com/vcrhonek/hwdata/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e79ee7e0251c94273ac8ffa7f68892152d3cfc243a471bc61771d8ab53da3331"
+checksum="bdc91561ec210877e6d1e3ec3abf0305389d7bcc3bf616bcecb2bdf74e3a7696"
 reverts+=" 20150118_1"
 reverts+=" 20150129_1"
 reverts+=" 20150421_1"
