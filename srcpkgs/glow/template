@@ -1,21 +1,28 @@
 maintainer="nox"
 pkgname="glow"
-version=1.4.1
+version=1.5.0
 revision=1
 short_desc="Render markdown on the CLI, with pizzazz"
 homepage="https://github.com/charmbracelet/glow"
 license="MIT"
 distfiles="https://github.com/charmbracelet/glow/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ff6dfd7568f0bac5144ffa3a429ed956dcbdb531487ef6e38ac61365322c9601"
+checksum="66f2a876eba15d71cfd08b56667fb07e1d49d383aa17d31696a39e794e23ba92"
 build_style="go"
 go_import_path="github.com/charmbracelet/glow"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
+go_ldflags+=" -X main.Version=$version"
 go_ldflags+=" -extldflags=-static"
 
 export GOFLAGS="-trimpath"
 
 post_install() {
+  for shell in bash \
+               fish \
+               zsh; do
+    CGO_ENABLED=0 GOARCH= go run . completion "$shell" > "glow.$shell"
+    vcompletion "glow.$shell" "$shell"
+  done
   vlicense LICENSE
 }
 
