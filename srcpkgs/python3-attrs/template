@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-attrs"
-version=22.1.0
+version=22.2.0
 revision=1
 short_desc="Attributes without boilerplate (Python3)"
 depends="python3"
@@ -11,8 +11,9 @@ checkdepends+=" python3-zope.interface"
 hostmakedepends="python3-setuptools"
 homepage="https://attrs.readthedocs.io/"
 license="MIT"
+changelog="https://github.com/python-attrs/attrs/raw/main/CHANGELOG.md"
 distfiles="$PYPI_SITE/a/attrs/attrs-$version.tar.gz"
-checksum="29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6"
+checksum="c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"
 build_style="python3-module"
 
 post_install() {
