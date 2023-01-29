@@ -1,16 +1,18 @@
 maintainer="nox"
 pkgname="python3-chardet"
-version=5.0.0
-revision=2
+version=5.1.0
+revision=1
 short_desc="Universal encoding detector"
 depends="python3"
 checkdepends="python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/chardet/chardet"
-license="LGPL-2.1-only"
+license="LGPL-2.1-or-later"
+changelog="https://github.com/chardet/chardet/releases"
 distfiles="$PYPI_SITE/c/chardet/chardet-$version.tar.gz"
-checksum="0368df2bfd78b5fc20572bb4e9bb7fb53e2c094f60ae9993339e8671d0afb8aa"
-build_style="python3-module"
+checksum="0d62712b956bc154f85fb0a266e2a3c5913c2967e00348701b32411d6def31e5"
+build_style="python3-pep517"
 conflicts="python-chardet"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
