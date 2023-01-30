@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-rich"
-version=13.2.0
+version=13.3.1
 revision=1
 short_desc="Library for rich text and beautiful formatting in the terminal"
 depends+=" python3-Pygments"
@@ -13,7 +13,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/willmcgugan/rich"
 license="MIT"
 distfiles="$PYPI_SITE/r/rich/rich-$version.tar.gz"
-checksum="f1a00cdd3eebf999a15d85ec498bfe0b1a77efe9b34f645768a54132ef444ac5"
+checksum="125d96d20c92b946b983d0d392b84ff945461e5a06d3867e9f9e575f8697b67f"
 build_style="python3-module"
 # some checks only work on windows
 make_check="extended"
