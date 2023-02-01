@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="oniguruma"
-version=6.9.5.rev1
+version=6.9.8
 revision=1
-_ver="${version%.*}_${version##*.}"
 short_desc="Multi-charset regular expressions library"
 homepage="https://github.com/kkos/oniguruma"
 license="BSD-2-Clause"
-distfiles="https://github.com/kkos/oniguruma/releases/download/v$_ver/onig-$_ver.tar.gz>$pkgname-$version.tar.gz"
-checksum="d33c849d1672af227944878cefe0a8fcf26fc62bedba32aa517f2f63c314a99e"
+changelog="https://github.com/kkos/oniguruma/releases"
+distfiles="https://github.com/kkos/oniguruma/releases/download/v$version/onig-$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="28cd62c1464623c7910565fb1ccaaa0104b2fe8b12bcd646e81f73b47535213e"
 build_style="gnu-configure"
 configure_args="--enable-posix-api=yes"
 
