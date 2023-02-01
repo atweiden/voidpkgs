@@ -1,16 +1,25 @@
-# Template file for 'openpgp-ca'
-pkgname=openpgp-ca
+maintainer="nox"
+pkgname="openpgp-ca"
 version=0.11.2
 revision=1
-build_style=cargo
-make_install_args="--path openpgp-ca-bin"
-hostmakedepends="pkg-config clang llvm nettle-devel sqlite-devel"
-makedepends="openssl-devel nettle-devel clang sqlite-devel"
-depends="gnupg"
 short_desc="Tool for handling OpenPGP keys in organizaations"
-maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
-license="GPL-3.0-or-later"
+depends="gnupg"
+makedepends+=" clang"
+makedepends+=" nettle-devel"
+makedepends+=" openssl-devel"
+makedepends+=" sqlite-devel"
+hostmakedepends+=" clang"
+hostmakedepends+=" llvm"
+hostmakedepends+=" nettle-devel"
+hostmakedepends+=" pkg-config"
+hostmakedepends+=" sqlite-devel"
 homepage="https://openpgp-ca.org/"
-distfiles="https://gitlab.com/openpgp-ca/openpgp-ca/-/archive/openpgp-ca/v${version}/openpgp-ca-openpgp-ca-v${version}.tar.gz"
-checksum=162f60cdb937a9db897f699a35266da00adeb14c42a21f806d13bfbed03f921e
-make_check=no # Tests require gpg-agent being set up
+license="GPL-3.0-or-later"
+distfiles="https://gitlab.com/openpgp-ca/openpgp-ca/-/archive/$pkgname/v$version/$pkgname-$pkgname-v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="162f60cdb937a9db897f699a35266da00adeb14c42a21f806d13bfbed03f921e"
+build_style="cargo"
+# tests require gpg-agent being set up
+make_check="no"
+make_install_args="--path openpgp-ca-bin"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
