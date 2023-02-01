@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="stunnel"
-version=5.66
+version=5.67
 revision=1
 short_desc="SSL encryption wrapper"
 makedepends="openssl-devel"
@@ -13,7 +13,7 @@ homepage="https://www.stunnel.org/"
 license="GPL-2.0-or-later"
 changelog="https://www.stunnel.org/NEWS.html"
 distfiles="https://www.stunnel.org/downloads/$pkgname-$version.tar.gz"
-checksum="558178704d1aa5f6883aac6cc5d6bbf2a5714c8a0d2e91da0392468cee9f579c"
+checksum="3086939ee6407516c59b0ba3fbf555338f9d52f459bcab6337c0f00e91ea8456"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --with-ssl=$XBPS_CROSS_BASE/usr"
