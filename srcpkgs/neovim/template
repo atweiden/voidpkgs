@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="neovim"
 version=0.8.2
-revision=2
+revision=3
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 makedepends+=" libluv-devel"
 makedepends+=" libtermkey-devel"
@@ -23,6 +23,8 @@ distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$v
 checksum="c516c8db73e1b12917a6b2e991b344d0914c057cef8266bce61a2100a28ffcc9"
 build_style="cmake"
 configure_args+=" -DCOMPILE_LUA=OFF"
+# MIN_LOG_LEVEL 1: INFO, 3: ERROR, upstream's release's default is 3
+configure_args+=" -DMIN_LOG_LEVEL=3"
 configure_args+=" -DPREFER_LUA=$(vopt_if luajit OFF ON)"
 build_options="luajit"
 case "$XBPS_TARGET_MACHINE" in
@@ -35,6 +37,9 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 # cross-compilation requires `qemu-user-static`, see: upstream
 nocross="yes"
+
+# they want assertion
+CFLAGS="-UNDEBUG"
 
 pre_configure() {
   vsed \
