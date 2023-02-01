@@ -1,12 +1,10 @@
 maintainer="nox"
 pkgname="python3-rich"
 version=13.3.1
-revision=1
+revision=2
 short_desc="Library for rich text and beautiful formatting in the terminal"
 depends+=" python3-Pygments"
-depends+=" python3-colorama"
-depends+=" python3-commonmark"
-depends+=" python3-typing_extensions"
+depends+=" python3-markdown-it"
 checkdepends+=" $depends"
 checkdepends+=" python3-wheel"
 hostmakedepends="python3-setuptools"
