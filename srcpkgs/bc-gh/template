@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bc-gh"
 version=6.2.2
-revision=1
+revision=2
 short_desc="Implementation of POSIX bc with GNU extensions"
 homepage="https://git.yzena.com/gavin/bc"
 license="BSD-2-Clause"
@@ -25,7 +25,7 @@ do_configure() {
   PREFIX="/usr" \
     ./configure.sh \
       -GM \
-      -sbc.banner \
+      -pGNU \
       -sdc.tty_mode
 }
 
