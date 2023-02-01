@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mpop"
-version=1.4.17
+version=1.4.18
 revision=1
 short_desc="POP3 client"
 makedepends+=" gnutls-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://marlam.de/mpop/"
 license="GPL-3.0-or-later"
 distfiles="https://marlam.de/mpop/releases/mpop-$version.tar.xz"
-checksum="42ae494bad2941d9f647c48c3ed98c38ba9aa5cf3fe48fb0fe06e5b6dadf8bd5"
+checksum="6099950184f7d094a782d1e7ab9833736f12308d34a544a59b46a8471d9f85b7"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
