@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lynx"
-version=2.9.0dev.10
+version=2.9.0dev.12
 revision=1
 short_desc="Text browser for the World Wide Web"
 makedepends+=" bzip2-devel"
@@ -11,18 +11,17 @@ makedepends+=" zlib-devel"
 hostmakedepends+=" pkg-config"
 homepage="http://lynx.invisible-island.net/"
 license="GPL-2.0-or-later"
-distfiles="http://invisible-mirror.net/archives/lynx/tarballs/$pkgname$version.tar.bz2"
-checksum="898ac82bcfcbd4b20ea39afdf66fd659b8773c7549623b0f8802bf392a41a912"
+changelog="https://lynx.invisible-island.net/current/CHANGES"
+distfiles="http://invisible-mirror.net/archives/lynx/tarballs/$pkgname$version.tar.bz2>$pkgname-$version.tar.bz2"
+checksum="a6455b159d00776d8ec1051285c972dc1f0c552d0571a0cff02a23ec146ee8e5"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
-configure_args+=" --enable-locale-charset"
-configure_args+=" --enable-nls"
-configure_args+=" --enable-underlines"
+configure_args+=" --enable-widec"
 configure_args+=" --with-bzlib"
-configure_args+=" --with-pkg-config"
-configure_args+=" --with-screen=ncursesw"
+configure_args+=" --with-screen=ncurses"
 configure_args+=" --with-ssl"
 configure_args+=" --with-zlib"
+configure_args+=" cf_cv_header_path_ssl=$XBPS_CROSS_BASE/usr/include/openssl"
 
 pre_configure() {
   sed \
