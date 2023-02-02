@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="libcbor"
-version=0.10.1
+version=0.10.2
 revision=1
 short_desc="Library for parsing and generating CBOR, a binary data format"
 homepage="https://github.com/PJK/libcbor"
 license="MIT"
 distfiles="https://github.com/PJK/libcbor/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e8fa0a726b18861c24428561c80b3c95aca95f468df4e2f3e3ac618be12d3047"
+checksum="e75f712215d7b7e5c89ef322a09b701f7159f028b8b48978865725f00f79875b"
 build_style="cmake"
 configure_args="-DBUILD_SHARED_LIBS=ON"
 
