@@ -1,17 +1,17 @@
 maintainer="nox"
 pkgname="pkcs11-helper"
-version=1.25.1
-revision=6
+version=1.29.0
+revision=1
 short_desc="Library to help simplify interacting with PKCS#11 providers"
 makedepends="openssl-devel"
-hostmakedepends+=" automake"
 hostmakedepends+=" doxygen"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="https://github.com/OpenSC/pkcs11-helper/wiki"
+homepage="https://github.com/OpenSC/pkcs11-helper"
 license="GPL-2.0-only, BSD-3-Clause"
-distfiles="https://github.com/OpenSC/pkcs11-helper/archive/$pkgname-$version.tar.gz"
-checksum="fbcec9dd15a71d6ef22b09f63934c66d7d0292fefbaf3a60703ee4a9a73bf6a5"
+changelog="https://github.com/OpenSC/pkcs11-helper/raw/master/ChangeLog"
+distfiles="https://github.com/OpenSC/pkcs11-helper/releases/download/$pkgname-$version/$pkgname-$version.tar.bz2"
+checksum="996846a3c8395e03d8c0515111dc84d82e6e3648d44ba28cb2dbbbca2d4db7d6"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --enable-doc"
@@ -20,10 +20,6 @@ configure_args+=" $(vopt_enable threading)"
 build_options="threading"
 build_options_default="threading"
 desc_option_threading="Enable threading and slotevent support"
-
-pre_configure() {
-  autoreconf -fi
-}
 
 post_install() {
   vlicense COPYING
