@@ -49,9 +49,10 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 create_wrksrc="yes"
+nostrip="yes"
+repository="bootstrap"
 conflicts="rust>=0"
 lib32disabled="yes"
-nostrip="yes"
 
 do_install() {
   for d in *; do
