@@ -13,6 +13,7 @@ build_wrksrc="cargo-auditable"
 build_style="cargo"
 # required for bootstrapping purposes
 make_cmd="cargo"
+repository="bootstrap"
 
 post_install() {
   vlicense ../LICENSE-MIT
