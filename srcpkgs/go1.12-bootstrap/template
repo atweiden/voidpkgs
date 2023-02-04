@@ -37,6 +37,7 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 distfiles="https://dl.google.com/go/go$version.linux-$_dist_arch.tar.gz"
 nostrip="yes"
+repository="bootstrap"
 noverifyrdeps="yes"
 nocross="yes"
 lib32disabled="yes"
