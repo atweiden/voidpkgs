@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql"
-version=14
-revision=2
+version=15
+revision=1
 short_desc="PostgreSQL server meta package"
 depends="postgresql$version"
 homepage="https://www.postgresql.org"
