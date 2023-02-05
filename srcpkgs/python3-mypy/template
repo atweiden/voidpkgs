@@ -1,21 +1,28 @@
 maintainer="nox"
 pkgname="python3-mypy"
-version=0.961
-revision=2
+version=0.991
+revision=1
 short_desc="Optional static typing for Python3"
 depends+=" python3-mypy_extensions"
-depends+=" python3-tomli"
-depends+=" python3-typed-ast"
 depends+=" python3-typing_extensions"
+checkdepends+=" $depends"
+checkdepends+=" python3-attrs"
+checkdepends+=" python3-filelock"
+checkdepends+=" python3-lxml"
+checkdepends+=" python3-psutil"
+checkdepends+=" python3-py"
+checkdepends+=" python3-pytest-xdist"
 hostmakedepends+=" python3-Sphinx"
 hostmakedepends+=" python3-setuptools"
-homepage="https://github.com/python/mypy"
+homepage="https://www.mypy-lang.org"
 license="MIT"
+changelog="https://mypy-lang.blogspot.com"
 distfiles="$PYPI_SITE/m/mypy/mypy-$version.tar.gz"
-checksum="f730d56cb924d371c26b8eaddeea3cc07d78ff51c521c6d04899ac6904b75492"
+checksum="3c0165ba8f354a6d9881809ef29f1a9318a236a6d81c690094c5df32107bde06"
 build_style="python3-module"
-# needs pytest-xdist and many tests fail
-make_check="no"
+# fails in ci
+make_check_args="-k not(testDaemonStatusKillRestartRecheck)"
+make_check_target="mypy/test"
 
 post_install() {
   make -C docs man
