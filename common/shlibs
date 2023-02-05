@@ -695,10 +695,10 @@ libpci.so.3 pciutils-3.7.0_1
 libperl.so.5.36 perl-5.36.0_1
 libpkcs11-helper.so.1 pkcs11-helper-1.25.1_6
 libpopt.so.0 popt-1.15_1
-libecpg.so.6 postgresql-libs-14.0_1
-libecpg_compat.so.3 postgresql-libs-14.0_1
-libpgtypes.so.3 postgresql-libs-14.0_1
-libpq.so.5 postgresql-libs-14.0_1
+libecpg.so.6 postgresql-libs-15.1_1
+libecpg_compat.so.3 postgresql-libs-15.1_1
+libpgtypes.so.3 postgresql-libs-15.1_1
+libpq.so.5 postgresql-libs-15.1_1
 libprocps.so.8 procps-ng-3.3.16_1
 libproxychains4.so proxychains-ng-4.13_1
 libpython2.7.so.1.0 python-2.7.18_3
