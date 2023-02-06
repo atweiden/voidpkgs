@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="squid"
-version=5.3
+version=5.7
 revision=1
 short_desc="Caching proxy for the Web"
 depends="perl"
@@ -17,7 +17,7 @@ homepage="http://www.squid-cache.org/"
 license="GPL-2.0-or-later"
 changelog="http://www.squid-cache.org/Versions/v5/changesets/"
 distfiles="http://www.squid-cache.org/Versions/v5/$pkgname-$version.tar.xz"
-checksum="45178588df1311ded41ebadd632840c4d93a8d7f5f60e38e74acf2f1ae2f1715"
+checksum="6b0753aaba4c9c4efd333e67124caecf7ad6cc2d38581f19d2f0321f5b7ecd81"
 conf_files+=" /etc/squid/cachemgr.conf"
 conf_files+=" /etc/squid/errorpage.css"
 conf_files+=" /etc/squid/mime.conf"
@@ -34,7 +34,6 @@ configure_args+=" --enable-auth-digest"
 configure_args+=" --enable-auth-negotiate"
 configure_args+=" --enable-auth-ntlm"
 configure_args+=" --enable-cache-digests"
-configure_args+=" --enable-carp"
 configure_args+=" --enable-delay-pools"
 configure_args+=" --enable-epoll"
 configure_args+=" --enable-esi"
@@ -43,15 +42,13 @@ configure_args+=" --enable-icap-client"
 configure_args+=" --enable-icmp"
 configure_args+=" --enable-ident-lookups"
 configure_args+=" --enable-linux-netfilter"
-configure_args+=" --enable-referer-log"
 configure_args+=" --enable-removal-policies=lru,heap"
 configure_args+=" --enable-snmp"
 configure_args+=" --enable-ssl-crtd"
 configure_args+=" --enable-storeio=aufs,ufs,diskd,rock"
-configure_args+=" --enable-truncate"
-configure_args+=" --enable-useragent-log"
 configure_args+=" --enable-wccpv2"
 configure_args+=" --libexecdir=/usr/libexec/squid"
+configure_args+=" --localstatedir=/var"
 configure_args+=" --sysconfdir=/etc/squid"
 configure_args+=" --with-build-environment=default"
 configure_args+=" --with-default-user=squid"
@@ -59,10 +56,6 @@ configure_args+=" --with-large-files"
 configure_args+=" --with-logdir=/var/log/squid"
 configure_args+=" --with-openssl=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-pidfile=/run/squid.pid"
-configure_args+=" BUILDCXX=$CXX_host"
-configure_args+=" BUILDCXXFLAGS=-O2"
-configure_args+=" squid_cv_gnu_atomics=yes"
-configure_args+=" squid_opt_enable_large_files=yes"
 # squid-conf-tests requires a squid user in the system
 make_check="no"
 system_accounts="squid"
@@ -74,15 +67,16 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   LDFLAGS+=" -latomic"
 fi
 
+pre_configure() {
+  export BUILDCXX="$CXX_host"
+  export BUILDCXXFLAGS="-O2"
+}
+
 post_install() {
   chmod u+s \
     "$DESTDIR/usr/libexec/squid/basic_ncsa_auth" \
     "$DESTDIR/usr/libexec/squid/basic_pam_auth" \
     "$DESTDIR/usr/libexec/squid/pinger"
-  cat >> "$DESTDIR/etc/squid/squid.conf" <<'EOF'
-# CVE-2018-1000027
-log_uses_indirect_client off
-EOF
   vinstall "$FILESDIR/cron.daily" 0744 etc/cron.daily squid
   vsv squid
 }
