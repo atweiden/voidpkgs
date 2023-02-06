@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libheif"
-version=1.12.0
-revision=3
+version=1.14.2
+revision=1
 short_desc="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 makedepends+=" libaom-devel"
 makedepends+=" libde265-devel"
@@ -12,12 +12,12 @@ hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-homepage="http://www.libheif.org"
+homepage="https://github.com/strukturag/libheif"
 license="LGPL-3.0-or-later"
+changelog="https://github.com/strukturag/libheif/releases"
 distfiles="https://github.com/strukturag/libheif/archive/v$version.tar.gz"
-checksum="086145b0d990182a033b0011caadb1b642da84f39ab83aa66d005610650b3c65"
+checksum="e9c88e75e3b7fad9df32e42d28646752de2679df57efddfb3f63cd25110ce9d9"
 build_style="gnu-configure"
-configure_args="--disable-option-checking"
 
 pre_configure() {
   ./autogen.sh
