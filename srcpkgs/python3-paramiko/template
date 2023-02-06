@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="python3-paramiko"
 version=2.11.0
-revision=2
+revision=3
 short_desc="Python3 SSH2 protocol library"
 depends+=" python3-bcrypt"
 depends+=" python3-cryptography"
 depends+=" python3-pyasn1"
 depends+=" python3-pynacl"
+depends+=" python3-six"
 hostmakedepends="python3-setuptools"
 homepage="http://www.paramiko.org/"
 license="LGPL-2.1-or-later"
