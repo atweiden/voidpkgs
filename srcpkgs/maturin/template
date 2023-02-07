@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="maturin"
-version=0.14.10
+version=0.14.12
 revision=1
 # bump target-lexicon version if it changes in Cargo.lock
 _tlver="0.12.5"
@@ -18,7 +18,7 @@ homepage="https://github.com/PyO3/maturin"
 license="Apache-2.0, MIT"
 distfiles+=" https://github.com/PyO3/maturin/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/bytecodealliance/target-lexicon/archive/v$_tlver.tar.gz>target-lexicon-$_tlver.tar.gz"
-checksum+=" 8fc9bcdcb7f1535d5e3e8bb500c348ca1bff5a6dce87b0ab7dbc5a49723da28a"
+checksum+=" b1b665ffdfe6fa7f6f7e3ee2b7c3927567dbebea704141ab30dae3a88aba82be"
 checksum+=" efc488676998ea73d107b0c2632cc71baff91b5ea95abb6064b48a09edc233f9"
 create_wrksrc="yes"
 build_style="python3-module"
