@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rustup"
-version=1.25.1
+version=1.25.2
 revision=1
 short_desc="Rust toolchain installer"
 # rustup doesn't recognize this target
@@ -11,8 +11,9 @@ makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
+changelog="https://github.com/rust-lang/rustup/raw/master/CHANGELOG.md"
 distfiles="https://github.com/rust-lang/rustup/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4d062c77b08309bd212f22dd7da1957c1882509c478e57762f34ec4fb2884c9a"
+checksum="dc9bb5d3dbac5cea9afa9b9c3c96fcf644a1e7ed6188a6b419dfe3605223b5f3"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features curl-backend,reqwest-backend,reqwest-default-tls,no-self-update"
