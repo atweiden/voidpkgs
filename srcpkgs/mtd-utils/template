@@ -1,18 +1,27 @@
-# Template file for 'mtd-utils'
-pkgname=mtd-utils
+maintainer="nox"
+pkgname="mtd-utils"
 version=2.1.5
 revision=1
-build_style=gnu-configure
-hostmakedepends="autoconf automake libtool pkg-config"
-makedepends="acl-devel liblzma-devel libuuid-devel lzo-devel
- zlib-devel openssl-devel libzstd-devel"
 short_desc="Memory Technology Device Utilities"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-or-later"
+makedepends+=" acl-devel"
+makedepends+=" liblzma-devel"
+makedepends+=" libuuid-devel"
+makedepends+=" libzstd-devel"
+makedepends+=" lzo-devel"
+makedepends+=" openssl-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" pkg-config"
 homepage="http://www.linux-mtd.infradead.org/"
-distfiles="https://github.com/sigma-star/mtd-utils/archive/v${version}.tar.gz"
-checksum=76f56daba7e56b1341b4c7494ba865553e52ded66acaf0e83c88489cc47dd3c9
+license="GPL-2.0-or-later"
+distfiles="https://github.com/sigma-star/mtd-utils/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="76f56daba7e56b1341b4c7494ba865553e52ded66acaf0e83c88489cc47dd3c9"
+build_style="gnu-configure"
 
 pre_configure() {
-	autoreconf -fi
+  autoreconf -fi
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
