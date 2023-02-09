@@ -9,12 +9,12 @@ makedepends+=" libsodium-devel"
 hostmakedepends="git"
 homepage="https://github.com/myfreeweb/freepass"
 license="Unlicense"
-_basedir="$pkgname-$_gitrev"
+build_wrksrc="cli"
 build_style="cargo"
 
 do_fetch() {
-  git clone "$homepage" "$_basedir"
-  cd "$_basedir"
+  git clone "$homepage" "$wrksrc"
+  cd "$wrksrc"
   git reset --hard "$_gitrev"
   git submodule update --init --recursive
 }
