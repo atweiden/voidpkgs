@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="acpid"
 version=2.0.34
-revision=1
+revision=2
 short_desc="ACPI Daemon (acpid) With Netlink Support"
 license="GPL-2.0-or-later"
 homepage="https://sourceforge.net/projects/acpid2/"
