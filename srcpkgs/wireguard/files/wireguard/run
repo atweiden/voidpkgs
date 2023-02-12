@@ -1,4 +1,5 @@
 #!/bin/sh
 [ -r ./conf ] && . ./conf
+exec 2>&1
 wg-quick up ${WIREGUARD_INTERFACE:-wg0} 1>&2
 exec pause
