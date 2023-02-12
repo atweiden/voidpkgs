@@ -17,6 +17,11 @@
 !/etc
 !/srcpkgs
 !/xbps-src
+
+# also except downstream docs and scripts
+!/docs
+!/scripts
+
 etc/conf
 etc/conf.*
 etc/virtual
