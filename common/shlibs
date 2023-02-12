@@ -503,7 +503,6 @@ libssh.so.4 libssh-0.9.5_2
 libssh2.so.1 libssh2-1.9.0_3
 libssl.so.1.1 libssl1.1-1.1.1f_1
 libssl.so.48 libssl48-3.1.1_1
-libssp.so.0 libssp-4.4.0_1
 libstdc++.so.6 libstdc++-4.4.0_1
 libsvn_client-1.so.0 libsvn-1.7.5_1
 libsvn_delta-1.so.0 libsvn-1.7.5_1

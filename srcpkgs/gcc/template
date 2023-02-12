@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gcc"
 version=12.2.0
-revision=1
+revision=2
 _minorver="${version%.*}"
 _majorver="${_minorver%.*}"
 _gmp_version=6.2.1
@@ -11,7 +11,6 @@ _isl_version=0.24
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
 depends+=" libgcc-devel-${version}_$revision"
-depends+=" libssp-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
 makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
@@ -55,10 +54,12 @@ fi
 nopie="yes"
 lib32disabled="yes"
 bootstrap="yes"
-replaces+=" gcc-gcj-jdk-compat<7.2.0"
 replaces+=" gcc-gcj<7.2.0"
+replaces+=" gcc-gcj-jdk-compat<7.2.0"
 replaces+=" libmpx>=0"
 replaces+=" libmpx-devel>=0"
+replaces+=" libssp>=0"
+replaces+=" libssp-devel>=0"
 _have_gccgo="yes"
 # mips is untested and does not have go in cross toolchains
 # 32-bit powerpc seems weirdly broken since the 10.x release
@@ -86,8 +87,6 @@ subpackages+=" libgomp"
 subpackages+=" libgomp-devel"
 subpackages+=" libatomic"
 subpackages+=" libatomic-devel"
-subpackages+=" libssp"
-subpackages+=" libssp-devel"
 if [[ -n "$CHROOT_READY" ]]; then
   subpackages+=" gcc-fortran"
   subpackages+=" libgfortran-devel"
@@ -384,6 +383,7 @@ do_configure() {
   export CXXFLAGS="${CXXFLAGS//-fno-PIE/}"
   export LDFLAGS="${LDFLAGS//-no-pie/}"
 
+  _args+=" --disable-libssp"
   _args+=" --disable-libstdcxx-pch"
   _args+=" --disable-multilib"
   _args+=" --disable-nls"
@@ -840,23 +840,6 @@ libsanitizer_package() {
   short_desc+=" - sanitizer libraries"
   pkg_install() {
     vmove "usr/lib/lib*san*.so.*"
-  }
-}
-
-libssp-devel_package() {
-  depends="libssp>=$_minorver"
-  short_desc+=" - SSP (StackSmashingProtection) library - development files"
-  pkg_install() {
-    vmove "usr/lib/libssp*.a"
-    vmove "usr/lib/gcc/$_triplet/$_minorver/include/ssp"
-  }
-}
-
-libssp_package() {
-  short_desc+=" - SSP (StackSmashingProtection) library"
-  pkg_install() {
-    vmove "usr/lib/libssp.so*"
-    vlicense COPYING.RUNTIME RUNTIME.LIBRARY.EXCEPTION
   }
 }
 

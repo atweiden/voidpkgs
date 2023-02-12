@@ -227,8 +227,6 @@ constant %PKG = Map.new(
                 libquadmath-devel
                 libsanitizer
                 libsanitizer-devel
-                libssp
-                libssp-devel
                 libstdc++
                 libstdc++-devel
                 libvtv
