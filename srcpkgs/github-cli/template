@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="github-cli"
-version=2.22.1
+version=2.23.0
 revision=1
 short_desc="GitHub CLI tool"
 homepage="https://cli.github.com"
 license="MIT"
 changelog="https://github.com/cli/cli/releases"
 distfiles="https://github.com/cli/cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="09cdd1c435d453a0c610f407979ecf8d314aec41d7b8004794f136f05b0fe688"
+checksum="1e9f92a47caa92efedc06b22cfe9c951c5163c4a9bc60a45d477fd5d9b592e54"
 build_style="go"
 go_import_path="github.com/cli/cli/v2/cmd/gh"
 go_build_tags="netgo"
