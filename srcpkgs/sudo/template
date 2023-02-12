@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sudo"
 version=1.9.12p2
-revision=1
+revision=2
 short_desc="Allow others to run commands as root"
 makedepends+=" pam-devel"
 makedepends+=" zlib-devel"

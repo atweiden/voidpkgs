@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pax"
 version=20201030
-revision=1
+revision=2
 short_desc="POSIX archiving utility pax from MirOS (plus tar and cpio)"
 hostmakedepends="cpio"
 homepage="https://www.mirbsd.org/MirOS/dist/mir/cpio/"

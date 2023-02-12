@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dqlite"
 version=1.13.0
-revision=1
+revision=2
 short_desc="Distributed SQLite database using the Raft algorithm"
 makedepends+=" raft-devel"
 makedepends+=" sqlite-devel"

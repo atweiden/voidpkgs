@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="p0f"
 version=3.09b
-revision=3
+revision=4
 short_desc="Passive OS fingerprinting tool"
 makedepends="libpcap-devel"
 homepage="https://lcamtuf.coredump.cx/p0f3"

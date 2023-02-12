@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="raft"
 version=0.16.0
-revision=1
+revision=2
 short_desc="C implementation of the Raft consensus protocol"
 makedepends+=" liblz4-devel"
 makedepends+=" libuv-devel"

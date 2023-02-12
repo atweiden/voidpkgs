@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tini"
 version=0.19.0
-revision=1
+revision=2
 short_desc="Tiny but valid init for containers"
 homepage="https://github.com/krallin/tini"
 license="MIT"
