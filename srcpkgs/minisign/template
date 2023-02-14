@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="minisign"
-version=0.10
+version=0.11
 revision=1
 short_desc="Simple tool to sign files and verify signatures"
 makedepends="libsodium-devel"
 hostmakedepends="pkg-config"
 homepage="https://jedisct1.github.io/minisign"
-license="MIT"
+license="ISC"
+changelog="https://github.com/jedisct1/minisign/releases"
 distfiles="https://github.com/jedisct1/minisign/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9fe40c2bd899a91f6b62a6ff3d469ece670f155307df50c2482ddd31337ab6da"
+checksum="74c2c78a1cd51a43a6c98f46a4eabefbc8668074ca9aa14115544276b663fc55"
 build_style="cmake"
 
 post_install() {
