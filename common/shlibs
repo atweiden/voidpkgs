@@ -758,7 +758,7 @@ libxmlrpc_server_cgi++.so.8 xmlrpc-c-1.51.06_2
 libxmlrpc_server_pstream++.so.8 xmlrpc-c-1.51.06_2
 libxmlrpc_util++.so.8 xmlrpc-c-1.51.06_2
 libxmlrpc_util.so.4 xmlrpc-c-1.51.06_2
-libyascreen.so.1 yascreen-1.92_1
+libyascreen.so.0 yascreen-1.96_1
 libzcash_script.so.0 zcash-4.6.0_1
 libzmq.so.5 zeromq-4.1.2_1
 libz.so.1 zlib-1.2.3_1
