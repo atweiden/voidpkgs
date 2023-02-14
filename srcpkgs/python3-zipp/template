@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-zipp"
-version=3.12.0
+version=3.13.0
 revision=1
 short_desc="Pathlib-compatible Zipfile object wrapper (Python 3)"
 depends="python3"
@@ -10,8 +10,10 @@ homepage="https://pypi.org/project/zipp/"
 license="MIT"
 changelog="https://github.com/jaraco/zipp/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/z/zipp/zipp-$version.tar.gz"
-checksum="73efd63936398aac78fd92b6f4865190119d6c91b531532e798977ea8dd402eb"
+checksum="23f70e964bc11a34cef175bc90ba2914e1e4545ea1e3e2f67c079671883f9cb6"
 build_style="python3-pep517"
+# unpackaged: jaraco.itertools
+make_check="no"
 
 post_install() {
   vlicense LICENSE
