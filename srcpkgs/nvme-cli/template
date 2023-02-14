@@ -1,17 +1,16 @@
 maintainer="nox"
 pkgname="nvme-cli"
-version=2.1.2
+version=2.2.1
 revision=1
 short_desc="NVMe management command line interface"
 makedepends+=" json-c-devel"
 makedepends+=" libnvme-devel"
-makedepends+=" libuuid-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="http://nvmexpress.org"
 license="GPL-2.0-only"
 distfiles="https://github.com/linux-nvme/nvme-cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b39811fd2ab8005d515f2f539984cc08f9ab1fe34e5359da10091fdf153df231"
+checksum="68720bc25c68adb93dafe1186de4fabbe40f8390ff1416256b52fe74f78259ae"
 conf_files="/etc/nvme/*.conf"
 build_style="meson"
 configure_args+=" -Ddocs=man"
@@ -24,12 +23,11 @@ else
 fi
 
 post_install() {
-  # remove files that are systemd-only
-  rm -rf "$DESTDIR/usr/lib/systemd"
+  # remove files that need systemd
   # calls systemctl
-  rm -rf "$DESTDIR/usr/lib/udev/rules.d/70-nvmf-autoconnect.rules"
+  rm "$DESTDIR/usr/lib/udev/rules.d/70-nvmf-autoconnect.rules"
   # needs 70-nvmf-autoconnect.rules
-  rm -rf "$DESTDIR/usr/lib/dracut/dracut.conf.d/70-nvmf-autoconnect.conf"
+  rm "$DESTDIR/usr/lib/dracut/dracut.conf.d/70-nvmf-autoconnect.conf"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
