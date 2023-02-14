@@ -424,6 +424,7 @@ libnl-idiag-3.so.200 libnl3-3.2.28_1
 libnl-xfrm-3.so.200 libnl3-3.4.0_1
 libnuma.so.1 libnuma-2.0.7_1
 libnvme.so.1 libnvme-1.0_1
+libnvme-mi.so.1 libnvme-1.2_1
 libobjc.so.4 libobjc-4.7.3_12
 libodbc.so.2 libodbc-2.3.1_1
 libodbcinst.so.2 libodbc-2.3.1_1
