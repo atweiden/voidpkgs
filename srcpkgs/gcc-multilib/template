@@ -3,7 +3,7 @@ _triplet="x86_64-unknown-linux-gnu"
 maintainer="nox"
 pkgname="gcc-multilib"
 version=12.2.0
-revision=1
+revision=2
 _majorver="${version%.*}"
 short_desc="GNU Compiler Collection (multilib files)"
 archs="x86_64"
@@ -16,7 +16,6 @@ depends+=" libgcc-32bit>=$_majorver"
 depends+=" libgomp-devel-32bit>=$_majorver"
 depends+=" libitm-devel-32bit>=$_majorver"
 depends+=" libsanitizer-devel-32bit>=$_majorver"
-depends+=" libssp-devel-32bit>=$_majorver"
 depends+=" libvtv-devel-32bit>=$_majorver"
 depends+=" zlib-32bit"
 makedepends+=" glibc-32bit"
@@ -32,7 +31,9 @@ hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
 distfiles="$GNU_SITE/gcc/$pkgname-$version/$pkgname-$version.tar.xz"
 checksum="e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff"
-replaces="libmpx-devel-32bit>=0"
+replaces+=" libmpx-devel-32bit>=0"
+replaces+=" libssp-32bit>=0"
+replaces+=" libssp-devel-32bit>=0"
 
 do_configure() {
   ldconfig &>/dev/null
@@ -50,6 +51,7 @@ do_configure() {
 
   ./configure                      \
     --disable-bootstrap            \
+    --disable-libssp               \
     --disable-libstdcxx-pch        \
     --disable-rpath                \
     --disable-target-libiberty     \
