@@ -1,20 +1,20 @@
 maintainer="nox"
 pkgname="haproxy"
-version=2.4.20
+version=2.6.9
 revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" lua53-devel"
 makedepends+=" openssl-devel"
-makedepends+=" pcre-devel"
+makedepends+=" pcre2-devel"
 checkdepends+=" curl"
 checkdepends+=" varnish"
 hostmakedepends="lua53-devel"
 homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
-changelog="https://www.haproxy.org/download/2.4/src/CHANGELOG"
+changelog="https://www.haproxy.org/download/${version%.*}/src/CHANGELOG"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="415c62d2159941a17c443941aa85e7353047d79f3b72a0e7062473f7e753cacc"
+checksum="f01a1c5f465dc1b5cd175d0b28b98beb4dfe82b5b5b63ddcc68d1df433641701"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
@@ -46,8 +46,8 @@ do_build() {
     USE_LIBCRYPT=1 \
     USE_LUA=1 \
     USE_OPENSSL=1 \
-    USE_PCRE=1 \
-    USE_PCRE_JIT=1 \
+    USE_PCRE2=1 \
+    USE_PCRE2_JIT=1 \
     USE_PROMEX=1 \
     USE_ZLIB=1 \
     "$makejobs"
