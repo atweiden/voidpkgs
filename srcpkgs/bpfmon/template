@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bpfmon"
 version=2.51
-revision=1
+revision=2
 short_desc="BPF based visual packet rate monitor"
 makedepends+=" libpcap-devel"
 makedepends+=" yascreen-devel"
