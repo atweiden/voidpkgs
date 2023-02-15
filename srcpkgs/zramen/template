@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zramen"
-version=0.2.1
-revision=2
+version=0.3.0
+revision=1
 short_desc="Manage zram swap space"
 depends+=" virtual?awk"
 depends+=" bash"
@@ -13,7 +13,7 @@ depends+=" util-linux"
 homepage="https://github.com/atweiden/zramen"
 license="Unlicense"
 distfiles="https://github.com/atweiden/zramen/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="368d384eff501392e8dd12dbd12cc490352267fb214ec78f9b5f08f0883bc7c1"
+checksum="50c9fcc69c70454beed21a2c2600c5ce46d2c2ae647579cfa2ac9e9675d6d645"
 conf_files="/etc/sv/zramen/conf"
 
 do_install() {
