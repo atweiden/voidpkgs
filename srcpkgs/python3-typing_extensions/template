@@ -1,14 +1,18 @@
 maintainer="nox"
 pkgname="python3-typing_extensions"
-version=4.2.0
-revision=2
+version=4.4.0
+revision=1
 short_desc="Backported and Experimental Type Hints for Python 3.5+"
 depends="python3"
 hostmakedepends="python3-flit_core"
-homepage="https://github.com/python/typing"
+homepage="https://github.com/python/typing_extensions"
 license="Python-2.0"
+changelog="https://github.com/python/typing_extensions/raw/main/CHANGELOG.md"
 distfiles="$PYPI_SITE/t/typing_extensions/typing_extensions-$version.tar.gz"
-checksum="f1c24655a0da0d1b67f07e17a5e6b2a105894e6824b92096378bb3668ef02376"
+checksum="1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa"
 build_style="python3-pep517"
+# depends on the test module, which is intentionally not included in
+# the python3 package
+make_check="no"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
