@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pahole"
 version=1.23
-revision=2
+revision=4
 short_desc="Various DWARF utils"
 makedepends+=" elfutils-devel"
 makedepends+=" zlib-devel"
@@ -9,13 +9,15 @@ case $XBPS_TARGET_MACHINE in
   *-musl)
     makedepends+=" argp-standalone"
     makedepends+=" musl-obstack-devel"
+    ;;
 esac
 homepage="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license="GPL-2.0-only"
-distfiles="https://fedorapeople.org/~acme/dwarves/dwarves-$version.tar.xz"
+distfiles="https://fedorapeople.org/~acme/dwarves/dwarves-$version.tar.xz>$pkgname-$version.tar.xz"
 checksum="f085c25f068627d10e54bd030464f8952f5b2211d4ba26047fe209377470862a"
 build_style="cmake"
 configure_args="-D__LIB=lib"
+reverts="1.24_1"
 
 pre_configure() {
   case $XBPS_TARGET_MACHINE in
@@ -24,6 +26,7 @@ pre_configure() {
         -i \
         -e "/^target_link_libraries/s/)/ obstack argp)/" \
         CMakeLists.txt
+      ;;
   esac
 }
 
