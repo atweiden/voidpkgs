@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux5.15"
-version=5.15.85
+version=5.15.94
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -29,7 +29,7 @@ license="GPL-2.0-only"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version%.*}.tar.xz"
 distfiles+=" https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-$version.xz"
 checksum+=" 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8"
-checksum+=" bcf81892e467380e79f54b7856cbcf9d0de5dc33ac32570e788b980d7027620c"
+checksum+=" ff30c9eb2ba8a54e6edba9150fa9725cf451507afa6f5c76f23a9421778a5fbc"
 skip_extraction="patch-$version.xz"
 python_version=3
 # -dbg package is generated below manually
