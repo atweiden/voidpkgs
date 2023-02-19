@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="vim"
-version=9.0.0948
+version=9.0.1321
 revision=1
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
@@ -18,7 +18,7 @@ hostmakedepends+=" pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
 distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f0d98cf3005045363066373c6070076f5feaca8de1d34c2d501abc59e90bbc41"
+checksum="8334f08acbd351c27af6d191d8215c8402ceb4ebda51a1dc5c8144f45418df0f"
 build_style="gnu-configure"
 configure_args+=" --disable-canberra"
 configure_args+=" --disable-cscope"
