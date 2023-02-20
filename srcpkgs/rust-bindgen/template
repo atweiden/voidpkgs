@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rust-bindgen"
-version=0.63.0
+version=0.64.0
 revision=1
 short_desc="Tool to generate Rust FFI bindings to C (and some C++) libraries"
 depends="libclang"
@@ -9,7 +9,7 @@ homepage="https://rust-lang.github.io/rust-bindgen/"
 license="BSD-3-Clause"
 changelog="https://github.com/rust-lang/rust-bindgen/raw/master/CHANGELOG.md"
 distfiles="https://github.com/rust-lang/rust-bindgen/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9fdfea04da35b9f602967426e4a5893e4efb453bceb0d7954efb1b3c88caaf33"
+checksum="9d987e7e2cefebed2c856ba36438e75af00aa08d4274fc15b8c20886065cb1f2"
 build_style="cargo"
 configure_args="--bins"
 make_install_args="--path bindgen-cli"
