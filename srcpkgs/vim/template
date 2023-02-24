@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vim"
 version=9.0.1321
-revision=1
+revision=2
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
 makedepends+=" acl-devel"
@@ -17,8 +17,11 @@ hostmakedepends+=" gettext"
 hostmakedepends+=" pkgconf"
 homepage="https://www.vim.org/"
 license="Vim"
-distfiles="https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8334f08acbd351c27af6d191d8215c8402ceb4ebda51a1dc5c8144f45418df0f"
+distfiles+=" https://github.com/vim/vim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://www.drchip.org/astronaut/vim/syntax/sh.vim.gz"
+checksum+=" 8334f08acbd351c27af6d191d8215c8402ceb4ebda51a1dc5c8144f45418df0f"
+checksum+=" 7da50517fb9f6ae4c35789e75ab44dedeca7e1364ec325e3501578d8102d515d"
+create_wrksrc="required"
 build_style="gnu-configure"
 configure_args+=" --disable-canberra"
 configure_args+=" --disable-cscope"
@@ -63,6 +66,11 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 make_install_args="VIMRCLOC=/etc"
 python_version=3
+
+pre_configure() {
+  # https://github.com/vim/vim/issues/11977
+  cp sh.vim "$pkgname-$version/runtime/syntax/sh.vim"
+}
 
 do_check() {
   cd "$wrksrc"
