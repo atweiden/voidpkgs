@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libtool"
 version=2.4.7
-revision=3
+revision=4
 short_desc="Generic library support script"
 depends+=" grep"
 depends+=" sed"
@@ -52,10 +52,10 @@ post_install() {
   # things that need to go; the target libtool script is meant to be used
   # in native environments, not in cross environments, so patch the script
   if [[ -n "$CROSS_BUILD" ]]; then
-    # e.g. AR="armv7l-linux-gnueabihf-ar" becomes AR="${AR:=ar}"
+    # e.g. AR="armv7l-linux-gnueabihf-ar" becomes AR="ar"
     vsed \
       -i \
-      -e "s,\([A-Z]\+\)=\"$XBPS_CROSS_TRIPLET\-\(.*\)\",\1=\$\{\1:=\2\},g" \
+      -e "s,\([A-Z]\+\)=\"$XBPS_CROSS_TRIPLET\-\(.*\)\",\1=\"\2\",g" \
       "$PKGDESTDIR/usr/bin/libtool"
 
     # clear out any sysroot present
@@ -69,6 +69,24 @@ post_install() {
       -i \
       -e "s,\-I$XBPS_CROSS_BASE/usr/include,,g" \
       "$PKGDESTDIR/usr/bin/libtool"
+
+    # strip cross sysroot from paths
+    vsed \
+      -i \
+      -e "s,$XBPS_CROSS_BASE,,g" \
+     "$PKGDESTDIR/usr/bin/libtool"
+
+    if [[ "$XBPS_TARGET_WORDSIZE" == "64" ]]; then
+      vsed \
+        -i \
+        -e "s,/$XBPS_CROSS_TRIPLET/lib/../lib64,/lib64,g" \
+        "$PKGDESTDIR/usr/bin/libtool"
+    else
+      vsed \
+        -i \
+        -e "s,/$XBPS_CROSS_TRIPLET/lib,/lib,g" \
+        "$PKGDESTDIR/usr/bin/libtool"
+    fi
 
     # canonicalize host_alias, replace build(_alias,_os)
     _canonical_host=$(grep "^host=" "$PKGDESTDIR/usr/bin/libtool" | sed 's/host=//')
