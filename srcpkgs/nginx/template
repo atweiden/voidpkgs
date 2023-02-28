@@ -242,5 +242,8 @@ nginx-mod-stream-geoip_package() {
 # On update, the pregenerated header file for ARM may need
 # synchronization. See srcpkgs/nginx/files/ngx_auto_config.h.armv6l.patch
 # for more information.
+#
+# Consider using mime.types from mime-types package. See comments in
+# mime-types template.
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
