@@ -1,16 +1,29 @@
 maintainer="nox"
 pkgname="mime-types"
-version=9
-revision=5
+version=2.1.53
+revision=1
 short_desc="Provides a shared /etc/mime.types file"
-homepage="http://www.gentoo.org"
-license="GPL-2.0-or-later"
-distfiles="http://mirrors.kernel.org/gentoo/distfiles/$pkgname-$version.tar.bz2"
-checksum="b4638a734f121be30a546ed092aec16bf74e9b88ed7921fba89cf7e2c0462b5e"
+homepage="https://pagure.io/mailcap"
+license="Public Domain, MIT"
+distfiles="https://releases.pagure.org/mailcap/mailcap-$version.tar.xz"
+checksum="5eea2ef17b304977ba3ecb87afad4319fa0440f825e4f6fba6e8fa2ffeb88785"
 conf_files="/etc/mime.types"
+#conf_files+=" /etc/nginx/mime.types"
+reverts+=" 9_1"
+reverts+=" 9_2"
+reverts+=" 9_3"
+reverts+=" 9_4"
+reverts+=" 9_5"
+
+do_build() {
+  : sh generate-nginx-mimetypes.sh < mime.types > mime.types.nginx
+}
 
 do_install() {
   vconf mime.types
+  #vinstall 644 mime.types.nginx etc/nginx/mime.types
+  vman mailcap.5
+  vlicense COPYING
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
