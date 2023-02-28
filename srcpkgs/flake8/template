@@ -10,13 +10,21 @@ checkdepends+=" $depends"
 checkdepends+=" python3-mock"
 checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
-homepage="https://gitlab.com/pycqa/flake8"
+homepage="https://flake8.pycqa.org/"
 license="MIT"
-changelog="https://github.com/PyCQA/flake8/raw/master/docs/source/release-notes/$version.rst"
+changelog="https://github.com/PyCQA/flake8/raw/main/docs/source/release-notes/$version.rst"
 distfiles="$PYPI_SITE/f/flake8/flake8-$version.tar.gz"
 checksum="c61007e76655af75e6785a931f452915b371dc48f56efd765247c8fe68f2b181"
 build_style="python3-module"
-make_check_args="--deselect=tests/unit/plugins/pycodestyle_test.py"
+
+do_check() {
+  local testdir
+  testdir="tmp/$(date +%s)"
+  python3 setup.py install --prefix="/usr" --root="$testdir"
+  PATH="$testdir/usr/bin:$PATH" \
+  PYTHONPATH="$testdir/$py3_sitelib" \
+    pytest3 --ignore tests/unit/plugins/pycodestyle_test.py
+}
 
 post_install() {
   vlicense LICENSE
