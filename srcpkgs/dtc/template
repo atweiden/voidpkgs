@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dtc"
-version=1.6.1
+version=1.7.0
 revision=1
 short_desc="Device Tree Compiler"
 makedepends="libyaml-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://git.kernel.org/pub/scm/utils/dtc/dtc.git"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/utils/dtc/$pkgname-$version.tar.xz"
-checksum="65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473"
+checksum="29edce3d302a15563d8663198bbc398c5a0554765c83830d0d4c0409d21a16c4"
 build_style="gnu-makefile"
 make_build_args="NO_PYTHON=1"
 make_install_args="$make_build_args"
