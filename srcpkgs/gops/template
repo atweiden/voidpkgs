@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="gops"
-version=0.3.26
+version=0.3.27
 revision=1
 short_desc="List and diagnose Go processes currently running on your system"
 homepage="https://github.com/google/gops"
 license="BSD-3-Clause"
+changelog="https://github.com/google/gops/releases"
 distfiles="https://github.com/google/gops/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c6f9fb32deb94ad057822d342c57f74cae2c10c70b7fb712fcb0c1413c1cb169"
+checksum="1d5b8b0979c284d29d85f44aba6d0a5175059568aa698a242c5bc1d772263746"
 build_style="go"
 go_import_path="github.com/google/gops"
 go_build_tags="netgo"
