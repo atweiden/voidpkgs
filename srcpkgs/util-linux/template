@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="util-linux"
 version=2.38.1
-revision=2
+revision=3
 short_desc="Miscellaneous linux utilities"
 depends+=" libblkid>=${version}_1<=${version}_9999"
 depends+=" libfdisk>=${version}_1<=${version}_9999"
