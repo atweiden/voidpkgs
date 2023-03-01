@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bpftrace"
 version=0.17.0
-revision=1
+revision=2
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -29,10 +29,5 @@ configure_args+=" -DUSE_SYSTEM_BPF_BCC=ON"
 nostrip="yes"
 
 CXXFLAGS="-isystem $XBPS_CROSS_BASE/usr/include/bcc/compat"
-
-post_install() {
-  # clashes with bcc-tools
-  rm -rf "$DESTDIR/usr/share/man"
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
