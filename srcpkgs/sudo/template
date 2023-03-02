@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sudo"
 version=1.9.13p2
-revision=1
+revision=2
 short_desc="Allow others to run commands as root"
 makedepends+=" pam-devel"
 makedepends+=" zlib-devel"
@@ -49,6 +49,7 @@ pre_install() {
 }
 
 post_install() {
+  chmod +s "$DESTDIR/usr/bin/sudo"
   vlicense LICENSE.md
   vinstall "$FILESDIR/sudo.pam" 644 etc/pam.d sudo
   # remove unused stuff
