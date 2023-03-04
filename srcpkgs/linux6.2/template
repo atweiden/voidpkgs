@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux6.2"
-version=6.2.0
+version=6.2.2
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -30,7 +30,8 @@ if [[ "${version##*.}" != "0" ]]; then
   distfiles+=" $KERNEL_SITE/kernel/v${version%%.*}.x/patch-$version.xz"
   skip_extraction="patch-$version.xz"
 fi
-checksum="74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1"
+checksum+=" 74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1"
+checksum+=" a1699c7183afcbb2af7c0afb30a2680f867775f934b111a382cbb16760f2f8fa"
 skip_extraction="patch-$version.xz"
 python_version=3
 # -dbg package is generated below manually
