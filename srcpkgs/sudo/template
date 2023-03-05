@@ -40,16 +40,7 @@ post_configure() {
   esac
 }
 
-pre_install() {
-  find "$wrksrc" -type f -name Makefile \
-    -exec sed \
-            -i \
-            -e 's,$(INSTALL_OWNER),,g' \
-            {} \;
-}
-
 post_install() {
-  chmod +s "$DESTDIR/usr/bin/sudo"
   vlicense LICENSE.md
   vinstall "$FILESDIR/sudo.pam" 644 etc/pam.d sudo
   # remove unused stuff
