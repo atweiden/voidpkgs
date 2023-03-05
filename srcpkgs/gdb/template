@@ -39,6 +39,7 @@ configure_args+=" $(vopt_with debuginfod)"
 configure_args+=" $(vopt_with guile)"
 # tests take too long, not all of them pass
 make_check="extended"
+python_version=3
 pycompile_dirs="/usr/share/gdb/python"
 ignore_elf_files+=" /usr/share/gdb/guile/gdb.go"
 ignore_elf_files+=" /usr/share/gdb/guile/gdb/experimental.go"
