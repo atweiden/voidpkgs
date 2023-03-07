@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-cryptography"
-version=39.0.1
+version=39.0.2
 revision=1
 short_desc="Python3 library that provides cryptographic recipes and primitives"
 depends="python3-cffi"
@@ -21,7 +21,7 @@ homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 changelog="https://github.com/pyca/cryptography/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cryptography/cryptography-$version.tar.gz"
-checksum="d1f6198ee6d9148405e49887803907fe8962a23e6c6f83ea7d98f1c0de375695"
+checksum="bc5b871e977c8ee5a1bbc42fa8d19bcc08baf0c51cbf1586b0e87a2694dde42f"
 build_style="python3-module"
 build_helper="rust"
 make_check_args+=" --ignore tests/bench/test_aead.py"
