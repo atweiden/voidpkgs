@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="meson"
-version=1.0.0
+version=1.0.1
 revision=1
 short_desc="Super fast build system"
 depends+=" ninja"
@@ -11,7 +11,7 @@ homepage="https://mesonbuild.com"
 license="Apache-2.0"
 changelog="https://github.com/mesonbuild/meson/raw/master/docs/markdown/Release-notes-for-${version%.?}.0.md"
 distfiles="https://github.com/mesonbuild/meson/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="aa50a4ba4557c25e7d48446abfde857957dcdf58385fffbe670ba0e8efacce05"
+checksum="d926b730de6f518728cc7c57bc5e701667bae0c3522f9e369427b2cc7839d3c1"
 build_style="python3-module"
 
 # XXX: sanitizers aren't available on musl
