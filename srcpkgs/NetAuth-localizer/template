@@ -14,6 +14,7 @@ go_package="$go_import_path/cmd/localize"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

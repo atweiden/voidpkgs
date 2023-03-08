@@ -18,6 +18,7 @@ go_build_tags+=" seccomp"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.version=$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

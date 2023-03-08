@@ -21,6 +21,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/build.Commit=v${version%beta}-beta"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 go_mod_mode="vendor"
 
 export CGO_ENABLED=0

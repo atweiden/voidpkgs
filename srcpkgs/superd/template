@@ -17,6 +17,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 make_dirs="/etc/superd/services 0755 root root"
 
 export GOFLAGS="-trimpath"

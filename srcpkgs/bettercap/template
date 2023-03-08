@@ -17,6 +17,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 # fix: collect2: fatal error: cannot find 'ld'
 go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

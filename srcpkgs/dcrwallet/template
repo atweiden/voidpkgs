@@ -15,6 +15,7 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
 go_ldflags+=" -X $go_import_path/version.PreRelease="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 # objdump: .gnu.version_r invalid entry, private headers incomplete
 nopie_files="/usr/bin/dcrpromptsecret"
 

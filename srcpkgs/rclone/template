@@ -13,8 +13,9 @@ go_import_path="github.com/rclone/rclone"
 go_build_tags+=" netgo"
 go_build_tags+=" noselfupdate"
 go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
 go_ldflags+=" -X github.com/rclone/rclone/fs.Version=v$version"
+go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
+go_ldflags+=" -linkmode=external"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

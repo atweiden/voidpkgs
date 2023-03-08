@@ -17,6 +17,7 @@ go_build_tags+=" noembed"
 go_build_tags+=" seccomp"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

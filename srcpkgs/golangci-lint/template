@@ -17,6 +17,7 @@ go_ldflags+=" -X main.date=$SOURCE_DATE_EPOCH"
 go_ldflags+=" -X main.commit=v$version"
 # fix: collect2: fatal error: cannot find 'ld'
 go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

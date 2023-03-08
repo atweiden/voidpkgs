@@ -15,6 +15,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 ignore_elf_dirs="/usr/share/aerc/filters"
 
 export GOFLAGS="-trimpath"

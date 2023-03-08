@@ -16,11 +16,7 @@ go_build_tags+=" release"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/sdk/version.GitCommit=$_gitrev"
 go_ldflags+=" -extldflags=-static"
-case "$XBPS_TARGET_MACHINE" in
-  arm*)
-    go_ldflags+=" -linkmode=external"
-    ;;
-esac
+go_ldflags+=" -linkmode=external"
 system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
 make_dirs+=" /etc/vault 0750 root _vault"

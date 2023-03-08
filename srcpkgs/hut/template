@@ -14,6 +14,7 @@ go_import_path="git.sr.ht/~emersion/hut"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

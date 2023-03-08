@@ -14,6 +14,7 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/claudiodangelis/qrcp/version.version=$version"
 go_ldflags+=" -X github.com/claudiodangelis/qrcp/version.date=$(date -d@$SOURCE_DATE_EPOCH +%Y-%m-%dT%H:%M:%SZ)"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

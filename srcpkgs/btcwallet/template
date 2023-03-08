@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="btcwallet"
-version=0.16.1
+version=0.16.7
 revision=1
 short_desc="Secure Bitcoin wallet daemon written in Go"
 tags="btcsuite"
@@ -8,7 +8,7 @@ homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
 changelog="https://github.com/btcsuite/btcwallet/raw/master/CHANGES"
 distfiles="https://github.com/btcsuite/btcwallet/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7015c34911d61ce25544b1e0ad2ce68176a44dad1bf6d49381aa4663c7730787"
+checksum="aa6fbf0e65b444c9da03971a68fa40b9f2c81feb4e70c9f82c0c443a359d99be"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
 go_package+=" $go_import_path"
@@ -17,6 +17,7 @@ go_package+=" $go_import_path/cmd/sweepaccount"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

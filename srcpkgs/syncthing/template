@@ -18,6 +18,7 @@ go_build_tags+=" noupgrade"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/lib/build.Version=v$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

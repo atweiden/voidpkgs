@@ -14,6 +14,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/cli/cli/v2/internal/build.Version=v$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

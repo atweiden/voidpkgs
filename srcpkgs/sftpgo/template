@@ -12,6 +12,7 @@ go_import_path="github.com/drakkan/sftpgo/v2"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 make_dirs="/var/lib/sftpgo root root 0750"
 
 export GOFLAGS="-trimpath"

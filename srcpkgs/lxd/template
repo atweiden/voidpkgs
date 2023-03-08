@@ -35,6 +35,7 @@ go_build_tags+=" libsqlite3"
 go_build_tags+=" netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 system_groups="lxd"
 
 # whitelist dqlite LDFLAGS

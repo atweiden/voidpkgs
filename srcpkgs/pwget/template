@@ -13,6 +13,7 @@ go_import_path="github.com/majewsky/pwget"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

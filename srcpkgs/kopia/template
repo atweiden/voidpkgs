@@ -14,6 +14,7 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/repo.BuildVersion=$version"
 go_ldflags+=" -X $go_import_path/repo.BuildInfo=void-nox"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 
 export GOFLAGS="-trimpath"
 

@@ -12,11 +12,7 @@ go_import_path="github.com/hashicorp/packer"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
-case "$XBPS_TARGET_MACHINE" in
-  arm*)
-    go_ldflags+=" -linkmode=external"
-    ;;
-esac
+go_ldflags+=" -linkmode=external"
 replaces="packer-bin>=0"
 
 export GOFLAGS="-trimpath"

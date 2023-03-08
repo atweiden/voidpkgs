@@ -26,6 +26,7 @@ go_import_path="github.com/docker/docker"
 go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 system_groups="docker"
 
 export GOFLAGS="-trimpath"

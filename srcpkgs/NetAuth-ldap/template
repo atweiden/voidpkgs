@@ -13,6 +13,7 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/netauth/ldap/internal/buildinfo.Version=$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 system_accounts="_netauth_ldap"
 
 export GOFLAGS="-trimpath"

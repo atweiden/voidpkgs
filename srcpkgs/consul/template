@@ -15,6 +15,7 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
 go_ldflags+=" -X $go_import_path/version.GitDescribe=v$version"
 go_ldflags+=" -extldflags=-static"
+go_ldflags+=" -linkmode=external"
 # consul has a vendor directory, but relies on replace statements in
 # go.mod, so force default non-vendor behavior
 go_mod_mode="default"
