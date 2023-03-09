@@ -19,8 +19,10 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/build.BuildMetadata="
 go_ldflags+=" -X $go_import_path/build.Commit=v$version"
 go_ldflags+=" -X $go_import_path/build.PreRelease="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export CGO_ENABLED=0
 

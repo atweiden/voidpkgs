@@ -10,9 +10,11 @@ checksum="3ac091dacf81357a83b5c8bf17bbcb325371111b88bc59fa79c8354be2273145"
 build_style="go"
 go_import_path="github.com/goreleaser/goreleaser"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

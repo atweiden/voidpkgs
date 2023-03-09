@@ -11,9 +11,11 @@ checksum="bbbd5c472c36b78896cd7ae673749d3943621a6d5523d47973ed2fc6800ae4c8"
 build_style="go"
 go_import_path="github.com/svent/sift"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

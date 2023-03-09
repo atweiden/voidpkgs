@@ -19,9 +19,11 @@ go_package+=" $_gh_import_path/cmd/csppserver"
 go_package+=" $_gh_import_path/cmd/csppsolver"
 go_package+=" $_gh_import_path/cmd/report2csv"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"

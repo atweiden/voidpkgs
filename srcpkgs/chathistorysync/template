@@ -11,9 +11,11 @@ checksum="97d428a7ce46caabdfcf13e1863eeaa534b7c8247d8bd9f8cbcc64c20e5cf86a"
 build_style="go"
 go_import_path="git.sr.ht/~emersion/chathistorysync"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

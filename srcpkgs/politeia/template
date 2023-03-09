@@ -23,8 +23,10 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/decred/politeia/util/version.BuildMetadata="
 go_ldflags+=" -X github.com/decred/politeia/util/version.PreRelease="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 # XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
 export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"

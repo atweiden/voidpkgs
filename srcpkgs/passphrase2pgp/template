@@ -10,9 +10,11 @@ checksum="5a1feb8cab9ebc791c1baaa1d3d0e33790257a1a89473f8bf329caabf9dae909"
 build_style="go"
 go_import_path="nullprogram.com/x/passphrase2pgp"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

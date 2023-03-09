@@ -16,8 +16,10 @@ go_build_tags+=" release"
 go_build_tags+=" ui"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.GitCommit=$_gitrev"
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 make_dirs+=" /etc/nomad.d 0755 root root"
 make_dirs+=" /var/lib/nomad 0755 root root"
 

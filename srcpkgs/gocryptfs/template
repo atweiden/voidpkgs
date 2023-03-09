@@ -17,8 +17,10 @@ go_ldflags+=" -buildid="
 go_ldflags+=" -X main.GitVersion=v$version"
 go_ldflags+=" -X main.GitVersionFuse="[vendored]""
 go_ldflags+=" -X main.BuildDate=$(date +%Y-%m-%d)"
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

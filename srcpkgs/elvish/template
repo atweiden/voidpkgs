@@ -11,10 +11,14 @@ checksum="f4635db90af2241bfd37e17ac1a72567b92d18a396598da2099a908b3d88c590"
 build_style="go"
 go_import_path="src.elv.sh/cmd/elvish"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-# fix: collect2: fatal error: cannot find 'ld'
-go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
+  go_ldflags+=" -linkmode=external"
+else
+  # fix: collect2: fatal error: cannot find 'ld'
+  go_ldflags+=" -extldflags=-fuse-ld=bfd"
+fi
 register_shell="/bin/elvish"
 
 export GOFLAGS="-trimpath"

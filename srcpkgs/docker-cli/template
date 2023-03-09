@@ -19,8 +19,10 @@ go_build_tags="netgo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X \"$_cli_ver_path.GitCommit=tag v$version\""
 go_ldflags+=" -X \"$_cli_ver_path.Version=$version\""
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 system_groups="docker"
 
 export GOFLAGS="-trimpath"

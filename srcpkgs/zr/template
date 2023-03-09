@@ -16,9 +16,11 @@ go_package+=" $go_import_path/cmd/zr-reindex"
 go_package+=" $go_import_path/cmd/zr-stackexchange"
 go_package+=" $go_import_path/cmd/zr-stdin"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 

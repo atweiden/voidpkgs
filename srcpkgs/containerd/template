@@ -25,8 +25,10 @@ go_build_tags+=" seccomp"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.Version=$version"
 go_ldflags+=" -X $go_import_path/version.Revision=UNSET"
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 make_dirs="/var/lib/containerd 0755 root root"
 
 export GOFLAGS="-trimpath"

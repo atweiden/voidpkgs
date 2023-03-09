@@ -14,8 +14,12 @@ go_build_tags+=" netgo"
 go_build_tags+=" noselfupdate"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/rclone/rclone/fs.Version=v$version"
-go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
-go_ldflags+=" -linkmode=external"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"
+  go_ldflags+=" -linkmode=external"
+else
+  go_ldflags+=" -extldflags=-fuse-ld=bfd"
+fi
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 

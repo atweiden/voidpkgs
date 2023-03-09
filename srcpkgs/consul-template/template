@@ -10,9 +10,11 @@ checksum="61ce1b818ae9f555440a5a3a7a81590051c4871acfccd73001b4b087c66357e9"
 build_style="go"
 go_import_path="github.com/hashicorp/consul-template"
 go_build_tags="netgo"
-go_ldflags+=" -buildid="
-go_ldflags+=" -extldflags=-static"
-go_ldflags+=" -linkmode=external"
+go_ldflags="-buildid="
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
 
 export GOFLAGS="-trimpath"
 
