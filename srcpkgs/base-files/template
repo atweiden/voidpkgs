@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-files"
-version=0.142
-revision=14
+version=0.143
+revision=1
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
 homepage="https://www.voidlinux.org"
@@ -110,6 +110,10 @@ do_install() {
   # udev rules
   vmkdir usr/lib/udev/rules.d
   install -m 644 "$FILESDIR"/*.rules "$DESTDIR/usr/lib/udev/rules.d"
+
+  # os-release in the expected places
+  vinstall "$FILESDIR/os-release" 644 /usr/lib/
+  ln -s ../usr/lib/os-release "$DESTDIR/etc/os-release"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
