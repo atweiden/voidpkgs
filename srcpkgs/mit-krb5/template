@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mit-krb5"
-version=1.18.3
-revision=2
+version=1.20.1
+revision=1
 short_desc="MIT Kerberos 5 implementation"
 makedepends+=" e2fsprogs-devel"
 makedepends+=" libldap-devel"
@@ -11,8 +11,8 @@ hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
-distfiles="http://web.mit.edu/kerberos/dist/krb5/${version%.*}/${pkgname#mit-}-$version.tar.gz"
-checksum="e61783c292b5efd9afb45c555a80dd267ac67eebabca42185362bee6c4fbd719"
+distfiles="http://web.mit.edu/kerberos/dist/krb5/${version%.*}/krb5-$version.tar.gz"
+checksum="704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851"
 build_style="gnu-configure"
 
 post_patch() {
