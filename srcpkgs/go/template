@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="go"
-version=1.20.1
+version=1.20.2
 revision=1
 short_desc="Go Programming Language"
 checkdepends+=" clang"
@@ -11,7 +11,7 @@ homepage="https://go.dev/"
 license="BSD-3-Clause"
 changelog="https://go.dev/doc/devel/release.html"
 distfiles="https://go.dev/dl/go$version.src.tar.gz"
-checksum="b5c1a3af52c385a6d1c76aed5361cf26459023980d0320de7658bae3915831a2"
+checksum="4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab"
 create_wrksrc="yes"
 build_wrksrc="go"
 # on ci it tries to use `git submodule`, which is not part of chroot-git
