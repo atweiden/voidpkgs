@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hostapd"
 version=2.10
-revision=1
+revision=2
 short_desc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
 makedepends+=" libnl3-devel"
 makedepends+=" openssl-devel"
