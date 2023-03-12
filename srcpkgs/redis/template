@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="redis"
 version=7.0.8
-revision=1
+revision=2
 short_desc="Advanced key-value store"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends="libatomic-devel"
@@ -21,7 +21,8 @@ make_build_args="V=1"
 make_check_target="test"
 system_accounts="redis"
 redis_homedir="/var/lib/redis"
-make_dirs="/var/lib/redis 0700 redis redis"
+make_dirs+=" /etc/redis 0750 root redis"
+make_dirs+=" /var/lib/redis 0700 redis redis"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   make_build_args+=" MALLOC=libc"
