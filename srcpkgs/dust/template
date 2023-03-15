@@ -1,19 +1,21 @@
 maintainer="nox"
 pkgname="dust"
-version=0.8.3
+version=0.8.4
 revision=1
 short_desc="More intuitive version of du"
 homepage="https://github.com/bootandy/dust"
 license="Apache-2.0"
 distfiles="https://github.com/bootandy/dust/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1e07203546274276503a4510adcf5dc6eacd5d1e20604fcd55a353b3b63c1213"
+checksum="611f2da80ef5b1d4423bcda159a65e9436692357b686b91b1dd8245a76eed589"
 build_style="cargo"
 
 post_install() {
   vcompletion completions/dust.bash bash
   vcompletion completions/dust.fish fish
   vcompletion completions/_dust zsh
+
   vsconf config/config.toml
+  vman man-page/dust.1
   vdoc README.md
 }
 
