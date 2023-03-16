@@ -1,15 +1,18 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-htmlhelp"
-version=2.0.0
-revision=3
+version=2.0.1
+revision=1
 short_desc="Sphinx extension which outputs HTML document"
 depends="python3"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-flit_core"
+hostmakedepends+=" python3-pyproject-hooks"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-$version.tar.gz"
-checksum="f5f8bb2d0d629f398bf47d0d69c07bc13b65f75a81ad9e2f71a63d4b7a2f6db2"
-build_style="python3-module"
+checksum="0cbdd302815330058422b98a113195c9249825d681e18f11e8b1f78a2f11efff"
+build_style="python3-pep517"
 # cyclic with sphinx
 make_check="no"
 
