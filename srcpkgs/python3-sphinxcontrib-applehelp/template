@@ -1,16 +1,21 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-applehelp"
-version=1.0.2
-revision=4
+version=1.0.4
+revision=1
 short_desc="Sphinx extension which outputs Apple help book"
 depends="python3"
 checkdepends="python3-Sphinx"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-flit_core"
+hostmakedepends+=" python3-pyproject-hooks"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/s/sphinxcontrib-applehelp/sphinxcontrib-applehelp-$version.tar.gz"
-checksum="a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"
-build_style="python3-module"
+checksum="828f867945bbe39817c210a1abfd1bc4895c8b73fcaade56d45357a348a07d7e"
+build_style="python3-pep517"
+# cyclic with sphinx
+make_check="no"
 
 post_install() {
   vlicense LICENSE
