@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.25.2
+version=3.25.3
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -18,7 +18,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="c026f22cb931dd532f648f087d587f07a1843c6e66a3dfca4fb0ea21944ed33c"
+checksum="cc995701d590ca6debc4245e9989939099ca52827dd46b5d3592f093afe1901c"
 build_style="cmake"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
 configure_args+=" -DCMAKE_MAN_DIR=/share/man"
@@ -59,8 +59,7 @@ pre_configure() {
 
 do_check() {
   cd build
-  # https://gitlab.kitware.com/cmake/cmake/-/issues/23885
-  ./bin/ctest -E RunCMake.SymlinkTrees
+  ./bin/ctest
 }
 
 post_install() {
