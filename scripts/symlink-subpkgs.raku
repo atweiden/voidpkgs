@@ -792,8 +792,6 @@ constant %PKG = Map.new(
     'tdb' => qw<libtdb
                 tdb-devel
                 tdb-python3>,
-    'tidy5' => qw<libtidy5
-                  libtidy5-devel>,
     'tiff' => ['tiff-devel'],
     'tlp' => ['tlp-rdw'],
     'toxcore' => ['toxcore-devel'],
