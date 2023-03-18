@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="consul"
-version=1.14.0
+version=1.15.1
 revision=1
-_gitrev="0e046bbb34f12b4a38c6c2dc6497426761f0b02f"
+_gitrev="7c04b6a0dd433619e788617434a4c236b7d4f892"
 short_desc="Distributed solution to connect and configure applications"
 homepage="https://www.consul.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/consul/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d5d857be454767705f552c7e1588eb811b3923dc1d0f3553cc48fefbd57539bd"
+checksum="3f5f698aad0343642949d1c442e6e8bbcd835e3c173e4ee8ebb087758d1e31a4"
 build_style="go"
 go_import_path="github.com/hashicorp/consul"
 go_build_tags="netgo"
@@ -18,9 +18,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"
   go_ldflags+=" -linkmode=external"
 fi
-# consul has a vendor directory, but relies on replace statements in
-# go.mod, so force default non-vendor behavior
-go_mod_mode="default"
 
 export GOFLAGS="-trimpath"
 
