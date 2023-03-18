@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="nomad"
-version=1.4.3
+version=1.5.1
 revision=1
-_gitrev="2aa7e66bdb526e25f59883952d74dad7ea9a014e"
+_gitrev="6c118ddaf95e9bfd3d85f488f255fdc5e14129c7"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
 depends="cni-plugins"
 homepage="https://www.nomadproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0710f6bd787ed6fc98003ce63f5b7b44ae6b6672757f5638812af4ca1bca56fc"
+checksum="d1df280e400149e9bd41ee5e952201a06a2c8ab86554edc4d8d0f33fd2498e2f"
 build_style="go"
 go_import_path="github.com/hashicorp/nomad"
 go_build_tags+=" netgo"
