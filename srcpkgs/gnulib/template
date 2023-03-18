@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gnulib"
-version=20220829~828413b
+version=20230209+stable
 revision=1
 short_desc="Gnulib - The GNU Portability Library"
 hostmakedepends="automake"
 homepage="https://www.gnu.org/software/gnulib/"
 license="LGPL-2.1-or-later, GPL-2.0-or-later, FSFULLR"
 distfiles="$DEBIAN_SITE/main/g/gnulib/gnulib_$version.orig.tar.gz"
-checksum="8bf9ac42ebc7d6ec1afc9d50bfe823a212b06f0d40e738b0e9e468be60a858fe"
+checksum="3d705dfeae9d4f17c3532e8663523206352b1f79c990b945bdcda2a847ba3546"
 create_wrksrc="yes"
 build_style="gnu-configure"
 
