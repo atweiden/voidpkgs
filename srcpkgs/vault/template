@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="vault"
-version=1.12.3
+version=1.13.0
 revision=1
-_gitrev="b47a9e72942719f217f7750df18be36ec21dfc0e"
+_gitrev="a4cf0dc4437de35fce4860857b64569d092a9b5a"
 short_desc="Manage Secrets and Protect Sensitive Data"
 depends="libcap-progs"
 homepage="https://www.vaultproject.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/vault/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="be65f2fcc2e5ed0e01978c72a5ee8142470e7115088c96d8c0d1a66e0b5ec17a"
+checksum="ebffe482b9e23346862272fbab7d589315200f2004b63b26b2df43823a5d3fb6"
 build_style="go"
 go_import_path="github.com/hashicorp/vault"
 go_build_tags+=" netgo"
