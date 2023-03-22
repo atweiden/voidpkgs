@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-argcomplete"
-version=2.1.1
+version=2.1.2
 revision=1
 short_desc="Bash tab completion for argparse"
 depends="python3"
@@ -8,7 +8,7 @@ hostmakedepends="python3-wheel"
 homepage="https://github.com/kislyuk/argcomplete"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/a/argcomplete/argcomplete-$version.tar.gz"
-checksum="72e08340852d32544459c0c19aad1b48aa2c3a96de8c6e5742456b4f538ca52f"
+checksum="fc82ef070c607b1559b5c720529d63b54d9dcf2dcfc2632b10e6372314a34457"
 build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
