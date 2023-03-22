@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xtools"
 version=0.65
-revision=1
+revision=2
 short_desc="Opinionated helpers for working with XBPS"
 depends+=" curl"
 depends+=" git"
@@ -29,7 +29,6 @@ _minimal+=" xhog"
 _minimal+=" xi"
 _minimal+=" xilog"
 _minimal+=" xls"
-_minimal+=" xmandoc"
 _minimal+=" xmksv"
 _minimal+=" xnodev"
 _minimal+=" xoptdiff"
