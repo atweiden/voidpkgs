@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sqlite"
-version=3.41.1
+version=3.41.2
 revision=1
 _amalgamationver="$(printf "%d%02d%02d00\n" ${version//./ })"
 short_desc="SQL Database Engine in a C Library"
@@ -10,7 +10,7 @@ homepage="https://sqlite.org/"
 license="Public Domain"
 changelog="https://www.sqlite.org/changes.html"
 distfiles="https://sqlite.org/2023/sqlite-autoconf-$_amalgamationver.tar.gz"
-checksum="4dadfbeab9f8e16c695d4fbbc51c16b2f77fb97ff4c1c3d139919dfc038c9e33"
+checksum="e98c100dd1da4e30fa460761dab7c0b91a50b785e167f8c57acc46514fae9499"
 build_style="gnu-configure"
 configure_args+=" --enable-dynamic-extensions"
 configure_args+=" --enable-fts5"
