@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fish-shell"
-version=3.6.0
+version=3.6.1
 revision=1
 short_desc="User friendly shell intended mostly for interactive use"
 makedepends+=" ncurses-devel"
@@ -12,7 +12,7 @@ homepage="https://fishshell.com/"
 license="GPL-2.0-only"
 changelog="https://github.com/fish-shell/fish-shell/raw/master/CHANGELOG.rst"
 distfiles="https://github.com/fish-shell/fish-shell/releases/download/$version/${pkgname%-*}-$version.tar.xz"
-checksum="97044d57773ee7ca15634f693d917ed1c3dc0fa7fde1017f1626d60b83ea6181"
+checksum="55402bb47ca6739d8aba25e41780905b5ce1bce0a5e0dd17dca908b5bc0b49b2"
 build_style="cmake"
 # tests don't work as root
 make_check="ci-skip"
