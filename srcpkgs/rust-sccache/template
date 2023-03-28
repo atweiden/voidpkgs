@@ -1,17 +1,23 @@
 maintainer="nox"
 pkgname="rust-sccache"
-version=0.3.3
+version=0.4.1
 revision=1
 short_desc="Sccache is a ccache-like tool"
 makedepends="openssl-devel"
 hostmakedepends="pkg-config"
 homepage="https://crates.io/crates/sccache"
 license="Apache-2.0"
+changelog="https://github.com/mozilla/sccache/releases"
 distfiles="https://static.crates.io/crates/sccache/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
-checksum="6aae524ce9e447b7dbe9d43918827ede44d77591f820d843738d14b4f6195a4d"
+checksum="c2651cae8522bfad07ab58f8cd44886a4b47232c6e2b2e3be007825176b213b4"
 build_style="cargo"
-# fails in musl
-make_check_args="-- --skip dist::pkg::toolchain_imp::test_ldd_parse_v2_30"
+make_check_args+=" --"
+# 1. requires expensive extra feature
+make_check_args+=" --skip test_s3_invalid_args"
+# 2. requires clang
+make_check_args+=" --skip test_sccache_command"
+# 3. requires libc
+make_check_args+=" --skip dist::pkg::toolchain_imp::test_ldd_parse_v2_30"
 
 case "$XBPS_TARGET_MACHINE" in
   x86_64*|i686*|arm*|aarch64*)
