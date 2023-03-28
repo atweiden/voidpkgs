@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bat"
-version=0.22.1
-revision=2
+version=0.23.0
+revision=1
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
 makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
@@ -15,7 +15,7 @@ homepage="https://github.com/sharkdp/bat"
 license="Apache-2.0, MIT"
 changelog="https://github.com/sharkdp/bat/raw/master/CHANGELOG.md"
 distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="25e45debf7c86794281d63a51564feefa96fdfdf575381e3adc5c06653ecaeca"
+checksum="30b6256bea0143caebd08256e0a605280afbbc5eef7ce692f84621eb232a9b31"
 build_style="cargo"
 
 # skip problematic doctests on i686
@@ -27,10 +27,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_patch() {
-  # fixes an indexmap error when cross compiling
-  cargo update --package autocfg@1.0.1 --precise 1.1.0
-}
+export RUSTONIG_SYSTEM_LIBONIG=1
 
 pre_build() {
   export CFLAGS_${RUST_BUILD//-/_}="$CFLAGS_host"
