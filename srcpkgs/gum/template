@@ -1,26 +1,38 @@
-# Template file for 'gum'
-pkgname=gum
+maintainer="nox"
+pkgname="gum"
 version=0.10.0
 revision=1
-build_style=go
-build_helper=qemu
-go_import_path="github.com/charmbracelet/gum"
-go_ldflags="-X main.Version=${version}"
 short_desc="Tool for glamorous shell scripts"
-maintainer="zenobit <zen@osowoso.xyz>"
-license="MIT"
 homepage="https://github.com/charmbracelet/gum"
+license="MIT"
 changelog="https://github.com/charmbracelet/gum/releases"
-distfiles="https://github.com/charmbracelet/gum/archive/refs/tags/v${version}.tar.gz"
-checksum=6084bd89fdb51bbe58ef2a576e81f7d66471a48acc4d8aae41deff5cbb41a2ab
+distfiles="https://github.com/charmbracelet/gum/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6084bd89fdb51bbe58ef2a576e81f7d66471a48acc4d8aae41deff5cbb41a2ab"
+build_style="go"
+go_import_path="github.com/charmbracelet/gum"
+go_build_tags="netgo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -X main.Version=$version"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
+
+export GOFLAGS="-trimpath"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 
-	for shell in bash fish zsh; do
-		vtargetrun ${DESTDIR}/usr/bin/gum completion $shell > gum.${shell}
-		vcompletion gum.${shell} $shell
-	done
-	vtargetrun ${DESTDIR}/usr/bin/gum man > gum.1
-	vman gum.1
+  for shell in bash \
+               fish \
+               zsh; do
+    "$DESTDIR/usr/bin/gum" completion "$shell" > "gum.$shell"
+    "gum.$shell" "$shell"
+  done
+  "$DESTDIR/usr/bin/gum" man > gum.1
+  vman gum.1
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
