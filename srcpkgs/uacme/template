@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="uacme"
-version=1.7.3
+version=1.7.4
 revision=1
 short_desc="Minimal ACMEv2 (Let's Encrypt) client written in plain C"
 makedepends+=" libcurl-devel"
@@ -11,7 +11,7 @@ homepage="https://github.com/ndilieto/uacme"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ndilieto/uacme/raw/master/ChangeLog"
 distfiles="https://github.com/ndilieto/uacme/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0ec8e5bcb8ed2b532572ca4878d30b2a794f607b995348ebc176d566b64d73f9"
+checksum="a638fe0878dba8fdda62f89e7a284243edbcd31b92c11b5cfdc7d3efd9547bca"
 build_style="gnu-configure"
 configure_args+=" --disable-maintainer-mode"
 configure_args+=" --with-openssl"
