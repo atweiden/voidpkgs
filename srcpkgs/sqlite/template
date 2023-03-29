@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sqlite"
 version=3.41.2
-revision=1
+revision=2
 _amalgamationver="$(printf "%d%02d%02d00\n" ${version//./ })"
 short_desc="SQL Database Engine in a C Library"
 makedepends+=" libedit-devel"
