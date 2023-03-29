@@ -1,24 +1,27 @@
-# Template file for 'python3-pyrsistent'
-pkgname=python3-pyrsistent
+maintainer="nox"
+pkgname="python3-pyrsistent"
 version=0.18.1
 revision=2
-build_style=python3-module
-hostmakedepends="python3-setuptools python3-devel"
-depends="python3"
-checkdepends="python3-pytest python3-hypothesis"
 short_desc="Python persistent immutable data structures"
-maintainer="dkwo <nicolopiazzalunga@gmail.com>"
-license="MIT"
+depends="python3"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest"
+hostmakedepends+=" python3-devel"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/tobgu/pyrsistent/"
-distfiles="${PYPI_SITE}/p/pyrsistent/pyrsistent-${version}.tar.gz"
-checksum=d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96
+license="MIT"
+distfiles="$PYPI_SITE/p/pyrsistent/pyrsistent-$version.tar.gz"
+checksum="d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
+build_style="python3-module"
 
 post_install() {
-	vlicense LICENSE.mit LICENSE
+  vlicense LICENSE.mit LICENSE
 }
 
 python3-rsistent_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - transitional dummy package"
-	build_style=meta
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - transitional dummy package"
+  build_style="meta"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
