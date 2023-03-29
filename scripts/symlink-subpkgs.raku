@@ -720,6 +720,7 @@ constant %PKG = Map.new(
     'python3' => ['python3-devel'],
     'python3-greenlet' => ['python3-greenlet-devel'],
     'python3-pycodestyle' => ['python-pycodestyle'],
+    'python3-pyrsistent' => ['python3-rsistent'],
     'python3-pyscard' => ['python3-scard'],
     'qrencode' => qw<libqrencode
                      qrencode-devel>,
