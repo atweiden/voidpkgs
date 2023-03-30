@@ -1,18 +1,18 @@
 maintainer="nox"
 pkgname="libatomic_ops"
-version=7.6.14
+version=7.8.0
 revision=1
 short_desc="Semi-portable access to hardware provided atomic memory operations"
 homepage="https://github.com/ivmai/libatomic_ops"
 license="GPL-2.0-or-later, MIT"
 distfiles="https://github.com/ivmai/libatomic_ops/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="390f244d424714735b7050d056567615b3b8f29008a663c262fb548f1802d292"
+checksum="15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31"
 build_style="gnu-configure"
 configure_args+=" --enable-shared"
 configure_args+=" --enable-static"
 
 post_install() {
-  vlicense doc/LICENSING.txt
+  vlicense LICENSE
 }
 
 libatomic_ops-devel_package() {
