@@ -1,9 +1,7 @@
 maintainer="nox"
 pkgname="maturin"
-version=0.14.15
+version=0.14.16
 revision=1
-# bump target-lexicon version if it changes in Cargo.lock
-_tlver="0.12.6"
 short_desc="Build and publish crates as python packages"
 depends="python3-tomli"
 makedepends="openssl-devel"
@@ -16,36 +14,14 @@ hostmakedepends+=" python3-tomli"
 hostmakedepends+=" python3-wheel"
 homepage="https://github.com/PyO3/maturin"
 license="Apache-2.0, MIT"
-distfiles+=" https://github.com/PyO3/maturin/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/bytecodealliance/target-lexicon/archive/v$_tlver.tar.gz>target-lexicon-$_tlver.tar.gz"
-checksum+=" 60cbf8ff73a36333c3f5483ca679a52169839db381f06683d8e61a6c00c28cf7"
-checksum+=" 0b80ee4cd10c0cd02e64bb2ea0ba376e21c5a3a130c941e58baba1864340c945"
-create_wrksrc="yes"
+distfiles="https://github.com/PyO3/maturin/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f649ca80edbd3b9d9d9d679d7a63174de5f0c5190a57ccd258bc9e9784e3061d"
 build_style="python3-module"
 build_helper="rust"
 # tests use unstable features and fail to build
 make_check="no"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
-
-case "$XBPS_TARGET_MACHINE" in
-  ppc64*)
-    ;;
-  ppc*)
-    broken="https://github.com/console-rs/indicatif/blob/main/src/state.rs#L2"
-    ;;
-esac
-
-post_extract() {
-  mv "maturin-$version"/* .
-  mv "target-lexicon-$_tlver" target-lexicon
-  echo "[patch.crates-io]" >> Cargo.toml
-  echo "target-lexicon = { path = './target-lexicon' }" >> Cargo.toml
-}
-
-pre_configure() {
-  cargo update --package target-lexicon --precise "$_tlver"
-}
 
 post_install() {
   local _matbin
