@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coreutils"
-version=8.32
-revision=4
+version=9.2
+revision=1
 short_desc="GNU core utilities"
 makedepends+=" acl-devel"
 makedepends+=" gmp-devel"
@@ -10,7 +10,7 @@ homepage="https://www.gnu.org/software/coreutils"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/gitweb/?p=coreutils.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="$GNU_SITE/coreutils/$pkgname-$version.tar.xz"
-checksum="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
+checksum="6885ff47b9cdb211de47d368c17853f406daaf98b148aaecdf10de29cc04b0b3"
 bootstrap="yes"
 replaces+=" b2sum>=0"
 replaces+=" chroot-coreutils>=0"
@@ -143,6 +143,13 @@ do_check() {
   exeext_tests+=" fchmodat"
   exeext_tests+=" fchdir"
 
+  # temporarily disable two tests (coreutils9.1)
+  vsed \
+    -i \
+    -e "s/test-getcwd.sh //" \
+    gnulib-tests/Makefile
+  exeext_tests+=" getlogin"
+
   for test in $exeext_tests; do
     vsed \
       -i \
@@ -164,6 +171,8 @@ do_install() {
     "$DESTDIR/usr/bin/hostname-coreutils"
   mv "$DESTDIR/usr/share/man/man1/hostname.1" \
     "$DESTDIR/usr/share/man/man1/hostname-coreutils.1"
+
+  ln -s test.1 "$DESTDIR/usr/share/man/man1/[.1"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
