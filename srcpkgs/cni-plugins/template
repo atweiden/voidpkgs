@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="cni-plugins"
-version=1.1.1
+version=1.2.0
 revision=1
 short_desc="Container Network Interface (plugins)"
 homepage="https://github.com/containernetworking/plugins"
 license="Apache-2.0"
 distfiles="https://github.com/containernetworking/plugins/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c86c44877c47f69cd23611e22029ab26b613f620195b76b3ec20f589367a7962"
+checksum="f3496ddda9c7770a0b695b67ae7ee80a4ee331ac2745af4830054b81627f79b7"
 build_style="go"
 go_import_path="github.com/containernetworking/plugins"
 go_build_tags="netgo"
-go_ldflags="-buildid="
+go_ldflags+=" -buildid="
+go_ldflags+=" -X $go_import_path/pkg/utils/buildversion.BuildVersion=$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"
   go_ldflags+=" -linkmode=external"
@@ -19,7 +20,7 @@ fi
 export GOFLAGS="-trimpath"
 
 do_build() {
-  ./build_linux.sh
+  ./build_linux.sh -ldflags "$go_ldflags"
 }
 
 do_install() {
