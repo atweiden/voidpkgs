@@ -100,8 +100,8 @@ libss.so.2 e2fsprogs-libs-1.41.5_1_1
 libecl.so.21.2 ecl-21.2.1_1
 libudev.so.1 eudev-libudev-1.6_1
 libexpat.so.1 expat-2.0.0_1
-libf2fs.so.5 f2fs-tools-1.11.0_1
-libf2fs_format.so.4 f2fs-tools-1.11.0_1
+libf2fs.so.9 f2fs-tools-1.15.0_1
+libf2fs_format.so.8 f2fs-tools-1.15.0_1
 libfaketime.so.1 faketime-0.9.7_1
 libfaketimeMT.so.1 faketime-0.9.7_1
 libfcgi.so.0 fcgi-2.4.0_2
