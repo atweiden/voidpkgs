@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bpftrace"
 version=0.17.0
-revision=2
+revision=3
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
 archs+=" ppc64*"
