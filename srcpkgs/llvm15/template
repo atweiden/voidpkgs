@@ -165,16 +165,6 @@ post_patch() {
         "$wrksrc/libcxx/CMakeLists.txt"
       ;;
   esac
-
-  case "$XBPS_TARGET_MACHINE" in
-    # sanitizer code is broken since it duplicates some libc bits
-    arm*-musl|i686-musl)
-      vsed \
-        -i \
-        -e 's/set(COMPILER_RT_HAS_SANITIZER_COMMON TRUE)/set(COMPILER_RT_HAS_SANITIZER_COMMON FALSE)/' \
-        "$wrksrc/compiler-rt/cmake/config-ix.cmake"
-      ;;
-  esac
 }
 
 pre_configure() {
@@ -224,6 +214,17 @@ pre_configure() {
       && configure_args+=" -DLLDB_TABLEGEN=$wrksrc/llvm/build/HOST/bin/lldb-tblgen"
     cd ../..
   fi
+
+  # patch this after we built tblgen
+  case "$XBPS_TARGET_MACHINE" in
+    # sanitizer code is broken since it duplicates some libc bits
+    arm*-musl|i686-musl)
+      vsed \
+        -i \
+        -e 's/set(COMPILER_RT_HAS_SANITIZER_COMMON TRUE)/set(COMPILER_RT_HAS_SANITIZER_COMMON FALSE)/' \
+        "$wrksrc/compiler-rt/cmake/config-ix.cmake"
+      ;;
+  esac
 
   case "$XBPS_TARGET_MACHINE" in
     i686*)
