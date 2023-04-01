@@ -217,12 +217,9 @@ pre_configure() {
 
   # patch this after we built tblgen
   case "$XBPS_TARGET_MACHINE" in
-    # sanitizer code is broken since it duplicates some libc bits
     arm*-musl|i686-musl)
-      vsed \
-        -i \
-        -e 's/set(COMPILER_RT_HAS_SANITIZER_COMMON TRUE)/set(COMPILER_RT_HAS_SANITIZER_COMMON FALSE)/' \
-        "$wrksrc/compiler-rt/cmake/config-ix.cmake"
+      # sanitizer code is broken since it duplicates some libc bits
+      configure_args+=" -DCOMPILER_RT_BUILD_SANITIZERS=OFF"
       ;;
   esac
 
