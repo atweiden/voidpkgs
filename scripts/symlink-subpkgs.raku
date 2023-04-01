@@ -508,7 +508,8 @@ constant %PKG = Map.new(
     'linux6.2' => qw<linux6.2-dbg
                      linux6.2-headers>,
     'llhttp' => ['llhttp-devel'],
-    'llvm12' => qw<clang
+    'llvm12' => ['libllvm12'],
+    'llvm15' => qw<clang
                    clang-analyzer
                    clang-tools-extra
                    libclang
@@ -517,7 +518,7 @@ constant %PKG = Map.new(
                    libcxx-devel
                    libcxxabi
                    libcxxabi-devel
-                   libllvm12
+                   libllvm15
                    libomp
                    libomp-devel
                    lld
@@ -526,7 +527,6 @@ constant %PKG = Map.new(
                    lldb-devel
                    llvm-unwind
                    llvm-unwind-devel>,
-    'llvm15' => ['libllvm15'],
     'lm_sensors' => qw<libsensors
                        libsensors-devel>,
     'lowdown' => ['lowdown-devel'],

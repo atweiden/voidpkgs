@@ -276,8 +276,8 @@ libcap-ng.so.0 libcap-ng-0.6.2_1
 libcbor.so.0.10 libcbor-0.10.1_1
 libcgroup.so.3 libcgroup-3.0.0_1
 libchicken.so.11 libchicken-5.1.0_1
-libclang.so.12 libclang-12.0.0_1
-libclang-cpp.so.12 libclang-cpp-12.0.0_1
+libclang.so.15 libclang-15.0.7_1
+libclang-cpp.so.15 libclang-cpp-15.0.7_1
 libcli.so.1.9 libcli-1.9.8.4_1
 libconfig++.so.11 libconfig++-1.7.1_1
 libconfig.so.11 libconfig-1.7.1_1
@@ -587,7 +587,7 @@ libzfsbootenv.so.1 libzfs-2.1.7_1
 libzpool.so.5 libzfs-2.1.7_1
 libzip.so.5 libzip-1.7.3_2
 libzstd.so.1 libzstd-1.0.0_1
-liblldb.so.12 lldb-12.0.0_1
+liblldb.so.15 lldb-15.0.7_1
 libllhttp.so.1 llhttp-1.0.1_1
 liblowdown.so lowdown-0.11.2_1
 liblttng-ctl.so.0 lttng-tools-2.10.1_1
