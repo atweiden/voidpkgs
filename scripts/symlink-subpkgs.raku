@@ -526,6 +526,7 @@ constant %PKG = Map.new(
                    lldb-devel
                    llvm-unwind
                    llvm-unwind-devel>,
+    'llvm15' => ['libllvm15'],
     'lm_sensors' => qw<libsensors
                        libsensors-devel>,
     'lowdown' => ['lowdown-devel'],
