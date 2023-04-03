@@ -1,21 +1,32 @@
 maintainer="nox"
 pkgname="gd"
-version=2.3.2
+version=2.3.3
 revision=1
 short_desc="Graphics library for the dynamic creation of images"
 makedepends+=" fontconfig-devel"
 makedepends+=" libheif-devel"
 makedepends+=" libjpeg-turbo-devel"
 makedepends+=" libpng-devel"
+# build without xpm support - requires gui packages
+#makedepends+=" libXpm-devel"
 makedepends+=" libwebp-devel"
 makedepends+=" tiff-devel"
 hostmakedepends="pkg-config"
 homepage="http://www.libgd.org/"
 license="custom:BSD-like"
+changelog="https://github.com/libgd/libgd/raw/master/CHANGELOG.md"
 distfiles="https://github.com/libgd/libgd/releases/download/$pkgname-$version/libgd-$version.tar.xz"
-checksum="478a047084e0d89b83616e4c2cf3c9438175fb0cc55d8c8967f06e0427f7d7fb"
+checksum="3fe822ece20796060af63b7c60acb151e5844204d289da0ce08f8fdf131e5a61"
 build_style="gnu-configure"
 configure_args="--without-xpm"
+# https://github.com/libgd/libgd/issues/745
+make_check="ci-skip"
+
+pre_check() {
+  # without this some tests fail
+  # `tmpdir failed to be used or initialized (/tmp)`
+  export TMPDIR="/tmp"
+}
 
 post_install() {
   vlicense COPYING
@@ -33,6 +44,7 @@ gd-devel_package() {
     vmove usr/lib/pkgconfig
   }
 }
+
 gd-progs_package() {
   depends="perl"
   short_desc+=" - utilities"
