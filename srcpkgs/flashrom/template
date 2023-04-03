@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="flashrom"
 version=1.2
-revision=2
+revision=3
 short_desc="Utility for reading, writing, erasing and verifying flash ROM chips"
 makedepends+=" libftdi1-devel"
 makedepends+=" libusb-compat-devel"
