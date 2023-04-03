@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ouch"
-version=0.4.0
+version=0.4.1
 revision=1
 short_desc="CLI utility for easily compressing and decompressing files and dirs"
 makedepends+=" bzip2-devel"
@@ -9,7 +9,7 @@ makedepends+=" libzip-devel"
 homepage="https://github.com/ouch-org/ouch"
 license="MIT"
 distfiles="https://github.com/ouch-org/ouch/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3e126f00e1ad82ef4abfd28f86dac53b366a29de6a70359e734ecc8748f580fc"
+checksum="b0fcd6bbe6c66544b5bf1167d72605427c5cc6afae564f23f3eff5ea22b01b79"
 build_style="cargo"
 
 pre_build() {
