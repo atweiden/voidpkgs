@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="logswan"
-version=2.1.13
+version=2.1.14
 revision=1
 short_desc="Fast Web log analyzer using probabilistic data structures"
 makedepends+=" jansson-devel"
@@ -9,7 +9,7 @@ homepage="https://www.logswan.org/"
 license="BSD-2-clause"
 changelog="https://github.com/fcambus/logswan/raw/master/ChangeLog"
 distfiles="https://github.com/fcambus/logswan/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6ddc406121e17f3fd21907d77d020466bb4584c3855701579d40265fdb315d02"
+checksum="689e9af1ba8f22443e6ed3480693cc3a3add68c296d8e535dffa641c0c25e459"
 build_style="cmake"
 
 post_install() {
