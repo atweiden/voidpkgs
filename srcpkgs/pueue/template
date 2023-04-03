@@ -1,14 +1,17 @@
 maintainer="nox"
 pkgname="pueue"
-version=2.1.0
+version=3.1.2
 revision=1
 short_desc="Command-line tool for managing long-running tasks"
 homepage="https://github.com/Nukesor/pueue"
 license="MIT"
 changelog="https://github.com/Nukesor/pueue/raw/main/CHANGELOG.md"
 distfiles="https://github.com/Nukesor/pueue/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="cd5c6500e65960f6a102db5d0f0544f49eec8f74b2cc0df16ded8e2525a545f6"
+checksum="653eac9b7fc111cc4b9bddacbbf514932a8d273a059b20b1cc66af74e500eb5e"
 build_style="cargo"
+# tests are nondeterministic
+make_check="no"
+make_install_args="--path pueue"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
@@ -20,21 +23,22 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_build() {
+post_install() {
+}
+
+post_install() {
   # build shell completions without cross-platform support (see: upstream)
   for shell in bash \
                fish \
                zsh; do
-    "target/$RUST_TARGET/release/pueue" completions "$shell" .
+    "$DESTDIR/usr/bin/pueue" completions "$shell" .
   done
-}
 
-post_install() {
-  vlicense LICENSE
-
-  vcompletion _pueue zsh pueue
   vcompletion pueue.bash bash pueue
   vcompletion pueue.fish fish pueue
+  vcompletion _pueue zsh pueue
+
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
