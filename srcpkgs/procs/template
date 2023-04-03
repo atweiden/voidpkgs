@@ -1,25 +1,23 @@
 maintainer="nox"
 pkgname="procs"
-version=0.13.4
+version=0.14.0
 revision=1
 short_desc="Modern replacement for ps written in Rust"
 homepage="https://github.com/dalance/procs"
 license="MIT"
 changelog="https://github.com/dalance/procs/raw/master/CHANGELOG.md"
 distfiles="https://github.com/dalance/procs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9b9b59b79049cf6ae2c39d9cc5b0c5af81411ba898a414fda41f68921c3c9539"
+checksum="fa5af0951dc8aa63c0590f8c5c1136594866057704cfb1cdfc22ac3cc49437c6"
 build_style="cargo"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
-post_build() {
-  PROCS="target/$RUST_TARGET/release/procs"
-  "$PROCS" --completion-out bash > procs.bash
-  "$PROCS" --completion-out fish > procs.fish
-  "$PROCS" --completion-out zsh > procs.zsh
-}
-
 post_install() {
+  PROCS="$DESTDIR/usr/bin/procs"
+  "$PROCS" --gen-completion-out bash > procs.bash
+  "$PROCS" --gen-completion-out fish > procs.fish
+  "$PROCS" --gen-completion-out zsh > procs.zsh
+
   vcompletion procs.bash bash
   vcompletion procs.fish fish
   vcompletion procs.zsh zsh
