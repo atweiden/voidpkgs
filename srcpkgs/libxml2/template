@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxml2"
 version=2.9.13
-revision=4
+revision=5
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
