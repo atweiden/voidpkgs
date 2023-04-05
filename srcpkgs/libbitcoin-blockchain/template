@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-blockchain"
 version=3.6.0
-revision=8
+revision=9
 short_desc="Bitcoin Blockchain Library"
 archs+=" aarch64*"
 archs+=" ppc64*"
