@@ -1,21 +1,20 @@
 maintainer="nox"
 pkgname="openblas"
-version=0.3.21
-revision=2
+version=0.3.23
+revision=1
 short_desc="Optimized BLAS (Basic Linear Algebra Subprograms) based on GotoBLAS2"
 makedepends="libgomp-devel"
 hostmakedepends+=" gcc-fortran"
 hostmakedepends+=" perl"
 homepage="https://www.openblas.net/"
 license="BSD-3-Clause"
-changelog="https://github.com/xianyi/OpenBLAS/raw/v$version/Changelog.txt"
+changelog="https://github.com/xianyi/OpenBLAS/raw/develop/Changelog.txt"
 distfiles="https://github.com/xianyi/OpenBLAS/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f36ba3d7a60e7c8bcc54cd9aaa9b1223dd42eaf02c811791c37e8ca707c241ca"
+checksum="5d9491d07168a5d00116cdc068a40022c3455bf9293c7cb86a65b1054d7e5114"
 build_style="gnu-makefile"
 make_build_args+=" HOSTCC=gcc"
 make_build_args+=" USE_OPENMP=1"
 make_install_args="OPENBLAS_INCLUDE_DIR=\$(PREFIX)/include/openblas"
-reverts="0.3.22_1"
 
 case "$XBPS_TARGET_MACHINE" in
   ppc64*)
