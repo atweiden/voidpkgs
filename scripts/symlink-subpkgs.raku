@@ -848,10 +848,6 @@ constant %PKG = Map.new(
                 zfs-devel
                 zfs-pam>,
     'zlib' => ['zlib-devel'],
-    'znc' => qw<znc-devel
-                znc-perl
-                znc-python3
-                znc-tcl>,
     'zstd' => qw<libzstd
                  libzstd-devel>,
     'zulucrypt' => ['zulucrypt-devel']
