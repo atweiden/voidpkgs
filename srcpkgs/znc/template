@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="znc"
 version=1.8.2
-revision=13
+revision=14
 short_desc="Advanced IRC Bouncer"
 makedepends+=" icu-devel"
 makedepends+=" libsasl-devel"
