@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nodejs"
 version=16.19.0
-revision=1
+revision=2
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
 # see: https://github.com/nodejs/node/pull/21079
