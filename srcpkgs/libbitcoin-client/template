@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-client"
 version=3.6.0
-revision=8
+revision=9
 short_desc="Bitcoin Client Query Library"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
