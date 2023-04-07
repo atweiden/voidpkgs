@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dnscrypt-proxy"
 version=2.1.4
-revision=2
+revision=3
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/DNSCrypt/dnscrypt-proxy"
 license="ISC"

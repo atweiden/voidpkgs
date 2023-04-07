@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="delve"
 version=1.20.0
-revision=1
+revision=2
 short_desc="Debugger for the Go programming language"
 # https://github.com/go-delve/delve/blob/master/pkg/proc/native/support_sentinel_linux.go
 archs+=" aarch64*"

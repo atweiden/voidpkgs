@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="step-cli"
 version=0.22.0
-revision=1
+revision=2
 short_desc="Zero trust swiss army knife"
 homepage="https://smallstep.com/cli"
 license="Apache-2.0"

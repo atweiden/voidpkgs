@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="NetAuth"
 version=0.6.1
-revision=3
+revision=4
 short_desc="Network authentication and identity system"
 tags="netauth"
 homepage="https://netauth.org"

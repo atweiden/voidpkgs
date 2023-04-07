@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pam_netauth"
 version=0.3.5
-revision=1
+revision=2
 short_desc="PAM plugin for NetAuth"
 makedepends="pam-devel"
 tags="netauth"

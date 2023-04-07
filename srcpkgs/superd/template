@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="superd"
 version=0.7.1
-revision=1
+revision=2
 short_desc="Lightweight user service supervising daemon"
 hostmakedepends="scdoc"
 homepage="https://sr.ht/~craftyguy/superd/"

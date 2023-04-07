@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="consul"
 version=1.15.1
-revision=1
+revision=2
 _gitrev="7c04b6a0dd433619e788617434a4c236b7d4f892"
 short_desc="Distributed solution to connect and configure applications"
 homepage="https://www.consul.io/"

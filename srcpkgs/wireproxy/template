@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wireproxy"
 version=1.0.5
-revision=1
+revision=2
 short_desc="Wireguard client that exposes itself as a socks5 proxy"
 homepage="https://github.com/octeep/wireproxy"
 license="ISC"

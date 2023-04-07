@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="syncthing"
 version=1.22.1
-revision=1
+revision=2
 short_desc="Open Source Continuous File Synchronization"
 homepage="https://syncthing.net/"
 license="MPL-2.0"

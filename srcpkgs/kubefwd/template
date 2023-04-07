@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="kubefwd"
 version=1.22.4
-revision=1
+revision=2
 short_desc="Bulk port forwarding Kubernetes services for local development"
 homepage="https://github.com/txn2/kubefwd"
 license="Apache-2.0"

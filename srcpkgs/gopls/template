@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gopls"
 version=0.11.0
-revision=1
+revision=2
 short_desc="Official language server for the Go language"
 homepage="https://github.com/golang/tools/tree/master/gopls"
 license="MIT"

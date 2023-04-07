@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git-lfs"
 version=3.3.0
-revision=1
+revision=2
 short_desc="Git extension for versioning large files"
 hostmakedepends+=" git"
 hostmakedepends+=" ruby-asciidoctor"

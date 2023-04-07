@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gum"
 version=0.10.0
-revision=1
+revision=2
 short_desc="Tool for glamorous shell scripts"
 homepage="https://github.com/charmbracelet/gum"
 license="MIT"

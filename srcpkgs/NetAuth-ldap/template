@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="NetAuth-ldap"
 version=0.3.0
-revision=1
+revision=2
 short_desc="LDAP Proxy for NetAuth"
 homepage="https://www.netauth.org/ecosystem/ldap"
 license="MIT"

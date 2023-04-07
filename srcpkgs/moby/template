@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="moby"
 # should be kept in sync with docker-cli
 version=23.0.2
-revision=1
+revision=2
 # libnetwork commit is mentioned in vendor.conf
 _libnetwork_gitrev="05b93e0d3a95952f70c113b0bc5bdb538d7afdd7"
 short_desc="Container engine for the Docker ecosystem"

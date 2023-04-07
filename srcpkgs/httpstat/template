@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="httpstat"
 version=1.1.0
-revision=1
+revision=2
 short_desc="It's like curl -v, with colours"
 homepage="https://github.com/davecheney/httpstat"
 license="MIT"

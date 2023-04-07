@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="elvish"
 version=0.19.2
-revision=1
+revision=2
 short_desc="Novel Unix shell"
 homepage="https://elv.sh/"
 license="BSD-2-Clause"

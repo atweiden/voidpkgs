@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="docker-cli"
 # should be kept in sync with moby
 version=23.0.2
-revision=1
+revision=2
 short_desc="Command-line interface for the Docker daemon"
 depends="git"
 hostmakedepends+=" go-md2man"

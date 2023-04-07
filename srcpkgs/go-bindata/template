@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="go-bindata"
 version=3.0.7.20151023
-revision=12
+revision=13
 _gitrev="a0ff2567cfb70903282db057e799fd826784d41d"
 short_desc="A small utility which generates Go code from any file"
 homepage="https://github.com/jteeuwen/go-bindata"

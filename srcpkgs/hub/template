@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hub"
 version=2.14.2
-revision=2
+revision=3
 short_desc="Command line tool for Github"
 hostmakedepends+=" git"
 hostmakedepends+=" groff"
