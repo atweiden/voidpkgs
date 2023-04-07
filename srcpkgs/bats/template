@@ -1,28 +1,29 @@
-# Template file for 'bats'
-pkgname=bats
+maintainer="nox"
+pkgname="bats"
 version=1.9.0
 revision=1
+short_desc="Bash Automated Testing System"
 depends="bash"
 checkdepends="procps-ng"
-short_desc="Bash Automated Testing System"
-maintainer="Piraty <mail@piraty.dev>"
-license="MIT"
 homepage="https://github.com/bats-core/bats-core"
-distfiles="https://github.com/bats-core/bats-core/archive/v${version}.tar.gz"
-checksum=3c64295318d157616ca2478de819371e2c579ccdab30c1f0b7279f7b214fb1f4
+license="MIT"
+distfiles="https://github.com/bats-core/bats-core/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="3c64295318d157616ca2478de819371e2c579ccdab30c1f0b7279f7b214fb1f4"
 
 pre_check() {
-	export TERM=linux
+  export TERM="linux"
 }
 
 do_check() {
-	./bin/bats --print-output-on-failure --tap test
+  ./bin/bats --print-output-on-failure --tap test
 }
 
 do_install() {
-	./install.sh "${DESTDIR}/usr"
+  ./install.sh "$DESTDIR/usr"
 }
 
 post_install() {
-	vlicense LICENSE.md
+  vlicense LICENSE.md
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
