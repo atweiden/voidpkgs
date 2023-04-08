@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="u-boot-tools"
-version=2023.01
+version=2023.04
 revision=1
 short_desc="Das U-Boot tools"
 makedepends+=" gnutls-devel"
@@ -11,13 +11,14 @@ hostmakedepends+=" bison"
 hostmakedepends+=" flex"
 hostmakedepends+=" python3"
 hostmakedepends+=" python3-devel"
+hostmakedepends+=" python3-pyelftools"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" swig"
 hostmakedepends+=" which"
 homepage="https://www.denx.de/wiki/U-Boot/"
 license="GPL-2.0-or-later"
 distfiles="ftp://ftp.denx.de/pub/u-boot/u-boot-$version.tar.bz2"
-checksum="69423bad380f89a0916636e89e6dcbd2e4512d584308d922d1039d1e4331950f"
+checksum="e31cac91545ff41b71cec5d8c22afd695645cd6e2a442ccdacacd60534069341"
 build_style="gnu-makefile"
 make_build_args+=" HOSTSTRIP=:"
 make_build_args+=" NO_SDL=1"
@@ -40,13 +41,6 @@ post_extract() {
     include/env.h \
     tools/mkimage.h \
     tools/proftool.c
-
-  if [[ -n "$CROSS_BUILD" ]]; then
-    vsed \
-      -i \
-      -e 's;^\t$(obj)/bmp_logo;\tbmp_logo;g' \
-      tools/Makefile
-  fi
 }
 
 do_configure() {
@@ -72,8 +66,7 @@ do_check() {
 
 do_install() {
   ln -sf fw_printenv tools/env/fw_setenv
-  for x in bmp_logo \
-           dumpimage \
+  for x in dumpimage \
            env/fw_printenv \
            env/fw_setenv \
            fdtgrep \
