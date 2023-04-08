@@ -11,10 +11,11 @@ distfiles="https://github.com/decred/dcrseeder/archive/$_gitrev.tar.gz>$pkgname-
 checksum="742e9e53fed819ee28f7b73f129fc6bb546d823a125b9a3869e71cd7d4ed51e2"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 

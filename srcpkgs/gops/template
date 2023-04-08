@@ -10,7 +10,8 @@ distfiles="https://github.com/google/gops/archive/v$version.tar.gz>$pkgname-$ver
 checksum="1d5b8b0979c284d29d85f44aba6d0a5175059568aa698a242c5bc1d772263746"
 build_style="go"
 go_import_path="github.com/google/gops"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

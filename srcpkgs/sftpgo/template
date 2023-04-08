@@ -9,7 +9,8 @@ distfiles="https://github.com/drakkan/sftpgo/archive/v$version.tar.gz>$pkgname-$
 checksum="b5844ccbea92e458c9b132fcbcaa5976baa9cf2a9d864f9efc06c143886b4b13"
 build_style="go"
 go_import_path="github.com/drakkan/sftpgo/v2"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

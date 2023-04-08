@@ -11,7 +11,8 @@ distfiles="https://git.sr.ht/~rjarry/aerc/archive/$version.tar.gz>$pkgname-$vers
 checksum="60bfd15e5528a504dd11a03a33a11438ebbac7d5daca46e02d0bdc983adf9012"
 build_style="go"
 go_import_path="git.sr.ht/~rjarry/aerc"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.Version=$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then

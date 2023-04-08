@@ -18,10 +18,11 @@ go_package+=" $go_import_path"
 go_package+=" $_gh_import_path/cmd/csppserver"
 go_package+=" $_gh_import_path/cmd/csppsolver"
 go_package+=" $_gh_import_path/cmd/report2csv"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 

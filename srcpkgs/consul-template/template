@@ -9,7 +9,8 @@ distfiles="https://github.com/hashicorp/consul-template/archive/v$version.tar.gz
 checksum="61ce1b818ae9f555440a5a3a7a81590051c4871acfccd73001b4b087c66357e9"
 build_style="go"
 go_import_path="github.com/hashicorp/consul-template"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

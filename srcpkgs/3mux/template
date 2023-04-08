@@ -9,7 +9,8 @@ distfiles="https://github.com/aaronjanse/3mux/archive/v$version.tar.gz>$pkgname-
 checksum="0f4dae181914c73eaa91bdb21ee0875f21b5da64c7c9d478f6d52a2d0aa2c0ea"
 build_style="go"
 go_import_path="github.com/aaronjanse/3mux"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

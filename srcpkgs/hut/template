@@ -11,7 +11,8 @@ distfiles="https://git.sr.ht/~emersion/hut/archive/v$version.tar.gz>$pkgname-$ve
 checksum="2a4e49458a2cb129055f1db3b835e111a89583f47d4d917110205113863492b9"
 build_style="go"
 go_import_path="git.sr.ht/~emersion/hut"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

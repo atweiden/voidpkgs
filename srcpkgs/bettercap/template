@@ -13,7 +13,8 @@ distfiles="https://github.com/bettercap/bettercap/archive/v$version.tar.gz>$pkgn
 checksum="ea28d4d533776a328a54723a74101d1720016ffe7d434bf1d7ab222adb397ac6"
 build_style="go"
 go_import_path="github.com/bettercap/bettercap"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags='-fuse-ld=bfd -static'"

@@ -10,7 +10,8 @@ distfiles="https://github.com/cli/cli/archive/v$version.tar.gz>$pkgname-$version
 checksum="3552c0be9b24cf1b04b19f3cddc30f067a9761bd8872b591e02bf3147de5dd0e"
 build_style="go"
 go_import_path="github.com/cli/cli/v2/cmd/gh"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X github.com/cli/cli/v2/internal/build.Version=v$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then

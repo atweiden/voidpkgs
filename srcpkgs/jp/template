@@ -9,7 +9,8 @@ distfiles="https://github.com/jmespath/jp/archive/$version.tar.gz>$pkgname-$vers
 checksum="77a2c5e631fbbf7fed4331f7c0b8934bb5cdbc9dbaddd4fa1bec5e0546430365"
 build_style="go"
 go_import_path="github.com/jmespath/jp"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"

@@ -9,7 +9,8 @@ distfiles="https://github.com/xo/usql/archive/v$version.tar.gz>$pkgname-$version
 checksum="69e901e6623ac8b1b14ef6a0ab37da5bbba5a3990af57ad34a73cf2cd1452fc7"
 build_style="go"
 go_import_path="github.com/xo/usql"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/text.CommandVersion=$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then

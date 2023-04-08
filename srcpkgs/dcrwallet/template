@@ -10,12 +10,13 @@ distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>
 checksum="302ec009d75410afac2b00978a171fe14ab6def63251a1052bee5b54775ad5e2"
 build_style="go"
 go_import_path="decred.org/dcrwallet/v2"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
 go_ldflags+=" -X $go_import_path/version.PreRelease="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 # objdump: .gnu.version_r invalid entry, private headers incomplete

@@ -9,7 +9,8 @@ distfiles="https://github.com/davecheney/httpstat/archive/v$version.tar.gz>$pkgn
 checksum="58260ab0a56557d0c2509ea09ee3fe54fe21a49f95d94189efdd64caec84fa67"
 build_style="go"
 go_import_path="github.com/davecheney/httpstat"
-go_build_tags="netgo"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X=main.version=$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
