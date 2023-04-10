@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libtls"
-version=3.6.2
+version=3.7.2
 revision=1
 _lssl_asm_ver="1.2.0"
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
@@ -9,9 +9,9 @@ hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="http://www.libressl.org/"
 license="OpenSSL, ISC"
-changelog="https://github.com/libressl-portable/portable/raw/master/ChangeLog"
+changelog="https://github.com/libressl/portable/raw/master/ChangeLog"
 distfiles="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$version.tar.gz"
-checksum="4be80fff073746cf50b4a8e5babe2795acae98c6b132a9e02519b445dfbfd033"
+checksum="b06aa538fefc9c6b33c4db4931a09a5f52d9d2357219afcbff7d93fe12ebf6f7"
 create_wrksrc="yes"
 patch_args="-Np1 --directory=$build_wrksrc"
 build_wrksrc="libressl-$version"
@@ -30,7 +30,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 build_options="asm"
-build_options_default="asm"
+build_options_default=""
 desc_option_asm="Use platform assembly for faster crypto"
 replaces="libtls20>0"
 
