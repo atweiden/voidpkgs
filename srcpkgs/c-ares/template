@@ -1,23 +1,24 @@
 maintainer="nox"
 pkgname="c-ares"
-version=1.18.1
+version=1.19.0
 revision=1
-short_desc="C library that performs DNS requests and name resolves asynchronously"
+short_desc="Library for asynchronous DNS requests"
 checkdepends="iana-etc"
 homepage="https://c-ares.haxx.se/"
 license="MIT"
 changelog="https://c-ares.haxx.se/changelog.html"
 distfiles="https://c-ares.haxx.se/download/$pkgname-$version.tar.gz"
-checksum="1a7d52a8a84a9fbffb1be9133c0f6e17217d91ea5a6fa61f6b4729cda78ebbcf"
-build_style="gnu-configure"
+checksum="bfceba37e23fd531293829002cac0401ef49a6dc55923f7f92236585b7ad1dd3"
+build_style="cmake"
+configure_args+=" -DCARES_SHARED=ON"
+configure_args+=" -DCARES_STATIC=ON"
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" -DCARES_BUILD_TESTS=ON"
+else
+  configure_args+=" -DCARES_BUILD_TESTS=OFF"
+fi
 # segfaults only on ci
 make_check="ci-skip"
-
-pre_configure() {
-  export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=?/}"
-  export CPPFLAGS+=" -D_FORTIFY_SOURCE=2"
-  export CFLAGS="${CFLAGS/-I$XBPS_CROSS_BASE\/usr\/include/}"
-}
 
 post_install() {
   vlicense LICENSE.md LICENSE
@@ -25,12 +26,22 @@ post_install() {
 
 c-ares-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
     vmove usr/lib/pkgconfig
-    vmove usr/share/man
+    vmove usr/lib/cmake
+    vmove usr/share/man/man3
+  }
+}
+
+c-ares-utils_package() {
+  short_desc+=" - utilities"
+  pkg_install() {
+    vmove usr/bin
+    vmove usr/share/man/man1
   }
 }
 
