@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="libsigsegv"
-version=2.12
+version=2.14
 revision=1
 short_desc="Handling page faults in user mode"
 homepage="https://www.gnu.org/software/libsigsegv/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="https://ftpmirror.gnu.org/libsigsegv/$pkgname-$version.tar.gz"
-checksum="3ae1af359eebaa4ffc5896a1aee3568c052c99879316a1ab57f8fe1789c390b6"
+checksum="cdac3941803364cf81a908499beb79c200ead60b6b5b40cad124fd1e06caa295"
 build_style="gnu-configure"
 configure_args="--enable-shared"
 
@@ -14,12 +14,12 @@ post_configure() {
   case "$XBPS_TARGET_MACHINE" in
     arm*-musl)
       # avoid double include of signal.h
-      sed \
+      vsed \
         -i \
         -e "s;#define HAVE_SYS_SIGNAL_H 1;#undef HAVE_SYS_SIGNAL_H;" \
         "$wrksrc/config.h"
       # struct sigcontext already defined through sigsegv.h
-      sed \
+      vsed \
         -i \
         -e "s;#include <asm/sigcontext.h>;;" \
         "$wrksrc/src/fault-linux-arm-old.h"
