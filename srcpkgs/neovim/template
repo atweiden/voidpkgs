@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="neovim"
-version=0.8.3
+version=0.9.0
 revision=1
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 makedepends+=" libluv-devel"
@@ -20,8 +20,9 @@ hostmakedepends+=" $(vopt_if luajit LuaJIT lua51)"
 homepage="https://neovim.io"
 license="Apache-2.0, Vim"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="adf45ff160e1d89f519b6114732eba03485ae469beb27919b0f7a4f6b44233c1"
+checksum="39d79107c54d2f3babcad2cd157c399241c04f6e75e98c18e8afaf2bb5e82937"
 build_style="cmake"
+configure_args+=" -DCI_BUILD=OFF"
 configure_args+=" -DCOMPILE_LUA=OFF"
 # MIN_LOG_LEVEL 1: INFO, 3: ERROR, upstream's release's default is 3
 configure_args+=" -DMIN_LOG_LEVEL=3"
@@ -46,6 +47,10 @@ pre_configure() {
     -i \
     -e "s|\".*/bin/nvim|\${CMAKE_CROSSCOMPILING_EMULATOR} &|g" \
     runtime/CMakeLists.txt
+  vsed \
+    -i \
+    -e "s|\$<TARGET_FILE:nvim|\${CMAKE_CROSSCOMPILING_EMULATOR} &|g" \
+    src/nvim/po/CMakeLists.txt
 }
 
 post_install() {
