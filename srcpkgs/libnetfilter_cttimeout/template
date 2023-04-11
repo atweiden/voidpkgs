@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="libnetfilter_cttimeout"
-version=1.0.0
+version=1.0.1
 revision=1
 short_desc="Interface to the fine-grain connection tracking timeout infrastructure"
 makedepends="libmnl-devel"
 hostmakedepends="pkg-config"
 homepage="http://www.netfilter.org/projects/libnetfilter_cttimeout/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/libnetfilter_cttimeout/files/$pkgname-$version.tar.bz2"
-checksum="aeab12754f557cba3ce2950a2029963d817490df7edb49880008b34d7ff8feba"
+checksum="0b59da2f3204e1c80cb85d1f6d72285fc07b01a2f5678abf5dccfbbefd650325"
 build_style="gnu-configure"
 
 libnetfilter_cttimeout-devel_package() {
