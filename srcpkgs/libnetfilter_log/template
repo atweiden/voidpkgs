@@ -1,24 +1,16 @@
 maintainer="nox"
 pkgname="libnetfilter_log"
-version=1.0.1
-revision=2
-short_desc="A userspace library providing interface to packets that have been logged by the kernel packet filter"
-makedepends="libnfnetlink-devel"
-hostmakedepends="pkg-config"
+version=1.0.2
+revision=1
+short_desc="UInterface to packets that have been logged by the kernel packet filter"
+makedepends+=" libmnl-devel"
+makedepends+=" libnetfilter_conntrack-devel"
+makedepends+=" libnfnetlink-devel"
 homepage="http://www.netfilter.org/projects/libnetfilter_log/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/libnetfilter_log/files/$pkgname-$version.tar.bz2"
-checksum="74e0fe75753dba3ac114531b5e73240452c789a3f3adccf5c51217da1d933b21"
+checksum="e3f408575614d849e4726b45e90c7ebb0e6744b04859555a9ce6ec40744ffeea"
 build_style="gnu-configure"
-
-pre_configure() {
-  sed \
-    -i \
-    -e 's/u_int\([0-9]*\)_t/uint\1_t/' \
-    include/libnetfilter_log/* \
-    src/* \
-    utils/*
-}
 
 libnetfilter_log-devel_package() {
   unset depends
