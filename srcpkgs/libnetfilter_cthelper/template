@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="libnetfilter_cthelper"
-version=1.0.0
+version=1.0.1
 revision=1
 short_desc="Interface to the connection tracking user-space helper infrastructure"
 makedepends="libmnl-devel"
 hostmakedepends="pkg-config"
 homepage="http://www.netfilter.org/projects/libnetfilter_cthelper/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/libnetfilter_cthelper/files/$pkgname-$version.tar.bz2"
-checksum="07618e71c4d9a6b6b3dc1986540486ee310a9838ba754926c7d14a17d8fccf3d"
+checksum="14073d5487233897355d3ff04ddc1c8d03cc5ba8d2356236aa88161a9f2dc912"
 build_style="gnu-configure"
 
 libnetfilter_cthelper-devel_package() {
