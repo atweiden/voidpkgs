@@ -1,18 +1,21 @@
 maintainer="nox"
 pkgname="libmicrohttpd"
-version=0.9.73
+version=0.9.76
 revision=1
 short_desc="Library embedding HTTP server functionality"
 makedepends+=" gnutls-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libgcrypt-devel"
+hostmakedepends="texinfo"
 homepage="https://www.gnu.org/software/libmicrohttpd/"
 license="LGPL-2.1-or-later"
 distfiles="$GNU_SITE/libmicrohttpd/$pkgname-$version.tar.gz"
-checksum="a37b2f1b88fd1bfe74109586be463a434d34e773530fc2a74364cfcf734c032e"
+checksum="f0b1547b5a42a6c0f724e8e1c1cb5ce9c4c35fb495e7d780b9930d35011ceb4c"
 build_style="gnu-configure"
-
-LDFLAGS=" -lgnutls"
+configure_args+=" --enable-curl"
+configure_args+=" --enable-https"
+configure_args+=" --enable-largefile"
+configure_args+=" --enable-messages"
 
 libmicrohttpd-devel_package() {
   unset depends
