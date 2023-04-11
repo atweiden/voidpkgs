@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="conntrack-tools"
-version=1.4.6
-revision=2
+version=1.4.7
+revision=1
 short_desc="Tools to interact with the netfilter connection tracking system"
 makedepends+=" libmnl-devel"
 makedepends+=" libnetfilter_conntrack-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" pkg-config"
 homepage="http://conntrack-tools.netfilter.org/"
 license="GPL-2.0-or-later"
 distfiles="http://www.netfilter.org/projects/conntrack-tools/files/$pkgname-$version.tar.bz2"
-checksum="590859cc848245dbfd9c6487761dd303b3a1771e007f4f42213063ca56205d5f"
+checksum="099debcf57e81690ced57f516b493588a73518f48c14d656f823b29b4fc24b5d"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
