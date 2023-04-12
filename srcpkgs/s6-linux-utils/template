@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="s6-linux-utils"
-version=2.6.0.0
+version=2.6.1.0
 revision=1
 short_desc="Minimalistic Linux-specific system utilities (s6-chroot, s6-mount etc.)"
 makedepends="skalibs-devel"
@@ -8,15 +8,19 @@ homepage="https://skarnet.org/software/s6-linux-utils/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-linux-utils/upgrade.html"
 distfiles="https://skarnet.org/software/s6-linux-utils/$pkgname-$version.tar.gz"
-checksum="6c7132734a0c8287002ee6910c469f175a97d766a8023c0c33af8ba92643ed59"
+checksum="2accb5a443dd04203a6358534bdcf0dd369aceb4733e322612c2b8329260b7a2"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --includedir=/usr/include"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+configure_args+=" $(vopt_if multicall --enable-multicall)"
 configure_args+=" $(vopt_if static --enable-static-libc)"
-build_options="static"
+build_options+=" multicall"
+build_options+=" static"
+desc_option_multicall="Build single multicall binary instead of a binary per utility"
+desc_option_static="Build static binaries"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
