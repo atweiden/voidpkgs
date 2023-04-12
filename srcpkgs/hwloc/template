@@ -1,25 +1,22 @@
 maintainer="nox"
 pkgname="hwloc"
-version=2.7.2
+version=2.9.1
 revision=1
 short_desc="Portable abstraction of hierarchical hardware architectures"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" ncurses-devel"
+case "$XBPS_TARGET_MACHINE" in
+  i686*|x86_64*|ppc64*) makedepends+=" libnuma-devel" ;;
+esac
 hostmakedepends="pkg-config"
 homepage="https://www.open-mpi.org/projects/hwloc/"
 license="BSD-3-Clause"
 distfiles="https://www.open-mpi.org/software/hwloc/v${version%.*}/downloads/$pkgname-$version.tar.bz2"
-checksum="6d99649822a85cbf2a51de6e96ad0f7b15391fe33641a3e5b6dee38e1cc09115"
+checksum="7cc4931a20fef457e0933af3f375be6eafa7703fde21e137bfb9685b1409599e"
 build_style="gnu-configure"
 configure_args+=" --disable-cairo"
 configure_args+=" --disable-gl"
-
-case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*|ppc64*)
-    makedepends+=" libnuma-devel"
-    ;;
-esac
 
 post_install() {
   rm -rf "$DESTDIR/usr/share/doc"
