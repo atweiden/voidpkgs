@@ -64,7 +64,8 @@ constant %PKG = Map.new(
                  bind-libs
                  bind-utils>,
     'binutils' => qw<binutils-devel
-                     binutils-doc>,
+                     binutils-doc
+                     libiberty-devel>,
     'bitcoin' => qw<bitcoin-devel
                     bitcoin-doc>,
     'boost' => qw<boost-build

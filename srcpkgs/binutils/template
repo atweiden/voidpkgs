@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.39
-revision=1
+revision=2
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 hostmakedepends="pkgconf"
@@ -20,6 +20,7 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
+  subpackages+=" libiberty-devel"
   subpackages+=" binutils-devel"
 fi
 
@@ -38,12 +39,13 @@ do_configure() {
   local conf
 
   if [[ -n "$CHROOT_READY" ]]; then
-    conf+=" --with-debuginfod"
+    conf+=" --enable-install-libiberty"
     conf+=" --enable-shared"
+    conf+=" --with-debuginfod"
   else
-    conf+=" --without-debuginfod"
-    conf+=" --disable-shared"
     conf+=" --disable-install-libbfd"
+    conf+=" --disable-shared"
+    conf+=" --without-debuginfod"
   fi
   if [[ -n "$CROSS_BUILD" ]]; then
     # we don't want --with-sysroot=$XBPS_CROSS_BASE like gnu-configure
@@ -157,6 +159,8 @@ do_install() {
       "$DESTDIR/usr/lib/libbfd.so"
     echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > \
       "$DESTDIR/usr/lib/libopcodes.so"
+    # install PIC version of libiberty.a
+    vinstall build/libiberty/pic/libiberty.a 755 usr/lib
   fi
 
   # remove useless manpages
@@ -193,6 +197,18 @@ binutils-doc_package() {
     vmove usr/share/info
     # remove info file that conflicts with autoconf
     rm -f "$PKGDESTDIR/usr/share/info/standards.info"
+  }
+}
+
+libiberty-devel_package() {
+  unset reverts
+  reverts+=" 20210106_1"
+  reverts+=" 20220713_1"
+  short_desc="Library of utility functions used by GNU programs"
+  conflicts="binutils-devel<=2.35.1_3"
+  pkg_install() {
+    vmove usr/include/libiberty
+    vmove usr/lib/libiberty.a
   }
 }
 
