@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="s6-networking"
-version=2.5.1.1
+version=2.5.1.3
 revision=1
 short_desc="Suite of small network utilities for Unix systems"
 makedepends+=" execline-devel"
@@ -13,7 +13,7 @@ homepage="https://skarnet.org/software/s6-networking/"
 license="ISC"
 changelog="https://skarnet.org/software/s6-networking/upgrade.html"
 distfiles="https://skarnet.org/software/s6-networking/$pkgname-$version.tar.gz"
-checksum="7ac79d4de3d9c13532e444ab7497c4e04ad0fa7229d502984d9dc7d48aa64418"
+checksum="a09e43c959ff9e0caa8ff4002608e73c0f57f87f04a8d9c24e6c9afefe45e977"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
