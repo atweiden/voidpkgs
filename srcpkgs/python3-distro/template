@@ -1,18 +1,18 @@
 maintainer="nox"
 pkgname="python3-distro"
-version=1.7.0
-revision=2
+version=1.8.0
+revision=1
 short_desc="OS platform information API"
 depends="python3"
-makedepends="python3-devel"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-unittest-mixins"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-wheel"
 homepage="https://github.com/nir0s/distro"
 license="Apache-2.0"
 changelog="https://github.com/python-distro/distro/raw/master/CHANGELOG.md"
 distfiles="$PYPI_SITE/d/distro/distro-$version.tar.gz"
-checksum="151aeccf60c216402932b52e40ee477a939f8d58898927378a02abbe852c1c39"
-build_style="python3-module"
+checksum="02e111d1dc6a50abb8eed6bf31c3e48ed8b0830d1ea2a1b78c61765c2513fdd8"
+build_style="python3-pep517"
+make_check_pre="env PYTHONPATH=src"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
