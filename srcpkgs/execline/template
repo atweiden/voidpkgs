@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="execline"
-version=2.9.0.1
+version=2.9.2.0
 revision=1
 short_desc="Non-interactive scripting language"
 makedepends="skalibs-devel"
@@ -8,14 +8,18 @@ homepage="https://skarnet.org/software/execline/"
 license="ISC"
 changelog="https://skarnet.org/software/execline/upgrade.html"
 distfiles="https://skarnet.org/software/execline/$pkgname-$version.tar.gz"
-checksum="01260fcaf80ffbca2a94aa55ea474dfb9e39b3033b55c8af88126791879531f6"
+checksum="9365012558a1e3c019cafc6eb574b0f5890495fb02652f20efdd782d577b1601"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" --with-lib=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-sysdeps=$XBPS_CROSS_BASE/usr/lib/skalibs/sysdeps"
+configure_args+=" $(vopt_if multicall --enable-multicall)"
 configure_args+=" $(vopt_if static --enable-static-libc)"
-build_options="static"
+build_options+=" multicall"
+build_options+=" static"
+desc_option_multicall="Build single multicall binary instead of a binary per utility"
+desc_option_static="Build static binaries"
 
 CFLAGS="-fPIC"
 
