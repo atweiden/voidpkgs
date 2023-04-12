@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nsss"
-version=0.2.0.1
-revision=2
+version=0.2.0.3
+revision=1
 short_desc="Minimal competing implementation of glibc's Name Switch Service"
 # only available for musl
 archs="*-musl"
@@ -10,7 +10,7 @@ homepage="https://skarnet.org/software/nsss/"
 license="ISC"
 changelog="https://skarnet.org/software/nsss/upgrade.html"
 distfiles="https://skarnet.org/software/nsss/$pkgname-$version.tar.gz"
-checksum="7d984ea627b3a8d7649d9bf24c79693f338e911d2b11040b89c4febfb1b3125b"
+checksum="b1e397ed5b327611a7c2c8c1dc60e91fef353c54fead464f887720bc0914148e"
 build_style="configure"
 configure_args+=" --bindir=/usr/bin"
 configure_args+=" --dynlibdir=/usr/lib"
