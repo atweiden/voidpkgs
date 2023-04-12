@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="66-tools"
 version=0.0.8.0
-revision=2
+revision=3
 short_desc="Small tools and helpers for service scripts execution"
 makedepends+=" execline-devel"
 makedepends+=" oblibs-devel"
