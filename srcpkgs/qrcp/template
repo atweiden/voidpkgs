@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="qrcp"
-version=0.9.1
-revision=2
+version=0.10.0
+revision=1
 short_desc="Transfer files over wifi to mobile devices by scanning a QR code"
 homepage="https://claudiodangelis.com/qrcp/"
 license="MIT"
 distfiles="https://github.com/claudiodangelis/qrcp/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1ee0d1b04222fb2a559d412b144a49051c3315cbc99c7ea1f281bdd4f13f07bf"
+checksum="70f9930cb371fa9a0a98df12442486a7802ede1a797d26fbc3363605b6574db4"
 build_style="go"
 go_import_path="github.com/claudiodangelis/qrcp"
 go_build_tags+=" netgo"
