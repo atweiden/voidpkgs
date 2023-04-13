@@ -9,6 +9,8 @@ changelog="https://github.com/jdxcode/rtx/releases"
 distfiles="https://github.com/jdxcode/rtx/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6da13ad3d3d2ab6e00486aafc40e8fa6d77d7bb3cd4c3b246ac00a3ac61777e4"
 build_style="cargo"
+# skip cli tests: fail to find executable
+make_check_args="-- --skip cli::direnv::exec::tests"
 
 post_install() {
   vlicense LICENSE
