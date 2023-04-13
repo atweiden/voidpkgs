@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="diffr"
-version=0.1.4
+version=0.1.5
 revision=1
 short_desc="LCS based diff highlighting tool to ease code review from your terminal"
 homepage="https://github.com/mookid/diffr"
 license="MIT"
 changelog="https://github.com/mookid/diffr/raw/master/CHANGELOG.md"
 distfiles="https://github.com/mookid/diffr/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2613b57778df4466a20349ef10b9e022d0017b4aee9a47fb07e78779f444f8cb"
+checksum="6c5861e5b8f5d798e027fe69cc186452848dc4ae5641326b41b5c160d3e91654"
 build_style="cargo"
 
 do_install() {
