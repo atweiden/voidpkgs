@@ -1,0 +1,19 @@
+maintainer="nox"
+pkgname="rtx"
+version=1.28.4
+revision=1
+short_desc="Polyglot runtime manager (asdf rust clone)"
+homepage="https://github.com/jdxcode/rtx"
+license="MIT"
+changelog="https://github.com/jdxcode/rtx/releases"
+distfiles="https://github.com/jdxcode/rtx/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="6da13ad3d3d2ab6e00486aafc40e8fa6d77d7bb3cd4c3b246ac00a3ac61777e4"
+build_style="cargo"
+
+do_install() {
+  vbin "target/$RUST_TARGET/release/rtx"
+  vlicense LICENSE
+  vdoc README.md
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
