@@ -1,21 +1,21 @@
 maintainer="nox"
 pkgname="taplo"
-version=0.7.0
+version=0.8.0
 revision=1
 short_desc="TOML toolkit written in Rust"
-# ring
-archs+=" aarch64*"
-archs+=" arm*"
-archs+=" i686*"
-archs+=" x86_64*"
 makedepends="openssl-devel"
 hostmakedepends="pkg-config"
 homepage="https://taplo.tamasfe.dev/"
 license="MIT"
-distfiles="https://github.com/tamasfe/taplo/archive/release-$pkgname-cli-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6b6d06220dabc3a63e17b87ca4be1b9dfde97dc3c6bd6e8115cc5d2e2dad9bbe"
+distfiles="https://github.com/tamasfe/taplo/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="079fab82f48e4f71379f0d2e249b7bd402af8ddf84ea16b65ba2742811a8d951"
 build_wrksrc="crates/taplo-cli"
 build_style="cargo"
+# lsp: build toml language server
+# native-tls: enable linking against system ssl instead of rustls/ring
+configure_args+=" --features lsp,native-tls"
+# allow selecting custom feature set
+configure_args+=" --no-default-features"
 
 post_install() {
   vlicense ../../LICENSE.md
