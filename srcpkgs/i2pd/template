@@ -29,6 +29,12 @@ _i2pd_homedir="/var/lib/i2pd"
 make_dirs="/var/lib/i2pd 0700 _i2pd _i2pd"
 
 do_install() {
+  # static library and headers for the -devel package
+  vinstall libi2pd.a 644 usr/lib
+  vmkdir usr/include
+  vcopy "libi2pd/*.h" usr/include
+
+  # configuration for the main package
   vbin i2pd
   vlicense LICENSE
   vman debian/i2pd.1
@@ -42,7 +48,16 @@ post_install() {
   vmkdir usr/share/i2pd
   vcopy contrib/certificates usr/share/i2pd
   vmkdir var/lib/i2pd
-  ln -s /usr/share/i2pd/certificates "$DESTDIR/var/lib/i2pd/certificates"
+  ln -sf /usr/share/i2pd/certificates "$DESTDIR/var/lib/i2pd/certificates"
+}
+
+i2pd-devel_package() {
+  depends="i2pd>=${version}_$revision"
+  short_desc+=" - development files"
+  pkg_install() {
+    vmove "usr/lib/*.a"
+    vmove "usr/include/*.h"
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

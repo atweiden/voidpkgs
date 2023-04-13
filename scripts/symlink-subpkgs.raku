@@ -295,6 +295,7 @@ constant %PKG = Map.new(
                      libhunspell1.7>,
     'hwloc' => qw<libhwloc
                   libhwloc-devel>,
+    'i2pd' => ['i2pd-devel'],
     'icdiff' => ['python3-icdiff'],
     'icu' => qw<icu-devel
                 icu-libs>,
