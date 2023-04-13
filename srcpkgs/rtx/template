@@ -10,8 +10,7 @@ distfiles="https://github.com/jdxcode/rtx/archive/v$version.tar.gz>$pkgname-$ver
 checksum="6da13ad3d3d2ab6e00486aafc40e8fa6d77d7bb3cd4c3b246ac00a3ac61777e4"
 build_style="cargo"
 
-do_install() {
-  vbin "target/$RUST_TARGET/release/rtx"
+post_install() {
   vlicense LICENSE
   vdoc README.md
 }
