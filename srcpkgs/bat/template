@@ -35,6 +35,7 @@ pre_build() {
 }
 
 post_install() {
+  local bash_completion
   local fish_completion
   local manpage
   local zsh_completion
