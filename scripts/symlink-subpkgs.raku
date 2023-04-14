@@ -821,6 +821,8 @@ constant %PKG = Map.new(
                               libsmartcols-devel
                               libuuid
                               libuuid-devel>,
+    'uwsgi' => qw<uwsgi-cgi
+                  uwsgi-python3>,
     'valgrind' => ['valgrind-devel'],
     'varnish' => qw<libvarnishapi
                     libvarnishapi-devel>,
