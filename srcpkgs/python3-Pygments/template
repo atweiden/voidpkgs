@@ -1,25 +1,26 @@
 maintainer="nox"
 pkgname="python3-Pygments"
-version=2.14.0
+version=2.15.0
 revision=1
 short_desc="Generic syntax highlighter written in Python"
 depends="python3"
 checkdepends+=" python3-lxml"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://pygments.org"
 license="BSD-2-Clause"
 changelog="https://github.com/pygments/pygments/raw/master/CHANGES"
 distfiles="$PYPI_SITE/P/Pygments/Pygments-$version.tar.gz"
-checksum="b3ed06a9e8ac9a9aae5a6f5dbe78a8a58655d17b43b93c078f094ddc476ae297"
-build_style="python3-module"
+checksum="f7e36cffc4c517fbc252861b9a6e4644ca0e5abadf9a113c72d1358ad09b9500"
+build_style="python3-pep517"
 # ignored tests rely on unpackaged wcag_contrast_ratio module
 make_check_args="--ignore=tests/contrast/test_contrasts.py"
 alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
+conflicts="python-Pygments>=0"
 
 post_install() {
   vlicense LICENSE
-  mv "$DESTDIR/usr/bin"/pygmentize{,3}
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
