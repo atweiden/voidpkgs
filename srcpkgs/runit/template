@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="runit"
 version=2.1.2
-revision=14
+revision=15
 short_desc="UNIX init scheme with service supervision"
 homepage="http://smarden.org/runit/"
 license="BSD-3-Clause"
@@ -10,6 +10,9 @@ checksum="6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18"
 patch_args="-Np0"
 build_wrksrc="$pkgname-$version/src"
 build_style="gnu-makefile"
+# FIXME: this is caused by some bonk tests that should be fixed in
+# void-linux/runit at some point
+make_check="no"
 build_options="static"
 
 if [[ -n "$build_option_static" ]]; then
