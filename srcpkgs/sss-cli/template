@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sss-cli"
 version=0.1.1
-revision=1
+revision=2
 short_desc="Shamir's secret sharing scheme CLI tool"
 homepage="https://github.com/dsprenkels/sss-cli"
 license="MIT"
