@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-crev"
 version=0.23.3
-revision=1
+revision=2
 short_desc="Cryptographically verifiable code review system for cargo"
 makedepends="openssl-devel"
 hostmakedepends="pkg-config"
