@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-update"
 version=13.0.0
-revision=1
+revision=2
 short_desc="Cargo subcommand for updates to installed executables"
 makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
@@ -19,6 +19,12 @@ build_style="cargo"
 if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
   make_check_args="-- --skip ops::assert_index_path"
 fi
+
+post_patch() {
+  # upstream does not ship a lockfile and is very vocal about that being
+  # the right way: https://github.com/nabijaczleweli/cargo-update/issues/50
+  cargo generate-lockfile
+}
 
 post_install() {
   vlicense LICENSE
