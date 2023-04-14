@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-packaging"
-version=23.0
+version=23.1
 revision=1
 short_desc="Core utilities for Python packages (Python3)"
 depends="python3-parsing"
@@ -10,7 +10,7 @@ hostmakedepends+=" python3-installer"
 homepage="https://github.com/pypa/packaging"
 license="Apache-2.0, BSD-2-Clause"
 distfiles="$PYPI_SITE/p/packaging/packaging-$version.tar.gz"
-checksum="b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"
+checksum="a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f"
 # this package is required by python3-build, used by the python3-pep517
 # style; using that style here would create a cycle
 build_style="python3-module"
