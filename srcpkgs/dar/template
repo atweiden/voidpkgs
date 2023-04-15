@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="dar"
-version=2.6.13
+version=2.7.9
 revision=1
 short_desc="Shell command that backs up directory trees and files"
 makedepends+=" acl-devel"
 makedepends+=" bzip2-devel"
 makedepends+=" e2fsprogs-devel"
+makedepends+=" libargon2-devel"
 makedepends+=" libcurl-devel"
 makedepends+=" libgcrypt-devel"
 makedepends+=" liblzma-devel"
@@ -16,10 +17,11 @@ hostmakedepends+=" gettext-devel"
 hostmakedepends+=" gpgme-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" which"
 homepage="http://dar.linux.free.fr/"
 license="GPL-2.0-or-later"
-distfiles="$SOURCEFORGE_SITE/dar/dar-$version.tar.gz"
-checksum="3fea9ff9e55fb9827e17a080de7d1a2605b82c2320c0dec969071efefdbfd097"
+distfiles="$SOURCEFORGE_SITE/dar/$pkgname-$version.tar.gz"
+checksum="1c609f691f99e6a868c0a6fcf70d2f5d2adee5dc3c0cbf374e69983129677df5"
 conf_files="/etc/darrc"
 build_style="gnu-configure"
 configure_args+=" --disable-build-html"
@@ -30,6 +32,17 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" ac_cv_lib_gcrypt_gcry_check_version=false"
   LDFLAGS="-L$XBPS_CROSS_BASE/usr/lib -lgcrypt"
 fi
+
+post_extract() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # skip building checks, its trying to execute a target binary and
+    # we don't run the checks for cross builds anywyas.
+    vsed \
+      -i \
+      -e '/SUBDIRS =/s/check//g' \
+      src/Makefile.in
+  fi
+}
 
 do_check() {
   # need to be run as root
