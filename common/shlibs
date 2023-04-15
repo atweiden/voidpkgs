@@ -298,6 +298,7 @@ libdnet.so.1 libdnet-1.12_1
 libedit.so.0 libedit-20130712.3.1_1
 libefiboot.so.1 libefivar-31_1
 libefivar.so.1 libefivar-31_1
+libefisec.so.1 libefivar-38_1
 libasm.so.1 libelf-0.155_1
 libdw.so.1 libelf-0.155_1
 libelf.so.1 libelf-0.155_1

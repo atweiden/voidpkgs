@@ -1,23 +1,51 @@
 maintainer="nox"
 pkgname="efivar"
-version=37
-revision=2
+version=38
+revision=1
 short_desc="Tools to manipulate EFI variables"
-hostmakedepends="pkg-config"
-homepage="https://github.com/rhinstaller/efivar"
+checkdepends="grub"
+hostmakedepends+=" mdocml"
+hostmakedepends+=" pkg-config"
+homepage="https://github.com/rhboot/efivar"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/rhboot/efivar/releases/download/$version/$pkgname-$version.tar.bz2"
-checksum="3c67feb93f901b98fbb897d5ca82931a6698b5bcd6ac34f0815f670d77747b9f"
+checksum="f018ed6e49c5f1c16d336d9fd7687ce87023276591921db1e49a314ad6515349"
 build_style="gnu-makefile"
 make_build_args="libdir=/usr/lib"
 make_build_target+=" all"
 make_build_target+=" test"
+make_check_args="GRUB_PREFIX=grub"
+make_check_target="test"
 make_install_args="libdir=/usr/lib"
+disable_parallel_check="yes"
 
-CFLAGS="-D_GNU_SOURCE -Wno-error=address-of-packed-member"
+post_extract() {
+  vsed \
+    -i \
+    -e 's/-march=native//' \
+    src/include/defaults.mk
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # we build makeguids manually, make sure its not rebuild
+    vsed \
+      -i \
+      -e '/$(MAKEGUIDS_OUTPUT) : makeguids/d' \
+      src/Makefile
+  fi
+}
 
-post_build() {
-  make -C src/test
+pre_build() {
+  if [[ -n "$CROSS_BUILD" ]]; then
+    # work around broken cross build support by building makeguids and
+    # then cleaning up shared objects
+    HOSTCC="gcc" \
+    HOSTCCLD="gcc" \
+    HOST_CFLAGS= \
+    HOST_LDFLAGS= \
+    SRCDIR="$wrksrc" \
+    TOPDIR="$wrksrc" \
+      make "$makejobs" -C src makeguids
+    rm -f src/*.o
+  fi
 }
 
 post_install() {
