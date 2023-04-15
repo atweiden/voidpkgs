@@ -1,7 +1,8 @@
 maintainer="nox"
 pkgname="cyrus-sasl"
-version=2.1.27
-revision=9
+# keep in sync with libsasl
+version=2.1.28
+revision=1
 short_desc="Cyrus SASL - auth daemon and administration tools"
 depends="libsasl>=$version"
 makedepends+=" db-devel"
@@ -20,7 +21,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.cyrusimap.org/sasl/"
 license="BSD-3-Clause-Attribution"
 distfiles="https://github.com/cyrusimap/cyrus-sasl/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5"
+checksum="7ccfc6abd01ed67c1a0924b353e526f1b766b21f42d4562ee635a8ebfc5bb38c"
 build_style="gnu-configure"
 configure_args+=" --disable-krb4"
 configure_args+=" --disable-macos-framework"
@@ -47,6 +48,7 @@ configure_args+=" --with-ldap"
 configure_args+=" --with-mysql=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-pam"
 configure_args+=" --with-saslauthd=/run/saslauthd"
+configure_args+=" ac_cv_gssapi_supports_spnego=yes"
 
 pre_configure() {
   autoreconf -fi
