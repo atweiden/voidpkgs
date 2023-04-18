@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tiff"
-version=4.3.0
+version=4.5.0
 revision=1
 short_desc="Library and tools for reading and writing TIFF data files"
 makedepends+=" jbigkit-devel"
@@ -8,31 +8,30 @@ makedepends+=" libjpeg-turbo-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
-homepage="http://libtiff.maptools.org/"
+homepage="http://www.simplesystems.org/libtiff/"
 license="libtiff"
-distfiles="http://download.osgeo.org/libtiff/$pkgname-$version.tar.gz"
-checksum="0e46e5acb087ce7d1ac53cf4f56a09b221537fc86dfc5daaad1c2e89e1b37ac8"
+distfiles="https://download.osgeo.org/libtiff/$pkgname-$version.tar.gz"
+checksum="c7a1d9296649233979fa3eacffef3fa024d73d05d589cb622727b5b08c423464"
 build_style="gnu-configure"
 configure_args+=" --enable-cxx"
 configure_args+=" --without-x"
-
-pre_configure() {
-  autoreconf -fi
-}
+if [[ -n "$XBPS_CHECK_PKGS" ]]; then
+  configure_args+=" --enable-tests"
+else
+  configure_args+=" --disable-tests"
+fi
 
 post_install() {
   for f in "$DESTDIR/usr/share/man/man3"/*.3tiff; do
     mv "$f" "${f%tiff}"
   done
-  vlicense COPYRIGHT
+  vlicense LICENSE.md
 }
 
 tiff-devel_package() {
   unset depends
   depends+=" $makedepends"
-  depends+=" tiff>=${version}_$revision"
+  depends+=" $sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
