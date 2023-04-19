@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="cargo-auditable-bootstrap"
 # keep synced with cargo-auditable
 version=0.6.1
-revision=1
+revision=2
 short_desc="Bootstrap package for cargo-auditable"
 homepage="https://github.com/rust-secure-code/cargo-auditable"
 license="MIT,Apache-2.0"
