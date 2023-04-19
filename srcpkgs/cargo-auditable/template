@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="cargo-auditable"
 # keep synced with cargo-auditable-bootstrap
 version=0.6.1
-revision=1
+revision=2
 short_desc="Tool for embedding dependency information in rust binaries"
 hostmakedepends="cargo-auditable-bootstrap"
 homepage="https://github.com/rust-secure-code/cargo-auditable"
