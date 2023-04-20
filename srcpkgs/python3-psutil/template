@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-psutil"
-version=5.9.4
+version=5.9.5
 revision=1
 short_desc="Cross-platform process and system utilities module for Python3"
 depends="python3"
@@ -10,7 +10,7 @@ homepage="https://github.com/giampaolo/psutil"
 license="BSD-3-Clause"
 changelog="https://github.com/giampaolo/psutil/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/p/psutil/psutil-$version.tar.gz"
-checksum="3d7f9739eb435d4b1338944abe23f49584bde5395f27487d2ee25ad9a8774a62"
+checksum="5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
 build_style="python3-module"
 # tests seem to assume package is installed
 make_check="no"
