@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ccache"
-version=4.7.4
+version=4.8
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="libzstd-devel"
@@ -13,8 +13,8 @@ license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
 distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
 distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version-linux-x86_64.tar.xz"
-checksum+=" df0c64d15d3efaf0b4f6837dd6b1467e40eeaaa807db25ce79c3a08a46a84e36"
-checksum+=" 0b700cc10884f7faf615203241d34eba7ebe0723f38f6aeb77569a556ff37313"
+checksum+=" b963ee3bf88d7266b8a0565e4ba685d5666357f0a7e364ed98adb0dc1191fcbb"
+checksum+=" 3b35ec9e8af0f849e66e7b5392e2d436d393adbb0574b7147b203943258c6205"
 build_style="cmake"
 configure_args+=" -DENABLE_DOCUMENTATION=OFF"
 configure_args+=" -DENABLE_TESTING=OFF"
