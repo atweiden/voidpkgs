@@ -1,7 +1,7 @@
 # partially adapted from alpine/adélie's rust APKBUILD
 maintainer="nox"
 pkgname="rust"
-version=1.68.2
+version=1.69.0
 revision=1
 short_desc="Safe, concurrent, practical systems language"
 depends="rust-std"
@@ -40,7 +40,7 @@ fi
 homepage="https://www.rust-lang.org/"
 license="MIT, Apache-2.0"
 distfiles="https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
-checksum="93339c23f7cd4d0c45db58e18b4c6e16d6070f4277aad9d2492d23294bf32e96"
+checksum="fb05971867ad6ccabbd3720279f5a94b99f61024923187b56bb5c455fa3cf60f"
 build_options="bindist"
 desc_option_bindist="Generate tarballs for bootstrap"
 lib32disabled="yes"
