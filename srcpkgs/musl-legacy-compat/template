@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="musl-legacy-compat"
-version=0.5
+version=0.6
 revision=1
 short_desc="Legacy compatibility headers for the musl libc"
 archs="*-musl"
