@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux6.2"
 version=6.2.11
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
