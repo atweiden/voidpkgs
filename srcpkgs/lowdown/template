@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lowdown"
 version=1.0.1
-revision=1
+revision=2
 short_desc="Simple markdown translator"
 homepage="https://kristaps.bsd.lv/lowdown/"
 license="ISC"
@@ -13,9 +13,7 @@ configure_args+=" MANDIR=/usr/share/man"
 configure_args+=" PREFIX=/usr"
 make_check_target="regress"
 make_install_target+=" install"
-make_install_target+=" install_shared"
-make_install_target+=" install_static"
-shlib_provides="liblowdown.so"
+make_install_target+=" install_libs"
 
 post_install() {
   vlicense LICENSE.md
@@ -28,6 +26,7 @@ lowdown-devel_package() {
     vmove usr/include
     vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
     vmove "usr/share/man/man3/*.3"
   }
 }

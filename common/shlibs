@@ -590,7 +590,7 @@ libzip.so.5 libzip-1.7.3_2
 libzstd.so.1 libzstd-1.0.0_1
 liblldb.so.15 lldb-15.0.7_1
 libllhttp.so.1 llhttp-1.0.1_1
-liblowdown.so lowdown-0.11.2_1
+liblowdown.so.2 lowdown-1.0.1_1
 liblttng-ctl.so.0 lttng-tools-2.10.1_1
 liblttng-ust-ctl.so.4 lttng-ust-2.10.0_1
 liblttng-ust-fd.so.0 lttng-ust-2.10.0_1
