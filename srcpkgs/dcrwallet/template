@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dcrwallet"
-version=1.7.5
+version=1.7.7
 revision=1
 short_desc="Decred wallet daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="302ec009d75410afac2b00978a171fe14ab6def63251a1052bee5b54775ad5e2"
+checksum="ff17f468920ba207b6402ca8f5a3b096638b6289c70e2ecf563b1d09e8fb1897"
 build_style="go"
 go_import_path="decred.org/dcrwallet/v2"
 go_build_tags+=" netgo"
