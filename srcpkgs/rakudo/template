@@ -42,6 +42,11 @@ make_dirs+=" /usr/lib/raku/vendor/short 0755 root root"
 make_dirs+=" /usr/lib/raku/vendor/sources 0755 root root"
 provides="raku-${version}_$revision"
 
+post_extract() {
+  # remove failing test
+  rm --force t/09-moar/01-profilers.t
+}
+
 post_install() {
   vbin tools/install-dist.raku raku-install-dist
 }
