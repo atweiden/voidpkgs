@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="chroot-git"
-version=2.39.2
+version=2.40.1
 revision=1
 short_desc="GIT Tree History Storage Tool - for xbps-src use"
 makedepends="zlib-devel"
 homepage="https://git-scm.com/"
 license="GPL-2.0-only"
 distfiles="https://www.kernel.org/pub/software/scm/git/${pkgname#chroot-}-$version.tar.xz"
-checksum="475f75f1373b2cd4e438706185175966d5c11f68c4db1e48c26257c43ddcf2d6"
+checksum="4893b8b98eefc9fdc4b0e7ca249e340004faa7804a433d17429e311e1fef21d2"
 repository="bootstrap"
 bootstrap="yes"
 
