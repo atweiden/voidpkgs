@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-mypy"
-version=1.0.0
+version=1.2.0
 revision=1
 short_desc="Optional static typing for Python3"
 depends+=" python3-mypy_extensions"
@@ -18,7 +18,7 @@ homepage="https://www.mypy-lang.org"
 license="MIT"
 changelog="https://mypy-lang.blogspot.com"
 distfiles="$PYPI_SITE/m/mypy/mypy-$version.tar.gz"
-checksum="f34495079c8d9da05b183f9f7daec2878280c2ad7cc81da686ef0b484cea2ecf"
+checksum="f70a40410d774ae23fcb4afbbeca652905a04de7948eaf0b1789c8d1426b72d1"
 build_style="python3-module"
 # fails in ci
 make_check_args="-k not(testDaemonStatusKillRestartRecheck)"
