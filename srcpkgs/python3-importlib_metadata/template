@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-importlib_metadata"
-version=6.3.0
+version=6.6.0
 revision=1
 short_desc="Read metadata from python3 packages"
 depends="python3-zipp"
@@ -10,7 +10,7 @@ homepage="https://pypi.org/project/importlib-metadata/"
 license="Apache-2.0"
 changelog="https://github.com/python/importlib_metadata/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/i/importlib_metadata/importlib_metadata-$version.tar.gz"
-checksum="23c2bcae4762dfb0bbe072d358faec24957901d75b6c4ab11172c0c982532402"
+checksum="92501cdf9cc66ebd3e612f1b4f0c0765dfa42f0fa38ffb319b6bd84dd675d705"
 build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
