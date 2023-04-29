@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="lttng-tools"
 version=2.12.4
-revision=1
+revision=2
 short_desc="Set of tools to control LTTng tracing"
 makedepends+=" libuuid-devel"
 makedepends+=" libxml2-devel"
