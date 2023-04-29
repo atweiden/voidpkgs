@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xfsprogs"
 version=5.19.0
-revision=1
+revision=2
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
 makedepends+=" libblkid-devel"
