@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="libpsl"
-version=0.21.1
-revision=5
+version=0.21.2
+revision=1
 short_desc="Public Suffix List library functions"
 makedepends="icu-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 license="MIT"
 homepage="https://rockdaboot.github.io/libpsl/"
+changelog="https://github.com/rockdaboot/libpsl/raw/master/NEWS"
 distfiles="https://github.com/rockdaboot/libpsl/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="ac6ce1e1fbd4d0254c4ddb9d37f1fa99dec83619c1253328155206b896210d4c"
+checksum="e35991b6e17001afa2c0ca3b10c357650602b92596209b7492802f3768a6285f"
 build_style="gnu-configure"
 
 post_install() {
@@ -17,7 +18,7 @@ post_install() {
 }
 
 libpsl-devel_package() {
-  depends="libpsl-${version}_$revision"
+  depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
