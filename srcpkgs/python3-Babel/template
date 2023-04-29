@@ -1,19 +1,26 @@
 maintainer="nox"
 pkgname="python3-Babel"
-version=2.10.3
-revision=2
+version=2.12.1
+revision=1
 short_desc="Tools for internationalizing Python applications (Python3)"
-depends="python3-pytz"
+checkdepends+=" faketime"
 checkdepends+=" python3-freezegun"
 checkdepends+=" python3-pytest"
-checkdepends+=" python3-pytz"
 hostmakedepends="python3-setuptools"
 homepage="https://babel.pocoo.org"
 license="BSD-3-Clause"
 changelog="https://github.com/python-babel/babel/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/B/Babel/Babel-$version.tar.gz"
-checksum="7614553711ee97490f732126dc077f8d0ae084ebc6a96e23db1482afabdb2c51"
+checksum="cc2d99999cd01d44420ae725a21c9e3711b3aadc7976d6147f622d8581963455"
 build_style="python3-module"
+
+do_check() {
+  # if you see this is hanging, remove faketime it has problem with
+  # python's time.sleep
+  LD_PRELOAD="/usr/lib/faketime/libfaketime.so.1" \
+  FAKETIME="@2023-01-01 00:00:00" \
+    python3 -m pytest
+}
 
 post_install() {
   vlicense LICENSE
