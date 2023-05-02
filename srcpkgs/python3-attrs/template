@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-attrs"
-version=22.2.0
+version=23.1.0
 revision=1
 short_desc="Attributes without boilerplate (Python3)"
 depends="python3"
@@ -8,13 +8,14 @@ checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-six"
 checkdepends+=" python3-zope.interface"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" hatch-vcs"
+hostmakedepends+=" python3-setuptools"
 homepage="https://attrs.readthedocs.io/"
 license="MIT"
 changelog="https://github.com/python-attrs/attrs/raw/main/CHANGELOG.md"
 distfiles="$PYPI_SITE/a/attrs/attrs-$version.tar.gz"
-checksum="c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"
-build_style="python3-module"
+checksum="6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
