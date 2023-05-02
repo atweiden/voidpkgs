@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="python3-curio"
-version=1.5
-revision=3
+version=1.6
+revision=1
 short_desc="Coroutine-based library for concurrent programming using async/await"
 depends="python3"
 checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/dabeaz/curio"
 license="BSD-3-Clause"
-distfiles="$PYPI_SITE/c/curio/curio-$version.tar.gz"
-checksum="af08212e590bb7da8e4cc39c42012711494dc20d622f162155ba296cc2e3bc10"
+changelog="https://github.com/dabeaz/curio/raw/master/CHANGES"
+distfiles="https://github.com/dabeaz/curio/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="8bf9f1fa8b16f8f9f202c9c7d7189f3757ecc38e3823a0afa363b59acb087123"
 build_style="python3-module"
 
 do_check() {
