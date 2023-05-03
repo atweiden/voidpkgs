@@ -5,9 +5,9 @@ revision=2
 short_desc="Tool for creating single-use unrecoverable encrypted sandboxes"
 depends+=" bash"
 depends+=" encfs"
-homepage="https://xyne.archlinux.ca/projects/quixand/"
+homepage="https://xyne.dev/projects/quixand"
 license="GPL-2.0-only"
-distfiles="https://xyne.archlinux.ca/projects/quixand/src/$pkgname-$version.tar.xz"
+distfiles="https://xyne.dev/projects/quixand/src/$pkgname-$version.tar.xz"
 checksum="470fac15b0f4f9c6e4cdf2be360cb4e9325ec319494991e8550b3d1d0b0226e1"
 
 do_install() {
