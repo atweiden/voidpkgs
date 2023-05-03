@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gptfdisk"
 version=1.0.9
-revision=1
+revision=2
 short_desc="GPT fdisk text-mode partitioning tool"
 makedepends+=" libuuid-devel"
 makedepends+=" ncurses-devel"
