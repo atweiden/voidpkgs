@@ -8,14 +8,32 @@ depends+=" git"
 depends+=" python3"
 depends+=" python3-docopt"
 depends+=" python3-yaml"
-hostmakedepends="python3-setuptools"
+checkdepends+=" $depends"
+checkdepends+=" mercurial"
+checkdepends+=" python3-pytest"
+checkdepends+=" rsync"
+checkdepends+=" subversion"
+hostmakedepends+=" hatchling"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/buildinspace/peru"
 license="MIT"
 distfiles="https://github.com/buildinspace/peru/archive/$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="6a21108f8b0417301d3cd76fa220906cea9d58f95208b70191282972f8bb8ff9"
-build_style="python3-module"
-# tests fail inside chroot
-make_check="no"
+build_style="python3-pep517"
+
+do_check() {
+  local skiptests
+
+  skiptests+=" test_curl_plugin_fetch or"
+  skiptests+=" test_curl_plugin_fetch_archives or"
+  skiptests+=" test_curl_plugin_reup or"
+  skiptests+=" test_git_plugin_with_relative_submodule or"
+  skiptests+=" test_git_plugin_with_submodule or"
+  skiptests+=" test_plugin_fetch or"
+  skiptests+=" test_plugin_get_reup_fields"
+
+  PYTHONPATH="$(cd tests && pwd)" python3 -m pytest -k "not ($skiptests)"
+}
 
 post_install() {
   vlicense LICENSE
