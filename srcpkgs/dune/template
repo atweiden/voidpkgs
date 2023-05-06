@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="dune"
-version=3.6.1
+version=3.7.1
 revision=1
 short_desc="Composable build system for OCaml"
 depends="ocaml"
 makedepends="ocaml"
 homepage="https://dune.build/"
 license="MIT"
+changelog="https://github.com/ocaml/dune/raw/main/CHANGES.md"
 distfiles="https://github.com/ocaml/dune/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="89eb18ff7d3808812e9422b36713336cabc2bd48e875621facee1307ff082f6a"
+checksum="9ddc1dae09e7be6d0bf22b7d1584d95a1b3d4f5d1bae1d4095dc4e1833fa86b2"
 nocross="ocaml"
 
 _dune_release_pkgs+=" dune"
@@ -21,7 +22,8 @@ _dune_release_pkgs+=" dyn"
 _dune_release_pkgs+=" stdune"
 _dune_release_pkgs+=" ordering"
 _dune_release_pkgs+=" xdg"
-_dune_release_pkgs+=" fiber"
+_dune_release_pkgs+=" chrome-trace"
+_dune_release_pkgs+=" ocamlc-loc"
 
 do_configure() {
   ./configure \
