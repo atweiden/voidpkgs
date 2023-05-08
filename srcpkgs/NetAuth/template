@@ -26,6 +26,7 @@ nocross="yes"
 export GOFLAGS="-trimpath"
 
 post_install() {
+  # build shell completions without cross-platform support (see: upstream)
   for sh in bash \
             zsh; do
     "$DESTDIR/usr/bin/netauth" system cli "$sh" "netauth.$sh"

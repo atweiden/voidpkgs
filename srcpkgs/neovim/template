@@ -29,14 +29,10 @@ configure_args+=" -DMIN_LOG_LEVEL=3"
 configure_args+=" -DPREFER_LUA=$(vopt_if luajit OFF ON)"
 build_options="luajit"
 case "$XBPS_TARGET_MACHINE" in
-  riscv64*)
-    build_options_default=""
-    ;;
-  *)
-    build_options_default="luajit"
-    ;;
+  riscv64*) build_options_default="" ;;
+  *) build_options_default="luajit" ;;
 esac
-# cross-compilation requires `qemu-user-static`, see: upstream
+# cross-compilation requires qemu-user-static (see: upstream)
 nocross="yes"
 
 # they want assertion

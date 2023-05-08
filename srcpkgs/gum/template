@@ -26,6 +26,7 @@ export GOFLAGS="-trimpath"
 post_install() {
   vlicense LICENSE
 
+  # build shell completions without cross-platform support (see: upstream)
   for shell in bash \
                fish \
                zsh; do

@@ -56,6 +56,7 @@ post_install() {
   ln -sf rclone "$DESTDIR/usr/bin/mount.rclone"
   vlicense COPYING
   vman rclone.1
+  # build shell completions without cross-platform support (see: upstream)
   for shell in bash \
                fish \
                zsh; do

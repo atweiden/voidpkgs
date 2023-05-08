@@ -13,6 +13,7 @@ build_style="cargo"
 nocross="yes"
 
 post_install() {
+  # build shell completions without cross-platform support (see: upstream)
   PROCS="$DESTDIR/usr/bin/procs"
   "$PROCS" --gen-completion-out bash > procs.bash
   "$PROCS" --gen-completion-out fish > procs.fish

@@ -16,15 +16,9 @@ make_install_args="--path pueue"
 nocross="yes"
 
 case "$XBPS_TARGET_MACHINE" in
-  x86_64*|i686*|arm*|aarch64*)
-    ;;
-  *)
-    broken="ftbfs in ring"
-    ;;
+  x86_64*|i686*|arm*|aarch64*) ;;
+  *) broken="ftbfs in ring" ;;
 esac
-
-post_install() {
-}
 
 post_install() {
   # build shell completions without cross-platform support (see: upstream)

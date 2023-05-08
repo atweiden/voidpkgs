@@ -29,7 +29,7 @@ post_install() {
   vlicense license-mit LICENSE-MIT
   python3 setup.py install --prefix="/usr" --root="$DESTDIR"
 
-  # generate and install some completions
+  # build shell completions without cross-platform support (see: upstream)
   _matbin="$DESTDIR/usr/bin/maturin"
   "$_matbin" completions zsh > maturin.zsh
   "$_matbin" completions fish > maturin.fish

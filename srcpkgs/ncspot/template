@@ -18,11 +18,12 @@ build_style="cargo"
 _features="alsa_backend,pulseaudio_backend,termion_backend"
 configure_args+=" --no-default-features"
 configure_args+=" --features $_features"
-# cross requires build_helper=qemu, see: upstream
+# shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
 post_build() {
   cargo auditable build --release --target "$RUST_TARGET" --package xtask
+  # build shell completions without cross-platform support (see: upstream)
   "target/$RUST_TARGET/release/xtask" generate-shell-completion
   "target/$RUST_TARGET/release/xtask" generate-manpage
 }

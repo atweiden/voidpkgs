@@ -23,7 +23,7 @@ configure_args+=" --localstatedir=/var"
 configure_args+=" --prefix=/usr"
 configure_args+=" --sysconfdir=/etc"
 configure_args+=" --without-gettext"
-# cross compilation requires `qemu`, see: upstream
+# cross-compilation requires qemu (see: upstream)
 nocross="yes"
 
 export PYTHON_CONFIG="$XBPS_CROSS_BASE/usr/bin/python3-config"

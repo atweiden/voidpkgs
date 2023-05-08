@@ -18,7 +18,7 @@ distfiles="https://github.com/zellij-org/zellij/archive/v$version.tar.gz>$pkgnam
 checksum="df64fa143c10f3c7c3e53befeb6ab3b8f08c220f3cf6331cfc6faa2aa779b6b1"
 build_style="cargo"
 make_check_pre="env LIBSSH2_SYS_USE_PKG_CONFIG=1"
-# cross requires build_helper=qemu, see: upstream
+# shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
 post_install() {
@@ -26,6 +26,7 @@ post_install() {
   vinstall assets/zellij.desktop 644 usr/share/applications
   vlicense LICENSE.md
 
+  # build shell completions without cross-platform support (see: upstream)
   for shell in bash \
                fish \
                zsh; do
