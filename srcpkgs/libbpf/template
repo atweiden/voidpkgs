@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libbpf"
-version=1.1.0
+version=1.2.0
 revision=1
 short_desc="Library for working with (e)BPF"
 makedepends="elfutils-devel"
@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/libbpf/libbpf"
 license="LGPL-2.1-only, BSD-2-Clause"
 distfiles="https://github.com/libbpf/libbpf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5da826c968fdb8a2f714701cfef7a4b7078be030cf58b56143b245816301cbb8"
+checksum="dadd4bb6ab3bf9c667d42ee2ae4f7673fca8c60c0f467fcd88c211478266f644"
 build_wrksrc="src"
 build_style="gnu-makefile"
 
