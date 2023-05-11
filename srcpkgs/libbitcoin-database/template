@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-database"
 version=3.6.0
-revision=9
+revision=10
 short_desc="Bitcoin High Performance Blockchain Database"
 archs+=" aarch64*"
 archs+=" ppc64*"
