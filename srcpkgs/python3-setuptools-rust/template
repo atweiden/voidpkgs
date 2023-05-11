@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-setuptools-rust"
-version=1.5.2
-revision=2
+version=1.6.0
+revision=1
 short_desc="Setuptools plugin for Rust support"
 depends+=" python3-semanticversion"
 depends+=" python3-setuptools"
@@ -11,7 +11,7 @@ homepage="https://github.com/PyO3/setuptools-rust"
 license="MIT"
 changelog="https://github.com/PyO3/setuptools-rust/raw/master/CHANGELOG.md"
 distfiles="$PYPI_SITE/s/setuptools-rust/setuptools-rust-$version.tar.gz"
-checksum="d8daccb14dc0eae1b6b6eb3ecef79675bd37b4065369f79c35393dd5c55652c7"
+checksum="c86e734deac330597998bfbc08da45187e6b27837e23bd91eadb320732392262"
 build_style="python3-module"
 # tests have unpackaged dependencies
 make_check="no"
