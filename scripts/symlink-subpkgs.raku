@@ -104,6 +104,7 @@ constant %PKG = Map.new(
                   libboost_stacktrace_addr2line
                   libboost_stacktrace_basic
                   libboost_stacktrace_noop
+                  libboost_sync
                   libboost_system
                   libboost_thread
                   libboost_timer
