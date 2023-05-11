@@ -1,22 +1,17 @@
 maintainer="nox"
 pkgname="cpio"
-version=2.13
+version=2.14
 revision=1
 short_desc="GNU copy-in/out (cpio) with remote magnetic tape (rmt) support"
-hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" tar"
 homepage="http://www.gnu.org/software/cpio/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/cpio/$pkgname-$version.tar.bz2"
-checksum="eab5bdc5ae1df285c59f2a4f140a98fc33678a0bf61bdba67d9436ae26b46f6d"
+checksum="fcdc15d60f7267a6fc7efcd6b9db7b6c8966c4f2fbbb964c24d41336fd3f2c12"
 build_style="gnu-configure"
 configure_args="--with-rmt=/usr/bin/rmt"
 
 CFLAGS="-fcommon"
-
-pre_configure() {
-  autoreconf -if
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
