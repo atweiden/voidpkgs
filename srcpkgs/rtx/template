@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="rtx"
-version=1.29.6
+version=1.29.7
 revision=1
 short_desc="Polyglot runtime manager (asdf rust clone)"
 homepage="https://github.com/jdxcode/rtx"
 license="MIT"
 changelog="https://github.com/jdxcode/rtx/releases"
 distfiles="https://github.com/jdxcode/rtx/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2bd6747c8f871d8db5c727b92358936de490e7b98aca9ed2ada39c99c7bcad8c"
+checksum="1f74dc9936150afb19de3492cda0f1049240fb653782d82c4e7bc4018548be2a"
 build_style="cargo"
 # skip cli tests: fail to find executable
 make_check_args="-- --skip cli::direnv::exec::tests"
@@ -16,6 +16,7 @@ nocross="yes"
 
 post_install() {
   vlicense LICENSE
+  vman man/man1/rtx.1
   vdoc README.md
   # build shell completions without cross-platform support (see: upstream)
   "$DESTDIR/usr/bin/rtx" completion bash > rtx.bash
