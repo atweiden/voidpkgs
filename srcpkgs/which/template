@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="which"
 version=2.21
-revision=3
+revision=4
 short_desc="Displays where a particular program in your path is located"
 homepage="http://savannah.gnu.org/projects/which"
 license="GPL-3.0-or-later"
@@ -9,5 +9,6 @@ distfiles="$GNU_SITE/which/$pkgname-$version.tar.gz"
 checksum="f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad"
 build_style="gnu-configure"
 bootstrap="yes"
+FLAGS="-D_LARGE_FILE_SOURCE=1 -D_FILE_OFFSET_BITS=64"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
