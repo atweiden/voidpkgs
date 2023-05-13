@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="icu"
 version=72.1
-revision=1
+revision=2
 short_desc="Robust and fully-featured Unicode libraries"
 checkdepends+=" diffutils"
 checkdepends+=" python3"
@@ -16,8 +16,8 @@ build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --with-data-packaging=archive"
 
-CFLAGS="-fPIC"
-CXXFLAGS="-fPIC"
+CFLAGS="-fPIC -D_LARGE_FILE_SOURCE=1 -D_FILE_OFFSET_BITS=64"
+CXXFLAGS="-fPIC -D_LARGE_FILE_SOURCE=1 -D_FILE_OFFSET_BITS=64"
 
 # we will be managing icudata manually, because when cross-compiling for
 # another endianness the output data is broken... fortunately, we can
