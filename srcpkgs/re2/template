@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="re2"
-version=2020.06.01
+version=2023.03.01
 revision=1
 short_desc="Efficient, principled regular expression library"
 homepage="https://github.com/google/re2"
 license="BSD-3-Clause"
 distfiles="https://github.com/google/re2/archive/${version//./-}.tar.gz>$pkgname-$version.tar.gz"
-checksum="fb8e0f4ed7a212e3420507f27933ef5a8c01aec70e5148c6a35313573269fae6"
+checksum="7a9a4824958586980926a300b4717202485c4b4115ac031822e29aa4ef207e48"
 build_style="gnu-makefile"
 
 post_install() {
