@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.49.1
-revision=1
+revision=2
 short_desc="High performance, open source, general RPC framework"
 _devel_depends+=" abseil-cpp-devel"
 _devel_depends+=" c-ares-devel"
