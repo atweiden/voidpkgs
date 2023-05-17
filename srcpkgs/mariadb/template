@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mariadb"
 version=10.5.10
-revision=4
+revision=5
 short_desc="Fast SQL database server, drop-in replacement for MySQL"
 depends="perl"
 makedepends+=" boost-devel"
