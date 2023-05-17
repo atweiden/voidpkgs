@@ -1,16 +1,20 @@
 maintainer="nox"
 pkgname="pounce"
-version=3.0
-revision=3
+version=3.1
+revision=1
 short_desc="Multi-client, TLS-only IRC bouncer"
 depends="openssl"
-makedepends="libtls-devel"
+makedepends+=" libcurl-devel"
+makedepends+=" libtls-devel"
+makedepends+=" sqlite-devel"
 hostmakedepends="pkg-config"
 homepage="https://git.causal.agency/pounce/"
 license="GPL-3.0-or-later"
 distfiles="https://git.causal.agency/pounce/snapshot/$pkgname-$version.tar.gz"
-checksum="f776f7f170493697a97923e7dce9597dff5577fd40ba756e9a1bcfab17199df0"
+checksum="97f245556b1cc940553fca18f4d7d82692e6c11a30f612415e5e391e5d96604e"
 build_style="gnu-configure"
+configure_args+=" --enable-notify"
+configure_args+=" --enable-palaver"
 make_build_target="all"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
