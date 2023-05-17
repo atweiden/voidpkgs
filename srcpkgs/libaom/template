@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libaom"
-version=3.6.0
+version=3.6.1
 revision=1
 short_desc="AV1 Codec library implementation"
 hostmakedepends="perl"
@@ -9,7 +9,7 @@ license="BSD-2-Clause"
 changelog="https://aomedia.googlesource.com/aom/+/master/CHANGELOG"
 distfiles="https://aomedia.googlesource.com/aom/+archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 # unstable checksum use content hash
-checksum="@07e101dfe89500bdef1d3cfc0301ada7627cc0fa9b324d84e36ddbd76594933c"
+checksum="@b0ab6b38f5c0533d48ad5a5ff34e207feea6998a27a215a476eccfe9b7f3ecce"
 create_wrksrc="yes"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
