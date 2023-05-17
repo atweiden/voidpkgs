@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxslt"
-version=1.1.37
-revision=3
+version=1.1.38
+revision=1
 short_desc="XSLT parser library from the GNOME project"
 makedepends+=" libgcrypt-devel"
 makedepends+=" libxml2-devel"
@@ -18,7 +18,7 @@ fi
 homepage="https://gitlab.gnome.org/GNOME/libxslt"
 license="MIT"
 distfiles="$GNOME_SITE/libxslt/${version%.*}/libxslt-$version.tar.xz"
-checksum="3a4b27dc8027ccd6146725950336f1ec520928f320f144eb5fa7990ae6123ab4"
+checksum="1f32450425819a09acaff2ab7a5a7f8a2ec7956e505d7beeb45e843d0e1ecab1"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
 configure_args+=" --disable-dependency-tracking"
@@ -58,10 +58,6 @@ post_install() {
       -i \
       -e "s,-I$XBPS_CROSS_BASE/usr/include,-I\${includedir}," \
       "$DESTDIR/usr/bin/xslt-config"
-    vsed \
-      -i \
-      -e "s,$XBPS_CROSS_BASE,,g" \
-      "$DESTDIR/usr/lib/pkgconfig/libexslt.pc"
   fi
 }
 
