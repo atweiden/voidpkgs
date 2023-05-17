@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="vagrant"
-version=2.3.4
+version=2.3.5
 revision=1
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
@@ -13,7 +13,7 @@ homepage="https://www.vagrantup.com/"
 license="MIT"
 changelog="https://github.com/hashicorp/vagrant/raw/main/CHANGELOG.md"
 distfiles="https://github.com/hashicorp/vagrant/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="43eb1461c6dcfd23a0c386570e6c2a876e06d2388bbc0f1f0c9c99e393aa2f0f"
+checksum="34fce02219c67174457a6f8750063047f6c29b7148e425e4f3647cb80b8a5b2e"
 build_style="gemspec"
 nocross="yes"
 
