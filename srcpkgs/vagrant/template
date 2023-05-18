@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vagrant"
 version=2.3.5
-revision=2
+revision=3
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
 archs+=" x86_64*"
@@ -64,8 +64,8 @@ do_install() {
 
   # XXX: work around bad permissions
   chmod 644 \
-    "$DESTDIR/usr/lib/vagrant/gems/google-protobuf-3.23.0/lib/google/protobuf.rb" \
-    "$DESTDIR/usr/lib/vagrant/gems/google-protobuf-3.23.0/lib/google/protobuf"/*.rb
+    "$DESTDIR/usr/lib/vagrant/gems"/google-protobuf-*/lib/google/protobuf.rb \
+    "$DESTDIR/usr/lib/vagrant/gems"/google-protobuf-*/lib/google/protobuf/*.rb
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
