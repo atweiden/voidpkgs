@@ -21,6 +21,8 @@ build_helper="rust"
 # tests use unstable features and fail to build
 make_check="no"
 
+export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
+
 post_install() {
   vlicense license-mit LICENSE-MIT
 }
