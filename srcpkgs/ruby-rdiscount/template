@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby-rdiscount"
 version=2.2.0.1
-revision=9
+revision=10
 short_desc="Fast implementation of Gruber's Markdown in C"
 makedepends="ruby-devel"
 homepage="http://dafoster.net/projects/rdiscount/"
