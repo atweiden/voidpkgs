@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="ruby"
-version=3.1.4
+version=3.2.0
 revision=1
-_ruby_abiver=3.1.0
+_ruby_abiver=3.2.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
 makedepends+=" libffi-devel"
@@ -19,7 +19,7 @@ fi
 homepage="http://www.ruby-lang.org/en/"
 license="Ruby, BSD-2-Clause"
 distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.xz"
-checksum="1b6d6010e76036c937b9671f4752f065aeca800a6c664f71f6c9a699453af94f"
+checksum="d2f4577306e6dd932259693233141e5c3ec13622c95b75996541b8d5b68b28b4"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-shared"
