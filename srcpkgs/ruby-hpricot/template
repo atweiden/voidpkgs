@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby-hpricot"
 version=0.8.6
-revision=7
+revision=8
 short_desc="Swift, liberal HTML parser"
 makedepends="ruby-devel"
 homepage="http://code.whytheluckystiff.net/hpricot/"
