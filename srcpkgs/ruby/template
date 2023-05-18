@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ruby"
-version=3.2.0
+version=3.2.2
 revision=1
 _ruby_abiver=3.2.0
 short_desc="Ruby programming language"
@@ -19,7 +19,7 @@ fi
 homepage="http://www.ruby-lang.org/en/"
 license="Ruby, BSD-2-Clause"
 distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/$pkgname-$version.tar.xz"
-checksum="d2f4577306e6dd932259693233141e5c3ec13622c95b75996541b8d5b68b28b4"
+checksum="4b352d0f7ec384e332e3e44cdbfdcd5ff2d594af3c8296b5636c710975149e23"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --enable-shared"
