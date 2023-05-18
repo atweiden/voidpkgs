@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby-asciidoctor"
 version=2.0.15
-revision=3
+revision=4
 short_desc="Ruby implementation of AsciiDoc"
 homepage="https://asciidoctor.org"
 license="MIT"
