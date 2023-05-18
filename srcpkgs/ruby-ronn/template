@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby-ronn"
 version=0.7.3
-revision=6
+revision=7
 short_desc="Strick markdown-like format for manpages"
 depends+=" groff"
 depends+=" ruby-hpricot"
