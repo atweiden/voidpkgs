@@ -1,25 +1,28 @@
-# Template file for 'watchexec'
-pkgname=watchexec
+maintainer="nox"
+pkgname="watchexec"
 version=1.22.3
 revision=1
-build_wrksrc="crates/cli"
-build_style=cargo
 short_desc="Executes commands in response to file modifications"
-maintainer="cinerea0 <cinerea0@protonmail.com>"
-license="Apache-2.0"
 homepage="https://github.com/watchexec/watchexec"
-distfiles="https://github.com/watchexec/watchexec/archive/refs/tags/v${version}.tar.gz"
-checksum=698ed1dc178279594542f325b23f321c888c9c12c1960fe11c0ca48ba6edad76
+license="Apache-2.0"
+distfiles="https://github.com/watchexec/watchexec/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="698ed1dc178279594542f325b23f321c888c9c12c1960fe11c0ca48ba6edad76"
+build_wrksrc="crates/cli"
+build_style="cargo"
 
-if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
-	makedepends+=" libatomic-devel"
-	XBPS_CROSS_RUSTFLAGS+=" -latomic"
+if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
+  makedepends+=" libatomic-devel"
+  XBPS_CROSS_RUSTFLAGS+=" -latomic"
 fi
 
 post_install() {
-	for shell in bash fish zsh; do
-		vcompletion ${wrksrc}/completions/${shell} ${shell}
-	done
+  for shell in bash \
+               fish \
+               zsh; do
+    vcompletion "$wrksrc/completions/$shell" "$shell"
+  done
 
-	vman ${wrksrc}/doc/watchexec.1
+  vman "$wrksrc/doc/watchexec.1"
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
