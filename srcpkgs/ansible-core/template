@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ansible-core"
-version=2.14.4
+version=2.15.0
 revision=1
 short_desc="Simple deployment, configuration management and execution framework"
 depends+=" git"
@@ -31,7 +31,7 @@ homepage="https://www.ansible.com/"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ansible/ansible/raw/stable-${version%.*}/changelogs/CHANGELOG-v${version%.*}.rst"
 distfiles="$PYPI_SITE/a/ansible-core/ansible-core-$version.tar.gz"
-checksum="90b260bc264901d35fb1f0753f2b650813f54cfe6476540afbc6b25ef541ef14"
+checksum="cf690fd4ebb40590e00c5acdc0624758ca4c58d1e4b2b02ec026a034070ebf4d"
 conflicts="ansible<2.10.1_1"
 replaces="ansible-base<2.11.0_1"
 
@@ -40,7 +40,7 @@ do_build() {
 }
 
 do_check() {
-  TEST_FLAGS="$make_check_args" make tests-py3
+  bin/ansible-test units
 }
 
 do_install() {
