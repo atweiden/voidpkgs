@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-flit_core"
 version=3.9.0
-revision=1
+revision=2
 # pull the installer package directly to bootstrap the pep517 toolchain
  _installer_version=0.5.1
 short_desc="Simplified packaging of Python modules - PEP 517 build backend"
@@ -10,38 +10,28 @@ checkdepends+=" python3"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-testpath"
 hostmakedepends="python3"
-homepage="https://flit.readthedocs.io"
+homepage="https://flit.pypa.io/"
 license="BSD-3-Clause"
-changelog="https://flit.readthedocs.io/en/latest/history.html"
-distfiles+=" $PYPI_SITE/f/flit/flit-$version.tar.gz"
-distfiles+=" $PYPI_SITE/i/installer/installer-$_installer_version.tar.gz"
-checksum+=" d75edf5eb324da20d53570a6a6f87f51e606eee8384925cd66a90611140844c7"
-checksum+=" f970995ec2bb815e2fdaf7977b26b2091e1e386f0f42eafd5ac811953dc5d445"
+changelog="https://flit.pypa.io/en/stable/history.html"
+distfiles="$PYPI_SITE/f/flit_core/flit_core-$version.tar.gz"
+checksum="72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba"
 # this package is required by python3-build and python3-installer, used
 # by the python3-pep517 style; so using that style here would create
 # a cycle
-build_style="python3-module"
-build_wrksrc="flit-$version/flit_core"
 
 do_build() {
   python3 -m flit_core.wheel
 }
 
+do_check() {
+  python3 -m pytest flit_core/tests
+}
+
 do_install() {
-  local pypath
+  python3 bootstrap_install.py --install-root "$DESTDIR" \
+    "dist/flit_core-$version-py3-none-any.whl"
 
-  pypath="../../installer-$_installer_version/src"
-  if [[ -n "$PYTHONPATH" ]]; then
-    pypath="$pypath:$PYTHONPATH"
-  fi
-
-  PYTHONPATH="$pypath" \
-    python3 \
-      -m installer \
-      --destdir "$DESTDIR" \
-      "dist/flit_core-$version-py3-none-any.whl"
-
-  vlicense ../LICENSE
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
