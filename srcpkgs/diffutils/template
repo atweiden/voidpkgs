@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="diffutils"
 version=3.9
-revision=1
+revision=2
 short_desc="GNU diff utilities"
 checkdepends="perl"
 homepage="https://www.gnu.org/software/diffutils"
@@ -16,6 +16,8 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" gl_cv_func_getopt_gnu=yes"
 fi
 bootstrap="yes"
+
+CFLAGS="-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   export ac_cv_lib_error_at_line="no"
