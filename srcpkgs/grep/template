@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="grep"
-version=3.8
+version=3.11
 revision=1
 short_desc="GNU grep utility"
 makedepends="pcre2-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.gnu.org/software/grep/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/grep/$pkgname-$version.tar.xz"
-checksum="498d7cc1b4fb081904d87343febb73475cf771e424fb7e6141aff66013abc382"
+checksum="1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
