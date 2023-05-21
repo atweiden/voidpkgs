@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="xmirror"
-version=0.2
+version=0.3
 revision=1
 short_desc="Interactive script for changing XBPS mirrors"
 depends="bash dialog"
 homepage="https://github.com/void-linux/xmirror"
 license="BSD-2-Clause"
 distfiles="https://github.com/void-linux/xmirror/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="10d5a6f9534469b825c00308ba638d52d841193bad4f8f08afded98cd5686342"
+checksum="2bcb45936203f9707c91ce7df5a80b8800e40925224a06fd7b704f7a76a77a25"
 mutable_files="/usr/share/xmirror/mirrors.lst"
 build_style="gnu-makefile"
 
