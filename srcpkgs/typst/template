@@ -1,26 +1,27 @@
-# Template file for 'typst'
-pkgname=typst
-reverts="23.03.28_1"
+maintainer="nox"
+pkgname="typst"
 version=0.4.0
 revision=1
-build_style=cargo
-make_install_args="--path cli"
 short_desc="Markup-based typesetting system that is powerful and easy to learn"
-maintainer="classabbyamp <void@placeviolette.net>"
-license="Apache-2.0"
 homepage="https://typst.app"
+license="Apache-2.0"
 changelog="https://typst.app/docs/changelog/"
-distfiles="https://github.com/typst/typst/archive/refs/tags/v${version}.tar.gz"
-checksum=97bc0f62d373595ace556677e581daea5845bac18863ff014ced3bf8e650d94b
+distfiles="https://github.com/typst/typst/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="97bc0f62d373595ace556677e581daea5845bac18863ff014ced3bf8e650d94b"
+build_style="cargo"
+make_install_args="--path cli"
+reverts="23.03.28_1"
 
-export TYPST_VERSION="$version"
 export GEN_ARTIFACTS="./generated"
+export TYPST_VERSION="$version"
 
 post_install() {
-	for f in cli/generated/*.?; do
-		vman "$f"
-	done
-	vcompletion cli/generated/typst.bash bash
-	vcompletion cli/generated/typst.fish fish
-	vcompletion cli/generated/_typst zsh
+  for f in cli/generated/*.?; do
+    vman "$f"
+  done
+  vcompletion cli/generated/typst.bash bash
+  vcompletion cli/generated/typst.fish fish
+  vcompletion cli/generated/_typst zsh
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
