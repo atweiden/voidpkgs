@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libgit2"
 version=1.5.1
-revision=1
+revision=2
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
 makedepends+=" libssh2-devel"
@@ -21,6 +21,8 @@ if [[ -n "$XBPS_CHECK_PKGS" ]]; then
 else
   configure_args+=" -DBUILD_TESTS=OFF"
 fi
+
+CFLAGS="-D_LARGE_FILE_SOURCE=1 -D_FILE_OFFSET_BITS=64"
 
 post_patch() {
   # no online tests
