@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="httpie"
-version=3.2.1
-revision=2
+version=3.2.2
+revision=1
 short_desc="Modern, user-friendly command-line HTTP client for the API era"
 depends+=" python3-Pygments"
 depends+=" python3-charset-normalizer"
@@ -17,7 +17,7 @@ homepage="https://httpie.io/"
 license="BSD-3-Clause"
 changelog="https://github.com/httpie/httpie/raw/master/CHANGELOG.md"
 distfiles="https://github.com/httpie/httpie/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="803e1624e005c2f7002802a77ebc687b05375aca76af42639f844405328633eb"
+checksum="797fe33afe3bf0a4364a869a7d73f5c728f67d4ac47039be41e08bd564f86bb0"
 build_style="python3-module"
 # requires pytest-lazy-fixture (not packaged), many tests fail
 make_check="no"
