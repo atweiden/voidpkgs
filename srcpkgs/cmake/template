@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.26.3
+version=3.26.4
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" expat-devel"
@@ -18,7 +18,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659"
+checksum="313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208"
 build_style="cmake"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
 configure_args+=" -DCMAKE_MAN_DIR=/share/man"
