@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-IO-Socket-SSL"
-version=2.082
+version=2.083
 revision=1
 short_desc="IO::Socket::SSL - SSL sockets with IO::Socket interface"
 depends+=" perl"
@@ -14,7 +14,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/IO-Socket-SSL"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/IO/${pkgname#*-}-$version.tar.gz"
-checksum="58cbca19d05aab98bae79b6cb5602057c1f22d2cf07aa8b90b29982e4cc4686c"
+checksum="904ef28765440a97d8a9a0df597f8c3d7f3cb0a053d1b082c10bed03bc802069"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
