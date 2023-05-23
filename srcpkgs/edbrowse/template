@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="edbrowse"
-version=3.8.6
+version=3.8.7
 revision=1
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" libcurl-devel"
@@ -12,8 +12,9 @@ hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://edbrowse.org/"
 license="GPL-3.0-or-later, MIT"
+changelog="https://github.com/CMB/edbrowse/raw/master/CHANGES"
 distfiles="https://github.com/CMB/edbrowse/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="85ce43c2832e1e79ea24e23c7726757080ef966d7c2c387f8aa9be108f36bf26"
+checksum="2c7f6a07e5897060527b6cc5c19c45106444e2c4d8c9799434973c352d9ce4e6"
 build_style="gnu-makefile"
 make_build_args+=" QUICKJS_DIR=$XBPS_CROSS_BASE/usr/include/quickjs"
 make_build_args+=" QUICKJS_LDFLAGS=-lquickjs"
