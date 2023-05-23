@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dos2unix"
-version=7.4.4
+version=7.5.0
 revision=1
 short_desc="Text file format converter"
 checkdepends="perl"
@@ -9,7 +9,7 @@ homepage="https://waterlan.home.xs4all.nl/dos2unix.html"
 license="BSD-2-Clause"
 changelog="https://waterlan.home.xs4all.nl/dos2unix/NEWS.txt"
 distfiles="https://waterlan.home.xs4all.nl/$pkgname/$pkgname-$version.tar.gz"
-checksum="28a841db0bd5827d645caba9d8015e3a71983dc6e398070b5287ee137ae4436e"
+checksum="7a3b01d01e214d62c2b3e04c3a92e0ddc728a385566e4c0356efa66fd6eb95af"
 build_style="gnu-makefile"
 
 post_install() {
