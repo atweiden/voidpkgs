@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grub"
 version=2.06
-revision=2
+revision=3
 short_desc="GRand Unified Bootloader 2"
 archs+=" aarch64*"
 archs+=" i686*"
