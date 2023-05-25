@@ -169,7 +169,8 @@ constant %PKG = Map.new(
                  dracut-uefi>,
     'dtc' => ['dtc-devel'],
     'e2fsprogs' => qw<e2fsprogs-devel
-                      e2fsprogs-libs>,
+                      e2fsprogs-libs
+                      fuse2fs>,
     'efitools' => ['efitools-efi'],
     'efivar' => qw<libefivar
                    libefivar-devel>,
