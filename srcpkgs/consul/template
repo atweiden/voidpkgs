@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="consul"
 version=1.15.1
-revision=2
+revision=3
 _gitrev="7c04b6a0dd433619e788617434a4c236b7d4f892"
 short_desc="Distributed solution to connect and configure applications"
 homepage="https://www.consul.io/"
@@ -24,6 +24,7 @@ export GOFLAGS="-trimpath"
 
 post_install() {
   vlicense LICENSE
+  vsv consul
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
