@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="wget"
-version=1.21.3
+version=1.21.4
 revision=1
 short_desc="GNU wget download utility"
 depends="ca-certificates"
@@ -19,7 +19,7 @@ homepage="https://www.gnu.org/software/wget/wget.html"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/cgit/wget.git/plain/NEWS"
 distfiles="$GNU_SITE/wget/$pkgname-$version.tar.gz"
-checksum="5726bb8bc5ca0f6dc7110f6416e4bb7019e2d2ff5bf93d1ca2ffcc6656f220e5"
+checksum="81542f5cefb8faacc39bbbc6c82ded80e3e4a88505ae72ea51df27525bcde04c"
 conf_files="/etc/wgetrc"
 build_style="gnu-configure"
 configure_args+=" $(vopt_if ssl --with-ssl=openssl)"
