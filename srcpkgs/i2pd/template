@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="i2pd"
 version=2.46.0
-revision=2
+revision=3
 short_desc="Full-featured C++ implementation of I2P client"
 makedepends+=" boost-devel"
 makedepends+=" libatomic-devel"
