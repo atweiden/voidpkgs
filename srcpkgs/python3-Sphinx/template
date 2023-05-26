@@ -36,7 +36,6 @@ checksum="61e025f788c5977d9412587e733733a289e2b9fdc2fef8868ddfbfc4ccfe881d"
 build_style="python3-pep517"
 # ImageMagick in checkdepends requires gui dependencies
 make_check="no"
-make_install_target="dist/sphinx-$version-py3-none-any.whl"
 conflicts="python-Sphinx>=0"
 
 post_install() {

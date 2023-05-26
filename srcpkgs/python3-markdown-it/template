@@ -13,7 +13,6 @@ checksum="7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"
 build_style="python3-pep517"
 # tests not shipped in pypi tarball
 make_check="no"
-make_install_target="dist/markdown_it_py-$version-*-*-*.whl"
 
 post_install() {
   vlicense LICENSE
