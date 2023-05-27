@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="consul"
 version=1.15.2
-revision=2
+revision=3
 _gitrev="5e08e229dbdaed5adf3ca99afe9df247c51507da"
 short_desc="Distributed solution to connect and configure applications"
 homepage="https://www.consul.io/"
@@ -20,7 +20,7 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 system_accounts="_consul"
-make_dirs+=" /etc/consul.d 0755 _consul _consul"
+make_dirs+=" /etc/consul.d 0755 root _consul"
 make_dirs+=" /var/lib/consul 0750 _consul _consul"
 
 export GOFLAGS="-trimpath"
