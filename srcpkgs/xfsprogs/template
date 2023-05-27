@@ -1,21 +1,22 @@
 maintainer="nox"
 pkgname="xfsprogs"
-version=5.19.0
-revision=2
+version=6.2.0
+revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
 makedepends+=" libblkid-devel"
 makedepends+=" libedit-devel"
 makedepends+=" liburcu-devel"
-hostmakedepends+=" gettext"
-hostmakedepends+=" libuuid-devel"
+makedepends+=" libuuid-devel"
+hostmakedepends="gettext"
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="4b6c6c98c036a37f6d90c82cb7fe9405d3b5856d9345662032d01ff4b140592c"
+checksum="d67dcba5a28e0904b60886b6e5f752bc7c9c3a5c7096153855b5adca9db86c51"
 build_style="gnu-configure"
-configure_args+=" --enable-lib64=no"
 configure_args+=" --enable-editline=yes"
+configure_args+=" --enable-lib64=no"
+configure_args+=" --enable-lto"
 configure_args+=" --libdir=/usr/lib"
 
 do_install() {
