@@ -1,15 +1,18 @@
-# Template file for 'python3-calver'
-pkgname=python3-calver
+maintainer="nox"
+pkgname="python3-calver"
 version=2022.6.26
 revision=1
-build_style=python3-pep517
-hostmakedepends="python3-setuptools python3-wheel"
-depends="python3"
 short_desc="Setuptools extension for CalVer package versions"
-maintainer="Mohammed Anas <triallax@tutanota.com>"
-license="Apache-2.0"
+depends="python3"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/di/calver"
+license="Apache-2.0"
 changelog="https://github.com/di/calver/releases"
-distfiles="${PYPI_SITE}/c/calver/calver-${version}.tar.gz"
-checksum=e05493a3b17517ef1748fbe610da11f10485faa7c416b9d33fd4a52d74894f8b
-make_check=no # PyPI tarball has no tests.
+distfiles="$PYPI_SITE/c/calver/calver-$version.tar.gz"
+checksum="e05493a3b17517ef1748fbe610da11f10485faa7c416b9d33fd4a52d74894f8b"
+build_style="python3-pep517"
+# pypi tarball has no tests
+make_check="no"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
