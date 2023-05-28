@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="diffutils"
-version=3.9
-revision=2
+version=3.10
+revision=1
 short_desc="GNU diff utilities"
 checkdepends="perl"
 homepage="https://www.gnu.org/software/diffutils"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/diffutils/$pkgname-$version.tar.xz"
-checksum="d80d3be90a201868de83d78dad3413ad88160cc53bcc36eb9eaf7c20dbf023f1"
+checksum="90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e"
 build_style="gnu-configure"
 configure_args+=" gl_cv_func_gettimeofday_clobber=no"
 configure_args+=" gl_cv_func_tzset_clobber=no"
