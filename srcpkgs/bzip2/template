@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bzip2"
 version=1.0.8
-revision=1
+revision=2
 short_desc="Freely available, patent free, high-quality data compressor"
 homepage="https://sourceware.org/bzip2/"
 license="bzip2-1.0.6"
@@ -43,6 +43,12 @@ do_install() {
   vinstall libbz2.a 644 usr/lib
   vinstall bzlib.h 644 usr/include
 
+  vinstall "$FILESDIR/bzip2.pc" 644 usr/lib/pkgconfig
+  vsed \
+    -i \
+    -e "s/@VERSION@/$version/" \
+    "$DESTDIR/usr/lib/pkgconfig/bzip2.pc"
+
   vman bzip2.1
   ln -sf bzip2.1 "$DESTDIR/usr/share/man/man1/bunzip2.1"
   ln -sf bzip2.1 "$DESTDIR/usr/share/man/man1/bzcat.1"
@@ -54,6 +60,7 @@ bzip2-devel_package() {
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
+    vmove usr/lib/pkgconfig
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
