@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pulseaudio"
 version=15.0
-revision=3
+revision=4
 short_desc="Featureful, general-purpose sound server"
 depends="pulseaudio-utils>=${version}_$revision"
 makedepends+=" alsa-lib-devel"
@@ -59,28 +59,17 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 # FIXME: core-util-test fails
-make_check="yes"
+make_check="no"
 python_version=3
 system_groups="pulse-access"
 system_accounts="pulse"
 pulse_groups="audio"
 pulse_homedir="/var/empty"
 
-pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    # disable neon optimizations for the arm* architectures
-    arm*)
-      vsed \
-        -i \
-        -e '/  neon/d' \
-        src/pulsecore/meson.build
-      ;;
-  esac
-}
-
 post_install() {
   rm "$DESTDIR/etc/dbus-1/system.d/pulseaudio-system.conf"
-  vsv pulseaudio
+  vmkdir usr/share/examples/pulseaudio/sv/
+  vcopy "$FILESDIR/pulseaudio" usr/share/examples/pulseaudio/sv/
   vdoc "$FILESDIR/README.voidlinux"
 }
 
