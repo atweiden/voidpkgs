@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="haproxy"
-version=2.6.9
-revision=2
+version=2.6.13
+revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" libatomic-devel"
 makedepends+=" lua53-devel"
@@ -14,7 +14,7 @@ homepage="https://www.haproxy.org"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 changelog="https://www.haproxy.org/download/${version%.*}/src/CHANGELOG"
 distfiles="https://www.haproxy.org/download/${version%.*}/src/$pkgname-$version.tar.gz"
-checksum="f01a1c5f465dc1b5cd175d0b28b98beb4dfe82b5b5b63ddcc68d1df433641701"
+checksum="d69ff5233dbca657132ef280d111222ec1e33f5be1c1937d4e9ff516f63f5243"
 conf_files="/etc/haproxy/haproxy.cfg"
 build_style="gnu-makefile"
 make_install_args+=" DOCDIR=$DESTDIR/usr/share/doc/$pkgname"
