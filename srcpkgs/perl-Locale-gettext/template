@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="perl-Locale-gettext"
 version=1.07
-revision=12
+revision=13
 short_desc="Permits access from Perl to the gettext() family of functions"
 depends="perl"
 makedepends="perl"
 hostmakedepends="perl"
-homepage="https://metacpan.org/release/gettext"
+homepage="https://metacpan.org/release/Locale-gettext"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
-distfiles="$CPAN_SITE/Locale/${pkgname##*-}-$version.tar.gz"
+distfiles="$CPAN_SITE/Locale/PVANDRY/Locale-gettext-$version.tar.gz"
 checksum="909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15"
 build_style="perl-module"
 
