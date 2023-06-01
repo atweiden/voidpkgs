@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zstd"
-version=1.5.2
+version=1.5.5
 revision=1
 short_desc="Fast real-time compression algorithm - CLI tool"
 makedepends+=" liblz4-devel"
@@ -8,10 +8,11 @@ makedepends+=" liblzma-devel"
 makedepends+=" zlib-devel"
 checkdepends+=" gtest-devel"
 checkdepends+=" tar"
-homepage="http://www.zstd.net"
+homepage="https://facebook.github.io/zstd/"
 license="BSD-3-Clause, GPL-2.0-or-later"
+changelog="https://github.com/facebook/zstd/raw/dev/CHANGELOG"
 distfiles="https://github.com/facebook/zstd/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0"
+checksum="9c4396cc829cfae319a6e2615202e82aad41372073482fce286fac78646d3ee4"
 bootstrap="yes"
 
 do_build() {
