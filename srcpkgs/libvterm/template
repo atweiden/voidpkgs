@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libvterm"
-version=0.3.1
+version=0.3.2
 revision=1
 short_desc="Abstract VT220/xterm/ECMA-48 emulation library"
 hostmakedepends+=" libtool"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.leonerd.org.uk/code/libvterm"
 license="MIT"
 distfiles="https://www.leonerd.org.uk/code/libvterm/$pkgname-$version.tar.gz"
-checksum="25a8ad9c15485368dfd0a8a9dca1aec8fea5c27da3fa74ec518d5d3787f0c397"
+checksum="91eb5088069f4e6edab69e14c4212f6da0192e65695956dc048016a0dab8bcf6"
 build_style="gnu-makefile"
 make_install_target+=" install-inc"
 make_install_target+=" install-lib"
@@ -17,11 +17,11 @@ make_install_target+=" install-lib"
 post_extract() {
   if [[ -n "$CROSS_BUILD" ]]; then
     cp /usr/bin/libtool .
-    sed \
+    vsed \
       -i \
       -e "s,CCLD=.*,CCLD=$CC,g;s,CC=.*,CC=$CC,g" \
       libtool
-    sed \
+    vsed \
       -i \
       -e "s,libtool,./libtool,g" \
       Makefile
