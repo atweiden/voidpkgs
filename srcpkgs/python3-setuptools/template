@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-setuptools"
-version=67.7.2
+version=67.8.0
 revision=1
 short_desc="Easily build and distribute Python3 packages"
 depends="python3"
@@ -9,7 +9,7 @@ homepage="https://github.com/pypa/setuptools"
 license="MIT"
 changelog="https://github.com/pypa/setuptools/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/s/setuptools/setuptools-$version.tar.gz"
-checksum="f104fa03692a2602fa0fec6c6a9e63b6c8a968de13e17c026957dd1f53d80990"
+checksum="62642358adc77ffa87233bc4d2354c4b2682d214048f500964dbe760ccedf102"
 build_style="python3-module"
 # tests rely on jaraco.path, which relies on singledispatch, both
 # unpackaged; singledispatch backports functools.singledispatch and is
