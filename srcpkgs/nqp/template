@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nqp"
-version=2023.04
+version=2023.05
 revision=1
 short_desc="Lightweight Raku-like environment for virtual machines"
 depends="MoarVM-${version}_$revision"
@@ -14,7 +14,7 @@ tags="raku"
 homepage="https://github.com/Raku/nqp"
 license="Artistic-2.0"
 distfiles="https://rakudo.org/dl/nqp/$pkgname-$version.tar.gz"
-checksum="6735e5e601921cd427651e99bdf63be8338f4b815520803a97985dec488e50b5"
+checksum="1402db7e3ca6f2f3dfc1e98aa32e0e2a937e49b2a777a74c62268a98abb3bbd2"
 build_style="configure"
 configure_script="perl Configure.pl"
 configure_args+=" --backends=moar"
