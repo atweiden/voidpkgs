@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-fido2"
-version=1.1.0
+version=1.1.1
 revision=1
 short_desc="Library for FIDO2 functionality"
 depends+=" python3-cryptography"
@@ -10,17 +10,12 @@ depends+=" python3-six"
 checkdepends+=" $depends"
 checkdepends+=" python3-mock"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-poetry-core"
 homepage="https://github.com/Yubico/python-fido2"
 license="BSD-2-Clause"
 distfiles="$PYPI_SITE/f/${pkgname#python3-}/${pkgname#python3-}-$version.tar.gz"
-checksum="2b4b4e620c2100442c20678e0e951ad6d1efb3ba5ca8ebb720c4c8d543293674"
-build_style="python3-module"
-
-post_extract() {
-  # pytest mis-recognises this file as a test case
-  rm -f examples/test_config.py
-}
+checksum="5dc495ca8c59c1c337383b4b8c314d46b92d5c6fc650e71984c6d7f954079fc3"
+build_style="python3-pep517"
 
 post_install() {
   vlicense COPYING
