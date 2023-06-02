@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bitcoin"
-version=24.0
+version=25.0
 revision=1
 # see:
 # bitcoin/bitcoin/depends/packages/bdb.mk
@@ -34,7 +34,7 @@ distfiles+=" https://bitcoincore.org/bin/$pkgname-core-$version/$pkgname-$versio
 distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.NC.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://sqlite.org/2022/sqlite-autoconf-$_sqlite_amalgamationver.tar.gz"
-checksum+=" 9cfa4a9f4acb5093e85b8b528392f0f05067f3f8fafacd4dcfe8a396158fd9f4"
+checksum+=" 5df67cf42ca3b9a0c38cdafec5bbb517da5b58d251f32c8d2a47511f9be1ebc2"
 checksum+=" 12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
 checksum+=" 5af07de982ba658fd91a03170c945f99c971f6955bc79df3266544373e39869c"
@@ -58,14 +58,14 @@ configure_args+=" --with-seccomp"
 configure_args+=" --with-sqlite=yes"
 configure_args+=" --without-gui"
 configure_args+=" --without-miniupnpc"
-configure_args+=" --without-natpnp"
+configure_args+=" --without-natpmp"
 configure_args+=" --without-qrencode"
 if [[ -n "$XBPS_CHECK_PKGS" ]]; then
   configure_args="${configure_args/disable-tests/enable-tests}"
   configure_args="${configure_args/--enable-reduce-exports/}"
 fi
 # both provide libbitcoinconsensus.so.0
-conflicts="litecoin>=0"
+conflicts="litecoin"
 
 # directory in which to build custom libraries
 _depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
@@ -146,24 +146,23 @@ _do_build_sqlite() {
 
   _configure_args_sqlite+=" --disable-dynamic-extensions"
   _configure_args_sqlite+=" --disable-readline"
+  _configure_args_sqlite+=" --disable-rtree"
+  _configure_args_sqlite+=" --disable-fts4"
+  _configure_args_sqlite+=" --disable-fts5"
   _configure_args_sqlite+=" --disable-shared"
   _configure_args_sqlite+=" --enable-option-checking"
   _configure_args_sqlite+=" --prefix=/"
   _configure_args_sqlite+=" --with-pic"
 
-  _cflags_sqlite+=" -DSQLITE_ENABLE_BATCH_ATOMIC_WRITE=1"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_COLUMN_METADATA"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_DBSTAT_VTAB"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_DESERIALIZE"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_PARENTHESIS"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS3_TOKENIZER=1"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_FTS4"
-  _cflags_sqlite+=" -DSQLITE_ENABLE_UNLOCK_NOTIFY"
-  _cflags_sqlite+=" -DSQLITE_SECURE_DELETE"
-
-  # explicitly enable fdatasync
-  _cflags_sqlite+=" -DHAVE_FDATASYNC"
+  _cflags_sqlite+=" -DSQLITE_DEFAULT_MEMSTATUS=0"
+  _cflags_sqlite+=" -DSQLITE_DQS=0"
+  _cflags_sqlite+=" -DSQLITE_LIKE_DOESNT_MATCH_BLOBS"
+  _cflags_sqlite+=" -DSQLITE_OMIT_AUTOINIT"
+  _cflags_sqlite+=" -DSQLITE_OMIT_DECLTYPE"
+  _cflags_sqlite+=" -DSQLITE_OMIT_DEPRECATED"
+  _cflags_sqlite+=" -DSQLITE_OMIT_JSON"
+  _cflags_sqlite+=" -DSQLITE_OMIT_PROGRESS_CALLBACK"
+  _cflags_sqlite+=" -DSQLITE_OMIT_SHARED_CACHE"
 
   # explicitly set byte order to avoid bad autodetection macros
   case "$XBPS_TARGET_ENDIAN" in
@@ -234,7 +233,15 @@ post_install() {
   for b in bitcoin-cli \
            bitcoin-tx \
            bitcoind; do
-    vcompletion "contrib/$b.bash-completion" bash "$b"
+    vcompletion "contrib/completions/bash/$b.bash-completion" bash "$b"
+  done
+
+  for f in bitcoin-cli \
+           bitcoin-tx \
+           bitcoin-util \
+           bitcoin-wallet \
+           bitcoind; do
+    vcompletion "contrib/completions/fish/$f.fish" fish "$f"
   done
 
   vlicense COPYING
@@ -242,6 +249,7 @@ post_install() {
 
 bitcoin-devel_package() {
   depends="$sourcepkg>=${version}_$revision"
+  conflicts="litecoin"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
