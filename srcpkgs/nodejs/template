@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nodejs"
 version=16.19.0
-revision=2
+revision=3
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
 # see: https://github.com/nodejs/node/pull/21079
@@ -45,8 +45,7 @@ build_options_default+=" libuv"
 build_options_default+=" nghttp2"
 build_options_default+=" ssl"
 provides="nodejs-runtime-0_1"
-conflicts+=" nodejs-lts"
-conflicts+=" nodejs-lts-10"
+conflicts="nodejs-lts-10"
 replaces="iojs>=0"
 
 # https://build.voidlinux.org/builders/i686_builder/builds/27325/steps/shell_3/logs/stdio
@@ -161,13 +160,23 @@ do_install() {
 }
 
 nodejs-devel_package() {
-  unset conflicts
   short_desc+=" - development files"
-  conflicts+=" nodejs-lts-devel"
-  conflicts+=" nodejs-lts-10-devel"
+  conflicts="nodejs-lts-10-devel"
   pkg_install() {
     vmove usr/include
   }
+}
+
+nodejs-lts_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" LTS"
+  build_style="meta"
+}
+
+nodejs-lts-devel_package() {
+  depends="$sourcepkg-devel>=${version}_$revision"
+  short_desc+=" LTS (development files)"
+  build_style="meta"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

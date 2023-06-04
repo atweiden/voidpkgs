@@ -624,7 +624,9 @@ constant %PKG = Map.new(
                   nginx-mod-stream-js>,
     'nilfs-utils' => qw<libnilfs
                         nilfs-utils-devel>,
-    'nodejs' => ['nodejs-devel'],
+    'nodejs' => qw<nodejs-devel
+                   nodejs-lts
+                   nodejs-lts-devel>,
     'npth' => ['npth-devel'],
     'nspr' => ['nspr-devel'],
     'nss' => ['nss-devel'],
