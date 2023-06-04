@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-zstandard"
-version=0.19.0
+version=0.21.0
 revision=1
 short_desc="Python bindings to the Zstandard (zstd) compression library"
 depends="python3"
@@ -12,7 +12,7 @@ homepage="https://github.com/indygreg/python-zstandard"
 license="BSD-3-Clause"
 changelog="https://github.com/indygreg/python-zstandard/raw/main/docs/news.rst"
 distfiles="https://github.com/indygreg/python-zstandard/archive/$version.tar.gz"
-checksum="8106c216bcaed7b70e6515b407adbfd21dd84c9855c9771530e0a3561b130454"
+checksum="15adc6bfa629d48b0bb658e9eae94c484adb66a28738fa780478eebeb41599a5"
 build_style="python3-module"
 make_build_args="--system-zstd"
 
