@@ -35,8 +35,7 @@ llhttp-devel_package() {
 
 # REMARKS:
 #
-# When this package is updated, nodejs and nodejs-lts may need to be
-# updated or at least a revbump in the same pull request since they
-# work in-sync.
+# When this package is updated, nodejs may need to be updated or at
+# least a revbump in the same pull request since they work in-sync.
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
