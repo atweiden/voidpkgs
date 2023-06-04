@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="delta"
-version=0.16.4
+version=0.16.5
 revision=1
 short_desc="Syntax-highlighting pager for git"
 makedepends+=" libgit2-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/dandavison/delta"
 license="MIT"
 distfiles="https://github.com/dandavison/delta/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="66380e92d422881fae6526aee14bedf8124ea17903bcf6d22633e658bd509190"
+checksum="00d4740e9da4f543f34a2a0503615f8190d307d1180dfb753b6911aa6940197f"
 build_style="cargo"
 
 pre_build() {
