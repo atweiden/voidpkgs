@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nodejs"
-version=16.19.0
-revision=3
+version=18.16.0
+revision=1
 short_desc="Evented I/O for V8 javascript"
 # need these for host v8 for torque
 # see: https://github.com/nodejs/node/pull/21079
@@ -27,7 +27,7 @@ hostmakedepends+=" $(vopt_if ssl openssl-devel)"
 homepage="https://nodejs.org/"
 license="MIT"
 distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="8b8a2939fa5f654ff61cae29b12118c24109273458ecbe6162ad8a8858309e0d"
+checksum="6a4f5c5d76e5c50cef673099e56f19bc3266ae363f56ca0ab77dd2f3c5088c6d"
 python_version=3
 build_options+=" cares"
 build_options+=" icu"
@@ -61,7 +61,7 @@ case "$XBPS_TARGET_MACHINE" in
   ppc64*)
     ;;
   ppc*)
-    broken="node 16.x does not support 32-bit ppc"
+    broken="Node 18.x does not support 32-bit ppc"
     ;;
 esac
 
