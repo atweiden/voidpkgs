@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="tree"
-version=2.1.0
+version=2.1.1
 revision=1
 short_desc="Recursive directory listing program"
 homepage="https://mama.indstate.edu/users/ice/tree"
 license="GPL-2.0-or-later"
 changelog="https://mama.indstate.edu/users/ice/tree/changes.html"
 distfiles="https://gitlab.com/OldManProgrammer/unix-tree/-/archive/$version/unix-tree-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e9f829a03996451bcf90fae4fdee4285bece6dc1a89de92a3f8e6cad29e03c71"
+checksum="bcd2a0327ad40592a9c43e09a4d2ef834e6f17aa9a59012a5fb1007950b5eced"
 build_style="gnu-makefile"
 
 do_install() {
