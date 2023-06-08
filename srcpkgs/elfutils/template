@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="elfutils"
-version=0.187
+version=0.189
 revision=1
 short_desc="Utilities to handle ELF object files"
 makedepends+=" bzip2-devel"
@@ -18,13 +18,13 @@ checkdepends+=" iproute2"
 checkdepends+=" procps-ng"
 checkdepends+=" rpm"
 checkdepends+=" zstd"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
+hostmakedepends+=" m4"
 hostmakedepends+=" pkg-config"
 homepage="https://sourceware.org/elfutils/"
 license="GPL-3.0-or-later"
+changelog="https://sourceware.org/git/?p=elfutils.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="https://sourceware.org/pub/elfutils/$version/$pkgname-$version.tar.bz2"
-checksum="e70b0dfbe610f90c4d1fe0d71af142a4e25c3c4ef9ebab8d2d72b65159d454c8"
+checksum="39bd8f1a338e2b7cd4abc3ff11a0eddc6e690f69578a57478d8179b4148708c8"
 build_style="gnu-configure"
 configure_args+=" --program-prefix=eu-"
 # subpackages require explicit ordering
