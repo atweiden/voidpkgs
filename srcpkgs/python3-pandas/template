@@ -1,34 +1,43 @@
-# Template file for 'python3-pandas'
-pkgname=python3-pandas
+maintainer="nox"
+pkgname="python3-pandas"
 version=2.0.2
 revision=1
-build_style=python3-module
-hostmakedepends="python3-setuptools python3-Cython python3-numpy python3-versioneer"
-makedepends="python3-devel python3-numpy python3-dateutil python3-pytz"
-depends="python3-numpy python3-dateutil python3-pytz"
 short_desc="Python3 data analysis library"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
-license="BSD-3-Clause"
+depends+=" python3-dateutil"
+depends+=" python3-numpy"
+depends+=" python3-pytz"
+makedepends+=" python3-dateutil"
+makedepends+=" python3-devel"
+makedepends+=" python3-numpy"
+makedepends+=" python3-pytz"
+hostmakedepends+=" python3-Cython"
+hostmakedepends+=" python3-numpy"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-versioneer"
 homepage="https://pandas.pydata.org/"
+license="BSD-3-Clause"
 changelog="https://pandas.pydata.org/pandas-docs/stable/whatsnew/index.html"
 distfiles="https://github.com/pandas-dev/pandas/archive/v${version}.tar.gz"
-checksum=44f41cb263726716ff513081bf57ea62fec704f367e3fc8adb15e54991c98273
-# Builds seem to sometimes have missing symbol problems;
-# the intermittent nature suggests this might be a race
-disable_parallel_build=yes
-# Tests won't run from source directory; build directory lacks data files
-make_check=no
+checksum="44f41cb263726716ff513081bf57ea62fec704f367e3fc8adb15e54991c98273"
+build_style="python3-module"
+# tests won't run from source directory; build directory lacks data files
+make_check="no"
+# builds seem to sometimes have missing symbol problems; the intermittent
+# nature suggests this might be a race
+disable_parallel_build="yes"
 
 pre_build() {
-	# Try to avoid i686 build failure
-	case "$XBPS_TARGET_MACHINE" in
-		i686*)
-			CFLAGS="${CFLAGS// -g/ -g1}"
-			CXXFLAGS="${CXXFLAGS// -g/ -g1}"
-			;;
-	esac
+  # Try to avoid i686 build failure
+  case "$XBPS_TARGET_MACHINE" in
+    i686*)
+      CFLAGS="${CFLAGS// -g/ -g1}"
+      CXXFLAGS="${CXXFLAGS// -g/ -g1}"
+      ;;
+  esac
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
