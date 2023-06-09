@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="xfsprogs"
-version=6.2.0
+version=6.3.0
 revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
@@ -9,10 +9,13 @@ makedepends+=" libedit-devel"
 makedepends+=" liburcu-devel"
 makedepends+=" libuuid-devel"
 hostmakedepends="gettext"
+if [[ -n "$CROSS_BUILD" ]]; then
+  hostmakedepends+=" liburcu-devel"
+fi
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="d67dcba5a28e0904b60886b6e5f752bc7c9c3a5c7096153855b5adca9db86c51"
+checksum="ec987c9f0bcb2db2991bffb80d353150b389c3a2b79b6830411f7042adf6990c"
 build_style="gnu-configure"
 configure_args+=" --enable-editline=yes"
 configure_args+=" --enable-lib64=no"
