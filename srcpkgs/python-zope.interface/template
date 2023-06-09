@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python-zope.interface"
-version=5.4.0
-revision=3
+version=5.5.2
+revision=1
 short_desc="Zope interfaces for Python2"
 depends="python-setuptools"
 makedepends+=" python-devel"
@@ -12,7 +12,7 @@ homepage="https://github.com/zopefoundation/zope.interface"
 license="ZPL-2.1"
 changelog="https://github.com/zopefoundation/zope.interface/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/z/zope.interface/zope.interface-$version.tar.gz"
-checksum="5dba5f530fec3f0988d83b78cc591b58c0b6eb8431a85edd1569a0539a8a5a0e"
+checksum="bfee1f3ff62143819499e348f5b8a7f3aa0259f9aca5e0ddae7391d059dce671"
 build_style="python-module"
 # tests can't find the package they test
 make_check="no"
