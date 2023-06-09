@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tdb"
-version=1.4.7
+version=1.4.8
 revision=1
 short_desc="Trivial Database, similar to GDBM but allows simultaneous commits"
 makedepends+=" gettext-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://tdb.samba.org/"
 license="GPL-3.0-or-later"
 distfiles="https://download.samba.org/pub/tdb/$pkgname-$version.tar.gz"
-checksum="a4fb168def533f31ff2c07f7d9844bb3131e6799f094ebe77d0380adc987c20e"
+checksum="8434c9c857d13ce3fa8466f75601f25c3693676b36919f159e0ad6121baf5ce8"
 build_style="waf3"
 configure_script="buildtools/bin/waf"
 configure_args+=" --builtin-libraries=replace"
@@ -28,6 +28,10 @@ nocross="yes"
 
 export PYTHON_CONFIG="$XBPS_CROSS_BASE/usr/bin/python3-config"
 export PYTHONHASHSEED=1
+
+do_check() {
+  $configure_script test "$makejobs"
+}
 
 tdb-devel_package() {
   depends="libtdb-${version}_$revision"
