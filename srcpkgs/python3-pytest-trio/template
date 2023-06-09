@@ -1,26 +1,31 @@
-# Template file for 'python3-pytest-trio'
-pkgname=python3-pytest-trio
+maintainer="nox"
+pkgname="python3-pytest-trio"
 version=0.8.0
 revision=1
-build_style=python3-pep517
-hostmakedepends="python3-setuptools python3-wheel"
-depends="python3-trio python3-outcome python3-pytest"
-checkdepends="$depends python3-hypothesis"
 short_desc="Pytest plugin for trio"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="MIT, Apache-2.0"
+depends+=" python3-outcome"
+depends+=" python3-pytest"
+depends+=" python3-trio"
+checkdepends+=" $depends"
+checkdepends+=" python3-hypothesis"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/python-trio/pytest-trio"
-changelog="https://raw.githubusercontent.com/python-trio/pytest-trio/master/docs/source/history.rst"
-distfiles="${PYPI_SITE}/p/pytest-trio/pytest-trio-${version}.tar.gz"
-checksum=8363db6336a79e6c53375a2123a41ddbeccc4aa93f93788651641789a56fb52e
+license="MIT, Apache-2.0"
+changelog="https://github.com/python-trio/pytest-trio/raw/master/docs/source/history.rst"
+distfiles="$PYPI_SITE/p/pytest-trio/pytest-trio-$version.tar.gz"
+checksum="8363db6336a79e6c53375a2123a41ddbeccc4aa93f93788651641789a56fb52e"
+build_style="python3-pep517"
 make_check_pre="env PYTHONPATH=."
 
 post_patch() {
-	# Defining 'pytest_plugins' in a non-top-level conftest is no
-	# longer supported in pytest
-	mv pytest_trio/_tests/conftest.py .
+  # defining 'pytest_plugins' in a non-top-level conftest is no longer
+  # supported in pytest
+  mv pytest_trio/_tests/conftest.py .
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
