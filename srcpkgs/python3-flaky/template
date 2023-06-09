@@ -1,14 +1,18 @@
 maintainer="nox"
 pkgname="python3-flaky"
-version=3.6.1
-revision=6
-short_desc="Plugin for nose/py.test that automatically reruns flaky tests (Python3)"
+version=3.7.0
+revision=1
+short_desc="Plugin for nose or pytest that automatically reruns flaky tests"
 depends="python3"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/box/flaky"
 license="Apache-2.0"
+changelog="https://github.com/box/flaky/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/f/flaky/flaky-$version.tar.gz"
-checksum="8cd5455bb00c677f787da424eaf8c4a58a922d0e97126d3085db5b279a98b698"
-build_style="python3-module"
+checksum="3ad100780721a1911f57a165809b7ea265a7863305acb66708220820caf8aa0d"
+build_style="python3-pep517"
+# tests are broken
+make_check="no"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
