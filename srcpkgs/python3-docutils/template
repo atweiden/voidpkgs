@@ -1,16 +1,17 @@
 maintainer="nox"
 pkgname="python3-docutils"
-version=0.19
+version=0.20.1
 revision=1
 short_desc="Python3 documentation utilities"
 # docutils/writers/odf_odt/pygmentsformatter.py
 depends="python3-Pygments"
-checkdepends="python3-Pygments"
+checkdepends+=" python3-Pygments"
+checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
-homepage="http://docutils.sourceforge.net"
+homepage="https://docutils.sourceforge.io"
 license="Public Domain, BSD-2-Clause, GPL-3.0-or-later, Python-2.0"
 distfiles="$PYPI_SITE/d/docutils/docutils-$version.tar.gz"
-checksum="33995a6753c30b7f577febfc2c50411fec6aac7f7ffeb7c4cfe5991072dcf9e6"
+checksum="f08a4e276c3a1583a86dce3e34aba3fe04d02bba2dd51ed16106244e8a923e3b"
 build_style="python3-module"
 alternatives+=" docutils:rst2html:/usr/bin/rst2html.py"
 alternatives+=" docutils:rst2html4:/usr/bin/rst2html4.py"
@@ -24,11 +25,6 @@ alternatives+=" docutils:rst2s5:/usr/bin/rst2s5.py"
 alternatives+=" docutils:rst2xetex:/usr/bin/rst2xetex.py"
 alternatives+=" docutils:rst2xml:/usr/bin/rst2xml.py"
 alternatives+=" docutils:rstpep2html:/usr/bin/rstpep2html.py"
-
-do_check() {
-  cd test
-  python3 alltests.py
-}
 
 post_install() {
   vlicense COPYING.txt COPYING
