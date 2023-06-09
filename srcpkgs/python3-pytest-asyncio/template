@@ -1,29 +1,25 @@
 maintainer="nox"
 pkgname="python3-pytest-asyncio"
-version=0.20.3
+version=0.21.0
 revision=1
-short_desc="Pytest support for asyncio"
+short_desc="Pytest plugin for asyncio"
 depends="python3-pytest"
+checkdepends+=" python3-flaky"
 checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-trio"
 hostmakedepends+=" python3-setuptools_scm"
 hostmakedepends+=" python3-wheel"
 homepage="https://github.com/pytest-dev/pytest-asyncio"
 license="Apache-2.0"
+changelog="https://github.com/pytest-dev/pytest-asyncio/raw/master/docs/source/reference/changelog.rst"
 distfiles="$PYPI_SITE/p/pytest-asyncio/pytest-asyncio-$version.tar.gz"
-checksum="83cbf01169ce3e8eb71c6c278ccb0574d1a7a3bb8eaaf5e50e0ad342afb33b36"
+checksum="2b38a496aef56f56b0e87557ec313e11e1ab9276fc3863f6a7be0f1d0e415e1b"
 build_style="python3-pep517"
-
-do_check() {
-  local skiptests
-
-  skiptests+=" test_auto_mode_cmdline or"
-  skiptests+=" test_strict_mode_ignores_trio_fixtures or"
-  skiptests+=" test_unused_port_fixture or"
-  skiptests+=" test_unused_port_factory_fixture"
-
-  PYTHONPATH="$(cd build/lib* && pwd)" \
-    python3 -m pytest -k "not ($skiptests)"
-}
+if [[ "$XBPS_BUILD_ENVIRONMENT" == "void-packages-ci" ]]; then
+  # these tests fail on CI (bind to a tcp address)
+  make_check_args+=" --deselect=tests/test_simple.py::test_unused_port_fixture"
+  make_check_args+=" --deselect=tests/test_simple.py::test_unused_port_factory_fixture"
+fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
