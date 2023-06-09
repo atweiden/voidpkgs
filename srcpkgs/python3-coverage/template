@@ -1,20 +1,45 @@
 maintainer="nox"
 pkgname="python3-coverage"
-version=5.0.3
-revision=5
-short_desc="Code coverage testing for Python3"
+version=7.2.7
+revision=1
+short_desc="Code coverage tool for Python"
 depends="python3-setuptools"
 makedepends="python3-devel"
 checkdepends+=" python3-flaky"
+checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest-xdist"
-checkdepends+=" python3-unittest-mixins"
-hostmakedepends="python3-setuptools"
-homepage="https://bitbucket.org/ned/coveragepy"
+checkdepends+=" python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
+homepage="https://github.com/nedbat/coveragepy"
 license="Apache-2.0"
+changelog="https://github.com/nedbat/coveragepy/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/c/coverage/coverage-$version.tar.gz"
-checksum="77afca04240c40450c331fa796b3eab6f1e15c5ecf8bf2b8bee9706cd5452fef"
-build_style="python3-module"
-# coverage executable needs to run for many tests
-make_check="no"
+checksum="924d94291ca674905fe9481f12294eb11f2d3d3fd1adb20314ba89e94f44ed59"
+build_style="python3-pep517"
+
+pre_check() {
+  # required setup, see tox.ini
+  python igor.py zip_mods
+}
+
+do_check() {
+  local testdir
+  local testpy
+
+  # running via PYTHONPATH breaks a few tests so we use a venv
+  testdir="$wrksrc/.xbps-testdir/$(date +%s)"
+  python3 -m venv --system-site-packages --without-pip "$testdir"
+
+  testpy="$testdir/bin/python3"
+  "$testpy" -m installer dist/*.whl
+  PATH="$testdir/bin:$PATH" "$testpy" -m pytest -n "$XBPS_MAKEJOBS"
+}
+
+post_install() {
+  # remove versioned scripts (keep only /usr/bin/coverage)
+  rm "$DESTDIR/usr/bin/coverage3"
+  rm "$DESTDIR/usr/bin/coverage-$py3_ver"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
