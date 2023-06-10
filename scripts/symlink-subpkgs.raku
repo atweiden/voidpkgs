@@ -751,6 +751,7 @@ constant %PKG = Map.new(
     'runit-void' => ['runit-void-apparmor'],
     'run-parts' => ['ischroot'],
     'rust' => qw<rust-doc
+                 rust-src
                  rust-std>,
     's6' => qw<s6-devel
                s6-doc>,
