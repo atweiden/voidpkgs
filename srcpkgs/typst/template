@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="typst"
-version=0.4.0
+version=0.5.0
 revision=1
 short_desc="Markup-based typesetting system that is powerful and easy to learn"
 homepage="https://typst.app"
 license="Apache-2.0"
 changelog="https://typst.app/docs/changelog/"
 distfiles="https://github.com/typst/typst/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="97bc0f62d373595ace556677e581daea5845bac18863ff014ced3bf8e650d94b"
+checksum="8532b4423fdb125c85a0dd15c8f8718d3135c394b0f8abe26b96a52d14c109c8"
 build_style="cargo"
 make_install_args="--path cli"
 reverts="23.03.28_1"
