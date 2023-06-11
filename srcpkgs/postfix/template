@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="postfix"
-version=3.8.0
+version=3.8.1
 revision=1
 short_desc="High-performance mail transport agent"
 makedepends+=" icu-devel"
@@ -18,7 +18,7 @@ fi
 homepage="http://www.postfix.org/"
 license="IPL-1.0, EPL-2.0"
 distfiles="http://ftp.porcupine.org/mirrors/postfix-release/official/$pkgname-$version.tar.gz"
-checksum="a3ad8029bd2c6b0c576477a0f77bf9d2c0b761cbaa0efbfef47969efea6eade9"
+checksum="54e1bffded3032828a70de22c2a1a94d1c097fc4513e0fdbfcfdbf3bff6b7092"
 conf_files+=" /etc/postfix/access"
 conf_files+=" /etc/postfix/aliases"
 conf_files+=" /etc/postfix/canonical"
