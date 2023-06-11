@@ -556,6 +556,7 @@ liburcu-mb.so.8 liburcu-0.14.0_1
 liburcu-qsbr.so.8 liburcu-0.14.0_1
 liburcu-signal.so.8 liburcu-0.14.0_1
 liburcu.so.8 liburcu-0.14.0_1
+liburing.so.2 liburing-2.0_1
 libusb-1.0.so.0 libusb-1.0.0_1
 libusb-0.1.so.4 libusb-compat-0.1.0_1
 libutempter.so.0 libutempter-1.1.5_1

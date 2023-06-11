@@ -482,6 +482,7 @@ constant %PKG = Map.new(
     'libunistring' => ['libunistring-devel'],
     'libunwind' => ['libunwind-devel'],
     'liburcu' => ['liburcu-devel'],
+    'liburing' => ['liburing-devel'],
     'libusb' => ['libusb-devel'],
     'libusb-compat' => ['libusb-compat-devel'],
     'libutempter' => ['libutempter-devel'],
