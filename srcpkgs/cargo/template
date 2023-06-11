@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo"
 version=1.70.0
-revision=1
+revision=2
 _cargo_revision=0.71.0
 short_desc="Rust package manager"
 depends="rust"
