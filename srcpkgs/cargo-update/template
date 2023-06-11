@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-update"
 version=13.0.4
-revision=1
+revision=2
 short_desc="Cargo subcommand for updates to installed executables"
 makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
