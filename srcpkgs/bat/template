@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bat"
 version=0.23.0
-revision=1
+revision=2
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
 makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
@@ -17,17 +17,15 @@ changelog="https://github.com/sharkdp/bat/raw/master/CHANGELOG.md"
 distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="30b6256bea0143caebd08256e0a605280afbbc5eef7ce692f84621eb232a9b31"
 build_style="cargo"
-
 # skip problematic doctests on i686
 case "$XBPS_TARGET_MACHINE" in
-  i686)
-    make_check_args="--tests"
-    ;;
-  *)
-    ;;
+  i686) make_check_args="--tests" ;;
+  *) ;;
 esac
 
-export RUSTONIG_SYSTEM_LIBONIG=1
+post_patch() {
+  cargo update --package git2@0.16.1 --precise 0.17.2
+}
 
 pre_build() {
   export CFLAGS_${RUST_BUILD//-/_}="$CFLAGS_host"
