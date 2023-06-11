@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="delta"
 version=0.16.5
-revision=1
+revision=2
 short_desc="Syntax-highlighting pager for git"
 makedepends+=" libgit2-devel"
 makedepends+=" oniguruma-devel"
@@ -13,8 +13,8 @@ distfiles="https://github.com/dandavison/delta/archive/$version.tar.gz>$pkgname-
 checksum="00d4740e9da4f543f34a2a0503615f8190d307d1180dfb753b6911aa6940197f"
 build_style="cargo"
 
-pre_build() {
-  export RUSTONIG_SYSTEM_LIBONIG=1
+post_patch() {
+  cargo update --package git2@0.16.1 --precise 0.17.2
 }
 
 post_install() {
