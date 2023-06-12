@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="quickjs"
 version=2021.03.27
-revision=3
+revision=4
 short_desc="Small and embeddable Javascript engine"
 homepage="https://bellard.org/quickjs/"
 license="MIT"
