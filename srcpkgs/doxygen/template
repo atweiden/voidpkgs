@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="doxygen"
-version=1.9.5
-revision=2
+version=1.9.7
+revision=1
 short_desc="Source code documentation generator tool"
 #checkdepends+=" libxml2"
 #checkdepends+=" texlive-BibTeX"
@@ -12,7 +12,7 @@ homepage="http://www.doxygen.org/"
 license="GPL-2.0-only"
 changelog="https://www.doxygen.nl/manual/changelog.html"
 distfiles="http://doxygen.nl/files/$pkgname-$version.src.tar.gz"
-checksum="55b454b35d998229a96f3d5485d57a0a517ce2b78d025efb79d57b5a2e4b2eec"
+checksum="87007641c38e2c392c8596f36711eb97633b984c8430f389e7bcf6323a098d94"
 build_style="cmake"
 # texlive-BibTeX in checkdepends requires gui dependencies
 make_check="no"
