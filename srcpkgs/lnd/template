@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lnd"
-version=0.15.4beta
+version=0.16.3beta
 revision=1
 short_desc="Lightning Network Daemon"
 tags+=" btcsuite"
@@ -9,8 +9,9 @@ homepage="https://github.com/lightningnetwork/lnd"
 license="MIT"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/$pkgname-source-v${version%beta}-beta.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/lightningnetwork/lnd/releases/download/v${version%beta}-beta/vendor.tar.gz>$pkgname-vendor-$version.tar.gz"
-checksum+=" 764c911f8ffbbff58575943ab33b9aedff889a44ed88a82c85ab79249abd85b1"
-checksum+=" 7348efe388e76f8694916c6d79a970c0d25ac227e06da850aaeb416b18c6c172"
+checksum+=" 55893ce93f32f3ff25c829bb7697ffea702e99c487628426e4e65c811bd5b038"
+checksum+=" 7570e2db94511baf635c5cfb9c6d18d01893f9f59b853c1fdff7b6873b2d37d1"
+skip_extraction="$pkgname-vendor-$version.tar.gz"
 create_wrksrc="yes"
 build_style="go"
 go_import_path="github.com/lightningnetwork/lnd"
@@ -19,20 +20,23 @@ go_package+=" $go_import_path/cmd/lnd"
 go_package+=" $go_import_path/cmd/lncli"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
+_go_flags="-trimpath"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/build.Commit=v${version%beta}-beta"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
-  go_ldflags+=" -extldflags=-static"
+  _go_flags+=" -buildmode=pie"
+  go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 go_mod_mode="vendor"
 
 export CGO_ENABLED=0
-export GOFLAGS="-trimpath"
+export GOFLAGS="$_go_flags"
 
-do_configure() {
-  # upstream ships required dependencies
-  ln -s "$wrksrc/vendor" "$GOPATH"
+post_extract() {
+  mkdir -p "$GOPATH"
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname-vendor-$version.tar.gz" \
+    --strip-components=1 -C "$GOPATH"
 }
 
 post_install() {
