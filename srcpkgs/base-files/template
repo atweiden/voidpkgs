@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-files"
 version=0.143
-revision=1
+revision=2
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
 homepage="https://www.voidlinux.org"
