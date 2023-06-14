@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="libmd"
-version=1.0.4
+version=1.1.0
 revision=1
 short_desc="Message Digest functions from BSD systems"
 homepage="https://www.hadrons.org/software/libmd/"
 license="BSD-3-Clause, BSD-2-Clause, ISC, Beerware, custom:Public Domain"
 distfiles="https://archive.hadrons.org/software/libmd/$pkgname-$version.tar.xz"
-checksum="f51c921042e34beddeded4b75557656559cf5b1f2448033b4c1eec11c07e530f"
+checksum="1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332"
 build_style="gnu-configure"
 
 post_install() {
