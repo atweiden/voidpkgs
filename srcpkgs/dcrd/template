@@ -1,34 +1,35 @@
 maintainer="nox"
 pkgname="dcrd"
-version=1.7.7
+version=1.8.0
 revision=1
 short_desc="Decred daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
 distfiles="https://github.com/decred/dcrd/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="47791cf7f38f8bfc55b5258a5a6d8af0eaffaf9b910b94d46ea4b9324b86fb22"
+checksum="be37c1fd1af9ee41c9b62da4c853eec8ba0ee353ea347eef22859716798d7eef"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
 go_package+=" $go_import_path"
 go_package+=" $go_import_path/cmd/addblock"
-go_package+=" $go_import_path/cmd/findcheckpoint"
 go_package+=" $go_import_path/cmd/gencerts"
 go_package+=" $go_import_path/cmd/promptsecret"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
+_go_flags+=" -trimpath"
+_go_flags+=" -mod=readonly"
+_go_flags+=" -modcacherw"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/internal/version.BuildMetadata="
 go_ldflags+=" -X $go_import_path/internal/version.PreRelease="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  _go_flags+=" -buildmode=pie"
   go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 
 export CGO_ENABLED=0
-
-# XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
-export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
+export GOFLAGS="$_go_flags"
 
 pre_install() {
   # prepend dcr to unqualified binaries
