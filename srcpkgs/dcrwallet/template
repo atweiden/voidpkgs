@@ -1,29 +1,30 @@
 maintainer="nox"
 pkgname="dcrwallet"
-version=1.7.7
+version=1.8.0
 revision=1
 short_desc="Decred wallet daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrwallet"
 license="ISC"
 distfiles="https://github.com/decred/dcrwallet/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ff17f468920ba207b6402ca8f5a3b096638b6289c70e2ecf563b1d09e8fb1897"
+checksum="26dba84f280a24368e1f3555a43d2aaf07b7897a44df3baa63be88157738938f"
 build_style="go"
-go_import_path="decred.org/dcrwallet/v2"
+go_import_path="decred.org/dcrwallet/v3"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
+_go_flags+=" -trimpath"
+_go_flags+=" -mod=readonly"
+_go_flags+=" -modcacherw"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X $go_import_path/version.BuildMetadata="
 go_ldflags+=" -X $go_import_path/version.PreRelease="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  _go_flags+=" -buildmode=pie"
   go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
-# objdump: .gnu.version_r invalid entry, private headers incomplete
-nopie_files="/usr/bin/dcrpromptsecret"
 
-# XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
-export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
+export GOFLAGS="$_go_flags"
 
 pre_install() {
   # prepend dcr to unqualified binaries
