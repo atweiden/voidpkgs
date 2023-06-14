@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zfs"
-version=2.1.11
+version=2.1.12
 revision=1
 short_desc="Z File System -- userland, pyzfs, and kernel modules (using DKMS)"
 depends+=" dkms>=2.2.0.3_9"
@@ -25,7 +25,7 @@ hostmakedepends+=" python3"
 homepage="https://openzfs.github.io/openzfs-docs/"
 license="CDDL-1.0"
 distfiles="https://github.com/openzfs/zfs/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="a54fe4e854d0a207584f1799a80e165eae66bc30dc8e8c96a1f99ed9d4d8ceb2"
+checksum="64daa26aed3e12c931f6f4413d7527c4ebdb8da35416b356152b5f9fdd4c6e6d"
 conf_files="/etc/zfs/zed.d/zed.rc"
 build_style="gnu-configure"
 configure_args+=" --with-config=user"
