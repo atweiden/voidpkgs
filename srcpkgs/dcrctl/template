@@ -1,29 +1,31 @@
 maintainer="nox"
 pkgname="dcrctl"
-version=1.7.7
+version=1.8.0
 revision=1
 short_desc="Command-line client for interacting with the JSON-RPC servers of dcrd and dcrwallet"
 tags="decred"
 homepage="https://github.com/decred/dcrctl"
 license="ISC"
 distfiles="https://github.com/decred/dcrctl/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6db104bc85f41906566b7f25e4d455e1253bab0c713bbe527bcb6f9fb494ea4d"
+checksum="f8aef35e02d5f28f8c67f1424dfc008f0bc203b2abcda129b7550f5a84faa2a6"
 build_style="go"
 go_import_path="decred.org/dcrctl"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
+_go_flags+=" -trimpath"
+_go_flags+=" -mod=readonly"
+_go_flags+=" -modcacherw"
 go_ldflags+=" -buildid="
 go_ldflags+=" -X main.BuildMetadata="
 go_ldflags+=" -X main.PreRelease="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  _go_flags+=" -buildmode=pie"
   go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 
 export CGO_ENABLED=0
-
-# XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
-export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
+export GOFLAGS="$_go_flags"
 
 post_install() {
   vlicense LICENSE
