@@ -1,26 +1,29 @@
 maintainer="nox"
 pkgname="dcrseeder"
 version=0.0.1pre
-revision=4
-_gitrev="200a2176299d2438343a656146c1bc2af412885d"
+revision=5
+_gitrev="e21ac7e509b2417afc844ed64aa8a879dd2dae93"
 short_desc="Decred DNS seeder"
 tags="decred"
 homepage="https://github.com/decred/dcrseeder"
 license="ISC"
 distfiles="https://github.com/decred/dcrseeder/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="742e9e53fed819ee28f7b73f129fc6bb546d823a125b9a3869e71cd7d4ed51e2"
+checksum="e684509f22127fb088f317d05e11a5a8364b14d7e316b9d0414bd067e8defa28"
 build_style="go"
 go_import_path="github.com/decred/dcrseeder"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
+_go_flags+=" -trimpath"
+_go_flags+=" -mod=readonly"
+_go_flags+=" -modcacherw"
 go_ldflags="-buildid="
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  _go_flags+=" -buildmode=pie"
   go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
 
-# XXX: -buildmode=pie is unverified on *-musl, and non-x86_64 or aarch64
-export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
+export GOFLAGS="$_go_flags"
 
 post_install() {
   vlicense LICENSE
