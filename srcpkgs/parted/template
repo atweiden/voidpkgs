@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="parted"
-version=3.5
+version=3.6
 revision=1
 short_desc="GNU Parted disk partition resizing program"
 makedepends+=" device-mapper-devel"
@@ -15,7 +15,7 @@ hostmakedepends="pkg-config"
 homepage="http://www.gnu.org/software/parted/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/parted/$pkgname-$version.tar.xz"
-checksum="4938dd5c1c125f6c78b1f4b3e297526f18ee74aa43d45c248578b1d2470c05a2"
+checksum="3b43dbe33cca0f9a18601ebab56b7852b128ec1a3df3a9b30ccde5e73359e612"
 build_style="gnu-configure"
 # parted wants off_t as 64bit type
 configure_args="ac_cv_sizeof_off_t=8"
