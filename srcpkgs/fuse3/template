@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fuse3"
-version=3.14.1
+version=3.15.0
 revision=1
 short_desc="Filesystem in Userspace 3.x"
 makedepends="eudev-libudev-devel"
@@ -9,12 +9,13 @@ homepage="https://github.com/libfuse/libfuse"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 changelog="https://github.com/libfuse/libfuse/raw/master/ChangeLog.rst"
 distfiles="https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.xz"
-checksum="126919d72b46b3e0eb58a9c6933a2a50c36f2ea69f61fe9e78bdba9f463ffa20"
+checksum="70589cfd5e1cff7ccd6ac91c86c01be340b227285c5e200baa284e401eea2ca0"
 conf_files="/etc/fuse.conf"
 build_style="meson"
 configure_args+=" --sbindir=bin"
 configure_args+=" -Db_lto=false"
 configure_args+=" -Dexamples=false"
+configure_args+=" -Dtests=false"
 configure_args+=" -Duseroot=false"
 # tests require root
 make_check="no"
