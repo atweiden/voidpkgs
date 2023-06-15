@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="dhcpcd"
-version=9.4.1
-revision=2
+version=10.0.1
+revision=1
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
 hostmakedepends+=" ntp"
 hostmakedepends+=" pkg-config"
 homepage="https://roy.marples.name/projects/dhcpcd"
 license="BSD-2-Clause"
-distfiles="https://roy.marples.name/downloads/dhcpcd/$pkgname-$version.tar.xz"
-checksum="819357634efed1ea5cf44ec01b24d3d3f8852fec8b4249925dcc5667c54e376c"
+distfiles="https://github.com/NetworkConfiguration/dhcpcd/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="2bd3480bc93e6bff530872b8bc80cbcaa821449f7bf6aaf202fa12fb8c2e6f55"
 conf_files="/etc/dhcpcd.conf"
 build_style="configure"
 configure_args+=" --prefix=/usr"
