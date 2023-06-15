@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
-version=8.0.1
-revision=2
+version=8.1.2
+revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -26,11 +26,11 @@ hostmakedepends+=" pkg-config"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" curl"
 fi
-homepage="https://curl.haxx.se"
+homepage="https://curl.se"
 license="MIT"
-changelog="https://curl.haxx.se/changes.html#${version//./_}"
-distfiles="https://curl.haxx.se/download/$pkgname-$version.tar.bz2"
-checksum="9b6b1e96b748d04b968786b6bdf407aa5c75ab53a3d37c1c8c81cdb736555ccf"
+changelog="https://curl.se/changes.html"
+distfiles="https://curl.se/download/curl-$version.tar.gz"
+checksum="2e5a9b8fcdc095bdd2f079561f369de71c5eb3b80f00a702fbe9a8b8d9897891"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
