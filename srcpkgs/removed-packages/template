@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="removed-packages"
-version=0.1.20230506
+version=0.1.20230516
 revision=1
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
