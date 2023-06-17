@@ -1,21 +1,17 @@
 maintainer="nox"
-pkgname="python-pyasn1-modules"
+pkgname="python3-pyasn1-modules"
 version=0.2.8
 revision=6
-short_desc="Collection of ASN.1-based protocols modules (Python2)"
-depends="python-pyasn1"
-checkdepends="python-pyasn1"
-hostmakedepends="python-setuptools"
+short_desc="Collection of ASN.1-based protocols modules (Python3)"
+depends="python3-pyasn1"
+checkdepends+=" python3-pyasn1"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/etingof/pyasn1-modules"
 license="BSD-2-Clause"
 distfiles="https://github.com/etingof/pyasn1-modules/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="c562fcf94e21b19b1b01c103a4dbe24b286356237d2b453afd75882683cf0ad7"
-build_style="python2-module"
-pycompile_module="pyasn1_modules"
-
-do_check() {
-  python setup.py test
-}
+build_style="python3-module"
 
 post_install() {
   vlicense LICENSE.txt
