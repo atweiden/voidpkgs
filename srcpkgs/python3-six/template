@@ -1,16 +1,17 @@
 maintainer="nox"
-pkgname="python-six"
+pkgname="python3-six"
 version=1.16.0
 revision=3
-short_desc="Python 2 and 3 compatibility utilities (Python2)"
-depends="python"
-hostmakedepends="python-setuptools"
+short_desc="Python 2 and 3 compatibility utilities (Python3)"
+depends="python3"
+checkdepends="python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/benjaminp/six"
 license="MIT"
-changelog="https://github.com/benjaminp/raw/six/master/CHANGES"
+changelog="https://github.com/benjaminp/six/raw/master/CHANGES"
 distfiles="$PYPI_SITE/s/six/six-$version.tar.gz"
 checksum="1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
-build_style="python2-module"
+build_style="python3-module"
 
 post_install() {
   vlicense LICENSE
