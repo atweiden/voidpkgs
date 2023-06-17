@@ -1,26 +1,41 @@
 maintainer="nox"
 pkgname="python3-tornado"
-version=6.2
+version=6.3.2
 revision=1
 short_desc="Python3 web framework and asynchronous networking library"
 depends+=" ca-certificates"
 depends+=" python3"
 makedepends="python3-devel"
-hostmakedepends="python3-setuptools"
+#checkdepends+=" python3-Twisted"
+#checkdepends+=" python3-curl"
+#checkdepends+=" python3-pycares"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="http://www.tornadoweb.org/"
 license="Apache-2.0"
+changelog="https://www.tornadoweb.org/en/stable/releases.html"
 distfiles="$PYPI_SITE/t/tornado/tornado-$version.tar.gz"
-checksum="9b630419bde84ec666bfd7ea0a4cb2a8a651c2d5cccdbdd1972a0c859dfc3c13"
-build_style="python3-module"
-# tests failing, already with 6.1
+checksum="4b927c4f19b71e627b13f3db2324e4ae660527143f9e1f2e2fb404f3a187e2ba"
+build_style="python3-pep517"
+# transient dependency requires gui dependencies
 make_check="no"
 
-pre_build() {
-  # use system ca-certificates
-  sed \
-    -i \
-    -e "/install_requires.append('certifi')/d" \
-    setup.py
+do_check() {
+  local -x ASYNC_TEST_TIMEOUT
+
+  # there is one instance of test_bind_source_ip (the one for
+  # curl_httpclient_test.CurlHTTPClientCommonTestCase)
+  # which for some reason is taking a little bit over 5s (but only on
+  # x86_64-musl and only on ci)
+  #
+  # the default test timeout is 5s so the test times out and fails
+  # see: https://github.com/void-linux/void-packages/pull/44312#issuecomment-1582361791
+  #
+  # setting the timeout to 6 works around it
+  ASYNC_TEST_TIMEOUT=6
+
+  # pytest is not supported
+  python3 -m tornado.test
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
