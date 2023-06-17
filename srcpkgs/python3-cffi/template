@@ -1,0 +1,37 @@
+maintainer="nox"
+pkgname="python3-cffi"
+version=1.15.1
+revision=2
+short_desc="C foreign function interface for Python3"
+depends="python3-pycparser"
+makedepends+=" libffi-devel"
+makedepends+=" python3-devel"
+checkdepends+=" python3-pycparser"
+checkdepends+=" python3-pytest"
+hostmakedepends+=" libffi-devel"
+hostmakedepends+=" python3-setuptools"
+homepage="https://cffi.readthedocs.io/"
+license="MIT"
+changelog="https://cffi.readthedocs.io/en/latest/whatsnew.html"
+distfiles="$PYPI_SITE/c/cffi/cffi-$version.tar.gz"
+checksum="d400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9"
+build_style="python3-module"
+
+do_check() {
+  local excludes
+  # glibc libm.so is a GNU ld script that isn't properly handled on
+  # dlopen; libm symbols required in these tests are missing
+  excludes+=' not sin'
+  excludes+=' and not test_dlopen'
+  excludes+=' and not test_function_typedef'
+  excludes+=' and not test_wraps_from_stdlib'
+  excludes+=' and not test_stdcall_only_on_windows'
+  PYTHONPATH="$(cd build/lib* && pwd)" \
+    python3 -m pytest c/ testing/ -x -k "$excludes"
+}
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

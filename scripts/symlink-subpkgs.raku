@@ -717,7 +717,6 @@ constant %PKG = Map.new(
                        pulseaudio-utils>,
     'python' => ['python-devel'],
     'python-Cython' => ['python3-Cython'],
-    'python-cffi' => ['python3-cffi'],
     'python-coverage' => ['python3-coverage'],
     'python-dateutil' => ['python3-dateutil'],
     'python-ply' => ['python3-ply'],
