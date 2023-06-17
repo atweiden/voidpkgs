@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=9.3p1
-revision=1
+revision=2
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -24,6 +24,7 @@ configure_args+=" --datadir=/usr/share/openssh"
 configure_args+=" --disable-strip"
 configure_args+=" --sysconfdir=/etc/ssh"
 configure_args+=" --with-Werror"
+configure_args+=" --with-default-path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 configure_args+=" --with-libedit"
 configure_args+=" --with-mantype=doc"
 configure_args+=" --with-pam"
