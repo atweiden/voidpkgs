@@ -25,19 +25,19 @@ pre_build() {
   echo "$CC $LDFLAGS -Wl,-z -Wl,noexecstack" >conf-ld
 
   # use /usr/bin
-  sed \
+  vsed \
     -i \
     -e 's,sbin/runit,usr/bin/runit,g' \
     runit.h
 
   # set default service path to /var/service
-  sed \
+  vsed \
     -i \
     -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' \
     sv.c
 
   # change type short to gid_t for getgroups(2) and setgroups(2)
-  sed \
+  vsed \
     -i \
     -e 's:short x\[4\];$:gid_t x[4];:' \
     chkshsgr.c
@@ -68,7 +68,6 @@ do_install() {
   done
 
   vinstall "$FILESDIR/sv"  644 usr/share/bash-completion/completions
-  vinstall "$FILESDIR/_sv" 644 usr/share/zsh/site-functions
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
