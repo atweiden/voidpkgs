@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zsh"
 version=5.9
-revision=2
+revision=3
 short_desc="Z SHell"
 makedepends+=" gdbm-devel"
 makedepends+=" libcap-devel"
@@ -67,6 +67,11 @@ post_patch() {
 
   rm -f Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
   rm -f Completion/Unix/Command/_{notmuch,osc,systemd}
+
+  vsed \
+    -i \
+    -e 's,/etc/service,/var/service,g' \
+    Completion/Unix/Command/_runit
 
   vsed \
     -i \
