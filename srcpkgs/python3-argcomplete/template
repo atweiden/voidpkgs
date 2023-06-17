@@ -1,14 +1,24 @@
 maintainer="nox"
 pkgname="python3-argcomplete"
-version=3.0.5
+version=3.1.1
 revision=1
 short_desc="Bash tab completion for argparse"
 depends="python3"
-hostmakedepends="python3-wheel"
+checkdepends+=" python3-pexpect"
+checkdepends+=" python3-pip"
+checkdepends+=" zsh"
+hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/kislyuk/argcomplete"
 license="Apache-2.0"
+changelog="https://github.com/kislyuk/argcomplete/raw/develop/Changes.rst"
 distfiles="$PYPI_SITE/a/argcomplete/argcomplete-$version.tar.gz"
-checksum="fe3ce77125f434a0dd1bffe5f4643e64126d5731ce8d173d36f62fa43d6eb6f7"
+checksum="6c4c563f14f01440aaffa3eae13441c5db2357b5eec639abe7c0b15334627dff"
 build_style="python3-pep517"
+
+do_check() {
+  # pytest is not supported
+  python3 -m unittest -b test/test.py
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
