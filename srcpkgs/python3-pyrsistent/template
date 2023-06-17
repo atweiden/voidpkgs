@@ -1,18 +1,20 @@
 maintainer="nox"
 pkgname="python3-pyrsistent"
-version=0.18.1
-revision=2
+version=0.19.3
+revision=1
 short_desc="Python persistent immutable data structures"
 depends="python3"
 checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
 hostmakedepends+=" python3-devel"
 hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/tobgu/pyrsistent/"
 license="MIT"
+changelog="https://github.com/tobgu/pyrsistent/raw/master/CHANGES.txt"
 distfiles="$PYPI_SITE/p/pyrsistent/pyrsistent-$version.tar.gz"
-checksum="d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
-build_style="python3-module"
+checksum="1a2994773706bbb4995c31a97bc94f1418314923bd1048c6d964837040376440"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE.mit LICENSE
