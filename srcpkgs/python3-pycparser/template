@@ -1,19 +1,21 @@
 maintainer="nox"
-pkgname="python-pycparser"
+pkgname="python3-pycparser"
 version=2.21
 revision=1
-short_desc="Complete C99 parser in pure Python (Python2)"
-depends="python-ply"
-hostmakedepends="python-setuptools"
+short_desc="Complete C99 parser in pure Python (Python3)"
+depends="python3-ply"
+checkdepends+=" python3-ply"
+checkdepends+=" python3-pytest"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/eliben/pycparser"
 license="BSD-3-Clause"
 distfiles="$PYPI_SITE/p/pycparser/pycparser-$version.tar.gz"
 checksum="e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
-build_style="python2-module"
+build_style="python3-module"
 
 post_install() {
-  rm -rf "$DESTDIR/$py2_sitelib/pycparser/ply"
-  ln -sf ../ply "$DESTDIR/$py2_sitelib/pycparser/ply"
+  rm -rf "$DESTDIR/$py3_sitelib/pycparser/ply"
+  ln -sf ../ply "$DESTDIR/$py3_sitelib/pycparser/ply"
   vlicense LICENSE
 }
 
