@@ -1,23 +1,20 @@
 maintainer="nox"
-pkgname="python-dateutil"
+pkgname="python3-dateutil"
 version=2.8.2
 revision=2
-short_desc="Extensions to the standard Python2 datetime module"
-depends+=" python-six"
+short_desc="Extensions to the standard Python3 datetime module"
+depends+=" python3-six"
 depends+=" tzdata"
-hostmakedepends="python-setuptools"
+checkdepends+=" $depends"
+checkdepends+=" python3-freezegun"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest-cov"
+hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/dateutil/dateutil"
 license="Apache-2.0, BSD-3-Clause"
 distfiles="$PYPI_SITE/p/python-dateutil/python-dateutil-$version.tar.gz"
 checksum="0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"
-build_style="python2-module"
-
-post_patch() {
-  vsed \
-    -i \
-    -e "s/%PKGVERSION%/'$version'/" \
-    setup.py
-}
+build_style="python3-module"
 
 post_install() {
   vlicense LICENSE
