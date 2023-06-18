@@ -1,19 +1,21 @@
-# Template file for 'python3-PyHamcrest'
-pkgname=python3-PyHamcrest
+maintainer="nox"
+pkgname="python3-PyHamcrest"
 version=2.0.4
 revision=1
-build_style=python3-pep517
-hostmakedepends="hatch-vcs"
-depends="python3"
-checkdepends="python3-pytest python3-numpy"
 short_desc="Hamcrest framework for matcher objects (Python3)"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="BSD-3-Clause"
+depends="python3"
+checkdepends+=" python3-numpy"
+checkdepends+=" python3-pytest"
+hostmakedepends="hatch-vcs"
 homepage="https://github.com/hamcrest/PyHamcrest"
-distfiles="${PYPI_SITE}/p/pyhamcrest/pyhamcrest-${version}.tar.gz"
-checksum=b5d9ce6b977696286cf232ce2adf8969b4d0b045975b0936ac9005e84e67e9c1
+license="BSD-3-Clause"
+distfiles="$PYPI_SITE/p/pyhamcrest/pyhamcrest-$version.tar.gz"
+checksum="b5d9ce6b977696286cf232ce2adf8969b4d0b045975b0936ac9005e84e67e9c1"
+build_style="python3-pep517"
 make_check_pre="env PYTHONPATH=src"
 
 post_install() {
-	vlicense LICENSE.txt
+  vlicense LICENSE.txt
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
