@@ -1,32 +1,42 @@
-# Template file for 'python3-automat'
-pkgname=python3-automat
+maintainer="nox"
+pkgname="python3-automat"
 version=22.10.0
 revision=2
-build_style=python3-module
-hostmakedepends="python3-setuptools"
-depends="python3-setuptools python3-attrs python3-six"
-checkdepends="${depends} python3-pytest python3-pytest-benchmark python3-graphviz"
 short_desc="Finite-state machines in Python (Python3)"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="MIT"
+depends+=" python3-attrs"
+depends+=" python3-setuptools"
+depends+=" python3-six"
+#checkdepends+=" $depends"
+#checkdepends+=" python3-graphviz"
+#checkdepends+=" python3-pytest"
+#checkdepends+=" python3-pytest-benchmark"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/glyph/Automat"
-distfiles="${PYPI_SITE}/A/Automat/Automat-${version}.tar.gz"
-checksum=e56beb84edad19dcc11d30e8d9b895f75deeb5ef5e96b84a467066b3b84bb04e
+license="MIT"
+distfiles="$PYPI_SITE/A/Automat/Automat-$version.tar.gz"
+checksum="e56beb84edad19dcc11d30e8d9b895f75deeb5ef5e96b84a467066b3b84bb04e"
+build_style="python3-module"
+# graphviz in checkdepends requires gui dependencies
+make_check="no"
 alternatives="automat:automat-visualize:/usr/bin/automat-visualize3"
 
 pre_build() {
-	sed -i setup.py \
-		-e '/print(/d' \
-		-e '/setup_requires=/,+3d' \
-		-e "s/use_scm_version=True/version='${version}'/"
+  sed \
+    -i \
+    -e '/print(/d' \
+    -e '/setup_requires=/,+3d' \
+    -e "s/use_scm_version=True/version='$version'/" \
+    setup.py
 }
 
 # do_check() {
 #     PYTHONPATH="$(cd build/lib* && pwd)" \
-#         python3 -m pytest ${testjobs} automat/_test
+#         python3 -m pytest $testjobs automat/_test
 # }
 
 post_install() {
-	mv ${DESTDIR}/usr/bin/automat-visualize{,3}
-	vlicense LICENSE
+  mv "$DESTDIR/usr/bin"/automat-visualize{,3}
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
