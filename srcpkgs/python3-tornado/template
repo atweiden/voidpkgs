@@ -6,9 +6,9 @@ short_desc="Python3 web framework and asynchronous networking library"
 depends+=" ca-certificates"
 depends+=" python3"
 makedepends="python3-devel"
-#checkdepends+=" python3-Twisted"
-#checkdepends+=" python3-curl"
-#checkdepends+=" python3-pycares"
+checkdepends+=" python3-Twisted"
+checkdepends+=" python3-curl"
+checkdepends+=" python3-pycares"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-wheel"
 homepage="http://www.tornadoweb.org/"
@@ -17,8 +17,6 @@ changelog="https://www.tornadoweb.org/en/stable/releases.html"
 distfiles="$PYPI_SITE/t/tornado/tornado-$version.tar.gz"
 checksum="4b927c4f19b71e627b13f3db2324e4ae660527143f9e1f2e2fb404f3a187e2ba"
 build_style="python3-pep517"
-# transient dependency requires gui dependencies
-make_check="no"
 
 do_check() {
   local -x ASYNC_TEST_TIMEOUT
