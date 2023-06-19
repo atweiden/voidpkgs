@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ack"
-version=3.6.0
+version=3.7.0
 revision=1
 short_desc="Tool like grep, optimized for programmers"
 depends+=" perl"
@@ -9,7 +9,7 @@ hostmakedepends="$depends"
 homepage="https://beyondgrep.com/"
 license="Artistic-2.0"
 distfiles="$CPAN_SITE/App/ack-v$version.tar.gz"
-checksum="03144d1070649e92f6a1b7d20bdc535e2bb1ac258daabe482e9aa8277b48f005"
+checksum="ea7caa14f757de083310ed2cba298661ddcca5dee06ec8f18043ea625a79df20"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
