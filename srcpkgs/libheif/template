@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libheif"
 version=1.16.2
-revision=1
+revision=2
 short_desc="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 makedepends+=" libaom-devel"
 makedepends+=" libde265-devel"
@@ -34,6 +34,7 @@ libheif-tools_package() {
   pkg_install() {
     vmove usr/bin
     vmove usr/share/man
+    vmove usr/share/thumbnailers
   }
 }
 
