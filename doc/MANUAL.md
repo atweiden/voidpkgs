@@ -6,73 +6,73 @@ packages for XBPS, the `Void Linux` native packaging system.
 *Table of Contents*
 
 * [Introduction](#Introduction)
-  * [Package build phases](#buildphase)
-  * [Package naming conventions](#namingconventions)
-    * [Libraries](#libs)
-    * [Language Modules](#language_modules)
-    * [Language Bindings](#language_bindings)
-    * [Programs](#programs)
-  * [Global functions](#global_funcs)
-  * [Global variables](#global_vars)
-  * [Available variables](#available_vars)
-    * [Mandatory variables](#mandatory_vars)
-    * [Optional variables](#optional_vars)
-    * [About the depends variables](#explain_depends)
-  * [Repositories](#repositories)
-    * [Repositories defined by Branch](#repo_by_branch)
-    * [Package defined repositories](#pkg_defined_repo)
-  * [Checking for new upstream releases](#updates)
-  * [Handling patches](#patches)
-  * [Build style scripts](#build_scripts)
-  * [Build helper scripts](#build_helper)
-  * [Functions](#functions)
-  * [Build options](#build_options)
-    * [Runtime dependencies](#deps_runtime)
-  * [INSTALL and REMOVE files](#install_remove_files)
-  * [INSTALL.msg and REMOVE.msg files](#install_remove_files_msg)
-  * [Creating system accounts/groups at runtime](#runtime_account_creation)
-  * [Writing runit services](#writing_runit_services)
-  * [32bit packages](#32bit_pkgs)
-  * [Subpackages](#pkgs_sub)
-  * [Development packages](#pkgs_development)
-  * [Data packages](#pkgs_data)
-  * [Documentation packages](#pkgs_documentation)
-  * [Python packages](#pkgs_python)
-  * [Go packages](#pkgs_go)
-  * [Haskell packages](#pkgs_haskell)
-  * [Font packages](#pkgs_font)
-  * [Renaming a package](#pkg_rename)
-  * [Removing a package](#pkg_remove)
-  * [XBPS Triggers](#xbps_triggers)
-    * [appstream-cache](#triggers_appstream_cache)
-    * [binfmts](#triggers_binfmts)
-    * [dkms](#triggers_dkms)
-    * [gconf-schemas](#triggers_gconf_schemas)
-    * [gdk-pixbuf-loaders](#triggers_gdk_pixbuf_loaders)
-    * [gio-modules](#triggers_gio_modules)
-    * [gettings-schemas](#triggers_gsettings_schemas)
-    * [gtk-icon-cache](#triggers_gtk_icon_cache)
-    * [gtk-immodules](#triggers_gtk_immodules)
-    * [gtk-pixbuf-loaders](#triggers_gtk_pixbuf_loaders)
-    * [gtk3-immodules](#triggers_gtk3_immodules)
-    * [hwdb.d-dir](#triggers_hwdb.d_dir)
-    * [info-files](#triggers_info_files)
-    * [initramfs-regenerate](#triggers_initramfs_regenerate)
-    * [kernel-hooks](#triggers_kernel_hooks)
-    * [mimedb](#triggers_mimedb)
-    * [mkdirs](#triggers_mkdirs)
-    * [openjdk-profile](#triggers_openjdk_profile)
-    * [pango-modules](#triggers_pango_module)
-    * [pycompile](#triggers_pycompile)
-    * [register-shell](#triggers_register_shell)
-    * [system-accounts](#triggers_system_accounts)
-    * [texmf-dist](#triggers_texmf_dist)
-    * [update-desktopdb](#triggers_update_desktopdb)
-    * [x11-fonts](#triggers_x11_fonts)
-    * [xml-catalog](#triggers_xml_catalog)
-  * [Void specific documentation](#documentation)
-  * [Notes](#notes)
-  * [Contributing via git](#contributing)
+    * [Package build phases](#buildphase)
+    * [Package naming conventions](#namingconventions)
+        * [Libraries](#libs)
+        * [Language Modules](#language_modules)
+        * [Language Bindings](#language_bindings)
+        * [Programs](#programs)
+    * [Global functions](#global_funcs)
+    * [Global variables](#global_vars)
+    * [Available variables](#available_vars)
+        * [Mandatory variables](#mandatory_vars)
+        * [Optional variables](#optional_vars)
+        * [About the depends variables](#explain_depends)
+    * [Repositories](#repositories)
+        * [Repositories defined by Branch](#repo_by_branch)
+        * [Package defined repositories](#pkg_defined_repo)
+    * [Checking for new upstream releases](#updates)
+    * [Handling patches](#patches)
+    * [Build style scripts](#build_scripts)
+    * [Build helper scripts](#build_helper)
+    * [Functions](#functions)
+    * [Build options](#build_options)
+        * [Runtime dependencies](#deps_runtime)
+    * [INSTALL and REMOVE files](#install_remove_files)
+    * [INSTALL.msg and REMOVE.msg files](#install_remove_files_msg)
+    * [Creating system accounts/groups at runtime](#runtime_account_creation)
+    * [Writing runit services](#writing_runit_services)
+    * [32bit packages](#32bit_pkgs)
+    * [Subpackages](#pkgs_sub)
+    * [Development packages](#pkgs_development)
+    * [Data packages](#pkgs_data)
+    * [Documentation packages](#pkgs_documentation)
+    * [Python packages](#pkgs_python)
+    * [Go packages](#pkgs_go)
+    * [Haskell packages](#pkgs_haskell)
+    * [Font packages](#pkgs_font)
+    * [Renaming a package](#pkg_rename)
+    * [Removing a package](#pkg_remove)
+    * [XBPS Triggers](#xbps_triggers)
+        * [appstream-cache](#triggers_appstream_cache)
+        * [binfmts](#triggers_binfmts)
+        * [dkms](#triggers_dkms)
+        * [gconf-schemas](#triggers_gconf_schemas)
+        * [gdk-pixbuf-loaders](#triggers_gdk_pixbuf_loaders)
+        * [gio-modules](#triggers_gio_modules)
+        * [gettings-schemas](#triggers_gsettings_schemas)
+        * [gtk-icon-cache](#triggers_gtk_icon_cache)
+        * [gtk-immodules](#triggers_gtk_immodules)
+        * [gtk-pixbuf-loaders](#triggers_gtk_pixbuf_loaders)
+        * [gtk3-immodules](#triggers_gtk3_immodules)
+        * [hwdb.d-dir](#triggers_hwdb.d_dir)
+        * [info-files](#triggers_info_files)
+        * [initramfs-regenerate](#triggers_initramfs_regenerate)
+        * [kernel-hooks](#triggers_kernel_hooks)
+        * [mimedb](#triggers_mimedb)
+        * [mkdirs](#triggers_mkdirs)
+        * [openjdk-profile](#triggers_openjdk_profile)
+        * [pango-modules](#triggers_pango_module)
+        * [pycompile](#triggers_pycompile)
+        * [register-shell](#triggers_register_shell)
+        * [system-accounts](#triggers_system_accounts)
+        * [texmf-dist](#triggers_texmf_dist)
+        * [update-desktopdb](#triggers_update_desktopdb)
+        * [x11-fonts](#triggers_x11_fonts)
+        * [xml-catalog](#triggers_xml_catalog)
+    * [Void specific documentation](#documentation)
+    * [Notes](#notes)
+    * [Contributing via git](#contributing)
 * [Help](#help)
 
 <a id="Introduction"></a>
@@ -245,95 +245,95 @@ The following functions are defined by `xbps-src` and can be used on any templat
 
 - *vinstall()* `vinstall <file> <mode> <targetdir> [<name>]`
 
-  Installs `file` with the specified `mode` into `targetdir` in the pkg `$DESTDIR`.
-  The optional 4th argument can be used to change the `file name`.
+    Installs `file` with the specified `mode` into `targetdir` in the pkg `$DESTDIR`.
+    The optional 4th argument can be used to change the `file name`.
 
 - *vcopy()* `vcopy <pattern> <targetdir>`
 
-  Copies recursively all files in `pattern` to `targetdir` in the pkg `$DESTDIR`.
+    Copies recursively all files in `pattern` to `targetdir` in the pkg `$DESTDIR`.
 
 - *vmove()* `vmove <pattern>`
 
-  Moves `pattern` to the specified directory in the pkg `$DESTDIR`.
+    Moves `pattern` to the specified directory in the pkg `$DESTDIR`.
 
 - *vmkdir()* `vmkdir <directory> [<mode>]`
 
-  Creates a directory in the pkg `$DESTDIR`. The 2nd optional argument sets the mode of the directory.
+    Creates a directory in the pkg `$DESTDIR`. The 2nd optional argument sets the mode of the directory.
 
 - *vbin()* `vbin <file> [<name>]`
 
-  Installs `file` into `usr/bin` in the pkg `$DESTDIR` with the
-  permissions 0755. The optional 2nd argument can be used to change
-  the `file name`.
+    Installs `file` into `usr/bin` in the pkg `$DESTDIR` with the
+    permissions 0755. The optional 2nd argument can be used to change
+    the `file name`.
 
 - *vman()* `vman <file> [<name>]`
 
-  Installs `file` as a man page. `vman()` parses the name and
-  determines the section as well as localization. Also transparently
-  converts gzipped (.gz) and bzipped (.bz2) manpages into plaintext.
-  Example mappings:
+    Installs `file` as a man page. `vman()` parses the name and
+    determines the section as well as localization. Also transparently
+    converts gzipped (.gz) and bzipped (.bz2) manpages into plaintext.
+    Example mappings:
 
-  - `foo.1` -> `${DESTDIR}/usr/share/man/man1/foo.1`
-  - `foo.fr.1` -> `${DESTDIR}/usr/share/man/fr/man1/foo.1`
-  - `foo.1p` -> `${DESTDIR}/usr/share/man/man1/foo.1p`
-  - `foo.1.gz` -> `${DESTDIR}/usr/share/man/man1/foo.1`
-  - `foo.1.bz2` -> `${DESTDIR}/usr/share/man/man1/foo.1`
+    - `foo.1` -> `${DESTDIR}/usr/share/man/man1/foo.1`
+    - `foo.fr.1` -> `${DESTDIR}/usr/share/man/fr/man1/foo.1`
+    - `foo.1p` -> `${DESTDIR}/usr/share/man/man1/foo.1p`
+    - `foo.1.gz` -> `${DESTDIR}/usr/share/man/man1/foo.1`
+    - `foo.1.bz2` -> `${DESTDIR}/usr/share/man/man1/foo.1`
 
 - *vdoc()* `vdoc <file> [<name>]`
 
-  Installs `file` into `usr/share/doc/<pkgname>` in the pkg
-  `$DESTDIR`. The optional 2nd argument can be used to change the
-  `file name`.
+    Installs `file` into `usr/share/doc/<pkgname>` in the pkg
+    `$DESTDIR`. The optional 2nd argument can be used to change the
+    `file name`.
 
 - *vconf()* `vconf <file> [<name>]`
 
-  Installs `file` into `etc` in the pkg
-  `$DESTDIR`. The optional 2nd argument can be used to change the
-  `file name`.
+    Installs `file` into `etc` in the pkg
+    `$DESTDIR`. The optional 2nd argument can be used to change the
+    `file name`.
 
 - *vsconf()* `vsconf <file> [<name>]`
 
-  Installs `file` into `usr/share/examples/<pkgname>` in the pkg
-  `$DESTDIR`. The optional 2nd argument can be used to change the
-  `file name`.
+    Installs `file` into `usr/share/examples/<pkgname>` in the pkg
+    `$DESTDIR`. The optional 2nd argument can be used to change the
+    `file name`.
 
 - <a id="vlicense"></a>
  *vlicense()* `vlicense <file> [<name>]`
 
-  Installs `file` into `usr/share/licenses/<pkgname>` in the pkg
-  `$DESTDIR`. The optional 2nd argument can be used to change the
-  `file name`. See [license](#var_license) for when to use it.
+    Installs `file` into `usr/share/licenses/<pkgname>` in the pkg
+    `$DESTDIR`. The optional 2nd argument can be used to change the
+    `file name`. See [license](#var_license) for when to use it.
 
 - *vsv()* `vsv <service> [<facility>]`
 
-  Installs `service` from `${FILESDIR}` to /etc/sv. The service must
-  be a directory containing at least a run script. Note the `supervise`
-  symlink will be created automatically by `vsv` and that the run script
-  is automatically made executable by this function.
-  For further information on how to create a new service directory see
-  [The corresponding section the FAQ](http://smarden.org/runit/faq.html#create).
-  A `log` sub-service will be automatically created if one does not exist in
-  `${FILESDIR}/$service`, containing `exec vlogger -t $service -p $facility`.
-  if a second argument is not specified, the `daemon` facility is used.
-  For more information about `vlogger` and available values for the facility,
-  see [vlogger(1)](https://man.voidlinux.org/vlogger.1).
+    Installs `service` from `${FILESDIR}` to /etc/sv. The service must
+    be a directory containing at least a run script. Note the `supervise`
+    symlink will be created automatically by `vsv` and that the run script
+    is automatically made executable by this function.
+    For further information on how to create a new service directory see
+    [The corresponding section the FAQ](http://smarden.org/runit/faq.html#create).
+    A `log` sub-service will be automatically created if one does not exist in
+    `${FILESDIR}/$service`, containing `exec vlogger -t $service -p $facility`.
+    if a second argument is not specified, the `daemon` facility is used.
+    For more information about `vlogger` and available values for the facility,
+    see [vlogger(1)](https://man.voidlinux.org/vlogger.1).
 
 - *vsed()* `vsed -i <file> -e <regex>`
 
-  Wrapper around sed that checks sha256sum of a file before and after running
-  the sed command to detect cases in which the sed call didn't change anything.
-  Takes any arbitrary amount of files and regexes by calling `-i file` and
-  `-e regex` repeatedly, at least one file and one regex must be specified.
+    Wrapper around sed that checks sha256sum of a file before and after running
+    the sed command to detect cases in which the sed call didn't change anything.
+    Takes any arbitrary amount of files and regexes by calling `-i file` and
+    `-e regex` repeatedly, at least one file and one regex must be specified.
 
-  Note that vsed will call the sed command for every regex specified against
-  every file specified, in the order that they are given.
+    Note that vsed will call the sed command for every regex specified against
+    every file specified, in the order that they are given.
 
 - *vcompletion()* `<file> <shell> [<command>]`
 
-  Installs shell completion from `file` for `command`, in the correct location
-  and with the appropriate filename for `shell`. If `command` isn't specified,
-  it will default to `pkgname`. The `shell` argument can be one of `bash`,
-  `fish` or `zsh`.
+    Installs shell completion from `file` for `command`, in the correct location
+    and with the appropriate filename for `shell`. If `command` isn't specified,
+    it will default to `pkgname`. The `shell` argument can be one of `bash`,
+    `fish` or `zsh`.
 
 > Shell wildcards must be properly quoted, Example: `vmove "usr/lib/*.a"`.
 
@@ -484,7 +484,7 @@ can be separated by whitespaces. The files must end in `.tar.lzma`, `.tar.xz`,
 `.txz`, `.tar.bz2`, `.tbz`, `.tar.gz`, `.tgz`, `.gz`, `.bz2`, `.tar` or
 `.zip`. To define a target filename, append `>filename` to the URL.
 Example:
-  distfiles="http://foo.org/foo-1.0.tar.gz http://foo.org/bar-1.0.tar.gz>bar.tar.gz"
+    distfiles="http://foo.org/foo-1.0.tar.gz http://foo.org/bar-1.0.tar.gz>bar.tar.gz"
 
   To avoid repetition, several variables for common hosting sites
   exist:
@@ -741,14 +741,14 @@ First matching pattern is taken to allow/deny build. When no pattern matches,
 package is build if last pattern includes tilde.
 Examples:
 
-  ```
-  # Build package only for musl architectures
-  archs="*-musl"
-  # Build package for x86_64-musl and any non-musl architecture
-  archs="x86_64-musl ~*-musl"
-  # Default value (all arches)
-  archs="*"
-  ```
+    ```
+    # Build package only for musl architectures
+    archs="*-musl"
+    # Build package for x86_64-musl and any non-musl architecture
+    archs="x86_64-musl ~*-musl"
+    # Default value (all arches)
+    archs="*"
+    ```
 A special value `noarch` used to be available, but has since been removed.
 
 - `nocheckperms` If set, xbps-src will not fail on common permission errors (world writable files, etc.)
@@ -1280,18 +1280,18 @@ An example of how an `INSTALL` or `REMOVE` script shall be created is shown belo
 # INSTALL
 case "$ACTION" in
 pre)
-  # Actions to execute before the package files are unpacked.
-  ...
-  ;;
+    # Actions to execute before the package files are unpacked.
+    ...
+    ;;
 post)
-  if [ "$UPDATE" = "yes" ]; then
-    # actions to execute if package is being updated.
-    ...
-  else
-    # actions to execute if package is being installed.
-    ...
-  fi
-  ;;
+    if [ "$UPDATE" = "yes" ]; then
+        # actions to execute if package is being updated.
+        ...
+    else
+        # actions to execute if package is being installed.
+        ...
+    fi
+    ;;
 esac
 ```
 
@@ -1331,11 +1331,11 @@ separated by blanks, i.e `system_accounts="_foo _blah:22"`. Optionally the **uid
 can be specified by delimiting it with a colon, i.e `system_accounts="_foo:48"`.
 Additional variables for the **system accounts** can be specified to change its behavior:
 
-  - `<account>_homedir` the home directory for the user. If unset defaults to `/var/empty`.
-  - `<account>_shell` the shell for the new user. If unset defaults to `/sbin/nologin`.
-  - `<account>_descr` the description for the new user. If unset defaults to `<account> unprivileged user`.
-  - `<account>_groups` additional groups to be added to for the new user.
-  - `<account>_pgroup` to set the primary group, by default primary group is set to `<account>`.
+    - `<account>_homedir` the home directory for the user. If unset defaults to `/var/empty`.
+    - `<account>_shell` the shell for the new user. If unset defaults to `/sbin/nologin`.
+    - `<account>_descr` the description for the new user. If unset defaults to `<account> unprivileged user`.
+    - `<account>_groups` additional groups to be added to for the new user.
+    - `<account>_pgroup` to set the primary group, by default primary group is set to `<account>`.
 
 The **system user** is created by using a dynamically allocated **uid/gid** in your system
 and it's created as a `system account`, unless the **uid** is set. A new group will be created for the
@@ -1441,14 +1441,14 @@ checksum="fea0a94d4b605894f3e2d5572e3f96e4413bcad3a085aae7367c2cf07908b2ff"
 
 # foo-devel is a subpkg
 foo-devel_package() {
-  short_desc+=" - development files"
-  depends="${sourcepkg}>=${version}_${revision}"
-  pkg_install() {
-    vmove usr/include
-    vmove "usr/lib/*.a"
-    vmove "usr/lib/*.so"
-    vmove usr/lib/pkgconfig
-  }
+    short_desc+=" - development files"
+    depends="${sourcepkg}>=${version}_${revision}"
+    pkg_install() {
+        vmove usr/include
+        vmove "usr/lib/*.a"
+        vmove "usr/lib/*.so"
+        vmove usr/lib/pkgconfig
+    }
 }
 ```
 
