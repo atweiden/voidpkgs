@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kubernetes"
-version=1.27.2
+version=1.27.3
 revision=1
 short_desc="Container Cluster Manager for Docker"
 archs+=" aarch64*"
@@ -17,7 +17,7 @@ hostmakedepends+=" which"
 homepage="http://kubernetes.io"
 license="Apache-2.0"
 distfiles="https://github.com/kubernetes/kubernetes/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c6fcfddd38f877ce49c49318973496f9a16672e83a29874a921242950cd1c5d2"
+checksum="8ef07217229e1c0dab21cc014ee05f79dffd31d3bf13a8ff3c730e031973f3e8"
 conf_files="/etc/kubernetes/*"
 build_style="go"
 go_import_path="github.com/kubernetes/kubernetes"
