@@ -103,6 +103,10 @@ post_install() {
   done
 
   vlicense COPYING
+
+  vdoc README.md
+  vdoc SECURITY.md
+  vcopy doc "usr/share/doc/$pkgname"
 }
 
 bitcoin-devel_package() {
@@ -119,9 +123,7 @@ bitcoin-devel_package() {
 bitcoin-doc_package() {
   short_desc+=" - documentation"
   pkg_install() {
-    vdoc README.md
-    vdoc SECURITY.md
-    vcopy doc "usr/share/doc/$pkgname"
+    vmove usr/share/doc
   }
 }
 
