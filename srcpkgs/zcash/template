@@ -248,6 +248,10 @@ post_install() {
   done
 
   vlicense COPYING
+
+  vdoc README.md
+  vdoc SECURITY.md
+  vcopy doc "usr/share/doc/$pkgname"
 }
 
 zcash-devel_package() {
@@ -263,9 +267,7 @@ zcash-devel_package() {
 zcash-doc_package() {
   short_desc+=" - documentation"
   pkg_install() {
-    vdoc README.md
-    vdoc SECURITY.md
-    vcopy doc "usr/share/doc/$pkgname"
+    vmove usr/share/doc
   }
 }
 
