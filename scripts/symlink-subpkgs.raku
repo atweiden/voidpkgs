@@ -384,6 +384,7 @@ constant %PKG = Map.new(
     'libconfig' => qw<libconfig++
                       libconfig++-devel
                       libconfig-devel>,
+    'libcpuid' => ['libcpuid-devel'],
     'libcppunit' => qw<libcppunit-devel
                        libcppunit-examples>,
     'libdaemon' => ['libdaemon-devel'],
