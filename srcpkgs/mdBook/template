@@ -1,0 +1,16 @@
+# Template file for 'mdBook'
+pkgname=mdBook
+version=0.4.30
+revision=1
+build_style=cargo
+short_desc="Create book from markdown files. Like Gitbook but implemented in Rust"
+maintainer="Érico Nogueira <ericonr@disroot.org>"
+license="MPL-2.0"
+homepage="https://github.com/rust-lang/mdBook"
+changelog="https://raw.githubusercontent.com/rust-lang/mdBook/master/CHANGELOG.md"
+distfiles="https://github.com/rust-lang/mdBook/archive/refs/tags/v${version}.tar.gz"
+checksum=9df217a6a4c22d4b0fef0d13e04b1a9ae896a0c1084af36b93d032c9fa2c4148
+
+post_install() {
+	vlicense LICENSE
+}
