@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="golangci-lint"
-version=1.53.2
+version=1.53.3
 revision=1
 short_desc="Linters Runner for Go"
 homepage="https://github.com/golangci/golangci-lint"
 license="GPL-3.0-only"
 changelog="https://github.com/golangci/golangci-lint/raw/master/CHANGELOG.md"
 distfiles="https://github.com/golangci/golangci-lint/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="fc3e94b5574cdbe0faf37c8cbc1764c4ed07852a9e9dc146216ee69a20b3f97c"
+checksum="a11540d116fa6b015423afc1bfe57c4b22ec3c3165189442cdb7ff8fda729370"
 build_style="go"
 go_import_path="github.com/golangci/golangci-lint/cmd/golangci-lint"
 go_build_tags+=" netgo"
