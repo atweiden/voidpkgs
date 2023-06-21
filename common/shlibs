@@ -123,6 +123,7 @@ libe2p.so.2 e2fsprogs-libs-1.41.5_1_1
 libext2fs.so.2 e2fsprogs-libs-1.41.5_1_1
 libss.so.2 e2fsprogs-libs-1.41.5_1_1
 libecl.so.21.2 ecl-21.2.1_1
+libeditline.so.1 editline-1.16.0_1
 libudev.so.1 eudev-libudev-1.6_1
 libexpat.so.1 expat-2.0.0_1
 libf2fs.so.9 f2fs-tools-1.15.0_1

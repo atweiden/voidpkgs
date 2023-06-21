@@ -171,6 +171,7 @@ constant %PKG = Map.new(
     'e2fsprogs' => qw<e2fsprogs-devel
                       e2fsprogs-libs
                       fuse2fs>,
+    'editline' => ['editline-devel'],
     'efitools' => ['efitools-efi'],
     'efivar' => qw<libefivar
                    libefivar-devel>,
