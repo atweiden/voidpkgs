@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dkms"
 version=3.0.10
-revision=1
+revision=2
 short_desc="Dynamic Kernel Module Support"
 depends+=" bash"
 depends+=" coreutils"
