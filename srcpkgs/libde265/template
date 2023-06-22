@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libde265"
-version=1.0.11
+version=1.0.12
 revision=1
 short_desc="Open h.265 video codec implementation"
 hostmakedepends="pkg-config"
@@ -8,8 +8,13 @@ homepage="https://www.libde265.org"
 license="LGPL-3.0-or-later"
 changelog="https://github.com/strukturag/libde265/releases"
 distfiles="https://github.com/strukturag/libde265/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="2f8f12cabbdb15e53532b7c1eb964d4e15d444db1be802505e6ac97a25035bab"
+checksum="62185ea2182e68cf68bba20cc6eb4c287407b509cf0a827d7ddb75614db77b5c"
 build_style="gnu-configure"
+
+post_install() {
+  # why is this installed anyway?
+  rm -f "$DESTDIR/bin/tests"
+}
 
 libde265-devel_package() {
   short_desc+=" - development files"
