@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cargo-outdated"
-version=0.11.2
+version=0.13.1
 revision=1
 short_desc="Cargo subcommand for displaying when dependencies are out of date"
 makedepends+=" libcurl-devel"
@@ -12,7 +12,7 @@ homepage="https://github.com/kbknapp/cargo-outdated"
 license="MIT"
 changelog="https://github.com/kbknapp/cargo-outdated/raw/master/CHANGELOG.md"
 distfiles="https://github.com/kbknapp/cargo-outdated/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7e82d1507594d86cb1c2007d58e329a9780a22bdb0f38d5e71d2692a7f1727d9"
+checksum="571910b0c44f0bcf0b6e5c24184247e4603f474c7bde5f0eaa1203ce802b4a4a"
 build_style="cargo"
 
 post_install() {
