@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-virtualenv"
-version=20.21.0
+version=20.23.1
 revision=1
 short_desc="Virtual Python environment builder"
 depends+=" python3-distlib"
@@ -18,21 +18,11 @@ homepage="https://virtualenv.pypa.io/"
 license="MIT"
 changelog="https://virtualenv.pypa.io/en/latest/changelog.html"
 distfiles="$PYPI_SITE/v/virtualenv/virtualenv-$version.tar.gz"
-checksum="f50e3e60f990a0757c9b68333c9fdaa72d7188caa417f96af9e52407831a3b68"
+checksum="8ff19a38c1021c742148edc4f81cb43d7f8c6816d2ede2ab72af5b84c749ade1"
 alternatives="virtualenv:virtualenv:/usr/bin/virtualenv3"
 build_style="python3-pep517"
-
-do_check() {
-  local _skip
-  # excluded tests depend on pytest-freezegun, not packaged in void,
-  # or python2
-  vsed \
-    -i \
-    -e '/addopts/d' \
-    setup.cfg
-  _skip="test_periodic_update or test_get_wheel_download_cached or test_py_pyc_missing or test_py_info_setuptools"
-  PYTHONPATH="src" python3 -m pytest -k "not ($_skip)"
-}
+make_check_args+=" --deselect tests/unit/seed/wheels/test_acquire.py::test_get_wheel_download_cached"
+make_check_args+=" --ignore tests/unit/seed/wheels/test_periodic_update.py"
 
 post_install() {
   mv "$DESTDIR/usr/bin/virtualenv" "$DESTDIR/usr/bin/virtualenv3"
