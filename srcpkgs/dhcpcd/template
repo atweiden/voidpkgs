@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dhcpcd"
 version=10.0.1
-revision=1
+revision=2
 short_desc="RFC2131 compliant DHCP client"
 makedepends="eudev-libudev-devel"
 hostmakedepends+=" ntp"
