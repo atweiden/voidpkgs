@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="transmission"
-version=3.00
-revision=5
+version=4.0.2
+revision=1
 short_desc="Fast, easy and free BitTorrent client"
 makedepends+=" libcurl-devel"
 makedepends+=" libevent-devel"
@@ -14,8 +14,8 @@ hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://www.transmissionbt.com"
 license="MIT, GPL-2.0-or-later"
-distfiles="https://github.com/transmission/transmission-releases/raw/master/$pkgname-$version.tar.xz"
-checksum="9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
+distfiles="https://github.com/transmission/transmission/releases/download/$version/$pkgname-$version.tar.xz"
+checksum="39bf7a104a722805a9dc089cdaaffe33bf90b82230a7ea7f340cae59f00a2ee8"
 build_style="cmake"
 configure_args+=" -DENABLE_CLI=ON"
 configure_args+=" -DENABLE_DAEMON=ON"
@@ -31,15 +31,6 @@ configure_args+=" -DWITH_SYSTEMD=OFF"
 system_accounts="transmission"
 transmission_homedir="/var/lib/transmission"
 make_dirs="/var/lib/transmission 0755 transmission transmission"
-
-post_configure() {
-  # add missing includes which happen as side-effects with glibc
-  sed \
-    -i \
-    -e "/#include <inttypes.h>.*/i #include <sys/types.h> /* ssize_t */" \
-    -e "/#include <inttypes.h>.*/i #include <stdio.h> /* off_t */" \
-    libtransmission/transmission.h
-}
 
 post_install() {
   rm -f "$DESTDIR/usr/share/$pkgname/web/LICENSE"
