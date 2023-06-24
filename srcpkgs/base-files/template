@@ -27,6 +27,7 @@ conf_files+=" /etc/subuid"
 system_groups+=" kvm:24"
 system_groups+=" plugdev:26"
 system_groups+=" usbmon:27"
+system_groups+=" sgx:28"
 bootstrap="yes"
 replaces="base-directories>=0"
 
