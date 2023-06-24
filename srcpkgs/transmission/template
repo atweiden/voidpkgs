@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="transmission"
-version=4.0.2
+version=4.0.3
 revision=1
 short_desc="Fast, easy and free BitTorrent client"
 makedepends+=" libcurl-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.transmissionbt.com"
 license="MIT, GPL-2.0-or-later"
 distfiles="https://github.com/transmission/transmission/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="39bf7a104a722805a9dc089cdaaffe33bf90b82230a7ea7f340cae59f00a2ee8"
+checksum="b6b01fd58e42bb14f7aba0253db932ced050fcd2bba5d9f8469d77ddd8ad545a"
 build_style="cmake"
 configure_args+=" -DENABLE_CLI=ON"
 configure_args+=" -DENABLE_DAEMON=ON"
