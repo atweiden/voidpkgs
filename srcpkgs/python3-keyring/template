@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-keyring"
-version=24.0.1
+version=24.2.0
 revision=1
 short_desc="Python interface to the system keyring service"
 depends+=" python3-SecretStorage"
@@ -15,7 +15,7 @@ homepage="https://pypi.org/project/keyring/"
 license="MIT"
 changelog="https://github.com/jaraco/keyring/raw/main/NEWS.rst"
 distfiles="$PYPI_SITE/k/keyring/keyring-$version.tar.gz"
-checksum="f77da625a448baa77906b099be9feaa29aa90979547506ac1ec422926085cee0"
+checksum="ca0746a19ec421219f4d713f848fa297a661a8a8c1504867e55bfb5e09091509"
 make_check_pre="env PY_IGNORE_IMPORTMISMATCH=1"
 build_style="python3-pep517"
 
