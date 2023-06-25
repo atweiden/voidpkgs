@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="spdx-licenses-list"
-version=3.20
+version=3.21
 revision=1
 short_desc="SPDX License List"
 homepage="https://spdx.org"
 license="CC-BY-3.0"
 distfiles="https://github.com/spdx/license-list-data/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="fba795a26f8d646340b0cef2d22c3fa490158809636b225c7a0c2214a91c156f"
+checksum="7f7a4ffb4aa2d6ac32610a629a6fe127e5d5a3a5e41774b555dccc9284f3e149"
 
 do_install() {
   vmkdir usr/share/spdx
@@ -43,5 +43,8 @@ spdx-licenses-html_package() {
 # REMARKS:
 #
 # common/travis/license.lst should be updated in sync with this package
+#
+# run common/scripts/check-custom-licenses after updating to find license
+# fields in packages that can have 'custom:' removed
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
