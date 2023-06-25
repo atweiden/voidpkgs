@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Test-Deep"
-version=1.130
-revision=2
+version=1.204
+revision=1
 short_desc="Test::Deep - Extremely flexible deep comparison"
 depends="perl"
 makedepends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Deep"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname#*-}-$version.tar.gz"
-checksum="4064f494f5f62587d0ae501ca439105821ee5846c687dc6503233f55300a7c56"
+checksum="b6591f6ccdd853c7efc9ff3c5756370403211cffe46047f082b1cd1611a84e5f"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
