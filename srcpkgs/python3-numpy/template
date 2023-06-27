@@ -1,21 +1,23 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.24.3
+version=1.25.0
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
 makedepends+=" python3-devel"
 makedepends+=" $(vopt_if openblas 'openblas-devel' 'lapack-devel cblas-devel')"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest-xdist"
+checkdepends+=" python3-pytz"
 hostmakedepends+=" gcc-fortran"
 hostmakedepends+=" python3-Cython"
 hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
-distfiles="https://github.com/numpy/numpy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0d78333b35bd704826892a56e2af71af69139ee02fa155c8c83aeec58bee4744"
+changelog="https://numpy.org/doc/stable/release.html"
+distfiles="$PYPI_SITE/n/numpy/numpy-$version.tar.gz"
+checksum="f1accae9a28dc3cda46a91de86acf69de0d1b5f4edd44a9b0c3ceb8036dfff19"
 build_style="python3-module"
-# tests do not function propery in a build directory
-make_check="no"
 build_options="openblas"
 alternatives="numpy:f2py:/usr/bin/f2py3"
 
@@ -72,6 +74,34 @@ library_dirs = $XBPS_CROSS_BASE/usr/lib
 runtime_library_dirs = $XBPS_CROSS_BASE/usr/lib
 EOF
   done
+}
+
+do_check() {
+  local _skip
+  local testjobs
+
+  testjobs="-n $XBPS_MAKEJOBS"
+
+  case $XBPS_TARGET_MACHINE in
+    # this triggers a known bug in musl libm, fixed in: https://git.musl-libc.org/cgit/musl/commit/?id=aa2d23e57c9c95f0ffeb80cb035e5a5be52d8ef0
+    *-musl)
+      _skip+="or(test_against_cmath)"
+      ;;
+  esac
+
+  if [[ ${XBPS_TARGET_MACHINE%-musl} == "i686" ]]; then
+    # see: https://github.com/numpy/numpy/issues/18388
+    _skip+="or(test_float_remainder_overflow)"
+    _skip+="or(test_identityless_reduction_huge_array)"
+    _skip+="or((TestKind)and(test_int))"
+    # these 3 fail in ci but not locally
+    _skip+="or(test_einsum_sums_int8)"
+    _skip+="or(test_einsum_sums_uint8)"
+    _skip+="or(test_einsum_sums_int16)"
+  fi
+
+  echo python3 runtests.py -- $testjobs ${_skip+-k "not(${_skip#or})"}
+  python3 runtests.py -- $testjobs ${_skip+-k "not(${_skip#or})"}
 }
 
 post_install() {
