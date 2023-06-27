@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-platformdirs"
-version=3.6.0
+version=3.8.0
 revision=1
 short_desc="Library to determine platform-specific system directories"
 depends="python3"
@@ -13,7 +13,7 @@ homepage="https://platformdirs.rtfd.io/"
 license="MIT"
 changelog="https://github.com/platformdirs/platformdirs/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/p/platformdirs/platformdirs-$version.tar.gz"
-checksum="57e28820ca8094678b807ff529196506d7a21e17156cb1cddb3e74cebce54640"
+checksum="b0cabcb11063d21a0b261d557acb0a9d2126350e63b70cdf7db6347baea456dc"
 build_style="python3-pep517"
 make_check_pre="env PYTHONPATH=src"
 
