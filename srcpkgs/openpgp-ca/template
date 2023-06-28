@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openpgp-ca"
 version=0.12.0
-revision=1
+revision=2
 short_desc="Tool for handling OpenPGP keys in organizaations"
 depends="gnupg"
 makedepends+=" clang"
