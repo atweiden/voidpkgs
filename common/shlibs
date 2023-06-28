@@ -322,6 +322,7 @@ libdb-5.3.so libdb-5.3.21_1
 libdb_cxx-5.3.so libdb-cxx-5.3.21_1
 libde265.so.0 libde265-1.0.3_1
 libdebuginfod.so.1 libdebuginfod-0.182_1
+libdeflate.so.0 libdeflate-1.8_1
 libdnet.so.1 libdnet-1.12_1
 libedit.so.0 libedit-20130712.3.1_1
 libefiboot.so.1 libefivar-31_1
