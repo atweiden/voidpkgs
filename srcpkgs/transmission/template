@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="transmission"
 version=4.0.3
-revision=1
+revision=2
 short_desc="Fast, easy and free BitTorrent client"
 makedepends+=" libcurl-devel"
+makedepends+=" libdeflate-devel"
 makedepends+=" libevent-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" musl-legacy-compat"
