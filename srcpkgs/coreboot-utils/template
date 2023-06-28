@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="coreboot-utils"
-version=4.17
-revision=2
+version=4.20.1
+revision=1
 short_desc="Coreboot firmware utilities"
 archs+=" i686*"
 archs+=" x86_64*"
@@ -10,9 +10,11 @@ makedepends+=" zlib-devel"
 homepage="https://coreboot.org"
 license="GPL-2.0-only"
 distfiles="https://coreboot.org/releases/${pkgname%-*}-$version.tar.xz"
-checksum="95da11d1c6a450385101a68799258a398ce965f4e46cce6fe8d5ebd74e50c125"
+checksum="b41539a8c2eab2fec752157eb4acbd0e2a637a7203530c12e66b43a5c3c3a931"
 build_wrksrc="util"
 build_style="gnu-makefile"
+
+CFLAGS="-D_GNU_SOURCE"
 
 do_build() {
   for util in cbfstool \
