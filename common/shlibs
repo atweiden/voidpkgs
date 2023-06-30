@@ -122,7 +122,6 @@ libcom_err.so.2 e2fsprogs-libs-1.41.5_1_1
 libe2p.so.2 e2fsprogs-libs-1.41.5_1_1
 libext2fs.so.2 e2fsprogs-libs-1.41.5_1_1
 libss.so.2 e2fsprogs-libs-1.41.5_1_1
-libecl.so.21.2 ecl-21.2.1_1
 libeditline.so.1 editline-1.16.0_1
 libudev.so.1 eudev-libudev-1.6_1
 libexpat.so.1 expat-2.0.0_1
@@ -558,7 +557,6 @@ libsysfs.so.2 libsysfs-2.1.0_1
 libtasn1.so.6 libtasn1-3.2_1
 libtdb.so.1 libtdb-1.2.2_1
 libtermkey.so.1 libtermkey-0.17_1
-libtidy.so.58 libtidy5-5.8.0_1
 libtirpc.so.3 libtirpc-1.0.2_1
 libtls.so.26 libtls-3.6.1_1
 libtommath.so.1 libtommath-1.0_1
