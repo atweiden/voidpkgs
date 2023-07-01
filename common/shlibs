@@ -672,9 +672,6 @@ libnettle.so.8 nettle-3.6_1
 libnewt.so.0.52 newt-0.52.18_1
 libnghttp2.so.14 nghttp2-1.43.0_2
 libnpth.so.0 npth-1.1_1
-libnspr4.so nspr-4.8_1
-libplc4.so nspr-4.8_1
-libplds4.so nspr-4.8_1
 libntfs-3g.so.89 ntfs-3g-2021.8.22_1
 libntl.so.44 ntl-11.5.1_1
 liboblibs.so.0.1 oblibs-0.1.1.1_1
