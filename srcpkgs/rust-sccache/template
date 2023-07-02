@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rust-sccache"
-version=0.5.3
+version=0.5.4
 revision=1
 short_desc="Sccache is a ccache-like tool"
 makedepends+=" libzstd-devel"
@@ -10,7 +10,7 @@ homepage="https://crates.io/crates/sccache"
 license="Apache-2.0"
 changelog="https://github.com/mozilla/sccache/releases"
 distfiles="https://static.crates.io/crates/sccache/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
-checksum="4b9f745761d99969cb885e41e3ec4dacc99598e21a8d07a51d5028a26acb5cc3"
+checksum="b1211a5c7a6dcbb1ef3fab4f3b0f194f05d9ee3a65f7001a908fda5ed61732ad"
 build_style="cargo"
 make_check_args+=" --"
 # 1. requires expensive extra feature
