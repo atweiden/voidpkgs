@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rebar3"
 version=3.19.0
-revision=2
+revision=3
 short_desc="Erlang build tool to compile, test, and release applications"
 depends="erlang>=22"
 hostmakedepends="erlang"
