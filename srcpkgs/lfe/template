@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="lfe"
-version=2.0.1
-revision=2
+version=2.1.1
+revision=1
 short_desc="Lisp flavoured erlang"
 depends="erlang"
 hostmakedepends="erlang"
 homepage="http://lfe.io/"
 license="Apache-2.0"
 distfiles="https://github.com/lfe/lfe/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d64a5c0b626411afe67f146b56094337801c596d9b0cdfeabaf61223c479985f"
+checksum="e5abacd57dc2f357dda46d8336a40046be806f5c6776f95612676c4b45f6d56b"
 build_style="gnu-makefile"
 
 do_install() {
