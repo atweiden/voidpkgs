@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="jq"
 version=1.6
-revision=3
+revision=4
 short_desc="Command-line JSON processor"
 makedepends="oniguruma-devel"
 checkdepends="valgrind"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
-homepage="http://stedolan.github.io/jq/"
+homepage="https://jqlang.github.io/jq/"
 license="MIT"
-distfiles="https://github.com/stedolan/jq/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
+distfiles="https://github.com/jqlang/jq/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
 checksum="5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72"
 build_style="gnu-configure"
 
