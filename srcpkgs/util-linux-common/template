@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="util-linux-common"
 version=2.38.1
-revision=3
+revision=4
 short_desc="Miscellaneous linux utilities - common files"
 makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
