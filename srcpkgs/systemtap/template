@@ -1,26 +1,33 @@
 maintainer="nox"
 pkgname="systemtap"
-version=4.5
+version=4.9
 revision=1
 short_desc="Infrastructure to simplify the gathering of information"
-archs+=" aarch64"
-archs+=" armv6l"
-archs+=" armv7l"
-archs+=" i686"
-archs+=" ppc64le"
-archs+=" x86_64"
 depends="python3"
 makedepends="elfutils-devel"
 hostmakedepends="python3"
 homepage="https://sourceware.org/systemtap/"
 license="GPL-3.0-or-later"
 distfiles="https://sourceware.org/pub/systemtap/releases/$pkgname-$version.tar.gz"
-checksum="75078ed37e0dd2a769c9d1f9394170b2d9f4d7daa425f43ca80c13bad6cfc925"
+checksum="d01033baea9d0af52a65e70167816931f4b856427a53ff2ab30e4b45f6ad3a98"
 build_style="gnu-configure"
 python_version=3
 
 CFLAGS="-Wno-error"
-CXXFLAGS="-Wno-error"
+
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  makedepends+=" musl-obstack-devel"
+  CFLAGS+=" -DFNM_EXTMATCH=0"
+  CFLAGS+=" -DFTW_ACTIONRETVAL=16"
+  CFLAGS+=" -DFTW_CONTINUE=0"
+  CFLAGS+=" -DFTW_SKIP_SUBTREE=2"
+  CFLAGS+=" -D__off_t=off_t"
+  CFLAGS+=" -D__uint32_t=uint32_t"
+  CFLAGS+=" -D__uint64_t=uint64_t"
+  CXXFLAGS="-fpermissive"
+fi
+
+CXXFLAGS+=" $CFLAGS"
 
 systemtap-devel_package() {
   depends="systemtap-${version}_$revision"
