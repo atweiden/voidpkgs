@@ -142,6 +142,8 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   LDFLAGS+=" -lucontext"
 fi
 
+broken="build some other stuff first"
+
 case "$XBPS_TARGET_MACHINE" in
   i686*)
     _arch="x86"
