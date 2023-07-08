@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="schilytools"
-version=2023.01.12
-revision=2
+version=2023.04.19
+revision=1
 short_desc="Schily's portable tools"
 depends+=" sccs"
 depends+=" sdd"
@@ -16,7 +16,7 @@ makedepends+=" m4"
 homepage="https://codeberg.org/schilytools/schilytools"
 license="CDDL-1.0"
 distfiles="https://codeberg.org/schilytools/schilytools/archive/${version//./-}.tar.gz>$pkgname-$version.tar.gz"
-checksum="d66f8b3badeef07432502c1ff48f559bb5f07170aeaf48eff8222f8316dff992"
+checksum="a4270cdcca5dd69c0114079277b06e5efad260b0a099c9c09d31e16e99a23ff5"
 build_style="meta"
 # configure + re-builds with itself
 nocross="yes"
