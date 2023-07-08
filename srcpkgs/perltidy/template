@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perltidy"
-version=20230309
+version=20230701
 revision=1
 short_desc="Perl script indenter and reformatter"
 depends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Perl-Tidy"
 license="GPL-2.0-or-later"
 distfiles="$CPAN_SITE/Perl/Perl-Tidy-$version.tar.gz"
-checksum="e22949a208c618d671a18c5829b451abbe9da0da2cddd78fdbfcb036c7361c18"
+checksum="e04922ba34a0c0c8dca7d6897a70399e1b1358441f66d3abd0f021a413869743"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
