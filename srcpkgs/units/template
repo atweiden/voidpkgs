@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="units"
-version=2.21
+version=2.22
 revision=1
 short_desc="Converts between different units"
 depends+=" python3"
@@ -10,16 +10,9 @@ hostmakedepends="python"
 homepage="https://www.gnu.org/software/units/units.html"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/units/$pkgname-$version.tar.gz"
-checksum="6c3e80a9f980589fd962a5852a2674642257db1c5fd5b27c4d9e664f3486cbaf"
+checksum="5d13e1207721fe7726d906ba1d92dc0eddaa9fc26759ed22e3b8d1a793125848"
 build_style="gnu-configure"
+configure_args="--sharedstatedir=/usr/share"
 python_version=3
-
-post_install() {
-  # tries to install to /usr/com/currency.units
-  rm -f -- "$DESTDIR/usr/share/units/currency.units"
-  mv \
-    "$DESTDIR/usr/com/units/currency.units" \
-    "$DESTDIR/usr/share/units/currency.units"
-}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
