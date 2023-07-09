@@ -1,0 +1,16 @@
+maintainer="nox"
+pkgname="Archetype"
+version=0.0.0
+revision=1
+_gitrev="31baee6ba394d4f27022398d6a32947f879aae96"
+short_desc="Small tool for deterministic generation of secrets"
+makedepends="nettle-devel"
+hostmakedepends+=" clang"
+hostmakedepends+=" pkg-config"
+homepage="https://github.com/Reisen/Archetype"
+license="Custom"
+distfiles="https://github.com/Reisen/Archetype/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="1ce0d9993d4801031cd411c812f2761c2a67affdffc7800458237f96537c68b8"
+build_style="cargo"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
