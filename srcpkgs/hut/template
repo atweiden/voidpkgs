@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="hut"
-version=0.2.0
-revision=2
+version=0.3.0
+revision=1
 short_desc="CLI tool for sr.ht"
 hostmakedepends="scdoc"
 homepage="https://git.sr.ht/~emersion/hut"
 license="AGPL-3.0-only"
 changelog="https://git.sr.ht/~emersion/hut/log"
 distfiles="https://git.sr.ht/~emersion/hut/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2a4e49458a2cb129055f1db3b835e111a89583f47d4d917110205113863492b9"
+checksum="ca191d663be81000c8ac0e952cd1b95fbded8c1d918d6d89ff08adbcd3d75289"
 build_style="go"
 go_import_path="git.sr.ht/~emersion/hut"
 go_build_tags+=" netgo"
