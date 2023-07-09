@@ -7,7 +7,7 @@ checkdepends="kyua"
 homepage="http://pkgconf.org/"
 license="MIT"
 changelog="https://github.com/pkgconf/pkgconf/raw/master/NEWS"
-distfiles="https://distfiles.dereferenced.org/pkgconf/$pkgname-$version.tar.xz"
+distfiles="https://distfiles.ariadne.space/pkgconf/$pkgname-$version.tar.xz"
 checksum="5fb355b487d54fb6d341e4f18d4e2f7e813a6622cf03a9e87affa6a40565699d"
 # cmake and meson also available
 build_style="gnu-configure"
