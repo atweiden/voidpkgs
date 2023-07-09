@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnupg"
-version=2.4.0
+version=2.4.3
 revision=1
 short_desc="GNU Privacy Guard (2.x)"
 depends="pinentry"
@@ -20,7 +20,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/"
 license="GPL-3.0-or-later"
 distfiles="https://gnupg.org/ftp/gcrypt/gnupg/${pkgname%2}-$version.tar.bz2"
-checksum="1d79158dd01d992431dd2e3facb89fdac97127f89784ea2cb610c600fb0c1483"
+checksum="a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d"
 # we're building outside of the source tree, because upstream told us to:
 # https://dev.gnupg.org/T6313#166339
 build_wrksrc="build"
@@ -42,7 +42,6 @@ post_extract() {
 
 post_install() {
   vmkdir usr/share/examples
-  rm -r "$DESTDIR/usr/share/doc/gnupg/examples/systemd-user"
   mv "$DESTDIR/usr/share/doc/gnupg/examples" \
     "$DESTDIR/usr/share/examples/gnupg"
 }
@@ -73,5 +72,10 @@ gnupg2-scdaemon_package() {
     vdoc "$FILESDIR/gnupg2-scdaemon-README.voidlinux" README.voidlinux
   }
 }
+
+# REMARKS:
+#
+# minor version updates (2.3-> 2.4) often need a fix in reverse
+# dependencies
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
