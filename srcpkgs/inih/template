@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="inih"
-version=56
+version=57
 revision=1
 short_desc="Simple ini file parser library"
 homepage="https://github.com/benhoyt/inih"
 license="BSD-3-Clause"
 distfiles="https://github.com/benhoyt/inih/archive/r$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4f2ba6bd122d30281a8c7a4d5723b7af90b56aa828c0e88256d7fceda03a491a"
+checksum="f03f98ca35c3adb56b2358573c8d3eda319ccd5287243d691e724b7eafa970b3"
 build_style="meson"
 configure_args+=" -Ddistro_install=true"
 configure_args+=" -Ddefault_library=shared"
