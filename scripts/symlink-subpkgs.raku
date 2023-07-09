@@ -139,8 +139,7 @@ constant %PKG = Map.new(
     'cryptsetup' => qw<cryptsetup-devel
                        cryptsetup-static
                        libcryptsetup>,
-    'curl' => qw<chroot-curl
-                 libcurl
+    'curl' => qw<libcurl
                  libcurl-devel>,
     'cyrus-sasl' => qw<cyrus-sasl-modules
                        cyrus-sasl-modules-gssapi
