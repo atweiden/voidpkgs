@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="varnish"
-version=7.1.0
+version=7.3.0
 revision=1
 short_desc="Fast caching HTTP reverse proxy"
 makedepends+=" pcre2-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" python3-docutils"
 homepage="https://varnish-cache.org/"
 license="BSD-2-Clause"
 distfiles="https://varnish-cache.org/_downloads/varnish-$version.tgz"
-checksum="f54ab88685667664e5b3c39eb56ac8c624b6c1093436a7f8c555491144c69eba"
+checksum="e2dbbb0ec270a90647c386866e6e226993aed46e48de751a72bb819737f14ae7"
 conf_files="/etc/varnish/default.vcl"
 build_style="gnu-configure"
 configure_args+=" --cache-file=config.void"
