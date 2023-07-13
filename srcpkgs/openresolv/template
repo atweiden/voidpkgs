@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="openresolv"
-version=3.12.0
+version=3.13.2
 revision=1
 short_desc="Management framework for resolv.conf"
 hostmakedepends="runit"
 homepage="https://roy.marples.name/projects/openresolv"
 license="BSD-2-Clause"
 distfiles="https://github.com/NetworkConfiguration/openresolv/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f4c43bdfe20fddb56a5371647e7ae05bad3c1e089a1c5a056ab445f43dd2eb53"
+checksum="e16b732b52df50e03fde3e37dd3fb642094248412afe78e6a7cf37c429ffe3ad"
 conf_files="/etc/resolvconf.conf"
 build_style="gnu-configure"
 
