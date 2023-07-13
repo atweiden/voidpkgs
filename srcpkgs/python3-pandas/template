@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pandas"
-version=2.0.2
+version=2.0.3
 revision=1
 short_desc="Python3 data analysis library"
 depends+=" python3-dateutil"
@@ -18,7 +18,7 @@ homepage="https://pandas.pydata.org/"
 license="BSD-3-Clause"
 changelog="https://pandas.pydata.org/pandas-docs/stable/whatsnew/index.html"
 distfiles="https://github.com/pandas-dev/pandas/archive/v${version}.tar.gz"
-checksum="44f41cb263726716ff513081bf57ea62fec704f367e3fc8adb15e54991c98273"
+checksum="e7ea4798650316b2c45cf801ff02e3d6e79614696c8f0731b24715aad9969516"
 build_style="python3-module"
 # tests won't run from source directory; build directory lacks data files
 make_check="no"
