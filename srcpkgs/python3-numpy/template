@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.25.0
+version=1.25.1
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3-setuptools"
@@ -16,7 +16,7 @@ homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
 changelog="https://numpy.org/doc/stable/release.html"
 distfiles="$PYPI_SITE/n/numpy/numpy-$version.tar.gz"
-checksum="f1accae9a28dc3cda46a91de86acf69de0d1b5f4edd44a9b0c3ceb8036dfff19"
+checksum="9a3a9f3a61480cc086117b426a8bd86869c213fc4072e606f01c4e4b66eb92bf"
 build_style="python3-module"
 build_options="openblas"
 alternatives="numpy:f2py:/usr/bin/f2py3"
