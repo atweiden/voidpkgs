@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dune"
-version=3.8.2
+version=3.9.1
 revision=1
 short_desc="Composable build system for OCaml"
 depends="ocaml"
@@ -9,7 +9,7 @@ homepage="https://dune.build/"
 license="MIT"
 changelog="https://github.com/ocaml/dune/raw/main/CHANGES.md"
 distfiles="https://github.com/ocaml/dune/releases/download/$version/$pkgname-$version.tbz"
-checksum="5a6ec790128616b6b46616427fa9c8f2ba0d6ef5a405bf8fdbc6f82dc0d935fd"
+checksum="f0c3ce49f36c733b8aee72611f107cf06de6bc423be7262aab1bb3f03c05a878"
 nocross="ocaml"
 
 _dune_release_pkgs+=" dune"
