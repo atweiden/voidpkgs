@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="docker-compose"
-version=2.19.1
+version=2.20.0
 revision=1
 short_desc="Tool to define and run multi-container Docker applications"
 depends="docker-cli"
@@ -8,7 +8,7 @@ homepage="https://docs.docker.com/compose/"
 license="Apache-2.0"
 changelog="https://github.com/docker/compose/releases"
 distfiles="https://github.com/docker/compose/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="869d4ffd3f6b6835dcbb5cd627e98a9d2f1d30a9ae2c8e712275db9aa3e6e97d"
+checksum="983b372bfedfa832699fa18b6b9dc559ea42b3f0a97eff5d5f4f3994954993fe"
 build_style="go"
 go_import_path="github.com/docker/compose/v2"
 go_package="$go_import_path/cmd"
