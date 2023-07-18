@@ -1,13 +1,15 @@
 maintainer="nox"
 pkgname="mosh"
 version=1.4.0
-revision=3
+revision=4
 short_desc="Mobile shell, remote terminal application that allows roaming"
 depends="perl-IO-Tty"
 makedepends+=" libutempter-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" openssl-devel"
 makedepends+=" protobuf-devel"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf"
@@ -20,6 +22,7 @@ build_style="gnu-configure"
 pre_configure() {
   # make local.test always succeed. It fails due to missing X server in chroot.
   printf "%s\n" "#!/bin/sh" ":" > src/tests/local.test
+  autoreconf -fi
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
