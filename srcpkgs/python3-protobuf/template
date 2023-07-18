@@ -1,17 +1,23 @@
 maintainer="nox"
 pkgname="python3-protobuf"
-version=4.21.12
+version=4.23.4
 revision=1
 short_desc="Python3 bindings for Google Protocol Buffers"
 depends+=" python3-setuptools"
 depends+=" python3-six"
+checkdepends="python3-numpy"
+hostmakedepends+=" protobuf"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-wheel"
 homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
-distfiles="$PYPI_SITE/p/protobuf/protobuf-$version.tar.gz"
-checksum="7cd532c4566d0e6feafecc1059d04c7915aec8e182d1cf7adee8b24ef1e2e6ab"
+# pypi release does not have bits for cppext
+distfiles="https://github.com/protocolbuffers/protobuf/releases/download/v${version#*.}/protobuf-${version#*.}.tar.gz"
+checksum="a700a49470d301f1190a487a923b5095bf60f08f4ae4cac9f5f7c36883d17971"
+build_wrksrc="python"
 build_style="python3-module"
+# ImportError: cannot import name 'unittest_retention_pb2' from 'google.protobuf'
+make_check="no"
 build_options="cppext"
 build_options_default="cppext"
 desc_option_cppext="Build C++ extension to improve performance"
@@ -22,10 +28,6 @@ if [[ -n "$build_option_cppext" ]]; then
   make_build_args="--cpp_implementation"
   make_install_args="--cpp_implementation"
 fi
-
-do_check() {
-  echo "skipping check: package ships with no tests"
-}
 
 post_install() {
   sed -n 1,29p google/protobuf/__init__.py >LICENSE
