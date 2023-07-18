@@ -1,23 +1,25 @@
 maintainer="nox"
 pkgname="protobuf"
-version=21.12
+version=23.4
 revision=1
-_googletest_gitrev="5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081"
 short_desc="Protocol buffers compiler"
-makedepends="zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
-hostmakedepends+=" pkg-config"
+# XXX: tests require abseil-cpp provides absl::scoped_mock_log
+makedepends+=" abseil-cpp-devel"
+makedepends+=" gtest-devel"
+makedepends+=" libatomic-devel"
+makedepends+=" zlib-devel"
+hostmakedepends="pkg-config"
 homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
-distfiles+=" https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-distfiles+=" https://github.com/google/googletest/archive/$_googletest_gitrev.tar.gz>googletest-$_googletest_gitrev.tar.gz"
-checksum+=" 22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de"
-checksum+=" 0e2f36e8e403c125fd0ab02171bdb786d3b6b3875b6ccf3b2eb7969be8faecd0"
-create_wrksrc="yes"
-build_wrksrc="$pkgname-$version"
-build_style="gnu-configure"
+distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="a700a49470d301f1190a487a923b5095bf60f08f4ae4cac9f5f7c36883d17971"
+build_style="cmake"
+configure_args+=" -Dprotobuf_ABSL_PROVIDER=package"
+configure_args+=" -Dprotobuf_BUILD_LIBPROTOC=ON"
+configure_args+=" -Dprotobuf_BUILD_SHARED_LIBS=ON"
+configure_args+=" -Dprotobuf_BUILD_TESTS=OFF"
+configure_args+=" -Dprotobuf_USE_EXTERNAL_GTEST=ON"
 # switch to versioned package
 conflicts+=" protobuf18>=0"
 conflicts+=" protobuf23>=0"
@@ -30,24 +32,11 @@ replaces="$conflicts"
 if [[ -n "$CROSS_BUILD" ]]; then
   # needs host protoc
   hostmakedepends+=" $pkgname"
-  configure_args+=" --with-protoc=/usr/bin/protoc"
+  configure_args+=" -Dprotobuf_PROTOC_EXE=/usr/bin/protoc"
 fi
-
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-  LDFLAGS+=" -latomic"
-fi
-
-post_extract() {
-  rmdir "$build_wrksrc/third_party/googletest"
-  mv "googletest-$_googletest_gitrev" "$build_wrksrc/third_party/googletest"
-}
-
-pre_configure() {
-  autoreconf -fi
-}
 
 post_install() {
+  rm -rf "$DESTDIR/usr/lib/cmake"
   vlicense LICENSE
 }
 
@@ -90,7 +79,6 @@ libprotoc-devel_package() {
   conflicts+=" libprotoc28-devel>=0"
   replaces="$conflicts"
   pkg_install() {
-    vmove usr/lib/libprotoc.a
     vmove usr/lib/libprotoc.so
     vmove usr/include/google/protobuf/compiler
   }
@@ -100,6 +88,7 @@ protobuf-devel_package() {
   unset conflicts
   unset depends
   unset replaces
+  depends+=" abseil-cpp-devel"
   depends+=" libprotobuf-${version}_$revision"
   depends+=" libprotobuf-lite-${version}_$revision"
   depends+=" zlib-devel"
@@ -114,11 +103,10 @@ protobuf-devel_package() {
   replaces="$conflicts"
   pkg_install() {
     vmove usr/include
-    vmove usr/lib/libprotobuf.a
-    vmove usr/lib/libprotobuf-lite.a
     vmove usr/lib/libprotobuf.so
     vmove usr/lib/libprotobuf-lite.so
     vmove usr/lib/pkgconfig
+    vmove "usr/lib/*.a"
   }
 }
 
