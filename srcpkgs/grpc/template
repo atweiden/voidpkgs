@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
-version=1.49.1
-revision=2
+version=1.56.0
+revision=1
 short_desc="High performance, open source, general RPC framework"
 _devel_depends+=" abseil-cpp-devel"
 _devel_depends+=" c-ares-devel"
@@ -12,26 +12,27 @@ makedepends+=" $_devel_depends"
 makedepends+=" gperftools-devel"
 makedepends+=" libprotoc-devel"
 makedepends+=" protobuf-devel"
+hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf"
-hostmakedepends+=" which"
-if [[ -n "$CROSS_BUILD" ]]; then
-  # need host grpc_cpp_plugin
-  hostmakedepends+=" grpc"
-fi
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
 distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
-checksum="5071b630e2a14707ad060636990f1b25b0984bd168c7ea1ab95e48a3bdc0081f"
+checksum="e034992a0b464042021f6d440f2090acc2422c103a322b0844e3921ccea981dc"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
-configure_args+=" -D_gRPC_RE2_INCLUDE_DIR=$XBPS_CROSS_BASE/usr/include"
-configure_args+=" -D_gRPC_RE2_LIBRARIES=-lre2"
 configure_args+=" -DgRPC_ABSL_PROVIDER=package"
 configure_args+=" -DgRPC_CARES_PROVIDER=package"
 configure_args+=" -DgRPC_PROTOBUF_PROVIDER=package"
+configure_args+=" -DgRPC_RE2_PROVIDER=package"
 configure_args+=" -DgRPC_SSL_PROVIDER=package"
 configure_args+=" -DgRPC_ZLIB_PROVIDER=package"
 reverts="1.37.0_1"
+
+if [[ -n "$CROSS_BUILD" ]]; then
+  # need host grpc_cpp_plugin
+  hostmakedepends+=" grpc"
+  configure_args+=" -DProtobuf_PROTOC_EXECUTABLE=/usr/bin/protoc"
+fi
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
   makedepends+=" libatomic-devel"
@@ -51,6 +52,7 @@ grpc-devel_package() {
   short_desc+=" - development files"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" $_devel_depends"
+  depends+=" protobuf-devel"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
