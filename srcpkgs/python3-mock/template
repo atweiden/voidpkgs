@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-mock"
-version=5.0.2
+version=5.1.0
 revision=1
 short_desc="Python mock library"
 depends="python3"
@@ -11,7 +11,7 @@ homepage="http://mock.readthedocs.org/en/latest/"
 license="BSD-2-Clause"
 changelog="https://github.com/testing-cabal/mock/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/m/mock/mock-$version.tar.gz"
-checksum="06f18d7d65b44428202b145a9a36e99c2ee00d1eb992df0caf881d4664377891"
+checksum="5e96aad5ccda4718e0a229ed94b2024df75cc2d55575ba5762d31f5767b8767d"
 build_style="python3-pep517"
 
 post_install() {
