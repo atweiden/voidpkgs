@@ -1,17 +1,18 @@
 maintainer="nox"
 pkgname="goreleaser"
-version=1.8.3
-revision=2
+version=1.19.2
+revision=1
 short_desc="Deliver Go binaries as fast and easily as possible"
 homepage="https://goreleaser.com/"
 license="MIT"
 distfiles="https://github.com/goreleaser/goreleaser/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3ac091dacf81357a83b5c8bf17bbcb325371111b88bc59fa79c8354be2273145"
+checksum="60e94d9371f7106878441deb006814339e3cf3d7f574d25cb22a9a45ec14939b"
 build_style="go"
 go_import_path="github.com/goreleaser/goreleaser"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
-go_ldflags="-buildid="
+go_ldflags+=" -buildid="
+go_ldflags+=" -X main.version=$version"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"
   go_ldflags+=" -linkmode=external"
