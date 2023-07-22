@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="xxHash"
-version=0.8.1
-revision=2
+version=0.8.2
+revision=1
 short_desc="Fast non-cryptographic hashing algorithm"
 license="BSD-2-Clause, GPL-2.0-or-later"
 homepage="https://cyan4973.github.io/xxHash/"
 distfiles="https://github.com/Cyan4973/xxHash/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c"
+checksum="baee0c6afd4f03165de7a4e67988d16f0f2b257b51d0e3cb91909302a26a79c4"
 build_style="gnu-makefile"
 make_use_env="yes"
 make_build_target="all"
