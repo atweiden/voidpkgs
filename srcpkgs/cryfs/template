@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cryfs"
-version=0.11.3
+version=0.11.4
 revision=1
 short_desc="Cryptographic filesystem for the cloud"
 depends="fuse"
@@ -18,7 +18,7 @@ homepage="https://www.cryfs.org"
 license="LGPL-3.0-only"
 changelog="https://github.com/cryfs/cryfs/raw/master/ChangeLog.txt"
 distfiles="https://github.com/cryfs/cryfs/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="18f68e0defdcb7985f4add17cc199b6653d5f2abc6c4d237a0d48ae91a6c81c0"
+checksum="a71e2d56f9e7a907f4b425b74eeb8bef064ec49fa3a770ad8a02b4ec64c48828"
 create_wrksrc="yes"
 build_style="cmake"
 configure_args+=" -DBoost_USE_STATIC_LIBS=OFF"
