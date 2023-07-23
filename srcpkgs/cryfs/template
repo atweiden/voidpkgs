@@ -19,7 +19,6 @@ license="LGPL-3.0-only"
 changelog="https://github.com/cryfs/cryfs/raw/master/ChangeLog.txt"
 distfiles="https://github.com/cryfs/cryfs/releases/download/$version/$pkgname-$version.tar.xz"
 checksum="a71e2d56f9e7a907f4b425b74eeb8bef064ec49fa3a770ad8a02b4ec64c48828"
-create_wrksrc="yes"
 build_style="cmake"
 configure_args+=" -DBoost_USE_STATIC_LIBS=OFF"
 configure_args+=" -DCRYFS_UPDATE_CHECKS=off"
@@ -42,7 +41,6 @@ pre_configure() {
 
 do_check() {
   cd "$wrksrc/build"
-  # XXX: check their Travis-CI script on update
   ./test/gitversion/gitversion-test
   ./test/cpp-utils/cpp-utils-test
   ./test/parallelaccessstore/parallelaccessstore-test
@@ -53,5 +51,10 @@ do_check() {
   #./test/fspp/fspp-test
   #./test/cryfs-cli/cryfs-cli-test
 }
+
+# REMARKS:
+#
+# On update, check upstream CI script to inform do_check:
+# cryfs/cryfs/.github/workflows/actions/run_tests/action.yaml
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
