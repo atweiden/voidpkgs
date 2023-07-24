@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="curl"
-version=8.1.2
+version=8.2.0
 revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
@@ -30,7 +30,7 @@ homepage="https://curl.se"
 license="MIT"
 changelog="https://curl.se/changes.html"
 distfiles="https://curl.se/download/curl-$version.tar.gz"
-checksum="2e5a9b8fcdc095bdd2f079561f369de71c5eb3b80f00a702fbe9a8b8d9897891"
+checksum="c67849462d171a3fee08b605cdd837d18ee22ecc3ee2c6a0393c9cec5d1a137e"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
