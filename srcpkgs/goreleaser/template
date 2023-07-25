@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="goreleaser"
 version=1.19.2
-revision=1
+revision=2
 short_desc="Deliver Go binaries as fast and easily as possible"
 homepage="https://goreleaser.com/"
 license="MIT"
@@ -17,11 +17,23 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"
   go_ldflags+=" -linkmode=external"
 fi
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
 export GOFLAGS="-trimpath"
 
 post_install() {
+  local goreleaser
+
   vlicense LICENSE.md
+
+  goreleaser="$(find "$GOPATH/bin" -name goreleaser)"
+  for shell in bash \
+               fish \
+               zsh; do
+    "$goreleaser" completion "$shell" > "completion.$shell"
+    vcompletion "completion.$shell" "$shell"
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
