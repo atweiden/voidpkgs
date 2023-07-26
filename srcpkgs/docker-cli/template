@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="docker-cli"
 # should be kept in sync with moby
-version=24.0.4
+version=24.0.5
 revision=1
 short_desc="Command-line interface for the Docker daemon"
 depends="git"
@@ -10,7 +10,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.docker.com"
 license="Apache-2.0"
 distfiles="https://github.com/docker/cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="dc1d025fd16b113a1a7e2a5d34c30409613d9c4ec313937f17bf34991caf597f"
+checksum="fa32b5f3c2f85fba9ef6e1b5099a4b608fa20af45ba71b3da2194e8728037eec"
 build_style="go"
 go_package="github.com/docker/cli/cmd/docker"
 go_import_path="github.com/docker/cli"
