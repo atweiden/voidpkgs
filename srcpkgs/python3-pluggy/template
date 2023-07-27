@@ -1,25 +1,18 @@
 maintainer="nox"
 pkgname="python3-pluggy"
-version=1.0.0
-revision=2
+version=1.2.0
+revision=1
 short_desc="Minimalist production ready plugin system (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
-hostmakedepends="python3-setuptools_scm"
+hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/pytest-dev/pluggy"
 license="MIT"
+changelog="https://github.com/pytest-dev/pluggy/raw/main/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/pluggy/pluggy-$version.tar.gz"
-checksum="4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"
-build_style="python3-module"
-
-do_check() {
-  local _pypath
-
-  # must export PYTHONPATH so subprocesses see the variable
-  _pypath="$PYTHONPATH"
-  export PYTHONPATH="$PWD/src:$PYTHONPATH"
-  python3 -m pytest
-}
+checksum="d12f0c4b579b15f5e054301bb226ee85eeeba08ffec228092f8defbaa3a4c4b3"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
