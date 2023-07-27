@@ -19,10 +19,6 @@ make_check="ci-skip"
 register_shell+=" /bin/fish"
 register_shell+=" /usr/bin/fish"
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
-
 post_install() {
   # starting with fish-3.0.0 this is a skeleton file with only comments
   rm "$DESTDIR/etc/fish/config.fish"

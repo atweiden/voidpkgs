@@ -3,7 +3,6 @@ pkgname="usbguard"
 version=1.1.2
 revision=2
 makedepends+=" bash-completion"
-makedepends+=" libatomic-devel"
 makedepends+=" libcap-ng-devel"
 makedepends+=" libqb-devel"
 makedepends+=" libseccomp-devel"

@@ -6,7 +6,6 @@ short_desc="Protocol buffers compiler"
 # XXX: tests require abseil-cpp provides absl::scoped_mock_log
 makedepends+=" abseil-cpp-devel"
 makedepends+=" gtest-devel"
-makedepends+=" libatomic-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://developers.google.com/protocol-buffers/"

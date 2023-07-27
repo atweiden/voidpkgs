@@ -21,7 +21,6 @@ make_build_args+=" QUICKJS_LDFLAGS=-lquickjs"
 make_use_env="true"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
   make_build_args+=" QUICKJS_LDFLAGS+=-latomic"
 fi
 

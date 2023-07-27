@@ -63,7 +63,6 @@ make_dirs+=" /var/cache/squid 750 squid squid"
 make_dirs+=" /var/log/squid 750 squid squid"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
   LDFLAGS+=" -latomic"
 fi
 

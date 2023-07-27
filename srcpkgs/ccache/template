@@ -4,9 +4,6 @@ version=4.8.2
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="libzstd-devel"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 hostmakedepends="perl"
 homepage="https://ccache.dev"
 license="GPL-3.0-or-later"

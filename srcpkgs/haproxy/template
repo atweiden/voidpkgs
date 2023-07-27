@@ -3,7 +3,6 @@ pkgname="haproxy"
 version=2.6.14
 revision=1
 short_desc="Reliable, high performance TCP/HTTP load balancer"
-makedepends+=" libatomic-devel"
 makedepends+=" lua53-devel"
 makedepends+=" openssl-devel"
 makedepends+=" pcre2-devel"

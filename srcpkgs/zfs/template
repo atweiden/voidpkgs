@@ -14,9 +14,6 @@ makedepends+=" libtirpc-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" pam-devel"
 makedepends+=" zlib-devel"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 hostmakedepends+=" automake"
 hostmakedepends+=" dracut"
 hostmakedepends+=" libtool"

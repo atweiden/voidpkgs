@@ -70,7 +70,6 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
   CFLAGS+=" -latomic"
 fi
 

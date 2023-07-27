@@ -15,7 +15,6 @@ if [[ -n "$CROSS_BUILD" ]]; then
 fi
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
   LDFLAGS+=" -latomic"
 fi
 

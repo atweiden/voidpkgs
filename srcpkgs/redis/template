@@ -3,9 +3,6 @@ pkgname="redis"
 version=7.0.8
 revision=2
 short_desc="Advanced key-value store"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends="libatomic-devel"
-fi
 checkdepends+=" pkg-config"
 checkdepends+=" procps-ng"
 checkdepends+=" tcl-devel"

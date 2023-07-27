@@ -23,9 +23,6 @@ makedepends+=" libsodium-devel"
 makedepends+=" lowdown-devel"
 makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 case "$XBPS_TARGET_MACHINE" in
   x86_64*|i686*) makedepends+=" libcpuid-devel";;
 esac

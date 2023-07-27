@@ -3,9 +3,6 @@ pkgname="dhcp"
 version=4.4.2P1
 revision=3
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"

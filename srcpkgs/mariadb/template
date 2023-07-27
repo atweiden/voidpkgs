@@ -7,7 +7,6 @@ depends="perl"
 makedepends+=" boost-devel"
 makedepends+=" gnutls-devel"
 makedepends+=" libaio-devel"
-makedepends+=" libatomic-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" pam-devel"
 makedepends+=" pcre2-devel"
@@ -109,9 +108,7 @@ libmariadbclient_package() {
 }
 
 libmariadbclient-devel_package() {
-  unset depends
-  depends+=" libatomic-devel"
-  depends+=" libmariadbclient>=${version}_$revision"
+  depends="libmariadbclient>=${version}_$revision"
   provides="libmysqlclient-devel-${version}_$revision"
   replaces="libmysqlclient-devel>=0"
   short_desc+=" - client development files"

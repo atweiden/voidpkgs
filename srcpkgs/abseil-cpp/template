@@ -3,7 +3,6 @@ pkgname="abseil-cpp"
 version=20230125.3
 revision=1
 short_desc="Abseil common libraries"
-makedepends="libatomic-devel"
 hostmakedepends="pkg-config"
 homepage="https://abseil.io"
 license="Apache-2.0"

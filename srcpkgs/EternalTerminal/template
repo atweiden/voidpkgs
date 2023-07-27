@@ -15,9 +15,6 @@ makedepends+=" zlib-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" libexecinfo-devel"
 fi
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-fi
 hostmakedepends="protobuf"
 homepage="https://eternalterminal.dev/"
 license="Apache-2.0"
