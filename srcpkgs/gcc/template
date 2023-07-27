@@ -10,6 +10,7 @@ _mpc_version=1.2.1
 _isl_version=0.24
 short_desc="GNU Compiler Collection"
 depends+=" binutils"
+depends+=" libatomic-devel-${version}_$revision"
 depends+=" libgcc-devel-${version}_$revision"
 depends+=" libstdc++-devel-${version}_$revision"
 makedepends+=" libzstd-devel"
@@ -187,6 +188,12 @@ case "$XBPS_TARGET_MACHINE" in
   mipselhf-musl)
     _triplet="mipsel-linux-muslhf"
     ;;
+  riscv64)
+    _triplet="riscv64-linux-gnu"
+    ;;
+  riscv64-musl)
+    _triplet="riscv64-linux-musl"
+    ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -212,6 +219,8 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 case "$XBPS_TARGET_MACHINE" in
   mips*)
+    ;;
+  riscv*)
     ;;
   x86_64*|i686)
     subpackages+=" libitm"
