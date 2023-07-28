@@ -1,18 +1,18 @@
 maintainer="nox"
 pkgname="python3-execnet"
-version=1.9.0
-revision=3
+version=2.0.2
+revision=1
 short_desc="Distributed Python deployment and communication"
 depends="python3"
 checkdepends="python3-pytest"
-hostmakedepends+=" python3-setuptools"
-hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" hatch-vcs"
+hostmakedepends+=" hatchling"
 homepage="https://execnet.readthedocs.io/en/stable/"
 license="MIT"
 changelog="https://github.com/pytest-dev/execnet/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/e/execnet/execnet-$version.tar.gz"
-checksum="8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5"
-build_style="python3-module"
+checksum="cc59bc4423742fd71ad227122eb0dd44db51efb3dc4095b45ac9a08c770096af"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
