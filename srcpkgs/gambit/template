@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gambit"
-version=4.9.4
+version=4.9.5
 revision=1
 short_desc="Complete, portable, efficient and reliable implementation of Scheme"
 makedepends="openssl-devel"
 homepage="https://gambitscheme.org/"
 license="LGPL-2.1-only, Apache-2.0"
 distfiles="https://github.com/gambit/gambit/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="19fb44a65b669234f6c0467cdc3dbe2e2c95a442f38e4638e7d89c90e247bd08"
+checksum="758da7b4afe6411e9c4fed14b0cc5ada39b5f1393c1edd4d3dd9c9a06127c310"
 build_style="gnu-configure"
 configure_args+=" --disable-absolute-shared-libs"
 configure_args+=" --docdir=/usr/share/doc/gambit"
@@ -21,6 +21,9 @@ configure_args+=" --enable-versioned-shared-libs"
 configure_args+=" --libdir=/usr/lib/gambit"
 # we only build core, since the rest doesn't cross-compile
 make_build_target="core"
+alternatives+=" scheme:scheme:/usr/bin/gsi"
+alternatives+=" scheme:scheme.1:/usr/share/man/man1/gsi.1"
+alternatives+=" scheme:scheme-r5rs:/usr/bin/gsi"
 
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
@@ -28,17 +31,11 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-post_patch() {
-  vsed \
-    -i \
-    -e 's/4\.9\.3/4.9.4/g' \
-    include/stamp-release.h
-}
-
 post_install() {
   for f in "$DESTDIR/usr/lib/gambit"/lib*.so.*; do
     ln -sfr "$f" "$DESTDIR/usr/lib"
   done
+  rm "$DESTDIR/usr/bin/scheme-r5rs"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
