@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=9.3p2
-revision=1
+revision=2
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -47,6 +47,7 @@ build_options+=" gssapi"
 build_options+=" ldns"
 build_options+=" ssl"
 build_options_default+=" fido2"
+build_options_default+=" gssapi"
 build_options_default+=" ldns"
 build_options_default+=" ssl"
 desc_option_fido2="Enable support for FIDO2 USB tokens"
