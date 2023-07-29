@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
 version=2.41.0
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
@@ -34,7 +34,6 @@ configure_args+=" --with-expat"
 configure_args+=" --with-libpcre2"
 configure_args+=" --without-tcltk"
 python_version=3
-register_shell="/usr/bin/git-shell"
 replaces="git-perl>=0"
 subpackages+=" git-cvs"
 subpackages+=" git-svn"
