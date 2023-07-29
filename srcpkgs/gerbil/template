@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gerbil"
 version=0.17
-revision=1
+revision=2
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
 makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
@@ -18,6 +18,13 @@ nocross="yes"
 do_build() {
   export GERBIL_GSC="gambit-gsc"
   (cd src && ./build.sh)
+}
+
+do_check() {
+  GERBIL_GSC="gambit-gsc" \
+  GERBIL_HOME="$PWD" \
+  PATH="$PWD/bin:$PATH" \
+    ./src/std/run-tests.ss
 }
 
 do_install() {
