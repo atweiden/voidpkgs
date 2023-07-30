@@ -1,44 +1,47 @@
 maintainer="nox"
 pkgname="mit-krb5"
-version=1.20.1
+version=1.21.1
 revision=1
+_distver="$(echo "$version" | cut -d. -f-2)"
 short_desc="MIT Kerberos 5 implementation"
+makedepends+=" db-devel"
 makedepends+=" e2fsprogs-devel"
-makedepends+=" libldap-devel"
+makedepends+=" $(vopt_if ldap libldap-devel)"
+makedepends+=" $(vopt_if lmdb lmdb-devel)"
 hostmakedepends+=" e2fsprogs-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 homepage="http://web.mit.edu/kerberos"
 license="MIT"
-distfiles="http://web.mit.edu/kerberos/dist/krb5/${version%.*}/krb5-$version.tar.gz"
-checksum="704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851"
+distfiles="http://kerberos.org/dist/krb5/$_distver/krb5-$version.tar.gz"
+checksum="7881c3aaaa1b329bd27dbc6bf2bf1c85c5d0b6c7358aff2b35d513ec2d50fa1f"
 build_style="gnu-configure"
+configure_args+=" --disable-rpath"
+configure_args+=" --enable-shared"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --with-system-db"
+configure_args+=" --with-system-et"
+configure_args+=" --with-system-ss"
+configure_args+=" --without-system-verto"
+configure_args+=" $(vopt_with ldap)"
+configure_args+=" $(vopt_with lmdb)"
+build_options+=" ldap"
+build_options+=" lmdb"
+build_options_default="ldap"
+desc_option_lmdb="Enable LMDB database backend"
 
 post_patch() {
+  # fix db plugin
   vsed \
     -i \
-    -e "/LDFLAGS=/d" \
-    src/build-tools/krb5-config.in
-
-  # fix db plugin
-  sed \
-    -i \
     -e "s|<db.h>|<db_185.h>|" \
-    "$wrksrc/src/plugins/kdb/db2"/*.[ch]
+    src/plugins/kdb/db2/{adb_openclose.c,db2_exp.c,kdb_db2.c,policy_db.h}
 }
 
 do_configure() {
-  WARN_CFLAGS= ./src/configure \
+  ./src/configure \
     $configure_args \
-    --disable-rpath \
-    --enable-shared \
-    --with-ldap \
-    --with-system-db \
-    --with-system-et \
-    --with-system-ss \
-    --without-system-verto \
-    --without-tcl \
     ac_cv_func_pthread_once="yes" \
     ac_cv_func_pthread_rwlock_init="yes" \
     ac_cv_func_regcomp="yes" \
@@ -47,14 +50,16 @@ do_configure() {
     krb5_cv_attr_constructor_destructor="yes,yes"
 }
 
-do_build() {
-  make
-}
-
 post_install() {
   vlicense NOTICE
   vsv krb5kdc
   vsv kadmind
+  # install schema files for LDAP database backend
+  if [[ -n "$(vopt_if ldap present)" ]]; then
+    for schema in kerberos.{schema,ldif,openldap.ldif}; do
+      vdoc "src/plugins/kdb/ldap/libkdb_ldap/$schema"
+    done
+  fi
 }
 
 mit-krb5-client_package() {
