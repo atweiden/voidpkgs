@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux-mainline"
-version=6.3
+version=6.4
 revision=1
 short_desc="Linux latest mainline kernel meta package (for experts only)"
 depends+=" linux$version"
