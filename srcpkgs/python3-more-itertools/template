@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-more-itertools"
-version=9.1.0
+version=10.0.0
 revision=1
 short_desc="More Python3 routines for operating on itertables"
 depends="python3"
@@ -9,7 +9,7 @@ hostmakedepends="python3-flit_core"
 homepage="https://github.com/erikrose/more-itertools"
 license="MIT"
 distfiles="$PYPI_SITE/m/more-itertools/more-itertools-$version.tar.gz"
-checksum="cabaa341ad0389ea83c17a94566a53ae4c9d07349861ecb14dc6d0345cf9ac5d"
+checksum="cd65437d7c4b615ab81c0640c0480bc29a550ea032891977681efd28344d51e1"
 build_style="python3-pep517"
 
 do_check() {
