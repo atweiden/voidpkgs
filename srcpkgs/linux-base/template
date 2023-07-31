@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="linux-base"
-version=2021.07.21
+version=2023.05.29
 revision=1
 short_desc="Linux kernel base dependencies"
 homepage="https://voidlinux.org/"
 license="Public Domain"
-build_style="meta"
 
 case "$XBPS_TARGET_MACHINE" in
   i686*|x86_64*)
@@ -22,5 +21,9 @@ case "$XBPS_TARGET_MACHINE" in
     depends+=" linux-firmware-nvidia"
     ;;
 esac
+
+do_install() {
+  vinstall "$FILESDIR/50-bootsize.postinst" 0755 etc/kernel.d/post-install 50-bootsize
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
