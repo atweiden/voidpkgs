@@ -295,6 +295,7 @@ constant %PKG = Map.new(
     'httrack' => ['httrack-devel'],
     'hunspell' => qw<hunspell-devel
                      libhunspell1.7>,
+    'hwinfo' => ['hwinfo-devel'],
     'hwloc' => qw<libhwloc
                   libhwloc-devel>,
     'i2pd' => ['i2pd-devel'],
