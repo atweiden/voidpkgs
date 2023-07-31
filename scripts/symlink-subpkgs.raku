@@ -495,6 +495,7 @@ constant %PKG = Map.new(
                     libsharpyuv-devel
                     libwebp-devel
                     libwebp-tools>,
+    'libx86emu' => ['libx86emu-devel'],
     'libxml2' => qw<libxml2-devel
                     libxml2-python3>,
     'libxslt' => qw<libxslt-devel
