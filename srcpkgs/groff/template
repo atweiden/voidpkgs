@@ -1,36 +1,25 @@
 maintainer="nox"
 pkgname="groff"
-version=1.22.4
-revision=3
+version=1.23.0
+revision=1
 short_desc="GNU troff text-formatting system"
 makedepends="zlib-devel"
 hostmakedepends+=" bison"
 hostmakedepends+=" perl"
-hostmakedepends+=" texinfo"
 homepage="https://www.gnu.org/software/groff/groff.html"
 license="GPL-3.0-or-later"
+changelog="https://git.savannah.gnu.org/cgit/groff.git/plain/NEWS"
 distfiles="$GNU_SITE/groff/$pkgname-$version.tar.gz"
-checksum="e78e7b4cb7dec310849004fa88847c44701e8d133b5d4c13057d876c1bad0293"
+checksum="6b9757f592b7518b4902eb6af7e54570bdccba37a871fddb2d30ae3863511c13"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --without-x"
 
-subpackages="libgroff"
-
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends+=" groff"
-  configure_args+=" --with-doc=no"
-else
-  subpackages+=" groff-doc"
+  make_build_args+=" GROFFBIN=/usr/bin/groff"
+  make_build_args+=" GROFF_BIN_PATH=/usr/bin"
 fi
-
-pre_configure() {
-  case "$XBPS_TARGET_MACHINE" in
-    *musl)
-      patch -p0 -i "$FILESDIR/musl.patch"
-      ;;
-  esac
-}
 
 post_install() {
   # from archlinux:
@@ -40,13 +29,6 @@ post_install() {
            mdoc; do
     cat "$FILESDIR/site.tmac" >> "$DESTDIR/usr/share/groff/site-tmac/$f.local"
   done
-}
-
-libgroff_package() {
-  short_desc+=" - libraries"
-  pkg_install() {
-    vmove usr/lib
-  }
 }
 
 groff-doc_package() {

@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
-version=0.1.20230626
-revision=2
+version=0.1.20230728
+revision=1
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -15,6 +15,7 @@ replaces+=" httperf<=0.9.0_9"
 replaces+=" isl16<=0.16_2"
 replaces+=" jless<=0.7.2_1"
 replaces+=" libglib-static<=2.58.3_5"
+replaces+=" libgroff<=1.22.4_3"
 replaces+=" libtidy5<=5.8.0_1"
 replaces+=" libtidy5-devel<=5.8.0_1"
 replaces+=" libxml2-python<=2.9.10_4"

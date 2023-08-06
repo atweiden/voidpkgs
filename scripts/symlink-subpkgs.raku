@@ -270,8 +270,7 @@ constant %PKG = Map.new(
     'gpgme' => qw<gpgme-devel
                   gpgmepp
                   gpgmepp-devel>,
-    'groff' => qw<groff-doc
-                  libgroff>,
+    'groff' => ['groff-doc'],
     'grpc' => qw<grpc-devel
                  libgrpc>,
     'grub' => qw<grub-arm64-efi
