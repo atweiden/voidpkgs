@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fossil"
-version=2.21
+version=2.22
 revision=1
 short_desc="Simple, high-reliability, distributed software configuration management"
 makedepends+=" openssl-devel"
@@ -11,7 +11,7 @@ homepage="https://www.fossil-scm.org"
 license="BSD-2-Clause"
 changelog="https://www.fossil-scm.org/home/doc/trunk/www/changes.wiki"
 distfiles="https://fossil-scm.org/home/tarball/version-$version/$pkgname-$version.tar.gz"
-checksum="c1feeca782124cde76992407c70f2cefffcbe1b78b66dc246890d83159ef8084"
+checksum="81d823ff6f5d175b384dfa84eeba0d052da73a37cd66cd72b786e71671210d6b"
 build_style="configure"
 configure_args+=" --disable-internal-sqlite"
 configure_args+=" --json"
