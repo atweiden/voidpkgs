@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="file"
-version=5.44
+version=5.45
 revision=1
 short_desc="File type identification utility"
 makedepends+=" zlib-devel"
@@ -12,7 +12,7 @@ fi
 homepage="https://www.darwinsys.com/file/"
 license="BSD-2-Clause"
 distfiles="https://astron.com/pub/file/$pkgname-$version.tar.gz"
-checksum="3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b"
+checksum="fc97f51029bb0e2c9f4e3bffefdaf678f0e039ee872b9de5c002a6d09c784d82"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" $(vopt_enable libseccomp)"
