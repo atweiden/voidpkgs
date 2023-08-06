@@ -1,21 +1,20 @@
 maintainer="nox"
 pkgname="mpg123"
 # sync with mpg123-extras
-version=1.31.2
+version=1.31.3
 revision=1
 short_desc="Fast console MPEG audio decoder/player"
 makedepends="alsa-lib-devel"
 hostmakedepends="pkg-config"
 homepage="https://www.mpg123.org/"
 license="LGPL-2.1-only"
-changelog="https://www.mpg123.org/cgi-bin/scm/mpg123/trunk/NEWS"
-distfiles+=" $SOURCEFORGE_SITE/mpg123/$pkgname-$version.tar.bz2"
-distfiles+=" https://www.mpg123.org/download/$pkgname-$version.tar.bz2"
-checksum+=" b17f22905e31f43b6b401dfdf6a71ed11bb7d056f68db449d70b9f9ae839c7de"
-checksum+=" b17f22905e31f43b6b401dfdf6a71ed11bb7d056f68db449d70b9f9ae839c7de"
+changelog="https://www.mpg123.de/trunk/NEWS"
+distfiles="$SOURCEFORGE_SITE/mpg123/$pkgname-$version.tar.bz2"
+checksum="1ca77d3a69a5ff845b7a0536f783fee554e1041139a6b978f6afe14f5814ad1a"
 build_style="gnu-configure"
 # --with-cpu not necessary, upstream detects features correctly
 configure_args+=" --with-default-audio=alsa"
+# --with-optimization=0 makes configure script respect xbps-src's defaults
 configure_args+=" --with-optimization=0"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   # no lfs required with musl
