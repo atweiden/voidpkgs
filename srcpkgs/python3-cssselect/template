@@ -1,14 +1,15 @@
 maintainer="nox"
 pkgname="python3-cssselect"
-version=1.1.0
-revision=7
+version=1.2.0
+revision=1
 short_desc="CSS selectors for Python3"
 depends="python3"
 hostmakedepends="python3-setuptools"
 homepage="https://cssselect.readthedocs.io/"
 license="BSD-3-Clause"
-distfiles="$PYPI_SITE/c/${pkgname#*-}/${pkgname#*-}-$version.tar.gz"
-checksum="f95f8dedd925fd8f54edb3d2dfb44c190d9d18512377d3c1e2388d16126879bc"
+changelog="https://github.com/scrapy/cssselect/raw/master/CHANGES"
+distfiles="$PYPI_SITE/c/cssselect/cssselect-$version.tar.gz"
+checksum="666b19839cfaddb9ce9d36bfe4c969132c647b92fc9088c4e23f786b30f1b3dc"
 build_style="python3-module"
 
 do_check() {
