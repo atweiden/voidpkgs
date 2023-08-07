@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rust-cargo-audit"
 version=0.17.6
-revision=1
+revision=2
 short_desc="Audit Cargo.lock for crates with security vulnerabilities"
 makedepends+=" libssh2-devel"
 makedepends+=" openssl-devel"
@@ -13,6 +13,7 @@ changelog="https://github.com/rustsec/rustsec/raw/main/cargo-audit/CHANGELOG.md"
 distfiles="https://static.crates.io/crates/cargo-audit/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
 checksum="d7c04d2178b9ff56e0d4500d10d72d3a5d8156c2d6b6fc193e28a524dadde5c5"
 build_style="cargo"
+configure_args="--features=fix"
 
 if [[ "$XBPS_TARGET_WORDSIZE" == "32" ]] && [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
   broken="smartstring crate does not build on 32-bit BE architectures"
