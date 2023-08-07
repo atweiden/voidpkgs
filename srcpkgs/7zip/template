@@ -1,21 +1,21 @@
 maintainer="nox"
 pkgname="7zip"
-version=22.01
-revision=2
+version=23.01
+revision=1
 short_desc="File archiver with a high compression ratio"
 homepage="https://www.7-zip.org"
 license="LGPL-2.1-or-later, BSD-3-Clause"
 changelog="https://www.7-zip.org/history.txt"
 distfiles="https://www.7-zip.org/a/7z${version//./}-src.tar.xz"
-checksum="393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5"
+checksum="356071007360e5a1824d9904993e8b2480b51b570e8c9faf7c0f58ebe4bf9f74"
 alternatives+=" 7z:7z:/usr/bin/7zip"
 alternatives+=" 7z:7za:/usr/bin/7zip"
 alternatives+=" 7z:7zr:/usr/bin/7zip"
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   # missing pthread_attr_setaffinity_np()
-  CFLAGS+="-D_7ZIP_AFFINITY_DISABLE"
-  CXXFLAGS+="-D_7ZIP_AFFINITY_DISABLE"
+  CFLAGS+=" -DZ7_AFFINITY_DISABLE"
+  CXXFLAGS+=" -DZ7_AFFINITY_DISABLE"
 fi
 
 do_build() {
