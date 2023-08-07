@@ -1,25 +1,24 @@
 maintainer="nox"
 pkgname="python3-SecretStorage"
-version=3.3.1
-revision=3
+version=3.3.3
+revision=1
 short_desc="Python3 bindings to FreeDesktop.org Secret Service API"
 depends+=" python3-cryptography"
 depends+=" python3-jeepney"
 #checkdepends+=" $depends"
 #checkdepends+=" dbus"
 #checkdepends+=" gnome-keyring"
+#checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/mitya57/secretstorage"
 license="BSD-3-Clause"
+changelog="https://github.com/mitya57/secretstorage/raw/master/changelog"
 distfiles="$PYPI_SITE/S/SecretStorage/SecretStorage-$version.tar.gz"
-checksum="fd666c51a6bf200643495a04abb261f83229dcb6fd8472ec393df7ffc8b6f195"
+checksum="2403533ef369eca6d2ba81718576c5e0f564d5cca1b58f73a8b23e7d4eeebd77"
 build_style="python3-module"
 # dbus and gnome-keyring in checkdepends require gui dependencies
 make_check="no"
-
-do_check() {
-  dbus-run-session -- python3 -m unittest discover -s tests
-}
+make_check_pre="dbus-run-session"
 
 post_install() {
   vlicense LICENSE
