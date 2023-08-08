@@ -1,27 +1,27 @@
 maintainer="nox"
 pkgname="typst"
-version=0.6.0
+version=0.7.0
 revision=1
 short_desc="Markup-based typesetting system that is powerful and easy to learn"
 homepage="https://typst.app"
 license="Apache-2.0"
 changelog="https://typst.app/docs/changelog/"
 distfiles="https://github.com/typst/typst/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0f5c16c2143bbdc8889d823506e29a4706f8606ce29769916d71b17a05dda568"
+checksum="550fb66bb3405951dfd0a1736e9e17756e906e664f6f683eeb87d40643218846"
 build_style="cargo"
-make_install_args="--path cli"
+make_install_args="--path crates/typst-cli"
 reverts="23.03.28_1"
 
 export GEN_ARTIFACTS="./generated"
 export TYPST_VERSION="$version"
 
 post_install() {
-  for f in cli/generated/*.?; do
+  for f in crates/typst-cli/generated/*.?; do
     vman "$f"
   done
-  vcompletion cli/generated/typst.bash bash
-  vcompletion cli/generated/typst.fish fish
-  vcompletion cli/generated/_typst zsh
+  vcompletion crates/typst-cli/generated/typst.bash bash
+  vcompletion crates/typst-cli/generated/typst.fish fish
+  vcompletion crates/typst-cli/generated/_typst zsh
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
