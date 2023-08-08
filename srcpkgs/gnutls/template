@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gnutls"
-version=3.8.0
+version=3.8.1
 revision=1
 short_desc="GNU Transport Layer Security library"
 # dependencies listed in pkg-config files
@@ -28,7 +28,7 @@ homepage="https://gnutls.org"
 license="GPL-3.0-only, LGPL-2.1-or-later"
 changelog="https://gitlab.com/gnutls/gnutls/-/raw/master/NEWS"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/$pkgname-$version.tar.xz"
-checksum="0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5"
+checksum="ba8b9e15ae20aba88f44661978f5b5863494316fe7e722ede9d069fe6294829c"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --disable-static"
