@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bind"
 version=9.16.22
-revision=2
+revision=3
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
 makedepends+=" libcap-devel"
@@ -70,8 +70,10 @@ bind-libs_package() {
 bind-utils_package() {
   short_desc+=" - DNS utils"
   pkg_install() {
-    for f in dig \
+    for f in delv \
+             dig \
              host \
+             mdig \
              nslookup \
              nsupdate; do
       vmove "usr/bin/$f"
