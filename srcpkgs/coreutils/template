@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="coreutils"
-version=9.2
+version=9.3
 revision=1
 short_desc="GNU core utilities"
 makedepends+=" acl-devel"
@@ -10,7 +10,7 @@ homepage="https://www.gnu.org/software/coreutils"
 license="GPL-3.0-or-later"
 changelog="https://git.savannah.gnu.org/gitweb/?p=coreutils.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="$GNU_SITE/coreutils/$pkgname-$version.tar.xz"
-checksum="6885ff47b9cdb211de47d368c17853f406daaf98b148aaecdf10de29cc04b0b3"
+checksum="adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa"
 bootstrap="yes"
 replaces+=" b2sum>=0"
 replaces+=" chroot-coreutils>=0"
@@ -63,6 +63,13 @@ do_configure() {
     # XXX: syncfs() in src/sync.c expects a return value
     *-musl)
       configure_args+=" ac_cv_func_syncfs=no"
+      ;;
+  esac
+  case "$XBPS_TARGET_MACHINE" in
+    # musl 1.1
+    arm*-musl)
+      # this does not work: --disable-year2038
+      configure_args+=" ac_year2038_required=no"
       ;;
   esac
   # do not install kill (provided by util-linux)
@@ -139,23 +146,20 @@ do_check() {
   exeext_tests+=" lchown"
   exeext_tests+=" fchownat"
 
-  # tests that depend on the tests removed
-  exeext_tests+=" fchmodat"
-  exeext_tests+=" fchdir"
-
-  # temporarily disable two tests (coreutils9.1)
-  vsed \
-    -i \
-    -e "s/test-getcwd.sh //" \
-    gnulib-tests/Makefile
-  exeext_tests+=" getlogin"
-
   for test in $exeext_tests; do
     vsed \
       -i \
       -e "s/test-$test\$(EXEEXT) //" \
       gnulib-tests/Makefile
   done
+
+  if [[ "$XBPS_BUILD_ENVIRONMENT" == "void-packages-ci" ]]; then
+    vsed \
+      -i \
+      -e '/tests\/tail-2\/inotify-dir-recreate/d' \
+      -e '/tests\/du\/long-from-unreadable/d' \
+      Makefile
+  fi
 
   make check
 }
