@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux6.4"
-version=6.4.8
+version=6.4.9
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -31,7 +31,7 @@ if [[ "${version##*.}" != "0" ]]; then
   skip_extraction="patch-$version.xz"
 fi
 checksum+=" 8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3"
-checksum+=" 38779bbab667e412d7d53a2ec2cd695d1840d233655a3db7abf31ea6cdd4f596"
+checksum+=" 8c677c64494120ba957deefc5ddd67e6f7dc22263d0e4b4ab64e5ec960944ef3"
 skip_extraction="patch-$version.xz"
 python_version=3
 # -dbg package is generated below manually
