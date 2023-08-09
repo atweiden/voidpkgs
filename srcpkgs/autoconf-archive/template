@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="autoconf-archive"
-version=2022.02.11
+version=2023.02.20
 revision=1
 short_desc="Collection of freely re-usable Autoconf macros"
 depends="autoconf"
@@ -8,7 +8,7 @@ hostmakedepends="texinfo"
 homepage="https://www.gnu.org/software/autoconf-archive/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/autoconf-archive/$pkgname-$version.tar.xz"
-checksum="78a61b611e2eeb55a89e0398e0ce387bcaf57fe2dd53c6fe427130f777ad1e8c"
+checksum="71d4048479ae28f1f5794619c3d72df9c01df49b1c628ef85fde37596dc31a33"
 build_style="gnu-configure"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
