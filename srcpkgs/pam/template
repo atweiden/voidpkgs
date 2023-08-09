@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pam"
-version=1.5.2
-revision=2
+version=1.5.3
+revision=1
 short_desc="Flexible mechanism for authenticating users"
 # version of pam-base that doesn't include removed modules
 depends="pam-base>=0.4_1"
@@ -14,13 +14,16 @@ homepage="https://github.com/linux-pam/linux-pam"
 license="BSD-3-Clause"
 changelog="https://github.com/linux-pam/linux-pam/raw/master/NEWS"
 distfiles="https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz"
-checksum="e4ec7131a91da44512574268f493c6d8ca105c87091691b8e9b56ca685d4f94d"
+checksum="7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283"
 conf_files+=" /etc/environment"
 conf_files+=" /etc/security/access.conf"
+conf_files+=" /etc/security/faillock.conf"
 conf_files+=" /etc/security/group.conf"
 conf_files+=" /etc/security/limits.conf"
 conf_files+=" /etc/security/namespace.conf"
+conf_files+=" /etc/security/namespace.init"
 conf_files+=" /etc/security/pam_env.conf"
+conf_files+=" /etc/security/pwhistory.conf"
 conf_files+=" /etc/security/time.conf"
 build_style="gnu-configure"
 configure_args+=" --disable-audit"
@@ -34,10 +37,6 @@ configure_args+=" BUILD_LDFLAGS="
 make_dirs+=" /etc/security/limits.d 0755 root root"
 make_dirs+=" /etc/security/namespace.d 0755 root root"
 lib32disabled="yes"
-
-if [[ "$XBPS_CHECK_PKGS" == "musl" ]]; then
-  configure_args+=" ac_cv_search_crypt=no"
-fi
 
 post_install() {
   # fix unix_chkpwd perms
