@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-lxml"
-version=4.9.2
+version=4.9.3
 revision=1
 short_desc="Python binding for the libxml2 and libxslt libraries"
 depends="python3"
@@ -13,8 +13,9 @@ hostmakedepends+=" python3-Cython"
 hostmakedepends+=" python3-setuptools"
 license="BSD-3-Clause, custom:ElementTree"
 homepage="https://lxml.de/"
+changelog="https://github.com/lxml/lxml/raw/master/CHANGES.txt"
 distfiles="https://github.com/lxml/lxml/archive/lxml-$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="c057e334efc357fc88eb71b888d2df3a44cf3c7aaac56a8753e92090c5217050"
+checksum="42b9ab83cb8739d817c7fff41c20f31aa61625bb6f6ab333873a5f3406b139ac"
 build_style="python3-module"
 make_build_args="--with-cython"
 
