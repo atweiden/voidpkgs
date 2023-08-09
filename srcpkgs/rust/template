@@ -1,10 +1,11 @@
 # partially adapted from alpine/adélie's rust APKBUILD
 maintainer="nox"
 pkgname="rust"
-version=1.71.0
+version=1.71.1
 revision=1
 short_desc="Safe, concurrent, practical systems language"
-depends="rust-std"
+depends+=" gcc"
+depends+=" rust-std"
 makedepends+=" libffi-devel"
 makedepends+=" libxml2-devel"
 makedepends+=" llvm15"
@@ -36,7 +37,7 @@ fi
 homepage="https://www.rust-lang.org/"
 license="MIT, Apache-2.0"
 distfiles="https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
-checksum="a667e4abdc5588ebfea35c381e319d840ffbf8d2dbfb79771730573642034c96"
+checksum="6fa90d50d1d529a75f6cc349784de57d7ec0ba2419b09bde7d335c25bd4e472e"
 # needed for python files in rust-src
 python_version=3
 build_options="bindist"
