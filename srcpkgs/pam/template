@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pam"
 version=1.5.3
-revision=1
+revision=2
 short_desc="Flexible mechanism for authenticating users"
 # version of pam-base that doesn't include removed modules
 depends="pam-base>=0.4_1"
@@ -31,6 +31,7 @@ configure_args+=" --disable-nis"
 configure_args+=" --disable-regenerate-docu"
 configure_args+=" --disable-selinux"
 configure_args+=" --docdir=/usr/share/doc/pam"
+configure_args+=" --enable-lastlog"
 configure_args+=" --libdir=/usr/lib"
 configure_args+=" BUILD_CFLAGS=-Os"
 configure_args+=" BUILD_LDFLAGS="
