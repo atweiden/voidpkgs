@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="nncp"
-version=8.8.3
+version=8.9.0
 revision=1
 short_desc="Node to Node copy, utilities for secure store-and-forward"
 homepage="http://www.nncpgo.org/"
 license="GPL-3.0-only"
 distfiles="http://www.nncpgo.org/download/nncp-$version.tar.xz"
-checksum="225750084747e970d82be0d6e6507fe47145146baad670e40b011a568eef22f1"
+checksum="259facbc3354edcc16e7c64e278aaccdb47ffa3ec2afea0b36283f46aa824b5d"
 build_style="go"
 go_import_path="cypherpunks.ru/nncp"
 go_build_tags+=" netgo"
@@ -20,15 +20,14 @@ fi
 export GOFLAGS="-trimpath"
 
 do_build() {
-  make
+  ./bin/build
 }
 
 do_install() {
-  make \
-    DESTDIR="$DESTDIR" \
-    INFODIR="$DESTDIR/usr/share/info" \
-    PREFIX="/usr" \
-    install
+  DESTDIR="$DESTDIR" \
+  INFODIR="$DESTDIR/usr/share/info" \
+  PREFIX="/usr" \
+    ./install
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
