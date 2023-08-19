@@ -133,6 +133,7 @@ constant %PKG = Map.new(
     'cmocka' => ['cmocka-devel'],
     'confuse' => ['confuse-devel'],
     'coreboot-utils' => ['coreboot-utils-me_cleaner'],
+    'cppdap' => ['cppdap-devel'],
     'cracklib' => qw<cracklib-devel
                      libcracklib>,
     'crypto++' => ['crypto++-devel'],
