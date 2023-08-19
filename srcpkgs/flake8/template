@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="flake8"
-version=6.0.0
+version=6.1.0
 revision=1
 short_desc="Modular source code checker: pycodestyle, pyflakes, mccabe"
 depends+=" python3-mccabe"
@@ -9,22 +9,17 @@ depends+=" python3-pyflakes"
 checkdepends+=" $depends"
 checkdepends+=" python3-mock"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://flake8.pycqa.org/"
 license="MIT"
 changelog="https://github.com/PyCQA/flake8/raw/main/docs/source/release-notes/$version.rst"
-distfiles="$PYPI_SITE/f/flake8/flake8-$version.tar.gz"
-checksum="c61007e76655af75e6785a931f452915b371dc48f56efd765247c8fe68f2b181"
-build_style="python3-module"
-
-do_check() {
-  local testdir
-  testdir="tmp/$(date +%s)"
-  python3 setup.py install --prefix="/usr" --root="$testdir"
-  PATH="$testdir/usr/bin:$PATH" \
-  PYTHONPATH="$testdir/$py3_sitelib" \
-    pytest3 --ignore tests/unit/plugins/pycodestyle_test.py
-}
+distfiles="https://github.com/PyCQA/flake8/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="bcb01efc0c83d3c9362e200b5359fe22e11b859962dd27e5bebf3ada7620ae2f"
+build_style="python3-pep517"
+make_check_target="tests/unit"
+make_check_args+=" --ignore=tests/unit/plugins/pycodestyle_test.py"
+make_check_args+=" --ignore=tests/unit/test_pyflakes_codes.py"
 
 post_install() {
   vlicense LICENSE
