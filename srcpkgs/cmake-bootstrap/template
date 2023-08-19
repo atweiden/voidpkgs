@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="cmake-bootstrap"
-version=3.27.2
+version=3.27.3
 revision=1
 short_desc="CMake for xbps-src"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/cmake-$version.tar.gz"
-checksum="798e50085d423816fe96c9ef8bee5e50002c9eca09fed13e300de8a91d35c211"
+checksum="66afdc0f181461b70b6fedcde9ecc4226c5cd184e7203617c83b7d8e47f49521"
 build_style="cmake"
 configure_args+=" -DBUILD_CursesDialog=OFF"
 configure_args+=" -DBUILD_QtDialog=OFF"
@@ -15,10 +15,13 @@ configure_args+=" -DCMAKE_SKIP_RPATH=OFF"
 configure_args+=" -DCMAKE_USE_OPENSSL=OFF"
 configure_args+=" -DCMAKE_USE_SYSTEM_LIBRARIES=OFF"
 configure_args+=" -DCMake_INSTALL_INFIX=libexec/xbps-src/"
+configure_args+=" -DCMake_TEST_NO_NETWORK=ON"
+configure_args+=" -DCTEST_TEST_CPACK=OFF"
 configure_args+=" -DKWSYS_LFS_WORKS=1"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   configure_args+=" -DCMake_NO_SELF_BACKTRACE=1"
 fi
+provides="cmake-${version}_1"
 repository="bootstrap"
 
 pre_configure() {
@@ -45,15 +48,21 @@ pre_configure() {
 }
 
 do_check() {
+  local _ignore
   mkdir -p /tmp/fake-bin
   ln -sf /usr/bin/bsdtar /tmp/fake-bin/tar
   PATH="$PATH:/tmp/fake-bin"
+  # requires git-submodule
+  _ignore="ExternalProject|UpdateGIT|CMP0150"
+  # cra(y)pe compiler
+  _ignore="$_ignore|ParseImplicitLinkInfo"
+  # broken on musl, depends on ldconfig
+  _ignore="$_ignore|file-GET_RUNTIME_DEPENDENCIES"
   cd build
-  ./bin/ctest -E "ExternalProject|UpdateGIT|CMP0150"
+  ./bin/ctest -E "$_ignore"
 }
 
 post_install() {
-  rm -f "$DESTDIR/usr/libexec/xbps-src/bin/cpack"
   # we install license manually because cmake forgets some of them
   test ! -d "$DESTDIR/usr/libexec/xbps-src/share/doc"
   {
