@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="curl"
 version=8.2.1
-revision=1
+revision=2
 short_desc="Client that groks URLs"
 depends="ca-certificates"
 makedepends+=" nghttp2-devel"
@@ -55,6 +55,7 @@ build_options+=" rtmp"
 build_options+=" ssh"
 build_options+=" ssl"
 build_options+=" zstd"
+build_options_default+=" ssh"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
 vopt_conflict "ssl" "gnutls"
