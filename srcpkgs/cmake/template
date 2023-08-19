@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.26.4
-revision=3
+version=3.27.2
+revision=1
 short_desc="Cross-platform, open-source build system"
+makedepends+=" cppdap-devel"
 makedepends+=" expat-devel"
 makedepends+=" jsoncpp-devel"
 makedepends+=" libarchive-devel"
@@ -18,8 +19,10 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208"
+checksum="798e50085d423816fe96c9ef8bee5e50002c9eca09fed13e300de8a91d35c211"
 build_style="cmake"
+configure_args+=" -DBUILD_CursesDialog=ON"
+configure_args+=" -DBUILD_QtDialog=OFF"
 configure_args+=" -DCMAKE_DOC_DIR=/share/doc/cmake"
 configure_args+=" -DCMAKE_MAN_DIR=/share/man"
 configure_args+=" -DCMAKE_SKIP_BOOTSTRAP_TEST=1"
@@ -31,31 +34,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   configure_args+=" -DCMake_NO_SELF_BACKTRACE=1"
 fi
 make_check_target="test"
-replaces="cmake-bootstrap>=0"
-
-pre_configure() {
-  local f
-  mkdir -p build
-  cd build
-  CC="$CC_FOR_BUILD" \
-  CFLAGS="$CFLAGS_FOR_BUILD" \
-  CXX="$CXX_FOR_BUILD" \
-  CXXFLAGS="$CXXFLAGS_FOR_BUILD" \
-  LD="$LD_FOR_BUILD" \
-  LDFLAGS="$LDFLAGS_FOR_BUILD" \
-  ../bootstrap \
-    --generator="Ninja" \
-    --no-system-libs \
-    ${XBPS_MAKEJOBS:+--parallel=$XBPS_MAKEJOBS}
-  # make sure build directory is clean
-  for f in *; do
-    if [[ "$f" != "Bootstrap.cmk" ]]; then
-      return 1
-    fi
-  done
-  cd "$wrksrc"
-  PATH="$wrksrc/build/Bootstrap.cmk:$PATH"
-}
 
 do_check() {
   cd build
@@ -63,14 +41,15 @@ do_check() {
 }
 
 post_install() {
+  # no license would be installed
+  # or something were bundled without our knowledge
+  test ! -d "$DESTDIR/usr/share/doc"
+  sed -n -e '/Copyright/,/authorization[.]/p' \
+    Source/CursesDialog/form/fld_arg.c >fld.license
+  vlicense fld.license
+  sed -e '/\$FreeBSD\$/q' Utilities/cmelf/elf_common.h >elf.license
+  vlicense elf.license
   vlicense Copyright.txt
-  vlicense Utilities/KWIML/Copyright.txt KWIML-Copyright.txt
-  sed \
-    -n \
-    -e '/Copyright/,/authorization[.]/p' \
-    Source/CursesDialog/form/fld_arg.c > \
-    fld.LICENSE
-  vlicense fld.LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
