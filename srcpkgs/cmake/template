@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cmake"
-version=3.27.2
+version=3.27.3
 revision=1
 short_desc="Cross-platform, open-source build system"
 makedepends+=" cppdap-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" python3-Sphinx"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
 distfiles="https://www.cmake.org/files/v${version%.*}/$pkgname-$version.tar.gz"
-checksum="798e50085d423816fe96c9ef8bee5e50002c9eca09fed13e300de8a91d35c211"
+checksum="66afdc0f181461b70b6fedcde9ecc4226c5cd184e7203617c83b7d8e47f49521"
 build_style="cmake"
 configure_args+=" -DBUILD_CursesDialog=ON"
 configure_args+=" -DBUILD_QtDialog=OFF"
