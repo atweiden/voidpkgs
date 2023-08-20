@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="talloc"
-version=2.3.4
+version=2.4.1
 revision=1
 short_desc="Hierarchical pool based memory allocator with destructors"
 makedepends+=" gettext-devel"
@@ -12,7 +12,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://talloc.samba.org/"
 license="GPL-3.0-or-later"
 distfiles="https://download.samba.org/pub/talloc/$pkgname-$version.tar.gz"
-checksum="179f9ebe265e67e4ab2c26cad2b7de4b6a77c6c212f966903382869f06be6505"
+checksum="410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9"
 build_style="waf3"
 configure_script="buildtools/bin/waf"
 configure_args+=" --builtin-libraries=replace"
