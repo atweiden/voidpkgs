@@ -1,19 +1,17 @@
 maintainer="nox"
 pkgname="less"
-version=633
+version=643
 revision=1
 short_desc="Pager program similar to more(1)"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
+checkdepends="perl"
 homepage="https://www.greenwoodsoftware.com/less"
 license="GPL-3.0-or-later"
 changelog="https://github.com/gwsw/less/raw/master/NEWS"
 distfiles="https://www.greenwoodsoftware.com/less/$pkgname-$version.tar.gz"
-checksum="2f201d64b828b88af36dfe6cfdba3e0819ece2e446ebe6224813209aaefed04f"
+checksum="2911b5432c836fa084c8a2e68f6cd6312372c026a58faaa98862731c8b6052e8"
 build_style="gnu-configure"
 configure_args="--with-regex=pcre2"
-# tests intentionally not included in tarball
-# see: https://github.com/gwsw/less/issues/344
-make_check="no"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
