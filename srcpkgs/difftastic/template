@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="difftastic"
-version=0.49.0
+version=0.50.0
 revision=1
 short_desc="Structural diff tool that understands syntax"
 homepage="https://difftastic.wilfred.me.uk"
 license="MIT"
 changelog="https://github.com/Wilfred/difftastic/raw/master/CHANGELOG.md"
 distfiles="https://static.crates.io/crates/difftastic/difftastic-$version.crate"
-checksum="62a84f868779bb073e05bed05bd9875971b2d0de53553c64a35e2b696f7236b0"
+checksum="1540d41fd6ceec7210cdebcfb448bfd5698f4312bada58d6fbc3ad4181b67abb"
 build_style="cargo"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
@@ -16,11 +16,6 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
     broken="how is this supposed to even work"
   fi
 fi
-
-pre_build() {
-  # yanked
-  cargo update --package crossbeam-channel@0.5.4 --precise 0.5.8
-}
 
 post_install() {
   vlicense LICENSE
