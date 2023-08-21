@@ -1,8 +1,7 @@
 maintainer="nox"
 pkgname="arch-wiki-lite"
 # keep synced with arch-wiki-docs
-version=2022.03.19
-_generator_program_version=20181022
+version=2023.08.21
 revision=1
 short_desc="Arch Wiki without HTML"
 depends+=" bash"
@@ -17,7 +16,7 @@ hostmakedepends+=" arch-wiki-docs"
 hostmakedepends+=" python3"
 homepage="http://www.kmkeen.com/arch-wiki-lite/"
 license="GFDL-1.3-or-later,GPL-3.0-only"
-distfiles="http://www.kmkeen.com/arch-wiki-lite/$pkgname-$_generator_program_version.tar.gz"
+distfiles="http://www.kmkeen.com/arch-wiki-lite/$pkgname.tar.gz"
 checksum="b381e3f5589d652346621a4be33988efd924fd702b1c204dcab452a92bb00ca4"
 
 pre_build() {
