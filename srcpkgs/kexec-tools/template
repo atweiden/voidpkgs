@@ -1,26 +1,34 @@
-# Template file for 'kexec-tools'
-pkgname=kexec-tools
+maintainer="nox"
+pkgname="kexec-tools"
 version=2.0.26
 revision=1
-build_style=gnu-configure
-hostmakedepends="tar xz"
-makedepends="zlib-devel liblzma-devel"
 short_desc="Tools to support fast kexec reboots"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="GPL-2.0-only"
+makedepends+=" liblzma-devel"
+makedepends+=" zlib-devel"
+hostmakedepends+=" tar"
+hostmakedepends+=" xz"
 homepage="http://kernel.org/pub/linux/utils/kernel/kexec/"
-distfiles="${KERNEL_SITE}/utils/kernel/kexec/${pkgname}-${version}.tar.xz"
-checksum=7fe36a064101cd5c515e41b2be393dce3ca88adce59d6ee668e0af7c0c4570cd
+license="GPL-2.0-only"
+distfiles="$KERNEL_SITE/utils/kernel/kexec/$pkgname-$version.tar.xz"
+checksum="7fe36a064101cd5c515e41b2be393dce3ca88adce59d6ee668e0af7c0c4570cd"
+build_style="gnu-configure"
+case "$XBPS_TARGET_MACHINE" in
+  # textrels not supported
+  ppc-musl) nopie="yes";;
+esac
 
 CFLAGS="-fcommon"
 
-case "$XBPS_TARGET_MACHINE" in
-	ppc-musl) nopie=yes;; # textrels not supported
-esac
-
 pre_build() {
-	rm ${XBPS_WRAPPERDIR}/strip
-	case "$XBPS_TARGET_MACHINE" in
-		i686*) vsed -i '/compat_x86_64.S/d' purgatory/arch/i386/Makefile;;
-	esac
+  rm "$XBPS_WRAPPERDIR/strip"
+  case "$XBPS_TARGET_MACHINE" in
+    i686*)
+      vsed \
+        -i \
+        -e '/compat_x86_64.S/d' \
+        purgatory/arch/i386/Makefile
+      ;;
+  esac
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
