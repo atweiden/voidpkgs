@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="arch-wiki-docs"
 # build date of generated docs
-version=2022.03.19
+version=2023.08.21
 revision=1
-_gitrev="216a2170262f5b1ee4af3ac9b565fd3be2752df9"
+_gitrev="929424410caecd0265e35126f625d9d1a7a63625"
 short_desc="Arch Wiki without HTML"
 hostmakedepends+=" python3"
 hostmakedepends+=" python3-cssselect"
@@ -13,7 +13,7 @@ hostmakedepends+=" python3-simplemediawiki"
 homepage="https://github.com/lahwaacz/arch-wiki-docs"
 license="GFDL-1.3-or-later,GPL-3.0-only"
 distfiles="https://github.com/lahwaacz/arch-wiki-docs/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="664e444bb29b004a295930a4d5c8cd039478701ca3866b428f99ea33bd86a911"
+checksum="ca3a4060b3c69ac79e51dac054d5571311dc0ca936d3f2387311a873a0546d83"
 
 do_build() {
   LANG="en_US.UTF-8" python3 arch-wiki-docs.py \
