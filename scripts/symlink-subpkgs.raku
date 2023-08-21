@@ -357,6 +357,7 @@ constant %PKG = Map.new(
                        libarchive-devel>,
     'libassuan' => ['libassuan-devel'],
     'libatomic_ops' => ['libatomic_ops-devel'],
+    'libb64' => ['libb64-devel'],
     'libbitcoin-blockchain' => ['libbitcoin-blockchain-devel'],
     'libbitcoin-client' => ['libbitcoin-client-devel'],
     'libbitcoin-consensus' => ['libbitcoin-consensus-devel'],

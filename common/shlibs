@@ -283,6 +283,7 @@ libassuan.so.0 libassuan-2.0.1_1
 libatomic.so.1 libatomic-4.9.0_1
 libatomic_ops.so.1 libatomic_ops-7.4.2_1
 libatomic_ops_gpl.so.1 libatomic_ops-7.4.2_1
+libb64.so.0 libb64-1.2.1_1
 libbitcoin-blockchain.so.0 libbitcoin-blockchain-3.5.0_1
 libbitcoin-client.so.0 libbitcoin-client-3.5.0_1
 libbitcoin-consensus.so.0 libbitcoin-consensus-3.5.0_1
