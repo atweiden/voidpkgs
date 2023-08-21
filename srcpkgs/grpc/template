@@ -2,22 +2,30 @@ maintainer="nox"
 pkgname="grpc"
 version=1.56.0
 revision=1
+_opencensus_version=0.3.0
+_xds_gitrev="e9ce68804cb4e64cab5a52e3c8baf840d4ff87b7"
 short_desc="High performance, open source, general RPC framework"
 _devel_depends+=" abseil-cpp-devel"
 _devel_depends+=" c-ares-devel"
 _devel_depends+=" openssl-devel"
+_devel_depends+=" protobuf-devel"
 _devel_depends+=" re2-devel"
 _devel_depends+=" zlib-devel"
 makedepends+=" $_devel_depends"
 makedepends+=" gperftools-devel"
 makedepends+=" libprotoc-devel"
-makedepends+=" protobuf-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf"
 homepage="https://github.com/grpc/grpc"
 license="Apache-2.0"
-distfiles="https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
-checksum="e034992a0b464042021f6d440f2090acc2422c103a322b0844e3921ccea981dc"
+distfiles+=" https://github.com/grpc/grpc/archive/v$version/$pkgname-$version.tar.gz"
+distfiles+=" https://storage.googleapis.com/grpc-bazel-mirror/github.com/census-instrumentation/opencensus-proto/archive/v$_opencensus_version.tar.gz>opencensus-proto-v$_opencensus_version.tar.gz"
+distfiles+=" https://storage.googleapis.com/grpc-bazel-mirror/github.com/cncf/xds/archive/$_xds_gitrev.tar.gz>xds-$_xds_gitrev.tar.gz"
+checksum+=" e034992a0b464042021f6d440f2090acc2422c103a322b0844e3921ccea981dc"
+checksum+=" b7e13f0b4259e80c3070b583c2f39e53153085a6918718b1c710caf7037572b0"
+checksum+=" 0d33b83f8c6368954e72e7785539f0d272a8aba2f6e2e336ed15fd1514bc9899"
+skip_extraction+=" opencensus-proto-v$_opencensus_version.tar.gz"
+skip_extraction+=" xds-$_xds_gitrev.tar.gz"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
 configure_args+=" -DgRPC_ABSL_PROVIDER=package"
@@ -34,9 +42,10 @@ if [[ -n "$CROSS_BUILD" ]]; then
   configure_args+=" -DProtobuf_PROTOC_EXECUTABLE=/usr/bin/protoc"
 fi
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
-fi
+post_extract() {
+  vsrcextract -C third_party/opencensus-proto "opencensus-proto-v$_opencensus_version.tar.gz"
+  vsrcextract -C third_party/xds "xds-$_xds_gitrev.tar.gz"
+}
 
 libgrpc_package() {
   short_desc+=" - libraries"
@@ -51,7 +60,6 @@ grpc-devel_package() {
   short_desc+=" - development files"
   depends+=" $sourcepkg>=${version}_$revision"
   depends+=" $_devel_depends"
-  depends+=" protobuf-devel"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.so"
