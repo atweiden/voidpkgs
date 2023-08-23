@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sift"
 version=0.9.0
-revision=14
+revision=15
 short_desc="Fast and powerful alternative to grep"
 hostmakedepends="git"
 homepage="https://github.com/svent/sift"
