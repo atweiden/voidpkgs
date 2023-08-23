@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="kubernetes"
 version=1.27.4
-revision=1
+revision=2
 short_desc="Container Cluster Manager for Docker"
 archs+=" aarch64*"
 archs+=" ppc64le*"
