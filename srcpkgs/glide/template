@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="glide"
 version=0.13.3
-revision=2
+revision=3
 short_desc="Vendor package management for golang"
 depends+=" git"
 depends+=" go"
