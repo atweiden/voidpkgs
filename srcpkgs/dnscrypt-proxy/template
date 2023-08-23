@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dnscrypt-proxy"
 version=2.1.4
-revision=3
+revision=4
 short_desc="DNS proxy that encrypts queries"
 homepage="https://github.com/DNSCrypt/dnscrypt-proxy"
 license="ISC"
@@ -23,6 +23,10 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
 fi
 
 export GOFLAGS="-trimpath"
+
+pre_build() {
+  export GOTOOLCHAIN="go1.20.7"
+}
 
 post_install() {
   vconf dnscrypt-proxy/example-dnscrypt-proxy.toml dnscrypt-proxy.toml
