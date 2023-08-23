@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="aerc"
 version=0.15.2
-revision=1
+revision=2
 short_desc="Pretty good email client"
 hostmakedepends="scdoc"
 homepage="https://aerc-mail.org/"
