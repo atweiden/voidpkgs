@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gops"
 version=0.3.28
-revision=1
+revision=2
 short_desc="List and diagnose Go processes currently running on your system"
 homepage="https://github.com/google/gops"
 license="BSD-3-Clause"
