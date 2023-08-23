@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="passphrase2pgp"
 version=1.3.0
-revision=2
+revision=3
 short_desc="Generate a PGP key from a passphrase"
 homepage="https://github.com/skeeto/passphrase2pgp"
 license="Unlicense"
