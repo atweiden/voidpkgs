@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="go-md2man"
 version=2.0.2
-revision=2
+revision=3
 short_desc="Convert md to manpages"
 homepage="https://github.com/cpuguy83/go-md2man"
 license="MIT"
