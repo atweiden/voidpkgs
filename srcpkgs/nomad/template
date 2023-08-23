@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nomad"
 version=1.5.6
-revision=1
+revision=2
 _gitrev="8af70885c02ab921dedbdf6bc406a1e886866f80"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
 depends="cni-plugins"
