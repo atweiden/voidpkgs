@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="kopia"
 version=0.13.0
-revision=1
+revision=2
 short_desc="Fast and secure backup tool"
 homepage="https://kopia.io/"
 license="Apache-2.0"
