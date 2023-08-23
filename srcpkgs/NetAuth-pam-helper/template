@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="NetAuth-pam-helper"
 version=0.1.5
-revision=2
+revision=3
 short_desc="Helper executable to use with pam_exec"
 homepage="https://github.com/netauth/pam-helper"
 license="MIT"
