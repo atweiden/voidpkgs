@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xmandump"
 version=0.2.7
-revision=2
+revision=3
 short_desc="Dump all manpages in an XBPS package for use with man.cgi"
 homepage="https://github.com/void-linux/xmandump"
 license="ISC"
