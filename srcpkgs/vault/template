@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vault"
 version=1.13.2
-revision=1
+revision=2
 _gitrev="b9b773f1628260423e6cc9745531fd903cae853f"
 short_desc="Manage Secrets and Protect Sensitive Data"
 depends="libcap-progs"
