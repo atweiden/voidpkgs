@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="qrcp"
 version=0.10.0
-revision=1
+revision=2
 short_desc="Transfer files over wifi to mobile devices by scanning a QR code"
 homepage="https://claudiodangelis.com/qrcp/"
 license="MIT"
