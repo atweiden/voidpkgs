@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="godef"
 version=1.1.2
-revision=2
+revision=3
 short_desc="Print where symbols are defined in Go source code"
 homepage="https://github.com/rogpeppe/godef"
 license="BSD-3-Clause"
