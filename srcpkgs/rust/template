@@ -15,7 +15,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" libexecinfo-devel"
 fi
 hostmakedepends+=" cargo-bootstrap"
-hostmakedepends+=" cmake"
 hostmakedepends+=" curl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
