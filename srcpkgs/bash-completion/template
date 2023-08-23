@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bash-completion"
 version=2.11
-revision=4
+revision=5
 short_desc="Programmable completion for the GNU Bash shell"
 depends="bash"
 checkdepends+=" python3-pexpect"
