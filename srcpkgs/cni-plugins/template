@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cni-plugins"
 version=1.2.0
-revision=2
+revision=3
 short_desc="Container Network Interface (plugins)"
 homepage="https://github.com/containernetworking/plugins"
 license="Apache-2.0"
