@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apr-util"
-version=1.6.1
-revision=13
+version=1.6.3
+revision=1
 short_desc="Apache Portable Runtime Utility Library"
 makedepends+=" apr-devel"
 makedepends+=" db-devel"
@@ -15,13 +15,15 @@ makedepends+=" sqlite-devel"
 makedepends+=" unixodbc-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" apr-devel"
+hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 homepage="https://apr.apache.org/"
 license="Apache-2.0"
 distfiles="https://archive.apache.org/dist/apr/$pkgname-$version.tar.bz2"
-checksum="d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+checksum="a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5"
 build_style="gnu-configure"
 configure_args+=" --enable-util-dso"
+configure_args+=" --with-apr=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-berkeley-db=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-crypto"
 configure_args+=" --with-dbm=db53"
@@ -34,11 +36,6 @@ configure_args+=" --with-openssl"
 configure_args+=" --with-pgsql"
 configure_args+=" --with-sqlite3=$XBPS_CROSS_BASE/usr"
 configure_args+=" --without-oracle"
-if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args+=" --with-apr=$XBPS_WRAPPERDIR/apr-1-config"
-else
-  configure_args+=" --with-apr=/usr/bin/apr-1-config"
-fi
 # fails to build tests
 make_check="no"
 
@@ -47,25 +44,28 @@ if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
 fi
 
 pre_configure() {
-  sed \
-    -i \
-    -e "s;^\(  APR_BUILD_DIR=\).*$;\1$XBPS_CROSS_BASE/usr/share/apr-1/build;" \
-    configure
+  autoreconf -fi
 }
 
 post_configure() {
   # hacks to make cross compiling work
-  sed \
+  if [[ -n "$CROSS_BUILD" ]]; then
+    vsed \
+      -i \
+      -e "s;\(apr_builddir=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
+      -e "s;\(apr_builders=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
+      -e "s;--mode=link;& --tag=CC;g" \
+      -e "s;--mode=compile;& --tag=CC;g" \
+      -e "/^CC=/s:=.*:=$CC:" \
+      build/rules.mk
+  fi
+  vsed \
     -i \
-    -e "s;\(apr_builddir=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
-    -e "s;\(apr_builders=\)\(/usr/share/apr-1\);\1$XBPS_CROSS_BASE\2;" \
-    -e "s;--mode=link;& --tag=CC;g" \
-    -e "s;--mode=compile;& --tag=CC;g" \
-    -e "s;^INTERNAL_CPPFLAGS.*;& -I$XBPS_CROSS_BASE/usr/include/apr-1;" \
-    -e "s;\$(apr_builddir)/libtool;$XBPS_CROSS_BASE/usr/bin/libtool;" \
-    -e '/^LINK /s;$(COMPILE);$(CC);' \
+    -e "/^LIBTOOL=/s;(apr_builddir);(top_builddir);" \
+    -e "s;\(top_builddir=\)\(.*\);\1$wrksrc;" \
+    -e "/^CFLAGS=/s:=.*:=$CFLAGS:" \
+    -e '/^LTFLAGS/s:--silent::' \
     build/rules.mk
-
 }
 
 post_install() {
