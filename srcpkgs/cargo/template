@@ -12,7 +12,6 @@ if [[ -z "$_build_static" ]]; then
   makedepends+=" libgit2-devel"
 fi
 hostmakedepends+=" cargo-bootstrap"
-hostmakedepends+=" cmake"
 hostmakedepends+=" curl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
