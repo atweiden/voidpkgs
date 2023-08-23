@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="img"
 version=0.5.11
-revision=2
+revision=3
 short_desc="Standalone, daemonless, unprivileged container image builder"
 depends+=" libseccomp"
 depends+=" runc"
