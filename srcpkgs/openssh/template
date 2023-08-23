@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=9.3p2
-revision=2
+revision=3
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
@@ -41,7 +41,8 @@ configure_args+=" $(vopt_if fido2 --with-security-key-builtin)"
 configure_args+=" $(vopt_if gssapi --with-kerberos5=$XBPS_CROSS_BASE/usr --without-kerberos5)"
 configure_args+=" $(vopt_if ldns --with-ldns=$XBPS_CROSS_BASE/usr)"
 configure_args+=" $(vopt_if ssl --with-ssl-engine --without-openssl)"
-make_dirs="/var/chroot/ssh 0755 root root"
+make_dirs+=" /etc/ssh/sshd_config.d 0755 root root"
+make_dirs+=" /var/chroot/ssh 0755 root root"
 build_options+=" fido2"
 build_options+=" gssapi"
 build_options+=" ldns"
@@ -87,14 +88,6 @@ post_install() {
   vman contrib/ssh-copy-id.1
   vinstall contrib/sshd.pam.generic 644 etc/pam.d sshd
   vbin contrib/ssh-copy-id
-
-  # configure to use PAM
-  vsed \
-    -i \
-    -e 's|^#\(UsePAM\) no|\1 yes|g' \
-    -e 's|^#\(KbdInteractiveAuthentication\) yes|\1 no|g' \
-    -e 's|^#\(PrintMotd\) yes|\1 no|g' \
-    "$DESTDIR/etc/ssh/sshd_config"
 
   vinstall "$FILESDIR/sshd.pam" 644 etc/pam.d sshd
   vsv sshd
