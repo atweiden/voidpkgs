@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="senpai"
-version=0.1.0
-revision=2
+version=0.2.0
+revision=1
 short_desc="IRC client that works best with bouncers"
 hostmakedepends="scdoc"
 homepage="https://git.sr.ht/~taiite/senpai"
 license="ISC"
 distfiles="https://git.sr.ht/~taiite/senpai/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff"
+checksum="9786fd83f3e1067549c3c88455a1f66ec66d993fe597cee334d217a5d1cf4803"
 build_style="go"
 go_import_path="git.sr.ht/~taiite/senpai"
 go_package="./cmd/senpai"
