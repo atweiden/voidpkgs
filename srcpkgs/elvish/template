@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="elvish"
 version=0.19.2
-revision=2
+revision=3
 short_desc="Novel Unix shell"
 homepage="https://elv.sh/"
 license="BSD-2-Clause"
@@ -9,7 +9,8 @@ changelog="https://elv.sh/blog/$version-release-notes.html"
 distfiles="https://github.com/elves/elvish/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ef8032507c74c84369d49b098afcf1da65701aa071be9ee762f8bc456576ac94"
 build_style="go"
-go_import_path="src.elv.sh/cmd/elvish"
+go_import_path="src.elv.sh"
+go_package="./cmd/elvish"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
 go_ldflags="-buildid="
