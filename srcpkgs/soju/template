@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="soju"
 version=0.6.2
-revision=1
+revision=2
 short_desc="User-friendly IRC bouncer"
 makedepends="sqlite-devel"
 hostmakedepends="scdoc"
