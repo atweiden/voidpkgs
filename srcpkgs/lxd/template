@@ -43,6 +43,8 @@ system_groups="lxd"
 
 # whitelist dqlite LDFLAGS
 export CGO_LDFLAGS_ALLOW='-Wl,-z,now'
+
+# would be placed in pre_build function but for its usage in post_build
 export GOFLAGS="-trimpath"
 
 post_build() {

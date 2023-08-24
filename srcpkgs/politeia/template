@@ -33,7 +33,9 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
-export GOFLAGS="$_go_flags"
+pre_build() {
+  export GOFLAGS="$_go_flags"
+}
 
 post_install() {
   local _cmd

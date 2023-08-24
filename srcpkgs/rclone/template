@@ -26,8 +26,6 @@ make_check="ci-skip"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
-export GOFLAGS="-trimpath"
-
 pre_build() {
   if [[ -n "$CROSS_BUILD" ]] && [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
     # XXX: when cross building, the binary has a textrel, which segfaults
@@ -36,6 +34,7 @@ pre_build() {
     # entirely
     export CGO_ENABLED=0
   fi
+  export GOFLAGS="-trimpath"
 }
 
 do_check() {

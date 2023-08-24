@@ -23,7 +23,9 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
 fi
 make_dirs="/etc/superd/services 0755 root root"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 do_check() {
   go test ./...

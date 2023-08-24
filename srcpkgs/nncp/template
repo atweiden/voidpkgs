@@ -17,7 +17,9 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 do_build() {
   ./bin/build

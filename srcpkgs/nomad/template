@@ -24,7 +24,9 @@ fi
 make_dirs+=" /etc/nomad.d 0755 root root"
 make_dirs+=" /var/lib/nomad 0755 root root"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   vlicense LICENSE

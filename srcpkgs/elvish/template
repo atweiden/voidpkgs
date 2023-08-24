@@ -23,7 +23,9 @@ else
 fi
 register_shell="/bin/elvish"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   vlicense LICENSE

@@ -27,7 +27,9 @@ system_accounts="_soju"
 make_dirs+=" /var/db/soju 0750 _soju _soju"
 make_dirs+=" /var/log/soju 0750 _soju _soju"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   for f in doc/*.?.scd; do

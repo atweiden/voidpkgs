@@ -24,10 +24,10 @@ system_accounts="_vault"
 make_dirs+=" /var/lib/vault 0700 _vault _vault"
 make_dirs+=" /etc/vault 0750 root _vault"
 
-export GOFLAGS="-trimpath"
-
 pre_build() {
   local depbin
+
+  export GOFLAGS="-trimpath"
 
   vsed \
     -i \

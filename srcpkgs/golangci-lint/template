@@ -25,7 +25,9 @@ else
   go_ldflags+=" -extldflags=-fuse-ld=bfd"
 fi
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   vdoc README.md

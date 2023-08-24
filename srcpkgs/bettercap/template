@@ -24,10 +24,12 @@ else
   go_ldflags+=" -extldflags=-fuse-ld=bfd"
 fi
 
-export GOFLAGS="-trimpath"
-
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   CPPFLAGS="-Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t"
 fi
+
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

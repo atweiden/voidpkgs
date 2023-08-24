@@ -28,8 +28,10 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
-export CGO_ENABLED=0
-export GOFLAGS="$_go_flags"
+pre_build() {
+  export CGO_ENABLED=0
+  export GOFLAGS="$_go_flags"
+}
 
 pre_install() {
   # prepend dcr to unqualified binaries

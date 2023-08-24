@@ -21,7 +21,9 @@ fi
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   # build shell completions without cross-platform support (see: upstream)

@@ -32,7 +32,9 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
 fi
 make_dirs="/var/lib/containerd 0755 root root"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_build() {
   # build the man pages

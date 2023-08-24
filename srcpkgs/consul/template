@@ -23,7 +23,9 @@ system_accounts="_consul"
 make_dirs+=" /etc/consul.d 0755 root _consul"
 make_dirs+=" /var/lib/consul 0750 _consul _consul"
 
-export GOFLAGS="-trimpath"
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
 
 post_install() {
   vlicense LICENSE
