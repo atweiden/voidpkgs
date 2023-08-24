@@ -3,6 +3,7 @@ pkgname="wireproxy"
 version=1.0.5
 revision=4
 short_desc="Wireguard client that exposes itself as a socks5 proxy"
+hostmakedepends="go1.20"
 homepage="https://github.com/octeep/wireproxy"
 license="ISC"
 distfiles="https://github.com/octeep/wireproxy/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
