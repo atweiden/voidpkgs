@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="syncthing"
 version=1.23.7
-revision=1
+revision=3
 short_desc="Open Source Continuous File Synchronization"
+hostmakedepends="go1.20"
 homepage="https://syncthing.net/"
 license="MPL-2.0"
 changelog="https://github.com/syncthing/syncthing/releases"
@@ -23,11 +24,10 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
-broken="GOTOOLCHAIN not supported"
+export GOTOOLCHAIN="go1.20"
 
 pre_build() {
   export GOFLAGS="-trimpath"
-  export GOTOOLCHAIN="go1.20.7"
   GOARCH= go generate \
     github.com/syncthing/syncthing/lib/api/auto \
     github.com/syncthing/syncthing/cmd/strelaypoolsrv/auto
