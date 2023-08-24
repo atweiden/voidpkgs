@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="dnscrypt-proxy"
 version=2.1.4
-revision=4
+revision=5
 short_desc="DNS proxy that encrypts queries"
+hostmakedepends="go1.20"
 homepage="https://github.com/DNSCrypt/dnscrypt-proxy"
 license="ISC"
 changelog="https://github.com/DNSCrypt/dnscrypt-proxy/raw/master/ChangeLog"
@@ -22,11 +23,10 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
-broken="GOTOOLCHAIN not supported"
+export GOTOOLCHAIN="go1.20"
 
 pre_build() {
   export GOFLAGS="-trimpath"
-  export GOTOOLCHAIN="go1.20.7"
 }
 
 post_install() {
