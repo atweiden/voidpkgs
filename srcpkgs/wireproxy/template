@@ -23,6 +23,8 @@ _wireproxy_homedir="/var/lib/wireproxy"
 make_dirs+=" /etc/wireproxy 0750 root _wireproxy"
 make_dirs+=" /var/lib/wireproxy 0700 _wireproxy _wireproxy"
 
+broken="GOTOOLCHAIN not supported"
+
 pre_build() {
   export GOFLAGS="-trimpath"
   export GOTOOLCHAIN="go1.20.7"
