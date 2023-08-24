@@ -23,6 +23,8 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 
+broken="GOTOOLCHAIN not supported"
+
 pre_build() {
   export GOFLAGS="-trimpath"
   export GOTOOLCHAIN="go1.20.7"
