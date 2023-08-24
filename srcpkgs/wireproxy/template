@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wireproxy"
 version=1.0.5
-revision=3
+revision=4
 short_desc="Wireguard client that exposes itself as a socks5 proxy"
 homepage="https://github.com/octeep/wireproxy"
 license="ISC"
@@ -23,11 +23,10 @@ _wireproxy_homedir="/var/lib/wireproxy"
 make_dirs+=" /etc/wireproxy 0750 root _wireproxy"
 make_dirs+=" /var/lib/wireproxy 0700 _wireproxy _wireproxy"
 
-broken="GOTOOLCHAIN not supported"
+export GOTOOLCHAIN="go1.20"
 
 pre_build() {
   export GOFLAGS="-trimpath"
-  export GOTOOLCHAIN="go1.20.7"
 }
 
 post_install() {
