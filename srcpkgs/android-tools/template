@@ -17,7 +17,7 @@ makedepends+=" libzstd-devel"
 makedepends+=" pcre2-devel"
 makedepends+=" protobuf-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" go"
+hostmakedepends+=" go1.20"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf"
@@ -26,10 +26,12 @@ license="Apache-2.0, ISC, GPL-2.0-only, MIT"
 distfiles="https://github.com/nmeum/android-tools/releases/download/$version/$pkgname-$version.tar.xz"
 checksum="60234ecbca19a17a7e2f46a4581960d645b7c55b870d924a21494c76a6f548ec"
 build_style="cmake"
-
+configure_args="-DGO_EXECUTABLE=/usr/bin/go1.20"
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  configure_args="-DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
+  configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
 fi
+
+export GOTOOLCHAIN="go1.20"
 
 post_install() {
   # zsh's built in works, while this one doesn't
