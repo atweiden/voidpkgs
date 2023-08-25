@@ -38,6 +38,9 @@ case "$XBPS_TARGET_MACHINE" in
   mips*)
     _goarch="mips"
     ;;
+  riscv64*)
+    _goarch="riscv64"
+    ;;
   *)
     broken="Unsupported architecture $XBPS_TARGET_MACHINE"
     ;;
