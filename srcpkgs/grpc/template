@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="grpc"
 version=1.56.0
-revision=1
+revision=2
 _opencensus_version=0.3.0
 _xds_gitrev="e9ce68804cb4e64cab5a52e3c8baf840d4ff87b7"
 short_desc="High performance, open source, general RPC framework"
