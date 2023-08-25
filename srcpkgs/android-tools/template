@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="android-tools"
 version=34.0.1
-revision=2
+revision=3
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
