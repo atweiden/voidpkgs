@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sysdig"
 version=0.33.1
-revision=1
+revision=2
 _falco_gitrev="59fb313475b82f842e9e9bbc1e0e629428c0a4cf"
 short_desc="Open source system-level exploration and troubleshooting tool"
 depends="dkms"
