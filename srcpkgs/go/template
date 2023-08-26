@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="go"
 version=1.21.0
-revision=1
+revision=2
 short_desc="Go Programming Language"
 checkdepends+=" clang"
 checkdepends+=" gcc-fortran"
@@ -122,14 +122,14 @@ do_install() {
   # <dominikh> sigh. well, someone fix the template and add a symlink,
   # usr/lib/go/misc -> /usr/share/go/misc
   ln -sfr "$DESTDIR/usr/share/go/misc" "$DESTDIR/usr/lib/go/misc"
-}
 
-post_install() {
-  vlicense LICENSE
   rm -f "$DESTDIR/usr/share/go/doc/articles/wiki/get.bin"
   rm -f "$DESTDIR/usr/lib/go/pkg/tool"/*/api
   rm -rf "$DESTDIR/usr/lib/go/pkg/bootstrap"
   rm -rf "$DESTDIR/usr/lib/go/pkg/obj"
+
+  vinstall go.env 644 usr/lib/go
+  vlicense LICENSE
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
