@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-DBD-mysql"
 version=4.050
-revision=10
+revision=11
 short_desc="DBD::mysql - MySQL DBI driver"
 depends="perl-DBI"
 makedepends+=" libmariadbclient-devel"
