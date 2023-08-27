@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rust-cargo-audit"
 version=0.17.6
-revision=2
+revision=3
 short_desc="Audit Cargo.lock for crates with security vulnerabilities"
 makedepends+=" libssh2-devel"
 makedepends+=" openssl-devel"
