@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mosh"
 version=1.4.0
-revision=5
+revision=6
 short_desc="Mobile shell, remote terminal application that allows roaming"
 depends="perl-IO-Tty"
 makedepends+=" libutempter-devel"
