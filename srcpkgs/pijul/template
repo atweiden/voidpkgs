@@ -1,36 +1,28 @@
 maintainer="nox"
 pkgname="pijul"
-version=0.12.2
-revision=6
-_sequoia_ver=0.9.0
+version=1.0.0.beta.6
+revision=1
+_crates_version="${version%.*.*}-${version#*.*.*.}"
 short_desc="Distributed version control system based on patches"
 makedepends+=" libsodium-devel"
-makedepends+=" nettle-devel"
 makedepends+=" openssl-devel"
-hostmakedepends+=" clang"
-hostmakedepends+=" pkg-config"
+hostmakedepends="pkg-config"
 homepage="https://pijul.org/"
-license="GPL-2.0-only"
-distfiles+=" https://static.crates.io/crates/pijul/$pkgname-$version.crate>$pkgname-$version.tar.gz"
-distfiles+=" https://gitlab.com/sequoia-pgp/sequoia/-/archive/v$_sequoia_ver/sequoia-v$_sequoia_ver.tar.gz"
-checksum+=" f92a3f4063e780ca45c161ceb0f42baf34dfeddf3359ebf6c2e0442d9abb5889"
-checksum+=" 71823c88b9666611f3cfa6b1d923bd66fda92fa6a53368b195bd2f962fdf7f4b"
+license="GPL-2.0-or-later"
+distfiles="https://static.crates.io/crates/pijul/pijul-$_crates_version.crate"
+checksum="b7757b1c39487a70d82d5e5f5e432e7d9cf3c24cb837b90cf1c436da8edba802"
 create_wrksrc="yes"
 build_style="cargo"
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
-post_extract() {
-  mv pijul-*/* .
-  mv sequoia-* sequoia
-}
-
-post_patch() {
-  # upstream does not ship a lockfile yet
-  cargo generate-lockfile
-}
-
-# we only want to install the binary, so don't run cargo install
-do_install() {
-  vbin "target/$RUST_TARGET/release/pijul"
+post_install() {
+  for shell in bash \
+               fish \
+               zsh; do
+    "$DESTDIR/usr/bin/pijul" completion "$shell" > "pijul.$shell"
+    vcompletion "pijul.$shell" "$shell"
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
