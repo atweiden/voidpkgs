@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="sslscan"
 version=2.0.16
-revision=1
+revision=2
 short_desc="Fast SSL/TLS scanner"
 makedepends="openssl-devel"
 homepage="https://github.com/rbsec/sslscan"
