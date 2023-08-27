@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ldns"
 version=1.8.3
-revision=1
+revision=2
 short_desc="Modern DNS/DNSSEC library - utils"
 makedepends+=" dnssec-anchors"
 makedepends+=" libpcap-devel"
