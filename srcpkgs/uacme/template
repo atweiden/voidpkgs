@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="uacme"
 version=1.7.4
-revision=1
+revision=2
 short_desc="Minimal ACMEv2 (Let's Encrypt) client written in plain C"
 makedepends+=" libcurl-devel"
 makedepends+=" openssl-devel"
