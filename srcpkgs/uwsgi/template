@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="uwsgi"
 version=2.0.22
-revision=1
+revision=2
 short_desc="Fast, self-healing application container server"
 makedepends+=" openssl-devel"
 makedepends+=" python3-devel"
