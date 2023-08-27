@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rsync"
 version=3.2.7
-revision=1
+revision=2
 short_desc="Remote fast incremental file transfer tool"
 makedepends+=" acl-devel"
 makedepends+=" liblz4-devel"
