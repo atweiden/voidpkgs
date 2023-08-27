@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gerbil"
 version=0.17
-revision=2
+revision=3
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
 makedepends+=" openssl-devel"
 makedepends+=" sqlite-devel"
