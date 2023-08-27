@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="monit"
 version=5.33.0
-revision=1
+revision=2
 short_desc="Utility for monitoring, processes, files, directories and devices"
 makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
