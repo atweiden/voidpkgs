@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zfs"
 version=2.1.12
-revision=1
+revision=2
 short_desc="Z File System -- userland, pyzfs, and kernel modules (using DKMS)"
 depends+=" dkms>=2.2.0.3_9"
 depends+=" libzfs>=${version}_$revision"
