@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-deny"
 version=0.13.9
-revision=1
+revision=2
 _adv_gitrev="222ccf84ef7d733a6eac71f694a5e14b4d0d0289"
 short_desc="Cargo plugin to help you manage large dependency graphs"
 makedepends+=" libzstd-devel"
