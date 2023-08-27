@@ -629,10 +629,6 @@ libutempter.so.0 libutempter-1.1.5_1
 libuuid.so.1 libuuid-2.18_1
 libuv.so.1 libuv-1.0.0_1
 libvarnishapi.so.3 libvarnishapi-7.1.0_1
-libvdehist.so.0 libvde2-2.3.2_23
-libvdemgmt.so.0 libvde2-2.3.2_23
-libvdeplug.so.3 libvde2-2.3.2_23
-libvdesnmp.so.0 libvde2-2.3.2_23
 libvorbis.so.0 libvorbis-1.2.1rc1_1
 libvorbisenc.so.2 libvorbis-1.2.1rc1_1
 libvorbisfile.so.3 libvorbis-1.2.1rc1_1

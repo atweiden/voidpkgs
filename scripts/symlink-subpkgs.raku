@@ -829,8 +829,6 @@ constant %PKG = Map.new(
     'valgrind' => ['valgrind-devel'],
     'varnish' => qw<libvarnishapi
                     libvarnishapi-devel>,
-    'vde2' => qw<libvde2
-                 vde2-devel>,
     'vim' => qw<vim-common
                 xxd>,
     'void-repo-multilib' => ['void-repo-multilib-nonfree'],
