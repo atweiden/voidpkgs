@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="unbound"
 version=1.17.1
-revision=1
+revision=2
 short_desc="Validating, recursive, and caching DNS resolver"
 depends="dnssec-anchors"
 makedepends+=" expat-devel"
