@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-cryptography"
 version=41.0.3
-revision=1
+revision=2
 short_desc="Python3 library that provides cryptographic recipes and primitives"
 depends="python3-cffi"
 makedepends+=" openssl-devel"
