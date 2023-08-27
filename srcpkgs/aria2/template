@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="aria2"
 version=1.36.0
-revision=1
+revision=2
 short_desc="Lightweight multi-protocol/multi-source command-line download utility"
 depends="ca-certificates"
 makedepends+=" c-ares-devel"
