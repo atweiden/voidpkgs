@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nghttp2"
 version=1.55.1
-revision=1
+revision=2
 short_desc="HTTP/2 C Library"
 makedepends+=" c-ares-devel"
 makedepends+=" jansson-devel"
