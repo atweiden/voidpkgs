@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="scrypt"
 version=1.3.1
-revision=2
+revision=3
 short_desc="Scrypt key derivation function"
 makedepends="openssl-devel"
 homepage="https://www.tarsnap.com/scrypt.html"
