@@ -656,8 +656,8 @@ constant %PKG = Map.new(
                     openmpi-devel>,
     'opensp' => ['opensp-devel'],
     'openssh' => ['openssh-sk-helper'],
-    'openssl' => qw<libcrypto1.1
-                    libssl1.1
+    'openssl' => qw<libcrypto3
+                    libssl3
                     openssl-c_rehash
                     openssl-devel>,
     'opus' => ['opus-devel'],

@@ -352,8 +352,7 @@ libconfig.so.11 libconfig-1.7.1_1
 libcppunit-1.15.so.1 libcppunit-1.15.1_1
 libcpuid.so.16 libcpuid-0.6.2_1
 libcrack.so.2 libcracklib-2.8.22_2
-libcrypto.so.1.1 libcrypto1.1-1.1.1f_1
-libcrypto.so.46 libcrypto46-3.1.1_1
+libcrypto.so.3 libcrypto3-3.1.2_1
 libcryptsetup.so.12 libcryptsetup-2.3.4_2
 libcurl.so.4 libcurl-7.75.0_2
 libdaemon.so.0 libdaemon-0.14_1
@@ -576,8 +575,7 @@ libspdlog.so.1.11 libspdlog-1.11.0_1
 libspeex.so.1 libspeex-1.1_1
 libssh.so.4 libssh-0.9.5_2
 libssh2.so.1 libssh2-1.9.0_3
-libssl.so.1.1 libssl1.1-1.1.1f_1
-libssl.so.48 libssl48-3.1.1_1
+libssl.so.3 libssl3-3.1.2_1
 libstdc++.so.6 libstdc++-4.4.0_1
 libsvn_client-1.so.0 libsvn-1.7.5_1
 libsvn_delta-1.so.0 libsvn-1.7.5_1
