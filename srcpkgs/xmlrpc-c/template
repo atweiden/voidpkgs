@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xmlrpc-c"
 version=1.51.07
-revision=1
+revision=2
 short_desc="XML-RPC for C and C++"
 makedepends+=" libcurl-devel"
 makedepends+=" libxml2-devel"
