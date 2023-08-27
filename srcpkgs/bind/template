@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bind"
 version=9.16.22
-revision=3
+revision=4
 _fullver="$version${_patchver:+-$_patchver}"
 short_desc="Berkeley Internet Name Domain server"
 makedepends+=" libcap-devel"
