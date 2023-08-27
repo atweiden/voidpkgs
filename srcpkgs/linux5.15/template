@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux5.15"
 version=5.15.124
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
