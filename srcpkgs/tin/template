@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tin"
 version=2.6.2
-revision=1
+revision=2
 short_desc="NNTP and spool based UseNet newsreader"
 makedepends+=" gpgme-devel"
 makedepends+=" libidn-devel"
