@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="httrack"
 version=3.49.2
-revision=8
+revision=9
 short_desc="Free and easy-to-use offline browser utility"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
