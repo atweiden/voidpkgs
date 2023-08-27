@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="socat"
 version=1.7.4.4
-revision=1
+revision=2
 short_desc="Relay for bidirectional data transfer between two independent channels"
 makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
