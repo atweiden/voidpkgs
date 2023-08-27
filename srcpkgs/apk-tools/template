@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apk-tools"
 version=2.14.0
-revision=1
+revision=2
 short_desc="Alpine Package Keeper (Alpine package manager)"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
