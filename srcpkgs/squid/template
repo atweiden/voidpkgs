@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="squid"
 version=5.7
-revision=1
+revision=2
 short_desc="Caching proxy for the Web"
 depends="perl"
 makedepends+=" libcap-devel"
