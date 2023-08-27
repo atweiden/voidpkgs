@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="postgresql15"
 version=15.3
-revision=1
+revision=2
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
 _sysconfdir="etc/psql$_major"
