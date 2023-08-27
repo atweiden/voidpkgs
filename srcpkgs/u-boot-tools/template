@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="u-boot-tools"
 version=2023.07.02
-revision=1
+revision=2
 short_desc="Das U-Boot tools"
 makedepends+=" gnutls-devel"
 makedepends+=" libuuid-devel"
