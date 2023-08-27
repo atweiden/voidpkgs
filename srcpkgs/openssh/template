@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openssh"
 version=9.4p1
-revision=1
+revision=2
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
 makedepends+=" pam-devel"
