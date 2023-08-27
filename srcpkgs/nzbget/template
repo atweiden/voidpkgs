@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nzbget"
 version=21.1
-revision=2
+revision=3
 short_desc="Download from Usenet using .nzb files"
 makedepends+=" libxml2-devel"
 makedepends+=" ncurses-devel"
