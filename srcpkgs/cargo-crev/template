@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="cargo-crev"
 version=0.23.3
-revision=2
+revision=3
 short_desc="Cryptographically verifiable code review system for cargo"
-makedepends="openssl-devel"
+makedepends+=" openssl-devel"
+makedepends+=" nghttp2-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/crev-dev/cargo-crev"
 license="MPL-2.0, MIT, Apache-2.0"
