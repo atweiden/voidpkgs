@@ -1,8 +1,8 @@
 # this pkg must be synchronized with "srcpkgs/python3-tkinter"
 maintainer="nox"
 pkgname="python3"
-version=3.11.4
-revision=2
+version=3.11.5
+revision=1
 _bluez="bluez-5.64"
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
@@ -22,7 +22,7 @@ homepage="https://www.python.org"
 license="Python-2.0"
 distfiles+=" https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
 distfiles+=" $KERNEL_SITE/bluetooth/$_bluez.tar.xz"
-checksum+=" 2f0e409df2ab57aa9fc4cbddfb976af44e4e55bf6f619eee6bc5c2297264a7f6"
+checksum+=" 85cd12e9cf1d6d5a45f17f7afe1cebe7ee628d3282281c492e86adf636defa3f"
 checksum+=" ae437e65b6b3070c198bc5b0109fe9cdeb9eaa387380e2072f9de65fe8a1de34"
 skip_extraction="$_bluez.tar.xz"
 build_style="gnu-configure"
