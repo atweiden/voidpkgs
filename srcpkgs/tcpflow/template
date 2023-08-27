@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tcpflow"
 version=1.6.1
-revision=1
+revision=2
 short_desc="Captures data transmitted as part of TCP connections"
 makedepends+=" boost-devel"
 makedepends+=" libcap-ng-devel"
