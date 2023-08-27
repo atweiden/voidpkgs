@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openvpn"
 version=2.6.4
-revision=1
+revision=2
 short_desc="Easy-to-use, robust, and highly configurable VPN"
 makedepends+=" libcap-ng-devel"
 makedepends+=" liblz4-devel"
