@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nsd"
 version=4.7.0
-revision=1
+revision=2
 short_desc="Authoritative only, high performance and simple DNS server"
 makedepends="libevent-devel"
 homepage="https://www.nlnetlabs.nl/projects/nsd/"
