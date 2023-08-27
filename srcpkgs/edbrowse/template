@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="edbrowse"
 version=3.8.7
-revision=1
+revision=2
 short_desc="Line-oriented text editor, web browser and mail client similar to ed(1)"
 makedepends+=" libcurl-devel"
 makedepends+=" pcre2-devel"
