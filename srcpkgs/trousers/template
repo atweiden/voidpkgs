@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="trousers"
 version=0.3.15
-revision=1
+revision=2
 short_desc="Trusted Computing Software Stack for the TPM"
 makedepends="openssl-devel"
 hostmakedepends+=" automake"
