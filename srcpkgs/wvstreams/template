@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wvstreams"
 version=4.6.1
-revision=21
+revision=22
 short_desc="Library for doing network in C++"
 homepage="https://code.google.com/p/wvstreams"
 license="LGPL-2.0-only"
