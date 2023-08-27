@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libgit2"
 version=1.6.4
-revision=1
+revision=2
 short_desc="Git linkable library"
 makedepends+=" http-parser-devel"
 makedepends+=" libssh2-devel"
