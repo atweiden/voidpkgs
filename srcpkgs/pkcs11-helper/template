@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pkcs11-helper"
 version=1.29.0
-revision=1
+revision=2
 short_desc="Library to help simplify interacting with PKCS#11 providers"
 makedepends="openssl-devel"
 hostmakedepends+=" doxygen"
