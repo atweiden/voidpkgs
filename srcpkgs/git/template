@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="git"
 version=2.42.0
-revision=1
+revision=2
 short_desc="Git Tree History Storage Tool"
 depends+=" ca-certificates"
 depends+=" perl-Authen-SASL"
