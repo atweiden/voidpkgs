@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-geiger"
 version=0.11.6
-revision=1
+revision=2
 short_desc="Detects usage of unsafe Rust in a Rust crate and its dependencies"
 makedepends="openssl-devel"
 hostmakedepends="pkg-config"
