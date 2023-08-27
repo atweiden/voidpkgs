@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-edit"
 version=0.12.0
-revision=1
+revision=2
 short_desc="Utility for managing cargo dependencies from the command line"
 # uses ring
 archs+=" aarch64*"
