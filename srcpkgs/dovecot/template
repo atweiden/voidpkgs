@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dovecot"
 version=2.3.20
-revision=2
+revision=3
 short_desc="IMAP and POP3 server written with security primarily in mind"
 # for SSL support
 depends="ca-certificates"
