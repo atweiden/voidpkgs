@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="python"
 version=2.7.18.7
-revision=3
+revision=4
 _gitrev="937f6fc83dc2f7f7156f69c993bc017a26e4f5bd"
 short_desc="Interpreted, interactive, object-oriented programming language"
 depends="ca-certificates"
