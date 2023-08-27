@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="stunnel"
 version=5.69
-revision=1
+revision=2
 short_desc="SSL encryption wrapper"
 makedepends="openssl-devel"
 checkdepends+=" iproute2"
