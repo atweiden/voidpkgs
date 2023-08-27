@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="alpine"
 version=2.26
-revision=1
+revision=2
 _gitrev="9726c098a739edfdca6218bc5dee104c310957e9"
 short_desc="Apache-licensed PINE mail user agent (with Chappa patches)"
 makedepends+=" gettext-devel"
@@ -20,6 +20,8 @@ configure_args+=" --with-ssl-dir=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-system-fixed-pinerc=/etc/alpine.d/pine.conf.fixed"
 configure_args+=" --with-system-pinerc=/etc/alpine.d/pine.conf"
 configure_args+=" --without-tcl"
+# weird fail with openssl3 otherwise
+disable_parallel_build="yes"
 
 post_extract() {
   sed \
