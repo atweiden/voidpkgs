@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libtorrent"
 version=0.13.8
-revision=4
+revision=5
 short_desc="BitTorrent library written in C++"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
