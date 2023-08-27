@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ntp"
 version=4.2.8p15
-revision=6
+revision=7
 short_desc="Network Time Protocol daemon and utilities"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
