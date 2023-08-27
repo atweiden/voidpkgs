@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="so"
 version=0.4.9
-revision=2
+revision=3
 short_desc="Terminal interface for Stack Overflow"
 makedepends="openssl-devel"
 hostmakedepends="pkg-config"
