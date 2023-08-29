@@ -26,11 +26,12 @@ vextract() {
 		esac
 	done
 
-	local TAR_CMD sfx
+	local TAR_CMD="${tar_cmd}"
+	local sfx
 	local archive="$1"
 	local ret=0
 
-	TAR_CMD="$(command -v bsdtar)"
+	[ -z "$TAR_CMD" ] && TAR_CMD="$(command -v bsdtar)"
 	[ -z "$TAR_CMD" ] && TAR_CMD="$(command -v tar)"
 	[ -z "$TAR_CMD" ] && msg_error "xbps-src: no suitable tar cmd (bsdtar, tar)\n"
 	case "$archive" in
@@ -161,4 +162,21 @@ vsrcextract() {
 	done
 	vextract "$sc" ${dst:+-C "$dst"} \
 		"${XBPS_SRCDISTDIR}/${pkgname}-${version}/$1"
+}
+
+vtar() {
+	bsdtar "$@"
+}
+
+vsrccopy() {
+	local _tgt
+	if [ $# -lt 2 ]; then
+		msg_error "vsrccopy <file>... <target>"
+	fi
+	_tgt="${@:-1}"
+	mkdir -p "$_tgt"
+	while [ $# -gt 1 ]; do
+		cp -a "${XBPS_SRCDISTDIR}/${pkgname}-${version}/$1" "$_tgt"
+		shift
+	done
 }
