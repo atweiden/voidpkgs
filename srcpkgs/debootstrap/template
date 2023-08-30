@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="debootstrap"
-version=1.0.128+nmu5
+version=1.0.131
 revision=1
 short_desc="Bootstrap a basic Debian system"
 depends+=" binutils"
@@ -13,9 +13,9 @@ depends+=" zstd"
 homepage="http://packages.qa.debian.org/d/debootstrap.html"
 license="MIT"
 distfiles+=" $DEBIAN_SITE/main/d/debootstrap/debootstrap_${version}_all.deb"
-distfiles+=" $DEBIAN_SITE/main/d/debian-archive-keyring/debian-archive-keyring_2021.1.1_all.deb"
-checksum+=" 565e058d0f5b254915c8c7c0f13c98010f5b91a621fca7b6a97e604cb3b7af81"
-checksum+=" 56beca470dcd9b6d7e6c3c9e9d702101e01e9467e62810a8c357bd7b9c26251d"
+distfiles+=" $DEBIAN_SITE/main/d/debian-archive-keyring/debian-archive-keyring_2023.4_all.deb"
+checksum+=" 275ecc10b05077fc9b6820e498a1150b7545e30614c58004697e4af4d902f2d6"
+checksum+=" 6e93a87b9e50bd81518880ec07a62f95d7d8452f4aa703f5b0a3076439f1022c"
 
 case "$XBPS_TARGET_MACHINE" in
   armv5*l*)
@@ -42,20 +42,16 @@ case "$XBPS_TARGET_MACHINE" in
   ppc*)
     _debarch="powerpc"
     ;;
+  riscv64*)
+    _debarch="riscv64"
+    ;;
   *)
     broken="please add your architecture"
     ;;
 esac
 
 post_extract() {
-  for x in bullseye \
-           buster \
-           removed \
-           stretch; do
-    rm usr/share/keyrings/debian-archive-$x-*
-  done
   rm -r usr/share/doc/debian-archive-keyring
-
   mv usr/sbin usr/bin
   echo "$_debarch" > usr/share/debootstrap/arch
 }
