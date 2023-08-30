@@ -3,6 +3,7 @@ pkgname="arch-wiki-lite"
 # keep synced with arch-wiki-docs
 version=2023.08.21
 revision=1
+_gitrev="a9673ee216ba152377543339e1b26e024975d804"
 short_desc="Arch Wiki without HTML"
 depends+=" bash"
 depends+=" coreutils"
@@ -14,32 +15,13 @@ depends+=" sed"
 depends+=" util-linux"
 hostmakedepends+=" arch-wiki-docs"
 hostmakedepends+=" python3"
-homepage="http://www.kmkeen.com/arch-wiki-lite/"
+homepage="https://gitlab.archlinux.org/grawlinson/arch-wiki-lite"
 license="GFDL-1.3-or-later,GPL-3.0-only"
-distfiles="http://www.kmkeen.com/arch-wiki-lite/$pkgname.tar.gz"
-checksum="b381e3f5589d652346621a4be33988efd924fd702b1c204dcab452a92bb00ca4"
+distfiles="https://gitlab.archlinux.org/grawlinson/arch-wiki-lite/-/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="1df934c46153f98ffb94294af04f29e7fd33355978714a2cf7ae9336c7cc6432"
 
-pre_build() {
-  local arch_wiki_docs
-  local arch_wiki_docs_html
-  local arch_wiki_docs_text
-
-  arch_wiki_docs='\/usr\/share\/doc\/arch-wiki-docs'
-  arch_wiki_docs_html="$(printf "%s\/html" "$arch_wiki_docs")"
-  arch_wiki_docs_text="$(printf "%s\/text" "$arch_wiki_docs")"
-
-  # in wiki-search executable, wiki_path is text
-  sed \
-    -i \
-    -e 's/^\(wiki_path\).*/\1='''\"$arch_wiki_docs_text\"'''/' \
-    -e 's/^\(html_path\).*/\1='''\"$arch_wiki_docs_html\"'''/' \
-    wiki-search
-
-  # in wiki_lite.py executable, wiki_path is html
-  sed \
-    -i \
-    -e 's/^\(wiki_path\).*/\1 = '''\'$arch_wiki_docs_html\\/\''''/' \
-    wiki_lite.py
+post_extract() {
+  mv "$pkgname-$_gitrev"/* .
 }
 
 do_build() {
@@ -48,8 +30,10 @@ do_build() {
 
 do_install() {
   vbin wiki-search
-  vmkdir usr/share/doc/arch-wiki-docs/text
-  vcopy "wiki/*" usr/share/doc/arch-wiki-docs/text
+  # requires arch-wiki-docs at runtime
+  vbin wiki-search-html
+  vmkdir usr/share/doc/arch-wiki/text
+  vcopy "wiki/*" usr/share/doc/arch-wiki/text
   vinstall wiki-search.dialog.rc 644 etc/dialog.d wiki-search.dialog.rc
 }
 

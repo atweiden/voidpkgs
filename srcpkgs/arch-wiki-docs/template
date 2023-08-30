@@ -4,7 +4,7 @@ pkgname="arch-wiki-docs"
 version=2023.08.21
 revision=1
 _gitrev="929424410caecd0265e35126f625d9d1a7a63625"
-short_desc="Arch Wiki without HTML"
+short_desc="Pages from Arch Wiki optimized for offline browsing"
 hostmakedepends+=" python3"
 hostmakedepends+=" python3-cssselect"
 hostmakedepends+=" python3-lxml"
@@ -23,8 +23,8 @@ do_build() {
 }
 
 do_install() {
-  vmkdir usr/share/doc/arch-wiki-docs/html
-  vcopy "build_wiki/*" usr/share/doc/arch-wiki-docs/html
+  vmkdir usr/share/doc/arch-wiki/html
+  vcopy "build_wiki/*" usr/share/doc/arch-wiki/html
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
