@@ -2,12 +2,14 @@
 maintainer="nox"
 pkgname="xbps-static"
 version=0.59.1
-revision=6
+revision=7
 short_desc="XBPS package system utilities - static binaries"
 # only musl
 archs="*-musl"
 depends="xbps-triggers"
-makedepends="libarchive-devel"
+makedepends+=" libarchive-devel"
+makedepends+=" openssl-devel"
+makedepends+=" zlib-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/void-linux/xbps"
 license="BSD-2-Clause, BSD-3-Clause, ISC"
