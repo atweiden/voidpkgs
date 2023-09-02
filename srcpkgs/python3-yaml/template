@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-yaml"
 version=6.0
-revision=2
+revision=3
 short_desc="YAML parser and emitter for Python 3"
 depends="python3"
 makedepends+=" libyaml-devel"
