@@ -372,6 +372,7 @@ constant %PKG = Map.new(
     'libbpf' => ['libbpf-devel'],
     'libbsd' => ['libbsd-devel'],
     'libcap' => qw<libcap-devel
+                   libcap-pam
                    libcap-progs>,
     'libcap-ng' => qw<libcap-ng-devel
                       libcap-ng-progs
