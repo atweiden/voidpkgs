@@ -20,6 +20,7 @@ distfiles="https://github.com/libarchive/libarchive/releases/download/v$version/
 checksum="ba6d02f15ba04aba9c23fd5f236bb234eab9d5209e95d1c4df85c44d5f19b9b3"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
+configure_args+=" --without-libb2"
 configure_args+=" --without-nettle"
 configure_args+=" --without-xml2"
 configure_args+=" $(vopt_enable acl)"
