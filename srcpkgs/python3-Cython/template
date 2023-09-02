@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Cython"
 version=3.0.2
-revision=1
+revision=2
 short_desc="Python to C compiler"
 depends="python3-setuptools"
 makedepends="python3-devel"
@@ -17,6 +17,8 @@ make_check="no"
 alternatives+=" cython:cygdb:/usr/bin/cygdb3"
 alternatives+=" cython:cython:/usr/bin/cython3"
 alternatives+=" cython:cythonize:/usr/bin/cythonize3"
+conflicts="python3-Cython0.29>=0"
+replaces="python3-Cython0.29>=0"
 
 post_install() {
   mv "$DESTDIR/usr/bin"/cygdb{,3}
