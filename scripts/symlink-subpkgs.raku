@@ -29,6 +29,7 @@ constant %PKG = Map.new(
                  p7zip
                  p7zip-unrar>,
     'NetAuth' => ['NetAuth-server'],
+    'OpenCL-Headers' => ['opencl2-headers'],
     'abseil-cpp' => ['abseil-cpp-devel'],
     'acl' => qw<acl-devel
                 acl-progs>,
