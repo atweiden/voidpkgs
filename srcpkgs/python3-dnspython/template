@@ -1,27 +1,39 @@
-# Template file for 'python3-dnspython'
-pkgname=python3-dnspython
+maintainer="nox"
+pkgname="python3-dnspython"
 version=2.1.0
 revision=3
-build_style=python3-module
-hostmakedepends="python3-setuptools unzip"
-depends="python3"
-checkdepends="python3-attrs python3-async_generator python3-idna python3-curio
- python3-trio python3-outcome python3-sniffio python3-sortedcontainers
- python3-requests python3-requests-toolbelt python3-pytest iana-etc"
 short_desc="DNS toolkit for Python3"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="ISC"
+depends="python3"
+checkdepends+=" iana-etc"
+checkdepends+=" python3-async_generator"
+checkdepends+=" python3-attrs"
+checkdepends+=" python3-curio"
+checkdepends+=" python3-idna"
+checkdepends+=" python3-outcome"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-requests"
+checkdepends+=" python3-requests-toolbelt"
+checkdepends+=" python3-sniffio"
+checkdepends+=" python3-sortedcontainers"
+checkdepends+=" python3-trio"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" unzip"
 homepage="https://www.dnspython.org/"
-distfiles="${PYPI_SITE}/d/dnspython/dnspython-${version}.zip"
-checksum=e4a87f0b573201a0f3727fa18a516b055fd1107e0e5477cded4a2de497df1dd4
-# Some tests not working
-make_check=extended
+license="ISC"
+distfiles="$PYPI_SITE/d/dnspython/dnspython-$version.zip"
+checksum="e4a87f0b573201a0f3727fa18a516b055fd1107e0e5477cded4a2de497df1dd4"
+build_style="python3-module"
+# some tests not working
+make_check="extended"
 
 do_check() {
-	# All tests should work again in version 2.1.1 or 2.2.0 (https://github.com/rthalley/dnspython/issues/622)
-	PYTHONPATH=$(cd build/lib* && pwd) pytest -k 'not test_unpickle'
+  # all tests should work again in version 2.1.1 or 2.2.0
+  # (see: https://github.com/rthalley/dnspython/issues/622)
+  PYTHONPATH="$(cd build/lib* && pwd)" pytest -k 'not test_unpickle'
 }
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
