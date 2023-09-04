@@ -459,6 +459,7 @@ constant %PKG = Map.new(
     'libsasl' => ['libsasl-devel'],
     'libscrypt' => ['libscrypt-devel'],
     'libseccomp' => ['libseccomp-devel'],
+    'libsecp256k1' => ['libsecp256k1-devel'],
     'libselinux' => ['libselinux-devel'],
     'libsepol' => ['libsepol-devel'],
     'libsigc++' => ['libsigc++-devel'],

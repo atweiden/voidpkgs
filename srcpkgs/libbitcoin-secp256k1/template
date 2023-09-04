@@ -21,6 +21,7 @@ configure_args+=" --enable-exhaustive-tests"
 configure_args+=" --enable-module-recovery"
 configure_args+=" --enable-tests"
 configure_args+=" --with-gnu-ld"
+conflicts="libsecp256k1"
 
 pre_configure() {
   ./autogen.sh
@@ -34,6 +35,7 @@ post_install() {
 libbitcoin-secp256k1-devel_package() {
   short_desc+=" - development files"
   depends="$sourcepkg>=${version}_$revision"
+  conflicts="libsecp256k1-devel"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
