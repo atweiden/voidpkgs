@@ -1,41 +1,47 @@
-# Template file for 'libsecp256k1'
-pkgname=libsecp256k1
+maintainer="nox"
+pkgname="libsecp256k1"
 version=0.3.2
 revision=1
-build_style=gnu-configure
-configure_args="--disable-benchmark --disable-coverage --enable-experimental
- --enable-module-ecdh --enable-module-recovery --enable-tests
- --enable-exhaustive-tests --with-gnu-ld"
-hostmakedepends="autoconf automake libtool m4 pkg-config"
 short_desc="Optimized C library for EC operations on curve secp256k1"
-maintainer="Arjan Mossel <arjanmossel@gmail.com>"
-license="MIT"
+hostmakedepends+=" autoconf"
+hostmakedepends+=" automake"
+hostmakedepends+=" libtool"
+hostmakedepends+=" m4"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/bitcoin-core/secp256k1"
-distfiles="https://github.com/bitcoin-core/secp256k1/archive/v${version}.tar.gz"
+license="MIT"
+distfiles="https://github.com/bitcoin-core/secp256k1/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="ef2e1061951b8cf94a7597b4e60fd7810613e327e25305e8d73dfdff67d12190"
+build_style="gnu-configure"
+configure_args+=" --disable-benchmark"
+configure_args+=" --disable-coverage"
+configure_args+=" --enable-exhaustive-tests"
+configure_args+=" --enable-experimental"
+configure_args+=" --enable-module-ecdh"
+configure_args+=" --enable-module-recovery"
+configure_args+=" --enable-tests"
+configure_args+=" --with-gnu-ld"
+conflicts="libbitcoin-secp256k1"
 
 pre_configure() {
-	./autogen.sh
+  ./autogen.sh
 }
 
 post_install() {
-	vlicense COPYING
-	vdoc README.md
+  vlicense COPYING
+  vdoc README.md
 }
 
 libsecp256k1-devel_package() {
-	short_desc+=" - development files"
-	depends="${sourcepkg}>=${version}_${revision}"
-	pkg_install() {
-		vmove usr/include
-		vmove "usr/lib/*.a"
-		vmove "usr/lib/*.so"
-		vmove usr/lib/pkgconfig
-	}
+  short_desc+=" - development files"
+  depends="$sourcepkg>=${version}_$revision"
+  conflicts="libbitcoin-secp256k1-devel"
+  pkg_install() {
+    vmove usr/include
+    vmove "usr/lib/*.a"
+    vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
+  }
 }
 
-libbitcoin-secp256k1_package() {
-	depends="libsecp256k1"
-	short_desc+=" - transitional dummy package"
-	build_style=meta
-}
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
