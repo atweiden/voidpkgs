@@ -1,3 +1,6 @@
 Some optional packages must be installed for additional functionality:
 
+- python3-btchip: BTChip hardware wallet support
+- python3-keepkey: KeepKey hardware wallet support
 - python3-matplotlib: plot transaction history in graphical mode
+- python3-trezor: TREZOR hardware wallet support
