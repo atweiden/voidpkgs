@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-certifi"
 version=2022.09.24
-revision=2
+revision=3
 short_desc="Curated collection of Root Certificates"
 depends="python3"
 hostmakedepends="python3-setuptools"
@@ -11,9 +11,12 @@ distfiles="https://github.com/certifi/python-certifi/archive/$version.tar.gz>$pk
 checksum="8c1db7f2a3b272e8a90b2e1910763930fa81e2512fbb96cb7a25787d63765c78"
 build_style="python3-module"
 
+post_extract() {
+  rm -f certifi/cacert.pem
+}
+
 do_check() {
-  cd build/lib
-  python3 -c 'import certifi as m; print(m)'
+  python3 -m unittest
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
