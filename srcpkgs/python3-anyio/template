@@ -1,19 +1,21 @@
-# Template file for 'python3-anyio'
-pkgname=python3-anyio
+maintainer="nox"
+pkgname="python3-anyio"
 version=3.6.2
 revision=1
-build_style=python3-module
-hostmakedepends="python3-setuptools_scm"
-depends="python3-sniffio python3-idna"
 short_desc="High level asynchronous concurrency and networking framework"
-maintainer="dkwo <nicolopiazzalunga@gmail.com>"
-license="MIT"
+depends+=" python3-idna"
+depends+=" python3-sniffio"
+hostmakedepends="python3-setuptools_scm"
 homepage="https://github.com/agronholm/anyio"
-distfiles="${PYPI_SITE}/a/anyio/anyio-${version}.tar.gz"
-checksum=25ea0d673ae30af41a0c442f81cf3b38c7e79fdc7b60335a4c14e05eb0947421
-# Tests not supported
-make_check=no
+license="MIT"
+distfiles="$PYPI_SITE/a/anyio/anyio-$version.tar.gz"
+checksum="25ea0d673ae30af41a0c442f81cf3b38c7e79fdc7b60335a4c14e05eb0947421"
+build_style="python3-module"
+# tests not supported
+make_check="no"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
