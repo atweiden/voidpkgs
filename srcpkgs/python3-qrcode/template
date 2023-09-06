@@ -18,6 +18,7 @@ do_check() {
 
 post_install() {
   vlicense LICENSE
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

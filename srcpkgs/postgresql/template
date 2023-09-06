@@ -6,7 +6,6 @@ short_desc="PostgreSQL server meta package"
 depends="postgresql$version"
 homepage="https://www.postgresql.org"
 license="PostgreSQL"
-build_style="meta"
 build_options="languages"
 desc_option_languages="Include procedural languages as dependency"
 if [[ -z "$CROSS_BUILD" ]]; then
@@ -23,6 +22,10 @@ if [[ -n "$build_option_languages" ]]; then
   subpackages+=" postgresql-plpython"
   subpackages+=" postgresql-pltcl"
 fi
+
+do_install() {
+  vdoc "$FILESDIR/README.voidlinux"
+}
 
 postgresql-doc_package() {
   depends="postgresql$version-doc"

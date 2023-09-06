@@ -79,6 +79,8 @@ post_install() {
 
   # we installed a custom conflicting profile
   rm "$DESTDIR/etc/apparmor.d"/{,local/}php-fpm
+
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 libapparmor_package() {

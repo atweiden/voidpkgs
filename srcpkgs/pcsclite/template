@@ -22,6 +22,7 @@ configure_args+=" --enable-libudev"
 post_install() {
   vsv pcscd
   vlicense COPYING
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 pcsclite-devel_package() {

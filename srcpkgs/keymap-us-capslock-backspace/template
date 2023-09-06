@@ -35,4 +35,8 @@ do_install() {
   vinstall us-capslock-backspace.map.gz 644 usr/share/kbd/keymaps/i386/qwerty
 }
 
+post_install() {
+  vdoc "$FILESDIR/README.voidlinux"
+}
+
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

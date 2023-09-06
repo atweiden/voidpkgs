@@ -70,6 +70,7 @@ do_install() {
   rm "$DESTDIR/usr/lib/syslinux/com32"/*.a
   # remove keytab-lilo to prevent conflict with LILO
   rm "$DESTDIR/usr/bin/keytab-lilo"
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -15,6 +15,7 @@ conflicts="b43-firmware>=0"
 do_install() {
   vmkdir usr/lib/firmware
   b43-fwcutter -w "$DESTDIR/usr/lib/firmware" linux/wl_apsta.o
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

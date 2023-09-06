@@ -28,6 +28,7 @@ post_extract() {
 post_install() {
   vman man/update-grml-rescueboot.8
   vdoc debian/README
+  vdoc "$FILESDIR/README.voidlinux"
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
