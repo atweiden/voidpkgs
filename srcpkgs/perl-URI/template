@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-URI"
-version=5.19
+version=5.21
 revision=1
 short_desc="Perl Uniform Resource Identifiers class (URI, RFC 2396)"
 depends="perl"
@@ -14,7 +14,7 @@ homepage="https://metacpan.org/release/URI"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://metacpan.org/dist/URI/changes"
 distfiles="$CPAN_SITE/URI/${pkgname#*-}-$version.tar.gz"
-checksum="8fed5f819905c8a8e18f4447034322d042c3536b43c13ac1f09ba92e1a50a394"
+checksum="96265860cd61bde16e8415dcfbf108056de162caa0ac37f81eb695c9d2e0ab77"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
