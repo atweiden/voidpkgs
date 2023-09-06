@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="zsh-syntax-highlighting"
 version=0.7.1
-revision=2
+revision=3
 short_desc="Fish shell like syntax highlighting for Zsh"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-syntax-highlighting"
@@ -11,13 +11,10 @@ distfiles="https://github.com/zsh-users/zsh-syntax-highlighting/archive/$version
 checksum="f5044266ee198468b1bcec881a56e6399e209657d6ed9fa6d21175bc76afdefa"
 
 do_install() {
-  vinstall "$pkgname.zsh" 644 "usr/share/zsh/plugins/$pkgname"
-  vinstall .version 644 "usr/share/zsh/plugins/$pkgname"
-  vinstall .revision-hash 644 "usr/share/zsh/plugins/$pkgname"
-  vcopy highlighters "usr/share/zsh/plugins/$pkgname"
-}
-
-post_install() {
+  make install \
+    DOC_DIR="$DESTDIR/usr/share/zsh/plugins/$pkgname/doc" \
+    SHARE_DIR="$DESTDIR/usr/share/zsh/plugins/$pkgname"
+  vinstall "$pkgname.plugin.zsh" 644 "usr/share/zsh/plugins/$pkgname"
   vlicense COPYING.md
 }
 
