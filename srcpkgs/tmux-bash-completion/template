@@ -1,15 +1,18 @@
 maintainer="nox"
 pkgname="tmux-bash-completion"
-version=20170805
+version=20200419
 revision=1
-_gitrev="847eda60c4664bfca833a086a3e2167957c26be0"
+_gitrev="f5d53239f7658f8e8fbaf02535cc369009c436d6"
 short_desc="Bash completion for tmux"
-archs="noarch"
 depends="bash-completion"
 license="GPL-2.0-only"
 homepage="https://github.com/imomaliev/tmux-bash-completion"
 distfiles="https://github.com/imomaliev/tmux-bash-completion/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
-checksum="3ac0a217e749f762d2b93057dca9795fed74f700402184f2ee0b4cf22eb596e5"
+checksum="e3e70b8b769b409aefc2c419f3579670573ff7d9968b8f5a11d26405c7fc16ff"
+
+post_extract() {
+  mv "$pkgname-$_gitrev"/* .
+}
 
 do_install() {
   vinstall completions/tmux 644 usr/share/bash-completion/completions
