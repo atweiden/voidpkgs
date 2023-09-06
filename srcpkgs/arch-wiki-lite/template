@@ -20,10 +20,6 @@ license="GFDL-1.3-or-later,GPL-3.0-only"
 distfiles="https://gitlab.archlinux.org/grawlinson/arch-wiki-lite/-/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="1df934c46153f98ffb94294af04f29e7fd33355978714a2cf7ae9336c7cc6432"
 
-post_extract() {
-  mv "$pkgname-$_gitrev"/* .
-}
-
 do_build() {
   LC_ALL="en_US.UTF-8" python3 wiki_lite.py
 }

@@ -10,10 +10,6 @@ homepage="https://github.com/imomaliev/tmux-bash-completion"
 distfiles="https://github.com/imomaliev/tmux-bash-completion/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 checksum="e3e70b8b769b409aefc2c419f3579670573ff7d9968b8f5a11d26405c7fc16ff"
 
-post_extract() {
-  mv "$pkgname-$_gitrev"/* .
-}
-
 do_install() {
   vinstall completions/tmux 644 usr/share/bash-completion/completions
 }
