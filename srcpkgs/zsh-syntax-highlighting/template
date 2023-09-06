@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="zsh-syntax-highlighting"
 version=0.7.1
-revision=1
+revision=2
 short_desc="Fish shell like syntax highlighting for Zsh"
-archs="noarch"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-syntax-highlighting"
 license="BSD-3-Clause"
