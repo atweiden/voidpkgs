@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libtommath"
-version=1.2.0
+version=1.2.1
 revision=1
 short_desc="Portable number theoretic multiple-precision integer library"
 hostmakedepends="libtool"
 homepage="http://www.libtom.net/LibTomMath/"
 license="Public domain"
 distfiles="https://github.com/libtom/libtommath/releases/download/v$version/ltm-$version.tar.xz"
-checksum="b7c75eecf680219484055fcedd686064409254ae44bc31a96c5032843c0e18b1"
+checksum="986025d7b374276fee2e30e99f3649e4ac0db8a02257a37ee10eae72abed0d1f"
 
 do_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
