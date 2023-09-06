@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="usb-modeswitch-data"
 version=20191128
-revision=1
-short_desc="Mode switching tool for controlling 'multi-mode' USB devices (data files)"
-archs="noarch"
+revision=2
+short_desc="Mode switching tool for controlling multi-mode USB devices - data files"
 homepage="http://www.draisberghof.de/usb_modeswitch/"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="http://www.draisberghof.de/usb_modeswitch/$pkgname-$version.tar.bz2"
 checksum="3f039b60791c21c7cb15c7986cac89650f076dc274798fa242231b910785eaf9"
 build_style="gnu-makefile"
