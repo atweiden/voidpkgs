@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="fdm"
 version=2.2
-revision=2
+revision=3
 short_desc="Program to fetch and deliver mail"
 makedepends+=" openssl-devel"
 makedepends+=" pcre2-devel"
@@ -24,6 +24,7 @@ configure_args+=" --enable-pcre2"
 post_install() {
   vmkdir "usr/share/doc/$pkgname"
   cp -r examples "$DESTDIR/usr/share/doc/$pkgname"
+  vdoc MANUAL
   sed 17q fdm.c > LICENSE
   vlicense LICENSE
 }
