@@ -1,14 +1,13 @@
 maintainer="nox"
 pkgname="syncthing"
-version=1.23.7
-revision=3
+version=1.24.0
+revision=1
 short_desc="Open Source Continuous File Synchronization"
-hostmakedepends="go1.20"
 homepage="https://syncthing.net/"
 license="MPL-2.0"
 changelog="https://github.com/syncthing/syncthing/releases"
 distfiles="https://github.com/syncthing/syncthing/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="cc36d6244590f0eeaa1df6f465b617dd7fdbee3dae434d55b272b25580f6e53b"
+checksum="75734e6f75395d9d4f5c27a415753b372d5aad5fb9ff08d3a6b50df4b0626133"
 build_style="go"
 go_import_path="github.com/syncthing/syncthing"
 go_package+=" $go_import_path/cmd/stdiscosrv"
@@ -23,8 +22,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static"
   go_ldflags+=" -linkmode=external"
 fi
-
-export GOTOOLCHAIN="go1.20"
 
 pre_build() {
   export GOFLAGS="-trimpath"
