@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-click"
-version=8.1.3
-revision=2
+version=8.1.7
+revision=1
 short_desc="Python3 package for creating beautiful command line interfaces"
 depends="python3"
 checkdepends="python3-pytest"
@@ -10,7 +10,7 @@ homepage="https://palletsprojects.com/p/click/"
 license="BSD-3-Clause"
 changelog="https://github.com/pallets/click/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/c/click/click-$version.tar.gz"
-checksum="7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"
+checksum="ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
 build_style="python3-module"
 
 post_install() {
