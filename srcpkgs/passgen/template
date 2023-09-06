@@ -2,19 +2,19 @@ maintainer="nox"
 pkgname="passgen"
 version=1.0.0
 revision=1
-_gitrev="33696fe23cd14df76637b497fa66ea25c8f3111c"
+_gitrev="3470a3f70e702bac1ec575856a75803843ca950f"
 # the revision passgen uses as a submodule for the specific version
-_utf8proc_gitrev="462093b3924c7491defc67fda4bc7a27baf9b088"
+_utf8proc_gitrev="1cb28a66ca79a0845e99433fd1056257456cef8b"
 short_desc="Regex-based password generator"
 makedepends="jansson-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" ruby"
 homepage="https://github.com/xfbs/passgen"
 license="MIT"
-distfiles+=" https://gitlab.com/xfbs/passgen/-/archive/master/passgen-$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+distfiles+=" https://gitlab.com/xfbs/passgen/-/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/JuliaStrings/utf8proc/archive/$_utf8proc_gitrev.tar.gz"
-checksum+=" 18db2c4b0e5f0bde7a19cf345af83ce0c3ef5caa74833ee77af176400c5dc846"
-checksum+=" 095fd8f48e95a6e894e8a0ac419662f3e0c7a4d43b4cce05550d4e902754ee54"
+checksum+=" a997337b9fac0c5c5fae13d47f06ce196a8d56e4a0e752d6b701466b3d6ec7cf"
+checksum+=" 097cf4361b43cb51e662065a8d3e9339a9fd57ec59aee3965d746d058dd82217"
 skip_extraction+=" $_utf8proc_gitrev.tar.gz"
 build_style="cmake"
 configure_args+=" -DBUILD_BENCH=NO"
@@ -35,7 +35,7 @@ post_extract() {
 }
 
 post_install() {
-  vlicense LICENSE
+  vlicense LICENSE.md
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
