@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-trove-classifiers"
-version=2023.7.6
+version=2023.8.7
 revision=1
 short_desc="Canonical source for classifiers on PyPI"
 depends="python3"
@@ -13,7 +13,7 @@ homepage="https://github.com/pypa/trove-classifiers"
 license="Apache-2.0"
 changelog="https://github.com/pypa/trove-classifiers/releases"
 distfiles="$PYPI_SITE/t/trove-classifiers/trove-classifiers-$version.tar.gz"
-checksum="8a8e168b51d20fed607043831d37632bb50919d1c80a64e0f1393744691a8b22"
+checksum="c9f2a0a85d545e5362e967e4f069f56fddfd91215e22ffa48c66fb283521319a"
 build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
