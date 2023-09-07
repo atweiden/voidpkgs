@@ -788,6 +788,7 @@ libtbbmalloc_proxy_debug.so.2 tbb-4.3_1
 libtcl8.6.so tcl-8.6.0_1
 libtiff.so.6 tiff-4.5.0_1
 libtiffxx.so.6 tiff-4.5.0_1
+libtinyxml2.so.9 tinyxml2-9.0.0_1
 libtorsocks.so.0 torsocks-2.2.0_1
 libtoxcore.so.2 toxcore-0.2.0_1
 libtre.so.5 tre-0.8.0_1

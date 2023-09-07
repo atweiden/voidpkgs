@@ -803,6 +803,7 @@ constant %PKG = Map.new(
                 tdb-devel
                 tdb-python3>,
     'tiff' => ['tiff-devel'],
+    'tinyxml2' => ['tinyxml2-devel'],
     'tlp' => ['tlp-rdw'],
     'toxcore' => ['toxcore-devel'],
     'tre' => ['tre-devel'],
