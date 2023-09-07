@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="difftastic"
-version=0.50.0
+version=0.51.1
 revision=1
 short_desc="Structural diff tool that understands syntax"
 homepage="https://difftastic.wilfred.me.uk"
 license="MIT"
 changelog="https://github.com/Wilfred/difftastic/raw/master/CHANGELOG.md"
 distfiles="https://static.crates.io/crates/difftastic/difftastic-$version.crate"
-checksum="1540d41fd6ceec7210cdebcfb448bfd5698f4312bada58d6fbc3ad4181b67abb"
+checksum="eb8eb4c1c664ab12fc224a400cd61294c9f0fc1f6e4f159e4311e369ecdb1ade"
 build_style="cargo"
 
 if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
