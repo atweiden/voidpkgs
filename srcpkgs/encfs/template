@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="encfs"
 version=1.9.5
-revision=6
+revision=7
 short_desc="Encrypted filesystem in user-space"
 # for encfssh
 depends="perl"
 makedepends+=" fuse-devel"
 makedepends+=" gettext-devel"
 makedepends+=" openssl-devel"
+makedepends+=" tinyxml2-devel"
 hostmakedepends+=" gettext"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
@@ -16,14 +17,13 @@ license="GPL-2.0-or-later, LGPL-3.0-or-later"
 distfiles="https://github.com/vgough/encfs/releases/download/v$version/$pkgname-$version.tar.gz"
 checksum="4709f05395ccbad6c0a5b40a4619d60aafe3473b1a79bafb3aa700b1f756fd63"
 build_style="cmake"
+configure_args="-DUSE_INTERNAL_TINYXML=OFF"
+make_build_target="all"
 
-# can't run test programs when cross compiling
 if [[ -n "$CROSS_BUILD" ]]; then
-  configure_args="-DBUILD_UNIT_TESTS=0"
-fi
-
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  LDFLAGS+=" -latomic"
+  configure_args+=" -DBUILD_UNIT_TESTS=0"
+else
+  make_build_target+=" unittests"
 fi
 
 post_install() {
