@@ -1,19 +1,24 @@
 maintainer="nox"
 pkgname="python3-parameterized"
-version=0.8.1
-revision=3
+version=0.9.0
+revision=1
 short_desc="Parameterized testing with any Python test framework"
 depends="python3"
-checkdepends+=" python3-mock"
-checkdepends+=" python3-nose"
-hostmakedepends="python3-setuptools"
+checkdepends="python3-mock"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/wolever/parameterized"
 license="BSD-2-Clause-Views"
 changelog="https://github.com/wolever/parameterized/raw/master/CHANGELOG.txt"
 distfiles="$PYPI_SITE/p/parameterized/parameterized-$version.tar.gz"
-checksum="41bbff37d6186430f77f900d777e5bb6a24928a1c46fb1de692f8b52b8833b5c"
-build_style="python3-module"
-make_check_target="nosetests"
+checksum="7fc905272cefa4f364c1a3429cbbe9c0f98b793988efb5bf90aac80f08db09b1"
+build_style="python3-pep517"
+
+do_check() {
+  # errs with pytest4 - not supported by upstream
+  # https://github.com/wolever/parameterized/blob/v0.9.0/tox.ini#L12
+  python3 -m unittest parameterized.test
+}
 
 post_install() {
   rm "$DESTDIR/$py3_sitelib/parameterized/test.py"
