@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="shadowsocks-libev"
 version=3.3.4
-revision=1
+revision=4
 short_desc="Lightweight secured socks5 proxy for embedded devices and low end boxes"
 makedepends+=" c-ares-devel"
 makedepends+=" libev-devel"
