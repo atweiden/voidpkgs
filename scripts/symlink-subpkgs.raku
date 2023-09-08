@@ -480,6 +480,7 @@ constant %PKG = Map.new(
     'libtirpc' => ['libtirpc-devel'],
     'libtls' => qw<libressl-netcat
                    libtls-devel>,
+    'libtomcrypt' => ['libtomcrypt-devel'],
     'libtommath' => ['libtommath-devel'],
     'libtool' => qw<libltdl
                     libltdl-devel>,
