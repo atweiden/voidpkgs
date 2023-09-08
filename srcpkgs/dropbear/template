@@ -1,28 +1,35 @@
-# Template file for 'dropbear'
-pkgname=dropbear
+maintainer="nox"
+pkgname="dropbear"
 version=2022.83
 revision=1
-build_style=gnu-configure
-configure_args="--enable-zlib --disable-bundled-libtom"
-makedepends="zlib-devel libtommath-devel libtomcrypt-devel"
-checkdepends="python3-pytest python3-parsing python3-psutil openssh"
 short_desc="Small SSH server and client"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="MIT"
+makedepends+=" libtomcrypt-devel"
+makedepends+=" libtommath-devel"
+makedepends+=" zlib-devel"
+checkdepends+=" openssh"
+checkdepends+=" python3-parsing"
+checkdepends+=" python3-psutil"
+checkdepends+=" python3-pytest"
 homepage="https://matt.ucc.asn.au/dropbear/dropbear.html"
+license="MIT"
 changelog="https://matt.ucc.asn.au/dropbear/CHANGES"
-distfiles="https://matt.ucc.asn.au/${pkgname}/releases/${pkgname}-${version}.tar.bz2"
-checksum=bc5a121ffbc94b5171ad5ebe01be42746d50aa797c9549a4639894a16749443b
+distfiles="https://matt.ucc.asn.au/$pkgname/releases/$pkgname-$version.tar.bz2"
+checksum="bc5a121ffbc94b5171ad5ebe01be42746d50aa797c9549a4639894a16749443b"
+build_style="gnu-configure"
+configure_args+=" --disable-bundled-libtom"
+configure_args+=" --enable-zlib"
 make_dirs="/etc/dropbear 0755 root root"
 
-# These tests don't work from within xbps-src
-# and probably should not be run from there
+# these tests don't work from within xbps-src and probably should not
+# be run from there
 pre_check() {
-	rm test/test_aslr.py
-	rm test/test_channels.py
+  rm test/test_aslr.py
+  rm test/test_channels.py
 }
 
 post_install() {
-	vsv dropbear
-	vlicense LICENSE
+  vsv dropbear
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
