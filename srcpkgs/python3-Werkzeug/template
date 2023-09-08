@@ -1,26 +1,28 @@
 maintainer="nox"
 pkgname="python3-Werkzeug"
-version=2.2.2
-revision=3
+version=2.3.7
+revision=1
 short_desc="Swiss Army knife of Python web development (Python3)"
 depends="python3-MarkupSafe"
 checkdepends+=" python3-MarkupSafe"
 checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
 checkdepends+=" python3-requests"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-flit_core"
 homepage="https://palletsprojects.com/p/werkzeug/"
 license="BSD-3-Clause"
 changelog="https://github.com/pallets/werkzeug/raw/main/CHANGES.rst"
-distfiles="$PYPI_SITE/W/Werkzeug/Werkzeug-$version.tar.gz"
-checksum="7ea2d48322cc7c0f8b3a215ed73eabd7b5d75d0b50e31ab006286ccff9e00b8f"
-build_style="python3-module"
+distfiles="https://github.com/pallets/werkzeug/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="d9a68679b430e099b668a61130f1eb6e6768ac663a8667745ad637955ca1dd9d"
+build_style="python3-pep517"
+# some tests depend on unpackaged dependencies
+make_check_args+=" --ignore=tests/test_debug.py"
+make_check_args+=" --ignore=tests/middleware/test_http_proxy.py"
+make_check_args+=" --ignore=tests/test_serving.py"
 
-do_check() {
-  # tests depend on xprocess and pytest-timeout, which aren't packaged
-  # for some reason, --ignore doesn't work
-  rm -f tests/conftest.py tests/test_debug.py tests/test_serving.py
-  PYTHONPATH="src" python3 -m pytest tests -k 'not test_http_proxy'
+pre_check() {
+  # for some reason --ignore doesn't work on this file
+  rm -f tests/conftest.py
 }
 
 post_install() {
