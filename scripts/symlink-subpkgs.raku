@@ -601,6 +601,7 @@ constant %PKG = Map.new(
                        mkinitcpio-mdadm
                        mkinitcpio-xbps
                        mkinitcpio-zfs>,
+    'mkinitcpio-utils' => ['mkinitcpio-encryptssh'],
     'monero' => ['monero-devel'],
     'mpg123' => qw<libmpg123
                    mpg123-devel>,
