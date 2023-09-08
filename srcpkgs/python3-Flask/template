@@ -1,23 +1,23 @@
 maintainer="nox"
 pkgname="python3-Flask"
-version=2.2.2
-revision=2
+version=2.3.3
+revision=1
 short_desc="Python3 web microframework"
 depends+=" python3-Jinja2"
 depends+=" python3-Werkzeug"
+depends+=" python3-blinker"
 depends+=" python3-click"
 depends+=" python3-itsdangerous"
-depends+=" python3-setuptools"
 checkdepends+=" $depends"
 checkdepends+=" python3-hypothesis"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-flit_core"
 homepage="http://flask.pocoo.org"
 license="BSD-3-Clause"
 changelog="https://github.com/pallets/flask/raw/main/CHANGES.rst"
-distfiles="$PYPI_SITE/F/Flask/Flask-$version.tar.gz"
-checksum="642c450d19c4ad482f96729bd2a8f6d32554aa1e231f4f6b4e7e5264b16cca2b"
-build_style="python3-module"
+distfiles="https://github.com/pallets/flask/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="0e3e8ab9a6c8c2003256583deb03cb1a561d58bf27512e9dabda10b009c5c164"
+build_style="python3-pep517"
 conflicts="python-Flask>=0"
 
 post_install() {
