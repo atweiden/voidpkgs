@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="procps-ng"
-version=4.0.3
+version=4.0.4
 revision=1
 short_desc="Utilities for monitoring your system and its processes"
 makedepends="ncurses-devel"
@@ -11,7 +11,7 @@ homepage="https://gitlab.com/procps-ng/procps"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 changelog="https://gitlab.com/procps-ng/procps/raw/master/NEWS"
 distfiles="$SOURCEFORGE_SITE/procps-ng/Production/$pkgname-$version.tar.xz"
-checksum="303c8ec4f96ae18d8eaef86c2bd0986938764a45dc505fe0a0af868c674dba92"
+checksum="22870d6feb2478adb617ce4f09a787addaf2d260c5a8aa7b17d889a962c5e42e"
 conf_files="/etc/sysctl.conf"
 build_style="gnu-configure"
 configure_args+=" --exec-prefix=/"
