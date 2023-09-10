@@ -25,17 +25,11 @@ make_dirs="$haproxy_homedir 0750 haproxy haproxy"
 CFLAGS="-Wno-address-of-packed-member"
 
 do_build() {
-  local atomic
   local target
-
-  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-    atomic="-latomic"
-  fi
 
   target="linux-$XBPS_TARGET_LIBC"
 
   make \
-    ADDLIB="$atomic" \
     CC="$CC" \
     DEBUG_CFLAGS="$CFLAGS" \
     EXTRA= \

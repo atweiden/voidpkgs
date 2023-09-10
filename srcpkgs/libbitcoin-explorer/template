@@ -32,10 +32,6 @@ configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  LDFLAGS="-latomic"
-fi
-
 pre_configure() {
   ./autogen.sh
 }

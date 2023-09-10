@@ -21,10 +21,6 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  export LIBS="-latomic"
-fi
-
 do_configure() {
   ./configure \
     --prefix="/usr" \

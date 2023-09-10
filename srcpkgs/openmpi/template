@@ -33,10 +33,6 @@ else
   hostmakedepends+=" gcc-fortran"
 fi
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  export LIBS="-latomic"
-fi
-
 post_patch() {
   vsed \
     -i \

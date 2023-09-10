@@ -39,10 +39,6 @@ configure_args+=" --without-oracle"
 # fails to build tests
 make_check="no"
 
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  LDFLAGS="-latomic"
-fi
-
 pre_configure() {
   autoreconf -fi
 }

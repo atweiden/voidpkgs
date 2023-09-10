@@ -3,9 +3,8 @@ pkgname="dhcp"
 version=4.4.2P1
 revision=3
 short_desc="Server from the Internet Software Consortium's implementation of DHCP"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 hostmakedepends+=" tar"
 homepage="https://www.isc.org/downloads/dhcp"
 license="MPL-2.0"
@@ -18,15 +17,6 @@ disable_parallel_build="yes"
 
 CFLAGS="-fcommon"
 
-post_patch() {
-  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-    vsed \
-      -i \
-      -e "/LIBATOMIC=/s/$/-latomic/" \
-      configure.ac
-  fi
-}
-
 pre_configure() {
   local _args
   _args+=" --enable-paranoia"
@@ -38,7 +28,6 @@ pre_configure() {
   cargs="$(echo $configure_args | tr '\n' ' ')"
   # set real configure_args
   export configure_args+=" $_args"
-  autoreconf -if
 }
 
 post_install() {

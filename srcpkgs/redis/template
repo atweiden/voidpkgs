@@ -35,12 +35,6 @@ post_patch() {
     -e "s|^dir .*|dir $redis_homedir|" \
     -e "s|^pidfile .*|pidfile /run/redis/redis.pid|" \
     redis.conf
-  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-    vsed \
-      -i \
-      -e "s|^FINAL_LIBS=.*|& -latomic|" \
-      src/Makefile
-  fi
 }
 
 do_install() {

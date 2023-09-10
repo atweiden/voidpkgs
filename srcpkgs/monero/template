@@ -34,50 +34,23 @@ skip_extraction+=" rapidjson-$_rapidjson_gitrev.tar.gz"
 skip_extraction+=" supercop-$_supercop_gitrev.tar.gz"
 conf_files="/etc/monerod.conf"
 build_style="cmake"
+case "$XBPS_TARGET_MACHINE" in
+  armv7*) configure_args+=" -DARCH=armv7" ;;
+  armv6*) configure_args+=" -DARCH=armv6" ;;
+  armv5*) configure_args+=" -DARCH=armv5" ;;
+  aarch64*) configure_args+=" -DARCH=aarch64" ;;
+  mips*) configure_args+=" -DARCH=mipsr32 -DNO_AES=ON" ;;
+  ppc64le*) configure_args+=" -DARCH=ppc64le" ;;
+  ppc64*) configure_args+=" -DARCH=ppc64" ;;
+  ppc*) configure_args+=" -DARCH=ppc" ;;
+  *) configure_args+=" -DARCH=default" ;;
+esac
+case "$XBPS_TARGET_MACHINE" in
+  *-musl) configure_args+=" -DSTACK_TRACE=OFF" ;;
+esac
 make_dirs+=" /var/lib/monero 0750 monero monero"
 make_dirs+=" /var/log/monero 0755 monero monero"
 system_accounts="monero"
-
-case "$XBPS_TARGET_MACHINE" in
-  armv7*)
-    configure_args+=" -DARCH=armv7"
-    ;;
-  armv6*)
-    configure_args+=" -DARCH=armv6"
-    ;;
-  armv5*)
-    configure_args+=" -DARCH=armv5"
-    ;;
-  aarch64*)
-    configure_args+=" -DARCH=aarch64"
-    ;;
-  mips*)
-    configure_args+=" -DARCH=mipsr32"
-    configure_args+=" -DNO_AES=ON"
-    ;;
-  ppc64le*)
-    configure_args+=" -DARCH=ppc64le"
-    ;;
-  ppc64*)
-    configure_args+=" -DARCH=ppc64"
-    ;;
-  ppc*)
-    configure_args+=" -DARCH=ppc"
-    ;;
-  *)
-    configure_args+=" -DARCH=default"
-    ;;
-esac
-
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  CFLAGS+=" -latomic"
-fi
-
-case "$XBPS_TARGET_MACHINE" in
-  *-musl)
-    configure_args+=" -DSTACK_TRACE=OFF"
-    ;;
-esac
 
 post_extract() {
   bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/RandomX-$_randomx_gitrev.tar.gz" \
@@ -86,15 +59,6 @@ post_extract() {
     --strip-components=1 -C "$wrksrc/external/rapidjson"
   bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/supercop-$_supercop_gitrev.tar.gz" \
     --strip-components=1 -C "$wrksrc/external/supercop"
-}
-
-pre_configure() {
-  if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-    sed \
-      -i \
-      -e '/include(version.cmake)/i list(APPEND EXTRA_LIBRARIES libatomic.a)' \
-      CMakeLists.txt
-  fi
 }
 
 pre_build() {
