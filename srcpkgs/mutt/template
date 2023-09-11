@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mutt"
-version=2.2.10
+version=2.2.22
 revision=1
 short_desc="Mutt Mail Client"
 depends="mime-types"
@@ -21,7 +21,7 @@ homepage="http://www.mutt.org"
 license="GPL-2.0-or-later"
 changelog="http://mutt.org/relnotes/${version%.*}"
 distfiles="http://ftp.mutt.org/pub/mutt/$pkgname-$version.tar.gz"
-checksum="4d773f22422f79096f7b94b57bee45654ad9a25165dbb36463c58295b4cd3d88"
+checksum="043af312f64b8e56f7fd0bf77f84a205d4c498030bd9586457665c47bb18ce38"
 conf_files="/etc/mutt/Muttrc"
 build_style="gnu-configure"
 configure_args+=" --enable-gpgme"
