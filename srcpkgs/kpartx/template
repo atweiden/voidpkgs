@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="kpartx"
-version=0.9.5
+version=0.9.6
 revision=1
 short_desc="Create device maps from partition tables"
 makedepends="device-mapper-devel"
 homepage="http://christophe.varoqui.free.fr/"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/opensvc/multipath-tools/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e410fdee62ccaaecb79a0feb09c10d075a7254d013cf65543923bccb40c091c6"
+checksum="401c6f6e8dc5d3feaaee76280716aee718579ac024ce4f2fae77c798dc7a0f9f"
 build_wrksrc="kpartx"
 build_style="gnu-makefile"
 make_install_args+=" bindir=/usr/bin"
