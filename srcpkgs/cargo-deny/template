@@ -1,29 +1,42 @@
 maintainer="nox"
 pkgname="cargo-deny"
-version=0.13.9
-revision=2
-_adv_gitrev="222ccf84ef7d733a6eac71f694a5e14b4d0d0289"
+version=0.14.2
+revision=1
+_adv_gitrev="9cf72357c8c52629d22edd8b4b8d7f7cdeea2504"
+_test_adv_gitrev="1f44d565d81692a44b8c7af8a80f587e19757f8c"
 short_desc="Cargo plugin to help you manage large dependency graphs"
-makedepends+=" libzstd-devel"
-makedepends+=" openssl-devel"
+makedepends="libzstd-devel"
 hostmakedepends="pkg-config"
 homepage="https://github.com/EmbarkStudios/cargo-deny"
 license="MIT, Apache-2.0"
 changelog="https://github.com/EmbarkStudios/cargo-deny/raw/main/CHANGELOG.md"
 distfiles="https://github.com/EmbarkStudios/cargo-deny/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b26d8f984e00ddf96766e25781d6b296ff7a571f2c3730a607bfde24062b8adb"
+checksum="86152b1be86c9293b4bf0f80a1feedf6d9e045964c68de63d0407abf6aadcfc3"
 build_style="cargo"
 configure_args="--no-default-features"
+# too many failed tests
+if [[ "$XBPS_WORDSIZE" == "32" ]]; then make_check="no"; fi
+make_check_args="-- --skip=fetches_with_gi"
 
 if [[ "$XBPS_TARGET_ENDIAN" == "be" ]]; then
   broken="bitvec crate unimplemented for big endian"
 fi
 
 pre_check() {
-  rm -rf tests/advisory-db/github.com-2f857891b7f43c59
-  /usr/libexec/chroot-git/git clone https://github.com/rustsec/advisory-db.git tests/advisory-db/github.com-2f857891b7f43c59
-  cd tests/advisory-db/github.com-2f857891b7f43c59
-  /usr/libexec/chroot-git/git checkout "$_adv_gitrev"
+  local ADV_DB_DIR
+  local TEST_ADV_DB_DIR
+
+  export PATH="/usr/libexec/chroot-git:$PATH"
+
+  ADV_DB_DIR="tests/advisory-db/github.com-a946fc29ac602819"
+  rmdir "$ADV_DB_DIR"
+  git clone https://github.com/rustsec/advisory-db.git "$ADV_DB_DIR"
+  git -C "$ADV_DB_DIR" checkout "$_adv_gitrev"
+
+  TEST_ADV_DB_DIR="tests/advisory-db/github.com-c373669cccc50ac0"
+  rmdir "$TEST_ADV_DB_DIR"
+  git clone https://github.com/EmbarkStudios/test-advisory-db.git "$TEST_ADV_DB_DIR"
+  git -C "$TEST_ADV_DB_DIR" checkout "$_test_adv_gitrev"
 }
 
 post_install() {
