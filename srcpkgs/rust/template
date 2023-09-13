@@ -1,7 +1,7 @@
 # partially adapted from alpine/adélie's rust APKBUILD
 maintainer="nox"
 pkgname="rust"
-version=1.71.1
+version=1.72.0
 revision=1
 short_desc="Safe, concurrent, practical systems language"
 depends+=" gcc"
@@ -36,7 +36,7 @@ fi
 homepage="https://www.rust-lang.org/"
 license="MIT, Apache-2.0"
 distfiles="https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
-checksum="6fa90d50d1d529a75f6cc349784de57d7ec0ba2419b09bde7d335c25bd4e472e"
+checksum="ea9d61bbb51d76b6ea681156f69f0e0596b59722f04414b01c6e100b4b5be3a1"
 # needed for python files in rust-src
 python_version=3
 build_options="bindist"
@@ -127,7 +127,7 @@ do_configure() {
     --enable-locked-deps \
     --enable-verbose-tests \
     --disable-full-bootstrap \
-    --disable-extended \
+    --enable-extended \
     --disable-codegen-tests \
     --disable-dist-src \
     --$_llvm_shared-llvm-link-shared \
@@ -141,6 +141,7 @@ do_configure() {
     --release-description="Void Linux" \
     --llvm-libunwind="no" \
     --llvm-config="/usr/bin/llvm-config" \
+    --tools="clippy,rustdoc,rustfmt" \
     --set="rust.optimize=true" \
     --set="rust.debug=false" \
     --set="rust.codegen-units=1" \
@@ -213,6 +214,10 @@ do_install() {
   tar xf "build/dist/rust-docs-$version-$RUST_TARGET.tar.gz" \
    -C "$DESTDIR/usr" --strip-components=2 --exclude="manifest.in"
   tar xf "build/dist/rust-src-$version.tar.gz" \
+   -C "$DESTDIR/usr" --strip-components=2 --exclude="manifest.in"
+  tar xf "build/dist/rustfmt-$version-$RUST_TARGET.tar.gz" \
+   -C "$DESTDIR/usr" --strip-components=2 --exclude="manifest.in"
+  tar xf "build/dist/clippy-$version-$RUST_TARGET.tar.gz" \
    -C "$DESTDIR/usr" --strip-components=2 --exclude="manifest.in"
 
   vlicense COPYRIGHT
