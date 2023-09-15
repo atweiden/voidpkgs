@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="hwloc"
-version=2.9.2
+version=2.9.3
 revision=1
 short_desc="Portable abstraction of hierarchical hardware architectures"
 makedepends+=" eudev-libudev-devel"
@@ -13,7 +13,7 @@ hostmakedepends="pkg-config"
 homepage="https://www.open-mpi.org/projects/hwloc/"
 license="BSD-3-Clause"
 distfiles="https://www.open-mpi.org/software/hwloc/v${version%.*}/downloads/$pkgname-$version.tar.bz2"
-checksum="0a87fdf677f8b00b567d229b6320bf6b25c693edaa43e0b85268d999d6b060cf"
+checksum="5c4062ce556f6d3451fc177ffb8673a2120f81df6835dea6a21a90fbdfff0dec"
 build_style="gnu-configure"
 configure_args+=" --disable-cairo"
 configure_args+=" --disable-gl"
