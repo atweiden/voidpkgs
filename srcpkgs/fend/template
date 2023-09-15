@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fend"
-version=1.2.1
+version=1.2.2
 revision=1
 short_desc="Arbitrary-precision unit-aware calculator"
 homepage="https://printfn.github.io/fend/"
@@ -8,7 +8,7 @@ license="MIT"
 changelog="https://github.com/printfn/fend/raw/main/CHANGELOG.md"
 distfiles+=" https://github.com/printfn/fend/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/printfn/fend/releases/download/v$version/fend.1"
-checksum+=" 61f28950e5195669391f15c258e6c20cfad4ba45024046538ff8543d08862833"
+checksum+=" eb37d1dc6883ec7c181b913d8900d9592cc10ba501a904707500e3a3ae0dcec1"
 checksum+=" 11b921e5976ac2f994a9b0105f0bb2c3b49499a17906694762ec6774199f4145"
 skip_extraction="fend.1"
 build_style="cargo"
