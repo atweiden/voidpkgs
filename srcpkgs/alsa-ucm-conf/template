@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="alsa-ucm-conf"
-version=1.2.9
+version=1.2.10
 revision=1
 short_desc="ALSA Use Case Manager topology configurations"
 homepage="https://github.com/alsa-project/alsa-ucm-conf"
 license="BSD-3-Clause"
 distfiles="https://github.com/alsa-project/alsa-ucm-conf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1c40618161bc2738c55aab4dee1d0c82514e257116f296815a799adeaab5e48b"
+checksum="00e67c31b60494665f45ce57ca9d2c42421c40fbe0140b5a5648291238e63508"
 
 do_install() {
   vdoc ucm2/README.md
