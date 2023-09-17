@@ -1,41 +1,45 @@
-# Template file for 'eza'
-pkgname=eza
+maintainer="nox"
+pkgname="eza"
 version=0.12.0
 revision=1
-build_style=cargo
-hostmakedepends="pandoc pkg-config"
-makedepends="libgit2-devel"
 short_desc="Modern, maintained replacement for ls"
-maintainer="Marcin Puc <tranzystorek.io@protonmail.com>"
-license="MIT"
+makedepends="libgit2-devel"
+hostmakedepends+=" pandoc"
+hostmakedepends+=" pkg-config"
 homepage="https://github.com/eza-community/eza"
-changelog="https://raw.githubusercontent.com/eza-community/eza/main/CHANGELOG.md"
-distfiles="https://github.com/eza-community/eza/archive/refs/tags/v${version}.tar.gz"
-checksum=766e754c9f4632b92e4a773ac496dee8b6b83fdc9b8ed9514750058039fc5a83
+license="MIT"
+changelog="https://github.com/eza-community/eza/raw/main/CHANGELOG.md"
+distfiles="https://github.com/eza-community/eza/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="766e754c9f4632b92e4a773ac496dee8b6b83fdc9b8ed9514750058039fc5a83"
+build_style="cargo"
 
 post_patch() {
-	cargo update --package git2@0.18.0 --precise 0.17.2
+  cargo update --package git2@0.18.0 --precise 0.17.2
 }
 
 post_install() {
-	vcompletion completions/bash/eza bash
-	vcompletion completions/fish/eza.fish fish
-	vcompletion completions/zsh/_eza zsh
+  vcompletion completions/bash/eza bash
+  vcompletion completions/fish/eza.fish fish
+  vcompletion completions/zsh/_eza zsh
 
-	for manpage in eza.1 eza_colors.5 eza_colors-explanation.5; do
-		pandoc --standalone -f markdown -t man man/${manpage}.md > ${manpage}
-		vman ${manpage}
-	done
+  for manpage in eza.1 \
+                 eza_colors.5 \
+                 eza_colors-explanation.5; do
+    pandoc --standalone -f markdown -t man "man/$manpage.md" > "$manpage"
+    vman "$manpage"
+  done
 
-	vlicense LICENCE
+  vlicense LICENCE
 
-	ln -s eza ${DESTDIR}/usr/bin/exa
+  ln -s eza "$DESTDIR/usr/bin/exa"
 }
 
 exa_package() {
-	depends="eza>=${version}_${revision}"
-	short_desc+=" - transitional dummy package"
-	pkg_install() {
-		vmove usr/bin/exa
-	}
+  depends="eza>=${version}_$revision"
+  short_desc+=" - transitional dummy package"
+  pkg_install() {
+    vmove usr/bin/exa
+  }
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
