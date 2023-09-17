@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="alsa-lib"
 version=1.2.10
-revision=1
+revision=2
 short_desc="Advanced Linux Sound Architecture (ALSA) library"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
