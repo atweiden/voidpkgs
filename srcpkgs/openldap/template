@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openldap"
-version=2.4.58
-revision=2
+version=2.6.6
+revision=1
 short_desc="OpenLDAP (Lightweight Directory Access Protocol)"
 depends="openldap-tools>=${version}_$revision"
 makedepends+=" db-devel"
@@ -13,27 +13,28 @@ hostmakedepends+=" pkg-config"
 homepage="http://www.openldap.org"
 license="OLDAP-2.0"
 distfiles="https://www.openldap.org/software/download/OpenLDAP/$pkgname-release/$pkgname-$version.tgz"
-checksum="57b59254be15d0bf6a9ab3d514c1c05777b02123291533134a87c94468f8f47b"
+checksum="082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0"
 conf_files+=" /etc/openldap/ldap.conf"
 conf_files+=" /etc/openldap/slapd.conf"
+conf_files+=" /etc/openldap/slapd.ldif"
 build_style="gnu-configure"
 configure_args+=" --disable-static"
-configure_args+=" --enable-bdb"
 configure_args+=" --enable-crypt"
 configure_args+=" --enable-dynamic"
-configure_args+=" --enable-hdb"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-ldap"
 configure_args+=" --enable-local"
-configure_args+=" --enable-meta=mod"
+configure_args+=" --enable-meta=yes"
 configure_args+=" --enable-modules"
-configure_args+=" --enable-overlays=mod"
-configure_args+=" --enable-proctitle"
+configure_args+=" --enable-overlays=yes"
 configure_args+=" --enable-slapd"
 configure_args+=" --enable-spasswd"
 configure_args+=" --enable-syslog"
 configure_args+=" --libexecdir=/usr/libexec"
 configure_args+=" --localstatedir=/var/lib/openldap"
+configure_args+=" --prefix=/usr"
+configure_args+=" --sbindir=/usr/bin"
+configure_args+=" --sysconfdir=/etc"
 configure_args+=" --with-cyrus-sasl"
 configure_args+=" --with-threads"
 configure_args+=" --with-tls"
@@ -56,15 +57,17 @@ pre_configure() {
     servers/slapd/Makefile.in
 }
 
+pre_build() {
+  make "$makejobs" $make_build_args depend
+}
+
 post_install() {
   vlicense LICENSE
   ln -sf ../libexec/slapd "$DESTDIR/usr/bin/slapd"
   vsv slapd
   chmod 755 "$DESTDIR/usr/lib"/*.so.*
   vmkdir usr/share/examples/openldap
-  mv \
-    "$DESTDIR/etc/openldap"/*.{example,default} \
-    "$DESTDIR/usr/share/examples/openldap"
+  mv "$DESTDIR/etc/openldap"/*.default "$DESTDIR/usr/share/examples/openldap"
   chmod 0644 "$DESTDIR/usr/share/examples/openldap"/*
 }
 
@@ -99,6 +102,7 @@ openldap-tools_package() {
     vmove usr/bin/ldappasswd
     vmove usr/bin/ldapsearch
     vmove usr/bin/ldapurl
+    vmove usr/bin/ldapvc
     vmove usr/bin/ldapwhoami
     vmove usr/share/man/man1/ldapadd.1
     vmove usr/share/man/man1/ldapcompare.1
@@ -109,6 +113,7 @@ openldap-tools_package() {
     vmove usr/share/man/man1/ldappasswd.1
     vmove usr/share/man/man1/ldapsearch.1
     vmove usr/share/man/man1/ldapurl.1
+    vmove usr/share/man/man1/ldapvc.1
     vmove usr/share/man/man1/ldapwhoami.1
   }
 }
