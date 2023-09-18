@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gnupg1"
 version=1.4.23
-revision=1
+revision=2
 short_desc="GNU Privacy Guard v1"
 makedepends+=" bzip2-devel"
 makedepends+=" libcurl-devel"
