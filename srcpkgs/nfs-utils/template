@@ -17,6 +17,7 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" musl-legacy-compat"
 fi
 hostmakedepends+=" libtirpc-devel"
+hostmakedepends+=" mit-krb5-devel"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" rpcsvc-proto"
 homepage="https://www.linux-nfs.org/"
