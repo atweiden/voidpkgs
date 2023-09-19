@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zellij"
-version=0.38.1
+version=0.38.2
 revision=1
 short_desc="Terminal workspace with batteries included"
 # dependency crate wasmer-vm only supports x86_64, arm64, x86
@@ -15,7 +15,7 @@ homepage="https://zellij.dev"
 license="MIT"
 changelog="https://github.com/zellij-org/zellij/raw/main/CHANGELOG.md"
 distfiles="https://github.com/zellij-org/zellij/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ff15b85f0413fdf8c7f3c67b89c1662b2772b84e9f17af9a3e937469af272a56"
+checksum="18e8ae9fa2ad995af5f6c64b3c0713143d260cdc6c1a978831313bfaf305ad5e"
 build_style="cargo"
 make_check_pre="env LIBSSH2_SYS_USE_PKG_CONFIG=1"
 # shell completion generation requires qemu (see: upstream)
