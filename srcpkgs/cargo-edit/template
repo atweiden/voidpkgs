@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-edit"
-version=0.12.0
-revision=2
+version=0.12.2
+revision=1
 short_desc="Utility for managing cargo dependencies from the command line"
 # uses ring
 archs+=" aarch64*"
@@ -15,7 +15,7 @@ homepage="https://github.com/killercup/cargo-edit"
 license="MIT"
 changelog="https://github.com/killercup/cargo-edit/raw/master/CHANGELOG.md"
 distfiles="https://github.com/killercup/cargo-edit/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a8168ea2320c095f55d2b32f8bede8c814dcdc4290c250df36dc8ce0f6fb2095"
+checksum="10c86ca7585852ce288a44608ef87c827f4b733a94eb847ab15735b823b30560"
 build_style="cargo"
 configure_args+=" --features upgrade,set-version"
 configure_args+=" --no-default-features"
