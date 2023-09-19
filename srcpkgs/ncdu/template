@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ncdu"
-version=1.18.1
+version=1.19
 revision=1
 short_desc="NCurses Disk Usage utility"
 makedepends="ncurses-devel"
@@ -8,7 +8,7 @@ homepage="https://dev.yorhel.nl/ncdu"
 license="MIT"
 changelog="https://dev.yorhel.nl/ncdu/changes"
 distfiles="https://dev.yorhel.nl/download/$pkgname-$version.tar.gz"
-checksum="7c0fa1eb29d85aaed4ba174164bdbb8f011b5c390d017c57d668fc7231332405"
+checksum="30363019180cde0752c7fb006c12e154920412f4e1b5dc3090654698496bb17d"
 build_style="gnu-configure"
 
 post_install() {
