@@ -1,8 +1,8 @@
 # NOTE: keep this package synchronized with "srcpkgs/xbps"
 maintainer="nox"
 pkgname="xbps-static"
-version=0.59.1
-revision=7
+version=0.59.2
+revision=1
 short_desc="XBPS package system utilities - static binaries"
 # only musl
 archs="*-musl"
@@ -15,7 +15,7 @@ homepage="https://github.com/void-linux/xbps"
 license="BSD-2-Clause, BSD-3-Clause, ISC"
 changelog="https://github.com/void-linux/xbps/blob/master/NEWS"
 distfiles="https://github.com/void-linux/xbps/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0cbd8d5f23a62047c75974bca21da9f004a94efffd7f37c68562a8dbc869fb2a"
+checksum="a6607e83fcd654a0ae846d729e43fefd8da9a61323e91430f884caf895b4f59b"
 build_style="configure"
 
 do_configure() {
