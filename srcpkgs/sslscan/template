@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="sslscan"
-version=2.0.16
-revision=2
+version=2.1.0
+revision=1
 short_desc="Fast SSL/TLS scanner"
 makedepends="openssl-devel"
 homepage="https://github.com/rbsec/sslscan"
 license="GPL-3.0-or-later"
 changelog="https://github.com/rbsec/sslscan/raw/master/Changelog"
 distfiles="https://github.com/rbsec/sslscan/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="eae49b9c2023f9c9adeb10c50a6ee3ddf5da7aae20f6a6c59251e7a84aa44131"
+checksum="3140af055f067411a726f1061d8d7fd79e08fd4286e228dc3a230067b5704a72"
 build_style="gnu-makefile"
 # no test suite
 make_check="no"
