@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="f2fs-tools"
-version=1.15.0
+version=1.16.0
 revision=1
 short_desc="Tools for the Linux Flash-Friendly File System (F2FS)"
 makedepends+=" libblkid-devel"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git"
 license="GPL-2.0-only"
 distfiles="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/$pkgname-$version.tar.gz"
-checksum="147d471040b44900283ce2c935f1d35d13d7f40008e7cb8fab2b69f54da01a4f"
+checksum="208c7a07e95383fbd7b466b5681590789dcb41f41bf197369c41a95383b57c5e"
 build_style="gnu-configure"
 configure_args="--disable-static"
 make_install_args="sbindir=/usr/bin"
@@ -25,10 +25,5 @@ esac
 pre_configure() {
   autoreconf -fi
 }
-
-post_install() {
-  # /usr/bin/sg_write_buffer is provided in sg3_utils
-  rm "$DESTDIR/usr/bin/sg_write_buffer"
- }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
