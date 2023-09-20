@@ -1,24 +1,15 @@
 maintainer="nox"
 pkgname="bandwhich"
-version=0.20.0
-revision=2
+version=0.21.0
+revision=1
 short_desc="Terminal bandwidth utilization tool"
 homepage="https://github.com/imsnif/bandwhich"
 license="MIT"
-distfiles="https://github.com/imsnif/bandwhich/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4bbf05be32439049edd50bd1e4d5a2a95b0be8d36782e4100732f0cc9f19ba12"
+changelog="https://github.com/imsnif/bandwhich/raw/main/CHANGELOG.md"
+distfiles="https://github.com/imsnif/bandwhich/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="f9c50c340372593bf4c54fcf2608ef37c2c56a37367b2f430c27cce3ea947828"
 build_style="cargo"
-# cba for now
-make_check="no"
-
-post_patch() {
-  # We're patching in Cargo.toml without patching in Cargo.lock, so the
-  # lockfile is out of date after patching. Aside of that, we need
-  # to update some transitive dependencies to fix the build (socket2,
-  # failure and linked-hash-map), which is also done by just regenerating
-  # Cargo.lock.
-  cargo generate-lockfile
-}
+make_check_args="-- --skip tests::cases::ui::layout_under_50_width_under_50_height"
 
 post_install() {
   vlicense LICENSE.md
