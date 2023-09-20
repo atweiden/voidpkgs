@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux6.5"
-version=6.5.3
+version=6.5.4
 revision=1
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
@@ -31,7 +31,7 @@ if [[ "${version##*.}" != "0" ]]; then
   skip_extraction="patch-$version.xz"
 fi
 checksum+=" 7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884"
-checksum+=" a9f4c3c9a6026e33cf7e6dd4727016ab7dcb4c0fb7f2f289f227d3b32eed2c33"
+checksum+=" 14e8569a800595a7bf22d005fbaf72b70f81b86346be27fc9bfaa14c78480f8e"
 skip_extraction="patch-$version.xz"
 python_version=3
 # -dbg package is generated below manually
@@ -469,55 +469,6 @@ do_install() {
         "$hdrdest/tools/objtool"
       ;;
   esac
-
-  # remove unneeded architectures
-  case "$arch" in
-    i386|x86_64)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" p*"
-      ;;
-    arm|arm64)
-      _args+=" x86*"
-      _args+=" m*"
-      _args+=" p*"
-      ;;
-    powerpc)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" x86*"
-      _args+=" parisc"
-      ;;
-    mips)
-      _args+=" arm*"
-      _args+=" p*"
-      _args+=" x86*"
-      ;;
-    riscv)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" p*"
-      _args+=" x86*"
-      ;;
-  esac
-  for arch in $_args \
-              alpha \
-              avr32 \
-              blackfin \
-              cris \
-              frv \
-              h8300 \
-              ia64 \
-              s* \
-              um \
-              v850 \
-              xtensa; do
-    rm -rf "$hdrdest/arch/$arch"
-  done
-  # keep arch/x86/ras/Kconfig as it is needed by drivers/ras/Kconfig
-  mkdir -p "$hdrdest/arch/x86/ras"
-  cp -a arch/x86/ras/Kconfig \
-    "$hdrdest/arch/x86/ras/Kconfig"
 
   # extract debugging symbols and compress modules
   msg_normal "$pkgver: extracting debug info and compressing modules, please wait...\n"
