@@ -4,14 +4,13 @@ version=2.0.1
 revision=3
 short_desc="Little TOML parser for Python"
 depends="python3"
+checkdepends="python3-pytest"
 hostmakedepends="python3-flit_core"
 homepage="https://github.com/hukkin/tomli"
 license="MIT"
-distfiles="$PYPI_SITE/t/tomli/tomli-$version.tar.gz"
-checksum="de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
+distfiles="https://github.com/hukkin/tomli/archive/$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="ad22dbc128623e0c156ffaff019f29f456eba8a5d5a05164dd34f63e560449df"
 build_style="python3-pep517"
-# archive includes no tests
-make_check="no"
 
 post_install() {
   vlicense LICENSE
