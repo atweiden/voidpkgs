@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pmbootstrap"
-version=1.53.0
+version=2.0.0
 revision=1
 short_desc="Package build and device flashing tool for postmarketOS"
 depends+=" git"
@@ -11,7 +11,7 @@ homepage="https://postmarketos.org"
 license="GPL-3.0-or-later"
 changelog="https://git.sr.ht/~postmarketos/pmbootstrap/refs"
 distfiles="https://git.sr.ht/~postmarketos/pmbootstrap/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="524a7ef43bc254bdb0973926312befc6f76b0c14b03cecdfc6407388c97cbec7"
+checksum="e8d63b6f746c50cba3abd604902ee3f61ccd25dcfc026b0c1418df7540fd99f7"
 build_style="python3-module"
 # tests require chroot
 make_check="no"
