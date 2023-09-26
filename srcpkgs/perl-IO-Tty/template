@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-IO-Tty"
 version=1.17
-revision=1
+revision=2
 short_desc="IO::Tty - Perl interface to Low-level allocate a pseudo-Tty"
 depends="perl"
 makedepends="perl"
