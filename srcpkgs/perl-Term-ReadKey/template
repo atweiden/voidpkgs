@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Term-ReadKey"
 version=2.33
-revision=12
+revision=13
 short_desc="Perl module for simple terminal control"
 depends="perl"
 makedepends="perl"
