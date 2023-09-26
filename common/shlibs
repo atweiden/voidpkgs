@@ -752,7 +752,7 @@ libpam_misc.so.0 pam-libs-1.1.6_3
 libpamc.so.0 pam-libs-1.1.6_3
 libpassgen.so passgen-1.0.0_1
 libpci.so.3 pciutils-3.7.0_1
-libperl.so.5.36 perl-5.36.0_1
+libperl.so.5.38 perl-5.38.0_1
 libpkcs11-helper.so.1 pkcs11-helper-1.25.1_6
 libpopt.so.0 popt-1.15_1
 libecpg.so.6 postgresql-libs-15.1_1
