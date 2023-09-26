@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="subversion"
 version=1.14.2
-revision=3
+revision=4
 short_desc="A modern concurrent version control system"
 depends="ca-certificates"
 makedepends+=" apache-devel"
