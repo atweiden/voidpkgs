@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl-Crypt-Rijndael"
 version=1.16
-revision=2
+revision=3
 short_desc="Crypt::Rijndael - Crypt::CBC compliant Rijndael module"
 depends="perl"
 makedepends="perl"
