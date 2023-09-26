@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vim"
 version=9.0.1903
-revision=1
+revision=2
 short_desc="Vi Improved, a highly configurable, improved version of the vi text editor"
 depends="vim-common>=$version"
 makedepends+=" acl-devel"
