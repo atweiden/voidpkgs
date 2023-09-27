@@ -4,7 +4,8 @@ version=4.0.1
 revision=1
 short_desc="Modern password hashing for software and servers"
 depends="python3-cffi"
-makedepends="python3-devel"
+makedepends+=" python3-devel"
+makedepends+=" rust-std"
 checkdepends+=" python3-cffi"
 checkdepends+=" python3-pytest"
 hostmakedepends+=" cargo"
@@ -18,11 +19,5 @@ distfiles="$PYPI_SITE/b/bcrypt/bcrypt-$version.tar.gz"
 checksum="27d375903ac8261cfe4047f6709d16f7d18d39b1ec92aaf72af989552a650ebd"
 build_helper="rust"
 build_style="python3-pep517"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  makedepends+=" rust-std"
-  export PYO3_CROSS_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
-  export PYO3_CROSS_INCLUDE_DIR="$XBPS_CROSS_BASE/usr/include"
-fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
