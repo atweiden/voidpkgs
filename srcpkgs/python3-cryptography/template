@@ -6,6 +6,7 @@ short_desc="Python3 library that provides cryptographic recipes and primitives"
 depends="python3-cffi"
 makedepends+=" openssl-devel"
 makedepends+=" python3-devel"
+makedepends+=" rust-std"
 checkdepends+=" $depends"
 checkdepends+=" python3-cryptography_vectors"
 checkdepends+=" python3-hypothesis"
@@ -28,12 +29,6 @@ build_style="python3-module"
 build_helper="rust"
 make_check_args+=" --ignore tests/bench/test_aead.py"
 make_check_args+=" --ignore tests/bench/test_x509.py"
-
-if [[ -n "$CROSS_BUILD" ]]; then
-  makedepends+=" rust-std"
-  export PYO3_CROSS_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
-  export PYO3_CROSS_INCLUDE_DIR="$XBPS_CROSS_BASE/usr/include"
-fi
 
 pre_check() {
   vsed \
