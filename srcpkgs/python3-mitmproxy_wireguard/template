@@ -17,10 +17,6 @@ build_style="python3-pep517"
 build_helper="rust"
 
 do_build() {
-  if [[ -n "$CROSS_BUILD" ]]; then
-    export PYO3_CROSS_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
-    export PYO3_CROSS_INCLUDE_DIR="$XBPS_CROSS_BASE/usr/include"
-  fi
   # taken from ../python3-adblock/template
   maturin build -o . --release --target "$RUST_TARGET" --manylinux off
   mkdir -p dist
