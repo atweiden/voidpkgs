@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
-version=0.1.20230905
-revision=1
+version=0.1.20230926
+revision=3
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
