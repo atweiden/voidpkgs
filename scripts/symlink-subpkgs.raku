@@ -768,7 +768,8 @@ constant %PKG = Map.new(
     's6-rc' => qw<s6-rc-devel
                   s6-rc-doc>,
     'sbcl' => ['sbcl-source'],
-    'schilytools' => qw<sccs
+    'schilytools' => qw<cdrtools
+                        sccs
                         sdd
                         sfind
                         smake

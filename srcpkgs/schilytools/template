@@ -3,6 +3,7 @@ pkgname="schilytools"
 version=2023.04.19
 revision=1
 short_desc="Schily's portable tools"
+depends+=" cdrtools"
 depends+=" sccs"
 depends+=" sdd"
 depends+=" sfind"
@@ -12,6 +13,7 @@ depends+=" ved"
 makedepends+=" acl-devel"
 makedepends+=" attr-devel"
 makedepends+=" e2fsprogs-devel"
+makedepends+=" libcap-progs"
 makedepends+=" m4"
 homepage="https://codeberg.org/schilytools/schilytools"
 license="CDDL-1.0"
@@ -44,6 +46,11 @@ do_build() {
     COPTX="$CFLAGS" \
     INS_BASE="/usr/libexec/sccs" \
     LDOPTX="$LDFLAGS"
+}
+
+do_install() {
+  make install -C libsiconv/tables DESTDIR="$DESTDIR" INS_BASE="/usr"
+  vlicense CDDL.Schily.txt
 }
 
 sccs_package() {
@@ -126,6 +133,44 @@ ved_package() {
   short_desc+=" - ved"
   pkg_install() {
     make install -C ved DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
+    vlicense CDDL.Schily.txt
+  }
+}
+
+cdrtools_package() {
+  unset conf_files
+  unset depends
+  depends+=" libcap-progs"
+  depends+=" schilytools"
+  short_desc+=" - cdrtools"
+  conf_files+=" /etc/default/cdrecord"
+  conf_files+=" /etc/default/rscsi"
+  pkg_install() {
+    vsed \
+      -i \
+      -e 's|INSDIR=.*|INSDIR=bin|' \
+      rscsi/Makefile
+    for d in btcflash \
+             cdda2wav \
+             cdrecord \
+             mkisofs \
+             mkisofs/diag \
+             readcd \
+             rscsi \
+             scgcheck \
+             scgskeleton; do
+      make install -C "$d" \
+        CC="$CC" \
+        COPTX="$CFLAGS" \
+        DESTDIR="$PKGDESTDIR" \
+        INS_BASE="/usr" \
+        LDOPTX="$LDFLAGS" \
+        LDPATH= \
+        RUNPATH=
+    done
+    rm -rf "$PKGDESTDIR/usr/lib/profiled"
+    vmkdir usr/lib/modules-load.d
+    echo sg > "$PKGDESTDIR/usr/lib/modules-load.d/cdrtools.conf"
     vlicense CDDL.Schily.txt
   }
 }
