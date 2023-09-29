@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="toxic"
 version=0.11.3
-revision=1
+revision=2
 short_desc="Ncurses-based Tox instant messenger client"
 makedepends+=" libconfig-devel"
 makedepends+=" libcurl-devel"
