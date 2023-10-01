@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="android-tools"
-version=34.0.1
-revision=3
+version=34.0.4
+revision=1
 short_desc="Android platform tools (adb and fastboot)"
 archs+=" aarch64*"
 archs+=" armv*"
@@ -9,6 +9,7 @@ archs+=" i686*"
 archs+=" ppc64le*"
 archs+=" x86_64*"
 depends="python3"
+makedepends+=" abseil-cpp-devel"
 makedepends+=" brotli-devel"
 makedepends+=" gtest-devel"
 makedepends+=" liblz4-devel"
@@ -18,20 +19,14 @@ makedepends+=" pcre2-devel"
 makedepends+=" protobuf-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" go"
-hostmakedepends+=" go1.20"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" protobuf"
 homepage="https://developer.android.com/tools/help/adb.html"
 license="Apache-2.0, ISC, GPL-2.0-only, MIT"
 distfiles="https://github.com/nmeum/android-tools/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="60234ecbca19a17a7e2f46a4581960d645b7c55b870d924a21494c76a6f548ec"
+checksum="7a22ff9cea81ff4f38f560687858e8f8fb733624412597e3cc1ab0262f8da3a1"
 build_style="cmake"
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  configure_args="-DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
-fi
-
-export GOTOOLCHAIN="go1.20"
 
 post_install() {
   # zsh's built in works, while this one doesn't
