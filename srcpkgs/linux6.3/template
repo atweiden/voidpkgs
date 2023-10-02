@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="linux6.3"
 version=6.3.13
-revision=1
+revision=2
 _kernver="${version}_$revision"
 kernel_hooks_version="$_kernver"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -304,6 +304,7 @@ do_install() {
   cd "$wrksrc"
   # install required headers to build external modules
   install -Dm 644 Makefile "$hdrdest/Makefile"
+  install -Dm 644 Kbuild "$hdrdest/Kbuild"
   install -Dm 644 kernel/Makefile "$hdrdest/kernel/Makefile"
   install -Dm 644 .config "$hdrdest/.config"
   for file in $(find . -name Kconfig\*); do
@@ -377,6 +378,17 @@ do_install() {
   mkdir -p "$hdrdest/tools/include"
   cp -a tools/include/tools \
     "$hdrdest/tools/include"
+  if [[ -d "arch/$arch/tools" ]]; then
+    cp -a "arch/$arch/tools" \
+      "$hdrdest/arch/$arch"
+  fi
+  cp -a kernel/time/timeconst.bc \
+    "$hdrdest/kernel/time"
+  cp -a kernel/bounds.c \
+    "$hdrdest/kernel"
+  mkdir -p "$hdrdest/arch/x86/entry/syscalls"
+  cp -a arch/x86/entry/syscalls/syscall_32.tbl \
+    "$hdrdest/arch/x86/entry/syscalls"
 
   mkdir -p "$hdrdest/arch/$arch/kernel"
   cp "arch/$arch/Makefile" \
@@ -392,6 +404,8 @@ do_install() {
       "$hdrdest/arch/x86/kernel"
   elif [[ "$arch" == "arm64" ]]; then
     mkdir -p "$hdrdest/arch/arm64/kernel"
+    cp arch/arm64/kernel/asm-offsets.s \
+      "$hdrdest/arch/arm64/kernel"
     cp -a arch/arm64/kernel/vdso \
       "$hdrdest/arch/arm64/kernel/"
   fi
@@ -469,55 +483,6 @@ do_install() {
         "$hdrdest/tools/objtool"
       ;;
   esac
-
-  # remove unneeded architectures
-  case "$arch" in
-    i386|x86_64)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" p*"
-      ;;
-    arm|arm64)
-      _args+=" x86*"
-      _args+=" m*"
-      _args+=" p*"
-      ;;
-    powerpc)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" x86*"
-      _args+=" parisc"
-      ;;
-    mips)
-      _args+=" arm*"
-      _args+=" p*"
-      _args+=" x86*"
-      ;;
-    riscv)
-      _args+=" arm*"
-      _args+=" m*"
-      _args+=" p*"
-      _args+=" x86*"
-      ;;
-  esac
-  for arch in $_args \
-              alpha \
-              avr32 \
-              blackfin \
-              cris \
-              frv \
-              h8300 \
-              ia64 \
-              s* \
-              um \
-              v850 \
-              xtensa; do
-    rm -rf "$hdrdest/arch/$arch"
-  done
-  # keep arch/x86/ras/Kconfig as it is needed by drivers/ras/Kconfig
-  mkdir -p "$hdrdest/arch/x86/ras"
-  cp -a arch/x86/ras/Kconfig \
-    "$hdrdest/arch/x86/ras/Kconfig"
 
   # extract debugging symbols and compress modules
   msg_normal "$pkgver: extracting debug info and compressing modules, please wait...\n"
