@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cargo-update"
-version=13.0.4
-revision=3
+version=13.1.0
+revision=1
 short_desc="Cargo subcommand for updates to installed executables"
 makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
@@ -13,7 +13,7 @@ homepage="https://github.com/nabijaczleweli/cargo-update"
 license="MIT"
 changelog="https://github.com/nabijaczleweli/cargo-update/releases"
 distfiles="https://github.com/nabijaczleweli/cargo-update/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="cc07255dc6b7b61d7c54955ea33486b447f629564d9f3ebb88d421ab5bcdcdf6"
+checksum="f7623883f332162531c90a517e2733e61387d479000c928c62c061ec06584b94"
 build_style="cargo"
 
 post_patch() {
