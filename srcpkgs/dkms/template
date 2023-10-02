@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="dkms"
 version=3.0.10
-revision=2
+revision=3
 short_desc="Dynamic Kernel Module Support"
 depends+=" bash"
+depends+=" bc"
 depends+=" coreutils"
 depends+=" gcc"
 depends+=" kmod"
@@ -20,7 +21,8 @@ homepage="https://github.com/dell/dkms"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/dell/dkms/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="1eba13bf3a2c140c21e9ba31c1db9e9b8eac55658291340b0e50b965565f9ef7"
-conf_files="/etc/dkms/framework.conf"
+conf_files+=" /etc/default/dkms"
+conf_files+=" /etc/dkms/framework.conf"
 # dkms does not create this directory, but needs it
 # https://github.com/void-linux/void-packages/issues/39066
 make_dirs="/var/lib/dkms 0755 root root"
@@ -47,6 +49,7 @@ do_install() {
   # kernel hooks
   vinstall "$FILESDIR/kernel.d/dkms.postinst" 754 etc/kernel.d/post-install 10-dkms
   vinstall "$FILESDIR/kernel.d/dkms.prerm" 754 etc/kernel.d/pre-remove 10-dkms
+  vinstall "$FILESDIR/dkms.default" 644 etc/default dkms
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
