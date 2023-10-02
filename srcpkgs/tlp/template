@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tlp"
 version=1.5.0
-revision=2
+revision=3
 short_desc="Advanced power management tool for Linux"
 depends+=" bash"
 depends+=" ethtool"
@@ -17,7 +17,8 @@ checksum="b5f08f00d535c26abc49b336b4c7264c6e5fb7bc3de8054eaabeebdd00e0760e"
 conf_files+=" /etc/tlp.conf"
 conf_files+=" /etc/tlp.d/*.conf"
 make_dirs="/var/lib/tlp 0755 root root"
-conflicts="laptop-mode>=0"
+conflicts+=" laptop-mode>=0"
+conflicts+=" perl-Unicode-Tussle>=0"
 
 do_install() {
   make \
@@ -37,6 +38,8 @@ do_install() {
   rm -f "$DESTDIR/usr/share/man/man8"/*.service.8
 
   vsv tlp
+  vinstall "$FILESDIR/tlp.resume" 755 etc/zzz.d/resume 50-tlp.sh
+  vinstall "$FILESDIR/tlp.suspend" 755 etc/zzz.d/suspend 50-tlp.sh
 
   rm -rf "$DESTDIR/etc/init.d"
 }
