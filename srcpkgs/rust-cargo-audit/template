@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rust-cargo-audit"
-version=0.18.1
+version=0.18.2
 revision=1
 short_desc="Audit Cargo.lock for crates with security vulnerabilities"
 makedepends+=" libssh2-devel"
@@ -11,7 +11,7 @@ homepage="https://rustsec.org"
 license="Apache-2.0, MIT"
 changelog="https://github.com/rustsec/rustsec/raw/main/cargo-audit/CHANGELOG.md"
 distfiles="https://static.crates.io/crates/cargo-audit/${pkgname/rust-/}-$version.crate>$pkgname-$version.crate"
-checksum="98bf8e948b35c7e5c715db6a7e82c7eccb8ec722965287b59f3ac15431288f9b"
+checksum="596642f33fd57a8014990a19a449473184938642d8011b6e27a5ad50195c5e09"
 build_style="cargo"
 configure_args="--features=fix"
 
