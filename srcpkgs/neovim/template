@@ -24,8 +24,6 @@ checksum="06b8518bad4237a28a67a4fbc16ec32581f35f216b27f4c98347acee7f5fb369"
 build_style="cmake"
 configure_args+=" -DCI_BUILD=OFF"
 configure_args+=" -DCOMPILE_LUA=OFF"
-# MIN_LOG_LEVEL 1: INFO, 3: ERROR, upstream's release's default is 3
-configure_args+=" -DMIN_LOG_LEVEL=3"
 configure_args+=" -DPREFER_LUA=$(vopt_if luajit OFF ON)"
 build_options="luajit"
 case "$XBPS_TARGET_MACHINE" in
