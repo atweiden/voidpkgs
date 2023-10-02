@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tzutils"
-version=2023a
-revision=2
+version=2023c
+revision=1
 short_desc="Time zone and daylight-saving time utilities"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends="tzutils"
@@ -9,9 +9,8 @@ fi
 homepage="https://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="https://www.iana.org/time-zones/repository/releases/tzdb-$version.tar.lz"
-checksum="4ab2805f15f9a5a681e4f581cb54383d41ae25da506469b77b4239556038c652"
+checksum="08fd090f1a16d522ae4e9247445056f4155002239e5be760b31ba0376d2e632c"
 bootstrap="yes"
-reverts="2023b_1"
 
 do_build() {
   touch version
