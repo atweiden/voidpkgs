@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-socks"
-version=2.3.0
+version=2.4.3
 revision=1
 short_desc="Core proxy client functionality for Python"
 depends="python3"
@@ -18,7 +18,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/romis2012/python-socks"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/p/python-socks/python-socks-$version.tar.gz"
-checksum="2002f20f32366861bec90e6b520e4696671587b3dd56e476477e5a07ec49a094"
+checksum="135430ae36d582dc834c983696c5f66177aa5b587407f540985d616ef2e0c701"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
