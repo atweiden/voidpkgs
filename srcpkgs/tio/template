@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tio"
-version=2.6
+version=2.7
 revision=1
 short_desc="Simple serial device I/O tool"
 makedepends="inih-devel"
@@ -9,7 +9,7 @@ homepage="https://github.com/tio/tio"
 license="GPL-2.0-or-later"
 changelog="https://github.com/tio/tio/raw/master/NEWS"
 distfiles="https://github.com/tio/tio/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9b8a69124662cda8aee0faf74c71cdcd482530a46368f784015b579759e5d485"
+checksum="c1fb02f953a9a1f37a2077dd7030afbb99ace10a8c6204a810f2e662ecd43fe4"
 build_style="meson"
 
 post_install() {
