@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="gocryptfs"
 version=2.3.1
-revision=3
+revision=4
 short_desc="Encrypted overlay filesystem written in Go"
-depends="fuse"
+depends="fuse3"
 homepage="https://nuetzlich.net/gocryptfs"
 license="MIT"
 changelog="https://github.com/rfjakob/gocryptfs#changelog"
