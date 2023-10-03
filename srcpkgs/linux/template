@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="linux"
-version=6.3
+version=6.5
 revision=1
 short_desc="Linux kernel meta package"
 depends+=" linux$version"
