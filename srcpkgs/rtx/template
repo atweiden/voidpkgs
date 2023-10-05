@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rtx"
-version=2023.9.2
+version=2023.10.0
 revision=1
 short_desc="Polyglot runtime manager (asdf rust clone)"
 makedepends="openssl-devel"
@@ -9,7 +9,7 @@ homepage="https://github.com/jdxcode/rtx"
 license="MIT"
 changelog="https://github.com/jdxcode/rtx/releases"
 distfiles="https://github.com/jdxcode/rtx/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ed4bc7910802814d7570f4b9950825740a6096b32d9a706f7077f11e03380432"
+checksum="5e0a2391b890f1a5b874faf029219d85a6ae1bce9878269779a78857bc598a1e"
 build_style="cargo"
 # skip cli tests: fail to find executable
 make_check_args="-- --skip cli::direnv::exec::tests"
