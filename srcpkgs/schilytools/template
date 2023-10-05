@@ -1,9 +1,8 @@
 maintainer="nox"
 pkgname="schilytools"
 version=2023.09.28
-revision=1
+revision=2
 short_desc="Schily's portable tools"
-depends+=" cdrtools"
 depends+=" sccs"
 depends+=" sdd"
 depends+=" sfind"
