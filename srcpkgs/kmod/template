@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kmod"
-version=30
+version=31
 revision=1
 short_desc="Linux kernel module handling"
 makedepends+=" liblzma-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/kernel/kmod/$pkgname-$version.tar.xz"
-checksum="f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f"
+checksum="f5a6949043cc72c001b728d8c218609c5a15f3c33d75614b78c79418fcf00d80"
 build_style="gnu-configure"
 configure_args+=" --with-xz"
 configure_args+=" --with-zlib"
