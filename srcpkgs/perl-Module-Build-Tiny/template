@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-Module-Build-Tiny"
-version=0.046
+version=0.047
 revision=1
 short_desc="Module::Build::Tiny - A tiny replacement for Module::Build"
 depends+=" perl"
@@ -12,7 +12,7 @@ hostmakedepends="$depends"
 homepage="https://metacpan.org/release/Module-Build-Tiny"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Module/${pkgname/perl-/}-$version.tar.gz"
-checksum="be193027e2debb4c9926434aaf1aa46c9fc7bf4db83dcc347eb6e359ee878289"
+checksum="71260e9421b93c33dd1b3e7d0cf15f759c0ca7c753fa840279ec3be70f8f8c9d"
 build_style="perl-ModuleBuild"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
