@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Sphinx"
-version=7.0.1
+version=7.2.6
 revision=1
 short_desc="Python 3 documentation generator"
 depends+=" python3-Babel"
@@ -31,8 +31,9 @@ hostmakedepends+=" python3-pyproject-hooks"
 homepage="http://sphinx-doc.org"
 license="BSD-3-Clause"
 changelog="https://github.com/sphinx-doc/sphinx/raw/master/CHANGES"
-distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
-checksum="61e025f788c5977d9412587e733733a289e2b9fdc2fef8868ddfbfc4ccfe881d"
+#distfiles="$PYPI_SITE/S/Sphinx/Sphinx-$version.tar.gz"
+distfiles="$PYPI_SITE/s/sphinx/sphinx-$version.tar.gz"
+checksum="9a5160e1ea90688d5963ba09a2dcd8bdd526620edbb65c328728f1b2228d5ab5"
 build_style="python3-pep517"
 # ImageMagick in checkdepends requires gui dependencies
 make_check="no"
