@@ -1,14 +1,27 @@
-# Template file for 'pdfcpu'
-pkgname=pdfcpu
+maintainer="nox"
+pkgname="pdfcpu"
 version=0.5.0
 revision=1
-build_style=go
-go_import_path="github.com/pdfcpu/pdfcpu"
-go_package="${go_import_path}/cmd/pdfcpu"
 short_desc="PDF processor"
-maintainer="Andrew Benson <abenson+void@gmail.com>"
-license="Apache-2.0"
 homepage="http://pdfcpu.io/"
+license="Apache-2.0"
 changelog="https://github.com/pdfcpu/pdfcpu/releases"
-distfiles="https://github.com/pdfcpu/pdfcpu/archive/v${version}.tar.gz"
-checksum=d67529db954b4b8fd708ac984cf79a53baf57ab2d50ef9ee0f9188f7e4a83127
+distfiles="https://github.com/pdfcpu/pdfcpu/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="d67529db954b4b8fd708ac984cf79a53baf57ab2d50ef9ee0f9188f7e4a83127"
+build_style="go"
+go_import_path="github.com/pdfcpu/pdfcpu"
+go_package="$go_import_path/cmd/pdfcpu"
+go_build_tags+=" netgo"
+go_build_tags+=" osusergo"
+go_ldflags+=" -buildid="
+go_ldflags+=" -X main.Version=$version"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  go_ldflags+=" -extldflags=-static"
+  go_ldflags+=" -linkmode=external"
+fi
+
+pre_build() {
+  export GOFLAGS="-trimpath"
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
