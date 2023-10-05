@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tor"
-version=0.4.7.14
-revision=2
+version=0.4.8.7
+revision=1
 short_desc="Anonymizing overlay network"
 depends+=" ca-certificates"
 depends+=" torsocks"
@@ -19,10 +19,9 @@ homepage="https://www.torproject.org/"
 license="BSD-3-Clause"
 changelog="https://gitlab.torproject.org/tpo/core/tor/-/raw/main/ChangeLog"
 distfiles="https://dist.torproject.org/$pkgname-$version.tar.gz"
-checksum="a5ac67f6466380fc05e8043d01c581e4e8a2b22fe09430013473e71065e65df8"
+checksum="b20d2b9c74db28a00c07f090ee5b0241b2b684f3afdecccc6b8008931c557491"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
-configure_args="--enable-zstd"
 case "$XBPS_TARGET_MACHINE" in
   # tests just don't work here
   x86_64-musl)
