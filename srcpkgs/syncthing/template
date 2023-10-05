@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="syncthing"
-version=1.24.0
+version=1.25.0
 revision=1
 short_desc="Open Source Continuous File Synchronization"
 homepage="https://syncthing.net/"
 license="MPL-2.0"
 changelog="https://github.com/syncthing/syncthing/releases"
 distfiles="https://github.com/syncthing/syncthing/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="75734e6f75395d9d4f5c27a415753b372d5aad5fb9ff08d3a6b50df4b0626133"
+checksum="25948ff788d98b74672b8fdb67a414b96d7a28cf9c48a52b32213dbc34d6bb65"
 build_style="go"
 go_import_path="github.com/syncthing/syncthing"
 go_package+=" $go_import_path/cmd/stdiscosrv"
