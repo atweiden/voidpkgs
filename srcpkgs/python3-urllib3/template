@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-urllib3"
 version=1.26.12
-revision=1
+revision=2
 short_desc="HTTP library with thread-safe connection pooling"
 depends="python3-six"
 checkdepends+=" python3-dateutil"
