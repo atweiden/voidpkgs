@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-execnet"
 version=2.0.2
-revision=1
+revision=2
 short_desc="Distributed Python deployment and communication"
 depends="python3"
 checkdepends="python3-pytest"
