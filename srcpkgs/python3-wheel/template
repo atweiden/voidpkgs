@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-wheel"
 version=0.41.2
-revision=1
+revision=2
 short_desc="Built-package format for Python (Python3)"
 depends="python3-setuptools"
 checkdepends+=" $depends"
