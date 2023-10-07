@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-jeepney"
 version=0.8.0
-revision=2
+revision=3
 short_desc="Low-level, pure Python DBus protocol wrapper"
 depends="python3"
 checkdepends+=" python3-async-timeout"
