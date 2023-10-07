@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-platformdirs"
 version=3.10.0
-revision=1
+revision=2
 short_desc="Library to determine platform-specific system directories"
 depends="python3"
 checkdepends+=" python3-appdirs"
