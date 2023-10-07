@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-importlib_metadata"
 version=6.7.0
-revision=1
+revision=2
 short_desc="Read metadata from python3 packages"
 depends="python3-zipp"
 hostmakedepends+=" python3-setuptools_scm"
