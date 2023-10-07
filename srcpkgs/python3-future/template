@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-future"
 version=0.18.2
-revision=6
+revision=7
 short_desc="Clean single-source support for Python 3 and 2 (Python3)"
 depends="python3-setuptools"
 hostmakedepends="python3-setuptools"
