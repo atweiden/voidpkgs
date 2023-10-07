@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hatch-vcs"
 version=0.3.0
-revision=1
+revision=2
 short_desc="Hatch plugin for VCS based versioning"
 depends+=" hatchling"
 depends+=" python3-setuptools_scm"
