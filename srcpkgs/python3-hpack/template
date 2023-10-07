@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-hpack"
 version=4.0.0
-revision=3
+revision=4
 short_desc="HTTP/2 Header Encoding (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
