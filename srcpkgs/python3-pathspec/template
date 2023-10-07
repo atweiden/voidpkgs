@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pathspec"
 version=0.11.2
-revision=1
+revision=2
 short_desc="Python3 utility library for pattern matching of file paths"
 depends="python3"
 checkdepends="python3-pytest"
