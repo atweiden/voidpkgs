@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-cov"
 version=4.1.0
-revision=1
+revision=2
 short_desc="Pytest plugin for measuring coverage"
 depends+=" python3-coverage"
 depends+=" python3-pytest"
