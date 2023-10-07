@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nyx"
 version=2.1.0
-revision=6
+revision=7
 short_desc="Command-line status monitor for tor"
 depends+=" python3-setuptools"
 depends+=" python3-stem"
