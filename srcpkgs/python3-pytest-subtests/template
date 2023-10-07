@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-subtests"
 version=0.11.0
-revision=1
+revision=2
 short_desc="Subtest fixture for python3-pytest"
 depends="python3-pytest"
 checkdepends="python3-pytest"
