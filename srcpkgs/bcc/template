@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bcc"
 version=0.28.0
-revision=1
+revision=2
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
 makedepends+=" clang-tools-extra"
