@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-dnspython"
 version=2.1.0
-revision=3
+revision=4
 short_desc="DNS toolkit for Python3"
 depends="python3"
 checkdepends+=" iana-etc"
