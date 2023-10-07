@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-elementpath"
 version=3.0.2
-revision=2
+revision=3
 short_desc="XPath 1.0/2.0 parsers and selectors for ElementTree and lxml"
 depends="python3"
 checkdepends+=" python3-lxml"
