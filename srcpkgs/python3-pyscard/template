@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyscard"
 version=2.0.5
-revision=1
+revision=2
 short_desc="Python library for smartcard"
 depends+=" libpcsclite"
 depends+=" pcsclite"
