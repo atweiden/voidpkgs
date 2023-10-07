@@ -1,11 +1,11 @@
 maintainer="nox"
 pkgname="uwsgi"
 version=2.0.22
-revision=2
+revision=3
 short_desc="Fast, self-healing application container server"
 makedepends+=" openssl-devel"
 makedepends+=" python3-devel"
-hostmakedepends="python3"
+hostmakedepends="python3-setuptools"
 homepage="https://uwsgi-docs.readthedocs.io/en/latest/"
 license="GPL-2.0-only WITH GCC-exception-2.0"
 changelog="https://github.com/unbit/uwsgi-docs/raw/master/Changelog-$version.rst"
