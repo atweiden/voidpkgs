@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-imagesize"
 version=1.2.0
-revision=3
+revision=4
 short_desc="Python3 library to get image size from png/jpeg/jpeg2000/gif file"
 depends="python3"
 checkdepends="python3-pytest"
