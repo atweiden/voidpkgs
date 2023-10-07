@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nmap"
 version=7.94
-revision=2
+revision=3
 short_desc="Utility for network discovery and security auditing"
 makedepends+=" libpcap-devel"
 makedepends+=" libssh2-devel"
@@ -9,7 +9,7 @@ makedepends+=" openssl-devel"
 makedepends+=" pcre-devel"
 makedepends+=" zlib-devel"
 makedepends+=" $(vopt_if lua lua53-devel)"
-hostmakedepends="python3"
+hostmakedepends="python3-setuptools"
 homepage="https://nmap.org"
 license="custom:nmap"
 changelog="https://github.com/nmap/nmap/raw/master/CHANGELOG"
