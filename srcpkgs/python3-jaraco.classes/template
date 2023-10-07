@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-jaraco.classes"
 version=3.2.1
-revision=2
+revision=3
 short_desc="Utility functions for Python class constructs (Python3)"
 depends="python3-more-itertools"
 hostmakedepends+=" python3-setuptools_scm"
