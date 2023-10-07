@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyrsistent"
 version=0.19.3
-revision=1
+revision=2
 short_desc="Python persistent immutable data structures"
 depends="python3"
 checkdepends+=" python3-hypothesis"
