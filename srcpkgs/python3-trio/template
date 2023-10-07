@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-trio"
 version=0.22.0
-revision=1
+revision=2
 short_desc="Friendly Python library for async concurrency and I/O"
 depends+=" python3-async_generator"
 depends+=" python3-attrs"
