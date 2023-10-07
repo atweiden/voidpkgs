@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-argon2"
 version=19.2.0
-revision=4
+revision=5
 short_desc="CFFI-based Argon2 Bindings for Python3"
 depends+=" python3-cffi"
 depends+=" python3-six"
