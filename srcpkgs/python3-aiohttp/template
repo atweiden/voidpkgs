@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-aiohttp"
 version=3.7.4
-revision=4
+revision=5
 short_desc="HTTP client/server for asyncio (PEP-3156)"
 depends+=" python3-async-timeout"
 depends+=" python3-attrs"
