@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-charset-normalizer"
 version=3.2.0
-revision=1
+revision=2
 short_desc="Encoding and language detection"
 depends="python3"
 checkdepends="python3-pytest"
