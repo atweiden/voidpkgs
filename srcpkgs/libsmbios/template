@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libsmbios"
 version=2.4.3
-revision=4
+revision=5
 short_desc="Library for SMBIOS access"
 archs+=" i686*"
 archs+=" x86_64*"
