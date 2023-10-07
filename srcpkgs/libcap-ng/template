@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libcap-ng"
 version=0.8.3
-revision=2
+revision=3
 short_desc="Alternate POSIX capabilities library"
 homepage="http://people.redhat.com/sgrubb/libcap-ng/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
@@ -15,6 +15,7 @@ subpackages+=" libcap-ng-progs"
 
 if [[ -z "$CROSS_BUILD" ]]; then
   hostmakedepends+=" python3-devel"
+  hostmakedepends+=" python3-setuptools"
   hostmakedepends+=" swig"
   configure_args+=" --without-python"
   configure_args+=" --with-python3"
