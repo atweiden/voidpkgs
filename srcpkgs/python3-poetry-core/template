@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-poetry-core"
 version=1.5.0
-revision=1
+revision=2
 short_desc="Poetry PEP 517 Build Backend & Core Utilities"
 depends="python3"
 checkdepends+=" python3-devel"
