@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-ruamel.yaml"
 version=0.17.21
-revision=2
+revision=3
 short_desc="YAML parser/emitter in Python 3"
 depends="python3-ruamel.yaml.clib"
 makedepends="python3-devel"
