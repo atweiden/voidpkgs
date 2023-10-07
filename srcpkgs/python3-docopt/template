@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-docopt"
 version=0.6.2
-revision=9
+revision=10
 short_desc="Pythonic argument parser, that will make you smile (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
