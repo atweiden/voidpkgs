@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyasn1-modules"
 version=0.2.8
-revision=6
+revision=7
 short_desc="Collection of ASN.1-based protocols modules (Python3)"
 depends="python3-pyasn1"
 checkdepends+=" python3-pyasn1"
