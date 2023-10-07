@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-distlib"
 version=0.3.6
-revision=1
+revision=2
 short_desc="Low-level components of distutils2/packaging, with higher-level APIs"
 depends="python3"
 checkdepends="python3-pytest-xdist"
