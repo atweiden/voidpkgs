@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-psutil"
 version=5.9.5
-revision=1
+revision=2
 short_desc="Cross-platform process and system utilities module for Python3"
 depends="python3"
 makedepends="python3-devel"
