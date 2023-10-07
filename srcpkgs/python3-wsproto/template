@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-wsproto"
 version=1.0.0
-revision=3
+revision=4
 short_desc="Sans-IO WebSocket protocol implementation (Python3)"
 depends="python3-h11"
 checkdepends+=" $depends"
