@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytz"
 version=2023.3.post1
-revision=1
+revision=2
 short_desc="Python3 timezone library"
 depends+=" python3"
 depends+=" tzdata"
