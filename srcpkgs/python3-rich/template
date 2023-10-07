@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-rich"
 version=13.6.0
-revision=1
+revision=2
 short_desc="Library for rich text and beautiful formatting in the terminal"
 depends+=" python3-Pygments"
 depends+=" python3-markdown-it"
