@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-simplejson"
 version=3.18.3
-revision=1
+revision=2
 short_desc="Simple, fast, extensible JSON encoder/decoder for Python3"
 depends="python3"
 makedepends="python3-devel"
