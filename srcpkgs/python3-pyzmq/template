@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyzmq"
 version=25.1.1
-revision=1
+revision=2
 short_desc="Python3 bindings for the ZeroMQ messaging library"
 depends="python3"
 makedepends+=" python3-devel"
