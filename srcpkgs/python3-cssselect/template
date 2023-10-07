@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-cssselect"
 version=1.2.0
-revision=1
+revision=2
 short_desc="CSS selectors for Python3"
 depends="python3"
 hostmakedepends="python3-setuptools"
