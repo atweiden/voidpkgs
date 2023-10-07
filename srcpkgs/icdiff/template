@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="icdiff"
 version=2.0.7
-revision=1
+revision=2
 short_desc="Side-by-side highlighted command line diffs"
 depends+=" python3"
 depends+=" python3-setuptools"
