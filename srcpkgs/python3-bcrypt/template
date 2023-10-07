@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-bcrypt"
 version=4.0.1
-revision=1
+revision=2
 short_desc="Modern password hashing for software and servers"
 depends="python3-cffi"
 makedepends+=" python3-devel"
