@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyperclip"
 version=1.8.2
-revision=2
+revision=3
 short_desc="Cross-platform clipboard module (Python3)"
 depends="python3"
 #checkdepends+=" python3-pytest"
