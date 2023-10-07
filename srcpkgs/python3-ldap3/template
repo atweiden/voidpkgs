@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-ldap3"
 version=2.8.1
-revision=3
+revision=4
 short_desc="Strictly RFC 4510 conforming LDAP V3 pure Python client (Python3)"
 depends="python3-pyasn1"
 hostmakedepends="python3-setuptools"
