@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-sphinx-automodapi"
 version=0.13
-revision=3
+revision=4
 short_desc="Sphinx extension for generating API documentation"
 depends="python3-Sphinx"
 hostmakedepends="python3-setuptools"
