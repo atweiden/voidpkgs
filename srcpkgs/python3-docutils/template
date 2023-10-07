@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-docutils"
 version=0.20.1
-revision=1
+revision=2
 short_desc="Python3 documentation utilities"
 # docutils/writers/odf_odt/pygmentsformatter.py
 depends="python3-Pygments"
