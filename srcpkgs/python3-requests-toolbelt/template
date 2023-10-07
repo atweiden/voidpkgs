@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-requests-toolbelt"
 version=1.0.0
-revision=1
+revision=2
 short_desc="Utilities for advanced use of python-requests (Python3)"
 depends="python3-requests"
 checkdepends+=" python3-betamax"
