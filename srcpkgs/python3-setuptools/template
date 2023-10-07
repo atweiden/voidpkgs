@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-setuptools"
 version=68.2.2
-revision=1
+revision=2
 short_desc="Easily build and distribute Python3 packages"
 depends="python3"
 hostmakedepends="python3-devel"
