@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Flask"
 version=2.3.3
-revision=1
+revision=2
 short_desc="Python3 web microframework"
 depends+=" python3-Jinja2"
 depends+=" python3-Werkzeug"
