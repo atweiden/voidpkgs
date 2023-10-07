@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tox"
 version=3.28.0
-revision=1
+revision=2
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-filelock"
 depends+=" python3-packaging"
