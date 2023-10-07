@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apparmor"
 version=3.1.6
-revision=1
+revision=2
 short_desc="Mandatory access control to restrict programs"
 # python3-{dbus,notify2} needed for aa-notify, but requires glib and dbus
 depends+=" iproute2"
