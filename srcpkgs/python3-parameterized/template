@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-parameterized"
 version=0.9.0
-revision=1
+revision=2
 short_desc="Parameterized testing with any Python test framework"
 depends="python3"
 checkdepends="python3-mock"
