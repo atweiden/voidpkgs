@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Pygments"
 version=2.16.1
-revision=1
+revision=2
 short_desc="Generic syntax highlighter written in Python"
 depends="python3"
 checkdepends+=" python3-lxml"
