@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest"
 version=7.4.0
-revision=1
+revision=2
 short_desc="Simple powerful testing with Python 3"
 _common_deps+=" python3-attrs"
 _common_deps+=" python3-iniconfig"
