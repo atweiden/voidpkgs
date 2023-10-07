@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-testpath"
 version=0.6.0
-revision=1
+revision=2
 short_desc="Test utilities for Python code working with files and commands"
 depends="python3"
 checkdepends="python3-pytest"
