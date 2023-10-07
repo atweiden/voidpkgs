@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyflakes"
 version=3.0.1
-revision=1
+revision=2
 short_desc="Passive checker of Python programs (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
