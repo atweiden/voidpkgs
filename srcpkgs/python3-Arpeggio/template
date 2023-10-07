@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Arpeggio"
 version=2.0.0
-revision=2
+revision=3
 short_desc="Recursive descent parser with memoization based on PEG grammars"
 depends="python3"
 checkdepends="python3-pytest"
