@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-xdist"
 version=3.3.1
-revision=1
+revision=2
 short_desc="Pytest plugin for distributed testing & loop-on-failures testing modes"
 depends+=" python3-execnet"
 depends+=" python3-pytest"
