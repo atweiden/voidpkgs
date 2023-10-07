@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Twisted"
 version=22.10.0
-revision=1
+revision=2
 short_desc="Asynchronous networking framework written in Python (Python3)"
 depends+=" python3-attrs"
 depends+=" python3-automat"
