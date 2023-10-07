@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libkdumpfile"
 version=0.5.2
-revision=1
+revision=2
 short_desc="Kernel coredump file access library"
 makedepends+=" libzstd-devel"
 makedepends+=" lzo-devel"
@@ -10,6 +10,7 @@ makedepends+=" snappy-devel"
 makedepends+=" zlib-devel"
 hostmakedepends+=" automake"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" libtool"
 homepage="https://github.com/ptesarik/libkdumpfile"
 license="GPL-2.0-or-later, LGPL-3.0-or-later"
