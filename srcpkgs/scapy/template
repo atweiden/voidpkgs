@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="scapy"
 version=2.4.5
-revision=3
+revision=4
 short_desc="Powerful interactive packet manipulation program written in Python"
 depends+=" python3"
 depends+=" tcpdump"
