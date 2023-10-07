@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pmbootstrap"
 version=2.0.0
-revision=1
+revision=2
 short_desc="Package build and device flashing tool for postmarketOS"
 depends+=" git"
 depends+=" openssl"
