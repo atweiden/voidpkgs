@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-hyperframe"
 version=6.0.1
-revision=3
+revision=4
 short_desc="Pure-Python HTTP/2 framing (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
