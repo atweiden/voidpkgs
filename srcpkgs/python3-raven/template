@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-raven"
 version=6.10.0
-revision=7
+revision=8
 short_desc="Python3 client for Sentry"
 depends+=" ca-certificates"
 depends+=" python3-setuptools"
