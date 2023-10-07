@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-publicsuffix2"
 version=2019.12.21
-revision=2
+revision=3
 short_desc="Get a public suffix for a domain name using the Public Suffix List"
 depends="python3"
 hostmakedepends+=" python3-requests"
