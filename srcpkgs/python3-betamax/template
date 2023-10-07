@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-betamax"
 version=0.8.1
-revision=2
+revision=3
 short_desc="VCR imitation designed only for python-requests (Python3)"
 depends="python3-requests"
 checkdepends+=" python3-pytest"
