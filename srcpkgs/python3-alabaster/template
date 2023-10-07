@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-alabaster"
 version=0.7.12
-revision=6
+revision=7
 short_desc="Configurable sidebar-enabled Sphinx theme (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
