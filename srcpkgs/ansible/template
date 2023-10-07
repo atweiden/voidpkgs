@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ansible"
 version=8.0.0
-revision=1
+revision=2
 short_desc="Simple deployment, configuration management and execution framework"
 depends="ansible-core"
 hostmakedepends+=" python3-setuptools"
