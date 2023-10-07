@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-outcome"
 version=1.2.0
-revision=1
+revision=2
 short_desc="Capture the outcome of Python function calls"
 depends="python3"
 checkdepends+=" python3-pytest"
