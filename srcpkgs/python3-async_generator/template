@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-async_generator"
 version=1.10
-revision=5
+revision=6
 short_desc="Async generators and context managers for Python3.5+"
 depends="python3"
 hostmakedepends="python3-setuptools"
