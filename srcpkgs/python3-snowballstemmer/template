@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-snowballstemmer"
 version=1.2.1
-revision=8
+revision=9
 short_desc="Snowball stemming library collection for Python3"
 depends="python3"
 hostmakedepends="python3-setuptools"
