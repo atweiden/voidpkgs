@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="hatchling"
 version=1.18.0
-revision=1
+revision=2
 short_desc="Extensible, standards compliant build backend used by Hatch"
 depends+=" python3-editables"
 depends+=" python3-packaging"
