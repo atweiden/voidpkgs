@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-semanticversion"
 version=2.8.5
-revision=4
+revision=5
 short_desc="Semantic version comparison (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
