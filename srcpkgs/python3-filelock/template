@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-filelock"
 version=3.11.0
-revision=1
+revision=2
 short_desc="Platform independent file lock"
 depends="python3"
 checkdepends+=" python3-coverage"
