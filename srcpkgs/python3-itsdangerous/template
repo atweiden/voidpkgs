@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-itsdangerous"
 version=2.1.2
-revision=2
+revision=3
 short_desc="Various helpers to pass trusted data to untrusted enviroments and back"
 depends="python3"
 makedepends="python3-devel"
