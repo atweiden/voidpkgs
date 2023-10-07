@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pycryptodomex"
 version=3.16.0
-revision=1
+revision=2
 short_desc="Pycryptodome equivalent that installs under the 'Cryptodome' name"
 depends="python3"
 makedepends="python3-devel"
