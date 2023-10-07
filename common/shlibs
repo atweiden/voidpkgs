@@ -762,8 +762,8 @@ libpq.so.5 postgresql-libs-15.1_1
 libproc2.so.0 procps-ng-4.0.3_1
 libproxychains4.so proxychains-ng-4.13_1
 libpython2.7.so.1.0 python-2.7.18_3
-libpython3.11.so.1.0 python3-3.11.0_1
-libpython3.so python3-3.9.2_2
+libpython3.12.so.1.0 python3-3.12.0_1
+libpython3.so python3-3.12.0_1
 libraft.so.2 raft-0.13.0_1
 libre2.so.10 re2-2023.03.01_1
 libreiserfscore.so.0 reiserfsprogs-3.6.27_3
