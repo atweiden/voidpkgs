@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-wcwidth"
 version=0.2.6
-revision=1
+revision=2
 short_desc="Measures no. of terminal column cells of wide-character codes"
 depends="python3"
 checkdepends="python3-pytest"
