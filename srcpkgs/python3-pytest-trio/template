@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-trio"
 version=0.8.0
-revision=1
+revision=2
 short_desc="Pytest plugin for trio"
 depends+=" python3-outcome"
 depends+=" python3-pytest"
