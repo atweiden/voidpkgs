@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Jinja2"
 version=3.1.2
-revision=1
+revision=2
 short_desc="Full featured template engine (Python3)"
 depends="python3-MarkupSafe"
 checkdepends+=" python3-MarkupSafe"
