@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-qrcode"
 version=6.1
-revision=6
+revision=7
 short_desc="QR Code image generator (Python3)"
 depends="python3-six"
 checkdepends="python3-six"
