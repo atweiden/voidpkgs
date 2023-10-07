@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mitmproxy"
 version=9.0.1
-revision=1
+revision=2
 short_desc="Interactive TLS-capable intercepting HTTP proxy"
 depends+=" python3-Brotli"
 depends+=" python3-Flask"
