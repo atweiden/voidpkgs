@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libnvme"
 version=1.6
-revision=1
+revision=2
 short_desc="C Library for NVM Express on Linux"
 makedepends+=" json-c-devel"
 makedepends+=" openssl-devel"
