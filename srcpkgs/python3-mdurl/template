@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-mdurl"
 version=0.1.2
-revision=1
+revision=2
 short_desc="Python port of the JavaScript mdurl package"
 depends="python3"
 hostmakedepends="python3-flit_core"
