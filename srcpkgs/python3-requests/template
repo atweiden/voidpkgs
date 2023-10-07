@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-requests"
 version=2.31.0
-revision=1
+revision=2
 short_desc="Python3 HTTP library for human beings"
 depends+=" ca-certificates"
 depends+=" python3-charset-normalizer"
