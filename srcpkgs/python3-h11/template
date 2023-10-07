@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-h11"
 version=0.14.0
-revision=1
+revision=2
 short_desc="Bring-your-own-I/O implementation of HTTP/1.1 (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
