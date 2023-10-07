@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-iso8601"
 version=2.0.0
-revision=1
+revision=2
 short_desc="ISO8601 formatted dated parser for Python3"
 depends="python3"
 checkdepends+=" python3-hypothesis"
