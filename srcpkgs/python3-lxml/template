@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-lxml"
 version=4.9.3
-revision=2
+revision=3
 short_desc="Python binding for the libxml2 and libxslt libraries"
 depends="python3"
 makedepends+=" libxslt-devel"
