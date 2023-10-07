@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyproject-hooks"
 version=1.0.0
-revision=1
+revision=2
 short_desc="Low-level library for calling Python build backends"
 depends="python3"
 checkdepends+=" python3-flit_core"
