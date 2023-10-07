@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-passlib"
 version=1.7.4
-revision=2
+revision=3
 short_desc="Comprehensive password hashing framework for Python3"
 depends="python3"
 checkdepends+=" python3-bcrypt"
