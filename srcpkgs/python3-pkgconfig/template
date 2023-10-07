@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pkgconfig"
 version=1.5.4
-revision=2
+revision=3
 short_desc="Python3 module to interface with pkg-config"
 depends+=" pkg-config"
 depends+=" python3"
