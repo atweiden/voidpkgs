@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Brotli"
 version=1.0.9
-revision=2
+revision=3
 short_desc="Python bindings for the Brotli compression library"
 depends="python3"
 makedepends+=" brotli-devel"
