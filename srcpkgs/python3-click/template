@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-click"
 version=8.1.7
-revision=1
+revision=2
 short_desc="Python3 package for creating beautiful command line interfaces"
 depends="python3"
 checkdepends="python3-pytest"
