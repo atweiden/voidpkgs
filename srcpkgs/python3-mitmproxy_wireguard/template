@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-mitmproxy_wireguard"
 version=0.1.19
-revision=1
+revision=2
 short_desc="WireGuard frontend for mitmproxy"
 depends="python3"
 makedepends+=" python3-devel"
