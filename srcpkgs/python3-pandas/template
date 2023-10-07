@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-pandas"
-version=2.0.3
+version=2.1.1
 revision=1
 short_desc="Python3 data analysis library"
 depends+=" python3-dateutil"
@@ -10,16 +10,20 @@ makedepends+=" python3-dateutil"
 makedepends+=" python3-devel"
 makedepends+=" python3-numpy"
 makedepends+=" python3-pytz"
+hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3-Cython0.29"
+hostmakedepends+=" python3-meson-python"
 hostmakedepends+=" python3-numpy"
-hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-versioneer"
+hostmakedepends+=" python3-wheel"
 homepage="https://pandas.pydata.org/"
 license="BSD-3-Clause"
 changelog="https://pandas.pydata.org/pandas-docs/stable/whatsnew/index.html"
 distfiles="https://github.com/pandas-dev/pandas/archive/v${version}.tar.gz"
-checksum="e7ea4798650316b2c45cf801ff02e3d6e79614696c8f0731b24715aad9969516"
-build_style="python3-module"
+checksum="853a0d3c3af28821436ae45619ef6e07b9748f2bd5a1a0c0356320f968a0a64b"
+build_style="python3-pep517"
+build_helper+=" meson"
+build_helper+=" numpy"
 # tests won't run from source directory; build directory lacks data files
 make_check="no"
 # builds seem to sometimes have missing symbol problems; the intermittent
