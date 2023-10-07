@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-neovim"
 version=0.4.3
-revision=3
+revision=4
 short_desc="Python3 client for Neovim"
 depends+=" neovim"
 depends+=" python3-greenlet"
