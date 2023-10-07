@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-versioneer"
 version=0.29
-revision=1
+revision=2
 short_desc="Version-string management for VCS-controlled trees"
 depends="python3"
 hostmakedepends+=" python3-setuptools"
