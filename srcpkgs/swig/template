@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="swig"
-version=4.0.2
-revision=2
+version=4.1.1
+revision=1
 short_desc="Simplified Wrapper and Interface Generator"
-makedepends+=" pcre-devel"
+makedepends+=" pcre2-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="bison"
 homepage="http://www.swig.org"
 license="GPL-3.0-or-later"
 distfiles="$SOURCEFORGE_SITE/swig/$pkgname-$version.tar.gz"
-checksum="d53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc"
+checksum="2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b"
 build_style="gnu-configure"
-configure_args="--with-pcre-prefix=$XBPS_CROSS_BASE/usr"
+configure_args="--with-pcre2-prefix=$XBPS_CROSS_BASE/usr"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
