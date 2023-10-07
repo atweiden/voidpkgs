@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-applehelp"
 version=1.0.4
-revision=1
+revision=2
 short_desc="Sphinx extension which outputs Apple help book"
 depends="python3"
 checkdepends="python3-Sphinx"
