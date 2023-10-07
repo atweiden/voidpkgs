@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-fido2"
 version=1.1.1
-revision=1
+revision=2
 short_desc="Library for FIDO2 functionality"
 depends+=" python3-cryptography"
 depends+=" python3-pyscard"
