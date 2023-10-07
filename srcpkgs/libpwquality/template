@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libpwquality"
 version=1.4.5
-revision=1
+revision=2
 short_desc="Library for password quality checking and generating random passwords"
 depends="cracklib"
 makedepends+=" cracklib-devel"
@@ -11,6 +11,7 @@ hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" python3"
+hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/libpwquality/libpwquality"
 license="GPL-2.0-or-later"
 changelog="https://github.com/libpwquality/libpwquality/raw/master/NEWS"
