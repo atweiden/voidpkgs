@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="python3-curio"
 version=1.6
-revision=1
+revision=2
 short_desc="Coroutine-based library for concurrent programming using async/await"
 depends="python3"
-checkdepends="python3-pytest"
+checkdepends="python3-pytest-xdist"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/dabeaz/curio"
 license="BSD-3-Clause"
@@ -16,7 +16,8 @@ build_style="python3-module"
 do_check() {
   # ci container has different privileges than expected in test_errors()
   # which leads to ci builds timing out on some arches
-  PYTHONPATH=$(cd build/lib* && pwd) pytest -k 'not test_errors'
+  PYTHONPATH="$(cd build/lib* && pwd)" \
+    pytest3 -n "$XBPS_MAKEJOBS" -k 'not test_errors'
 }
 
 post_install() {
