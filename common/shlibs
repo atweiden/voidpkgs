@@ -114,7 +114,7 @@ libisccfg-9.16.22.so bind-libs-9.16.22_1
 libns-9.16.22.so bind-libs-9.16.22_1
 libbitcoinconsensus.so.0 bitcoin-22.0_1
 libblas.so.3 blas-3.5.0_1
-libboost_python311.so.1.83.0 boost-python3-1.83.0_1
+libboost_python312.so.1.83.0 boost-python3-1.83.0_1
 libbotan-2.so.19 botan-2.19.1_1
 libbrotlicommon.so.1 brotli-1.0.2_1
 libbrotlidec.so.1 brotli-1.0.2_1
