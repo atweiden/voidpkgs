@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-idna"
 version=3.4
-revision=2
+revision=3
 short_desc="Internationalized Domain Names in Applications (IDNA) for Python3"
 depends="python3"
 hostmakedepends="python3-flit_core"
