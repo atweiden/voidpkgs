@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-constantly"
 version=15.1.0
-revision=7
+revision=8
 short_desc="Symbolic constants in Python (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
