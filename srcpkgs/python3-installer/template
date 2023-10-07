@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-installer"
 version=0.7.0
-revision=1
+revision=2
 short_desc="Low-level library for installing from a Python wheel"
 depends="python3"
 checkdepends="python3-pytest-xdist"
