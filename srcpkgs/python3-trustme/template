@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-trustme"
 version=1.0.0
-revision=1
+revision=2
 depends+=" python3-cryptography"
 depends+=" python3-idna"
 checkdepends+=" $depends"
