@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pretend"
 version=1.0.9
-revision=6
+revision=7
 short_desc="Make stubbing with Python3 easier"
 depends="python3"
 hostmakedepends="python3-setuptools"
