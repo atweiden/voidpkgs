@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="electrum"
 version=4.4.6
-revision=1
+revision=2
 short_desc="Lightweight Bitcoin wallet"
 depends+=" libsecp256k1"
 depends+=" python3-aiohttp"
