@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-qthelp"
 version=1.0.3
-revision=4
+revision=5
 short_desc="Sphinx extension which outputs QtHelp document"
 depends="python3"
 checkdepends="python3-Sphinx"
