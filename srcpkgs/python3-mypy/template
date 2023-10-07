@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-mypy"
 version=1.5.1
-revision=1
+revision=2
 short_desc="Optional static typing for Python3"
 depends+=" python3-mypy_extensions"
 depends+=" python3-typing_extensions"
