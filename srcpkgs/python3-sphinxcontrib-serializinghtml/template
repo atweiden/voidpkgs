@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-serializinghtml"
 version=1.1.5
-revision=3
+revision=4
 short_desc="Sphinx extension which outputs serialized HTML document"
 depends="python3"
 hostmakedepends="python3-setuptools"
