@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-zipp"
 version=3.13.0
-revision=1
+revision=2
 short_desc="Pathlib-compatible Zipfile object wrapper (Python 3)"
 depends="python3"
 hostmakedepends+=" python3-setuptools_scm"
