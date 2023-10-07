@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-aiorpcx"
 version=0.22.1
-revision=2
+revision=3
 short_desc="Generic async RPC implementation"
 depends="python3-attrs"
 checkdepends+=" iana-etc"
