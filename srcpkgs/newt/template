@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="newt"
 version=0.52.21
-revision=6
+revision=7
 short_desc="Library for color text mode, widget based user interfaces"
 makedepends+=" popt-devel"
 makedepends+=" python3-devel"
