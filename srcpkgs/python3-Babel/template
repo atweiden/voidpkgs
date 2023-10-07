@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Babel"
 version=2.12.1
-revision=1
+revision=2
 short_desc="Tools for internationalizing Python applications (Python3)"
 checkdepends+=" faketime"
 checkdepends+=" python3-freezegun"
