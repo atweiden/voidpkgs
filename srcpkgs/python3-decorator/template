@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-decorator"
 version=5.1.1
-revision=2
+revision=3
 short_desc="Python3 decorator module"
 depends="python3"
 hostmakedepends="python3-setuptools"
