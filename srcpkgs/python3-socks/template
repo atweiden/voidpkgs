@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-socks"
 version=2.4.3
-revision=1
+revision=2
 short_desc="Core proxy client functionality for Python"
 depends="python3"
 checkdepends+=" python3-anyio"
