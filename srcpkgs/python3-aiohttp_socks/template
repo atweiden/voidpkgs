@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-aiohttp_socks"
 version=0.8.0
-revision=1
+revision=2
 short_desc="SOCKS proxy connector for aiohttp"
 depends+=" python3-aiohttp"
 depends+=" python3-socks"
