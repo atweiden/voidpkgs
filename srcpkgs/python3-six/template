@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-six"
 version=1.16.0
-revision=3
+revision=4
 short_desc="Python 2 and 3 compatibility utilities (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
