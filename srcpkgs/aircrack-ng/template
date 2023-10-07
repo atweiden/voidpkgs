@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="aircrack-ng"
 version=1.7
-revision=3
+revision=4
 short_desc="Complete suite of tools to assess WiFi network security"
 makedepends+=" libcap-devel"
 makedepends+=" libhwloc-devel"
@@ -19,7 +19,7 @@ hostmakedepends+=" automake"
 hostmakedepends+=" ethtool"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
-hostmakedepends+=" python3"
+hostmakedepends+=" python3-setuptools"
 homepage="https://www.aircrack-ng.org/"
 license="GPL-2.0-or-later, BSD-3-Clause, OpenSSL"
 changelog="https://www.aircrack-ng.org/doku.php?id=changelog"
