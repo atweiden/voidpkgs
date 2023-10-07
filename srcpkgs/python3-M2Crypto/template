@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-M2Crypto"
 version=0.38.0
-revision=3
+revision=4
 short_desc="Python crypto and SSL toolkit"
 depends="python3"
 makedepends+=" openssl-devel"
