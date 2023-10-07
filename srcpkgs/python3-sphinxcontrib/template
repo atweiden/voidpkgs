@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib"
 version=1.0
-revision=7
+revision=8
 short_desc="Namespace package declaration for sphinxcontrib"
 depends="python3-setuptools"
 hostmakedepends="python3-setuptools"
