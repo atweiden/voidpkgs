@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pyaes"
 version=1.6.1
-revision=7
+revision=8
 short_desc="Pure-Python implementation of the AES block cipher (Python3)"
 depends="python3"
 hostmakedepends="python3-setuptools"
