@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-urwid"
 version=2.1.2
-revision=4
+revision=5
 short_desc="Console user interface library for Python3"
 depends="python3"
 makedepends="python3-devel"
