@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="borg"
 version=1.2.6
-revision=1
+revision=2
 short_desc="Deduplicating backup program with compression and encryption"
 depends+=" python3-msgpack"
 depends+=" python3-packaging"
