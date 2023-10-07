@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-appdirs"
 version=1.4.4
-revision=5
+revision=6
 short_desc="Python3 module for determining appropriate platform-specific dirs"
 depends="python3"
 hostmakedepends="python3-setuptools"
