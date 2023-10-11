@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-drgn"
-version=0.0.23
-revision=2
+version=0.0.24
+revision=1
 short_desc="Scriptable debugger library"
 depends="python3"
 makedepends+=" elfutils-devel"
@@ -15,7 +15,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/osandov/drgn/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/osandov/drgn/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a13691a0df3e33bb8e4c73219c5677b75c2324bf70a1eeb485a3b367ce0c5d4c"
+checksum="f3c82c95ba4694d9d4beff53d96730ec0d71f792319db639385c2f72ff1d9979"
 build_style="python3-module"
 
 pre_build() {
