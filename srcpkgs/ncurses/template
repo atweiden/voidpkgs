@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ncurses"
 version=6.4
-revision=1
+revision=2
 short_desc="System V Release 4.0 curses emulation library"
 depends="ncurses-base-${version}_$revision"
 homepage="https://invisible-island.net/ncurses/"
@@ -176,7 +176,6 @@ ncurses-term_package() {
 }
 
 ncurses-libtinfo-libs_package() {
-  lib32disabled="yes"
   depends="ncurses-libs-${version}_$revision"
   short_desc+=" - libtinfo.so symlink"
   pkg_install() {
@@ -186,7 +185,7 @@ ncurses-libtinfo-libs_package() {
 
 ncurses-libtinfo-devel_package() {
   unset depends
-  lib32disabled="yes"
+  lib32mode="full"
   depends+=" ncurses-devel-${version}_$revision"
   depends+=" ncurses-libtinfo-libs-${version}_$revision"
   short_desc+=" - libtinfo.so symlink - development files"
