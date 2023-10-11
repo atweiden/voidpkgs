@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Cython"
 version=3.0.2
-revision=3
+revision=4
 short_desc="Python to C compiler"
 depends="python3-setuptools"
 makedepends="python3-devel"
