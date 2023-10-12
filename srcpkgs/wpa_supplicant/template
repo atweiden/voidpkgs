@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="wpa_supplicant"
 version=2.10
-revision=3
+revision=4
 short_desc="WPA/WPA2/IEEE 802.1X Supplicant"
 makedepends+=" libnl3-devel"
 makedepends+=" openssl-devel"
