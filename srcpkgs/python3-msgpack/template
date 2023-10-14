@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-msgpack"
-version=1.0.5
-revision=2
+version=1.0.7
+revision=1
 short_desc="Python module for Msgpack serializer"
 depends="python3"
 makedepends="python3-devel"
@@ -11,7 +11,7 @@ homepage="https://github.com/msgpack/msgpack-python"
 license="Apache-2.0"
 changelog="https://github.com/msgpack/msgpack-python/raw/main/ChangeLog.rst"
 distfiles="$PYPI_SITE/m/msgpack/msgpack-$version.tar.gz"
-checksum="c075544284eadc5cddc70f4757331d99dcbc16b2bbd4849d15f8aae4cf36d31c"
+checksum="572efc93db7a4d27e404501975ca6d2d9775705c2d922390d878fcf768d92c87"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
