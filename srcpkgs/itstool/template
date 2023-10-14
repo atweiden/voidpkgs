@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="itstool"
 version=2.0.7
-revision=1
+revision=2
 short_desc="ITS Tool"
 depends+=" libxml2-python3"
 depends+=" python3"
