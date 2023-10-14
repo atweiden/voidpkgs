@@ -1,57 +1,31 @@
 maintainer="nox"
 pkgname="bat"
-version=0.23.0
-revision=2
+version=0.24.0
+revision=1
 short_desc="Cat(1) clone with syntax highlighting and Git integration"
-makedepends+=" libcurl-devel"
 makedepends+=" libgit2-devel"
-makedepends+=" libssh2-devel"
 makedepends+=" oniguruma-devel"
-hostmakedepends+=" clang"
-hostmakedepends+=" cmake"
-hostmakedepends+=" llvm"
-hostmakedepends+=" pkg-config"
+hostmakedepends="pkg-config"
 homepage="https://github.com/sharkdp/bat"
 license="Apache-2.0, MIT"
 changelog="https://github.com/sharkdp/bat/raw/master/CHANGELOG.md"
 distfiles="https://github.com/sharkdp/bat/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="30b6256bea0143caebd08256e0a605280afbbc5eef7ce692f84621eb232a9b31"
+checksum="907554a9eff239f256ee8fe05a922aad84febe4fe10a499def72a4557e9eedfb"
 build_style="cargo"
-# skip problematic doctests on i686
-case "$XBPS_TARGET_MACHINE" in
-  i686) make_check_args="--tests" ;;
-  *) ;;
-esac
 
-post_patch() {
-  cargo update --package git2@0.16.1 --precise 0.17.2
-}
+export BAT_ASSETS_GEN_DIR="$XBPS_BUILDDIR/$pkgname-$version"
 
 pre_build() {
-  export CFLAGS_${RUST_BUILD//-/_}="$CFLAGS_host"
-  export CC_${RUST_BUILD//-/_}="$BUILD_CC"
+  cargo update --package git2@0.18.0 --precise 0.17.2
 }
 
 post_install() {
-  local bash_completion
-  local fish_completion
-  local manpage
-  local zsh_completion
-
   vlicense LICENSE-MIT
   vdoc README.md
-
-  # the manual page is hidden somewhere deep in the build tree
-  manpage="$(find "$wrksrc/target" -name bat.1 | head -n1)"
-  vman "$manpage"
-
-  # completions are also hidden somewhere deep in the build tree
-  fish_completion="$(find "$wrksrc/target" -name bat.fish -print -quit)"
-  vcompletion "$fish_completion" fish
-  zsh_completion="$(find "$wrksrc/target" -name bat.zsh -print -quit)"
-  vcompletion "$zsh_completion" zsh
-  bash_completion="$(find "$wrksrc/target" -name bat.bash -print -quit)"
-  vcompletion "$bash_completion" bash
+  vman assets/manual/bat.1
+  vcompletion assets/completions/bat.fish fish
+  vcompletion assets/completions/bat.zsh zsh
+  vcompletion assets/completions/bat.bash bash
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
