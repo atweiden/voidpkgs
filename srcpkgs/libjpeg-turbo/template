@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libjpeg-turbo"
 version=2.1.5.1
-revision=1
+revision=2
 short_desc="Derivative of libjpeg which uses SIMD instructions"
 hostmakedepends="yasm"
 homepage="https://libjpeg-turbo.org/"
@@ -10,8 +10,7 @@ changelog="https://github.com/libjpeg-turbo/libjpeg-turbo/raw/main/ChangeLog.md"
 distfiles="$SOURCEFORGE_SITE/libjpeg-turbo/$pkgname-$version.tar.gz"
 checksum="2fdc3feb6e9deb17adec9bafa3321419aa19f8f4e5dea7bf8486844ca22207bf"
 build_style="cmake"
-configure_args+=" -DCMAKE_INSTALL_LIBDIR=/usr/lib"
-configure_args+=" -DWITH_JPEG8=1"
+configure_args="-DWITH_JPEG8=1"
 provides="jpeg-8_1"
 replaces="jpeg>=0"
 
