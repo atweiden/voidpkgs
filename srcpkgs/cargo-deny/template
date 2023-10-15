@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cargo-deny"
-version=0.14.2
+version=0.14.3
 revision=1
 _adv_gitrev="9cf72357c8c52629d22edd8b4b8d7f7cdeea2504"
 _test_adv_gitrev="1f44d565d81692a44b8c7af8a80f587e19757f8c"
@@ -11,7 +11,7 @@ homepage="https://github.com/EmbarkStudios/cargo-deny"
 license="MIT, Apache-2.0"
 changelog="https://github.com/EmbarkStudios/cargo-deny/raw/main/CHANGELOG.md"
 distfiles="https://github.com/EmbarkStudios/cargo-deny/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="86152b1be86c9293b4bf0f80a1feedf6d9e045964c68de63d0407abf6aadcfc3"
+checksum="7de9e0e55f353a7396ca2d93645ec11ce14675749752c938fe2f63b68dc84e48"
 build_style="cargo"
 configure_args="--no-default-features"
 # too many failed tests
