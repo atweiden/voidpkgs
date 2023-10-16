@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-uvloop"
-version=0.17.0
-revision=3
+version=0.18.0
+revision=1
 short_desc="Fast replacement for Python asyncio event loop"
 depends="python3"
 makedepends+=" libuv-devel"
@@ -16,7 +16,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://github.com/MagicStack/uvloop"
 license="Apache-2.0, MIT"
 distfiles="https://github.com/MagicStack/uvloop/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="175ac8aeb251da6a6a72f504f451ad7b4e60092d5adee9231b0a67ad2e7ca235"
+checksum="81907a393fd5636dc52cb9affd0b841702cd8758f3106acafa4b1bfe85087dc1"
 build_style="python3-module"
 
 do_check() {
