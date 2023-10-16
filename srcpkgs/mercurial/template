@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mercurial"
-version=6.5
-revision=2
+version=6.5.2
+revision=1
 short_desc="Fast, lightweight source control management system"
 depends+=" ca-certificates"
 depends+=" python3"
@@ -24,7 +24,7 @@ hostmakedepends+=" python3-setuptools"
 homepage="https://www.mercurial-scm.org/"
 license="GPL-2.0-or-later"
 distfiles="https://www.mercurial-scm.org/release/$pkgname-$version.tar.gz"
-checksum="a5603d0d395ebf67fe5d27abbb3bd37fcc01871ecf394c793672d2c1e68be7e7"
+checksum="afc39d7067976593c8332b8e97a12afd393b55037c5fb9c3cab1a42c7560f60a"
 build_style="python3-module"
 
 pre_check() {
@@ -47,11 +47,11 @@ do_check() {
   fi
 
   cd tests
-  rm test-hghave.t
-  rm test-merge-tools.t
-  rm test-status.t
-  rm test-status-eacces.t
-  PATH="/tmp/bin:$PATH" python3 run-tests.py "$makejobs" "$_additional_test"
+  PATH="/tmp/bin:$PATH" \
+    python3 run-tests.py \
+      --blacklist "$FILESDIR/tests_blacklist" \
+      $makejobs \
+      $_additional_test
 }
 
 post_install() {
