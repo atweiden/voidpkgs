@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="abseil-cpp"
-version=20230802.0
+version=20230802.1
 revision=1
 short_desc="Abseil common libraries"
 hostmakedepends="pkg-config"
@@ -8,7 +8,7 @@ homepage="https://abseil.io"
 license="Apache-2.0"
 changelog="https://github.com/abseil/abseil-cpp/releases"
 distfiles="https://github.com/abseil/abseil-cpp/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="59d2976af9d6ecf001a81a35749a6e551a335b949d34918cfade07737b9d93c5"
+checksum="987ce98f02eefbaf930d6e38ab16aa05737234d7afbab2d5c4ea7adbe50c28ed"
 build_style="cmake"
 configure_args+=" -DABSL_PROPAGATE_CXX_STD=ON"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
