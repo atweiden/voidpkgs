@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="cargo-modules"
-version=0.9.3
+version=0.10.0
 revision=1
 short_desc="Cargo plugin to render crate's module/item structure as a tree or graph"
 homepage="https://github.com/regexident/cargo-modules"
 license="MPL-2.0"
 changelog="https://github.com/regexident/cargo-modules/raw/main/CHANGELOG.md"
 distfiles="https://github.com/regexident/cargo-modules/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a7bf566d0297801877dc70c6e02b9f1066909f4c3e37a4fb45b56fc5683901b7"
+checksum="441448832c5adc2fd61dee471a509e370f2f21cbf86f5d87b7ad3faf7a3d966a"
 build_style="cargo"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
