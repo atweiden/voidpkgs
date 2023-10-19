@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-httplib2"
-version=0.21.0
-revision=2
+version=0.22.0
+revision=1
 short_desc="Comprehensive HTTP client library (Python3)"
 depends+=" ca-certificates"
 depends+=" python3"
@@ -18,10 +18,8 @@ homepage="https://github.com/httplib2/httplib2"
 license="MIT"
 changelog="https://github.com/httplib2/httplib2/raw/master/CHANGELOG"
 distfiles="$PYPI_SITE/h/httplib2/httplib2-$version.tar.gz"
-checksum="fc144f091c7286b82bec71bdbd9b27323ba709cc612568d3000893bfd9cb4b34"
+checksum="d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81"
 build_style="python3-module"
-# https://github.com/httplib2/httplib2/issues/221
-make_check_args="-k not(test_client_cert_password_verified)"
 
 post_install() {
   # use system ca certificates
