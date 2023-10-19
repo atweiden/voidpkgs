@@ -93,7 +93,7 @@ zfs-devel_package() {
   depends="libzfs>=${version}_$revision"
   short_desc="Z File System -- development files"
   provides="zfs-devel-${version}_$revision"
-  replaces="zfs-devel-lts>=0"
+  replaces="zfs-lts-devel>=0"
   pkg_install() {
     vmove usr/include
     vmove "usr/lib/*.a"
@@ -106,7 +106,7 @@ zfs-pam_package() {
   depends="$sourcepkg>=${version}_$revision"
   short_desc="Z File System -- PAM integration"
   provides="zfs-pam-${version}_$revision"
-  replaces="zfs-pam-lts>=0"
+  replaces="zfs-lts-pam>=0"
   pkg_install() {
     vmove usr/lib/security/pam_zfs_key.so
   }
