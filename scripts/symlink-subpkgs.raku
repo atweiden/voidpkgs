@@ -863,6 +863,9 @@ constant %PKG = Map.new(
     'zfs' => qw<libzfs
                 zfs-devel
                 zfs-pam>,
+    'zfs-lts' => qw<libzfs-lts
+                    zfs-lts-devel
+                    zfs-lts-pam>,
     'zlib' => ['zlib-devel'],
     'zstd' => qw<libzstd
                  libzstd-devel>,
