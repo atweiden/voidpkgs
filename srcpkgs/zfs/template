@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zfs"
-version=2.1.13
+version=2.2.0
 revision=1
 short_desc="Z File System -- userland, pyzfs, and kernel modules (using DKMS)"
 depends+=" dkms>=2.2.0.3_9"
@@ -22,8 +22,9 @@ hostmakedepends+=" python3"
 homepage="https://openzfs.github.io/openzfs-docs/"
 license="CDDL-1.0"
 distfiles="https://github.com/openzfs/zfs/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="06b24cbb3cbc1554e2edf2fcd71d1f8bec4febf4412aeac17070877c44302abd"
-conf_files="/etc/zfs/zed.d/zed.rc"
+checksum="42035fd059faa25a09cd511b24a57b8ad1285cb69127f2a0043b98562c5ec690"
+conf_files+=" /etc/zfs/zed.d/zed.rc"
+conf_files+=" /usr/src/zfs-$version/META"
 build_style="gnu-configure"
 configure_args+=" --with-config=user"
 configure_args+=" --with-dracutdir=/usr/lib/dracut"
@@ -70,6 +71,11 @@ post_install() {
   # contains ELF binaries, remove until upstream has a way to move this
   # into /usr/libexec or similiar
   rm -rf "$DESTDIR/usr/share/zfs/zfs-tests"
+
+  # move bash completions to a policy compliant directory
+  vmkdir usr/share/bash-completion/completions
+  mv "$DESTDIR/etc/bash_completion.d"/* \
+    "$DESTDIR/usr/share/bash-completion/completions"
 }
 
 libzfs_package() {
