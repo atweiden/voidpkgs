@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bitcoin"
-version=25.0
+version=25.1
 revision=1
 short_desc="Decentralized, peer to peer payment network"
 makedepends+=" boost-devel"
@@ -27,7 +27,7 @@ hostmakedepends+=" which"
 homepage="https://bitcoin.org/"
 license="MIT"
 distfiles="https://bitcoincore.org/bin/$pkgname-core-$version/$pkgname-$version.tar.gz"
-checksum="5df67cf42ca3b9a0c38cdafec5bbb517da5b58d251f32c8d2a47511f9be1ebc2"
+checksum="bec2a598d8dfa8c2365b77f13012a733ec84b8c30386343b7ac1996e901198c9"
 build_style="gnu-configure"
 configure_args+=" --disable-bench"
 configure_args+=" --disable-ccache"
