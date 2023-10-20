@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libpcap"
-version=1.10.3
+version=1.10.4
 revision=1
 short_desc="System-independent interface for user-level packet capture"
 makedepends+=" libnl3-devel"
@@ -11,7 +11,7 @@ homepage="https://www.tcpdump.org/"
 license="BSD-3-Clause"
 changelog="https://www.tcpdump.org/libpcap-changes.txt"
 distfiles="https://www.tcpdump.org/release/$pkgname-$version.tar.gz"
-checksum="2a8885c403516cf7b0933ed4b14d6caa30e02052489ebd414dc75ac52e7559e6"
+checksum="ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --with-libnl"
@@ -32,8 +32,8 @@ post_install() {
 
 libpcap-devel_package() {
   unset depends
+  depends+=" $sourcepkg>=${version}_$revision"
   depends+=" libnl3-devel"
-  depends+=" libpcap>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
