@@ -3,7 +3,7 @@ pkgname="fail2ban"
 version=1.0.2
 revision=2
 short_desc="Authentication failure monitor system"
-depends="python3"
+depends="python3-pyasynchat"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3-setuptools"
 homepage="https://www.fail2ban.org/"
@@ -23,6 +23,7 @@ pre_build() {
 }
 
 post_install() {
+  rm -rf "$DESTDIR/$py3_sitelib/fail2ban/tests"
   vsv fail2ban
 }
 
