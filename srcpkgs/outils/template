@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="outils"
-version=0.12
+version=0.13
 revision=1
 short_desc="Some non-standard OpenBSD tools"
 # for cpp(1)
@@ -8,7 +8,7 @@ depends="gcc"
 homepage="https://github.com/leahneukirchen/outils"
 license="ISC, BSD-3-Clause"
 distfiles="https://github.com/leahneukirchen/outils/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="63b6ebddfb2e6213be1d5b20475321ba6f3221d6f86abe1dc615329c955c24db"
+checksum="49d46211fe84a5b96cf55d689696d190b7aba7d3e043c8c8dc9f5ff9af8f927a"
 build_style="gnu-makefile"
 make_install_args+=" install"
 make_install_args+=" install-calendars"
