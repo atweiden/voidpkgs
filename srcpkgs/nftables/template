@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nftables"
-version=1.0.8
-revision=2
+version=1.0.9
+revision=1
 short_desc="Netfilter nftables userspace tools"
 makedepends+=" gmp-devel"
 makedepends+=" jansson-devel"
@@ -15,11 +15,13 @@ hostmakedepends+=" flex"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
-hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-build"
+hostmakedepends+=" python3-installer"
+hostmakedepends+=" python3-wheel"
 homepage="http://netfilter.org/projects/nftables/"
 license="GPL-2.0-only"
 distfiles="http://www.netfilter.org/projects/nftables/files/$pkgname-$version.tar.xz"
-checksum="9373740de41a82dbc98818e0a46a073faeb8a8d0689fa4fa1a74399c32bf3d50"
+checksum="a3c304cd9ba061239ee0474f9afb938a9bb99d89b960246f66f0c3a0a85e14cd"
 build_style="gnu-configure"
 configure_args+=" --with-cli=readline"
 configure_args+=" --with-json"
@@ -29,7 +31,14 @@ post_extract() {
   autoreconf -fi
 }
 
+post_build() {
+  (cd py
+   python -m build --no-isolation --wheel)
+}
+
 post_install() {
+  (cd py
+   python -m installer --destdir "$DESTDIR" --no-compile-bytecode dist/*.whl)
   vsv nftables
 }
 
