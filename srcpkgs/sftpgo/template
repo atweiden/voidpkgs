@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="sftpgo"
-version=2.3.5
-revision=4
+version=2.5.4
+revision=1
 short_desc="Fully featured and highly configurable SFTP server"
 homepage="https://github.com/drakkan/sftpgo"
 license="AGPL-3.0-only"
 distfiles="https://github.com/drakkan/sftpgo/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="b5844ccbea92e458c9b132fcbcaa5976baa9cf2a9d864f9efc06c143886b4b13"
+checksum="bf3df1429e3528cf8be83197fd735d2dd495cad41039c6d3a8d83ab47ef11590"
 build_style="go"
 go_import_path="github.com/drakkan/sftpgo/v2"
 go_build_tags+=" netgo"
