@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="consul"
-version=1.15.2
-revision=4
+version=1.16.2
+revision=1
 _gitrev="5e08e229dbdaed5adf3ca99afe9df247c51507da"
 short_desc="Distributed solution to connect and configure applications"
 homepage="https://www.consul.io/"
-license="MPL-2.0"
+license="BUSL-1.1"
 distfiles="https://github.com/hashicorp/consul/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ce5e6666c9bd3ee8dcd60b2ed6e082ab9893fda3c0a2218add649c197f34f2f3"
+checksum="0dacc7eeacd19a687e20fa83ae88444d2a5336a9150cfc116d39a39b31d5829d"
 build_style="go"
 go_import_path="github.com/hashicorp/consul"
 go_build_tags+=" netgo"
@@ -22,6 +22,7 @@ fi
 system_accounts="_consul"
 make_dirs+=" /etc/consul.d 0755 root _consul"
 make_dirs+=" /var/lib/consul 0750 _consul _consul"
+repository="nonfree"
 
 pre_build() {
   export GOFLAGS="-trimpath"
