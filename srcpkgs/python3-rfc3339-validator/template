@@ -1,18 +1,23 @@
-# Template file for 'python3-rfc3339-validator'
-pkgname=python3-rfc3339-validator
+maintainer="nox"
+pkgname="python3-rfc3339-validator"
 version=0.1.4
 revision=2
-build_style=python3-pep517
-hostmakedepends="python3-setuptools python3-wheel"
-depends="python3-six"
-checkdepends="$depends python3-hypothesis python3-pytest python3-strict-rfc3339"
 short_desc="Pure python RFC3339 validator"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="MIT"
+depends="python3-six"
+checkdepends+=" python3-six"
+checkdepends+=" python3-hypothesis"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-strict-rfc3339"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/naimetti/rfc3339-validator"
-distfiles="${PYPI_SITE}/r/rfc3339-validator/rfc3339_validator-${version}.tar.gz"
-checksum=138a2abdf93304ad60530167e51d2dfb9549521a836871b88d7f4695d0022f6b
+license="MIT"
+distfiles="$PYPI_SITE/r/rfc3339-validator/rfc3339_validator-$version.tar.gz"
+checksum="138a2abdf93304ad60530167e51d2dfb9549521a836871b88d7f4695d0022f6b"
+build_style="python3-pep517"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
