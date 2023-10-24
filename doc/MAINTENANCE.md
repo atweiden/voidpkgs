@@ -605,6 +605,7 @@ python
 - python3-recommonmark
 - python3-referencing
 - python3-requests
+- python3-rfc3339-validator
 - python3-rpds-py
 - python3-semanticversion
 - python3-service_identity
