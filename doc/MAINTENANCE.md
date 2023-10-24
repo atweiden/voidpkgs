@@ -50,7 +50,6 @@ bootstrap
 - readline
 - run-parts
 - sed
-- toxcore
 - tzutils
 - void-artwork
 - void-release-keys
@@ -152,7 +151,6 @@ general
 - flex
 - fmt
 - fuse
-- fuse
 - fuse3
 - gawk
 - gc
@@ -206,11 +204,9 @@ general
 - ldns
 - less
 - libaio
-- libarchive
 - libargon2
 - libassuan
 - libatomic_ops
-- libcap
 - libcap-ng
 - libcbor
 - libcppunit
@@ -233,7 +229,6 @@ general
 - libmicrohttpd
 - libmnl
 - libmpack
-- libmpc
 - libnetfilter_conntrack
 - libnfnetlink
 - libnftnl
@@ -283,7 +278,6 @@ general
 - lvm2
 - lzip
 - lzo
-- m4
 - man-db
 - man-pages
 - man-pages-posix
@@ -296,13 +290,11 @@ general
 - mkinitcpio
 - mkinitcpio-utils
 - moby
-- mpfr
 - msgpack
 - musl-bootstrap
 - musl-fts
 - musl-obstack
 - nasm
-- ncurses
 - neovim
 - net-tools
 - nettle
@@ -344,7 +336,6 @@ general
 - pinentry
 - pkcs11-helper
 - pkg-config
-- pkgconf
 - popt
 - postgresql
 - postgresql15
@@ -360,7 +351,6 @@ general
 - rhash
 - rpm
 - rsync
-- run-parts
 - runc
 - runit
 - runit-iptables
@@ -393,7 +383,6 @@ general
 - tree-sitter
 - trousers
 - tzdata
-- tzutils
 - u-boot-menu
 - u-boot-tools
 - unbound
