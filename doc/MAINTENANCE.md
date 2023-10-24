@@ -602,6 +602,7 @@ python
 - python3-raven
 - python3-recommonmark
 - python3-requests
+- python3-rpds-py
 - python3-semanticversion
 - python3-service_identity
 - python3-setuptools
