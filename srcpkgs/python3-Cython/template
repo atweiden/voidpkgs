@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-Cython"
-version=3.0.2
-revision=4
+version=3.0.4
+revision=1
 short_desc="Python to C compiler"
 depends="python3-setuptools"
 makedepends="python3-devel"
@@ -10,7 +10,7 @@ homepage="https://cython.org/"
 license="Apache-2.0"
 changelog="https://github.com/cython/cython/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/C/Cython/Cython-$version.tar.gz"
-checksum="9594818dca8bb22ae6580c5222da2bc5cc32334350bd2d294a00d8669bcc61b5"
+checksum="2e379b491ee985d31e5faaf050f79f4a8f59f482835906efe4477b33b4fbe9ff"
 build_style="python3-module"
 # tests are flaky
 make_check="no"
