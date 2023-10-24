@@ -457,6 +457,7 @@ constant %PKG = Map.new(
     'libreadline8' => qw<libhistory8
                          readline-devel>,
     'librsync' => ['librsync-devel'],
+    'librtas' => ['librtas-devel'],
     'libsasl' => ['libsasl-devel'],
     'libscrypt' => ['libscrypt-devel'],
     'libseccomp' => ['libseccomp-devel'],

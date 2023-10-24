@@ -549,6 +549,8 @@ librpmbuild.so.9 librpmbuild-4.15.0_1
 librpmio.so.9 librpmio-4.15.0_1
 librpmsign.so.9 librpmsign-4.15.0_1
 librsync.so.2 librsync-1.0.0_1
+librtas.so.2 librtas-2.0.2_1
+librtasevent.so.2 librtas-2.0.2_1
 librtmp.so.1 librtmp-2.4.20161210_9
 libasan.so.8 libsanitizer-12.2.0_1
 libtsan.so.2 libsanitizer-12.2.0_1
