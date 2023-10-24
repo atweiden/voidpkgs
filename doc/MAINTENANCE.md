@@ -548,6 +548,7 @@ python
 - python3-installer
 - python3-iso8601
 - python3-itsdangerous
+- python3-jsonschema-specifications
 - python3-lxml
 - python3-mccabe
 - python3-meson-python
