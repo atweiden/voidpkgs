@@ -44,3 +44,5 @@ cppdap-devel_package() {
 #
 # As much as I know about Google, their library's ABI ain't stable.
 # Rebuild all revdeps on update
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
