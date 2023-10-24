@@ -601,6 +601,7 @@ python
 - python3-pytz
 - python3-raven
 - python3-recommonmark
+- python3-referencing
 - python3-requests
 - python3-rpds-py
 - python3-semanticversion
