@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="nginx"
 version=1.24.0
-revision=3
+revision=4
 _tests_gitrev="36a4563f7f00"
 _njs_version=0.7.12
 short_desc="High performance web and reverse proxy server"
@@ -76,6 +76,7 @@ configure_args+=" --with-http_v2_module"
 configure_args+=" --with-http_xslt_module=dynamic"
 configure_args+=" --with-mail"
 configure_args+=" --with-mail_ssl_module"
+configure_args+=" --with-openssl-opt=enable-ktls"
 configure_args+=" --with-pcre-jit"
 configure_args+=" --with-stream=dynamic"
 configure_args+=" --with-stream_geoip_module=dynamic"
