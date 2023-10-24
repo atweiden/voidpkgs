@@ -1,22 +1,23 @@
 maintainer="nox"
 pkgname="python3-httpbin"
-version=0.7.0
-revision=4
+version=0.10.0
+revision=1
 short_desc="HTTP Request & Response Service"
 depends+=" python3-Brotli"
 depends+=" python3-Flask"
-depends+=" python3-blinker"
 depends+=" python3-decorator"
-depends+=" python3-raven"
+depends+=" python3-flasgger"
+depends+=" python3-greenlet"
 depends+=" python3-six"
 checkdepends+=" $depends"
 checkdepends+=" python3-pytest"
-hostmakedepends="python3-setuptools"
-homepage="https://github.com/postmanlabs/httpbin"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
+homepage="https://github.com/psf/httpbin"
 license="ISC"
 distfiles="$PYPI_SITE/h/httpbin/httpbin-$version.tar.gz"
-checksum="cbb37790c91575f4f15757f42ad41d9f729eb227d5edbe89e4ec175486db8dfa"
-build_style="python3-module"
+checksum="7b8596beb0e75a7b653c39d1f3cf263d6d5c476d29e1df6f7bb2b70bf9f06a3d"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
