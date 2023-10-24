@@ -1,19 +1,21 @@
-# Template file for 'python3-mistune'
-pkgname=python3-mistune
+maintainer="nox"
+pkgname="python3-mistune"
 version=3.0.2
 revision=1
-build_style=python3-pep517
-hostmakedepends="python3-setuptools python3-wheel"
+short_desc="Markdown parser for Python"
 depends="python3"
 checkdepends="python3-pytest"
-short_desc="Markdown parser for Python"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="BSD-3-Clause"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://mistune.lepture.com/"
-changelog="https://raw.githubusercontent.com/lepture/mistune/master/docs/changes.rst"
-distfiles="${PYPI_SITE}/m/mistune/mistune-${version}.tar.gz"
-checksum=fc7f93ded930c92394ef2cb6f04a8aabab4117a91449e72dcc8dfa646a508be8
+license="BSD-3-Clause"
+changelog="https://github.com/lepture/mistune/raw/master/docs/changes.rst"
+distfiles="$PYPI_SITE/m/mistune/mistune-$version.tar.gz"
+checksum="fc7f93ded930c92394ef2cb6f04a8aabab4117a91449e72dcc8dfa646a508be8"
+build_style="python3-pep517"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
