@@ -623,6 +623,7 @@ python
 - python3-sphinxcontrib-jsmath
 - python3-sphinxcontrib-qthelp
 - python3-sphinxcontrib-serializinghtml
+- python3-strict-rfc3339
 - python3-testpath
 - python3-tornado
 - python3-trio
