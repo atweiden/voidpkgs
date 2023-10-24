@@ -549,6 +549,7 @@ python
 - python3-iso8601
 - python3-itsdangerous
 - python3-jsonpointer
+- python3-jsonschema
 - python3-jsonschema-specifications
 - python3-lxml
 - python3-mccabe
