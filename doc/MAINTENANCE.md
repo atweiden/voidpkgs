@@ -532,6 +532,7 @@ python
 - python3-fields
 - python3-filelock
 - python3-flake8
+- python3-flasgger
 - python3-flit_core
 - python3-freezegun
 - python3-h2
