@@ -555,6 +555,7 @@ python
 - python3-lxml
 - python3-mccabe
 - python3-meson-python
+- python3-mistune
 - python3-mock
 - python3-msgpack
 - python3-mypy
