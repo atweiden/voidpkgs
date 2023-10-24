@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-websockets"
-version=11.0.3
-revision=2
+version=12.0
+revision=1
 short_desc="Library for building WebSocket clients and servers in Python"
 depends="python3"
 makedepends="python3-devel"
@@ -10,7 +10,7 @@ homepage="https://websockets.readthedocs.io/en/stable/"
 license="BSD-3-Clause"
 changelog="https://websockets.readthedocs.io/en/stable/project/changelog.html"
 distfiles="$PYPI_SITE/w/websockets/websockets-$version.tar.gz"
-checksum="88fc51d9a26b10fc331be344f1781224a375b78488fc343620184e95a4b27016"
+checksum="81df9cbcbb6c260de1e007e58c011bfebe2dafc8435107b0537f393dd38c8b1b"
 build_style="python3-module"
 # package ships no tests
 make_check="no"
