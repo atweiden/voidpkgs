@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="openssl"
-version=3.1.2
+version=3.1.4
 revision=1
 short_desc="Toolkit for Secure Sockets Layer and Transport Layer Security"
 homepage="https://www.openssl.org"
 license="Apache-2.0"
 distfiles="https://www.openssl.org/source/$pkgname-$version.tar.gz"
-checksum="a0ce69b8b97ea6a35b96875235aa453b966ba3cba8af2de23657d8b6767d6539"
+checksum="840af5366ab9b522bde525826be3ef0fb0af81c6a9ebd84caa600fea1731eee3"
 conf_files="/etc/ssl/openssl.cnf"
 build_style="configure"
 configure_script="./Configure"
@@ -14,7 +14,7 @@ configure_args+=" --libdir=lib"
 configure_args+=" --openssldir=/etc/ssl"
 configure_args+=" --prefix=/usr"
 configure_args+=" -Wa,--noexecstack"
-configure_args+=" no-ssl3-method"
+configure_args+=" enable-ktls"
 configure_args+=" shared"
 configure_args+=" $(vopt_if asm '' 'no-asm')"
 case $XBPS_TARGET_MACHINE in
