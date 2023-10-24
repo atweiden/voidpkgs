@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-blinker"
-version=1.6.2
-revision=2
+version=1.6.3
+revision=1
 short_desc="Fast, simple object-to-object and broadcast signaling for Python3"
 depends="python3"
 makedepends="python3-devel"
@@ -9,13 +9,12 @@ checkdepends+=" python3-iniconfig"
 checkdepends+=" python3-packaging"
 checkdepends+=" python3-pluggy"
 checkdepends+=" python3-pytest-asyncio"
-hostmakedepends+=" python3-setuptools"
-hostmakedepends+=" python3-wheel"
+hostmakedepends="python3-flit_core"
 homepage="https://blinker.readthedocs.io/en/stable/"
 license="MIT"
 changelog="https://github.com/pallets-eco/blinker/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/b/blinker/blinker-$version.tar.gz"
-checksum="4afd3de66ef3a9f8067559fb7a1cbe555c17dcbe15971b05d1b625c3e7abe213"
+checksum="152090d27c1c5c722ee7e48504b02d76502811ce02e1523553b4cf8c8b3d3a8d"
 build_style="python3-pep517"
 
 post_install() {
