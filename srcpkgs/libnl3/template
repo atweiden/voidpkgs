@@ -1,31 +1,28 @@
 maintainer="nox"
 pkgname="libnl3"
-version=3.5.0
+version=3.8.0
 revision=1
 short_desc="Netlink Protocol Library Suite"
-hostmakedepends+=" automake"
 hostmakedepends+=" flex"
-hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/thom311/libnl"
 license="LGPL-2.1-only"
 distfiles="https://github.com/thom311/libnl/releases/download/${pkgname%3}${version//./_}/${pkgname%3}-$version.tar.gz"
-checksum="352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
+checksum="bb726c6d7a08b121978d73ff98425bf313fa26a27a331d465e4f1d7ec5b838c6"
 conf_files+=" /etc/libnl/classid"
 conf_files+=" /etc/libnl/pktloc"
 build_style="gnu-configure"
 configure_args="--disable-static"
 
-pre_configure() {
-  autoreconf -fi
-  sed \
+pre_build() {
+  vsed \
     -i \
     -e '/<linux\/if_bridge.h>/i#define _LINUX_IN6_H' \
     lib/route/link/bridge.c
 }
 
 libnl3-devel_package() {
-  depends="libnl3>=${version}_$revision"
+  depends="$sourcepkg>=${version}_$revision"
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
@@ -35,7 +32,7 @@ libnl3-devel_package() {
 }
 
 libnl3-progs_package() {
-  short_desc+=" - cli utilities"
+  short_desc+=" - CLI utilities"
   pkg_install() {
     vmove usr/bin
     vmove usr/share/man/man8
