@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="xfsprogs"
-version=6.4.0
+version=6.5.0
 revision=1
 short_desc="Utilities for managing the XFS filesystem"
 makedepends+=" inih-devel"
@@ -15,7 +15,7 @@ fi
 homepage="http://xfs.org/index.php/Main_Page"
 license="LGPL-2.1-or-later"
 distfiles="$KERNEL_SITE/utils/fs/xfs/xfsprogs/$pkgname-$version.tar.xz"
-checksum="c31868418bfbf49a3a9c47fc70cdffde9d96f4ff0051bd04a0881e6654648104"
+checksum="8db81712b32756b97d89dd9a681ac5e325bbb75e585382cd4863fab7f9d021c6"
 build_style="gnu-configure"
 configure_args+=" --enable-editline=yes"
 configure_args+=" --enable-lib64=no"
