@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="opensmtpd"
-version=7.3.0p2
+version=7.4.0p2
 revision=1
 short_desc="Free implementation of the server-side SMTP protocol"
 depends="ca-certificates"
@@ -16,7 +16,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.opensmtpd.org"
 license="BSD-3-Clause, ISC, MIT"
 distfiles="https://www.opensmtpd.org/archives/$pkgname-$version.tar.gz"
-checksum="fccdfbc5b98d150012bf9ccdef51752c18a862ed10888b56289826b83a2b5a4e"
+checksum="c181ccc3434a11e583619e00028520d457fe062e34dc03beea358078220ce374"
 conf_files+=" /etc/smtpd/aliases"
 conf_files+=" /etc/smtpd/smtpd.conf"
 build_style="gnu-configure"
