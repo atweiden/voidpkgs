@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="pueue"
-version=3.2.0
+version=3.3.0
 revision=1
 short_desc="Command-line tool for managing long-running tasks"
 homepage="https://github.com/Nukesor/pueue"
 license="MIT"
 changelog="https://github.com/Nukesor/pueue/raw/main/CHANGELOG.md"
 distfiles="https://github.com/Nukesor/pueue/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0c3126579661f894fb02a0d8c0e138ab23b277e97cea2d85e48d3d2b9fb1c372"
+checksum="95f9c2744c6b9c43cf9e78864fcc05478aad65527786cb9ab5c58c2b998547de"
 build_style="cargo"
 # tests are nondeterministic
 make_check="no"
