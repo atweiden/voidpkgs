@@ -593,6 +593,7 @@ python
 - python3-pyproject-hooks
 - python3-pyproject-metadata
 - python3-pyrsistent
+- python3-pyserial
 - python3-pysocks
 - python3-pytest
 - python3-pytest-asyncio
