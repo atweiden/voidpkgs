@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="fish-shell"
 version=3.6.1
-revision=1
+revision=2
 short_desc="User friendly shell intended mostly for interactive use"
 makedepends+=" ncurses-devel"
 makedepends+=" pcre2-devel"
