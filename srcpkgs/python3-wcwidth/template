@@ -1,15 +1,16 @@
 maintainer="nox"
 pkgname="python3-wcwidth"
-version=0.2.6
-revision=2
+version=0.2.8
+revision=1
 short_desc="Measures no. of terminal column cells of wide-character codes"
 depends="python3"
-checkdepends="python3-pytest"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-cov"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/jquast/wcwidth"
 license="MIT"
 distfiles="$PYPI_SITE/w/wcwidth/wcwidth-$version.tar.gz"
-checksum="a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"
+checksum="8705c569999ffbb4f6a87c6d1b80f324bd6db952f5eb0b95bc07517f4c1813d4"
 build_style="python3-module"
 
 post_install() {
