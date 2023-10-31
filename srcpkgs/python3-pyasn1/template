@@ -1,16 +1,16 @@
 maintainer="nox"
 pkgname="python3-pyasn1"
-version=0.4.8
-revision=6
+version=0.5.0
+revision=1
 short_desc="ASN.1 library for Python3"
 depends="python3"
 checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
-homepage="https://github.com/etingof/pyasn1"
+homepage="https://github.com/pyasn1/pyasn1"
 license="BSD-2-Clause"
-changelog="https://github.com/etingof/pyasn1/raw/master/CHANGES.rst"
+changelog="https://github.com/pyasn1/pyasn1/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/p/pyasn1/pyasn1-$version.tar.gz"
-checksum="aef77c9fb94a3ac588e87841208bdec464471d9871bd5050a287cc9a475cd0ba"
+checksum="97b7290ca68e62a832558ec3976f15cbf911bf5d7c7039d8b861c2a0ece69fde"
 build_style="python3-module"
 
 post_install() {
