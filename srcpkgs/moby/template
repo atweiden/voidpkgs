@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="moby"
 # should be kept in sync with docker-cli
-version=24.0.6
+version=24.0.7
 revision=1
 # libnetwork commit is mentioned in vendor.conf
 _libnetwork_gitrev="05b93e0d3a95952f70c113b0bc5bdb538d7afdd7"
@@ -18,7 +18,7 @@ license="Apache-2.0"
 changelog="https://github.com/moby/moby/releases"
 distfiles+=" https://github.com/moby/moby/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/moby/libnetwork/archive/$_libnetwork_gitrev.tar.gz>libnetwork-$_libnetwork_gitrev.tar.gz"
-checksum+=" 29a8ee54e9ea008b40eebca42dec8b67ab257eb8ac175f67e79c110e4187d7d2"
+checksum+=" 16a2cb4cf4d314a070085e0df06e3a6bd9ec678d28715b64060af694fc9051d5"
 checksum+=" 5c5e3aa7599e85036438a65016796aa11df4afb44d13b5927dcfb0ec5947a86b"
 create_wrksrc="yes"
 build_style="go"
