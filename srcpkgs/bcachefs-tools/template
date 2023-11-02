@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="bcachefs-tools"
-version=24
+version=1.2
 revision=1
 short_desc="Userspace tools for bcachefs"
 makedepends+=" attr-devel"
@@ -14,16 +14,21 @@ makedepends+=" libudev-devel"
 makedepends+=" liburcu-devel"
 makedepends+=" libuuid-devel"
 makedepends+=" libzstd-devel"
+makedepends+=" rust"
 makedepends+=" zlib-devel"
-hostmakedepends="pkg-config"
+hostmakedepends+=" cargo"
+hostmakedepends+=" clang"
+hostmakedepends+=" pkg-config"
 homepage="https://bcachefs.org/"
 license="GPL-2.0-only"
 distfiles="https://github.com/koverstreet/bcachefs-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4631f8ba752c562f0e7d74a8052bace39abefa98421e4a2989069d988892c264"
+checksum="2f7b68576303bcbb80ea6c4042aa27b1b1027739f3de68106ca9166963e161dc"
 build_style="gnu-makefile"
 make_install_args="ROOT_SBINDIR=/usr/bin"
 make_use_env="yes"
+reverts="24_1"
 
 export VERSION="v$version"
+export RUST_TARGET
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
