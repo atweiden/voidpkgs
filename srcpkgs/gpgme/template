@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="gpgme"
-version=1.21.0
+version=1.23.1
 revision=1
 short_desc="GnuPG Made Easy"
 makedepends="libassuan-devel"
@@ -8,8 +8,9 @@ hostmakedepends+=" gnupg"
 hostmakedepends+=" pkg-config"
 homepage="https://www.gnupg.org/software/gpgme/index.html"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
+changelog="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgme.git;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gpgme/$pkgname-$version.tar.bz2"
-checksum="416e174e165734d84806253f8c96bda2993fd07f258c3aad5f053a6efd463e88"
+checksum="a0c316f7ab7d3bfb01a8753c3370dc906e5b61436021f3b54ff1483b513769bd"
 build_style="gnu-configure"
 configure_args+=" --enable-fd-passing"
 configure_args+=" --with-libassuan-prefix=$XBPS_CROSS_BASE/usr"
