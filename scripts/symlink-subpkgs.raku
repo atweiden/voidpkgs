@@ -356,6 +356,7 @@ constant %PKG = Map.new(
     'libaom' => qw<libaom-devel
                    libaom-tools>,
     'libarchive' => qw<bsdtar
+                       bsdunzip
                        libarchive-devel>,
     'libassuan' => ['libassuan-devel'],
     'libatomic_ops' => ['libatomic_ops-devel'],

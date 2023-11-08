@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libarchive"
-version=3.6.2
-revision=3
+version=3.7.2
+revision=1
 short_desc="Library to read/write several different streaming archive formats"
 makedepends+=" bzip2-devel"
 makedepends+=" liblzma-devel"
@@ -15,9 +15,9 @@ makedepends+=" $(vopt_if zstd libzstd-devel)"
 hostmakedepends="pkgconf"
 homepage="http://www.libarchive.org/"
 license="BSD-2-Clause"
-changelog="https://raw.github.com/wiki/libarchive/libarchive/ReleaseNotes.md"
-distfiles="https://github.com/libarchive/libarchive/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="ba6d02f15ba04aba9c23fd5f236bb234eab9d5209e95d1c4df85c44d5f19b9b3"
+changelog="https://github.com/libarchive/libarchive/releases"
+distfiles="https://github.com/libarchive/libarchive/releases/download/v$version/$pkgname-$version.tar.xz"
+checksum="04357661e6717b6941682cde02ad741ae4819c67a260593dfb2431861b251acb"
 build_style="gnu-configure"
 configure_args+=" --disable-rpath"
 configure_args+=" --without-libb2"
@@ -43,14 +43,6 @@ build_options_default+=" lz4"
 build_options_default+=" ssl"
 build_options_default+=" zstd"
 
-post_extract() {
-  # remove iconv from libarchive.pc requirements
-  vsed \
-    -i \
-    -e '/LIBSREQUIRED.*iconv/d' \
-    configure
-}
-
 pre_configure() {
   export LIBS="-pthread"
 }
@@ -58,11 +50,11 @@ pre_configure() {
 do_check() {
   case "$XBPS_TARGET_LIBC" in
     *musl)
-      make check \
+      make check "$makejobs" ||
         || msg_warn "Tests can fail due to encoding conversions\n"
       ;;
     *)
-      make check
+      make check "$makejobs"
       ;;
   esac
 }
@@ -81,6 +73,15 @@ bsdtar_package() {
     # conflicts with mtree
     mv "$PKGDESTDIR/usr/share/man/man5"/{mtree.5,libarchive-mtree.5}
   }
+}
+
+bsdunzip_package() {
+  unset reverts
+  reverts+=" 20160115_1"
+  reverts+=" 20160115_2"
+  build_style="meta"
+  short_desc="BSD utilities using libarchive (transitional dummy package)"
+  depends="bsdtar>=${version}_$revision"
 }
 
 libarchive-devel_package() {
