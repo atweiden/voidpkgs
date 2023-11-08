@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="perl-Test-Warnings"
-version=0.031
+version=0.032
 revision=1
 short_desc="Test::Warnings - Test for warnings and the lack of them"
 depends="perl"
@@ -10,7 +10,7 @@ hostmakedepends="perl"
 homepage="https://metacpan.org/release/Test-Warnings"
 license="Artistic-1.0-Perl, GPL-1.0-or-later"
 distfiles="$CPAN_SITE/Test/${pkgname/perl-/}-$version.tar.gz"
-checksum="1e542909fef305e45563e9878ea1c3b0c7cef1b28bb7ae07eba2e1efabec477b"
+checksum="4727dae2416e9f07e41e2dc3a9143ba6affc1ec57652117c99d50038e313e9d9"
 build_style="perl-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
