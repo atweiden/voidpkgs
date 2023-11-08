@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="removed-packages"
-version=0.1.20230926
-revision=3
+version=0.1.20231019
+revision=1
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
 license="Public Domain"
@@ -37,6 +37,7 @@ replaces+=" llvm11<=11.0.0_2"
 replaces+=" nspr<=4.35_1"
 replaces+=" nss<=3.91_1"
 replaces+=" opentmpfiles<=0.3.1_1"
+replaces+=" postgresql14<=14.9_1"
 replaces+=" python-Babel<=2.8.0_4"
 replaces+=" python-Cython<=0.29.35_1"
 replaces+=" python-Jinja2<=2.11.3_2"
