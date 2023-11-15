@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libsndfile"
 version=1.2.0
-revision=1
+revision=2
 short_desc="C library for reading and writing files containing sampled sound"
 makedepends+=" alsa-lib-devel"
 makedepends+=" lame-devel"
