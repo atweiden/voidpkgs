@@ -51,6 +51,12 @@ build_style="gnu-configure"
 # use /nix/var as suggested by official manual
 configure_args+=" --localstatedir=/nix/var"
 configure_args+=" --with-sandbox-shell=/usr/bin/busybox.static"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # XXX: documentation generation hangs in cross on arm32 musl
+  case "$XBPS_TARGET_MACHINE" in
+    arm*musl) configure_args+=" --disable-doc-gen" ;;
+  esac
+fi
 make_build_args+=" SET_RPATH_TO_LIBS=0"
 make_build_args+=" V=1"
 make_install_args+=" SET_RPATH_TO_LIBS=0"
