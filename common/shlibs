@@ -390,8 +390,8 @@ libfftw3f_threads.so.3 libfftw-3.3_1
 libfftw3l.so.3 libfftw-3.3_1
 libfftw3l_threads.so.3 libfftw-3.3_1
 libfido2.so.1 libfido2-1.6.0_2
-libFLAC++.so.6 libflac-1.2.1_1
-libFLAC.so.8 libflac-1.2.1_1
+libFLAC++.so.10 libflac-1.4.3_1
+libFLAC.so.12 libflac-1.4.3_1
 libftdi1.so.2 libftdi1-1.2_1
 libgcc_s.so.1 libgcc-4.4.0_1
 libgcrypt.so.20 libgcrypt-1.6.1_1
