@@ -53,6 +53,7 @@ configure_args+=" --localstatedir=/nix/var"
 configure_args+=" --with-sandbox-shell=/usr/bin/busybox.static"
 if [[ -n "$CROSS_BUILD" ]]; then
   # XXX: documentation generation hangs in cross on arm32 musl
+  # see https://gitlab.com/qemu-project/qemu/-/issues/1729
   case "$XBPS_TARGET_MACHINE" in
     arm*musl) configure_args+=" --disable-doc-gen" ;;
   esac
