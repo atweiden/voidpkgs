@@ -1,21 +1,22 @@
 maintainer="nox"
 pkgname="zellij"
-version=0.38.2
+version=0.39.0
 revision=1
 short_desc="Terminal workspace with batteries included"
-# dependency crate wasmer-vm only supports x86_64, arm64, x86
-# https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#compiler-support-by-chipset
+# wasmer runtime only supports the following archs: x86_64, arm64
+# https://docs.wasmer.io/runtime/features#backend-support-by-chipset
+# https://github.com/wasmerio/wasmer/issues/4244#issuecomment-1751365804
 archs+=" aarch64*"
-archs+=" i686*"
 archs+=" x86_64*"
-checkdepends+=" libssh2-devel"
-checkdepends+=" pkg-config"
-hostmakedepends="mandown"
+makedepends="libcurl-devel"
+checkdepends="libssh2-devel"
+hostmakedepends+=" mandown"
+hostmakedepends+=" pkg-config"
 homepage="https://zellij.dev"
 license="MIT"
 changelog="https://github.com/zellij-org/zellij/raw/main/CHANGELOG.md"
 distfiles="https://github.com/zellij-org/zellij/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="18e8ae9fa2ad995af5f6c64b3c0713143d260cdc6c1a978831313bfaf305ad5e"
+checksum="dee3c677eb4545d302895e1c0020f7da9aba8b154927c6ff215b59aec4fbec9f"
 build_style="cargo"
 make_check_pre="env LIBSSH2_SYS_USE_PKG_CONFIG=1"
 # shell completion generation requires qemu (see: upstream)
