@@ -1,20 +1,20 @@
 maintainer="nox"
 pkgname="python3-pyserial"
-version=3.4
-revision=8
+version=3.5
+revision=1
 short_desc="Python3 module providing access for the serial port"
 depends="python3"
 checkdepends="python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/pyserial/pyserial"
 license="BSD-3-Clause"
+changelog="https://github.com/pyserial/pyserial/raw/master/CHANGES.rst"
 distfiles="$PYPI_SITE/p/pyserial/pyserial-$version.tar.gz"
-checksum="6e2d401fdee0eab996cf734e67773a0143b932772ca8b42451440cfed942c627"
+checksum="3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb"
 build_style="python3-module"
 alternatives="pyserial:miniterm:/usr/bin/miniterm.py3"
 
 post_install() {
-  mv "$DESTDIR/usr/bin"/miniterm.py{,3}
   vlicense LICENSE.txt LICENSE
 }
 
