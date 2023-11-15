@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-wheel"
-version=0.41.2
-revision=2
+version=0.41.3
+revision=1
 short_desc="Built-package format for Python (Python3)"
 depends="python3-setuptools"
 checkdepends+=" $depends"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/pypa/wheel"
 license="MIT"
 distfiles="$PYPI_SITE/w/wheel/wheel-$version.tar.gz"
-checksum="0c5ac5ff2afb79ac23ab82bab027a0be7b5dbcf2e54dc50efe4bf507de1f7985"
+checksum="4d4987ce51a49370ea65c0bfd2234e8ce80a12780820d9dc462597a6e60d0841"
 build_style="python3-module"
 conflicts="python-wheel>=0"
 
