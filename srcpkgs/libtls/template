@@ -2,7 +2,6 @@ maintainer="nox"
 pkgname="libtls"
 version=3.8.2
 revision=1
-_lssl_asm_ver="1.2.0"
 short_desc="Version of the TLS/crypto stack forked from OpenSSL"
 depends="ca-certificates"
 hostmakedepends+=" automake"
@@ -18,37 +17,13 @@ build_wrksrc="libressl-$version"
 build_style="gnu-configure"
 configure_args+=" --enable-libtls-only"
 configure_args+=" --enable-nc"
-configure_args+=" $(vopt_enable asm)"
 case "$XBPS_TARGET_MACHINE" in
-  i686-musl)
-    # disable ssp
-    configure_args+=" --disable-hardening"
-    ;;
-  armv5*)
-    # on armv5 always disable asm as it's not supported
-    configure_args+=" --disable-asm"
-    ;;
+  # disable ssp
+  i686-musl) configure_args+=" --disable-hardening" ;;
 esac
-build_options="asm"
-build_options_default=""
-desc_option_asm="Use platform assembly for faster crypto"
 replaces="libtls20>0"
 
-if [[ -n "$build_option_asm" ]]; then
-  distfiles+=" https://github.com/q66/libressl-portable-asm/archive/v$_lssl_asm_ver.tar.gz"
-  checksum+=" e1c76178c4deb1cd20a0cd7ba553d6607f8131acb2e0844223f797e42f0d6f60"
-fi
-
-post_extract() {
-  [[ -z "$build_option_asm" ]] \
-    && return 0
-  mv "libressl-portable-asm-$_lssl_asm_ver" "$build_wrksrc"
-}
-
 pre_configure() {
-  if [[ -n "$build_option_asm" ]]; then
-    "./libressl-portable-asm-$_lssl_asm_ver/patch_libressl.sh" .
-  fi
   autoreconf -fi
 }
 
@@ -64,10 +39,6 @@ do_install() {
     DESTDIR="$DESTDIR"
 
   vlicense COPYING
-  if [[ -n "$build_option_asm" ]]; then
-    vlicense "libressl-portable-asm-$_lssl_asm_ver/LICENSE.cryptogams"
-    vlicense "libressl-portable-asm-$_lssl_asm_ver/LICENSE.openssl"
-  fi
 }
 
 libtls-devel_package() {
