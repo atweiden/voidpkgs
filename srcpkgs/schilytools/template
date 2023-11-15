@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="schilytools"
 version=2023.09.28
-revision=2
+revision=3
 short_desc="Schily's portable tools"
+depends+=" cdrtools"
 depends+=" sccs"
 depends+=" sdd"
 depends+=" sfind"
@@ -17,39 +18,82 @@ makedepends+=" m4"
 homepage="https://codeberg.org/schilytools/schilytools"
 license="CDDL-1.0"
 distfiles="https://codeberg.org/schilytools/schilytools/archive/${version//./-}.tar.gz>$pkgname-$version.tar.gz"
-checksum="564ea2365876a53eba02f184c565016399aee188c26d862589906cf3f92198e6"
+checksum="c813cc19a320f8d3b5d82f5b1ca6a93ab1bb5f4c50f86fdac58101fe472d2143"
 build_style="meta"
-# configure + re-builds with itself
-nocross="yes"
 
-do_build() {
-  make \
-    "$makejobs" \
-    CC="$CC" \
-    COPTX="$CFLAGS" \
-    INS_BASE="/usr" \
-    LDOPTX="$LDFLAGS"
-  make \
-    -C ved \
-    "$makejobs" \
-    CC="$CC" \
-    COPTX="$CFLAGS" \
-    INS_BASE="/usr" \
-    LDOPTX="$LDFLAGS"
-  make \
-    -C sccs \
-    clean
-  make \
-    -C sccs \
-    CC="$CC" \
-    COPTX="$CFLAGS" \
-    INS_BASE="/usr/libexec/sccs" \
-    LDOPTX="$LDFLAGS"
+_common_flags=(ARCH="${XBPS_TARGET_MACHINE%-musl}"
+               GMAKE_NOWARN="true"
+               INS_BASE="/usr")
+
+post_patch() {
+  vsed -i 's|INSDIR=.*|INSDIR=bin|' rscsi/Makefile
 }
 
-do_install() {
-  make install -C libsiconv/tables DESTDIR="$DESTDIR" INS_BASE="/usr"
-  vlicense CDDL.Schily.txt
+do_build() {
+  local _flags
+
+  _flags=("$makejobs"
+          "${_common_flags[@]}"
+          CC="$CC"
+          CCC="$CXX"
+          COPTX="$CFLAGS"
+          LDOPTX="$LDFLAGS")
+
+  # build the bootstrap smake for host always
+  (cd psmake && CC="gcc" CC_OPT="-O2" CFLAGS="" LDFLAGS="" sh ./MAKE-all)
+
+  if [[ -n "$CROSS_BUILD" ]]; then
+    export CONFIG_RMTCALL="/usr/bin/qemu-$XBPS_TARGET_QEMU_MACHINE-static"
+    export CONFIG_RMTHOST="dummy"
+  fi
+
+  make "${_flags[@]}"
+
+  # sccs has a special INS_BASE
+  make -C sccs clean "${_flags[@]}"
+  make -C sccs "${_flags[@]}" INS_BASE="/usr/libexec/sccs"
+
+  for d in btcflash \
+           cdda2wav \
+           cdrecord \
+           mkisofs \
+           mkisofs/diag \
+           readcd \
+           rscsi \
+           scgcheck \
+           scgskeleton \
+           sdd \
+           sfind \
+           smake \
+           star \
+           ved; do
+    make -C "$d" clean "${_flags[@]}"
+    make -C "$d" "${_flags[@]}"
+  done
+}
+
+cdrtools_package() {
+  depends="libcap-progs"
+  short_desc+=" - cdrtools"
+  conf_files="/etc/default/rscsi /etc/default/cdrecord"
+  pkg_install() {
+    for d in btcflash \
+             cdda2wav \
+             cdrecord \
+             libsiconv/tables \
+             mkisofs \
+             mkisofs/diag \
+             readcd \
+             rscsi \
+             scgcheck \
+             scgskeleton; do
+      make install -C "$d" DESTDIR="$PKGDESTDIR" "${_common_flags[@]}"
+    done
+    rm -rf "$PKGDESTDIR/usr/lib/profiled"
+    vmkdir usr/lib/modules-load.d
+    echo sg > "$PKGDESTDIR/usr/lib/modules-load.d/cdrtools.conf"
+    vlicense CDDL.Schily.txt
+  }
 }
 
 sccs_package() {
@@ -58,12 +102,13 @@ sccs_package() {
     make \
       -C sccs \
       DESTDIR="$PKGDESTDIR" \
+      "${_common_flags[@]}" \
       INS_BASE="/usr/libexec/sccs" \
       install
     vmkdir usr/bin
     vmkdir usr/share
     rm -f "$PKGDESTDIR/usr/libexec/sccs/share/man"/man?/[!s]*
-    mv "$PKGDESTDIR/usr/libexec/sccs/share/man" "$PKGDESTDIR/usr/share"
+    mv "$PKGDESTDIR/usr/libexec/sccs/share/man" "$PKGDESTDIR"/usr/share
     rm -rf "$PKGDESTDIR/usr/libexec/sccs/bin"
     ln -sfr "$PKGDESTDIR/usr/libexec/sccs/ccs/bin/sccs" "$PKGDESTDIR/usr/bin/sccs"
     vlicense CDDL.Schily.txt
@@ -76,7 +121,7 @@ sdd_package() {
     make \
       -C sdd \
       DESTDIR="$PKGDESTDIR" \
-      INS_BASE="/usr" \
+      "${_common_flags[@]}" \
       install
     vlicense CDDL.Schily.txt
   }
@@ -88,7 +133,7 @@ sfind_package() {
     make \
       -C sfind \
       DESTDIR="$PKGDESTDIR" \
-      INS_BASE="/usr" \
+      "${_common_flags[@]}" \
       install
     vlicense CDDL.Schily.txt
   }
@@ -100,7 +145,7 @@ smake_package() {
     make \
       -C smake \
       DESTDIR="$PKGDESTDIR" \
-      INS_BASE="/usr" \
+      "${_common_flags[@]}" \
       install
     vlicense CDDL.Schily.txt
   }
@@ -115,15 +160,15 @@ star_package() {
     make \
       -C star \
       DESTDIR="$PKGDESTDIR" \
-      INS_BASE="/usr" \
       SYMLINKS="suntar scpio spax" \
+      "${_common_flags[@]}" \
       install
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/ustar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1/gnutar.1"
     rm -f "$PKGDESTDIR/usr/share/man/man1"/*[!1]
     rm -f "$PKGDESTDIR/usr/share/man/man5"/*[!5]
-    rm -rf "$PKGDESTDIR/usr/share/doc/"
+    rm -rf "$PKGDESTDIR/usr/share/doc"
     vlicense CDDL.Schily.txt
   }
 }
@@ -131,45 +176,11 @@ star_package() {
 ved_package() {
   short_desc+=" - ved"
   pkg_install() {
-    make install -C ved DESTDIR="$PKGDESTDIR" INS_BASE="/usr"
-    vlicense CDDL.Schily.txt
-  }
-}
-
-cdrtools_package() {
-  unset conf_files
-  unset depends
-  depends+=" libcap-progs"
-  depends+=" schilytools"
-  short_desc+=" - cdrtools"
-  conf_files+=" /etc/default/cdrecord"
-  conf_files+=" /etc/default/rscsi"
-  pkg_install() {
-    vsed \
-      -i \
-      -e 's|INSDIR=.*|INSDIR=bin|' \
-      rscsi/Makefile
-    for d in btcflash \
-             cdda2wav \
-             cdrecord \
-             mkisofs \
-             mkisofs/diag \
-             readcd \
-             rscsi \
-             scgcheck \
-             scgskeleton; do
-      make install -C "$d" \
-        CC="$CC" \
-        COPTX="$CFLAGS" \
-        DESTDIR="$PKGDESTDIR" \
-        INS_BASE="/usr" \
-        LDOPTX="$LDFLAGS" \
-        LDPATH= \
-        RUNPATH=
-    done
-    rm -rf "$PKGDESTDIR/usr/lib/profiled"
-    vmkdir usr/lib/modules-load.d
-    echo sg > "$PKGDESTDIR/usr/lib/modules-load.d/cdrtools.conf"
+    make \
+      -C ved \
+      DESTDIR="$PKGDESTDIR" \
+      "${_common_flags[@]}" \
+      install
     vlicense CDDL.Schily.txt
   }
 }
