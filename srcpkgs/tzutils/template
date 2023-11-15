@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tzutils"
 version=2023c
-revision=1
+revision=2
 short_desc="Time zone and daylight-saving time utilities"
 if [[ -n "$CROSS_BUILD" ]]; then
   hostmakedepends="tzutils"
@@ -71,6 +71,7 @@ tzdata_package() {
   pkg_install() {
     vmove usr/share/man/man5
     vmove "usr/share/zoneinfo*"
+    vinstall leap-seconds.list 644 usr/share/zoneinfo
   }
 }
 
