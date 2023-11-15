@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="removed-packages"
-version=0.1.20231019
+version=0.1.20231114
 revision=1
 short_desc="Uninstalls packages removed from repository"
 homepage="https://voidlinux.org"
@@ -22,6 +22,8 @@ replaces+=" libllvm8<=8.0.1_5"
 replaces+=" libllvm9<=9.0.1_8"
 replaces+=" libllvm10<=10.0.0_8"
 replaces+=" libllvm11<=11.0.0_2"
+replaces+=" liblvm2app<=2.02.187"
+replaces+=" liblvm2app-devel<=2.02.187"
 replaces+=" libtidy5<=5.8.0_1"
 replaces+=" libtidy5-devel<=5.8.0_1"
 replaces+=" libxml2-python<=2.9.10_4"

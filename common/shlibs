@@ -141,14 +141,14 @@ libcppdap.so cppdap-1.58.0+a_1
 libreg.so crda-3.18_5
 libcryptopp.so.8 crypto++-8.3.0_1
 libczmq.so.4 czmq-4.0.1_1
-libdevmapper-event-lvm2.so.2.02 device-mapper-2.02.110_1
 libdevmapper-event.so.1.02 device-mapper-2.02.110_1
 libdevmapper.so.1.02 device-mapper-2.02.110_1
 libdevmapper-event-lvm2mirror.so.2.02 device-mapper-2.02.178_1
 libdevmapper-event-lvm2raid.so.2.02 device-mapper-2.02.178_1
 libdevmapper-event-lvm2snapshot.so.2.02 device-mapper-2.02.178_1
 libdevmapper-event-lvm2thin.so.2.02 device-mapper-2.02.178_1
-liblvm2cmd.so.2.02 device-mapper-2.02.54_1
+libdevmapper-event-lvm2.so.2.03 device-mapper-2.03.18_1
+liblvm2cmd.so.2.03 device-mapper-2.03.18_1
 libdmraid.so.1 dmraid-1.0.0.rc16.3_5
 libdovecot-compression.so.0 dovecot-2.3.13_3
 libdovecot-lda.so.0 dovecot-2.3.13_3
@@ -444,7 +444,6 @@ libLLVM-12.so libllvm12-12.0.0_1
 libLLVM-15.so libllvm15-15.0.7_1
 libltdl.so.7 libltdl-2.2.6_1
 libluv.so.1 libluv-1.30.1.0_1
-liblvm2app.so.2.2 liblvm2app-2.02.54_1
 liblxc.so.1 liblxc-4.0.6_2
 liblz4.so.1 liblz4-1.8.2_1
 liblzma.so.5 liblzma-5.0.0_1

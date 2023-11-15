@@ -578,9 +578,7 @@ constant %PKG = Map.new(
                            luarocks-lua54>,
     'lutok' => ['lutok-devel'],
     'lvm2' => qw<device-mapper
-                 device-mapper-devel
-                 liblvm2app
-                 liblvm2app-devel>,
+                 device-mapper-devel>,
     'lxc' => qw<liblxc
                 lxc-devel>,
     'lz4' => qw<liblz4

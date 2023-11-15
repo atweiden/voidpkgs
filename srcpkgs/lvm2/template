@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="lvm2"
-version=2.02.188
+version=2.03.22
 revision=1
 short_desc="Logical Volume Manager 2 utilities"
 depends="thin-provisioning-tools"
@@ -8,21 +8,20 @@ makedepends+=" eudev-libudev-devel"
 makedepends+=" libaio-devel"
 makedepends+=" libblkid-devel"
 makedepends+=" readline-devel"
+makedepends+=" thin-provisioning-tools"
 hostmakedepends="pkg-config"
 homepage="https://sourceware.org/lvm2/"
-license="GPL-2.0-only, LGPL-2.1-only"
+license="GPL-2.0-only, LGPL-2.1-only, BSD-2-Clause"
 changelog="https://abi-laboratory.pro/?view=changelog&l=lvm2&v=$version"
 distfiles="https://mirrors.kernel.org/sourceware/lvm2/releases/${pkgname^^}.$version.tgz"
-checksum="7101e8b0816ad77e4390fed9749a090214ba520061cd083437871e19e50cc9bd"
+checksum="4c5a6923bd1ace7ce04474608a84937ce053ba91b1ace9f0b0017268e732dc7c"
 conf_files+=" /etc/lvm/*.conf"
 conf_files+=" /etc/lvm/profile/*"
 build_style="gnu-configure"
 configure_args+=" --disable-selinux"
-configure_args+=" --enable-applib"
 configure_args+=" --enable-cmdlib"
 configure_args+=" --enable-dmeventd"
 configure_args+=" --enable-fsadm"
-configure_args+=" --enable-lvmetad"
 configure_args+=" --enable-pkgconfig"
 configure_args+=" --enable-readline"
 configure_args+=" --enable-udev_rules"
@@ -31,6 +30,7 @@ configure_args+=" --with-default-dm-run-dir=/run"
 configure_args+=" --with-default-locking-dir=/run/lock/lvm"
 configure_args+=" --with-default-pid-dir=/run"
 configure_args+=" --with-default-run-dir=/run/lvm"
+configure_args+=" --without-systemd-run"
 configure_args+=" --with-udevdir=/usr/lib/udev/rules.d"
 make_dirs+=" /etc/lvm/archive 0755 root root"
 make_dirs+=" /etc/lvm/backup 0755 root root"
@@ -41,11 +41,6 @@ case $XBPS_TARGET_MACHINE in
     ;;
 esac
 
-do_check() {
-  # requires opening /dev/kmsg which requires root
-  :
-}
-
 pre_configure() {
   sed \
     -i \
@@ -53,22 +48,15 @@ pre_configure() {
     make.tmpl.in
 }
 
+do_check() {
+  # requires opening /dev/kmsg which requires root
+  :
+}
+
 post_install() {
-  sed \
-    -i \
-    -e 's,use_lvmetad = 1,use_lvmetad = 0,' \
-    "$DESTDIR/etc/lvm/lvm.conf"
-  case "$XBPS_TARGET_MACHINE" in
-    *-musl)
-      sed \
-        -i \
-        -e 's,use_mlockall = 0,use_mlockall = 1,' \
-        "$DESTDIR/etc/lvm/lvm.conf"
-      ;;
-  esac
-  vsv lvmetad
   vmkdir usr/bin
   mv -f "$DESTDIR/usr/sbin"/* "$DESTDIR/usr/bin/" || true
+  vlicense COPYING.BSD
 }
 
 device-mapper-devel_package() {
@@ -109,26 +97,6 @@ device-mapper_package() {
       vmove "usr/lib/udev/rules.d/$f.rules"
     done
     vsv dmeventd
-  }
-}
-
-liblvm2app-devel_package() {
-  unset depends
-  depends+=" device-mapper-devel-${version}_$revision"
-  depends+=" libblkid-devel"
-  depends+=" liblvm2app-${version}_$revision"
-  short_desc="LVM2 application library - development files"
-  pkg_install() {
-    vmove usr/include/lvm2app.h
-    vmove "usr/lib/pkgconfig/lvm2app*"
-    vmove usr/lib/liblvm2app.so
-  }
-}
-
-liblvm2app_package() {
-  short_desc="LVM2 application library"
-  pkg_install() {
-    vmove "usr/lib/liblvm2app.so.*"
   }
 }
 
