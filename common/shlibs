@@ -536,8 +536,8 @@ libprotoc.so.24.1.0 libprotoc-24.1_1
 libpsl.so.5 libpsl-0.20.2_1
 libpulse-simple.so.0 libpulseaudio-15.0_1
 libpulse.so.0 libpulseaudio-15.0_1
-libpulsecommon-15.0.so libpulseaudio-15.0_1
-libpulsecore-15.0.so libpulseaudio-15.0_1
+libpulsecommon-16.1.so libpulseaudio-16.0_1
+libpulsecore-16.1.so libpulseaudio-16.0_1
 libpwquality.so.1 libpwquality-1.1.1_1
 libpytalloc-util.so.2 libpytalloc-util-2.3.1_2
 libqb.so.100 libqb-2.0.0_1
