@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cronie"
 version=1.7.0
-revision=1
+revision=2
 short_desc="Runs specified programs at scheduled times"
 depends="run-parts"
 makedepends="pam-devel"
@@ -56,6 +56,7 @@ post_install() {
   vinstall contrib/anacrontab 644 etc
   vinstall contrib/0hourly 644 etc/cron.d
   vinstall contrib/0anacron 755 etc/cron.hourly
+  vinstall "$FILESDIR/anacron" 644 etc/default
 
   # crontab must be setuid
   chmod u+s "$DESTDIR/usr/bin/crontab"
