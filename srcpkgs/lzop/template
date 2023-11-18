@@ -1,12 +1,13 @@
-# Template file for 'lzop'
-pkgname=lzop
+maintainer="nox"
+pkgname="lzop"
 version=1.04
 revision=1
-build_style=gnu-configure
-makedepends="lzo-devel"
 short_desc="File compressor using LZO"
-maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="GPL-2"
+makedepends="lzo-devel"
 homepage="http://www.lzop.org/"
+license="GPL-2"
 distfiles="http://www.lzop.org/download/$pkgname-$version.tar.gz"
-checksum=7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41
+checksum="7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41"
+build_style="gnu-configure"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
