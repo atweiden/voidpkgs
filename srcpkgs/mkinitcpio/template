@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="mkinitcpio"
 version=37
-revision=2
+revision=3
 short_desc="Next generation of initramfs creation"
 depends+=" bash"
 depends+=" bsdtar"
 depends+=" busybox-static"
+depends+=" zstd"
 checkdepends+=" bats-assert"
 checkdepends+=" busybox-static"
 checkdepends+=" lz4"
