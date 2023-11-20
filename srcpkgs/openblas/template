@@ -59,6 +59,10 @@ case "$XBPS_TARGET_MACHINE" in
   ppc*)
     make_build_args+=" TARGET=PPCG4"
     ;;
+  riscv64*)
+    make_build_args+=" TARGET=RISCV64_GENERIC"
+    make_build_args+=" DYNAMIC_ARCH=1"
+    ;;
   mips*)
     broken="Not supported"
     ;;
