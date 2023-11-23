@@ -1,11 +1,10 @@
 maintainer="nox"
 pkgname="git-toolbelt"
 version=1.9.0
-revision=1
+revision=2
 short_desc="Helper tools to make everyday life with Git much easier"
 depends+=" fzf"
 depends+=" git"
-depends+=" moreutils"
 homepage="https://github.com/nvie/git-toolbelt"
 license="BSD-3-Clause"
 distfiles="https://github.com/nvie/git-toolbelt/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
