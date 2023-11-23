@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zeromq"
-version=4.3.4
+version=4.3.5
 revision=1
 short_desc="Intelligent Transport Layer"
 makedepends="libsodium-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" xmlto"
 homepage="http://www.zeromq.org"
 license="LGPL-3.0-or-later"
 distfiles="https://github.com/zeromq/libzmq/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="c593001a89f5a85dd2ddf564805deb860e02471171b3f204944857336295c3e5"
+checksum="6653ef5910f17954861fe72332e68b03ca6e4d9c7160eb3a8de5a5a913bfab43"
 build_style="gnu-configure"
 configure_args+=" --disable-Werror"
 configure_args+=" --with-libsodium"
