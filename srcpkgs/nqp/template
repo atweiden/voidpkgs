@@ -21,6 +21,10 @@ configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
 make_check_target="test"
 nocross="yes"
-disable_parallel_build="yes"
+case "$XBPS_TARGET_MACHINE" in
+  arm*|aarch64*)
+    disable_parallel_build="yes"
+    ;;
+esac
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
