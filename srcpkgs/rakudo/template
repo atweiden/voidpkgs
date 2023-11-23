@@ -26,6 +26,11 @@ make_check_target="test"
 make_install_args+=" RAKUDO_LOG_PRECOMP=1"
 make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
 nocross="yes"
+case "$XBPS_TARGET_MACHINE" in
+  arm*|aarch64*)
+    disable_parallel_build="yes"
+    ;;
+esac
 make_dirs+=" /usr/lib/raku/core/bin 0755 root root"
 make_dirs+=" /usr/lib/raku/core/resources 0755 root root"
 make_dirs+=" /usr/lib/raku/site/bin 0755 root root"
