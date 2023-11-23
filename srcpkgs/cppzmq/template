@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cppzmq"
-version=4.7.1
+version=4.10.0
 revision=1
 short_desc="C++ binding for 0MQ"
 depends="zeromq-devel"
@@ -9,7 +9,7 @@ hostmakedepends="pkg-config"
 homepage="https://github.com/zeromq/cppzmq"
 license="MIT"
 distfiles="https://github.com/zeromq/cppzmq/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9853e0437d834cbed5d3c223bf1d755cadee70e7c964c6e42c4c6783dee5d02c"
+checksum="c81c81bba8a7644c84932225f018b5088743a22999c6d82a2b5f5cd1e6942b74"
 build_style="cmake"
 configure_args="-DCPPZMQ_BUILD_TESTS=OFF"
 
