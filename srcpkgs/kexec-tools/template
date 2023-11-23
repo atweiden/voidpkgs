@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="kexec-tools"
-version=2.0.26
+version=2.0.27
 revision=1
 short_desc="Tools to support fast kexec reboots"
 makedepends+=" liblzma-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" xz"
 homepage="http://kernel.org/pub/linux/utils/kernel/kexec/"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/kernel/kexec/$pkgname-$version.tar.xz"
-checksum="7fe36a064101cd5c515e41b2be393dce3ca88adce59d6ee668e0af7c0c4570cd"
+checksum="38d78bcfa33a88928324b57dc81f50c1dfc279eede45e80957ca18f4e84b8187"
 build_style="gnu-configure"
 case "$XBPS_TARGET_MACHINE" in
   # textrels not supported
