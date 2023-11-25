@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="runit-void"
-version=20230413
+version=20231124
 revision=1
 short_desc="Void Linux runit scripts"
 depends+=" virtual?awk"
@@ -9,7 +9,7 @@ depends+=" runit"
 homepage="https://github.com/void-linux/void-runit"
 license="CC0-1.0"
 distfiles="https://github.com/void-linux/void-runit/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1049555eb27c370ec482ab576382ff951c2c33da6e8f5d165b3733c4a6d157cb"
+checksum="2bdb86a08ee0ee70d1a189ebbf9e60157f847e8c8f75caedc009536ca794a77c"
 conf_files+=" /etc/hostname"
 conf_files+=" /etc/locale.conf"
 conf_files+=" /etc/rc.conf"
