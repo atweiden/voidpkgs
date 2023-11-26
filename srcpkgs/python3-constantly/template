@@ -1,14 +1,16 @@
 maintainer="nox"
 pkgname="python3-constantly"
-version=15.1.0
-revision=8
+version=23.10.4
+revision=1
 short_desc="Symbolic constants in Python (Python3)"
 depends="python3"
-hostmakedepends="python3-setuptools"
+checkdepends="python3-Twisted"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-versioneer"
 homepage="https://github.com/twisted/constantly"
 license="MIT"
 distfiles="$PYPI_SITE/c/constantly/constantly-$version.tar.gz"
-checksum="586372eb92059873e29eba4f9dec8381541b4d3834660707faf8ba59146dfc35"
+checksum="aa92b70a33e2ac0bb33cd745eb61776594dc48764b06c35e0efd050b7f1c7cbd"
 build_style="python3-module"
 
 post_install() {
