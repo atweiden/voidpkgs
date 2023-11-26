@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="black"
-version=23.10.1
+version=23.11.0
 revision=1
 short_desc="Uncompromising Python code formatter"
 depends+=" python3-click"
@@ -19,7 +19,7 @@ homepage="https://black.readthedocs.io/en/stable/"
 license="MIT"
 changelog="https://github.com/psf/black/raw/main/CHANGES.md"
 distfiles="$PYPI_SITE/b/black/black-$version.tar.gz"
-checksum="1f8ce316753428ff68749c65a5f7844631aa18c8679dfd3ca9dc1a289979c258"
+checksum="4c68855825ff432d197229846f971bc4d6666ce90492e5b02013bcaca4d9ab05"
 build_style="python3-pep517"
 # python3-ipython in checkdepends requires gui dependencies
 # TODO: https://github.com/psf/black/pull/3984
