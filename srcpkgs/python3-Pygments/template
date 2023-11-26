@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Pygments"
-version=2.17.1
+version=2.17.2
 revision=1
 short_desc="Generic syntax highlighter written in Python"
 depends="python3"
@@ -11,7 +11,7 @@ homepage="https://pygments.org"
 license="BSD-2-Clause"
 changelog="https://github.com/pygments/pygments/raw/master/CHANGES"
 distfiles="$PYPI_SITE/p/pygments/pygments-$version.tar.gz"
-checksum="e45a0e74bf9c530f564ca81b8952343be986a29f6afe7f5ad95c5f06b7bdf5e8"
+checksum="da46cec9fd2de5be3a8a784f434e4c4ab670b4ff54d605c4c2717e9d49c4c367"
 build_style="python3-pep517"
 # ignored tests rely on unpackaged wcag_contrast_ratio module
 make_check_args="--ignore=tests/contrast/test_contrasts.py"
