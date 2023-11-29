@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zellij"
-version=0.39.1
+version=0.39.2
 revision=1
 short_desc="Terminal workspace with batteries included"
 # wasmer runtime only supports the following archs: x86_64, arm64
@@ -16,7 +16,7 @@ homepage="https://zellij.dev"
 license="MIT"
 changelog="https://github.com/zellij-org/zellij/raw/main/CHANGELOG.md"
 distfiles="https://github.com/zellij-org/zellij/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4b2f00ea3aec0d36a8e764d33d521b09de936e3c94594536ccd348457e108e14"
+checksum="feef552f06898fe06df00f9a590b862607266c087e804fffb638d2c46d9edad1"
 build_style="cargo"
 make_check_pre="env LIBSSH2_SYS_USE_PKG_CONFIG=1"
 # shell completion generation requires qemu (see: upstream)
