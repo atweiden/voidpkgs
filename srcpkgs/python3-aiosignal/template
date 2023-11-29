@@ -1,15 +1,19 @@
-# Template file for 'python3-aiosignal'
-pkgname=python3-aiosignal
+maintainer="nox"
+pkgname="python3-aiosignal"
 version=1.3.1
 revision=1
-build_style=python3-module
-hostmakedepends="python3-setuptools python3-wheel"
-depends="python3-frozenlist"
-checkdepends="python3-pytest python3-pytest-asyncio python3-pytest-cov
- python3-frozenlist"
 short_desc="List of registered asynchronous callbacks"
-maintainer="Arjan Mossel <arjanmossel@gmail.com>"
-license="Apache-2.0"
+depends="python3-frozenlist"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-asyncio"
+checkdepends+=" python3-pytest-cov"
+checkdepends+=" python3-frozenlist"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/aio-libs/aiosignal"
-distfiles="${PYPI_SITE}/a/aiosignal/aiosignal-${version}.tar.gz"
-checksum=54cd96e15e1649b75d6c87526a6ff0b6c1b0dd3459f43d9ca11d48c339b68cfc
+license="Apache-2.0"
+distfiles="$PYPI_SITE/a/aiosignal/aiosignal-$version.tar.gz"
+checksum="54cd96e15e1649b75d6c87526a6ff0b6c1b0dd3459f43d9ca11d48c339b68cfc"
+build_style="python3-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
