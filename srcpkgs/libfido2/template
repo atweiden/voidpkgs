@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libfido2"
-version=1.13.0
-revision=2
+version=1.14.0
+revision=1
 short_desc="Library for FIDO 2.0, including communication with a device over USB"
 makedepends+=" eudev-libudev-devel"
 makedepends+=" libcbor-devel"
@@ -12,7 +12,7 @@ homepage="https://github.com/Yubico/libfido2"
 license="BSD-2-Clause"
 changelog="https://github.com/Yubico/libfido2/raw/main/NEWS"
 distfiles="https://github.com/Yubico/libfido2/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="51d43727e2a1c4544c7fd0ee47786f443e39f1388ada735a509ad4af0a2459ca"
+checksum="3601792e320032d428002c4cce8499a4c7b803319051a25a0c9f1f138ffee45a"
 # udev rules used to be shipped by libu2f-host
 conf_files="/usr/lib/udev/rules.d/70-u2f.rules"
 build_style="cmake"
