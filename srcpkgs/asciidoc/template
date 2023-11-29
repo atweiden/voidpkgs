@@ -1,21 +1,21 @@
 maintainer="nox"
 pkgname="asciidoc"
-version=9.1.1
+version=10.2.0
 revision=1
 short_desc="Text based document generation"
 depends+=" docbook-xsl"
 depends+=" libxslt"
 depends+=" python3"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-mock"
 hostmakedepends+=" docbook-xsl"
 hostmakedepends+=" libxslt"
-hostmakedepends+=" python3"
+hostmakedepends+=" python3-setuptools"
 homepage="https://asciidoc-py.github.io"
 license="GPL-2.0-or-later"
 changelog="https://asciidoc-py.github.io/CHANGELOG.html"
 distfiles="https://github.com/asciidoc-py/asciidoc-py/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="ea39760ac2739496c14002902571592dc2ae2fa673296ec141a9e491d9c11fca"
-conf_files+=" /etc/asciidoc/filters/*/*.conf"
-conf_files+=" /etc/asciidoc/*.conf"
-build_style="gnu-configure"
+checksum="237b2ba5c35c0ae7ccd4cd44ebf1d87c20b2695dae01798954416d492ef7fa0e"
+build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
