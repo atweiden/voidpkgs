@@ -1,8 +1,9 @@
 maintainer="nox"
 pkgname="python3-aiohttp"
-version=3.7.4
-revision=5
+version=3.9.1
+revision=1
 short_desc="HTTP client/server for asyncio (PEP-3156)"
+depends+=" python3-aiosignal"
 depends+=" python3-async-timeout"
 depends+=" python3-attrs"
 depends+=" python3-chardet"
@@ -11,12 +12,15 @@ depends+=" python3-typing_extensions"
 depends+=" python3-yarl"
 makedepends+=" http-parser-devel"
 makedepends+=" python3-devel"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://aiohttp.readthedocs.io/"
 license="Apache-2.0"
 distfiles="$PYPI_SITE/a/aiohttp/aiohttp-$version.tar.gz"
-checksum="5d84ecc73141d0a0d61ece0742bb7ff5751b0657dab8405f899d3ceb104cc7de"
+checksum="8fc49a87ac269d4529da45871e2ffb6874e87779c3d0e2ccd813c0899221239d"
 build_style="python3-module"
+# depends on proxy.py and re_assert
+make_check="no"
 
 post_patch() {
   # use system http-parser
@@ -24,10 +28,6 @@ post_patch() {
     -i \
     -e '/http_parser\.c/d' \
     setup.py
-  vsed \
-    -i \
-    -e '/http_parser\.h/s/".*\//"/' \
-    aiohttp/_cparser.pxd
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
