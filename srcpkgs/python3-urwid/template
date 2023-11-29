@@ -1,16 +1,28 @@
 maintainer="nox"
 pkgname="python3-urwid"
-version=2.1.2
-revision=5
-short_desc="Console user interface library for Python3"
+version=2.2.3
+revision=1
+short_desc="Console user interface library for Python"
 depends="python3"
 makedepends="python3-devel"
-hostmakedepends="python3-setuptools"
+checkdepends="python3-pytest"
+hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="http://urwid.org/"
 license="LGPL-2.1-or-later"
 changelog="https://github.com/urwid/urwid/raw/master/docs/changelog.rst"
 distfiles="$PYPI_SITE/u/urwid/urwid-$version.tar.gz"
-checksum="588bee9c1cb208d0906a9f73c613d2bd32c3ed3702012f51efe318a3f2127eae"
-build_style="python3-module"
+checksum="e4516d55dcee6bd012b3e72a10c75f2866c63a740f0ec4e1ada05c1e1cc02e34"
+build_style="python3-pep517"
+# "vterm" tests do pipe writes that hang
+make_check_args="--ignore=tests/test_vterm.py"
+make_check_target="tests"
+
+pre_check() {
+  vsed \
+    -i \
+    -e '/addopts/d' \
+    pyproject.toml
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
