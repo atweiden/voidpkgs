@@ -15,6 +15,11 @@ configure_args="--features=pcre2"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
 
+post_patch() {
+  # tries to do weird things on musl
+  rm -f .cargo/config.toml
+}
+
 post_install() {
   local _rg
 
