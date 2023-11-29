@@ -1,7 +1,7 @@
 # partially adapted from alpine/adélie's rust APKBUILD
 maintainer="nox"
 pkgname="rust"
-version=1.73.0
+version=1.74.0
 revision=1
 short_desc="Safe, concurrent, practical systems language"
 depends+=" gcc"
@@ -36,7 +36,7 @@ fi
 homepage="https://www.rust-lang.org/"
 license="MIT, Apache-2.0"
 distfiles="https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
-checksum="96d62e6d1f2d21df7ac8acb3b9882411f9e7c7036173f7f2ede9e1f1f6b1bb3a"
+checksum="882b584bc321c5dcfe77cdaa69f277906b936255ef7808fcd5c7492925cf1049"
 # needed for python files in rust-src
 python_version=3
 build_options="bindist"
