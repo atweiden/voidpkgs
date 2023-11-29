@@ -1,23 +1,26 @@
 maintainer="nox"
 pkgname="soju"
-version=0.6.2
-revision=2
+version=0.7.0
+revision=1
 short_desc="User-friendly IRC bouncer"
+depends="libcap-progs"
 makedepends="sqlite-devel"
 hostmakedepends="scdoc"
 homepage="https://soju.im"
 license="AGPL-3.0-or-later"
 changelog="https://git.sr.ht/~emersion/soju/refs"
 distfiles="https://git.sr.ht/~emersion/soju/refs/download/v$version/$pkgname-$version.tar.gz"
-checksum="b8a8f5af08670497d233137086e273a26c388f5e313c9e9e613ef6caaa3e928a"
+checksum="0d776a28bfb2b7f9cdca0336a5debc4888b224812094daf0de0e29bae9c865cf"
 conf_files="/etc/soju/config"
 build_style="go"
 go_import_path="git.sr.ht/~emersion/soju"
-go_package="./cmd/..."
+go_package+=" ./cmd/..."
+go_package+=" ./contrib/..."
 go_build_tags+=" libsqlite3"
 go_build_tags+=" netgo"
 go_build_tags+=" osusergo"
-go_ldflags="-buildid="
+go_ldflags+=" -buildid="
+go_ldflags+=" -X git.sr.ht/~emersion/soju/config.DefaultPath=/etc/soju/config"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_build_tags+=" sqlite_omit_load_extension"
   go_ldflags+=" -extldflags=-static"
@@ -32,6 +35,11 @@ pre_build() {
 }
 
 post_install() {
+  for b in migrate-db \
+           migrate-logs \
+           znc-import; do
+    mv "$DESTDIR/usr/bin"/{,soju-}$b
+  done
   for f in doc/*.?.scd; do
     scdoc <"$f" >"${f%.scd}"
     vman "${f%.scd}"
