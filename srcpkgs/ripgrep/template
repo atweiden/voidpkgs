@@ -1,26 +1,37 @@
 maintainer="nox"
 pkgname="ripgrep"
-version=13.0.0
-revision=2
+version=14.0.0
+revision=1
 short_desc="Fast search tool inspired by ag and grep"
 makedepends="pcre2-devel"
-hostmakedepends+=" pkg-config"
-hostmakedepends+=" ruby-asciidoctor"
+hostmakedepends="pkg-config"
 homepage="https://github.com/BurntSushi/ripgrep/"
 license="Unlicense, MIT"
+changelog="https://github.com/BurntSushi/ripgrep/raw/master/CHANGELOG.md"
 distfiles="https://github.com/BurntSushi/ripgrep/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0fb17aaf285b3eee8ddab17b833af1e190d73de317ff9648751ab0660d763ed2"
+checksum="d4a57f558abe30bb272850d08850d412870fb3f942ed06932a30b4989911360b"
 build_style="cargo"
 configure_args="--features=pcre2"
+# shell completion generation requires qemu (see: upstream)
+nocross="yes"
 
 post_install() {
+  local _rg
+
   vlicense LICENSE-MIT
   vlicense UNLICENSE
+
+  _rg="$DESTDIR/usr/bin/rg"
+
+  "$_rg" --generate man > rg.1
   vman rg.1
-  cd "target/$RUST_TARGET/release/build"/ripgrep-*/out
-  vinstall rg.bash 0644 usr/share/bash-completion/completions rg
-  vinstall rg.fish 0644 usr/share/fish/completions
-  vinstall complete/_rg 0644 usr/share/zsh/site-functions
+
+  for _shell in bash \
+                fish \
+                zsh; do
+    "$_rg" --generate "complete-$_shell" > "rg.$_shell"
+    vcompletion "rg.$_shell" "$_shell" rg
+  done
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
