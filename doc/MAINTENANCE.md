@@ -278,6 +278,7 @@ general
 - lvm2
 - lzip
 - lzo
+- lzop
 - man-db
 - man-pages
 - man-pages-posix
