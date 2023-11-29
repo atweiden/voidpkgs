@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ripgrep"
-version=14.0.0
+version=14.0.2
 revision=1
 short_desc="Fast search tool inspired by ag and grep"
 makedepends="pcre2-devel"
@@ -9,7 +9,7 @@ homepage="https://github.com/BurntSushi/ripgrep/"
 license="Unlicense, MIT"
 changelog="https://github.com/BurntSushi/ripgrep/raw/master/CHANGELOG.md"
 distfiles="https://github.com/BurntSushi/ripgrep/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d4a57f558abe30bb272850d08850d412870fb3f942ed06932a30b4989911360b"
+checksum="2b9bd8a582d1fea70eb932e389e0895922b9a0147f65f9ad4b601b3f3a82a195"
 build_style="cargo"
 configure_args="--features=pcre2"
 # shell completion generation requires qemu (see: upstream)
