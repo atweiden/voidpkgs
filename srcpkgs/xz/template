@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="xz"
-version=5.4.4
+version=5.4.5
 revision=1
 short_desc="XZ compression utilities"
 homepage="https://tukaani.org/xz"
 license="Public Domain, GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
 changelog="https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS"
 distfiles="https://tukaani.org/xz/$pkgname-$version.tar.bz2"
-checksum="0b6fcde1ac38e90433a2556f500c065950b9bcd2d602006efc334782bdfe6296"
+checksum="8ccf5fff868c006f29522e386fb4c6a1b66463fbca65a4cfc3c4bd596e895e79"
 build_style="gnu-configure"
 configure_args="--disable-doc"
 bootstrap="yes"
