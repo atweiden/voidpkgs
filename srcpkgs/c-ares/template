@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="c-ares"
-version=1.22.1
+version=1.23.0
 revision=1
 short_desc="Library for asynchronous DNS requests"
 checkdepends="iana-etc"
@@ -8,7 +8,7 @@ homepage="https://c-ares.haxx.se/"
 license="MIT"
 changelog="https://c-ares.haxx.se/changelog.html"
 distfiles="https://c-ares.haxx.se/download/$pkgname-$version.tar.gz"
-checksum="f67c180deb799c670d9dda995a18ce06f6c7320b6c6363ff8fa85b77d0da9db8"
+checksum="cb614ecf78b477d35963ebffcf486fc9d55cc3d3216f00700e71b7d4868f79f5"
 build_style="gnu-configure"
 # segfaults only on ci
 make_check="ci-skip"
