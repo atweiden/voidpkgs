@@ -1,7 +1,7 @@
 maintainer="nox"
-pkgname="base-voidstrap"
+pkgname="base-container-full"
 version=0.11
-revision=1
+revision=2
 short_desc="Void Linux base system meta package for containers/chroots"
 depends+=" base-files"
 depends+=" ncurses"
@@ -56,5 +56,11 @@ esac
 homepage="https://www.voidlinux.org/"
 license="Public Domain"
 build_style="meta"
+
+base-voidstrap_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" (transitional dummy package)"
+  build_style="meta"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

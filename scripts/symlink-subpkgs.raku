@@ -56,6 +56,7 @@ constant %PKG = Map.new(
     'attr' => qw<attr-devel
                  attr-progs>,
     'base-container' => ['base-minimal'],
+    'base-container-full' => ['base-voidstrap'],
     'bash' => ['bash-devel'],
     'bcc' => qw<bcc-devel
                 bcc-tools
