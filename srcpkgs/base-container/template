@@ -1,8 +1,8 @@
 maintainer="nox"
-pkgname="base-minimal"
+pkgname="base-container"
 version=0.3
-revision=1
-short_desc="Void Linux base system meta with minimal tools"
+revision=2
+short_desc="Void Linux base system meta for minimal containers/chroots"
 depends+=" base-files"
 depends+=" coreutils"
 depends+=" findutils"
@@ -23,10 +23,6 @@ depends+=" nvi"
 depends+=" tzdata"
 depends+=" runit-void"
 depends+=" removed-packages"
-homepage="https://www.voidlinux.org/"
-license="Public Domain"
-build_style="meta"
-
 case "$XBPS_TARGET_MACHINE" in
   *-musl)
     depends+=" musl"
@@ -35,5 +31,14 @@ case "$XBPS_TARGET_MACHINE" in
     depends+=" glibc-locales"
     ;;
 esac
+homepage="https://www.voidlinux.org/"
+license="Public Domain"
+build_style="meta"
+
+base-minimal_package() {
+  depends="$sourcepkg>=${version}_$revision"
+  short_desc+=" (transitional dummy package)"
+  build_style="meta"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

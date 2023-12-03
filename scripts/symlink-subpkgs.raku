@@ -55,6 +55,7 @@ constant %PKG = Map.new(
                 atf-libs>,
     'attr' => qw<attr-devel
                  attr-progs>,
+    'base-container' => ['base-minimal'],
     'bash' => ['bash-devel'],
     'bcc' => qw<bcc-devel
                 bcc-tools
