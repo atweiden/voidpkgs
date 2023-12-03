@@ -1,10 +1,9 @@
 maintainer="nox"
 pkgname="tor"
-version=0.4.8.7
+version=0.4.8.9
 revision=1
 short_desc="Anonymizing overlay network"
-depends+=" ca-certificates"
-depends+=" torsocks"
+depends="ca-certificates"
 makedepends+=" libcap-devel"
 makedepends+=" libevent-devel"
 makedepends+=" liblzma-devel"
@@ -16,12 +15,13 @@ checkdepends+=" coccinelle"
 checkdepends+=" python3"
 hostmakedepends="pkg-config"
 homepage="https://www.torproject.org/"
-license="BSD-3-Clause"
+license="BSD-3-Clause, GPL-3.0-only"
 changelog="https://gitlab.torproject.org/tpo/core/tor/-/raw/main/ChangeLog"
 distfiles="https://dist.torproject.org/$pkgname-$version.tar.gz"
-checksum="b20d2b9c74db28a00c07f090ee5b0241b2b684f3afdecccc6b8008931c557491"
+checksum="59bb7d8890f6131b4ce5344f3dcea5deb2182b7f4f10ff0cb4e4d81f11b2cf65"
 conf_files="/etc/tor/torrc"
 build_style="gnu-configure"
+configure_args="--enable-gpl"
 case "$XBPS_TARGET_MACHINE" in
   # tests just don't work here
   x86_64-musl)
