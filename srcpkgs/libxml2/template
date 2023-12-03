@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxml2"
-version=2.12.1
-revision=1
+version=2.11.4
+revision=5
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
@@ -14,9 +14,8 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="https://gitlab.gnome.org/GNOME/libxml2"
 license="MIT"
-changelog="https://gitlab.gnome.org/GNOME/libxml2/-/raw/master/NEWS"
 distfiles="$GNOME_SITE/libxml2/${version%.*}/libxml2-$version.tar.xz"
-checksum="8982b9ccdf7f456e30d8f7012d50858c6623e495333b6191def455c7e95427eb"
+checksum="737e1d7f8ab3f139729ca13a2494fd17bf30ddb4b7a427cf336252cab57f57f7"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --with-ftp"
@@ -26,6 +25,7 @@ configure_args+=" --with-legacy"
 configure_args+=" --with-threads"
 configure_args+=" --with-xptr-locs"
 python_version=3
+reverts="2.12.1_1"
 
 CFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
 
