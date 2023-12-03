@@ -1,13 +1,15 @@
 maintainer="nox"
 pkgname="torsocks"
 version=2.4.0
-revision=1
+revision=2
 short_desc="Transparent socks proxy for use with tor"
+depends="tor"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 homepage="https://gitlab.torproject.org/tpo/core/torsocks"
 license="GPL-2.0-only"
+changelog="https://gitlab.torproject.org/tpo/core/torsocks/-/raw/main/ChangeLog"
 distfiles="https://gitlab.torproject.org/tpo/core/torsocks/-/archive/v$version/$pkgname-v$version.tar.bz2"
 checksum="54b2e3255b697fb69bb92388376419bcef1f94d511da3980f9ed5cd8a41df3a8"
 conf_files="/etc/tor/torsocks.conf"
