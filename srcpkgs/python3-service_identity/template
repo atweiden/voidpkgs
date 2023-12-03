@@ -1,20 +1,22 @@
 maintainer="nox"
 pkgname="python3-service_identity"
-version=18.1.0
-revision=8
+version=23.1.0
+revision=1
 short_desc="Service identity verification for Python (Python3)"
 depends+=" python3-attrs"
 depends+=" python3-cryptography"
 depends+=" python3-pyasn1-modules"
 depends+=" python3-six"
 checkdepends="$depends"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" hatchling"
+hostmakedepends+=" hatch-vcs"
+hostmakedepends+=" python3-build"
 homepage="https://service-identity.readthedocs.org/"
 license="MIT"
-changelog="https://github.com/pyca/service-identity/raw/main/CHANGELOG.rst"
+changelog="https://github.com/pyca/service-identity/raw/main/CHANGELOG.md"
 distfiles="$PYPI_SITE/s/service_identity/service_identity-$version.tar.gz"
-checksum="0858a54aabc5b459d1aafa8a518ed2081a285087f349fe3e55197989232e2e2d"
-build_style="python3-module"
+checksum="ecb33cd96307755041e978ab14f8b14e13b40f1fbd525a4dc78f46d2b986431d"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
