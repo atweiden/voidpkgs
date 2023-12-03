@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="terraform"
-version=1.6.3
+version=1.6.5
 revision=1
 short_desc="Tool for building, changing, and combining infrastructure"
 homepage="https://www.terraform.io/"
 license="MPL-2.0"
 distfiles="https://github.com/hashicorp/terraform/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2c0e2299107a385a6381f3c4c23f48faf0c93a64257d084356459bff5ddaf385"
+checksum="92f8ac6f120a0b691d9f2a2eba2b13a1aaa72d60a949c557acb21d377dc142c1"
 build_style="go"
 go_import_path="github.com/hashicorp/terraform"
 go_build_tags+=" netgo"
