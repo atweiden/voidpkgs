@@ -346,6 +346,7 @@ general
 - psmisc
 - py3c
 - range-v3
+- rdfind
 - re2
 - reiserfsprogs
 - removed-packages
