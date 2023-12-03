@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="mdBook"
-version=0.4.35
+version=0.4.36
 revision=1
 short_desc="Create book from markdown files. Like Gitbook but implemented in Rust"
 homepage="https://github.com/rust-lang/mdBook"
 license="MPL-2.0"
 changelog="https://github.com/rust-lang/mdBook/raw/master/CHANGELOG.md"
 distfiles="https://github.com/rust-lang/mdBook/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2fcefce12acc957c1d604e60c309502b9ec37040f6f70656f12c81374ff27bd4"
+checksum="dd47214172ecf95e1b2cbcbebb8428d0b029e0de5dce74204b3c3a91f26223a1"
 build_style="cargo"
 
 post_install() {
