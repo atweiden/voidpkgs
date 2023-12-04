@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gerbil"
 version=0.18
-revision=1
+revision=2
 _gitrev="f5c3cce810b56f6823c5badc8723a9dbbb9cb804"
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
 depends+=" gcc"
@@ -15,7 +15,8 @@ hostmakedepends+=" tar"
 homepage="https://cons.io/"
 license="LGPL-2.1-or-later, Apache-2.0"
 build_style="configure"
-configure_args="--prefix=/usr/lib/gerbil"
+configure_args+=" --enable-march="
+configure_args+=" --prefix=/usr/lib/gerbil"
 nocross="yes"
 
 do_fetch() {
