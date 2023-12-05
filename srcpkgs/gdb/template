@@ -1,11 +1,12 @@
 maintainer="nox"
 pkgname="gdb"
-version=13.2
-revision=2
+version=14.1
+revision=1
 short_desc="GNU Debugger"
 depends="gdb-common>=${version}_${revision}"
 makedepends+=" expat-devel"
 makedepends+=" gmp-devel"
+makedepends+=" mpfr-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
@@ -23,8 +24,9 @@ hostmakedepends+=" $(vopt_if guile guile)"
 hostmakedepends+=" $(vopt_if python python3-devel)"
 homepage="https://www.gnu.org/software/gdb"
 license="GPL-3.0-or-later"
+changelog="https://sourceware.org/git/?p=binutils-gdb.git;a=blob_plain;f=gdb/NEWS;hb=HEAD"
 distfiles="$GNU_SITE/gdb/$pkgname-$version.tar.xz"
-checksum="fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a"
+checksum="d66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80"
 build_style="gnu-configure"
 configure_args+=" --disable-nls"
 configure_args+=" --disable-werror"
