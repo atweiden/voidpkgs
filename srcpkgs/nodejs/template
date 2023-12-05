@@ -1,42 +1,44 @@
 maintainer="nox"
 pkgname="nodejs"
-version=18.16.0
-revision=3
+version=18.19.0
+revision=1
 short_desc="Evented I/O for V8 javascript"
-# need these for host v8 for torque
-# see: https://github.com/nodejs/node/pull/21079
-makedepends+=" zlib-devel"
-makedepends+=" $(vopt_if cares c-ares-devel)"
-makedepends+=" $(vopt_if icu icu-devel)"
-makedepends+=" $(vopt_if libuv libuv-devel)"
-makedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
-makedepends+=" $(vopt_if ssl openssl-devel)"
+_make_depends+=" zlib-devel"
+_make_depends+=" $(vopt_if brotli brotli-devel)"
+_make_depends+=" $(vopt_if cares c-ares-devel)"
+_make_depends+=" $(vopt_if icu icu-devel)"
+_make_depends+=" $(vopt_if libuv libuv-devel)"
+_make_depends+=" $(vopt_if nghttp2 nghttp2-devel)"
+_make_depends+=" $(vopt_if ssl openssl-devel)"
+makedepends="$_make_depends"
 checkdepends+=" iana-etc"
 checkdepends+=" procps-ng"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" which"
-hostmakedepends+=" zlib-devel"
-hostmakedepends+=" $(vopt_if cares c-ares-devel)"
-hostmakedepends+=" $(vopt_if icu icu-devel)"
-hostmakedepends+=" $(vopt_if libuv libuv-devel)"
-hostmakedepends+=" $(vopt_if nghttp2 nghttp2-devel)"
-hostmakedepends+=" $(vopt_if ssl openssl-devel)"
+if [[ -n "$CROSS_BUILD" ]]; then
+  # need these for host v8 for torque, see: https://github.com/nodejs/node/pull/21079
+  hostmakedepends+=" $_make_depends"
+fi
 homepage="https://nodejs.org/"
 license="MIT"
-distfiles="https://nodejs.org/dist/v$version/${pkgname%js}-v$version.tar.gz"
-checksum="6a4f5c5d76e5c50cef673099e56f19bc3266ae363f56ca0ab77dd2f3c5088c6d"
+changelog="https://github.com/nodejs/node/raw/main/doc/changelogs/CHANGELOG_V${version%%.*}.md"
+distfiles="https://nodejs.org/dist/v$version/node-v$version.tar.xz"
+checksum="f52b41af20596a9abd8ed75241837ec43945468221448bbf841361e2091819b6"
 python_version=3
+build_options+=" brotli"
 build_options+=" cares"
 build_options+=" icu"
 build_options+=" libuv"
 build_options+=" nghttp2"
 build_options+=" ssl"
-desc_option_ssl="Enable shared openssl"
-desc_option_libuv="Enable shared libuv"
-desc_option_icu="Enable shared icu"
-desc_option_nghttp2="Enable shared nghttp2"
+desc_option_brotli="Enable shared brotli"
 desc_option_cares="Enable shared c-ares"
+desc_option_icu="Enable shared icu"
+desc_option_libuv="Enable shared libuv"
+desc_option_nghttp2="Enable shared nghttp2"
+desc_option_ssl="Enable shared openssl"
+build_options_default+=" brotli"
 build_options_default+=" cares"
 build_options_default+=" icu"
 build_options_default+=" libuv"
@@ -109,8 +111,10 @@ do_configure() {
   fi
   ./configure \
     $_args \
+    --enable-lto \
     --prefix="/usr" \
     --shared-zlib \
+    $(vopt_if brotli --shared-brotli) \
     $(vopt_if cares --shared-cares) \
     $(vopt_if icu --with-intl=system-icu) \
     $(vopt_if libuv --shared-libuv) \
@@ -137,12 +141,40 @@ do_build() {
 
 do_check() {
   local CI_SKIP_TESTS
-  CI_SKIP_TESTS="test-cluster-primary-error.js,test-cluster-primary-kill.js,test-child-process-uid-gid.js,test-process-euid-egid.js,test-process-uid-gid.js,test-socket-write-after-fin-error.js,test-dns-perf_hooks.js"
+
+  CI_SKIP_TESTS+="test-child-process-uid-gid.js"
+  CI_SKIP_TESTS+=",test-process-euid-egid.js"
+  CI_SKIP_TESTS+=",test-process-uid-gid.js"
+  CI_SKIP_TESTS+=",test-tls-session-cache.js"
+  CI_SKIP_TESTS+=",test-tls-getprotocol.js"
+  CI_SKIP_TESTS+=",test-tls-alert.js"
+  CI_SKIP_TESTS+=",test-tls-cli-min-version-1.1.js"
+  CI_SKIP_TESTS+=",test-tls-cli-max-version-1.1.js"
+  CI_SKIP_TESTS+=",test-tls-cli-min-version-1.2.js"
+  CI_SKIP_TESTS+=",test-tls-cli-max-version-1.2.js"
+  CI_SKIP_TESTS+=",test-tls-cli-min-version-1.3.js"
+  CI_SKIP_TESTS+=",test-tls-cli-max-version-1.3.js"
+  CI_SKIP_TESTS+=",test-tls-min-max-version.js"
+  CI_SKIP_TESTS+=",test-process-versions.js"
+  CI_SKIP_TESTS+=",test-strace-openat-openssl.js"
+  CI_SKIP_TESTS+=",test-crypto-dh.js"
+  CI_SKIP_TESTS+=",test-dgram-send-cb-quelches-error.js"
+  CI_SKIP_TESTS+=",test-https-agent-session-eviction.js"
+
+  # https://github.com/nodejs/node/issues/50741
+  CI_SKIP_TESTS+=",test-dns-resolveany.js"
+  CI_SKIP_TESTS+=",test-dns-resolveany-bad-ancount.js"
+
+  if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
+    # https://github.com/nodejs/node/issues/45906
+    CI_SKIP_TESTS+=",test-fs-utimes-y2K38.js"
+  fi
+
   make \
     "$makejobs" \
     CI_SKIP_TESTS="$CI_SKIP_TESTS" \
     LD="$CXX" \
-    LDFLAGS+=-ldl \
+    LDFLAGS+="-ldl" \
     V=1 \
     test-only
 }
