@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="e2fsprogs"
 version=1.47.0
-revision=1
+revision=2
 short_desc="Ext2/3/4 Filesystem Utilities"
 makedepends+=" fuse-devel"
 makedepends+=" libblkid-devel"
@@ -28,6 +28,7 @@ configure_args+=" --enable-relative-symlinks"
 configure_args+=" --enable-symlink-build"
 configure_args+=" --enable-symlink-install"
 configure_args+=" --with-root-prefix=/usr"
+configure_args+=" ac_cv_prog_AWK=awk"
 configure_args+=" e2fsprogs_cv_struct_st_flags=no"
 make_install_args="install-libs"
 
