@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="curl"
-version=8.4.0
+version=8.5.0
 revision=1
 short_desc="Client that groks URLs"
 depends="ca-certificates"
@@ -30,7 +30,7 @@ homepage="https://curl.se"
 license="MIT"
 changelog="https://curl.se/changes.html"
 distfiles="https://curl.se/download/curl-$version.tar.gz"
-checksum="816e41809c043ff285e8c0f06a75a1fa250211bbfb2dc0a037eeef39f1a9e427"
+checksum="05fc17ff25b793a437a0906e0484b82172a9f4de02be5ed447e0cab8c3475add"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
 configure_args+=" --enable-threaded-resolver"
@@ -61,6 +61,9 @@ build_options_default+=" zstd"
 vopt_conflict "ssl" "gnutls"
 # impacket in checkdepends requires gui dependencies
 make_check="no"
+# 1477 verifies if headers and manpages are in sync which belongs in
+# upstream processes
+make_check_args="TFLAGS=!1477"
 
 pre_configure() {
   export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=2/}"
