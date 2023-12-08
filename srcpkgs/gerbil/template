@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="gerbil"
-version=0.18
-revision=2
-_gitrev="f5c3cce810b56f6823c5badc8723a9dbbb9cb804"
+version=0.18.1
+revision=1
+_gitrev="23c30a6062cd7e63f9d85300ce01585bb9035d2d"
 short_desc="Opinionated dialect of Scheme designed for Systems Programming"
 depends+=" gcc"
 depends+=" openssl"
