@@ -152,6 +152,7 @@ constant %PKG = Map.new(
     'czmq' => ['czmq-devel'],
     'dar' => qw<libdar
                 libdar-devel>,
+    'dash' => ['dash-libedit'],
     'db' => qw<db-devel
                db-doc
                libdb

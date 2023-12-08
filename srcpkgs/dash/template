@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="dash"
 version=0.5.12
-revision=1
-hostmakedepends="bison"
+revision=2
 short_desc="POSIX-compliant Unix shell, much smaller than GNU bash"
+makedepends="libedit-devel"
+hostmakedepends="bison"
 homepage="http://gondor.apana.org.au/~herbert/dash/"
 license="BSD-3-Clause"
 distfiles="http://gondor.apana.org.au/~herbert/dash/files/$pkgname-$version.tar.gz"
@@ -18,8 +19,41 @@ register_shell+=" /usr/bin/sh"
 alternatives+=" sh:sh:/usr/bin/dash"
 alternatives+=" sh:sh.1:/usr/share/man/man1/dash.1"
 
-post_install() {
+do_configure() {
+  mkdir -p build-minimal build-libedit
+  cd "$wrksrc/build-minimal"
+  ../configure $configure_args $(vopt_enable static) --without-libedit
+  cd "$wrksrc/build-libedit"
+  ../configure $configure_args --with-libedit
+}
+
+do_build() {
+  make -C build-minimal "$makejobs"
+  make -C build-libedit "$makejobs"
+}
+
+do_check() {
+  make -C build-minimal "$makejobs" check
+  make -C build-libedit "$makejobs" check
+}
+
+do_install() {
+  make -C build-minimal "$makejobs" install DESTDIR="$DESTDIR"
   vlicense COPYING
+}
+
+dash-libedit_package() {
+  unset alternatives
+  short_desc+=" - with libedit"
+  register_shell="/usr/bin/sh /usr/bin/dash /bin/sh /bin/dash"
+  alternatives+=" sh:sh:/usr/bin/dash"
+  alternatives+=" sh:sh.1:/usr/share/man/man1/dash.1"
+  provides="dash-${version}_$revision"
+  replaces="dash>=0"
+  pkg_install() {
+    make -C build-libedit "$makejobs" install DESTDIR="$PKGDESTDIR"
+    vlicense COPYING
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
