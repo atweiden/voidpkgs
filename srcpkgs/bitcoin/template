@@ -90,7 +90,7 @@ post_install() {
   for b in bitcoin-cli \
            bitcoin-tx \
            bitcoind; do
-    vcompletion "contrib/completions/bash/$b.bash-completion" bash "$b"
+    vcompletion "contrib/completions/bash/$b.bash" bash "$b"
   done
 
   for f in bitcoin-cli \
