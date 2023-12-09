@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.39
-revision=2
+revision=3
 short_desc="GNU binary utilities"
 makedepends="zlib-devel"
 hostmakedepends="pkgconf"
@@ -9,6 +9,8 @@ homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
 checksum="645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00"
+build_options="all_targets"
+desc_option_all_targets="Enable all supported targets"
 subpackages="binutils-doc"
 bootstrap="yes"
 
@@ -37,6 +39,8 @@ _get_triplet() {
 
 do_configure() {
   local conf
+  local extra_targets
+  local void_targets
 
   if [[ -n "$CHROOT_READY" ]]; then
     conf+=" --enable-install-libiberty"
@@ -55,7 +59,7 @@ do_configure() {
 
   # gprofng currently only supports x86 and aarch64 glibc
   case "$XBPS_TARGET_MACHINE" in
-    x86_64|i386|aarch64)
+    x86_64|i686|aarch64)
       conf+=" --enable-gprofng"
       ;;
     *)
@@ -67,13 +71,30 @@ do_configure() {
     ppc*)
       conf+=" --enable-secureplt"
       ;;
-    x86_64*)
-      conf+=" --enable-targets=x86_64-pep"
-      ;;
-    i686*)
-      conf+=" --enable-targets=x86_64-linux-gnu,x86_64-pep"
+    x86_64*|i686*)
+      extra_targets="x86_64-pep"
       ;;
   esac
+
+  # target archs supported by Void
+  # borked: riscv64 (gold doesn't support it)
+  void_targets+="aarch64"
+  void_targets+=",armv5tel"
+  void_targets+=",armv6l"
+  void_targets+=",armv7l"
+  void_targets+=",i686"
+  void_targets+=",mips"
+  void_targets+=",mipsel"
+  void_targets+=",ppc"
+  void_targets+=",ppcle"
+  void_targets+=",ppc64"
+  void_targets+=",ppc64le"
+  void_targets+=",x86_64"
+  conf+=" --enable-targets=$(echo "$void_targets" | sed -E -e 's/(,|$)/-linux-gnu\1/g'),$extra_targets"
+
+  if [[ -n "$build_option_all_targets" ]]; then
+    conf+=" --enable-targets=all"
+  fi
 
   # enable multilib on x86_64 glibc
   if [[ "$XBPS_TARGET_MACHINE" == "x86_64" ]]; then
