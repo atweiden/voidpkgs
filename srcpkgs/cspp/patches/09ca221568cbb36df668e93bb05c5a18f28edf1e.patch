@@ -1,0 +1,24 @@
+From 09ca221568cbb36df668e93bb05c5a18f28edf1e Mon Sep 17 00:00:00 2001
+From: Josh Rickmar <jrick@companyzero.com>
+Date: Fri, 8 Dec 2023 14:13:05 +0000
+Subject: [PATCH] Add included headers needed by flint 3.0.1
+
+---
+ solver/solver.go | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/solver/solver.go b/solver/solver.go
+index 9a51389..025c793 100644
+--- a/solver/solver.go
++++ b/solver/solver.go
+@@ -5,7 +5,10 @@ package solver
+ #cgo LDFLAGS: -L/usr/local/lib -lflint -lmpfr -lgmp -lm
+ #include <stdlib.h>
+ #include <flint/flint.h>
++#include <flint/fmpz.h>
++#include <flint/fmpz_mod.h>
+ #include <flint/fmpz_mod_poly.h>
++#include <flint/fmpz_mod_poly_factor.h>
+ */
+ import "C"
+ import (
