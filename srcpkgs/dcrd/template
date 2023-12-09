@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dcrd"
-version=1.8.0
+version=1.8.1
 revision=1
 short_desc="Decred daemon written in Go"
 tags="decred"
 homepage="https://github.com/decred/dcrd"
 license="ISC"
 distfiles="https://github.com/decred/dcrd/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="be37c1fd1af9ee41c9b62da4c853eec8ba0ee353ea347eef22859716798d7eef"
+checksum="120bcad03e8a704df7e16b6a0610d4b755f3af7eb4ef38c6f4628b75cbe1d26f"
 build_style="go"
 go_import_path="github.com/decred/dcrd"
 go_package+=" $go_import_path"
