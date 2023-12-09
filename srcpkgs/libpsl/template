@@ -1,20 +1,29 @@
 maintainer="nox"
 pkgname="libpsl"
 version=0.21.2
-revision=2
+revision=3
 short_desc="Public Suffix List library functions"
-makedepends="icu-devel"
+depends="public-suffix"
+makedepends+=" libidn2-devel"
+makedepends+=" libunistring-devel"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" public-suffix"
 hostmakedepends+=" python3"
-license="MIT"
+license="MIT, BSD-3-Clause"
 homepage="https://rockdaboot.github.io/libpsl/"
 changelog="https://github.com/rockdaboot/libpsl/raw/master/NEWS"
 distfiles="https://github.com/rockdaboot/libpsl/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="e35991b6e17001afa2c0ca3b10c357650602b92596209b7492802f3768a6285f"
 build_style="gnu-configure"
+configure_args+=" --enable-runtime=libidn2"
+configure_args+=" --with-psl-distfile=/usr/share/publicsuffix/public_suffix_list.dafsa"
+configure_args+=" --with-psl-file=/usr/share/publicsuffix/public_suffix_list.dat"
+python_version=3
 
 post_install() {
+  vbin src/psl-make-dafsa
   vlicense COPYING
+  vlicense src/LICENSE.chromium
 }
 
 libpsl-devel_package() {
