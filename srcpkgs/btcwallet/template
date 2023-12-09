@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="btcwallet"
-version=0.16.8
+version=0.16.9
 revision=1
 short_desc="Secure Bitcoin wallet daemon written in Go"
 tags="btcsuite"
@@ -8,7 +8,7 @@ homepage="https://github.com/btcsuite/btcwallet"
 license="ISC"
 changelog="https://github.com/btcsuite/btcwallet/raw/master/CHANGES"
 distfiles="https://github.com/btcsuite/btcwallet/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d46407e73a46ab9ac8f837886917241d1228106a6584d5c9dbda770bd5123e9f"
+checksum="1c8bd9d45df95ea505d23c841098cbd9d1e3e29ccdbcad1943dba63eb358184f"
 build_style="go"
 go_import_path="github.com/btcsuite/btcwallet"
 go_package+=" $go_import_path"
