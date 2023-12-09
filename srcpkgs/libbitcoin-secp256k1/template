@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libbitcoin-secp256k1"
-version=0.1.0.13
+version=0.1.0.20
 revision=1
 short_desc="Optimized C library for EC operations on curve secp256k1"
 hostmakedepends+=" autoconf"
@@ -11,7 +11,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/libbitcoin/secp256k1"
 license="MIT"
 distfiles="https://github.com/libbitcoin/secp256k1/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="9e48dbc88d0fb5646d40ea12df9375c577f0e77525e49833fb744d3c2a69e727"
+checksum="61583939f1f25b92e6401e5b819e399da02562de663873df3056993b40148701"
 build_style="gnu-configure"
 configure_args+=" --disable-benchmark"
 configure_args+=" --disable-coverage"
