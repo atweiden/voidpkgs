@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-server"
-version=3.6.0
-revision=10
+version=3.8.0
+revision=1
 short_desc="Bitcoin Full Node and Query Server"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -31,7 +31,7 @@ tags+=" obelisk"
 homepage="https://github.com/libbitcoin/libbitcoin-server"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-server/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="283fa7572fcde70a488c93e8298e57f7f9a8e8403e209ac232549b2c433674e1"
+checksum="17e6f72606a2d132a966727c87f8afeef652b0e882b6e961673e06af89c56516"
 conf_files="/etc/libbitcoin/bs.cfg"
 build_style="gnu-configure"
 configure_args+=" --with-bash-completiondir=/usr/share/bash-completion/completions"
