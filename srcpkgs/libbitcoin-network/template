@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-network"
-version=3.6.0
-revision=10
+version=3.8.0
+revision=1
 short_desc="Bitcoin P2P Network Library"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
@@ -18,7 +18,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-network"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-network/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="68d36577d44f7319280c446a5327a072eb20749dfa859c0e1ac768304c9dd93a"
+checksum="d317582bc6d00cba99a0ef01903a542c326c2a4262ef78a4aa682d3826fd14ad"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
