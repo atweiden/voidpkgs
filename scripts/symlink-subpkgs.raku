@@ -202,7 +202,9 @@ constant %PKG = Map.new(
     'flac' => qw<libflac
                  libflac-devel>,
     'flex' => ['libfl-devel'],
-    'flintlib' => ['flintlib-devel'],
+    'flintlib' => qw<arb
+                     arb-devel
+                     flintlib-devel>,
     'fmt' => ['fmt-devel'],
     'fontconfig' => qw<fontconfig-devel
                        fontconfig-doc>,
