@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="dcrctl"
-version=1.8.0
+version=1.8.1
 revision=1
 short_desc="Command-line client for interacting with the JSON-RPC servers of dcrd and dcrwallet"
 tags="decred"
 homepage="https://github.com/decred/dcrctl"
 license="ISC"
 distfiles="https://github.com/decred/dcrctl/archive/release-v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f8aef35e02d5f28f8c67f1424dfc008f0bc203b2abcda129b7550f5a84faa2a6"
+checksum="dee818ac201692975c858f27aa3dc7ca317031bb7ed7922441b087aeb42bd624"
 build_style="go"
 go_import_path="decred.org/dcrctl"
 go_build_tags+=" netgo"
