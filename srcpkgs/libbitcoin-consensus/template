@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-consensus"
-version=3.6.0
-revision=2
+version=3.8.0
+revision=1
 short_desc="Bitcoin Consensus Library"
 makedepends+=" boost-devel"
 makedepends+=" libbitcoin-secp256k1-devel"
@@ -14,7 +14,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-consensus"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-consensus/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a4252f40910fcb61da14cf8028bf3824125bacb0fc251491c9bb4e2818065fca"
+checksum="3f63b233a25323ff81de71a6c96455a6f5141e21cb0678a2304b36b56e771ca2"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
