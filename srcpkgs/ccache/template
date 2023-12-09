@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ccache"
-version=4.8.2
+version=4.8.3
 revision=1
 short_desc="Fast C/C++ Compiler Cache"
 makedepends="libzstd-devel"
@@ -10,8 +10,8 @@ license="GPL-3.0-or-later"
 changelog="https://ccache.dev/releasenotes.html"
 distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version.tar.xz"
 distfiles+=" https://github.com/ccache/ccache/releases/download/v$version/$pkgname-$version-linux-x86_64.tar.xz"
-checksum+=" 3d3fb3f888a5b16c4fa7ee5214cca76348afd6130e8443de5f6f2424f2076a49"
-checksum+=" 0b33f39766fe9db67f40418aed6a5b3d7b2f4f7fab025a8213264b77a2d0e1b1"
+checksum+=" e47374c810b248cfca3665ee1d86c7c763ffd68d9944bc422d9c1872611f2b11"
+checksum+=" 1021f6dc9641447524cc7bceb72f807f2d6502df118d69dc3f0f86cacf048e79"
 build_style="cmake"
 configure_args+=" -DENABLE_DOCUMENTATION=OFF"
 configure_args+=" -DENABLE_TESTING=OFF"
@@ -37,27 +37,37 @@ post_install() {
            g++ \
            gcc; do
     ln -sfr "$DESTDIR/usr/bin/ccache" "$DESTDIR/usr/lib/ccache/bin/$f"
+    # cross compilers
     for x in aarch64-linux-gnu \
              aarch64-linux-musl \
              arm-linux-gnueabi \
              arm-linux-gnueabihf \
+             arm-linux-musleabi \
              arm-linux-musleabihf \
+             arm-none-eabi \
              armv7l-linux-gnueabihf \
              armv7l-linux-musleabihf \
+             avr \
              i686-linux-musl \
              i686-pc-linux-gnu \
-             mips-linux-musl \
-             mips-linux-muslhf \
              mipsel-linux-musl \
              mipsel-linux-muslhf \
-             powerpc-linux-gnu \
-             powerpc-linux-musl \
-             powerpcle-linux-gnu \
-             powerpcle-linux-musl \
+             mips-linux-musl \
+             mips-linux-muslhf \
+             musl-gcc \
+             or1k-none-elf \
+             powerpc64le-linux-gnu \
+             powerpc64le-linux-musl \
              powerpc64-linux-gnu \
              powerpc64-linux-musl \
-             powerpc64le-linux-gnu \
-             powerpc64le-linux-musl; do
+             powerpcle-linux-gnu \
+             powerpcle-linux-musl \
+             powerpc-linux-gnu \
+             powerpc-linux-musl \
+             riscv64-linux-gnu \
+             riscv64-linux-musl \
+             x86_64-linux-gnu \
+             x86_64-linux-musl; do
       ln -sfr "$DESTDIR/usr/bin/ccache" "$DESTDIR/usr/lib/ccache/bin/$x-$f"
     done
   done
