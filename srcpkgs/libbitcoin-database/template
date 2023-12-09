@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-database"
-version=3.6.0
-revision=10
+version=3.8.0
+revision=1
 short_desc="Bitcoin High Performance Blockchain Database"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -21,7 +21,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-database"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-database/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d65b35745091b93feed61c5665b5a07b404b578e2582640e93c1a01f6b746f5a"
+checksum="37dba4c01515fba82be125d604bbe55dbdcc69e41d41f8cf6fbaddaaab68c038"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
