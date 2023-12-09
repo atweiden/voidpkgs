@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libbitcoin-system"
-version=3.6.0
-revision=10
+version=3.8.0
+revision=1
 short_desc="Bitcoin Cross-Platform C++ Development Toolkit"
 makedepends+=" boost-devel"
 makedepends+=" icu-devel"
@@ -17,7 +17,7 @@ tags="libbitcoin"
 homepage="https://github.com/libbitcoin/libbitcoin-system"
 license="AGPL-3.0-or-later"
 distfiles="https://github.com/libbitcoin/libbitcoin-system/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="5bcc4c31b53acbc9c0d151ace95d684909db4bf946f8d724f76c711934c6775c"
+checksum="b5dd2a97289370fbb93672dd3114383f30d877061de1d1683fa8bdda5309bfa2"
 build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"

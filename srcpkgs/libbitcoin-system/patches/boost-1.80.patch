@@ -1,5 +1,18 @@
---- a/include/bitcoin/bitcoin/log/file_collector.hpp
-+++ b/include/bitcoin/bitcoin/log/file_collector.hpp
+From 9409a211565bf0d1ee2fb8349c954b6873480281 Mon Sep 17 00:00:00 2001
+From: Andy Weidenbaum <atweiden@ioiojo.com>
+Date: Sat, 9 Dec 2023 23:05:08 +0000
+Subject: [PATCH] fix building with boost-1.8.0
+
+---
+ include/bitcoin/system/log/file_collector.hpp |  6 +++++-
+ include/bitcoin/system/unicode/file_lock.hpp  | 11 ++++------
+ src/log/file_collector.cpp                    | 20 +++++++++++++++++++
+ 3 files changed, 29 insertions(+), 8 deletions(-)
+
+diff --git a/include/bitcoin/system/log/file_collector.hpp b/include/bitcoin/system/log/file_collector.hpp
+index 0a312ec..c5728b0 100644
+--- a/include/bitcoin/system/log/file_collector.hpp
++++ b/include/bitcoin/system/log/file_collector.hpp
 @@ -68,14 +68,18 @@ public:
      void store_file(boost::filesystem::path const& src_path) override;
  
@@ -20,46 +33,12 @@
  
  private:
      //! Information about a single stored file
---- a/src/log/file_collector.cpp
-+++ b/src/log/file_collector.cpp
-@@ -357,6 +357,17 @@ void file_collector::store_file(filesyst
- 
- 
- //! Scans the target directory for the files that have already been stored
-+boost::log::sinks::file::scan_result file_collector::scan_for_files(
-+    boost::log::sinks::file::scan_method method,
-+    filesystem::path const& pattern)
-+{
-+    boost::log::sinks::file::scan_result result;
-+    unsigned int counter = 0;
-+    result.found_count = scan_for_files(method, pattern, &counter);
-+    result.last_file_counter = counter;
-+    return result;
-+}
-+
- uintmax_t file_collector::scan_for_files(
-     boost::log::sinks::file::scan_method method,
-     filesystem::path const& pattern, unsigned int* counter)
-@@ -450,6 +461,15 @@ bool file_collector::is_governed(filesys
-     return filesystem::equivalent(storage_dir_, dir);
- }
- 
-+/* I don't care if this is correct or not */
-+/* upstream removed */
-+bool file_collector::is_in_storage(filesystem::path const& src_path) const
-+{
-+    if (!is_governed(src_path.parent_path()))
-+        return false;
-+    return filesystem::exists(src_path);
-+}
-+
- filesystem::path file_collector::make_absolute(
-     filesystem::path const& path)
- {
---- a/include/bitcoin/bitcoin/unicode/file_lock.hpp
-+++ b/include/bitcoin/bitcoin/unicode/file_lock.hpp
+diff --git a/include/bitcoin/system/unicode/file_lock.hpp b/include/bitcoin/system/unicode/file_lock.hpp
+index a25278b..cab3560 100644
+--- a/include/bitcoin/system/unicode/file_lock.hpp
++++ b/include/bitcoin/system/unicode/file_lock.hpp
 @@ -14,14 +14,11 @@
- #define LIBBITCOIN_INTERPROCESS_FILE_LOCK_HPP
+ #define LIBBITCOIN_SYSTEM_INTERPROCESS_FILE_LOCK_HPP
  
  #include <string>
 -#include <boost/interprocess/detail/config_begin.hpp>
@@ -77,3 +56,44 @@
  #include <boost/move/move.hpp>
  
  // Includes <windows.h> from bitcoin/unicode.hpp under _MSC_VER.
+diff --git a/src/log/file_collector.cpp b/src/log/file_collector.cpp
+index ef01390..eb36dc4 100644
+--- a/src/log/file_collector.cpp
++++ b/src/log/file_collector.cpp
+@@ -357,6 +357,17 @@ void file_collector::store_file(filesystem::path const& src_path)
+ 
+ 
+ //! Scans the target directory for the files that have already been stored
++boost::log::sinks::file::scan_result file_collector::scan_for_files(
++    boost::log::sinks::file::scan_method method,
++    filesystem::path const& pattern)
++{
++    boost::log::sinks::file::scan_result result;
++    unsigned int counter = 0;
++    result.found_count = scan_for_files(method, pattern, &counter);
++    result.last_file_counter = counter;
++    return result;
++}
++
+ uintmax_t file_collector::scan_for_files(
+     boost::log::sinks::file::scan_method method,
+     filesystem::path const& pattern, unsigned int* counter)
+@@ -450,6 +461,15 @@ bool file_collector::is_governed(filesystem::path const& dir) const
+     return filesystem::equivalent(storage_dir_, dir);
+ }
+ 
++/* I don't care if this is correct or not */
++/* upstream removed */
++bool file_collector::is_in_storage(filesystem::path const& src_path) const
++{
++    if (!is_governed(src_path.parent_path()))
++        return false;
++    return filesystem::exists(src_path);
++}
++
+ filesystem::path file_collector::make_absolute(
+     filesystem::path const& path)
+ {
+-- 
+2.43.0
+
