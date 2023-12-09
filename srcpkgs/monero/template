@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="monero"
-version=0.18.1.2
-revision=4
+version=0.18.3.1
+revision=1
 # the revision monero uses as a submodule for the specific version
-_randomx_gitrev="261d58c77fc5547c0aa7fdfeb58421ba7e0e6e1c"
+_randomx_gitrev="102f8acf90a7649ada410de5499a7ec62e49e1da"
 _rapidjson_gitrev="129d19ba7f496df5e33658527a7158c79b99c21c"
 _supercop_gitrev="633500ad8c8759995049ccd022107d1fa8a1bbc9"
 short_desc="Private, secure, untraceable, decentralised digital currency"
@@ -19,20 +19,20 @@ makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
 makedepends+=" unbound-devel"
 hostmakedepends="pkg-config"
-homepage="https://getmonero.org"
+homepage="https://www.getmonero.org"
 license="BSD-3-Clause"
 distfiles+=" https://github.com/monero-project/monero/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/tevador/RandomX/archive/$_randomx_gitrev.tar.gz>RandomX-$_randomx_gitrev.tar.gz"
 distfiles+=" https://github.com/Tencent/rapidjson/archive/$_rapidjson_gitrev.tar.gz>rapidjson-$_rapidjson_gitrev.tar.gz"
 distfiles+=" https://github.com/monero-project/supercop/archive/$_supercop_gitrev.tar.gz>supercop-$_supercop_gitrev.tar.gz"
-checksum+=" f7fec9c7456e22b70cb86a34dd9192c948161155fdbdfb8505f8ea95c357a38e"
-checksum+=" 4aeadafe16810320fd492491e39d03fb6028a2db35916aba0fef96c716aba46f"
+checksum+=" 57d6e2f8fc7cb04b9040912e98f84316901e1c5837b4ee4c0d89372e58f5b24a"
+checksum+=" 91bf75a91614e433194b7cd46248775576d0c82fccc2396d37b3375fc86513e7"
 checksum+=" 44b007d419ac21b6affec58991e865ee572346ead19b73cf1c3e4e11c7a81273"
 checksum+=" b973b9d8269ec4d97c3c3443f0dad96d09f72b1b30e616e0947557adbdbb03f7"
 skip_extraction+=" RandomX-$_randomx_gitrev.tar.gz"
 skip_extraction+=" rapidjson-$_rapidjson_gitrev.tar.gz"
 skip_extraction+=" supercop-$_supercop_gitrev.tar.gz"
-conf_files="/etc/monerod.conf"
+conf_files="/etc/monero/monerod.conf"
 build_style="cmake"
 case "$XBPS_TARGET_MACHINE" in
   armv7*) configure_args+=" -DARCH=armv7" ;;
@@ -77,7 +77,7 @@ post_install() {
   vlicense LICENSE
   vbin build/bin/monero-blockchain-import
   vbin build/bin/monero-blockchain-export
-  vinstall utils/conf/monerod.conf 644 etc
+  vinstall utils/conf/monerod.conf 644 etc/monero
   vsv monerod
 }
 
