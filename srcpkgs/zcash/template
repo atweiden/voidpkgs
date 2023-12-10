@@ -17,6 +17,7 @@ _rust_cxx_version=1.0.107
 _rust_cxxbridge_version=$_rust_cxx_version
 short_desc="Implementation of the Zerocash protocol"
 makedepends+=" boost-devel"
+makedepends+=" expected"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
 makedepends+=" utfcpp"
@@ -75,6 +76,7 @@ configure_args+=" --disable-ccache"
 configure_args+=" --disable-man"
 configure_args+=" --disable-static"
 configure_args+=" --disable-tests"
+configure_args+=" --disable-werror"
 configure_args+=" --disable-zmq"
 configure_args+=" --enable-glibc-back-compat"
 configure_args+=" --enable-hardening"
@@ -172,7 +174,7 @@ _do_build_libevent() {
 _do_build_libsodium() {
   local _configure_args_libsodium
 
-  cd "$_depends_builddir/libsodium-$_libsodium_version"
+  cd "$_depends_builddir/libsodium-stable"
 
   patch -Np1 -i "$FILESDIR/libsodium/1.0.15-pubkey-validation.diff"
   patch -Np1 -i "$FILESDIR/libsodium/1.0.15-signature-validation.diff"
