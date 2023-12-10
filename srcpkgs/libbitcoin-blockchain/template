@@ -12,8 +12,6 @@ makedepends+=" libbitcoin-consensus-devel"
 makedepends+=" libbitcoin-database-devel"
 makedepends+=" libbitcoin-secp256k1-devel"
 makedepends+=" libbitcoin-system-devel"
-makedepends+=" libpng-devel"
-makedepends+=" qrencode-devel"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
@@ -28,6 +26,11 @@ build_style="gnu-configure"
 configure_args+=" --with-boost-libdir=$XBPS_CROSS_BASE/usr/lib"
 configure_args+=" --with-boost=$XBPS_CROSS_BASE/usr"
 configure_args+=" --with-gnu-ld"
+case "$XBPS_MACHINE" in
+  arm*|aarch64*)
+    disable_parallel_build="yes"
+    ;;
+esac
 
 pre_configure() {
   ./autogen.sh

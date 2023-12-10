@@ -296,7 +296,7 @@ libbitcoin-node.so.0 libbitcoin-node-3.5.0_1
 libbitcoin-protocol.so.0 libbitcoin-protocol-3.5.0_1
 libsecp256k1.so.0 libbitcoin-secp256k1-0.1.0.13_1
 libbitcoin-server.so.0 libbitcoin-server-3.5.0_1
-libbitcoin.so.0 libbitcoin-system-3.5.0_1
+libbitcoin-system.so.0 libbitcoin-system-3.5.0_1
 libblkid.so.1 libblkid-2.18_1
 libboost_atomic.so.1.83.0 libboost_atomic-1.83.0_1
 libboost_chrono.so.1.83.0 libboost_chrono-1.83.0_1
