@@ -90,6 +90,11 @@ if [[ -n "$XBPS_CHECK_PKGS" ]]; then
 fi
 # tests take too long, not all of them pass
 make_check="extended"
+case "$XBPS_MACHINE" in
+  arm*|aarch64*)
+    disable_parallel_build="yes"
+    ;;
+esac
 
 # directory in which to build custom libraries
 _depends_builddir="$XBPS_BUILDDIR/$pkgname-$version/depends"
