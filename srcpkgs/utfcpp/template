@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="utfcpp"
-version=3.2.1
+version=4.0.3
 revision=1
-_ftest_gitrev="9c7e60cc1b7c76f59e2ffbbc3dad15bafc5cdac5"
+_ftest_gitrev="c4ad4af0946b73ce1a40cbc72205d15d196c7e06"
 short_desc="UTF-8 with C++ in a portable way"
 homepage="https://github.com/nemtrif/utfcpp"
 license="BSL-1.0"
 distfiles+=" https://github.com/nemtrif/utfcpp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/nemtrif/ftest/archive/$_ftest_gitrev.tar.gz"
-checksum+=" 8d6aa7d77ad0abb35bb6139cb9a33597ac4c5b33da6a004ae42429b8598c9605"
-checksum+=" 2a28f2c715eabf10be7c1ff53ff6be85828bbc7dd484909e5678acf5e4831b12"
+checksum+=" 05e7d023b2bf606777442efc49038e0efce317596582db15adf5c776e237a326"
+checksum+=" ab0e41879e3b4c70d207179b886516a561843f71a2ff6674c774fa5149c3cf3a"
 skip_extraction="$_ftest_gitrev.tar.gz"
 build_style="cmake"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
