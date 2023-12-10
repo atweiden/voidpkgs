@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="rust-cxxbridge"
-version=1.0.79
+version=1.0.107
 revision=1
 short_desc="C++ code generator for integrating cxx crate into a non-Cargo build"
 homepage="https://cxx.rs"
 license="MIT, Apache-2.0"
 distfiles="https://crates.io/api/v1/crates/cxxbridge-cmd/$version/download>$pkgname-$version.tar.gz"
-checksum="b5e4841817d774db9d271592b01029a280a6520b2bf72e8d87b56a710ebfd771"
+checksum="7cbaf4f521973fd4e9c84c65dbfed65050fa4be2774dd0b0277982990070bcb0"
 create_wrksrc="yes"
 build_style="cargo"
 
