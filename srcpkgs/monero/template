@@ -51,7 +51,11 @@ esac
 make_dirs+=" /var/lib/monero 0750 monero monero"
 make_dirs+=" /var/log/monero 0755 monero monero"
 system_accounts="monero"
-disable_parallel_build="yes"
+case "$XBPS_MACHINE" in
+  arm*|aarch64*)
+    disable_parallel_build="yes"
+    ;;
+esac
 
 post_extract() {
   bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/RandomX-$_randomx_gitrev.tar.gz" \
