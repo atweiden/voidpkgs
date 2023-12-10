@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="go"
-version=1.21.4
+version=1.21.5
 revision=1
 short_desc="Go Programming Language"
 checkdepends+=" clang"
@@ -11,7 +11,7 @@ homepage="https://go.dev/"
 license="BSD-3-Clause"
 changelog="https://go.dev/doc/devel/release.html"
 distfiles="https://go.dev/dl/go$version.src.tar.gz"
-checksum="47b26a83d2b65a3c1c1bcace273b69bee49a7a7b5168a7604ded3d26a37bd787"
+checksum="285cbbdf4b6e6e62ed58f370f3f6d8c30825d6e56c5853c66d3c23bcdb09db19"
 create_wrksrc="yes"
 build_wrksrc="go"
 # on ci it tries to use `git submodule`, which is not part of chroot-git
@@ -21,25 +21,43 @@ noverifyrdeps="yes"
 
 case "$XBPS_TARGET_MACHINE" in
   aarch64*)
-    _goarch="arm64"
+    export GOARCH="arm64"
     ;;
-  arm*)
-    _goarch="arm"
+  armv5*)
+    export GOARCH="arm"
+    export GOARM=5
+    ;;
+  armv6*)
+    export GOARCH="arm"
+    export GOARM=6
+    ;;
+  armv7*)
+    export GOARCH="arm"
+    export GOARM=7
     ;;
   i686*)
-    _goarch="386"
+    export GOARCH="386"
     ;;
   x86_64*)
-    _goarch="amd64"
+    export GOARCH="amd64"
     ;;
   ppc64le*)
-    _goarch="ppc64le"
+    export GOARCH="ppc64le"
+    ;;
+  ppc64*)
+    export GOARCH="ppc64"
+    ;;
+  ppc*)
+    export GOARCH="ppc"
+    ;;
+  mipsel*)
+    export GOARCH="mipsle"
     ;;
   mips*)
-    _goarch="mips"
+    export GOARCH="mips"
     ;;
   riscv64*)
-    _goarch="riscv64"
+    export GOARCH="riscv64"
     ;;
   *)
     broken="Unsupported architecture $XBPS_TARGET_MACHINE"
@@ -79,7 +97,6 @@ do_build() {
   unset CGO_CXXFLAGS
   unset CGO_ENABLED
 
-  export GOARCH="$_goarch"
   export GOROOT="$PWD"
   export GOROOT_BOOTSTRAP="/usr/lib/go1.17.13"
 
@@ -101,7 +118,7 @@ do_install() {
   local bindir
 
   if [[ -n "$CROSS_BUILD" ]]; then
-    bindir="bin/linux_$_goarch"
+    bindir="bin/linux_$GOARCH"
   else
     bindir="bin"
   fi
@@ -110,7 +127,7 @@ do_install() {
   vmkdir usr/lib/go
   vmkdir usr/lib/go/bin
   vmkdir usr/share/go
-  cp -d --preserve="all" "$bindir"/* "$DESTDIR/usr/lib/go/bin" || true
+  cp -d --preserve="all" "$bindir"/* "$DESTDIR/usr/lib/go/bin"
   cp -a pkg src lib "$DESTDIR/usr/lib/go"
   cp -r doc misc -t "$DESTDIR/usr/share/go"
   ln -s /usr/share/go/doc "$DESTDIR/usr/lib/go/doc"
