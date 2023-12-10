@@ -26,7 +26,7 @@ make_check_target="test"
 make_install_args+=" RAKUDO_LOG_PRECOMP=1"
 make_install_args+=" RAKUDO_RERESOLVE_DEPENDENCIES=0"
 nocross="yes"
-case "$XBPS_TARGET_MACHINE" in
+case "$XBPS_MACHINE" in
   arm*|aarch64*)
     disable_parallel_build="yes"
     ;;

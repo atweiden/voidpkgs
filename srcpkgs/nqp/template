@@ -21,7 +21,7 @@ configure_args+=" --backends=moar"
 configure_args+=" --prefix=/usr"
 make_check_target="test"
 nocross="yes"
-case "$XBPS_TARGET_MACHINE" in
+case "$XBPS_MACHINE" in
   arm*|aarch64*)
     disable_parallel_build="yes"
     ;;
