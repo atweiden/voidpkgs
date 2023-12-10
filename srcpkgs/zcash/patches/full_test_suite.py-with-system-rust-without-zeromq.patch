@@ -1,19 +1,17 @@
-diff --git i/qa/zcash/full_test_suite.py w/qa/zcash/full_test_suite.py
-index 173e07f09..b8bd623cf 100755
---- i/qa/zcash/full_test_suite.py
-+++ w/qa/zcash/full_test_suite.py
-@@ -133,9 +133,7 @@ def ensure_no_dot_so_in_depends():
-     return exit_code == 0
- 
- def util_test():
--    python = []
--    if os.path.isfile('/usr/local/bin/python3'):
--        python = ['/usr/local/bin/python3']
-+    python = ['python3']
- 
-     return subprocess.call(
-         python + [repofile('src/test/bitcoin-util-test.py')],
-@@ -144,18 +142,12 @@ def util_test():
+From 343a29516408b41a082c81106725e3492a287637 Mon Sep 17 00:00:00 2001
+From: Andy Weidenbaum <atweiden@ioiojo.com>
+Date: Sun, 10 Dec 2023 00:39:23 +0000
+Subject: [PATCH] full_test_suite.py with system rust without zeromq
+
+---
+ qa/zcash/full_test_suite.py | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/qa/zcash/full_test_suite.py b/qa/zcash/full_test_suite.py
+index 119a137..8c321f2 100755
+--- a/qa/zcash/full_test_suite.py
++++ b/qa/zcash/full_test_suite.py
+@@ -144,18 +144,12 @@ def util_test():
      ) == 0
  
  def rust_test():
@@ -35,7 +33,7 @@ index 173e07f09..b8bd623cf 100755
  
  #
  # Tests
-@@ -182,7 +174,7 @@ STAGE_COMMANDS = {
+@@ -182,7 +176,7 @@ STAGE_COMMANDS = {
      'util-test': util_test,
      'secp256k1': ['make', '-C', repofile('src/secp256k1'), 'check'],
      'univalue': ['make', '-C', repofile('src/univalue'), 'check'],
@@ -44,3 +42,6 @@ index 173e07f09..b8bd623cf 100755
  }
  
  
+-- 
+2.43.0
+

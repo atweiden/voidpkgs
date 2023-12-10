@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="zcash"
-version=5.3.0
+version=5.7.0
 revision=1
 # see:
 # zcash/zcash/depends/packages/bdb.mk
@@ -11,13 +11,11 @@ revision=1
 # zcash/zcash/depends/packages/rustcxx.mk
 _db_version=6.2.23
 _libevent_version=2.1.12
-_libsodium_version=1.0.18
-_rust_version=1.64.0
-_rust_cxx_version=1.0.79
+_libsodium_version=1.0.19
+_rust_version=1.69.0
+_rust_cxx_version=1.0.107
 _rust_cxxbridge_version=$_rust_cxx_version
 short_desc="Implementation of the Zerocash protocol"
-# for zcash-fetch-params
-depends="curl"
 makedepends+=" boost-devel"
 makedepends+=" libgcc"
 makedepends+=" libstdc++"
@@ -61,11 +59,11 @@ distfiles+=" https://download.oracle.com/berkeley-db/db-$_db_version.tar.gz"
 distfiles+=" https://github.com/libevent/libevent/releases/download/release-$_libevent_version-stable/libevent-$_libevent_version-stable.tar.gz"
 distfiles+=" https://download.libsodium.org/libsodium/releases/libsodium-$_libsodium_version.tar.gz"
 distfiles+=" https://crates.io/api/v1/crates/cxx/$_rust_cxx_version/download>rust-cxx-$_rust_cxx_version.tar.gz"
-checksum+=" 6e7275b8c1b89a39869c5b68a694d0120c09e62fb895810c84391f052cda4b3f"
+checksum+=" 52212014f17c53287ee14fdea28c0d2a08cbce156b673269f33c60e4fac0c528"
 checksum+=" 47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7"
 checksum+=" 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
-checksum+=" 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
-checksum+=" 3f83d0ebf42c6eafb8d7c52f7e5f2d3003b89c7aa4fd2b79229209459a849af8"
+checksum+=" 018d79fe0a045cca07331d37bd0cb57b2e838c51bc48fd837a1472e50068bbea"
+checksum+=" bbe98ba1789d56fb3db3bee5e032774d4f421b685de7ba703643584ba24effbe"
 skip_extraction+=" db-$_db_version.tar.gz"
 skip_extraction+=" libevent-$_libevent_version-stable.tar.gz"
 skip_extraction+=" libsodium-$_libsodium_version.tar.gz"
@@ -234,8 +232,6 @@ do_check() {
 }
 
 post_install() {
-  vbin zcutil/fetch-params.sh zcash-fetch-params
-
   vsconf contrib/debian/examples/zcash.conf
 
   vmkdir "usr/share/$pkgname"
