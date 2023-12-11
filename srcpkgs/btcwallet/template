@@ -40,10 +40,17 @@ pre_install() {
 
 post_install() {
   vlicense LICENSE
+  vsconf sample-btcwallet.conf
   vdoc CHANGES
   vdoc README.md
-  vdoc sample-btcwallet.conf
   vcopy docs "usr/share/doc/$pkgname"
+}
+
+btcwallet-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
