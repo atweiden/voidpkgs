@@ -42,10 +42,17 @@ pre_build() {
 
 post_install() {
   vlicense LICENSE
-  vdoc README.md
-  vdoc sample-lnd.conf
-  vcopy docs "usr/share/doc/$pkgname"
+  vsconf sample-lnd.conf
   vinstall contrib/lncli.bash-completion 0644 usr/share/bash-completion/completions lncli
+  vdoc README.md
+  vcopy docs "usr/share/doc/$pkgname"
+}
+
+lnd-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
