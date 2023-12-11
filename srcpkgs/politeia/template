@@ -68,7 +68,7 @@ post_install() {
 
   _cmd="politeiawww"
   vinstall "$_cmd/README.md" 644 "$_docdir/$_cmd"
-  vsconf "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+  vsconf "$_cmd/sample-$_cmd.conf"
 
   _cmd="politeiawww_dbutil"
   vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
