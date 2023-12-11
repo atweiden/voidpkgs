@@ -32,6 +32,8 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -extldflags=-static-pie"
   go_ldflags+=" -linkmode=external"
 fi
+subpackages+=" politeia-tools"
+subpackages+=" politeia-doc"
 
 pre_build() {
   export GOFLAGS="$_go_flags"
