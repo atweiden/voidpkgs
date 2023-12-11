@@ -52,10 +52,17 @@ pre_install() {
 
 post_install() {
   vlicense LICENSE
+  vsconf sample-btcd.conf
   vdoc CHANGES
   vdoc README.md
-  vdoc sample-btcd.conf
   vcopy docs "usr/share/doc/$pkgname"
+}
+
+btcd-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vmove usr/share/doc
+  }
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
