@@ -31,8 +31,8 @@ pre_build() {
 
 post_install() {
   vlicense LICENSE
+  vsconf sample-dcrctl.conf
   vdoc README.md
-  vdoc sample-dcrctl.conf
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
