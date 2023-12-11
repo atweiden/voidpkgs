@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="dcraddrgen"
 version=0.0.1pre
-revision=2
+revision=1
 _gitrev="3e51bb48900b09994c3a61ea3444f1c38d865fd2"
 short_desc="Simple offline address generator for Decred"
 tags="decred"
