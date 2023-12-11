@@ -49,15 +49,26 @@ post_install() {
 
   _cmd="cmswww"
   vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
-  vinstall "politeiawww/cmd/$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+  vsconf "politeiawww/cmd/$_cmd/sample-$_cmd.conf"
+
+  _cmd="pictl"
+  vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+  vsconf "politeiawww/cmd/$_cmd/sample-$_cmd.conf"
 
   _cmd="politeiad"
   vinstall "$_cmd/README.md" 644 "$_docdir/$_cmd"
-  vinstall "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+  vsconf "$_cmd/sample-$_cmd.conf"
+
+  _cmd="politeiaverify"
+  vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+
+  _cmd="politeiavoter"
+  vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+  vsconf "$FILESDIR/sample-$_cmd.conf"
 
   _cmd="politeiawww"
   vinstall "$_cmd/README.md" 644 "$_docdir/$_cmd"
-  vinstall "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+  vsconf "$_cmd/sample-$_cmd.conf" 644 "$_docdir"
 
   _cmd="politeiawww_dbutil"
   vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
@@ -68,22 +79,24 @@ politeia-tools_package() {
   pkg_install() {
     local _cmd
     local _docdir
+    local _eggdir
 
     _docdir="usr/share/doc/$sourcepkg"
+    _eggdir="usr/share/examples/$sourcepkg"
 
     _cmd="pictl"
     vmove "usr/bin/$_cmd"
-    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
-    vinstall "politeiawww/cmd/$_cmd/sample-$_cmd.conf" 644 "$_docdir"
+    vmove "$_docdir/$_cmd"
+    vmove "$_eggdir/sample-$_cmd.conf"
 
     _cmd="politeiaverify"
     vmove "usr/bin/$_cmd"
-    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
+    vmove "$_docdir/$_cmd"
 
     _cmd="politeiavoter"
     vmove "usr/bin/$_cmd"
-    vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
-    vinstall "$FILESDIR/sample-$_cmd.conf" 644 "$_docdir"
+    vmove "$_docdir/$_cmd"
+    vmove "$_eggdir/sample-$_cmd.conf"
   }
 }
 
