@@ -31,9 +31,8 @@ fi
 go_mod_mode="vendor"
 
 post_extract() {
-  mkdir -p "$GOPATH"
-  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname-vendor-$version.tar.gz" \
-    --strip-components=1 -C "$GOPATH"
+  mv lnd-source/* .
+  bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname-vendor-$version.tar.gz"
 }
 
 pre_build() {
