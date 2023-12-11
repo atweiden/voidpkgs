@@ -32,7 +32,6 @@ fi
 go_mod_mode="vendor"
 
 post_extract() {
-  mv "$pkgname-$version"/* .
   bsdtar xzf "$XBPS_SRCDISTDIR/$pkgname-$version/$pkgname-vendor-$version.tar.gz"
 }
 
