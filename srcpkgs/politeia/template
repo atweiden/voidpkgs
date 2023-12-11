@@ -74,6 +74,13 @@ post_install() {
   vinstall "politeiawww/cmd/$_cmd/README.md" 644 "$_docdir/$_cmd"
 }
 
+politeia-doc_package() {
+  short_desc+=" - documentation"
+  pkg_install() {
+    vmove usr/share/doc
+  }
+}
+
 politeia-tools_package() {
   short_desc+=" - client tools"
   pkg_install() {
