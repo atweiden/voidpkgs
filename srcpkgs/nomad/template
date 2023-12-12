@@ -1,10 +1,11 @@
 maintainer="nox"
 pkgname="nomad"
 version=1.7.1
-revision=1
+revision=2
 _gitrev="608e719430038cdeb5fe108536d90cf88a8540e3"
 short_desc="Cluster scheduler designed to easily integrate into existing workflows"
-depends="cni-plugins"
+depends+=" cni-plugins"
+depends+=" dmidecode"
 homepage="https://www.nomadproject.io/"
 license="BUSL-1.1"
 distfiles="https://github.com/hashicorp/nomad/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
