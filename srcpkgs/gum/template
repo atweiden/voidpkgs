@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gum"
-version=0.12.0
+version=0.13.0
 revision=1
 short_desc="Tool for glamorous shell scripts"
 homepage="https://github.com/charmbracelet/gum"
 license="MIT"
 changelog="https://github.com/charmbracelet/gum/releases"
 distfiles="https://github.com/charmbracelet/gum/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2af0c3bfb89f5201b48c2009da2c9fffba1819188bf6622e5ef8336e8cc27b10"
+checksum="329a38f3453b4be1f00e1fcb987aacf574fe3a8cc592084529c05716ddf4e7c4"
 build_style="go"
 go_import_path="github.com/charmbracelet/gum"
 go_build_tags+=" netgo"
