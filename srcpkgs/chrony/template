@@ -1,13 +1,14 @@
 maintainer="nox"
 pkgname="chrony"
 version=4.4
-revision=1
+revision=2
 short_desc="Versatile implementation of the Network Time Protocol (NTP)"
 makedepends+=" gnutls-devel"
 makedepends+=" libcap-devel"
 makedepends+=" libedit-devel"
 makedepends+=" libseccomp-devel"
 makedepends+=" nettle-devel"
+makedepends+=" pps-tools-devel"
 hostmakedepends="pkg-config"
 homepage="https://chrony.tuxfamily.org/"
 license="GPL-2.0-only"
