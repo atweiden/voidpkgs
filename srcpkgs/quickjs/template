@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="quickjs"
-version=2021.03.27
-revision=4
+version=2023.12.09
+revision=1
 short_desc="Small and embeddable Javascript engine"
 homepage="https://bellard.org/quickjs/"
 license="MIT"
 distfiles="https://bellard.org/quickjs/$pkgname-${version//./-}.tar.xz"
-checksum="a45bface4c3379538dea8533878d694e289330488ea7028b105f72572fe7fe1a"
+checksum="e8afe386f875d0e52310ea91aa48e2b0e04182e821f19147794e3e272f4c8d8c"
 build_style="gnu-makefile"
 make_use_env="true"
 make_build_args="CONFIG_LTO= prefix=/usr"
