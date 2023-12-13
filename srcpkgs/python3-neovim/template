@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-neovim"
-version=0.4.3
-revision=5
+version=0.5.0
+revision=1
 short_desc="Python3 client for Neovim"
 depends+=" neovim"
 depends+=" python3-greenlet"
@@ -10,7 +10,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/neovim/pynvim"
 license="Apache-2.0"
 distfiles="https://github.com/neovim/pynvim/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="e7c9de44b0201ad874a608270b7a9b10fd48bda65f49bada05815d973ca79391"
+checksum="448414e8d005b6d99868c8badeec7a20b10a7a37fb6b85fb12846b80c044c279"
 build_style="python3-module"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
