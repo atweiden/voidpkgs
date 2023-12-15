@@ -42,12 +42,8 @@ pre_build() {
 
 pre_install() {
   # prepend btc to unqualified binaries
-  for _bin in $(find "$GOPATH/bin"  \
-                        -mindepth 1 \
-                        -maxdepth 1 \
-                        -type f ! -name "btc*" -printf '%f\n'); do
-    mv "$GOPATH/bin/$_bin" "$GOPATH/bin/btc$_bin"
-  done
+  find "$GOPATH/bin" -mindepth 1 -type f ! -name "btc*" \
+    | while read -r _bin; do mv "$_bin" "${_bin%/*}/btc${_bin##*/}"; done
 }
 
 post_install() {

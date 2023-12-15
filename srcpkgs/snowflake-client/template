@@ -31,12 +31,8 @@ do_check() {
 
 pre_install() {
   # prepend snowflake- to unqualified binaries
-  for _bin in $(find "$GOPATH/bin"  \
-                        -mindepth 1 \
-                        -maxdepth 1 \
-                        -type f ! -name "snowflake*" -printf '%f\n'); do
-    mv "$GOPATH/bin/$_bin" "$GOPATH/bin/snowflake-$_bin"
-  done
+  find "$GOPATH/bin" -mindepth 1 -type f ! -name "snowflake*" \
+    | while read -r _bin; do mv "$_bin" "${_bin%/*}/snowflake-${_bin##*/}"; done
 }
 
 post_install() {
