@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="jq"
-version=1.7
+version=1.7.1
 revision=1
 short_desc="Command-line JSON processor"
 makedepends="oniguruma-devel"
@@ -10,7 +10,7 @@ hostmakedepends+=" libtool"
 homepage="https://jqlang.github.io/jq/"
 license="MIT"
 distfiles="https://github.com/jqlang/jq/releases/download/$pkgname-$version/$pkgname-$version.tar.gz"
-checksum="402a0d6975d946e6f4e484d1a84320414a0ff8eb6cf49d2c11d144d4d344db62"
+checksum="478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2"
 build_style="gnu-configure"
 
 CFLAGS="-D_LARGE_FILE_SOURCE=1 -D_FILE_OFFSET_BITS=64"
@@ -36,6 +36,7 @@ jq-devel_package() {
     vmove usr/include
     vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
+    vmove usr/lib/pkgconfig
   }
 }
 
