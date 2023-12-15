@@ -77,7 +77,7 @@ snowflake-server_package() {
   pkg_install() {
     vmove usr/bin/snowflake-server
     vmove usr/share/doc/snowflake/server
-    vsconf "server/torrc"
+    vsconf server/torrc
   }
 }
 
