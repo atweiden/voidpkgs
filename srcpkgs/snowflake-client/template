@@ -25,6 +25,10 @@ pre_build() {
   export GOFLAGS="-trimpath"
 }
 
+do_check() {
+  go test ./...
+}
+
 pre_install() {
   # prepend snowflake- to unqualified binaries
   for _bin in $(find "$GOPATH/bin"  \
