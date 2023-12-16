@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="OpenCL-Headers"
-version=2023.04.17
-revision=3
+version=2023.12.14
+revision=1
 short_desc="Khronos OpenCL (Open Computing Language) header files"
 homepage="https://github.com/KhronosGroup/OpenCL-Headers"
 license="Apache-2.0"
 distfiles="https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0ce992f4167f958f68a37918dec6325be18f848dee29a4521c633aae3304915d"
+checksum="407d5e109a70ec1b6cd3380ce357c21e3d3651a91caae6d0d8e1719c69a1791d"
 build_style="cmake"
 provides="opencl-headers-${version}_$revision"
 replaces="opencl-headers>=0"
