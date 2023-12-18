@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ncspot"
-version=0.13.4
-revision=2
+version=1.0.0
+revision=1
 short_desc="Cross-platform ncurses Spotify client"
 makedepends+=" alsa-lib-devel"
 makedepends+=" openssl-devel"
@@ -10,9 +10,9 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="https://github.com/hrkfdn/ncspot"
 license="BSD-2-Clause"
-changelog="https://github.com/hrkfdn/ncspot/releases"
+changelog="https://github.com/hrkfdn/ncspot/raw/main/CHANGELOG.md"
 distfiles="https://github.com/hrkfdn/ncspot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ca2cd3ca21d7ed0410f3327cf3c1b6db990dfbb5bd2ef0d15f3fb0a1b5fe6ee9"
+checksum="516663b62b9536cb18e6d8eb69470a5b6560f2890e010e8a3d2e8cfc65df9497"
 build_style="cargo"
 # build without dbus support or need for gui dependencies
 _features="alsa_backend,pulseaudio_backend,termion_backend"
