@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="tinyproxy"
-version=1.11.0
+version=1.11.1
 revision=1
 short_desc="Small, efficient HTTP/SSL proxy daemon"
 hostmakedepends="asciidoc"
 homepage="https://tinyproxy.github.io/"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/tinyproxy/tinyproxy/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="c1ec81cfc4c551d2c24e0227a5aeeaad8723bd9a39b61cd729e516b82eaa3f32"
+checksum="d66388448215d0aeb90d0afdd58ed00386fb81abc23ebac9d80e194fceb40f7c"
 conf_files="/etc/tinyproxy/tinyproxy.conf"
 build_style="gnu-configure"
 configure_args+=" --enable-transparent"
