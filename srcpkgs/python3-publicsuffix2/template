@@ -1,18 +1,25 @@
 maintainer="nox"
 pkgname="python3-publicsuffix2"
 version=2019.12.21
-revision=3
+revision=4
 short_desc="Get a public suffix for a domain name using the Public Suffix List"
-depends="python3"
+depends+=" public-suffix"
+depends+=" python3"
+hostmakedepends+=" public-suffix"
 hostmakedepends+=" python3-requests"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-wheel"
 homepage="https://github.com/nexB/python-publicsuffix2"
-license="MIT, MPL-2.0"
+license="MIT"
 changelog="https://github.com/nexB/python-publicsuffix2/raw/develop/CHANGELOG.rst"
 distfiles="https://github.com/nexB/python-publicsuffix2/archive/release-2.${version//./-}.tar.gz>$pkgname-$version.tar.gz"
 checksum="b4ef022fccd7b4968151af208b0f890e55c00b24892a1a826b2b7a381215bafa"
 build_style="python3-module"
+
+post_extract() {
+  rm -f src/publicsuffix2/mpl-2.0.LICENSE
+  rm -f src/publicsuffix2/public_suffix_list.dat
+}
 
 post_install() {
   vlicense publicsuffix2.LICENSE
