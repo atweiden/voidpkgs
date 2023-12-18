@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="openvpn"
-version=2.6.4
-revision=2
+version=2.6.8
+revision=1
 short_desc="Easy-to-use, robust, and highly configurable VPN"
 makedepends+=" libcap-ng-devel"
 makedepends+=" liblz4-devel"
@@ -16,7 +16,7 @@ homepage="https://www.openvpn.net"
 license="GPL-2.0-only"
 changelog="https://github.com/OpenVPN/openvpn/raw/release/${version%.*}/Changes.rst"
 distfiles="http://build.openvpn.net/downloads/releases/$pkgname-$version.tar.gz"
-checksum="371a2a323a99a79299b9b4caa4a31bc7b2cdff63236e68d429f3ee50e75f3dd4"
+checksum="5ede1565c8a6d880100f7f235317a7ee9eea83d5052db5547f13a9e76af7805d"
 build_style="gnu-configure"
 configure_args+=" --disable-systemd"
 configure_args+=" $(vopt_if mbedtls --with-crypto-library=mbedtls)"
