@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iproute2"
-version=6.5.0
+version=6.6.0
 revision=1
 short_desc="IP Routing Utilities"
 makedepends+=" db-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://wiki.linuxfoundation.org/networking/iproute2"
 license="GPL-2.0-only"
 distfiles="$KERNEL_SITE/utils/net/iproute2/$pkgname-$version.tar.xz"
-checksum="a70179085fa1b96d3c33b040c809b75e2b57563adc505a4ad05e2609df373463"
+checksum="8738c804afd09f0bf756937f0c3de23117832a98d8cbbf50386cf5005cd613ce"
 conf_files+=" /etc/iproute2/bpf_pinning"
 conf_files+=" /etc/iproute2/ematch_map"
 conf_files+=" /etc/iproute2/group"
