@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="yubikey-manager"
-version=5.1.1
+version=5.2.1
 revision=1
 short_desc="Library and CLI tools to configure YubiKey"
 depends+=" libfido2"
@@ -18,7 +18,7 @@ hostmakedepends="python3-poetry-core"
 homepage="https://developers.yubico.com/yubikey-manager/"
 license="BSD-2-Clause"
 distfiles="https://developers.yubico.com/yubikey-manager/Releases/${pkgname/-/_}-$version.tar.gz"
-checksum="6487db976d8b5b52965db55d084f9d2aef2b96f77da785dc13f6dfdd3302aace"
+checksum="35c5aa83ac474fd2434c33267dc0e33d312b3969b108f885e533463af3fbe4e1"
 build_style="python3-pep517"
 
 post_install() {
