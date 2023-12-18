@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libvterm"
-version=0.3.2
+version=0.3.3
 revision=1
 short_desc="Abstract VT220/xterm/ECMA-48 emulation library"
 hostmakedepends+=" libtool"
@@ -9,7 +9,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://www.leonerd.org.uk/code/libvterm"
 license="MIT"
 distfiles="https://www.leonerd.org.uk/code/libvterm/$pkgname-$version.tar.gz"
-checksum="91eb5088069f4e6edab69e14c4212f6da0192e65695956dc048016a0dab8bcf6"
+checksum="09156f43dd2128bd347cbeebe50d9a571d32c64e0cf18d211197946aff7226e0"
 build_style="gnu-makefile"
 make_install_target+=" install-inc"
 make_install_target+=" install-lib"
