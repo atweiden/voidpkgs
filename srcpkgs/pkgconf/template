@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pkgconf"
-version=1.9.3
+version=2.1.0
 revision=1
 short_desc="Provides compiler and linker configuration"
 checkdepends="kyua"
@@ -8,7 +8,7 @@ homepage="http://pkgconf.org/"
 license="MIT"
 changelog="https://github.com/pkgconf/pkgconf/raw/master/NEWS"
 distfiles="https://distfiles.ariadne.space/pkgconf/$pkgname-$version.tar.xz"
-checksum="5fb355b487d54fb6d341e4f18d4e2f7e813a6622cf03a9e87affa6a40565699d"
+checksum="266d5861ee51c52bc710293a1d36622ae16d048d71ec56034a02eb9cf9677761"
 # cmake and meson also available
 build_style="gnu-configure"
 bootstrap="yes"
