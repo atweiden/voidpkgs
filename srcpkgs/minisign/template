@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="minisign"
 version=0.11
-revision=1
+revision=2
 short_desc="Simple tool to sign files and verify signatures"
 makedepends="libsodium-devel"
 hostmakedepends="pkg-config"
