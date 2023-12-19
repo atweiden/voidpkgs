@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pijul"
 version=1.0.0.beta.6
-revision=1
+revision=2
 _crates_version="${version%.*.*}-${version#*.*.*.}"
 short_desc="Distributed version control system based on patches"
 makedepends+=" libsodium-devel"
