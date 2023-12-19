@@ -568,7 +568,7 @@ libsmartcols.so.1 libsmartcols-2.25_1
 libsmbios.so.2 libsmbios-2.2.28_1
 libsmbios_c.so.2 libsmbios-2.2.28_1
 libsndfile.so.1 libsndfile-1.0.20_1
-libsodium.so.23 libsodium-1.0.15_1
+libsodium.so.26 libsodium-1.0.19_1
 libsoxr-lsr.so.0 libsoxr-0.1.2_1
 libsoxr.so.0 libsoxr-0.1.2_1
 libspdlog.so.1.11 libspdlog-1.11.0_1
