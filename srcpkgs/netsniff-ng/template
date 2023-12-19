@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="netsniff-ng"
 version=0.6.8
-revision=2
+revision=3
 short_desc="Free Linux networking toolkit"
 makedepends+=" libcli-devel"
 makedepends+=" libnet-devel"
@@ -28,23 +28,19 @@ CFLAGS="-fcommon"
 post_extract() {
   vsed \
     -i \
-    -e "s|/sbin|/bin|g" \
+    -e 's|/sbin|/bin|g' \
+    -e '/--jobs=/d' \
     Makefile
+  vsed \
+    -i \
+    -e 's/ncurses/ncursesw/g' \
+    flowtop/Makefile
 }
 
 pre_configure() {
   export NACL_INC_DIR="$XBPS_CROSS_BASE/usr/include/sodium"
   export NACL_LIB="sodium"
   export NACL_LIB_DIR="$XBPS_CROSS_BASE/usr/lib"
-}
-
-do_build() {
-  make \
-    "$makejobs" \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    LD="$CC" \
-    LDFLAGS="$LDFLAGS"
 }
 
 pre_install() {
