@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="toxcore"
 version=0.2.18
-revision=2
+revision=3
 short_desc="Encrypted peer-to-peer instant messenger protocol library"
 makedepends+=" libconfig-devel"
 makedepends+=" libsodium-devel"
