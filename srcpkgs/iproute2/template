@@ -1,9 +1,10 @@
 maintainer="nox"
 pkgname="iproute2"
 version=6.6.0
-revision=1
+revision=2
 short_desc="IP Routing Utilities"
 makedepends+=" db-devel"
+makedepends+=" elfutils-devel"
 makedepends+=" iptables-devel"
 makedepends+=" libfl-devel"
 makedepends+=" libmnl-devel"
