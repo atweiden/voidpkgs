@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="sniproxy"
-version=0.6.0
+version=0.6.1
 revision=1
 short_desc="Proxies incoming HTTP and TLS connections based on the hostname"
 makedepends+=" libev-devel"
@@ -8,18 +8,22 @@ makedepends+=" pcre-devel"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" musl-legacy-compat"
 fi
+checkdepends+=" curl"
+checkdepends+=" perl"
 hostmakedepends+=" autoconf"
 hostmakedepends+=" automake"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" libtool"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" udns-devel"
-license="GPL-3"
 homepage="https://github.com/dlundquist/sniproxy"
+license="BSD-2-Clause"
+changelog="https://github.com/dlundquist/sniproxy/raw/master/ChangeLog"
 distfiles="https://github.com/dlundquist/sniproxy/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="d73c77a9fa8199ae7ac551c0332d3e0a3ff234623f53d65369a8fa560d9880e2"
+checksum="6a06d12bedcbd5295a2c75d60a9df1cfde9e26efa31f44a34979b5cb8fb0bc1a"
 conf_files="/etc/sniproxy.conf"
 build_style="gnu-configure"
+configure_args="--enable-dns"
 
 CFLAGS="-fcommon"
 
@@ -29,6 +33,7 @@ pre_configure() {
 
 post_install() {
   vconf sniproxy.conf
+  vlicense COPYING
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
