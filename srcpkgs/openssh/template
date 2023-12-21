@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="openssh"
-version=9.5p1
+version=9.6p1
 revision=1
 short_desc="OpenSSH free Secure Shell (SSH) client and server implementation"
 makedepends+=" libedit-devel"
@@ -14,7 +14,7 @@ hostmakedepends="automake"
 homepage="https://www.openssh.com"
 license="BSD-2-Clause, ISC"
 distfiles="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$pkgname-$version.tar.gz"
-checksum="f026e7b79ba7fb540f75182af96dc8a8f1db395f922bbc9f6ca603672686086b"
+checksum="910211c07255a8c5ad654391b40ee59800710dd8119dd5362de09385aa7a777c"
 conf_files+=" /etc/pam.d/sshd"
 conf_files+=" /etc/ssh/moduli"
 conf_files+=" /etc/ssh/ssh_config"
