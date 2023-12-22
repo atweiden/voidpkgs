@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="toot"
-version=0.38.2
+version=0.39.0
 revision=1
 short_desc="Mastodon CLI client"
 depends+=" python3-BeautifulSoup4"
@@ -8,6 +8,7 @@ depends+=" python3-requests"
 depends+=" python3-setuptools"
 depends+=" python3-tomlkit"
 depends+=" python3-urwid"
+depends+=" python3-urwidgets"
 depends+=" python3-wcwidth"
 checkdepends+=" $depends"
 checkdepends+=" python3-psycopg2"
@@ -18,7 +19,7 @@ homepage="https://toot.bezdomni.net"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ihabunek/toot/raw/master/CHANGELOG.md"
 distfiles="https://github.com/ihabunek/toot/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="2a8801d74e7ecf69812e3bd329db86ad6e99159dfb235060fedca7b5f5c72417"
+checksum="8c5626e5586b73d1b940e9edea9276595ee85df5a67c69932a88b001f3e9ca77"
 build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
