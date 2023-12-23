@@ -1,19 +1,55 @@
 maintainer="nox"
 pkgname="python3-psutil"
-version=5.9.6
+version=5.9.7
 revision=1
 short_desc="Cross-platform process and system utilities module for Python3"
 depends="python3"
 makedepends="python3-devel"
-hostmakedepends="python3-setuptools"
+# two tests use util-linux (findmnt), but it conflicts chroot-util-linux
+checkdepends+=" inetutils-ifconfig"
+checkdepends+=" procps-ng"
+checkdepends+=" python3-pytest"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/giampaolo/psutil"
 license="BSD-3-Clause"
 changelog="https://github.com/giampaolo/psutil/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/p/psutil/psutil-$version.tar.gz"
-checksum="e4b92ddcd7dd4cdd3f900180ea1e104932c7bce234fb88976e2a3b296441225a"
-build_style="python3-module"
-# tests seem to assume package is installed
-make_check="no"
+checksum="3f02134e82cfb5d089fddf20bb2e03fd5cd52395321d1c8458a9e58500ff417c"
+build_style="python3-pep517"
+# failing tests: see https://github.com/giampaolo/psutil/issues/2043
+make_check_args+=" --import-mode=importlib"
+make_check_args+=" --deselect psutil/tests/test_contracts.py::TestFetchAllProcesses::test_all"
+make_check_args+=" --deselect psutil/tests/test_linux.py::TestProcess::test_exe_mocked"
+make_check_args+=" --deselect psutil/tests/test_linux.py::TestRootFsDeviceFinder::test_against_findmnt"
+make_check_args+=" --deselect psutil/tests/test_linux.py::TestSystemVirtualMemoryAgainstFree::test_used"
+make_check_args+=" --deselect psutil/tests/test_linux.py::TestSystemVirtualMemoryAgainstVmstat::test_used"
+make_check_args+=" --deselect psutil/tests/test_misc.py::TestCommonModule::test_debug"
+make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_terminal"
+make_check_args+=" --deselect psutil/tests/test_system.py::TestDiskAPIs::test_disk_partitions"
+make_check_args+=" --deselect psutil/tests/test_system.py::TestMiscAPIs::test_users"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  # this test fails because RLIMIT_RTTIME is n/a in musl 1.1
+  make_check_args+=" --deselect psutil/tests/test_contracts.py::TestAvailConstantsAPIs::test_rlimit"
+fi
+if [[ "$XBPS_BUILD_ENVIRONMENT" == "void-packages-ci" ]]; then
+  # tests that fail on ci; the first one actually hangs
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_wait_non_children"
+  make_check_args+=" --deselect psutil/tests/test_linux.py::TestRootFsDeviceFinder::test_comparisons"
+  make_check_args+=" --deselect psutil/tests/test_linux.py::TestRootFsDeviceFinder::test_disk_partitions_mocked"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_children_recursive"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_oneshot_cache"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_parent_multi"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_parents"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_parents_and_children"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestProcess::test_zombie_process"
+  make_check_args+=" --deselect psutil/tests/test_testutils.py::TestProcessUtils::test_reap_children"
+  make_check_args+=" --deselect psutil/tests/test_testutils.py::TestProcessUtils::test_spawn_children_pair"
+  make_check_args+=" --deselect psutil/tests/test_testutils.py::TestProcessUtils::test_spawn_zombie"
+  make_check_args+=" --deselect psutil/tests/test_testutils.py::TestProcessUtils::test_terminate"
+  make_check_args+=" --deselect psutil/tests/test_testutils.py::TestMemLeakClass::test_leak_mem"
+  make_check_args+=" --deselect psutil/tests/test_process.py::TestPopen::test_misc"
+fi
 
 post_install() {
   rm -r "$DESTDIR/$py3_sitelib/psutil/tests"
