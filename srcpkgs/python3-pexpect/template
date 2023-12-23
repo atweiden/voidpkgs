@@ -1,29 +1,22 @@
 maintainer="nox"
 pkgname="python3-pexpect"
-version=4.8.0
-revision=4
-short_desc="Python3 module for spawning child applications and controlling them"
+version=4.9.0
+revision=1
+short_desc="Spawn child applications and control them"
 depends="python3-ptyprocess"
 checkdepends+=" mdocml"
 checkdepends+=" python3-ptyprocess"
 checkdepends+=" python3-pytest"
+checkdepends+=" zsh"
 hostmakedepends="python3-setuptools"
 homepage="https://pexpect.readthedocs.io/"
 license="ISC"
+changelog="https://github.com/pexpect/pexpect/raw/master/doc/history.rst"
 distfiles="$PYPI_SITE/p/pexpect/pexpect-$version.tar.gz"
-checksum="fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"
+checksum="ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f"
 build_style="python3-module"
 
-do_check() {
-  # the mdcocml is for test
-  # REPLWrapTestCase.test_pager_as_cat
-  python3 -m pytest
-}
-
 post_install() {
-  # drop asyncio stuff from python2
-  # https://github.com/pexpect/pexpect/issues/290
-  rm -f "$DESTDIR/usr/lib/python$py3_ver/site-packages/pexpect/_async.py"
   vlicense LICENSE
 }
 
