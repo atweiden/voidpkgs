@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libheif"
-version=1.16.2
-revision=2
+version=1.17.5
+revision=1
 short_desc="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 makedepends+=" libaom-devel"
 makedepends+=" libde265-devel"
@@ -12,7 +12,7 @@ homepage="https://github.com/strukturag/libheif"
 license="LGPL-3.0-or-later"
 changelog="https://github.com/strukturag/libheif/releases"
 distfiles="https://github.com/strukturag/libheif/archive/v$version.tar.gz"
-checksum="d207f2ff5c86e6af3621c237f186130b985b7a9ff657875944b58ac5d27ba71c"
+checksum="2150d6f643e36d0c6dc07c203510815c9660c062868f88d6f14cc6a545d6750e"
 build_style="cmake"
 
 libheif-devel_package() {
