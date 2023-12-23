@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-tornado"
-version=6.3.3
+version=6.4
 revision=1
 short_desc="Python3 web framework and asynchronous networking library"
 depends+=" ca-certificates"
@@ -15,7 +15,7 @@ homepage="http://www.tornadoweb.org/"
 license="Apache-2.0"
 changelog="https://www.tornadoweb.org/en/stable/releases.html"
 distfiles="$PYPI_SITE/t/tornado/tornado-$version.tar.gz"
-checksum="e7d8db41c0181c80d76c982aacc442c0783a2c54d6400fe028954201a2e032fe"
+checksum="72291fa6e6bc84e626589f1c29d90a5a6d593ef5ae68052ee2ef000dfd273dee"
 build_style="python3-pep517"
 
 do_check() {
