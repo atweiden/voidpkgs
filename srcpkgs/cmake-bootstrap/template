@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="cmake-bootstrap"
 version=3.27.6
-revision=1
+revision=2
 short_desc="CMake for xbps-src"
 homepage="https://www.cmake.org"
 license="BSD-3-Clause, ICU"
