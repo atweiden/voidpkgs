@@ -37,6 +37,7 @@ bootstrap
 - libcap
 - libmpc
 - libreadline8
+- libxcrypt
 - lz4
 - m4
 - make
@@ -572,6 +573,7 @@ python
 - python3-packaging
 - python3-pandas
 - python3-parsing
+- python3-passlib
 - python3-pathspec
 - python3-pexpect
 - python3-pip

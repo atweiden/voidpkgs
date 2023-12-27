@@ -510,6 +510,8 @@ constant %PKG = Map.new(
                     libwebp-devel
                     libwebp-tools>,
     'libx86emu' => ['libx86emu-devel'],
+    'libxcrypt' => qw<libxcrypt-compat
+                      libxcrypt-devel>,
     'libxml2' => qw<libxml2-devel
                     libxml2-python3>,
     'libxslt' => qw<libxslt-devel
