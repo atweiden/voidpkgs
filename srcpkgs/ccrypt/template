@@ -1,8 +1,11 @@
 maintainer="nox"
 pkgname="ccrypt"
 version=1.11
-revision=1
+revision=2
 short_desc="Symmetric encryption utility using Rijndael cipher"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 homepage="https://ccrypt.sourceforge.net"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/ccrypt/$pkgname-$version.tar.gz"
