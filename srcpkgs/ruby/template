@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ruby"
 version=3.2.2
-revision=2
+revision=3
 _ruby_abiver=3.2.0
 short_desc="Ruby programming language"
 makedepends+=" gdbm-devel"
@@ -10,6 +10,9 @@ makedepends+=" libyaml-devel"
 makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends+=" bison"
 hostmakedepends+=" groff"
 hostmakedepends+=" pkgconf"
