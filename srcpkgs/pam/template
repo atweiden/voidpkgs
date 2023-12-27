@@ -1,12 +1,15 @@
 maintainer="nox"
 pkgname="pam"
 version=1.5.3
-revision=2
+revision=3
 short_desc="Flexible mechanism for authenticating users"
 # version of pam-base that doesn't include removed modules
 depends="pam-base>=0.4_1"
 makedepends+=" db-devel"
 makedepends+=" libfl-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends="pam-base"
 hostmakedepends+=" gettext-devel"
 hostmakedepends+=" pkg-config"
