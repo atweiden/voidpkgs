@@ -1,8 +1,7 @@
 maintainer="nox"
 pkgname="glibc"
-version=2.36
-revision=2
-_patchver="72-g0f90d6204d"
+version=2.38
+revision=1
 short_desc="GNU C library"
 archs="~*-musl"
 makedepends="kernel-libc-headers"
@@ -15,8 +14,8 @@ if [[ -n "$CHROOT_READY" ]]; then
 fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
-distfiles="https://vasilek.cz/paste/glibc-$version-$_patchver.tar.xz"
-checksum="656200722d5ba968b4888a2d2950719d72c86290fd0479f61897d25b7db2cb57"
+distfiles="$GNU_SITE/libc/glibc-$version.tar.xz"
+checksum="fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2"
 conf_files+=" /etc/gai.conf"
 conf_files+=" /etc/ld.so.conf"
 conf_files+=" /etc/rpc"
@@ -40,7 +39,6 @@ nostrip_files+=" ld64.so.2"
 nostrip_files+=" libBrokenLocale.so.1"
 nostrip_files+=" libc.so.6"
 nostrip_files+=" libc_malloc_debug.so.0"
-nostrip_files+=" libcrypt.so.1"
 nostrip_files+=" libm.so.6"
 nostrip_files+=" libmemusage.so"
 nostrip_files+=" libmvec.so.1"
@@ -110,20 +108,15 @@ do_configure() {
   SHELL="/bin/bash" ../configure \
     $configure_args \
     --bindir="/usr/bin" \
-    --disable-lock-elision \
     --disable-profile \
     --disable-werror \
-    --enable-add-ons="libidn" \
     --enable-bind-now \
     --enable-kernel="3.2.0" \
     --enable-multi-arch \
-    --enable-stack-guard-randomization \
     --enable-stack-protector="strong" \
     --libdir="$_libdir" \
     --libexecdir="$_libdir" \
     --sbindir="/usr/bin" \
-    --with-headers="$XBPS_CROSS_BASE/usr/include" \
-    --without-cvs \
     --without-gd \
     --without-selinux \
     libc_cv_rootsbindir="/usr/bin" \
