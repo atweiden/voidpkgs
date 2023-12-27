@@ -1,11 +1,14 @@
 maintainer="nox"
 pkgname="monit"
 version=5.33.0
-revision=2
+revision=3
 short_desc="Utility for monitoring, processes, files, directories and devices"
 makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
