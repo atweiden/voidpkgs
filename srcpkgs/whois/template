@@ -1,9 +1,12 @@
 maintainer="nox"
 pkgname="whois"
 version=5.5.20
-revision=1
+revision=2
 short_desc="Improved whois client"
 makedepends="libidn2-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends+=" gettext"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
