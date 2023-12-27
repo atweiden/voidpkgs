@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="cyrus-sasl"
 # keep in sync with libsasl
 version=2.1.28
-revision=3
+revision=4
 short_desc="Cyrus SASL - auth daemon and administration tools"
 depends="libsasl>=$version"
 makedepends+=" db-devel"
@@ -14,6 +14,9 @@ makedepends+=" openssl-devel"
 makedepends+=" pam-devel"
 makedepends+=" postgresql-libs-devel"
 makedepends+=" sqlite-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends+=" automake"
 hostmakedepends+=" libtool"
 hostmakedepends+=" groff"
