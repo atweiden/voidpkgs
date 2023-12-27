@@ -1,10 +1,13 @@
 maintainer="nox"
 pkgname="clisp"
 version=2.49.92
-revision=1
+revision=2
 short_desc="ANSI Common Lisp Interpreter, Compiler and Debugger"
 makedepends+=" libsigsegv-devel"
 makedepends+=" $(vopt_if readline readline-devel)"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends="ffcall"
 homepage="https://gitlab.com/gnu-clisp/clisp"
 license="GPL-2.0-only"
