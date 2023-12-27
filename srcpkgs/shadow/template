@@ -1,11 +1,14 @@
 maintainer="nox"
 pkgname="shadow"
 version=4.8.1
-revision=2
+revision=3
 short_desc="Shadow password file utilities"
 depends="pam"
 makedepends+=" acl-devel"
 makedepends+=" pam-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends="libtool"
 homepage="https://github.com/shadow-maint/shadow"
 license="BSD-3-Clause"
