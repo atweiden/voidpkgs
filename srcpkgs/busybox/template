@@ -1,8 +1,11 @@
 maintainer="nox"
 pkgname="busybox"
 version=1.34.1
-revision=4
+revision=5
 short_desc="Swiss Army Knife of Embedded Linux"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" tar"
 checkdepends+=" which"
 checkdepends+=" zip"
