@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="guile"
 version=2.2.7
-revision=2
+revision=3
 short_desc="Portable, embeddable Scheme implementation written in C"
 makedepends+=" gc-devel"
 makedepends+=" gmp-devel"
@@ -10,6 +10,9 @@ makedepends+=" libffi-devel"
 makedepends+=" libltdl-devel"
 makedepends+=" libunistring-devel"
 makedepends+=" readline-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" texinfo"
 license="GPL-3.0-or-later, LGPL-3.0-or-later"
