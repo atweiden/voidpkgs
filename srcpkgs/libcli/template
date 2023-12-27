@@ -1,9 +1,12 @@
 maintainer="nox"
 pkgname="libcli"
 version=1.9.8.4
+revision=2
 _distver="${version%.*}-${version##*.}"
-revision=1
 short_desc="Library for cisco style telnet interfaces"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 homepage="https://github.com/dparrish/libcli"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/dparrish/libcli/archive/v$_distver.tar.gz>$pkgname-$version.tar.gz"
