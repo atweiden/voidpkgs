@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="util-linux"
 version=2.38.1
-revision=4
+revision=5
 short_desc="Miscellaneous linux utilities"
 depends+=" libblkid>=${version}_1<=${version}_9999"
 depends+=" libfdisk>=${version}_1<=${version}_9999"
@@ -14,6 +14,9 @@ makedepends+=" libcap-ng-devel"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" bc"
 checkdepends+=" iproute2"
 checkdepends+=" procps-ng"
