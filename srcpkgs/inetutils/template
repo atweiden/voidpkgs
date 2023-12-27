@@ -1,10 +1,13 @@
 maintainer="nox"
 pkgname="inetutils"
 version=2.4
-revision=1
+revision=2
 short_desc="GNU network utilities"
 makedepends+=" pam-devel"
 makedepends+=" readline-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" iana-etc"
 checkdepends+=" net-tools"
 homepage="https://www.gnu.org/software/inetutils/"
