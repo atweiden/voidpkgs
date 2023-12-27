@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="glibc"
 version=2.38
-revision=1
+revision=2
 short_desc="GNU C library"
 archs="~*-musl"
 makedepends="kernel-libc-headers"
