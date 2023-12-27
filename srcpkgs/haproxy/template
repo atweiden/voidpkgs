@@ -1,11 +1,14 @@
 maintainer="nox"
 pkgname="haproxy"
 version=2.6.15
-revision=1
+revision=2
 short_desc="Reliable, high performance TCP/HTTP load balancer"
 makedepends+=" lua53-devel"
 makedepends+=" openssl-devel"
 makedepends+=" pcre2-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" curl"
 checkdepends+=" varnish"
 hostmakedepends="lua53-devel"
