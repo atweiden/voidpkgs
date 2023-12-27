@@ -46,6 +46,7 @@ bootstrap
 - ncurses
 - openssl
 - patch
+- perl-bootstrap
 - pkgconf
 - readline
 - run-parts
