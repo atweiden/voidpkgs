@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl"
 version=5.38.2
-revision=1
+revision=2
 _perl_cross_version=1.5.2
 short_desc="Practical Extraction and Report Language"
 depends="less"
@@ -9,6 +9,9 @@ makedepends+=" bzip2-devel"
 makedepends+=" db-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" iana-etc"
 checkdepends+=" perl-AnyEvent"
 checkdepends+=" perl-Test-Pod"
