@@ -1,11 +1,14 @@
 maintainer="nox"
 pkgname="dropbear"
 version=2022.83
-revision=1
+revision=2
 short_desc="Small SSH server and client"
 makedepends+=" libtomcrypt-devel"
 makedepends+=" libtommath-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 checkdepends+=" openssh"
 checkdepends+=" python3-parsing"
 checkdepends+=" python3-psutil"
