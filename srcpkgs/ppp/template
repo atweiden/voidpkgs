@@ -1,10 +1,13 @@
 maintainer="nox"
 pkgname="ppp"
 version=2.4.9
-revision=3
+revision=4
 short_desc="PPP (Point-to-Point Protocol) daemon"
 makedepends+=" libpcap-devel"
 makedepends+=" openssl-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 homepage="https://ppp.samba.org/"
 license="BSD-3-Clause, LGPL-2.0-or-later, GPL-2.0-or-later, Public Domain"
 distfiles="https://ftp.samba.org/pub/ppp/$pkgname-$version.tar.gz"
