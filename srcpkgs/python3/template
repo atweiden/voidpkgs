@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="python3"
 version=3.12.1
-revision=1
+revision=2
 _bluez="bluez-5.64"
 short_desc="Python programming language (${version%.*} series)"
 depends="ca-certificates"
@@ -17,6 +17,9 @@ makedepends+=" openssl-devel"
 makedepends+=" readline-devel"
 makedepends+=" sqlite-devel"
 makedepends+=" zlib-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends="pkgconf"
 homepage="https://www.python.org"
 license="Python-2.0"
