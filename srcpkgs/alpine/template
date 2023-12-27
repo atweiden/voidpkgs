@@ -1,13 +1,16 @@
 maintainer="nox"
 pkgname="alpine"
 version=2.26
-revision=3
+revision=4
 _gitrev="9726c098a739edfdca6218bc5dee104c310957e9"
 short_desc="Apache-licensed PINE mail user agent (with Chappa patches)"
 makedepends+=" gettext-devel"
 makedepends+=" libldap-devel"
 makedepends+=" mit-krb5-devel"
 makedepends+=" ncurses-devel"
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  makedepends+=" libxcrypt-devel"
+fi
 hostmakedepends="hunspell"
 homepage="https://repo.or.cz/alpine.git"
 license="Apache-2.0, BSD-4-Clause"
