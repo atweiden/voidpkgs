@@ -1,15 +1,17 @@
 maintainer="nox"
 pkgname="python3-sphinxcontrib-serializinghtml"
-version=1.1.5
-revision=4
+version=1.1.9
+revision=1
 short_desc="Sphinx extension which outputs serialized HTML document"
 depends="python3"
-hostmakedepends="python3-setuptools"
+hostmakedepends+=" python3-flit_core"
+hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-wheel"
 homepage="http://sphinx-doc.org"
 license="BSD-2-Clause"
-distfiles="$PYPI_SITE/s/sphinxcontrib-serializinghtml/sphinxcontrib-serializinghtml-$version.tar.gz"
-checksum="aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952"
-build_style="python3-module"
+distfiles="$PYPI_SITE/s/sphinxcontrib_serializinghtml/sphinxcontrib_serializinghtml-$version.tar.gz"
+checksum="0c64ff898339e1fac29abd2bf5f11078f3ec413cfe9c046d3120d7ca65530b54"
+build_style="python3-pep517"
 # cyclic with sphinx
 make_check="no"
 
