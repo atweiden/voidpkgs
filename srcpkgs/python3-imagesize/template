@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-imagesize"
-version=1.2.0
-revision=4
+version=1.4.1
+revision=1
 short_desc="Python3 library to get image size from png/jpeg/jpeg2000/gif file"
 depends="python3"
 checkdepends="python3-pytest"
@@ -9,8 +9,10 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/shibukawa/imagesize_py"
 license="MIT"
 distfiles="$PYPI_SITE/i/imagesize/imagesize-$version.tar.gz"
-checksum="b1f6b5a4eab1f73479a50fb79fcf729514a900c341d8503d62a62dbc4127a2b1"
+checksum="69150444affb9cb0d5cc5a92b3676f0b2fb7cd9ae39e947a5e11a36b4497cd4a"
 build_style="python3-module"
+# tries to fetch a dead url
+make_check_args="--deselect test/test_get_filelike.py::test_get_filelike"
 
 post_install() {
   vlicense LICENSE.rst
