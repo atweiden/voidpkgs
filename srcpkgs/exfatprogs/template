@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="exfatprogs"
-version=1.2.0
+version=1.2.2
 revision=1
 short_desc="Tools to create, check and label exFAT filesystems"
 homepage="https://github.com/exfatprogs/exfatprogs"
 license="GPL-2.0-or-later"
 changelog="https://github.com/exfatprogs/exfatprogs/raw/master/NEWS"
 distfiles="https://github.com/exfatprogs/exfatprogs/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="56d9a49465deafc367d428afc71c8098705a30ee19a3cdf3c5320650b8880742"
+checksum="61d517231f8ec177eeb5955fd6edb89748d3f88ba412c48bcb32741b430e359a"
 build_style="gnu-configure"
 conflicts="exfat-utils"
 replaces="exfat-utils>=0"
