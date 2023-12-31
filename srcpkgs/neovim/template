@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="neovim"
-version=0.9.4
+version=0.9.5
 revision=1
 short_desc="Fork of Vim aiming to improve user experience, plugins and GUIs"
 makedepends+=" libluv-devel"
@@ -17,8 +17,9 @@ hostmakedepends+=" lua51-mpack"
 hostmakedepends+=" $(vopt_if luajit LuaJIT lua51)"
 homepage="https://neovim.io"
 license="Apache-2.0, Vim"
+changelog="https://github.com/neovim/neovim/releases"
 distfiles="https://github.com/neovim/neovim/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="148356027ee8d586adebb6513a94d76accc79da9597109ace5c445b09d383093"
+checksum="fe74369fc30a32ec7a086b1013acd0eacd674e7570eb1acc520a66180c9e9719"
 build_style="cmake"
 configure_args+=" -DCOMPILE_LUA=OFF"
 configure_args+=" -DPREFER_LUA=$(vopt_if luajit OFF ON)"
