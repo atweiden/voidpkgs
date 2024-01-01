@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="perl"
 version=5.38.2
-revision=2
+revision=3
 _perl_cross_version=1.5.2
 short_desc="Practical Extraction and Report Language"
 depends="less"
@@ -9,9 +9,6 @@ makedepends+=" bzip2-devel"
 makedepends+=" db-devel"
 makedepends+=" gdbm-devel"
 makedepends+=" zlib-devel"
-if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
-  makedepends+=" libxcrypt-devel"
-fi
 checkdepends+=" iana-etc"
 checkdepends+=" perl-AnyEvent"
 checkdepends+=" perl-Test-Pod"
@@ -149,6 +146,11 @@ provides+=" perl-version-0.9929_1"
 for f in $provides; do
   replaces+=" $("$XBPS_UHELPER_CMD" getpkgname "$f")>=0"
 done
+
+if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
+  depends+=" libxcrypt-devel"
+  makedepends+=" libxcrypt-devel"
+fi
 
 post_extract() {
   local TAR
