@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="postgresql15"
-version=15.4
+version=15.5
 revision=1
 _major="${version%%.*}"
 _prefix="usr/lib/psql$_major"
@@ -23,7 +23,7 @@ homepage="https://www.postgresql.org"
 license="PostgreSQL"
 changelog="https://www.postgresql.org/docs/current/release-${version//./-}.html"
 distfiles="https://ftp.postgresql.org/pub/source/v$version/postgresql-$version.tar.bz2"
-checksum="baec5a4bdc4437336653b6cb5d9ed89be5bd5c0c58b94e0becee0a999e63c8f9"
+checksum="8f53aa95d78eb8e82536ea46b68187793b42bba3b4f65aa342f540b23c9b10a6"
 conf_files+=" /$_sysconfdir/default/postgresql"
 conf_files+=" /$_sysconfdir/pam.d/postgresql"
 conf_files+=" /$_sysconfdir/postgresql/postgresql.conf"
@@ -57,6 +57,25 @@ postgres_shell="/bin/sh"
 postgres_descr="PostgreSQL database server user"
 make_dirs+=" /var/lib/postgresql 0750 postgres postgres"
 make_dirs+=" /var/lib/postgresql$_major 0750 postgres postgres"
+alternatives+=" postgresql:/usr/bin/initdb:/usr/lib/psql15/bin/initdb"
+alternatives+=" postgresql:/usr/bin/pg_amchec:/usr/lib/psql15/bin/pg_amcheck"
+alternatives+=" postgresql:/usr/bin/pg_archivecleanup:/usr/lib/psql15/bin/pg_archivecleanup"
+alternatives+=" postgresql:/usr/bin/pg_basebackup:/usr/lib/psql15/bin/pg_basebackup"
+alternatives+=" postgresql:/usr/bin/pg_checksums:/usr/lib/psql15/bin/pg_checksums"
+alternatives+=" postgresql:/usr/bin/pg_controldata:/usr/lib/psql15/bin/pg_controldata"
+alternatives+=" postgresql:/usr/bin/pg_ctl:/usr/lib/psql15/bin/pg_ctl"
+alternatives+=" postgresql:/usr/bin/pg_receivewal:/usr/lib/psql15/bin/pg_receivewal"
+alternatives+=" postgresql:/usr/bin/pg_recvlogical:/usr/lib/psql15/bin/pg_recvlogical"
+alternatives+=" postgresql:/usr/bin/pg_resetwal:/usr/lib/psql15/bin/pg_resetwal"
+alternatives+=" postgresql:/usr/bin/pg_rewind:/usr/lib/psql15/bin/pg_rewind"
+alternatives+=" postgresql:/usr/bin/pg_test_fsync:/usr/lib/psql15/bin/pg_test_fsync"
+alternatives+=" postgresql:/usr/bin/pg_test_timing:/usr/lib/psql15/bin/pg_test_timing"
+alternatives+=" postgresql:/usr/bin/pg_upgrade:/usr/lib/psql15/bin/pg_upgrade"
+alternatives+=" postgresql:/usr/bin/pg_verifybackup:/usr/lib/psql15/bin/pg_verifybackup"
+alternatives+=" postgresql:/usr/bin/pg_waldump:/usr/lib/psql15/bin/pg_waldump"
+alternatives+=" postgresql:/usr/bin/pgbench:/usr/lib/psql15/bin/pgbench"
+alternatives+=" postgresql:/usr/bin/postgres:/usr/lib/psql15/bin/postgres"
+alternatives+=" postgresql:/usr/bin/postmaster:/usr/lib/psql15/bin/postmaster"
 
 post_patch() {
   cp "$FILESDIR/pg_config.sh.in" src/common/pg_config.sh.in
@@ -110,8 +129,6 @@ post_install() {
           '{}' ';'
   vlicense COPYRIGHT
 
-  vinstall "$FILESDIR/profile.sh" 644 etc/profile.d "$pkgname.sh"
-  _substitute "$DESTDIR/etc/profile.d/$pkgname.sh"
   vinstall "$FILESDIR/postgresql.confd" 644 "$_sysconfdir/default" postgresql
   _substitute "$DESTDIR/$_sysconfdir/default/postgresql"
   vinstall "$FILESDIR/postgresql.pam" 644 "$_sysconfdir/pam.d" postgresql
@@ -250,6 +267,18 @@ fi # !CROSS_BUILD
 
 postgresql15-client_package() {
   short_desc="Client frontends programs for PostgreSQL"
+  alternatives+=" postgresql-client:/usr/bin/clusterdb:/usr/lib/psql15/bin/clusterdb"
+  alternatives+=" postgresql-client:/usr/bin/createdb:/usr/lib/psql15/bin/createdb"
+  alternatives+=" postgresql-client:/usr/bin/createuser:/usr/lib/psql15/bin/createuser"
+  alternatives+=" postgresql-client:/usr/bin/dropdb:/usr/lib/psql15/bin/dropdb"
+  alternatives+=" postgresql-client:/usr/bin/dropuser:/usr/lib/psql15/bin/dropuser"
+  alternatives+=" postgresql-client:/usr/bin/pg_dump:/usr/lib/psql15/bin/pg_dump"
+  alternatives+=" postgresql-client:/usr/bin/pg_dumpall:/usr/lib/psql15/bin/pg_dumpall"
+  alternatives+=" postgresql-client:/usr/bin/pg_isready:/usr/lib/psql15/bin/pg_isready"
+  alternatives+=" postgresql-client:/usr/bin/pg_restore:/usr/lib/psql15/bin/pg_restore"
+  alternatives+=" postgresql-client:/usr/bin/psql:/usr/lib/psql15/bin/psql"
+  alternatives+=" postgresql-client:/usr/bin/reindexdb:/usr/lib/psql15/bin/reindexdb"
+  alternatives+=" postgresql-client:/usr/bin/vacuumdb:/usr/lib/psql15/bin/vacuumdb"
   pkg_install() {
     for f in clusterdb \
              createdb \
@@ -276,13 +305,13 @@ postgresql15-client_package() {
       mv "$d" "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
     done
     mv "$DESTDIR/$_prefix/share/postgresql"/psqlrc.* "$PKGDESTDIR/$_prefix/share"
-    vinstall "$FILESDIR/profile.sh" 644 etc/profile.d "$pkgname.sh"
-    _substitute "$PKGDESTDIR/etc/profile.d/$pkgname.sh"
   }
 }
 
 postgresql15-contrib_package() {
   short_desc="PostgreSQL contributed programs and extensions"
+  alternatives+=" postgresql-contrib:/usr/bin/oid2name:/usr/lib/psql15/bin/oid2name"
+  alternatives+=" postgresql-contrib:/usr/bin/vacuumlo:/usr/lib/psql15/bin/vacuumlo"
   pkg_install() {
     make -C contrib install DESTDIR="$PKGDESTDIR"
     mv "$PKGDESTDIR/usr/include" "$PKGDESTDIR/$_prefix"
