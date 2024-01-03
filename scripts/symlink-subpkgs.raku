@@ -703,25 +703,24 @@ constant %PKG = Map.new(
     'postgresql' => qw<postgresql-client
                        postgresql-contrib
                        postgresql-doc
+                       postgresql-full
                        postgresql-plperl
                        postgresql-plpython
                        postgresql-pltcl>,
-    'postgresql14' => qw<postgresql14-client
-                         postgresql14-contrib
-                         postgresql14-doc
-                         postgresql14-libs
-                         postgresql14-libs-devel
-                         postgresql14-plperl
-                         postgresql14-plpython
-                         postgresql14-pltcl>,
-    'postgresql15' => qw<postgresql-libs
-                         postgresql-libs-devel
-                         postgresql15-client
+    'postgresql15' => qw<postgresql15-client
                          postgresql15-contrib
                          postgresql15-doc
                          postgresql15-plperl
                          postgresql15-plpython
                          postgresql15-pltcl>,
+    'postgresql16' => qw<postgresql-libs
+                         postgresql-libs-devel
+                         postgresql16-client
+                         postgresql16-contrib
+                         postgresql16-doc
+                         postgresql16-plperl
+                         postgresql16-plpython
+                         postgresql16-pltcl>,
     'ppp' => ['ppp-devel'],
     'pps-tools' => ['pps-tools-devel'],
     'procps-ng' => ['procps-ng-devel'],

@@ -342,6 +342,7 @@ general
 - popt
 - postgresql
 - postgresql15
+- postgresql16
 - pps-tools
 - procps-ng
 - protobuf
