@@ -158,26 +158,7 @@ postgresql15-doc_package() {
   }
 }
 
-postgresql-libs_package() {
-  unset conflicts
-  short_desc="PostgreSQL shared libraries"
-  conflicts+=" postgresql9.6-libs>=0"
-  conflicts+=" postgresql12-libs>=0"
-  conflicts+=" postgresql13-libs>=0"
-  conflicts+=" postgresql14-libs>=0"
-  pkg_install() {
-    vmove "$_prefix/lib/*.so*"
-    for d in $(find "$DESTDIR/$_prefix/share/locale" \
-                -type f \
-                -name libpq5\*); do
-      mkdir -p "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
-      mv "$d" "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
-    done
-    mv "$PKGDESTDIR/$_prefix/lib"/* "$PKGDESTDIR/usr/lib"
-  }
-}
-
-postgresql-libs-devel_package() {
+postgresql15-libs-devel_package() {
   unset conflicts
   unset depends
   depends+=" openssl-devel"
@@ -188,10 +169,18 @@ postgresql-libs-devel_package() {
   conflicts+=" postgresql13-libs-devel>=0"
   conflicts+=" postgresql14-libs-devel>=0"
   pkg_install() {
+    # postgresql-libs
+    vmove "$_prefix/lib/*.so*"
+    for d in $(find "$DESTDIR/$_prefix/share/locale" -type f -name libpq5\*); do
+      mkdir -p "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
+      mv "$d" "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
+    done
+    rm -r "$PKGDESTDIR/$_prefix"
+    # postgresql-libs-devel
     vmkdir usr/bin
     vmkdir usr/lib
-    for f in pg_config \
-             ecpg; do
+    for f in ecpg \
+             pg_config; do
       vmove "$_prefix/bin/$f"
       vmove "usr/share/man/man1/$(basename "$f")*"
       ln -sr "$PKGDESTDIR/$_prefix/bin/$f" "$PKGDESTDIR/usr/bin"
@@ -202,16 +191,14 @@ postgresql-libs-devel_package() {
     mv "$DESTDIR/$_prefix/lib/pkgconfig" "$PKGDESTDIR/usr/lib"
     vmove usr/share/man/man3
     vmove "$_prefix/lib/postgresql/pgxs"
-    for f in libpq.so \
+    for f in libecpg_compat.so \
+             libecpg.so \
              libpgtypes.so \
-             libecpg_compat.so \
-             libecpg.so; do
+             libpq.so; do
       ln -sr "$PKGDESTDIR/usr/lib/$f" "$PKGDESTDIR/$_prefix/lib"
     done
-    for d in $(find "$DESTDIR/$_prefix/share/locale" \
-                -type f \
-                -name pg_config\* \
-             -o -name ecpg\*); do
+    for d in $(find "$DESTDIR/$_prefix/share/locale" -type f -name pg_config\* \
+                                                          -o -name ecpg\*); do
       mkdir -p "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
       mv "$d" "$PKGDESTDIR/$(dirname "${d#$DESTDIR}")"
     done

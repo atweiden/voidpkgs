@@ -710,6 +710,7 @@ constant %PKG = Map.new(
     'postgresql15' => qw<postgresql15-client
                          postgresql15-contrib
                          postgresql15-doc
+                         postgresql15-libs-devel
                          postgresql15-plperl
                          postgresql15-plpython
                          postgresql15-pltcl>,
