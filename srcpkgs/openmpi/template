@@ -1,26 +1,31 @@
 maintainer="nox"
 pkgname="openmpi"
-version=4.1.6
+version=5.0.1
 revision=1
 short_desc="High Performance Message Passing Library"
+# openmpi >= 5 is 64-bit only
+archs+=" aarch64*"
+archs+=" ppc64*"
+archs+=" riscv64"
+archs+=" x86_64*"
 makedepends+=" libevent-devel"
 makedepends+=" libgomp-devel"
 makedepends+=" libhwloc-devel"
 makedepends+=" zlib-devel"
-hostmakedepends+=" automake"
-hostmakedepends+=" libtool"
 hostmakedepends+=" perl"
 hostmakedepends+=" pkg-config"
+hostmakedepends+=" python3"
 homepage="https://www.open-mpi.org/"
 license="BSD-3-Clause"
 distfiles="https://www.open-mpi.org/software/ompi/v${version%.*}/downloads/$pkgname-$version.tar.bz2"
-checksum="f740994485516deb63b5311af122c265179f5328a0d857a567b85db00b11e415"
-conf_files+=" /etc/openmpi-default-hostfile"
-conf_files+=" /etc/openmpi-mca-params.conf"
-conf_files+=" /etc/openmpi-totalview.tcl"
+checksum="e357043e65fd1b956a47d0dae6156a90cf0e378df759364936c1781f1a25ef80"
+conf_files="/etc/openmpi/*"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
+configure_args+=" --with-pmix=internal"
+configure_args+=" --with-prrte=internal"
 configure_args+=" --libdir=\${prefix}/lib$XBPS_TARGET_WORDSIZE"
+configure_args+=" --sysconfdir=/etc/openmpi"
 configure_args+=" --with-hwloc=$XBPS_CROSS_BASE/usr"
 lib32disabled="yes"
 
@@ -38,10 +43,6 @@ post_patch() {
     -i \
     -e 's,sys/unistd.h,unistd.h,g' \
     opal/include/opal/sys/cma.h
-  vsed \
-    -i \
-    -e '1i#include <unistd.h>' \
-    opal/mca/pmix/pmix3x/pmix/include/pmix_server.h
 }
 
 pre_configure() {
@@ -51,8 +52,6 @@ pre_configure() {
 
 post_install() {
   vlicense LICENSE
-  # https://github.com/void-linux/void-packages/pull/28996#issuecomment-784255185
-  mv "$DESTDIR/usr/lib/ompi_monitoring_prof.so" "$DESTDIR/usr/lib/openmpi"
 }
 
 libopenmpi_package() {
@@ -74,6 +73,9 @@ openmpi-devel_package() {
     vmove usr/lib/pkgconfig
     vmove usr/share/man/man3
     vmove "usr/lib/*.so"
+    if [[ -z "$CROSS_BUILD" ]]; then
+      vmove "usr/lib/*.mod"
+    fi
   }
 }
 
