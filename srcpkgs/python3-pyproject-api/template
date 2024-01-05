@@ -1,24 +1,27 @@
-# Template file for 'python3-pyproject-api'
-pkgname=python3-pyproject-api
+maintainer="nox"
+pkgname="python3-pyproject-api"
 version=1.6.1
 revision=1
-build_style=python3-pep517
-hostmakedepends="hatchling hatch-vcs"
-depends="python3-packaging"
-checkdepends="python3-pytest python3-pytest-mock python3-wheel"
 short_desc="API to interact with the python pyproject.toml based projects"
-maintainer="Gonzalo Tornaría <tornaria@cmat.edu.uy>"
-license="MIT"
+depends="python3-packaging"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-pytest-mock"
+checkdepends+=" python3-wheel"
+hostmakedepends+=" hatchling"
+hostmakedepends+=" hatch-vcs"
 homepage="https://github.com/tox-dev/pyproject-api"
-changelog="https://raw.githubusercontent.com/tox-dev/pyproject-api/main/docs/changelog.rst"
-distfiles="${PYPI_SITE}/p/pyproject-api/pyproject_api-${version}.tar.gz"
-checksum=1817dc018adc0d1ff9ca1ed8c60e1623d5aaca40814b953af14a9cf9a5cae538
-
-if [ "$XBPS_BUILD_ENVIRONMENT" = void-packages-ci ]; then
-	# this test fails on CI
-	make_check_args="--deselect tests/test_frontend_setuptools.py::test_result_missing"
+license="MIT"
+changelog="https://github.com/tox-dev/pyproject-api/raw/main/docs/changelog.rst"
+distfiles="$PYPI_SITE/p/pyproject-api/pyproject_api-$version.tar.gz"
+checksum="1817dc018adc0d1ff9ca1ed8c60e1623d5aaca40814b953af14a9cf9a5cae538"
+build_style="python3-pep517"
+if [[ "$XBPS_BUILD_ENVIRONMENT" == "void-packages-ci" ]]; then
+  # this test fails on ci
+  make_check_args="--deselect tests/test_frontend_setuptools.py::test_result_missing"
 fi
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
