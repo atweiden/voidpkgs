@@ -618,6 +618,7 @@ python
 - python3-raven
 - python3-recommonmark
 - python3-referencing
+- python3-regex
 - python3-requests
 - python3-rfc3339-validator
 - python3-rfc3987
