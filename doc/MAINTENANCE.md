@@ -516,6 +516,7 @@ python
 - python3-blinker
 - python3-bottle
 - python3-build
+- python3-cachetools
 - python3-calver
 - python3-cffi
 - python3-click
