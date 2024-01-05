@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="plocate"
-version=1.1.19
+version=1.1.20
 revision=1
 short_desc="Much faster locate based on posting lists"
 makedepends+=" liburing-devel"
@@ -10,10 +10,11 @@ homepage="https://plocate.sesse.net/"
 license="GPL-2.0-or-later"
 changelog="https://git.sesse.net/?p=plocate;a=blob_plain;f=NEWS;hb=HEAD"
 distfiles="https://plocate.sesse.net/download/$pkgname-$version.tar.gz"
-checksum="d95bc8ee8a9f79b9f69ce63df53fb85b202139f243bbb84c399555eda22e6165"
+checksum="9b3d2842a08e69633c0ffa480c139603514ce59f1d021c263e9301324976959f"
 build_style="meson"
-configure_args+=" -Dinstall_systemd=false"
+configure_args+=" -Dinstall_systemd=true"
 configure_args+=" -Dlocategroup=_plocate"
+configure_args+=" -Dsystemunitdir=/usr/lib/systemd/system"
 configure_args+=" -Dupdatedb_progname=pupdatedb"
 system_accounts="_plocate"
 alternatives+=" locate:locate:/usr/bin/plocate"
