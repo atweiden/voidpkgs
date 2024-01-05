@@ -641,6 +641,7 @@ libwslay.so.0 libwslay-1.1.0_1
 libx86emu.so.3 libx86emu-3.4_1
 libxbps.so.5 libxbps-0.59.1_4
 libcrypt.so.2 libxcrypt-4.4.36_1
+libcrypt.so.1 libxcrypt-compat-4.4.36_1
 libxml2.so.2 libxml2-2.7.0_1
 libexslt.so.0 libxslt-1.1.24_1
 libxslt.so.1 libxslt-1.1.24_1
