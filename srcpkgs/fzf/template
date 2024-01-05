@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="fzf"
-version=0.44.1
+version=0.45.0
 revision=1
 short_desc="Command-line fuzzy finder"
 makedepends="ncurses-devel"
@@ -8,7 +8,7 @@ homepage="https://github.com/junegunn/fzf"
 license="MIT"
 changelog="https://github.com/junegunn/fzf/raw/master/CHANGELOG.md"
 distfiles="https://github.com/junegunn/fzf/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="295f3aec9519f0cf2dce67a14e94d8a743d82c19520e5671f39c71c9ea04f90c"
+checksum="f0dd5548f80fe7f80d9277bb8fe252ac6e42a41e76fc85ce0f3af702cd987600"
 build_style="go"
 go_import_path="github.com/junegunn/fzf"
 go_build_tags+=" netgo"
