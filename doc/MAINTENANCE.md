@@ -642,6 +642,7 @@ python
 - python3-sphinxcontrib-serializinghtml
 - python3-strict-rfc3339
 - python3-testpath
+- python3-time-machine
 - python3-tornado
 - python3-trio
 - python3-trove-classifiers
