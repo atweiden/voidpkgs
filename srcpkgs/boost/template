@@ -1,13 +1,12 @@
 maintainer="nox"
 pkgname="boost"
 version=1.83.0
-revision=3
+revision=4
 short_desc="Free peer-reviewed portable C++ source libraries"
 makedepends+=" bzip2-devel"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
 makedepends+=" libzstd-devel"
-makedepends+=" openmpi-devel"
 makedepends+=" python3-devel"
 makedepends+=" zlib-devel"
 case "$XBPS_TARGET_MACHINE" in
@@ -20,7 +19,6 @@ checkdepends+=" libpng-devel"
 checkdepends+=" openssl-devel"
 hostmakedepends+=" bzip2-devel"
 hostmakedepends+=" icu-devel"
-hostmakedepends+=" openmpi"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3-devel"
 hostmakedepends+=" which"
@@ -79,7 +77,6 @@ subpackages+=" libboost_chrono"
 subpackages+=" libboost_math_tr1f"
 subpackages+=" libboost_wave"
 subpackages+=" libboost_graph"
-subpackages+=" libboost_graph_parallel"
 subpackages+=" libboost_locale"
 subpackages+=" libboost_regex"
 subpackages+=" libboost_fiber"
@@ -100,8 +97,6 @@ subpackages+=" libboost_math_tr1"
 subpackages+=" boost-build"
 subpackages+=" libboost_contract"
 subpackages+=" libboost_nowide"
-subpackages+=" libboost_mpi"
-subpackages+=" libboost_mpi-python3"
 subpackages+=" libboost_date_time"
 subpackages+=" libboost_log"
 subpackages+=" libboost_random"
@@ -141,6 +136,16 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" libucontext-devel"
   LDFLAGS+=" -lucontext"
 fi
+
+case "$XBPS_TARGET_MACHINE" in
+  x86_64*|aarch64*|ppc64*|riscv64*)
+    makedepends+=" openmpi-devel"
+    hostmakedepends+=" openmpi"
+    subpackages+=" libboost_mpi"
+    subpackages+=" libboost_mpi-python3"
+    subpackages+=" libboost_graph_parallel"
+    ;;
+esac
 
 case "$XBPS_TARGET_MACHINE" in
   i686*)
