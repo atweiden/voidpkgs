@@ -1,39 +1,45 @@
 maintainer="nox"
 pkgname="tox"
-version=3.28.0
-revision=2
+version=4.11.4
+revision=1
 short_desc="Generic virtualenv management and test command line tool"
+depends+=" python3-cachetools"
+depends+=" python3-chardet"
+depends+=" python3-colorama"
 depends+=" python3-filelock"
-depends+=" python3-packaging"
-depends+=" python3-pluggy"
-depends+=" python3-pytest"
+depends+=" python3-pyproject-api"
 depends+=" python3-virtualenv"
 checkdepends+=" $depends"
+checkdepends+=" python3-distlib"
 checkdepends+=" python3-flaky"
-checkdepends+=" python3-freezegun"
-checkdepends+=" python3-pathlib2"
-checkdepends+=" python3-pip"
+checkdepends+=" python3-psutil"
+checkdepends+=" python3-pytest"
 checkdepends+=" python3-pytest-mock"
-hostmakedepends="python3-setuptools_scm"
-homepage="https://tox.wiki/en/legacy/"
+checkdepends+=" python3-pytest-xdist"
+checkdepends+=" python3-re-assert"
+checkdepends+=" python3-time-machine"
+checkdepends+=" python3-wheel"
+hostmakedepends+=" hatchling"
+hostmakedepends+=" hatch-vcs"
+homepage="https://tox.wiki/"
 license="MIT"
-changelog="https://tox.wiki/en/legacy/changelog.html"
+changelog="https://github.com/tox-dev/tox/raw/main/docs/changelog.rst"
 distfiles="$PYPI_SITE/t/tox/tox-$version.tar.gz"
-checksum="d0d28f3fe6d6d7195c27f8b054c3e99d5451952b54abdae673b71609a581f640"
-build_style="python3-module"
+checksum="73a7240778fabf305aeb05ab8ea26e575e042ab5a18d71d0ed13e343a51d6ce1"
+build_style="python3-pep517"
 
 do_check() {
-  # skipped tests fail to find module or rely on missing entrypoint script
-  PYTHONPATH="src" python3 -m pytest \
-    -k "not test_parallel \
-        and not test_provision_race \
-        and not test_tox_console_script \
-        and not test_tox_quickstart_script \
-        and not test_provision_cli_args_ignore \
-        and not test_provision_interrupt_child \
-        and not test_provision_non_canonical_dep \
-        and not test_package_poetry"
- }
+  local testdir
+  local testpy
+
+  # running via PYTHONPATH breaks a few tests so we use a venv
+  testdir="$wrksrc/.xbps-testdir/$(date +%s)"
+  python3 -m venv --system-site-packages --without-pip "$testdir"
+
+  testpy="$testdir/bin/python3"
+  "$testpy" -m installer dist/*.whl
+  PATH="$testdir/bin:$PATH" "$testpy" -m pytest -n "$XBPS_MAKEJOBS"
+}
 
 post_install() {
   vlicense LICENSE
