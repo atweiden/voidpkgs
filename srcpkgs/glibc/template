@@ -1,11 +1,14 @@
 maintainer="nox"
 pkgname="glibc"
 version=2.38
-revision=2
+revision=3
 short_desc="GNU C library"
 archs="~*-musl"
 makedepends="kernel-libc-headers"
 if [[ -n "$CHROOT_READY" ]]; then
+  # XXX: remove this on the next update
+  # ensures partial upgrades don't break things like pam
+  depends="libxcrypt-compat"
   hostmakedepends+=" bison"
   hostmakedepends+=" gettext"
   hostmakedepends+=" perl"
