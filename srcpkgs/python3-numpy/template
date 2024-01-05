@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-numpy"
-version=1.26.2
+version=1.26.3
 revision=1
 short_desc="Fast and sophisticated array facility to Python3"
 depends="python3"
@@ -18,9 +18,9 @@ hostmakedepends+=" python3-pyproject-metadata"
 hostmakedepends+=" python3-setuptools"
 homepage="https://www.numpy.org/"
 license="BSD-3-Clause"
-changelog="https://numpy.org/doc/stable/release.html"
+changelog="https://github.com/numpy/numpy/releases"
 distfiles="$PYPI_SITE/n/numpy/numpy-$version.tar.gz"
-checksum="f65738447676ab5777f11e6bbbdb8ce11b785e105f690bc45966574816b6d3ea"
+checksum="697df43e2b6310ecc9d95f05d5ef20eacc09c7c4ecc9da3f235d39e71b7da1e4"
 build_style="python3-pep517"
 build_helper="meson"
 make_build_args+=" -Csetup-args=-Ddisable-svml=true"
