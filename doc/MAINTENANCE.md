@@ -599,6 +599,7 @@ python
 - python3-pyelftools
 - python3-pyflakes
 - python3-pyfuse3
+- python3-pyproject-api
 - python3-pyproject-hooks
 - python3-pyproject-metadata
 - python3-pyrsistent
