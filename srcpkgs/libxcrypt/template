@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxcrypt"
 version=4.4.36
-revision=2
+revision=3
 short_desc="Modern library for one-way hashing of passwords"
 archs="~*-musl"
 checkdepends="python3-passlib"
@@ -67,6 +67,7 @@ libxcrypt-devel_package() {
 
 libxcrypt-compat_package() {
   short_desc+=" - legacy compatibility"
+  noverifyrdeps="yes"
   pkg_install() {
     vmove "usr/lib/libcrypt.so.1*"
   }
