@@ -616,6 +616,7 @@ python
 - python3-pytest-xdist
 - python3-pytz
 - python3-raven
+- python3-re-assert
 - python3-recommonmark
 - python3-referencing
 - python3-regex
