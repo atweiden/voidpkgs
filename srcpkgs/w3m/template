@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="w3m"
 version=0.5.3+git20230121
-revision=1
+revision=2
 short_desc="Text-based Web browser and pager (with Debian patches)"
 makedepends+=" gc-devel"
 makedepends+=" ncurses-devel"
