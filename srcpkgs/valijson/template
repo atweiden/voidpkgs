@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="valijson"
-version=1.0
+version=1.0.2
 revision=1
 short_desc="Header-only C++ library for JSON Schema validation"
 homepage="https://github.com/tristanpenman/valijson"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/tristanpenman/valijson/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6b9f0bc89880feb3fe09aa469cd81f6168897d2fbb4e715853da3b94afd3779a"
+checksum="35d86e54fc727f1265226434dc996e33000a570f833537a25c8b702b0b824431"
 build_style="cmake"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
