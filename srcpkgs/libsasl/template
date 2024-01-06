@@ -25,8 +25,11 @@ configure_args+=" --enable-gssapi"
 configure_args+=" --enable-login"
 configure_args+=" --enable-ntlm"
 configure_args+=" --enable-plain"
+configure_args+=" --with-authdaemond=no"
 configure_args+=" --with-configdir=/etc/sasl2:/etc/sasl:/usr/lib/sasl2"
 configure_args+=" --with-devrandom=/dev/random"
+configure_args+=" --with-pwcheck=no"
+configure_args+=" --with-saslauthd=no"
 configure_args+=" ac_cv_gssapi_supports_spnego=yes"
 
 pre_configure() {
