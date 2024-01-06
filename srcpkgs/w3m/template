@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="w3m"
-version=0.5.3+git20220429
+version=0.5.3+git20230121
 revision=1
 short_desc="Text-based Web browser and pager (with Debian patches)"
 makedepends+=" gc-devel"
@@ -16,7 +16,7 @@ homepage="https://tracker.debian.org/pkg/w3m"
 license="MIT"
 changelog="https://github.com/tats/w3m/raw/master/NEWS"
 distfiles="https://github.com/tats/w3m/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3"
+checksum="fdc7d55d3c0104db26aa9759db34f37e5eee03f44c868796e3bbfb8935c96e39"
 build_style="gnu-configure"
 configure_args+=" --disable-w3mmailer"
 configure_args+=" --enable-image=fb"
