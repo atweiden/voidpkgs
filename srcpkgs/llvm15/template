@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm15"
 version=15.0.7
-revision=2
+revision=3
 short_desc="Low Level Virtual Machine"
 depends="libllvm15>=${version}_$revision"
 makedepends+=" binutils-devel"
