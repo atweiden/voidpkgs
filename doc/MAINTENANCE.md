@@ -402,6 +402,7 @@ general
 - wget
 - wifi-firmware
 - wireguard-tools
+- wireless-regdb
 - wpa_supplicant
 - xfsprogs
 - xmlcatmgr
