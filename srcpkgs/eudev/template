@@ -1,7 +1,9 @@
 maintainer="nox"
 pkgname="eudev"
-version=3.2.12
+version=3.2.14
 revision=1
+# compatible udev version provided
+_UDEV_VERSION="251"
 short_desc="Fork of systemd-udev (enhanced userland device daemon)"
 makedepends+=" libblkid-devel"
 makedepends+=" libkmod-devel"
@@ -14,7 +16,7 @@ homepage="https://github.com/eudev-project/eudev"
 license="GPL-2.0-or-later"
 changelog="https://github.com/eudev-project/eudev/releases"
 distfiles="https://github.com/eudev-project/eudev/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="ccdd64ec3c381d3c3ed0e99d2e70d1f62988c7763de89ca7bdffafa5eacb9ad8"
+checksum="8da4319102f24abbf7fff5ce9c416af848df163b29590e666d334cc1927f006f"
 conf_files="/etc/udev/udev.conf"
 build_style="gnu-configure"
 configure_args+=" --enable-hwdb"
@@ -23,9 +25,6 @@ if [[ -n "$XBPS_ALLOW_CHROOT_BREAKOUT" ]]; then
   # requires unshare(2) which is not available in chroot
   make_check="no"
 fi
-
-# compatible udev version provided
-_UDEV_VERSION="243"
 
 post_install() {
   mv "$DESTDIR/etc/udev/hwdb.d" "$DESTDIR/usr/lib/udev"
