@@ -1,21 +1,27 @@
-# Template file for 'wireless-regdb'
-pkgname=wireless-regdb
+maintainer="nox"
+pkgname="wireless-regdb"
 version=2023.09.01
 revision=1
 short_desc="Regulatory database used by Linux"
-maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
-license="ISC"
 homepage="https://wireless.wiki.kernel.org/en/developers/regulatory/wireless-regdb"
-distfiles="https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-${version}.tar.xz"
-checksum=26d4c2a727cc59239b84735aad856b7c7d0b04e30aa5c235c4f7f47f5f053491
+license="ISC"
+distfiles="https://www.kernel.org/pub/software/network/wireless-regdb/$pkgname-$version.tar.xz"
+checksum="26d4c2a727cc59239b84735aad856b7c7d0b04e30aa5c235c4f7f47f5f053491"
 replaces="crda>=0"
 
 post_patch() {
-	vsed -i 's/[.]gz//' regulatory.db.5
+  vsed \
+    -i \
+    -e 's/[.]gz//' \
+    regulatory.db.5
 }
 
 do_install() {
-	make install DESTDIR="${DESTDIR}" \
-		MANDIR=usr/share/man FIRMWARE_PATH=usr/lib/firmware
-	vlicense LICENSE
+  make install \
+    DESTDIR="$DESTDIR" \
+    FIRMWARE_PATH="usr/lib/firmware" \
+    MANDIR="usr/share/man"
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
