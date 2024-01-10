@@ -1,12 +1,13 @@
 maintainer="nox"
 pkgname="wstunnel"
-version=8.5.4
+version=9.0.0
 revision=1
 short_desc="Tunnel traffic over websocket protocol"
 homepage="https://github.com/erebe/wstunnel"
 license="BSD-3-Clause"
+changelog="https://github.com/erebe/wstunnel/releases"
 distfiles="https://github.com/erebe/wstunnel/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ae0d6268660925d2a8a89896afba13fa1f1616b0308c7aa34546c85dbc224a81"
+checksum="75ac24ed8aa31e6ec6d24ddb15b7c4f4b099985a74723b30a7504da10811b462"
 build_style="cargo"
 # remaining tests require port binding which can't be done in ci
 make_check="ci-skip"
