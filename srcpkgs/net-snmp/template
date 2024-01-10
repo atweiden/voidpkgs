@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="net-snmp"
 version=5.9.1
-revision=4
+revision=5
 short_desc="Simple Network Management Protocol (SNMP) suite"
 makedepends+=" bzip2-devel"
-makedepends+=" libnl-devel"
+makedepends+=" libnl3-devel"
 makedepends+=" libsensors-devel"
 makedepends+=" openssl-devel"
 makedepends+=" pciutils-devel"
