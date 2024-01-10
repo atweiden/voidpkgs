@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="memtest86+"
-version=6.20
+version=7.00
 revision=1
 short_desc="Advanced Memory Diagnostic Tool - upstream binary"
 archs+=" i686*"
@@ -8,7 +8,7 @@ archs+=" x86_64*"
 homepage="http://www.memtest.org"
 license="GPL-2.0-or-later"
 distfiles="https://www.memtest.org/download/v$version/mt86plus_$version.binaries.zip>$pkgname-$version.zip"
-checksum="ccabd43063b65e53be4fddb08de0cc6bedc94b4ab44706855e4145e17fa52c72"
+checksum="19894151788a99c25c42644696527aba18cb210b2f9bca4a60e73586a6d78286"
 create_wrksrc="yes"
 nostrip="yes"
 noverifyrdeps="yes"
