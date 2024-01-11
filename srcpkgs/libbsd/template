@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libbsd"
-version=0.11.7
-revision=2
+version=0.11.8
+revision=1
 short_desc="Provides useful functions commonly found on BSD system"
 makedepends="libmd-devel"
 homepage="https://libbsd.freedesktop.org/"
 license="ISC, MIT, Beerware, BSD-2-Clause, BSD-3-Clause, BSD-4-Clause"
 distfiles="https://libbsd.freedesktop.org/releases/$pkgname-$version.tar.xz"
-checksum="9baa186059ebbf25c06308e9f991fda31f7183c0f24931826d83aa6abd8a0261"
+checksum="55fdfa2696fb4d55a592fa9ad14a9df897c7b0008ddb3b30c419914841f85f33"
 build_style="gnu-configure"
 
 post_install() {
