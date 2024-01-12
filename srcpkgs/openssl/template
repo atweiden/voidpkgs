@@ -47,6 +47,8 @@ case $XBPS_TARGET_MACHINE in
     configure_args+=" linux-mips32"
     configure_args+=" -mips32"
     ;;
+  riscv64*)
+    configure_args+=" linux64-riscv64";;
   *)
     broken="$XBPS_TARGET_MACHINE"
     ;;
