@@ -482,7 +482,6 @@ libnftnl.so.11 libnftnl-1.1.2_1
 libnilfs.so.0 libnilfs-2.1.0_1
 libnilfscleaner.so.0 libnilfs-2.1.0_1
 libnilfsgc.so.0 libnilfs-2.1.0_1
-libnl.so.1 libnl-1.1_1
 libnl-cli-3.so.200 libnl3-3.2.1_1
 libnl-genl-3.so.200 libnl3-3.2.1_1
 libnl-nf-3.so.200 libnl3-3.2.1_1

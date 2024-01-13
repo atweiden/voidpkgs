@@ -444,7 +444,6 @@ constant %PKG = Map.new(
     'libnfnetlink' => ['libnfnetlink-devel'],
     'libnfs' => ['libnfs-devel'],
     'libnftnl' => ['libnftnl-devel'],
-    'libnl' => ['libnl-devel'],
     'libnl3' => qw<libnl3-devel
                    libnl3-progs>,
     'libnvme' => qw<libnvme-devel
