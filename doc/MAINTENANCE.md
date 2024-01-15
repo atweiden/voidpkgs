@@ -271,7 +271,7 @@ general
 - linux-lts
 - linux-mainline
 - linux6.1
-- linux6.5
+- linux6.6
 - llvm
 - llvm15
 - lmdb
