@@ -8,6 +8,7 @@ makedepends+=" liblzma-devel"
 makedepends+=" libzstd-devel"
 makedepends+=" lzo-devel"
 makedepends+=" zlib-devel"
+hostmakedepends="which"
 homepage="https://github.com/plougher/squashfs-tools"
 license="GPL-2.0-or-later"
 changelog="https://github.com/plougher/squashfs-tools/raw/master/CHANGES"
@@ -21,16 +22,7 @@ make_build_args+=" LZMA_XZ_SUPPORT=1"
 make_build_args+=" LZO_SUPPORT=1"
 make_build_args+=" XZ_SUPPORT=1"
 make_build_args+=" ZSTD_SUPPORT=1"
-
-do_install() {
-  vbin mksquashfs
-  vbin unsquashfs
-  ln -sf mksquashfs "$DESTDIR/usr/bin/sqfstar"
-  ln -sf unsquashfs "$DESTDIR/usr/bin/sqfscat"
-
-  for f in ../manpages/*.1; do
-    vman "$f"
-  done
-}
+make_install_args+=" INSTALL_MANPAGES_DIR=\${DESTDIR}/usr/share/man/man1"
+make_install_args+=" INSTALL_PREFIX=\${DESTDIR}/usr"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
