@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bats-assert"
 version=2.1.0
-revision=1
+revision=2
 short_desc="Common assertions for BATS"
 depends+=" bats"
 depends+=" bats-support"
@@ -12,16 +12,16 @@ distfiles="https://github.com/bats-core/bats-assert/archive/v$version.tar.gz>$pk
 checksum="98ca3b685f8b8993e48ec057565e6e2abcc541034ed5b0e81f191505682037fd"
 
 do_check() {
-  BATS_LIB_PATH="/usr/lib" bats test
+  bats test
 }
 
 do_install() {
   for f in *.bash; do
-    vinstall "$f" 644 usr/lib/bats-assert
+    vinstall "$f" 644 usr/lib/bats/bats-assert
   done
 
   for f in src/*.bash; do
-    vinstall "$f" 644 usr/lib/bats-assert/src
+    vinstall "$f" 644 usr/lib/bats/bats-assert/src
   done
 }
 
