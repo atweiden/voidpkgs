@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bats-support"
 version=0.3.0
-revision=1
+revision=2
 short_desc="Supporting library for BATS test helpers"
 depends="bats"
 checkdepends="bats"
@@ -16,11 +16,11 @@ do_check() {
 
 do_install() {
   for f in *.bash; do
-    vinstall "$f" 644 usr/lib/bats-support
+    vinstall "$f" 644 usr/lib/bats/bats-support
   done
 
   for f in src/*.bash; do
-    vinstall "$f" 644 usr/lib/bats-support/src
+    vinstall "$f" 644 usr/lib/bats/bats-support/src
   done
 }
 
