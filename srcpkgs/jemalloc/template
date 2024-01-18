@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="jemalloc"
 version=5.2.1
-revision=1
+revision=2
 short_desc="General-purpose scalable concurrent malloc(3) implementation"
 homepage="http://jemalloc.net/"
 license="BSD-2-Clause"
@@ -9,7 +9,7 @@ changelog="https://github.com/jemalloc/jemalloc/raw/master/ChangeLog"
 distfiles="https://github.com/jemalloc/jemalloc/releases/download/$version/$pkgname-$version.tar.bz2"
 checksum="34330e5ce276099e2e8950d9335db5a875689a4c6a56751ef3b1d8c537f887f6"
 build_style="gnu-configure"
-configure_args="je_cv_static_page_shift=12"
+configure_args="--with-lg-page=16"
 
 post_install() {
   vlicense COPYING
