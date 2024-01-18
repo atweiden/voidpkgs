@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="rust"
 version=1.75.0
-revision=1
+revision=2
 short_desc="Safe, concurrent, practical systems language"
 depends+=" gcc"
 depends+=" rust-std"
@@ -168,6 +168,7 @@ do_configure() {
 # cross host
 do_build() {
   export RUST_BACKTRACE=1
+  export JEMALLOC_SYS_WITH_LG_PAGE=16
   export CARGO_HOME="$wrksrc/.cargo"
   export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
   # prevent sysroot from leaking in
