@@ -1,15 +1,18 @@
 maintainer="nox"
 pkgname="python3-cachetools"
-version=4.2.4
-revision=4
+version=5.3.2
+revision=1
 short_desc="Python3 extensible memoizing collections and decorators"
 depends="python3"
-hostmakedepends="python3-setuptools"
+checkdepends="python3-pytest"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/tkem/cachetools"
 license="MIT"
+changelog="https://github.com/tkem/cachetools/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/c/cachetools/cachetools-$version.tar.gz"
-checksum="89ea6f1b638d5a73a4f9226be57ac5e4f399d22770b92355f92dcb0f7f001693"
-build_style="python3-module"
+checksum="086ee420196f7b2ab9ca2db2520aca326318b68fe5ba8bc4d49cca91add450f2"
+build_style="python3-pep517"
 
 post_install() {
   vlicense LICENSE
