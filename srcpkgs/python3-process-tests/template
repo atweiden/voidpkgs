@@ -1,19 +1,18 @@
 maintainer="nox"
 pkgname="python3-process-tests"
-version=2.1.2
-revision=2
+version=3.0.0
+revision=1
 short_desc="Tools for testing processes"
 depends="python3"
+checkdepends="python3-pytest"
 hostmakedepends+=" python3-setuptools"
 hostmakedepends+=" python3-wheel"
 homepage="https://github.com/ionelmc/python-process-tests"
 license="BSD-2-Clause"
 changelog="https://github.com/ionelmc/python-process-tests/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/p/process-tests/process-tests-$version.tar.gz"
-checksum="a3747ad947bdfc93e5c986bdb17a6d718f3f26e8577a0807a00962f29e26deba"
+checksum="e5d57dea7161251e91cadb84bf3ecc85275fb121fd478e579f800777b1d424bd"
 build_style="python3-pep517"
-# no tests available
-make_check="no"
 
 post_install() {
   vlicense LICENSE
