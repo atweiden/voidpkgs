@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tox"
-version=4.11.4
+version=4.12.1
 revision=1
 short_desc="Generic virtualenv management and test command line tool"
 depends+=" python3-cachetools"
@@ -25,7 +25,7 @@ homepage="https://tox.wiki/"
 license="MIT"
 changelog="https://github.com/tox-dev/tox/raw/main/docs/changelog.rst"
 distfiles="$PYPI_SITE/t/tox/tox-$version.tar.gz"
-checksum="73a7240778fabf305aeb05ab8ea26e575e042ab5a18d71d0ed13e343a51d6ce1"
+checksum="61aafbeff1bd8a5af84e54ef6e8402f53c6a6066d0782336171ddfbf5362122e"
 build_style="python3-pep517"
 
 do_check() {
