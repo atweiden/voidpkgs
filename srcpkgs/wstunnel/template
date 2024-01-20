@@ -7,7 +7,7 @@ homepage="https://github.com/erebe/wstunnel"
 license="BSD-3-Clause"
 changelog="https://github.com/erebe/wstunnel/releases"
 distfiles="https://github.com/erebe/wstunnel/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="4a232a191203ef5e90da48cddce1760409fc25eefebacee523ba9f25706d0ad8"
+checksum="804900a8f827b51aeac6397b4633cae74a4f9fdc90d8a97e0572b359d907df8a"
 build_style="cargo"
 # remaining tests require port binding which can't be done in ci
 make_check="ci-skip"
