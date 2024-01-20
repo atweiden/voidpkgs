@@ -1,0 +1,18 @@
+maintainer="nox"
+pkgname="dircs"
+version=0.1.8
+revision=1
+_gitrev="8b959067c977a0ae01b4d43e159459a9d33890b1"
+short_desc="Get the hash of a file or directory"
+homepage="https://github.com/ClementTsang/dircs"
+license="Apache-2.0"
+changelog="https://github.com/ClementTsang/dircs/raw/master/CHANGELOG.md"
+distfiles="https://github.com/ClementTsang/dircs/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
+checksum="58af41eb114fc00bbb97ae198403d4d0eca4b902eca21e69592e9d8dce07bcd4"
+build_style="cargo"
+
+post_install() {
+  vlicense LICENSE
+}
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
