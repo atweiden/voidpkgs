@@ -1,21 +1,19 @@
 maintainer="nox"
 pkgname="python3-filelock"
-version=3.11.0
-revision=2
+version=3.13.1
+revision=1
 short_desc="Platform independent file lock"
 depends="python3"
-checkdepends+=" python3-coverage"
 checkdepends+=" python3-pytest"
-checkdepends+=" python3-pytest-cov"
 checkdepends+=" python3-pytest-mock"
+checkdepends+=" python3-pytest-timeout"
 hostmakedepends+=" hatch-vcs"
 hostmakedepends+=" hatchling"
 homepage="https://py-filelock.readthedocs.io/en/latest/"
 license="Unlicense"
 changelog="https://github.com/tox-dev/py-filelock/raw/main/docs/changelog.rst"
 distfiles="$PYPI_SITE/f/filelock/filelock-$version.tar.gz"
-checksum="3618c0da67adcc0506b015fd11ef7faf1b493f0b40d87728e19986b536890c37"
+checksum="521f5f56c50f8426f5e03ad3b281b490a87ef15bc6c526f168290f0c7148d44e"
 build_style="python3-pep517"
-make_check_pre="env PYTHONPATH=src/"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
