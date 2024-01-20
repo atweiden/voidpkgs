@@ -12,5 +12,7 @@ distfiles="$CPAN_SITE/Term/TermReadKey-$version.tar.gz"
 checksum="99708f2d157343b79af6d552384fc4cbdf8ab633b727eb547f733fbc1cfdd14d"
 build_style="perl-module"
 reverts="2.37_1"
+ignore+=" 2.37"
+ignore+=" 2.38"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
