@@ -1,10 +1,10 @@
 maintainer="nox"
 pkgname="packer"
 version=1.10.0
-revision=1
+revision=2
 short_desc="Create identical multiplatform machine images from a single source"
 homepage="http://www.packer.io"
-license="MPL-2.0"
+license="BUSL-1.1"
 distfiles="https://github.com/hashicorp/packer/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="d4f8c8741786c675b01a3be14dc24fb60baf69991908b1c4644277dae47cf946"
 build_style="go"
@@ -17,6 +17,7 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   go_ldflags+=" -linkmode=external"
 fi
 replaces="packer-bin>=0"
+repository="nonfree"
 
 pre_build() {
   export GOFLAGS="-trimpath"
