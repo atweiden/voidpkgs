@@ -16,7 +16,6 @@ license="MIT"
 changelog="https://github.com/jaraco/keyring/raw/main/NEWS.rst"
 distfiles="$PYPI_SITE/k/keyring/keyring-$version.tar.gz"
 checksum="ca0746a19ec421219f4d713f848fa297a661a8a8c1504867e55bfb5e09091509"
-make_check_pre="env PY_IGNORE_IMPORTMISMATCH=1"
 build_style="python3-pep517"
 
 pre_check() {
