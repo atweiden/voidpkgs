@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="vagrant"
 version=2.4.0
-revision=1
+revision=2
 short_desc="Tool for building and distributing virtualized development environments"
 archs+=" i686"
 archs+=" x86_64*"
@@ -10,12 +10,13 @@ depends+=" curl"
 depends+=" openssh"
 depends+=" rsync"
 homepage="https://www.vagrantup.com/"
-license="MIT"
+license="BUSL-1.1"
 changelog="https://github.com/hashicorp/vagrant/raw/main/CHANGELOG.md"
 distfiles="https://github.com/hashicorp/vagrant/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
 checksum="b3b27cec956b864ad3ab333a819e3d5b5d769ecc159ea8af98c466aef2c069c5"
 build_style="gemspec"
 nocross="yes"
+repository="nonfree"
 
 post_extract() {
   vsed \
