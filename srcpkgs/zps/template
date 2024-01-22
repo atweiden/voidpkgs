@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="zps"
-version=1.2.9
+version=2.0.0
 revision=1
 short_desc="Small utility for listing and reaping zombie processes"
 homepage="https://github.com/orhun/zps"
 license="GPL-3.0-or-later"
 distfiles="https://github.com/orhun/zps/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7d451dc1dbad9ed651eabcdab6a890c8c8c148dc6ba8c3bd0dc7cff0f10f8948"
+checksum="84fa627c7eec92df62ecae129fe30fc7d16e297f20a3d126b8c53d04a6c35c60"
 build_style="cmake"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
