@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="eza"
-version=0.17.1
+version=0.17.2
 revision=1
 short_desc="Modern, maintained replacement for ls"
 makedepends="libgit2-devel"
@@ -10,7 +10,7 @@ homepage="https://eza.rocks"
 license="MIT"
 changelog="https://github.com/eza-community/eza/raw/main/CHANGELOG.md"
 distfiles="https://github.com/eza-community/eza/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="78f56a35fc6707297f422647988b963f39bcef023bf55f6f2f5e7cd4be659a2a"
+checksum="272b341099d5f7839cf73b619f69c5cd3eb55e9a5ded9a29dd283795220f42f8"
 build_style="cargo"
 
 post_patch() {
