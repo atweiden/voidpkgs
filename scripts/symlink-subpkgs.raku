@@ -530,8 +530,6 @@ constant %PKG = Map.new(
                       linux5.15-headers>,
     'linux6.1' => qw<linux6.1-dbg
                      linux6.1-headers>,
-    'linux6.5' => qw<linux6.5-dbg
-                     linux6.5-headers>,
     'linux6.6' => qw<linux6.6-dbg
                      linux6.6-headers>,
     'linux6.7' => qw<linux6.7-dbg
