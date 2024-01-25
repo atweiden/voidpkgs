@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="parallel"
-version=20231222
+version=20240122
 revision=1
 short_desc="Shell tool for executing jobs in parallel"
 depends="perl"
@@ -9,7 +9,7 @@ hostmakedepends="perl"
 homepage="https://www.gnu.org/software/parallel/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/parallel/$pkgname-$version.tar.bz2"
-checksum="19466ddc6fa9bbd7be1886f5404129af12448f12ecd3b9562e985ada84da9baa"
+checksum="859688cbb5641cd7b6b16b2b960be24aa4e37e655cc8ffcd8af971cd7d5b449f"
 build_style="gnu-configure"
 
 pre_configure() {
