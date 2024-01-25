@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="glibc"
 version=2.38
-revision=3
+revision=4
 short_desc="GNU C library"
 archs="~*-musl"
 makedepends="kernel-libc-headers"
@@ -127,16 +127,24 @@ do_configure() {
     libc_cv_slibdir="$_libdir"
 }
 
-do_build() {
+post_configure() {
   # less verbose output when compiling and assembling
-  sed \
+  vsed \
     -i \
     -e 's|compile-command.c = \(.*\)|compile-command.c = @echo " CC     $<"; \1|' \
     -e 's|compile-command.cc = \(.*\)|compile-command.cc = @echo " CXX    $<"; \1|' \
     -e 's|compile-command.S = \(.*\)|compile-command.S = @echo " ASM    $<"; \1|' \
     Makerules
+}
+
+do_build() {
   cd build
-  make "$makejobs"
+  # enable both DT_GNU_HASH and DT_HASH for ld.so and DSOs to improve
+  # compatibility with applications that expect DT_HASH
+  env \
+    LDFLAGS-rtld="-Wl,--hash-style=both" \
+    LDFLAGS.so="-Wl,--hash-style=both" \
+    make "$makejobs"
 }
 
 do_install() {
