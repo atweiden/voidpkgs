@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="orc"
-version=0.4.34
+version=0.4.35
 revision=1
 short_desc="Oild Runtime Compiler"
 hostmakedepends+=" automake"
@@ -10,7 +10,7 @@ homepage="https://cgit.freedesktop.org/gstreamer/orc"
 license="BSD-2-Clause"
 changelog="https://gitlab.freedesktop.org/gstreamer/orc/-/raw/main/RELEASE"
 distfiles="http://gstreamer.freedesktop.org/src/orc/$pkgname-$version.tar.xz"
-checksum="8f47abb3f097171e44eb807adcdabd860fba2effd37d8d3c4fbd5f341cadd41f"
+checksum="718cdb60db0d5f7d4fc8eb955cd0f149e0ecc78dcd5abdc6ce3be95221b793b9"
 build_style="meson"
 configure_args+=" -Dexamples=disabled"
 configure_args+=" -Dgtk_doc=disabled"
