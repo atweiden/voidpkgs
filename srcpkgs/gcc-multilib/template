@@ -2,8 +2,8 @@ _triplet="x86_64-unknown-linux-gnu"
 
 maintainer="nox"
 pkgname="gcc-multilib"
-version=12.2.0
-revision=2
+version=13.2.0
+revision=1
 _majorver="${version%.*}"
 short_desc="GNU Compiler Collection (multilib files)"
 archs="x86_64"
@@ -20,7 +20,7 @@ depends+=" libvtv-devel-32bit>=$_majorver"
 depends+=" zlib-32bit"
 makedepends+=" glibc-32bit"
 makedepends+=" glibc-devel-32bit"
-makedepends+=" isl15-devel"
+makedepends+=" isl-devel"
 makedepends+=" libfl-devel"
 makedepends+=" libmpc-devel"
 makedepends+=" zlib-devel"
@@ -30,7 +30,7 @@ hostmakedepends+=" tar"
 hostmakedepends+=" unzip"
 hostmakedepends+=" zip"
 distfiles="$GNU_SITE/gcc/$pkgname-$version/$pkgname-$version.tar.xz"
-checksum="e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff"
+checksum="e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da"
 replaces+=" libmpx-devel-32bit>=0"
 replaces+=" libssp-32bit>=0"
 replaces+=" libssp-devel-32bit>=0"
