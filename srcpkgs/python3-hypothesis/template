@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-hypothesis"
-version=6.96.0
+version=6.97.0
 revision=1
 short_desc="Python library for property-based testing"
 depends+=" python3-attrs"
@@ -20,7 +20,7 @@ homepage="https://hypothesis.works/"
 license="MPL-2.0"
 changelog="https://github.com/HypothesisWorks/hypothesis/raw/master/hypothesis-python/docs/changes.rst"
 distfiles="https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-$version.tar.gz"
-checksum="7782dddd8b4354b438d3810008ca5c96138c06ecf76626618f96aa4dc01558ea"
+checksum="fef6fa7f6c97111e121b975bd0d4bb953310e58514661530fbedfe150800865e"
 build_wrksrc="hypothesis-python"
 build_style="python3-pep517"
 # disable tests requiring unpackaged dependencies or installed entrypoints
