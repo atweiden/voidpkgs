@@ -22,7 +22,6 @@ if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   # musl always searches LD_LIBRARY_PATH before RPATH and RUNPATH
   configure_args="lt_cv_shlibpath_overrides_runpath=yes"
 fi
-nocross="temporarily"
 
 post_extract() {
   chmod -R +rw .
