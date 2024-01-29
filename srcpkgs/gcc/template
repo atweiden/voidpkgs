@@ -52,7 +52,6 @@ if [[ -n "$build_option_gnatboot" ]]; then
       ;;
   esac
 fi
-nocross="temporarily"
 nopie="yes"
 lib32disabled="yes"
 bootstrap="yes"
@@ -75,7 +74,7 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
 esac
 case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*|ppc64le)
+  i686*|x86_64*|ppc64le*)
     _have_libquadmath="yes"
     ;;
 esac
@@ -337,9 +336,9 @@ do_configure() {
       ;;
   esac
 
-  # on ppc64le-musl and all big endian ppc64
+  # on all big endian ppc64
   case "$XBPS_TARGET_MACHINE" in
-    ppc64le)
+    ppc64le*)
       ;;
     ppc64*)
       _args+=" --disable-libquadmath"
