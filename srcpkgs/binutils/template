@@ -12,7 +12,6 @@ distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
 checksum="ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450"
 build_options="all_targets"
 desc_option_all_targets="Enable all supported targets"
-nocross="temporarily"
 subpackages="binutils-doc"
 bootstrap="yes"
 
