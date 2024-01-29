@@ -1,28 +1,33 @@
 maintainer="nox"
 pkgname="binutils"
-version=2.39
-revision=3
+version=2.41
+revision=1
 short_desc="GNU binary utilities"
-makedepends="zlib-devel"
+makedepends+=" libzstd-devel"
+makedepends+=" zlib-devel"
 hostmakedepends="pkgconf"
 homepage="http://www.gnu.org/software/binutils/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/binutils/$pkgname-$version.tar.xz"
-checksum="645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00"
+checksum="ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450"
 build_options="all_targets"
 desc_option_all_targets="Enable all supported targets"
+nocross="temporarily"
 subpackages="binutils-doc"
 bootstrap="yes"
 
 if [[ -n "$CHROOT_READY" ]]; then
+  unset depends
   unset hostmakedepends
-  depends="binutils-doc"
+  depends+=" binutils-doc"
+  depends+=" binutils-libs"
   makedepends+=" elfutils-devel"
   checkdepends="bc"
   hostmakedepends+=" flex"
   hostmakedepends+=" perl"
   hostmakedepends+=" texinfo"
   subpackages+=" libiberty-devel"
+  subpackages+=" binutils-libs"
   subpackages+=" binutils-devel"
 fi
 
@@ -176,9 +181,9 @@ do_install() {
     # remove these symlinks, they are not ABI stable
     # programs should compile static to the .a file
     rm -f "$DESTDIR/usr/lib"/lib{bfd,opcodes}.so
-    echo "INPUT ( /usr/lib/libbfd.a -liberty -lz )" > \
+    echo "INPUT ( /usr/lib$XBPS_TARGET_WORDSIZE/libbfd.a -lsframe -liberty -lzstd -lz )" > \
       "$DESTDIR/usr/lib/libbfd.so"
-    echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > \
+    echo "INPUT ( /usr/lib$XBPS_TARGET_WORDSIZE/libopcodes.a -lbfd )" > \
       "$DESTDIR/usr/lib/libopcodes.so"
     # install PIC version of libiberty.a
     vinstall build/libiberty/pic/libiberty.a 755 usr/lib
@@ -201,14 +206,24 @@ do_install() {
 binutils-devel_package() {
   if [[ -n "$CHROOT_READY" ]]; then
     unset depends
+    depends+=" binutils-libs"
     depends+=" libiberty-devel"
+    depends+=" libzstd-devel"
     depends+=" zlib-devel"
   fi
   short_desc+=" - development files"
   pkg_install() {
     vmove usr/include
-    vmove "usr/lib/libbfd.so"
-    vmove "usr/lib/libopcodes.so"
+    vmove "*.a"
+    vmove "*.so"
+  }
+}
+
+binutils-libs_package() {
+  short_desc+=" - shared libraries"
+  pkg_install() {
+    vmove "usr/lib/lib*-$version.so"
+    vmove "usr/lib/*.so.*"
   }
 }
 
