@@ -9,11 +9,6 @@ makedepends+=" liblzma-devel"
 makedepends+=" libzstd-devel"
 makedepends+=" python3-devel"
 makedepends+=" zlib-devel"
-case "$XBPS_TARGET_MACHINE" in
-  i686*|x86_64*|ppc64le)
-    makedepends+=" libquadmath-devel"
-    ;;
-esac
 checkdepends+=" libjpeg-turbo-devel"
 checkdepends+=" libpng-devel"
 checkdepends+=" openssl-devel"
@@ -130,6 +125,11 @@ esac
 
 if [[ -z "$CROSS_BUILD" ]]; then
   subpackages+=" libboost_stacktrace_addr2line"
+  case "$XBPS_TARGET_MACHINE" in
+    i686*|x86_64*|ppc64le)
+      makedepends+=" libquadmath-devel"
+      ;;
+  esac
 fi
 
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
