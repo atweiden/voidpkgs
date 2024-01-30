@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="sshguard"
-version=2.4.2
+version=2.4.3
 revision=1
 short_desc="Protects networked hosts from brute force attacks"
 hostmakedepends="flex"
 homepage="https://www.sshguard.net/"
 license="BSD-3-Clause"
 distfiles="$SOURCEFORGE_SITE/sshguard/$pkgname-$version.tar.gz"
-checksum="2770b776e5ea70a9bedfec4fd84d57400afa927f0f7522870d2dcbbe1ace37e8"
+checksum="64029deff6de90fdeefb1f497d414f0e4045076693a91da1a70eb7595e97efeb"
 conf_files="/etc/sshguard.conf"
 build_style="gnu-configure"
 make_dirs="/var/db/sshguard 0755 root root"
