@@ -59,6 +59,8 @@ do_configure() {
     # we don't want --with-sysroot=$XBPS_CROSS_BASE like gnu-configure
     conf+=" --host=$XBPS_CROSS_TRIPLET"
     conf+=" --with-build-sysroot=$XBPS_CROSS_BASE"
+    # pkgconf adds sysroot includes to cflags and ldflags, which breaks
+    # binutils cross-compile with zstd
     vsed \
       -i \
       -e '/PKG_CONFIG_SYSROOT_DIR/d' \
