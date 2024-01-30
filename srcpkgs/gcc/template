@@ -52,6 +52,7 @@ if [[ -n "$build_option_gnatboot" ]]; then
       ;;
   esac
 fi
+nocross="temporarily"
 nopie="yes"
 lib32disabled="yes"
 bootstrap="yes"
