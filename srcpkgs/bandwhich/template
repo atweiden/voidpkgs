@@ -1,18 +1,28 @@
 maintainer="nox"
 pkgname="bandwhich"
-version=0.21.1
-revision=2
+version=0.22.2
+revision=1
 short_desc="Terminal bandwidth utilization tool"
 homepage="https://github.com/imsnif/bandwhich"
 license="MIT"
 changelog="https://github.com/imsnif/bandwhich/raw/main/CHANGELOG.md"
 distfiles="https://github.com/imsnif/bandwhich/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8ba9bf6469834ad498b9fd17f86759a16793b00a6ef44edd6e525ec40adcb0b0"
+checksum="4c41719549e05dbaac1bc84828269e59b2f2032e76ae646da9b9e3b87e5a5fd1"
 build_style="cargo"
 make_check_args="-- --skip tests::cases::ui::layout_under_50_width_under_50_height"
 
+export BANDWHICH_GEN_DIR="$XBPS_BUILDDIR/$pkgname-$version/gen"
+
+pre_build() {
+  mkdir gen
+}
+
 post_install() {
   vlicense LICENSE.md
+  vcompletion gen/bandwhich.bash bash
+  vcompletion gen/bandwhich.fish fish
+  vcompletion gen/_bandwhich zsh
+  vman gen/bandwhich.1
 }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
