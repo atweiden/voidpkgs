@@ -565,6 +565,7 @@ python
 - python3-iso8601
 - python3-isort
 - python3-itsdangerous
+- python3-jedi
 - python3-jsonpointer
 - python3-jsonschema
 - python3-jsonschema-specifications
