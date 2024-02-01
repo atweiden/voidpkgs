@@ -631,6 +631,7 @@ python
 - python3-setuptools-rust
 - python3-setuptools_scm
 - python3-six
+- python3-smmap
 - python3-sniffio
 - python3-snowballstemmer
 - python3-sortedcontainers
