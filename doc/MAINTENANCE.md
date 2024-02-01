@@ -531,6 +531,7 @@ python
 - python3-curio
 - python3-curl
 - python3-dateutil
+- python3-ddt
 - python3-decorator
 - python3-distlib
 - python3-docutils
