@@ -649,6 +649,7 @@ python
 - python3-termcolor
 - python3-testpath
 - python3-time-machine
+- python3-toml
 - python3-tornado
 - python3-trio
 - python3-trove-classifiers
