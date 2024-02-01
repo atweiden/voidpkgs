@@ -615,6 +615,7 @@ python
 - python3-pytest-httpbin
 - python3-pytest-mock
 - python3-pytest-subtests
+- python3-pytest-sugar
 - python3-pytest-trio
 - python3-pytest-xdist
 - python3-pytz
