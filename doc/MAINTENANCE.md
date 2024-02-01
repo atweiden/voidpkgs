@@ -490,6 +490,7 @@ python
 - black
 - hatch-vcs
 - hatchling
+- pylint
 - python
 - python3
 - python3-Babel
