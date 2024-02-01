@@ -512,6 +512,7 @@ python
 - python3-anytree
 - python3-appdirs
 - python3-argcomplete
+- python3-astroid
 - python3-async_generator
 - python3-attrs
 - python3-automat
