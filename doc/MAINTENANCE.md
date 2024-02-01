@@ -544,6 +544,7 @@ python
 - python3-flit_core
 - python3-freezegun
 - python3-frozenlist
+- python3-gitdb
 - python3-h2
 - python3-hpack
 - python3-html5lib
