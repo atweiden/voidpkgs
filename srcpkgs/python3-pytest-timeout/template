@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-timeout"
-version=2.1.0
-revision=3
+version=2.2.0
+revision=1
 short_desc="Pytest plugin which will terminate tests after a certain timeout"
 depends="python3-pytest"
 checkdepends+=" python3-pexpect"
@@ -11,7 +11,7 @@ hostmakedepends="python3-setuptools"
 homepage="https://github.com/pytest-dev/pytest-timeout"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytest-timeout/pytest-timeout-$version.tar.gz"
-checksum="c07ca07404c612f8abbe22294b23c368e2e5104b521c1790195561f37e1ac3d9"
+checksum="3b0b95dabf3cb50bac9ef5ca912fa0cfc286526af17afc806824df20c2f72c90"
 build_style="python3-module"
 # tests require package to be installed
 make_check="no"
