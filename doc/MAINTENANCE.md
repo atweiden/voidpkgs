@@ -664,6 +664,7 @@ python
 - python3-virtualenv
 - python3-webencodings
 - python3-wheel
+- python3-wrapt
 - python3-xmlschema
 - python3-zope.interface
 
