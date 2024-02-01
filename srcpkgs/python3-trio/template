@@ -1,31 +1,37 @@
 maintainer="nox"
 pkgname="python3-trio"
-version=0.22.0
-revision=2
+version=0.24.0
+revision=1
 short_desc="Friendly Python library for async concurrency and I/O"
-depends+=" python3-async_generator"
 depends+=" python3-attrs"
 depends+=" python3-idna"
 depends+=" python3-outcome"
 depends+=" python3-sniffio"
 depends+=" python3-sortedcontainers"
-#checkdepends+=" $depends"
-#checkdepends+=" black"
-#checkdepends+=" python3-flake8"
-#checkdepends+=" python3-ipython"
-#checkdepends+=" python3-jedi"
-#checkdepends+=" python3-mypy"
-#checkdepends+=" python3-pylint"
-#checkdepends+=" python3-pytest"
-#checkdepends+=" python3-pytest-cov"
-hostmakedepends="python3-setuptools"
+checkdepends+=" $depends"
+checkdepends+=" iana-etc"
+checkdepends+=" pylint"
+checkdepends+=" python3-astroid"
+checkdepends+=" python3-async_generator"
+checkdepends+=" python3-jedi"
+checkdepends+=" python3-openssl"
+checkdepends+=" python3-pytest"
+checkdepends+=" python3-trustme"
+hostmakedepends+=" python3-setuptools"
+hostmakedepends+=" python3-wheel"
 homepage="https://github.com/python-trio/trio"
 license="Apache-2.0, MIT"
+changelog="https://github.com/python-trio/trio/raw/master/docs/source/history.rst"
 distfiles="$PYPI_SITE/t/trio/trio-$version.tar.gz"
-checksum="ce68f1c5400a47b137c5a4de72c7c901bd4e7a24fbdebfe9b41de8c6c04eaacf"
-build_style="python3-module"
-# python3-ipython in checkdepends requires gui dependencies
-make_check="no"
+checksum="ffa09a74a6bf81b84f8613909fb0beaee84757450183a7a2e0b47b455c0cac5d"
+build_style="python3-pep517"
+make_check_pre="env PY_IGNORE_IMPORTMISMATCH=1"
+# needs astor (https://pypi.org/project/astor/)
+make_check_args="--ignore src/trio/_tests/tools/test_gen_exports.py"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  # pthread_getname_np(3) n/a in musl 1.1
+  make_check_args+=" --deselect src/trio/_tests/test_threads.py::test_named_thread_os"
+fi
 
 post_install() {
   vlicense LICENSE
