@@ -1,18 +1,19 @@
-# Template file for 'python3-smmap'
-pkgname=python3-smmap
+maintainer="nox"
+pkgname="python3-smmap"
 version=5.0.0
 revision=3
-build_style=python3-module
-hostmakedepends="python3-setuptools"
+short_desc="Sliding memory map manager (Python3)"
 depends="python3"
 checkdepends="python3-pytest"
-short_desc="Sliding memory map manager (Python3)"
-maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
-license="BSD-3-Clause"
+hostmakedepends="python3-setuptools"
 homepage="https://github.com/gitpython-developers/smmap"
-distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=265a54c1cc32742ac37204396f62680bf45295fe03a4ece82f9e63a5a08c9686
+license="BSD-3-Clause"
+distfiles="https://github.com/gitpython-developers/smmap/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="265a54c1cc32742ac37204396f62680bf45295fe03a4ece82f9e63a5a08c9686"
+build_style="python3-module"
 
 post_install() {
-	vlicense LICENSE
+  vlicense LICENSE
 }
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
