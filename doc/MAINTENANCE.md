@@ -537,6 +537,7 @@ python
 - python3-ddt
 - python3-decorator
 - python3-distlib
+- python3-docopt
 - python3-docutils
 - python3-editables
 - python3-elementpath
