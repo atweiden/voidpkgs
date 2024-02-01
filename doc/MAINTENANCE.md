@@ -566,6 +566,7 @@ python
 - python3-jsonpointer
 - python3-jsonschema
 - python3-jsonschema-specifications
+- python3-lazy-object-proxy
 - python3-lxml
 - python3-mccabe
 - python3-meson-python
