@@ -498,6 +498,7 @@ python
 - python3-Cython
 - python3-Cython0.29
 - python3-Flask
+- python3-GitPython
 - python3-Jinja2
 - python3-Mako
 - python3-MarkupSafe
