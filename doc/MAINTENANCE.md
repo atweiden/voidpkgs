@@ -560,6 +560,7 @@ python
 - python3-iniconfig
 - python3-installer
 - python3-iso8601
+- python3-isort
 - python3-itsdangerous
 - python3-jsonpointer
 - python3-jsonschema
