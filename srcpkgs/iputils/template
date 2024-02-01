@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="iputils"
-version=20221126
+version=20240117
 revision=1
 short_desc="Useful utilities for Linux networking (including ping)"
 depends="libcap-progs"
@@ -15,7 +15,7 @@ homepage="https://github.com/iputils/iputils"
 license="BSD-3-Clause, GPL-2.0-or-later"
 changelog="https://github.com/iputils/iputils/raw/master/CHANGES"
 distfiles="https://github.com/iputils/iputils/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="745ea711fe06d5c57d470d21acce3c3ab866eb6afb69379a16c6d60b89bd4311"
+checksum="a5d66e2997945b2541b8f780a7f5a5ec895d53a517ae1dc4f3ab762573edea9a"
 build_style="meson"
 configure_args="-DUSE_IDN=false"
 alternatives+=" ping:ping:/usr/bin/$pkgname-ping"
