@@ -584,6 +584,7 @@ python
 - python3-packaging
 - python3-pandas
 - python3-parsing
+- python3-parso
 - python3-passlib
 - python3-pathspec
 - python3-pexpect
