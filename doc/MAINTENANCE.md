@@ -645,6 +645,7 @@ python
 - python3-sphinxcontrib-qthelp
 - python3-sphinxcontrib-serializinghtml
 - python3-strict-rfc3339
+- python3-termcolor
 - python3-testpath
 - python3-time-machine
 - python3-tornado
