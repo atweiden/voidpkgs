@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="asciidoc"
 version=10.2.0
-revision=1
+revision=2
 short_desc="Text based document generation"
 depends+=" docbook-xsl"
 depends+=" libxslt"
@@ -17,5 +17,10 @@ changelog="https://asciidoc-py.github.io/CHANGELOG.html"
 distfiles="https://github.com/asciidoc-py/asciidoc-py/releases/download/$version/$pkgname-$version.tar.gz"
 checksum="237b2ba5c35c0ae7ccd4cd44ebf1d87c20b2695dae01798954416d492ef7fa0e"
 build_style="python3-module"
+
+post_install() {
+  vman doc/a2x.1
+  vman doc/asciidoc.1
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
