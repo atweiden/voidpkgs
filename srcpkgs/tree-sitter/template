@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="tree-sitter"
-version=0.20.8
+version=0.20.9
 revision=1
 short_desc="Parser generator tool and incremental parsing library"
 homepage="https://tree-sitter.github.io"
 license="MIT"
 distfiles="https://github.com/tree-sitter/tree-sitter/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6181ede0b7470bfca37e293e7d5dc1d16469b9485d13f13a605baec4a8b1f791"
+checksum="9b2fd489a7281e3a7e5e7cbbf3a974e5a6a115889ae65676d61b79bdae96464e"
 build_style="cargo"
 # tests require generating fixtures from remote repositories
 make_check="no"
