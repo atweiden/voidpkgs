@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="tzutils"
-version=2023d
+version=2024a
 revision=1
 short_desc="Time zone and daylight-saving time utilities"
 if [[ -n "$CROSS_BUILD" ]]; then
@@ -9,7 +9,7 @@ fi
 homepage="https://www.iana.org/time-zones"
 license="Public Domain"
 distfiles="https://www.iana.org/time-zones/repository/releases/tzdb-$version.tar.lz"
-checksum="696849b454176ea8f52dd7e9001999d01f5bb594344190a0c4084aeaf7f86bd8"
+checksum="511af6b467f40b1ec9ac3684d1701793af470f3e29ddfb97b82be438e8601a7a"
 bootstrap="yes"
 
 do_build() {
