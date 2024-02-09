@@ -2,7 +2,7 @@ maintainer="nox"
 pkgname="ghc"
 # keep this synchronized with http://www.stackage.org/lts
 version=9.0.2
-revision=1
+revision=2
 # recent safe to use tarball
 # ghc's bundled tarball is from 2017, buggy on some archs
 _ffi_rev="4d6d2866ae43e55325e8ee96561221804602cd7a"
@@ -70,9 +70,9 @@ fi
 
 case "$XBPS_TARGET_MACHINE" in
   aarch64*)
-    # GHC uses LLVM to generate code on aarch64
-    depends+=" llvm"
-    hostmakedepends+=" llvm"
+    # ghc uses llvm to generate code on aarch64
+    depends+=" llvm17-devel"
+    hostmakedepends+=" llvm17-devel"
     ;;
 esac
 
