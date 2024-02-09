@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="bpftrace"
 version=0.20.0
-revision=1
+revision=2
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -13,7 +13,7 @@ makedepends+=" clang-tools-extra"
 makedepends+=" elfutils-devel"
 makedepends+=" libbpf-devel"
 makedepends+=" libxml2-devel"
-makedepends+=" llvm"
+makedepends+=" llvm17-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" ruby-asciidoctor"
