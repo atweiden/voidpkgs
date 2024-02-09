@@ -49,6 +49,7 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 lib32disabled="yes"
 python_version=3
+conflicts="llvm17"
 
 _enabled_projects="clang;clang-tools-extra;compiler-rt;lld"
 
@@ -214,6 +215,7 @@ clang-analyzer15_package() {
   depends+=" python3"
   short_desc+=" - A source code analysis framework"
   homepage="https://clang-analyzer.llvm.org/"
+  conflicts="clang-analyzer17"
   pkg_install() {
     vmove "usr/bin/scan-*"
     vmove "usr/libexec/*analyzer"
@@ -229,6 +231,7 @@ clang-tools-extra15_package() {
   depends+=" python3"
   short_desc+=" - Extra Clang tools"
   homepage="https://clang.llvm.org/extra/"
+  conflicts="clang-tools-extra17"
   pkg_install() {
     vmove usr/bin/clang-apply-replacements
     vmove usr/bin/clang-change-namespace
@@ -274,6 +277,7 @@ clang15_package() {
   depends+=" libstdc++-devel"
   short_desc+=" - C language family frontend"
   homepage="https://clang.llvm.org/"
+  conflicts="clang17"
   pkg_install() {
     vmove "usr/bin/*clang*"
     vmove usr/bin/c-index-test
@@ -306,6 +310,7 @@ lld15_package() {
   lib32disabled="yes"
   short_desc+=" - linker"
   homepage="https://lld.llvm.org"
+  conflicts="lld17"
   pkg_install() {
     vmove "usr/bin/ld.lld*"
     vmove "usr/bin/ld64.lld*"
@@ -319,6 +324,7 @@ lld15-devel_package() {
   short_desc+=" - linker - development files"
   homepage="https://lld.llvm.org"
   depends="lld15>=${version}_$revision"
+  conflicts="lld17-devel"
   pkg_install() {
     vmove usr/include/lld
     vmove usr/lib/cmake/lld
@@ -331,6 +337,7 @@ lldb15_package() {
   depends+=" python3-six"
   short_desc+=" - LLDB debugger"
   homepage="https://lldb.llvm.org/"
+  conflicts="lldb17"
   pkg_install() {
     vmove "usr/bin/*lldb*"
     vmove "usr/lib/liblldb*so.*"
@@ -342,6 +349,7 @@ lldb15-devel_package() {
   lib32disabled="yes"
   depends="lldb15>=${version}_$revision"
   short_desc+=" - LLDB debugger - development files"
+  conflicts="lldb17-devel"
   pkg_install() {
     vmove usr/include/lldb
     vmove "usr/lib/liblldb*.so"
