@@ -1,9 +1,9 @@
 maintainer="nox"
 pkgname="llvm"
-version=15
+version=17
 revision=1
 short_desc="LLVM meta package"
-depends="llvm15"
+depends="llvm$version"
 homepage="https://www.voidlinux.org"
 license="Public Domain"
 build_style="meta"
@@ -15,5 +15,54 @@ replaces+=" llvm9>=0"
 replaces+=" llvm10>=0"
 replaces+=" llvm11>=0"
 replaces+=" llvm12>=0"
+replaces+=" llvm15>=0"
+
+clang_package() {
+  build_style="meta"
+  depends="clang$version>=0"
+  short_desc+=" - clang"
+}
+
+clang-tools-extra_package() {
+  build_style="meta"
+  depends="clang-tools-extra$version>=0"
+  short_desc+=" - clang-tools-extra"
+}
+
+clang-analyzer_package() {
+  build_style="meta"
+  depends="clang-tools-extra$version>=0"
+  short_desc+=" - clang-tools-extra"
+}
+
+lld_package() {
+  build_style="meta"
+  depends="lld$version>=0"
+  short_desc+=" - lld"
+}
+
+lldb_package() {
+  build_style="meta"
+  depends="lldb$version>=0"
+  short_desc+=" - lldb"
+}
+
+libclang_package() {
+  build_style="meta"
+  depends="libclang$version>=0"
+  short_desc+=" - transitional meta package"
+}
+
+libclang-cpp_package() {
+  build_style="meta"
+  depends="libclang-cpp$version>=0"
+  short_desc+=" - transitional meta package"
+}
+
+libllvm_package() {
+  build_style="meta"
+  depends="libllvm$version>=0"
+  short_desc+=" - transitional meta package"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
