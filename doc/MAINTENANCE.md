@@ -503,6 +503,7 @@ python
 - python3-GitPython
 - python3-Jinja2
 - python3-Mako
+- python3-Markdown
 - python3-MarkupSafe
 - python3-PyHamcrest
 - python3-Pygments
