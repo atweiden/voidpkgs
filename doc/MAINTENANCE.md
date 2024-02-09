@@ -274,6 +274,7 @@ general
 - linux6.6
 - llvm
 - llvm15
+- llvm17
 - lmdb
 - logrotate
 - lutok

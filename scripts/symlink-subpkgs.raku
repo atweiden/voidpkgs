@@ -541,19 +541,37 @@ constant %PKG = Map.new(
                    clang-tools-extra
                    libclang
                    libclang-cpp
-                   libcxx
-                   libcxx-devel
-                   libcxxabi
-                   libcxxabi-devel
                    libllvm15
-                   libomp
-                   libomp-devel
                    lld
                    lld-devel
                    lldb
-                   lldb-devel
+                   lldb-devel>,
+    'llvm17' => qw<clang17
+                   clang17-devel
+                   clang-analyzer17
+                   clang-tools-extra17
+                   flang17
+                   flang17-devel
+                   libclang17
+                   libclang-cpp17
+                   libcxx
+                   libcxxabi
+                   libcxxabi-devel
+                   libcxx-devel
+                   libllvm17
+                   libomp
+                   libomp-devel
+                   lld17
+                   lld17-devel
+                   lldb17
+                   lldb17-devel
+                   llvm17-devel
+                   llvm17-doc
+                   llvm-bolt17
                    llvm-unwind
-                   llvm-unwind-devel>,
+                   llvm-unwind-devel
+                   mlir17
+                   mlir17-devel>,
     'lm_sensors' => qw<libsensors
                        libsensors-devel>,
     'lmdb' => ['lmdb-devel'],
