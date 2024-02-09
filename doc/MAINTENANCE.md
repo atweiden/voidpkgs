@@ -655,6 +655,7 @@ python
 - python3-sphinxcontrib-jsmath
 - python3-sphinxcontrib-qthelp
 - python3-sphinxcontrib-serializinghtml
+- python3-sphinx-markdown-tables
 - python3-strict-rfc3339
 - python3-termcolor
 - python3-testpath
