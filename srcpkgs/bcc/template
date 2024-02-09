@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="bcc"
 version=0.29.1
-revision=1
+revision=2
 short_desc="BPF-based Linux IO analysis, networking, monitoring, and more"
 makedepends+=" clang"
 makedepends+=" clang-tools-extra"
 makedepends+=" elfutils-devel"
 makedepends+=" flex"
 makedepends+=" lld-devel"
-makedepends+=" llvm"
+makedepends+=" llvm17-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" python3-devel"
 makedepends+=" zlib-devel"
