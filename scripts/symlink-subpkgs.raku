@@ -544,7 +544,16 @@ constant %PKG = Map.new(
                  lld
                  lldb>,
     'llvm12' => ['libllvm12'],
-    'llvm15' => ['libllvm15'],
+    'llvm15' => qw<clang15
+                   clang-analyzer15
+                   clang-tools-extra15
+                   libclang15
+                   libclang-cpp15
+                   libllvm15
+                   lld15
+                   lld15-devel
+                   lldb15
+                   lldb15-devel>,
     'llvm17' => qw<clang17
                    clang17-devel
                    clang-analyzer17
