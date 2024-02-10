@@ -278,7 +278,10 @@ constant %PKG = Map.new(
     'gperftools' => ['gperftools-devel'],
     'gpgme' => qw<gpgme-devel
                   gpgmepp
-                  gpgmepp-devel>,
+                  gpgmepp-devel
+                  gpgme-python3
+                  libgpgme
+                  python3-gpg>,
     'groff' => ['groff-doc'],
     'grpc' => qw<grpc-devel
                  libgrpc>,
