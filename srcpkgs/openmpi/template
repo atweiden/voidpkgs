@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="openmpi"
-version=5.0.1
+version=5.0.2
 revision=1
 short_desc="High Performance Message Passing Library"
 # openmpi >= 5 is 64-bit only
@@ -18,7 +18,7 @@ hostmakedepends+=" python3"
 homepage="https://www.open-mpi.org/"
 license="BSD-3-Clause"
 distfiles="https://www.open-mpi.org/software/ompi/v${version%.*}/downloads/$pkgname-$version.tar.bz2"
-checksum="e357043e65fd1b956a47d0dae6156a90cf0e378df759364936c1781f1a25ef80"
+checksum="ee46ad8eeee2c3ff70772160bff877cbf38c330a0bc3b3ddc811648b3396698f"
 conf_files="/etc/openmpi/*"
 build_style="gnu-configure"
 configure_args+=" --enable-ipv6"
