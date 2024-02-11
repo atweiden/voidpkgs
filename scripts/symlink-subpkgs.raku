@@ -559,8 +559,10 @@ constant %PKG = Map.new(
                    lldb15-devel>,
     'llvm17' => qw<clang17
                    clang17-devel
+                   clang17-headers
                    clang-analyzer17
                    clang-tools-extra17
+                   compiler-rt
                    flang17
                    flang17-devel
                    libclang17
@@ -576,6 +578,7 @@ constant %PKG = Map.new(
                    lld17-devel
                    lldb17
                    lldb17-devel
+                   llvm17-cross-tools
                    llvm17-devel
                    llvm17-doc
                    llvm-bolt17
