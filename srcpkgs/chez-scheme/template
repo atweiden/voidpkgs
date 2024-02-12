@@ -1,42 +1,21 @@
 maintainer="nox"
 pkgname="chez-scheme"
-version=9.6.4
+version=10.0.0
 revision=1
 short_desc="Compiler and run-time system for R6RS Scheme"
-archs+=" armv6l*"
-archs+=" armv7l*"
-archs+=" i686*"
-archs+=" x86_64*"
-makedepends+=" git"
 makedepends+=" liblz4-devel"
-makedepends+=" libuuid-devel"
 makedepends+=" ncurses-devel"
 makedepends+=" zlib-devel"
 hostmakedepends="$makedepends"
 homepage="https://scheme.com/"
 license="Apache-2.0"
 distfiles="https://github.com/cisco/ChezScheme/releases/download/v$version/csv$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f5827682fa259c47975ffe078785fb561e4a5c54f764331ef66c32132843685d"
-build_style="gnu-configure"
+checksum="d37199012b5ed1985c4069d6a87ff18e5e1f5a2df27e402991faf45dc4f2232c"
+build_style="gnu-makefile"
 configure_args="--disable-x11"
+make_build_target="kernel"
 alternatives+=" scheme:scheme.1:/usr/share/man/man1/chez-scheme.1"
 alternatives+=" scheme:scheme:/usr/bin/chez-scheme"
-
-case "$XBPS_MACHINE" in
-  i686*)
-    _host="ti3le"
-    ;;
-  x86_64*)
-    _host="ta6le"
-    ;;
-  arm*)
-    # no threading makefile
-    _host="arm32le"
-    ;;
-  *)
-    broken="unsupported host platform"
-    ;;
-esac
 
 case "$XBPS_TARGET_MACHINE" in
   i686*)
@@ -46,100 +25,63 @@ case "$XBPS_TARGET_MACHINE" in
     _target="ta6le"
     ;;
   arm*)
-    _target="arm32le"
+    _target="tarm32le"
+    ;;
+  aarch64*)
+    _target="tarm64le"
+    ;;
+  riscv64*)
+    _target="trv64le"
     ;;
   *)
-    broken="unsupported target platform"
+    # portable bytecode
+    _target="pb"
     ;;
 esac
 
-do_configure() {
-  # configure such that scheme uses the zlib and lz4 system shared libs
-  # ZLIB and LZ4 are used when building the scheme kernel and use the
-  # full path
-  # LDFLAGS is extended in 'do_build' so that the rest of the scheme
-  # system links them
+pre_configure() {
+  # since version 10, chez only ships portable boot files, so first
+  # bootstrap with --pb, then build the boot files for the target
+  #
+  # the kernel is (cross-)compiled in do_build
+  if [[ "$_target" == "pb" ]]; then return; fi
   ./configure \
+    --pb \
+    AR="ar" \
+    CC="$BUILD_CC" \
+    CFLAGS="$BUILD_CFLAGS" \
+    LD="$BUILD_LD" \
+    LZ4="-llz4" \
+    ZLIB="-lz"
+  make "$makejobs" bootquick XM="$_target"
+}
+
+do_configure() {
+  local target
+  case "$_target" in
+    pb)
+      target="--pb"
+      ;;
+    *)
+      target="--machine=$_target"
+      ;;
+  esac
+  ./configure \
+    "$target" \
     --installman="/usr/share/man" \
     --installprefix="/usr" \
     --installschemename="chez-scheme" \
-    --machine="$_host" \
     --nogzip-man-pages \
     --temproot="$DESTDIR" \
-    ZLIB="-L/usr/lib/libz.so" \
-    LZ4="-L/usr/lib/liblz4.so"
+    LZ4="-llz4" \
+    ZLIB="-lz"
 }
 
 post_install() {
-  # make link relative
+  # replace duplicate file by symlink
   ln -sf \
     scheme.boot \
     "$DESTDIR/usr/lib"/csv*/*/scheme-script.boot
 }
-
-if [[ -n "$CROSS_BUILD" ]]; then
-
-do_build() {
-  # build host/bootstrap scheme compiler
-  make \
-    "$makejobs" \
-    CC="$BUILD_CC" \
-    CFLAGS="$BUILD_CFLAGS" \
-    LD="$BUILD_LD" \
-    LDFLAGS="-lz -llz4 $BUILD_LDFLAGS"
-
-  ./workarea "$_target"
-
-  # use Mf-config created from 'do_configure'
-  # this is required - the build fails to include the scheme kernel
-  # when this is missing
-  cd "$_target/c"
-  ln -sf "../../$_host/c/Mf-config" .
-  cd ..
-
-  # cross compile to target
-  make \
-    "$makejobs" \
-    -C s \
-    -f Mf-cross \
-    base="../../$_host" \
-    m="$_host" \
-    xm="$_target"
-
-  make \
-    "$makejobs" \
-    -C c \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    LD="$LD" \
-    LDFLAGS="-lz -llz4 $LDFLAGS"
-}
-
-do_install() {
-  cd "$_target"
-  make \
-    -f "../$_host/Mf-install" \
-    DESTDIR="$DESTDIR" \
-    m="$_target"
-}
-
-else
-
-do_build() {
-  make \
-    "$makejobs" \
-    CC="$CC" \
-    CFLAGS="$CFLAGS" \
-    LD="$LD" \
-    LDFLAGS="-lz -llz4 $LDFLAGS"
-}
-
-do_install() {
-  make \
-    DESTDIR="$DESTDIR" \
-    install
-}
-
-fi
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
