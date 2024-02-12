@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="grml-rescueboot"
-version=0.6.0
+version=0.6.1
 revision=1
 short_desc="Grub rules to find and boot Grml ISO images"
 archs+=" i686"
@@ -9,7 +9,7 @@ depends="grub"
 homepage="http://wiki.grml.org/doku.php?id=rescueboot"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/grml/grml-rescueboot/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="63057c5a30d27faabc202c7818b6e40a1f7a810411238abf82297073fe7b54fb"
+checksum="f5b64f8e994ab6aeb79ee21597284dfb8ef62ed66eb754cb5244776dc98528d0"
 conf_files="/etc/default/grml-rescueboot"
 build_style="gnu-makefile"
 make_dirs="/boot/grml 0755 root root"
