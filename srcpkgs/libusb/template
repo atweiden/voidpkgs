@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libusb"
-version=1.0.26
+version=1.0.27
 revision=1
 short_desc="Library which allows userspace access to USB devices"
 makedepends="eudev-libudev-devel"
@@ -9,7 +9,7 @@ homepage="https://libusb.info"
 license="LGPL-2.1-or-later"
 changelog="https://github.com/libusb/libusb/raw/master/ChangeLog"
 distfiles="https://github.com/libusb/libusb/releases/download/v$version/$pkgname-$version.tar.bz2"
-checksum="12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5"
+checksum="ffaa41d741a8a3bee244ac8e54a72ea05bf2879663c098c82fc5757853441575"
 build_style="gnu-configure"
 disable_parallel_build="yes"
 
