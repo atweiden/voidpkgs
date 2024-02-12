@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="lzip"
-version=1.23
+version=1.24
 revision=1
 short_desc="Lossless data compressor based on the LZMA algorithm"
 homepage="https://www.nongnu.org/lzip/lzip.html"
 license="GPL-2.0-or-later"
 distfiles="$NONGNU_SITE/lzip/$pkgname-$version.tar.gz"
-checksum="4792c047ddf15ef29d55ba8e68a1a21e0cb7692d87ecdf7204419864582f280d"
+checksum="d42659229b10e066eeb6e81eb673cdd893b672e512d26719c2d95975556ca56c"
 build_style="gnu-configure"
 
 do_configure() {
