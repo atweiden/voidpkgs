@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="ca-certificates"
-version=20230311+3.95
+version=20240203+3.95
 revision=1
 _nss_version=${version#*+}
 short_desc="Common CA certificates for SSL/TLS from Mozilla"
@@ -11,7 +11,7 @@ homepage="https://wiki.mozilla.org/NSS:Root_certs"
 license="GPL-2.0-or-later, MPL-2.0"
 distfiles+=" $DEBIAN_SITE/main/c/$pkgname/${pkgname}_${version%+*}.tar.xz"
 distfiles+=" $MOZILLA_SITE/security/nss/releases/NSS_${_nss_version//\./_}_RTM/src/nss-$_nss_version.tar.gz"
-checksum+=" 83de934afa186e279d1ed08ea0d73f5cf43a6fbfb5f00874b6db3711c64576f3"
+checksum+=" 3286d3fc42c4d11b7086711a85f865b44065ce05cf1fb5376b2abed07622a9c6"
 checksum+=" 469888e41e8a780051ce00edcd914e8a6bd38da88a82cfb84898dd388635822a"
 conf_files="/etc/ca-certificates.conf"
 build_wrksrc="ca-certificates"
@@ -19,9 +19,13 @@ bootstrap="yes"
 
 post_extract() {
   cp "$FILESDIR"/* "$build_wrksrc/mozilla"
-  cp "nss-$_nss_version/nss/lib/ckfw/builtins/certdata.txt" \
-    "nss-$_nss_version/nss/lib/ckfw/builtins/nssckbi.h" \
-    "$build_wrksrc/mozilla"
+}
+
+do_configure() {
+  cp \
+    "../nss-$_nss_version/nss/lib/ckfw/builtins/certdata.txt" \
+    "../nss-$_nss_version/nss/lib/ckfw/builtins/nssckbi.h" \
+    mozilla
 }
 
 do_build() {
