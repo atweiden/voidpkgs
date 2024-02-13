@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-files"
-version=0.143
-revision=4
+version=0.144
+revision=1
 short_desc="Void Linux base system files"
 depends="xbps-triggers"
 homepage="https://www.voidlinux.org"
@@ -100,6 +100,7 @@ do_install() {
   # vkpurge
   vbin "$FILESDIR/vkpurge"
   vman "$FILESDIR/vkpurge.8"
+  vcompletion "$FILESDIR/_vkpurge" zsh vkpurge
 
   vbin "$FILESDIR/lsb_release"
 
