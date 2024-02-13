@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="llvm"
 version=17
-revision=1
+revision=2
 short_desc="LLVM meta package"
 depends="llvm$version"
 homepage="https://www.voidlinux.org"
@@ -31,8 +31,8 @@ clang-tools-extra_package() {
 
 clang-analyzer_package() {
   build_style="meta"
-  depends="clang-tools-extra$version>=0"
-  short_desc+=" - clang-tools-extra"
+  depends="clang-analyzer$version>=0"
+  short_desc+=" - clang-analyzer"
 }
 
 lld_package() {
