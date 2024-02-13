@@ -1,12 +1,12 @@
 maintainer="nox"
 pkgname="libcap-ng"
-version=0.8.3
-revision=3
+version=0.8.4
+revision=1
 short_desc="Alternate POSIX capabilities library"
 homepage="http://people.redhat.com/sgrubb/libcap-ng/"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="http://people.redhat.com/sgrubb/libcap-ng/$pkgname-$version.tar.gz"
-checksum="bed6f6848e22bb2f83b5f764b2aef0ed393054e803a8e3a8711cb2a39e6b492d"
+checksum="68581d3b38e7553cb6f6ddf7813b1fc99e52856f21421f7b477ce5abd2605a8a"
 build_style="gnu-configure"
 configure_args+=" --without-python"
 configure_args+=" --without-python3"
