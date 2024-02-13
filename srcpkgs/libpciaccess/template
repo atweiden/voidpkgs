@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="libpciaccess"
-version=0.16
+version=0.18
 revision=1
 short_desc="X11 PCI Access library"
 homepage="http://xorg.freedesktop.org/"
 license="MIT"
-distfiles="$XORG_SITE/lib/$pkgname-$version.tar.bz2"
-checksum="214c9d0d884fdd7375ec8da8dcb91a8d3169f263294c9a90c575bf1938b9f489"
-build_style="gnu-configure"
+distfiles="$XORG_SITE/lib/$pkgname-$version.tar.xz"
+checksum="5461b0257d495254346f52a9c329b44b346262663675d3fecdb204a7e7c262a9"
+build_style="meson"
 
 post_install() {
   vlicense COPYING
@@ -19,7 +19,6 @@ libpciaccess-devel_package() {
   pkg_install() {
     vmove usr/include
     vmove usr/lib/pkgconfig
-    vmove "usr/lib/*.a"
     vmove "usr/lib/*.so"
   }
 }
