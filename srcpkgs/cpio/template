@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="cpio"
-version=2.14
+version=2.15
 revision=1
 short_desc="GNU copy-in/out (cpio) with remote magnetic tape (rmt) support"
 hostmakedepends+=" gettext-devel"
@@ -8,7 +8,7 @@ hostmakedepends+=" tar"
 homepage="http://www.gnu.org/software/cpio/"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/cpio/$pkgname-$version.tar.bz2"
-checksum="fcdc15d60f7267a6fc7efcd6b9db7b6c8966c4f2fbbb964c24d41336fd3f2c12"
+checksum="937610b97c329a1ec9268553fb780037bcfff0dcffe9725ebc4fd9c1aa9075db"
 build_style="gnu-configure"
 configure_args="--with-rmt=/usr/bin/rmt"
 
