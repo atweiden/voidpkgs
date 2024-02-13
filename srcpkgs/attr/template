@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="attr"
-version=2.5.1
+version=2.5.2
 revision=1
 short_desc="Extended attribute support library for ACL support"
 checkdepends="perl"
 homepage="http://savannah.nongnu.org/projects/attr"
 license="LGPL-2.1-or-later"
 distfiles="$NONGNU_SITE/attr/$pkgname-$version.tar.gz"
-checksum="bae1c6949b258a0d68001367ce0c741cebdacdd3b62965d17e5eb23cd78adaf8"
+checksum="39bf67452fa41d0948c2197601053f48b3d78a029389734332a6309a680c6c87"
 conf_files="/etc/xattr.conf"
 build_style="gnu-configure"
 configure_args+=" --libdir=/usr/lib"
