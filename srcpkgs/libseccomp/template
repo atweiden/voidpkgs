@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libseccomp"
-version=2.5.4
+version=2.5.5
 revision=1
 short_desc="High level interface to the Linux Kernel's seccomp filter"
 checkdepends="which"
@@ -10,7 +10,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/seccomp/libseccomp/"
 license="LGPL-2.1-or-later"
 distfiles="https://github.com/seccomp/libseccomp/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="96bbadb4384716272a6d2be82801dc564f7aab345febfe9b698b70fc606e3f75"
+checksum="7082b016d3cbda3e15c0e71ebd018023d693bb7507389b32f943db13f935e01d"
 build_style="gnu-configure"
 
 pre_configure() {
