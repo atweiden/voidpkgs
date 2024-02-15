@@ -1,14 +1,14 @@
 maintainer="nox"
 pkgname="zsh-syntax-highlighting"
-version=0.7.1
-revision=3
+version=0.8.0
+revision=1
 short_desc="Fish shell like syntax highlighting for Zsh"
 depends="zsh"
 homepage="https://github.com/zsh-users/zsh-syntax-highlighting"
 license="BSD-3-Clause"
 changelog="https://github.com/zsh-users/zsh-syntax-highlighting/raw/master/changelog.md"
 distfiles="https://github.com/zsh-users/zsh-syntax-highlighting/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="f5044266ee198468b1bcec881a56e6399e209657d6ed9fa6d21175bc76afdefa"
+checksum="5981c19ebaab027e356fe1ee5284f7a021b89d4405cc53dc84b476c3aee9cc32"
 
 do_install() {
   make install \
