@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nodejs"
-version=18.19.0
+version=18.19.1
 revision=1
 short_desc="Evented I/O for V8 javascript"
 _make_depends+=" zlib-devel"
@@ -24,7 +24,7 @@ homepage="https://nodejs.org/"
 license="MIT"
 changelog="https://github.com/nodejs/node/raw/main/doc/changelogs/CHANGELOG_V${version%%.*}.md"
 distfiles="https://nodejs.org/dist/v$version/node-v$version.tar.xz"
-checksum="f52b41af20596a9abd8ed75241837ec43945468221448bbf841361e2091819b6"
+checksum="090f96a2ecde080b6b382c6d642bca5d0be4702a78cb555be7bf02b20bd16ded"
 python_version=3
 build_options+=" brotli"
 build_options+=" cares"
