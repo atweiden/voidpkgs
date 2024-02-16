@@ -172,6 +172,10 @@ case "$XBPS_TARGET_MACHINE" in
     _arch="power"
     _abi="sysv"
     ;;
+  riscv64*)
+    _arch="riscv"
+    _abi="sysv"
+    ;;
 esac
 
 do_build() {
