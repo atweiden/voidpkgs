@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="gnu-efi-libs"
-version=3.0.14
+version=3.0.17
 revision=1
 short_desc="Library for building UEFI Applications using GNU toolchain"
 makedepends="pciutils-devel"
 homepage="https://sourceforge.net/projects/gnu-efi/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gnu-efi/${pkgname%-libs}-$version.tar.bz2"
-checksum="b73b643a0d5697d1f396d7431448e886dd805668789578e3e1a28277c9528435"
+checksum="7807e903349343a7a142ebb934703a2872235e89688cf586c032b0a1087bcaf4"
 nostrip="yes"
 # not an actual revert, xbps considers 3.0w higher than 3.0.8
 reverts="3.0w_1"
@@ -61,6 +61,10 @@ case "$XBPS_TARGET_MACHINE" in
 esac
 
 do_build() {
+  # upstream provides LDFLAGS directly to ld:
+  # https://sourceforge.net/p/gnu-efi/bugs/33/
+  LDFLAGS="${LDFLAGS//-Wl/}"
+  LDFLAGS="${LDFLAGS//,/ }"
   make \
     ARCH="$TARGET_ARCH" \
     HOSTARCH="$HOST_ARCH"
