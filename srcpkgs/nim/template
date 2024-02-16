@@ -77,10 +77,13 @@ do_build() {
     ppc*)
       _arch="powerpc"
       ;;
+    riscv64*)
+      _arch="riscv64"
+      ;;
   esac
 
   case "$XBPS_TARGET_MACHINE" in
-    arm*|aarch64*|ppc*)
+    arm*|aarch64*|ppc*|riscv64*)
       vsed \
         -i \
         -e 's/^arm\.linux\.gcc\.\(linker\)\?exe /#&/' \
