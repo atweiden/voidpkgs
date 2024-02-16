@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="valgrind"
 version=3.22.0
-revision=1
+revision=2
 short_desc="Tool for finding memory management bugs in programs"
 depends="perl"
 makedepends="libgomp-devel"
@@ -33,6 +33,8 @@ lib32symlinks+=" valgrind/lackey-x86-linux"
 lib32symlinks+=" valgrind/massif-x86-linux"
 lib32symlinks+=" valgrind/memcheck-x86-linux"
 lib32symlinks+=" valgrind/none-x86-linux"
+# https://valgrind.org/docs/manual/dist.readme-packagers.html
+nostrip="yes"
 
 case "$XBPS_TARGET_MACHINE" in
   armv6*)
