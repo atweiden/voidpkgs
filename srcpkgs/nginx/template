@@ -136,14 +136,18 @@ pre_build() {
   if [[ -n "$CROSS_BUILD" ]]; then
     mkdir -p "../njs-$_njs_version/build"
     case "$XBPS_TARGET_MACHINE" in
-    arm*)
-      cp "$FILESDIR/ngx_auto_config.h.armv6l" objs/ngx_auto_config.h
-      cp "$FILESDIR/njs_auto_config.h.armv6l" "../njs-$_njs_version/build/njs_auto_config.h"
-      ;;
-    aarch64*)
-      cp "$FILESDIR/ngx_auto_config.h.aarch64" objs/ngx_auto_config.h
-      cp "$FILESDIR/njs_auto_config.h.aarch64" "../njs-$_njs_version/build/njs_auto_config.h"
-      ;;
+      arm*)
+        cp "$FILESDIR/ngx_auto_config.h.armv6l" objs/ngx_auto_config.h
+        cp "$FILESDIR/njs_auto_config.h.armv6l" "../njs-$_njs_version/build/njs_auto_config.h"
+        ;;
+      aarch64*)
+        cp "$FILESDIR/ngx_auto_config.h.aarch64" objs/ngx_auto_config.h
+        cp "$FILESDIR/njs_auto_config.h.aarch64" "../njs-$_njs_version/build/njs_auto_config.h"
+        ;;
+      riscv64*)
+        cp "$FILESDIR/ngx_auto_config.h.riscv64" objs/ngx_auto_config.h
+        cp "$FILESDIR/njs_auto_config.h.riscv64" "../njs-$_njs_version/build/njs_auto_config.h"
+        ;;
     esac
     sed \
       -i \
