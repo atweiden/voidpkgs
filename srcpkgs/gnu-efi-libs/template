@@ -36,6 +36,9 @@ case "$XBPS_MACHINE" in
   aarch64*)
     HOST_ARCH="aarch64"
     ;;
+  riscv64*)
+    HOST_ARCH="riscv64"
+    ;;
 esac
 
 # filter our arches for the target machines
@@ -54,6 +57,9 @@ case "$XBPS_TARGET_MACHINE" in
     ;;
   aarch64*)
     TARGET_ARCH="aarch64"
+    ;;
+  riscv64*)
+    TARGET_ARCH="riscv64"
     ;;
   *)
     broken="$XBPS_TARGET_MACHINE is untested, please add support if possible"
