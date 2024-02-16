@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tmux"
-version=3.3a
-revision=2
+version=3.4
+revision=1
 short_desc="Terminal Multiplexer"
 depends="ncurses-base"
 makedepends+=" libevent-devel"
@@ -15,9 +15,10 @@ homepage="https://tmux.github.io"
 license="ISC"
 changelog="https://github.com/tmux/tmux/raw/master/CHANGES"
 distfiles="https://github.com/tmux/tmux/releases/download/$version/$pkgname-$version.tar.gz"
-checksum="e4fd347843bd0772c4f48d6dde625b0b109b7a380ff15db21e97c11a4dcdf93f"
+checksum="551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa"
 build_style="gnu-configure"
-configure_args="--enable-utempter"
+configure_args+=" --enable-sixel"
+configure_args+=" --enable-utempter"
 
 pre_configure() {
   autoreconf -fi
