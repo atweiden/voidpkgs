@@ -1,7 +1,8 @@
 maintainer="nox"
 pkgname="bcachefs-tools"
-version=1.4.1
+version=1.6.1
 revision=1
+_llvmver=17
 short_desc="Userspace tools for bcachefs"
 makedepends+=" attr-devel"
 makedepends+=" eudev-libudev-devel"
@@ -17,13 +18,14 @@ makedepends+=" libzstd-devel"
 makedepends+=" rust"
 makedepends+=" zlib-devel"
 hostmakedepends+=" cargo"
-hostmakedepends+=" clang"
+hostmakedepends+=" clang$_llvmver-devel"
 hostmakedepends+=" liburcu-devel"
+hostmakedepends+=" llvm"
 hostmakedepends+=" pkg-config"
 homepage="https://bcachefs.org/"
 license="GPL-2.0-only"
 distfiles="https://github.com/koverstreet/bcachefs-tools/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="682777c2391a718c34a5b8992954eba38b5916bdc5fc33f036d55562f4c45d72"
+checksum="f1899907bcac16cd89cead98b1f407dad93d67bd02a8aaa3eaa577a77d8b59d8"
 build_style="gnu-makefile"
 make_install_args="ROOT_SBINDIR=/usr/bin"
 make_use_env="yes"
@@ -31,5 +33,10 @@ reverts="24_1"
 
 export VERSION="v$version"
 export RUST_TARGET
+
+pre_build() {
+  # fuck me sideways why this is necessary, it should be default
+  RUSTFLAGS+=" -C linker=$CC"
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
