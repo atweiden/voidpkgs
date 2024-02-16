@@ -5,6 +5,7 @@ revision=1
 short_desc="Terminal Multiplexer"
 depends="ncurses-base"
 makedepends+=" libevent-devel"
+makedepends+=" libsixel-devel"
 makedepends+=" libutempter-devel"
 makedepends+=" ncurses-devel"
 hostmakedepends+=" autoconf"
