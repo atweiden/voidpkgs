@@ -97,6 +97,9 @@ do_configure() {
       x86_64*)
         _args="--dest-cpu=x86_64"
         ;;
+      riscv64*)
+        _args="--dest-cpu=riscv64"
+        ;;
       *)
         msg_error "$pkgver: cannot be cross compiled for $XBPS_TARGET_MACHINE.\n"
         ;;
