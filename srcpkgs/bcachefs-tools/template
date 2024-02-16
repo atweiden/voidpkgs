@@ -30,6 +30,9 @@ build_style="gnu-makefile"
 make_install_args="ROOT_SBINDIR=/usr/bin"
 make_use_env="yes"
 reverts="24_1"
+case "$XBPS_TARGET_MACHINE" in
+  i686*) broken="complain to upstream" ;;
+esac
 
 export VERSION="v$version"
 export RUST_TARGET
