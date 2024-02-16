@@ -245,6 +245,7 @@ general
 - libscrypt
 - libseccomp
 - libsecp256k1
+- libsixel
 - libsodium
 - libssh
 - libssh2

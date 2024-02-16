@@ -475,6 +475,8 @@ constant %PKG = Map.new(
     'libsepol' => ['libsepol-devel'],
     'libsigc++' => ['libsigc++-devel'],
     'libsigsegv' => ['libsigsegv-devel'],
+    'libsixel' => qw<libsixel-devel
+                     libsixel-util>,
     'libsmbios' => qw<libsmbios-devel
                       libsmbios-utils
                       python3-libsmbios>,
