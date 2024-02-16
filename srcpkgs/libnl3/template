@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libnl3"
-version=3.8.0
+version=3.9.0
 revision=1
 short_desc="Netlink Protocol Library Suite"
 hostmakedepends+=" flex"
@@ -8,7 +8,7 @@ hostmakedepends+=" pkg-config"
 homepage="https://github.com/thom311/libnl"
 license="LGPL-2.1-only"
 distfiles="https://github.com/thom311/libnl/releases/download/${pkgname%3}${version//./_}/${pkgname%3}-$version.tar.gz"
-checksum="bb726c6d7a08b121978d73ff98425bf313fa26a27a331d465e4f1d7ec5b838c6"
+checksum="aed507004d728a5cf11eab48ca4bf9e6e1874444e33939b9d3dfed25018ee9bb"
 conf_files+=" /etc/libnl/classid"
 conf_files+=" /etc/libnl/pktloc"
 build_style="gnu-configure"
