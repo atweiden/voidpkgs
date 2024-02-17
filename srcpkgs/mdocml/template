@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mdocml"
 version=1.14.6
-revision=7
+revision=8
 short_desc="UNIX manpage compiler toolset (mandoc)"
 depends="less"
 makedepends="zlib-devel"
@@ -27,7 +27,6 @@ alternatives+=" man:whatis:/usr/bin/mandoc"
 CFLAGS="-fcommon"
 
 post_patch() {
-  cat "$FILESDIR/void.css" >>mandoc.css
   cp "$FILESDIR/cgi.h" .
 }
 
