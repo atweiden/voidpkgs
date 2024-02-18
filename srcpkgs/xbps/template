@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="xbps"
 version=0.59.2
-revision=2
+revision=3
 short_desc="XBPS package system utilities"
 depends+=" ca-certificates"
 depends+=" xbps-triggers"
