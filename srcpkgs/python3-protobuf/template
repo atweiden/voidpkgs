@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-protobuf"
-version=4.24.1
-revision=2
+version=4.25.2
+revision=1
 short_desc="Python3 bindings for Google Protocol Buffers"
 depends+=" python3-setuptools"
 depends+=" python3-six"
@@ -13,7 +13,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 # pypi release does not have bits for cppext
 distfiles="https://github.com/protocolbuffers/protobuf/releases/download/v${version#*.}/protobuf-${version#*.}.tar.gz"
-checksum="0930b1a6eb840a2295dfcb13bb5736d1292c3e0d61a90391181399327be7d8f1"
+checksum="8ff511a64fc46ee792d3fe49a5a1bcad6f7dc50dfbba5a28b0e5b979c17f9871"
 build_wrksrc="python"
 build_style="python3-module"
 # ImportError: cannot import name 'unittest_retention_pb2' from 'google.protobuf'
