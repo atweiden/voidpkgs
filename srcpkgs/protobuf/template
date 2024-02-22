@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="protobuf"
-version=24.1
+version=25.2
 revision=1
 short_desc="Protocol buffers compiler"
 # XXX: tests require abseil-cpp provides absl::scoped_mock_log
@@ -12,7 +12,7 @@ homepage="https://developers.google.com/protocol-buffers/"
 license="BSD-3-Clause"
 changelog="https://github.com/google/protobuf/raw/master/CHANGES.txt"
 distfiles="https://github.com/protocolbuffers/protobuf/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="0930b1a6eb840a2295dfcb13bb5736d1292c3e0d61a90391181399327be7d8f1"
+checksum="8ff511a64fc46ee792d3fe49a5a1bcad6f7dc50dfbba5a28b0e5b979c17f9871"
 build_style="cmake"
 configure_args+=" -Dprotobuf_ABSL_PROVIDER=package"
 configure_args+=" -Dprotobuf_BUILD_LIBPROTOC=ON"
