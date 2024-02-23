@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-cryptography_vectors"
-version=42.0.2
+version=42.0.4
 revision=1
 short_desc="Test vectors for python3-cryptography"
 depends="python3"
@@ -8,7 +8,7 @@ hostmakedepends="python3-flit_core"
 homepage="https://github.com/pyca/cryptography"
 license="BSD-3-Clause, Apache-2.0"
 distfiles="$PYPI_SITE/c/cryptography_vectors/cryptography_vectors-$version.tar.gz"
-checksum="adcdccf5d9ee661a9602ad21d2525f678ba07a6e768ce79835994e208bab0e16"
+checksum="d6b707d238a5e2390c3dae7761b997b68c2b8c0723ed24fc13f832bcc8739945"
 build_style="python3-pep517"
 
 post_install() {
