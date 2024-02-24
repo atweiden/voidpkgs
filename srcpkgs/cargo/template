@@ -1,8 +1,8 @@
 maintainer="nox"
 pkgname="cargo"
-version=1.75.0
+version=1.76.0
 revision=1
-_cargo_revision=0.76.0
+_cargo_revision=0.77.0
 short_desc="Rust package manager"
 depends="rust"
 makedepends+=" libcurl-devel"
@@ -20,7 +20,7 @@ hostmakedepends+=" zlib-devel"
 homepage="https://crates.io/"
 license="MIT, Apache-2.0"
 distfiles="https://github.com/rust-lang/cargo/archive/$_cargo_revision.tar.gz>$pkgname-$version.tar.gz"
-checksum="52d57889715cdfe0070b13f6d4dbfc4affdafc763483269e78b6ebd7166fdb83"
+checksum="1c33e2feb197f848f082fdc074162328e231c2f68394e0e1d2dbbbf79c9fc3ec"
 build_helper="rust"
 build_options+=" bindist"
 build_options+=" static"
@@ -33,6 +33,9 @@ fi
 
 do_build() {
   local cargs
+
+  # breaks requested building sqlite in bundled mode
+  unset LIBSQLITE3_SYS_USE_PKG_CONFIG
 
   if [[ -n "$_build_static" ]]; then
     unset LIBSSH2_SYS_USE_PKG_CONFIG
