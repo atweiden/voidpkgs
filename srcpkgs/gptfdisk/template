@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gptfdisk"
-version=1.0.9
-revision=3
+version=1.0.10
+revision=1
 short_desc="GPT fdisk text-mode partitioning tool"
 makedepends+=" libuuid-devel"
 makedepends+=" ncurses-devel"
@@ -9,7 +9,7 @@ makedepends+=" popt-devel"
 homepage="https://www.rodsbooks.com/gdisk/"
 license="GPL-2.0-or-later"
 distfiles="$SOURCEFORGE_SITE/gptfdisk/$pkgname-$version.tar.gz"
-checksum="dafead2693faeb8e8b97832b23407f6ed5b3219bc1784f482dd855774e2d50c2"
+checksum="2abed61bc6d2b9ec498973c0440b8b804b7a72d7144069b5a9209b2ad693a282"
 build_style="gnu-makefile"
 make_check_target="test"
 
