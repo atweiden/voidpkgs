@@ -1,28 +1,23 @@
 maintainer="nox"
 pkgname="sshuttle"
-version=1.1.1
-revision=2
+version=1.1.2
+revision=1
 short_desc="Transparent proxy server that forwards TCP packets over ssh"
 depends="python3-psutil"
 checkdepends+=" python3-flake8"
 checkdepends+=" python3-mock"
 checkdepends+=" python3-pytest"
 hostmakedepends+=" python3-Sphinx"
-hostmakedepends+=" python3-setuptools_scm"
+hostmakedepends+=" python3-poetry-core"
 homepage="https://github.com/sshuttle/sshuttle"
 license="LGPL-2.1-or-later"
 changelog="https://github.com/sshuttle/sshuttle/raw/master/CHANGES.rst"
-distfiles="$PYPI_SITE/s/sshuttle/$pkgname-$version.tar.gz"
-checksum="f5a3ed1e5ab1213c7a6df860af41f1a903ab2cafbfef71f371acdcff21e69ee6"
-build_style="python3-module"
-
-post_extract() {
-  # BUG: wrong permissions (https://github.com/sshuttle/sshuttle/issues/217)
-  chmod -R go+rX .
-}
+distfiles="https://github.com/sshuttle/sshuttle/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
+checksum="85dc603af59ab45a30f96273fe971821b73d8686659c922f76b1f039f16f5e8e"
+build_style="python3-pep517"
 
 pre_check() {
-  sed \
+  vsed \
     -i \
     -e '/addopts/d' \
     setup.cfg
