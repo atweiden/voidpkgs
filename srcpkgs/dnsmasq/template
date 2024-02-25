@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="dnsmasq"
-version=2.89
+version=2.90
 revision=1
 short_desc="Lightweight, easy to configure DNS forwarder and DHCP server"
 makedepends+=" libcap-devel"
@@ -11,7 +11,7 @@ homepage="https://www.thekelleys.org.uk/dnsmasq/doc.html"
 license="GPL-2.0-or-later"
 changelog="https://www.thekelleys.org.uk/dnsmasq/CHANGELOG"
 distfiles="https://www.thekelleys.org.uk/dnsmasq/$pkgname-$version.tar.gz"
-checksum="8651373d000cae23776256e83dcaa6723dee72c06a39362700344e0c12c4e7e4"
+checksum="8f6666b542403b5ee7ccce66ea73a4a51cf19dd49392aaccd37231a2c51b303b"
 conf_files="/etc/dnsmasq.conf"
 system_accounts="dnsmasq"
 dnsmasq_homedir="/var/chroot"
