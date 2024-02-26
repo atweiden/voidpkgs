@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="ocaml-stdcompat"
 version=19
-revision=1
+revision=2
 short_desc="Compatibility module for OCaml standard library"
 makedepends+=" ocaml"
 makedepends+=" ocaml-findlib"
@@ -14,6 +14,15 @@ build_style="gnu-configure"
 configure_args="--libdir=/usr/lib/ocaml"
 nocross="yes"
 disable_parallel_build="yes"
+
+pre_configure() {
+  if ! command -v ocamlc.opt >/dev/null; then
+    sed \
+      -i \
+      -e 's/AC_SUBST(\[OCAMLOPT\], \[\["$OCAMLFIND ocamlopt"\]\])//' \
+      configure.ac
+  fi
+}
 
 post_install() {
   vlicense COPYING LICENSE
