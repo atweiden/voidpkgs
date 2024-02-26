@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="nvme-cli"
-version=2.6
+version=2.8
 revision=1
 short_desc="NVMe management command line interface"
 makedepends+=" json-c-devel"
@@ -10,7 +10,7 @@ hostmakedepends="pkg-config"
 homepage="http://nvmexpress.org"
 license="GPL-2.0-only"
 distfiles="https://github.com/linux-nvme/nvme-cli/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="7e2f11eb7a9c1b9343d537a32ae5c78f51de20cd4a6cdddb2bc2459c259b33d6"
+checksum="0743d9188792a87d39187ae5e5cb31e8f46cca8c6f100547c50ec0dd659d2531"
 conf_files="/etc/nvme/*.conf"
 build_style="meson"
 configure_args+=" -Ddocs=man"
