@@ -1,16 +1,20 @@
 maintainer="nox"
 pkgname="ocamlbuild"
-version=0.14.2
+version=0.14.3
 revision=1
 short_desc="OCaml build tool"
 hostmakedepends="ocaml"
 homepage="https://github.com/ocaml/ocamlbuild"
 license="LGPL-2.0-only"
 distfiles="https://github.com/ocaml/ocamlbuild/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="62d2dab6037794c702a83ac584a7066d018cf1645370d1f3d5764c2b458791b1"
+checksum="ce151bfd2141abc6ee0b3f25ba609e989ff564a48bf795d6fa7138a4db0fc2e1"
 build_style="gnu-makefile"
 nocross="yes"
 
 export CHECK_IF_PREINSTALLED=false
+
+pre_build() {
+  command -v ocamlc.opt >/dev/null || export OCAML_NATIVE=false
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
