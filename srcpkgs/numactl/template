@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="numactl"
-version=2.0.14
+version=2.0.18
 revision=1
 short_desc="Simple NUMA policy support"
 hostmakedepends+=" automake"
@@ -8,7 +8,7 @@ hostmakedepends+=" libtool"
 homepage="https://github.com/numactl/numactl"
 license="LGPL-2.1-only"
 distfiles="https://github.com/numactl/numactl/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="1ee27abd07ff6ba140aaf9bc6379b37825e54496e01d6f7343330cf1a4487035"
+checksum="8cd6c13f3096e9c2293c1d732f56e2aa37a7ada1a98deed3fac7bd6da1aaaaf6"
 build_style="gnu-configure"
 
 if [[ "$XBPS_TARGET_MACHINE" == "i686" ]]; then
