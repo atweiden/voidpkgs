@@ -13,15 +13,20 @@ build_style="configure"
 configure_args+=" -config /etc/findlib.conf"
 configure_args+=" -mandir /usr/share/man"
 configure_args+=" -sitelib /usr/lib/ocaml"
-make_build_args+=" all"
-make_build_args+=" opt"
+case "$XBPS_TARGET_MACHINE" in
+  # native code platforms
+  x86_64*|aarch64*|riscv64*) make_build_args="all opt" ;;
+  *) make_build_target="all" ;;
+esac
 nocross="yes"
 nopie="yes"
 disable_parallel_build="yes"
 
 do_install() {
   make prefix="$DESTDIR" install
-  vbin src/findlib/ocamlfind_opt
+  if [[ -f "src/findlib/ocamlfind_opt" ]]; then
+    vbin src/findlib/ocamlfind_opt
+  fi
 }
 
 post_install() {
