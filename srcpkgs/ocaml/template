@@ -1,25 +1,27 @@
 maintainer="nox"
 pkgname="ocaml"
-version=4.14.0
-revision=2
-short_desc="Main implementation of the Caml language"
-makedepends="ncurses-devel"
+version=5.1.1
+revision=1
+short_desc="Main implementation of the OCaml language"
+depends="libzstd-devel"
+makedepends="libzstd-devel"
 homepage="http://ocaml.org/"
 license="QPL-1.0, LGPL-2.1-only"
 distfiles="https://github.com/ocaml/ocaml/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="39f44260382f28d1054c5f9d8bf4753cb7ad64027da792f7938344544da155e8"
+checksum="57f7b382b3d71198413ede405d95ef3506f1cdc480cda1dca1e26b37cb090e17"
 build_style="gnu-configure"
 configure_args+=" --libdir=/usr/lib/ocaml"
 configure_args+=" --with-pic"
-make_build_target="world.opt"
-nocross="yes"
-
 case "$XBPS_TARGET_MACHINE" in
-  # also just segfaults when compiled without PIE (BSS-PLT?)
-  ppc-musl)
-    broken="/usr/bin/ocamlc: unsupported relocation type 6"
+  # native code platforms
+  x86_64*|aarch64*|riscv64*)
+    make_build_target="world.opt"
+    ;;
+  *)
+    make_build_target="world"
     ;;
 esac
+nocross="yes"
 
 export ASPP="cc -c"
 
