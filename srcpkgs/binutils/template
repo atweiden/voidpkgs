@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="binutils"
 version=2.41
-revision=1
+revision=2
 short_desc="GNU binary utilities"
 makedepends+=" libzstd-devel"
 makedepends+=" zlib-devel"
@@ -237,8 +237,8 @@ binutils-doc_package() {
   short_desc+=" - info files"
   pkg_install() {
     vmove usr/share/info
-    # remove info file that conflicts with autoconf
-    rm -f "$PKGDESTDIR/usr/share/info/standards.info"
+    # remove info file that conflicts with gdb
+    rm "$PKGDESTDIR/usr/share/info/sframe-spec.info"
   }
 }
 
