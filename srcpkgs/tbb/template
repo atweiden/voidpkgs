@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tbb"
 version=2021.11.0
-revision=1
+revision=2
 short_desc="Intel Threading Building Blocks"
 makedepends+=" libgomp-devel"
 makedepends+=" libhwloc-devel"
@@ -29,11 +29,6 @@ esac
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   makedepends+=" libucontext-devel"
   configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-lucontext"
-fi
-
-if [[ -n "$XBPS_TARGET_NO_ATOMIC8" ]]; then
-  makedepends+=" libatomic-devel"
-  configure_args+=" -DCMAKE_CXX_FLAGS=-latomic"
 fi
 
 post_extract() {
