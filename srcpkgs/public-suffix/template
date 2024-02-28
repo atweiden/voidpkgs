@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="public-suffix"
-version=2024.01.07
+version=2024.02.12
 revision=1
-_gitrev="5db9b65997e3c9230ac4353b01994c2ae9667cb9"
+_gitrev="b7a0606a980a361fe055aeb1c908544a2488b2b6"
 short_desc="Public Suffix List"
 hostmakedepends="python3"
 homepage="https://publicsuffix.org/"
 license="MPL-2.0"
 distfiles+=" https://github.com/publicsuffix/list/archive/$_gitrev.tar.gz>$pkgname-$version.tar.gz"
 distfiles+=" https://github.com/rockdaboot/libpsl/raw/0.21.2/src/psl-make-dafsa"
-checksum+=" 065be93dbe9731c680992d5b251bf32b95d7dc3335eae51774d89caab3423c79"
+checksum+=" bc28dc607202ddd2ed4dfaef81064df14b356781a909a739439f7060e6167bbd"
 checksum+=" 252e22a3ad8e48542a71ae5625b3c2ca7e9b90ce5edbab68ecf4d0ccec82c604"
 skip_extraction="psl-make-dafsa"
 
