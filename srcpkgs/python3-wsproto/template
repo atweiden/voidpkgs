@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-wsproto"
-version=1.0.0
-revision=4
+version=1.2.0
+revision=1
 short_desc="Sans-IO WebSocket protocol implementation (Python3)"
 depends="python3-h11"
 checkdepends+=" $depends"
@@ -11,7 +11,7 @@ homepage="https://wsproto.readthedocs.io"
 license="MIT"
 changelog="https://github.com/python-hyper/wsproto/raw/master/CHANGELOG.rst"
 distfiles="$PYPI_SITE/w/wsproto/wsproto-$version.tar.gz"
-checksum="868776f8456997ad0d9720f7322b746bbe9193751b5b290b7f924659377c8c38"
+checksum="ad565f26ecb92588a3e43bc3d96164de84cd9902482b130d0ddbaa9664a85065"
 build_style="python3-module"
 
 post_install() {
