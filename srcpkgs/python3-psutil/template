@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-psutil"
-version=5.9.7
+version=5.9.8
 revision=1
 short_desc="Cross-platform process and system utilities module for Python3"
 depends="python3"
@@ -15,7 +15,7 @@ homepage="https://github.com/giampaolo/psutil"
 license="BSD-3-Clause"
 changelog="https://github.com/giampaolo/psutil/raw/master/HISTORY.rst"
 distfiles="$PYPI_SITE/p/psutil/psutil-$version.tar.gz"
-checksum="3f02134e82cfb5d089fddf20bb2e03fd5cd52395321d1c8458a9e58500ff417c"
+checksum="6be126e3225486dff286a8fb9a06246a5253f4c7c53b475ea5f5ac934e64194c"
 build_style="python3-pep517"
 # failing tests: see https://github.com/giampaolo/psutil/issues/2043
 make_check_args+=" --import-mode=importlib"
