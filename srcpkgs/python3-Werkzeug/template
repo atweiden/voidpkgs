@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-Werkzeug"
-version=3.0.0
+version=3.0.1
 revision=1
 short_desc="Swiss Army knife of Python web development (Python3)"
 depends="python3-MarkupSafe"
@@ -13,7 +13,7 @@ homepage="https://palletsprojects.com/p/werkzeug/"
 license="BSD-3-Clause"
 changelog="https://github.com/pallets/werkzeug/raw/main/CHANGES.rst"
 distfiles="https://github.com/pallets/werkzeug/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="3ba5b5f0668073c7a32f13451c3703e7bcdbfbf7dce469739873c86d37b7ae0c"
+checksum="d5aed0e7fe61a83cf385c94f7cf7f6c43a7affa7f81ef7b07bd632834756f4dc"
 build_style="python3-pep517"
 # some tests depend on unpackaged dependencies
 make_check_args+=" --ignore=tests/test_debug.py"
