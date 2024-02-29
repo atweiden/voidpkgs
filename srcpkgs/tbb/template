@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="tbb"
 version=2021.11.0
-revision=2
+revision=3
 short_desc="Intel Threading Building Blocks"
 makedepends+=" libgomp-devel"
 makedepends+=" libhwloc-devel"
