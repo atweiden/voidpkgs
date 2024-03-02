@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-bcrypt"
-version=4.0.1
-revision=2
+version=4.1.2
+revision=1
 short_desc="Modern password hashing for software and servers"
 depends="python3-cffi"
 makedepends+=" python3-devel"
@@ -16,7 +16,7 @@ homepage="https://github.com/pyca/bcrypt"
 license="Apache-2.0"
 changelog="https://github.com/pyca/bcrypt/blob/main/README.rst#changelog"
 distfiles="$PYPI_SITE/b/bcrypt/bcrypt-$version.tar.gz"
-checksum="27d375903ac8261cfe4047f6709d16f7d18d39b1ec92aaf72af989552a650ebd"
+checksum="33313a1200a3ae90b75587ceac502b048b840fc69e7f7a0905b5f87fac7a1258"
 build_helper="rust"
 build_style="python3-pep517"
 
