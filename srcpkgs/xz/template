@@ -4,12 +4,15 @@ version=5.4.6
 revision=1
 short_desc="XZ compression utilities"
 homepage="https://xz.tukaani.org"
-license="Public Domain, GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
+license="0BSD, GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-or-later"
 changelog="https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS"
 distfiles="https://github.com/tukaani-project/xz/releases/download/v$version/$pkgname-$version.tar.gz"
-checksum="aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c"
+checksum="0f5c81f14171b74fcc9777d302304d964e63ffc2d7b634ef023a7249d9b5d875"
 build_style="gnu-configure"
 configure_args="--disable-doc"
+if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+  configure_args+=" --disable-sandbox"
+fi
 bootstrap="yes"
 
 liblzma_package() {
@@ -17,6 +20,11 @@ liblzma_package() {
   pkg_install() {
     vmove "usr/lib/*.so.*"
   }
+}
+
+post_install() {
+  vlicense COPYING
+  vlicense COPYING.0BSD
 }
 
 liblzma-devel_package() {
