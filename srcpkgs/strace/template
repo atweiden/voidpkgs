@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="strace"
 version=6.7
-revision=1
+revision=2
 short_desc="System Call Tracer"
 makedepends="$(vopt_if libunwind libunwind-devel)"
 homepage="https://strace.io/"
