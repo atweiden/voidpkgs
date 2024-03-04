@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="rdrview"
-version=0.1
+version=0.1.1
 revision=1
 short_desc="Firefox Reader View as a command line tool"
 makedepends+=" libcurl-devel"
@@ -9,7 +9,7 @@ makedepends+=" libxml2-devel"
 homepage="https://github.com/eafer/rdrview"
 license="Apache-2.0"
 distfiles="https://github.com/eafer/rdrview/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6cb6688b3465f71ced13b889708cbd728193d7137f4108511a3fd2d4331d7f0c"
+checksum="4655d77fd74f0cb89acf6f72a3be445265da6c948f30c29eb8ee2bb8d6df3f63"
 build_style="gnu-makefile"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
