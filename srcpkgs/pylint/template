@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pylint"
-version=2.17.4
-revision=2
+version=3.1.0
+revision=1
 short_desc="Python code static checker"
 depends+=" python3-astroid"
 depends+=" python3-dill"
@@ -19,7 +19,7 @@ hostmakedepends="python3-wheel"
 homepage="https://pylint.pycqa.org"
 license="GPL-2.0-or-later"
 distfiles="https://github.com/PyCQA/pylint/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a4be4ce65a5ab900fec8a6f38670e84c9720cb1b611991845c2c5ff136afb794"
+checksum="c4c13c6b77f6604367763f906e5df4e9f4c7fbfa6e8553f31493adfabfc73092"
 build_style="python3-pep517"
 make_build_args="--skip-dependency-check"
 # python3-tkinter in checkdepends requires gui dependencies
