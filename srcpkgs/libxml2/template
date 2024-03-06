@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="libxml2"
-version=2.11.4
-revision=6
+version=2.12.5
+revision=1
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
 makedepends+=" liblzma-devel"
@@ -14,8 +14,9 @@ hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 homepage="https://gitlab.gnome.org/GNOME/libxml2"
 license="MIT"
+changelog="https://gitlab.gnome.org/GNOME/libxml2/-/raw/master/NEWS"
 distfiles="$GNOME_SITE/libxml2/${version%.*}/libxml2-$version.tar.xz"
-checksum="737e1d7f8ab3f139729ca13a2494fd17bf30ddb4b7a427cf336252cab57f57f7"
+checksum="a972796696afd38073e0f59c283c3a2f5a560b5268b4babc391b286166526b21"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --with-ftp"
@@ -25,13 +26,14 @@ configure_args+=" --with-legacy"
 configure_args+=" --with-threads"
 configure_args+=" --with-xptr-locs"
 python_version=3
-reverts="2.12.1_1"
 
 CFLAGS="-I$XBPS_CROSS_BASE/usr/include/python$py3_ver"
 
 post_extract() {
   if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
+    # disable broken encoding conversion tests on musl
     rm -f test/ebcdic_566012.xml
+    rm -f test/icu_parse_test.xml
   fi
 }
 
