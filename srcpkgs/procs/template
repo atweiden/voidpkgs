@@ -1,13 +1,13 @@
 maintainer="nox"
 pkgname="procs"
-version=0.14.4
+version=0.14.5
 revision=1
 short_desc="Modern replacement for ps written in Rust"
 homepage="https://github.com/dalance/procs"
 license="MIT"
 changelog="https://github.com/dalance/procs/raw/master/CHANGELOG.md"
 distfiles="https://github.com/dalance/procs/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="77c5f5d3bdfc9cef870732500ef58c203a1464f924b12f79c7d9e301b4dd5b16"
+checksum="539b88565c775a106063da5cc5148cfdc7e010534f3dbc90cb8f6317d51ca96b"
 build_style="cargo"
 # shell completion generation requires qemu (see: upstream)
 nocross="yes"
