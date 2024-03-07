@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="python3-pytest-subtests"
-version=0.11.0
-revision=2
+version=0.12.0
+revision=1
 short_desc="Subtest fixture for python3-pytest"
 depends="python3-pytest"
 checkdepends="python3-pytest"
@@ -10,7 +10,7 @@ hostmakedepends+=" python3-wheel"
 homepage="https://github.com/pytest-dev/pytest-subtests"
 license="MIT"
 distfiles="$PYPI_SITE/p/pytest-subtests/pytest-subtests-$version.tar.gz"
-checksum="51865c88457545f51fb72011942f0a3c6901ee9e24cbfb6d1b9dc1348bafbe37"
+checksum="331de3989c37abdad0745f38bd5f2e1ac1a025c7fbd0e01fe37651b51022857c"
 build_style="python3-pep517"
 
 post_install() {
