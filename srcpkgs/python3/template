@@ -20,7 +20,9 @@ makedepends+=" zlib-devel"
 if [[ "$XBPS_TARGET_LIBC" == "glibc" ]]; then
   makedepends+=" libxcrypt-devel"
 fi
-hostmakedepends="pkgconf"
+hostmakedepends+=" autoconf-archive"
+hostmakedepends+=" automake"
+hostmakedepends+=" pkgconf"
 homepage="https://www.python.org"
 license="Python-2.0"
 distfiles+=" https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz"
@@ -72,6 +74,11 @@ post_patch() {
   if [[ -n "$CROSS_BUILD" ]]; then
     patch -Np1 -i "$FILESDIR/cross.patch"
   fi
+}
+
+# https://github.com/python/cpython/issues/89640
+pre_configure() {
+  autoreconf -vfi
 }
 
 do_configure() {
