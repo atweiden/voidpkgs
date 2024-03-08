@@ -1,19 +1,24 @@
 maintainer="nox"
 pkgname="uacme"
-version=1.7.4
-revision=2
+version=1.7.5
+revision=1
 short_desc="Minimal ACMEv2 (Let's Encrypt) client written in plain C"
 makedepends+=" libcurl-devel"
 makedepends+=" openssl-devel"
 hostmakedepends+=" asciidoc"
+hostmakedepends+=" automake"
 hostmakedepends+=" pkg-config"
 homepage="https://github.com/ndilieto/uacme"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ndilieto/uacme/raw/master/ChangeLog"
 distfiles="https://github.com/ndilieto/uacme/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a638fe0878dba8fdda62f89e7a284243edbcd31b92c11b5cfdc7d3efd9547bca"
+checksum="596b2fba75fedc7a410dd71583c828642ecd486dfdcfde109dfebb82a374abbe"
 build_style="gnu-configure"
 configure_args+=" --disable-maintainer-mode"
 configure_args+=" --with-openssl"
+
+pre_configure() {
+  autoreconf -fi
+}
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
