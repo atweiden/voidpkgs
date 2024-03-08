@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="autoconf-archive"
 version=2023.02.20
-revision=1
+revision=2
 short_desc="Collection of freely re-usable Autoconf macros"
 depends="autoconf"
 hostmakedepends="texinfo"
