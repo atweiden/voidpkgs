@@ -1,7 +1,8 @@
 maintainer="nox"
 pkgname="bpftrace"
-version=0.20.0
-revision=2
+version=0.20.2
+revision=1
+_llvmver=17
 short_desc="High-level tracing language for Linux enhanced Berkeley Packet Filter"
 archs+=" aarch64*"
 archs+=" ppc64*"
@@ -12,15 +13,16 @@ makedepends+=" clang"
 makedepends+=" clang-tools-extra"
 makedepends+=" elfutils-devel"
 makedepends+=" libbpf-devel"
+makedepends+=" libomp-devel"
 makedepends+=" libxml2-devel"
-makedepends+=" llvm17-devel"
+makedepends+=" llvm$_llvmver-devel"
 hostmakedepends+=" flex"
 hostmakedepends+=" pkg-config"
 hostmakedepends+=" ruby-asciidoctor"
 homepage="https://github.com/iovisor/bpftrace"
 license="Apache-2.0"
 distfiles="https://github.com/iovisor/bpftrace/archive/v$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="ee70af32b208eff32e59108c9f1dcc569ce207f95babed68db9c408ca617bf08"
+checksum="8051bd84bfeec03d090ca619718ac4009b717dc212b52e03fe578d3a62a91c85"
 build_style="cmake"
 # needs root to run
 configure_args+=" -DBUILD_TESTING=OFF"
