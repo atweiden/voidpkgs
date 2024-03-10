@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="abseil-cpp"
 version=20240116.1
-revision=1
+revision=2
 short_desc="Abseil common libraries"
 hostmakedepends="pkg-config"
 homepage="https://abseil.io"
@@ -12,6 +12,7 @@ checksum="3c743204df78366ad2eaf236d6631d83f6bc928d1705dd0000b872e53b73dc6a"
 build_style="cmake"
 configure_args+=" -DABSL_PROPAGATE_CXX_STD=ON"
 configure_args+=" -DBUILD_SHARED_LIBS=ON"
+configure_args+=" -DCMAKE_CXX_STANDARD=17"
 
 abseil-cpp-devel_package() {
   short_desc+=" - development files"
