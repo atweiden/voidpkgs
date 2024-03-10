@@ -1,16 +1,17 @@
-# Template file for 'perl-JSON'
-pkgname=perl-JSON
+maintainer="nox"
+pkgname="perl-JSON"
 version=4.10
 revision=1
-build_style=perl-module
-hostmakedepends="perl"
-makedepends="$hostmakedepends"
-depends="perl"
-checkdepends="perl-Test-Pod"
 short_desc="JSON (JavaScript Object Notation) encoder/decoder"
-maintainer="Orphaned <orphan@voidlinux.org>"
-license="Artistic-1.0-Perl, GPL-1.0-or-later"
+depends="perl"
+makedepends="perl"
+checkdepends="perl-Test-Pod"
+hostmakedepends="perl"
 homepage="https://metacpan.org/release/JSON"
+license="Artistic-1.0-Perl, GPL-1.0-or-later"
 changelog="https://metacpan.org/dist/JSON/changes"
-distfiles="${CPAN_SITE}/JSON/JSON-${version}.tar.gz"
-checksum=df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35
+distfiles="$CPAN_SITE/JSON/JSON-$version.tar.gz"
+checksum="df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35"
+build_style="perl-module"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
