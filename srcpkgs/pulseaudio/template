@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pulseaudio"
 version=16.1
-revision=1
+revision=2
 short_desc="Featureful, general-purpose sound server"
 depends="pulseaudio-utils>=${version}_$revision"
 makedepends+=" alsa-lib-devel"
@@ -37,6 +37,7 @@ configure_args+=" -Dbashcompletiondir=/usr/share/bash-completion/completions"
 configure_args+=" -Dbluez5=disabled"
 configure_args+=" -Dbluez5-native-headset=disabled"
 configure_args+=" -Dbluez5-ofono-headset=disabled"
+configure_args+=" -Dcpp_std=c++17"
 configure_args+=" -Ddatabase=tdb"
 configure_args+=" -Ddbus=disabled"
 configure_args+=" -Delogind=disabled"
