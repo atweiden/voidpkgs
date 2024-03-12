@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="apk-tools"
-version=2.14.0
-revision=2
+version=2.14.1
+revision=1
 short_desc="Alpine Package Keeper (Alpine package manager)"
 makedepends+=" openssl-devel"
 makedepends+=" zlib-devel"
@@ -13,7 +13,7 @@ hostmakedepends+=" scdoc"
 homepage="https://git.alpinelinux.org/apk-tools"
 license="GPL-2.0-only"
 distfiles="https://gitlab.alpinelinux.org/alpine/apk-tools/-/archive/v$version/$pkgname-v$version.tar.gz"
-checksum="4c6db13039280814a10a3b3d89b29837b59769c69214a1861997e088eac107a5"
+checksum="c06487563cae9e92161dfe1a81e714f700229cc0ad075b6c26ac3f157892e732"
 build_style="gnu-makefile"
 # link libapk statically
 make_build_args+=" LDFLAGS_apk.static="
