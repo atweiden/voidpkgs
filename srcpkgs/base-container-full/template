@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-container-full"
 version=0.11
-revision=2
+revision=3
 short_desc="Void Linux base system meta package for containers/chroots"
 depends+=" base-files"
 depends+=" ncurses"
