@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-container"
 version=0.3
-revision=2
+revision=3
 short_desc="Void Linux base system meta for minimal containers/chroots"
 depends+=" base-files"
 depends+=" coreutils"
