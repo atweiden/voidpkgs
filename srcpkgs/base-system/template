@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="base-system"
 version=0.114
-revision=1
+revision=2
 short_desc="Void Linux base system meta package"
 depends+=" base-files>=0.77"
 depends+=" ncurses"
