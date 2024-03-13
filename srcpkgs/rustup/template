@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="rustup"
-version=1.26.0
-revision=2
+version=1.27.0
+revision=1
 short_desc="Rust toolchain installer"
 # rustup doesn't recognize this target
 archs="~armv*-musl"
@@ -13,7 +13,7 @@ homepage="https://www.rustup.rs"
 license="Apache-2.0, MIT"
 changelog="https://github.com/rust-lang/rustup/raw/master/CHANGELOG.md"
 distfiles="https://github.com/rust-lang/rustup/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="6f20ff98f2f1dbde6886f8d133fe0d7aed24bc76c670ea1fca18eb33baadd808"
+checksum="3d331ab97d75b03a1cc2b36b2f26cd0a16d681b79677512603f2262991950ad1"
 build_style="cargo"
 configure_args+=" --bin rustup-init"
 configure_args+=" --features curl-backend,reqwest-backend,reqwest-default-tls,no-self-update"
