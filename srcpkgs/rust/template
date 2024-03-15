@@ -2,7 +2,7 @@
 maintainer="nox"
 pkgname="rust"
 version=1.76.0
-revision=1
+revision=2
 _llvmver=17
 short_desc="Safe, concurrent, practical systems language"
 depends+=" gcc"
@@ -142,7 +142,7 @@ do_configure() {
     --release-description="Void Linux" \
     --llvm-libunwind="no" \
     --llvm-config="/usr/bin/llvm-config" \
-    --tools="clippy,rustdoc,rustfmt" \
+    --tools="clippy,rustdoc,rustfmt,rust-analyzer-proc-macro-srv" \
     --set="rust.optimize=true" \
     --set="rust.debug=false" \
     --set="rust.codegen-units=1" \
