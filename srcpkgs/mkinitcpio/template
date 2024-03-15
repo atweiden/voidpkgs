@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="mkinitcpio"
-version=38
+version=38.1
 revision=1
 short_desc="Next generation of initramfs creation"
 depends+=" bash"
@@ -18,7 +18,7 @@ hostmakedepends="asciidoc"
 homepage="https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio"
 license="GPL-2.0-only"
 changelog="https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/raw/master/CHANGELOG"
-distfiles="https://sources.archlinux.org/other/$pkgname/$pkgname-$version.tar.gz"
+distfiles="5c63525097a3c17bfb654dacea71ed7681c3102a3684d18c319d06e57007e1cd"
 checksum="c64ff852c63d3ee668950e0a4e10a2eae020e079025fa9ad23261e3221cddc05"
 conf_files="/etc/mkinitcpio.conf"
 build_style="gnu-makefile"
