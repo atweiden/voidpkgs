@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="fzf"
 version=0.48.0
-revision=1
+revision=2
 short_desc="Command-line fuzzy finder"
 makedepends="ncurses-devel"
 homepage="https://github.com/junegunn/fzf"
