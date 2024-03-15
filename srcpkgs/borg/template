@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="borg"
 version=1.2.7
-revision=1
+revision=2
 short_desc="Deduplicating backup program with compression and encryption"
 depends+=" python3-msgpack"
 depends+=" python3-packaging"
@@ -32,6 +32,18 @@ export BORG_LIBLZ4_PREFIX="$XBPS_CROSS_BASE/usr"
 export BORG_LIBXXHASH_PREFIX="$XBPS_CROSS_BASE/usr"
 export BORG_LIBZSTD_PREFIX="$XBPS_CROSS_BASE/usr"
 export BORG_OPENSSL_PREFIX="$XBPS_CROSS_BASE/usr"
+
+post_extract() {
+  # borg#8133
+  vsed \
+    -i \
+    -e '/msgpack/s/<=1.0.7/<=1.0.8/g' \
+    setup.py
+  vsed \
+    -i \
+    -e '/msgpack/s/<= (1, 0, 7)/<= (1, 0, 8)/g' \
+    src/borg/helpers/msgpack.py
+}
 
 post_install() {
   vlicense LICENSE
