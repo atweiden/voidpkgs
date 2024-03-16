@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="mkinitcpio-nfs-utils"
 version=0.3
-revision=4
+revision=5
 short_desc="Ipconfig and nfsmount tools for NFS root support in mkinitcpio"
 depends="mkinitcpio"
 homepage="http://www.archlinux.org/"
