@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="units"
-version=2.22
+version=2.23
 revision=1
 short_desc="Converts between different units"
 depends+=" python3"
@@ -10,7 +10,7 @@ hostmakedepends="python"
 homepage="https://www.gnu.org/software/units/units.html"
 license="GPL-3.0-or-later"
 distfiles="$GNU_SITE/units/$pkgname-$version.tar.gz"
-checksum="5d13e1207721fe7726d906ba1d92dc0eddaa9fc26759ed22e3b8d1a793125848"
+checksum="d957b451245925c9e614c4513397449630eaf92bd62b8495ba09bbe351a17370"
 build_style="gnu-configure"
 configure_args="--sharedstatedir=/usr/share"
 python_version=3
