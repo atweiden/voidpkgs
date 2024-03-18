@@ -1,20 +1,19 @@
 maintainer="nox"
 pkgname="python3-qrcode"
-version=6.1
-revision=7
-short_desc="QR Code image generator (Python3)"
-depends="python3-six"
-checkdepends="python3-six"
+version=7.4.2
+revision=1
+short_desc="QR Code image generator"
+depends+=" python3-pypng"
+depends+=" python3-typing_extensions"
+checkdepends+=" $depends"
+checkdepends+=" python3-pytest"
 hostmakedepends="python3-setuptools"
 homepage="https://github.com/lincolnloop/python-qrcode"
 license="BSD-3-Clause"
+changelog="https://github.com/lincolnloop/python-qrcode/raw/main/CHANGES.rst"
 distfiles="$PYPI_SITE/q/qrcode/qrcode-$version.tar.gz"
-checksum="505253854f607f2abf4d16092c61d4e9d511a3b4392e60bff957a68592b04369"
+checksum="9dd969454827e127dbd93696b20747239e6d540e082937c90f14ac95b30f5845"
 build_style="python3-module"
-
-do_check() {
-  python3 setup.py test
-}
 
 post_install() {
   vlicense LICENSE
