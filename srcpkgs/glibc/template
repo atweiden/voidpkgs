@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="glibc"
 version=2.39
-revision=1
+revision=2
 short_desc="GNU C library"
 archs="~*-musl"
 makedepends="kernel-libc-headers"
@@ -11,6 +11,9 @@ if [[ -n "$CHROOT_READY" ]]; then
   hostmakedepends+=" perl"
   hostmakedepends+=" python3"
   hostmakedepends+=" texinfo"
+  # XXX: remove this on the next update
+  # ensures partial upgrades don't break things like pam
+  depends="libxcrypt-compat"
 fi
 homepage="http://www.gnu.org/software/libc"
 license="GPL-2.0-or-later, LGPL-2.1-or-later, BSD-3-Clause"
@@ -52,8 +55,6 @@ nostrip_files+=" libresolv.so.2"
 nostrip_files+=" libthread_db.so.1"
 lib32files="/usr/lib/gconv/gconv-modules"
 lib32symlinks="ld-linux.so.2"
-# glibc 2.38 stops providing libcrypt.so.1
-conflicts="glibc-32bit<2.38_1"
 bootstrap="yes"
 if [[ "$XBPS_TARGET_LIBC" == "musl" ]]; then
   broken="no point in building this for musl"
