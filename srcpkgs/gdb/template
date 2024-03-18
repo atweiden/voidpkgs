@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="gdb"
 version=14.2
-revision=1
+revision=2
 short_desc="GNU Debugger"
 depends="gdb-common>=${version}_${revision}"
 makedepends+=" expat-devel"
@@ -71,7 +71,7 @@ fi
 post_install() {
   # resolve conflicts with binutils
   rm -rf "$DESTDIR/usr"/{include,lib}
-  rm -rf "$DESTDIR/usr/share/info"/{bfd,ctf-spec}.info*
+  rm -rf "$DESTDIR/usr/share/info"/{bfd,ctf-spec,sframe-spec}.info*
 }
 
 gdb-common_package() {
