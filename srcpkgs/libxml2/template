@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="libxml2"
-version=2.12.5
+version=2.12.6
 revision=1
 short_desc="Library providing XML and HTML support"
 makedepends+=" icu-devel"
@@ -16,7 +16,7 @@ homepage="https://gitlab.gnome.org/GNOME/libxml2"
 license="MIT"
 changelog="https://gitlab.gnome.org/GNOME/libxml2/-/raw/master/NEWS"
 distfiles="$GNOME_SITE/libxml2/${version%.*}/libxml2-$version.tar.xz"
-checksum="a972796696afd38073e0f59c283c3a2f5a560b5268b4babc391b286166526b21"
+checksum="889c593a881a3db5fdd96cc9318c87df34eb648edfc458272ad46fd607353fbb"
 build_style="gnu-configure"
 configure_args+=" --enable-static"
 configure_args+=" --with-ftp"
