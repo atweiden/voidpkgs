@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-time-machine"
-version=2.13.0
+version=2.14.0
 revision=1
 short_desc="Travel through time in your tests"
 depends="python3-dateutil"
@@ -13,7 +13,7 @@ homepage="https://github.com/adamchainz/time-machine"
 license="MIT"
 changelog="https://github.com/adamchainz/time-machine/raw/main/CHANGELOG.rst"
 distfiles="https://github.com/adamchainz/time-machine/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="a0892ada963bd16fdaf657d71ef9bec614931c467a935f3217bf08906fe3bd11"
+checksum="96d4d0d9af39004f74b705650bd5079c9208ba2c94428621863982e914ed0884"
 build_style="python3-pep517"
 
 post_install() {
