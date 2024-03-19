@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="python3-anyio"
-version=4.2.0
+version=4.3.0
 revision=1
 short_desc="High level asynchronous concurrency and networking framework"
 depends+=" python3-idna"
@@ -18,7 +18,7 @@ homepage="https://github.com/agronholm/anyio"
 license="MIT"
 changelog="https://github.com/agronholm/anyio/raw/master/docs/versionhistory.rst"
 distfiles="$PYPI_SITE/a/anyio/anyio-$version.tar.gz"
-checksum="e1875bb4b4e2de1669f4bc7869b6d3f54231cdced71605e6e64c9be77e3be50f"
+checksum="f75253795a87df48568485fd18cdd2a3fa5c4f7c5be8e5e36637733fce06fed6"
 build_style="python3-pep517"
 # this file needs python module `exceptiongroup`
 make_check_args="--ignore tests/test_taskgroups.py"
