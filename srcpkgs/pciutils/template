@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="pciutils"
-version=3.10.0
+version=3.11.1
 revision=1
 short_desc="PCI bus related utilities"
 depends="hwids"
@@ -11,7 +11,7 @@ homepage="https://mj.ucw.cz/sw/pciutils/"
 license="GPL-2.0-or-later"
 changelog="https://github.com/pciutils/pciutils/raw/master/ChangeLog"
 distfiles="https://mj.ucw.cz/download/linux/pci/pciutils-$version.tar.gz"
-checksum="7deabe38ae5fa88a96a8c4947975cf31c591506db546e9665a10dddbf350ead0"
+checksum="1904864ce5b0272d0a2e42e72ceac9e8810d1898480567f36b70642f8205fbfd"
 
 do_build() {
   make \
