@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="p11-kit"
-version=0.25.0
+version=0.25.3
 revision=1
 short_desc="Provides a way to load and enumerate PKCS#11 modules"
 makedepends+=" libffi-devel"
@@ -13,7 +13,7 @@ homepage="https://github.com/p11-glue/p11-kit"
 license="BSD-3-Clause"
 changelog="https://github.com/p11-glue/p11-kit/raw/master/NEWS"
 distfiles="https://github.com/p11-glue/p11-kit/releases/download/$version/$pkgname-$version.tar.xz"
-checksum="d55583bcdde83d86579cabe3a8f7f2638675fef01d23cace733ff748fc354706"
+checksum="d8ddce1bb7e898986f9d250ccae7c09ce14d82f1009046d202a0eb1b428b2adc"
 conf_files="/etc/pkcs11/pkcs11.conf"
 build_style="meson"
 configure_args+=" -Dbash_completion=disabled"
