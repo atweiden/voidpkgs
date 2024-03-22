@@ -1,7 +1,7 @@
 maintainer="nox"
 pkgname="pam-base"
 version=0.4
-revision=2
+revision=3
 short_desc="PAM base configuration files"
 homepage="http://www.voidlinux.org"
 license="Public Domain"
