@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="hatchling"
-version=1.21.0
+version=1.22.3
 revision=1
 short_desc="Extensible, standards compliant build backend used by Hatch"
 depends+=" python3-editables"
@@ -14,7 +14,7 @@ homepage="https://hatch.pypa.io/latest/"
 license="MIT"
 changelog="https://github.com/pypa/hatch/raw/master/docs/history/hatchling.md"
 distfiles="$PYPI_SITE/h/hatchling/hatchling-$version.tar.gz"
-checksum="5c086772357a50723b825fd5da5278ac7e3697cdf7797d07541a6c90b6ff754c"
+checksum="adf5d32ab10ac59272cd0bcae9c8193288841860025f2c51df971dae161f8683"
 build_style="python3-pep517"
 
 post_install() {
