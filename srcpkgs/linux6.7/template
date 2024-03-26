@@ -18,6 +18,7 @@ hostmakedepends+=" libmpc-devel"
 hostmakedepends+=" openssl-devel"
 hostmakedepends+=" pahole"
 hostmakedepends+=" perl"
+hostmakedepends+=" pkg-config"
 hostmakedepends+=" python3"
 hostmakedepends+=" tar"
 hostmakedepends+=" uboot-mkimage"
@@ -369,6 +370,9 @@ do_install() {
   cp -a "arch/$arch/include" \
     "$hdrdest/arch/$arch"
 
+  # needed for mv-debug
+  cp scripts/sign-file "$XBPS_WRAPPERDIR"
+
   # remove helper binaries built for host
   # if generated files from the scripts/ directory need to be included,
   # they need to be copied to $hdrdest before this step
@@ -504,7 +508,7 @@ do_install() {
   install -Dm 644 vmlinux "$DESTDIR/usr/lib/debug/boot/vmlinux-$_kernver"
   (cd "$DESTDIR"
    export DESTDIR
-   export SIGN_FILE="$wrksrc/scripts/sign-file sha512 $wrksrc/certs/signing_key.pem $wrksrc/certs/signing_key.x509"
+   export SIGN_FILE="$XBPS_WRAPPERDIR/sign-file sha512 $wrksrc/certs/signing_key.pem $wrksrc/certs/signing_key.x509"
    find ./ -name "*.ko" -print0 \
      | xargs -0r -n1 -P "$XBPS_MAKEJOBS" "$FILESDIR/mv-debug")
   # ... and run depmod again
