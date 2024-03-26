@@ -1,6 +1,6 @@
 maintainer="nox"
 pkgname="toot"
-version=0.41.1
+version=0.42.0
 revision=1
 short_desc="Mastodon CLI client"
 depends+=" python3-BeautifulSoup4"
@@ -20,7 +20,7 @@ homepage="https://toot.bezdomni.net"
 license="GPL-3.0-or-later"
 changelog="https://github.com/ihabunek/toot/raw/master/CHANGELOG.md"
 distfiles="https://github.com/ihabunek/toot/archive/$version.tar.gz>$pkgname-$version.tar.gz"
-checksum="8d5f6aa5b156f9a3be01b9f6d3bffb103090f56456b434ea18962526b1e1370e"
+checksum="05502896b3a75aa93c8895bab75669653601af502ac6cf44d1ab33de373ef229"
 build_style="python3-pep517"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
