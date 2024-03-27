@@ -1,15 +1,15 @@
 maintainer="nox"
 pkgname="sysstat"
-version=12.7.2
+version=12.7.5
 revision=1
 short_desc="Collection of performance monitoring tools"
 depends="lm_sensors"
 hostmakedepends+=" gettext"
 hostmakedepends+=" pkg-config"
-homepage="http://pagesperso-orange.fr/sebastien.godard/"
+homepage="https://sysstat.github.io/"
 license="GPL-2.0-or-later"
-distfiles="http://pagesperso-orange.fr/sebastien.godard/sysstat-$version.tar.xz"
-checksum="ec4090c9c140d8301d5f8cd84e21456737d094d054141a30f557ccb05bbd3b9f"
+distfiles="https://sysstat.github.io/sysstat-packages/$pkgname-$version.tar.xz"
+checksum="57664040a549d33bb06a1121c7124d4cadd9b8b35f815856c194393047cd4d6b"
 conf_files+=" /etc/default/sysstat"
 conf_files+=" /etc/default/sysstat.ioconf"
 build_style="gnu-configure"
@@ -31,9 +31,7 @@ post_extract() {
 
 pre_configure() {
   export conf_dir="/etc/default"
-  export cron_owner="$(whoami)"
-  vmkdir etc/cron.daily
-  vmkdir etc/cron.hourly
+  vmkdir etc/cron.d
 }
 
 post_install() {
