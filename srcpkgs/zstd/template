@@ -1,3 +1,4 @@
+# don't forget to rebuild 'python3-zstandard' which depends on api version
 maintainer="nox"
 pkgname="zstd"
 version=1.5.6
