@@ -472,6 +472,7 @@ libmpc.so.3 libmpc-1.0.1_1
 libmpg123.so.0 libmpg123-1.13.4_2
 libout123.so.0 libmpg123-1.23.0_1
 libsyn123.so.0 libmpg123-1.26.0_1
+libnatpmp.so.1 libnatpmp-20230423_1
 libnet.so.9 libnet-1.2_1
 libnetsnmp.so.40 libnet-snmp-5.9_2
 libnetsnmpagent.so.40 libnet-snmp-5.9_2
